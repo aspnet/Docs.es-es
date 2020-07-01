@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/identity
-ms.openlocfilehash: 97cbc5f68d20c06e92a56ead85c8377d4e8ef582
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 31970bd2b52ad83c116067d258aa9dca2d9b3b66
+ms.sourcegitcommit: 895e952aec11c91d703fbdd3640a979307b8cc67
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85404592"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85793573"
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a>Introducción a Identity en ASP.net Core
 
@@ -93,7 +93,11 @@ Ejecute el siguiente comando en la consola del administrador de paquetes (PMC):
 
 # <a name="net-core-cli"></a>[CLI de .NET Core](#tab/netcore-cli)
 
-No es necesario realizar migraciones en este paso al usar SQLite. Para LocalDB, ejecute el siguiente comando:
+No es necesario realizar migraciones en este paso al usar SQLite.
+
+[!INCLUDE [more information on the CLI for EF Core](~/includes/ef-cli.md)]
+
+Para LocalDB, ejecute el siguiente comando:
 
 ```dotnetcli
 dotnet ef database update
@@ -242,7 +246,7 @@ Para evitar la publicación de recursos estáticos Identity (hojas de estilos y 
 
 * [IdentityCódigo fuente de ASP.net Core](https://github.com/dotnet/aspnetcore/tree/master/src/Identity)
 * Consulte [este problema de github](https://github.com/dotnet/AspNetCore.Docs/issues/5131) para obtener información sobre cómo configurar el Identity uso de SQLite.
-* [ConfigurarIdentity](xref:security/authentication/identity-configuration)
+* [Configurar Identity](xref:security/authentication/identity-configuration)
 * <xref:security/authorization/secure-data>
 * <xref:security/authentication/add-user-data>
 * <xref:security/authentication/identity-enable-qrcodes>
@@ -432,7 +436,7 @@ Consulte [configuración](#pw) para obtener un ejemplo que establece los requisi
 ## <a name="next-steps"></a>Pasos siguientes
 
 * Consulte [este problema de github](https://github.com/dotnet/AspNetCore.Docs/issues/5131) para obtener información sobre cómo configurar el Identity uso de SQLite.
-* [ConfigurarIdentity](xref:security/authentication/identity-configuration)
+* [Configurar Identity](xref:security/authentication/identity-configuration)
 * <xref:security/authorization/secure-data>
 * <xref:security/authentication/add-user-data>
 * <xref:security/authentication/identity-enable-qrcodes>
