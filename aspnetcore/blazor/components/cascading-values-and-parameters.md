@@ -8,17 +8,19 @@ ms.custom: mvc
 ms.date: 06/16/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: blazor/components/cascading-values-and-parameters
-ms.openlocfilehash: 43fbaa6284fa45dee46a693ed858ed06130600b6
-ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
+ms.openlocfilehash: c72bf5584c7e0afdeadbb4103b5e58d91ae8c1e9
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85242386"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85399223"
 ---
 # <a name="aspnet-core-blazor-cascading-values-and-parameters"></a>Valores y parámetros en cascada de Blazor en ASP.NET Core
 

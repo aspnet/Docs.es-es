@@ -6,17 +6,19 @@ ms.author: riande
 ms.date: 10/14/2016
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: fundamentals/request-features
-ms.openlocfilehash: e26a1a7b35d40c1214bbc40269571545cbd2c235
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 21e78c6c1d05eb3b2ce8ade1b950b15823fa0e83
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82776030"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85407283"
 ---
 # <a name="request-features-in-aspnet-core"></a>Características de solicitud de ASP.NET Core
 

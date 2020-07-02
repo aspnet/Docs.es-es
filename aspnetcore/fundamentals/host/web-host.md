@@ -8,17 +8,19 @@ ms.custom: mvc
 ms.date: 10/07/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: fundamentals/host/web-host
-ms.openlocfilehash: 71bca4c0987059efa0e4ff35f25fe7cdb75641d5
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 630191948a9013e88853ee1a31d15f2964b4a7f4
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82773996"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85399418"
 ---
 # <a name="aspnet-core-web-host"></a>Host web de ASP.NET Core
 
@@ -530,7 +532,7 @@ using (var host = WebHost.Start("http://localhost:8080", app => app.Response.Wri
 
 Produce el mismo resultado que **Start(RequestDelegate app)** , excepto que la aplicación responde en `http://localhost:8080`.
 
-**Start(Action\<IRouteBuilder> routeBuilder)**
+**Start(acción\<IRouteBuilder> routeBuilder)**
 
 Use una instancia de `IRouteBuilder` ([Microsoft.AspNetCore.Routing](https://www.nuget.org/packages/Microsoft.AspNetCore.Routing/)) para usar el middleware de enrutamiento:
 
@@ -564,7 +566,7 @@ Utilice las siguientes solicitudes de explorador con el ejemplo:
 
 `WaitForShutdown` se bloquea hasta que se emite un salto (Ctrl-C/SIGINT o SIGTERM). La aplicación muestra el mensaje `Console.WriteLine` y espera a que se pulse una tecla para salir.
 
-**Start(string url, Action\<IRouteBuilder> routeBuilder)**
+**Start(url de cadena, acción\<IRouteBuilder> routeBuilder)**
 
 Use una dirección URL y una instancia de `IRouteBuilder`:
 
@@ -585,9 +587,9 @@ using (var host = WebHost.Start("http://localhost:8080", router => router
 }
 ```
 
-Produce el mismo resultado que **Start(Action\<IRouteBuilder> routeBuilder)** , salvo que la aplicación responde en `http://localhost:8080`.
+Produce el mismo resultado que **Start(acción\<IRouteBuilder> routeBuilder)** , excepto que la aplicación responde en `http://localhost:8080`.
 
-**StartWith(Action\<IApplicationBuilder> app)**
+**StartWith(acción\<IApplicationBuilder> app)**
 
 Proporciona un delegado para configurar `IApplicationBuilder`:
 
@@ -608,7 +610,7 @@ using (var host = WebHost.StartWith(app =>
 
 Haga una solicitud en el explorador a `http://localhost:5000` para recibir la respuesta "Hello World!" `WaitForShutdown` se bloquea hasta que se emite un salto (Ctrl-C/SIGINT o SIGTERM). La aplicación muestra el mensaje `Console.WriteLine` y espera a que se pulse una tecla para salir.
 
-**StartWith(string url, Action\<IApplicationBuilder> app)**
+**StartWith(url de cadena, acción\<IApplicationBuilder> app)**
 
 Proporcione una dirección URL y un delegado para configurar `IApplicationBuilder`:
 
@@ -627,7 +629,7 @@ using (var host = WebHost.StartWith("http://localhost:8080", app =>
 }
 ```
 
-Produce el mismo resultado que **StartWith(Action\<IApplicationBuilder> app)** , salvo que la aplicación responde en `http://localhost:8080`.
+Produce el mismo resultado que **StartWith(acción\<IApplicationBuilder> app)** , excepto que la aplicación responde en `http://localhost:8080`.
 
 ::: moniker range=">= aspnetcore-3.0"
 

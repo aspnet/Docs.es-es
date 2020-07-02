@@ -8,17 +8,19 @@ ms.custom: mvc
 ms.date: 05/04/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: fundamentals/servers/kestrel
-ms.openlocfilehash: fd0db90e897a813e0127ce1c751569158efa8fdf
-ms.sourcegitcommit: 4437f4c149f1ef6c28796dcfaa2863b4c088169c
+ms.openlocfilehash: 9f70de3c4c3f936f25a390c3a7ab1a1e2a000138
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85074170"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85401030"
 ---
 # <a name="kestrel-web-server-implementation-in-aspnet-core"></a>Implementación del servidor web Kestrel en ASP.NET Core
 

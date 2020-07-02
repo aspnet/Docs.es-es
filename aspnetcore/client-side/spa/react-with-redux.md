@@ -8,17 +8,19 @@ ms.custom: mvc
 ms.date: 02/13/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: spa/react-with-redux
-ms.openlocfilehash: eab71349464255c9e333976caeba0e05a52909f0
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: d44e1afabd909b7d46d3355a5d66848458416873
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82773714"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85401745"
 ---
 # <a name="use-the-react-with-redux-project-template-with-aspnet-core"></a>Uso de la plantilla de proyecto React-with-Redux con ASP.NET Core
 

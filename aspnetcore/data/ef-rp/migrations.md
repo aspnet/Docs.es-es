@@ -6,17 +6,19 @@ ms.author: riande
 ms.date: 07/22/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: data/ef-rp/migrations
-ms.openlocfilehash: 74fe8771718647c3adf8288a72b11c30fb097a63
-ms.sourcegitcommit: fa67462abdf0cc4051977d40605183c629db7c64
+ms.openlocfilehash: 7d326bd5d8204d98e2f13b433f49fd740557905f
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84652635"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85405684"
 ---
 # <a name="part-4-razor-pages-with-ef-core-migrations-in-aspnet-core"></a>Parte 4. Razor Pages con migraciones de EF Core en ASP.NET Core
 

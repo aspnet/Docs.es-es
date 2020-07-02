@@ -8,17 +8,19 @@ ms.custom: mvc
 ms.date: 06/22/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: host-and-deploy/health-checks
-ms.openlocfilehash: ca5540b4920bc92e968dcbc22a9407453041b01c
-ms.sourcegitcommit: 5e462c3328c70f95969d02adce9c71592049f54c
+ms.openlocfilehash: 6725dec7c5e6b28282e5efe3c07ef17c2f43f915
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85292703"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85407816"
 ---
 # <a name="health-checks-in-aspnet-core"></a>Comprobaciones de estado en ASP.NET Core
 

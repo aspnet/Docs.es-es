@@ -6,17 +6,19 @@ ms.author: riande
 ms.date: 12/18/2018
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: aspnetcore-1.1
-ms.openlocfilehash: c3317c8ff905d1c7a9c9d9019d18cbebad92edaf
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: ea9605c60e05f2a9cea962aa744850e07ef4d2f5
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82775848"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85403669"
 ---
 # <a name="whats-new-in-aspnet-core-11"></a>Novedades de ASP.NET Core 1.1
 

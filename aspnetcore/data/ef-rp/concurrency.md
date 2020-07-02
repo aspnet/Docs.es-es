@@ -7,17 +7,19 @@ ms.custom: mvc
 ms.date: 07/22/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: data/ef-rp/concurrency
-ms.openlocfilehash: fb6a59a11cf31dff4866d5f5294cd9f15b173add
-ms.sourcegitcommit: fa67462abdf0cc4051977d40605183c629db7c64
+ms.openlocfilehash: 597f396237151f49a9ae333973e91d8f4f7c6ff1
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84652429"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85401381"
 ---
 # <a name="part-8-razor-pages-with-ef-core-in-aspnet-core---concurrency"></a>Parte 8. Razor Pages con EF Core en ASP.NET Core: Simultaneidad
 

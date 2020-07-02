@@ -8,17 +8,19 @@ ms.custom: mvc
 ms.date: 05/26/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: grpc/configuration
-ms.openlocfilehash: a90735c6cd99de30f168fb1498e705de2d6887ca
-ms.sourcegitcommit: 6a71b560d897e13ad5b61d07afe4fcb57f8ef6dc
+ms.openlocfilehash: e56410d2e9a893a406ec5b60841c2b70dca7205c
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84106122"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85403565"
 ---
 # <a name="grpc-for-net-configuration"></a>Configuración gRPC para .NET
 

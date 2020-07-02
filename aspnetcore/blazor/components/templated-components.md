@@ -8,17 +8,19 @@ ms.custom: mvc
 ms.date: 03/18/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: blazor/components/templated-components
-ms.openlocfilehash: ae591fb8280b706d568dd530e2e60a2f7955841c
-ms.sourcegitcommit: 490434a700ba8c5ed24d849bd99d8489858538e3
+ms.openlocfilehash: eaa04b3f5a193b00619849d5525ea8d721ace71f
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85103449"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85400956"
 ---
 # <a name="aspnet-core-blazor-templated-components"></a>Componentes con plantilla de Blazor en ASP.NET Core
 

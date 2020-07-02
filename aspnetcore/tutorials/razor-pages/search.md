@@ -6,17 +6,19 @@ ms.author: riande
 ms.date: 12/05/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: tutorials/razor-pages/search
-ms.openlocfilehash: 8c5fba8596f401f1232e8dcb4659041c2a413151
-ms.sourcegitcommit: fa67462abdf0cc4051977d40605183c629db7c64
+ms.openlocfilehash: b0ee3294a4646b199f85d6a023e152e5eabaa225
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84652562"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85408791"
 ---
 # <a name="part-6-add-search-to-aspnet-core-razor-pages"></a>Parte 6. Adición de búsqueda a Razor Pages de ASP.NET Core
 

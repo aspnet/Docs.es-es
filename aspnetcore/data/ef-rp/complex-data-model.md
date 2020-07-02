@@ -7,17 +7,19 @@ ms.custom: mvc
 ms.date: 07/22/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: data/ef-rp/complex-data-model
-ms.openlocfilehash: f44ca9857ea127cf7e662e2712cc6d4b460450e9
-ms.sourcegitcommit: fa67462abdf0cc4051977d40605183c629db7c64
+ms.openlocfilehash: 38d3753b889da709e2d4691590290a5438208290
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84652504"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85401459"
 ---
 # <a name="part-5-razor-pages-with-ef-core-in-aspnet-core---data-model"></a>Parte 5. Razor Pages con EF Core en ASP.NET Core: Modelo de datos
 

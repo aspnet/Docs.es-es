@@ -8,17 +8,19 @@ ms.custom: mvc
 ms.date: 04/09/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: host-and-deploy/directory-structure
-ms.openlocfilehash: 29031556882dd471a5036b79dcb93a515bc98a33
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: a4f02a021bc2317e9e63cead521ff4a031a5243b
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82776401"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85408102"
 ---
 # <a name="aspnet-core-directory-structure"></a>Estructura de directorios de ASP.NET Core
 
@@ -34,8 +36,8 @@ El directorio *publish* contiene recursos de la aplicación producidos por el co
 
 | Tipo de aplicación | Estructura de directorios |
 | -------- | ------------------- |
-| [Archivo ejecutable dependiente del marco de trabajo (FDE)](/dotnet/core/deploying/#framework-dependent-executables-fde) | <ul><li>publish&dagger;<ul><li>Views&dagger; Aplicaciones MVC; si las vistas no están precompiladas</li><li>Pages&dagger; Aplicaciones MVC o de Razor Pages; si las páginas no están precompiladas</li><li>wwwroot&dagger;</li><li>archivos \*.dll</li><li>{NOMBRE DE ENSAMBLADO}.deps.json</li><li>{NOMBRE DE ENSAMBLADO}.dll</li><li>Extensión {NOMBRE DE ENSAMBLADO}{.EXTENSIÓN} .exe en Windows, no en macOS ni Linux</li><li>{NOMBRE DE ENSAMBLADO}.pdb</li><li>{NOMBRE DE ENSAMBLADO}.Views.dll</li><li>{NOMBRE DE ENSAMBLADO}.Views.pdb</li><li>{NOMBRE DE ENSAMBLADO}.runtimeconfig.json</li><li>web.config (implementaciones de IIS)</li><li>createdump ([utilidad createdump de Linux](https://github.com/dotnet/coreclr/blob/master/Documentation/botr/xplat-minidump-generation.md#configurationpolicy))</li><li>\*.so (biblioteca de objetos compartidos de Linux)</li><li>\*.a (archivo macOS)</li><li>\*.dylib (biblioteca dinámica de macOS)</li></ul></li></ul> |
-| [Implementación autocontenida (SCD)](/dotnet/core/deploying/#self-contained-deployments-scd) | <ul><li>publish&dagger;<ul><li>Views&dagger; Aplicaciones MVC; si las vistas no están precompiladas</li><li>Pages&dagger; Aplicaciones MVC o de Razor Pages; si las páginas no están precompiladas</li><li>wwwroot&dagger;</li><li>archivos \*.dll</li><li>{NOMBRE DE ENSAMBLADO}.deps.json</li><li>{NOMBRE DE ENSAMBLADO}.dll</li><li>{NOMBRE DE ENSAMBLADO}.exe</li><li>{NOMBRE DE ENSAMBLADO}.pdb</li><li>{NOMBRE DE ENSAMBLADO}.Views.dll</li><li>{NOMBRE DE ENSAMBLADO}.Views.pdb</li><li>{NOMBRE DE ENSAMBLADO}.runtimeconfig.json</li><li>web.config (implementaciones de IIS)</li></ul></li></ul> |
+| [Archivo ejecutable dependiente del marco de trabajo (FDE)](/dotnet/core/deploying/#framework-dependent-executables-fde) | <ul><li>publish&dagger;<ul><li>Views&dagger; Aplicaciones MVC; si las vistas no están precompiladas</li><li>Pages&dagger; Aplicaciones de MVC o de Razor Pages, si las páginas no están precompiladas</li><li>wwwroot&dagger;</li><li>archivos \*.dll</li><li>{NOMBRE DE ENSAMBLADO}.deps.json</li><li>{NOMBRE DE ENSAMBLADO}.dll</li><li>Extensión {NOMBRE DE ENSAMBLADO}{.EXTENSIÓN} .exe en Windows, no en macOS ni Linux</li><li>{NOMBRE DE ENSAMBLADO}.pdb</li><li>{NOMBRE DE ENSAMBLADO}.Views.dll</li><li>{NOMBRE DE ENSAMBLADO}.Views.pdb</li><li>{NOMBRE DE ENSAMBLADO}.runtimeconfig.json</li><li>web.config (implementaciones de IIS)</li><li>createdump ([utilidad createdump de Linux](https://github.com/dotnet/coreclr/blob/master/Documentation/botr/xplat-minidump-generation.md#configurationpolicy))</li><li>\*.so (biblioteca de objetos compartidos de Linux)</li><li>\*.a (archivo macOS)</li><li>\*.dylib (biblioteca dinámica de macOS)</li></ul></li></ul> |
+| [Implementación autocontenida (SCD)](/dotnet/core/deploying/#self-contained-deployments-scd) | <ul><li>publish&dagger;<ul><li>Views&dagger; Aplicaciones MVC; si las vistas no están precompiladas</li><li>Pages&dagger; Aplicaciones de MVC o de Razor Pages, si las páginas no están precompiladas</li><li>wwwroot&dagger;</li><li>archivos \*.dll</li><li>{NOMBRE DE ENSAMBLADO}.deps.json</li><li>{NOMBRE DE ENSAMBLADO}.dll</li><li>{NOMBRE DE ENSAMBLADO}.exe</li><li>{NOMBRE DE ENSAMBLADO}.pdb</li><li>{NOMBRE DE ENSAMBLADO}.Views.dll</li><li>{NOMBRE DE ENSAMBLADO}.Views.pdb</li><li>{NOMBRE DE ENSAMBLADO}.runtimeconfig.json</li><li>web.config (implementaciones de IIS)</li></ul></li></ul> |
 
 &dagger;Indica un directorio
 

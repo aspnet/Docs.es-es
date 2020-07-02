@@ -7,17 +7,19 @@ ms.author: riande
 ms.date: 2/18/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: razor-pages/filter
-ms.openlocfilehash: ea6b897a008d1be1953928e5d90555d9a9a408ec
-ms.sourcegitcommit: 1833870ad0845326fb764fef1b530a07b9b5b099
+ms.openlocfilehash: 626003ad75333cfaf17a3ea97549ca82650469a8
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85347143"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85407374"
 ---
 # <a name="filter-methods-for-razor-pages-in-aspnet-core"></a>Métodos de filtrado de Razor Pages de ASP.NET Core
 

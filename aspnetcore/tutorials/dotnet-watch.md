@@ -6,17 +6,19 @@ ms.author: riande
 ms.date: 05/31/2018
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: tutorials/dotnet-watch
-ms.openlocfilehash: 17fc7fd2d65fd314d9f6f9530db5d511af248569
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 0c81dc2fd83cb9327dad46dab840d4352de89baf
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82776596"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85409038"
 ---
 # <a name="develop-aspnet-core-apps-using-a-file-watcher"></a>Desarrollar aplicaciones ASP.NET Core con un monitor de archivos
 

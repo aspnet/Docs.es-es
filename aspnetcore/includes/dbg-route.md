@@ -1,8 +1,8 @@
 ## <a name="debug-diagnostics"></a>Diagnóstico de depuración
 
-Para ver la salida detallada del diagnóstico de cálculo de ruta, establezca `Logging:LogLevel:Microsoft` en `Debug`. Por ejemplo, en el entorno de desarrollo, establezca *appsettings.Development.json*:
+Para ver la salida detallada del diagnóstico de cálculo de ruta, establezca `Logging:LogLevel:Microsoft` en `Debug`. En el entorno de desarrollo, establezca el nivel de registro en *appsettings.Development.jsen*:
 
-```JSON
+```json
 {
   "Logging": {
     "LogLevel": {
@@ -12,3 +12,4 @@ Para ver la salida detallada del diagnóstico de cálculo de ruta, establezca `L
     }
   }
 }
+```

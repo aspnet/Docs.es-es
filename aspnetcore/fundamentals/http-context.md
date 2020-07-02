@@ -8,17 +8,19 @@ ms.custom: mvc
 ms.date: 5/5/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: fundamentals/httpcontext
-ms.openlocfilehash: 716e74551b95455c99abbac58b712f013acfde56
-ms.sourcegitcommit: d4527df91f2c15bbe1cbf5a541adbea5747897aa
+ms.openlocfilehash: d4512c9fa136e518fa0230c0cf9c607519eed6d8
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82852362"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85399457"
 ---
 # <a name="access-httpcontext-in-aspnet-core"></a>Acceso a HttpContext en ASP.NET Core
 

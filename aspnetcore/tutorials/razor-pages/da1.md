@@ -6,17 +6,19 @@ ms.author: riande
 ms.date: 12/20/2018
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: tutorials/razor-pages/da1
-ms.openlocfilehash: 144c4e7f07986c0a10089d74991fe3b44c013894
-ms.sourcegitcommit: fa67462abdf0cc4051977d40605183c629db7c64
+ms.openlocfilehash: 9ab97ca9a79e055b9013801ccc65bd6707e2b312
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84652864"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85404514"
 ---
 # <a name="part-5-update-the-generated-pages-in-an-aspnet-core-app"></a>Parte 5. Actualización de las páginas generadas en una aplicación de ASP.NET Core
 

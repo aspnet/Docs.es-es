@@ -8,17 +8,19 @@ ms.date: 02/06/2019
 ms.topic: tutorial
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: data/ef-mvc/intro
-ms.openlocfilehash: 7f17352d2e7e3f4239b338ec961120ab3088c77a
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 3a42ce1773bef74fab35884025765d147c534dd2
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82773554"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85403227"
 ---
 # <a name="tutorial-get-started-with-ef-core-in-an-aspnet-mvc-web-app"></a>Tutorial: Introducción a EF Core en una aplicación web de ASP.NET Core MVC
 
@@ -318,7 +320,7 @@ Haga clic con el botón derecho en la tabla **Student** y haga clic en **Ver dat
 
 ![Tabla de estudiantes en SSOX](intro/_static/ssox-student-table.png)
 
-Los archivos de base de datos *.mdf* y *.ldf* se encuentran en la carpeta *C:\Usuarios\\\<su_nombre_de_usuario>* .
+Los archivos de base de datos *.mdf* y *.ldf* se encuentran en la carpeta *C:\Usuarios\\\<yourusername>* .
 
 Como se está llamando a `EnsureCreated` en el método de inicializador que se ejecuta al iniciar la aplicación, ahora podría realizar un cambio en la clase `Student`, eliminar la base de datos, volver a ejecutar la aplicación y la base de datos se volvería a crear de forma automática para que coincida con el cambio. Por ejemplo, si agrega una propiedad `EmailAddress` a la clase `Student`, verá una columna `EmailAddress` nueva en la tabla que se ha vuelto a crear.
 
@@ -332,7 +334,7 @@ La cantidad de código que tendría que escribir para que Entity Framework pudie
 
 * Las propiedades de entidad que se denominan ID o classnameID se reconocen como propiedades de clave principal.
 
-* Una propiedad se interpreta como propiedad de clave externa si se denomina *\<nombre de la propiedad de navegación>\<nombre de la propiedad de clave principal* (por ejemplo, `StudentID` para la propiedad de navegación `Student`, dado que la clave principal de la entidad `Student` es `ID`). Las propiedades de clave externa también se pueden denominar simplemente *\<nombre de la propiedad de clave principal>* (por ejemplo `EnrollmentID`, dado que la clave principal de la entidad `Enrollment` es `EnrollmentID`).
+* Una propiedad se interpreta como propiedad de clave externa si se denomina *\<navigation property name>\<primary key property name>* (por ejemplo, `StudentID` para la propiedad de navegación `Student`, dado que la clave principal de la entidad `Student` es `ID`). Las propiedades de clave externa también se pueden denominar simplemente *\<primary key property name>* (por ejemplo `EnrollmentID`, dado que la clave principal de la entidad `Enrollment` es `EnrollmentID`).
 
 El comportamiento de las convenciones se puede reemplazar. Por ejemplo, puede especificar explícitamente los nombres de tabla, como se vio anteriormente en este tutorial. Y puede establecer los nombres de columna y cualquier propiedad como clave principal o clave externa, como verá en un [tutorial posterior](complex-data-model.md) de esta serie.
 
