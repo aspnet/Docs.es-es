@@ -10,12 +10,12 @@ metadata:
   author: WadePickett
   ms.author: wpickett
   ms.date: 06/05/2020
-  ms.openlocfilehash: 25b5387c8956ea7931751525ea954f6f702c0cde
-  ms.sourcegitcommit: 05490855e0c70565f0c4b509d392b0828bcfd141
+  ms.openlocfilehash: c90bd79b68252505120a0b28bce2a2b5b9d627d7
+  ms.sourcegitcommit: 66fca14611eba141d455fe0bd2c37803062e439c
   ms.translationtype: HT
   ms.contentlocale: es-ES
-  ms.lasthandoff: 06/08/2020
-  ms.locfileid: "84507328"
+  ms.lasthandoff: 07/03/2020
+  ms.locfileid: "85944518"
 highlightedContent:
   items:
   - title: Creación de una aplicación de ASP.NET Core en cualquier plataforma en cinco minutos
@@ -52,10 +52,10 @@ conceptualContent:
     - url: blazor/index.md
       itemType: overview
       text: Información general
-    - url: blazor/get-started.md
+    - url: https://dotnet.microsoft.com/learn/aspnet/blazor-tutorial/intro
       itemType: get-started
       text: Creación de la primera aplicación Blazor
-    - url: tutorials/build-your-first-blazor-app.md
+    - url: tutorials/build-a-blazor-app.md
       itemType: get-started
       text: Creación de la primera aplicación Blazor con componentes reutilizables
     - url: blazor/hosting-models.md
