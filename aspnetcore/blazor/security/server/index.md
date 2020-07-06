@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/server/index
-ms.openlocfilehash: ab3baad30f78c5d5e2f969b3292d4886fcd0406d
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 69a24fc955a0f2fb524ec817eb50372052f538a1
+ms.sourcegitcommit: 66fca14611eba141d455fe0bd2c37803062e439c
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85402317"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85944261"
 ---
 # <a name="secure-aspnet-core-blazor-server-apps"></a>Protección de aplicaciones de ASP.NET Core Blazor Server
 
@@ -34,7 +34,7 @@ Se puede configurar la autenticación de la plantilla de proyecto de Blazor Serv
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-Siga las instrucciones de Visual Studio que se indican en el artículo <xref:blazor/get-started> para crear un proyecto de Blazor Server con un mecanismo de autenticación.
+Siga las instrucciones de Visual Studio en <xref:blazor/tooling> para crear un proyecto de Blazor Server con un mecanismo de autenticación.
 
 Después de elegir la plantilla de aplicación de **Blazor Server** en el cuadro de diálogo **Crear una aplicación web ASP.NET Core**, seleccione **Cambiar** en **Autenticación**.
 
@@ -49,7 +49,7 @@ Se abre un cuadro de diálogo para ofrecer el mismo conjunto de mecanismos de au
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-Siga las instrucciones de Visual Studio Code que se indican en el artículo <xref:blazor/get-started> para crear un proyecto de Blazor Server con un mecanismo de autenticación:
+Siga las instrucciones de Visual Studio Code en <xref:blazor/tooling> para crear un proyecto de Blazor Server con un mecanismo de autenticación:
 
 ```dotnetcli
 dotnet new blazorserver -o {APP NAME} -au {AUTHENTICATION}
@@ -75,7 +75,7 @@ Para más información, consulte el comando [`dotnet new`](/dotnet/core/tools/do
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)
 
-1. Siga las instrucciones de Visual Studio para Mac del artículo <xref:blazor/get-started>.
+1. Siga las instrucciones de Visual Studio para Mac en <xref:blazor/tooling>.
 
 1. En el paso **Configure your new Blazor Server App** (Configurar la nueva aplicación de Blazor Server), seleccione **Individual Authentication (in-app)** (Autenticación individual [en aplicación]) en la lista desplegable **Authentication** (Autenticación).
 
@@ -83,7 +83,7 @@ Para más información, consulte el comando [`dotnet new`](/dotnet/core/tools/do
 
 # <a name="net-core-cli"></a>[CLI de .NET Core](#tab/netcore-cli/)
 
-Siga las instrucciones de la CLI de .NET Core del artículo <xref:blazor/get-started> para crear un proyecto de Blazor Server con un mecanismo de autenticación:
+Cree un nuevo proyecto de Blazor Server con un mecanismo de autenticación que use el siguiente comando en un shell de comandos:
 
 ```dotnetcli
 dotnet new blazorserver -o {APP NAME} -au {AUTHENTICATION}

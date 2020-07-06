@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/index
-ms.openlocfilehash: 02e3f7f5442a5abde0b13b7bba14d9d0f29c1de7
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: d25dc3441c2373655558dfc101b899252a280814
+ms.sourcegitcommit: 66fca14611eba141d455fe0bd2c37803062e439c
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85399093"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85944450"
 ---
 # <a name="create-and-use-aspnet-core-razor-components"></a>Creación y uso de componentes de Razor de ASP.NET Core
 
@@ -420,7 +420,22 @@ Las referencias de componentes son una forma de hacer referencia a una instancia
 Cuando el componente se represente, el campo `loginDialog` se rellena con la instancia del componente secundario `MyLoginDialog`. Tras ello, se pueden invocar métodos de .NET en la instancia del componente.
 
 > [!IMPORTANT]
-> La variable `loginDialog` solo se rellena después de que el componente se represente, y su salida incluye el elemento `MyLoginDialog`. Hasta ese momento, no hay nada a lo que hacer referencia. Para manipular las referencias de componente una vez finalizada la representación del componente, use los métodos [`OnAfterRenderAsync` o `OnAfterRender`](xref:blazor/components/lifecycle#after-component-render).
+> La variable `loginDialog` solo se rellena después de que el componente se represente, y su salida incluye el elemento `MyLoginDialog`. Hasta que se represente el componente, no hay nada a lo que hacer referencia.
+>
+> Para manipular las referencias de componente una vez finalizada la representación del componente, use los métodos [`OnAfterRenderAsync` o `OnAfterRender`](xref:blazor/components/lifecycle#after-component-render).
+>
+> Para usar una variable de referencia con un controlador de eventos, use una expresión lambda o asigne el delegado de controlador de eventos en los métodos [`OnAfterRenderAsync` o `OnAfterRender`](xref:blazor/components/lifecycle#after-component-render). Esto garantiza que la variable de referencia se asigna antes de que se asigne el controlador de eventos.
+>
+> ```razor
+> <button type="button" 
+>     @onclick="@(() => loginDialog.DoSomething())">Do Something</button>
+>
+> <MyLoginDialog @ref="loginDialog" ... />
+>
+> @code {
+>     private MyLoginDialog loginDialog;
+> }
+> ```
 
 Para hacer referencias a componentes de un bucle, consulte el artículo sobre la [captura de referencias a varios componentes secundarios similares (dotnet/aspnetcore #13358)](https://github.com/dotnet/aspnetcore/issues/13358).
 

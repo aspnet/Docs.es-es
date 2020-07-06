@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/configuration/index
-ms.openlocfilehash: 5e413fad090ff2cb5e1379bf7311caf159a57a4b
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 5a9ed8d6737352f56be78039a895a85f22dec361
+ms.sourcegitcommit: 66fca14611eba141d455fe0bd2c37803062e439c
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85408596"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85944644"
 ---
 # <a name="configuration-in-aspnet-core"></a>Configuración en ASP.NET Core
 
@@ -183,6 +183,10 @@ En [Azure App Service](https://azure.microsoft.com/services/app-service/), selec
 Para más información, consulte [Aplicaciones de Azure: Invalidación de la configuración de la aplicación mediante Azure Portal](xref:host-and-deploy/azure-apps/index#override-app-configuration-using-the-azure-portal).
 
 Consulte la sección [Prefijos de cadena de conexión](#constr) para obtener información sobre las cadenas de conexión de base de datos de Azure.
+
+### <a name="environment-variables-set-in-launchsettingsjson"></a>Variables de entorno configuradas en launchSettings.json
+
+Las variables de entorno configuradas en *launchSettings.json* invalidan aquellas configuradas en el entorno del sistema.
 
 <a name="clcp"></a>
 
@@ -750,6 +754,8 @@ Este tema solo concierne a la *configuración de aplicaciones*. Otros aspectos d
 * *web.config* es un archivo de configuración del servidor, que se describe en los temas siguientes:
   * <xref:host-and-deploy/iis/index>
   * <xref:host-and-deploy/aspnet-core-module>
+
+Las variables de entorno configuradas en *launchSettings.json* invalidan aquellas configuradas en el entorno del sistema.
 
 Para más información sobre cómo migrar la configuración de aplicaciones de versiones anteriores de ASP.NET, consulte <xref:migration/proper-to-2x/index#store-configurations>.
 
