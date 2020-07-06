@@ -15,18 +15,18 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/index
-ms.openlocfilehash: d25dc3441c2373655558dfc101b899252a280814
-ms.sourcegitcommit: 66fca14611eba141d455fe0bd2c37803062e439c
+ms.openlocfilehash: 0a8335461b4c9cd628d9c65b97f7ab6a74487fca
+ms.sourcegitcommit: 7f423602a1475736f61fc361327d4de0976c9649
 ms.translationtype: HT
 ms.contentlocale: es-ES
 ms.lasthandoff: 07/03/2020
-ms.locfileid: "85944450"
+ms.locfileid: "85950899"
 ---
 # <a name="create-and-use-aspnet-core-razor-components"></a>Creación y uso de componentes de Razor de ASP.NET Core
 
 Por [Luke Latham](https://github.com/guardrex), [Daniel Roth](https://github.com/danroth27) y [Tobias Bartsch](https://www.aveo-solutions.com/)
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/../common/samples/) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
 Las aplicaciones Blazor se crean usando *componentes*. Un componente es un fragmento independiente de la interfaz de usuario, como una página, un cuadro de diálogo o un formulario. Los componentes incluyen el marcado HTML y la lógica de procesamiento necesarios para insertar datos o responder a eventos de la interfaz de usuario. Además, son flexibles y ligeros, y se pueden anidar, reutilizar y compartir entre proyectos.
 
