@@ -1,37 +1,38 @@
 ---
 title: Entornos de Blazor de ASP.NET Core
 author: guardrex
-description: Obtenga información sobre los entornos en Blazor, incluido cómo configurar el entorno de una aplicación WebAssembly de Blazor.
+description: Obtenga información sobre los entornos en Blazor, incluido cómo configurar el entorno de una aplicación Blazor WebAssembly.
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 06/10/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: blazor/fundamentals/environments
-ms.openlocfilehash: a527e04cf97dd2d2b88dcc6e866475835498545d
-ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
-ms.translationtype: HT
+ms.openlocfilehash: f8d0fc3cba22973628f405b4399cef39d562d6ed
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85243621"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85402902"
 ---
-# <a name="aspnet-core-blazor-environments"></a><span data-ttu-id="b0bc7-103">Entornos de Blazor de ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="b0bc7-103">ASP.NET Core Blazor environments</span></span>
+# <a name="aspnet-core-blazor-environments"></a><span data-ttu-id="03a03-103">Entornos de Blazor de ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="03a03-103">ASP.NET Core Blazor environments</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="b0bc7-104">Este tema atañe a WebAssembly de Blazor.</span><span class="sxs-lookup"><span data-stu-id="b0bc7-104">This topic applies to Blazor WebAssembly.</span></span> <span data-ttu-id="b0bc7-105">Para obtener instrucciones generales sobre cómo configurar la aplicación ASP.NET Core, vea <xref:fundamentals/environments>.</span><span class="sxs-lookup"><span data-stu-id="b0bc7-105">For general guidance on ASP.NET Core app configuration, see <xref:fundamentals/environments>.</span></span>
+> <span data-ttu-id="03a03-104">Este tema se aplica a Blazor WebAssembly.</span><span class="sxs-lookup"><span data-stu-id="03a03-104">This topic applies to Blazor WebAssembly.</span></span> <span data-ttu-id="03a03-105">Para obtener instrucciones generales sobre cómo configurar la aplicación ASP.NET Core, vea <xref:fundamentals/environments>.</span><span class="sxs-lookup"><span data-stu-id="03a03-105">For general guidance on ASP.NET Core app configuration, see <xref:fundamentals/environments>.</span></span>
 
-<span data-ttu-id="b0bc7-106">Cuando una aplicación se ejecuta de manera local, el entorno se establece de manera predeterminada en Desarrollo.</span><span class="sxs-lookup"><span data-stu-id="b0bc7-106">When running an app locally, the environment defaults to Development.</span></span> <span data-ttu-id="b0bc7-107">Cuando la aplicación se publica, el entorno se establece de manera predeterminada en Producción.</span><span class="sxs-lookup"><span data-stu-id="b0bc7-107">When the app is published, the environment defaults to Production.</span></span>
+<span data-ttu-id="03a03-106">Cuando una aplicación se ejecuta de manera local, el entorno se establece de manera predeterminada en Desarrollo.</span><span class="sxs-lookup"><span data-stu-id="03a03-106">When running an app locally, the environment defaults to Development.</span></span> <span data-ttu-id="03a03-107">Cuando la aplicación se publica, el entorno se establece de manera predeterminada en Producción.</span><span class="sxs-lookup"><span data-stu-id="03a03-107">When the app is published, the environment defaults to Production.</span></span>
 
-<span data-ttu-id="b0bc7-108">Una aplicación Blazor WebAssembly hospedada selecciona el entorno desde el servidor a través de un middleware que comunica el entorno con el explorador mediante la adición del encabezado `blazor-environment`.</span><span class="sxs-lookup"><span data-stu-id="b0bc7-108">A hosted Blazor WebAssembly app picks up the environment from the server via a middleware that communicates the environment to the browser by adding the `blazor-environment` header.</span></span> <span data-ttu-id="b0bc7-109">El valor del encabezado es el entorno.</span><span class="sxs-lookup"><span data-stu-id="b0bc7-109">The value of the header is the environment.</span></span> <span data-ttu-id="b0bc7-110">La aplicación Blazor hospedada y la aplicación de servidor comparten el mismo entorno.</span><span class="sxs-lookup"><span data-stu-id="b0bc7-110">The hosted Blazor app and the server app share the same environment.</span></span> <span data-ttu-id="b0bc7-111">Para más información, incluida la manera de configurar el entorno, consulte <xref:fundamentals/environments>.</span><span class="sxs-lookup"><span data-stu-id="b0bc7-111">For more information, including how to configure the environment, see <xref:fundamentals/environments>.</span></span>
+<span data-ttu-id="03a03-108">Una aplicación Blazor WebAssembly hospedada selecciona el entorno desde el servidor a través de un middleware que comunica el entorno con el explorador mediante la adición del encabezado `blazor-environment`.</span><span class="sxs-lookup"><span data-stu-id="03a03-108">A hosted Blazor WebAssembly app picks up the environment from the server via a middleware that communicates the environment to the browser by adding the `blazor-environment` header.</span></span> <span data-ttu-id="03a03-109">El valor del encabezado es el entorno.</span><span class="sxs-lookup"><span data-stu-id="03a03-109">The value of the header is the environment.</span></span> <span data-ttu-id="03a03-110">La aplicación Blazor hospedada y la aplicación de servidor comparten el mismo entorno.</span><span class="sxs-lookup"><span data-stu-id="03a03-110">The hosted Blazor app and the server app share the same environment.</span></span> <span data-ttu-id="03a03-111">Para más información, incluida la manera de configurar el entorno, consulte <xref:fundamentals/environments>.</span><span class="sxs-lookup"><span data-stu-id="03a03-111">For more information, including how to configure the environment, see <xref:fundamentals/environments>.</span></span>
 
-<span data-ttu-id="b0bc7-112">En el caso de una aplicación independiente que se ejecuta localmente, el servidor de desarrollo agrega el encabezado `blazor-environment` para especificar el entorno de Desarrollo.</span><span class="sxs-lookup"><span data-stu-id="b0bc7-112">For a standalone app running locally, the development server adds the `blazor-environment` header to specify the Development environment.</span></span> <span data-ttu-id="b0bc7-113">Para especificar el entorno para otros entornos de hospedaje, agregue el encabezado `blazor-environment`.</span><span class="sxs-lookup"><span data-stu-id="b0bc7-113">To specify the environment for other hosting environments, add the `blazor-environment` header.</span></span>
+<span data-ttu-id="03a03-112">En el caso de una aplicación independiente que se ejecuta localmente, el servidor de desarrollo agrega el encabezado `blazor-environment` para especificar el entorno de Desarrollo.</span><span class="sxs-lookup"><span data-stu-id="03a03-112">For a standalone app running locally, the development server adds the `blazor-environment` header to specify the Development environment.</span></span> <span data-ttu-id="03a03-113">Para especificar el entorno para otros entornos de hospedaje, agregue el encabezado `blazor-environment`.</span><span class="sxs-lookup"><span data-stu-id="03a03-113">To specify the environment for other hosting environments, add the `blazor-environment` header.</span></span>
 
-<span data-ttu-id="b0bc7-114">En el ejemplo siguiente de IIS, agregue el encabezado personalizado al archivo `web.config` publicado.</span><span class="sxs-lookup"><span data-stu-id="b0bc7-114">In the following example for IIS, add the custom header to the published `web.config` file.</span></span> <span data-ttu-id="b0bc7-115">El archivo `web.config` se encuentra en la carpeta `bin/Release/{TARGET FRAMEWORK}/publish`:</span><span class="sxs-lookup"><span data-stu-id="b0bc7-115">The `web.config` file is located in the `bin/Release/{TARGET FRAMEWORK}/publish` folder:</span></span>
+<span data-ttu-id="03a03-114">En el ejemplo siguiente de IIS, agregue el encabezado personalizado al archivo `web.config` publicado.</span><span class="sxs-lookup"><span data-stu-id="03a03-114">In the following example for IIS, add the custom header to the published `web.config` file.</span></span> <span data-ttu-id="03a03-115">El archivo `web.config` se encuentra en la carpeta `bin/Release/{TARGET FRAMEWORK}/publish`:</span><span class="sxs-lookup"><span data-stu-id="03a03-115">The `web.config` file is located in the `bin/Release/{TARGET FRAMEWORK}/publish` folder:</span></span>
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -50,9 +51,9 @@ ms.locfileid: "85243621"
 ```
 
 > [!NOTE]
-> <span data-ttu-id="b0bc7-116">Si quiere usar un archivo `web.config` personalizado para IIS que no se sobrescriba cuando la aplicación se publique en la carpeta `publish`, consulte <xref:blazor/host-and-deploy/webassembly#use-a-custom-webconfig>.</span><span class="sxs-lookup"><span data-stu-id="b0bc7-116">To use a custom `web.config` file for IIS that isn't overwritten when the app is published to the `publish` folder, see <xref:blazor/host-and-deploy/webassembly#use-a-custom-webconfig>.</span></span>
+> <span data-ttu-id="03a03-116">Si quiere usar un archivo `web.config` personalizado para IIS que no se sobrescriba cuando la aplicación se publique en la carpeta `publish`, consulte <xref:blazor/host-and-deploy/webassembly#use-a-custom-webconfig>.</span><span class="sxs-lookup"><span data-stu-id="03a03-116">To use a custom `web.config` file for IIS that isn't overwritten when the app is published to the `publish` folder, see <xref:blazor/host-and-deploy/webassembly#use-a-custom-webconfig>.</span></span>
 
-<span data-ttu-id="b0bc7-117">Para obtener el entorno de la aplicación en un componente, inserte <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment> y lea la propiedad <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.Environment>:</span><span class="sxs-lookup"><span data-stu-id="b0bc7-117">Obtain the app's environment in a component by injecting <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment> and reading the <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.Environment> property:</span></span>
+<span data-ttu-id="03a03-117">Para obtener el entorno de la aplicación en un componente, inserte <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment> y lea la propiedad <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.Environment>:</span><span class="sxs-lookup"><span data-stu-id="03a03-117">Obtain the app's environment in a component by injecting <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment> and reading the <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.Environment> property:</span></span>
 
 ```razor
 @page "/"
@@ -64,7 +65,7 @@ ms.locfileid: "85243621"
 <p>Environment: @HostEnvironment.Environment</p>
 ```
 
-<span data-ttu-id="b0bc7-118">Durante el inicio, <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.WebAssemblyHostBuilder> expone el <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment> a través de la propiedad <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.WebAssemblyHostBuilder.HostEnvironment>, lo que permite que los desarrolladores tengan una lógica específica del entorno en el código:</span><span class="sxs-lookup"><span data-stu-id="b0bc7-118">During startup, the <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.WebAssemblyHostBuilder> exposes the <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment> through the <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.WebAssemblyHostBuilder.HostEnvironment> property, which enables developers to have environment-specific logic in their code:</span></span>
+<span data-ttu-id="03a03-118">Durante el inicio, <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.WebAssemblyHostBuilder> expone el <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment> a través de la propiedad <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.WebAssemblyHostBuilder.HostEnvironment>, lo que permite que los desarrolladores tengan una lógica específica del entorno en el código:</span><span class="sxs-lookup"><span data-stu-id="03a03-118">During startup, the <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.WebAssemblyHostBuilder> exposes the <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment> through the <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.WebAssemblyHostBuilder.HostEnvironment> property, which enables developers to have environment-specific logic in their code:</span></span>
 
 ```csharp
 if (builder.HostEnvironment.Environment == "Custom")
@@ -73,7 +74,7 @@ if (builder.HostEnvironment.Environment == "Custom")
 };
 ```
 
-<span data-ttu-id="b0bc7-119">Los métodos de extensión útiles siguientes permiten comprobar el entorno actual para Desarrollo, Producción, Ensayo y nombres de entornos personalizados:</span><span class="sxs-lookup"><span data-stu-id="b0bc7-119">The following convenience extension methods permit checking the current environment for Development, Production, Staging, and custom environment names:</span></span>
+<span data-ttu-id="03a03-119">Los métodos de extensión útiles siguientes permiten comprobar el entorno actual para Desarrollo, Producción, Ensayo y nombres de entornos personalizados:</span><span class="sxs-lookup"><span data-stu-id="03a03-119">The following convenience extension methods permit checking the current environment for Development, Production, Staging, and custom environment names:</span></span>
 
 * `IsDevelopment()`
 * `IsProduction()`
@@ -92,8 +93,8 @@ if (builder.HostEnvironment.IsEnvironment("Custom"))
 };
 ```
 
-<span data-ttu-id="b0bc7-120">La propiedad <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType> se puede usar durante el inicio cuando el servicio <xref:Microsoft.AspNetCore.Components.NavigationManager> no está disponible.</span><span class="sxs-lookup"><span data-stu-id="b0bc7-120">The <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType> property can be used during startup when the <xref:Microsoft.AspNetCore.Components.NavigationManager> service isn't available.</span></span>
+<span data-ttu-id="03a03-120">La propiedad <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType> se puede usar durante el inicio cuando el servicio <xref:Microsoft.AspNetCore.Components.NavigationManager> no está disponible.</span><span class="sxs-lookup"><span data-stu-id="03a03-120">The <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType> property can be used during startup when the <xref:Microsoft.AspNetCore.Components.NavigationManager> service isn't available.</span></span>
 
-## <a name="additional-resources"></a><span data-ttu-id="b0bc7-121">Recursos adicionales</span><span class="sxs-lookup"><span data-stu-id="b0bc7-121">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="03a03-121">Recursos adicionales</span><span class="sxs-lookup"><span data-stu-id="03a03-121">Additional resources</span></span>
 
 * <xref:fundamentals/environments>
