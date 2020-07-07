@@ -1,18 +1,25 @@
 ---
 title: Pruebas unitarias de Razor Pages en ASP.NET Core
 author: rick-anderson
-description: Obtenga información sobre cómo crear pruebas unitarias para aplicaciones de Razor Pages.
+description: Aprenda a crear pruebas unitarias de aplicaciones de Razor Pages.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 08/14/2019
+no-loc:
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: test/razor-pages-tests
-ms.openlocfilehash: 0e217b6b7f15519a3da44f5d074cf80fa96a3b3a
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
-ms.translationtype: HT
+ms.openlocfilehash: 756af7f2b14512bd43aefd1a4e63e195c2daa138
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "78649577"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85407764"
 ---
 # <a name="razor-pages-unit-tests-in-aspnet-core"></a>Pruebas unitarias de Razor Pages en ASP.NET Core
 
@@ -25,7 +32,7 @@ ASP.NET Core admite pruebas unitarias de aplicaciones de Razor Pages. Las prue
 * Hay documentación adicional disponible sobre cómo debe comportarse la aplicación.
 * Se detectan regresiones —que son errores que salen a la luz a raíz de las actualizaciones de código— en los procesos de compilación e implementación automatizados.
 
-En este tema se da por hecho que el usuario posee conocimientos básicos de las pruebas unitarias y las aplicaciones de Razor Pages. Si no está familiarizado con los conceptos de prueba o aplicaciones de Razor Pages, vea los siguientes temas:
+En este tema se da por hecho que el usuario posee conocimientos básicos de las pruebas unitarias y las aplicaciones de Razor Pages. Si no está familiarizado con los conceptos de prueba o aplicaciones de Razor Pages, vea los siguientes temas:
 
 * <xref:razor-pages/index>
 * <xref:tutorials/razor-pages/razor-pages-start>
@@ -48,7 +55,7 @@ dotnet test
 
 ## <a name="message-app-organization"></a>Organización de la aplicación de mensajes
 
-La aplicación de mensajes es un sistema de mensajes de Razor Pages con las siguientes características:
+La aplicación de mensajes es un sistema de mensajes de Razor Pages con las siguientes características:
 
 * La página Index de la aplicación (*Pages/Index.cshtml* y *Pages/Index.cshtml.cs*) proporciona una interfaz de usuario y métodos de modelo de página para controlar la adición, eliminación y análisis de mensajes (hallar la media de palabras por mensaje).
 * La clase `Message` (*Data/Message.cs*) describe un mensaje con dos propiedades: `Id` (clave) y `Text` (mensaje). Se necesita la propiedad `Text`, que está limitada a 200 caracteres.
@@ -209,7 +216,7 @@ ASP.NET Core admite pruebas unitarias de aplicaciones de Razor Pages. Las prue
 * Hay documentación adicional disponible sobre cómo debe comportarse la aplicación.
 * Se detectan regresiones —que son errores que salen a la luz a raíz de las actualizaciones de código— en los procesos de compilación e implementación automatizados.
 
-En este tema se da por hecho que el usuario posee conocimientos básicos de las pruebas unitarias y las aplicaciones de Razor Pages. Si no está familiarizado con los conceptos de prueba o aplicaciones de Razor Pages, vea los siguientes temas:
+En este tema se da por hecho que el usuario posee conocimientos básicos de las pruebas unitarias y las aplicaciones de Razor Pages. Si no está familiarizado con los conceptos de prueba o aplicaciones de Razor Pages, vea los siguientes temas:
 
 * <xref:razor-pages/index>
 * <xref:tutorials/razor-pages/razor-pages-start>
@@ -232,7 +239,7 @@ dotnet test
 
 ## <a name="message-app-organization"></a>Organización de la aplicación de mensajes
 
-La aplicación de mensajes es un sistema de mensajes de Razor Pages con las siguientes características:
+La aplicación de mensajes es un sistema de mensajes de Razor Pages con las siguientes características:
 
 * La página Index de la aplicación (*Pages/Index.cshtml* y *Pages/Index.cshtml.cs*) proporciona una interfaz de usuario y métodos de modelo de página para controlar la adición, eliminación y análisis de mensajes (hallar la media de palabras por mensaje).
 * La clase `Message` (*Data/Message.cs*) describe un mensaje con dos propiedades: `Id` (clave) y `Text` (mensaje). Se necesita la propiedad `Text`, que está limitada a 200 caracteres.

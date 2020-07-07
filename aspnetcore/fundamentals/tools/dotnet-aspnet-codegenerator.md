@@ -7,17 +7,18 @@ ms.author: riande
 ms.date: 07/04/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: fundamentals/tools/dotnet-aspnet-codegenerator
-ms.openlocfilehash: 58f7aa30d3e916307437d56c61e80765ac0c21cf
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
-ms.translationtype: HT
+ms.openlocfilehash: a106654c8a37e84e9186a2f06d90605df753e8a7
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82766477"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85405606"
 ---
 # <a name="dotnet-aspnet-codegenerator"></a>dotnet aspnet-codegenerator
 
@@ -62,7 +63,7 @@ El generador de código que se va a ejecutar. Estos generadores están disponibl
 | ----------------- | ------------ | 
 | área      | [Aplica scaffolding a un área](/aspnet/core/mvc/controllers/areas) |
   controlador| [Aplica scaffolding a un controlador](/aspnet/core/tutorials/first-mvc-app/adding-model) |
-  identidad  | [Aplica scaffolding a una identidad](/aspnet/core/security/authentication/scaffold-identity) |
+  identidad  | [Aplica scaffolding a Identity](/aspnet/core/security/authentication/scaffold-identity) |
   razorpage | [Aplica scaffolding a Razor Pages](/aspnet/core/tutorials/razor-pages/model) |
   vista      | [Aplica scaffolding a una vista](/aspnet/core/mvc/views/overview) |
 
@@ -102,7 +103,7 @@ En las secciones siguientes se detallan las opciones disponibles para los genera
 
 * Área
 * Controlador
-* identidad  
+* Identity  
 * Razorpage
 * Ver
 

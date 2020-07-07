@@ -1,5 +1,5 @@
 ---
-title: Protección de una aplicación hospedada WebAssembly de Blazor de ASP.NET Core con Identity Server
+title: Protección de una aplicación hospedada Blazor WebAssembly de ASP.NET Core con Identity Server
 author: guardrex
 description: Crear en Visual Studio una aplicación hospedada Blazor con autenticación que usa un back-end de [IdentityServer](https://identityserver.io/)
 monikerRange: '>= aspnetcore-3.1'
@@ -8,19 +8,20 @@ ms.custom: mvc
 ms.date: 05/19/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: blazor/security/webassembly/hosted-with-identity-server
-ms.openlocfilehash: 8251658a2bb99ec17424ec26b8a44171082fab05
-ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
-ms.translationtype: HT
+ms.openlocfilehash: cce6b6b1ec144e362415fe34645aef567269c873
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85243489"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85402213"
 ---
-# <a name="secure-an-aspnet-core-blazor-webassembly-hosted-app-with-identity-server"></a>Protección de una aplicación hospedada WebAssembly de Blazor de ASP.NET Core con Identity Server
+# <a name="secure-an-aspnet-core-blazor-webassembly-hosted-app-with-identity-server"></a>Protección de una aplicación hospedada Blazor WebAssembly de ASP.NET Core con Identity Server
 
 Por [Javier Calvarro Nelson](https://github.com/javiercn) y [Luke Latham](https://github.com/guardrex)
 
@@ -30,7 +31,7 @@ En este artículo se explica cómo crear una aplicación hospedada Blazor que us
 
 En Visual Studio:
 
-1. Cree una **aplicación WebAssembly de Blazor** . Para obtener más información, vea <xref:blazor/get-started>.
+1. Cree una aplicación **Blazor WebAssembly** . Para obtener más información, vea <xref:blazor/get-started>.
 1. En el cuadro de diálogo **Crear una aplicación de Blazor** , seleccione **Cambiar** en la sección **Autenticación**.
 1. Seleccione **Cuentas de usuario individuales** y, después, **Aceptar**.
 1. Active la casilla **ASP.NET Core hosted** (Hospedada en ASP.NET Core) en la sección **Avanzado**.

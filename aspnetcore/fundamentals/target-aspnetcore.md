@@ -7,17 +7,18 @@ ms.custom: mvc
 ms.date: 12/16/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: fundamentals/target-aspnetcore
-ms.openlocfilehash: 70a445d109a1a9553178e94d79df87cd373e6b06
-ms.sourcegitcommit: 490434a700ba8c5ed24d849bd99d8489858538e3
-ms.translationtype: HT
+ms.openlocfilehash: 1c794092b856a916a318956d7cfb357d46a22d1d
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85103029"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85399652"
 ---
 # <a name="use-aspnet-core-apis-in-a-class-library"></a>Uso de las API de ASP.NET Core en una biblioteca de clases
 
@@ -52,7 +53,7 @@ Blazor admite los [modelos de hospedaje](xref:blazor/hosting-models) de WebAssem
 
 ### <a name="support-both-hosting-models"></a>Compatibilidad con ambos modelos de hospedaje
 
-Para permitir el uso de componentes Razordesde proyectos tanto de [Blazor Server](xref:blazor/hosting-models#blazor-server) como de [WebAssembly de Blazor](xref:blazor/hosting-models#blazor-webassembly), use las instrucciones siguientes de su editor.
+Para permitir el uso de componentes Razor desde proyectos tanto de [Blazor Server](xref:blazor/hosting-models#blazor-server) como de [BlazorWebAssembly de ](xref:blazor/hosting-models#blazor-webassembly), use las instrucciones siguientes de su editor.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 

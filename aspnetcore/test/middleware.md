@@ -7,17 +7,18 @@ ms.custom: mvc
 ms.date: 5/12/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: test/middleware
-ms.openlocfilehash: ea7fc0e889ab32cbaf23257b3e866519af0727aa
-ms.sourcegitcommit: 69e1a79a572b0af17d08e81af12c594b7316f2e1
-ms.translationtype: HT
+ms.openlocfilehash: f4ed16b136da37c093a72a8866301a188a8518a2
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83424537"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85406490"
 ---
 # <a name="test-aspnet-core-middleware"></a>Prueba del middleware de ASP.NET Core
 
@@ -41,6 +42,14 @@ Cree una prueba en el proyecto de prueba:
 
 * Compile e inicie un host que use <xref:Microsoft.AspNetCore.TestHost.TestServer>.
 * Agregue los servicios necesarios que usa el middleware.
+* Agregue el paquete NuGet [Microsoft.AspNetCore.TestHost](https://www.nuget.org/packages/Microsoft.AspNetCore.TestHost/) al proyecto:
+  
+  ```dotnetcli
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="3.1.*" />
+  </ItemGroup>
+  ```
+
 * Configure la canalización de procesamiento para usar el middleware para la prueba.
 
 [!code-csharp[](middleware/samples_snapshot/3.x/setup.cs?highlight=4-18)]

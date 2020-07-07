@@ -8,17 +8,18 @@ ms.custom: mvc
 ms.date: 05/19/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: blazor/templates
-ms.openlocfilehash: ce46d562285b95ff656ed43b3a63ca5e7315f4c8
-ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
-ms.translationtype: HT
+ms.openlocfilehash: 6359a02b23803f26c4a40772c68d39e804396403
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85243218"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85401901"
 ---
 # <a name="aspnet-core-blazor-templates"></a>Plantillas de Blazor de ASP.NET Core
 
@@ -26,8 +27,8 @@ Por [Daniel Roth](https://github.com/danroth27) y [Luke Latham](https://github.c
 
 El marco Blazor proporciona plantillas que permiten desarrollar aplicaciones para cada uno de los modelos de hospedaje de Blazor:
 
-* WebAssembly de Blazor (`blazorwasm`)
-* Servidor Blazor (`blazorserver`)
+* Blazor WebAssembly (`blazorwasm`)
+* Blazor Server (`blazorserver`)
 
 Para más información sobre los modelos de hospedaje de Blazor, vea <xref:blazor/hosting-models>.
 
@@ -46,20 +47,20 @@ Los siguientes archivos y carpetas componen una aplicación Blazor generada a pa
 
 * `Program.cs`: El punto de entrada de la aplicación que configura lo siguiente:
 
-  * [Host](xref:fundamentals/host/generic-host) de ASP.NET Core (servidor Blazor)
-  * Host de WebAssembly (WebAssembly Blazor): el código de este archivo es único en las aplicaciones creadas a partir de la plantilla de WebAssembly Blazor (`blazorwasm`).
+  * ASP.NET Core [hospedado](xref:fundamentals/host/generic-host) (Blazor Server)
+  * Host de WebAssembly (Blazor WebAssembly): el código de este archivo es único en las aplicaciones creadas a partir de la plantilla de Blazor WebAssembly (`blazorwasm`).
     * El componente `App`, que es el componente raíz de la aplicación, se especifica como el elemento DOM `app` en el método `Add`.
     * Los servicios se pueden configurar con el método `ConfigureServices` en el generador del host (por ejemplo, `builder.Services.AddSingleton<IMyDependency, MyDependency>();`).
     * La configuración se puede proporcionar a través del generador del host (`builder.Configuration`).
 
 * `Startup.cs` (Blazor Server): contiene la lógica de inicio de la aplicación. La clase `Startup` define dos métodos:
 
-  * `ConfigureServices`: configura los servicios de [inserción de dependencias](xref:fundamentals/dependency-injection) de la aplicación. En las aplicaciones del servidor Blazor, los servicios se agregan llamando a <xref:Microsoft.Extensions.DependencyInjection.ComponentServiceCollectionExtensions.AddServerSideBlazor%2A>, y el elemento `WeatherForecastService` se agrega al contenedor de servicios para que lo use el componente `FetchData` de ejemplo.
+  * `ConfigureServices`: configura los servicios de [inserción de dependencias](xref:fundamentals/dependency-injection) de la aplicación. En las aplicaciones Blazor Server, los servicios se agregan llamando a <xref:Microsoft.Extensions.DependencyInjection.ComponentServiceCollectionExtensions.AddServerSideBlazor%2A>, y el elemento `WeatherForecastService` se agrega al contenedor de servicios para que lo use el componente `FetchData` de ejemplo.
   * `Configure`: configura la canalización de administración de solicitudes de la aplicación:
     * Se llama a <xref:Microsoft.AspNetCore.Builder.ComponentEndpointRouteBuilderExtensions.MapBlazorHub%2A> para configurar un punto de conexión para la conexión en tiempo real con el explorador. La conexión se crea con [SignalR](xref:signalr/introduction), que es un marco para agregar funcionalidad web a las aplicaciones en tiempo real.
     * Se llama a [`MapFallbackToPage("/_Host")`](xref:Microsoft.AspNetCore.Builder.RazorPagesEndpointRouteBuilderExtensions.MapFallbackToPage*) para configurar la página raíz de la aplicación (`Pages/_Host.cshtml`) y habilitar la navegación.
 
-* `wwwroot/index.html` (WebAssembly de Blazor): página raíz de la aplicación implementada como página HTML:
+* `wwwroot/index.html` (Blazor WebAssembly): página raíz de la aplicación implementada como página HTML:
   * Cuando se solicita inicialmente cualquier página de la aplicación, esta página se representa y se devuelve en la respuesta.
   * La página especifica dónde se va a representar el componente `App` raíz. El componente `App` (`App.razor`) se especifica como el elemento DOM `app` del método `AddComponent` en `Startup.Configure`.
   * Se carga el archivo JavaScript `_framework/blazor.webassembly.js`, que hace lo siguiente:
@@ -74,7 +75,7 @@ Los siguientes archivos y carpetas componen una aplicación Blazor generada a pa
     * Se carga el archivo JavaScript `_framework/blazor.server.js`, que configura la conexión de SignalR en tiempo real entre el explorador y el servidor.
     * La página Host especifica dónde se va a representar el componente `App` raíz (`App.razor`).
   * `Counter` (`Pages/Counter.razor`): implementa la página Counter.
-  * `Error` (`Error.razor`, solo aplicación Blazor Server): se representa cuando se produce una excepción no controlada en la aplicación.
+  * `Error` (`Error.razor`, solo aplicaciones Blazor Server): se representa cuando se produce una excepción no controlada en la aplicación.
   * `FetchData` (`Pages/FetchData.razor`): implementa la página Fetch data (Recuperar datos).
   * `Index` (`Pages/Index.razor`): implementa la página principal.
 

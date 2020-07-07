@@ -1,5 +1,5 @@
 ---
-title: Protección de una aplicación independiente WebAssembly de Blazor de ASP.NET Core con la Biblioteca de autenticación
+title: Protección de una aplicación independiente Blazor WebAssembly de ASP.NET Core con la biblioteca de autenticación
 author: guardrex
 description: ''
 monikerRange: '>= aspnetcore-3.1'
@@ -8,25 +8,26 @@ ms.custom: mvc
 ms.date: 05/19/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: blazor/security/webassembly/standalone-with-authentication-library
-ms.openlocfilehash: 5a05543c77f1ebaebadc27236aa8f7634e84f1fd
-ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
-ms.translationtype: HT
+ms.openlocfilehash: be87257c5f901e9b3d1ba6a8d7c6b811419c433f
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85243424"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85402200"
 ---
-# <a name="secure-an-aspnet-core-blazor-webassembly-standalone-app-with-the-authentication-library"></a>Protección de una aplicación independiente WebAssembly de Blazor de ASP.NET Core con la Biblioteca de autenticación
+# <a name="secure-an-aspnet-core-blazor-webassembly-standalone-app-with-the-authentication-library"></a>Protección de una aplicación independiente Blazor WebAssembly de ASP.NET Core con la biblioteca de autenticación
 
 Por [Javier Calvarro Nelson](https://github.com/javiercn) y [Luke Latham](https://github.com/guardrex)
 
 *No siga las instrucciones de este tema con Azure Active Directory (AAD) ni Azure Active Directory B2C (AAD B2C). Vea los temas relativos a AAD y AAD B2C del índice.*
 
-Para crear una aplicación independiente WebAssembly de Blazor que use la biblioteca [`Microsoft.AspNetCore.Components.WebAssembly.Authentication`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication/), ejecute el siguiente comando en un shell de comandos:
+Para crear una aplicación independiente Blazor WebAssembly que use la biblioteca [`Microsoft.AspNetCore.Components.WebAssembly.Authentication`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication/), ejecute el siguiente comando en un shell de comandos:
 
 ```dotnetcli
 dotnet new blazorwasm -au Individual
@@ -34,7 +35,7 @@ dotnet new blazorwasm -au Individual
 
 Para especificar la ubicación de salida, lo que crea una carpeta de proyecto si no existe, incluya la opción de salida en el comando con una ruta de acceso (por ejemplo, `-o BlazorSample`). El nombre de la carpeta también pasa a formar parte del nombre del proyecto.
 
-En Visual Studio, [cree una aplicación WebAssembly de Blazor](xref:blazor/get-started). Establezca **Autenticación** en **Cuentas de usuario individuales** con la opción **Almacenar cuentas de usuario en aplicación**.
+En Visual Studio, [cree una aplicación Blazor WebAssembly](xref:blazor/get-started). Establezca **Autenticación** en **Cuentas de usuario individuales** con la opción **Almacenar cuentas de usuario en aplicación**.
 
 ## <a name="authentication-package"></a>Paquete de autenticación
 
@@ -76,7 +77,7 @@ La compatibilidad con la autenticación de aplicaciones independientes se ofrece
 
 ## <a name="access-token-scopes"></a>Ámbitos de token de acceso
 
-La plantilla WebAssembly de Blazor no configura la aplicación automáticamente para solicitar un token de acceso relativo a una API segura. Para aprovisionar un token de acceso como parte del flujo de inicio de sesión, agregue el ámbito a los ámbitos de token predeterminados de <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.OidcProviderOptions>:
+La plantilla de Blazor WebAssembly no configura la aplicación automáticamente para solicitar un token de acceso relativo a una API segura. Para aprovisionar un token de acceso como parte del flujo de inicio de sesión, agregue el ámbito a los ámbitos de token predeterminados de <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.OidcProviderOptions>:
 
 ```csharp
 builder.Services.AddOidcAuthentication(options =>

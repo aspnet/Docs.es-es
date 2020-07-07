@@ -7,17 +7,18 @@ ms.custom: mvc
 ms.date: 04/17/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: index
-ms.openlocfilehash: 7f46051193681ecac59428b77ca1e36830c7bb63
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
-ms.translationtype: HT
+ms.openlocfilehash: f58c25ec8b47b2bd8d425d0bfd0d52df9bbc2655
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "84466993"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85408206"
 ---
 # <a name="introduction-to-aspnet-core"></a>Introducción a ASP.NET Core
 
@@ -27,7 +28,7 @@ Por [Daniel Roth](https://github.com/danroth27), [Rick Anderson](https://twitter
 
 ASP.NET Core es un marco multiplataforma de [código abierto](https://github.com/dotnet/aspnetcore) y de alto rendimiento que tiene como finalidad compilar aplicaciones modernas conectadas a Internet y habilitadas para la nube. Con ASP.NET Core puede hacer lo siguiente:
 
-* Compilar servicios y aplicaciones web, aplicaciones de [Internet of Things (IoT)](https://www.microsoft.com/internet-of-things/) y back-ends móviles.
+* Compilar servicios y aplicaciones web, aplicaciones de [Internet de las cosas (IoT)](https://www.microsoft.com/internet-of-things/) y back-ends móviles.
 * Usar sus herramientas de desarrollo favoritas en Windows, macOS y Linux.
 * Efectuar implementaciones locales y en la nube.
 * Ejecutar en [.NET Core](/dotnet/core/introduction).
@@ -44,15 +45,15 @@ ASP.NET Core MVC proporciona características para crear [API web](xref:tutorial
 
 * El [patrón Modelo-Vista-Controlador (MVC)](xref:mvc/overview) permite que se puedan hacer pruebas en las API web y en las aplicaciones web.
 * [Razor Pages](xref:razor-pages/index) es un modelo de programación basado en páginas que facilita la compilación de interfaces de usuario web y hace que sea más productiva.
-* El [marcado de Razor](xref:mvc/views/razor) proporciona una sintaxis productiva para las [páginas de Razor](xref:razor-pages/index) y las [vistas de MVC](xref:mvc/views/overview).
-* Los [asistentes de etiquetas](xref:mvc/views/tag-helpers/intro) permiten que el código de servidor participe en la creación y la representación de elementos HTML en archivos de Razor.
+* El [marcado de RazorRazor](xref:mvc/views/razor) proporciona una sintaxis productiva para [Razor Pages](xref:razor-pages/index) y las [vistas de MVC](xref:mvc/views/overview).
+* Las [aplicaciones auxiliares de etiquetas](xref:mvc/views/tag-helpers/intro) permiten que el código de servidor participe en la creación y la representación de elementos HTML en archivos de Razor.
 * La compatibilidad integrada para [varios formatos de datos y la negociación de contenidos](xref:web-api/advanced/formatting) permite que las API web lleguen a una amplia gama de clientes, como los exploradores y los dispositivos móviles.
 * El [enlace de modelo](xref:mvc/models/model-binding) asigna automáticamente datos de solicitudes HTTP a parámetros de método de acción.
 * La [validación de modelos](xref:mvc/models/validation) efectúa una validación del lado cliente y del lado servidor de forma automática.
 
 ## <a name="client-side-development"></a>Desarrollo del lado del cliente
 
-ASP.NET Core se integra perfectamente con bibliotecas y marcos populares del lado cliente, que incluyen [Blazor](xref:blazor/index), [Angular](xref:spa/angular), [React](xref:spa/react) y [Bootstrap](https://getbootstrap.com/). Para más información, consulte <xref:blazor/index> y los temas relacionados en *Client-side development* (Desarrollo del lado cliente).
+ASP.NET Core se integra perfectamente con bibliotecas y plataformas de trabajo populares del lado cliente, que incluyen [Blazor](xref:blazor/index), [Angular](xref:spa/angular), [React](xref:spa/react) y [Bootstrap](https://getbootstrap.com/). Para más información, consulte <xref:blazor/index> y los temas relacionados en *Client-side development* (Desarrollo del lado cliente).
 
 <a name="target-framework"></a>
 
@@ -76,7 +77,7 @@ Se recomienda realizar la siguiente secuencia de tutoriales a modo de introducci
 
    |Tipo de aplicación  |Escenario  |Tutorial  |
    |----------|----------|----------|
-   |Aplicación web                   | Nuevo desarrollo de interfaz de usuario web del lado servidor |[Introducción a las páginas de Razor](xref:tutorials/razor-pages/razor-pages-start) |
+   |Aplicación web                   | Nuevo desarrollo de interfaz de usuario web del lado servidor |[Primeros pasos con Razor Pages](xref:tutorials/razor-pages/razor-pages-start) |
    |Aplicación web                   | Mantener una aplicación de MVC |[Introducción a MVC](xref:tutorials/first-mvc-app/start-mvc)|
    |Aplicación web                   | Desarrollo de interfaz de usuario web del lado cliente |[Introducción a Blazor](xref:tutorials/first-blazor-app) |
    |Web API                   | Servicios HTTP RESTful |[Creación de una API web](xref:tutorials/first-web-api)&dagger; |
@@ -87,7 +88,7 @@ Se recomienda realizar la siguiente secuencia de tutoriales a modo de introducci
 
    |Escenario  |Tutorial  |
    |----------|----------|
-   |Nuevo desarrollo        |[ Razor Pages con Entity Framework Core](xref:data/ef-rp/intro) |
+   |Nuevo desarrollo        |[Razor Pages con Entity Framework Core](xref:data/ef-rp/intro) |
    |Mantener una aplicación de MVC |[MVC con Entity Framework Core](xref:data/ef-mvc/intro) |
 
 1. Lea una introducción a los [conceptos básicos](xref:fundamentals/index) de ASP.NET Core aplicables a todos los tipos de aplicaciones.
@@ -123,15 +124,15 @@ ASP.NET Core MVC proporciona características para crear [API web](xref:tutorial
 
 * El [patrón Modelo-Vista-Controlador (MVC)](xref:mvc/overview) permite que se puedan hacer pruebas en las API web y en las aplicaciones web.
 * [Razor Pages](xref:razor-pages/index) es un modelo de programación basado en páginas que facilita la compilación de interfaces de usuario web y hace que sea más productiva.
-* El [marcado de Razor](xref:mvc/views/razor) proporciona una sintaxis productiva para las [páginas de Razor](xref:razor-pages/index) y las [vistas de MVC](xref:mvc/views/overview).
-* Los [asistentes de etiquetas](xref:mvc/views/tag-helpers/intro) permiten que el código de servidor participe en la creación y la representación de elementos HTML en archivos de Razor.
+* El [marcado de RazorRazor](xref:mvc/views/razor) proporciona una sintaxis productiva para [Razor Pages](xref:razor-pages/index) y las [vistas de MVC](xref:mvc/views/overview).
+* Las [aplicaciones auxiliares de etiquetas](xref:mvc/views/tag-helpers/intro) permiten que el código de servidor participe en la creación y la representación de elementos HTML en archivos de Razor.
 * La compatibilidad integrada para [varios formatos de datos y la negociación de contenidos](xref:web-api/advanced/formatting) permite que las API web lleguen a una amplia gama de clientes, como los exploradores y los dispositivos móviles.
 * El [enlace de modelo](xref:mvc/models/model-binding) asigna automáticamente datos de solicitudes HTTP a parámetros de método de acción.
 * La [validación de modelos](xref:mvc/models/validation) efectúa una validación del lado cliente y del lado servidor de forma automática.
 
 ## <a name="client-side-development"></a>Desarrollo del lado del cliente
 
-ASP.NET Core se integra perfectamente con bibliotecas y marcos populares del lado cliente, que incluyen [Blazor](xref:blazor/index), [Angular](xref:spa/angular), [React](xref:spa/react) y [Bootstrap](https://getbootstrap.com/). Para más información, consulte <xref:blazor/index> y los temas relacionados en *Client-side development* (Desarrollo del lado cliente).
+ASP.NET Core se integra perfectamente con bibliotecas y plataformas de trabajo populares del lado cliente, que incluyen [Blazor](xref:blazor/index), [Angular](xref:spa/angular), [React](xref:spa/react) y [Bootstrap](https://getbootstrap.com/). Para más información, consulte <xref:blazor/index> y los temas relacionados en *Client-side development* (Desarrollo del lado cliente).
 
 <a name="target-framework"></a>
 
@@ -164,7 +165,7 @@ Se recomienda la siguiente secuencia de tutoriales y artículos para obtener una
 
    |Tipo de aplicación  |Escenario  |Tutorial  |
    |----------|----------|----------|
-   |Aplicación web                   | Para un nuevo desarrollo        |[Introducción a las páginas de Razor](xref:tutorials/razor-pages/razor-pages-start) |
+   |Aplicación web                   | Para un nuevo desarrollo        |[Primeros pasos con Razor Pages](xref:tutorials/razor-pages/razor-pages-start) |
    |Aplicación web                   | Para mantener una aplicación MVC |[Introducción a MVC](xref:tutorials/first-mvc-app/start-mvc)|
    |Web API                   |                            |[Creación de una API web](xref:tutorials/first-web-api)&dagger; |
    |Aplicación en tiempo real             |                            |[Introducción a SignalR](xref:tutorials/signalr) |

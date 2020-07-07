@@ -6,17 +6,18 @@ ms.author: riande
 ms.date: 12/05/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: client-side/using-grunt
-ms.openlocfilehash: b51973e82bb1bd382be68a501c40ba613217fb03
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
-ms.translationtype: HT
+ms.openlocfilehash: fc871e22f9bd5a9c137008f1d87019542c45b5d2
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82773645"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85401771"
 ---
 # <a name="use-grunt-in-aspnet-core"></a>Uso de Grunt en ASP.NET Core
 
@@ -210,7 +211,7 @@ Grunt está configurado con un manifiesto denominado *Gruntfile.js* que define, 
 
 1. Agregue la tarea `uglify` mediante el código siguiente.
 
-    La tarea minifica el archivo *combined.js* que se encuentra en el directorio temporal y crea el archivo de resultados en wwwroot/lib siguiendo la convención de nomenclatura estándar *\<nombre de archivo\>.min.js*.
+    La tarea minifica el archivo *combined.js* que se encuentra en el directorio temporal y crea el archivo de resultados en wwwroot/lib siguiendo la convención de nomenclatura estándar *\<file name\>.min.js*.
 
     ```javascript
     uglify: {

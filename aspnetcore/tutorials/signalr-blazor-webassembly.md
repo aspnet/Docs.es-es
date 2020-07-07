@@ -8,26 +8,27 @@ ms.custom: mvc
 ms.date: 06/10/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: tutorials/signalr-blazor-webassembly
-ms.openlocfilehash: 3f8aeec1e0471bab5034d1dcc8a42023f6b13c0d
-ms.sourcegitcommit: 77729ba225d5143c0e3954db005906f4a5c7da95
-ms.translationtype: HT
+ms.openlocfilehash: 5a58e7ae28842e2e8a0f3bae8f47e252839903fe
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85122105"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85408882"
 ---
 # <a name="use-aspnet-core-signalr-with-blazor-webassembly"></a>Uso de ASP.NET Core SignalR con Blazor WebAssembly
 
 Por [Daniel Roth](https://github.com/danroth27) y [Luke Latham](https://github.com/guardrex)
 
-En este tutorial se describen los conceptos básicos de la creación de una aplicación en tiempo real usando SignalR con WebAssembly de Blazor. Aprenderá a:
+En este tutorial se describen los conceptos básicos de la creación de una aplicación en tiempo real mediante SignalR con Blazor WebAssembly. Aprenderá a:
 
 > [!div class="checklist"]
-> * Crear un proyecto de aplicación hospedado de Blazor WebAssembly
+> * Crear un proyecto de aplicación Blazor WebAssembly hospedado
 > * Adición de la biblioteca cliente de SignalR
 > * Agregar un concentrador de SignalR
 > * Agregar servicios de SignalR y un punto de conexión para el concentrador de SignalR
@@ -59,7 +60,7 @@ Al final de este tutorial, tendrá una aplicación de chat funcional.
 
 ---
 
-## <a name="create-a-hosted-blazor-webassembly-app-project"></a>Creación de un proyecto de aplicación de WebAssembly de Blazor hospedado
+## <a name="create-a-hosted-blazor-webassembly-app-project"></a>Creación de un proyecto de aplicación Blazor WebAssembly hospedado
 
 Siga las instrucciones para su elección de herramientas:
 
@@ -74,7 +75,7 @@ Siga las instrucciones para su elección de herramientas:
 
 1. Escriba `BlazorSignalRApp` en el campo **Nombre del proyecto**. Confirme que la entrada de **Ubicación** es correcta o proporcione una ubicación para el proyecto. Seleccione **Crear**.
 
-1. Elija la plantilla **Aplicación WebAssembly de Blazor** .
+1. Elija la plantilla **Aplicación de Blazor WebAssembly** .
 
 1. En **Avanzado**, active la casilla **ASP.NET Core hospedado**.
 
@@ -100,7 +101,7 @@ Siga las instrucciones para su elección de herramientas:
 
 1. En la barra lateral, seleccione **Web y consola** > **Aplicación**.
 
-1. Elija la plantilla **Aplicación WebAssembly de Blazor** . Seleccione **Siguiente**.
+1. Elija la plantilla **Aplicación de Blazor WebAssembly** . Seleccione **Siguiente**.
 
    Confirme las configuraciones siguientes:
 
@@ -221,7 +222,7 @@ En el proyecto `BlazorSignalRApp.Server`, cree una carpeta `Hubs` (plural) y agr
 
 1. Elija cualquier explorador, escriba un nombre y un mensaje, y haga clic en el botón para enviar el mensaje. El nombre y el mensaje se muestran en ambas páginas al instante:
 
-   Aplicación de ejemplo de ![SignalR de WebAssembly de Blazor abierta en dos ventanas del explorador que muestran mensajes intercambiados](signalr-blazor-webassembly/_static/3.x/signalr-blazor-webassembly-finished.png)
+   Aplicación de ejemplo de ![SignalR de Blazor WebAssembly abierta en dos ventanas del explorador que muestran mensajes intercambiados.](signalr-blazor-webassembly/_static/3.x/signalr-blazor-webassembly-finished.png)
 
    Citas: *Star Trek VI: The Undiscovered Country* &copy;1991 [Paramount](https://www.paramountmovies.com/movies/star-trek-vi-the-undiscovered-country)
 
@@ -239,7 +240,7 @@ En el proyecto `BlazorSignalRApp.Server`, cree una carpeta `Hubs` (plural) y agr
 
 1. Elija cualquier explorador, escriba un nombre y un mensaje, y haga clic en el botón para enviar el mensaje. El nombre y el mensaje se muestran en ambas páginas al instante:
 
-   Aplicación de ejemplo de ![SignalR de WebAssembly de Blazor abierta en dos ventanas del explorador que muestran mensajes intercambiados](signalr-blazor-webassembly/_static/3.x/signalr-blazor-webassembly-finished.png)
+   Aplicación de ejemplo de ![SignalR de Blazor WebAssembly abierta en dos ventanas del explorador que muestran mensajes intercambiados.](signalr-blazor-webassembly/_static/3.x/signalr-blazor-webassembly-finished.png)
 
    Citas: *Star Trek VI: The Undiscovered Country* &copy;1991 [Paramount](https://www.paramountmovies.com/movies/star-trek-vi-the-undiscovered-country)
 
@@ -251,7 +252,7 @@ En el proyecto `BlazorSignalRApp.Server`, cree una carpeta `Hubs` (plural) y agr
 
 1. Elija cualquier explorador, escriba un nombre y un mensaje, y haga clic en el botón para enviar el mensaje. El nombre y el mensaje se muestran en ambas páginas al instante:
 
-   Aplicación de ejemplo de ![SignalR de WebAssembly de Blazor abierta en dos ventanas del explorador que muestran mensajes intercambiados](signalr-blazor-webassembly/_static/3.x/signalr-blazor-webassembly-finished.png)
+   Aplicación de ejemplo de ![SignalR de Blazor WebAssembly abierta en dos ventanas del explorador que muestran mensajes intercambiados.](signalr-blazor-webassembly/_static/3.x/signalr-blazor-webassembly-finished.png)
 
    Citas: *Star Trek VI: The Undiscovered Country* &copy;1991 [Paramount](https://www.paramountmovies.com/movies/star-trek-vi-the-undiscovered-country)
 
@@ -268,7 +269,7 @@ En el proyecto `BlazorSignalRApp.Server`, cree una carpeta `Hubs` (plural) y agr
 
 1. Elija cualquier explorador, escriba un nombre y un mensaje, y haga clic en el botón para enviar el mensaje. El nombre y el mensaje se muestran en ambas páginas al instante:
 
-   Aplicación de ejemplo de ![SignalR de WebAssembly de Blazor abierta en dos ventanas del explorador que muestran mensajes intercambiados](signalr-blazor-webassembly/_static/3.x/signalr-blazor-webassembly-finished.png)
+   Aplicación de ejemplo de ![SignalR de Blazor WebAssembly abierta en dos ventanas del explorador que muestran mensajes intercambiados.](signalr-blazor-webassembly/_static/3.x/signalr-blazor-webassembly-finished.png)
 
    Citas: *Star Trek VI: The Undiscovered Country* &copy;1991 [Paramount](https://www.paramountmovies.com/movies/star-trek-vi-the-undiscovered-country)
 
@@ -279,7 +280,7 @@ En el proyecto `BlazorSignalRApp.Server`, cree una carpeta `Hubs` (plural) y agr
 En este tutorial ha aprendido a:
 
 > [!div class="checklist"]
-> * Crear un proyecto de aplicación hospedado de Blazor WebAssembly
+> * Crear un proyecto de aplicación Blazor WebAssembly hospedado
 > * Adición de la biblioteca cliente de SignalR
 > * Agregar un concentrador de SignalR
 > * Agregar servicios de SignalR y un punto de conexión para el concentrador de SignalR

@@ -4,26 +4,32 @@ author: jamesnk
 description: Obtenga información sobre cómo configurar servicios gRPC en ASP.NET Core a los que se puede llamar desde aplicaciones del explorador usando gRPC-Web.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
-ms.date: 05/26/2020
+ms.date: 06/29/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: grpc/browser
-ms.openlocfilehash: 6f66a94b41e6e13550396e2e19fdf48f9dc63d46
-ms.sourcegitcommit: 6a71b560d897e13ad5b61d07afe4fcb57f8ef6dc
-ms.translationtype: HT
+ms.openlocfilehash: 20f72deb9895111a6e691eb1ee5cd7419c8c4cb4
+ms.sourcegitcommit: 895e952aec11c91d703fbdd3640a979307b8cc67
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84106603"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85793504"
 ---
 # <a name="use-grpc-in-browser-apps"></a>Uso de gRPC en aplicaciones de explorador
 
 Por [James Newton-King](https://twitter.com/jamesnk)
 
-No se puede llamar a un servicio HTTP/2 gRPC desde una aplicación basada en el explorador. [gRPC-Web](https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-WEB.md) es un protocolo que permite a las aplicaciones de explorador de JavaScript y Blazor llamar a servicios gRPC. En este artículo se explica cómo usar gRPC-Web en .NET Core.
+ Obtenga información sobre cómo configurar un servicio gRPC de ASP.NET Core existente al que se puede llamar desde aplicaciones del explorador mediante el protocolo [gRPC-Web](https://github.com/grpc/grpc/blob/2a388793792cc80944334535b7c729494d209a7e/doc/PROTOCOL-WEB.md). gRPC-Web permite a las aplicaciones de explorador de JavaScript y Blazor llamar a servicios gRPC. No se puede llamar a un servicio HTTP/2 gRPC desde una aplicación basada en el explorador. Los servicios gRPC hospedados en ASP.NET Core se pueden configurar para admitir gRPC-Web junto con HTTP/2 gRPC.
+
+
+Para instrucciones sobre cómo agregar un servicio gRPC a una aplicación de ASP.NET Core existente, consulte [Incorporación de servicios gRPC a una aplicación de ASP.NET Core](xref:grpc/aspnetcore#add-grpc-services-to-an-aspnet-core-app).
+
+Para instrucciones sobre cómo crear un proyecto de gRPC, consulte <xref:tutorials/grpc/grpc-start>.
 
 ## <a name="grpc-web-in-aspnet-core-vs-envoy"></a>gRPC-Web en ASP.NET Core frente a Envoy
 
@@ -32,7 +38,7 @@ Hay dos opciones para agregar gRPC-Web a una aplicación de ASP.NET Core:
 * Compatibilidad con gRPC-Web junto con HTTP/2 gRPC en ASP.NET Core. Esta opción usa el middleware que el paquete `Grpc.AspNetCore.Web` proporciona.
 * Use la compatibilidad con gRPC-Web del [proxy de Envoy](https://www.envoyproxy.io/) para traducir gRPC-Web a HTTP/2 gRPC. A continuación, la llamada traducida se reenvía a la aplicación ASP.NET Core.
 
-Cada enfoque tiene ventajas y desventajas. Si ya usa Envoy como proxy en el entorno de la aplicación, puede que tenga sentido usarlo para proporcionar compatibilidad con gRPC-Web. Si desea una solución sencilla para gRPC-Web que solo requiera ASP.NET Core, `Grpc.AspNetCore.Web` es una buena elección.
+Cada enfoque tiene ventajas y desventajas. Si el entorno de una aplicación ya usa Envoy como proxy, puede que tenga sentido usar Envoy para proporcionar compatibilidad con gRPC-Web. Para obtener una solución básica para gRPC-Web que solo requiera ASP.NET Core, `Grpc.AspNetCore.Web` es una buena elección.
 
 ## <a name="configure-grpc-web-in-aspnet-core"></a>Configuración de gRPC-Web en ASP.NET Core
 
@@ -63,7 +69,7 @@ Como alternativa, se puede configurar el middleware gRPC-Web de forma que todos 
 
 La seguridad del explorador evita que una página web realice solicitudes a un dominio diferente del que atendió a dicha página web. Esta restricción se aplica a la hora de realizar llamadas de gRPC-Web con aplicaciones de explorador. Por ejemplo, una aplicación de explorador atendida por `https://www.contoso.com` no puede llamar a los servicios gRPC-Web hospedados en `https://services.contoso.com`. Para suavizar esta restricción, podemos recurrir al uso compartido de recursos entre orígenes (CORS).
 
-Para permitir que la aplicación de explorador haga llamadas de gRPC-Web entre orígenes, configure [CORS en ASP.NET Core](xref:security/cors). Use la compatibilidad de CORS integrada y exponga los encabezados específicos de gRPC con <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.WithExposedHeaders*>.
+Para permitir que una aplicación de explorador haga llamadas de gRPC-Web entre orígenes, configure [CORS en ASP.NET Core](xref:security/cors). Use la compatibilidad de CORS integrada y exponga los encabezados específicos de gRPC con <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.WithExposedHeaders%2A>.
 
 [!code-csharp[](~/grpc/browser/sample/CORS_Startup.cs?name=snippet_1&highlight=5-11,19,24)]
 
@@ -87,7 +93,7 @@ Existe un cliente gRPC-Web de JavaScript. Para obtener instrucciones sobre cómo
 
 ### <a name="configure-grpc-web-with-the-net-grpc-client"></a>Configuración de gRPC-Web con el cliente gRPC de .NET
 
-El cliente gRPC de .NET se puede configurar para realizar llamadas de gRPC-Web. Esto resulta útil en las aplicaciones de [Blazor WebAssembly](xref:blazor/index#blazor-webassembly), que se hospedan en el explorador y tienen las mismas limitaciones HTTP de código JavaScript. Llamar a gRPC-Web con un cliente .NET es [igual que HTTP/2 gRPC](xref:grpc/client). La única modificación es cómo se crea el canal.
+El cliente gRPC de .NET se puede configurar para realizar llamadas de gRPC-Web. Esto resulta útil en las aplicaciones [Blazor WebAssembly](xref:blazor/index#blazor-webassembly), que se hospedan en el explorador y tienen las mismas limitaciones HTTP de código JavaScript. Llamar a gRPC-Web con un cliente .NET es [igual que HTTP/2 gRPC](xref:grpc/client). La única modificación es cómo se crea el canal.
 
 Para usar gRPC-Web:
 
@@ -111,7 +117,7 @@ El código anterior:
 * **HttpVersion**: elemento `Version` del protocolo HTTP que se usa para establecer [HttpRequestMessage.Version](xref:System.Net.Http.HttpRequestMessage.Version) en la solicitud HTTP de gRPC subyacente. gRPC-Web no requiere que haya una versión específica y no invalida el valor predeterminado a menos que así se especifique.
 
 > [!IMPORTANT]
-> Los clientes de gRPC generados tienen métodos sincrónicos y asincrónicos para llamar a métodos unarios. Así, `SayHello` es sincrónico y `SayHelloAsync`, asincrónico. La llamada a un método sincrónico en una aplicación de Blazor WebAssembly hace que la aplicación deje de responder. En Blazor WebAssembly, siempre se deben usar métodos asincrónicos.
+> Los clientes de gRPC generados tienen métodos sincrónicos y asincrónicos para llamar a métodos unarios. Así, `SayHello` es sincrónico y `SayHelloAsync`, asincrónico. La llamada a un método sincrónico en una aplicación Blazor WebAssembly hace que la aplicación deje de responder. En Blazor WebAssembly, siempre se deben usar métodos asincrónicos.
 
 ## <a name="additional-resources"></a>Recursos adicionales
 

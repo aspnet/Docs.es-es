@@ -8,17 +8,18 @@ ms.custom: mvc
 ms.date: 06/10/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: blazor/fundamentals/additional-scenarios
-ms.openlocfilehash: 72a8b59b06e40f6f85abe41217ae564f82c8d89c
-ms.sourcegitcommit: 1833870ad0845326fb764fef1b530a07b9b5b099
-ms.translationtype: HT
+ms.openlocfilehash: 236dffd829bcd7c30ae1145242ce07cd8e9857e6
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85347078"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85402954"
 ---
 # <a name="aspnet-core-blazor-hosting-model-configuration"></a>Configuración del modelo de hospedaje de Blazor en ASP.NET Core
 
@@ -28,7 +29,7 @@ En este artículo se describe la configuración del modelo de hospedaje.
 
 ### <a name="signalr-cross-origin-negotiation-for-authentication"></a>Negociación entre orígenes de SignalR para la autenticación
 
-*Esta sección es aplicable a WebAssembly de Blazor.*
+*Esta sección es aplicable a Blazor WebAssembly.*
 
 Para configurar el cliente subyacente de SignalR para que envíe credenciales, como cookies o encabezados de autenticación HTTP:
 
@@ -111,11 +112,11 @@ Las aplicaciones Blazor Server se configuran de forma predeterminada para realiz
 
 No se admite la representación de componentes de servidor desde una página HTML estática.
 
-## <a name="configure-the-signalr-client-for-blazor-server-apps"></a>Configuración del cliente de SignalR para aplicaciones de servidor Blazor
+## <a name="configure-the-signalr-client-for-blazor-server-apps"></a>Configuración del cliente de SignalR para aplicaciones Blazor Server
 
 *Esta sección es aplicable a Blazor Server.*
 
-En ocasiones tendrá que configurar el cliente de SignalR que usan las aplicaciones de servidor Blazor. Por ejemplo, es posible que quiera configurar el registro en el cliente de SignalR para diagnosticar un problema de conexión.
+En ocasiones tendrá que configurar el cliente de SignalR que usan las aplicaciones Blazor Server. Por ejemplo, es posible que quiera configurar el registro en el cliente de SignalR para diagnosticar un problema de conexión.
 
 Para configurar el cliente de SignalR en el archivo `Pages/_Host.cshtml`:
 

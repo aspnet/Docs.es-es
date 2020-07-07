@@ -8,17 +8,18 @@ ms.custom: mvc
 ms.date: 05/05/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: blazor/security/server/threat-mitigation
-ms.openlocfilehash: a94dcd818c3f4e19ace57fad6390a84e704192bd
-ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
-ms.translationtype: HT
+ms.openlocfilehash: 4477b16d0d35fb90c35d17852f4639676d76aa02
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85242971"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85402291"
 ---
 # <a name="threat-mitigation-guidance-for-aspnet-core-blazor-server"></a>Guía de mitigación de amenazas para ASP.NET Core Blazor Server
 
@@ -26,7 +27,7 @@ Por [Javier Calvarro Nelson](https://github.com/javiercn)
 
 Las aplicaciones Blazor Server adoptan un modelo de procesamiento de datos *con estado*, donde el servidor y el cliente mantienen una relación de larga duración. El estado persistente se mantiene mediante un [circuito](xref:blazor/state-management), el cual puede abarcar conexiones que también son potencialmente de larga duración.
 
-Cuando un usuario visita un sitio de Blazor Server, el servidor crea un circuito en su memoria. Este circuito indica al explorador qué contenido se va a representar y responde a los eventos, como cuando el usuario selecciona un botón en la UI. Para realizar estas acciones, el circuito invoca funciones de JavaScript en el explorador del usuario y métodos de .NET en el servidor. Esta interacción bidireccional basada en JavaScript se conoce como [interoperabilidad de JavaScript (interoperabilidad de JS)](xref:blazor/call-javascript-from-dotnet).
+Cuando un usuario visita un sitio web de Blazor Server, el servidor crea un circuito en su memoria. Este circuito indica al explorador qué contenido se va a representar y responde a los eventos, como cuando el usuario selecciona un botón en la UI. Para realizar estas acciones, el circuito invoca funciones de JavaScript en el explorador del usuario y métodos de .NET en el servidor. Esta interacción bidireccional basada en JavaScript se conoce como [interoperabilidad de JavaScript (interoperabilidad de JS)](xref:blazor/call-javascript-from-dotnet).
 
 Dado que la interoperabilidad de JS se produce a través de Internet y el cliente usa un explorador remoto, las aplicaciones Blazor Server comparten la mayoría de los problemas de seguridad de las aplicaciones web. En este tema se describen las amenazas más habituales para las aplicaciones Blazor Server y se proporciona una guía de mitigación de amenazas centrada en las aplicaciones accesibles desde Internet.
 
@@ -101,7 +102,7 @@ De forma predeterminada, no hay ningún límite en cuanto al número de conexion
 
 Los ataques por denegación de servicio (DoS) se producen cuando un cliente provoca que el servidor agote uno o más de sus recursos, lo que hace que la aplicación no esté disponible. Las aplicaciones Blazor Server incluyen algunos límites predeterminados y dependen de otros límites de ASP.NET Core y SignalR para ofrecer protección contra los ataques DoS que se establecen en <xref:Microsoft.AspNetCore.Components.Server.CircuitOptions>.
 
-| Límite de la aplicación Blazor Server | Descripción | Default |
+| Límite de aplicaciones Blazor Server | Descripción | Default |
 | --- | --- | --- |
 | <xref:Microsoft.AspNetCore.Components.Server.CircuitOptions.DisconnectedCircuitMaxRetained> | Número máximo de circuitos desconectados que contiene a la vez un servidor determinado en la memoria. | 100 |
 | <xref:Microsoft.AspNetCore.Components.Server.CircuitOptions.DisconnectedCircuitRetentionPeriod> | Cantidad máxima de tiempo que un circuito desconectado se conserva en la memoria antes de desactivarlo. | 3 minutos |
@@ -360,7 +361,7 @@ Para obtener más información, vea <xref:security/cross-site-scripting>.
 
 ### <a name="cross-origin-protection"></a>Protección entre orígenes
 
-Los ataques entre orígenes se producen cuando un cliente de un origen diferente realiza una acción en el servidor. La acción malintencionada es normalmente una solicitud GET o un método POST de formulario (falsificación de solicitud entre sitios, CSRF), pero también puede ser la apertura de un WebSocket malintencionado. Las aplicaciones Blazor Server ofrecen [las mismas garantías que cualquier otra aplicación de SignalR que use la oferta de protocolo del centro de conectividad](xref:signalr/security):
+Los ataques entre orígenes se producen cuando un cliente de un origen diferente realiza una acción en el servidor. La acción malintencionada es normalmente una solicitud GET o un método POST de formulario (falsificación de solicitud entre sitios, CSRF), pero también puede ser la apertura de un WebSocket malintencionado. Las aplicaciones Blazor Server ofrecen [las mismas garantías que cualquier otra aplicación SignalR que use la oferta de protocolo del centro de conectividad](xref:signalr/security):
 
 * Se puede acceder a las aplicaciones Blazor Server desde diferentes orígenes, a menos que se tomen medidas adicionales para evitarlo. Para deshabilitar el acceso entre orígenes, deshabilite el uso compartido de recursos entre orígenes (CORS) en el punto de conexión agregando el middleware de CORS a la canalización y el atributo <xref:Microsoft.AspNetCore.Cors.DisableCorsAttribute> a los metadatos del punto de conexión de Blazor, o bien limite el conjunto de orígenes permitidos mediante la [configuración de SignalR para el uso compartido de recursos entre orígenes](xref:signalr/security#cross-origin-resource-sharing).
 * Si CORS está habilitado, podría ser necesario tomar medidas adicionales para proteger la aplicación en función de la configuración de CORS. Si CORS está habilitado globalmente, se puede deshabilitar para el centro de conectividad de Blazor Server agregando los metadatos de <xref:Microsoft.AspNetCore.Cors.DisableCorsAttribute> a los metadatos del punto de conexión después de llamar a <xref:Microsoft.AspNetCore.Builder.ComponentEndpointRouteBuilderExtensions.MapBlazorHub%2A> en el generador de rutas del punto de conexión.

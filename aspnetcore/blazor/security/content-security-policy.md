@@ -8,17 +8,18 @@ ms.custom: mvc
 ms.date: 05/19/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: blazor/security/content-security-policy
-ms.openlocfilehash: 360fff9383e25a6b5b9308cfebd397f7f4ee31a6
-ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
-ms.translationtype: HT
+ms.openlocfilehash: 5c53ac64d3ae1b365b40c519eb119f913d58cad1
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85242984"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85402447"
 ---
 # <a name="enforce-a-content-security-policy-for-aspnet-core-blazor"></a>Aplicación de una directiva de seguridad de contenido para Blazor de ASP.NET Core
 
@@ -38,7 +39,7 @@ Las directivas de seguridad de contenido se admiten en la mayoría de los explor
 
 ## <a name="policy-directives"></a>Directivas
 
-Especifique como mínimo las siguientes directivas y orígenes en las aplicaciones Blazor. Agregue más directivas y orígenes según sea necesario. Las siguientes directivas se usan en la sección [Aplicación de la directiva](#apply-the-policy) de este artículo, donde se proporcionan directivas de seguridad de ejemplo para WebAssembly de Blazor y Blazor Server:
+Especifique como mínimo las siguientes directivas y orígenes en las aplicaciones Blazor. Agregue más directivas y orígenes según sea necesario. Las siguientes directivas se usan en la sección [Aplicación de la directiva](#apply-the-policy) de este artículo, donde se proporcionan directivas de seguridad de ejemplo para Blazor WebAssembly y Blazor Server:
 
 * [base-uri](https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Security-Policy/base-uri): restringe las direcciones URL según la etiqueta `<base>` de una página. Especifique `self` para indicar que el origen de la aplicación (incluido el esquema y el número de puerto) es un origen válido.
 * [block-all-mixed-content](https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Security-Policy/block-all-mixed-content): impide la carga de contenido HTTP y HTTPS combinado.
@@ -50,8 +51,8 @@ Especifique como mínimo las siguientes directivas y orígenes en las aplicacion
 * [script-src](https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Security-Policy/script-src): indica los orígenes de scripts válidos.
   * Especifique el origen de host `https://stackpath.bootstrapcdn.com/` para los scripts de arranque.
   * Especifique `self` para indicar que el origen de la aplicación (incluido el esquema y el número de puerto) es un origen válido.
-  * En una aplicación WebAssembly de Blazor:
-    * Especifique los siguientes hash para permitir la carga de scripts en línea de WebAssembly de Blazor necesarios:
+  * En una aplicación Blazor WebAssembly:
+    * Especifique los siguientes hash para permitir la carga de scripts en línea Blazor WebAssembly necesarios:
       * `sha256-v8ZC9OgMhcnEQ/Me77/R9TlJfzOBqrMTW8e1KuqLaqc=`
       * `sha256-If//FtbPc03afjLezvWHnC3Nbu4fDM04IIzkPaf3pH0=`
       * `sha256-v8v3RKRPmN4odZ1CWM5gw80QKPCCWMcpNeOmimNL2AA=`
@@ -81,9 +82,9 @@ Use una etiqueta `<meta>` para aplicar la directiva:
 * Coloque las directivas en el valor de atributo `content`. Separe las directivas con un punto y coma (`;`).
 * Coloque siempre la etiqueta `meta` en el contenido de `<head>`.
 
-En las siguientes secciones se muestran directivas de ejemplo de WebAssembly de Blazor y Blazor Server. Estos ejemplos pertenecen a la versión de Blazor correspondiente a este artículo. Para usar la versión adecuada en su caso, seleccione la versión del documento usando el selector desplegable **Versión** de esta página web.
+En las secciones siguientes se muestran las directivas de ejemplo para Blazor WebAssembly y Blazor Server. Estos ejemplos pertenecen a la versión de Blazor correspondiente a este artículo. Para usar la versión adecuada en su caso, seleccione la versión del documento usando el selector desplegable **Versión** de esta página web.
 
-### <a name="blazor-webassembly"></a>Blazor WebAssembly
+### Blazor WebAssembly
 
 En el contenido de `<head>` de la página host `wwwroot/index.html`, aplique las directivas descritas en la sección [Directivas](#policy-directives):
 
@@ -106,7 +107,7 @@ En el contenido de `<head>` de la página host `wwwroot/index.html`, aplique las
                upgrade-insecure-requests;">
 ```
 
-### <a name="blazor-server"></a>Servidor de Blazor
+### Blazor Server
 
 En el contenido de `<head>` de la página host `Pages/_Host.cshtml`, aplique las directivas descritas en la sección [Directivas](#policy-directives):
 

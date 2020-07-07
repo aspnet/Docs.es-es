@@ -8,23 +8,24 @@ ms.custom: mvc
 ms.date: 06/10/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: blazor/fundamentals/logging
-ms.openlocfilehash: 841c4021d9217312b2601b0e775542c6455cca82
-ms.sourcegitcommit: dd2a1542a4a377123490034153368c135fdbd09e
-ms.translationtype: HT
+ms.openlocfilehash: 1f4b18bdea02016fb76b75dd01a8fcbeab9b2bc9
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85240881"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85402837"
 ---
 # <a name="aspnet-core-blazor-logging"></a>Registro de Blazor en ASP.NET Core
 
-## <a name="blazor-webassembly"></a>Blazor WebAssembly
+## Blazor WebAssembly
 
-Configure el registro en aplicaciones WebAssembly de Blazor con la propiedad `WebAssemblyHostBuilder.Logging` establecida en `Program.Main`:
+Configure el registro en aplicaciones Blazor WebAssembly con la propiedad `WebAssemblyHostBuilder.Logging` establecida en `Program.Main`:
 
 ```csharp
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
@@ -41,11 +42,11 @@ La propiedad `Logging` es del tipo <xref:Microsoft.Extensions.Logging.ILoggingBu
 
 La configuración de registro se puede cargar desde archivos de configuración de la aplicación. Para obtener más información, vea <xref:blazor/fundamentals/configuration#logging-configuration>.
 
-## <a name="blazor-server"></a>Servidor de Blazor
+## Blazor Server
 
 Para obtener instrucciones generales sobre el registro en ASP.NET Core, vea <xref:fundamentals/logging/index>.
 
-## <a name="blazor-webassembly-signalr-net-client-logging"></a>Registro de cliente .NET para SignalR en WebAssembly de Blazor
+## <a name="blazor-webassembly-signalr-net-client-logging"></a>Registro de clientes de Blazor WebAssembly SignalR .NET
 
 Inserte un proveedor <xref:Microsoft.Extensions.Logging.ILoggerProvider> para agregar un registrador `WebAssemblyConsoleLogger` a los proveedores de registro pasados a <xref:Microsoft.AspNetCore.SignalR.Client.HubConnectionBuilder>. A diferencia de los registradores <xref:Microsoft.Extensions.Logging.Console.ConsoleLogger> tradicionales, `WebAssemblyConsoleLogger` es un contenedor de API de registro específicas de explorador (por ejemplo, `console.log`). El uso de `WebAssemblyConsoleLogger` hace posible el registro en Mono dentro de un contexto de explorador.
 

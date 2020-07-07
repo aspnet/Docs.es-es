@@ -7,17 +7,18 @@ ms.date: 10/24/2018
 ms.custom: mvc, seodec18
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: azure/devops/cicd
-ms.openlocfilehash: f5b0e0ee1c903de26188815c7dc01ed547cca97e
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
-ms.translationtype: HT
+ms.openlocfilehash: 0edded18d766d6f2af08f6be5dbecbfd52a14a35
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82767140"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85400562"
 ---
 # <a name="continuous-integration-and-deployment"></a>Integración e implementación continuas
 
@@ -68,7 +69,7 @@ En esta sección se van a realizar las tareas siguientes:
 
 Quite la implementación de Git local con los pasos siguientes. Azure Pipelines (un servicio de Azure DevOps) reemplaza y aumenta esa funcionalidad.
 
-1. Abra [Azure Portal](https://portal.azure.com/) y vaya a la aplicación web staging *(mywebapp\<número_único\>/staging)* . La aplicación web se puede encontrar rápidamente si se escribe *staging* en el cuadro de búsqueda del portal:
+1. Abra [Azure Portal](https://portal.azure.com/) y vaya a la aplicación web de *almacenamiento provisional (mywebapp\<unique_number\>/staging)* . La aplicación web se puede encontrar rápidamente si se escribe *staging* en el cuadro de búsqueda del portal:
 
     ![Término de búsqueda de la aplicación web staging](media/cicd/portal-search-box.png)
 
@@ -89,7 +90,7 @@ Quite la implementación de Git local con los pasos siguientes. Azure Pipelines 
 
     ![Botón Inicie su proyecto](media/cicd/vsts-start-project.png)
 
-1. Se abre un explorador para *\<nombre_cuenta\>.visualstudio.com*. Haga clic en el vínculo *MyFirstProject* para empezar a configurar la canalización de DevOps del proyecto.
+1. Se abre un explorador para *\<account_name\>.visualstudio.com*. Haga clic en el vínculo *MyFirstProject* para empezar a configurar la canalización de DevOps del proyecto.
 
 ## <a name="configure-the-azure-pipelines-pipeline"></a>Configurar la canalización de Azure Pipelines
 
@@ -279,7 +280,7 @@ La canalización de versión consta de dos tareas: *Deploy Azure App Service to 
 
 ![Captura de pantalla que muestra la tarea de implementación de la canalización de versión](media/cicd/release-definition-task1.png)
 
-La suscripción de Azure, el tipo de servicio, el nombre de la aplicación web, el grupo de recursos y el espacio de implementación se definen en la tarea de implementación. El cuadro de texto **Paquete o carpeta** contiene la ruta de acceso del archivo *.zip* que se va a extraer e implementar en el *espacio de ensayo* de la aplicación web *mywebapp\<número_único\>* .
+La suscripción de Azure, el tipo de servicio, el nombre de la aplicación web, el grupo de recursos y el espacio de implementación se definen en la tarea de implementación. El cuadro de texto **Paquete o carpeta** contiene la ruta de acceso del archivo *.zip* que se va a extraer e implementar en el *espacio de ensayo* de la aplicación web *mywebapp\<unique_number\>* .
 
 Al hacer clic en la tarea de intercambio de espacio, se revela la siguiente configuración de tarea:
 

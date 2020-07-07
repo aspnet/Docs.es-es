@@ -7,17 +7,18 @@ ms.custom: mvc, seodec18
 ms.date: 07/10/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: azure/devops/monitor
-ms.openlocfilehash: 3af36a37124968e13952e8bf5de1b643265a4a5b
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
-ms.translationtype: HT
+ms.openlocfilehash: a94b1e0b5ce2a24cf22eb665c9bcd03c25ffa67f
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82766893"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85400380"
 ---
 # <a name="monitor-and-debug"></a>Supervisión y depuración
 
@@ -37,7 +38,7 @@ En esta sección, completará las tareas siguientes:
 
 Las aplicaciones web de App Service se pueden supervisar fácilmente en tiempo real. En Azure Portal se representan métricas en gráficos fáciles de entender.
 
-1. Abra [Azure Portal](https://portal.azure.com) y, después, vaya a la instancia de App Service *mywebapp\<número_único\>* .
+1. Abra [Azure Portal](https://portal.azure.com) y, después, vaya a la instancia de App Service *mywebapp\<unique_number\>* .
 
 1. En la pestaña **Información general** se muestra información útil "de un vistazo", incluidos gráficos con métricas recientes.
 
@@ -65,7 +66,7 @@ Las aplicaciones web de App Service se pueden supervisar fácilmente en tiempo r
 
 [Application Insights](/azure/application-insights/app-insights-overview) es un servicio de Azure para analizar el rendimiento y la estabilidad de las aplicaciones web y cómo las utilizan los usuarios. Los datos de Application Insights son más amplios y profundos que los de Azure Monitor. Los datos pueden proporcionar a desarrolladores y administradores información clave para mejorar las aplicaciones. Application Insights se puede agregar a un recurso de Azure App Service sin cambios del código.
 
-1. Abra [Azure Portal](https://portal.azure.com) y, después, vaya a la instancia de App Service *mywebapp\<número_único\>* .
+1. Abra [Azure Portal](https://portal.azure.com) y, después, vaya a la instancia de App Service *mywebapp\<unique_number\>* .
 1. En la pestaña **Información general**, haga clic en el icono **Application Insights**.
 
     ![Icono de Application Insights](./media/monitoring/app-insights.png)
@@ -90,7 +91,7 @@ Application Insights proporciona información útil del lado servidor sin config
 
 Los registros del servidor web y de la aplicación están deshabilitados de forma predeterminada en Azure App Service. Siga estos pasos para habilitar los registros:
 
-1. Abra [Azure Portal](https://portal.azure.com) y vaya a la instancia de App Service *mywebapp\<número_único\>* .
+1. Abra [Azure Portal](https://portal.azure.com) y vaya a la instancia de App Service *mywebapp\<unique_number\>* .
 1. En el menú de la izquierda, desplácese hacia abajo hasta la sección **Supervisión**. Seleccione **Registros de diagnóstico**.
 
     ![Vínculo Registros de diagnóstico](./media/monitoring/logging.png)
@@ -106,7 +107,7 @@ Los registros de ASP.NET Core y del servidor web (App Service) se generan para l
 
 Los registros del servidor web y de la aplicación se pueden transmitir en tiempo real a través del portal.
 
-1. Abra [Azure Portal](https://portal.azure.com) y vaya a la instancia de App Service *mywebapp\<número_único\>* .
+1. Abra [Azure Portal](https://portal.azure.com) y vaya a la instancia de App Service *mywebapp\<unique_number\>* .
 1. En el menú de la izquierda, desplácese hacia abajo hasta la sección **Supervisión** y seleccione **Secuencia de registro**.
 
     ![Captura de pantalla en la que se muestra el vínculo Secuencia de registro](./media/monitoring/log-stream.png)

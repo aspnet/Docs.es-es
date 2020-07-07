@@ -7,17 +7,18 @@ ms.custom: mvc
 ms.date: 07/10/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: test/troubleshoot
-ms.openlocfilehash: bd5e74569717db26496760eaaa2760122d4b49e7
-ms.sourcegitcommit: 6a71b560d897e13ad5b61d07afe4fcb57f8ef6dc
-ms.translationtype: HT
+ms.openlocfilehash: f3c975567ee9ea5a1d9f317d3bc77997f68be928
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84106499"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85399002"
 ---
 # <a name="troubleshoot-and-debug-aspnet-core-projects"></a>Solución de problemas y depuración de proyectos de ASP.NET Core
 
@@ -81,7 +82,7 @@ Si una aplicación es capaz de responder a las solicitudes, puede obtener los si
 
 * Solicitud: método, esquema, host, ruta de acceso base, ruta de acceso, cadena de consulta, encabezados
 * Conexión: dirección IP remota, puerto remoto, dirección IP local, puerto local, certificado de cliente
-* Identity: Name, display name
+* Identity: nombre, nombre para mostrar
 * Valores de configuración
 * Variables de entorno
 

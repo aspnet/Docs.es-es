@@ -8,17 +8,18 @@ ms.custom: mvc
 ms.date: 06/21/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: fundamentals/dependency-injection
-ms.openlocfilehash: 34ed08a5b49b56fd37628032ac73fe03a34448e6
-ms.sourcegitcommit: dd2a1542a4a377123490034153368c135fdbd09e
-ms.translationtype: HT
+ms.openlocfilehash: 2074aa75029cf27922b43545ec18c0cd8a50eb02
+ms.sourcegitcommit: 895e952aec11c91d703fbdd3640a979307b8cc67
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85240855"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85793352"
 ---
 # <a name="dependency-injection-in-aspnet-core"></a>Inserción de dependencias en ASP.NET Core
 
@@ -414,6 +415,8 @@ Los servicios disponibles en una solicitud de ASP.NET Core desde `HttpContext` s
 Los servicios de solicitud representan los servicios configurados y solicitados como parte de la aplicación. Cuando los objetos especifican dependencias, estas se cumplen mediante los tipos que se encuentran en `RequestServices`, no en `ApplicationServices`.
 
 Por lo general, la aplicación no debe usar estas propiedades directamente. En su lugar, solicite los tipos que las clases requieren mediante el constructor de clases y permita que el marco de trabajo inserte las dependencias. Esto produce clases que son más fáciles de probar.
+
+ASP.NET Core crea un ámbito por solicitud y `RequestServices` expone el proveedor de servicios de ámbito. Todos los servicios con ámbito son válidos mientras la solicitud está activa.
 
 > [!NOTE]
 > Se recomienda que solicite las dependencias como parámetros del constructor para obtener acceso a la colección `RequestServices`.

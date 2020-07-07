@@ -1,24 +1,25 @@
 ---
 title: Hospedaje e implementación de ASP.NET Core Blazor Server
 author: guardrex
-description: Aprenda a hospedar e implementar una aplicación Blazor Server con ASP.NET Core.
+description: Aprenda a hospedar e implementar una aplicación Blazor Server mediante ASP.NET Core.
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 06/04/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/server
-ms.openlocfilehash: c02d005aa5e37bc359e1c104a19c387f1c16fa34
-ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
-ms.translationtype: HT
+ms.openlocfilehash: e59579046ecbfdbb4cca79bfb0e39d299e26913c
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85243556"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85402603"
 ---
 # <a name="host-and-deploy-blazor-server"></a>Hospedaje e implementación de Blazor Server
 
@@ -26,19 +27,19 @@ Por [Luke Latham](https://github.com/guardrex), [Rainer Stropek](https://www.tim
 
 ## <a name="host-configuration-values"></a>Valores de configuración de host
 
-Las aplicaciones [Blazor Server](xref:blazor/hosting-models#blazor-server) pueden aceptar [valores de configuración de host genérico](xref:fundamentals/host/generic-host#host-configuration).
+[Las aplicaciones Blazor Server](xref:blazor/hosting-models#blazor-server) pueden aceptar [valores de configuración de host genérico](xref:fundamentals/host/generic-host#host-configuration).
 
 ## <a name="deployment"></a>Implementación
 
-Con el modelo de hospedaje de [Blazor Server](xref:blazor/hosting-models#blazor-server), Blazor se ejecuta en el servidor desde una aplicación ASP.NET Core. Las actualizaciones de la interfaz de usuario, el control de eventos y las llamadas de JavaScript se controlan mediante una conexión [SignalR](xref:signalr/introduction).
+Con el [modelo de hospedaje de Blazor Server](xref:blazor/hosting-models#blazor-server), Blazor se ejecuta en el servidor desde una aplicación ASP.NET Core. Las actualizaciones de la interfaz de usuario, el control de eventos y las llamadas de JavaScript se controlan mediante una conexión [SignalR](xref:signalr/introduction).
 
-Se requiere un servidor web que pueda hospedar una aplicación ASP.NET Core. Visual Studio incluye la plantilla de proyecto de **Aplicación Blazor Server** (plantilla `blazorserverside` cuando se usa el comando [`dotnet new`](/dotnet/core/tools/dotnet-new)).
+Se requiere un servidor web que pueda hospedar una aplicación ASP.NET Core. Visual Studio incluye la **plantilla de proyecto Aplicación Blazor Server** (plantilla `blazorserverside` cuando se usa el comando [`dotnet new`](/dotnet/core/tools/dotnet-new)).
 
 ## <a name="scalability"></a>Escalabilidad
 
 Planee una implementación para hacer el mejor uso de la infraestructura disponible para una aplicación Blazor Server. Consulte los siguientes recursos para abordar la escalabilidad de las aplicaciones Blazor Server:
 
-* [Aspectos básicos de las aplicaciones Blazor Server](xref:blazor/hosting-models#blazor-server)
+* [Fundamentos de las aplicacionesBlazor Server](xref:blazor/hosting-models#blazor-server)
 * <xref:blazor/security/server/threat-mitigation>
 
 ### <a name="deployment-server"></a>Servidor de implementación
@@ -54,7 +55,7 @@ Cada circuito utiliza aproximadamente 250 KB de memoria para una aplicación m�
 
 ### <a name="signalr-configuration"></a>Configuración de SignalR
 
-Las aplicaciones Blazor Server usan ASP.NET Core SignalR para comunicarse con el explorador. Las [SignalRcondiciones de hospedaje y escalabilidad de ](xref:signalr/publish-to-azure-web-app) se aplican a las aplicaciones Blazor Server.
+Las aplicaciones Blazor Server usan ASP.NET Core SignalR para comunicarse con el explorador. Las [condiciones de hospedaje y escalabilidad de SignalR](xref:signalr/publish-to-azure-web-app) se aplican a las aplicaciones Blazor Server.
 
 Blazor funciona mejor cuando se usa WebSockets como transporte de SignalR debido a su menor latencia, confiabilidad y [seguridad](xref:signalr/security). SignalR usa el sondeo largo cuando WebSockets no está disponible o cuando la aplicación está configurada explícitamente para usarlo. Al implementar en Azure App Service, configure la aplicación para usar WebSockets en la configuración de Azure Portal del servicio. Para más información sobre la configuración de la aplicación para Azure App Service, consulte las [SignalRdirectrices de publicación de](xref:signalr/publish-to-azure-web-app).
 
@@ -84,7 +85,7 @@ Se recomienda usar [Azure SignalR Service](/azure/azure-signalr) para las aplica
 
      * El valor **Configuración** > **Configuración de la aplicación** de la instancia de App Service en Azure Portal (**Nombre**: `Azure:SignalR:ServerStickyMode`, **Valor**: `Required`).
 
-1. Cree un perfil de publicación de aplicaciones de Azure en Visual Studio para la aplicación Blazor.
+1. Cree un perfil de publicación de aplicaciones de Azure en Visual Studio para la aplicación Blazor Server.
 1. Agregue la dependencia de **Azure SignalR Service** al perfil. Si la suscripción de Azure no tiene una instancia de Azure SignalR Service para asignarla a la aplicación, seleccione **Crear una instancia de Azure SignalR Service** para aprovisionar una nueva instancia de servicio.
 1. Publicación de la aplicación en Azure.
 

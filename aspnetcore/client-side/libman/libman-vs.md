@@ -7,17 +7,18 @@ ms.custom: mvc
 ms.date: 08/20/2018
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: client-side/libman/libman-vs
-ms.openlocfilehash: 45f81cbc713e7e7c1f335aef49360992d2297a81
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
-ms.translationtype: HT
+ms.openlocfilehash: 504c34ccd8813273161b86504700704f8a932538
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82770098"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85403175"
 ---
 # <a name="use-libman-with-aspnet-core-in-visual-studio"></a>Uso de LibMan con ASP.NET Core en Visual Studio
 
@@ -207,7 +208,7 @@ Para desinstalar archivos de biblioteca:
 
 * Abra *libman.json*.
 * Sitúe el cursor dentro del literal de objeto `libraries` correspondiente.
-* Haga clic en el icono de bombilla que aparece en el margen izquierdo y seleccione **Desinstalar \<nombre_de_la_biblioteca>@\<versión_de_la_biblioteca>** :
+* Haga clic en el icono de bombilla que aparece en el margen izquierdo y seleccione **Desinstalar \<library_name>@\<library_version>** :
 
   ![Opción Desinstalar biblioteca del menú contextual](_static/uninstall-menu-option.png)
 
