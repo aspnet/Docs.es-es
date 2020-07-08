@@ -14,12 +14,12 @@ no-loc:
 - Razor
 - SignalR
 uid: migration/proper-to-2x/membership-to-core-identity
-ms.openlocfilehash: f039772f4276d0e8bcec2629350eba2ec0e7418c
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: afad542a18a357a77f4542511a3d2c3108dbfb31
+ms.sourcegitcommit: fa89d6553378529ae86b388689ac2c6f38281bb9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85399691"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86059778"
 ---
 # <a name="migrate-from-aspnet-membership-authentication-to-aspnet-core-20-identity"></a>Migración de la autenticación de pertenencia de ASP.NET a ASP.NET Core 2,0Identity
 
@@ -44,7 +44,7 @@ ASP.NET Core 2,0 sigue el [Identity](/aspnet/identity/index) principio incluido 
 
 La manera más rápida de ver el esquema para ASP.NET Core 2,0 Identity es crear una nueva aplicación de ASP.NET Core 2,0. Siga estos pasos en Visual Studio 2017:
 
-1. Seleccione **File (Archivo)**  > **New (Nuevo)**  > **Project (Proyecto)** .
+1. Seleccione **Archivo** > **Nuevo** > **Proyecto**.
 1. Cree un nuevo proyecto de **aplicación Web de ASP.net Core** llamado *CoreIdentitySample*.
 1. Seleccione **ASP.NET Core 2,0** en la lista desplegable y, a continuación, seleccione **aplicación web**. Esta plantilla crea una aplicación de [ Razor páginas](xref:razor-pages/index) . Antes de hacer clic en **Aceptar**, haga clic en **cambiar autenticación**.
 1. Elija las **cuentas de usuario individuales** para las Identity plantillas. Por último, haga clic en **Aceptar**y en **Aceptar**. Visual Studio crea un proyecto mediante la Identity plantilla ASP.net Core.
@@ -75,36 +75,33 @@ Existen sutiles diferencias en las estructuras de tabla y los campos de pertenen
 
 ### <a name="users"></a>Usuarios
 
-|*Identity<br>DBO. AspNetUsers*        ||*Pertenencia <br> (DBO. aspnet_Users/DBO. aspnet_Membership)*||
-|----------------------------------------|-----------------------------------------------------------|
-|**Nombre del campo**                 |**Tipo**|**Nombre del campo**                                    |**Tipo**|
-|`Id`                           |string  |`aspnet_Users.UserId`                             |string  |
-|`UserName`                     |string  |`aspnet_Users.UserName`                           |string  |
-|`Email`                        |string  |`aspnet_Membership.Email`                         |string  |
-|`NormalizedUserName`           |string  |`aspnet_Users.LoweredUserName`                    |string  |
-|`NormalizedEmail`              |string  |`aspnet_Membership.LoweredEmail`                  |string  |
-|`PhoneNumber`                  |string  |`aspnet_Users.MobileAlias`                        |string  |
-|`LockoutEnabled`               |bit     |`aspnet_Membership.IsLockedOut`                   |bit     |
+|Identity<br>`dbo.AspNetUsers`columna ()  |Tipo     |Pertenencia<br>`dbo.aspnet_Users`  /  `dbo.aspnet_Membership` columna ()|Tipo      |
+|-------------------------------------------|-----------------------------------------------------------------------|
+| `Id`                            | `string`| `aspnet_Users.UserId`                                      | `string` |
+| `UserName`                      | `string`| `aspnet_Users.UserName`                                    | `string` |
+| `Email`                         | `string`| `aspnet_Membership.Email`                                  | `string` |
+| `NormalizedUserName`            | `string`| `aspnet_Users.LoweredUserName`                             | `string` |
+| `NormalizedEmail`               | `string`| `aspnet_Membership.LoweredEmail`                           | `string` |
+| `PhoneNumber`                   | `string`| `aspnet_Users.MobileAlias`                                 | `string` |
+| `LockoutEnabled`                | `bit`   | `aspnet_Membership.IsLockedOut`                            | `bit`    |
 
 > [!NOTE]
 > No todas las asignaciones de campos se parecen a las relaciones uno a uno de la pertenencia a ASP.NET Core Identity . La tabla anterior toma el esquema de usuario de pertenencia predeterminado y lo asigna al esquema de ASP.NET Core Identity . Cualquier otro campo personalizado que se usara para la pertenencia debe asignarse manualmente. En esta asignación, no hay ninguna asignación para las contraseñas, ya que los criterios de contraseña y las sales de contraseña no se migran entre los dos. **Se recomienda dejar la contraseña como NULL y pedir a los usuarios que restablezcan sus contraseñas.** En ASP.NET Core Identity , `LockoutEnd` debe establecerse en una fecha futura si el usuario está bloqueado. Esto se muestra en el script de migración.
 
 ### <a name="roles"></a>Roles
 
-|*Identity<br>DBO. AspNetRoles)*        ||*Pertenencia <br> (DBO. aspnet_Roles)*||
+|Identity<br>`dbo.AspNetRoles`columna ()|Tipo|Pertenencia<br>`dbo.aspnet_Roles`columna ()|Tipo|
 |----------------------------------------|-----------------------------------|
-|**Nombre del campo**                 |**Tipo**|**Nombre del campo**   |**Tipo**         |
-|`Id`                           |string  |`RoleId`         | string          |
-|`Name`                         |string  |`RoleName`       | string          |
-|`NormalizedName`               |string  |`LoweredRoleName`| string          |
+|`Id`                           |`string`|`RoleId`         | `string`        |
+|`Name`                         |`string`|`RoleName`       | `string`        |
+|`NormalizedName`               |`string`|`LoweredRoleName`| `string`        |
 
 ### <a name="user-roles"></a>Roles de usuario
 
-|*Identity<br>DBO. AspNetUserRoles*||*Pertenencia <br> (DBO. aspnet_UsersInRoles)*||
-|------------------------------------|------------------------------------------|
-|**Nombre del campo**           |**Tipo**  |**Nombre del campo**|**Tipo**                   |
-|`RoleId`                 |string    |`RoleId`      |string                     |
-|`UserId`                 |string    |`UserId`      |string                     |
+|Identity<br>`dbo.AspNetUserRoles`columna ()|Tipo|Pertenencia<br>`dbo.aspnet_UsersInRoles`columna ()|Tipo|
+|-------------------------|----------|--------------|---------------------------|
+|`RoleId`                 |`string`  |`RoleId`      |`string`                   |
+|`UserId`                 |`string`  |`UserId`      |`string`                   |
 
 Haga referencia a las tablas de asignación anteriores al crear un script de migración para *usuarios* y *roles*. En el ejemplo siguiente se da por supuesto que tiene dos bases de datos en un servidor de base de datos. Una base de datos contiene los datos y el esquema de pertenencia de ASP.NET existente. La otra base de datos *CoreIdentitySample* se creó con los pasos descritos anteriormente. Los comentarios se incluyen en línea para obtener más detalles.
 

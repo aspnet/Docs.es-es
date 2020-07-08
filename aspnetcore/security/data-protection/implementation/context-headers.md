@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/data-protection/implementation/context-headers
-ms.openlocfilehash: 078392662281253b8b6cfc0d50fddc8d66482b63
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 0995cd80c10f638c90a60630378518988ffb89ed
+ms.sourcegitcommit: fa89d6553378529ae86b388689ac2c6f38281bb9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85406899"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86060103"
 ---
 # <a name="context-headers-in-aspnet-core"></a>Encabezados de contexto en ASP.NET Core
 
@@ -26,7 +26,7 @@ ms.locfileid: "85406899"
 
 ## <a name="background-and-theory"></a>Antecedentes y teoría
 
-En el sistema de protección de datos, una "clave" hace referencia a un objeto que puede proporcionar servicios de cifrado autenticados. Cada clave se identifica mediante un identificador único (un GUID) y incluye información algorítmica y material Entropic. Está previsto que cada clave lleve una entropía única, pero el sistema no puede aplicar esto, y también tenemos que tener en cuenta a los desarrolladores que podrían cambiar el anillo de claves manualmente modificando la información algorítmica de una clave existente en el anillo de claves. Para alcanzar los requisitos de seguridad dados estos casos, el sistema de protección de datos tiene un concepto de [agilidad criptográfica](https://www.microsoft.com/en-us/research/publication/cryptographic-agility-and-its-relation-to-circular-encryption/), que permite usar de forma segura un único valor de Entropic en varios algoritmos criptográficos.
+En el sistema de protección de datos, una "clave" hace referencia a un objeto que puede proporcionar servicios de cifrado autenticados. Cada clave se identifica mediante un identificador único (un GUID) y incluye información algorítmica y material Entropic. Está previsto que cada clave lleve una entropía única, pero el sistema no puede aplicar esto, y también tenemos que tener en cuenta a los desarrolladores que podrían cambiar el anillo de claves manualmente modificando la información algorítmica de una clave existente en el anillo de claves. Para alcanzar los requisitos de seguridad dados estos casos, el sistema de protección de datos tiene un concepto de [agilidad criptográfica](https://www.microsoft.com/research/publication/cryptographic-agility-and-its-relation-to-circular-encryption), que permite usar de forma segura un único valor de Entropic en varios algoritmos criptográficos.
 
 La mayoría de los sistemas que admiten la agilidad criptográfica lo hacen mediante la inclusión de información de identificación sobre el algoritmo dentro de la carga. El OID del algoritmo suele ser un buen candidato para esto. Sin embargo, un problema en el que se produjo es que hay varias maneras de especificar el mismo algoritmo: "AES" (CNG) y las clases administradas AES, AesManaged, AesCryptoServiceProvider, AesCng y RijndaelManaged (determinados parámetros específicos) son realmente lo mismo, y es necesario mantener una asignación de todos ellos al OID correcto. Si un desarrollador desea proporcionar un algoritmo personalizado (o incluso otra implementación de AES!), deberá indicarnos su OID. Este paso de registro adicional hace que la configuración del sistema sea especialmente complicada.
 
@@ -50,21 +50,21 @@ El encabezado de contexto consta de los siguientes componentes:
 
 * [32 bits] Tamaño de síntesis (en bytes, Big-endian) del algoritmo HMAC.
 
-* EncCBC (K_E, IV, ""), que es la salida del algoritmo de cifrado de bloques simétricos dada una entrada de cadena vacía y donde IV es un vector de todo cero. A continuación se describe la construcción de K_E.
+* `EncCBC(K_E, IV, "")`, que es la salida del algoritmo de cifrado de bloques simétricos dada una entrada de cadena vacía y donde IV es un vector de todo cero. `K_E`A continuación se describe la construcción de.
 
-* MAC (K_H, ""), que es la salida del algoritmo HMAC dada una entrada de cadena vacía. A continuación se describe la construcción de K_H.
+* `MAC(K_H, "")`, que es la salida del algoritmo HMAC dada una entrada de cadena vacía. `K_H`A continuación se describe la construcción de.
 
-Idealmente, podríamos pasar todos los vectores de cero para K_E y K_H. Sin embargo, queremos evitar la situación en la que el algoritmo subyacente comprueba la existencia de claves débiles antes de realizar cualquier operación (en particular, DES y 3DES), lo que impide el uso de un patrón simple o repetible como un vector de todo cero.
+Idealmente, podríamos pasar todos los vectores de cero para `K_E` y `K_H` . Sin embargo, queremos evitar la situación en la que el algoritmo subyacente comprueba la existencia de claves débiles antes de realizar cualquier operación (en particular, DES y 3DES), lo que impide el uso de un patrón simple o repetible como un vector de todo cero.
 
-En su lugar, usamos NIST SP800-108 KDF en modo de contador (consulte [NIST SP800-108](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-108.pdf), Sec. 5,1) con una clave, etiqueta y contexto de longitud cero y HMACSHA512 como el PRF subyacente. Derivaremos | K_E | + | K_H | bytes de salida y, a continuación, descomponer el resultado en K_E y K_H ellos mismos. Matemáticamente, esto se representa como se indica a continuación.
+En su lugar, usamos NIST SP800-108 KDF en modo de contador (consulte [NIST SP800-108](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-108.pdf), Sec. 5,1) con una clave, etiqueta y contexto de longitud cero y HMACSHA512 como el PRF subyacente. Se derivan `| K_E | + | K_H |` bytes de salida y, a continuación, se descompone el resultado en `K_E` y en `K_H` sí mismos. Matemáticamente, esto se representa como se indica a continuación.
 
-(K_E | | K_H) = SP800_108_CTR (PRF = HMACSHA512, Key = "", Label = "", context = "")
+`( K_E || K_H ) = SP800_108_CTR(prf = HMACSHA512, key = "", label = "", context = "")`
 
 ### <a name="example-aes-192-cbc--hmacsha256"></a>Ejemplo: AES-192-CBC + HMACSHA256
 
 Como ejemplo, considere el caso en el que el algoritmo de cifrado de bloques simétricos es AES-192-CBC y el algoritmo de validación es HMACSHA256. El sistema generaría el encabezado de contexto mediante los pasos siguientes.
 
-En primer lugar, permita que (K_E | | K_H) = SP800_108_CTR (PRF = HMACSHA512, Key = "", Label = "", context = ""), donde | K_E | = 192 bits y | K_H | = 256 bits por los algoritmos especificados. Esto conduce a K_E = 5BB6. 21DD y K_H = A04A.. 00A9 en el ejemplo siguiente:
+En primer lugar, permita `( K_E || K_H ) = SP800_108_CTR(prf = HMACSHA512, key = "", label = "", context = "")` , donde `| K_E | = 192 bits` y `| K_H | = 256 bits` según los algoritmos especificados. Esto conduce a `K_E = 5BB6..21DD` y `K_H = A04A..00A9` en el ejemplo siguiente:
 
 ```
 5B B6 C9 83 13 78 22 1D 8E 10 73 CA CF 65 8E B0
@@ -73,13 +73,13 @@ En primer lugar, permita que (K_E | | K_H) = SP800_108_CTR (PRF = HMACSHA512, Ke
 B7 92 3D BF 59 90 00 A9
 ```
 
-A continuación, calcule Enc_CBC (K_E, IV, "") para AES-192-CBC dado IV = 0 * y K_E como se indicó anteriormente.
+A continuación, Compute `Enc_CBC (K_E, IV, "")` para AES-192-CBC `IV = 0*` y como se indica a continuación `K_E` .
 
-resultado: = F474B1872B3B53E4721DE19C0841DB6F
+`result := F474B1872B3B53E4721DE19C0841DB6F`
 
-Después, Compute MAC (K_H, "") para HMACSHA256 proporcionado K_H como se indicó anteriormente.
+A continuación, Compute `MAC(K_H, "")` para HMACSHA256 proporcionado `K_H` como se indicó anteriormente.
 
-resultado: = D4791184B996092EE1202F36E8608FA8FBD98ABDFF5402F264B1D7211536220C
+`result := D4791184B996092EE1202F36E8608FA8FBD98ABDFF5402F264B1D7211536220C`
 
 Esto genera el encabezado de contexto completo a continuación:
 
@@ -93,26 +93,26 @@ DB 6F D4 79 11 84 B9 96 09 2E E1 20 2F 36 E8 60
 
 Este encabezado de contexto es la huella digital del par de algoritmos de cifrado autenticados (cifrado AES-192-CBC + validación HMACSHA256). Los componentes, como se describió [anteriormente](xref:security/data-protection/implementation/context-headers#data-protection-implementation-context-headers-cbc-components) , son los siguientes:
 
-* el marcador (00 00)
+* el marcador`(00 00)`
 
-* la longitud de la clave de cifrado de bloques (00 00 00 18)
+* la longitud de la clave de cifrado de bloques`(00 00 00 18)`
 
-* tamaño de bloque de cifrado de bloques (00 00 00 10)
+* tamaño de bloque de cifrado de bloques`(00 00 00 10)`
 
-* la longitud de la clave HMAC (00 00 00 20)
+* la longitud de la clave HMAC`(00 00 00 20)`
 
-* el tamaño de síntesis de HMAC (00 00 00 20)
+* el tamaño de síntesis de HMAC`(00 00 00 20)`
 
-* la salida de cifrado de bloqueo PRP (F4 74-DB 6F) y
+* la salida de cifrado de bloqueo PRP `(F4 74 - DB 6F)` y
 
-* la salida de HMAC PRF (D4 79-end).
+* salida de HMAC PRF `(D4 79 - end)` .
 
 > [!NOTE]
 > El encabezado de contexto de autenticación con cifrado de modo CBC + HMAC se crea de la misma forma, independientemente de si las implementaciones de algoritmos las proporciona la CNG de Windows o los tipos de SymmetricAlgorithm y KeyedHashAlgorithm administrados. Esto permite que las aplicaciones que se ejecutan en distintos sistemas operativos generen de forma confiable el mismo encabezado de contexto, aunque las implementaciones de los algoritmos difieran entre los sistemas operativos. (En la práctica, el KeyedHashAlgorithm no tiene que ser un HMAC adecuado. Puede ser cualquier tipo de algoritmo hash con clave).
 
 ### <a name="example-3des-192-cbc--hmacsha1"></a>Ejemplo: 3DES-192-CBC + HMACSHA1
 
-En primer lugar, permita que (K_E | | K_H) = SP800_108_CTR (PRF = HMACSHA512, Key = "", Label = "", context = ""), donde | K_E | = 192 bits y | K_H | = 160 bits por los algoritmos especificados. Esto conduce a K_E = A219. E2BB y K_H = DC4A.. B464 en el ejemplo siguiente:
+En primer lugar, permita `( K_E || K_H ) = SP800_108_CTR(prf = HMACSHA512, key = "", label = "", context = "")` , donde `| K_E | = 192 bits` y `| K_H | = 160 bits` según los algoritmos especificados. Esto conduce a `K_E = A219..E2BB` y `K_H = DC4A..B464` en el ejemplo siguiente:
 
 ```
 A2 19 60 2F 83 A9 13 EA B0 61 3A 39 B8 A6 7E 22
@@ -120,13 +120,13 @@ A2 19 60 2F 83 A9 13 EA B0 61 3A 39 B8 A6 7E 22
 D1 F7 5A 34 EB 28 3E D7 D4 67 B4 64
 ```
 
-A continuación, calcule Enc_CBC (K_E, IV, "") para 3DES-192-CBC dado IV = 0 * y K_E como se indicó anteriormente.
+A continuación, calcule `Enc_CBC (K_E, IV, "")` para 3DES-192-CBC `IV = 0*` y como se indica a continuación `K_E` .
 
-resultado: = ABB100F81E53E10E
+`result := ABB100F81E53E10E`
 
-Después, Compute MAC (K_H, "") para HMACSHA1 proporcionado K_H como se indicó anteriormente.
+A continuación, Compute `MAC(K_H, "")` para HMACSHA1 proporcionado `K_H` como se indicó anteriormente.
 
-resultado: = 76EB189B35CF03461DDF877CD9F4B1B4D63A7555
+`result := 76EB189B35CF03461DDF877CD9F4B1B4D63A7555`
 
 Esto genera el encabezado de contexto completo, que es una huella digital del par de algoritmos de cifrado autenticado (cifrado 3DES-192-CBC Encryption + HMACSHA1), que se muestra a continuación:
 
@@ -138,19 +138,19 @@ Esto genera el encabezado de contexto completo, que es una huella digital del pa
 
 Los componentes se desglosan de la manera siguiente:
 
-* el marcador (00 00)
+* el marcador`(00 00)`
 
-* la longitud de la clave de cifrado de bloques (00 00 00 18)
+* la longitud de la clave de cifrado de bloques`(00 00 00 18)`
 
-* tamaño de bloque de cifrado de bloques (00 00 00 08)
+* tamaño de bloque de cifrado de bloques`(00 00 00 08)`
 
-* la longitud de la clave HMAC (00 00 00 14)
+* la longitud de la clave HMAC`(00 00 00 14)`
 
-* el tamaño de síntesis de HMAC (00 00 00 14)
+* el tamaño de síntesis de HMAC`(00 00 00 14)`
 
-* la salida de la PRP de cifrado de bloques (AB B1-E1 0E) y
+* la salida de cifrado de bloqueo PRP `(AB B1 - E1 0E)` y
 
-* la salida de HMAC PRF (76 EB-end).
+* salida de HMAC PRF `(76 EB - end)` .
 
 ## <a name="galoiscounter-mode-encryption--authentication"></a>Cifrado de modo de Galois/contador + autenticación
 
@@ -166,21 +166,21 @@ El encabezado de contexto consta de los siguientes componentes:
 
 * [32 bits] El tamaño de la etiqueta de autenticación (en bytes, Big-endian) generado por la función de cifrado autenticado. (En nuestro sistema, esto se corrigió en tamaño de etiqueta = 128 bits).
 
-* [128 bits] Etiqueta de Enc_GCM (K_E, nonce, ""), que es la salida del algoritmo de cifrado de bloques simétricos dada una entrada de cadena vacía y en la que el valor de seguridad (nonce) es un vector de tipo "todo cero" de 96 bits.
+* [128 bits] La etiqueta de `Enc_GCM (K_E, nonce, "")` , que es la salida del algoritmo de cifrado de bloques simétricos dada una entrada de cadena vacía y en la que el valor de nonce es un vector de 96 bits todo-cero.
 
-K_E se deriva mediante el mismo mecanismo que en el escenario CBC Encryption + HMAC Authentication. Sin embargo, puesto que no hay ningún K_H en juego aquí, esencialmente tenemos | K_H | = 0 y el algoritmo se contrae en el formulario siguiente.
+`K_E`se deriva mediante el mismo mecanismo que en el escenario CBC Encryption + HMAC Authentication. Sin embargo, puesto que no hay nada `K_H` en juego, esencialmente tenemos `| K_H | = 0` y el algoritmo se contrae en el formulario siguiente.
 
-K_E = SP800_108_CTR (PRF = HMACSHA512, Key = "", Label = "", context = "")
+`K_E = SP800_108_CTR(prf = HMACSHA512, key = "", label = "", context = "")`
 
 ### <a name="example-aes-256-gcm"></a>Ejemplo: AES-256-GCM
 
-En primer lugar, deje K_E = SP800_108_CTR (PRF = HMACSHA512, clave = "", Label = "", context = ""), donde | K_E | = 256 bits.
+En primer lugar, supongamos `K_E = SP800_108_CTR(prf = HMACSHA512, key = "", label = "", context = "")` dónde `| K_E | = 256 bits` .
 
-K_E: = 22BC6F1B171C08C4AE2F27444AF8FC8B3087A90006CAEA91FDCFB47C1B8733B8
+`K_E := 22BC6F1B171C08C4AE2F27444AF8FC8B3087A90006CAEA91FDCFB47C1B8733B8`
 
-A continuación, calcule la etiqueta de autenticación de Enc_GCM (K_E, nonce, "") para AES-256-GCM dado nonce = 096 y K_E como se indicó anteriormente.
+A continuación, calcule la etiqueta de autenticación de `Enc_GCM (K_E, nonce, "")` para AES-256-GCM `nonce = 096` y como se indica a continuación `K_E` .
 
-resultado: = E7DCCE66DF855A323A6BB7BD7A59BE45
+`result := E7DCCE66DF855A323A6BB7BD7A59BE45`
 
 Esto genera el encabezado de contexto completo a continuación:
 
@@ -192,14 +192,14 @@ BE 45
 
 Los componentes se desglosan de la manera siguiente:
 
-* el marcador (00 01)
+* el marcador`(00 01)`
 
-* la longitud de la clave de cifrado de bloques (00 00 00 20)
+* la longitud de la clave de cifrado de bloques`(00 00 00 20)`
 
-* el tamaño del nonce (00 00 00 0C)
+* el tamaño del nonce`(00 00 00 0C)`
 
-* tamaño de bloque de cifrado de bloques (00 00 00 10)
+* tamaño de bloque de cifrado de bloques`(00 00 00 10)`
 
-* el tamaño de la etiqueta de autenticación (00 00 00 10) y
+* el tamaño de la etiqueta de autenticación `(00 00 00 10)` y
 
-* la etiqueta de autenticación de que ejecuta el cifrado de bloques (E7 DC-end).
+* la etiqueta de autenticación de la ejecución del cifrado de bloque `(E7 DC - end)` .
