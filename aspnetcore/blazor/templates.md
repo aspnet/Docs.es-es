@@ -15,11 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/templates
-ms.openlocfilehash: 6359a02b23803f26c4a40772c68d39e804396403
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: f1b131947a242323295a763ba2f2473af0ccfb4f
+ms.sourcegitcommit: 66fca14611eba141d455fe0bd2c37803062e439c
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85401901"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85944526"
 ---
 # <a name="aspnet-core-blazor-templates"></a>Plantillas de Blazor de ASP.NET Core
 
@@ -31,8 +32,6 @@ El marco Blazor proporciona plantillas que permiten desarrollar aplicaciones par
 * Blazor Server (`blazorserver`)
 
 Para más información sobre los modelos de hospedaje de Blazor, vea <xref:blazor/hosting-models>.
-
-Para obtener instrucciones paso a paso sobre cómo crear una aplicación Blazor a partir de una plantilla, vea <xref:blazor/get-started>.
 
 Las opciones de plantilla están disponibles si se pasa la opción `--help` al comando [`dotnet new`](/dotnet/core/tools/dotnet-new) de la CLI:
 

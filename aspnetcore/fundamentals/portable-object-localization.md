@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/portable-object-localization
-ms.openlocfilehash: e4053bd5024914242db1755ca34ddbeb2f2d5013
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 531e836db8613cc3382ef2f38f336a0986116334
+ms.sourcegitcommit: 66fca14611eba141d455fe0bd2c37803062e439c
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85408128"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85944489"
 ---
 # <a name="configure-portable-object-localization-in-aspnet-core"></a>Configurar la localización de objetos portátiles en ASP.NET Core
 
@@ -28,7 +28,7 @@ En este artículo se describen los pasos para usar archivos de objeto portátil 
 
 **Nota:** Orchard Core no es un producto de Microsoft. Por tanto, Microsoft no ofrece soporte técnico para esta característica.
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/localization/sample/POLocalization) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/localization/sample/2.x/POLocalization) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
 ## <a name="what-is-a-po-file"></a>¿Qué es un archivo de objeto portátil?
 
