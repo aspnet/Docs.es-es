@@ -14,12 +14,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/gdpr
-ms.openlocfilehash: 0fef14388f83d8b4c708194954f2b75b2164b746
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 8a7041a976ea9f0e99bfd1eba792d0e919eaf6d3
+ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85404501"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86212828"
 ---
 # <a name="eu-general-data-protection-regulation-gdpr-support-in-aspnet-core"></a>Compatibilidad con Reglamento general de protección de datos de la Unión Europea (RGPD) en ASP.NET Core
 
@@ -86,7 +86,7 @@ Se llama a [UseCookiePolicy](/dotnet/api/microsoft.aspnetcore.builder.cookiepoli
 
 La vista parcial de * \_ CookieConsentPartial. cshtml* :
 
-[!code-html[](gdpr/sample/RP2.2/Pages/Shared/_CookieConsentPartial.cshtml)]
+[!code-cshtml[](gdpr/sample/RP2.2/Pages/Shared/_CookieConsentPartial.cshtml)]
 
 Este:
 

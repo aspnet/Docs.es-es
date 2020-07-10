@@ -14,12 +14,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/tag-helpers/authoring
-ms.openlocfilehash: 5e250debb5c4c2ef00b844557d31ed8281d2ff2f
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: e630bf4b0c121796315be077623abae73d240b37
+ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85407595"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86212465"
 ---
 # <a name="author-tag-helpers-in-aspnet-core"></a>Crear asistentes de etiquetas en ASP.NET Core
 
@@ -87,14 +87,14 @@ Es decir, una etiqueta delimitadora lo convierte en un vínculo de correo electr
 
 <!--
 the following snippet uses TagHelpers3 and should use TagHelpers (not the 3)
-    [!code-html[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImports.cshtml?highlight=3&range=1-3)]
+    [!code-cshtml[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImports.cshtml?highlight=3&range=1-3)]
 -->
 
 Para agregar un asistente de etiquetas a una vista con un FQN, agregue primero el FQN (`AuthoringTagHelpers.TagHelpers.EmailTagHelper`) y, después, el **nombre del ensamblado** (*AuthoringTagHelpers*, no necesariamente `namespace`). La mayoría de los desarrolladores prefiere usar la sintaxis de comodines. En [Introducción a los asistentes de etiquetas](intro.md) se describe en detalle la adición y eliminación de asistentes de etiquetas, la jerarquía y la sintaxis de comodines.
 
 1. Actualice el marcado del archivo *Views/Home/Contact.cshtml* con estos cambios:
 
-   [!code-html[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/Contact.cshtml?highlight=15,16&range=1-17)]
+   [!code-cshtml[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/Contact.cshtml?highlight=15,16&range=1-17)]
 
 1. Ejecute la aplicación y use su explorador favorito para ver el código fuente HTML, a fin de comprobar que las etiquetas de correo electrónico se han reemplazado por un marcado delimitador (por ejemplo, `<a>Support</a>`). *Support* y *Marketing* se representan como vínculos, pero no tienen un atributo `href` que los haga funcionales. Esto lo corregiremos en la sección siguiente.
 
@@ -118,7 +118,7 @@ Este enfoque funciona para el atributo "href" siempre y cuando no exista actualm
 
 1. Actualice el marcado del archivo *Views/Home/Contact.cshtml* con estos cambios:
 
-   [!code-html[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/ContactCopy.cshtml?highlight=15,16)]
+   [!code-cshtml[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/ContactCopy.cshtml?highlight=15,16)]
 
 1. Ejecute la aplicación y compruebe que genera los vínculos correctos.
 
@@ -147,7 +147,7 @@ En esta sección, escribiremos un asistente de correo electrónico asincrónico.
 
 1. Realice el cambio siguiente en el archivo *Views/Home/Contact.cshtml* para que el asistente de etiquetas pueda obtener el correo electrónico de destino.
 
-   [!code-html[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/Contact.cshtml?highlight=15,16&range=1-17)]
+   [!code-cshtml[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/Contact.cshtml?highlight=15,16&range=1-17)]
 
 1. Ejecute la aplicación y compruebe que genera vínculos de correo electrónico válidos.
 
@@ -163,7 +163,7 @@ En esta sección, escribiremos un asistente de correo electrónico asincrónico.
 
 1. Modifique la vista *About.cshtml* para que contenga un valor de atributo `bold`. A continuación se muestra el código completado.
 
-   [!code-html[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/AboutBoldOnly.cshtml?highlight=7)]
+   [!code-cshtml[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/AboutBoldOnly.cshtml?highlight=7)]
 
 1. Ejecute la aplicación. Puede usar el explorador que prefiera para inspeccionar el origen y comprobar el marcado.
 
@@ -225,7 +225,7 @@ También puede usar `[HtmlTargetElement]` para cambiar el nombre del elemento de
 
 1. Agregue el marcado siguiente a la vista *About.cshtml*. En el marcado resaltado se muestra la información del sitio web.
 
-   [!code-html[](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/About.cshtml?highlight=1,4-8, 18-999)]
+   [!code-cshtml[](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/About.cshtml?highlight=1,4-8, 18-999)]
 
    > [!NOTE]
    > En el Razor marcado que se muestra a continuación:
@@ -251,7 +251,7 @@ El asistente de etiquetas de condición representa la salida cuando se pasa un v
 
 1. Reemplace el contenido del archivo *Views/Home/Index.cshtml* por el marcado siguiente:
 
-   [!code-csharp[](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/Index.cshtml)]
+   [!code-cshtml[](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/Index.cshtml)]
 
 1. Reemplace el método `Index` del controlador `Home` por el código siguiente:
 
@@ -281,7 +281,7 @@ Dado que estos dos asistentes están estrechamente relacionados y tal vez las re
 
 1. Agregue el marcado siguiente al final del archivo *Views/Home/Contact.cshtml*:
 
-   [!code-html[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/Contact.cshtml?highlight=19)]
+   [!code-cshtml[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/Contact.cshtml?highlight=19)]
 
 1. Ejecute la aplicación y compruebe que el asistente de etiquetas representa el delimitador correctamente.
 

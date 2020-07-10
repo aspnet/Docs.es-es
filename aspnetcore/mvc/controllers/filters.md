@@ -14,12 +14,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/filters
-ms.openlocfilehash: 7fe33a620e43603388dd0cacb3ea42f5b5adc40f
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 0141ad2df5216183424980a6ca50bf6bcd64ade5
+ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85408297"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86213054"
 ---
 # <a name="filters-in-aspnet-core"></a>Filtros en ASP.NET Core
 
@@ -123,7 +123,7 @@ El código siguiente implementa un atributo `ActionFilterAttribute` que:
 
 Las opciones de configuración las proporciona el [sistema de configuración](xref:fundamentals/configuration/index) mediante el [patrón de opciones](xref:fundamentals/configuration/options). Por ejemplo, en el archivo *appsettings.json*:
 
-[!code-csharp[](filters/3.1sample/FiltersSample/appsettings.json)]
+[!code-json[](filters/3.1sample/FiltersSample/appsettings.json)]
 
 En `StartUp.ConfigureServices`:
 
@@ -284,7 +284,7 @@ Por tanto, el filtro `AddHeader` nunca se ejecuta en relación con la acción `S
 
 [!code-csharp[](./filters/3.1sample/FiltersSample/Controllers/SampleController.cs?name=snippet_AddHeader&highlight=1)]
 
-## <a name="dependency-injection"></a>Inserción de dependencia
+## <a name="dependency-injection"></a>Inserción de dependencias
 
 Los filtros se pueden agregar por tipo o por instancia. Si se agrega una instancia, esta se utiliza para todas las solicitudes. Si se agrega un tipo, se activa por tipo. Un filtro activado por tipo significa:
 
@@ -788,7 +788,7 @@ La propiedad `Order` se puede establecer con un parámetro de constructor:
 
 Considere los mismos tres filtros de acción que se muestran en el ejemplo anterior. Si la propiedad `Order` del controlador y de los filtros globales está establecida en 1 y 2 respectivamente, el orden de ejecución se invierte.
 
-| Secuencia | Ámbito del filtro | Propiedad `Order` | Método de filtro |
+| Secuencia | Ámbito del filtro | Propiedad`Order` | Método de filtro |
 |:--------:|:------------:|:-----------------:|:-------------:|
 | 1 | Método | 0 | `OnActionExecuting` |
 | 2 | Controller | 1  | `OnActionExecuting` |
@@ -816,7 +816,7 @@ Por tanto, el filtro `AddHeader` nunca se ejecuta en relación con la acción `S
 
 [!code-csharp[](./filters/sample/FiltersSample/Controllers/SampleController.cs?name=snippet_AddHeader&highlight=1,9)]
 
-## <a name="dependency-injection"></a>Inserción de dependencia
+## <a name="dependency-injection"></a>Inserción de dependencias
 
 Los filtros se pueden agregar por tipo o por instancia. Si se agrega una instancia, esta se utiliza para todas las solicitudes. Si se agrega un tipo, se activa por tipo. Un filtro activado por tipo significa:
 

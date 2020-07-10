@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/dependency-injection
-ms.openlocfilehash: 0cc452b25392fe92c87ef346b2e16350fb3ec19a
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 335eac4b1533f4156e00f9d0140f921fa492e71a
+ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85405892"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86212964"
 ---
 # <a name="dependency-injection-into-views-in-aspnet-core"></a>Inserción de dependencias en vistas de ASP.NET Core
 
@@ -61,7 +61,7 @@ Un ejemplo que usa `@inject`:
 
 Un servicio puede insertarse en una vista mediante la directiva `@inject`. Puede pensar que `@inject` es como si agregara una propiedad a la vista y rellenara la propiedad mediante DI.
 
-[!code-csharp[](../../mvc/views/dependency-injection/sample/src/ViewInjectSample/Views/ToDo/Index.cshtml?highlight=4,5,15,16,17)]
+[!code-cshtml[](../../mvc/views/dependency-injection/sample/src/ViewInjectSample/Views/ToDo/Index.cshtml?highlight=4,5,15,16,17)]
 
 Esta vista muestra una lista de instancias `ToDoItem`, junto con un resumen de estadísticas generales. El resumen se rellena a partir de `StatisticsService` insertado. Este servicio está registrado para la inserción de dependencias en `ConfigureServices` en *Startup.cs*:
 

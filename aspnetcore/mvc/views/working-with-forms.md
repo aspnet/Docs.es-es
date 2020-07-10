@@ -14,12 +14,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/working-with-forms
-ms.openlocfilehash: 06d5d6e2db1cf3ccb148c24c40c264016d47a0ed
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 7a92f2b5bc791f268b897878db08a9f9f4f7bf0c
+ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85406594"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86212414"
 ---
 # <a name="tag-helpers-in-forms-in-aspnet-core"></a>Asistentes de etiquetas en formularios de ASP.NET Core
 
@@ -45,7 +45,7 @@ Aplicación auxiliar de etiquetas de [formulario](https://www.w3.org/TR/html401/
 
 Sample:
 
-[!code-HTML[](working-with-forms/sample/final/Views/Demo/RegisterFormOnly.cshtml)]
+[!code-cshtml[](working-with-forms/sample/final/Views/Demo/RegisterFormOnly.cshtml)]
 
 El asistente de etiquetas Form anterior genera el siguiente HTML:
 
@@ -62,7 +62,7 @@ El tiempo de ejecución MVC genera el valor de atributo `action` de los atributo
 
 El atributo del asistente de etiquetas `asp-route` puede generar también el marcado del atributo HTML `action`. Una aplicación con una [ruta](../../fundamentals/routing.md) denominada `register` podría usar el siguiente marcado para la página de registro:
 
-[!code-HTML[](../../mvc/views/working-with-forms/sample/final/Views/Demo/RegisterRoute.cshtml)]
+[!code-cshtml[](../../mvc/views/working-with-forms/sample/final/Views/Demo/RegisterRoute.cshtml)]
 
 Muchas de las vistas de la carpeta Views/Account (que se genera cuando se crea una aplicación web con Cuentas de usuario individuales) contienen el atributoasp-route-returnurl:
 
@@ -89,7 +89,7 @@ Atributos [AnchorTagHelper](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-hel
 |[asp-page](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-page)|Nombre de la Razor página.|
 |[asp-page-handler](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-page-handler)|Nombre del controlador de la Razor página.|
 |[asp-route](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-route)|El nombre de la ruta.|
-|[asp-route-{value}](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-route-value)|Un valor único de ruta de dirección URL. Por ejemplo: `asp-route-id="1234"`.|
+|[asp-route-{value}](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-route-value)|Un valor único de ruta de dirección URL. Por ejemplo, `asp-route-id="1234"`.|
 |[asp-all-route-data](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-all-route-data)|Todos los valores de ruta.|
 |[asp-fragment](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-fragment)|El fragmento de dirección URL.|
 
@@ -207,7 +207,7 @@ El asistente de etiquetas `Input` establece el atributo HTML `type` en función 
 |Tipo de .NET|Tipo de entrada|
 |---|---|
 |Bool|type="checkbox"|
-|String|type="text"|
+|Cadena|type="text"|
 |DateTime|type=["datetime-local"](https://developer.mozilla.org/docs/Web/HTML/Element/input/datetime-local)|
 |Byte|type="number"|
 |Int|type="number"|
@@ -229,7 +229,7 @@ Sample:
 
 [!code-csharp[](working-with-forms/sample/final/ViewModels/RegisterViewModel.cs)]
 
-[!code-HTML[](working-with-forms/sample/final/Views/Demo/RegisterInput.cshtml)]
+[!code-cshtml[](working-with-forms/sample/final/Views/Demo/RegisterInput.cshtml)]
 
 El código anterior genera el siguiente HTML:
 
@@ -299,7 +299,7 @@ También se puede navegar a las propiedades secundarias a través de la ruta de 
 
 En la vista, enlazamos a `Address.AddressLine1`:
 
-[!code-HTML[](../../mvc/views/working-with-forms/sample/final/Views/Demo/RegisterAddress.cshtml?highlight=6)]
+[!code-cshtml[](../../mvc/views/working-with-forms/sample/final/Views/Demo/RegisterAddress.cshtml?highlight=6)]
 
 Se genera el siguiente código HTML para `Address.AddressLine1`:
 
@@ -325,11 +325,11 @@ public IActionResult Edit(int id, int colorIndex)
 
 A continuación Razor se muestra cómo se obtiene acceso a un `Color` elemento específico:
 
-[!code-HTML[](working-with-forms/sample/final/Views/Demo/EditColor.cshtml)]
+[!code-cshtml[](working-with-forms/sample/final/Views/Demo/EditColor.cshtml)]
 
 La plantilla *Views/Shared/EditorTemplates/String.cshtml*:
 
-[!code-HTML[](working-with-forms/sample/final/Views/Shared/EditorTemplates/String.cshtml)]
+[!code-cshtml[](working-with-forms/sample/final/Views/Shared/EditorTemplates/String.cshtml)]
 
 Ejemplo en el que se usa `List<T>`:
 
@@ -337,11 +337,11 @@ Ejemplo en el que se usa `List<T>`:
 
 A continuación Razor se muestra cómo recorrer en iteración una colección:
 
-[!code-HTML[](working-with-forms/sample/final/Views/Demo/Edit.cshtml)]
+[!code-cshtml[](working-with-forms/sample/final/Views/Demo/Edit.cshtml)]
 
 La plantilla *Views/Shared/EditorTemplates/ToDoItem.cshtml*:
 
-[!code-HTML[](working-with-forms/sample/final/Views/Shared/EditorTemplates/ToDoItem.cshtml)]
+[!code-cshtml[](working-with-forms/sample/final/Views/Shared/EditorTemplates/ToDoItem.cshtml)]
 
 Si es posible, debe usarse `foreach` si el valor se va a utilizar en un contexto equivalente a `asp-for` o `Html.DisplayFor`. En general, `for` es mejor que `foreach` (si el escenario lo permite), ya que no necesita asignar ningún enumerador; sin embargo, la evaluación de un indizador en una expresión LINQ puede resultar caro y, por tanto, se debe minimizar.
 
@@ -364,7 +364,7 @@ Sample:
 
 [!code-csharp[](working-with-forms/sample/final/ViewModels/DescriptionViewModel.cs)]
 
-[!code-HTML[](../../mvc/views/working-with-forms/sample/final/Views/Demo/RegisterTextArea.cshtml?highlight=4)]
+[!code-cshtml[](../../mvc/views/working-with-forms/sample/final/Views/Demo/RegisterTextArea.cshtml?highlight=4)]
 
 Se genera el siguiente código HTML:
 
@@ -400,7 +400,7 @@ Sample:
 
 [!code-csharp[](working-with-forms/sample/final/ViewModels/SimpleViewModel.cs)]
 
-[!code-HTML[](../../mvc/views/working-with-forms/sample/final/Views/Demo/RegisterLabel.cshtml?highlight=4)]
+[!code-cshtml[](../../mvc/views/working-with-forms/sample/final/Views/Demo/RegisterLabel.cshtml?highlight=4)]
 
 Se genera el siguiente código HTML para el elemento `<label>`:
 
@@ -462,15 +462,15 @@ Cuando se produce un error de validación del lado servidor (por ejemplo, porque
 |--- |--- |
 |ValidationSummary.All|Nivel de modelo y de propiedad|
 |ValidationSummary.ModelOnly|Modelo|
-|ValidationSummary.None|None|
+|ValidationSummary.None|Ninguno|
 
-### <a name="sample"></a>Ejemplo
+### <a name="sample"></a>Muestra
 
 En el siguiente ejemplo, el modelo de datos tiene atributos `DataAnnotation`, lo que genera mensajes de error de validación sobre el elemento `<input>`.  Cuando se produce un error de validación, el asistente de etiquetas de validación muestra el mensaje de error:
 
 [!code-csharp[](working-with-forms/sample/final/ViewModels/RegisterViewModel.cs)]
 
-[!code-HTML[](../../mvc/views/working-with-forms/sample/final/Views/Demo/RegisterValidation.cshtml?highlight=4,6,8&range=1-10)]
+[!code-cshtml[](../../mvc/views/working-with-forms/sample/final/Views/Demo/RegisterValidation.cshtml?highlight=4,6,8&range=1-10)]
 
 El código HTML generado (cuando el modelo es válido) es este:
 
@@ -501,7 +501,7 @@ El código HTML generado (cuando el modelo es válido) es este:
 
 `Select Tag Helper` `asp-for` especifica el nombre de la propiedad de modelo del elemento [select](https://www.w3.org/wiki/HTML/Elements/select), mientras que `asp-items` especifica los elementos [option](https://www.w3.org/wiki/HTML/Elements/option).  Por ejemplo:
 
-[!code-HTML[](working-with-forms/sample/final/Views/Home/Index.cshtml?range=4)]
+[!code-cshtml[](working-with-forms/sample/final/Views/Home/Index.cshtml?range=4)]
 
 Sample:
 
@@ -538,7 +538,7 @@ Genera el siguiente código HTML (con la selección "CA"):
 
 El valor de atributo `asp-for` es un caso especial y no necesita un prefijo `Model`, mientras que los otros atributos del asistente de etiquetas sí (como `asp-items`).
 
-[!code-HTML[](working-with-forms/sample/final/Views/Home/Index.cshtml?range=4)]
+[!code-cshtml[](working-with-forms/sample/final/Views/Home/Index.cshtml?range=4)]
 
 ### <a name="enum-binding"></a>Enlace con enum
 
@@ -552,7 +552,7 @@ Sample:
 
 El método `GetEnumSelectList` genera un objeto `SelectList` para una enumeración.
 
-[!code-HTML[](../../mvc/views/working-with-forms/sample/final/Views/Home/IndexEnum.cshtml?highlight=5)]
+[!code-cshtml[](../../mvc/views/working-with-forms/sample/final/Views/Home/IndexEnum.cshtml?highlight=5)]
 
 Puede marcar la lista de enumeradores con el atributo `Display` para obtener una interfaz de usuario más completa:
 
@@ -617,7 +617,7 @@ El asistente de etiquetas Select generará automáticamente el atributo [multipl
 
 Con la siguiente vista:
 
-[!code-HTML[](../../mvc/views/working-with-forms/sample/final/Views/Home/IndexMultiSelect.cshtml?highlight=4)]
+[!code-cshtml[](../../mvc/views/working-with-forms/sample/final/Views/Home/IndexMultiSelect.cshtml?highlight=4)]
 
 Se genera el siguiente código HTML:
 
@@ -641,17 +641,17 @@ Se genera el siguiente código HTML:
 
 Si ve que usa la opción "sin especificar" en varias páginas, puede crear una plantilla para no tener que repetir el código HTML:
 
-[!code-HTML[](../../mvc/views/working-with-forms/sample/final/Views/Home/IndexEmptyTemplate.cshtml?highlight=5)]
+[!code-cshtml[](../../mvc/views/working-with-forms/sample/final/Views/Home/IndexEmptyTemplate.cshtml?highlight=5)]
 
 La plantilla *Views/Shared/EditorTemplates/CountryViewModel.cshtml*:
 
-[!code-HTML[](working-with-forms/sample/final/Views/Shared/EditorTemplates/CountryViewModel.cshtml)]
+[!code-cshtml[](working-with-forms/sample/final/Views/Shared/EditorTemplates/CountryViewModel.cshtml)]
 
 La adición de [\<option>](https://www.w3.org/wiki/HTML/Elements/option) elementos HTML no se limita al caso de *ninguna selección* . Por ejemplo, el método de acción y vista siguientes generarán un código HTML similar al código anterior:
 
 [!code-csharp[](working-with-forms/sample/final/Controllers/HomeController.cs?name=snippetNone)]
 
-[!code-HTML[](working-with-forms/sample/final/Views/Home/IndexOption.cshtml)]
+[!code-cshtml[](working-with-forms/sample/final/Views/Home/IndexOption.cshtml)]
 
 Se seleccionará el elemento `<option>` correcto (que contenga el atributo `selected="selected"`) en función del valor real de `Country`.
 

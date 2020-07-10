@@ -14,12 +14,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/view-components
-ms.openlocfilehash: 40902da52217505822abd9bfd889ecafdd4d88e0
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 272b5a89601a9e6ef24f3e60a3da7e2a40297c97
+ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85407842"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86213116"
 ---
 # <a name="view-components-in-aspnet-core"></a>Componentes de vista en ASP.NET Core
 
@@ -100,7 +100,7 @@ Se recomienda que asigne el nombre *Default.cshtml* al archivo de vista y use la
 
 Para personalizar la ruta de búsqueda de la vista, modifique la Razor <xref:Microsoft.AspNetCore.Mvc.Razor.RazorViewEngineOptions.ViewLocationFormats> colección de. Por ejemplo, para buscar vistas dentro de la ruta de acceso "/Components/{Nombre del componente de la vista}/{Nombre de la vista}", agregue un elemento nuevo a la colección:
 
-[!code-cs[](view-components/samples_snapshot/2.x/Startup.cs?name=snippet_ViewLocationFormats&highlight=4)]
+[!code-csharp[](view-components/samples_snapshot/2.x/Startup.cs?name=snippet_ViewLocationFormats&highlight=4)]
 
 En el código anterior, el marcador de posición "{0}" representa la ruta de acceso "Components/{Nombre del componente de la vista}/{Nombre de la vista}".
 

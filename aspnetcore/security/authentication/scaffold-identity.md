@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/scaffold-identity
-ms.openlocfilehash: 155bdfbeea06022d35bbb551d5b2d0ee5a51a093
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: e2ae82b9c26771ee5da16b1611026c6d62804bce
+ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85400822"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86212948"
 ---
 # <a name="scaffold-identity-in-aspnet-core-projects"></a>Scaffolding Identity en proyectos de ASP.net Core
 
@@ -48,7 +48,7 @@ Por ejemplo, `AddDbContext` y `AddDefaultIdentity` están comentados en el códi
 
 [!code-csharp[](scaffold-identity/3.1sample/StartupRemove.cs?name=snippet)]
 
-El código anterior comenta el código que está duplicado en *areas/ Identity /IdentityHostingStartup.CS*
+El código anterior comenta el código que está duplicado en *areas/ Identity / Identity HostingStartup.CS*
 
 Normalmente, las aplicaciones que se crearon con cuentas individuales ***no*** deben crear un nuevo contexto de datos.
 
@@ -93,7 +93,7 @@ before dotnet ef database update
 
 [!INCLUDE[](~/includes/scaffold-identity/id-scaffold-dlg.md)]
 
-Identityestá configurado en *areas/ Identity /IdentityHostingStartup.CS*. Para obtener más información, vea [IHostingStartup](xref:fundamentals/configuration/platform-specific-configuration).
+Identityestá configurado en *areas/ Identity / Identity HostingStartup.CS*. Para obtener más información, vea [IHostingStartup](xref:fundamentals/configuration/platform-specific-configuration).
 
 <a name="efm"></a>
 
@@ -115,7 +115,7 @@ Actualice la `Startup` clase con código similar al siguiente:
 
 Opcional: agregue el inicio de sesión parcial ( `_LoginPartial` ) al archivo de diseño:
 
-[!code-html[](scaffold-identity/3.1sample/_Layout.cshtml?highlight=20)]
+[!code-cshtml[](scaffold-identity/3.1sample/_Layout.cshtml?highlight=20)]
 
 ## <a name="scaffold-identity-into-a-razor-project-with-authorization"></a>Scaffolding Identity en un Razor proyecto con autorización
 
@@ -132,7 +132,7 @@ dotnet aspnet-codegenerator identity -dc RPauth.Data.ApplicationDbContext --file
 
 [!INCLUDE[](~/includes/scaffold-identity/id-scaffold-dlg-auth.md)]
 
-Algunas Identity opciones se configuran en *areas/ Identity /IdentityHostingStartup.CS*. Para obtener más información, vea [IHostingStartup](xref:fundamentals/configuration/platform-specific-configuration).
+Algunas Identity opciones se configuran en *areas/ Identity / Identity HostingStartup.CS*. Para obtener más información, vea [IHostingStartup](xref:fundamentals/configuration/platform-specific-configuration).
 
 ## <a name="scaffold-identity-into-an-mvc-project-without-existing-authorization"></a>Scaffolding Identity en un proyecto de MVC sin autorización existente
 
@@ -154,11 +154,11 @@ dotnet ef database update
 
 Opcional: agregue el inicio de sesión parcial ( `_LoginPartial` ) al archivo *views/Shared/_Layout. cshtml* :
 
-[!code-html[](scaffold-identity/3.1sample/_Layout.cshtml?highlight=20)]
+[!code-cshtml[](scaffold-identity/3.1sample/_Layout.cshtml?highlight=20)]
 
 * Mueva el archivo *pages/Shared/_LoginPartial. cshtml* a *views/Shared/_LoginPartial. cshtml*
 
-Identityestá configurado en *areas/ Identity /IdentityHostingStartup.CS*. Para obtener más información, vea IHostingStartup.
+Identityestá configurado en *areas/ Identity / Identity HostingStartup.CS*. Para obtener más información, vea IHostingStartup.
 
 [!INCLUDE[](~/includes/scaffold-identity/migrations.md)]
 
@@ -184,7 +184,7 @@ dotnet aspnet-codegenerator identity -dc MvcAuth.Data.ApplicationDbContext  --fi
 
 [!INCLUDE[](~/includes/scaffold-identity/id-scaffold-dlg.md)]
 
-Identityestá configurado en *areas/ Identity /IdentityHostingStartup.CS*. Para obtener más información, vea [IHostingStartup](xref:fundamentals/configuration/platform-specific-configuration).
+Identityestá configurado en *areas/ Identity / Identity HostingStartup.CS*. Para obtener más información, vea [IHostingStartup](xref:fundamentals/configuration/platform-specific-configuration).
 
 ### <a name="migrations"></a>Migraciones
 
@@ -304,7 +304,7 @@ El Identity diseño y los estilos de las páginas se pueden modificar para gener
 > [!NOTE]
 > El ejemplo de esta sección es simplemente un punto de partida para la personalización. Es probable que se necesite trabajo adicional para la mejor experiencia de usuario.
 
-Cree un nuevo `NavMenu_IdentityLayout` componente (*compartido/NavMenu_IdentityLayout. Razor*). Para el marcado y el código del componente, use el mismo contenido del componente de la aplicación `NavMenu` (*Shared/NavMenu. Razor*). Desseccione cualquier `NavLink` s en componentes que no se puedan alcanzar de forma anónima porque las redirecciones automáticas del `RedirectToLogin` componente no se realizan correctamente para los componentes que requieren autenticación o autorización.
+Cree un nuevo `NavMenu_IdentityLayout` componente (*Shared/NavMenu_ Identity layout. Razor*). Para el marcado y el código del componente, use el mismo contenido del componente de la aplicación `NavMenu` (*Shared/NavMenu. Razor*). Desseccione cualquier `NavLink` s en componentes que no se puedan alcanzar de forma anónima porque las redirecciones automáticas del `RedirectToLogin` componente no se realizan correctamente para los componentes que requieren autenticación o autorización.
 
 En el archivo *pages/Shared/layout. cshtml* , realice los cambios siguientes:
 
@@ -366,7 +366,7 @@ En el archivo *pages/Shared/layout. cshtml* , realice los cambios siguientes:
 
 [!INCLUDE[](~/includes/scaffold-identity/id-scaffold-dlg-auth.md)]
 
-Algunas Identity opciones se configuran en *areas/ Identity /IdentityHostingStartup.CS*. Para obtener más información, vea [IHostingStartup](xref:fundamentals/configuration/platform-specific-configuration).
+Algunas Identity opciones se configuran en *areas/ Identity / Identity HostingStartup.CS*. Para obtener más información, vea [IHostingStartup](xref:fundamentals/configuration/platform-specific-configuration).
 
 <a name="full"></a>
 
@@ -526,7 +526,7 @@ dotnet ef database update
 
 [!INCLUDE[](~/includes/scaffold-identity/id-scaffold-dlg.md)]
 
-Identityestá configurado en *areas/ Identity /IdentityHostingStartup.CS*. Para obtener más información, vea [IHostingStartup](xref:fundamentals/configuration/platform-specific-configuration).
+Identityestá configurado en *areas/ Identity / Identity HostingStartup.CS*. Para obtener más información, vea [IHostingStartup](xref:fundamentals/configuration/platform-specific-configuration).
 
 <a name="efm"></a>
 
@@ -548,7 +548,7 @@ En el `Configure` método de la `Startup` clase, llame a [UseAuthentication](/do
 
 Opcional: agregue el inicio de sesión parcial ( `_LoginPartial` ) al archivo de diseño:
 
-[!code-html[](scaffold-identity/sample/_Layout.cshtml?highlight=37)]
+[!code-cshtml[](scaffold-identity/sample/_Layout.cshtml?highlight=37)]
 
 ## <a name="scaffold-identity-into-a-razor-project-with-authorization"></a>Scaffolding Identity en un Razor proyecto con autorización
 
@@ -565,7 +565,7 @@ dotnet aspnet-codegenerator identity -dc RPauth.Data.ApplicationDbContext --file
 
 [!INCLUDE[](~/includes/scaffold-identity/id-scaffold-dlg-auth.md)]
 
-Algunas Identity opciones se configuran en *areas/ Identity /IdentityHostingStartup.CS*. Para obtener más información, vea [IHostingStartup](xref:fundamentals/configuration/platform-specific-configuration).
+Algunas Identity opciones se configuran en *areas/ Identity / Identity HostingStartup.CS*. Para obtener más información, vea [IHostingStartup](xref:fundamentals/configuration/platform-specific-configuration).
 
 ## <a name="scaffold-identity-into-an-mvc-project-without-existing-authorization"></a>Scaffolding Identity en un proyecto de MVC sin autorización existente
 
@@ -587,11 +587,11 @@ dotnet ef database update
 
 Opcional: agregue el inicio de sesión parcial ( `_LoginPartial` ) al archivo *views/Shared/_Layout. cshtml* :
 
-[!code-html[](scaffold-identity/sample/_LayoutMvc.cshtml?highlight=37)]
+[!code-cshtml[](scaffold-identity/sample/_LayoutMvc.cshtml?highlight=37)]
 
 * Mueva el archivo *pages/Shared/_LoginPartial. cshtml* a *views/Shared/_LoginPartial. cshtml*
 
-Identityestá configurado en *areas/ Identity /IdentityHostingStartup.CS*. Para obtener más información, vea IHostingStartup.
+Identityestá configurado en *areas/ Identity / Identity HostingStartup.CS*. Para obtener más información, vea IHostingStartup.
 
 [!INCLUDE[](~/includes/scaffold-identity/migrations.md)]
 

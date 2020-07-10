@@ -14,12 +14,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/tag-helpers/builtin-th/link-tag-helper
-ms.openlocfilehash: c767ff4c2a1e0d5d10ccb3ff855126f541c04f64
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: ac9f6449e2b7b135318ecf116e1dba7b33ddff83
+ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85408245"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86212401"
 ---
 # <a name="link-tag-helper-in-aspnet-core"></a>Asistente de etiquetas de vínculo en ASP.NET Core
 
@@ -33,11 +33,11 @@ El asistente de etiquetas de vínculo permite especificar una red CDN para el ar
 
 En el Razor marcado siguiente se muestra el `head` elemento de un archivo de diseño creado con la plantilla de aplicación web de ASP.net Core:
 
-[!code-html[](link-tag-helper/sample/_Layout.cshtml?name=snippet)]
+[!code-cshtml[](link-tag-helper/sample/_Layout.cshtml?name=snippet)]
 
 Lo siguiente es código HTML representado del código anterior (en un entorno que no es de desarrollo):
 
-[!code-csharp[](link-tag-helper/sample/HtmlPage1.html)]
+[!code-html[](link-tag-helper/sample/HtmlPage1.html)]
 
 En el código anterior, el asistente de etiquetas de vínculo generó el elemento `<meta name="x-stylesheet-fallback-test" content="" class="sr-only" />` y el siguiente código JavaScript que se usa para comprobar el archivo *bootstrap.min.css* solicitado está disponible en la red CDN. En este caso, el archivo CSS estaba disponible, por lo que el asistente de etiquetas generó el elemento `<link />` con el archivo CSS de la red CDN.
 

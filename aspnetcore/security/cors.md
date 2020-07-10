@@ -14,12 +14,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/cors
-ms.openlocfilehash: 0a2be31092ab491e23ab9de9be676b5b4d3963ee
-ms.sourcegitcommit: fa89d6553378529ae86b388689ac2c6f38281bb9
+ms.openlocfilehash: dc8e68ef482025443147eeb27bd3f245c1a1a5ed
+ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86060285"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86212888"
 ---
 # <a name="enable-cross-origin-requests-cors-in-aspnet-core"></a>Habilitación de solicitudes entre orígenes (CORS) en ASP.NET Core
 
@@ -147,7 +147,7 @@ El atributo [[EnableCors]](xref:Microsoft.AspNetCore.Cors.EnableCorsAttribute) p
 El `[EnableCors]` atributo se puede aplicar a:
 
 * RazorDel`PageModel`
-* Controlador
+* Controller
 * Método de acción del controlador
 
 Se pueden aplicar directivas diferentes a los controladores, modelos de página o métodos de acción con el `[EnableCors]` atributo. Cuando el `[EnableCors]` atributo se aplica a un controlador, un modelo de página o un método de acción y CORS está habilitado en middleware, se aplican **ambas** directivas. **Se recomienda no combinar directivas. Use el** `[EnableCors]` **atributo o middleware, no ambos en la misma aplicación.**
@@ -717,7 +717,7 @@ El atributo [ &lbrack; EnableCors &rbrack; ](xref:Microsoft.AspNetCore.Cors.Enab
 El `[EnableCors]` atributo se puede aplicar a:
 
 * RazorDel`PageModel`
-* Controlador
+* Controller
 * Método de acción del controlador
 
 Puede aplicar diferentes directivas al controlador/página-modelo o acción con el `[EnableCors]` atributo. Cuando el `[EnableCors]` atributo se aplica a un método de acción/modelo de página/controladores y CORS está habilitado en middleware, se aplican **ambas** directivas. Se recomienda **no** combinar directivas. Use el `[EnableCors]` atributo o middleware, **no ambos**. Al usar `[EnableCors]` , **no** defina una directiva predeterminada.
@@ -998,7 +998,7 @@ Para probar CORS:
 1. Cree un proyecto de aplicación web ( Razor páginas o MVC). El ejemplo utiliza Razor páginas. Puede crear la aplicación web en la misma solución que el proyecto de API.
 1. Agregue el siguiente código resaltado al archivo *index. cshtml* :
 
-  [!code-csharp[](cors/sample/Cors/ClientApp/Pages/Index2.cshtml?highlight=7-99)]
+  [!code-cshtml[](cors/sample/Cors/ClientApp/Pages/Index2.cshtml?highlight=7-99)]
 
 1. En el código anterior, reemplace `url: 'https://<web app>.azurewebsites.net/api/values/1',` por la dirección URL a la aplicación implementada.
 1. Implemente el proyecto de API. Por ejemplo, [implemente en Azure](xref:host-and-deploy/azure-apps/index).

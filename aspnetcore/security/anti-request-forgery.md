@@ -14,12 +14,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/anti-request-forgery
-ms.openlocfilehash: 0ec9aa5f2e1c9d439bbea2ac15ffb50b3e42daca
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 5fbbb7a468a820ddad30bb4727a261fb01b4a23a
+ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85399340"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86212843"
 ---
 # <a name="prevent-cross-site-request-forgery-xsrfcsrf-attacks-in-aspnet-core"></a>Prevención de ataques de falsificación de solicitud entre sitios (XSRF/CSRF) en ASP.NET Core
 
@@ -389,7 +389,7 @@ Si las cookies se utilizan para almacenar tokens de autenticación y autenticar 
 
 Con JavaScript con vistas, el token se puede crear con un servicio de dentro de la vista. Inserte el servicio [Microsoft. AspNetCore. antifalsification. IAntiforgery](/dotnet/api/microsoft.aspnetcore.antiforgery.iantiforgery) en la vista y llame a [GetAndStoreTokens](/dotnet/api/microsoft.aspnetcore.antiforgery.iantiforgery.getandstoretokens):
 
-[!code-csharp[](anti-request-forgery/sample/MvcSample/Views/Home/Ajax.cshtml?highlight=4-10,12-13,35-36)]
+[!code-cshtml[](anti-request-forgery/sample/MvcSample/Views/Home/Ajax.cshtml?highlight=4-10,12-13,35-36)]
 
 Este enfoque elimina la necesidad de tratar directamente con la configuración de cookies del servidor o de leerlas desde el cliente.
 
