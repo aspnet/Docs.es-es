@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-rp/update-related-data
-ms.openlocfilehash: b084404a7fdd8b2fc18c407bd11705ccd1c496c1
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: b442a4ce1f63c047c123315626f559155fd06424
+ms.sourcegitcommit: fa89d6553378529ae86b388689ac2c6f38281bb9
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85406308"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86060142"
 ---
 # <a name="part-7-razor-pages-with-ef-core-in-aspnet-core---update-related-data"></a>Parte 7. Razor Pages con EF Core en ASP.NET Core: Actualización de datos relacionados
 
@@ -158,7 +158,7 @@ Cree la clase base *Pages/Instructors/InstructorCoursesPageModel.cs*:
 
 `InstructorCoursesPageModel` es la clase base que se usará para los modelos de página de Edit y Create. `PopulateAssignedCourseData` lee todas las entidades `Course` para rellenar `AssignedCourseDataList`. Para cada curso, el código establece el `CourseID`, el título y si el instructor está asignado o no al curso. Se usa una instancia de [HashSet](/dotnet/api/system.collections.generic.hashset-1) para realizar búsquedas eficaces.
 
-Puesto que la página de Razor no tiene una colección de entidades Course, el enlazador de modelos no puede actualizar automáticamente la propiedad de navegación `CourseAssignments`. En lugar de usar el enlazador de modelos para actualizar la propiedad de navegación `CourseAssignments`, lo hace en el nuevo método `UpdateInstructorCourses`. Por lo tanto, tendrá que excluir la propiedad `CourseAssignments` del enlace de modelos. Esto no requiere ningún cambio en el código que llama a `TryUpdateModel` porque está usando la sobrecarga de la creación de listas de permitidos y `CourseAssignments` no se encuentra en la lista de inclusión.
+Puesto que la página de Razor no tiene una colección de entidades Course, el enlazador de modelos no puede actualizar automáticamente la propiedad de navegación `CourseAssignments`. En lugar de usar el enlazador de modelos para actualizar la propiedad de navegación `CourseAssignments`, lo hace en el nuevo método `UpdateInstructorCourses`. Por lo tanto, tendrá que excluir la propiedad `CourseAssignments` del enlace de modelos. Esto no requiere ningún cambio en el código que llama a `TryUpdateModel` porque está usando la sobrecarga con propiedades declaradas y `CourseAssignments` no se encuentra en la lista de inclusión.
 
 Si no se ha seleccionado ninguna casilla, el código en `UpdateInstructorCourses` inicializa la propiedad de navegación `CourseAssignments` con una colección vacía y devuelve:
 

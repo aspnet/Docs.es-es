@@ -1,0 +1,148 @@
+---
+title: Creación de una aplicación de lista de tareas pendientes Blazor
+author: guardrex
+description: Cree una aplicación Blazor paso a paso.
+monikerRange: '>= aspnetcore-3.0'
+ms.author: riande
+ms.custom: mvc
+ms.date: 07/02/2020
+no-loc:
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+uid: tutorials/build-a-blazor-app
+ms.openlocfilehash: 726380c42c952f47d6fdff09a811f35a20462d96
+ms.sourcegitcommit: 66fca14611eba141d455fe0bd2c37803062e439c
+ms.translationtype: HT
+ms.contentlocale: es-ES
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85944926"
+---
+# <a name="build-a-blazor-todo-list-app"></a>Creación de una aplicación de lista de tareas pendientes Blazor
+
+Por [Daniel Roth](https://github.com/danroth27) y [Luke Latham](https://github.com/guardrex)
+
+En este tutorial se muestra cómo crear y modificar una aplicación Blazor. Aprenderá a:
+
+> [!div class="checklist"]
+> * Crear un proyecto de aplicación Blazor de lista de tareas
+> * Modificar los componentes de Razor
+> * Usar el control de eventos y el enlace de datos en los componentes
+> * Usar la inserción de dependencias (DI) y el enrutamiento en una aplicación Blazor
+
+Al final de este tutorial, tendrá una aplicación de lista de tareas funcional.
+
+1. Cree una nueva aplicación de Blazor denominada `TodoList` en un shell de comandos:
+
+   ```dotnetcli
+   dotnet new blazorserver -o TodoList
+   ```
+
+   El comando anterior crea una carpeta denominada `TodoList` para contener la aplicación. Cambie los directorios a la carpeta `TodoList` con el siguiente comando:
+
+   ```dotnetcli
+   cd TodoList
+   ```
+
+1. Agregue un nuevo componente `Todo` Razor a la aplicación en la carpeta `Pages` con el siguiente comando:
+
+   ```dotnetcli
+   dotnet new razorcomponent -n Todo -o Pages
+   ```
+
+   > [!IMPORTANT]
+   > Puesto que la primera letra de los nombres de los archivos del componente Razor debe estar en mayúscula, asegúrese de que el nombre de archivo del componente `Todo` comience por una letra `T` mayúscula.
+
+1. En `Pages/Todo.razor`, proporcione el marcado inicial para el componente:
+
+   ```razor
+   @page "/todo"
+
+   <h3>Todo</h3>
+   ```
+
+1. Agregue el componente `Todo` a la barra de navegación.
+
+   El componente `NavMenu` (`Shared/NavMenu.razor`) se usa en el diseño de la aplicación. Los diseños son componentes que le permiten impedir la duplicación de contenido en la aplicación.
+
+   Agregue un elemento `<NavLink>` al componente `Todo`; para ello, incorpore el siguiente marcado de elementos de lista debajo de los elementos de lista existentes en el archivo `Shared/NavMenu.razor`:
+
+   ```razor
+   <li class="nav-item px-3">
+       <NavLink class="nav-link" href="todo">
+           <span class="oi oi-list-rich" aria-hidden="true"></span> Todo
+       </NavLink>
+   </li>
+   ```
+
+1. Recompile y ejecute la aplicación. Visite la nueva página Todo para confirmar que el vínculo al componente `Todo` funcione.
+
+1. Agregue un archivo `TodoItem.cs` a la raíz del proyecto para contener una clase que represente un elemento de la lista de tareas. Use el siguiente código de C# para la clase `TodoItem`:
+
+   [!code-csharp[](build-a-blazor-app/samples_snapshot/3.x/TodoItem.cs)]
+
+1. Vuelva al componente `Todo` (`Pages/Todo.razor`):
+
+   * Agregue un campo a los elementos de tareas pendientes en un bloque `@code`. El componente `Todo` utiliza este campo para mantener el estado de la lista de tareas pendientes.
+   * Agregue el marcado de la lista no ordenada y un bucle `foreach` para que cada elemento de la lista se represente en un elemento de la lista de tareas pendientes (`<li>`).
+
+   [!code-razor[](build-a-blazor-app/samples_snapshot/3.x/ToDo4.razor?highlight=5-10,12-14)]
+
+1. Para agregar elementos de tareas pendientes a la lista, la aplicación requiere elementos de la interfaz de usuario. Agregue una entrada de texto (`<input>`) y un botón (`<button>`) debajo de la lista no ordenada (`<ul>...</ul>`):
+
+   [!code-razor[](build-a-blazor-app/samples_snapshot/3.x/ToDo5.razor?highlight=12-13)]
+
+1. Recompile y ejecute la aplicación. Al seleccionar el botón **`Add todo`** , no ocurre nada porque no hay ningún controlador de eventos conectado al botón.
+
+1. Agregue un método `AddTodo` al componente `Todo` y regístrelo para seleccionar los botones mediante el atributo `@onclick`. El método `AddTodo` de C# se llama cuando se selecciona el botón:
+
+   [!code-razor[](build-a-blazor-app/samples_snapshot/3.x/ToDo6.razor?highlight=2,7-10)]
+
+1. Para obtener el título del nuevo elemento de tarea pendiente, agregue un campo de cadena `newTodo` en la parte superior del bloque `@code` y enlácelo al valor de la entrada de texto mediante el atributo `bind` en el elemento `<input>`:
+
+   [!code-razor[](build-a-blazor-app/samples_snapshot/3.x/ToDo7.razor?highlight=2)]
+
+   ```razor
+   <input placeholder="Something todo" @bind="newTodo" />
+   ```
+
+1. Actualice el método `AddTodo` para agregar el `TodoItem` con el título especificado a la lista. Borre el valor de la entrada de texto mediante el establecimiento de `newTodo` en una cadena vacía:
+
+   [!code-razor[](build-a-blazor-app/samples_snapshot/3.x/ToDo8.razor?highlight=19-26)]
+
+1. Recompile y ejecute la aplicación. Agregue algunos elementos de tareas pendientes a la lista de tareas pendientes para probar el nuevo código.
+
+1. Se puede hacer que el texto de título de cada elemento de tarea pendiente sea editable y una casilla puede ayudar al usuario a realizar un seguimiento de los elementos completados. Agregue una entrada de casilla a cada elemento de tarea pendiente y enlace su valor a la propiedad `IsDone`. Cambie `@todo.Title` a un elemento `<input>` enlazado a `@todo.Title`:
+
+   [!code-razor[](build-a-blazor-app/samples_snapshot/3.x/ToDo9.razor?highlight=5-6)]
+
+1. Para comprobar que estos valores están enlazados, actualice el encabezado `<h3>` para mostrar un recuento del número de elementos de la lista de tareas pendientes que no se han completado (`IsDone` es `false`).
+
+   ```razor
+   <h3>Todo (@todos.Count(todo => !todo.IsDone))</h3>
+   ```
+
+1. El componente `Todo` completado (`Pages/Todo.razor`):
+
+   [!code-razor[](build-a-blazor-app/samples_snapshot/3.x/Todo.razor)]
+
+1. Recompile y ejecute la aplicación. Agregue elementos de tarea pendiente para probar el nuevo código.
+
+## <a name="next-steps"></a>Pasos siguientes
+
+En este tutorial ha aprendido a:
+
+> [!div class="checklist"]
+> * Crear un proyecto de aplicación Blazor de lista de tareas
+> * Modificar los componentes de Razor
+> * Usar el control de eventos y el enlace de datos en los componentes
+> * Usar la inserción de dependencias (DI) y el enrutamiento en una aplicación Blazor
+
+Obtenga información acerca de las plantillas de proyecto de Blazor:
+
+> [!div class="nextstepaction"]
+> <xref:blazor/templates>

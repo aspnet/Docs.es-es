@@ -14,11 +14,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/get-started-with-swashbuckle
-ms.openlocfilehash: 0a47ed3338ebfbc5361a6082978d407543fb95c5
-ms.sourcegitcommit: b06511252f165dd4590ba9b5beca4153fa220779
+ms.openlocfilehash: bf6375f8f63bb9db50c423706a48363f53e96549
+ms.sourcegitcommit: f7873c02c1505c99106cbc708f37e18fc0a496d1
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85459784"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147665"
 ---
 # <a name="get-started-with-swashbuckle-and-aspnet-core"></a>Introducción a Swashbuckle y ASP.NET Core
 
@@ -123,7 +124,7 @@ En el método `Startup.Configure`, habilite el middleware para servir el documen
 
 La llamada de método `UseSwaggerUI` anterior habilita el [middleware de archivos estáticos](xref:fundamentals/static-files). Si el destino es .NET Framework o .NET Core 1.x, agregue el paquete NuGet [Microsoft.AspNetCore.StaticFiles](https://www.nuget.org/packages/Microsoft.AspNetCore.StaticFiles/) al proyecto.
 
-Inicie la aplicación y vaya a `http://localhost:<port>/swagger/v1/swagger.json`. El documento generado en el que se describen los puntos de conexión aparecerá según se muestra en la [especificación de Swagger (swagger.json)](xref:tutorials/web-api-help-pages-using-swagger#swagger-specification-swaggerjson).
+Inicie la aplicación y vaya a `http://localhost:<port>/swagger/v1/swagger.json`. El documento generado en el que se describen los puntos de conexión aparecerá según se muestra en la [especificación de OpenAPI (openapi.json)](xref:tutorials/web-api-help-pages-using-swagger#openapi-specification-openapijson).
 
 La interfaz de usuario de Swagger se encuentra en `http://localhost:<port>/swagger`. Explore la API a través de la interfaz de usuario de Swagger e incorpórela a otros programas.
 

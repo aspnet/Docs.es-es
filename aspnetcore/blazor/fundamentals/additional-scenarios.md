@@ -5,7 +5,7 @@ description: Obtenga información sobre más escenarios de configuración del mo
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 06/10/2020
+ms.date: 07/07/2020
 no-loc:
 - Blazor
 - Blazor Server
@@ -15,11 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/additional-scenarios
-ms.openlocfilehash: 236dffd829bcd7c30ae1145242ce07cd8e9857e6
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: e62cb2ab865fbf57166d5ec3d1344183c00c2095
+ms.sourcegitcommit: fa89d6553378529ae86b388689ac2c6f38281bb9
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85402954"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86059849"
 ---
 # <a name="aspnet-core-blazor-hosting-model-configuration"></a>Configuración del modelo de hospedaje de Blazor en ASP.NET Core
 
@@ -74,6 +75,18 @@ Para personalizar la interfaz de usuario, defina un elemento con un valor de `id
 </div>
 ```
 
+Agregue lo siguiente a la hoja de estilos de la aplicación (`wwwroot/css/app.css` o `wwwroot/css/site.css`):
+
+```css
+#components-reconnect-modal {
+    display: none;
+}
+
+#components-reconnect-modal.components-reconnect-show {
+    display: block;
+}
+```
+
 En la tabla siguiente se describen las clases de CSS aplicadas al elemento `components-reconnect-modal`.
 
 | Clase de CSS                       | Indica&hellip; |
@@ -104,7 +117,7 @@ Las aplicaciones Blazor Server se configuran de forma predeterminada para realiz
 * Se representa previamente en la página.
 * Se representa como HTML estático en la página o si incluye la información necesaria para arrancar una aplicación Blazor desde el agente de usuario.
 
-| <xref:Microsoft.AspNetCore.Mvc.TagHelpers.ComponentTagHelper.RenderMode> | Descripción |
+| Modo de representación | Descripción |
 | --- | --- |
 | <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.ServerPrerendered> | Representa el componente en código HTML estático e incluye un marcador para una aplicación Blazor Server. Cuando se inicia el agente de usuario, este marcador se usa para arrancar una aplicación Blazor. |
 | <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Server> | Representa un marcador para una aplicación Blazor Server. La salida del componente no está incluida. Cuando se inicia el agente de usuario, este marcador se usa para arrancar una aplicación Blazor. |

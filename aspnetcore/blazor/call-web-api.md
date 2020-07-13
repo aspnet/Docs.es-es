@@ -5,7 +5,7 @@ description: Obtenga información sobre cómo llamar a una API web desde una apl
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/28/2020
+ms.date: 06/24/2020
 no-loc:
 - Blazor
 - Blazor Server
@@ -15,11 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/call-web-api
-ms.openlocfilehash: 2d910def31e4035c1d9cbacb3aaa721dd699c273
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 9c90e2a6c03e02b771cfa8f589e381d52637dc26
+ms.sourcegitcommit: f7873c02c1505c99106cbc708f37e18fc0a496d1
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85400756"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147633"
 ---
 # <a name="call-a-web-api-from-aspnet-core-blazor"></a>Llamada a una API web desde Blazor de ASP.NET Core
 
@@ -157,7 +158,7 @@ Los métodos auxiliares de JSON envían solicitudes a un URI (una API web en los
   Las llamadas a <xref:System.Net.Http.Json.HttpClientJsonExtensions.PutAsJsonAsync%2A> devuelven <xref:System.Net.Http.HttpResponseMessage>. Para deserializar el contenido JSON del mensaje de respuesta, use el método de extensión <xref:System.Net.Http.Json.HttpContentJsonExtensions.ReadFromJsonAsync%2A>:
   
   ```csharp
-  var content = response.content.ReadFromJsonAsync<WeatherForecast>();
+  var content = response.Content.ReadFromJsonAsync<WeatherForecast>();
   ```
 
 <xref:System.Net.Http> incluye métodos de extensión adicionales para enviar solicitudes HTTP y recibir respuestas HTTP. <xref:System.Net.Http.HttpClient.DeleteAsync%2A?displayProperty=nameWithType> se usa para enviar una solicitud HTTP DELETE a una API web.
@@ -311,9 +312,11 @@ Para obtener más información, vea <xref:blazor/fundamentals/handle-errors>.
 
 La seguridad del explorador evita que una página web realice solicitudes a un dominio diferente del que ha proporcionado esa página web. Esta restricción se denomina *directiva de mismo origen*. La directiva de mismo origen evita que un sitio malintencionado lea información confidencial de otro sitio. Para realizar solicitudes desde el explorador a un punto de conexión con un origen diferente, el *punto de conexión* debe habilitar el [uso compartido de recursos entre orígenes (CORS)](https://www.w3.org/TR/cors/).
 
-En la aplicación de ejemplo [Blazor WebAssembly (BlazorWebAssemblySample)](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/) se muestra el uso de CORS en el componente de llamada a la API web (`Pages/CallWebAPI.razor`).
+En la aplicación de ejemplo [Blazor WebAssembly (BlazorBlazorWebAssemblySample)](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/) se muestra el uso de CORS en el componente de llamada a la API web (`Pages/CallWebAPI.razor`).
 
-Para permitir que otros sitios realicen solicitudes de uso compartido de recursos entre orígenes (CORS) a la aplicación, vea <xref:security/cors>.
+Para más información sobre CORS con solicitudes seguras en Blazor aplicaciones, consulte <xref:blazor/security/webassembly/additional-scenarios#cross-origin-resource-sharing-cors>.
+
+Para obtener información general sobre CORS con aplicaciones de ASP.NET Core, consulte <xref:security/cors>.
 
 ## <a name="additional-resources"></a>Recursos adicionales
 

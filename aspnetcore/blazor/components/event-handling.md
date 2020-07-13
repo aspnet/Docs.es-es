@@ -5,7 +5,7 @@ description: Obtenga información sobre las características de control de event
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 06/04/2020
+ms.date: 07/06/2020
 no-loc:
 - Blazor
 - Blazor Server
@@ -15,11 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/event-handling
-ms.openlocfilehash: 2fce394202be5df9af67e8afca27a0914f410402
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: f15f7e0fc7ef460cefffd817a7d0fa40c1f919b2
+ms.sourcegitcommit: fa89d6553378529ae86b388689ac2c6f38281bb9
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85399041"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86059804"
 ---
 # <a name="aspnet-core-blazor-event-handling"></a>Control de eventos de Blazor en ASP.NET Core
 
@@ -182,7 +183,7 @@ Cuando el botón se selecciona en `ChildComponent`:
 * Se llama al método `ShowMessage` de `ParentComponent`. `messageText` se actualiza y se muestra en `ParentComponent`.
 * No se requiere una llamada a [`StateHasChanged`](xref:blazor/components/lifecycle#state-changes) en el método de la devolución de llamada (`ShowMessage`). Se llama a <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> de forma automática para volver a representar el elemento `ParentComponent`, del mismo modo que los eventos secundarios desencadenan la nueva representación de los componentes en los controladores de eventos que se ejecutan dentro del elemento secundario.
 
-<xref:Microsoft.AspNetCore.Components.EventCallback> y <xref:Microsoft.AspNetCore.Components.EventCallback%601> permiten delegados asincrónicos. <xref:Microsoft.AspNetCore.Components.EventCallback%601> está fuertemente tipado y requiere un tipo de argumento específico. <xref:Microsoft.AspNetCore.Components.EventCallback> está débilmente tipado y permite cualquier tipo de argumento.
+<xref:Microsoft.AspNetCore.Components.EventCallback> y <xref:Microsoft.AspNetCore.Components.EventCallback%601> permiten delegados asincrónicos. <xref:Microsoft.AspNetCore.Components.EventCallback> tiene un establecimiento flexible de tipos y permite pasar cualquier argumento de tipo en `InvokeAsync(Object)`. <xref:Microsoft.AspNetCore.Components.EventCallback%601> tiene un establecimiento inflexible de tipos y requiere pasar un argumento `T` en `InvokeAsync(T)` que se puede asignar a `TValue`.
 
 ```razor
 <ChildComponent 
@@ -228,8 +229,6 @@ El valor del atributo también puede ser una expresión. En el ejemplo siguiente
 ```razor
 <input @onkeypress:preventDefault="shouldPreventDefault" />
 ```
-
-No se necesita un controlador de eventos para impedir la acción predeterminada. El controlador de eventos y el bloqueo de escenarios de acción predeterminados se pueden usar de forma independiente.
 
 ## <a name="stop-event-propagation"></a>Detención de la propagación de eventos
 

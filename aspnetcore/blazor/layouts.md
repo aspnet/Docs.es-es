@@ -5,7 +5,7 @@ description: Aprenda a crear componentes de diseño reutilizables para aplicacio
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/12/2020
+ms.date: 06/23/2020
 no-loc:
 - Blazor
 - Blazor Server
@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/layouts
-ms.openlocfilehash: f405bb655b2879bd546420d99ff645401ead92fc
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: fe78a144b413bf97be83d20b11148e1856608f78
+ms.sourcegitcommit: 66fca14611eba141d455fe0bd2c37803062e439c
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85402525"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85944241"
 ---
 # <a name="aspnet-core-blazor-layouts"></a>Diseños de ASP.NET Core Blazor
 
@@ -80,6 +80,9 @@ El archivo `_Imports.razor` siguiente importa estos elementos:
 El archivo `_Imports.razor` es similar al archivo [_ViewImports.cshtml de las vistas y las páginas de Razor](xref:mvc/views/layout#importing-shared-directives), aunque se aplica específicamente a los archivos de componentes de Razor.
 
 Al especificar un diseño en `_Imports.razor`, se invalida un diseño especificado como *diseño predeterminado* del enrutador.
+
+> [!WARNING]
+> **No** agregue una directiva Razor `@layout` al archivo raíz `_Imports.razor`, que da como resultado un bucle infinito de diseños en la aplicación. Para controlar el diseño predeterminado de la aplicación, especifique el diseño en el componente `Router`. Para obtener más información, vea la sección [Diseño predeterminado](#default-layout).
 
 ## <a name="nested-layouts"></a>Diseños anidados
 

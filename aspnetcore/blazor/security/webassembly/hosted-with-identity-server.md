@@ -1,11 +1,11 @@
 ---
 title: Protección de una aplicación hospedada Blazor WebAssembly de ASP.NET Core con Identity Server
 author: guardrex
-description: Crear en Visual Studio una aplicación hospedada Blazor con autenticación que usa un back-end de [IdentityServer](https://identityserver.io/)
+description: Para crear en Visual Studio una aplicación hospedada Blazor con autenticación que usa un back-end de [IdentityServer](https://identityserver.io/)
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/19/2020
+ms.date: 07/08/2020
 no-loc:
 - Blazor
 - Blazor Server
@@ -15,11 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/hosted-with-identity-server
-ms.openlocfilehash: cce6b6b1ec144e362415fe34645aef567269c873
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 001fa0885c4ef4f365d9849278d3aa36e7657c54
+ms.sourcegitcommit: f7873c02c1505c99106cbc708f37e18fc0a496d1
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85402213"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147729"
 ---
 # <a name="secure-an-aspnet-core-blazor-webassembly-hosted-app-with-identity-server"></a>Protección de una aplicación hospedada Blazor WebAssembly de ASP.NET Core con Identity Server
 
@@ -29,23 +30,39 @@ En este artículo se explica cómo crear una aplicación hospedada Blazor que us
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-En Visual Studio:
+Para crear un nuevo proyecto de Blazor WebAssembly con un mecanismo de autenticación:
 
-1. Cree una aplicación **Blazor WebAssembly** . Para obtener más información, vea <xref:blazor/get-started>.
-1. En el cuadro de diálogo **Crear una aplicación de Blazor** , seleccione **Cambiar** en la sección **Autenticación**.
-1. Seleccione **Cuentas de usuario individuales** y, después, **Aceptar**.
+1. Después de elegir la plantilla de aplicación de **Blazor WebAssembly** en el cuadro de diálogo **Crear una aplicación web ASP.NET Core**, seleccione **Cambiar** en **Autenticación**.
+
+1. Seleccione **Cuentas de usuario individuales** con la opción **Almacenar cuentas de usuario en aplicación** para almacenar usuarios dentro de la aplicación mediante el sistema [Identity](xref:security/authentication/identity) de ASP.NET Core.
+
 1. Active la casilla **ASP.NET Core hosted** (Hospedada en ASP.NET Core) en la sección **Avanzado**.
-1. Seleccione el botón **Crear**.
 
-# <a name="net-core-cli"></a>[CLI de .NET Core](#tab/netcore-cli/)
+# <a name="visual-studio-code--net-core-cli"></a>[Visual Studio Code y CLI de .NET Core](#tab/visual-studio-code+netcore-cli)
 
-Para crear una aplicación usando un shell de comandos, ejecute el siguiente comando:
+Para crear un nuevo proyecto de Blazor WebAssembly con un mecanismo de autenticación en una carpeta vacía, especifique el mecanismo de autenticación `Individual` con la opción `-au|--auth` para almacenar los usuarios dentro de la aplicación con el sistema [Identity](xref:security/authentication/identity) de ASP.NET Core:
 
 ```dotnetcli
-dotnet new blazorwasm -au Individual -ho
+dotnet new blazorwasm -au Individual -ho -o {APP NAME}
 ```
 
-Para especificar la ubicación de salida, lo que crea una carpeta de proyecto si no existe, incluya la opción de salida en el comando con una ruta de acceso (por ejemplo, `-o BlazorSample`). El nombre de la carpeta también pasa a formar parte del nombre del proyecto.
+| Marcador de posición  | Ejemplo        |
+| ------------ | -------------- |
+| `{APP NAME}` | `BlazorSample` |
+
+La ubicación de salida especificada con la opción `-o|--output` crea una carpeta de proyecto si no existe y se convierte en parte del nombre de la aplicación.
+
+Para más información, consulte el comando [`dotnet new`](/dotnet/core/tools/dotnet-new) de la guía de .NET Core.
+
+# <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)
+
+Para crear un nuevo proyecto de Blazor WebAssembly con un mecanismo de autenticación:
+
+1. En el paso **Configure your new Blazor WebAssembly App** (Configurar la nueva aplicación de Blazor Server), seleccione **Individual Authentication (in-app)** (Autenticación individual [en aplicación]) en la lista desplegable **Authentication** (Autenticación).
+
+1. La aplicación se crea para usuarios individuales almacenados en la aplicación con ASP.NET Core [Identity](xref:security/authentication/identity).
+
+1. Active la casilla **ASP.NET Core hosted** (Hospedada en ASP.NET Core).
 
 ---
 

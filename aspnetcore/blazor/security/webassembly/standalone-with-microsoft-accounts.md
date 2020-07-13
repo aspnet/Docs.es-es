@@ -5,7 +5,7 @@ description: ''
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/19/2020
+ms.date: 07/08/2020
 no-loc:
 - Blazor
 - Blazor Server
@@ -15,11 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/standalone-with-microsoft-accounts
-ms.openlocfilehash: 38452c3e9578d8a942035174a28d945e58e4008d
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 58dd791718a820e1a326db309afcd173d73c667b
+ms.sourcegitcommit: f7873c02c1505c99106cbc708f37e18fc0a496d1
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85402044"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147697"
 ---
 # <a name="secure-an-aspnet-core-blazor-webassembly-standalone-app-with-microsoft-accounts"></a>Protección de una aplicación independiente Blazor WebAssembly de ASP.NET Core con cuentas Microsoft
 
@@ -37,7 +38,7 @@ Registre una aplicación de AAD en el área **Azure Active Directory** > **Regis
 1. Desactive la casilla **Permisos** > **Conceda consentimiento del administrador a los permisos openid y offline_access**.
 1. Seleccione **Registrar**.
 
-Registre el identificador de la aplicación (identificador de cliente); por ejemplo, `11111111-1111-1111-1111-111111111111`.
+Registre el identificador de aplicación (cliente); por ejemplo, `41451fa7-82d9-4673-8fa5-69eff5a761fd`.
 
 En **Autenticación** > **Configuraciones de plataforma** > **Web**:
 
@@ -49,10 +50,15 @@ En **Autenticación** > **Configuraciones de plataforma** > **Web**:
 Crear la aplicación. Reemplace los marcadores de posición del siguiente comando por la información registrada anteriormente y ejecute el siguiente comando en un shell de comandos:
 
 ```dotnetcli
-dotnet new blazorwasm -au SingleOrg --client-id "{CLIENT ID}" --tenant-id "common"
+dotnet new blazorwasm -au SingleOrg --client-id "{CLIENT ID}" --tenant-id "common" -o {APP NAME}
 ```
 
-Para especificar la ubicación de salida, lo que crea una carpeta de proyecto si no existe, incluya la opción de salida en el comando con una ruta de acceso (por ejemplo, `-o BlazorSample`). El nombre de la carpeta también pasa a formar parte del nombre del proyecto.
+| Marcador de posición   | Nombre de Azure Portal       | Ejemplo                                |
+| ------------- | ----------------------- | -------------------------------------- |
+| `{APP NAME}`  | &mdash;                 | `BlazorSample`                         |
+| `{CLIENT ID}` | Id. de aplicación (cliente) | `41451fa7-82d9-4673-8fa5-69eff5a761fd` |
+
+La ubicación de salida especificada con la opción `-o|--output` crea una carpeta de proyecto si no existe y se convierte en parte del nombre de la aplicación.
 
 > [!NOTE]
 > En Azure Portal, el valor de **Autenticación** > **Configuraciones de plataforma** > **Web** > **URI de redirección** de la aplicación se establece en el puerto 5001 en el caso de las aplicaciones que se ejecutan en el servidor Kestrel con la configuración predeterminada.

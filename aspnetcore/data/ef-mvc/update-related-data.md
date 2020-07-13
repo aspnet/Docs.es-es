@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/update-related-data
-ms.openlocfilehash: 59bf94f6818108f09e9af147559fc304f48936bc
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 066bebf95a941fca5e7cc175c4c0d6d56abc9cb5
+ms.sourcegitcommit: fa89d6553378529ae86b388689ac2c6f38281bb9
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85401316"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86060064"
 ---
 # <a name="tutorial-update-related-data---aspnet-mvc-with-ef-core"></a>Tutorial: Actualización de datos relacionados: ASP.NET MVC con EF Core
 
@@ -143,7 +143,7 @@ El código realiza lo siguiente:
 
 * Obtiene la entidad Instructor actual de la base de datos mediante la carga diligente de la propiedad de navegación `OfficeAssignment`. Esto es lo mismo que hizo en el método `Edit` de HttpGet.
 
-* Actualiza la entidad Instructor recuperada con valores del enlazador de modelos. La sobrecarga de `TryUpdateModel` le permite crear una lista de permitidos con las propiedades que quiera incluir. Esto evita el registro excesivo, como se explica en el [segundo tutorial](crud.md).
+* Actualiza la entidad Instructor recuperada con valores del enlazador de modelos. La sobrecarga de `TryUpdateModel` le permite declarar las propiedades que quiera incluir. Esto evita el registro excesivo, como se explica en el [segundo tutorial](crud.md).
 
     <!-- Snippets don't play well with <ul> [!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?range=241-244)] -->
 
@@ -211,7 +211,7 @@ A continuación, agregue el código que se ejecuta cuando el usuario hace clic e
 
 La firma del método ahora es diferente del método `Edit` de HttpGet, por lo que el nombre del método cambia de `EditPost` a `Edit`.
 
-Puesto que la vista no tiene una colección de entidades Course, el enlazador de modelos no puede actualizar automáticamente la propiedad de navegación `CourseAssignments`. En lugar de usar el enlazador de modelos para actualizar la propiedad de navegación `CourseAssignments`, lo hace en el nuevo método `UpdateInstructorCourses`. Por lo tanto, tendrá que excluir la propiedad `CourseAssignments` del enlace de modelos. Esto no requiere ningún cambio en el código que llama a `TryUpdateModel` porque está usando la sobrecarga de la creación de listas de permitidos y `CourseAssignments` no se encuentra en la lista de inclusión.
+Puesto que la vista no tiene una colección de entidades Course, el enlazador de modelos no puede actualizar automáticamente la propiedad de navegación `CourseAssignments`. En lugar de usar el enlazador de modelos para actualizar la propiedad de navegación `CourseAssignments`, lo hace en el nuevo método `UpdateInstructorCourses`. Por lo tanto, tendrá que excluir la propiedad `CourseAssignments` del enlace de modelos. Esto no requiere ningún cambio en el código que llama a `TryUpdateModel` porque está usando la sobrecarga que requiere aprobación explícita y `CourseAssignments` no está en la lista de inclusión.
 
 Si no se ha seleccionado ninguna casilla, el código en `UpdateInstructorCourses` inicializa la propiedad de navegación `CourseAssignments` con una colección vacía y devuelve:
 

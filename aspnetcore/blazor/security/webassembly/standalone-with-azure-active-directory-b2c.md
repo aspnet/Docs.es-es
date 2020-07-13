@@ -5,7 +5,7 @@ description: ''
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/19/2020
+ms.date: 07/08/2020
 no-loc:
 - Blazor
 - Blazor Server
@@ -15,11 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/standalone-with-azure-active-directory-b2c
-ms.openlocfilehash: f98afc3d5dd73dca23be9a9c1202802f270bcee7
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 3b477b45ae70c6ad66578fbf0ed18589cecbec8d
+ms.sourcegitcommit: f7873c02c1505c99106cbc708f37e18fc0a496d1
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85402122"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147741"
 ---
 # <a name="secure-an-aspnet-core-blazor-webassembly-standalone-app-with-azure-active-directory-b2c"></a>Protección de una aplicación independiente Blazor WebAssembly de ASP.NET Core con Azure Active Directory B2C
 
@@ -33,8 +34,8 @@ Siga las instrucciones de los siguientes temas para crear un inquilino y registr
 
 Registre la siguiente información:
 
-* Instancia de AAD B2C (por ejemplo, `https://contoso.b2clogin.com/`, barra diagonal final incluida)
-* Dominio del inquilino de AAD B2C (por ejemplo, `contoso.onmicrosoft.com`)
+* Instancia de AAD B2C (por ejemplo, `https://contoso.b2clogin.com/`, barra diagonal final incluida): La instancia es el esquema y el host de un registro de la aplicación de Azure B2C, que se puede encontrar abriendo la ventana **Puntos de conexión** de la página **Registros de aplicaciones** de Azure Portal.
+* Dominio de AAD B2C Principal/Publicador/Inquilino (por ejemplo, `contoso.onmicrosoft.com`): El dominio está disponible como **Dominio del publicador** en la hoja **Personalización de marca** de Azure Portal de la aplicación registrada.
 
 Siga de nuevo las instrucciones que encontrará en [Tutorial: Registro de una aplicación en Azure Active Directory B2C](/azure/active-directory-b2c/tutorial-register-applications) para registrar una aplicación de AAD para la *aplicación cliente* y, después, haga lo siguiente:
 
@@ -45,7 +46,7 @@ Siga de nuevo las instrucciones que encontrará en [Tutorial: Registro de una ap
 1. Confirme que la casilla **Permisos** > **Conceda consentimiento del administrador a los permisos openid y offline_access** está activada.
 1. Seleccione **Registrar**.
 
-Registre el identificador de la aplicación (identificador de cliente); por ejemplo, `11111111-1111-1111-1111-111111111111`.
+Registre el identificador de aplicación (cliente); por ejemplo, `41451fa7-82d9-4673-8fa5-69eff5a761fd`.
 
 En **Autenticación** > **Configuraciones de plataforma** > **Web**:
 
@@ -62,13 +63,21 @@ Como mínimo, seleccione el atributo de usuario **Notificaciones de la aplicaci�
 
 Registre el nombre de flujo de usuario de inicio de sesión y de registro creado para la aplicación (por ejemplo, `B2C_1_signupsignin`).
 
-Reemplace los marcadores de posición del siguiente comando por la información registrada anteriormente y ejecute el comando en un shell de comandos:
+En una carpeta vacía, reemplace los marcadores de posición del siguiente comando por la información registrada anteriormente y ejecute el comando en un shell de comandos:
 
 ```dotnetcli
-dotnet new blazorwasm -au IndividualB2C --aad-b2c-instance "{AAD B2C INSTANCE}" --client-id "{CLIENT ID}" --domain "{TENANT DOMAIN}" -ssp "{SIGN UP OR SIGN IN POLICY}"
+dotnet new blazorwasm -au IndividualB2C --aad-b2c-instance "{AAD B2C INSTANCE}" --client-id "{CLIENT ID}" --domain "{TENANT DOMAIN}" -o {APP NAME} -ssp "{SIGN UP OR SIGN IN POLICY}"
 ```
 
-Para especificar la ubicación de salida, lo que crea una carpeta de proyecto si no existe, incluya la opción de salida en el comando con una ruta de acceso (por ejemplo, `-o BlazorSample`). El nombre de la carpeta también pasa a formar parte del nombre del proyecto.
+| Marcador de posición                   | Nombre de Azure Portal               | Ejemplo                                |
+| ----------------------------- | ------------------------------- | -------------------------------------- |
+| `{AAD B2C INSTANCE}`          | Instancia                        | `https://contoso.b2clogin.com/`        |
+| `{APP NAME}`                  | &mdash;                         | `BlazorSample`                         |
+| `{CLIENT ID}`                 | Id. de aplicación (cliente)         | `41451fa7-82d9-4673-8fa5-69eff5a761fd` |
+| `{SIGN UP OR SIGN IN POLICY}` | Flujo de usuario de registro o de inicio de sesión       | `B2C_1_signupsignin1`                  |
+| `{TENANT DOMAIN}`             | Dominio Principal/Publicador/Inquilino | `contoso.onmicrosoft.com`              |
+
+La ubicación de salida especificada con la opción `-o|--output` crea una carpeta de proyecto si no existe y se convierte en parte del nombre de la aplicación.
 
 > [!NOTE]
 > En Azure Portal, el valor de **Autenticación** > **Configuraciones de plataforma** > **Web** > **URI de redirección** de la aplicación se establece en el puerto 5001 en el caso de las aplicaciones que se ejecutan en el servidor Kestrel con la configuración predeterminada.

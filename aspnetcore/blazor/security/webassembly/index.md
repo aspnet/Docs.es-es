@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/index
-ms.openlocfilehash: 3fdea9f553cbd37f2c27740487cfe030ebd81937
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 0ff580dd7cbefdfe3121b30490f99e0235d93bc3
+ms.sourcegitcommit: 14c3d111f9d656c86af36ecb786037bf214f435c
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85402096"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86176153"
 ---
 # <a name="secure-aspnet-core-blazor-webassembly"></a>Protección de ASP.NET Core Blazor WebAssembly
 
@@ -55,6 +55,18 @@ La biblioteca [`Microsoft.AspNetCore.Components.WebAssembly.Authentication`](htt
 * Cuando la aplicación de Blazor WebAssembly carga el punto de conexión de devolución de llamada de inicio de sesión (`/authentication/login-callback`), se procesa la respuesta de autenticación.
   * Si el proceso de autenticación se completa correctamente, el usuario se autentica y, opcionalmente, se devuelve a la dirección URL protegida original que haya solicitado.
   * Si por algún motivo se produce un error en el proceso de autenticación, se envía al usuario a la página de inicio de sesión con errores (`/authentication/login-failed`) y se muestra un error.
+
+## <a name="authentication-component"></a>Componente de `Authentication`
+
+El componente `Authentication` (`Pages/Authentication.razor`) controla las operaciones de autenticación remota y permite a la aplicación:
+
+* Configurar rutas de aplicación para los estados de autenticación.
+* Establecer el contenido de la interfaz de usuario para los estados de autenticación.
+* Administrar el estado de la autenticación.
+
+Las acciones de autenticación, como el registro o la firma de un usuario, se pasan al componente <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteAuthenticatorViewCore%601> del marco de Blazor, que persiste y controla el estado en las operaciones de autenticación.
+
+Para obtener más información y ejemplos, vea <xref:blazor/security/webassembly/additional-scenarios>.
 
 ## <a name="authorization"></a>Autorización
 

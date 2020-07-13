@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/routing
-ms.openlocfilehash: 7ac6dc983454153792610a07c1df01fbc38c8d67
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 25464817314f79c5bfd11d982cc9b09a3c72df15
+ms.sourcegitcommit: fa89d6553378529ae86b388689ac2c6f38281bb9
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85400835"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86060350"
 ---
 # <a name="routing-in-aspnet-core"></a>Enrutamiento en ASP.NET Core
 
@@ -1436,26 +1436,26 @@ Las restricciones de ruta se ejecutan cuando se ha producido una coincidencia co
 
 En la tabla siguiente se muestran algunas restricciones de ruta de ejemplo y su comportamiento esperado.
 
-| restricción | Ejemplo | Coincidencias de ejemplo | Notas |
-| ---------- | ------- | --------------- | ----- |
-| `int` | `{id:int}` | `123456789`, `-123456789` | Coincide con cualquier entero. |
-| `bool` | `{active:bool}` | `true`, `FALSE` | Coincide con `true` o `false. No distingue mayúsculas de minúsculas. |
+| Restricción | Ejemplo | Coincidencias de ejemplo | Notas |
+|------------|---------|-----------------|-------|
+| `int` | `{id:int}` | `123456789`, `-123456789` | Coincide con cualquier entero.|
+| `bool` | `{active:bool}` | `true`, `FALSE` | Coincide con `true` o `false`. No distingue mayúsculas de minúsculas.|
 | `datetime` | `{dob:datetime}` | `2016-12-31`, `2016-12-31 7:32pm` | Coincide con un valor `DateTime` válido en la referencia cultural invariable. Vea la advertencia anterior.|
 | `decimal` | `{price:decimal}` | `49.99`, `-1,000.01` | Coincide con un valor `decimal` válido en la referencia cultural invariable. Vea la advertencia anterior.|
 | `double` | `{weight:double}` | `1.234`, `-1,001.01e8` | Coincide con un valor `double` válido en la referencia cultural invariable. Vea la advertencia anterior.|
 | `float` | `{weight:float}` | `1.234`, `-1,001.01e8` | Coincide con un valor `float` válido en la referencia cultural invariable. Vea la advertencia anterior.|
-| `guid` | `{id:guid}` | `CD2C1638-1638-72D5-1638-DEADBEEF1638`, `{CD2C1638-1638-72D5-1638-DEADBEEF1638}` | Coincide con un valor `Guid` válido. |
-| `long` | `{ticks:long}` | `123456789`, `-123456789` | Coincide con un valor `long` válido. |
-| `minlength(value)` | `{username:minlength(4)}` | `Rick` | La cadena debe tener al menos 4 caracteres. |
-| `maxlength(value)` | `{filename:maxlength(8)}` | `MyFile` | La cadena tiene 8 caracteres como máximo. |
-| `length(length)` | `{filename:length(12)}` | `somefile.txt` | La cadena debe tener una longitud exacta de 12 caracteres. |
-| `length(min,max)` | `{filename:length(8,16)}` | `somefile.txt` | La cadena debe tener al menos 8 caracteres y 16 como máximo. |
-| `min(value)` | `{age:min(18)}` | `19` | El valor entero debe ser como mínimo 18. |
-| `max(value)` | `{age:max(120)}` | `91` | Valor entero máximo de 120. |
-| `range(min,max)` | `{age:range(18,120)}` | `91` | El valor entero debe ser como mínimo 18 y máximo 120. |
-| `alpha` | `{name:alpha}` | `Rick` | La cadena debe constar de uno o más caracteres alfabéticos `a`-`z`.  No distingue mayúsculas de minúsculas. |
-| `regex(expression)` | `{ssn:regex(^\\d{{3}}-\\d{{2}}-\\d{{4}}$)}` | `123-45-6789` | La cadena debe coincidir con la expresión regular. Vea las sugerencias sobre cómo definir una expresión regular. |
-| `required` | `{name:required}` | `Rick` | Se usa para exigir que un valor que no es de parámetro esté presente durante la generación de direcciones URL. |
+| `guid` | `{id:guid}` | `CD2C1638-1638-72D5-1638-DEADBEEF1638`, `{CD2C1638-1638-72D5-1638-DEADBEEF1638}` | Coincide con un valor `Guid` válido.|
+| `long` | `{ticks:long}` | `123456789`, `-123456789` | Coincide con un valor `long` válido.|
+| `minlength(value)` | `{username:minlength(4)}` | `Rick` | La cadena debe tener al menos 4 caracteres.|
+| `maxlength(value)` | `{filename:maxlength(8)}` | `MyFile` | La cadena tiene 8 caracteres como máximo.|
+| `length(length)` | `{filename:length(12)}` | `somefile.txt` | La cadena debe tener una longitud exacta de 12 caracteres.|
+| `length(min,max)` | `{filename:length(8,16)}` | `somefile.txt` | La cadena debe tener al menos 8 caracteres y 16 como máximo.|
+| `min(value)` | `{age:min(18)}` | `19` | El valor entero debe ser como mínimo 18.|
+| `max(value)` | `{age:max(120)}` | `91` | Valor entero máximo de 120.|
+| `range(min,max)` | `{age:range(18,120)}` | `91` | El valor entero debe ser como mínimo 18 y máximo 120.|
+| `alpha` | `{name:alpha}` | `Rick` | La cadena debe constar de uno o más caracteres alfabéticos `a`-`z`. No distingue mayúsculas de minúsculas.|
+| `regex(expression)` | `{ssn:regex(^\\d{{3}}-\\d{{2}}-\\d{{4}}$)}` | `123-45-6789` | La cadena debe coincidir con la expresión regular. Vea las sugerencias sobre cómo definir una expresión regular.|
+| `required` | `{name:required}` | `Rick` | Se usa para exigir que un valor que no es de parámetro esté presente durante la generación de direcciones URL.|
 
 Es posible aplicar varias restricciones delimitadas por dos puntos a un único parámetro. Por ejemplo, la siguiente restricción permite limitar un parámetro a un valor entero de 1 o superior:
 

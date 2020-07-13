@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/crud
-ms.openlocfilehash: 0be63811874709db95285f4013e47bc1706050b1
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: e7e4c4b15cca9612a552c58029ae8b34b79070d1
+ms.sourcegitcommit: fa89d6553378529ae86b388689ac2c6f38281bb9
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85401485"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86060129"
 ---
 # <a name="tutorial-implement-crud-functionality---aspnet-mvc-with-ef-core"></a>Tutorial: Implementación de la funcionalidad CRUD: ASP.NET MVC con EF Core
 
@@ -187,7 +187,7 @@ Estos cambios implementan un procedimiento recomendado de seguridad para evitar 
 
 El código nuevo lee la entidad existente y llama a `TryUpdateModel` para actualizar los campos en la entidad recuperada [en función de la entrada del usuario en los datos de formulario publicados](xref:mvc/models/model-binding). El seguimiento de cambios automático de Entity Framework establece la marca `Modified` en los campos que se cambian mediante la entrada de formulario. Cuando se llama al método `SaveChanges`, Entity Framework crea instrucciones SQL para actualizar la fila de la base de datos. Los conflictos de simultaneidad se ignoran y las columnas de tabla que se actualizaron por el usuario se actualizan en la base de datos. (En un tutorial posterior se muestra cómo controlar los conflictos de simultaneidad).
 
-Como procedimiento recomendado para evitar la publicación excesiva, los campos que quiera que se puedan actualizar por la página **Edit** se incluyen en la lista de permitidos en los parámetros `TryUpdateModel`. (La cadena vacía que precede a la lista de campos en la lista de parámetros es para el prefijo que se usa con los nombres de campos de formulario). Actualmente no se está protegiendo ningún campo adicional, pero enumerar los campos que quiere que el enlazador de modelos enlace garantiza que, si en el futuro agrega campos al modelo de datos, se protejan automáticamente hasta que los agregue aquí de forma explícita.
+Como procedimiento recomendado para evitar la publicación excesiva, los campos que quiera que se puedan actualizar por la página de **edición** se declaran en los parámetros `TryUpdateModel`. (La cadena vacía que precede a la lista de campos en la lista de parámetros es para el prefijo que se usa con los nombres de campos de formulario). Actualmente no se está protegiendo ningún campo adicional, pero enumerar los campos que quiere que el enlazador de modelos enlace garantiza que, si en el futuro agrega campos al modelo de datos, se protejan automáticamente hasta que los agregue aquí de forma explícita.
 
 Como resultado de estos cambios, la firma de método del método HttpPost `Edit` es la misma que la del método HttpGet `Edit`; por tanto, se ha cambiado el nombre del método `EditPost`.
 

@@ -5,7 +5,7 @@ description: ''
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/19/2020
+ms.date: 07/08/2020
 no-loc:
 - Blazor
 - Blazor Server
@@ -15,11 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/standalone-with-azure-active-directory
-ms.openlocfilehash: 0f7bf6de44b3fb62291b4698b67de3a350817a45
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 9cd6097dfaa31a1329d3ea8ca6293b33e3bdb3c3
+ms.sourcegitcommit: f7873c02c1505c99106cbc708f37e18fc0a496d1
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85402083"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147714"
 ---
 # <a name="secure-an-aspnet-core-blazor-webassembly-standalone-app-with-azure-active-directory"></a>Protección de una aplicación independiente Blazor WebAssembly de ASP.NET Core con Azure Active Directory
 
@@ -39,8 +40,8 @@ Registre una aplicación de AAD en el área **Azure Active Directory** > **Regis
 
 Registre la siguiente información:
 
-* Identificador de la aplicación (identificador de cliente); por ejemplo, `11111111-1111-1111-1111-111111111111`
-* Identificador de directorio (identificador de inquilino); por ejemplo, `22222222-2222-2222-2222-222222222222`
+* Identificador de aplicación (cliente); por ejemplo, `41451fa7-82d9-4673-8fa5-69eff5a761fd`.
+* Identificador de directorio (inquilino); por ejemplo, `e86c78e2-8bb4-4c41-aefd-918e0565a45e`.
 
 En **Autenticación** > **Configuraciones de plataforma** > **Web**:
 
@@ -49,13 +50,19 @@ En **Autenticación** > **Configuraciones de plataforma** > **Web**:
 1. Los valores predeterminados restantes de la aplicación son aceptables en esta experiencia.
 1. Seleccione el botón **Guardar**.
 
-Crear la aplicación. Reemplace los marcadores de posición del siguiente comando por la información registrada anteriormente y ejecute el comando en un shell de comandos:
+Cree la aplicación en una carpeta vacía. Reemplace los marcadores de posición del siguiente comando por la información registrada anteriormente y ejecute el comando en un shell de comandos:
 
 ```dotnetcli
-dotnet new blazorwasm -au SingleOrg --client-id "{CLIENT ID}" --tenant-id "{TENANT ID}"
+dotnet new blazorwasm -au SingleOrg --client-id "{CLIENT ID}" -o {APP NAME} --tenant-id "{TENANT ID}"
 ```
 
-Para especificar la ubicación de salida, lo que crea una carpeta de proyecto si no existe, incluya la opción de salida en el comando con una ruta de acceso (por ejemplo, `-o BlazorSample`). El nombre de la carpeta también pasa a formar parte del nombre del proyecto.
+| Marcador de posición   | Nombre de Azure Portal       | Ejemplo                                |
+| ------------- | ----------------------- | -------------------------------------- |
+| `{APP NAME}`  | &mdash;                 | `BlazorSample`                         |
+| `{CLIENT ID}` | Id. de aplicación (cliente) | `41451fa7-82d9-4673-8fa5-69eff5a761fd` |
+| `{TENANT ID}` | Id. de directorio (inquilino)   | `e86c78e2-8bb4-4c41-aefd-918e0565a45e` |
+
+La ubicación de salida especificada con la opción `-o|--output` crea una carpeta de proyecto si no existe y se convierte en parte del nombre de la aplicación.
 
 > [!NOTE]
 > En Azure Portal, el valor de **Autenticación** > **Configuraciones de plataforma** > **Web** > **URI de redirección** de la aplicación se establece en el puerto 5001 en el caso de las aplicaciones que se ejecutan en el servidor Kestrel con la configuración predeterminada.

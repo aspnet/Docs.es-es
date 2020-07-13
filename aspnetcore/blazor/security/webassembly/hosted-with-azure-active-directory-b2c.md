@@ -5,7 +5,7 @@ description: ''
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/19/2020
+ms.date: 07/08/2020
 no-loc:
 - Blazor
 - Blazor Server
@@ -15,11 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/hosted-with-azure-active-directory-b2c
-ms.openlocfilehash: 123b664b87eb41a8f07344608713d9aed7a0aa37
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: b9125526db9a7484aca50f2ffa6175fd99b11453
+ms.sourcegitcommit: f7873c02c1505c99106cbc708f37e18fc0a496d1
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85402252"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147762"
 ---
 # <a name="secure-an-aspnet-core-blazor-webassembly-hosted-app-with-azure-active-directory-b2c"></a>Protección de una aplicación hospedada Blazor WebAssembly de ASP.NET Core con Azure Active Directory B2C
 
@@ -33,10 +34,7 @@ En este artículo se explica cómo crear una aplicación independiente Blazor We
 
 Siga las instrucciones que encontrará en [Tutorial: Creación de un inquilino de Azure Active Directory B2C](/azure/active-directory-b2c/tutorial-create-tenant) para crear un inquilino de AAD B2C.
 
-Registre la siguiente información:
-
-* Instancia de AAD B2C (por ejemplo, `https://contoso.b2clogin.com/`, barra diagonal final incluida)
-* Dominio del inquilino de AAD B2C (por ejemplo, `contoso.onmicrosoft.com`)
+Registre la instancia de AAD B2C (por ejemplo, `https://contoso.b2clogin.com/`, barra diagonal final incluida). La instancia es el esquema y el host de un registro de la aplicación de Azure B2C, que se puede encontrar abriendo la ventana **Puntos de conexión** de la página **Registros de aplicaciones** de Azure Portal.
 
 ### <a name="register-a-server-api-app"></a>Registro de una aplicación de API de servidor
 
@@ -51,9 +49,8 @@ Siga las instrucciones que encontrará en [Tutorial: Registro de una aplicación
 
 Registre la siguiente información:
 
-* Identificador de aplicación de la *aplicación de API de servidor* (identificador de cliente); por ejemplo, `11111111-1111-1111-1111-111111111111`
-* Identificador de directorio (identificador de inquilino); por ejemplo, `222222222-2222-2222-2222-222222222222`
-* Dominio del inquilino de AAD (por ejemplo, `contoso.onmicrosoft.com`): El dominio está disponible como **Dominio del publicador** en la hoja **Personalización de marca** de Azure Portal de la aplicación registrada.
+* Identificador de aplicación (cliente) de la *aplicación de API de servidor*; por ejemplo, `41451fa7-82d9-4673-8fa5-69eff5a761fd`.
+* Dominio de AAD Principal/Publicador/Inquilino (por ejemplo, `contoso.onmicrosoft.com`): El dominio está disponible como **Dominio del publicador** en la hoja **Personalización de marca** de Azure Portal de la aplicación registrada.
 
 En **Exponer una API**:
 
@@ -67,8 +64,10 @@ En **Exponer una API**:
 
 Registre la siguiente información:
 
-* URI del identificador de aplicación (por ejemplo, `https://contoso.onmicrosoft.com/11111111-1111-1111-1111-111111111111`, `api://11111111-1111-1111-1111-111111111111` o el valor personalizado que haya proporcionado)
+* URI del identificador de aplicación (por ejemplo, `https://contoso.onmicrosoft.com/41451fa7-82d9-4673-8fa5-69eff5a761fd`, `api://41451fa7-82d9-4673-8fa5-69eff5a761fd` o el valor personalizado que haya proporcionado)
 * Ámbito predeterminado (por ejemplo, `API.Access`)
+
+El URI de identificador de aplicación puede requerir una configuración especial en la aplicación cliente, que se describe en la sección [Ámbitos de token de acceso](#access-token-scopes) más adelante en este tema.
 
 ### <a name="register-a-client-app"></a>Registro de una aplicación cliente
 
@@ -81,7 +80,7 @@ Siga de nuevo las instrucciones que encontrará en [Tutorial: Registro de una ap
 1. Confirme que la casilla **Permisos** > **Conceda consentimiento del administrador a los permisos openid y offline_access** está activada.
 1. Seleccione **Registrar**.
 
-Registre el identificador de la aplicación (identificador de cliente); por ejemplo, `11111111-1111-1111-1111-111111111111`.
+Registre el identificador de aplicación (cliente); por ejemplo, `4369008b-21fa-427c-abaa-9b53bf58e538`.
 
 En **Autenticación** > **Configuraciones de plataforma** > **Web**:
 
@@ -97,7 +96,7 @@ En **Permisos de API**:
 1. Abra la lista **API**.
 1. Habilite el acceso a la API (por ejemplo, `API.Access`).
 1. Seleccione **Agregar permisos**.
-1. Seleccione el botón **Grant admin content for {TENANT NAME}** (Conceder permiso de administración a {TENANT NAME}). Seleccione **Sí** para confirmar la acción.
+1. Seleccione el botón **Conceder consentimiento de administrador para {NOMBRE DE INQUILINO}** . Seleccione **Sí** para confirmar la acción.
 
 En **Inicio** > **Azure AD B2C** > **Flujos de usuario**:
 
@@ -112,10 +111,21 @@ Registre el nombre de flujo de usuario de inicio de sesión y de registro creado
 Reemplace los marcadores de posición del siguiente comando por la información registrada anteriormente y ejecute el comando en un shell de comandos:
 
 ```dotnetcli
-dotnet new blazorwasm -au IndividualB2C --aad-b2c-instance "{AAD B2C INSTANCE}" --api-client-id "{SERVER API APP CLIENT ID}" --app-id-uri "{SERVER API APP ID URI}" --client-id "{CLIENT APP CLIENT ID}" --default-scope "{DEFAULT SCOPE}" --domain "{TENANT DOMAIN}" -ho -ssp "{SIGN UP OR SIGN IN POLICY}" --tenant-id "{TENANT ID}"
+dotnet new blazorwasm -au IndividualB2C --aad-b2c-instance "{AAD B2C INSTANCE}" --api-client-id "{SERVER API APP CLIENT ID}" --app-id-uri "{SERVER API APP ID URI}" --client-id "{CLIENT APP CLIENT ID}" --default-scope "{DEFAULT SCOPE}" --domain "{TENANT DOMAIN}" -ho -o {APP NAME} -ssp "{SIGN UP OR SIGN IN POLICY}"
 ```
 
-Para especificar la ubicación de salida, lo que crea una carpeta de proyecto si no existe, incluya la opción de salida en el comando con una ruta de acceso (por ejemplo, `-o BlazorSample`). El nombre de la carpeta también pasa a formar parte del nombre del proyecto.
+| Marcador de posición                   | Nombre de Azure Portal                                     | Ejemplo                                |
+| ----------------------------- | ----------------------------------------------------- | -------------------------------------- |
+| `{AAD B2C INSTANCE}`          | Instancia                                              | `https://contoso.b2clogin.com/`        |
+| `{APP NAME}`                  | &mdash;                                               | `BlazorSample`                         |
+| `{CLIENT APP CLIENT ID}`      | Identificador de aplicación (cliente) para la *aplicación cliente*          | `4369008b-21fa-427c-abaa-9b53bf58e538` |
+| `{DEFAULT SCOPE}`             | Nombre de ámbito                                            | `API.Access`                           |
+| `{SERVER API APP CLIENT ID}`  | Identificador de aplicación (cliente) para la *aplicación de API de servidor*      | `41451fa7-82d9-4673-8fa5-69eff5a761fd` |
+| `{SERVER API APP ID URI}`     | URI de identificador de aplicación ([consultar nota](#access-token-scopes)) | `41451fa7-82d9-4673-8fa5-69eff5a761fd` |
+| `{SIGN UP OR SIGN IN POLICY}` | Flujo de usuario de registro o de inicio de sesión                             | `B2C_1_signupsignin1`                  |
+| `{TENANT DOMAIN}`             | Dominio Principal/Publicador/Inquilino                       | `contoso.onmicrosoft.com`              |
+
+La ubicación de salida especificada con la opción `-o|--output` crea una carpeta de proyecto si no existe y se convierte en parte del nombre de la aplicación.
 
 > [!NOTE]
 > Pase el URI de identificador de aplicación a la opción `app-id-uri`, pero tenga en cuenta que puede que deba realizar un cambio de configuración en la aplicación cliente; esto se describe en la sección [Ámbitos de token de acceso](#access-token-scopes).
@@ -125,7 +135,7 @@ Para especificar la ubicación de salida, lo que crea una carpeta de proyecto si
 > [!NOTE]
 > En Azure Portal, el valor de **Autenticación** > **Configuraciones de plataforma** > **Web** > **URI de redirección** de la *aplicación cliente* se establece en el puerto 5001 en el caso de las aplicaciones que se ejecutan en el servidor Kestrel con la configuración predeterminada.
 >
-> Si la *aplicación cliente* se ejecuta en un puerto de IIS Express aleatorio, el puerto de la aplicación se encuentra en las propiedades de la *aplicación de servidor*, en el panel **Depurar**.
+> Si la *aplicación cliente* se ejecuta en un puerto de IIS Express aleatorio, el puerto de la aplicación se encuentra en las propiedades de la *aplicación de API de servidor*, en el panel **Depurar**.
 >
 > Si el puerto no se configuró anteriormente con el puerto conocido de la *aplicación cliente*, vuelva al registro de la *aplicación cliente* en Azure Portal y actualice el URI de redirección con el puerto correcto.
 

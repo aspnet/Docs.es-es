@@ -5,7 +5,7 @@ description: Obtenga información sobre cómo usar los escenarios de formularios
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 06/04/2020
+ms.date: 07/06/2020
 no-loc:
 - Blazor
 - Blazor Server
@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/forms-validation
-ms.openlocfilehash: 1ed87b4aa2519334d2339b500a615aa96ef4d57d
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: f31a1f1d8942c9d9654dc26e946c022cf21ed9d1
+ms.sourcegitcommit: fa89d6553378529ae86b388689ac2c6f38281bb9
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85402967"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86059869"
 ---
 # <a name="aspnet-core-blazor-forms-and-validation"></a>Formularios y validación de Blazor de ASP.NET Core
 
@@ -302,7 +302,7 @@ El componente `CustomInputText` se puede usar en cualquier lugar donde <xref:Mic
 }
 ```
 
-## <a name="work-with-radio-buttons"></a>Trabajo con botones de radio
+## <a name="radio-buttons"></a>Botones de radio
 
 Al trabajar con botones de radio en un formulario, el enlace de datos se controla de manera diferente que otros elementos, ya que los botones de radio se evalúan como un grupo. El valor de cada botón de radio es fijo, pero el valor del grupo de botones de radio es el valor del botón de radio seleccionado. El ejemplo siguiente muestra cómo:
 
@@ -390,6 +390,30 @@ El siguiente elemento <xref:Microsoft.AspNetCore.Components.Forms.EditForm> usa 
 }
 ```
 
+## <a name="binding-select-element-options-to-c-object-null-values"></a>Enlace de opciones del elemento `<select>` a valores `null` de un objeto C#
+
+No hay ninguna manera razonable de representar un valor de opción de elemento `<select>` como valor `null` de objeto C#, por los siguientes motivos:
+
+* Los atributos HTML no pueden tener valores `null`. El equivalente más cercano a `null` en HTML es la ausencia del atributo `value` de HTML del elemento `<option>`.
+* Al seleccionar un `<option>` sin ningún atributo `value`, el explorador trata el valor como *contenido de texto* de ese elemento de `<option>`.
+
+El marco de Blazor no intenta suprimir el comportamiento predeterminado porque implicaría lo siguiente:
+
+* Crear una cadena de soluciones alternativas de casos especiales en el marco.
+* Hacer cambios importantes en el comportamiento actual del marco.
+
+::: moniker range=">= aspnetcore-5.0"
+
+El `null` más plausible equivalente en HTML es una *cadena vacía* `value`. El marco Blazor controla `null` en las conversiones de cadenas vacías para el enlace bidireccional al valor de `<select>`.
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
+El marco Blazor no controla automáticamente `null` en las conversiones de cadenas vacías al intentar el enlace bidireccional al valor de `<select>`. Para obtener más información, vea [Corrección de enlaces `<select>` a un valor null (dotnet/aspnetcore #23221)](https://github.com/dotnet/aspnetcore/pull/23221).
+
+::: moniker-end
+
 ## <a name="validation-support"></a>Compatibilidad con la validación
 
 El componente <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> adjunta la compatibilidad con la validación mediante anotaciones de datos al elemento <xref:Microsoft.AspNetCore.Components.Forms.EditContext> en cascada. Este gesto explícito es necesario para habilitar la compatibilidad con la validación mediante anotaciones. Para usar un sistema de validación distinto al de las anotaciones de datos, reemplace <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> por una implementación personalizada. La implementación de ASP.NET Core está disponible para su inspección en el origen de referencia: [`DataAnnotationsValidator`](https://github.com/dotnet/AspNetCore/blob/master/src/Components/Forms/src/DataAnnotationsValidator.cs)/[`AddDataAnnotationsValidation`](https://github.com/dotnet/AspNetCore/blob/master/src/Components/Forms/src/EditContextDataAnnotationsExtensions.cs). Los vínculos anteriores al origen de referencia proporcionan código de la rama `master` del repositorio, que representa el desarrollo actual de la unidad de producto para la próxima versión de ASP.NET Core. Para seleccionar la rama de una versión diferente, use el selector de ramas de GitHub (por ejemplo, `release/3.1`).
@@ -421,6 +445,14 @@ El componente <xref:Microsoft.AspNetCore.Components.Forms.ValidationMessage%601>
 
 Los componentes <xref:Microsoft.AspNetCore.Components.Forms.ValidationMessage%601> y <xref:Microsoft.AspNetCore.Components.Forms.ValidationSummary> admiten atributos arbitrarios. Cualquier atributo que no coincida con un parámetro de componente se agrega a los elementos `<div>` o `<ul>` generados.
 
+Controle el estilo de los mensajes de validación en la hoja de estilos de la aplicación (`wwwroot/css/app.css` o `wwwroot/css/site.css`). La clase `validation-message` predeterminada establece el color del texto de los mensajes de validación en rojo:
+
+```css
+.validation-message {
+    color: red;
+}
+```
+
 ### <a name="custom-validation-attributes"></a>Atributos de validación personalizados
 
 Para asegurarnos de que un resultado de validación está correctamente asociado a un campo cuando se usa un [atributo de validación personalizado](xref:mvc/models/validation#custom-attributes), pase el elemento <xref:System.ComponentModel.DataAnnotations.ValidationContext.MemberName> del contexto de validación al crear el elemento <xref:System.ComponentModel.DataAnnotations.ValidationResult>:
@@ -429,7 +461,7 @@ Para asegurarnos de que un resultado de validación está correctamente asociado
 using System;
 using System.ComponentModel.DataAnnotations;
 
-private class MyCustomValidator : ValidationAttribute
+private class CustomValidator : ValidationAttribute
 {
     protected override ValidationResult IsValid(object value, 
         ValidationContext validationContext)
@@ -441,6 +473,9 @@ private class MyCustomValidator : ValidationAttribute
     }
 }
 ```
+
+> [!NOTE]
+> <xref:System.ComponentModel.DataAnnotations.ValidationContext.GetService%2A?displayProperty=nameWithType> es `null`. No se admite la inserción de servicios para la validación en el método `IsValid`.
 
 ### <a name="blazor-data-annotations-validation-package"></a>Paquete de validación de anotaciones de datos de Blazor
 

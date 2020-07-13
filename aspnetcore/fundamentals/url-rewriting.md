@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/url-rewriting
-ms.openlocfilehash: c41ba2e067c8dc978b1359db548733c5f8890a2b
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: dbdb7cd86218fd9ba63ae4ac2aa516836d4fd1a1
+ms.sourcegitcommit: 66fca14611eba141d455fe0bd2c37803062e439c
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85408388"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85944300"
 ---
 # <a name="url-rewriting-middleware-in-aspnet-core"></a>Middleware de reescritura de URL en ASP.NET Core
 
@@ -325,7 +325,7 @@ El middleware admite las siguientes variables de servidor del Módulo URL Rewrit
 
 Use <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.Add*> para implementar su propia lógica de la regla en un método. `Add` expone el elemento <xref:Microsoft.AspNetCore.Rewrite.RewriteContext>, lo que hace que <xref:Microsoft.AspNetCore.Http.HttpContext> esté disponible para usarlo en el método. [RewriteContext.Result](xref:Microsoft.AspNetCore.Rewrite.RewriteContext.Result*) determina cómo se administra el procesamiento adicional en la canalización. Establezca el valor en uno de los campos <xref:Microsoft.AspNetCore.Rewrite.RuleResult> que se describen en la tabla siguiente.
 
-| `RewriteContext.Result`              | Acción                                                           |
+| Volver a escribir el resultado del contexto               | Acción                                                           |
 | ------------------------------------ | ---------------------------------------------------------------- |
 | `RuleResult.ContinueRules` (valor predeterminado) | Continuar aplicando las reglas.                                         |
 | `RuleResult.EndResponse`             | Dejar de aplicar las reglas y enviar la respuesta.                       |
@@ -679,7 +679,7 @@ El middleware admite las siguientes variables de servidor del Módulo URL Rewrit
 
 Use <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.Add*> para implementar su propia lógica de la regla en un método. `Add` expone el elemento <xref:Microsoft.AspNetCore.Rewrite.RewriteContext>, lo que hace que <xref:Microsoft.AspNetCore.Http.HttpContext> esté disponible para usarlo en el método. [RewriteContext.Result](xref:Microsoft.AspNetCore.Rewrite.RewriteContext.Result*) determina cómo se administra el procesamiento adicional en la canalización. Establezca el valor en uno de los campos <xref:Microsoft.AspNetCore.Rewrite.RuleResult> que se describen en la tabla siguiente.
 
-| `RewriteContext.Result`              | Acción                                                           |
+| Volver a escribir el resultado del contexto               | Acción                                                           |
 | ------------------------------------ | ---------------------------------------------------------------- |
 | `RuleResult.ContinueRules` (valor predeterminado) | Continuar aplicando las reglas.                                         |
 | `RuleResult.EndResponse`             | Dejar de aplicar las reglas y enviar la respuesta.                       |

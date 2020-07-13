@@ -5,7 +5,7 @@ description: Obtenga información sobre cómo invocar funciones de JavaScript co
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/19/2020
+ms.date: 07/07/2020
 no-loc:
 - Blazor
 - Blazor Server
@@ -15,11 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/call-javascript-from-dotnet
-ms.openlocfilehash: 8a2df6ca55985a1cff49abb09113e49bfeae6829
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 5c22220871fdba7fea43c38fa4bc826c07135ffc
+ms.sourcegitcommit: fa89d6553378529ae86b388689ac2c6f38281bb9
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85400523"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86060038"
 ---
 # <a name="call-javascript-functions-from-net-methods-in-aspnet-core-blazor"></a>Llamada a funciones de JavaScript con métodos de .NET en Blazor de ASP.NET Core
 
@@ -116,7 +117,7 @@ La aplicación de ejemplo incluye un componente para mostrar la interoperabilida
 
 ```razor
 @page "/JSInterop"
-@using BlazorSample.JsInteropClasses
+@using {APP ASSEMBLY}.JsInteropClasses
 @inject IJSRuntime JSRuntime
 
 <h1>JavaScript Interop</h1>
@@ -142,6 +143,8 @@ La aplicación de ejemplo incluye un componente para mostrar la interoperabilida
     }
 }
 ```
+
+El marcador de posición `{APP ASSEMBLY}` es el nombre de ensamblado de la aplicación (por ejemplo, `BlazorSample`).
 
 1. Cuando `TriggerJsPrompt` se ejecuta seleccionando el botón **`Trigger JavaScript Prompt`** del componente, se llama a la función `showPrompt` de JavaScript proporcionada en el archivo `wwwroot/exampleJsInterop.js`.
 1. La función `showPrompt` acepta la entrada del usuario (el nombre del usuario), que se codifica en HTML y se devuelve al componente. El componente almacena el nombre del usuario en una variable local, `name`.
@@ -290,7 +293,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Components;
 
-namespace BlazorSample.Pages
+namespace {APP ASSEMBLY}.Pages
 {
     public partial class Index : 
         ComponentBase, IObservable<ElementReference>, IDisposable
@@ -367,6 +370,8 @@ namespace BlazorSample.Pages
 }
 ```
 
+El marcador de posición `{APP ASSEMBLY}` es el nombre de ensamblado de la aplicación (por ejemplo, `BlazorSample`).
+
 `Shared/SurveyPrompt.razor` (componente secundario):
 
 ```razor
@@ -396,7 +401,7 @@ namespace BlazorSample.Pages
 using System;
 using Microsoft.AspNetCore.Components;
 
-namespace BlazorSample.Shared
+namespace {APP ASSEMBLY}.Shared
 {
     public partial class SurveyPrompt : 
         ComponentBase, IObserver<ElementReference>, IDisposable
@@ -441,6 +446,8 @@ namespace BlazorSample.Shared
     }
 }
 ```
+
+El marcador de posición `{APP ASSEMBLY}` es el nombre de ensamblado de la aplicación (por ejemplo, `BlazorSample`).
 
 ## <a name="harden-js-interop-calls"></a>Protección de las llamadas de interoperabilidad de JS
 
