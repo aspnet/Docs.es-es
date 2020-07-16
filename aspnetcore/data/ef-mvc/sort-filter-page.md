@@ -14,12 +14,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/sort-filter-page
-ms.openlocfilehash: 45aabc644fbeaeaa31d534877ba93cb0611f3f34
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 24643931ed84ac257d98ceb8cc6c64d0767cfc14
+ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85401342"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86212587"
 ---
 # <a name="tutorial-add-sorting-filtering-and-paging---aspnet-mvc-with-ef-core"></a>Tutorial: Adición de ordenación, filtrado y paginación: ASP.NET MVC con EF Core
 
@@ -78,7 +78,7 @@ Este código podría detallarse con un gran número de columnas. [En el último 
 
 Reemplace el código de *Views/Students/Index.cshtml* por el código siguiente para agregar los hipervínculos del encabezado de columna. Se resaltan las líneas modificadas.
 
-[!code-html[](intro/samples/cu/Views/Students/Index2.cshtml?highlight=16,22)]
+[!code-cshtml[](intro/samples/cu/Views/Students/Index2.cshtml?highlight=16,22)]
 
 Este código usa la información que se incluye en las propiedades `ViewData` para configurar hipervínculos con los valores de cadena de consulta adecuados.
 
@@ -107,7 +107,7 @@ Ha agregado un parámetro `searchString` al método `Index`. El valor de la cade
 
 En *Views/Student/Index.cshtml*, agregue el código resaltado justo antes de la etiqueta de apertura de tabla para crear un título, un cuadro de texto y un botón de **búsqueda**.
 
-[!code-html[](intro/samples/cu/Views/Students/Index3.cshtml?range=9-23&highlight=5-13)]
+[!code-cshtml[](intro/samples/cu/Views/Students/Index3.cshtml?range=9-23&highlight=5-13)]
 
 Este código usa el [asistente de etiquetas](xref:mvc/views/tag-helpers/intro) `<form>` para agregar el cuadro de texto de búsqueda y el botón. De forma predeterminada, el asistente de etiquetas `<form>` envía datos de formulario con POST, lo que significa que los parámetros se pasan en el cuerpo del mensaje HTTP y no en la dirección URL como cadenas de consulta. Al especificar HTTP GET, los datos de formulario se pasan en la dirección URL como cadenas de consulta, lo que permite que los usuarios marquen la dirección URL. Las directrices de W3C recomiendan que use GET cuando la acción no produzca ninguna actualización.
 
@@ -186,7 +186,7 @@ El método `PaginatedList.CreateAsync` toma un número de página. Los dos signo
 
 En *Views/Students/Index.cshtml*, reemplace el código existente por el código siguiente. Los cambios aparecen resaltados.
 
-[!code-html[](intro/samples/cu/Views/Students/Index.cshtml?highlight=1,27,30,33,61-79)]
+[!code-cshtml[](intro/samples/cu/Views/Students/Index.cshtml?highlight=1,27,30,33,61-79)]
 
 La instrucción `@model` de la parte superior de la página especifica que ahora la vista obtiene un objeto `PaginatedList<T>` en lugar de un objeto `List<T>`.
 
@@ -250,7 +250,7 @@ La instrucción LINQ agrupa las entidades de alumnos por fecha de inscripción, 
 
 Agregue un archivo *Views/Home/About.cshtml* con el código siguiente:
 
-[!code-html[](intro/samples/cu/Views/Home/About.cshtml)]
+[!code-cshtml[](intro/samples/cu/Views/Home/About.cshtml)]
 
 Ejecute la aplicación y vaya a la página About. En una tabla se muestra el número de alumnos para cada fecha de inscripción.
 

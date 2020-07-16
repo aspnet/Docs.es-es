@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/concurrency
-ms.openlocfilehash: 3038ae8f01273013e6c35694583d9674a1668bac
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: f6ee60bf5e75256a9bf330f56b2f09b06f720a85
+ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85401563"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86212794"
 ---
 # <a name="tutorial-handle-concurrency---aspnet-mvc-with-ef-core"></a>Tutorial: Control de simultaneidad: ASP.NET MVC con EF Core
 
@@ -148,7 +148,7 @@ El motor de scaffolding creó una columna RowVersion en la vista Index, pero ese
 
 Reemplace el código de *Views/Departments/Index.cshtml* con el código siguiente.
 
-[!code-html[](intro/samples/cu/Views/Departments/Index.cshtml?highlight=4,7,44)]
+[!code-cshtml[](intro/samples/cu/Views/Departments/Index.cshtml?highlight=4,7,44)]
 
 Esto cambia el encabezado por "Departments", elimina la columna RowVersion y muestra el nombre completo en lugar del nombre del administrador.
 
@@ -198,7 +198,7 @@ En *Views/Departments/Edit.cshtml*, realice los cambios siguientes:
 
 * Agregue una opción "Select Administrator" a la lista desplegable.
 
-[!code-html[](intro/samples/cu/Views/Departments/Edit.cshtml?highlight=16,34-36)]
+[!code-cshtml[](intro/samples/cu/Views/Departments/Edit.cshtml?highlight=16,34-36)]
 
 ## <a name="test-concurrency-conflicts"></a>Prueba los conflictos de simultaneidad
 
@@ -258,7 +258,7 @@ Si se detecta un error de simultaneidad, el código vuelve a mostrar la página 
 
 En *Views/Departments/Delete.cshtml*, reemplace el código al que se aplicó la técnica scaffolding con el siguiente código, que agrega un campo de mensaje de error y campos ocultos para las propiedades DepartmentID y RowVersion. Los cambios aparecen resaltados.
 
-[!code-html[](intro/samples/cu/Views/Departments/Delete.cshtml?highlight=9,38,44,45,48)]
+[!code-cshtml[](intro/samples/cu/Views/Departments/Delete.cshtml?highlight=9,38,44,45,48)]
 
 Esto realiza los cambios siguientes:
 
@@ -288,11 +288,11 @@ Si quiere, puede limpiar el código al que se ha aplicado la técnica scaffoldin
 
 Reemplace el código de *Views/Departments/Details.cshtml* para eliminar la columna RowVersion y mostrar el nombre completo del administrador.
 
-[!code-html[](intro/samples/cu/Views/Departments/Details.cshtml?highlight=35)]
+[!code-cshtml[](intro/samples/cu/Views/Departments/Details.cshtml?highlight=35)]
 
 Reemplace el código de *Views/Departments/Create.cshtml* para agregar una opción Select en la lista desplegable.
 
-[!code-html[](intro/samples/cu/Views/Departments/Create.cshtml?highlight=32-34)]
+[!code-cshtml[](intro/samples/cu/Views/Departments/Create.cshtml?highlight=32-34)]
 
 ## <a name="get-the-code"></a>Obtención del código
 

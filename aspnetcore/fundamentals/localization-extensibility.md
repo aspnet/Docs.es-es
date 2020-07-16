@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/localization-extensibility
-ms.openlocfilehash: 6f3007637200b375730c970ca9186436629cbcf7
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: b743aee87af96ebf064689e94d85ee794de520e7
+ms.sourcegitcommit: 14c3d111f9d656c86af36ecb786037bf214f435c
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85406607"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86176185"
 ---
 # <a name="localization-extensibility"></a>Extensibilidad de la localización
 
@@ -68,7 +68,7 @@ options.RequestCultureProviders.Insert(0, new CustomRequestCultureProvider(async
         currentCulture = segments[0];
     }
 
-    var requestCulture = new ProviderCultureResult(culture);
+    var requestCulture = new ProviderCultureResult(currentCulture);
     
     return Task.FromResult(requestCulture);
 }));
@@ -89,7 +89,7 @@ options.AddInitialRequestCultureProvider(new CustomRequestCultureProvider(async 
         currentCulture = segments[0];
     }
 
-    var requestCulture = new ProviderCultureResult(culture);
+    var requestCulture = new ProviderCultureResult(currentCulture);
     
     return Task.FromResult(requestCulture);
 }));

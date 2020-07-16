@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/crud
-ms.openlocfilehash: e7e4c4b15cca9612a552c58029ae8b34b79070d1
-ms.sourcegitcommit: fa89d6553378529ae86b388689ac2c6f38281bb9
+ms.openlocfilehash: c33ff357ec6b467435325578047ac851a39e533e
+ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86060129"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86212726"
 ---
 # <a name="tutorial-implement-crud-functionality---aspnet-mvc-with-ef-core"></a>Tutorial: Implementación de la funcionalidad CRUD: ASP.NET MVC con EF Core
 
@@ -102,11 +102,11 @@ Para obtener más información sobre los asistentes de etiquetas, vea <xref:mvc/
 
 Abra *Views/Students/Details.cshtml*. Cada campo se muestra mediante los asistentes `DisplayNameFor` y `DisplayFor`, como se muestra en el ejemplo siguiente:
 
-[!code-html[](intro/samples/cu/Views/Students/Details.cshtml?range=13-18&highlight=2,5)]
+[!code-cshtml[](intro/samples/cu/Views/Students/Details.cshtml?range=13-18&highlight=2,5)]
 
 Después del último campo e inmediatamente antes de la etiqueta `</dl>` de cierre, agregue el código siguiente para mostrar una lista de las inscripciones:
 
-[!code-html[](intro/samples/cu/Views/Students/Details.cshtml?range=31-52)]
+[!code-cshtml[](intro/samples/cu/Views/Students/Details.cshtml?range=31-52)]
 
 Si la sangría de código no es correcta después de pegar el código, presione CTRL-K-D para corregirlo.
 
@@ -267,7 +267,7 @@ Si la entidad tiene datos relacionados que también se deban eliminar, asegúres
 
 En *Views/Student/Delete.cshtml*, agregue un mensaje de error entre los títulos h2 y h3, como se muestra en el ejemplo siguiente:
 
-[!code-html[](intro/samples/cu/Views/Students/Delete.cshtml?range=7-9&highlight=2)]
+[!code-cshtml[](intro/samples/cu/Views/Students/Delete.cshtml?range=7-9&highlight=2)]
 
 Ejecute la aplicación, haga clic en la pestaña **Students** y después en un hipervínculo **Delete**:
 
