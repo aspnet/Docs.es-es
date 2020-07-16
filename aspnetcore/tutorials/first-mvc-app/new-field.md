@@ -14,12 +14,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/new-field
-ms.openlocfilehash: 06db91e2b226f0e9222bf256f4c89fa2f8a3eb18
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: acd5d38f156dbcd23a82796bdded051a103880eb
+ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85405125"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86213096"
 ---
 # <a name="part-8-add-a-new-field-to-an-aspnet-core-mvc-app"></a>Parte 8. Adición de un nuevo campo a una aplicación de ASP.NET Core MVC
 
@@ -69,7 +69,7 @@ Actualice las plantillas de vista para mostrar, crear y editar la nueva propieda
 
 Edite el archivo */Views/Movies/Index.cshtml* y agregue un campo `Rating`:
 
-[!code-HTML[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/Movies/IndexGenreRating.cshtml?highlight=16,38&range=24-64)]
+[!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/Movies/IndexGenreRating.cshtml?highlight=16,38&range=24-64)]
 
 Actualice */Views/Movies/Create.cshtml* con un campo `Rating`.
 

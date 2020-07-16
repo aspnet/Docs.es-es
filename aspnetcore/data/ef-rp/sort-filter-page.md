@@ -14,12 +14,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-rp/sort-filter-page
-ms.openlocfilehash: 0a87fe2f4cf7014cc15752dcf25545ce7aaa4687
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 496221bb4e34e1f9e4177d1934786a77d8c9b411
+ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85408609"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86212537"
 ---
 # <a name="part-3-razor-pages-with-ef-core-in-aspnet-core---sort-filter-paging"></a>Página 3. Razor Pages con EF Core en ASP.NET Core: Ordenación, filtrado y paginación
 
@@ -337,7 +337,7 @@ El método usa LINQ to Entities para especificar la columna por la que se va a o
 
 Reemplace el código de *Students/Index.cshtml* con el siguiente código resaltado:
 
-[!code-html[](intro/samples/cu21/Pages/Students/Index2.cshtml?highlight=17-19,25-27)]
+[!code-cshtml[](intro/samples/cu21/Pages/Students/Index2.cshtml?highlight=17-19,25-27)]
 
 El código anterior:
 
@@ -393,7 +393,7 @@ Hay una disminución del rendimiento por llamar a `ToUpper`. El código `ToUpper
 
 En *Pages/Student/Index.cshtml*, agregue el siguiente código resaltado para crear un botón **Search** y cromo ordenado.
 
-[!code-html[](intro/samples/cu21/Pages/Students/Index3.cshtml?highlight=14-23&range=1-25)]
+[!code-cshtml[](intro/samples/cu21/Pages/Students/Index3.cshtml?highlight=14-23&range=1-25)]
 
 El código anterior usa el [asistente de etiquetas](xref:mvc/views/tag-helpers/intro) `<form>` para agregar el cuadro de texto de búsqueda y el botón. De forma predeterminada, el asistente de etiquetas `<form>` envía datos de formulario con POST. Con POST, los parámetros se pasan en el cuerpo del mensaje HTTP y no en la dirección URL. Cuando se usa el método HTTP GET, los datos del formulario se pasan en la dirección URL como cadenas de consulta. Pasar los datos con cadenas de consulta permite a los usuarios marcar la dirección URL. Las [directrices de W3C](https://www.w3.org/2001/tag/doc/whenToUseGet.html) recomiendan el uso de GET cuando la acción no produzca ninguna actualización.
 
@@ -471,15 +471,15 @@ Los dos signos de interrogación en `PaginatedList.CreateAsync` representan el [
 
 Actualice el marcado en *Students/Index.cshtml*. Se resaltan los cambios:
 
-[!code-html[](intro/samples/cu21/Pages/Students/Index.cshtml?highlight=28-31,37-40,68-999)]
+[!code-cshtml[](intro/samples/cu21/Pages/Students/Index.cshtml?highlight=28-31,37-40,68-999)]
 
 Los vínculos del encabezado de la columna usan la cadena de consulta para pasar la cadena de búsqueda actual al método `OnGetAsync`, de modo que el usuario pueda ordenar los resultados del filtro:
 
-[!code-html[](intro/samples/cu21/Pages/Students/Index.cshtml?range=28-31)]
+[!code-cshtml[](intro/samples/cu21/Pages/Students/Index.cshtml?range=28-31)]
 
 Los botones de paginación se muestran mediante asistentes de etiquetas:
 
-[!code-html[](intro/samples/cu21/Pages/Students/Index.cshtml?range=72-)]
+[!code-cshtml[](intro/samples/cu21/Pages/Students/Index.cshtml?range=72-)]
 
 Ejecute la aplicación y vaya a la página Students.
 
@@ -525,7 +525,7 @@ La instrucción LINQ agrupa las entidades de alumnos por fecha de inscripción, 
 
 Reemplace el código del archivo *Pages/About.cshtml* por el código siguiente:
 
-[!code-html[](intro/samples/cu21/Pages/About.cshtml)]
+[!code-cshtml[](intro/samples/cu21/Pages/About.cshtml)]
 
 Ejecute la aplicación y vaya a la página About. En una tabla se muestra el número de alumnos para cada fecha de inscripción.
 
