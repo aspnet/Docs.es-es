@@ -5,7 +5,7 @@ description: Aprenda a crear y usar componentes de Razor, lo que incluye cómo e
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/06/2020
+ms.date: 07/14/2020
 no-loc:
 - Blazor
 - Blazor Server
@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/index
-ms.openlocfilehash: 23aab2504368559b8d3dd21b3c0896ffc3348e2f
-ms.sourcegitcommit: fa89d6553378529ae86b388689ac2c6f38281bb9
+ms.openlocfilehash: c444b331f44382db885a8bac33b46dac8505dd20
+ms.sourcegitcommit: 6fb27ea41a92f6d0e91dfd0eba905d2ac1a707f7
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86059824"
+ms.lasthandoff: 07/15/2020
+ms.locfileid: "86407689"
 ---
 # <a name="create-and-use-aspnet-core-razor-components"></a>Creación y uso de componentes de Razor de ASP.NET Core
 
@@ -280,6 +280,29 @@ El elemento `ParentComponent` de la aplicación de muestra puede proporcionar co
 `Pages/ParentComponent.razor`:
 
 [!code-razor[](index/samples_snapshot/ParentComponent.razor?highlight=7-8)]
+
+Debido a la forma en que Blazor representa el contenido secundario, la representación de componentes dentro de un bucle `for` requiere una variable de índice local si se usa la variable de bucle incremental en el contenido del componente secundario:
+>
+> ```razor
+> @for (int c = 0; c < 10; c++)
+> {
+>     var current = c;
+>     <ChildComponent Param1="@c">
+>         Child Content: Count: @current
+>     </ChildComponent>
+> }
+> ```
+>
+> También puede usar un bucle `foreach` con <xref:System.Linq.Enumerable.Range%2A?displayProperty=nameWithType>:
+>
+> ```razor
+> @foreach(var c in Enumerable.Range(0,10))
+> {
+>     <ChildComponent Param1="@c">
+>         Child Content: Count: @c
+>     </ChildComponent>
+> }
+> ```
 
 ## <a name="attribute-splatting-and-arbitrary-parameters"></a>Expansión de atributos y parámetros arbitrarios
 
