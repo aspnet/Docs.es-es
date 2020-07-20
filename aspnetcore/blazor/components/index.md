@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/index
-ms.openlocfilehash: a5401e1b423740aadf6f8de84763b5c05d451cd0
-ms.sourcegitcommit: 384833762c614851db653b841cc09fbc944da463
+ms.openlocfilehash: 1312ae531b0acb0ce09137cc2bae6299ddda5c32
+ms.sourcegitcommit: e6b3dd344521ce320d5c2121bbc27c211df87e57
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/17/2020
-ms.locfileid: "86445338"
+ms.lasthandoff: 07/19/2020
+ms.locfileid: "86468852"
 ---
 # <a name="create-and-use-aspnet-core-razor-components"></a>Creación y uso de componentes de Razor de ASP.NET Core
 
@@ -648,7 +648,7 @@ Considere el componente `Expander` siguiente que:
 <div @onclick="@Toggle" class="card text-white bg-success mb-3">
     <div class="card-body">
         <div class="panel-heading">
-            <h2>Toggle (Expanded = @Expanded)</h2>
+            <h2>Toggle (<code>Expanded</code> = @Expanded)</h2>
         </div>
 
         @if (Expanded)
@@ -704,10 +704,10 @@ El siguiente componente `Expander` revisado:
 <div @onclick="@Toggle" class="card text-white bg-success mb-3">
     <div class="card-body">
         <div class="panel-heading">
-            <h2>Toggle (Expanded = @expanded)</h2>
+            <h2>Toggle (<code>expanded</code> = @expanded)</h2>
         </div>
 
-        @if (Expanded)
+        @if (expanded)
         {
             <div class="card-text">
                 @ChildContent
