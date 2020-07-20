@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/index
-ms.openlocfilehash: e905f08f867b73fc37d5fed7138256ac89811312
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 85446ac18608b39c469da766e1a9f2e92a1f5e11
+ms.sourcegitcommit: 384833762c614851db653b841cc09fbc944da463
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85402408"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86445117"
 ---
 # <a name="aspnet-core-blazor-authentication-and-authorization"></a>Autenticación y autorización de ASP.NET Core Blazor
 
@@ -320,7 +320,7 @@ Si no se especifica <xref:Microsoft.AspNetCore.Components.Authorization.Authoriz
 
 Blazor permite que el estado de autenticación se determine *asincrónicamente*. El escenario principal de este enfoque se encuentra en las aplicaciones de Blazor WebAssembly que realizan una solicitud de autenticación a un punto de conexión externo.
 
-Mientras la autenticación está en curso, <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView> no muestra ningún contenido de forma predeterminada. Para mostrar el contenido mientras tiene lugar la autenticación, use el elemento `<Authorizing>`:
+Mientras la autenticación está en curso, <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView> no muestra ningún contenido de forma predeterminada. Para mostrar el contenido mientras se produce autenticación, use la etiqueta `<Authorizing>`:
 
 ```razor
 <AuthorizeView>
@@ -413,7 +413,7 @@ En la plantilla de proyecto de Blazor Server predeterminada, el componente `App`
 
 El contenido de las etiquetas `<NotFound>`, `<NotAuthorized>` y `<Authorizing>` puede incluir elementos arbitrarios, como otros componentes interactivos.
 
-Si el elemento `<NotAuthorized>` no se especifica, <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeRouteView> utiliza el siguiente mensaje de reserva:
+Si no se especifica la etiqueta `<NotAuthorized>`, <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeRouteView> usa el siguiente mensaje de reserva:
 
 ```html
 Not authorized.
