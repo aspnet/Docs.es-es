@@ -14,12 +14,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/certauth
-ms.openlocfilehash: 2c58a274e8de0b1205b223287b7690b1d5caed23
-ms.sourcegitcommit: 384833762c614851db653b841cc09fbc944da463
+ms.openlocfilehash: 06803ee57824bbfac5725763938abbb9db0e360a
+ms.sourcegitcommit: d9ae1f352d372a20534b57e23646c1a1d9171af1
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/17/2020
-ms.locfileid: "86445130"
+ms.lasthandoff: 07/21/2020
+ms.locfileid: "86568852"
 ---
 # <a name="configure-certificate-authentication-in-aspnet-core"></a>Configurar la autenticación de certificados en ASP.NET Core
 
@@ -614,7 +614,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-La implementación de almacenamiento en caché predeterminada almacena los resultados en memoria. Puede proporcionar su propia memoria caché implementando `ICertificateValidationCache` y registrando la inserción de dependencias. Por ejemplo: `services.AddSingleton<ICertificateValidationCache, YourCache>()`.
+La implementación de almacenamiento en caché predeterminada almacena los resultados en memoria. Puede proporcionar su propia memoria caché implementando `ICertificateValidationCache` y registrando la inserción de dependencias. Por ejemplo, `services.AddSingleton<ICertificateValidationCache, YourCache>()`.
 
 ::: moniker-end
 
@@ -630,7 +630,7 @@ La renegociación de TLS era una forma antigua de implementar certificados de cl
 - HTTP/2 [prohíbe explícitamente](https://tools.ietf.org/html/rfc7540#section-9.2.1) la renegociación.
 - TLS 1,3 ha [quitado](https://tools.ietf.org/html/rfc8740#section-1) la compatibilidad con la renegociación.
 
-ASP.NET Core 5 Preview 4 y versiones posteriores agregan una compatibilidad más cómoda para los certificados de cliente opcionales. Para obtener más información, vea el [ejemplo de certificados opcionales](https://github.com/dotnet/aspnetcore/tree/9ce4a970a21bace3fb262da9591ed52359309592/src/Security/Authentication/Certificate/samples/Certificate.Optional.Sample).
+ASP.NET Core 5 Preview 7 y versiones posteriores agregan una compatibilidad más cómoda para los certificados de cliente opcionales. Para obtener más información, vea el [ejemplo de certificados opcionales](https://github.com/dotnet/aspnetcore/tree/9ce4a970a21bace3fb262da9591ed52359309592/src/Security/Authentication/Certificate/samples/Certificate.Optional.Sample).
 
 El siguiente enfoque admite certificados de cliente opcionales:
 

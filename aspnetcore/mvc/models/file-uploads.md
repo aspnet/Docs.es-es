@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/models/file-uploads
-ms.openlocfilehash: 055dc7295aad67f92fe5f4e8271a1543262257b5
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 720da8a8fe22f0e1911fd554c094661b4465a335
+ms.sourcegitcommit: d9ae1f352d372a20534b57e23646c1a1d9171af1
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85404605"
+ms.lasthandoff: 07/21/2020
+ms.locfileid: "86568839"
 ---
 # <a name="upload-files-in-aspnet-core"></a>Carga de archivos en ASP.NET Core
 
@@ -424,7 +424,7 @@ El `DisableFormValueModelBindingAttribute` se usa para deshabilitar el enlace de
 
 En la aplicación de ejemplo, `GenerateAntiforgeryTokenCookieAttribute` y `DisableFormValueModelBindingAttribute` se aplican como filtros a los modelos de aplicación de página de `/StreamedSingleFileUploadDb` y `/StreamedSingleFileUploadPhysical` en `Startup.ConfigureServices` mediante [ Razor las convenciones de páginas](xref:razor-pages/razor-pages-conventions):
 
-[!code-csharp[](file-uploads/samples/3.x/SampleApp/Startup.cs?name=snippet_AddRazorPages&highlight=8-11,17-20)]
+[!code-csharp[](file-uploads/samples/3.x/SampleApp/Startup.cs?name=snippet_AddRazorPages&highlight=7-10,16-19)]
 
 Dado que el enlace de modelos no lee el formulario, los parámetros enlazados desde el formulario no se enlazan (la consulta, la ruta y el encabezado siguen funcionando). El método de acción funciona directamente con la propiedad `Request`. Se usa un elemento `MultipartReader` para leer cada sección. Los datos de clave-valor se almacenan en un `KeyValueAccumulator`. Una vez leídas las secciones de varias partes, el contenido del `KeyValueAccumulator` se usa para enlazar los datos del formulario a un tipo de modelo.
 
@@ -456,7 +456,7 @@ La clase `FileHelpers` de la aplicación de ejemplo muestra varias comprobacione
 >
 > **No implemente nunca de manera indiscriminada el código de seguridad en una aplicación sin abordar estos requisitos.**
 
-### <a name="content-validation"></a>Validación de contenido
+### <a name="content-validation"></a>Validación del contenido
 
 **Use una API de detección de virus/malware de terceros en el contenido cargado.**
 
@@ -621,18 +621,17 @@ public void ConfigureServices(IServiceCollection services)
 En una Razor aplicación de páginas, aplique el filtro con una [Convención](xref:razor-pages/razor-pages-conventions) en `Startup.ConfigureServices` :
 
 ```csharp
-services.AddRazorPages()
-    .AddRazorPagesOptions(options =>
-    {
-        options.Conventions
-            .AddPageApplicationModelConvention("/FileUploadPage",
-                model.Filters.Add(
-                    new RequestFormLimitsAttribute()
-                    {
-                        // Set the limit to 256 MB
-                        MultipartBodyLengthLimit = 268435456
-                    });
-    });
+services.AddRazorPages(options =>
+{
+    options.Conventions
+        .AddPageApplicationModelConvention("/FileUploadPage",
+            model.Filters.Add(
+                new RequestFormLimitsAttribute()
+                {
+                    // Set the limit to 256 MB
+                    MultipartBodyLengthLimit = 268435456
+                });
+});
 ```
 
 En una Razor aplicación de páginas o en una aplicación MVC, aplique el filtro al método de acción o modelo de página:
@@ -669,18 +668,17 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 En una Razor aplicación de páginas, aplique el filtro con una [Convención](xref:razor-pages/razor-pages-conventions) en `Startup.ConfigureServices` :
 
 ```csharp
-services.AddRazorPages()
-    .AddRazorPagesOptions(options =>
-    {
-        options.Conventions
-            .AddPageApplicationModelConvention("/FileUploadPage",
-                model =>
-                {
-                    // Handle requests up to 50 MB
-                    model.Filters.Add(
-                        new RequestSizeLimitAttribute(52428800));
-                });
-    });
+services.AddRazorPages(options =>
+{
+    options.Conventions
+        .AddPageApplicationModelConvention("/FileUploadPage",
+            model =>
+            {
+                // Handle requests up to 50 MB
+                model.Filters.Add(
+                    new RequestSizeLimitAttribute(52428800));
+            });
+});
 ```
 
 En una Razor aplicación pages o MVC, aplique el filtro a la clase de controlador de páginas o al método de acción:
@@ -1185,7 +1183,7 @@ La clase `FileHelpers` de la aplicación de ejemplo muestra varias comprobacione
 >
 > **No implemente nunca de manera indiscriminada el código de seguridad en una aplicación sin abordar estos requisitos.**
 
-### <a name="content-validation"></a>Validación de contenido
+### <a name="content-validation"></a>Validación del contenido
 
 **Use una API de detección de virus/malware de terceros en el contenido cargado.**
 
