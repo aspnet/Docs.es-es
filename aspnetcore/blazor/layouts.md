@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/layouts
-ms.openlocfilehash: fe78a144b413bf97be83d20b11148e1856608f78
-ms.sourcegitcommit: 66fca14611eba141d455fe0bd2c37803062e439c
+ms.openlocfilehash: 684d7b76c7500ec19c90eb696ec0127692923297
+ms.sourcegitcommit: 14c3d111f9d656c86af36ecb786037bf214f435c
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85944241"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86176252"
 ---
 # <a name="aspnet-core-blazor-layouts"></a>Diseños de ASP.NET Core Blazor
 
@@ -39,7 +39,11 @@ En el ejemplo de código siguiente se muestra la plantilla de Razor de un compon
 
 [!code-razor[](layouts/sample_snapshot/3.x/MainLayout.razor?highlight=1,13)]
 
-En una aplicación basada en una de las plantillas de aplicación de Blazor, el componente de `MainLayout` (`MainLayout.razor`) se encuentra en la carpeta `Shared` de la aplicación.
+## <a name="mainlayout-component"></a>Componente de `MainLayout`
+
+En una aplicación basada en una de las plantillas de proyecto de Blazor, el componente `MainLayout` (`MainLayout.razor`) se encuentra en la carpeta `Shared` de la aplicación:
+
+[!code-razor[](./common/samples/3.x/BlazorWebAssemblySample/Shared/MainLayout.razor)]
 
 ## <a name="default-layout"></a>Diseño predeterminado
 

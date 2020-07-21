@@ -6,20 +6,20 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 2/25/2020
 no-loc:
-- Blazor
-- Blazor Server
-- Blazor WebAssembly
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
+- ':::no-loc(Blazor):::'
+- ':::no-loc(Blazor Server):::'
+- ':::no-loc(Blazor WebAssembly):::'
+- ':::no-loc(Identity):::'
+- ":::no-loc(Let's Encrypt):::"
+- ':::no-loc(Razor):::'
+- ':::no-loc(SignalR):::'
 uid: tutorials/first-web-api
-ms.openlocfilehash: 63f91086a7e9d71add7f7a5d58d96f46fa76353c
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 79f36168d0430ceee3794cfb5a4e29f3671ac73f
+ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85407790"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86212618"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>Tutorial: Creación de una API web con ASP.NET Core
 
@@ -114,9 +114,7 @@ En el diagrama siguiente, se muestra el diseño de la aplicación.
 
   ![Selección de plantilla de API de macOS](first-web-api-mac/_static/api_template.png)
 
-* Confirme que **Plataforma de destino** está establecido en **.NET Core 3.1**. Seleccione **Siguiente**.
-
-  ![Selección de .NET Core 3.1 de macOS](first-web-api-mac/_static/api_31_config.png)
+* En el cuadro de diálogo **Configure your new ASP.NET Core Web API** (Configurar la nueva API web de ASP.NET Core), seleccione la **plataforma de destino** .NET Core 3.x más reciente. Seleccione **Siguiente**.
 
 * Escriba *TodoApi* en **Nombre del proyecto** y seleccione **Crear**.
 
@@ -594,7 +592,7 @@ En el diagrama siguiente, se muestra el diseño de la aplicación.
 
 * En las versiones de Visual Studio para Mac anteriores a 8.6, seleccione **.NET Core** > **Aplicación** > **API** > **Siguiente**. En la versión 8.6 o posteriores, seleccione **Web y consola** > **Aplicación** > **API** > **Siguiente**.
   
-* En el cuadro de diálogo **Configurar la nueva API web de ASP.NET Core**, acepte la **plataforma de destino** predeterminada de * *.NET Core 2.2*.
+* En el cuadro de diálogo **Configure your new ASP.NET Core Web API** (Configurar la nueva API web de ASP.NET Core), seleccione la **plataforma de destino** .NET Core 2.x más reciente. Seleccione **Siguiente**.
 
 * Escriba *TodoApi* en **Nombre del proyecto** y seleccione **Crear**.
 
@@ -960,13 +958,13 @@ Para eliminar una tarea pendiente, hay que establecer el valor `type` de la llam
 
 ## <a name="add-authentication-support-to-a-web-api"></a>Agregar compatibilidad con la autenticación a una API web
 
-[!INCLUDE[](~/includes/IdentityServer4.md)]
+[!INCLUDE[](~/includes/:::no-loc(Identity):::Server4.md)]
 
-## <a name="additional-resources"></a>Recursos adicionales
+## <a name="additional-resources"></a>[!INCLUDE[](~/includes/IdentityServer4.md)]
 
-[Vea o descargue el código de ejemplo para este tutorial](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/first-web-api/samples). Vea [cómo descargarlo](xref:index#how-to-download-a-sample).
+Recursos adicionales [Vea o descargue el código de ejemplo para este tutorial](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/first-web-api/samples).
 
-Para obtener más información, vea los siguientes recursos:
+Vea [cómo descargarlo](xref:index#how-to-download-a-sample).
 
 * <xref:web-api/index>
 * <xref:tutorials/web-api-help-pages-using-swagger>
@@ -975,4 +973,4 @@ Para obtener más información, vea los siguientes recursos:
 * <xref:web-api/action-return-types>
 * <xref:host-and-deploy/azure-apps/index>
 * <xref:host-and-deploy/index>
-* [Versión en YouTube de este tutorial](https://www.youtube.com/watch?v=TTkhEyGBfAk)
+* Para obtener más información, vea los siguientes recursos:

@@ -5,7 +5,7 @@ description: Para crear en Visual Studio una aplicación hospedada Blazor con a
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/08/2020
+ms.date: 07/09/2020
 no-loc:
 - Blazor
 - Blazor Server
@@ -15,18 +15,21 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/hosted-with-identity-server
-ms.openlocfilehash: 001fa0885c4ef4f365d9849278d3aa36e7657c54
-ms.sourcegitcommit: f7873c02c1505c99106cbc708f37e18fc0a496d1
+ms.openlocfilehash: de1f8955693d2e73e624e2513b6ef4e075ff3406
+ms.sourcegitcommit: 6fb27ea41a92f6d0e91dfd0eba905d2ac1a707f7
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147729"
+ms.lasthandoff: 07/15/2020
+ms.locfileid: "86407702"
 ---
 # <a name="secure-an-aspnet-core-blazor-webassembly-hosted-app-with-identity-server"></a>Protección de una aplicación hospedada Blazor WebAssembly de ASP.NET Core con Identity Server
 
 Por [Javier Calvarro Nelson](https://github.com/javiercn) y [Luke Latham](https://github.com/guardrex)
 
 En este artículo se explica cómo crear una aplicación hospedada Blazor que usa [IdentityServer](https://identityserver.io/) para autenticar usuarios y llamadas API.
+
+> [!NOTE]
+> Para configurar una aplicación Blazor WebAssembly independiente u hospedada para que use una instancia de Identity Server externa existente, siga las instrucciones de <xref:blazor/security/webassembly/standalone-with-authentication-library>.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -148,7 +151,7 @@ Para obtener el control total del esquema de la base de datos, herede de una de 
 
 En `OidcConfigurationController` (`Controllers/OidcConfigurationController.cs`), el punto de conexión del cliente se aprovisiona para proporcionar parámetros de OIDC.
 
-### <a name="app-settings-files"></a>Archivo de configuración de la aplicación
+### <a name="app-settings"></a>Configuración de la aplicación
 
 En el archivo de configuración de la aplicación (`appsettings.json`), en la raíz del proyecto, la sección `IdentityServer` describe la lista de clientes configurados. En el siguiente ejemplo hay un solo cliente, cuyo nombre corresponde al nombre de la aplicación y se asigna por convención al parámetro `ClientId` de OAuth. El perfil señala el tipo de aplicación que se está configurando. El perfil se usa internamente para controlar las convenciones que simplifican el proceso de configuración del servidor. <!-- There are several profiles available, as explained in the [Application profiles](#application-profiles) section. -->
 
@@ -177,6 +180,22 @@ Si agrega autenticación a una aplicación, agregue el paquete manualmente al ar
   Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication" 
   Version="3.2.0" />
 ```
+
+### <a name="httpclient-configuration"></a>Configuración de `HttpClient`
+
+En `Program.Main` (`Program.cs`), hay configurada una instancia de <xref:System.Net.Http.HttpClient> (`HostIS.ServerAPI`) con nombre para proporcionar instancias de <xref:System.Net.Http.HttpClient> que incluyen tokens de acceso al realizar solicitudes a la API de servidor:
+
+```csharp
+builder.Services.AddHttpClient("HostIS.ServerAPI", 
+        client => client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress))
+    .AddHttpMessageHandler<BaseAddressAuthorizationMessageHandler>();
+
+builder.Services.AddTransient(sp => sp.GetRequiredService<IHttpClientFactory>()
+    .CreateClient("HostIS.ServerAPI"));
+```
+
+> [!NOTE]
+> Si va a configurar una aplicación Blazor WebAssembly para usar una instancia de Identity Server existente que no forma parte de una solución hospedada por Blazor, cambie el registro de la dirección base <xref:System.Net.Http.HttpClient> de <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType> (`builder.HostEnvironment.BaseAddress`) a la dirección URL del punto de conexión de autorización de API de la aplicación de servidor.
 
 ### <a name="api-authorization-support"></a>Compatibilidad con autorización de API
 

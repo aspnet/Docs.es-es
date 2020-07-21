@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/forms-validation
-ms.openlocfilehash: f31a1f1d8942c9d9654dc26e946c022cf21ed9d1
-ms.sourcegitcommit: fa89d6553378529ae86b388689ac2c6f38281bb9
+ms.openlocfilehash: b57e2a34f79691f7f2b1ed69cfad25de00c5ca13
+ms.sourcegitcommit: 14c3d111f9d656c86af36ecb786037bf214f435c
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86059869"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86176212"
 ---
 # <a name="aspnet-core-blazor-forms-and-validation"></a>Formularios y validación de Blazor de ASP.NET Core
 
@@ -72,6 +72,8 @@ En el ejemplo anterior:
 * El componente <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> adjunta la compatibilidad con la validación mediante anotaciones de datos.
 * El componente <xref:Microsoft.AspNetCore.Components.Forms.ValidationSummary> resume los mensajes de validación.
 * `HandleValidSubmit` se desencadena cuando el formulario se envía correctamente (supera la validación).
+
+## <a name="built-in-forms-components"></a>Componentes de formularios integrados
 
 Hay disponible un conjunto de componentes de entrada integrados para recibir y validar las entradas de usuario. Las entradas se validan cuando se cambian y cuando un formulario se envía. Los componentes de entrada disponibles se muestran en la siguiente tabla.
 

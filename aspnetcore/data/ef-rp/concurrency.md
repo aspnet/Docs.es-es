@@ -14,12 +14,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-rp/concurrency
-ms.openlocfilehash: 597f396237151f49a9ae333973e91d8f4f7c6ff1
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: ff9e01df002ac0fc94ced6d5d093099d66a14f36
+ms.sourcegitcommit: 14c3d111f9d656c86af36ecb786037bf214f435c
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85401381"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86176277"
 ---
 # <a name="part-8-razor-pages-with-ef-core-in-aspnet-core---concurrency"></a>Parte 8. Razor Pages con EF Core en ASP.NET Core: Simultaneidad
 
@@ -86,7 +86,7 @@ EF Core inicia excepciones `DbConcurrencyException` cuando detecta conflictos. E
 
 * Configurar EF Core para incluir los valores originales de las columnas configuradas como [tokens de simultaneidad](/ef/core/modeling/concurrency) en la cláusula Where de los comandos Update y Delete.
 
-  Cuando se llama a `SaveChanges`, la cláusula Where busca los valores originales de todas las propiedades anotadas con el atributo [ConcurrencyCheck](/dotnet/api/system.componentmodel.dataannotations.concurrencycheckattribute). La instrucción de actualización no encontrará una fila para actualizar si alguna de las propiedades de token de simultaneidad ha cambiado desde la primera vez que se ha leído la fila. EF Core interpreta que se trata de un conflicto de simultaneidad. Para las tablas de base de datos que tienen muchas columnas, este enfoque puede dar lugar a cláusulas Where muy grandes y puede requerir grandes cantidades de estado. Por tanto, generalmente este enfoque no se recomienda y no es el método usado en este tutorial.
+  Cuando se llama a `SaveChanges`, la cláusula Where busca los valores originales de todas las propiedades anotadas con el atributo <xref:System.ComponentModel.DataAnnotations.ConcurrencyCheckAttribute>. La instrucción de actualización no encontrará una fila para actualizar si alguna de las propiedades de token de simultaneidad ha cambiado desde la primera vez que se ha leído la fila. EF Core interpreta que se trata de un conflicto de simultaneidad. Para las tablas de base de datos que tienen muchas columnas, este enfoque puede dar lugar a cláusulas Where muy grandes y puede requerir grandes cantidades de estado. Por tanto, generalmente este enfoque no se recomienda y no es el método usado en este tutorial.
 
 * En la tabla de la base de datos, incluya una columna de seguimiento que pueda usarse para determinar si una fila ha cambiado.
 
@@ -98,7 +98,7 @@ En *Models/Department.cs*, agregue una propiedad de seguimiento denominada RowVe
 
 [!code-csharp[](intro/samples/cu30/Models/Department.cs?highlight=26,27)]
 
-El atributo [Timestamp](/dotnet/api/system.componentmodel.dataannotations.timestampattribute) es lo que identifica la columna como una columna de seguimiento de simultaneidad. La API fluida es una forma alternativa de especificar la propiedad de seguimiento:
+El atributo <xref:System.ComponentModel.DataAnnotations.TimestampAttribute> es lo que identifica la columna como una columna de seguimiento de simultaneidad. La API fluida es una forma alternativa de especificar la propiedad de seguimiento:
 
 ```csharp
 modelBuilder.Entity<Department>()
@@ -250,7 +250,7 @@ Actualice la página *Pages\Departments\Index.cshtml*:
 
 En el código siguiente se muestra la página actualizada:
 
-[!code-html[](intro/samples/cu30/Pages/Departments/Index.cshtml?highlight=5,8,29,48,51)]
+[!code-cshtml[](intro/samples/cu30/Pages/Departments/Index.cshtml?highlight=5,8,29,48,51)]
 
 ## <a name="update-the-edit-page-model"></a>Actualizar el modelo de la página Edit
 
@@ -258,7 +258,7 @@ Actualice *Pages\Departments\Edit.cshtml.cs* con el código siguiente:
 
 [!code-csharp[](intro/samples/cu30/Pages/Departments/Edit.cshtml.cs?name=snippet_All)]
 
-[OriginalValue](/dotnet/api/microsoft.entityframeworkcore.changetracking.propertyentry.originalvalue?view=efcore-2.0#Microsoft_EntityFrameworkCore_ChangeTracking_PropertyEntry_OriginalValue) se actualiza con el valor `rowVersion` de la entidad cuando se capturó en el método `OnGet`. EF Core genera un comando UPDATE de SQL con una cláusula WHERE que contiene el valor `RowVersion` original. Si no hay ninguna fila afectada por el comando UPDATE (ninguna fila tiene el valor `RowVersion` original), se produce una excepción `DbUpdateConcurrencyException`.
+<xref:Microsoft.EntityFrameworkCore.ChangeTracking.PropertyEntry.OriginalValue> se actualiza con el valor `rowVersion` de la entidad cuando se capturó en el método `OnGet`. EF Core genera un comando UPDATE de SQL con una cláusula WHERE que contiene el valor `RowVersion` original. Si no hay ninguna fila afectada por el comando UPDATE (ninguna fila tiene el valor `RowVersion` original), se produce una excepción `DbUpdateConcurrencyException`.
 
 [!code-csharp[](intro/samples/cu30/Pages/Departments/Edit.cshtml.cs?name=snippet_RowVersion&highlight=17-18)]
 
@@ -282,16 +282,16 @@ En el código resaltado siguiente se establece el valor `RowVersion` en el nuevo
 
 La instrucción `ModelState.Remove` es necesaria porque `ModelState` tiene el valor `RowVersion` antiguo. En la página de Razor, el valor `ModelState` de un campo tiene prioridad sobre los valores de propiedad de modelo cuando ambos están presentes.
 
-### <a name="update-the-razor-page"></a>Actualización de la página de Razor
+### <a name="update-the-edit-page"></a>Actualizar la página Edit
 
 Actualice *Pages/Departments/Edit.cshtml* con el código siguiente:
 
-[!code-html[](intro/samples/cu30/Pages/Departments/Edit.cshtml?highlight=1,14,16-17,37-39)]
+[!code-cshtml[](intro/samples/cu30/Pages/Departments/Edit.cshtml?highlight=1,14,16-17,37-39)]
 
 El código anterior:
 
 * Se actualiza la directiva `page` de `@page` a `@page "{id:int}"`.
-* Agrega una versión de fila oculta. Se debe agregar `RowVersion` para que la devolución enlace el valor.
+* Agrega una versión de fila oculta. Se debe agregar `RowVersion` para que el proceso postback enlace el valor.
 * Muestra el último byte de `RowVersion` para fines de depuración.
 * Reemplaza `ViewData` con `InstructorNameSL` fuertemente tipadas.
 
@@ -323,7 +323,7 @@ Esta ventana del explorador no planeaba cambiar el campo Name. Copie y pegue el 
 
 Vuelva a hacer clic en **Save**. Se guarda el valor especificado en la segunda pestaña del explorador. Verá los valores guardados en la página de índice.
 
-## <a name="update-the-delete-page"></a>Actualizar la página Delete
+## <a name="update-the-delete-page-model"></a>Actualización del modelo de página Delete
 
 Actualice *Pages/Departments/Delete.cshtml.cs* con el código siguiente:
 
@@ -335,11 +335,11 @@ La página Delete detecta los conflictos de simultaneidad cuando la entidad ha c
 * Se produce una excepción DbUpdateConcurrencyException.
 * Se llama a `OnGetAsync` con el `concurrencyError`.
 
-### <a name="update-the-delete-razor-page"></a>Actualización de la página de Razor Delete
+### <a name="update-the-delete-page"></a>Actualizar la página Delete
 
 Actualice *Pages/Departments/Delete.cshtml* con el código siguiente:
 
-[!code-html[](intro/samples/cu30/Pages/Departments/Delete.cshtml?highlight=1,10,39,51)]
+[!code-cshtml[](intro/samples/cu30/Pages/Departments/Delete.cshtml?highlight=1,10,39,42,51)]
 
 En el código anterior se realizan los cambios siguientes:
 
@@ -347,7 +347,7 @@ En el código anterior se realizan los cambios siguientes:
 * Se agrega un mensaje de error.
 * Se reemplaza FirstMidName por FullName en el campo **Administrator**.
 * Se cambia `RowVersion` para que muestre el último byte.
-* Agrega una versión de fila oculta. Se debe agregar `RowVersion` para que la devolución de postgit enlace el valor.
+* Agrega una versión de fila oculta. Se debe agregar `RowVersion` para que el proceso postback enlace el valor.
 
 ### <a name="test-concurrency-conflicts"></a>Prueba los conflictos de simultaneidad
 
@@ -365,7 +365,7 @@ Cambie el presupuesto en la primera pestaña del explorador y haga clic en **Sav
 
 El explorador muestra la página de índice con el valor modificado y el indicador rowVersion actualizado. Tenga en cuenta el indicador rowVersion actualizado, que se muestra en el segundo postback en la otra pestaña.
 
-Elimine el departamento de prueba de la segunda pestaña. Se mostrará un error de simultaneidad con los valores actuales de la base de datos. Al hacer clic en **Delete** se elimina la entidad, a menos que se haya actualizado `RowVersion`. El departamento se ha eliminado.
+Elimine el departamento de prueba de la segunda pestaña. Se mostrará un error de simultaneidad con los valores actuales de la base de datos. Al hacer clic en **Eliminar** se elimina la entidad, a menos que se haya actualizado `RowVersion`.
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
@@ -550,7 +550,7 @@ Actualice la página Index:
 
 El marcado siguiente muestra la página actualizada:
 
-[!code-html[](intro/samples/cu/Pages/Departments/Index.cshtml?highlight=5,8,29,47,50)]
+[!code-cshtml[](intro/samples/cu/Pages/Departments/Index.cshtml?highlight=5,8,29,47,50)]
 
 ### <a name="update-the-edit-page-model"></a>Actualizar el modelo de la página Edit
 
@@ -582,7 +582,7 @@ La instrucción `ModelState.Remove` es necesaria porque `ModelState` tiene el va
 
 Actualice *Pages/Departments/Edit.cshtml* con el siguiente marcado:
 
-[!code-html[](intro/samples/cu/Pages/Departments/Edit.cshtml?highlight=1,14,16-17,37-39)]
+[!code-cshtml[](intro/samples/cu/Pages/Departments/Edit.cshtml?highlight=1,14,16-17,37-39)]
 
 El marcado anterior:
 
@@ -637,7 +637,7 @@ La página Delete detecta los conflictos de simultaneidad cuando la entidad ha c
 
 Actualice *Pages/Departments/Delete.cshtml* con el código siguiente:
 
-[!code-html[](intro/samples/cu/Pages/Departments/Delete.cshtml?highlight=1,10,39,51)]
+[!code-cshtml[](intro/samples/cu/Pages/Departments/Delete.cshtml?highlight=1,10,39,51)]
 
 En el código anterior se realizan los cambios siguientes:
 
@@ -663,7 +663,7 @@ Cambie el presupuesto en la primera pestaña del explorador y haga clic en **Sav
 
 El explorador muestra la página de índice con el valor modificado y el indicador rowVersion actualizado. Tenga en cuenta el indicador rowVersion actualizado, que se muestra en el segundo postback en la otra pestaña.
 
-Elimine el departamento de prueba de la segunda pestaña. Se mostrará un error de simultaneidad con los valores actuales de la base de datos. Al hacer clic en **Delete** se elimina la entidad, a menos que se haya actualizado `RowVersion`. El departamento se ha eliminado.
+Elimine el departamento de prueba de la segunda pestaña. Se mostrará un error de simultaneidad con los valores actuales de la base de datos. Al hacer clic en **Eliminar** se elimina la entidad, a menos que se haya actualizado `RowVersion`.
 
 Vea [Herencia](xref:data/ef-mvc/inheritance) para obtener información sobre cómo se hereda un modelo de datos.
 

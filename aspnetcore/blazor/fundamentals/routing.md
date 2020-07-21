@@ -5,7 +5,7 @@ description: Obtenga información sobre cómo enrutar solicitudes en aplicacione
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/01/2020
+ms.date: 07/14/2020
 no-loc:
 - Blazor
 - Blazor Server
@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/routing
-ms.openlocfilehash: c41736e7c5a3e59a08b579de54f9810381c8df1c
-ms.sourcegitcommit: 66fca14611eba141d455fe0bd2c37803062e439c
+ms.openlocfilehash: 4f85c4a9803482f39446dda599f10829c9879f27
+ms.sourcegitcommit: 6fb27ea41a92f6d0e91dfd0eba905d2ac1a707f7
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85944183"
+ms.lasthandoff: 07/15/2020
+ms.locfileid: "86407767"
 ---
 # <a name="aspnet-core-blazor-routing"></a>Enrutamiento de Blazor de ASP.NET Core
 
@@ -35,6 +35,8 @@ Blazor Server se integra en el [enrutamiento de puntos de conexión de ASP.NET C
 [!code-csharp[](routing/samples_snapshot/3.x/Startup.cs?highlight=5)]
 
 La configuración más común consiste en enrutar todas las solicitudes a una página de Razor, que actúa como el host del lado servidor de la aplicación Blazor Server. Convencionalmente, la página del *host* se suele llamar `_Host.cshtml`. La ruta especificada en el archivo de host se denomina *ruta de reserva* porque tiene una prioridad baja en la búsqueda de rutas, y se tiene en cuenta solo cuando no se encuentran coincidencias en otras rutas. Esto permite a la aplicación usar otros controladores y páginas sin interferir con la aplicación Blazor Server.
+
+Para información sobre cómo configurar <xref:Microsoft.AspNetCore.Builder.RazorPagesEndpointRouteBuilderExtensions.MapFallbackToPage%2A> para el hospedaje de servidores de direcciones URL no raíz, consulte <xref:blazor/host-and-deploy/index#app-base-path>.
 
 ## <a name="route-templates"></a>Plantillas de ruta
 
@@ -199,6 +201,36 @@ Se representa el siguiente marcado HTML:
 <a href="my-page" target="_blank">My page</a>
 ```
 
+> [!WARNING]
+> Debido a la forma en que Blazor representa el contenido secundario, la representación de componentes `NavLink` dentro de un bucle `for` requiere una variable de índice local si se usa la variable de bucle incremental en el contenido del componente `NavLink` (secundario):
+>
+> ```razor
+> @for (int c = 0; c < 10; c++)
+> {
+>     var current = c;
+>     <li ...>
+>         <NavLink ... href="@c">
+>             <span ...></span> @current
+>         </NavLink>
+>     </li>
+> }
+> ```
+>
+> El uso de una variable de índice en este escenario es un requisito para **cualquier** componente secundario que use una variable de bucle en su [contenido secundario](xref:blazor/components/index#child-content), no solo para el componente `NavLink`.
+>
+> También puede usar un bucle `foreach` con <xref:System.Linq.Enumerable.Range%2A?displayProperty=nameWithType>:
+>
+> ```razor
+> @foreach(var c in Enumerable.Range(0,10))
+> {
+>     <li ...>
+>         <NavLink ... href="@c">
+>             <span ...></span> @c
+>         </NavLink>
+>     </li>
+> }
+> ```
+
 ## <a name="uri-and-navigation-state-helpers"></a>Aplicaciones auxiliares de URI y estado de navegación
 
 Use <xref:Microsoft.AspNetCore.Components.NavigationManager> para trabajar con los URI y con la navegación en el código de C#. <xref:Microsoft.AspNetCore.Components.NavigationManager> proporciona el evento y los métodos que se muestran en la siguiente tabla.
@@ -262,3 +294,46 @@ public void Dispose()
 * <xref:Microsoft.AspNetCore.Components.Routing.LocationChangedEventArgs.IsNavigationIntercepted>: si es `true`, Blazor ha interceptado la navegación del explorador. Si `false`, <xref:Microsoft.AspNetCore.Components.NavigationManager.NavigateTo%2A?displayProperty=nameWithType> hizo que se produjera la navegación.
 
 Para obtener más información sobre la eliminación de componentes, vea <xref:blazor/components/lifecycle#component-disposal-with-idisposable>.
+
+## <a name="query-string-and-parse-parameters"></a>Parámetros de cadena de consulta y de análisis
+
+La cadena de consulta de una solicitud se puede obtener de la propiedad <xref:Microsoft.AspNetCore.Components.NavigationManager.Uri> de <xref:Microsoft.AspNetCore.Components.NavigationManager>:
+
+```razor
+@inject NavigationManager Navigation
+
+...
+
+var query = new Uri(Navigation.Uri).Query;
+```
+
+Para analizar los parámetros de una cadena de consulta:
+
+* Agregue una referencia de paquete para [Microsoft.AspNetCore.webutilities](https://www.nuget.org/packages/Microsoft.AspNetCore.WebUtilities).
+* Obtenga el valor después de analizar la cadena de consulta con <xref:Microsoft.AspNetCore.WebUtilities.QueryHelpers.ParseQuery%2A?displayProperty=nameWithType>.
+
+```razor
+@page "/"
+@using Microsoft.AspNetCore.WebUtilities
+@inject NavigationManager NavigationManager
+
+<h1>Query string parse example</h1>
+
+<p>Value: @queryValue</p>
+
+@code {
+    private string queryValue = "Not set";
+
+    protected override void OnInitialized()
+    {
+        var query = new Uri(NavigationManager.Uri).Query;
+
+        if (QueryHelpers.ParseQuery(query).TryGetValue("{KEY}", out var value))
+        {
+            queryValue = value;
+        }
+    }
+}
+```
+
+El marcador de posición `{KEY}` del ejemplo anterior es la clave del parámetro de la cadena de consulta. Por ejemplo, el par clave-valor de dirección URL `?ship=Tardis` utiliza una clave de `ship`.

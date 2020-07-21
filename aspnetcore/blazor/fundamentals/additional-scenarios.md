@@ -5,7 +5,7 @@ description: Obtenga información sobre más escenarios de configuración del mo
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/07/2020
+ms.date: 07/10/2020
 no-loc:
 - Blazor
 - Blazor Server
@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/additional-scenarios
-ms.openlocfilehash: e62cb2ab865fbf57166d5ec3d1344183c00c2095
-ms.sourcegitcommit: fa89d6553378529ae86b388689ac2c6f38281bb9
+ms.openlocfilehash: b28e4e43b88fcf8eab9e8959142cca21223c57ff
+ms.sourcegitcommit: e216e8f4afa21215dc38124c28d5ee19f5ed7b1e
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86059849"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86239639"
 ---
 # <a name="aspnet-core-blazor-hosting-model-configuration"></a>Configuración del modelo de hospedaje de Blazor en ASP.NET Core
 
@@ -129,23 +129,107 @@ No se admite la representación de componentes de servidor desde una página HTM
 
 *Esta sección es aplicable a Blazor Server.*
 
-En ocasiones tendrá que configurar el cliente de SignalR que usan las aplicaciones Blazor Server. Por ejemplo, es posible que quiera configurar el registro en el cliente de SignalR para diagnosticar un problema de conexión.
+Configure el cliente SignalR que usan las aplicaciones Blazor Server en el archivo `Pages/_Host.cshtml`. Coloque un script que llame a `Blazor.start` después del script `_framework/blazor.server.js` y dentro de la etiqueta `</body>`.
 
-Para configurar el cliente de SignalR en el archivo `Pages/_Host.cshtml`:
+### <a name="logging"></a>Registro
+
+Para configurar el registro de cliente de SignalR:
 
 * Agregue un atributo `autostart="false"` a la etiqueta `<script>` para el script `blazor.server.js`.
-* Llame a `Blazor.start` y pase un objeto de configuración que especifique el generador de SignalR.
+* Pase un objeto de configuración (`configureSignalR`) que llame a `configureLogging` con el nivel de registro en el generador de cliente.
 
-```html
-<script src="_framework/blazor.server.js" autostart="false"></script>
-<script>
-  Blazor.start({
-    configureSignalR: function (builder) {
-      builder.configureLogging("information"); // LogLevel.Information
-    }
-  });
-</script>
+```cshtml
+    ...
+
+    <script src="_framework/blazor.server.js" autostart="false"></script>
+    <script>
+      Blazor.start({
+        configureSignalR: function (builder) {
+          builder.configureLogging("information");
+        }
+      });
+    </script>
+</body>
 ```
+
+En el ejemplo anterior, `information` es equivalente a un nivel de registro de <xref:Microsoft.Extensions.Logging.LogLevel.Information?displayProperty=nameWithType>.
+
+### <a name="modify-the-reconnection-handler"></a>Modificación del controlador de reconexión
+
+Los eventos de conexión del circuito del controlador de reconexión pueden modificarse para obtener comportamientos personalizados, por ejemplo:
+
+* Para notificar al usuario si la conexión se ha quitado.
+* Para realizar el registro (desde el cliente) cuando un circuito está conectado.
+
+Para modificar los eventos de conexión:
+
+* Agregue un atributo `autostart="false"` a la etiqueta `<script>` para el script `blazor.server.js`.
+* Registre las devoluciones de llamada de los cambios de conexión para las conexiones quitadas (`onConnectionDown`) y las conexiones establecidas/restablecidas (`onConnectionUp`). Se debe especificar **tanto** `onConnectionDown` como `onConnectionUp`.
+
+```cshtml
+    ...
+
+    <script src="_framework/blazor.server.js" autostart="false"></script>
+    <script>
+      Blazor.start({
+        reconnectionHandler: {
+          onConnectionDown: (options, error) => console.error(error);
+          onConnectionUp: () => console.log("Up, up, and away!");
+        }
+      });
+    </script>
+</body>
+```
+
+### <a name="adjust-the-reconnection-retry-count-and-interval"></a>Ajustar el número y el intervalo de reintentos de reconexión
+
+Para ajustar el número y el intervalo de reintentos de reconexión, siga estos pasos:
+
+* Agregue un atributo `autostart="false"` a la etiqueta `<script>` para el script `blazor.server.js`.
+* Establezca el número de reintentos (`maxRetries`) y el período en milisegundos permitido para cada reintento (`retryIntervalMilliseconds`).
+
+```cshtml
+    ...
+
+    <script src="_framework/blazor.server.js" autostart="false"></script>
+    <script>
+      Blazor.start({
+        reconnectionOptions: {
+          maxRetries: 3,
+          retryIntervalMilliseconds: 2000
+        }
+      });
+    </script>
+</body>
+```
+
+### <a name="hide-or-replace-the-reconnection-display"></a>Ocultar o reemplazar la pantalla de reconexión
+
+Para ocultar la pantalla de reconexión:
+
+* Agregue un atributo `autostart="false"` a la etiqueta `<script>` para el script `blazor.server.js`.
+* Establezca el valor `_reconnectionDisplay` del controlador de reconexión en un objeto vacío (`{}` o `new Object()`).
+
+```cshtml
+    ...
+
+    <script src="_framework/blazor.server.js" autostart="false"></script>
+    <script>
+      window.addEventListener('beforeunload', function () {
+        Blazor.defaultReconnectionHandler._reconnectionDisplay = {};
+      });
+    </script>
+</body>
+```
+
+Para reemplazar la pantalla de reconexión, establezca `_reconnectionDisplay` del ejemplo anterior en el elemento que se va a mostrar:
+
+```javascript
+Blazor.defaultReconnectionHandler._reconnectionDisplay = 
+  document.getElementById("{ELEMENT ID}");
+```
+
+El marcador de posición `{ELEMENT ID}` es el identificador del elemento HTML que se va a mostrar.
 
 ## <a name="additional-resources"></a>Recursos adicionales
 

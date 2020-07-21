@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/routing
-ms.openlocfilehash: 25464817314f79c5bfd11d982cc9b09a3c72df15
-ms.sourcegitcommit: fa89d6553378529ae86b388689ac2c6f38281bb9
+ms.openlocfilehash: 18f1aee5ac33b17914bd182e46453120e14b31ab
+ms.sourcegitcommit: 14c3d111f9d656c86af36ecb786037bf214f435c
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86060350"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86176207"
 ---
 # <a name="routing-in-aspnet-core"></a>Enrutamiento en ASP.NET Core
 
@@ -936,7 +936,7 @@ La declaración de un tipo propio permite agregar funcionalidad específica del 
 app.UseEndpoints(endpoints =>
 {
     // Your framework
-    endpoints.MapMyFramework(...).RequrireAuthorization()
+    endpoints.MapMyFramework(...).RequireAuthorization()
                                  .WithMyFrameworkFeature(awesome: true);
 
     endpoints.MapHealthChecks("/healthz");
@@ -988,7 +988,7 @@ app.UseAuthorization(new AuthorizationPolicy() { ... });
 app.UseEndpoints(endpoints =>
 {
     // Your framework
-    endpoints.MapMyFramework(...).RequrireAuthorization();
+    endpoints.MapMyFramework(...).RequireAuthorization();
 });
 ```
 

@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/start-mvc
-ms.openlocfilehash: 01321d68defafbe79371250669f921307bcfdba6
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: d4eb1744b1186704603430584b3da0793f90ee49
+ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85407049"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86213082"
 ---
 # <a name="get-started-with-aspnet-core-mvc"></a>Introducción a ASP.NET Core MVC
 
@@ -106,14 +106,12 @@ Para realizar el tutorial debe estar familiarizado con VS Code. Para más inform
 
   ![Selección de plantilla de aplicación web de macOS](start-mvc/_static/web_app_template_vsmac.png)
 
-* Confirme las configuraciones siguientes:
+* En el cuadro de diálogo **Configure your new Web Application** (Configurar la nueva aplicación web):
 
-  * **Plataforma de destino** establecida en **.NET Core 3.1**.
-  * **Autenticación** establecida en **Sin autenticación**.
-   
+  * Asegúrese de que la **autenticación** esté establecida en **Sin autenticación**.
+  * Si se presenta una opción para seleccionar una **plataforma de destino**, seleccione la versión 3.x más reciente.
+
   Seleccione **Siguiente**.
-
-  ![Selección de .NET Core 3.1 de macOS](start-mvc/_static/new_project_31_vsmac.png)
 
 * Asigne el nombre **MvcMovie** al proyecto y, después, seleccione **Crear**.
 
@@ -259,9 +257,12 @@ Para realizar el tutorial debe estar familiarizado con VS Code. Para más inform
 
 * En las versiones de Visual Studio para Mac anteriores a 8.6, seleccione **.NET Core** > **Aplicación** > **Aplicación web (controlador de vista de modelos)**  > **Siguiente**. En la versión 8.6 o posteriores, seleccione **Web y consola** > **Aplicación** > **Aplicación web (controlador de vista de modelos)**  > **Siguiente**.
 
-* En el cuadro de diálogo **Configurar la nueva API web de ASP.NET Core**, acepte el **Marco de trabajo de destino** predeterminado de **.NET Core 2.2**.
+* En el cuadro de diálogo **Configure your new Web Application** (Configurar la nueva aplicación web):
 
-  ![Selección de .NET Core 2.2 de macOS](./start-mvc/_static/new_project_22_vsmac.png)
+  * Asegúrese de que la **autenticación** esté establecida en **Sin autenticación**.
+  * Si se presenta una opción para seleccionar una **plataforma de destino**, seleccione la versión 2.x más reciente.
+
+  Seleccione **Siguiente**.
 
 * Asigne el nombre **MvcMovie** al proyecto y, después, seleccione **Crear**.
 

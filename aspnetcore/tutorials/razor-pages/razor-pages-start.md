@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/razor-pages-start
-ms.openlocfilehash: 97e3f60480bc8e7e88c8361e5b13f02d98765d9e
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 77b230f14b4eef60d771daf8fe09288a9dd3c69c
+ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85405307"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86212995"
 ---
 # <a name="tutorial-get-started-with-razor-pages-in-aspnet-core"></a>Tutorial: Introducción a Razor Pages en ASP.NET Core
 
@@ -67,7 +67,7 @@ Al final de este tutorial, tendrá una aplicación web de Razor Pages que compil
 * En el menú **Archivo** de Visual Studio, seleccione **Nuevo** > **Proyecto**.
 * Cree una nueva aplicación web de ASP.NET Core y seleccione **Siguiente**.
   ![Nueva aplicación web de ASP.NET Core](razor-pages-start/_static/np_2.1.png)
-* Asigne al proyecto el nombre **RazorPagesMovie**. Es importante asignarle el nombre *RazorPagesMovie* para que los espacios de nombres coincidan al copiar y pegar el código.
+* Asigne al proyecto el nombre **RazorPagesMovie**. Es importante asignarle el nombre *RazorPagesMovie* al proyecto para que los espacios de nombres coincidan al copiar y pegar el código.
   ![Nueva aplicación web de ASP.NET Core](razor-pages-start/_static/config.png)
 
 * Seleccione **ASP.NET Core 3.1** en la lista desplegable, después **Aplicación web** y, por último, **Crear**.
@@ -91,10 +91,10 @@ Al final de este tutorial, tendrá una aplicación web de Razor Pages que compil
   code -r RazorPagesMovie
   ```
 
-  * El comando `dotnet new` crea un proyecto de Razor en la carpeta *RazorPagesMovie*.
-  * El comando `code` abre la carpeta *RazorPagesMovie* en la instancia actual de Visual Studio Code.
+  * El comando `dotnet new` crea un proyecto de Razor Pages en la carpeta *RazorPagesMovie*.
+  * El comando `code` abre la carpeta *RazorPagesMovie* en la instancia actual de Visual Studio Code.
 
-* Cuando el icono de llama de OmniSharp de la barra de estado se ponga verde, aparecerá un cuadro de diálogo que pregunta **Required assets to build and debug are missing from 'RazorPagesMovie'. Add them?** (Faltan los activos necesarios para compilar y depurar en "RazorPagesMovie". ¿Desea agregarlos?). Seleccione **Sí**.
+* Cuando el icono de llama de OmniSharp de la barra de estado se pone en verde, aparece un cuadro de diálogo en el que se le indicará que **faltan los recursos necesarios para compilar y depurar en RazorPagesMovie. Add them?** (Faltan los activos necesarios para compilar y depurar en "RazorPagesMovie". ¿Desea agregarlos?). Seleccione **Sí**.
 
   Un directorio *.vscode*, que contiene archivos *launch.json* y *tasks.json*, se agrega al directorio raíz del proyecto.
 
@@ -108,16 +108,14 @@ Al final de este tutorial, tendrá una aplicación web de Razor Pages que compil
 
   ![Selección de plantilla de aplicación web de macOS](razor-pages-start/_static/web_app_template_vsmac.png)
 
-* Confirme las configuraciones siguientes:
+* En el cuadro de diálogo **Configure your new Web Application** (Configurar la nueva aplicación web):
 
-  * **Plataforma de destino** establecida en **.NET Core 3.1**.
-  * **Autenticación** establecida en **Sin autenticación**.
-   
+  * Asegúrese de que la **autenticación** esté establecida en **Sin autenticación**.
+  * Si se presenta una opción para seleccionar una **plataforma de destino**, seleccione la versión 3.x más reciente.
+
   Seleccione **Siguiente**.
 
-  ![Selección de .NET Core 3.1 de macOS](razor-pages-start/_static/targetframework3.png)
-
-* Asigne el nombre **RazorPagesMovie** al proyecto y, después, seleccione **Crear**.
+* Asigne al proyecto el nombre **RazorPagesMovie** y, luego, seleccione **Crear**.
 
   ![Nombre del proyecto en macOS](razor-pages-start/_static/RazorPagesMovie.png)
 
@@ -216,7 +214,7 @@ Al final de este tutorial, tendrá una aplicación web de Razor Pages que compil
 
   ![Nueva aplicación web de ASP.NET Core](razor-pages-start/_static/np_2.1.png)
 
-* Asigne al proyecto el nombre **RazorPagesMovie**. Es importante asignarle el nombre *RazorPagesMovie* para que los espacios de nombres coincidan al copiar y pegar el código.
+* Asigne al proyecto el nombre **RazorPagesMovie**. Es importante asignarle el nombre *RazorPagesMovie* al proyecto para que los espacios de nombres coincidan al copiar y pegar el código.
 
   ![Nueva aplicación web de ASP.NET Core](razor-pages-start/_static/config.png)
 
@@ -241,10 +239,10 @@ Al final de este tutorial, tendrá una aplicación web de Razor Pages que compil
   code -r RazorPagesMovie
   ```
 
-  * El comando `dotnet new` crea un proyecto de Razor en la carpeta *RazorPagesMovie*.
-  * El comando `code` abre la carpeta *RazorPagesMovie* en la instancia actual de Visual Studio Code.
+  * El comando `dotnet new` crea un proyecto de Razor Pages en la carpeta *RazorPagesMovie*.
+  * El comando `code` abre la carpeta *RazorPagesMovie* en la instancia actual de Visual Studio Code.
 
-* Cuando el icono de llama de OmniSharp de la barra de estado se ponga verde, aparecerá un cuadro de diálogo que pregunta **Required assets to build and debug are missing from 'RazorPagesMovie'. Add them?** (Faltan los activos necesarios para compilar y depurar en "RazorPagesMovie". ¿Desea agregarlos?). Seleccione **Sí**.
+* Cuando el icono de llama de OmniSharp de la barra de estado se pone en verde, aparece un cuadro de diálogo en el que se le indicará que **faltan los recursos necesarios para compilar y depurar en RazorPagesMovie. Add them?** (Faltan los activos necesarios para compilar y depurar en "RazorPagesMovie". ¿Desea agregarlos?). Seleccione **Sí**.
 
   Un directorio *.vscode*, que contiene archivos *launch.json* y *tasks.json*, se agrega al directorio raíz del proyecto.
 
@@ -256,11 +254,14 @@ Al final de este tutorial, tendrá una aplicación web de Razor Pages que compil
 
 * En las versiones de Visual Studio para Mac anteriores a 8.6, seleccione **.NET Core** > **Aplicación** > **Aplicación web** > **Siguiente**. En la versión 8.6 o posteriores, seleccione **Web y consola** > **Aplicación** > **Aplicación web** > **Siguiente**.
 
-* En el cuadro de diálogo **Configure your new ASP.NET Core Web API** (Configurar la nueva API web de ASP.NET Core), establezca la **plataforma de destino** en **.NET Core 3.1**.
+* En el cuadro de diálogo **Configure your new Web Application** (Configurar la nueva aplicación web):
 
-  ![Selección de .NET Core 3.0 de macOS](razor-pages-start/_static/targetframework3.png)
+  * Asegúrese de que la **autenticación** esté establecida en **Sin autenticación**.
+  * Si se presenta una opción para seleccionar una **plataforma de destino**, seleccione la versión 2.x más reciente.
 
-* Asigne el nombre **RazorPagesMovie** al proyecto y, después, seleccione **Crear**.
+  Seleccione **Siguiente**.
+
+* Asigne al proyecto el nombre **RazorPagesMovie** y, luego, seleccione **Crear**.
 
   ![nameproj](razor-pages-start/_static/RazorPagesMovie.png)
 
