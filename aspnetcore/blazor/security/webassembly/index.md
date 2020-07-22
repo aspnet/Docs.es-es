@@ -5,7 +5,7 @@ description: Obtenga información sobre cómo proteger aplicaciones WebAssemlby 
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 06/01/2020
+ms.date: 07/16/2020
 no-loc:
 - Blazor
 - Blazor Server
@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/index
-ms.openlocfilehash: 0ff580dd7cbefdfe3121b30490f99e0235d93bc3
-ms.sourcegitcommit: 14c3d111f9d656c86af36ecb786037bf214f435c
+ms.openlocfilehash: fbb3f6d254e6d294edc7af59d7980a1d67e4a801
+ms.sourcegitcommit: d9ae1f352d372a20534b57e23646c1a1d9171af1
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86176153"
+ms.lasthandoff: 07/21/2020
+ms.locfileid: "86568813"
 ---
 # <a name="secure-aspnet-core-blazor-webassembly"></a>Protección de ASP.NET Core Blazor WebAssembly
 
@@ -73,6 +73,22 @@ Para obtener más información y ejemplos, vea <xref:blazor/security/webassembly
 En aplicaciones de Blazor WebAssembly, las comprobaciones de autorización pueden omitirse porque los usuarios pueden modificar todos los códigos del lado cliente. Lo mismo se aplica a todas las tecnologías de aplicaciones del lado cliente, incluidas las plataformas JavaScript SPA o las aplicaciones nativas para cualquier sistema operativo.
 
 **Realice siempre las comprobaciones de autorización en el servidor dentro de cualquier punto de conexión de la API al que acceda su aplicación del lado cliente.**
+
+## <a name="require-authorization-for-the-entire-app"></a>Requerimiento de autorización para toda la aplicación
+
+Aplique el [atributo `[Authorize]`](xref:blazor/security/index#authorize-attribute) ([documentación de la API ](xref:System.Web.Mvc.AuthorizeAttribute)) a cada componente Razor de la aplicación siguiendo una de las estrategias siguientes:
+
+* Uso de la directiva [`@attribute`](xref:mvc/views/razor#attribute) en el archivo `_Imports.razor`:
+
+  ```razor
+  @using Microsoft.AspNetCore.Authorization
+  @attribute [Authorize]
+  ```
+
+* Agregue el atributo a cada componente Razor de la carpeta `Pages`.
+
+> [!NOTE]
+> **No** se admite la configuración de un elemento <xref:Microsoft.AspNetCore.Authorization.AuthorizationOptions.FallbackPolicy?displayProperty=nameWithType> en una directiva con <xref:Microsoft.AspNetCore.Authorization.AuthorizationPolicyBuilder.RequireAuthenticatedUser%2A>.
 
 ## <a name="refresh-tokens"></a>Tokens de actualización
 
