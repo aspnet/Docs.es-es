@@ -13,12 +13,12 @@ no-loc:
 - ':::no-loc(Razor):::'
 - ':::no-loc(SignalR):::'
 uid: security/authentication/identity
-ms.openlocfilehash: dd3296db568700a363c427398f02239846a46ada
-ms.sourcegitcommit: d9ae1f352d372a20534b57e23646c1a1d9171af1
+ms.openlocfilehash: 25070e90050db9dca8b003ae782662811096526a
+ms.sourcegitcommit: 1b89fc58114a251926abadfd5c69c120f1ba12d8
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/21/2020
-ms.locfileid: "86445441"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87160311"
 ---
 # <a name="introduction-to-no-locidentity-on-aspnet-core"></a>Introducción a :::no-loc(Identity)::: en ASP.net Core
 
@@ -32,6 +32,8 @@ Por [Rick Anderson](https://twitter.com/RickAndMSFT)
 * Administra usuarios, contraseñas, datos de perfil, roles, notificaciones, tokens, confirmación de correo electrónico, etc.
 
 Los usuarios pueden crear una cuenta con la información de inicio de sesión almacenada en :::no-loc(Identity)::: o pueden utilizar un proveedor de inicio de sesión externo. Entre los proveedores de inicio de sesión externos admitidos se incluyen [Facebook, Google, cuenta de Microsoft y Twitter](xref:security/authentication/social/index).
+
+[!INCLUDE[](~/includes/requireAuth.md)]
 
 El [ :::no-loc(Identity)::: código fuente](https://github.com/dotnet/AspNetCore/tree/master/src/:::no-loc(Identity):::) está disponible en github. [Scaffolding :::no-loc(Identity)::: ](xref:security/authentication/scaffold-identity) y vea los archivos generados para revisar la interacción de la plantilla con :::no-loc(Identity)::: .
 

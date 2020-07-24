@@ -1,64 +1,64 @@
 ---
-title: Configurar ASP.NET CoreIdentity
+title: 'Configurar ASP.NET Core:::no-loc(Identity):::'
 author: AdrienTorris
-description: Comprenda ASP.NET Core Identity valores predeterminados y aprenda a configurar Identity las propiedades para usar valores personalizados.
+description: 'Comprenda ASP.NET Core :::no-loc(Identity)::: valores predeterminados y aprenda a configurar :::no-loc(Identity)::: las propiedades para usar valores personalizados.'
 ms.author: riande
 ms.custom: mvc
 ms.date: 02/11/2019
 no-loc:
-- Blazor
-- Blazor Server
-- Blazor WebAssembly
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
+- ':::no-loc(Blazor):::'
+- ':::no-loc(Blazor Server):::'
+- ':::no-loc(Blazor WebAssembly):::'
+- ':::no-loc(Identity):::'
+- ":::no-loc(Let's Encrypt):::"
+- ':::no-loc(Razor):::'
+- ':::no-loc(SignalR):::'
 uid: security/authentication/identity-configuration
-ms.openlocfilehash: 262101594d57ad63bb0bac4da3cefa8d8d380908
-ms.sourcegitcommit: 3544941682869734ea0113e24e02ed0ec9e1a9ec
+ms.openlocfilehash: 5c999b426742cf75b1997f5b40223e2dda112901
+ms.sourcegitcommit: 1b89fc58114a251926abadfd5c69c120f1ba12d8
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2020
-ms.locfileid: "86464532"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87160295"
 ---
-# <a name="configure-aspnet-core-identity"></a>Configurar ASP.NET CoreIdentity
+# <a name="configure-aspnet-core-no-locidentity"></a>Configurar ASP.NET Core:::no-loc(Identity):::
 
-ASP.NET Core Identity usa valores predeterminados para la configuración, como la Directiva de contraseñas, el bloqueo y la configuración de cookies. Esta configuración se puede invalidar en la `Startup` clase.
+ASP.NET Core :::no-loc(Identity)::: usa valores predeterminados para la configuración, como la Directiva de contraseñas, el bloqueo y la configuración de cookies. Esta configuración se puede invalidar en la `Startup` clase.
 
-## <a name="identity-options"></a>IdentityOpciones
+## <a name="no-locidentity-options"></a>:::no-loc(Identity):::Opciones
 
-La clase [ Identity Options](/dotnet/api/microsoft.aspnetcore.identity.identityoptions) representa las opciones que se pueden utilizar para configurar el Identity sistema. `IdentityOptions`debe establecerse **después** de llamar a `AddIdentity` o `AddDefaultIdentity` .
+La clase [ :::no-loc(Identity)::: Options](/dotnet/api/microsoft.aspnetcore.identity.identityoptions) representa las opciones que se pueden utilizar para configurar el :::no-loc(Identity)::: sistema. `:::no-loc(Identity):::Options`debe establecerse **después** de llamar a `Add:::no-loc(Identity):::` o `AddDefault:::no-loc(Identity):::` .
 
-### <a name="claims-identity"></a>SurjaIdentity
+### <a name="claims-no-locidentity"></a>Surja:::no-loc(Identity):::
 
-[ Identity Options. Identity Claims](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.claimsidentity) especifica las [ Identity Opciones de notificaciones](/dotnet/api/microsoft.aspnetcore.identity.claimsidentityoptions) con las propiedades que se muestran en la tabla siguiente.
+[ :::no-loc(Identity)::: Options. :::no-loc(Identity)::: Claims](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.claimsidentity) especifica las [ :::no-loc(Identity)::: Opciones de notificaciones](/dotnet/api/microsoft.aspnetcore.identity.claimsidentityoptions) con las propiedades que se muestran en la tabla siguiente.
 
-| Propiedad | Descripción | Valor predeterminado |
+| Propiedad | Descripción | Default |
 | -------- | ----------- | :-----: |
 | [RoleClaimType](/dotnet/api/microsoft.aspnetcore.identity.claimsidentityoptions.roleclaimtype) | Obtiene o establece el tipo de demanda que se usa para una demanda de rol. | [Argumentos ClaimType. Role](/dotnet/api/system.security.claims.claimtypes.role) |
-| [SecurityStampClaimType](/dotnet/api/microsoft.aspnetcore.identity.claimsidentityoptions.securitystampclaimtype) | Obtiene o establece el tipo de notificaciones que se usa para la notificaciones de marca de seguridad. | `AspNet.Identity.SecurityStamp` |
+| [SecurityStampClaimType](/dotnet/api/microsoft.aspnetcore.identity.claimsidentityoptions.securitystampclaimtype) | Obtiene o establece el tipo de notificaciones que se usa para la notificaciones de marca de seguridad. | `AspNet.:::no-loc(Identity):::.SecurityStamp` |
 | [UserIdClaimType](/dotnet/api/microsoft.aspnetcore.identity.claimsidentityoptions.useridclaimtype) | Obtiene o establece el tipo de demanda que se usa para la demanda de identificador de usuario. | [Argumentos ClaimType. NameIdentifier](/dotnet/api/system.security.claims.claimtypes.nameidentifier) |
 | [UserNameClaimType](/dotnet/api/microsoft.aspnetcore.identity.claimsidentityoptions.usernameclaimtype) | Obtiene o establece el tipo de demanda que se usa para la demanda del nombre de usuario. | [ClaimTypes.Name](/dotnet/api/system.security.claims.claimtypes.name) |
 
 ### <a name="lockout"></a>Bloqueo
 
-El bloqueo se establece en el método [PasswordSignInAsync](/dotnet/api/microsoft.aspnetcore.identity.signinmanager-1.passwordsigninasync#Microsoft_AspNetCore_Identity_SignInManager_1_PasswordSignInAsync_System_String_System_String_System_Boolean_System_Boolean_) :
+El bloqueo se establece en el método [PasswordSignInAsync](/dotnet/api/microsoft.aspnetcore.identity.signinmanager-1.passwordsigninasync#Microsoft_AspNetCore_:::no-loc(Identity):::_SignInManager_1_PasswordSignInAsync_System_String_System_String_System_Boolean_System_Boolean_) :
 
-[!code-csharp[](identity-configuration/sample/Areas/Identity/Pages/Account/Login.cshtml.cs?name=snippet&highlight=9)]
+[!code-csharp[](identity-configuration/sample/Areas/:::no-loc(Identity):::/Pages/Account/Login.cshtml.cs?name=snippet&highlight=9)]
 
-El código anterior se basa en la `Login` Identity plantilla. 
+El código anterior se basa en la `Login` :::no-loc(Identity)::: plantilla. 
 
 Las opciones de bloqueo se establecen en `StartUp.ConfigureServices` :
 
 [!code-csharp[](identity-configuration/sample/Startup.cs?name=snippet_lock)]
 
-El código anterior establece las [ Identity Opciones](/dotnet/api/microsoft.aspnetcore.identity.identityoptions) [LockoutOptions](/dotnet/api/microsoft.aspnetcore.identity.lockoutoptions) con los valores predeterminados.
+El código anterior establece las [ :::no-loc(Identity)::: Opciones](/dotnet/api/microsoft.aspnetcore.identity.identityoptions) [LockoutOptions](/dotnet/api/microsoft.aspnetcore.identity.lockoutoptions) con los valores predeterminados.
 
 Una autenticación correcta restablece el número de intentos de acceso incorrectos y restablece el reloj.
 
-[ Identity Options. bloquear](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.lockout) especifica el [LockoutOptions](/dotnet/api/microsoft.aspnetcore.identity.lockoutoptions) con las propiedades que se muestran en la tabla.
+[ :::no-loc(Identity)::: Options. bloquear](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.lockout) especifica el [LockoutOptions](/dotnet/api/microsoft.aspnetcore.identity.lockoutoptions) con las propiedades que se muestran en la tabla.
 
-| Propiedad | Descripción | Valor predeterminado |
+| Propiedad | Descripción | Default |
 | -------- | ----------- | :-----: |
 | [AllowedForNewUsers](/dotnet/api/microsoft.aspnetcore.identity.lockoutoptions.allowedfornewusers) | Determina si un nuevo usuario puede bloquearse. | `true` |
 | [DefaultLockoutTimeSpan](/dotnet/api/microsoft.aspnetcore.identity.lockoutoptions.defaultlockouttimespan) | La cantidad de tiempo que un usuario se bloquea cuando se produce un bloqueo. | 5 minutos |
@@ -66,20 +66,20 @@ Una autenticación correcta restablece el número de intentos de acceso incorrec
 
 ### <a name="password"></a>Contraseña
 
-De forma predeterminada, Identity requiere que las contraseñas contengan caracteres en mayúsculas, caracteres en minúsculas, dígitos y caracteres no alfanuméricos. Las contraseñas deben tener al menos seis caracteres.
+De forma predeterminada, :::no-loc(Identity)::: requiere que las contraseñas contengan caracteres en mayúsculas, caracteres en minúsculas, dígitos y caracteres no alfanuméricos. Las contraseñas deben tener al menos seis caracteres.
 
 Las contraseñas se configuran con:
 
-* <xref:Microsoft.AspNetCore.Identity.PasswordOptions> en `Startup.ConfigureServices`.
-* [ `[StringLength]` atributos](xref:System.ComponentModel.DataAnnotations.StringLengthAttribute) de `Password` las propiedades si Identity se [scaffolding en la aplicación](xref:security/authentication/scaffold-identity). `InputModel`las `Password` propiedades se encuentran en los siguientes archivos:
-  * `Areas/Identity/Pages/Account/Register.cshtml.cs`
-  * `Areas/Identity/Pages/Account/ResetPassword.cshtml.cs`
+* <xref:Microsoft.AspNetCore.:::no-loc(Identity):::.PasswordOptions> en `Startup.ConfigureServices`.
+* [ `[StringLength]` atributos](xref:System.ComponentModel.DataAnnotations.StringLengthAttribute) de `Password` las propiedades si :::no-loc(Identity)::: se [scaffolding en la aplicación](xref:security/authentication/scaffold-identity). `InputModel`las `Password` propiedades se encuentran en los siguientes archivos:
+  * `Areas/:::no-loc(Identity):::/Pages/Account/Register.cshtml.cs`
+  * `Areas/:::no-loc(Identity):::/Pages/Account/ResetPassword.cshtml.cs`
 
 [!code-csharp[](identity-configuration/sample/Startup.cs?name=snippet_pw)]
 
-[ Identity Options. Password](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.password) especifica el [PasswordOptions](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions) con las propiedades que se muestran en la tabla.
+[ :::no-loc(Identity)::: Options. Password](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.password) especifica el [PasswordOptions](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions) con las propiedades que se muestran en la tabla.
 
-| Propiedad | Descripción | Valor predeterminado |
+| Propiedad | Descripción | Default |
 | -------- | ----------- | :-----: |
 | [RequireDigit](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions.requiredigit) | Requiere un número entre 0-9 en la contraseña. | `true` |
 | [RequiredLength](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions.requiredlength) | La longitud mínima de la contraseña. | 6 |
@@ -94,16 +94,16 @@ En el código siguiente `SignIn` se establece la configuración (en los valores 
 
 [!code-csharp[](identity-configuration/sample/Startup.cs?name=snippet_si)]
 
-[ Identity Options. Signen](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.signin) especifica el [SignInOptions](/dotnet/api/microsoft.aspnetcore.identity.signinoptions) con las propiedades que se muestran en la tabla.
+[ :::no-loc(Identity)::: Options. Signen](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.signin) especifica el [SignInOptions](/dotnet/api/microsoft.aspnetcore.identity.signinoptions) con las propiedades que se muestran en la tabla.
 
-| Propiedad | Descripción | Valor predeterminado |
+| Propiedad | Descripción | Default |
 | -------- | ----------- | :-----: |
 | [RequireConfirmedEmail](/dotnet/api/microsoft.aspnetcore.identity.signinoptions.requireconfirmedemail) | Requiere un correo electrónico confirmado para iniciar sesión. | `false` |
 | [RequireConfirmedPhoneNumber](/dotnet/api/microsoft.aspnetcore.identity.signinoptions.requireconfirmedphonenumber) | Requiere un número de teléfono confirmado para iniciar sesión. | `false` |
 
 ### <a name="tokens"></a>Tokens
 
-[ Identity Options. tokens](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.tokens) especifica el [TokenOptions](/dotnet/api/microsoft.aspnetcore.identity.tokenoptions) con las propiedades que se muestran en la tabla.
+[ :::no-loc(Identity)::: Options. tokens](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.tokens) especifica el [TokenOptions](/dotnet/api/microsoft.aspnetcore.identity.tokenoptions) con las propiedades que se muestran en la tabla.
 
 | Propiedad | Descripción |
 | -------- | ----------- |
@@ -118,16 +118,16 @@ En el código siguiente `SignIn` se establece la configuración (en los valores 
 
 [!code-csharp[](identity-configuration/sample/Startup.cs?name=snippet_user)]
 
-[ Identity Options. User](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.user) especifica el [UserOptions](/dotnet/api/microsoft.aspnetcore.identity.useroptions) con las propiedades que se muestran en la tabla.
+[ :::no-loc(Identity)::: Options. User](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.user) especifica el [UserOptions](/dotnet/api/microsoft.aspnetcore.identity.useroptions) con las propiedades que se muestran en la tabla.
 
-| Propiedad | Descripción | Valor predeterminado |
+| Propiedad | Descripción | Default |
 | -------- | ----------- | :-----: |
 | [AllowedUserNameCharacters](/dotnet/api/microsoft.aspnetcore.identity.useroptions.allowedusernamecharacters) | Caracteres permitidos en el nombre de usuario. | abcdefghijklmnopqrstuvwxyz<br>ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>0123456789<br>-.\_@+ |
 | [RequireUniqueEmail](/dotnet/api/microsoft.aspnetcore.identity.useroptions.requireuniqueemail) | Requiere que cada usuario tenga un correo electrónico único. | `false` |
 
 ### <a name="cookie-settings"></a>Configuración de cookies
 
-Configure la cookie de la aplicación en `Startup.ConfigureServices` . Se debe llamar a [ConfigureApplicationCookie](/dotnet/api/microsoft.extensions.dependencyinjection.identityservicecollectionextensions.configureapplicationcookie#Microsoft_Extensions_DependencyInjection_IdentityServiceCollectionExtensions_ConfigureApplicationCookie_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Action_Microsoft_AspNetCore_Authentication_Cookies_CookieAuthenticationOptions__) **después** de llamar a `AddIdentity` o `AddDefaultIdentity` .
+Configure la cookie de la aplicación en `Startup.ConfigureServices` . Se debe llamar a [ConfigureApplicationCookie](/dotnet/api/microsoft.extensions.dependencyinjection.identityservicecollectionextensions.configureapplicationcookie#Microsoft_Extensions_DependencyInjection_:::no-loc(Identity):::ServiceCollectionExtensions_ConfigureApplicationCookie_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Action_Microsoft_AspNetCore_Authentication_Cookies_CookieAuthenticationOptions__) **después** de llamar a `Add:::no-loc(Identity):::` o `AddDefault:::no-loc(Identity):::` .
 
 [!code-csharp[](identity-configuration/sample/Startup.cs?name=snippet_cookie)]
 
@@ -135,20 +135,24 @@ Para obtener más información, vea [CookieAuthenticationOptions](/dotnet/api/mi
 
 ## <a name="password-hasher-options"></a>Opciones de hash de contraseña
 
-<xref:Microsoft.AspNetCore.Identity.PasswordHasherOptions>Obtiene y establece las opciones para el hash de contraseña.
+<xref:Microsoft.AspNetCore.:::no-loc(Identity):::.PasswordHasherOptions>Obtiene y establece las opciones para el hash de contraseña.
 
 | Opción | Descripción |
 | ------ | ----------- |
-| <xref:Microsoft.AspNetCore.Identity.PasswordHasherOptions.CompatibilityMode> | El modo de compatibilidad utilizado al aplicar el algoritmo hash a nuevas contraseñas. Su valor predeterminado es <xref:Microsoft.AspNetCore.Identity.PasswordHasherCompatibilityMode.IdentityV3>. El primer byte de una contraseña con hash, denominada *marcador de formato*, especifica la versión del algoritmo hash que se usa para aplicar un algoritmo hash a la contraseña. Al comprobar una contraseña en un hash, el <xref:Microsoft.AspNetCore.Identity.PasswordHasher`1.VerifyHashedPassword*> método selecciona el algoritmo correcto en función del primer byte. Un cliente puede autenticarse independientemente de la versión del algoritmo que se usó para aplicar un algoritmo hash a la contraseña. Establecer el modo de compatibilidad afecta a la operación hash de *nuevas contraseñas*. |
-| <xref:Microsoft.AspNetCore.Identity.PasswordHasherOptions.IterationCount> | Número de iteraciones utilizadas al aplicar un algoritmo hash a las contraseñas mediante PBKDF2. Este valor solo se utiliza cuando <xref:Microsoft.AspNetCore.Identity.PasswordHasherOptions.CompatibilityMode> se establece en <xref:Microsoft.AspNetCore.Identity.PasswordHasherCompatibilityMode.IdentityV3> . El valor debe ser un entero positivo y su valor predeterminado es `10000` . |
+| <xref:Microsoft.AspNetCore.:::no-loc(Identity):::.PasswordHasherOptions.CompatibilityMode> | El modo de compatibilidad utilizado al aplicar el algoritmo hash a nuevas contraseñas. Tiene como valor predeterminado <xref:Microsoft.AspNetCore.:::no-loc(Identity):::.PasswordHasherCompatibilityMode.:::no-loc(Identity):::V3>. El primer byte de una contraseña con hash, denominada *marcador de formato*, especifica la versión del algoritmo hash que se usa para aplicar un algoritmo hash a la contraseña. Al comprobar una contraseña en un hash, el <xref:Microsoft.AspNetCore.:::no-loc(Identity):::.PasswordHasher`1.VerifyHashedPassword*> método selecciona el algoritmo correcto en función del primer byte. Un cliente puede autenticarse independientemente de la versión del algoritmo que se usó para aplicar un algoritmo hash a la contraseña. Establecer el modo de compatibilidad afecta a la operación hash de *nuevas contraseñas*. |
+| <xref:Microsoft.AspNetCore.:::no-loc(Identity):::.PasswordHasherOptions.IterationCount> | Número de iteraciones utilizadas al aplicar un algoritmo hash a las contraseñas mediante PBKDF2. Este valor solo se utiliza cuando <xref:Microsoft.AspNetCore.:::no-loc(Identity):::.PasswordHasherOptions.CompatibilityMode> se establece en <xref:Microsoft.AspNetCore.:::no-loc(Identity):::.PasswordHasherCompatibilityMode.:::no-loc(Identity):::V3> . El valor debe ser un entero positivo y su valor predeterminado es `10000` . |
 
-En el ejemplo siguiente, <xref:Microsoft.AspNetCore.Identity.PasswordHasherOptions.IterationCount> se establece `12000` en en `Startup.ConfigureServices` :
+En el ejemplo siguiente, <xref:Microsoft.AspNetCore.:::no-loc(Identity):::.PasswordHasherOptions.IterationCount> se establece `12000` en en `Startup.ConfigureServices` :
 
 ```csharp
-// using Microsoft.AspNetCore.Identity;
+// using Microsoft.AspNetCore.:::no-loc(Identity):::;
 
 services.Configure<PasswordHasherOptions>(option =>
 {
     option.IterationCount = 12000;
 });
 ```
+
+## <a name="globally-require-all-users-to-be-authenticated"></a>Requerir globalmente la autenticación de todos los usuarios
+
+[!INCLUDE[](~/includes/requireAuth.md)]

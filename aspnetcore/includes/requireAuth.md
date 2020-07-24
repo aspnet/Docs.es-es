@@ -1,0 +1,1 @@
+Para obtener información sobre cómo requerir globalmente la autenticación de todos los usuarios, consulte [requerir usuarios autenticados](xref:security/authorization/secure-data#rau).
