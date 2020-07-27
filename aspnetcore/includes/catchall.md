@@ -7,9 +7,9 @@
 >
 > Para ver casos de ejemplo relacionados con este error, consulte los errores [18677](https://github.com/dotnet/aspnetcore/issues/18677) y [16579](https://github.com/dotnet/aspnetcore/issues/16579) en GitHub.
 >
-> Una corrección opcional para este error se incluye en el [SDK de 3.1.301 de .net Core y versiones posteriores](https://dotnet.microsoft.com/download/dotnet-core/3.1). El código siguiente establece un conmutador interno que corrige este error:
+> Se incluye una corrección de participación para este error en el [SDK de .NET Core 3.1.301 y versiones posteriores](https://dotnet.microsoft.com/download/dotnet-core/3.1). En el código que hay a continuación se establece un cambio interno que corrige este error:
 >
->```
+>```csharp
 >public static void Main(string[] args)
 >{
 >    AppContext.SetSwitch("Microsoft.AspNetCore.Routing.UseCorrectCatchAllBehavior", 
