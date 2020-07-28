@@ -5,7 +5,7 @@ description: Obtenga información sobre cómo las pruebas de integración garant
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/20/2020
+ms.date: 07/14/2020
 no-loc:
 - Blazor
 - Blazor Server
@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: test/integration-tests
-ms.openlocfilehash: 6e4a0065486f6d9d6744dcd21de10ec76782f210
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: c050665f630c0973abe6c9d08a4652597441639f
+ms.sourcegitcommit: 384833762c614851db653b841cc09fbc944da463
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85405879"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86445286"
 ---
 # <a name="integration-tests-in-aspnet-core"></a>Pruebas de integración en ASP.NET Core
 
@@ -310,7 +310,7 @@ La aplicación de prueba puede simular un elemento <xref:Microsoft.AspNetCore.Au
 
 [!code-csharp[](integration-tests/samples/3.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/IntegrationTests/AuthTests.cs?name=snippet4&highlight=11-18)]
 
-Se llama a `TestAuthHandler` para autenticar a un usuario cuando el esquema de autenticación está establecido en `Test`, donde `AddAuthentication` está registrado para `ConfigureTestServices`:
+Se llama a `TestAuthHandler` para autenticar a un usuario cuando el esquema de autenticación está establecido en `Test`, donde `AddAuthentication` está registrado para `ConfigureTestServices`. Es importante que el esquema de `Test` coincida con el que espera la aplicación. En caso contrario, la autenticación no funcionará.
 
 [!code-csharp[](integration-tests/samples/3.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/IntegrationTests/AuthTests.cs?name=snippet3&highlight=7-12)]
 
@@ -366,7 +366,7 @@ La [aplicación de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/maste
 | Aplicación de mensajes (el SUT) | *src/RazorPagesProject* | Permite a un usuario agregar, analizar mensajes y eliminarlos todos o uno solo. |
 | Probar la aplicación | *tests/RazorPagesProject.Tests* | Se usa para probar la integración del SUT. |
 
-Las pruebas se pueden ejecutar con las características de prueba integradas de un IDE, como [Visual Studio](https://visualstudio.microsoft.com). Si usa [Visual Studio Code](https://code.visualstudio.com/) o la línea de comandos, ejecute el siguiente comando en un símbolo del sistema del directorio *tests/RazorPagesProject.Tests*:
+Las pruebas se pueden ejecutar con las características de prueba integradas de un IDE, como [Visual Studio](https://visualstudio.microsoft.com). Si usa [Visual Studio Code](https://code.visualstudio.com/) o la línea de comandos, ejecute el siguiente comando en un símbolo del sistema en el directorio *tests/RazorPagesProject.Tests*:
 
 ```console
 dotnet test
@@ -757,7 +757,7 @@ La [aplicación de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/maste
 | Aplicación de mensajes (el SUT) | *src/RazorPagesProject* | Permite a un usuario agregar, analizar mensajes y eliminarlos todos o uno solo. |
 | Probar la aplicación | *tests/RazorPagesProject.Tests* | Se usa para probar la integración del SUT. |
 
-Las pruebas se pueden ejecutar con las características de prueba integradas de un IDE, como [Visual Studio](https://visualstudio.microsoft.com). Si usa [Visual Studio Code](https://code.visualstudio.com/) o la línea de comandos, ejecute el siguiente comando en un símbolo del sistema del directorio *tests/RazorPagesProject.Tests*:
+Las pruebas se pueden ejecutar con las características de prueba integradas de un IDE, como [Visual Studio](https://visualstudio.microsoft.com). Si usa [Visual Studio Code](https://code.visualstudio.com/) o la línea de comandos, ejecute el siguiente comando en un símbolo del sistema en el directorio *tests/RazorPagesProject.Tests*:
 
 ```dotnetcli
 dotnet test

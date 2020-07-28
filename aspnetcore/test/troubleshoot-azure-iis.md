@@ -15,11 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: test/troubleshoot-azure-iis
-ms.openlocfilehash: 65095f3990c72224d95f1f5fe46d320ab8f12040
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 17ada36c40997353528f922bece5acc34ce760d2
+ms.sourcegitcommit: 384833762c614851db653b841cc09fbc944da463
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85404839"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86445390"
 ---
 # <a name="troubleshoot-aspnet-core-on-azure-app-service-and-iis"></a>Solución de problemas de ASP.NET Core en Azure App Service e IIS
 
@@ -298,34 +299,24 @@ La salida de consola de la aplicación, que muestra los posibles errores, se can
 
 ### <a name="aspnet-core-module-stdout-log-azure-app-service"></a>Registro de stdout del módulo ASP.NET Core (Azure App Service)
 
-El registro stdout del módulo ASP.NET Core con frecuencia registra mensajes de error útiles que no se encuentran en el registro de eventos de la aplicación. Para habilitar y ver los registros de stdout:
-
-1. Vaya a la hoja **Diagnose and solve problems** (Diagnosticar y resolver problemas) de Azure Portal.
-1. En **Seleccione una categoría de problema**, seleccione el botón abajo **Aplicación web**.
-1. En **Suggested Solutions** (Soluciones sugeridas) > **Enable Stdout Log Redirection** (Habilitar el redireccionamiento de registros de stdout), seleccione el botón para **abrir la consola de Kudu y editar web.config**.
-1. En la **consola de diagnóstico** de Kudu, abra las carpetas para la ruta de acceso **site** > **wwwroot**. Desplácese hacia abajo para mostrar el archivo *web.config* en la parte inferior de la lista.
-1. Haga clic en el icono de lápiz junto al archivo *web.config*.
-1. Establezca **stdoutLogEnabled** en `true` y cambie la ruta de acceso de **stdoutLogFile** a: `\\?\%home%\LogFiles\stdout`.
-1. Seleccione **Save** (Guardar) para guardar el archivo *web.config* actualizado.
-1. Realice una solicitud a la aplicación.
-1. Vuelva a Azure Portal. Seleccione la hoja **Herramientas avanzadas** en el área **Herramientas de desarrollo**. Seleccione el botón **Ir&rarr;** . Se abre la consola de Kudu en una nueva pestaña o ventana del explorador.
-1. Mediante la barra de navegación de la parte superior de la página, abra la **consola de depuración** y seleccione **CMD**.
-1. Seleccione la carpeta **LogFiles**.
-1. Inspeccione la columna **Modificado** y seleccione el icono de lápiz para editar el registro de stdout con la última fecha de modificación.
-1. Cuando se abre el archivo de registro, se muestra el error.
-
-Deshabilite el registro de stdout una vez haya solucionado los problemas:
-
-1. En la **consola de diagnóstico** de Kudu, vuelva a la ruta de acceso **site** > **wwwroot** para mostrar el archivo *web.config*. Seleccione el icono de lápiz para abrir de nuevo el archivo **web.config**.
-1. Establezca **stdoutLogEnabled** en `false`.
-1. Seleccione **Save** (Guardar) para guardar el archivo.
-
-Para obtener más información, vea <xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection>.
-
 > [!WARNING]
 > La imposibilidad de deshabilitar el registro de stdout puede dar lugar a un error de la aplicación o del servidor. No hay ningún límite en el tamaño del archivo de registro ni en el número de archivos de registro creados. Use únicamente el registro de stdout para solucionar problemas de inicio de la aplicación.
 >
 > Para el registro general en una aplicación ASP.NET Core, use una biblioteca de registro que limite el tamaño del archivo de registro y realice la rotación de los registros. Para más información, consulte los [proveedores de registro de terceros](xref:fundamentals/logging/index#third-party-logging-providers).
+
+El registro stdout del módulo ASP.NET Core con frecuencia registra mensajes de error útiles que no se encuentran en el registro de eventos de la aplicación. Para habilitar y ver los registros de stdout:
+
+1. En Azure Portal, vaya a la aplicación web.
+1. En la hoja **App Service**, escriba **kudu** en el cuadro de búsqueda.
+1. Seleccione **Herramientas avanzadas** > **Ir**.
+1. Seleccione **Consola de depuración > CMD**.
+1. Vaya a *site/wwwroot*.
+1. Seleccione el icono de lápiz para editar el archivo *web.config*.
+1. En el elemento `<aspNetCore />`, establezca `stdoutLogEnabled="true"` y seleccione **Guardar**.
+
+Establezca `stdoutLogEnabled="false"` para deshabilitar el registro de stdout una vez que haya solucionado los problemas.
+
+Para obtener más información, vea <xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection>.
 
 ### <a name="aspnet-core-module-debug-log-azure-app-service"></a>Registro de depuración del módulo ASP.NET Core (Azure App Service)
 
@@ -765,7 +756,7 @@ La salida de consola de la aplicación, que muestra los posibles errores, se can
 1. `cd D:\home\SiteExtensions\AspNetCoreRuntime.{X.Y}.x32` (`{X.Y}` es la versión del runtime)
 1. Ejecute la aplicación: `dotnet \home\site\wwwroot\{ASSEMBLY NAME}.dll`
 
-La salida de consola de la aplicación, que muestra los posibles errores, se canaliza a la consola de Kudu.
+La salida de la consola de la aplicación, en la que se muestra cualquier error, se canaliza a la consola de Kudu.
 
 #### <a name="test-a-64-bit-x64-app"></a>Prueba de una aplicación de 64 bits (x64)
 
@@ -778,7 +769,7 @@ La salida de consola de la aplicación, que muestra los posibles errores, se can
   1. `cd D:\home\site\wwwroot`
   1. Ejecute la aplicación: `{ASSEMBLY NAME}.exe`
 
-La salida de consola de la aplicación, que muestra los posibles errores, se canaliza a la consola de Kudu.
+La salida de la consola de la aplicación, en la que se muestra cualquier error, se canaliza a la consola de Kudu.
 
 **Implementación dependiente del marco en ejecución en una versión preliminar**
 
@@ -1243,7 +1234,7 @@ La salida de consola de la aplicación, que muestra los posibles errores, se can
 1. `cd D:\home\SiteExtensions\AspNetCoreRuntime.{X.Y}.x32` (`{X.Y}` es la versión del runtime)
 1. Ejecute la aplicación: `dotnet \home\site\wwwroot\{ASSEMBLY NAME}.dll`
 
-La salida de consola de la aplicación, que muestra los posibles errores, se canaliza a la consola de Kudu.
+La salida de la consola de la aplicación, en la que se muestra cualquier error, se canaliza a la consola de Kudu.
 
 #### <a name="test-a-64-bit-x64-app"></a>Prueba de una aplicación de 64 bits (x64)
 
@@ -1256,7 +1247,7 @@ La salida de consola de la aplicación, que muestra los posibles errores, se can
   1. `cd D:\home\site\wwwroot`
   1. Ejecute la aplicación: `{ASSEMBLY NAME}.exe`
 
-La salida de consola de la aplicación, que muestra los posibles errores, se canaliza a la consola de Kudu.
+La salida de la consola de la aplicación, en la que se muestra cualquier error, se canaliza a la consola de Kudu.
 
 **Implementación dependiente del marco en ejecución en una versión preliminar**
 

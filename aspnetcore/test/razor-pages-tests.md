@@ -5,7 +5,7 @@ description: Aprenda a crear pruebas unitarias de aplicaciones de Razor Pages.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/14/2019
+ms.date: 7/22/2020
 no-loc:
 - Blazor
 - Blazor Server
@@ -15,11 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: test/razor-pages-tests
-ms.openlocfilehash: 756af7f2b14512bd43aefd1a4e63e195c2daa138
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: ed048d600b629335b8267b63b3cfd57b525d608e
+ms.sourcegitcommit: c86b4e2955dc1724f2eaa7c97894ad8b3bf763fb
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85407764"
+ms.lasthandoff: 07/22/2020
+ms.locfileid: "86949099"
 ---
 # <a name="razor-pages-unit-tests-in-aspnet-core"></a>Pruebas unitarias de Razor Pages en ASP.NET Core
 
@@ -47,7 +48,7 @@ El proyecto de ejemplo se compone de dos aplicaciones:
 | Aplicación de mensajes | *src/RazorPagesTestSample*         | Permite a un usuario agregar un mensaje, eliminar un mensaje, eliminar todos los mensajes y analizar mensajes (hallar la media de palabras por mensaje). |
 | Probar la aplicación    | *tests/RazorPagesTestSample.Tests* | Sirve para realizar una prueba unitaria del modelo de página Index y la DAL de la aplicación de mensajes. |
 
-Las pruebas se pueden ejecutar con las características de prueba integradas de un IDE, como [Visual Studio](/visualstudio/test/unit-test-your-code) o [Visual Studio para Mac](/dotnet/core/tutorials/using-on-mac-vs-full-solution). Si usa [Visual Studio Code](https://code.visualstudio.com/) o la línea de comandos, ejecute el siguiente comando en un símbolo del sistema del directorio *tests/RazorPagesTestSample.Tests*:
+Las pruebas se pueden ejecutar con las características de prueba integradas de un IDE, como [Visual Studio](/visualstudio/test/unit-test-your-code) o [Visual Studio para Mac](/dotnet/core/tutorials/using-on-mac-vs-full-solution). Si usa [Visual Studio Code](https://code.visualstudio.com/) o la línea de comandos, ejecute el siguiente comando en un símbolo del sistema en la carpeta *tests/RazorPagesTestSample.Tests*:
 
 ```dotnetcli
 dotnet test
@@ -231,7 +232,7 @@ El proyecto de ejemplo se compone de dos aplicaciones:
 | Aplicación de mensajes | *src/RazorPagesTestSample*         | Permite a un usuario agregar un mensaje, eliminar un mensaje, eliminar todos los mensajes y analizar mensajes (hallar la media de palabras por mensaje). |
 | Probar la aplicación    | *tests/RazorPagesTestSample.Tests* | Sirve para realizar una prueba unitaria del modelo de página Index y la DAL de la aplicación de mensajes. |
 
-Las pruebas se pueden ejecutar con las características de prueba integradas de un IDE, como [Visual Studio](/visualstudio/test/unit-test-your-code) o [Visual Studio para Mac](/dotnet/core/tutorials/using-on-mac-vs-full-solution). Si usa [Visual Studio Code](https://code.visualstudio.com/) o la línea de comandos, ejecute el siguiente comando en un símbolo del sistema del directorio *tests/RazorPagesTestSample.Tests*:
+Las pruebas se pueden ejecutar con las características de prueba integradas de un IDE, como [Visual Studio](/visualstudio/test/unit-test-your-code) o [Visual Studio para Mac](/dotnet/core/tutorials/using-on-mac-vs-full-solution). Si usa [Visual Studio Code](https://code.visualstudio.com/) o la línea de comandos, ejecute el siguiente comando en un símbolo del sistema en la carpeta *tests/RazorPagesTestSample.Tests*:
 
 ```dotnetcli
 dotnet test
@@ -388,5 +389,6 @@ Otras pruebas de este grupo crean objetos de modelo de página que incluyen <xre
 * [Introducción a xUnit.net: Uso de .NET Core con la línea de comandos del SDK de .NET](https://xunit.github.io/docs/getting-started-dotnet-core)
 * [Moq](https://github.com/moq/moq4)
 * [Inicio rápido de Moq](https://github.com/Moq/moq4/wiki/Quickstart)
+* [JustMockLite](https://github.com/telerik/JustMockLite): marco ficticio para desarrolladores de .NET. (*Microsoft no realiza su mantenimiento ni su soporte técnico.* )
 
 ::: moniker-end
