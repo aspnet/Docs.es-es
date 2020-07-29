@@ -1,22 +1,23 @@
 ---
-title: Blazor WebAssembly en ASP.NET Core con grupos y roles de Azure Active Directory
+title: '[Blazor WebAssembly en ASP.NET Core con grupos y roles de Azure Active Directory'
 author: guardrex
-description: Obtenga información sobre cómo configurar Blazor WebAssembly para usar grupos y roles de Azure Active Directory.
+description: Obtenga información sobre cómo configurar [Blazor WebAssembly para usar grupos y roles de Azure Active Directory.
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 05/19/2020
 no-loc:
-- Blazor
-- Blazor Server
-- Blazor WebAssembly
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
+- '[Blazor'
+- '[Blazor Server'
+- '[Blazor WebAssembly'
+- '[Identity'
+- "[Let's Encrypt"
+- '[Razor'
+- '[SignalR'
 uid: blazor/security/webassembly/aad-groups-roles
 ms.openlocfilehash: 6e27b062d7b5a1b72804fe5d4ea31ec65358ce45
 ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.translationtype: HT
 ms.contentlocale: es-ES
 ms.lasthandoff: 06/26/2020
 ms.locfileid: "85402161"
@@ -25,7 +26,7 @@ ms.locfileid: "85402161"
 
 Por [Luke Latham](https://github.com/guardrex) y [Javier Calvarro Nelson](https://github.com/javiercn)
 
-Azure Active Directory (AAD) proporciona diversos métodos de autorización que se pueden combinar con Identity de ASP.NET Core:
+Azure Active Directory (AAD) proporciona diversos métodos de autorización que se pueden combinar con [Identity de ASP.NET Core:
 
 * Grupos definidos por el usuario
   * Seguridad
@@ -35,7 +36,7 @@ Azure Active Directory (AAD) proporciona diversos métodos de autorización que 
   * Roles administrativos integrados
   * Roles definidos por el usuario
 
-Las instrucciones de este artículo atañen a los escenarios de implementación de AAD de Blazor WebAssembly descritos en los siguientes temas:
+Las instrucciones de este artículo atañen a los escenarios de implementación de AAD de [Blazor WebAssembly descritos en los siguientes temas:
 
 * [Independiente con cuentas Microsoft](xref:blazor/security/webassembly/standalone-with-microsoft-accounts)
 * [Independiente con AAD](xref:blazor/security/webassembly/standalone-with-azure-active-directory)
@@ -94,9 +95,9 @@ public class CustomUserFactory
     {
         var initialUser = await base.CreateUserAsync(account, options);
 
-        if (initialUser.Identity.IsAuthenticated)
+        if (initialUser.[Identity.IsAuthenticated)
         {
-            var userIdentity = (ClaimsIdentity)initialUser.Identity;
+            var userIdentity = (ClaimsIdentity)initialUser.[Identity;
 
             foreach (var role in account.Roles)
             {
@@ -285,7 +286,7 @@ Administrador de Análisis de escritorio | c62c4ac5-e4c6-4096-8a2f-1ee3cbaaae15
 Lectores de directorios | e1fc84a6-7762-4b9b-8e29-518b4adbc23b
 Administrador de Dynamics 365 | f20a9cfa-9fdf-49a8-a977-1afe446a1d6e
 Administrador de Exchange | b2ec2cc0-d5c9-4864-ad9b-38dd9dba2652
-Administrador de proveedor de Identity externo | febfaeb4-e478-407a-b4b3-f4d9716618a2
+Administrador de proveedor de [Identity externo | febfaeb4-e478-407a-b4b3-f4d9716618a2
 Administrador global | a45ba61b-44db-462c-924b-3b2719152588
 Lector global | f6903b21-6aba-4124-b44c-76671796b9d5
 Administrador de grupos | 158b3e5a-d89d-460b-92b5-3b34985f0197

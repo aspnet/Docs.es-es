@@ -1,18 +1,18 @@
 ---
 title: Creación de una aplicación ASP.NET Core con datos de usuario protegidos por autorización
 author: rick-anderson
-description: 'Obtenga información sobre cómo crear una aplicación Web de ASP.NET Core con los datos de usuario protegidos por autorización. Incluye HTTPS, autenticación, seguridad, ASP.NET Core :::no-loc(Identity)::: .'
+description: Obtenga información sobre cómo crear una aplicación Web de ASP.NET Core con los datos de usuario protegidos por autorización. Incluye HTTPS, autenticación, seguridad, ASP.NET Core Identity .
 ms.author: riande
 ms.date: 7/18/2020
 ms.custom: mvc, seodec18
 no-loc:
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: security/authorization/secure-data
 ms.openlocfilehash: 7d4c10fa0b1c569179fc3e0a518917ec0185c51f
 ms.sourcegitcommit: 1b89fc58114a251926abadfd5c69c120f1ba12d8
@@ -97,11 +97,11 @@ En las secciones siguientes se describen todos los pasos principales para crear 
 
 ### <a name="tie-the-contact-data-to-the-user"></a>Vincular los datos de contacto al usuario
 
-Use el [:::no-loc(Identity):::](xref:security/authentication/identity) ID. de usuario de ASP.net para asegurarse de que los usuarios puedan editar sus datos, pero no los datos de otros usuarios. Agregue `OwnerID` y `ContactStatus` al `Contact` modelo:
+Use el [Identity](xref:security/authentication/identity) ID. de usuario de ASP.net para asegurarse de que los usuarios puedan editar sus datos, pero no los datos de otros usuarios. Agregue `OwnerID` y `ContactStatus` al `Contact` modelo:
 
 [!code-csharp[](secure-data/samples/final3/Models/Contact.cs?name=snippet1&highlight=5-6,16-999)]
 
-`OwnerID`es el identificador del usuario de la `AspNetUser` tabla de la [:::no-loc(Identity):::](xref:security/authentication/identity) base de datos. El `Status` campo determina si los usuarios generales pueden ver un contacto.
+`OwnerID`es el identificador del usuario de la `AspNetUser` tabla de la [Identity](xref:security/authentication/identity) base de datos. El `Status` campo determina si los usuarios generales pueden ver un contacto.
 
 Cree una nueva migración y actualice la base de datos:
 
@@ -110,9 +110,9 @@ dotnet ef migrations add userID_Status
 dotnet ef database update
 ```
 
-### <a name="add-role-services-to-no-locidentity"></a>Agregar servicios de función a:::no-loc(Identity):::
+### <a name="add-role-services-to-no-locidentity"></a>Agregar servicios de función aIdentity
 
-Anexe [AddRoles](/dotnet/api/microsoft.aspnetcore.identity.identitybuilder.addroles#Microsoft_AspNetCore_:::no-loc(Identity):::_:::no-loc(Identity):::Builder_AddRoles__1) para agregar servicios de rol:
+Anexe [AddRoles](/dotnet/api/microsoft.aspnetcore.identity.identitybuilder.addroles#Microsoft_AspNetCore_Identity_IdentityBuilder_AddRoles__1) para agregar servicios de rol:
 
 [!code-csharp[](secure-data/samples/final3/Startup.cs?name=snippet2&highlight=9)]
 
@@ -124,19 +124,19 @@ Establezca la Directiva de autenticación de reserva para requerir la autenticac
 
 [!code-csharp[](secure-data/samples/final3/Startup.cs?name=snippet&highlight=13-99)]
 
-El código resaltado anterior establece la [Directiva de autenticación de reserva](xref:Microsoft.AspNetCore.Authorization.AuthorizationOptions.FallbackPolicy). La Directiva de autenticación de reserva requiere que ***todos*** los usuarios se autentiquen, excepto :::no-loc(Razor)::: las páginas, los controladores o los métodos de acción con un atributo de autenticación. Por ejemplo, :::no-loc(Razor)::: páginas, controladores o métodos de acción con `[AllowAnonymous]` o `[Authorize(PolicyName="MyPolicy")]` usan el atributo de autenticación aplicado en lugar de la Directiva de autenticación de reserva.
+El código resaltado anterior establece la [Directiva de autenticación de reserva](xref:Microsoft.AspNetCore.Authorization.AuthorizationOptions.FallbackPolicy). La Directiva de autenticación de reserva requiere que ***todos*** los usuarios se autentiquen, excepto Razor las páginas, los controladores o los métodos de acción con un atributo de autenticación. Por ejemplo, Razor páginas, controladores o métodos de acción con `[AllowAnonymous]` o `[Authorize(PolicyName="MyPolicy")]` usan el atributo de autenticación aplicado en lugar de la Directiva de autenticación de reserva.
 
 La Directiva de autenticación de reserva:
 
 * Se aplica a todas las solicitudes que no especifican explícitamente una directiva de autenticación. En el caso de las solicitudes atendidas por el enrutamiento del punto de conexión, esto incluiría cualquier punto de conexión que no especifique un atributo de autorización. En el caso de las solicitudes atendidas por otro middleware después del middleware de autorización, como [archivos estáticos](xref:fundamentals/static-files), esto aplicaría la Directiva a todas las solicitudes.
 
-La configuración de la Directiva de autenticación de reserva para requerir que los usuarios se autentiquen protege :::no-loc(Razor)::: las páginas y controladores recién agregados. Tener autenticación necesaria de forma predeterminada es más seguro que confiar en nuevas páginas y controladores :::no-loc(Razor)::: para incluir el `[Authorize]` atributo.
+La configuración de la Directiva de autenticación de reserva para requerir que los usuarios se autentiquen protege Razor las páginas y controladores recién agregados. Tener autenticación necesaria de forma predeterminada es más seguro que confiar en nuevas páginas y controladores Razor para incluir el `[Authorize]` atributo.
 
 La <xref:Microsoft.AspNetCore.Authorization.AuthorizationOptions> clase también contiene <xref:Microsoft.AspNetCore.Authorization.AuthorizationOptions.DefaultPolicy?displayProperty=nameWithType> . `DefaultPolicy`Es la Directiva que se usa con el `[Authorize]` atributo cuando no se especifica ninguna directiva. `[Authorize]`no contiene una directiva con nombre, a diferencia de `[Authorize(PolicyName="MyPolicy")]` .
 
 Para obtener más información acerca de las directivas, vea <xref:security/authorization/policies> .
 
-Una forma alternativa para que las páginas y los controladores de MVC :::no-loc(Razor)::: requieran que todos los usuarios se autentiquen es agregar un filtro de autorización:
+Una forma alternativa para que las páginas y los controladores de MVC Razor requieran que todos los usuarios se autentiquen es agregar un filtro de autorización:
 
 [!code-csharp[](secure-data/samples/final3/Startup2.cs?name=snippet&highlight=14-99)]
 
@@ -199,7 +199,7 @@ Cree una `ContactAdministratorsAuthorizationHandler` clase en la carpeta de *aut
 
 ## <a name="register-the-authorization-handlers"></a>Registrar los controladores de autorización
 
-Los servicios que usan Entity Framework Core deben estar registrados para la [inserción de dependencias](xref:fundamentals/dependency-injection) mediante [AddScoped](/dotnet/api/microsoft.extensions.dependencyinjection.servicecollectionserviceextensions). `ContactIsOwnerAuthorizationHandler`Utiliza ASP.net Core [:::no-loc(Identity):::](xref:security/authentication/identity) , que se basa en Entity Framework Core. Registre los controladores con la colección de servicios para que estén disponibles para a `ContactsController` través de la [inserción de dependencias](xref:fundamentals/dependency-injection). Agregue el código siguiente al final de `ConfigureServices` :
+Los servicios que usan Entity Framework Core deben estar registrados para la [inserción de dependencias](xref:fundamentals/dependency-injection) mediante [AddScoped](/dotnet/api/microsoft.extensions.dependencyinjection.servicecollectionserviceextensions). `ContactIsOwnerAuthorizationHandler`Utiliza ASP.net Core [Identity](xref:security/authentication/identity) , que se basa en Entity Framework Core. Registre los controladores con la colección de servicios para que estén disponibles para a `ContactsController` través de la [inserción de dependencias](xref:fundamentals/dependency-injection). Agregue el código siguiente al final de `ConfigureServices` :
 
 [!code-csharp[](secure-data/samples/final3/Startup.cs?name=snippet_defaultPolicy&highlight=23-99)]
 
@@ -207,7 +207,7 @@ Los servicios que usan Entity Framework Core deben estar registrados para la [in
 
 ## <a name="support-authorization"></a>Autorización de soporte técnico
 
-En esta sección, actualizará las :::no-loc(Razor)::: páginas y agregará una clase de requisitos de operaciones.
+En esta sección, actualizará las Razor páginas y agregará una clase de requisitos de operaciones.
 
 ### <a name="review-the-contact-operations-requirements-class"></a>Revisar la clase de requisitos de las operaciones de contacto
 
@@ -215,16 +215,16 @@ Revise la `ContactOperations` clase. Esta clase contiene los requisitos que admi
 
 [!code-csharp[](secure-data/samples/final3/Authorization/ContactOperations.cs)]
 
-### <a name="create-a-base-class-for-the-contacts-no-locrazor-pages"></a>Crear una clase base para las páginas de contactos :::no-loc(Razor):::
+### <a name="create-a-base-class-for-the-contacts-no-locrazor-pages"></a>Crear una clase base para las páginas de contactos Razor
 
-Cree una clase base que contenga los servicios usados en las :::no-loc(Razor)::: páginas de contactos. La clase base coloca el código de inicialización en una ubicación:
+Cree una clase base que contenga los servicios usados en las Razor páginas de contactos. La clase base coloca el código de inicialización en una ubicación:
 
 [!code-csharp[](secure-data/samples/final3/Pages/Contacts/DI_BasePageModel.cs)]
 
 El código anterior:
 
 * Agrega el `IAuthorizationService` servicio para tener acceso a los controladores de autorización.
-* Agrega el :::no-loc(Identity)::: `UserManager` servicio.
+* Agrega el Identity `UserManager` servicio.
 * Agregue la `ApplicationDbContext`.
 
 ### <a name="update-the-createmodel"></a>Actualización de CreateModel
@@ -273,7 +273,7 @@ Actualice los vínculos de **edición** y **eliminación** en *pages/Contacts/in
 [!code-cshtml[](secure-data/samples/final3/Pages/Contacts/Index.cshtml?highlight=34-36,62-999)]
 
 > [!WARNING]
-> Ocultar los vínculos de los usuarios que no tienen permiso para cambiar datos no protege la aplicación. La ocultación de los vínculos hace que la aplicación sea más fácil de ver mostrando solo vínculos válidos. Los usuarios pueden atacar las direcciones URL generadas para invocar operaciones de edición y eliminación en los datos que no son de su propiedad. La :::no-loc(Razor)::: página o el controlador debe aplicar comprobaciones de acceso para proteger los datos.
+> Ocultar los vínculos de los usuarios que no tienen permiso para cambiar datos no protege la aplicación. La ocultación de los vínculos hace que la aplicación sea más fácil de ver mostrando solo vínculos válidos. Los usuarios pueden atacar las direcciones URL generadas para invocar operaciones de edición y eliminación en los datos que no son de su propiedad. La Razor página o el controlador debe aplicar comprobaciones de acceso para proteger los datos.
 
 ### <a name="update-details"></a>Detalles de la actualización
 
@@ -338,7 +338,7 @@ Cree un contacto en el explorador del administrador. Copie la dirección URL par
 
 ## <a name="create-the-starter-app"></a>Creación de la aplicación de inicio
 
-* Crear una :::no-loc(Razor)::: aplicación de páginas denominada "ContactManager"
+* Crear una Razor aplicación de páginas denominada "ContactManager"
   * Cree la aplicación con **cuentas de usuario individuales**.
   * Asígnele el nombre "ContactManager" para que el espacio de nombres coincida con el espacio de nombres usado en el ejemplo.
   * `-uld`especifica LocalDB en lugar de SQLite.
@@ -451,11 +451,11 @@ En las secciones siguientes se describen todos los pasos principales para crear 
 
 ### <a name="tie-the-contact-data-to-the-user"></a>Vincular los datos de contacto al usuario
 
-Use el [:::no-loc(Identity):::](xref:security/authentication/identity) ID. de usuario de ASP.net para asegurarse de que los usuarios puedan editar sus datos, pero no los datos de otros usuarios. Agregue `OwnerID` y `ContactStatus` al `Contact` modelo:
+Use el [Identity](xref:security/authentication/identity) ID. de usuario de ASP.net para asegurarse de que los usuarios puedan editar sus datos, pero no los datos de otros usuarios. Agregue `OwnerID` y `ContactStatus` al `Contact` modelo:
 
 [!code-csharp[](secure-data/samples/final2.1/Models/Contact.cs?name=snippet1&highlight=5-6,16-999)]
 
-`OwnerID`es el identificador del usuario de la `AspNetUser` tabla de la [:::no-loc(Identity):::](xref:security/authentication/identity) base de datos. El `Status` campo determina si los usuarios generales pueden ver un contacto.
+`OwnerID`es el identificador del usuario de la `AspNetUser` tabla de la [Identity](xref:security/authentication/identity) base de datos. El `Status` campo determina si los usuarios generales pueden ver un contacto.
 
 Cree una nueva migración y actualice la base de datos:
 
@@ -464,9 +464,9 @@ dotnet ef migrations add userID_Status
 dotnet ef database update
 ```
 
-### <a name="add-role-services-to-no-locidentity"></a>Agregar servicios de función a:::no-loc(Identity):::
+### <a name="add-role-services-to-no-locidentity"></a>Agregar servicios de función aIdentity
 
-Anexe [AddRoles](/dotnet/api/microsoft.aspnetcore.identity.identitybuilder.addroles#Microsoft_AspNetCore_:::no-loc(Identity):::_:::no-loc(Identity):::Builder_AddRoles__1) para agregar servicios de rol:
+Anexe [AddRoles](/dotnet/api/microsoft.aspnetcore.identity.identitybuilder.addroles#Microsoft_AspNetCore_Identity_IdentityBuilder_AddRoles__1) para agregar servicios de rol:
 
 [!code-csharp[](secure-data/samples/final2.1/Startup.cs?name=snippet2&highlight=11)]
 
@@ -476,7 +476,7 @@ Establezca la Directiva de autenticación predeterminada para requerir la autent
 
 [!code-csharp[](secure-data/samples/final2.1/Startup.cs?name=snippet&highlight=17-99)] 
 
- Puede rechazar la autenticación en el nivel de la :::no-loc(Razor)::: página, el controlador o el método de acción con el `[AllowAnonymous]` atributo. La configuración de la Directiva de autenticación predeterminada para requerir que los usuarios se autentiquen protege :::no-loc(Razor)::: las páginas y controladores recién agregados. Tener autenticación necesaria de forma predeterminada es más seguro que confiar en nuevas páginas y controladores :::no-loc(Razor)::: para incluir el `[Authorize]` atributo.
+ Puede rechazar la autenticación en el nivel de la Razor página, el controlador o el método de acción con el `[AllowAnonymous]` atributo. La configuración de la Directiva de autenticación predeterminada para requerir que los usuarios se autentiquen protege Razor las páginas y controladores recién agregados. Tener autenticación necesaria de forma predeterminada es más seguro que confiar en nuevas páginas y controladores Razor para incluir el `[Authorize]` atributo.
 
 Agregue [AllowAnonymous](/dotnet/api/microsoft.aspnetcore.authorization.allowanonymousattribute) a las páginas index, about y Contact para que los usuarios anónimos puedan obtener información sobre el sitio antes de registrarse.
 
@@ -535,7 +535,7 @@ Cree una `ContactAdministratorsAuthorizationHandler` clase en la carpeta de *aut
 
 ## <a name="register-the-authorization-handlers"></a>Registrar los controladores de autorización
 
-Los servicios que usan Entity Framework Core deben estar registrados para la [inserción de dependencias](xref:fundamentals/dependency-injection) mediante [AddScoped](/dotnet/api/microsoft.extensions.dependencyinjection.servicecollectionserviceextensions). `ContactIsOwnerAuthorizationHandler`Utiliza ASP.net Core [:::no-loc(Identity):::](xref:security/authentication/identity) , que se basa en Entity Framework Core. Registre los controladores con la colección de servicios para que estén disponibles para a `ContactsController` través de la [inserción de dependencias](xref:fundamentals/dependency-injection). Agregue el código siguiente al final de `ConfigureServices` :
+Los servicios que usan Entity Framework Core deben estar registrados para la [inserción de dependencias](xref:fundamentals/dependency-injection) mediante [AddScoped](/dotnet/api/microsoft.extensions.dependencyinjection.servicecollectionserviceextensions). `ContactIsOwnerAuthorizationHandler`Utiliza ASP.net Core [Identity](xref:security/authentication/identity) , que se basa en Entity Framework Core. Registre los controladores con la colección de servicios para que estén disponibles para a `ContactsController` través de la [inserción de dependencias](xref:fundamentals/dependency-injection). Agregue el código siguiente al final de `ConfigureServices` :
 
 [!code-csharp[](secure-data/samples/final2.1/Startup.cs?name=snippet_defaultPolicy&highlight=27-99)]
 
@@ -543,7 +543,7 @@ Los servicios que usan Entity Framework Core deben estar registrados para la [in
 
 ## <a name="support-authorization"></a>Autorización de soporte técnico
 
-En esta sección, actualizará las :::no-loc(Razor)::: páginas y agregará una clase de requisitos de operaciones.
+En esta sección, actualizará las Razor páginas y agregará una clase de requisitos de operaciones.
 
 ### <a name="review-the-contact-operations-requirements-class"></a>Revisar la clase de requisitos de las operaciones de contacto
 
@@ -551,16 +551,16 @@ Revise la `ContactOperations` clase. Esta clase contiene los requisitos que admi
 
 [!code-csharp[](secure-data/samples/final2.1/Authorization/ContactOperations.cs)]
 
-### <a name="create-a-base-class-for-the-contacts-no-locrazor-pages"></a>Crear una clase base para las páginas de contactos :::no-loc(Razor):::
+### <a name="create-a-base-class-for-the-contacts-no-locrazor-pages"></a>Crear una clase base para las páginas de contactos Razor
 
-Cree una clase base que contenga los servicios usados en las :::no-loc(Razor)::: páginas de contactos. La clase base coloca el código de inicialización en una ubicación:
+Cree una clase base que contenga los servicios usados en las Razor páginas de contactos. La clase base coloca el código de inicialización en una ubicación:
 
 [!code-csharp[](secure-data/samples/final2.1/Pages/Contacts/DI_BasePageModel.cs)]
 
 El código anterior:
 
 * Agrega el `IAuthorizationService` servicio para tener acceso a los controladores de autorización.
-* Agrega el :::no-loc(Identity)::: `UserManager` servicio.
+* Agrega el Identity `UserManager` servicio.
 * Agregue la `ApplicationDbContext`.
 
 ### <a name="update-the-createmodel"></a>Actualización de CreateModel
@@ -609,7 +609,7 @@ Actualice los vínculos de **edición** y **eliminación** en *pages/Contacts/in
 [!code-cshtml[](secure-data/samples/final2.1/Pages/Contacts/Index.cshtml?highlight=34-36,62-999)]
 
 > [!WARNING]
-> Ocultar los vínculos de los usuarios que no tienen permiso para cambiar datos no protege la aplicación. La ocultación de los vínculos hace que la aplicación sea más fácil de ver mostrando solo vínculos válidos. Los usuarios pueden atacar las direcciones URL generadas para invocar operaciones de edición y eliminación en los datos que no son de su propiedad. La :::no-loc(Razor)::: página o el controlador debe aplicar comprobaciones de acceso para proteger los datos.
+> Ocultar los vínculos de los usuarios que no tienen permiso para cambiar datos no protege la aplicación. La ocultación de los vínculos hace que la aplicación sea más fácil de ver mostrando solo vínculos válidos. Los usuarios pueden atacar las direcciones URL generadas para invocar operaciones de edición y eliminación en los datos que no son de su propiedad. La Razor página o el controlador debe aplicar comprobaciones de acceso para proteger los datos.
 
 ### <a name="update-details"></a>Detalles de la actualización
 
@@ -665,7 +665,7 @@ Cree un contacto en el explorador del administrador. Copie la dirección URL par
 
 ## <a name="create-the-starter-app"></a>Creación de la aplicación de inicio
 
-* Crear una :::no-loc(Razor)::: aplicación de páginas denominada "ContactManager"
+* Crear una Razor aplicación de páginas denominada "ContactManager"
   * Cree la aplicación con **cuentas de usuario individuales**.
   * Asígnele el nombre "ContactManager" para que el espacio de nombres coincida con el espacio de nombres usado en el ejemplo.
   * `-uld`especifica LocalDB en lugar de SQLite.

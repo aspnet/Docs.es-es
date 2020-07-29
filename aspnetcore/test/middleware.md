@@ -6,16 +6,17 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 5/12/2020
 no-loc:
-- Blazor
-- Blazor Server
-- Blazor WebAssembly
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
+- '[Blazor'
+- '[Blazor Server'
+- '[Blazor WebAssembly'
+- '[Identity'
+- "[Let's Encrypt"
+- '[Razor'
+- '[SignalR'
 uid: test/middleware
 ms.openlocfilehash: f4ed16b136da37c093a72a8866301a188a8518a2
 ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.translationtype: HT
 ms.contentlocale: es-ES
 ms.lasthandoff: 06/26/2020
 ms.locfileid: "85406490"

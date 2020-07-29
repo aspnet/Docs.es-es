@@ -6,13 +6,13 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/15/2020
 no-loc:
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: security/authorization/policies
 ms.openlocfilehash: 668c68bc328860ef17e1f2df09103fca07733ef7
 ms.sourcegitcommit: 1b89fc58114a251926abadfd5c69c120f1ba12d8
@@ -109,7 +109,7 @@ public void ConfigureServices(IServiceCollection services)
 
 
     services.AddControllersWithViews();
-    services.Add:::no-loc(Razor):::Pages();
+    services.AddRazorPages();
 }
 ```
 
@@ -117,21 +117,21 @@ Use <xref:Microsoft.AspNetCore.Authorization.IAuthorizationService> o `[Authoriz
 
 ## <a name="apply-policies-to-mvc-controllers"></a>Aplicar directivas a los controladores de MVC
 
-Si utiliza :::no-loc(Razor)::: páginas, consulte [aplicar directivas a :::no-loc(Razor)::: las páginas](#apply-policies-to-razor-pages) de este documento.
+Si utiliza Razor páginas, consulte [aplicar directivas a Razor las páginas](#apply-policies-to-razor-pages) de este documento.
 
 Las directivas se aplican a los controladores mediante el uso del `[Authorize]` atributo con el nombre de la Directiva. Por ejemplo:
 
 [!code-csharp[](policies/samples/PoliciesAuthApp1/Controllers/AlcoholPurchaseController.cs?name=snippet_AlcoholPurchaseControllerClass&highlight=4)]
 
-## <a name="apply-policies-to-no-locrazor-pages"></a>Aplicar directivas a :::no-loc(Razor)::: las páginas
+## <a name="apply-policies-to-no-locrazor-pages"></a>Aplicar directivas a Razor las páginas
 
-Las directivas se aplican a :::no-loc(Razor)::: las páginas mediante el `[Authorize]` atributo con el nombre de la Directiva. Por ejemplo:
+Las directivas se aplican a Razor las páginas mediante el `[Authorize]` atributo con el nombre de la Directiva. Por ejemplo:
 
 [!code-csharp[](policies/samples/PoliciesAuthApp2/Pages/AlcoholPurchase.cshtml.cs?name=snippet_AlcoholPurchaseModelClass&highlight=4)]
 
-Las directivas ***no*** se pueden aplicar en el :::no-loc(Razor)::: nivel de controlador de páginas, deben aplicarse a la página.
+Las directivas ***no*** se pueden aplicar en el Razor nivel de controlador de páginas, deben aplicarse a la página.
 
-Las directivas se pueden aplicar a :::no-loc(Razor)::: las páginas mediante una [Convención de autorización](xref:security/authorization/razor-pages-authorization).
+Las directivas se pueden aplicar a Razor las páginas mediante una [Convención de autorización](xref:security/authorization/razor-pages-authorization).
 
 ## <a name="requirements"></a>Requisitos
 
@@ -225,7 +225,7 @@ Por ejemplo, el anterior `BadgeEntryHandler` podría volver a escribirse de la s
 
 ## <a name="access-mvc-request-context-in-handlers"></a>Acceso al contexto de solicitud MVC en los controladores
 
-El `HandleRequirementAsync` método que se implementa en un controlador de autorización tiene dos parámetros: un `AuthorizationHandlerContext` y el `TRequirement` que se está controlando. Los marcos de trabajo como MVC o :::no-loc(SignalR)::: pueden agregar cualquier objeto a la `Resource` propiedad en `AuthorizationHandlerContext` para pasar información adicional.
+El `HandleRequirementAsync` método que se implementa en un controlador de autorización tiene dos parámetros: un `AuthorizationHandlerContext` y el `TRequirement` que se está controlando. Los marcos de trabajo como MVC o SignalR pueden agregar cualquier objeto a la `Resource` propiedad en `AuthorizationHandlerContext` para pasar información adicional.
 
 Al usar el enrutamiento de punto de conexión, la autorización se controla normalmente mediante el middleware de autorización. En este caso, la `Resource` propiedad es una instancia de <xref:Microsoft.AspNetCore.Http.Endpoint> . El punto de conexión se puede usar para sondear el recurso subyacente al que se va a enrutar. Por ejemplo:
 
@@ -239,7 +239,7 @@ if (context.Resource is Endpoint endpoint)
 
 El extremo no proporciona acceso al actual `HttpContext` . Al usar el enrutamiento de punto de conexión, use `IHttpContextAcessor` para tener acceso a `HttpContext` dentro de un controlador de autorización. Para obtener más información, vea [usar HttpContext desde componentes personalizados](xref:fundamentals/httpcontext#use-httpcontext-from-custom-components).
 
-Con el enrutamiento tradicional, o cuando la autorización se produce como parte del filtro de autorización de MVC, el valor de `Resource` es una <xref:Microsoft.AspNetCore.Mvc.Filters.AuthorizationFilterContext> instancia de. Esta propiedad proporciona acceso a `HttpContext` , `RouteData` y todo lo demás proporcionado por MVC y :::no-loc(Razor)::: pages.
+Con el enrutamiento tradicional, o cuando la autorización se produce como parte del filtro de autorización de MVC, el valor de `Resource` es una <xref:Microsoft.AspNetCore.Mvc.Filters.AuthorizationFilterContext> instancia de. Esta propiedad proporciona acceso a `HttpContext` , `RouteData` y todo lo demás proporcionado por MVC y Razor pages.
 
 El uso de la `Resource` propiedad es específico de Framework. El uso de la información en la `Resource` propiedad limita las directivas de autorización a marcos concretos. Debe convertir la `Resource` propiedad mediante la `is` palabra clave y, a continuación, confirmar que la conversión se ha realizado correctamente para asegurarse de que el código no se bloquea con `InvalidCastException` cuando se ejecuta en otros marcos:
 
@@ -353,19 +353,19 @@ Use <xref:Microsoft.AspNetCore.Authorization.IAuthorizationService> o `[Authoriz
 
 ## <a name="apply-policies-to-mvc-controllers"></a>Aplicar directivas a los controladores de MVC
 
-Si utiliza :::no-loc(Razor)::: páginas, consulte [aplicar directivas a :::no-loc(Razor)::: las páginas](#apply-policies-to-razor-pages) de este documento.
+Si utiliza Razor páginas, consulte [aplicar directivas a Razor las páginas](#apply-policies-to-razor-pages) de este documento.
 
 Las directivas se aplican a los controladores mediante el uso del `[Authorize]` atributo con el nombre de la Directiva. Por ejemplo:
 
 [!code-csharp[](policies/samples/PoliciesAuthApp1/Controllers/AlcoholPurchaseController.cs?name=snippet_AlcoholPurchaseControllerClass&highlight=4)]
 
-## <a name="apply-policies-to-no-locrazor-pages"></a>Aplicar directivas a :::no-loc(Razor)::: las páginas
+## <a name="apply-policies-to-no-locrazor-pages"></a>Aplicar directivas a Razor las páginas
 
-Las directivas se aplican a :::no-loc(Razor)::: las páginas mediante el `[Authorize]` atributo con el nombre de la Directiva. Por ejemplo:
+Las directivas se aplican a Razor las páginas mediante el `[Authorize]` atributo con el nombre de la Directiva. Por ejemplo:
 
 [!code-csharp[](policies/samples/PoliciesAuthApp2/Pages/AlcoholPurchase.cshtml.cs?name=snippet_AlcoholPurchaseModelClass&highlight=4)]
 
-Las directivas también se pueden aplicar a :::no-loc(Razor)::: las páginas mediante una [Convención de autorización](xref:security/authorization/razor-pages-authorization).
+Las directivas también se pueden aplicar a Razor las páginas mediante una [Convención de autorización](xref:security/authorization/razor-pages-authorization).
 
 ## <a name="requirements"></a>Requisitos
 
@@ -459,9 +459,9 @@ Por ejemplo, el anterior `BadgeEntryHandler` podría volver a escribirse de la s
 
 ## <a name="access-mvc-request-context-in-handlers"></a>Acceso al contexto de solicitud MVC en los controladores
 
-El `HandleRequirementAsync` método que se implementa en un controlador de autorización tiene dos parámetros: un `AuthorizationHandlerContext` y el `TRequirement` que se está controlando. Los marcos de trabajo como MVC o :::no-loc(SignalR)::: pueden agregar cualquier objeto a la `Resource` propiedad en `AuthorizationHandlerContext` para pasar información adicional.
+El `HandleRequirementAsync` método que se implementa en un controlador de autorización tiene dos parámetros: un `AuthorizationHandlerContext` y el `TRequirement` que se está controlando. Los marcos de trabajo como MVC o SignalR pueden agregar cualquier objeto a la `Resource` propiedad en `AuthorizationHandlerContext` para pasar información adicional.
 
-Por ejemplo, MVC pasa una instancia de [AuthorizationFilterContext](/dotnet/api/?term=AuthorizationFilterContext) en la `Resource` propiedad. Esta propiedad proporciona acceso a `HttpContext` , `RouteData` y todo lo demás proporcionado por MVC y :::no-loc(Razor)::: pages.
+Por ejemplo, MVC pasa una instancia de [AuthorizationFilterContext](/dotnet/api/?term=AuthorizationFilterContext) en la `Resource` propiedad. Esta propiedad proporciona acceso a `HttpContext` , `RouteData` y todo lo demás proporcionado por MVC y Razor pages.
 
 El uso de la `Resource` propiedad es específico de Framework. El uso de la información en la `Resource` propiedad limita las directivas de autorización a marcos concretos. Debe convertir la `Resource` propiedad mediante la `is` palabra clave y, a continuación, confirmar que la conversión se ha realizado correctamente para asegurarse de que el código no se bloquea con `InvalidCastException` cuando se ejecuta en otros marcos:
 

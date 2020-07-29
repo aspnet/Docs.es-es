@@ -1,35 +1,36 @@
 ---
-title: Otros escenarios de seguridad de Blazor Server en ASP.NET Core
+title: Otros escenarios de seguridad de [Blazor Server en ASP.NET Core
 author: guardrex
-description: Obtenga información sobre cómo configurar Blazor Server en otros escenarios de seguridad.
+description: Obtenga información sobre cómo configurar [Blazor Server en otros escenarios de seguridad.
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 06/04/2020
 no-loc:
-- Blazor
-- Blazor Server
-- Blazor WebAssembly
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
+- '[Blazor'
+- '[Blazor Server'
+- '[Blazor WebAssembly'
+- '[Identity'
+- "[Let's Encrypt"
+- '[Razor'
+- '[SignalR'
 uid: blazor/security/server/additional-scenarios
 ms.openlocfilehash: 46de9a22dec540b8dfda7583b7a3c5c2dcbbc549
 ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.translationtype: HT
 ms.contentlocale: es-ES
 ms.lasthandoff: 06/26/2020
 ms.locfileid: "85402330"
 ---
-# <a name="aspnet-core-blazor-server-additional-security-scenarios"></a>Otros escenarios de seguridad de Blazor Server en ASP.NET Core
+# <a name="aspnet-core-blazor-server-additional-security-scenarios"></a>Otros escenarios de seguridad de [Blazor Server en ASP.NET Core
 
 Por [Javier Calvarro Nelson](https://github.com/javiercn)
 
-## <a name="pass-tokens-to-a-blazor-server-app"></a>Transmisión de tokens a una aplicación Blazor Server
+## <a name="pass-tokens-to-a-blazor-server-app"></a>Transmisión de tokens a una aplicación [Blazor Server
 
-Con el método descrito en esta sección, los tokens disponibles fuera de los componentes Razor de una aplicación Blazor Server se pueden pasar a otros componentes. Para obtener código de ejemplo, incluido un ejemplo de `Startup.ConfigureServices` completo, vea [Paso de tokens a una aplicación Blazor del lado servidor](https://github.com/javiercn/blazor-server-aad-sample).
+Con el método descrito en esta sección, los tokens disponibles fuera de los componentes [Razor de una aplicación [Blazor Server se pueden pasar a otros componentes. Para obtener código de ejemplo, incluido un ejemplo de `Startup.ConfigureServices` completo, vea [Paso de tokens a una aplicación [Blazor del lado servidor](https://github.com/javiercn/blazor-server-aad-sample).
 
-Autentique la aplicación Blazor Server como lo haría con una instancia de Razor Pages o aplicación MVC al uso. Aprovisione y guarde los tokens en la cookie de autenticación. Por ejemplo:
+Autentique la aplicación [Blazor Server como lo haría con una instancia de [Razor Pages o aplicación MVC al uso. Aprovisione y guarde los tokens en la cookie de autenticación. Por ejemplo:
 
 ```csharp
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
@@ -57,7 +58,7 @@ public class InitialApplicationState
 }
 ```
 
-Defina un servicio de proveedor de tokens **con ámbito** que se pueda usar en la aplicación Blazor para resolver los tokens procedentes de [inserciones de dependencias](xref:blazor/fundamentals/dependency-injection):
+Defina un servicio de proveedor de tokens **con ámbito** que se pueda usar en la aplicación [Blazor para resolver los tokens procedentes de [inserciones de dependencias](xref:blazor/fundamentals/dependency-injection):
 
 ```csharp
 public class TokenProvider
@@ -151,7 +152,7 @@ public class WeatherForecastService
 
 ## <a name="set-the-authentication-scheme"></a>Establecimiento del esquema de autenticación
 
-En una aplicación que usa más de un middleware de autenticación (y que, por tanto, tiene más de un esquema de autenticación), el esquema que Blazor usa se puede establecer explícitamente en la configuración del punto de conexión de `Startup.Configure`. En el siguiente ejemplo se establece el esquema de Azure Active Directory:
+En una aplicación que usa más de un middleware de autenticación (y que, por tanto, tiene más de un esquema de autenticación), el esquema que [Blazor usa se puede establecer explícitamente en la configuración del punto de conexión de `Startup.Configure`. En el siguiente ejemplo se establece el esquema de Azure Active Directory:
 
 ```csharp
 endpoints.MapBlazorHub().RequireAuthorization(
@@ -163,7 +164,7 @@ endpoints.MapBlazorHub().RequireAuthorization(
 
 ## <a name="use-open-id-connect-oidc-v20-endpoints"></a>Uso de puntos de conexión de Open ID Connect (OIDC) versión 2.0
 
-La Biblioteca de autenticación y las plantillas de Blazor usan puntos de conexión la versión 1.0 de Open ID Connect (OIDC). Para usar un punto de conexión de la versión 2.0, configure la opción <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions.Authority?displayProperty=nameWithType> en <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions>:
+La Biblioteca de autenticación y las plantillas de [Blazor usan puntos de conexión la versión 1.0 de Open ID Connect (OIDC). Para usar un punto de conexión de la versión 2.0, configure la opción <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions.Authority?displayProperty=nameWithType> en <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions>:
 
 ```csharp
 services.Configure<OpenIdConnectOptions>(AzureADDefaults.OpenIdScheme, 

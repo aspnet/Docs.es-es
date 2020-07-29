@@ -6,16 +6,17 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 07/04/2019
 no-loc:
-- Blazor
-- Blazor Server
-- Blazor WebAssembly
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
+- '[Blazor'
+- '[Blazor Server'
+- '[Blazor WebAssembly'
+- '[Identity'
+- "[Let's Encrypt"
+- '[Razor'
+- '[SignalR'
 uid: fundamentals/tools/dotnet-aspnet-codegenerator
 ms.openlocfilehash: a106654c8a37e84e9186a2f06d90605df753e8a7
 ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.translationtype: HT
 ms.contentlocale: es-ES
 ms.lasthandoff: 06/26/2020
 ms.locfileid: "85405606"
@@ -63,8 +64,8 @@ El generador de código que se va a ejecutar. Estos generadores están disponibl
 | ----------------- | ------------ | 
 | área      | [Aplica scaffolding a un área](/aspnet/core/mvc/controllers/areas) |
   controlador| [Aplica scaffolding a un controlador](/aspnet/core/tutorials/first-mvc-app/adding-model) |
-  identidad  | [Aplica scaffolding a Identity](/aspnet/core/security/authentication/scaffold-identity) |
-  razorpage | [Aplica scaffolding a Razor Pages](/aspnet/core/tutorials/razor-pages/model) |
+  identidad  | [Aplica scaffolding a [Identity](/aspnet/core/security/authentication/scaffold-identity) |
+  razorpage | [Aplica scaffolding a [Razor Pages](/aspnet/core/tutorials/razor-pages/model) |
   vista      | [Aplica scaffolding a una vista](/aspnet/core/mvc/views/overview) |
 
 ## <a name="options"></a>Opciones
@@ -103,7 +104,7 @@ En las secciones siguientes se detallan las opciones disponibles para los genera
 
 * Área
 * Controlador
-* Identity  
+* [Identity  
 * Razorpage
 * Ver
 
@@ -111,7 +112,7 @@ En las secciones siguientes se detallan las opciones disponibles para los genera
 
 ### <a name="area-options"></a>Opciones del área
 
-Esta herramienta está diseñada para los proyectos web de ASP.NET Core con controladores y vistas. No está pensada para las aplicaciones de Razor Pages.
+Esta herramienta está diseñada para los proyectos web de ASP.NET Core con controladores y vistas. No está pensada para las aplicaciones de [Razor Pages.
 
 Uso: `dotnet aspnet-codegenerator area AreaNameToGenerate`
 
@@ -154,7 +155,7 @@ Consulte [Aplicar scaffolding al modelo de película](/aspnet/core/tutorials/raz
 
 <a name="rp"></a>
 
-Es posible aplicar scaffolding a Razor Pages de manera individual si se especifica el nombre de la página nueva y la plantilla a usar. Las plantillas admitidas son:
+Es posible aplicar scaffolding a [Razor Pages de manera individual si se especifica el nombre de la página nueva y la plantilla a usar. Las plantillas admitidas son:
 
 * `Empty`
 * `Create`
@@ -197,6 +198,6 @@ dotnet aspnet-codegenerator razorpage -h
 
 Consulte [Aplicar scaffolding al modelo de película](/aspnet/core/tutorials/razor-pages/model) para ver un ejemplo de `dotnet aspnet-codegenerator razorpage`.
 
-### Identity
+### [Identity
 
-Vea [Scaffolding Identity](/aspnet/core/security/authentication/scaffold-identity).
+Vea [Scaffolding [Identity](/aspnet/core/security/authentication/scaffold-identity).

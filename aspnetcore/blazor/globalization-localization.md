@@ -1,45 +1,46 @@
 ---
-title: Globalización y localización de Blazor de ASP.NET Core
+title: Globalización y localización de [Blazor de ASP.NET Core
 author: guardrex
-description: Aprenda a poner los componentes de Razor a disposición de los usuarios de diferentes referencias culturales e idiomas.
+description: Aprenda a poner los componentes de [Razor a disposición de los usuarios de diferentes referencias culturales e idiomas.
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 06/04/2020
 no-loc:
-- Blazor
-- Blazor Server
-- Blazor WebAssembly
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
+- '[Blazor'
+- '[Blazor Server'
+- '[Blazor WebAssembly'
+- '[Identity'
+- "[Let's Encrypt"
+- '[Razor'
+- '[SignalR'
 uid: blazor/globalization-localization
 ms.openlocfilehash: 1d24ebe900dfcdeb8b7bcc97f1d212deea9cecae
 ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.translationtype: HT
 ms.contentlocale: es-ES
 ms.lasthandoff: 06/26/2020
 ms.locfileid: "85402733"
 ---
-# <a name="aspnet-core-blazor-globalization-and-localization"></a>Globalización y localización de Blazor de ASP.NET Core
+# <a name="aspnet-core-blazor-globalization-and-localization"></a>Globalización y localización de [Blazor de ASP.NET Core
 
 Por [Luke Latham](https://github.com/guardrex) y [Daniel Roth](https://github.com/danroth27)
 
-Los componentes de Razor se pueden poner a disposición de los usuarios de varias referencias culturales e idiomas. Estos son los escenarios de globalización y localización de .NET disponibles:
+Los componentes de [Razor se pueden poner a disposición de los usuarios de varias referencias culturales e idiomas. Estos son los escenarios de globalización y localización de .NET disponibles:
 
 * Sistema de recursos de .NET
 * Formato de fecha y número específico de la referencia cultural
 
 Actualmente se admite un conjunto limitado de escenarios de localización de ASP.NET Core:
 
-* <xref:Microsoft.Extensions.Localization.IStringLocalizer> y <xref:Microsoft.Extensions.Localization.IStringLocalizer%601> *se admiten* en aplicaciones de Blazor.
-* <xref:Microsoft.AspNetCore.Mvc.Localization.IHtmlLocalizer>, <xref:Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer> y la localización de anotaciones de datos son escenarios de MVC de ASP.NET Core y **no se admiten** en aplicaciones de Blazor.
+* <xref:Microsoft.Extensions.Localization.IStringLocalizer> y <xref:Microsoft.Extensions.Localization.IStringLocalizer%601> *se admiten* en aplicaciones de [Blazor.
+* <xref:Microsoft.AspNetCore.Mvc.Localization.IHtmlLocalizer>, <xref:Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer> y la localización de anotaciones de datos son escenarios de MVC de ASP.NET Core y **no se admiten** en aplicaciones de [Blazor.
 
 Para obtener más información, vea <xref:fundamentals/localization>.
 
 ## <a name="globalization"></a>Globalización
 
-La funcionalidad [`@bind`](xref:mvc/views/razor#bind) de Blazor realiza formatos y analiza valores para mostrarlos en función de la referencia cultural actual del usuario.
+La funcionalidad [`@bind`](xref:mvc/views/razor#bind) de [Blazor realiza formatos y analiza valores para mostrarlos en función de la referencia cultural actual del usuario.
 
 Se puede acceder a la referencia cultural actual desde la propiedad <xref:System.Globalization.CultureInfo.CurrentCulture?displayProperty=fullName>.
 
@@ -54,29 +55,29 @@ Los tipos de campo anteriores:
 * No pueden contener texto de forma libre.
 * Proporcionar características de interacción del usuario en función de la implementación del explorador.
 
-Los siguientes tipos de campo tienen requisitos de formato específicos y no se admiten actualmente en Blazor, ya que no son compatibles con todos los exploradores principales:
+Los siguientes tipos de campo tienen requisitos de formato específicos y no se admiten actualmente en [Blazor, ya que no son compatibles con todos los exploradores principales:
 
 * `datetime-local`
 * `month`
 * `week`
 
-[`@bind`](xref:mvc/views/razor#bind) admite el parámetro `@bind:culture` para proporcionar un elemento <xref:System.Globalization.CultureInfo?displayProperty=fullName> para analizar y dar formato a un valor. No se recomienda especificar una referencia cultural cuando se usen los tipos de campo `date` y `number`. `date` y `number` tienen compatibilidad integrada con Blazor que proporciona la referencia cultural necesaria.
+[`@bind`](xref:mvc/views/razor#bind) admite el parámetro `@bind:culture` para proporcionar un elemento <xref:System.Globalization.CultureInfo?displayProperty=fullName> para analizar y dar formato a un valor. No se recomienda especificar una referencia cultural cuando se usen los tipos de campo `date` y `number`. `date` y `number` tienen compatibilidad integrada con [Blazor que proporciona la referencia cultural necesaria.
 
 ## <a name="localization"></a>Localización
 
-### Blazor WebAssembly
+### [Blazor WebAssembly
 
-Las aplicaciones Blazor WebAssembly establecen la referencia cultural mediante la [preferencia de idioma](https://developer.mozilla.org/docs/Web/API/NavigatorLanguage/languages) del usuario.
+Las aplicaciones [Blazor WebAssembly establecen la referencia cultural mediante la [preferencia de idioma](https://developer.mozilla.org/docs/Web/API/NavigatorLanguage/languages) del usuario.
 
 Para configurar explícitamente la referencia cultural, establezca <xref:System.Globalization.CultureInfo.DefaultThreadCurrentCulture?displayProperty=nameWithType> y <xref:System.Globalization.CultureInfo.DefaultThreadCurrentUICulture?displayProperty=nameWithType> en `Program.Main`.
 
-De forma predeterminada, la configuración del enlazador de Blazor para aplicaciones Blazor WebAssembly quita información de internacionalización, excepto para las configuraciones regionales solicitadas de forma explícita. Para obtener más información e instrucciones sobre cómo controlar el comportamiento del enlazador, vea <xref:blazor/host-and-deploy/configure-linker#configure-the-linker-for-internationalization>.
+De forma predeterminada, la configuración del enlazador de [Blazor para aplicaciones [Blazor WebAssembly quita información de internacionalización, excepto para las configuraciones regionales solicitadas de forma explícita. Para obtener más información e instrucciones sobre cómo controlar el comportamiento del enlazador, vea <xref:blazor/host-and-deploy/configure-linker#configure-the-linker-for-internationalization>.
 
-Si bien la referencia cultural que Blazor selecciona de manera predeterminada puede ser suficiente para la mayoría de los usuarios, considere la posibilidad de ofrecer una manera para que los usuarios especifiquen su configuración regional preferida. Para una aplicación de ejemplo Blazor WebAssembly con un selector de referencia cultural, consulte la aplicación de ejemplo de localización [`LocSample`](https://github.com/pranavkm/LocSample).
+Si bien la referencia cultural que [Blazor selecciona de manera predeterminada puede ser suficiente para la mayoría de los usuarios, considere la posibilidad de ofrecer una manera para que los usuarios especifiquen su configuración regional preferida. Para una aplicación de ejemplo [Blazor WebAssembly con un selector de referencia cultural, consulte la aplicación de ejemplo de localización [`LocSample`](https://github.com/pranavkm/LocSample).
 
-### Blazor Server
+### [Blazor Server
 
-Las aplicaciones Blazor Server se localizan usando un [middleware de localización](xref:fundamentals/localization#localization-middleware). El middleware selecciona la referencia cultural adecuada según los usuarios que solicitan recursos de la aplicación.
+Las aplicaciones [Blazor Server se localizan usando un [middleware de localización](xref:fundamentals/localization#localization-middleware). El middleware selecciona la referencia cultural adecuada según los usuarios que solicitan recursos de la aplicación.
 
 La referencia cultural se puede establecer con uno de los siguientes métodos:
 
@@ -93,7 +94,7 @@ El uso de una cookie garantiza que la conexión WebSocket puede propagar correct
 
 Se puede usar cualquier técnica para asignar una referencia cultural si la referencia cultural se conserva en una cookie de localización. Si la aplicación ya tiene un esquema de localización establecido para ASP.NET Core del lado servidor, siga usando la infraestructura de localización existente de la aplicación y establezca la cookie de cultura de localización en el esquema de la aplicación.
 
-En el siguiente ejemplo se muestra cómo establecer la referencia cultural actual en una cookie que el middleware de localización puede leer. Cree una expresión de Razor en el archivo `Pages/_Host.cshtml`, justo dentro de la etiqueta de apertura `<body>`:
+En el siguiente ejemplo se muestra cómo establecer la referencia cultural actual en una cookie que el middleware de localización puede leer. Cree una expresión de [Razor en el archivo `Pages/_Host.cshtml`, justo dentro de la etiqueta de apertura `<body>`:
 
 ```cshtml
 @using System.Globalization
@@ -119,10 +120,10 @@ La aplicación controla la localización en la siguiente secuencia de eventos:
 
 1. El explorador envía una solicitud HTTP inicial a la aplicación.
 1. El middleware de localización asigna la referencia cultural.
-1. La expresión Razor de la página `_Host` (`_Host.cshtml`) conserva la referencia cultural en una cookie como parte de la respuesta.
-1. El explorador abre una conexión WebSocket para crear una sesión Blazor Server interactiva.
+1. La expresión [Razor de la página `_Host` (`_Host.cshtml`) conserva la referencia cultural en una cookie como parte de la respuesta.
+1. El explorador abre una conexión WebSocket para crear una sesión [Blazor Server interactiva.
 1. El middleware de localización lee la cookie y asigna la referencia cultural.
-1. La sesión Blazor Server comienza con la referencia cultural correcta.
+1. La sesión [Blazor Server comienza con la referencia cultural correcta.
 
 #### <a name="provide-ui-to-choose-the-culture"></a>Especificación de una interfaz de usuario para elegir la referencia cultural
 

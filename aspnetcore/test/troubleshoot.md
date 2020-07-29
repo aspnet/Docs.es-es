@@ -6,16 +6,17 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/10/2019
 no-loc:
-- Blazor
-- Blazor Server
-- Blazor WebAssembly
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
+- '[Blazor'
+- '[Blazor Server'
+- '[Blazor WebAssembly'
+- '[Identity'
+- "[Let's Encrypt"
+- '[Razor'
+- '[SignalR'
 uid: test/troubleshoot
 ms.openlocfilehash: f3c975567ee9ea5a1d9f317d3bc77997f68be928
 ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.translationtype: HT
 ms.contentlocale: es-ES
 ms.lasthandoff: 06/26/2020
 ms.locfileid: "85399002"
@@ -82,7 +83,7 @@ Si una aplicación es capaz de responder a las solicitudes, puede obtener los si
 
 * Solicitud: método, esquema, host, ruta de acceso base, ruta de acceso, cadena de consulta, encabezados
 * Conexión: dirección IP remota, puerto remoto, dirección IP local, puerto local, certificado de cliente
-* Identity: nombre, nombre para mostrar
+* [Identity: nombre, nombre para mostrar
 * Valores de configuración
 * Variables de entorno
 
@@ -124,8 +125,8 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env,
             sb.Append($"LocalPort: {context.Connection.LocalPort}{nl}");
             sb.Append($"ClientCert: {context.Connection.ClientCertificate}{nl}{nl}");
 
-            sb.Append($"Identity{rule}");
-            sb.Append($"User: {context.User.Identity.Name}{nl}");
+            sb.Append($"[Identity{rule}");
+            sb.Append($"User: {context.User.[Identity.Name}{nl}");
             var scheme = await authSchemeProvider
                 .GetSchemeAsync(IISDefaults.AuthenticationScheme);
             sb.Append($"DisplayName: {scheme?.DisplayName}{nl}{nl}");
