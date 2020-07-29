@@ -7,16 +7,17 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/05/2019
 no-loc:
-- Blazor
-- Blazor Server
-- Blazor WebAssembly
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
+- '[Blazor'
+- '[Blazor Server'
+- '[Blazor WebAssembly'
+- '[Identity'
+- "[Let's Encrypt"
+- '[Razor'
+- '[SignalR'
 uid: fundamentals/startup
 ms.openlocfilehash: 0d1bf0dd23b7f3b99d6e9383ffc72291c1b138ec
 ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.translationtype: HT
 ms.contentlocale: es-ES
 ms.lasthandoff: 06/26/2020
 ms.locfileid: "85400718"
@@ -40,7 +41,7 @@ ms.locfileid: "85400718"
 
 [!code-csharp[](startup/3.0_samples/StartupFilterSample/Startup.cs?name=snippet)]
 
-<span data-ttu-id="d0fbc-114">El ejemplo anterior corresponde a [Razor Pages](xref:razor-pages/index); la versión para MVC es similar.</span><span class="sxs-lookup"><span data-stu-id="d0fbc-114">The preceding sample is for [Razor Pages](xref:razor-pages/index); the MVC version is similar.</span></span>
+<span data-ttu-id="d0fbc-114">El ejemplo anterior corresponde a [[Razor Pages](xref:razor-pages/index); la versión para MVC es similar.</span><span class="sxs-lookup"><span data-stu-id="d0fbc-114">The preceding sample is for [[Razor Pages](xref:razor-pages/index); the MVC version is similar.</span></span>
 
 
 <span data-ttu-id="d0fbc-115">La clase `Startup` se especifica cuando se crea el [host](xref:fundamentals/index#host) de la aplicación.</span><span class="sxs-lookup"><span data-stu-id="d0fbc-115">The `Startup` class is specified when the app's [host](xref:fundamentals/index#host) is built.</span></span> <span data-ttu-id="d0fbc-116">Habitualmente, la clase `Startup` se especifica mediante una llamada al método[WebHostBuilderExtensions.UseStartup\<TStartup>](xref:Microsoft.AspNetCore.Hosting.WebHostBuilderExtensions.UseStartup*) en el generador de host:</span><span class="sxs-lookup"><span data-stu-id="d0fbc-116">The `Startup` class is typically specified by calling the [WebHostBuilderExtensions.UseStartup\<TStartup>](xref:Microsoft.AspNetCore.Hosting.WebHostBuilderExtensions.UseStartup*) method on the host builder:</span></span>
@@ -92,12 +93,12 @@ ms.locfileid: "85400718"
 * [<span data-ttu-id="d0fbc-148">Seguridad de transporte estricta de HTTP (HSTS)</span><span class="sxs-lookup"><span data-stu-id="d0fbc-148">HTTP Strict Transport Security (HSTS)</span></span>](xref:security/enforcing-ssl#http-strict-transport-security-protocol-hsts)
 * [<span data-ttu-id="d0fbc-149">Redireccionamiento de HTTPS</span><span class="sxs-lookup"><span data-stu-id="d0fbc-149">HTTPS redirection</span></span>](xref:security/enforcing-ssl)
 * [<span data-ttu-id="d0fbc-150">Archivos estáticos</span><span class="sxs-lookup"><span data-stu-id="d0fbc-150">Static files</span></span>](xref:fundamentals/static-files)
-* <span data-ttu-id="d0fbc-151">ASP.NET Core [MVC](xref:mvc/overview) y [Razor Pages](xref:razor-pages/index)</span><span class="sxs-lookup"><span data-stu-id="d0fbc-151">ASP.NET Core [MVC](xref:mvc/overview) and [Razor Pages](xref:razor-pages/index)</span></span>
+* <span data-ttu-id="d0fbc-151">ASP.NET Core [MVC](xref:mvc/overview) y [[Razor Pages](xref:razor-pages/index)</span><span class="sxs-lookup"><span data-stu-id="d0fbc-151">ASP.NET Core [MVC](xref:mvc/overview) and [[Razor Pages](xref:razor-pages/index)</span></span>
 
 
 [!code-csharp[](startup/3.0_samples/StartupFilterSample/Startup.cs?name=snippet)]
 
-<span data-ttu-id="d0fbc-152">El ejemplo anterior corresponde a [Razor Pages](xref:razor-pages/index); la versión para MVC es similar.</span><span class="sxs-lookup"><span data-stu-id="d0fbc-152">The preceding sample is for [Razor Pages](xref:razor-pages/index); the MVC version is similar.</span></span>
+<span data-ttu-id="d0fbc-152">El ejemplo anterior corresponde a [[Razor Pages](xref:razor-pages/index); la versión para MVC es similar.</span><span class="sxs-lookup"><span data-stu-id="d0fbc-152">The preceding sample is for [[Razor Pages](xref:razor-pages/index); the MVC version is similar.</span></span>
 
 <span data-ttu-id="d0fbc-153">Cada método de extensión `Use` agrega uno o más componentes de middleware a la canalización de solicitudes.</span><span class="sxs-lookup"><span data-stu-id="d0fbc-153">Each `Use` extension method adds one or more middleware components to the request pipeline.</span></span> <span data-ttu-id="d0fbc-154">Por ejemplo, <xref:Microsoft.AspNetCore.Builder.StaticFileExtensions.UseStaticFiles*> configura [middleware](xref:fundamentals/middleware/index) para proporcionar [archivos estáticos](xref:fundamentals/static-files).</span><span class="sxs-lookup"><span data-stu-id="d0fbc-154">For instance, <xref:Microsoft.AspNetCore.Builder.StaticFileExtensions.UseStaticFiles*> configures [middleware](xref:fundamentals/middleware/index) to serve [static files](xref:fundamentals/static-files).</span></span>
 
@@ -226,7 +227,7 @@ ms.locfileid: "85400718"
 * [<span data-ttu-id="d0fbc-238">Seguridad de transporte estricta de HTTP (HSTS)</span><span class="sxs-lookup"><span data-stu-id="d0fbc-238">HTTP Strict Transport Security (HSTS)</span></span>](xref:security/enforcing-ssl#http-strict-transport-security-protocol-hsts)
 * [<span data-ttu-id="d0fbc-239">Redireccionamiento de HTTPS</span><span class="sxs-lookup"><span data-stu-id="d0fbc-239">HTTPS redirection</span></span>](xref:security/enforcing-ssl)
 * [<span data-ttu-id="d0fbc-240">Archivos estáticos</span><span class="sxs-lookup"><span data-stu-id="d0fbc-240">Static files</span></span>](xref:fundamentals/static-files)
-* <span data-ttu-id="d0fbc-241">ASP.NET Core [MVC](xref:mvc/overview) y [Razor Pages](xref:razor-pages/index)</span><span class="sxs-lookup"><span data-stu-id="d0fbc-241">ASP.NET Core [MVC](xref:mvc/overview) and [Razor Pages](xref:razor-pages/index)</span></span>
+* <span data-ttu-id="d0fbc-241">ASP.NET Core [MVC](xref:mvc/overview) y [[Razor Pages](xref:razor-pages/index)</span><span class="sxs-lookup"><span data-stu-id="d0fbc-241">ASP.NET Core [MVC](xref:mvc/overview) and [[Razor Pages](xref:razor-pages/index)</span></span>
 * [<span data-ttu-id="d0fbc-242">Reglamento General de Protección de Datos (GDPR)</span><span class="sxs-lookup"><span data-stu-id="d0fbc-242">General Data Protection Regulation (GDPR)</span></span>](xref:security/gdpr)
 
 [!code-csharp[](startup/sample_snapshot/Startup4.cs)]

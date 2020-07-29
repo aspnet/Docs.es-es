@@ -1,22 +1,23 @@
 ---
-title: Blazor WebAssembly en ASP.NET Core con grupos y roles de Azure Active Directory
+title: '[Blazor WebAssembly en ASP.NET Core con grupos y roles de Azure Active Directory'
 author: guardrex
-description: Obtenga información sobre cómo configurar Blazor WebAssembly para usar grupos y roles de Azure Active Directory.
+description: Obtenga información sobre cómo configurar [Blazor WebAssembly para usar grupos y roles de Azure Active Directory.
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 05/19/2020
 no-loc:
-- Blazor
-- Blazor Server
-- Blazor WebAssembly
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
+- '[Blazor'
+- '[Blazor Server'
+- '[Blazor WebAssembly'
+- '[Identity'
+- "[Let's Encrypt"
+- '[Razor'
+- '[SignalR'
 uid: blazor/security/webassembly/aad-groups-roles
 ms.openlocfilehash: 6e27b062d7b5a1b72804fe5d4ea31ec65358ce45
 ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.translationtype: HT
 ms.contentlocale: es-ES
 ms.lasthandoff: 06/26/2020
 ms.locfileid: "85402161"
@@ -25,7 +26,7 @@ ms.locfileid: "85402161"
 
 <span data-ttu-id="e6e7e-104">Por [Luke Latham](https://github.com/guardrex) y [Javier Calvarro Nelson](https://github.com/javiercn)</span><span class="sxs-lookup"><span data-stu-id="e6e7e-104">By [Luke Latham](https://github.com/guardrex) and [Javier Calvarro Nelson](https://github.com/javiercn)</span></span>
 
-<span data-ttu-id="e6e7e-105">Azure Active Directory (AAD) proporciona diversos métodos de autorización que se pueden combinar con Identity de ASP.NET Core:</span><span class="sxs-lookup"><span data-stu-id="e6e7e-105">Azure Active Directory (AAD) provides several authorization approaches that can be combined with ASP.NET Core Identity:</span></span>
+<span data-ttu-id="e6e7e-105">Azure Active Directory (AAD) proporciona diversos métodos de autorización que se pueden combinar con [Identity de ASP.NET Core:</span><span class="sxs-lookup"><span data-stu-id="e6e7e-105">Azure Active Directory (AAD) provides several authorization approaches that can be combined with ASP.NET Core [Identity:</span></span>
 
 * <span data-ttu-id="e6e7e-106">Grupos definidos por el usuario</span><span class="sxs-lookup"><span data-stu-id="e6e7e-106">User-defined groups</span></span>
   * <span data-ttu-id="e6e7e-107">Seguridad</span><span class="sxs-lookup"><span data-stu-id="e6e7e-107">Security</span></span>
@@ -35,7 +36,7 @@ ms.locfileid: "85402161"
   * <span data-ttu-id="e6e7e-111">Roles administrativos integrados</span><span class="sxs-lookup"><span data-stu-id="e6e7e-111">Built-in Administrative Roles</span></span>
   * <span data-ttu-id="e6e7e-112">Roles definidos por el usuario</span><span class="sxs-lookup"><span data-stu-id="e6e7e-112">User-defined roles</span></span>
 
-<span data-ttu-id="e6e7e-113">Las instrucciones de este artículo atañen a los escenarios de implementación de AAD de Blazor WebAssembly descritos en los siguientes temas:</span><span class="sxs-lookup"><span data-stu-id="e6e7e-113">The guidance in this article applies to the Blazor WebAssembly AAD deployment scenarios described in the following topics:</span></span>
+<span data-ttu-id="e6e7e-113">Las instrucciones de este artículo atañen a los escenarios de implementación de AAD de [Blazor WebAssembly descritos en los siguientes temas:</span><span class="sxs-lookup"><span data-stu-id="e6e7e-113">The guidance in this article applies to the [Blazor WebAssembly AAD deployment scenarios described in the following topics:</span></span>
 
 * [<span data-ttu-id="e6e7e-114">Independiente con cuentas Microsoft</span><span class="sxs-lookup"><span data-stu-id="e6e7e-114">Standalone with Microsoft Accounts</span></span>](xref:blazor/security/webassembly/standalone-with-microsoft-accounts)
 * [<span data-ttu-id="e6e7e-115">Independiente con AAD</span><span class="sxs-lookup"><span data-stu-id="e6e7e-115">Standalone with AAD</span></span>](xref:blazor/security/webassembly/standalone-with-azure-active-directory)
@@ -94,9 +95,9 @@ public class CustomUserFactory
     {
         var initialUser = await base.CreateUserAsync(account, options);
 
-        if (initialUser.Identity.IsAuthenticated)
+        if (initialUser.[Identity.IsAuthenticated)
         {
-            var userIdentity = (ClaimsIdentity)initialUser.Identity;
+            var userIdentity = (ClaimsIdentity)initialUser.[Identity;
 
             foreach (var role in account.Roles)
             {
@@ -285,7 +286,7 @@ builder.Services.AddMsalAuthentication(options =>
 <span data-ttu-id="e6e7e-198">Lectores de directorios</span><span class="sxs-lookup"><span data-stu-id="e6e7e-198">Directory readers</span></span> | <span data-ttu-id="e6e7e-199">e1fc84a6-7762-4b9b-8e29-518b4adbc23b</span><span class="sxs-lookup"><span data-stu-id="e6e7e-199">e1fc84a6-7762-4b9b-8e29-518b4adbc23b</span></span>
 <span data-ttu-id="e6e7e-200">Administrador de Dynamics 365</span><span class="sxs-lookup"><span data-stu-id="e6e7e-200">Dynamics 365 administrator</span></span> | <span data-ttu-id="e6e7e-201">f20a9cfa-9fdf-49a8-a977-1afe446a1d6e</span><span class="sxs-lookup"><span data-stu-id="e6e7e-201">f20a9cfa-9fdf-49a8-a977-1afe446a1d6e</span></span>
 <span data-ttu-id="e6e7e-202">Administrador de Exchange</span><span class="sxs-lookup"><span data-stu-id="e6e7e-202">Exchange administrator</span></span> | <span data-ttu-id="e6e7e-203">b2ec2cc0-d5c9-4864-ad9b-38dd9dba2652</span><span class="sxs-lookup"><span data-stu-id="e6e7e-203">b2ec2cc0-d5c9-4864-ad9b-38dd9dba2652</span></span>
-<span data-ttu-id="e6e7e-204">Administrador de proveedor de Identity externo</span><span class="sxs-lookup"><span data-stu-id="e6e7e-204">External Identity Provider administrator</span></span> | <span data-ttu-id="e6e7e-205">febfaeb4-e478-407a-b4b3-f4d9716618a2</span><span class="sxs-lookup"><span data-stu-id="e6e7e-205">febfaeb4-e478-407a-b4b3-f4d9716618a2</span></span>
+<span data-ttu-id="e6e7e-204">Administrador de proveedor de [Identity externo</span><span class="sxs-lookup"><span data-stu-id="e6e7e-204">External [Identity Provider administrator</span></span> | <span data-ttu-id="e6e7e-205">febfaeb4-e478-407a-b4b3-f4d9716618a2</span><span class="sxs-lookup"><span data-stu-id="e6e7e-205">febfaeb4-e478-407a-b4b3-f4d9716618a2</span></span>
 <span data-ttu-id="e6e7e-206">Administrador global</span><span class="sxs-lookup"><span data-stu-id="e6e7e-206">Global administrator</span></span> | <span data-ttu-id="e6e7e-207">a45ba61b-44db-462c-924b-3b2719152588</span><span class="sxs-lookup"><span data-stu-id="e6e7e-207">a45ba61b-44db-462c-924b-3b2719152588</span></span>
 <span data-ttu-id="e6e7e-208">Lector global</span><span class="sxs-lookup"><span data-stu-id="e6e7e-208">Global reader</span></span> | <span data-ttu-id="e6e7e-209">f6903b21-6aba-4124-b44c-76671796b9d5</span><span class="sxs-lookup"><span data-stu-id="e6e7e-209">f6903b21-6aba-4124-b44c-76671796b9d5</span></span>
 <span data-ttu-id="e6e7e-210">Administrador de grupos</span><span class="sxs-lookup"><span data-stu-id="e6e7e-210">Groups administrator</span></span> | <span data-ttu-id="e6e7e-211">158b3e5a-d89d-460b-92b5-3b34985f0197</span><span class="sxs-lookup"><span data-stu-id="e6e7e-211">158b3e5a-d89d-460b-92b5-3b34985f0197</span></span>

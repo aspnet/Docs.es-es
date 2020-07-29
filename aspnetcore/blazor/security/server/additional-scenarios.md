@@ -1,35 +1,36 @@
 ---
-title: Otros escenarios de seguridad de Blazor Server en ASP.NET Core
+title: Otros escenarios de seguridad de [Blazor Server en ASP.NET Core
 author: guardrex
-description: Obtenga información sobre cómo configurar Blazor Server en otros escenarios de seguridad.
+description: Obtenga información sobre cómo configurar [Blazor Server en otros escenarios de seguridad.
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 06/04/2020
 no-loc:
-- Blazor
-- Blazor Server
-- Blazor WebAssembly
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
+- '[Blazor'
+- '[Blazor Server'
+- '[Blazor WebAssembly'
+- '[Identity'
+- "[Let's Encrypt"
+- '[Razor'
+- '[SignalR'
 uid: blazor/security/server/additional-scenarios
 ms.openlocfilehash: 46de9a22dec540b8dfda7583b7a3c5c2dcbbc549
 ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.translationtype: HT
 ms.contentlocale: es-ES
 ms.lasthandoff: 06/26/2020
 ms.locfileid: "85402330"
 ---
-# <a name="aspnet-core-blazor-server-additional-security-scenarios"></a><span data-ttu-id="e80be-103">Otros escenarios de seguridad de Blazor Server en ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="e80be-103">ASP.NET Core Blazor Server additional security scenarios</span></span>
+# <a name="aspnet-core-blazor-server-additional-security-scenarios"></a><span data-ttu-id="e80be-103">Otros escenarios de seguridad de [Blazor Server en ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="e80be-103">ASP.NET Core [Blazor Server additional security scenarios</span></span>
 
 <span data-ttu-id="e80be-104">Por [Javier Calvarro Nelson](https://github.com/javiercn)</span><span class="sxs-lookup"><span data-stu-id="e80be-104">By [Javier Calvarro Nelson](https://github.com/javiercn)</span></span>
 
-## <a name="pass-tokens-to-a-blazor-server-app"></a><span data-ttu-id="e80be-105">Transmisión de tokens a una aplicación Blazor Server</span><span class="sxs-lookup"><span data-stu-id="e80be-105">Pass tokens to a Blazor Server app</span></span>
+## <a name="pass-tokens-to-a-blazor-server-app"></a><span data-ttu-id="e80be-105">Transmisión de tokens a una aplicación [Blazor Server</span><span class="sxs-lookup"><span data-stu-id="e80be-105">Pass tokens to a [Blazor Server app</span></span>
 
-<span data-ttu-id="e80be-106">Con el método descrito en esta sección, los tokens disponibles fuera de los componentes Razor de una aplicación Blazor Server se pueden pasar a otros componentes.</span><span class="sxs-lookup"><span data-stu-id="e80be-106">Tokens available outside of the Razor components in a Blazor Server app can be passed to components with the approach described in this section.</span></span> <span data-ttu-id="e80be-107">Para obtener código de ejemplo, incluido un ejemplo de `Startup.ConfigureServices` completo, vea [Paso de tokens a una aplicación Blazor del lado servidor](https://github.com/javiercn/blazor-server-aad-sample).</span><span class="sxs-lookup"><span data-stu-id="e80be-107">For sample code, including a complete `Startup.ConfigureServices` example, see the [Passing tokens to a server-side Blazor application](https://github.com/javiercn/blazor-server-aad-sample).</span></span>
+<span data-ttu-id="e80be-106">Con el método descrito en esta sección, los tokens disponibles fuera de los componentes [Razor de una aplicación [Blazor Server se pueden pasar a otros componentes.</span><span class="sxs-lookup"><span data-stu-id="e80be-106">Tokens available outside of the [Razor components in a [Blazor Server app can be passed to components with the approach described in this section.</span></span> <span data-ttu-id="e80be-107">Para obtener código de ejemplo, incluido un ejemplo de `Startup.ConfigureServices` completo, vea [Paso de tokens a una aplicación [Blazor del lado servidor](https://github.com/javiercn/blazor-server-aad-sample).</span><span class="sxs-lookup"><span data-stu-id="e80be-107">For sample code, including a complete `Startup.ConfigureServices` example, see the [Passing tokens to a server-side [Blazor application](https://github.com/javiercn/blazor-server-aad-sample).</span></span>
 
-<span data-ttu-id="e80be-108">Autentique la aplicación Blazor Server como lo haría con una instancia de Razor Pages o aplicación MVC al uso.</span><span class="sxs-lookup"><span data-stu-id="e80be-108">Authenticate the Blazor Server app as you would with a regular Razor Pages or MVC app.</span></span> <span data-ttu-id="e80be-109">Aprovisione y guarde los tokens en la cookie de autenticación.</span><span class="sxs-lookup"><span data-stu-id="e80be-109">Provision and save the tokens to the authentication cookie.</span></span> <span data-ttu-id="e80be-110">Por ejemplo:</span><span class="sxs-lookup"><span data-stu-id="e80be-110">For example:</span></span>
+<span data-ttu-id="e80be-108">Autentique la aplicación [Blazor Server como lo haría con una instancia de [Razor Pages o aplicación MVC al uso.</span><span class="sxs-lookup"><span data-stu-id="e80be-108">Authenticate the [Blazor Server app as you would with a regular [Razor Pages or MVC app.</span></span> <span data-ttu-id="e80be-109">Aprovisione y guarde los tokens en la cookie de autenticación.</span><span class="sxs-lookup"><span data-stu-id="e80be-109">Provision and save the tokens to the authentication cookie.</span></span> <span data-ttu-id="e80be-110">Por ejemplo:</span><span class="sxs-lookup"><span data-stu-id="e80be-110">For example:</span></span>
 
 ```csharp
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
@@ -57,7 +58,7 @@ public class InitialApplicationState
 }
 ```
 
-<span data-ttu-id="e80be-112">Defina un servicio de proveedor de tokens **con ámbito** que se pueda usar en la aplicación Blazor para resolver los tokens procedentes de [inserciones de dependencias](xref:blazor/fundamentals/dependency-injection):</span><span class="sxs-lookup"><span data-stu-id="e80be-112">Define a **scoped** token provider service that can be used within the Blazor app to resolve the tokens from [dependency injection (DI)](xref:blazor/fundamentals/dependency-injection):</span></span>
+<span data-ttu-id="e80be-112">Defina un servicio de proveedor de tokens **con ámbito** que se pueda usar en la aplicación [Blazor para resolver los tokens procedentes de [inserciones de dependencias](xref:blazor/fundamentals/dependency-injection):</span><span class="sxs-lookup"><span data-stu-id="e80be-112">Define a **scoped** token provider service that can be used within the [Blazor app to resolve the tokens from [dependency injection (DI)](xref:blazor/fundamentals/dependency-injection):</span></span>
 
 ```csharp
 public class TokenProvider
@@ -151,7 +152,7 @@ public class WeatherForecastService
 
 ## <a name="set-the-authentication-scheme"></a><span data-ttu-id="e80be-117">Establecimiento del esquema de autenticación</span><span class="sxs-lookup"><span data-stu-id="e80be-117">Set the authentication scheme</span></span>
 
-<span data-ttu-id="e80be-118">En una aplicación que usa más de un middleware de autenticación (y que, por tanto, tiene más de un esquema de autenticación), el esquema que Blazor usa se puede establecer explícitamente en la configuración del punto de conexión de `Startup.Configure`.</span><span class="sxs-lookup"><span data-stu-id="e80be-118">For an app that uses more than one Authentication Middleware and thus has more than one authentication scheme, the scheme that Blazor uses can be explicitly set in the endpoint configuration of `Startup.Configure`.</span></span> <span data-ttu-id="e80be-119">En el siguiente ejemplo se establece el esquema de Azure Active Directory:</span><span class="sxs-lookup"><span data-stu-id="e80be-119">The following example sets the Azure Active Directory scheme:</span></span>
+<span data-ttu-id="e80be-118">En una aplicación que usa más de un middleware de autenticación (y que, por tanto, tiene más de un esquema de autenticación), el esquema que [Blazor usa se puede establecer explícitamente en la configuración del punto de conexión de `Startup.Configure`.</span><span class="sxs-lookup"><span data-stu-id="e80be-118">For an app that uses more than one Authentication Middleware and thus has more than one authentication scheme, the scheme that [Blazor uses can be explicitly set in the endpoint configuration of `Startup.Configure`.</span></span> <span data-ttu-id="e80be-119">En el siguiente ejemplo se establece el esquema de Azure Active Directory:</span><span class="sxs-lookup"><span data-stu-id="e80be-119">The following example sets the Azure Active Directory scheme:</span></span>
 
 ```csharp
 endpoints.MapBlazorHub().RequireAuthorization(
@@ -163,7 +164,7 @@ endpoints.MapBlazorHub().RequireAuthorization(
 
 ## <a name="use-open-id-connect-oidc-v20-endpoints"></a><span data-ttu-id="e80be-120">Uso de puntos de conexión de Open ID Connect (OIDC) versión 2.0</span><span class="sxs-lookup"><span data-stu-id="e80be-120">Use Open ID Connect (OIDC) v2.0 endpoints</span></span>
 
-<span data-ttu-id="e80be-121">La Biblioteca de autenticación y las plantillas de Blazor usan puntos de conexión la versión 1.0 de Open ID Connect (OIDC).</span><span class="sxs-lookup"><span data-stu-id="e80be-121">The authentication library and Blazor templates use Open ID Connect (OIDC) v1.0 endpoints.</span></span> <span data-ttu-id="e80be-122">Para usar un punto de conexión de la versión 2.0, configure la opción <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions.Authority?displayProperty=nameWithType> en <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions>:</span><span class="sxs-lookup"><span data-stu-id="e80be-122">To use a v2.0 endpoint, configure the <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions.Authority?displayProperty=nameWithType> option in the <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions>:</span></span>
+<span data-ttu-id="e80be-121">La Biblioteca de autenticación y las plantillas de [Blazor usan puntos de conexión la versión 1.0 de Open ID Connect (OIDC).</span><span class="sxs-lookup"><span data-stu-id="e80be-121">The authentication library and [Blazor templates use Open ID Connect (OIDC) v1.0 endpoints.</span></span> <span data-ttu-id="e80be-122">Para usar un punto de conexión de la versión 2.0, configure la opción <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions.Authority?displayProperty=nameWithType> en <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions>:</span><span class="sxs-lookup"><span data-stu-id="e80be-122">To use a v2.0 endpoint, configure the <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions.Authority?displayProperty=nameWithType> option in the <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions>:</span></span>
 
 ```csharp
 services.Configure<OpenIdConnectOptions>(AzureADDefaults.OpenIdScheme, 

@@ -6,16 +6,17 @@ ms.author: casoper
 ms.custom: mvc, seodec18
 ms.date: 07/10/2019
 no-loc:
-- Blazor
-- Blazor Server
-- Blazor WebAssembly
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
+- '[Blazor'
+- '[Blazor Server'
+- '[Blazor WebAssembly'
+- '[Identity'
+- "[Let's Encrypt"
+- '[Razor'
+- '[SignalR'
 uid: azure/devops/monitor
 ms.openlocfilehash: a94b1e0b5ce2a24cf22eb665c9bcd03c25ffa67f
 ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.translationtype: HT
 ms.contentlocale: es-ES
 ms.lasthandoff: 06/26/2020
 ms.locfileid: "85400380"

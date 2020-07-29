@@ -6,16 +6,17 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 08/20/2018
 no-loc:
-- Blazor
-- Blazor Server
-- Blazor WebAssembly
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
+- '[Blazor'
+- '[Blazor Server'
+- '[Blazor WebAssembly'
+- '[Identity'
+- "[Let's Encrypt"
+- '[Razor'
+- '[SignalR'
 uid: client-side/libman/libman-vs
 ms.openlocfilehash: 504c34ccd8813273161b86504700704f8a932538
 ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.translationtype: HT
 ms.contentlocale: es-ES
 ms.lasthandoff: 06/26/2020
 ms.locfileid: "85403175"
@@ -67,7 +68,7 @@ ms.locfileid: "85403175"
     * <span data-ttu-id="a2004-139">Se usa *lib* si *wwwroot* no existe.</span><span class="sxs-lookup"><span data-stu-id="a2004-139">*lib* is used if *wwwroot* doesn't exist.</span></span>
   * <span data-ttu-id="a2004-140">Si se ha iniciado desde una carpeta de proyecto, se usa el nombre de carpeta correspondiente.</span><span class="sxs-lookup"><span data-stu-id="a2004-140">If launched from a project folder, the corresponding folder name is used.</span></span>
 
-  <span data-ttu-id="a2004-141">La sugerencia de carpeta tiene como sufijo el nombre de la biblioteca.</span><span class="sxs-lookup"><span data-stu-id="a2004-141">The folder suggestion is suffixed with the library name.</span></span> <span data-ttu-id="a2004-142">En la tabla siguiente se muestran sugerencias de carpeta al instalar jQuery en un proyecto de Razor Pages.</span><span class="sxs-lookup"><span data-stu-id="a2004-142">The following table illustrates folder suggestions when installing jQuery in a Razor Pages project.</span></span>
+  <span data-ttu-id="a2004-141">La sugerencia de carpeta tiene como sufijo el nombre de la biblioteca.</span><span class="sxs-lookup"><span data-stu-id="a2004-141">The folder suggestion is suffixed with the library name.</span></span> <span data-ttu-id="a2004-142">En la tabla siguiente se muestran sugerencias de carpeta al instalar jQuery en un proyecto de [Razor Pages.</span><span class="sxs-lookup"><span data-stu-id="a2004-142">The following table illustrates folder suggestions when installing jQuery in a [Razor Pages project.</span></span>
   
   |<span data-ttu-id="a2004-143">Ubicación de inicio</span><span class="sxs-lookup"><span data-stu-id="a2004-143">Launch location</span></span>                           |<span data-ttu-id="a2004-144">Carpeta sugerida</span><span class="sxs-lookup"><span data-stu-id="a2004-144">Suggested folder</span></span>      |
   |------------------------------------------|----------------------|

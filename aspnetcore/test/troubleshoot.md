@@ -6,16 +6,17 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/10/2019
 no-loc:
-- Blazor
-- Blazor Server
-- Blazor WebAssembly
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
+- '[Blazor'
+- '[Blazor Server'
+- '[Blazor WebAssembly'
+- '[Identity'
+- "[Let's Encrypt"
+- '[Razor'
+- '[SignalR'
 uid: test/troubleshoot
 ms.openlocfilehash: f3c975567ee9ea5a1d9f317d3bc77997f68be928
 ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.translationtype: HT
 ms.contentlocale: es-ES
 ms.lasthandoff: 06/26/2020
 ms.locfileid: "85399002"
@@ -82,7 +83,7 @@ ms.locfileid: "85399002"
 
 * <span data-ttu-id="ebd0e-148">Solicitud: método, esquema, host, ruta de acceso base, ruta de acceso, cadena de consulta, encabezados</span><span class="sxs-lookup"><span data-stu-id="ebd0e-148">Request: Method, scheme, host, pathbase, path, query string, headers</span></span>
 * <span data-ttu-id="ebd0e-149">Conexión: dirección IP remota, puerto remoto, dirección IP local, puerto local, certificado de cliente</span><span class="sxs-lookup"><span data-stu-id="ebd0e-149">Connection: Remote IP address, remote port, local IP address, local port, client certificate</span></span>
-* Identity<span data-ttu-id="ebd0e-150">: nombre, nombre para mostrar</span><span class="sxs-lookup"><span data-stu-id="ebd0e-150">: Name, display name</span></span>
+* <span data-ttu-id="ebd0e-150">[Identity: nombre, nombre para mostrar</span><span class="sxs-lookup"><span data-stu-id="ebd0e-150">[Identity: Name, display name</span></span>
 * <span data-ttu-id="ebd0e-151">Valores de configuración</span><span class="sxs-lookup"><span data-stu-id="ebd0e-151">Configuration settings</span></span>
 * <span data-ttu-id="ebd0e-152">Variables de entorno</span><span class="sxs-lookup"><span data-stu-id="ebd0e-152">Environment variables</span></span>
 
@@ -124,8 +125,8 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env,
             sb.Append($"LocalPort: {context.Connection.LocalPort}{nl}");
             sb.Append($"ClientCert: {context.Connection.ClientCertificate}{nl}{nl}");
 
-            sb.Append($"Identity{rule}");
-            sb.Append($"User: {context.User.Identity.Name}{nl}");
+            sb.Append($"[Identity{rule}");
+            sb.Append($"User: {context.User.[Identity.Name}{nl}");
             var scheme = await authSchemeProvider
                 .GetSchemeAsync(IISDefaults.AuthenticationScheme);
             sb.Append($"DisplayName: {scheme?.DisplayName}{nl}{nl}");

@@ -7,16 +7,17 @@ ms.author: scaddie
 ms.custom: H1Hack27Feb2017
 ms.date: 09/06/2019
 no-loc:
-- Blazor
-- Blazor Server
-- Blazor WebAssembly
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
+- '[Blazor'
+- '[Blazor Server'
+- '[Blazor WebAssembly'
+- '[Identity'
+- "[Let's Encrypt"
+- '[Razor'
+- '[SignalR'
 uid: client-side/spa-services
 ms.openlocfilehash: 05f76a7d341fc5c55b8234b6ff6d2be5aa61d6fd
 ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.translationtype: HT
 ms.contentlocale: es-ES
 ms.lasthandoff: 06/26/2020
 ms.locfileid: "85401836"
@@ -104,7 +105,7 @@ npm i -S aspnet-prerendering
 
 [!code-cshtml[](../client-side/spa-services/sample/SpaServicesSampleApp/Views/_ViewImports.cshtml?highlight=3)]
 
-<span data-ttu-id="02267-149">Estos asistentes de etiquetas abstraen las complejidades de la comunicación directa con las API de bajo nivel al aprovechar una sintaxis similar a HTML dentro de la vista de Razor:</span><span class="sxs-lookup"><span data-stu-id="02267-149">These Tag Helpers abstract away the intricacies of communicating directly with low-level APIs by leveraging an HTML-like syntax inside the Razor view:</span></span>
+<span data-ttu-id="02267-149">Estos asistentes de etiquetas abstraen las complejidades de la comunicación directa con las API de bajo nivel al aprovechar una sintaxis similar a HTML dentro de la vista de [Razor:</span><span class="sxs-lookup"><span data-stu-id="02267-149">These Tag Helpers abstract away the intricacies of communicating directly with low-level APIs by leveraging an HTML-like syntax inside the [Razor view:</span></span>
 
 [!code-cshtml[](../client-side/spa-services/sample/SpaServicesSampleApp/Views/Home/Index.cshtml?range=5)]
 
@@ -120,7 +121,7 @@ npm i -S aspnet-prerendering
 
 ### <a name="asp-prerender-data-tag-helper"></a><span data-ttu-id="02267-157">Asistente de etiquetas asp-prerender-data</span><span class="sxs-lookup"><span data-stu-id="02267-157">asp-prerender-data Tag Helper</span></span>
 
-<span data-ttu-id="02267-158">Cuando se combina con el asistente de etiquetas `asp-prerender-module`, el asistente de etiquetas `asp-prerender-data` se puede usar para pasar información contextual de la vista de Razor al código JavaScript del lado servidor.</span><span class="sxs-lookup"><span data-stu-id="02267-158">When coupled with the `asp-prerender-module` Tag Helper, the `asp-prerender-data` Tag Helper can be used to pass contextual information from the Razor view to the server-side JavaScript.</span></span> <span data-ttu-id="02267-159">Por ejemplo, el marcado siguiente pasa los datos de usuario al módulo `main-server`:</span><span class="sxs-lookup"><span data-stu-id="02267-159">For example, the following markup passes user data to the `main-server` module:</span></span>
+<span data-ttu-id="02267-158">Cuando se combina con el asistente de etiquetas `asp-prerender-module`, el asistente de etiquetas `asp-prerender-data` se puede usar para pasar información contextual de la vista de [Razor al código JavaScript del lado servidor.</span><span class="sxs-lookup"><span data-stu-id="02267-158">When coupled with the `asp-prerender-module` Tag Helper, the `asp-prerender-data` Tag Helper can be used to pass contextual information from the [Razor view to the server-side JavaScript.</span></span> <span data-ttu-id="02267-159">Por ejemplo, el marcado siguiente pasa los datos de usuario al módulo `main-server`:</span><span class="sxs-lookup"><span data-stu-id="02267-159">For example, the following markup passes user data to the `main-server` module:</span></span>
 
 [!code-cshtml[](../client-side/spa-services/sample/SpaServicesSampleApp/Views/Home/Index.cshtml?range=9-12)]
 

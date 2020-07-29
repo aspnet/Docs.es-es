@@ -6,16 +6,17 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 07/04/2019
 no-loc:
-- Blazor
-- Blazor Server
-- Blazor WebAssembly
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
+- '[Blazor'
+- '[Blazor Server'
+- '[Blazor WebAssembly'
+- '[Identity'
+- "[Let's Encrypt"
+- '[Razor'
+- '[SignalR'
 uid: fundamentals/tools/dotnet-aspnet-codegenerator
 ms.openlocfilehash: a106654c8a37e84e9186a2f06d90605df753e8a7
 ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.translationtype: HT
 ms.contentlocale: es-ES
 ms.lasthandoff: 06/26/2020
 ms.locfileid: "85405606"
@@ -63,8 +64,8 @@ dotnet aspnet-codegenerator [-h|--help]
 | ----------------- | ------------ | 
 | <span data-ttu-id="bf568-120">área</span><span class="sxs-lookup"><span data-stu-id="bf568-120">area</span></span>      | [<span data-ttu-id="bf568-121">Aplica scaffolding a un área</span><span class="sxs-lookup"><span data-stu-id="bf568-121">Scaffolds an Area</span></span>](/aspnet/core/mvc/controllers/areas) |
   <span data-ttu-id="bf568-122">controlador</span><span class="sxs-lookup"><span data-stu-id="bf568-122">controller</span></span>| [<span data-ttu-id="bf568-123">Aplica scaffolding a un controlador</span><span class="sxs-lookup"><span data-stu-id="bf568-123">Scaffolds a controller</span></span>](/aspnet/core/tutorials/first-mvc-app/adding-model) |
-  <span data-ttu-id="bf568-124">identidad</span><span class="sxs-lookup"><span data-stu-id="bf568-124">identity</span></span>  | <span data-ttu-id="bf568-125">[Aplica scaffolding a Identity](/aspnet/core/security/authentication/scaffold-identity)</span><span class="sxs-lookup"><span data-stu-id="bf568-125">[Scaffolds Identity](/aspnet/core/security/authentication/scaffold-identity)</span></span> |
-  <span data-ttu-id="bf568-126">razorpage</span><span class="sxs-lookup"><span data-stu-id="bf568-126">razorpage</span></span> | <span data-ttu-id="bf568-127">[Aplica scaffolding a Razor Pages](/aspnet/core/tutorials/razor-pages/model)</span><span class="sxs-lookup"><span data-stu-id="bf568-127">[Scaffolds Razor Pages](/aspnet/core/tutorials/razor-pages/model)</span></span> |
+  <span data-ttu-id="bf568-124">identidad</span><span class="sxs-lookup"><span data-stu-id="bf568-124">identity</span></span>  | <span data-ttu-id="bf568-125">[Aplica scaffolding a [Identity](/aspnet/core/security/authentication/scaffold-identity)</span><span class="sxs-lookup"><span data-stu-id="bf568-125">[Scaffolds [Identity](/aspnet/core/security/authentication/scaffold-identity)</span></span> |
+  <span data-ttu-id="bf568-126">razorpage</span><span class="sxs-lookup"><span data-stu-id="bf568-126">razorpage</span></span> | <span data-ttu-id="bf568-127">[Aplica scaffolding a [Razor Pages](/aspnet/core/tutorials/razor-pages/model)</span><span class="sxs-lookup"><span data-stu-id="bf568-127">[Scaffolds [Razor Pages](/aspnet/core/tutorials/razor-pages/model)</span></span> |
   <span data-ttu-id="bf568-128">vista</span><span class="sxs-lookup"><span data-stu-id="bf568-128">view</span></span>      | [<span data-ttu-id="bf568-129">Aplica scaffolding a una vista</span><span class="sxs-lookup"><span data-stu-id="bf568-129">Scaffolds a view</span></span>](/aspnet/core/mvc/views/overview) |
 
 ## <a name="options"></a><span data-ttu-id="bf568-130">Opciones</span><span class="sxs-lookup"><span data-stu-id="bf568-130">Options</span></span>
@@ -103,7 +104,7 @@ dotnet aspnet-codegenerator [-h|--help]
 
 * <span data-ttu-id="bf568-144">Área</span><span class="sxs-lookup"><span data-stu-id="bf568-144">Area</span></span>
 * <span data-ttu-id="bf568-145">Controlador</span><span class="sxs-lookup"><span data-stu-id="bf568-145">Controller</span></span>
-* Identity  
+* [Identity  
 * <span data-ttu-id="bf568-146">Razorpage</span><span class="sxs-lookup"><span data-stu-id="bf568-146">Razorpage</span></span>
 * <span data-ttu-id="bf568-147">Ver</span><span class="sxs-lookup"><span data-stu-id="bf568-147">View</span></span>
 
@@ -111,7 +112,7 @@ dotnet aspnet-codegenerator [-h|--help]
 
 ### <a name="area-options"></a><span data-ttu-id="bf568-148">Opciones del área</span><span class="sxs-lookup"><span data-stu-id="bf568-148">Area options</span></span>
 
-<span data-ttu-id="bf568-149">Esta herramienta está diseñada para los proyectos web de ASP.NET Core con controladores y vistas.</span><span class="sxs-lookup"><span data-stu-id="bf568-149">This tool is intended for ASP.NET Core web projects with controllers and views.</span></span> <span data-ttu-id="bf568-150">No está pensada para las aplicaciones de Razor Pages.</span><span class="sxs-lookup"><span data-stu-id="bf568-150">It's not intended for Razor Pages apps.</span></span>
+<span data-ttu-id="bf568-149">Esta herramienta está diseñada para los proyectos web de ASP.NET Core con controladores y vistas.</span><span class="sxs-lookup"><span data-stu-id="bf568-149">This tool is intended for ASP.NET Core web projects with controllers and views.</span></span> <span data-ttu-id="bf568-150">No está pensada para las aplicaciones de [Razor Pages.</span><span class="sxs-lookup"><span data-stu-id="bf568-150">It's not intended for [Razor Pages apps.</span></span>
 
 <span data-ttu-id="bf568-151">Uso: `dotnet aspnet-codegenerator area AreaNameToGenerate`</span><span class="sxs-lookup"><span data-stu-id="bf568-151">Usage: `dotnet aspnet-codegenerator area AreaNameToGenerate`</span></span>
 
@@ -154,7 +155,7 @@ dotnet aspnet-codegenerator controller -h
 
 <a name="rp"></a>
 
-<span data-ttu-id="bf568-178">Es posible aplicar scaffolding a Razor Pages de manera individual si se especifica el nombre de la página nueva y la plantilla a usar.</span><span class="sxs-lookup"><span data-stu-id="bf568-178">Razor Pages can be individually scaffolded by specifying the name of the new page and the template to use.</span></span> <span data-ttu-id="bf568-179">Las plantillas admitidas son:</span><span class="sxs-lookup"><span data-stu-id="bf568-179">The supported templates are:</span></span>
+<span data-ttu-id="bf568-178">Es posible aplicar scaffolding a [Razor Pages de manera individual si se especifica el nombre de la página nueva y la plantilla a usar.</span><span class="sxs-lookup"><span data-stu-id="bf568-178">[Razor Pages can be individually scaffolded by specifying the name of the new page and the template to use.</span></span> <span data-ttu-id="bf568-179">Las plantillas admitidas son:</span><span class="sxs-lookup"><span data-stu-id="bf568-179">The supported templates are:</span></span>
 
 * `Empty`
 * `Create`
@@ -197,6 +198,6 @@ dotnet aspnet-codegenerator razorpage -h
 
 <span data-ttu-id="bf568-194">Consulte [Aplicar scaffolding al modelo de película](/aspnet/core/tutorials/razor-pages/model) para ver un ejemplo de `dotnet aspnet-codegenerator razorpage`.</span><span class="sxs-lookup"><span data-stu-id="bf568-194">See [Scaffold the movie model](/aspnet/core/tutorials/razor-pages/model) for an example of `dotnet aspnet-codegenerator razorpage`.</span></span>
 
-### Identity
+### [Identity
 
-<span data-ttu-id="bf568-195">Vea [Scaffolding Identity](/aspnet/core/security/authentication/scaffold-identity).</span><span class="sxs-lookup"><span data-stu-id="bf568-195">See [Scaffold Identity](/aspnet/core/security/authentication/scaffold-identity)</span></span>
+<span data-ttu-id="bf568-195">Vea [Scaffolding [Identity](/aspnet/core/security/authentication/scaffold-identity).</span><span class="sxs-lookup"><span data-stu-id="bf568-195">See [Scaffold [Identity](/aspnet/core/security/authentication/scaffold-identity)</span></span>
