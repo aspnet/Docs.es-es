@@ -960,11 +960,11 @@ Para eliminar una tarea pendiente, hay que establecer el valor `type` de la llam
 
 [!INCLUDE[](~/includes/IdentityServer4.md)]
 
-## <a name="additional-resources"></a>Recursos adicionales
+## <a name="additional-resources"></a>[!INCLUDE[](~/includes/IdentityServer4.md)]
 
-[Vea o descargue el código de ejemplo para este tutorial](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/first-web-api/samples). Vea [cómo descargarlo](xref:index#how-to-download-a-sample).
+Recursos adicionales [Vea o descargue el código de ejemplo para este tutorial](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/first-web-api/samples).
 
-Para obtener más información, vea los siguientes recursos:
+Vea [cómo descargarlo](xref:index#how-to-download-a-sample).
 
 * <xref:web-api/index>
 * <xref:tutorials/web-api-help-pages-using-swagger>
@@ -973,4 +973,4 @@ Para obtener más información, vea los siguientes recursos:
 * <xref:web-api/action-return-types>
 * <xref:host-and-deploy/azure-apps/index>
 * <xref:host-and-deploy/index>
-* [Versión en YouTube de este tutorial](https://www.youtube.com/watch?v=TTkhEyGBfAk)
+* Para obtener más información, vea los siguientes recursos:
