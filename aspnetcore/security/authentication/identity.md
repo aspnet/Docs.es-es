@@ -14,10 +14,10 @@ no-loc:
 - SignalR
 uid: security/authentication/identity
 ms.openlocfilehash: 25070e90050db9dca8b003ae782662811096526a
-ms.sourcegitcommit: 1b89fc58114a251926abadfd5c69c120f1ba12d8
+ms.sourcegitcommit: 5a36758cca2861aeb10840093e46d273a6e6e91d
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 07/28/2020
 ms.locfileid: "87160311"
 ---
 # <a name="introduction-to-no-locidentity-on-aspnet-core"></a>Introducción a Identity en ASP.net Core
@@ -59,7 +59,7 @@ Cree un proyecto de aplicación Web de ASP.NET Core con cuentas de usuario indiv
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Seleccione **archivo** > **nuevo** > **proyecto**.
-* Seleccione **Aplicación web de ASP.NET Core**. Asigne al proyecto el nombre **WebApp1** para que tenga el mismo espacio de nombres que la descarga del proyecto. Haga clic en **OK**.
+* Seleccione **Aplicación web de ASP.NET Core**. Asigne al proyecto el nombre **WebApp1** para que tenga el mismo espacio de nombres que la descarga del proyecto. Haga clic en **Aceptar**.
 * Seleccione una **aplicación web**de ASP.net Core y, a continuación, seleccione **cambiar autenticación**.
 * Seleccione **cuentas de usuario individuales** y haga clic en **Aceptar**.
 
@@ -293,7 +293,7 @@ Cree un proyecto de aplicación Web de ASP.NET Core con cuentas de usuario indiv
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Seleccione **archivo** > **nuevo** > **proyecto**.
-* Seleccione **Aplicación web de ASP.NET Core**. Asigne al proyecto el nombre **WebApp1** para que tenga el mismo espacio de nombres que la descarga del proyecto. Haga clic en **OK**.
+* Seleccione **Aplicación web de ASP.NET Core**. Asigne al proyecto el nombre **WebApp1** para que tenga el mismo espacio de nombres que la descarga del proyecto. Haga clic en **Aceptar**.
 * Seleccione una **aplicación web**de ASP.net Core y, a continuación, seleccione **cambiar autenticación**.
 * Seleccione **cuentas de usuario individuales** y haga clic en **Aceptar**.
 
