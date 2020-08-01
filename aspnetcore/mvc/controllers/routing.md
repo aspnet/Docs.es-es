@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/routing
-ms.openlocfilehash: b917671053313c74acfff36518e8f36d5ef2eb22
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 962b42239b2101fc95e55fb38ce214481bf0ef01
+ms.sourcegitcommit: ca6a1f100c1a3f59999189aa962523442dd4ead1
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85405489"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87444144"
 ---
 # <a name="routing-to-controller-actions-in-aspnet-core"></a>Enrutar a acciones de controlador de ASP.NET Core
 
@@ -52,7 +52,7 @@ Este documento:
 
 [!code-csharp[](routing/samples/3.x/main/StartupDefaultMVC.cs?name=snippet)]
 
-Dentro de la llamada a <xref:Microsoft.AspNetCore.Builder.EndpointRoutingApplicationBuilderExtensions.UseEndpoints*> , <xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapControllerRoute*> se usa para crear una única ruta. La ruta única se denomina `default` Route. La mayoría de las aplicaciones con controladores y vistas usan una plantilla de ruta similar a la `default` ruta. Las API de REST deben usar el [enrutamiento de atributos](#ar).
+Dentro de la llamada a <xref:Microsoft.AspNetCore.Builder.EndpointRoutingApplicationBuilderExtensions.UseEndpoints%2A> , <xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapControllerRoute%2A> se usa para crear una única ruta. La ruta única se denomina `default` Route. La mayoría de las aplicaciones con controladores y vistas usan una plantilla de ruta similar a la `default` ruta. Las API de REST deben usar el [enrutamiento de atributos](#ar).
 
 La plantilla de ruta `"{controller=Home}/{action=Index}/{id?}"` :
 
@@ -89,7 +89,7 @@ Con la definición de controlador y la plantilla de ruta anteriores, la `HomeCon
 
 La ruta de dirección URL `/` utiliza la acción y los controladores predeterminados de la plantilla de ruta `Home` `Index` . La ruta de dirección URL `/Home` utiliza la acción predeterminada de la plantilla de ruta `Index` .
 
-El método de conveniencia <xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapDefaultControllerRoute*>:
+El método de conveniencia <xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapDefaultControllerRoute%2A>:
 
 ```csharp
 endpoints.MapDefaultControllerRoute();
@@ -102,10 +102,10 @@ endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}"
 ```
 
 > [!IMPORTANT]
-> El enrutamiento se configura mediante <xref:Microsoft.AspNetCore.Builder.EndpointRoutingApplicationBuilderExtensions.UseRouting*> el <xref:Microsoft.AspNetCore.Builder.EndpointRoutingApplicationBuilderExtensions.UseEndpoints*> middleware de y. Para usar controladores:
+> El enrutamiento se configura mediante <xref:Microsoft.AspNetCore.Builder.EndpointRoutingApplicationBuilderExtensions.UseRouting%2A> el <xref:Microsoft.AspNetCore.Builder.EndpointRoutingApplicationBuilderExtensions.UseEndpoints%2A> middleware de y. Para usar controladores:
 >
-> * Llame <xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapControllers*> `UseEndpoints` a dentro de para asignar los controladores [enrutados de atributo](#ar) .
-> * Llame <xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapControllerRoute*> <xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapAreaControllerRoute*> a o a para asignar controladores enrutados por [Convención](#cr) y controladores [enrutados por atributo](#ar) .
+> * Llame <xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapControllers%2A> `UseEndpoints` a dentro de para asignar los controladores [enrutados de atributo](#ar) .
+> * Llame <xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapControllerRoute%2A> <xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapAreaControllerRoute%2A> a o a para asignar controladores enrutados por [Convención](#cr) y controladores [enrutados por atributo](#ar) .
 
 <a name="routing-conventional-ref-label"></a>
 <a name="crd"></a>
@@ -151,7 +151,7 @@ La mayoría de las aplicaciones deben elegir un esquema de enrutamiento básico 
 * Se trata de un punto de partida útil para las aplicaciones basadas en la interfaz de usuario.
 * Es la única plantilla de ruta necesaria para muchas aplicaciones de interfaz de usuario Web. En el caso de las aplicaciones de interfaz de usuario Web más grandes, otra ruta que usa [áreas](#areas) , si suele ser necesario.
 
-<xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapControllerRoute*>y <xref:Microsoft.AspNetCore.Builder.MvcAreaRouteBuilderExtensions.MapAreaRoute*> :
+<xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapControllerRoute%2A>y <xref:Microsoft.AspNetCore.Builder.MvcAreaRouteBuilderExtensions.MapAreaRoute%2A> :
 
 * Asigne automáticamente un valor de **pedido** a sus puntos de conexión en función del orden en que se invocan.
 
@@ -168,7 +168,7 @@ El [enrutamiento de atributos](#ar) se explica más adelante en este documento.
 
 ### <a name="multiple-conventional-routes"></a>Varias rutas convencionales
 
-Se pueden agregar varias [rutas convencionales](#cr) en agregando `UseEndpoints` más llamadas a <xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapControllerRoute*> y <xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapAreaControllerRoute*> . Esto permite definir varias convenciones o agregar rutas convencionales dedicadas a una [acción](#action)específica, como:
+Se pueden agregar varias [rutas convencionales](#cr) en agregando `UseEndpoints` más llamadas a <xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapControllerRoute%2A> y <xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapAreaControllerRoute%2A> . Esto permite definir varias convenciones o agregar rutas convencionales dedicadas a una [acción](#action)específica, como:
 
 [!code-csharp[](routing/samples/3.x/main/Startup.cs?name=snippet_1)]
 
@@ -189,7 +189,7 @@ Dado `controller` `action` que y no aparecen en la plantilla de ruta `"blog/{*ar
 El ejemplo anterior:
 
 * `blog`la ruta tiene una prioridad más alta para las coincidencias que la `default` ruta porque se agrega en primer lugar.
-* Es y un ejemplo de enrutamiento de estilo de [indicaciones](https://developer.mozilla.org/docs/Glossary/Slug) en el que es habitual tener un nombre de artículo como parte de la dirección URL.
+* Es un ejemplo de enrutamiento de estilo de [indicaciones](https://developer.mozilla.org/docs/Glossary/Slug) en el que es habitual tener un nombre de artículo como parte de la dirección URL.
 
 > [!WARNING]
 > En ASP.NET Core 3,0 y versiones posteriores, el enrutamiento no:
@@ -203,7 +203,7 @@ El ejemplo anterior:
 ### <a name="conventional-routing-order"></a>Orden de enrutamiento convencional
 
 El enrutamiento convencional solo coincide con una combinación de acción y controlador que se define en la aplicación. Esto se ha diseñado para simplificar los casos en los que las rutas convencionales se superponen.
-Agregar rutas mediante <xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapControllerRoute*> , <xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapDefaultControllerRoute*> y <xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapAreaControllerRoute*> asigna automáticamente un valor de pedido a sus puntos de conexión en función del orden en el que se invocan. Las coincidencias de una ruta que aparece antes tienen una prioridad más alta. El enrutamiento convencional depende del orden. En general, las rutas con áreas deben colocarse anteriormente ya que son más específicas que las rutas sin un área. Las [rutas convencionales dedicadas](#dcr) con parámetros de ruta catch-all como `{*article}` pueden hacer que una ruta sea demasiado [expansiva](xref:fundamentals/routing#greedy), lo que significa que coincide con las direcciones URL que desea que coincidan con otras rutas. Coloque las rutas expansivas más adelante en la tabla de rutas para evitar coincidencias expansivas.
+Agregar rutas mediante <xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapControllerRoute%2A> , <xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapDefaultControllerRoute%2A> y <xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapAreaControllerRoute%2A> asigna automáticamente un valor de pedido a sus puntos de conexión en función del orden en el que se invocan. Las coincidencias de una ruta que aparece antes tienen una prioridad más alta. El enrutamiento convencional depende del orden. En general, las rutas con áreas deben colocarse anteriormente ya que son más específicas que las rutas sin un área. Las [rutas convencionales dedicadas](#dcr) con parámetros de ruta catch-all como `{*article}` pueden hacer que una ruta sea demasiado [expansiva](xref:fundamentals/routing#greedy), lo que significa que coincide con las direcciones URL que desea que coincidan con otras rutas. Coloque las rutas expansivas más adelante en la tabla de rutas para evitar coincidencias expansivas.
 
 [!INCLUDE[](~/includes/catchall.md)]
 
@@ -272,7 +272,7 @@ El enrutamiento mediante atributos utiliza un conjunto de atributos para asignar
 
 [!code-csharp[](routing/samples/3.x/main/StartupAPI.cs?name=snippet)]
 
-En el código anterior, <xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapControllers*> se llama a dentro de `UseEndpoints` para asignar controladores enrutados de atributo.
+En el código anterior, <xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapControllers%2A> se llama a dentro de `UseEndpoints` para asignar controladores enrutados de atributo.
 
 En el ejemplo siguiente:
 
@@ -431,7 +431,7 @@ En la tabla siguiente se explican los `[Route]` atributos del código anterior:
 | `[Route("")]` | Sí | `"Home"` |
 | `[Route("Index")]` | Sí | `"Home/Index"` |
 | `[Route("/")]` | **No** | `""` |
-| `[Route("About")]` | Yes | `"Home/About"` |
+| `[Route("About")]` | Sí | `"Home/About"` |
 
 <a name="routing-ordering-ref-label"></a>
 <a name="oar"></a>
@@ -721,7 +721,7 @@ Si `{ d = Donovan }` se agrega el valor:
 
 Podría esperar que se produzca este problema con la ruta predeterminada `{controller}/{action}/{id?}` . Este problema es raro en la práctica porque `Url.Action` siempre especifica explícitamente un `controller` valor de y `action` .
 
-Varias sobrecargas de [URL. Action](xref:Microsoft.AspNetCore.Mvc.IUrlHelper.Action*) toman un objeto de valores de ruta para proporcionar valores para los parámetros de ruta distintos de `controller` y `action` . El objeto Route Values se usa con frecuencia con `id` . Por ejemplo: `Url.Action("Buy", "Products", new { id = 17 })`. Objeto de valores de ruta:
+Varias sobrecargas de [URL. Action](xref:Microsoft.AspNetCore.Mvc.IUrlHelper.Action*) toman un objeto de valores de ruta para proporcionar valores para los parámetros de ruta distintos de `controller` y `action` . El objeto Route Values se usa con frecuencia con `id` . Por ejemplo, `Url.Action("Buy", "Products", new { id = 17 })`. Objeto de valores de ruta:
 
 * Por Convención suele ser un objeto de tipo anónimo.
 * Puede ser un `IDictionary<>` o un [poco](https://wikipedia.org/wiki/Plain_old_CLR_object)).
@@ -758,7 +758,7 @@ El Razor archivo siguiente genera un vínculo HTML a `Destination_Route` :
 
 <a name="routing-gen-urls-html-ref-label"></a>
 
-### <a name="generate-urls-in-html-and-razor"></a>Generar direcciones URL en HTML yRazor
+### <a name="generate-urls-in-html-and-no-locrazor"></a>Generar direcciones URL en HTML yRazor
 
 <xref:Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper>proporciona los <xref:Microsoft.AspNetCore.Mvc.ViewFeatures.HtmlHelper> métodos [HTML. BeginForm](xref:Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper.BeginForm*) y [HTML. ActionLink](xref:Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper.ActionLink*) para generar `<form>` `<a>` los elementos y, respectivamente. Estos métodos usan el método [URL. Action](xref:Microsoft.AspNetCore.Mvc.IUrlHelper.Action*) para generar una dirección URL y aceptan argumentos similares. Los métodos `Url.RouteUrl` complementarios de `HtmlHelper` son `Html.BeginRouteForm` y `Html.RouteLink`, cuya funcionalidad es similar.
 
@@ -776,7 +776,7 @@ Las clases base <xref:Microsoft.AspNetCore.Mvc.ControllerBase> y <xref:Microsoft
 
 [!code-csharp[](routing/samples/3.x/main/Controllers/CustomerController.cs?name=snippet)]
 
-Los métodos del generador de resultados de la acción como <xref:Microsoft.AspNetCore.Mvc.ControllerBase.RedirectToAction*> y <xref:Microsoft.AspNetCore.Mvc.ControllerBase.CreatedAtAction*> siguen un patrón similar a los métodos de `IUrlHelper` .
+Los métodos del generador de resultados de la acción como <xref:Microsoft.AspNetCore.Mvc.ControllerBase.RedirectToAction%2A> y <xref:Microsoft.AspNetCore.Mvc.ControllerBase.CreatedAtAction%2A> siguen un patrón similar a los métodos de `IUrlHelper` .
 
 <a name="routing-dedicated-ref-label"></a>
 
@@ -805,7 +805,7 @@ En el ejemplo siguiente se configura MVC para usar la ruta convencional predeter
 
 [!code-csharp[](routing/samples/3.x/AreasRouting/Startup.cs?name=snippet1)]
 
-En el código anterior, <xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapAreaControllerRoute*> se llama a para crear el `"blog_route"` . El segundo parámetro, `"Blog"` , es el nombre del área.
+En el código anterior, <xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapAreaControllerRoute%2A> se llama a para crear el `"blog_route"` . El segundo parámetro, `"Blog"` , es el nombre del área.
 
 Al buscar una coincidencia con una ruta de dirección URL como `/Manage/Users/AddUser` , la `"blog_route"` ruta genera los valores de ruta `{ area = Blog, controller = Users, action = AddUser }` . El `area` valor de ruta se genera mediante un valor predeterminado para `area` . La ruta creada por `MapAreaControllerRoute` es equivalente a la siguiente:
 
