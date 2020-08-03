@@ -4,22 +4,22 @@ author: scottaddie
 description: Obtenga información sobre cómo optimizar recursos estáticos en una aplicación web de ASP.NET Core aplicando técnicas de unión y minimización.
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 04/15/2020
+ms.date: 07/23/2020
 no-loc:
-- '[Blazor'
-- '[Blazor Server'
-- '[Blazor WebAssembly'
-- '[Identity'
-- "[Let's Encrypt"
-- '[Razor'
-- '[SignalR'
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: client-side/bundling-and-minification
-ms.openlocfilehash: de7c155189008e1f78bfb1eba062fcc86f9e4839
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 5db6ab3d790257c677c0a4ed7e605eb39c2982ed
+ms.sourcegitcommit: cc845634a490c49ff869c89b6e422b6d65d0e886
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85401914"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87159719"
 ---
 # <a name="bundle-and-minify-static-assets-in-aspnet-core"></a>Unión y minimización de recursos estáticos en ASP.NET Core
 
@@ -71,19 +71,19 @@ Los exploradores son bastante detallados con respecto a los encabezados de solic
 
 ## <a name="choose-a-bundling-and-minification-strategy"></a>Elección de una estrategia de unión y minimización
 
-Las plantillas de proyecto de MVC y [Razor Pages proporcionan una solución para la unión y la minificación que consta de un archivo de configuración JSON. Las herramientas de terceros, como el ejecutor de tareas [Grunt](xref:client-side/using-grunt), realizan las mismas tareas con un poco más de complejidad. Una herramienta de terceros es una buena opción cuando el flujo de trabajo de desarrollo requiere un procesamiento más allá de la unión y la minimización, como la detección de errores y la optimización de imágenes. Mediante el uso de la unión y la minimización en tiempo de diseño, los archivos minimizados se crean con anterioridad a la implementación de la aplicación. La unión y la minimización antes de la implementación proporcionan la ventaja de reducir la carga del servidor. Sin embargo, es importante reconocer que la unión y la minimización en tiempo de diseño aumentan la complejidad de la compilación y solo funcionan con archivos estáticos.
+Las plantillas de proyecto de MVC y Razor Pages proporcionan una solución para la unión y la minificación que consta de un archivo de configuración JSON. Las herramientas de terceros, como el ejecutor de tareas [Grunt](xref:client-side/using-grunt), realizan las mismas tareas con un poco más de complejidad. Una herramienta de terceros es una buena opción cuando el flujo de trabajo de desarrollo requiere un procesamiento más allá de la unión y la minimización, como la detección de errores y la optimización de imágenes. Mediante el uso de la unión y la minimización en tiempo de diseño, los archivos minimizados se crean con anterioridad a la implementación de la aplicación. La unión y la minimización antes de la implementación proporcionan la ventaja de reducir la carga del servidor. Sin embargo, es importante reconocer que la unión y la minimización en tiempo de diseño aumentan la complejidad de la compilación y solo funcionan con archivos estáticos.
 
 ## <a name="configure-bundling-and-minification"></a>Configuración de la unión y la minimización
 
 ::: moniker range="<= aspnetcore-2.0"
 
-En ASP.NET Core 2.0 o versiones anteriores, las plantillas de proyecto de MVC y [Razor Pages proporcionan un archivo de configuración *bundleconfig.json* que define las opciones de cada conjunto:
+En ASP.NET Core 2.0 o versiones anteriores, las plantillas de proyecto de MVC y Razor Pages proporcionan un archivo de configuración *bundleconfig.json* que define las opciones de cada conjunto:
 
 ::: moniker-end
 
 ::: moniker range=">= aspnetcore-2.1"
 
-En ASP.NET Core 2.1 o versiones posteriores, agregue un archivo JSON, denominado *bundleconfig.json*, a la raíz del proyecto de MVC o [Razor Pages. Incluya el código JSON siguiente en ese archivo como punto inicial:
+En ASP.NET Core 2.1 o versiones posteriores, agregue un archivo JSON, denominado *bundleconfig.json*, a la raíz del proyecto de MVC o Razor Pages. Incluya el código JSON siguiente en ese archivo como punto inicial:
 
 ::: moniker-end
 
@@ -174,13 +174,13 @@ Agregue un archivo *package.json*, con el elemento `devDependencies` siguiente, 
 
 Ejecute el comando siguiente al mismo nivel que *package.json* para instalar las dependencias:
 
-```console
+```bash
 npm i
 ```
 
 Instale la CLI de Gulp como una dependencia global:
 
-```console
+```bash
 npm i -g gulp-cli
 ```
 
@@ -190,9 +190,12 @@ Copie el archivo *gulpfile.js* siguiente en la raíz del proyecto:
 
 ### <a name="run-gulp-tasks"></a>Ejecución de tareas de Gulp
 
-Para desencadenar la tarea de minimización de Gulp antes de que el proyecto se compile en Visual Studio, agregue el [destino de MSBuild](/visualstudio/msbuild/msbuild-targets) siguiente al archivo *.csproj:
+Para desencadenar la tarea de minificación de Gulp antes de que el proyecto se compile en Visual Studio:
 
-[!code-xml[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/BuildBundlerMinifierApp.csproj?range=14-16)]
+1. Instale el paquete NuGet [BuildBundlerMinifier](https://www.nuget.org/packages/BuildBundlerMinifier).
+1. Agregue el [destino de MSBuild Target](/visualstudio/msbuild/msbuild-targets) al archivo de proyecto:
+
+    [!code-xml[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/BuildBundlerMinifierApp.csproj?range=14-16)]
 
 En este ejemplo, las tareas definidas en el destino `MyPreCompileTarget` se ejecutan antes que el destino `Build` predefinido. Aparece una salida similar a la siguiente en la ventana de salida de Visual Studio:
 

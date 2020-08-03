@@ -5,7 +5,7 @@ description: Obtenga información sobre cómo depurar aplicaciones Blazor.
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/15/2020
+ms.date: 07/27/2020
 no-loc:
 - Blazor
 - Blazor Server
@@ -15,14 +15,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/debug
-ms.openlocfilehash: 828fb0ce5101407b6f40195138d59c335eec389f
-ms.sourcegitcommit: 6fb27ea41a92f6d0e91dfd0eba905d2ac1a707f7
+ms.openlocfilehash: b4199c3a99af5875c5d9a87f29f7c7e2758ffd71
+ms.sourcegitcommit: 5a36758cca2861aeb10840093e46d273a6e6e91d
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/15/2020
-ms.locfileid: "86407676"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87303565"
 ---
-# <a name="debug-aspnet-core-blazor-webassembly"></a>Depuración de Blazor WebAssembly en ASP.NET Core
+# <a name="debug-aspnet-core-no-locblazor-webassembly"></a>Depuración de Blazor WebAssembly en ASP.NET Core
 
 [Daniel Roth](https://github.com/danroth27)
 
@@ -105,19 +105,19 @@ Al depurar la aplicación de Blazor WebAssembly, también puede depurar el códi
 
 ## <a name="visual-studio-code"></a>Visual Studio Code
 
-Para obtener información sobre la instalación de Visual Studio Code para el desarrollo de aplicaciones Blazor, vea <xref:blazor/tooling>.
-
-### <a name="debug-standalone-blazor-webassembly"></a>Depuración de una aplicación independiente Blazor WebAssembly
+### <a name="debug-standalone-no-locblazor-webassembly"></a>Depuración de una aplicación independiente Blazor WebAssembly
 
 1. Abra la aplicación independiente Blazor WebAssembly en VS Code.
 
-   Si recibe la notificación siguiente que indica que se requiere más información para habilitar la depuración:
+   Puede recibir la notificación siguiente que indica que se requiere más información para habilitar la depuración:
    
-   * Confirme que tiene instaladas las extensiones correctas.
-   * Confirme que está habilitada la depuración de JavaScript en versión preliminar.
-   * Recargue la ventana.
-
    ![Se requiere configuración adicional](https://devblogs.microsoft.com/aspnet/wp-content/uploads/sites/16/2020/03/vscode-additional-setup.png)
+   
+   Si recibe la notificación:
+
+   * Confirme que está instalada la [extensión de C# para Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) más reciente. Para inspeccionar las extensiones instaladas, abra **Ver** > **Extensiones** en la barra de menús o seleccione el icono **Extensiones** en la barra lateral **Actividad**.
+   * Confirme que está habilitada la depuración de JavaScript en versión preliminar. Abra la configuración en la barra de menús (**Archivo** > **Preferencias** > **Configuración**). Busque con las palabras clave `debug preview`. En los resultados de la búsqueda, confirme que la casilla **Depurar > JavaScript: Usar vista previa** está activada.
+   * Recargue la ventana.
 
 1. Para iniciar la depuración, use el método abreviado de teclado <kbd>F5</kbd> o el elemento de menú.
 
@@ -131,7 +131,7 @@ Para obtener información sobre la instalación de Visual Studio Code para el d
 
    ![Depuración del contenedor en VS Code](https://devblogs.microsoft.com/aspnet/wp-content/uploads/sites/16/2020/03/vscode-debug-counter.png)
 
-### <a name="debug-hosted-blazor-webassembly"></a>Depuración de una aplicación hospedada Blazor WebAssembly
+### <a name="debug-hosted-no-locblazor-webassembly"></a>Depuración de una aplicación hospedada Blazor WebAssembly
 
 1. Abra la carpeta de la solución de la aplicación Blazor WebAssembly hospedada en VS Code.
 
@@ -177,7 +177,7 @@ Estas opciones de configuración de inicio son compatibles con el tipo de depura
 
 ### <a name="example-launch-configurations"></a>Configuraciones de inicio de ejemplo
 
-#### <a name="launch-and-debug-a-standalone-blazor-webassembly-app"></a>Inicio y depuración de una aplicación independiente Blazor WebAssembly
+#### <a name="launch-and-debug-a-standalone-no-locblazor-webassembly-app"></a>Inicio y depuración de una aplicación independiente Blazor WebAssembly
 
 ```json
 {
@@ -198,7 +198,7 @@ Estas opciones de configuración de inicio son compatibles con el tipo de depura
 }
 ```
 
-#### <a name="launch-and-debug-a-hosted-blazor-webassembly-app-with-microsoft-edge"></a>Inicio y depuración de una aplicación Blazor WebAssembly hospedada con Microsoft Edge
+#### <a name="launch-and-debug-a-hosted-no-locblazor-webassembly-app-with-microsoft-edge"></a>Inicio y depuración de una aplicación Blazor WebAssembly hospedada con Microsoft Edge
 
 La configuración predeterminada del explorador es Google Chrome. Al usar Microsoft Edge para la depuración, establezca `browser` en `edge`. Para usar Google Chrome, no establezca la opción `browser` ni establezca el valor de la opción en `chrome`.
 

@@ -5,7 +5,7 @@ Las aplicaciones Blazor Server residen en la memoria del servidor. Eso significa
 
 Puede usar servicios singleton con estado en aplicaciones Blazor si están específicamente diseñadas para ello. Por ejemplo, es correcto usar una caché de memoria como singleton porque requiere una clave para acceder a una entrada determinada, dando por hecho que los usuarios no tienen control sobre las claves de caché que se usan.
 
-**Además, de nuevo por motivos de seguridad, no debe usar <xref:Microsoft.AspNetCore.Http.IHttpContextAccessor> en aplicaciones Blazor.** Las aplicaciones Blazor se ejecutan fuera del contexto de la canalización de ASP.NET Core y no se garantiza que <xref:Microsoft.AspNetCore.Http.HttpContext> esté disponible en <xref:Microsoft.AspNetCore.Http.IHttpContextAccessor>, ni que contenga el contexto que ha iniciado la aplicación Blazor.
+**Además, de nuevo por motivos de seguridad, no debe usar <xref:Microsoft.AspNetCore.Http.IHttpContextAccessor> en aplicaciones Blazor.** Las aplicaciones de Blazor se ejecutan fuera del contexto de la canalización de ASP.NET Core. No se garantiza que <xref:Microsoft.AspNetCore.Http.HttpContext> esté disponible en <xref:Microsoft.AspNetCore.Http.IHttpContextAccessor>, ni tampoco se garantiza que contenga el contexto que inició la aplicación de Blazor.
 
 La manera recomendada de pasar el estado de la solicitud a la aplicación Blazor es por medio de parámetros al componente raíz en la representación inicial de la aplicación:
 
