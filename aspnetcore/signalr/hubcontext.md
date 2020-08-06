@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/hubcontext
-ms.openlocfilehash: 85f0f48dd6586b40b8db21eb4b59793069afe2c5
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: d38cb5b3e818879d3ec40a927acfdd69dc85377a
+ms.sourcegitcommit: 84150702757cf7a7b839485382420e8db8e92b9c
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85405814"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87819255"
 ---
 # <a name="send-messages-from-outside-a-hub"></a>Envío de mensajes desde fuera de un concentrador
 
@@ -28,7 +28,7 @@ Por [Mikael Mengistu](https://twitter.com/MikaelM_12)
 
 El SignalR concentrador es la abstracción principal para enviar mensajes a los clientes conectados SignalR al servidor. También es posible enviar mensajes desde otros lugares de la aplicación mediante el `IHubContext` servicio. En este artículo se explica cómo acceder a SignalR `IHubContext` para enviar notificaciones a los clientes desde fuera de un concentrador.
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/hubcontext/sample/) [(cómo descargarlo)](xref:index#how-to-download-a-sample)
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/hubcontext/sample/) [(cómo descargarlo)](xref:index#how-to-download-a-sample).
 
 ## <a name="get-an-instance-of-ihubcontext"></a>Obtener una instancia de IHubContext
 
@@ -70,7 +70,7 @@ app.Use(async (context, next) =>
 
 ### <a name="get-an-instance-of-ihubcontext-from-ihost"></a>Obtener una instancia de IHubContext desde IHost
 
-El acceso a `IHubContext` desde el host web es útil para la integración con áreas fuera de ASP.net Core, por ejemplo, con marcos de inserción de dependencias de terceros:
+El acceso a `IHubContext` desde el host web es útil para la integración con áreas fuera de ASP.net Core, por ejemplo, con marcos de inyección de dependencia de terceros:
 
 ```csharp
     public class Program
@@ -114,5 +114,5 @@ public class ChatController : Controller
 ## <a name="related-resources"></a>Recursos relacionados
 
 * [Introducción](xref:tutorials/signalr)
-* [Concentradores](xref:signalr/hubs)
-* [Publicar en Azure](xref:signalr/publish-to-azure-web-app)
+* [Directorios](xref:signalr/hubs)
+* [Publicación en Azure](xref:signalr/publish-to-azure-web-app)
