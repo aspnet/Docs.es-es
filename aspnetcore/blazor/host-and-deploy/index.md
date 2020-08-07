@@ -15,14 +15,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/index
-ms.openlocfilehash: 77202cd60d357c27237cdb925e0adc00e66d2e56
-ms.sourcegitcommit: 6fb27ea41a92f6d0e91dfd0eba905d2ac1a707f7
+ms.openlocfilehash: d8c1d340a05ebdddffcdebad400b44e31159bc28
+ms.sourcegitcommit: 84150702757cf7a7b839485382420e8db8e92b9c
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/15/2020
-ms.locfileid: "86407715"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87818903"
 ---
-# <a name="host-and-deploy-aspnet-core-blazor"></a>Hospedaje e implementación de ASP.NET Core Blazor
+# <a name="host-and-deploy-aspnet-core-no-locblazor"></a>Hospedaje e implementación de ASP.NET Core Blazor
 
 Por [Luke Latham](https://github.com/guardrex), [Rainer Stropek](https://www.timecockpit.com) y [Daniel Roth](https://github.com/danroth27)
 
@@ -120,6 +120,10 @@ El marcador de posición `{RELATIVE PATH}` es la ruta de acceso no raíz en el s
 ```csharp
 endpoints.MapFallbackToPage("/CoolApp/{**path:nonfile}");
 ```
+
+**Hospedaje de varias aplicaciones de Blazor WebAssembly**
+
+Para obtener más información sobre cómo hospedar varias aplicaciones de Blazor WebAssembly en una solución de Blazor hospedada, vea <xref:blazor/host-and-deploy/webassembly#hosted-deployment-with-multiple-blazor-webassembly-apps>.
 
 ## <a name="deployment"></a>Implementación
 
