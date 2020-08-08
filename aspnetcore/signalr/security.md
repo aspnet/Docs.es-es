@@ -7,6 +7,8 @@ ms.author: anurse
 ms.custom: mvc
 ms.date: 01/16/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,14 +17,14 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/security
-ms.openlocfilehash: 4e125fd6c4ad2cd4989d692dd28a63638218ee57
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: e004899e334738f723cb98638cb31de8d314a830
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85400419"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88022477"
 ---
-# <a name="security-considerations-in-aspnet-core-signalr"></a>Consideraciones de seguridad en ASP.NET CoreSignalR
+# <a name="security-considerations-in-aspnet-core-no-locsignalr"></a>Consideraciones de seguridad en ASP.NET CoreSignalR
 
 Por [Andrew Stanton-enfermera](https://twitter.com/anurse)
 
@@ -41,12 +43,12 @@ Para obtener más información sobre la configuración de CORS, consulte [habili
 
 * Permite los orígenes esperados específicos. Permitir cualquier origen es posible, pero **no** es seguro ni recomendado.
 * Los métodos HTTP `GET` y `POST` deben ser permitidos.
-* Se deben permitir las credenciales para que las sesiones permanentes basadas en cookies funcionen correctamente. Deben habilitarse incluso cuando no se utiliza la autenticación.
+* Se deben permitir las credenciales para cookie que las sesiones permanentes basadas en funcionen correctamente. Deben habilitarse incluso cuando no se utiliza la autenticación.
 
 ::: moniker range=">= aspnetcore-5.0"
 
 Sin embargo, en 5,0 hemos proporcionado una opción en el cliente de TypeScript para no usar credenciales.
-La opción de no usar credenciales solo se debe usar cuando se conoce el 100% de que no se necesitan credenciales como cookies en la aplicación (Azure App Service usa las cookies cuando se usan varios servidores para sesiones permanentes).
+La opción de no usar credenciales solo se debe usar cuando se conoce el 100% de que las credenciales como Cookie s no se necesitan en la aplicación ( cookie se usan en Azure App Service cuando se usan varios servidores para sesiones permanentes).
 
 ::: moniker-end
 

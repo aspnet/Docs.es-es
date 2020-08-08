@@ -6,6 +6,8 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/17/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -14,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/cors
-ms.openlocfilehash: dc8e68ef482025443147eeb27bd3f245c1a1a5ed
-ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
+ms.openlocfilehash: ee640ded37f40175e3e150f713fa970e9705b62c
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86212888"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88021112"
 ---
 # <a name="enable-cross-origin-requests-cors-in-aspnet-core"></a>Habilitación de solicitudes entre orígenes (CORS) en ASP.NET Core
 
@@ -147,7 +149,7 @@ El atributo [[EnableCors]](xref:Microsoft.AspNetCore.Cors.EnableCorsAttribute) p
 El `[EnableCors]` atributo se puede aplicar a:
 
 * RazorDel`PageModel`
-* Controller
+* Controlador
 * Método de acción del controlador
 
 Se pueden aplicar directivas diferentes a los controladores, modelos de página o métodos de acción con el `[EnableCors]` atributo. Cuando el `[EnableCors]` atributo se aplica a un controlador, un modelo de página o un método de acción y CORS está habilitado en middleware, se aplican **ambas** directivas. **Se recomienda no combinar directivas. Use el** `[EnableCors]` **atributo o middleware, no ambos en la misma aplicación.**
@@ -272,7 +274,7 @@ La especificación CORS llama a estos encabezados de *respuesta simple*. Para qu
 [!code-csharp[](cors/3.1sample/Cors/WebAPI/StartupAllowSubdomain.cs?name=snippet5)]
 ### <a name="credentials-in-cross-origin-requests"></a>Credenciales en solicitudes entre orígenes
 
-Las credenciales requieren un tratamiento especial en una solicitud de CORS. De forma predeterminada, el explorador no envía credenciales con una solicitud entre orígenes. Las credenciales incluyen cookies y esquemas de autenticación HTTP. Para enviar credenciales con una solicitud entre orígenes, el cliente debe establecer `XMLHttpRequest.withCredentials` en `true` .
+Las credenciales requieren un tratamiento especial en una solicitud de CORS. De forma predeterminada, el explorador no envía credenciales con una solicitud entre orígenes. Las credenciales incluyen cookie esquemas de autenticación s y http. Para enviar credenciales con una solicitud entre orígenes, el cliente debe establecer `XMLHttpRequest.withCredentials` en `true` .
 
 Usar `XMLHttpRequest` directamente:
 
@@ -717,7 +719,7 @@ El atributo [ &lbrack; EnableCors &rbrack; ](xref:Microsoft.AspNetCore.Cors.Enab
 El `[EnableCors]` atributo se puede aplicar a:
 
 * RazorDel`PageModel`
-* Controller
+* Controlador
 * Método de acción del controlador
 
 Puede aplicar diferentes directivas al controlador/página-modelo o acción con el `[EnableCors]` atributo. Cuando el `[EnableCors]` atributo se aplica a un método de acción/modelo de página/controladores y CORS está habilitado en middleware, se aplican **ambas** directivas. Se recomienda **no** combinar directivas. Use el `[EnableCors]` atributo o middleware, **no ambos**. Al usar `[EnableCors]` , **no** defina una directiva predeterminada.
@@ -819,7 +821,7 @@ La especificación CORS llama a estos encabezados de *respuesta simple*. Para qu
 
 ### <a name="credentials-in-cross-origin-requests"></a>Credenciales en solicitudes entre orígenes
 
-Las credenciales requieren un tratamiento especial en una solicitud de CORS. De forma predeterminada, el explorador no envía credenciales con una solicitud entre orígenes. Las credenciales incluyen cookies y esquemas de autenticación HTTP. Para enviar credenciales con una solicitud entre orígenes, el cliente debe establecer `XMLHttpRequest.withCredentials` en `true` .
+Las credenciales requieren un tratamiento especial en una solicitud de CORS. De forma predeterminada, el explorador no envía credenciales con una solicitud entre orígenes. Las credenciales incluyen cookie esquemas de autenticación s y http. Para enviar credenciales con una solicitud entre orígenes, el cliente debe establecer `XMLHttpRequest.withCredentials` en `true` .
 
 Usar `XMLHttpRequest` directamente:
 

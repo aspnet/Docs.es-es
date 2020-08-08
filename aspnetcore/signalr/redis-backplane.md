@@ -7,6 +7,8 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 11/12/2019
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,14 +17,14 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/redis-backplane
-ms.openlocfilehash: 58c1ff2c9334e75535f6e5f0f418976176822724
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: d80bce204b467d436a3580933718147bc3fbe75c
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85408479"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88022490"
 ---
-# <a name="set-up-a-redis-backplane-for-aspnet-core-signalr-scale-out"></a>Configuración de un backplane de Redis para ASP.NET Core SignalR la escalabilidad horizontal
+# <a name="set-up-a-redis-backplane-for-aspnet-core-no-locsignalr-scale-out"></a>Configuración de un backplane de Redis para ASP.NET Core SignalR la escalabilidad horizontal
 
 Por [Andrew Stanton-enfermera](https://twitter.com/anurse), [Brady transgastor](https://twitter.com/bradygaster)y [Tom Dykstra](https://github.com/tdykstra),
 
@@ -35,7 +37,7 @@ En este artículo se explican los SignalR aspectos específicos de la configurac
   > [!IMPORTANT] 
   > Para su uso en producción, se recomienda un backplane de Redis solo cuando se ejecuta en el mismo centro de datos que la SignalR aplicación. De lo contrario, la latencia de red degrada el rendimiento. Si la SignalR aplicación se ejecuta en la nube de Azure, se recomienda el SignalR servicio de Azure en lugar de un backplane de Redis. Puede usar el servicio de Azure Redis Cache para entornos de desarrollo y pruebas.
 
-  Para obtener más información, vea los siguientes recursos:
+  Para obtener más información, consulte los siguientes recursos:
 
   * <xref:signalr/scale>
   * [Documentación de Redis](https://redis.io/)
@@ -232,7 +234,7 @@ La [agrupación en clústeres de Redis](https://redis.io/topics/cluster-spec) es
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Para obtener más información, vea los siguientes recursos:
+Para obtener más información, consulte los siguientes recursos:
 
 * <xref:signalr/scale>
 * [Documentación de Redis](https://redis.io/documentation)

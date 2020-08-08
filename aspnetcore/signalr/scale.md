@@ -7,6 +7,8 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 01/17/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,14 +17,14 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/scale
-ms.openlocfilehash: cfa1a4c67649e1816f510a33cc53e559c4a59153
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 2d128d54dc9b1189124563e45d72d74b19704ab1
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85408687"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88022529"
 ---
-# <a name="aspnet-core-signalr-hosting-and-scaling"></a>SignalRHospedaje y escalado de ASP.net Core
+# <a name="aspnet-core-no-locsignalr-hosting-and-scaling"></a>SignalRHospedaje y escalado de ASP.net Core
 
 Por [Andrew Stanton-enfermera](https://twitter.com/anurse), [Brady transgastor](https://twitter.com/bradygaster)y [Tom Dykstra](https://github.com/tdykstra),
 
@@ -62,15 +64,15 @@ Para evitar que SignalR el uso de recursos provoque errores en una SignalR aplic
 
 Una aplicación que usa SignalR debe realizar un seguimiento de todas sus conexiones, lo que crea problemas para una granja de servidores. Agregue un servidor y obtenga las nuevas conexiones que los otros servidores no conocen. Por ejemplo, en SignalR cada servidor del diagrama siguiente no es consciente de las conexiones en los otros servidores. Cuando SignalR en uno de los servidores desea enviar un mensaje a todos los clientes, el mensaje solo se dirige a los clientes conectados a ese servidor.
 
-![Escalado SignalR sin un backplane](scale/_static/scale-no-backplane.png)
+![Escalado::: no-LOC (Signalr)::: sin un plano posterior](scale/_static/scale-no-backplane.png)
 
 Las opciones para resolver este problema son el [ SignalR servicio de Azure](#azure-signalr-service) y el [backplane de Redis](#redis-backplane).
 
-## <a name="azure-signalr-service"></a>Azure SignalR Service
+## <a name="azure-no-locsignalr-service"></a>Azure SignalR Service
 
 El servicio de Azure SignalR es un proxy en lugar de un backplane. Cada vez que un cliente inicia una conexión al servidor, el cliente se redirige para conectarse al servicio. Ese proceso se ilustra en el diagrama siguiente:
 
-![Establecer una conexión con el servicio de Azure SignalR](scale/_static/azure-signalr-service-one-connection.png)
+![Establecer una conexión con Azure::: no-LOC (Signalr)::: Service](scale/_static/azure-signalr-service-one-connection.png)
 
 El resultado es que el servicio administra todas las conexiones de cliente, mientras que cada servidor solo necesita un pequeño número constante de conexiones al servicio, tal y como se muestra en el diagrama siguiente:
 
@@ -126,14 +128,14 @@ proxy_set_header Connection $connection_upgrade;
 
 Para obtener más información, vea [NGINX como proxy de WebSocket](https://www.nginx.com/blog/websocket-nginx/).
 
-## <a name="third-party-signalr-backplane-providers"></a>Proveedores de backplane de terceros SignalR
+## <a name="third-party-no-locsignalr-backplane-providers"></a>Proveedores de backplane de terceros SignalR
 
 * [NCache](https://www.alachisoft.com/ncache/asp-net-core-signalr.html)
 * [Orleans](https://github.com/OrleansContrib/SignalR.Orleans)
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Para obtener más información, vea los siguientes recursos:
+Para obtener más información, consulte los siguientes recursos:
 
 * [Documentación del servicio de Azure SignalR](/azure/azure-signalr/signalr-overview)
 * [Configuración de un backplane de Redis](xref:signalr/redis-backplane)

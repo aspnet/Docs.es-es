@@ -5,6 +5,8 @@ description: Más información sobre la duración y la administración de claves
 ms.author: riande
 ms.date: 10/14/2016
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -13,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/data-protection/configuration/default-settings
-ms.openlocfilehash: f758c814280ee09a240d99cc59cdab2dc4590df6
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: b39187d93247dc83c34bbbe6ec6accfd77108794
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85407101"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88021385"
 ---
 # <a name="data-protection-key-management-and-lifetime-in-aspnet-core"></a>Administración y duración de las claves de protección de datos en ASP.NET Core
 
@@ -31,7 +33,7 @@ La aplicación intenta detectar su entorno operativo y controlar la configuraci�
 1. Si la aplicación se hospeda en [aplicaciones de Azure](https://azure.microsoft.com/services/app-service/), las claves se conservan en la carpeta *%Home%\ASP.NET\DataProtection-Keys* Esta carpeta está respaldada por el almacenamiento de red y se sincroniza en todas las máquinas que hospedan la aplicación.
    * Las claves no están protegidas en reposo.
    * La carpeta de *claves de protección* de la información proporciona el anillo de claves a todas las instancias de una aplicación en una sola ranura de implementación.
-   * Las ranuras de implementación independientes, por ejemplo, almacenamiento provisional y producción, no comparten ningún anillo de clave. Al intercambiar entre las ranuras de implementación, por ejemplo, el intercambio de ensayo a producción o el uso de pruebas A/B, cualquier aplicación que use la protección de datos no podrá descifrar los datos almacenados mediante el anillo de claves dentro de la ranura anterior. Esto conduce a los usuarios que se registran en una aplicación que usa la autenticación de cookies de ASP.NET Core estándar, ya que usa la protección de datos para proteger sus cookies. Si desea usar anillos de claves independientes de la ranura, use un proveedor de anillo de claves externo, como Azure Blob Storage, Azure Key Vault, un almacén de SQL o caché en Redis.
+   * Las ranuras de implementación independientes, por ejemplo, almacenamiento provisional y producción, no comparten ningún anillo de clave. Al intercambiar entre las ranuras de implementación, por ejemplo, el intercambio de ensayo a producción o el uso de pruebas A/B, cualquier aplicación que use la protección de datos no podrá descifrar los datos almacenados mediante el anillo de claves dentro de la ranura anterior. Esto conduce a los usuarios que se registran en una aplicación que usa la autenticación de ASP.NET Core estándar cookie , ya que usa la protección de datos para proteger sus cookie s. Si desea usar anillos de claves independientes de la ranura, use un proveedor de anillo de claves externo, como Azure Blob Storage, Azure Key Vault, un almacén de SQL o caché en Redis.
 
 1. Si el perfil de usuario está disponible, las claves se conservan en la carpeta *%LOCALAPPDATA%\ASP.NET\DataProtection-Keys* Si el sistema operativo es Windows, las claves se cifran en reposo mediante DPAPI.
 

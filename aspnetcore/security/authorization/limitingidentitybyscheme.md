@@ -6,6 +6,8 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 11/08/2019
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -14,16 +16,16 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authorization/limitingidentitybyscheme
-ms.openlocfilehash: 042b22a220d961773437e9d85d5f0c5782e29bea
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 66b307a3629e18e49b5bb6e65a156054c0002ba8
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85406022"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88022113"
 ---
 # <a name="authorize-with-a-specific-scheme-in-aspnet-core"></a>Autorizar con un esquema específico en ASP.NET Core
 
-En algunos escenarios, como las aplicaciones de una sola página (Spa), es habitual usar varios métodos de autenticación. Por ejemplo, la aplicación puede usar la autenticación basada en cookies para iniciar sesión y la autenticación de portador de JWT para solicitudes de JavaScript. En algunos casos, la aplicación puede tener varias instancias de un controlador de autenticación. Por ejemplo, dos controladores de cookies donde uno contiene una identidad básica y uno se crea cuando se ha desencadenado una autenticación multifactor (MFA). MFA se puede desencadenar porque el usuario solicitó una operación que requiere seguridad adicional. Para obtener más información sobre cómo aplicar MFA cuando un usuario solicita un recurso que requiere MFA, consulte la sección de protección de problemas de GitHub [con MFA](https://github.com/dotnet/AspNetCore.Docs/issues/15791#issuecomment-580464195).
+En algunos escenarios, como las aplicaciones de una sola página (Spa), es habitual usar varios métodos de autenticación. Por ejemplo, la aplicación puede usar la cookie autenticación basada en para iniciar sesión y la autenticación de portador de JWT para solicitudes de JavaScript. En algunos casos, la aplicación puede tener varias instancias de un controlador de autenticación. Por ejemplo, dos cookie Controladores donde uno contiene una identidad básica y uno se crea cuando se desencadena una autenticación multifactor (MFA). MFA se puede desencadenar porque el usuario solicitó una operación que requiere seguridad adicional. Para obtener más información sobre cómo aplicar MFA cuando un usuario solicita un recurso que requiere MFA, consulte la sección de protección de problemas de GitHub [con MFA](https://github.com/dotnet/AspNetCore.Docs/issues/15791#issuecomment-580464195).
 
 Un esquema de autenticación se denomina cuando el servicio de autenticación se configura durante la autenticación. Por ejemplo:
 
@@ -43,7 +45,7 @@ public void ConfigureServices(IServiceCollection services)
         });
 ```
 
-En el código anterior, se han agregado dos controladores de autenticación: uno para las cookies y otro para el portador.
+En el código anterior, se han agregado dos controladores de autenticación: uno para cookie s y otro para el portador.
 
 >[!NOTE]
 >Al especificar el esquema predeterminado, `HttpContext.User` se establece la propiedad en esa identidad. Si no se desea ese comportamiento, deshabilítelo mediante la invocación del formulario sin parámetros de `AddAuthentication` .
@@ -63,7 +65,7 @@ public class MixedController : Controller
         JwtBearerDefaults.AuthenticationScheme;
 ```
 
-En el ejemplo anterior, los controladores de cookies y portadores se ejecutan y tienen la oportunidad de crear y anexar una identidad para el usuario actual. Al especificar solo un esquema, se ejecuta el controlador correspondiente.
+En el ejemplo anterior, los cookie controladores de portador y se ejecutan y tienen la oportunidad de crear y anexar una identidad para el usuario actual. Al especificar solo un esquema, se ejecuta el controlador correspondiente.
 
 ```csharp
 [Authorize(AuthenticationSchemes = 
@@ -71,7 +73,7 @@ En el ejemplo anterior, los controladores de cookies y portadores se ejecutan y 
 public class MixedController : Controller
 ```
 
-En el código anterior, solo se ejecuta el controlador con el esquema "portador". Se omiten las identidades basadas en cookies.
+En el código anterior, solo se ejecuta el controlador con el esquema "portador". cookieSe omiten las identidades basadas en.
 
 ## <a name="selecting-the-scheme-with-policies"></a>Seleccionar el esquema con directivas
 

@@ -7,6 +7,8 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 11/12/2019
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,14 +17,14 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/publish-to-azure-web-app
-ms.openlocfilehash: d3f48b3171012b03fcaf7665c2089b27d37bbeca
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 3163a2743c544d0a07d92eb7547e77c3b200ac83
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85408843"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88022542"
 ---
-# <a name="publish-an-aspnet-core-signalr-app-to-azure-app-service"></a>Publicación de una SignalR aplicación ASP.net Core en Azure App Service
+# <a name="publish-an-aspnet-core-no-locsignalr-app-to-azure-app-service"></a>Publicación de una SignalR aplicación ASP.net Core en Azure App Service
 
 Por el [Brady](https://twitter.com/bradygaster)
 
@@ -52,7 +54,7 @@ En este artículo se describe la publicación con las herramientas de Visual Stu
 
 1. Seleccione el ** SignalR servicio de Azure** en la lista desplegable **dependencias**  >  **Agregar** :
 
-   ![Área de dependencias que muestra la selección del servicio de Azure SignalR en la lista desplegable agregar](publish-to-azure-web-app/_static/signalr-service-dependency.png)
+   ![Área de dependencias que muestra la selección de Azure::: no-LOC (Signalr)::: Service en la lista desplegable agregar](publish-to-azure-web-app/_static/signalr-service-dependency.png)
 
 1. En el cuadro de diálogo ** SignalR servicio de Azure** , seleccione **crear una nueva SignalR instancia de servicio de Azure**.
 
@@ -78,7 +80,7 @@ Si se produce un error *de puerta de enlace HTTP 502,2-Bad* al implementar una a
 
 En el caso de las aplicaciones hospedadas sin el servicio de Azure SignalR , habilite:
 
-* [Afinidad de ARR](https://azure.github.io/AppService/2016/05/16/Disable-Session-affinity-cookie-(ARR-cookie)-for-Azure-web-apps.html) para enrutar las solicitudes de un usuario a la misma instancia de App Service. La configuración predeterminada es **on**.
+* [Afinidad ARR] ( https://azure.github.io/AppService/2016/05/16/Disable-Session-affinity- cookie -(Arr- cookie ) -for-Azure-web-apps.html) para enrutar las solicitudes de un usuario a la misma instancia de App Service. La configuración predeterminada es **on**.
 * [Sockets web](xref:fundamentals/websockets) para permitir que el transporte de sockets web funcione. El valor predeterminado es **OFF**.
 
 1. En el Azure Portal, vaya a la aplicación web en **App Services**.

@@ -7,6 +7,8 @@ ms.author: anurse
 ms.custom: signalr
 ms.date: 06/12/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,14 +17,14 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/diagnostics
-ms.openlocfilehash: f2b864d47c98a031872be676a68143bd79f49829
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 61733fe4fbcd7b94662404a39a288ff2ce75ec53
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85409103"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88021840"
 ---
-# <a name="logging-and-diagnostics-in-aspnet-core-signalr"></a>Registro y diagnósticos en ASP.NET CoreSignalR
+# <a name="logging-and-diagnostics-in-aspnet-core-no-locsignalr"></a>Registro y diagnósticos en ASP.NET CoreSignalR
 
 Por [Andrew Stanton-enfermera](https://twitter.com/anurse)
 
@@ -106,7 +108,7 @@ Si desea enviar registros a un sistema de registro personalizado, puede proporci
 
 [!code-typescript[](diagnostics/custom-logger.ts?highlight=3-7,13)]
 
-## <a name="net-client-logging"></a>Registro de cliente .NET
+## <a name="net-client-logging"></a>Registro de clientes de  .NET
 
 > [!WARNING]
 > Los registros del lado cliente pueden contener información confidencial de la aplicación. **Nunca** publique registros sin procesar de las aplicaciones de producción en foros públicos como GitHub.
@@ -218,11 +220,11 @@ Puede adjuntar archivos de diagnóstico a problemas de GitHub cambiando su nombr
 
 Métricas es una representación de medidas de datos a lo largo de intervalos de tiempo. Por ejemplo, solicitudes por segundo. Los datos de las métricas permiten la observación del estado de una aplicación en un nivel alto. Las métricas gRPC de .NET se emiten mediante <xref:System.Diagnostics.Tracing.EventCounter>.
 
-### <a name="signalr-server-metrics"></a>SignalRmétricas de servidor
+### <a name="no-locsignalr-server-metrics"></a>SignalRmétricas de servidor
 
 SignalRlas métricas del servidor se indican en el <xref:Microsoft.AspNetCore.Http.Connections> origen del evento.
 
-| NOMBRE                    | Descripción                 |
+| Nombre                    | Descripción                 |
 |-------------------------|-----------------------------|
 | `connections-started`   | Conexiones totales iniciadas   |
 | `connections-stopped`   | Conexiones totales detenidas   |

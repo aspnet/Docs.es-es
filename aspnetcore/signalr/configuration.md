@@ -7,6 +7,8 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 04/12/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,14 +17,14 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/configuration
-ms.openlocfilehash: c711c2163908e3fdd20e3bb497f333ebd495d921
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: d451e8807d761ab11509d33951009a98845f7e5e
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85406841"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88021866"
 ---
-# <a name="aspnet-core-signalr-configuration"></a>Configuración de SignalR en ASP.NET Core
+# <a name="aspnet-core-no-locsignalr-configuration"></a>Configuración de SignalR en ASP.NET Core
 
 ::: moniker range=">= aspnetcore-5.0"
 
@@ -30,7 +32,7 @@ ms.locfileid: "85406841"
 
 ASP.NET Core SignalR admite dos protocolos para codificar los mensajes: [JSON](https://www.json.org/) y [MessagePack](https://msgpack.org/index.html). Cada protocolo tiene opciones de configuración de serialización.
 
-La serialización de JSON se puede configurar en el servidor mediante el método de extensión [AddJsonProtocol](/dotnet/api/microsoft.extensions.dependencyinjection.jsonprotocoldependencyinjectionextensions.addjsonprotocol) . `AddJsonProtocol`se puede agregar después de [AddSignalR](/dotnet/api/microsoft.extensions.dependencyinjection.signalrdependencyinjectionextensions.addsignalr) en `Startup.ConfigureServices` . El `AddJsonProtocol` método toma un delegado que recibe un `options` objeto. La propiedad [PayloadSerializerOptions](/dotnet/api/microsoft.aspnetcore.signalr.jsonhubprotocoloptions.payloadserializeroptions) de ese objeto es un `System.Text.Json` <xref:System.Text.Json.JsonSerializerOptions> objeto que se puede utilizar para configurar la serialización de argumentos y valores devueltos. Para obtener más información, consulte la [documentación deSystem.Text.Js](/dotnet/api/system.text.json).
+La serialización de JSON se puede configurar en el servidor mediante el método de extensión [AddJsonProtocol](/dotnet/api/microsoft.extensions.dependencyinjection.jsonprotocoldependencyinjectionextensions.addjsonprotocol) . `AddJsonProtocol`se puede agregar después [de SignalR Agregar](/dotnet/api/microsoft.extensions.dependencyinjection.signalrdependencyinjectionextensions.addsignalr) en `Startup.ConfigureServices` . El `AddJsonProtocol` método toma un delegado que recibe un `options` objeto. La propiedad [PayloadSerializerOptions](/dotnet/api/microsoft.aspnetcore.signalr.jsonhubprotocoloptions.payloadserializeroptions) de ese objeto es un `System.Text.Json` <xref:System.Text.Json.JsonSerializerOptions> objeto que se puede utilizar para configurar la serialización de argumentos y valores devueltos. Para obtener más información, consulte la [documentación deSystem.Text.Js](/dotnet/api/system.text.json).
 
 Por ejemplo, para configurar el serializador para que no cambie el uso de mayúsculas y minúsculas de los nombres de propiedad, en lugar de los nombres "camelCase" predeterminados, use el código siguiente en `Startup.ConfigureServices` :
 
@@ -134,8 +136,8 @@ En la tabla siguiente se describen las opciones para configurar SignalR las opci
 | `AuthorizationData` | Los datos se recopilan automáticamente a partir de los `Authorize` atributos aplicados a la clase hub. | Una lista de objetos [IAuthorizeData](/dotnet/api/microsoft.aspnetcore.authorization.iauthorizedata) que se usan para determinar si un cliente está autorizado para conectarse al centro. |
 | `TransportMaxBufferSize` | 32 KB | Número máximo de bytes enviados por la aplicación que el servidor almacena en búfer antes de observar la contrapresión. El aumento de este valor permite que el servidor almacene en búfer mensajes más grandes con más rapidez sin esperar la presión, pero puede aumentar el consumo de memoria. |
 | `Transports` | Todos los transportes están habilitados. | Una enumeración de marcas de bits `HttpTransportType` que puede restringir los transportes que un cliente puede utilizar para conectarse. |
-| `LongPolling` | Véase a continuación. | Opciones adicionales específicas del transporte de sondeo prolongado. |
-| `WebSockets` | Véase a continuación. | Opciones adicionales específicas del transporte de WebSockets. |
+| `LongPolling` | Vea a continuación. | Opciones adicionales específicas del transporte de sondeo prolongado. |
+| `WebSockets` | Vea a continuación. | Opciones adicionales específicas del transporte de WebSockets. |
 | `MinimumProtocolVersion` | 0 | Especifique la versión mínima del protocolo Negotiate. Se utiliza para limitar a los clientes a las versiones más recientes. |
 
 El transporte de sondeo largo tiene opciones adicionales que se pueden configurar mediante la `LongPolling` propiedad:
@@ -198,8 +200,8 @@ En la tabla siguiente se enumeran los niveles de registro disponibles. El valor 
 | --------------------------- | ---------------------- |
 | `trace`                     | `LogLevel.Trace`       |
 | `debug`                     | `LogLevel.Debug`       |
-| `info` **o bien** `information` | `LogLevel.Information` |
-| `warn` **o bien** `warning`     | `LogLevel.Warning`     |
+| `info`**o bien**`information` | `LogLevel.Information` |
+| `warn`**o bien**`warning`     | `LogLevel.Warning`     |
 | `error`                     | `LogLevel.Error`       |
 | `critical`                  | `LogLevel.Critical`    |
 | `none`                      | `LogLevel.None`        |
@@ -339,12 +341,12 @@ Se pueden configurar opciones adicionales en el `WithUrl` `withUrl` método (en 
 | ----------- | -------------- | ----------- |
 | `AccessTokenProvider` | `null` | Función que devuelve una cadena que se proporciona como un token de autenticación de portador en solicitudes HTTP. |
 | `SkipNegotiation` | `false` | Establézcalo en `true` para omitir el paso de negociación. **Solo se admite cuando el transporte de WebSockets es el único transporte habilitado**. Esta configuración no se puede habilitar cuando se usa el servicio de Azure SignalR . |
-| `ClientCertificates` | Empty | Colección de certificados TLS que se enviarán a las solicitudes de autenticación. |
-| `Cookies` | Empty | Colección de cookies HTTP que se enviarán con cada solicitud HTTP. |
-| `Credentials` | Empty | Credenciales que se van a enviar con cada solicitud HTTP. |
+| `ClientCertificates` | Vacío | Colección de certificados TLS que se enviarán a las solicitudes de autenticación. |
+| `Cookies` | Vacío | Colección de HTTP cookie s que se va a enviar con cada solicitud HTTP. |
+| `Credentials` | Vacío | Credenciales que se van a enviar con cada solicitud HTTP. |
 | `CloseTimeout` | 5 segundos | Solo WebSockets. Cantidad máxima de tiempo que el cliente espera después de cerrarse para que el servidor confirme la solicitud de cierre. Si el servidor no reconoce el cierre dentro de este tiempo, el cliente se desconecta. |
-| `Headers` | Empty | Asignación de encabezados HTTP adicionales que se van a enviar con cada solicitud HTTP. |
-| `HttpMessageHandlerFactory` | `null` | Delegado que se puede utilizar para configurar o reemplazar el `HttpMessageHandler` utilizado para enviar solicitudes HTTP. No se usa para las conexiones WebSocket. Este delegado debe devolver un valor distinto de NULL y recibe el valor predeterminado como parámetro. Modifique la configuración de ese valor predeterminado y devuelva o devuelva una nueva `HttpMessageHandler` instancia. **Al reemplazar el controlador, asegúrese de copiar la configuración que desea conservar del controlador proporcionado; de lo contrario, las opciones configuradas (como cookies y encabezados) no se aplicarán al nuevo controlador.** |
+| `Headers` | Vacío | Asignación de encabezados HTTP adicionales que se van a enviar con cada solicitud HTTP. |
+| `HttpMessageHandlerFactory` | `null` | Delegado que se puede utilizar para configurar o reemplazar el `HttpMessageHandler` utilizado para enviar solicitudes HTTP. No se usa para las conexiones WebSocket. Este delegado debe devolver un valor distinto de NULL y recibe el valor predeterminado como parámetro. Modifique la configuración de ese valor predeterminado y devuelva o devuelva una nueva `HttpMessageHandler` instancia. **Al reemplazar el controlador, asegúrese de copiar la configuración que desea conservar del controlador proporcionado; de lo contrario, las opciones configuradas (como, por ejemplo, los Cookie encabezados y) no se aplicarán al nuevo controlador.** |
 | `Proxy` | `null` | Proxy HTTP que se va a usar al enviar solicitudes HTTP. |
 | `UseDefaultCredentials` | `false` | Establezca este valor booleano para enviar las credenciales predeterminadas para las solicitudes HTTP y WebSockets. Esto habilita el uso de la autenticación de Windows. |
 | `WebSocketConfiguration` | `null` | Delegado que se puede usar para configurar opciones adicionales de WebSocket. Recibe una instancia de [ClientWebSocketOptions](/dotnet/api/system.net.websockets.clientwebsocketoptions) que se puede usar para configurar las opciones. |
@@ -357,7 +359,7 @@ Se pueden configurar opciones adicionales en el `WithUrl` `withUrl` método (en 
 | `headers` | `null` | Diccionario de encabezados enviados con cada solicitud HTTP. El envío de encabezados en el explorador no funciona con WebSockets ni con el <xref:Microsoft.AspNetCore.Http.Connections.HttpTransportType.ServerSentEvents> flujo. |
 | `logMessageContent` | `null` | Establezca en `true` para registrar los bytes/caracteres de los mensajes enviados y recibidos por el cliente. |
 | `skipNegotiation` | `false` | Establézcalo en `true` para omitir el paso de negociación. **Solo se admite cuando el transporte de WebSockets es el único transporte habilitado**. Esta configuración no se puede habilitar cuando se usa el servicio de Azure SignalR . |
-| `withCredentials` | `true` | Especifica si las credenciales se enviarán con la solicitud de CORS. Azure App Service usa cookies para sesiones permanentes y necesita que esta opción esté habilitada para funcionar correctamente. Para obtener más información sobre CORS con SignalR , vea <xref:signalr/security#cross-origin-resource-sharing> . |
+| `withCredentials` | `true` | Especifica si las credenciales se enviarán con la solicitud de CORS. Azure App Service usa cookie para las sesiones permanentes y necesita que esta opción esté habilitada para funcionar correctamente. Para obtener más información sobre CORS con SignalR , vea <xref:signalr/security#cross-origin-resource-sharing> . |
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -365,7 +367,7 @@ Se pueden configurar opciones adicionales en el `WithUrl` `withUrl` método (en 
 | ----------- | ------------- | ----------- |
 | `withAccessTokenProvider` | `null` | Función que devuelve una cadena que se proporciona como un token de autenticación de portador en solicitudes HTTP. |
 | `shouldSkipNegotiate` | `false` | Establézcalo en `true` para omitir el paso de negociación. **Solo se admite cuando el transporte de WebSockets es el único transporte habilitado**. Esta configuración no se puede habilitar cuando se usa el servicio de Azure SignalR . |
-| `withHeader` `withHeaders` | Empty | Asignación de encabezados HTTP adicionales que se van a enviar con cada solicitud HTTP. |
+| `withHeader` `withHeaders` | Vacío | Asignación de encabezados HTTP adicionales que se van a enviar con cada solicitud HTTP. |
 
 ---
 
@@ -418,7 +420,7 @@ HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/c
 
 ASP.NET Core SignalR admite dos protocolos para codificar los mensajes: [JSON](https://www.json.org/) y [MessagePack](https://msgpack.org/index.html). Cada protocolo tiene opciones de configuración de serialización.
 
-La serialización de JSON se puede configurar en el servidor mediante el método de extensión [AddJsonProtocol](/dotnet/api/microsoft.extensions.dependencyinjection.jsonprotocoldependencyinjectionextensions.addjsonprotocol) . `AddJsonProtocol`se puede agregar después de [AddSignalR](/dotnet/api/microsoft.extensions.dependencyinjection.signalrdependencyinjectionextensions.addsignalr) en `Startup.ConfigureServices` . El `AddJsonProtocol` método toma un delegado que recibe un `options` objeto. La propiedad [PayloadSerializerOptions](/dotnet/api/microsoft.aspnetcore.signalr.jsonhubprotocoloptions.payloadserializeroptions) de ese objeto es un `System.Text.Json` <xref:System.Text.Json.JsonSerializerOptions> objeto que se puede utilizar para configurar la serialización de argumentos y valores devueltos. Para obtener más información, consulte la [documentación deSystem.Text.Js](/dotnet/api/system.text.json).
+La serialización de JSON se puede configurar en el servidor mediante el método de extensión [AddJsonProtocol](/dotnet/api/microsoft.extensions.dependencyinjection.jsonprotocoldependencyinjectionextensions.addjsonprotocol) . `AddJsonProtocol`se puede agregar después [de SignalR Agregar](/dotnet/api/microsoft.extensions.dependencyinjection.signalrdependencyinjectionextensions.addsignalr) en `Startup.ConfigureServices` . El `AddJsonProtocol` método toma un delegado que recibe un `options` objeto. La propiedad [PayloadSerializerOptions](/dotnet/api/microsoft.aspnetcore.signalr.jsonhubprotocoloptions.payloadserializeroptions) de ese objeto es un `System.Text.Json` <xref:System.Text.Json.JsonSerializerOptions> objeto que se puede utilizar para configurar la serialización de argumentos y valores devueltos. Para obtener más información, consulte la [documentación deSystem.Text.Js](/dotnet/api/system.text.json).
 
 Por ejemplo, para configurar el serializador para que no cambie el uso de mayúsculas y minúsculas de los nombres de propiedad, en lugar de los nombres "camelCase" predeterminados, use el código siguiente en `Startup.ConfigureServices` :
 
@@ -522,8 +524,8 @@ En la tabla siguiente se describen las opciones para configurar SignalR las opci
 | `AuthorizationData` | Los datos se recopilan automáticamente a partir de los `Authorize` atributos aplicados a la clase hub. | Una lista de objetos [IAuthorizeData](/dotnet/api/microsoft.aspnetcore.authorization.iauthorizedata) que se usan para determinar si un cliente está autorizado para conectarse al centro. |
 | `TransportMaxBufferSize` | 32 KB | Número máximo de bytes enviados por la aplicación que el servidor almacena en búfer antes de observar la contrapresión. El aumento de este valor permite que el servidor almacene en búfer mensajes más grandes con más rapidez sin esperar la presión, pero puede aumentar el consumo de memoria. |
 | `Transports` | Todos los transportes están habilitados. | Una enumeración de marcas de bits `HttpTransportType` que puede restringir los transportes que un cliente puede utilizar para conectarse. |
-| `LongPolling` | Véase a continuación. | Opciones adicionales específicas del transporte de sondeo prolongado. |
-| `WebSockets` | Véase a continuación. | Opciones adicionales específicas del transporte de WebSockets. |
+| `LongPolling` | Vea a continuación. | Opciones adicionales específicas del transporte de sondeo prolongado. |
+| `WebSockets` | Vea a continuación. | Opciones adicionales específicas del transporte de WebSockets. |
 | `MinimumProtocolVersion` | 0 | Especifique la versión mínima del protocolo Negotiate. Se utiliza para limitar a los clientes a las versiones más recientes. |
 
 El transporte de sondeo largo tiene opciones adicionales que se pueden configurar mediante la `LongPolling` propiedad:
@@ -586,8 +588,8 @@ En la tabla siguiente se enumeran los niveles de registro disponibles. El valor 
 | --------------------------- | ---------------------- |
 | `trace`                     | `LogLevel.Trace`       |
 | `debug`                     | `LogLevel.Debug`       |
-| `info` **o bien** `information` | `LogLevel.Information` |
-| `warn` **o bien** `warning`     | `LogLevel.Warning`     |
+| `info`**o bien**`information` | `LogLevel.Information` |
+| `warn`**o bien**`warning`     | `LogLevel.Warning`     |
 | `error`                     | `LogLevel.Error`       |
 | `critical`                  | `LogLevel.Critical`    |
 | `none`                      | `LogLevel.None`        |
@@ -727,12 +729,12 @@ Se pueden configurar opciones adicionales en el `WithUrl` `withUrl` método (en 
 | ----------- | -------------- | ----------- |
 | `AccessTokenProvider` | `null` | Función que devuelve una cadena que se proporciona como un token de autenticación de portador en solicitudes HTTP. |
 | `SkipNegotiation` | `false` | Establézcalo en `true` para omitir el paso de negociación. **Solo se admite cuando el transporte de WebSockets es el único transporte habilitado**. Esta configuración no se puede habilitar cuando se usa el servicio de Azure SignalR . |
-| `ClientCertificates` | Empty | Colección de certificados TLS que se enviarán a las solicitudes de autenticación. |
-| `Cookies` | Empty | Colección de cookies HTTP que se enviarán con cada solicitud HTTP. |
-| `Credentials` | Empty | Credenciales que se van a enviar con cada solicitud HTTP. |
+| `ClientCertificates` | Vacío | Colección de certificados TLS que se enviarán a las solicitudes de autenticación. |
+| `Cookies` | Vacío | Colección de HTTP cookie s que se va a enviar con cada solicitud HTTP. |
+| `Credentials` | Vacío | Credenciales que se van a enviar con cada solicitud HTTP. |
 | `CloseTimeout` | 5 segundos | Solo WebSockets. Cantidad máxima de tiempo que el cliente espera después de cerrarse para que el servidor confirme la solicitud de cierre. Si el servidor no reconoce el cierre dentro de este tiempo, el cliente se desconecta. |
-| `Headers` | Empty | Asignación de encabezados HTTP adicionales que se van a enviar con cada solicitud HTTP. |
-| `HttpMessageHandlerFactory` | `null` | Delegado que se puede utilizar para configurar o reemplazar el `HttpMessageHandler` utilizado para enviar solicitudes HTTP. No se usa para las conexiones WebSocket. Este delegado debe devolver un valor distinto de NULL y recibe el valor predeterminado como parámetro. Modifique la configuración de ese valor predeterminado y devuelva o devuelva una nueva `HttpMessageHandler` instancia. **Al reemplazar el controlador, asegúrese de copiar la configuración que desea conservar del controlador proporcionado; de lo contrario, las opciones configuradas (como cookies y encabezados) no se aplicarán al nuevo controlador.** |
+| `Headers` | Vacío | Asignación de encabezados HTTP adicionales que se van a enviar con cada solicitud HTTP. |
+| `HttpMessageHandlerFactory` | `null` | Delegado que se puede utilizar para configurar o reemplazar el `HttpMessageHandler` utilizado para enviar solicitudes HTTP. No se usa para las conexiones WebSocket. Este delegado debe devolver un valor distinto de NULL y recibe el valor predeterminado como parámetro. Modifique la configuración de ese valor predeterminado y devuelva o devuelva una nueva `HttpMessageHandler` instancia. **Al reemplazar el controlador, asegúrese de copiar la configuración que desea conservar del controlador proporcionado; de lo contrario, las opciones configuradas (como, por ejemplo, los Cookie encabezados y) no se aplicarán al nuevo controlador.** |
 | `Proxy` | `null` | Proxy HTTP que se va a usar al enviar solicitudes HTTP. |
 | `UseDefaultCredentials` | `false` | Establezca este valor booleano para enviar las credenciales predeterminadas para las solicitudes HTTP y WebSockets. Esto habilita el uso de la autenticación de Windows. |
 | `WebSocketConfiguration` | `null` | Delegado que se puede usar para configurar opciones adicionales de WebSocket. Recibe una instancia de [ClientWebSocketOptions](/dotnet/api/system.net.websockets.clientwebsocketoptions) que se puede usar para configurar las opciones. |
@@ -751,7 +753,7 @@ Se pueden configurar opciones adicionales en el `WithUrl` `withUrl` método (en 
 | ----------- | ------------- | ----------- |
 | `withAccessTokenProvider` | `null` | Función que devuelve una cadena que se proporciona como un token de autenticación de portador en solicitudes HTTP. |
 | `shouldSkipNegotiate` | `false` | Establézcalo en `true` para omitir el paso de negociación. **Solo se admite cuando el transporte de WebSockets es el único transporte habilitado**. Esta configuración no se puede habilitar cuando se usa el servicio de Azure SignalR . |
-| `withHeader` `withHeaders` | Empty | Asignación de encabezados HTTP adicionales que se van a enviar con cada solicitud HTTP. |
+| `withHeader` `withHeaders` | Vacío | Asignación de encabezados HTTP adicionales que se van a enviar con cada solicitud HTTP. |
 
 ---
 
@@ -804,7 +806,7 @@ HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/c
 
 ASP.NET Core SignalR admite dos protocolos para codificar los mensajes: [JSON](https://www.json.org/) y [MessagePack](https://msgpack.org/index.html). Cada protocolo tiene opciones de configuración de serialización.
 
-La serialización de JSON se puede configurar en el servidor mediante el método de extensión [AddJsonProtocol](/dotnet/api/microsoft.extensions.dependencyinjection.jsonprotocoldependencyinjectionextensions.addjsonprotocol) . `AddJsonProtocol`se puede agregar después de [AddSignalR](/dotnet/api/microsoft.extensions.dependencyinjection.signalrdependencyinjectionextensions.addsignalr) en `Startup.ConfigureServices` . El `AddJsonProtocol` método toma un delegado que recibe un `options` objeto. La propiedad [PayloadSerializerOptions](/dotnet/api/microsoft.aspnetcore.signalr.jsonhubprotocoloptions.payloadserializeroptions) de ese objeto es un `System.Text.Json` <xref:System.Text.Json.JsonSerializerOptions> objeto que se puede utilizar para configurar la serialización de argumentos y valores devueltos. Para obtener más información, consulte la [documentación deSystem.Text.Js](/dotnet/api/system.text.json).
+La serialización de JSON se puede configurar en el servidor mediante el método de extensión [AddJsonProtocol](/dotnet/api/microsoft.extensions.dependencyinjection.jsonprotocoldependencyinjectionextensions.addjsonprotocol) . `AddJsonProtocol`se puede agregar después [de SignalR Agregar](/dotnet/api/microsoft.extensions.dependencyinjection.signalrdependencyinjectionextensions.addsignalr) en `Startup.ConfigureServices` . El `AddJsonProtocol` método toma un delegado que recibe un `options` objeto. La propiedad [PayloadSerializerOptions](/dotnet/api/microsoft.aspnetcore.signalr.jsonhubprotocoloptions.payloadserializeroptions) de ese objeto es un `System.Text.Json` <xref:System.Text.Json.JsonSerializerOptions> objeto que se puede utilizar para configurar la serialización de argumentos y valores devueltos. Para obtener más información, consulte la [documentación deSystem.Text.Js](/dotnet/api/system.text.json).
 
 Por ejemplo, para configurar el serializador para que no cambie el uso de mayúsculas y minúsculas de los nombres de propiedad, en lugar de los nombres "camelCase" predeterminados, use el código siguiente en `Startup.ConfigureServices` :
 
@@ -908,8 +910,8 @@ En la tabla siguiente se describen las opciones para configurar SignalR las opci
 | `AuthorizationData` | Los datos se recopilan automáticamente a partir de los `Authorize` atributos aplicados a la clase hub. | Una lista de objetos [IAuthorizeData](/dotnet/api/microsoft.aspnetcore.authorization.iauthorizedata) que se usan para determinar si un cliente está autorizado para conectarse al centro. |
 | `TransportMaxBufferSize` | 32 KB | Número máximo de bytes enviados por la aplicación que el servidor almacena en búfer antes de observar la contrapresión. El aumento de este valor permite que el servidor almacene en búfer mensajes más grandes con más rapidez sin esperar la presión, pero puede aumentar el consumo de memoria. |
 | `Transports` | Todos los transportes están habilitados. | Una enumeración de marcas de bits `HttpTransportType` que puede restringir los transportes que un cliente puede utilizar para conectarse. |
-| `LongPolling` | Véase a continuación. | Opciones adicionales específicas del transporte de sondeo prolongado. |
-| `WebSockets` | Véase a continuación. | Opciones adicionales específicas del transporte de WebSockets. |
+| `LongPolling` | Vea a continuación. | Opciones adicionales específicas del transporte de sondeo prolongado. |
+| `WebSockets` | Vea a continuación. | Opciones adicionales específicas del transporte de WebSockets. |
 
 El transporte de sondeo largo tiene opciones adicionales que se pueden configurar mediante la `LongPolling` propiedad:
 
@@ -971,8 +973,8 @@ En la tabla siguiente se enumeran los niveles de registro disponibles. El valor 
 | --------------------------- | ---------------------- |
 | `trace`                     | `LogLevel.Trace`       |
 | `debug`                     | `LogLevel.Debug`       |
-| `info` **o bien** `information` | `LogLevel.Information` |
-| `warn` **o bien** `warning`     | `LogLevel.Warning`     |
+| `info`**o bien**`information` | `LogLevel.Information` |
+| `warn`**o bien**`warning`     | `LogLevel.Warning`     |
 | `error`                     | `LogLevel.Error`       |
 | `critical`                  | `LogLevel.Critical`    |
 | `none`                      | `LogLevel.None`        |
@@ -1112,12 +1114,12 @@ Se pueden configurar opciones adicionales en el `WithUrl` `withUrl` método (en 
 | ----------- | -------------- | ----------- |
 | `AccessTokenProvider` | `null` | Función que devuelve una cadena que se proporciona como un token de autenticación de portador en solicitudes HTTP. |
 | `SkipNegotiation` | `false` | Establézcalo en `true` para omitir el paso de negociación. **Solo se admite cuando el transporte de WebSockets es el único transporte habilitado**. Esta configuración no se puede habilitar cuando se usa el servicio de Azure SignalR . |
-| `ClientCertificates` | Empty | Colección de certificados TLS que se enviarán a las solicitudes de autenticación. |
-| `Cookies` | Empty | Colección de cookies HTTP que se enviarán con cada solicitud HTTP. |
-| `Credentials` | Empty | Credenciales que se van a enviar con cada solicitud HTTP. |
+| `ClientCertificates` | Vacío | Colección de certificados TLS que se enviarán a las solicitudes de autenticación. |
+| `Cookies` | Vacío | Colección de HTTP cookie s que se va a enviar con cada solicitud HTTP. |
+| `Credentials` | Vacío | Credenciales que se van a enviar con cada solicitud HTTP. |
 | `CloseTimeout` | 5 segundos | Solo WebSockets. Cantidad máxima de tiempo que el cliente espera después de cerrarse para que el servidor confirme la solicitud de cierre. Si el servidor no reconoce el cierre dentro de este tiempo, el cliente se desconecta. |
-| `Headers` | Empty | Asignación de encabezados HTTP adicionales que se van a enviar con cada solicitud HTTP. |
-| `HttpMessageHandlerFactory` | `null` | Delegado que se puede utilizar para configurar o reemplazar el `HttpMessageHandler` utilizado para enviar solicitudes HTTP. No se usa para las conexiones WebSocket. Este delegado debe devolver un valor distinto de NULL y recibe el valor predeterminado como parámetro. Modifique la configuración de ese valor predeterminado y devuelva o devuelva una nueva `HttpMessageHandler` instancia. **Al reemplazar el controlador, asegúrese de copiar la configuración que desea conservar del controlador proporcionado; de lo contrario, las opciones configuradas (como cookies y encabezados) no se aplicarán al nuevo controlador.** |
+| `Headers` | Vacío | Asignación de encabezados HTTP adicionales que se van a enviar con cada solicitud HTTP. |
+| `HttpMessageHandlerFactory` | `null` | Delegado que se puede utilizar para configurar o reemplazar el `HttpMessageHandler` utilizado para enviar solicitudes HTTP. No se usa para las conexiones WebSocket. Este delegado debe devolver un valor distinto de NULL y recibe el valor predeterminado como parámetro. Modifique la configuración de ese valor predeterminado y devuelva o devuelva una nueva `HttpMessageHandler` instancia. **Al reemplazar el controlador, asegúrese de copiar la configuración que desea conservar del controlador proporcionado; de lo contrario, las opciones configuradas (como, por ejemplo, los Cookie encabezados y) no se aplicarán al nuevo controlador.** |
 | `Proxy` | `null` | Proxy HTTP que se va a usar al enviar solicitudes HTTP. |
 | `UseDefaultCredentials` | `false` | Establezca este valor booleano para enviar las credenciales predeterminadas para las solicitudes HTTP y WebSockets. Esto habilita el uso de la autenticación de Windows. |
 | `WebSocketConfiguration` | `null` | Delegado que se puede usar para configurar opciones adicionales de WebSocket. Recibe una instancia de [ClientWebSocketOptions](/dotnet/api/system.net.websockets.clientwebsocketoptions) que se puede usar para configurar las opciones. |
@@ -1136,7 +1138,7 @@ Se pueden configurar opciones adicionales en el `WithUrl` `withUrl` método (en 
 | ----------- | ------------- | ----------- |
 | `withAccessTokenProvider` | `null` | Función que devuelve una cadena que se proporciona como un token de autenticación de portador en solicitudes HTTP. |
 | `shouldSkipNegotiate` | `false` | Establézcalo en `true` para omitir el paso de negociación. **Solo se admite cuando el transporte de WebSockets es el único transporte habilitado**. Esta configuración no se puede habilitar cuando se usa el servicio de Azure SignalR . |
-| `withHeader` `withHeaders` | Empty | Asignación de encabezados HTTP adicionales que se van a enviar con cada solicitud HTTP. |
+| `withHeader` `withHeaders` | Vacío | Asignación de encabezados HTTP adicionales que se van a enviar con cada solicitud HTTP. |
 
 ---
 
@@ -1189,7 +1191,7 @@ HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/c
 
 ASP.NET Core SignalR admite dos protocolos para codificar los mensajes: [JSON](https://www.json.org/) y [MessagePack](https://msgpack.org/index.html). Cada protocolo tiene opciones de configuración de serialización.
 
-La serialización de JSON se puede configurar en el servidor mediante el método de extensión [AddJsonProtocol](/dotnet/api/microsoft.extensions.dependencyinjection.jsonprotocoldependencyinjectionextensions.addjsonprotocol) , que se puede agregar después de [AddSignalR](/dotnet/api/microsoft.extensions.dependencyinjection.signalrdependencyinjectionextensions.addsignalr) en el `Startup.ConfigureServices` método. El `AddJsonProtocol` método toma un delegado que recibe un `options` objeto. La propiedad [PayloadSerializerSettings](/dotnet/api/microsoft.aspnetcore.signalr.jsonhubprotocoloptions.payloadserializersettings) de ese objeto es un `JsonSerializerSettings` objeto JSON.net que se puede usar para configurar la serialización de argumentos y valores devueltos. Para más información, vea la [documentación de JSON.NET](https://www.newtonsoft.com/json/help/html/Introduction.htm).
+La serialización de JSON se puede configurar en el servidor mediante el método de extensión [AddJsonProtocol](/dotnet/api/microsoft.extensions.dependencyinjection.jsonprotocoldependencyinjectionextensions.addjsonprotocol) , que se puede agregar después de [ SignalR Agregar](/dotnet/api/microsoft.extensions.dependencyinjection.signalrdependencyinjectionextensions.addsignalr) en el `Startup.ConfigureServices` método. El `AddJsonProtocol` método toma un delegado que recibe un `options` objeto. La propiedad [PayloadSerializerSettings](/dotnet/api/microsoft.aspnetcore.signalr.jsonhubprotocoloptions.payloadserializersettings) de ese objeto es un `JsonSerializerSettings` objeto JSON.net que se puede usar para configurar la serialización de argumentos y valores devueltos. Para más información, vea la [documentación de JSON.NET](https://www.newtonsoft.com/json/help/html/Introduction.htm).
  
 Por ejemplo, para configurar el serializador de modo que use nombres de propiedad "PascalCase", en lugar de los nombres predeterminados de "camelCase", use el código siguiente en `Startup.ConfigureServices` :
  
@@ -1289,8 +1291,8 @@ En la tabla siguiente se describen las opciones para configurar SignalR las opci
 | `AuthorizationData` | Los datos se recopilan automáticamente a partir de los `Authorize` atributos aplicados a la clase hub. | Una lista de objetos [IAuthorizeData](/dotnet/api/microsoft.aspnetcore.authorization.iauthorizedata) que se usan para determinar si un cliente está autorizado para conectarse al centro. |
 | `TransportMaxBufferSize` | 32 KB | Número máximo de bytes enviados por la aplicación que el servidor almacena en búfer. Al aumentar este valor, el servidor puede enviar mensajes de mayor tamaño, pero puede afectar negativamente al consumo de memoria. |
 | `Transports` | Todos los transportes están habilitados. | Una enumeración de marcas de bits `HttpTransportType` que puede restringir los transportes que un cliente puede utilizar para conectarse. |
-| `LongPolling` | Véase a continuación. | Opciones adicionales específicas del transporte de sondeo prolongado. |
-| `WebSockets` | Véase a continuación. | Opciones adicionales específicas del transporte de WebSockets. |
+| `LongPolling` | Vea a continuación. | Opciones adicionales específicas del transporte de sondeo prolongado. |
+| `WebSockets` | Vea a continuación. | Opciones adicionales específicas del transporte de WebSockets. |
 
 El transporte de sondeo largo tiene opciones adicionales que se pueden configurar mediante la `LongPolling` propiedad:
 
@@ -1461,12 +1463,12 @@ Se pueden configurar opciones adicionales en el `WithUrl` `withUrl` método (en 
 | ----------- | -------------- | ----------- |
 | `AccessTokenProvider` | `null` | Función que devuelve una cadena que se proporciona como un token de autenticación de portador en solicitudes HTTP. |
 | `SkipNegotiation` | `false` | Establézcalo en `true` para omitir el paso de negociación. **Solo se admite cuando el transporte de WebSockets es el único transporte habilitado**. Esta configuración no se puede habilitar cuando se usa el servicio de Azure SignalR . |
-| `ClientCertificates` | Empty | Colección de certificados TLS que se enviarán a las solicitudes de autenticación. |
-| `Cookies` | Empty | Colección de cookies HTTP que se enviarán con cada solicitud HTTP. |
-| `Credentials` | Empty | Credenciales que se van a enviar con cada solicitud HTTP. |
+| `ClientCertificates` | Vacío | Colección de certificados TLS que se enviarán a las solicitudes de autenticación. |
+| `Cookies` | Vacío | Colección de HTTP cookie s que se va a enviar con cada solicitud HTTP. |
+| `Credentials` | Vacío | Credenciales que se van a enviar con cada solicitud HTTP. |
 | `CloseTimeout` | 5 segundos | Solo WebSockets. Cantidad máxima de tiempo que el cliente espera después de cerrarse para que el servidor confirme la solicitud de cierre. Si el servidor no reconoce el cierre dentro de este tiempo, el cliente se desconecta. |
-| `Headers` | Empty | Asignación de encabezados HTTP adicionales que se van a enviar con cada solicitud HTTP. |
-| `HttpMessageHandlerFactory` | `null` | Delegado que se puede utilizar para configurar o reemplazar el `HttpMessageHandler` utilizado para enviar solicitudes HTTP. No se usa para las conexiones WebSocket. Este delegado debe devolver un valor distinto de NULL y recibe el valor predeterminado como parámetro. Modifique la configuración de ese valor predeterminado y devuelva o devuelva una nueva `HttpMessageHandler` instancia. **Al reemplazar el controlador, asegúrese de copiar la configuración que desea conservar del controlador proporcionado; de lo contrario, las opciones configuradas (como cookies y encabezados) no se aplicarán al nuevo controlador.** |
+| `Headers` | Vacío | Asignación de encabezados HTTP adicionales que se van a enviar con cada solicitud HTTP. |
+| `HttpMessageHandlerFactory` | `null` | Delegado que se puede utilizar para configurar o reemplazar el `HttpMessageHandler` utilizado para enviar solicitudes HTTP. No se usa para las conexiones WebSocket. Este delegado debe devolver un valor distinto de NULL y recibe el valor predeterminado como parámetro. Modifique la configuración de ese valor predeterminado y devuelva o devuelva una nueva `HttpMessageHandler` instancia. **Al reemplazar el controlador, asegúrese de copiar la configuración que desea conservar del controlador proporcionado; de lo contrario, las opciones configuradas (como, por ejemplo, los Cookie encabezados y) no se aplicarán al nuevo controlador.** |
 | `Proxy` | `null` | Proxy HTTP que se va a usar al enviar solicitudes HTTP. |
 | `UseDefaultCredentials` | `false` | Establezca este valor booleano para enviar las credenciales predeterminadas para las solicitudes HTTP y WebSockets. Esto habilita el uso de la autenticación de Windows. |
 | `WebSocketConfiguration` | `null` | Delegado que se puede usar para configurar opciones adicionales de WebSocket. Recibe una instancia de [ClientWebSocketOptions](/dotnet/api/system.net.websockets.clientwebsocketoptions) que se puede usar para configurar las opciones. |
@@ -1485,7 +1487,7 @@ Se pueden configurar opciones adicionales en el `WithUrl` `withUrl` método (en 
 | ----------- | ------------- | ----------- |
 | `withAccessTokenProvider` | `null` | Función que devuelve una cadena que se proporciona como un token de autenticación de portador en solicitudes HTTP. |
 | `shouldSkipNegotiate` | `false` | Establézcalo en `true` para omitir el paso de negociación. **Solo se admite cuando el transporte de WebSockets es el único transporte habilitado**. Esta configuración no se puede habilitar cuando se usa el servicio de Azure SignalR . |
-| `withHeader` `withHeaders` | Empty | Asignación de encabezados HTTP adicionales que se van a enviar con cada solicitud HTTP. |
+| `withHeader` `withHeaders` | Vacío | Asignación de encabezados HTTP adicionales que se van a enviar con cada solicitud HTTP. |
 
 ---
 
@@ -1538,7 +1540,7 @@ HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/c
 
 ASP.NET Core SignalR admite dos protocolos para codificar los mensajes: [JSON](https://www.json.org/) y [MessagePack](https://msgpack.org/index.html). Cada protocolo tiene opciones de configuración de serialización.
 
-La serialización de JSON se puede configurar en el servidor mediante el método de extensión [AddJsonProtocol](/dotnet/api/microsoft.extensions.dependencyinjection.jsonprotocoldependencyinjectionextensions.addjsonprotocol) , que se puede agregar después de [AddSignalR](/dotnet/api/microsoft.extensions.dependencyinjection.signalrdependencyinjectionextensions.addsignalr) en el `Startup.ConfigureServices` método. El `AddJsonProtocol` método toma un delegado que recibe un `options` objeto. La propiedad [PayloadSerializerSettings](/dotnet/api/microsoft.aspnetcore.signalr.jsonhubprotocoloptions.payloadserializersettings) de ese objeto es un `JsonSerializerSettings` objeto JSON.net que se puede usar para configurar la serialización de argumentos y valores devueltos. Para más información, vea la [documentación de JSON.NET](https://www.newtonsoft.com/json/help/html/Introduction.htm).
+La serialización de JSON se puede configurar en el servidor mediante el método de extensión [AddJsonProtocol](/dotnet/api/microsoft.extensions.dependencyinjection.jsonprotocoldependencyinjectionextensions.addjsonprotocol) , que se puede agregar después de [ SignalR Agregar](/dotnet/api/microsoft.extensions.dependencyinjection.signalrdependencyinjectionextensions.addsignalr) en el `Startup.ConfigureServices` método. El `AddJsonProtocol` método toma un delegado que recibe un `options` objeto. La propiedad [PayloadSerializerSettings](/dotnet/api/microsoft.aspnetcore.signalr.jsonhubprotocoloptions.payloadserializersettings) de ese objeto es un `JsonSerializerSettings` objeto JSON.net que se puede usar para configurar la serialización de argumentos y valores devueltos. Para más información, vea la [documentación de JSON.NET](https://www.newtonsoft.com/json/help/html/Introduction.htm).
  
 Por ejemplo, para configurar el serializador de modo que use nombres de propiedad "PascalCase", en lugar de los nombres predeterminados de "camelCase", use el código siguiente en `Startup.ConfigureServices` :
  
@@ -1637,8 +1639,8 @@ En la tabla siguiente se describen las opciones para configurar SignalR las opci
 | `AuthorizationData` | Los datos se recopilan automáticamente a partir de los `Authorize` atributos aplicados a la clase hub. | Una lista de objetos [IAuthorizeData](/dotnet/api/microsoft.aspnetcore.authorization.iauthorizedata) que se usan para determinar si un cliente está autorizado para conectarse al centro. |
 | `TransportMaxBufferSize` | 32 KB | Número máximo de bytes enviados por la aplicación que el servidor almacena en búfer. Al aumentar este valor, el servidor puede enviar mensajes de mayor tamaño, pero puede afectar negativamente al consumo de memoria. |
 | `Transports` | Todos los transportes están habilitados. | Una enumeración de marcas de bits `HttpTransportType` que puede restringir los transportes que un cliente puede utilizar para conectarse. |
-| `LongPolling` | Véase a continuación. | Opciones adicionales específicas del transporte de sondeo prolongado. |
-| `WebSockets` | Véase a continuación. | Opciones adicionales específicas del transporte de WebSockets. |
+| `LongPolling` | Vea a continuación. | Opciones adicionales específicas del transporte de sondeo prolongado. |
+| `WebSockets` | Vea a continuación. | Opciones adicionales específicas del transporte de WebSockets. |
 
 El transporte de sondeo largo tiene opciones adicionales que se pueden configurar mediante la `LongPolling` propiedad:
 
@@ -1804,12 +1806,12 @@ Se pueden configurar opciones adicionales en el `WithUrl` `withUrl` método (en 
 | ----------- | -------------- | ----------- |
 | `AccessTokenProvider` | `null` | Función que devuelve una cadena que se proporciona como un token de autenticación de portador en solicitudes HTTP. |
 | `SkipNegotiation` | `false` | Establézcalo en `true` para omitir el paso de negociación. **Solo se admite cuando el transporte de WebSockets es el único transporte habilitado**. Esta configuración no se puede habilitar cuando se usa el servicio de Azure SignalR . |
-| `ClientCertificates` | Empty | Colección de certificados TLS que se enviarán a las solicitudes de autenticación. |
-| `Cookies` | Empty | Colección de cookies HTTP que se enviarán con cada solicitud HTTP. |
-| `Credentials` | Empty | Credenciales que se van a enviar con cada solicitud HTTP. |
+| `ClientCertificates` | Vacío | Colección de certificados TLS que se enviarán a las solicitudes de autenticación. |
+| `Cookies` | Vacío | Colección de HTTP cookie s que se va a enviar con cada solicitud HTTP. |
+| `Credentials` | Vacío | Credenciales que se van a enviar con cada solicitud HTTP. |
 | `CloseTimeout` | 5 segundos | Solo WebSockets. Cantidad máxima de tiempo que el cliente espera después de cerrarse para que el servidor confirme la solicitud de cierre. Si el servidor no reconoce el cierre dentro de este tiempo, el cliente se desconecta. |
-| `Headers` | Empty | Asignación de encabezados HTTP adicionales que se van a enviar con cada solicitud HTTP. |
-| `HttpMessageHandlerFactory` | `null` | Delegado que se puede utilizar para configurar o reemplazar el `HttpMessageHandler` utilizado para enviar solicitudes HTTP. No se usa para las conexiones WebSocket. Este delegado debe devolver un valor distinto de NULL y recibe el valor predeterminado como parámetro. Modifique la configuración de ese valor predeterminado y devuelva o devuelva una nueva `HttpMessageHandler` instancia. **Al reemplazar el controlador, asegúrese de copiar la configuración que desea conservar del controlador proporcionado; de lo contrario, las opciones configuradas (como cookies y encabezados) no se aplicarán al nuevo controlador.** |
+| `Headers` | Vacío | Asignación de encabezados HTTP adicionales que se van a enviar con cada solicitud HTTP. |
+| `HttpMessageHandlerFactory` | `null` | Delegado que se puede utilizar para configurar o reemplazar el `HttpMessageHandler` utilizado para enviar solicitudes HTTP. No se usa para las conexiones WebSocket. Este delegado debe devolver un valor distinto de NULL y recibe el valor predeterminado como parámetro. Modifique la configuración de ese valor predeterminado y devuelva o devuelva una nueva `HttpMessageHandler` instancia. **Al reemplazar el controlador, asegúrese de copiar la configuración que desea conservar del controlador proporcionado; de lo contrario, las opciones configuradas (como, por ejemplo, los Cookie encabezados y) no se aplicarán al nuevo controlador.** |
 | `Proxy` | `null` | Proxy HTTP que se va a usar al enviar solicitudes HTTP. |
 | `UseDefaultCredentials` | `false` | Establezca este valor booleano para enviar las credenciales predeterminadas para las solicitudes HTTP y WebSockets. Esto habilita el uso de la autenticación de Windows. |
 | `WebSocketConfiguration` | `null` | Delegado que se puede usar para configurar opciones adicionales de WebSocket. Recibe una instancia de [ClientWebSocketOptions](/dotnet/api/system.net.websockets.clientwebsocketoptions) que se puede usar para configurar las opciones. |
@@ -1828,7 +1830,7 @@ Se pueden configurar opciones adicionales en el `WithUrl` `withUrl` método (en 
 | ----------- | ------------- | ----------- |
 | `withAccessTokenProvider` | `null` | Función que devuelve una cadena que se proporciona como un token de autenticación de portador en solicitudes HTTP. |
 | `shouldSkipNegotiate` | `false` | Establézcalo en `true` para omitir el paso de negociación. **Solo se admite cuando el transporte de WebSockets es el único transporte habilitado**. Esta configuración no se puede habilitar cuando se usa el servicio de Azure SignalR . |
-| `withHeader` `withHeaders` | Empty | Asignación de encabezados HTTP adicionales que se van a enviar con cada solicitud HTTP. |
+| `withHeader` `withHeaders` | Vacío | Asignación de encabezados HTTP adicionales que se van a enviar con cada solicitud HTTP. |
 
 ---
 

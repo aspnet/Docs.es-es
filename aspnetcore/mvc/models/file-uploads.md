@@ -7,6 +7,8 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/03/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/models/file-uploads
-ms.openlocfilehash: 720da8a8fe22f0e1911fd554c094661b4465a335
-ms.sourcegitcommit: d9ae1f352d372a20534b57e23646c1a1d9171af1
+ms.openlocfilehash: a11e6325143b9db57d6fbd1cd67478dc1dd6122d
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/21/2020
-ms.locfileid: "86568839"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88021255"
 ---
 # <a name="upload-files-in-aspnet-core"></a>Carga de archivos en ASP.NET Core
 
@@ -32,7 +34,7 @@ ASP.NET Core admite la carga de uno o varios archivos mediante el enlace de mod
 
 [Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
-## <a name="security-considerations"></a>Consideraciones sobre la seguridad
+## <a name="security-considerations"></a>Consideraciones de seguridad
 
 Tenga precaución al proporcionar a los usuarios la capacidad de cargar archivos en un servidor. Es posible que los atacantes intenten lo siguiente:
 
@@ -191,7 +193,7 @@ El ejemplo siguiente es análogo al ejemplo anterior, salvo en que:
 Para realizar la solicitud POST en JavaScript para los clientes que [no admiten Fetch API](https://caniuse.com/#feat=fetch), use uno de estos enfoques:
 
 * Use un Fetch Polyfill (por ejemplo, [window.fetch polyfill (github/fetch)](https://github.com/github/fetch)).
-* Mediante `XMLHttpRequest`. Por ejemplo:
+* Use `XMLHttpRequest`. Por ejemplo:
 
   ```javascript
   <script>
@@ -236,7 +238,7 @@ Es posible acceder a archivos individuales cargados en el servidor a través del
 >
 > Los ejemplos proporcionados hasta ahora no tienen en cuenta las consideraciones de seguridad. Se proporciona información adicional en las secciones siguientes y en la [aplicación de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/):
 >
-> * [Consideraciones sobre la seguridad](#security-considerations)
+> * [Consideraciones de seguridad](#security-considerations)
 > * [Validación](#validation)
 
 Al cargar archivos mediante el enlace de modelos y <xref:Microsoft.AspNetCore.Http.IFormFile>, el método de acción puede aceptar:
@@ -407,14 +409,14 @@ El ejemplo anterior es similar a un escenario que se muestra en la aplicación d
 >
 > Los ejemplos proporcionados no tienen en cuenta las consideraciones de seguridad. Se proporciona información adicional en las secciones siguientes y en la [aplicación de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/):
 >
-> * [Consideraciones sobre la seguridad](#security-considerations)
+> * [Consideraciones de seguridad](#security-considerations)
 > * [Validación](#validation)
 
 ### <a name="upload-large-files-with-streaming"></a>Carga de archivos de gran tamaño con streaming
 
 En el ejemplo siguiente se muestra cómo usar JavaScript para transmitir un archivo a una acción de controlador. El token de antifalsificación del archivo se genera por medio de un atributo de filtro personalizado y se pasa a los encabezados HTTP del cliente, en lugar de en el cuerpo de la solicitud. Dado que el método de acción procesa los datos cargados directamente, el enlace de modelos del formulario se deshabilita por otro filtro personalizado. Dentro de la acción, el contenido del formulario se lee usando un `MultipartReader` (que lee cada `MultipartSection` individual), de forma que el archivo se procesa o el contenido se almacena, según corresponda. Una vez leídas las secciones de varias partes, la acción realiza su propio enlace de modelos.
 
-La respuesta de la página inicial carga el formulario y guarda un token de antifalsificación en una cookie (a través del atributo `GenerateAntiforgeryTokenCookieAttribute`). El atributo usa la [compatibilidad de antifalsificación](xref:security/anti-request-forgery) integrada de ASP.NET Core para establecer una cookie con un token de solicitud:
+La respuesta de página inicial carga el formulario y guarda un token antifalsificación en un cookie (mediante el `GenerateAntiforgeryTokenCookieAttribute` atributo). El atributo usa la compatibilidad con la [antifalsificación](xref:security/anti-request-forgery) integrada de ASP.net Core para establecer un cookie con un token de solicitud:
 
 [!code-csharp[](file-uploads/samples/3.x/SampleApp/Filters/Antiforgery.cs?name=snippet_GenerateAntiforgeryTokenCookieAttribute)]
 
@@ -724,7 +726,7 @@ Esto solo ocurre en IIS; este comportamiento no sucede de forma predeterminada c
 
 Las limitaciones del módulo ASP.NET Core o la presencia del módulo de filtrado de solicitudes de IIS pueden limitar las cargas a 2 GB o 4 GB. Para obtener más información, consulte el artículo que indica que [no se pueden cargar archivos con un tamaño superior a 2 GB (aspnet/AspNetCore #2711)](https://github.com/dotnet/AspNetCore/issues/2711).
 
-## <a name="troubleshoot"></a>Solución de problemas
+## <a name="troubleshoot"></a>Solucionar problemas
 
 Aquí incluimos algunos problemas comunes que pueden surgir al cargar archivos, así como sus posibles soluciones.
 
@@ -759,7 +761,7 @@ ASP.NET Core admite la carga de uno o varios archivos mediante el enlace de mod
 
 [Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
-## <a name="security-considerations"></a>Consideraciones sobre la seguridad
+## <a name="security-considerations"></a>Consideraciones de seguridad
 
 Tenga precaución al proporcionar a los usuarios la capacidad de cargar archivos en un servidor. Es posible que los atacantes intenten lo siguiente:
 
@@ -918,7 +920,7 @@ El ejemplo siguiente es análogo al ejemplo anterior, salvo en que:
 Para realizar la solicitud POST en JavaScript para los clientes que [no admiten Fetch API](https://caniuse.com/#feat=fetch), use uno de estos enfoques:
 
 * Use un Fetch Polyfill (por ejemplo, [window.fetch polyfill (github/fetch)](https://github.com/github/fetch)).
-* Mediante `XMLHttpRequest`. Por ejemplo:
+* Use `XMLHttpRequest`. Por ejemplo:
 
   ```javascript
   <script>
@@ -963,7 +965,7 @@ Es posible acceder a archivos individuales cargados en el servidor a través del
 >
 > Los ejemplos proporcionados hasta ahora no tienen en cuenta las consideraciones de seguridad. Se proporciona información adicional en las secciones siguientes y en la [aplicación de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/):
 >
-> * [Consideraciones sobre la seguridad](#security-considerations)
+> * [Consideraciones de seguridad](#security-considerations)
 > * [Validación](#validation)
 
 Al cargar archivos mediante el enlace de modelos y <xref:Microsoft.AspNetCore.Http.IFormFile>, el método de acción puede aceptar:
@@ -1134,14 +1136,14 @@ El ejemplo anterior es similar a un escenario que se muestra en la aplicación d
 >
 > Los ejemplos proporcionados no tienen en cuenta las consideraciones de seguridad. Se proporciona información adicional en las secciones siguientes y en la [aplicación de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/):
 >
-> * [Consideraciones sobre la seguridad](#security-considerations)
+> * [Consideraciones de seguridad](#security-considerations)
 > * [Validación](#validation)
 
 ### <a name="upload-large-files-with-streaming"></a>Carga de archivos de gran tamaño con streaming
 
 En el ejemplo siguiente se muestra cómo usar JavaScript para transmitir un archivo a una acción de controlador. El token de antifalsificación del archivo se genera por medio de un atributo de filtro personalizado y se pasa a los encabezados HTTP del cliente, en lugar de en el cuerpo de la solicitud. Dado que el método de acción procesa los datos cargados directamente, el enlace de modelos del formulario se deshabilita por otro filtro personalizado. Dentro de la acción, el contenido del formulario se lee usando un `MultipartReader` (que lee cada `MultipartSection` individual), de forma que el archivo se procesa o el contenido se almacena, según corresponda. Una vez leídas las secciones de varias partes, la acción realiza su propio enlace de modelos.
 
-La respuesta de la página inicial carga el formulario y guarda un token de antifalsificación en una cookie (a través del atributo `GenerateAntiforgeryTokenCookieAttribute`). El atributo usa la [compatibilidad de antifalsificación](xref:security/anti-request-forgery) integrada de ASP.NET Core para establecer una cookie con un token de solicitud:
+La respuesta de página inicial carga el formulario y guarda un token antifalsificación en un cookie (mediante el `GenerateAntiforgeryTokenCookieAttribute` atributo). El atributo usa la compatibilidad con la [antifalsificación](xref:security/anti-request-forgery) integrada de ASP.net Core para establecer un cookie con un token de solicitud:
 
 [!code-csharp[](file-uploads/samples/2.x/SampleApp/Filters/Antiforgery.cs?name=snippet_GenerateAntiforgeryTokenCookieAttribute)]
 
@@ -1446,7 +1448,7 @@ Esto solo ocurre en IIS; este comportamiento no sucede de forma predeterminada c
 
 Las limitaciones del módulo ASP.NET Core o la presencia del módulo de filtrado de solicitudes de IIS pueden limitar las cargas a 2 GB o 4 GB. Para obtener más información, consulte el artículo que indica que [no se pueden cargar archivos con un tamaño superior a 2 GB (aspnet/AspNetCore #2711)](https://github.com/dotnet/AspNetCore/issues/2711).
 
-## <a name="troubleshoot"></a>Solución de problemas
+## <a name="troubleshoot"></a>Solucionar problemas
 
 Aquí incluimos algunos problemas comunes que pueden surgir al cargar archivos, así como sus posibles soluciones.
 

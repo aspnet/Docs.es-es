@@ -5,6 +5,8 @@ description: Consulte la tabla de contenido de la introducción a MVC de ASP.NET
 ms.author: riande
 ms.date: 10/26/2017
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -13,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/index
-ms.openlocfilehash: 497bed916a38667312fbddae2ca044482d06fd2f
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 100c3112b7bcaeed8679f4dd7593f2d2c18c8906
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85405138"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88021593"
 ---
 # <a name="create-a-web-app-with-aspnet-core-mvc"></a>Creación de una aplicación web con MVC de ASP.NET Core
 

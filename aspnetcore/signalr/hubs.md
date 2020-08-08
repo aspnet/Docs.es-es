@@ -7,6 +7,8 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 01/16/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,24 +17,24 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/hubs
-ms.openlocfilehash: 1757d205b583c8b3f3bbf845594d7228f8d45175
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: bd7432fc29d0cda003abed1f0e522bdddf2e4efc
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85408557"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88022217"
 ---
-# <a name="use-hubs-in-signalr-for-aspnet-core"></a>Usar hubs en SignalR para ASP.net Core
+# <a name="use-hubs-in-no-locsignalr-for-aspnet-core"></a>Usar hubs en SignalR para ASP.net Core
 
 Por [Rachel Appel](https://twitter.com/rachelappel) y [Kevin Griffin](https://twitter.com/1kevgriff)
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/hubs/sample/ ) [(cómo descargarlo)](xref:index#how-to-download-a-sample)
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/hubs/sample/ ) [(cómo descargarlo)](xref:index#how-to-download-a-sample).
 
-## <a name="what-is-a-signalr-hub"></a>¿Qué es un SignalR centro?
+## <a name="what-is-a-no-locsignalr-hub"></a>¿Qué es un SignalR centro?
 
 La SignalR API de hubs le permite llamar a métodos en clientes conectados desde el servidor. En el código del servidor, se definen los métodos a los que llama el cliente. En el código de cliente, se definen los métodos a los que se llama desde el servidor. SignalRse encarga de todo en segundo plano que permite la comunicación de cliente a servidor y de servidor a cliente en tiempo real.
 
-## <a name="configure-signalr-hubs"></a>Configuración de SignalR centros
+## <a name="configure-no-locsignalr-hubs"></a>Configuración de SignalR centros
 
 El SignalR middleware requiere algunos servicios, que se configuran mediante una llamada a `services.AddSignalR` .
 
@@ -207,4 +209,4 @@ Si tiene una condición *excepcional que desea* propagar al cliente, puede utili
 
 * [Introducción a ASP.NET CoreSignalR](xref:signalr/introduction)
 * [Cliente de JavaScript](xref:signalr/javascript-client)
-* [Publicar en Azure](xref:signalr/publish-to-azure-web-app)
+* [Publicación en Azure](xref:signalr/publish-to-azure-web-app)

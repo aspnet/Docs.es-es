@@ -7,6 +7,8 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 11/12/2019
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,14 +17,14 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/background-services
-ms.openlocfilehash: bf5fff213b2cd7db0b3227922a8c5babba2fc904
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 409ace5e3eaa4ab1de0b9d5f0cbd0e10d9243ea9
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85409090"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88022386"
 ---
-# <a name="host-aspnet-core-signalr-in-background-services"></a>ASP.NET Core host SignalR en los servicios en segundo plano
+# <a name="host-aspnet-core-no-locsignalr-in-background-services"></a>ASP.NET Core host SignalR en los servicios en segundo plano
 
 Por el [Brady](https://twitter.com/bradygaster)
 
@@ -33,16 +35,16 @@ En este artículo se proporcionan instrucciones para:
 
 ::: moniker range=">= aspnetcore-3.0"
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/background-service/samples/3.x) [(cómo descargarlo)](xref:index#how-to-download-a-sample)
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/background-service/samples/3.x) [(cómo descargarlo)](xref:index#how-to-download-a-sample).
 
 ::: moniker-end
 ::: moniker range="<= aspnetcore-2.2"
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/background-service/samples/2.2) [(cómo descargarlo)](xref:index#how-to-download-a-sample)
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/background-service/samples/2.2) [(cómo descargarlo)](xref:index#how-to-download-a-sample).
 
 ::: moniker-end
 
-## <a name="enable-signalr-in-startup"></a>Habilitar SignalR en el inicio
+## <a name="enable-no-locsignalr-in-startup"></a>Habilitar SignalR en el inicio
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -90,7 +92,7 @@ La interfaz utilizada por el fuertemente tipado `ClockHub` es la `IClock` interf
 
 ::: moniker-end
 
-## <a name="call-a-signalr-hub-from-a-background-service"></a>Llamar a un SignalR centro desde un servicio en segundo plano
+## <a name="call-a-no-locsignalr-hub-from-a-background-service"></a>Llamar a un SignalR centro desde un servicio en segundo plano
 
 Durante el inicio, la `Worker` clase, a `BackgroundService` , se habilita mediante `AddHostedService` .
 
@@ -113,7 +115,7 @@ Puesto que SignalR también se habilita durante la `Startup` fase, en la que cad
 
 A medida que `ExecuteAsync` se llama al método de forma iterativa en el servicio en segundo plano, la fecha y hora actuales del servidor se envían a los clientes conectados mediante `ClockHub` .
 
-## <a name="react-to-signalr-events-with-background-services"></a>Reaccionar a SignalR eventos con servicios en segundo plano
+## <a name="react-to-no-locsignalr-events-with-background-services"></a>Reaccionar a SignalR eventos con servicios en segundo plano
 
 Al igual que una aplicación de una sola página que usa el cliente de JavaScript para SignalR o una aplicación de escritorio de .net puede usar mediante el <xref:signalr/dotnet-client> , `BackgroundService` `IHostedService` también se puede usar una implementación de o para conectarse a SignalR los concentradores y responder a eventos.
 
@@ -158,5 +160,5 @@ Durante el `IHostedService.StopAsync` método, `HubConnection` se elimina de for
 
 * [Introducción](xref:tutorials/signalr)
 * [Concentradores](xref:signalr/hubs)
-* [Publicar en Azure](xref:signalr/publish-to-azure-web-app)
+* [Publicación en Azure](xref:signalr/publish-to-azure-web-app)
 * [Concentradores fuertemente tipados](xref:signalr/hubs#strongly-typed-hubs)

@@ -6,6 +6,8 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/02/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -14,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/jsonpatch
-ms.openlocfilehash: 08ae366859c4466e6957592f78dda813d6670bb4
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 09da557d678889ba16abe6f9af40ae1b33583d8b
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85405034"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88022373"
 ---
 # <a name="jsonpatch-in-aspnet-core-web-api"></a>JsonPatch en la API web de ASP.NET Core
 
@@ -114,7 +116,7 @@ La propiedad [path](https://tools.ietf.org/html/rfc6901) de un objeto de operaci
 
 Para especificar elementos de matriz se usan índices de base cero. El primer elemento de la matriz `addresses` estaría en `/addresses/0`. Hasta `add` el final de una matriz, use un guion ( `-` ) en lugar de un número de índice: `/addresses/-` .
 
-### <a name="operations"></a>Operations
+### <a name="operations"></a>Operaciones
 
 En la siguiente tabla se muestran las operaciones admitidas, como se ha definido en la [especificación de JSON Patch](https://tools.ietf.org/html/rfc6902):
 
@@ -139,7 +141,7 @@ En un controlador de API, un método de acción para JSON Patch:
 * Acepta `JsonPatchDocument<T>`, normalmente con `[FromBody]`.
 * Llama a `ApplyTo` en el documento de revisión para aplicar los cambios.
 
-Por ejemplo:
+Este es un ejemplo:
 
 [!code-csharp[](jsonpatch/samples/2.2/Controllers/HomeController.cs?name=snippet_PatchAction&highlight=1,3,9)]
 
@@ -326,7 +328,7 @@ La propiedad [path](https://tools.ietf.org/html/rfc6901) de un objeto de operaci
 
 Para especificar elementos de matriz se usan índices de base cero. El primer elemento de la matriz `addresses` estaría en `/addresses/0`. Para usar `add` al final de una matriz, use un guion (-) en lugar de un número de índice: `/addresses/-`.
 
-### <a name="operations"></a>Operations
+### <a name="operations"></a>Operaciones
 
 En la siguiente tabla se muestran las operaciones admitidas, como se ha definido en la [especificación de JSON Patch](https://tools.ietf.org/html/rfc6902):
 
@@ -351,7 +353,7 @@ En un controlador de API, un método de acción para JSON Patch:
 * Acepta `JsonPatchDocument<T>`, normalmente con `[FromBody]`.
 * Llama a `ApplyTo` en el documento de revisión para aplicar los cambios.
 
-Por ejemplo:
+Este es un ejemplo:
 
 [!code-csharp[](jsonpatch/samples/2.2/Controllers/HomeController.cs?name=snippet_PatchAction&highlight=1,3,9)]
 

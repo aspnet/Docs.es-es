@@ -5,6 +5,8 @@ description: En este artículo se describe cómo personalizar el modelo de datos
 ms.author: avickers
 ms.date: 07/01/2019
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -13,20 +15,20 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/customize_identity_model
-ms.openlocfilehash: 3a5bac0e3e34602b1f8a85a7bcde1ba92b372607
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 4e6d91de013755f1ae998e36481f4c3b659270ae
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85399171"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88022009"
 ---
-# <a name="identity-model-customization-in-aspnet-core"></a>IdentityPersonalización del modelo en ASP.NET Core
+# <a name="no-locidentity-model-customization-in-aspnet-core"></a>IdentityPersonalización del modelo en ASP.NET Core
 
 Por [Arthur Vickers](https://github.com/ajcvickers)
 
 ASP.NET Core Identity proporciona un marco para administrar y almacenar cuentas de usuario en ASP.net Core aplicaciones. Identityse agrega al proyecto cuando se selecciona **cuentas de usuario individuales** como mecanismo de autenticación. De forma predeterminada, Identity hace uso de un modelo de datos básico de Entity Framework (EF). En este artículo se describe cómo personalizar el Identity modelo.
 
-## <a name="identity-and-ef-core-migrations"></a>Identityy EF Core migraciones
+## <a name="no-locidentity-and-ef-core-migrations"></a>Identityy EF Core migraciones
 
 Antes de examinar el modelo, es útil entender cómo Identity funciona con migraciones de [EF Core](/ef/core/managing-schemas/migrations/) para crear y actualizar una base de datos. En el nivel superior, el proceso es:
 
@@ -52,9 +54,9 @@ Cuando se crea una nueva aplicación con Identity , los pasos 1 y 2 anteriores y
 
 Repita los pasos anteriores a medida que se realicen cambios en el modelo.
 
-## <a name="the-identity-model"></a>El Identity modelo
+## <a name="the-no-locidentity-model"></a>El Identity modelo
 
-### <a name="entity-types"></a>Tipos de entidades
+### <a name="entity-types"></a>Tipos de entidad
 
 El Identity modelo consta de los siguientes tipos de entidad.
 
@@ -355,7 +357,7 @@ Actualice *pages/Shared/_LoginPartial. cshtml* y reemplace `IdentityUser` por `A
 @inject UserManager<ApplicationUser> UserManager
 ```
 
-Actualice *areas/ Identity /IdentityHostingStartup.CS* o `Startup.ConfigureServices` y reemplace `IdentityUser` por `ApplicationUser` .
+Actualice *areas/ Identity / Identity HostingStartup.CS* o `Startup.ConfigureServices` y reemplace `IdentityUser` por `ApplicationUser` .
 
 ```csharp
 services.AddIdentity<ApplicationUser>()

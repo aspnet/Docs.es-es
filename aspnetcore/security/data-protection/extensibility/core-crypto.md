@@ -5,6 +5,8 @@ description: Obtenga información sobre IAuthenticatedEncryptor, IAuthenticatedE
 ms.author: riande
 ms.date: 08/11/2017
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -13,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/data-protection/extensibility/core-crypto
-ms.openlocfilehash: de34968f21eec28cf375ee9f75d3cb8b212c7e70
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 321e039a4b4692266c6d7ceaff96578db8a74bb5
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85404280"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88021606"
 ---
 # <a name="core-cryptography-extensibility-in-aspnet-core"></a>Extensibilidad de criptografía básica en ASP.NET Core
 

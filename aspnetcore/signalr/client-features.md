@@ -6,6 +6,8 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 11/12/2019
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -14,14 +16,14 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/client-features
-ms.openlocfilehash: 10752e8cace82dc08721af7d38c0250182e9bfb0
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 4f5fa2f4ff1ac3d00b04845aedc26fb0118b9991
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85408492"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88021476"
 ---
-# <a name="aspnet-core-signalr-clients"></a>SignalRClientes ASP.net Core
+# <a name="aspnet-core-no-locsignalr-clients"></a>SignalRClientes ASP.net Core
 
 ## <a name="versioning-support-and-compatibility"></a>Control de versiones, compatibilidad y compatibilidad
 
@@ -43,7 +45,7 @@ Las versiones 1. x de SignalR se asignan a las versiones 2,1 y 2,2 de .net Core 
 
 En la tabla siguiente se muestran las características y la compatibilidad de los clientes que ofrecen compatibilidad en tiempo real. Para cada característica, se muestra la versión *mínima* que admite esta característica. Si no aparece ninguna versión, no se admite la característica.
 
-| Característica | Server | Cliente .NET | Cliente de JavaScript | Cliente de Java |
+| Característica | Servidor | Cliente .NET | Cliente de JavaScript | Cliente de Java |
 | ---- | :-: | :-: | :-: | :-: |
 | SignalRCompatibilidad con servicios de Azure |2.1.0|1.0.0|1.0.0|1.0.0|
 | [Streaming de servidor a cliente](xref:signalr/streaming)          |2.1.0|1.0.0|1.0.0|1.0.0|

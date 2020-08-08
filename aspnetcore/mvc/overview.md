@@ -5,6 +5,8 @@ description: Conozca ASP.NET Core MVC, un marco completo para crear aplicaciones
 ms.author: riande
 ms.date: 02/12/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -13,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/overview
-ms.openlocfilehash: 68a0b14eb0897f6ff6e24e74b1fe5536bee1adfe
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 64bee1966eff40e9057166adfafbf78d0cc5b6aa
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85405853"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88021450"
 ---
 # <a name="overview-of-aspnet-core-mvc"></a>Información general de ASP.NET Core MVC
 
@@ -70,14 +72,14 @@ ASP.NET Core MVC incluye lo siguiente:
 * [Enrutamiento](#routing)
 * [Enlace de modelos](#model-binding)
 * [Validación de modelos](#model-validation)
-* [Inserción de dependencia](../fundamentals/dependency-injection.md)
+* [Inserción de dependencias](../fundamentals/dependency-injection.md)
 * [Filtros](#filters)
 * [Áreas](#areas)
 * [API web](#web-apis)
 * [Capacidad de prueba](#testability)
 * [Razormotor de vista](#razor-view-engine)
 * [Vistas fuertemente tipadas](#strongly-typed-views)
-* [Asistentes de etiquetas](#tag-helpers)
+* [Aplicaciones auxiliares de etiquetas](#tag-helpers)
 * [Ver componentes](#view-components)
 
 ### <a name="routing"></a>Enrutamiento
@@ -149,7 +151,7 @@ public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = 
 
 El marco administra los datos de la solicitud de validación en el cliente y en el servidor. La lógica de validación especificada en tipos de modelo se agrega a las vistas representadas como anotaciones discretas y se aplica en el explorador con [Validación de jQuery](https://jqueryvalidation.org/).
 
-### <a name="dependency-injection"></a>Inserción de dependencia
+### <a name="dependency-injection"></a>Inserción de dependencias
 
 ASP.NET Core tiene compatibilidad integrada con la [inserción de dependencias](../fundamentals/dependency-injection.md). En ASP.NET Core MVC, los [controladores](controllers/dependency-injection.md) pueden solicitar los servicios que necesiten a través de sus constructores, lo que les permite seguir el [principio de dependencias explícitas](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#explicit-dependencies).
 
@@ -194,7 +196,7 @@ Use la generación de vínculos para habilitar la compatibilidad con hipermedios
 
 Al usar interfaces e inserción de dependencias, el marco es adecuado para realizar pruebas unitarias. También incluye características (por ejemplo, un proveedor TestHost e InMemory para Entity Framework) con las que resulta muy fácil y rápido realizar [pruebas de integración](xref:test/integration-tests). Obtenga más información sobre [cómo probar la lógica del controlador](controllers/testing.md).
 
-### <a name="razor-view-engine"></a>Razormotor de vista
+### <a name="no-locrazor-view-engine"></a>Razormotor de vista
 
 [ASP.net Core vistas de MVC](views/overview.md) usan el [ Razor motor de vistas](views/razor.md) para representar las vistas. Razores un lenguaje de marcado de plantilla compacto, expresivo y fluido para definir vistas mediante código C# incrustado. Razorse utiliza para generar dinámicamente contenido web en el servidor. Permite combinar de manera limpia el código del servidor con el código y el contenido del lado cliente.
 
@@ -265,5 +267,5 @@ Para obtener más información, vea <xref:mvc/compatibility-version>.
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
-* [MyTest. AspNetCore. Mvc: biblioteca de pruebas fluidas para ASP.net Core MVC](https://github.com/ivaylokenov/MyTested.AspNetCore.Mvc): biblioteca de pruebas unitarias fuertemente tipadas, que proporciona una interfaz fluida para probar MVC y aplicaciones de API Web. (*Microsoft no realiza su mantenimiento ni su soporte técnico.*)
+* [MyTest. AspNetCore. Mvc: biblioteca de pruebas fluidas para ASP.net Core MVC](https://github.com/ivaylokenov/MyTested.AspNetCore.Mvc): biblioteca de pruebas unitarias fuertemente tipadas, que proporciona una interfaz fluida para probar MVC y aplicaciones de API Web. (*Microsoft no realiza su mantenimiento ni su soporte técnico.* )
 * <xref:blazor/components/integrate-components-into-razor-pages-and-mvc-apps>

@@ -6,6 +6,8 @@ ms.author: riande
 ms.date: 03/26/2020
 ms.custom: mvc, seodec18
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -14,14 +16,14 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/add-user-data
-ms.openlocfilehash: e5c23cc49a52b8772a43853e9e953dd416d69f69
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: d65974e9ff8e2f5be52ab79b063ed9d2dca557ea
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85408739"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88020865"
 ---
-# <a name="add-download-and-delete-custom-user-data-to-identity-in-an-aspnet-core-project"></a>Agregar, descargar y eliminar datos de usuario personalizados Identity en un proyecto de ASP.net Core
+# <a name="add-download-and-delete-custom-user-data-to-no-locidentity-in-an-aspnet-core-project"></a>Agregar, descargar y eliminar datos de usuario personalizados Identity en un proyecto de ASP.net Core
 
 Por [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -48,7 +50,7 @@ El ejemplo de proyecto se crea a partir de una Razor aplicación Web de páginas
 
 ::: moniker-end
 
-## <a name="create-a-razor-web-app"></a>Creación de una Razor aplicación Web
+## <a name="create-a-no-locrazor-web-app"></a>Creación de una Razor aplicación Web
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -81,7 +83,7 @@ dotnet new webapp -o WebApp1
 
 ---
 
-## <a name="run-the-identity-scaffolder"></a>Ejecutar el Identity scaffolding
+## <a name="run-the-no-locidentity-scaffolder"></a>Ejecutar el Identity scaffolding
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -137,7 +139,7 @@ Siga las instrucciones de [migraciones, UseAuthentication y diseño](xref:securi
   * Seleccione el botón **Descargar** y examine el *PersonalData.jsen* el archivo.
   * Pruebe el botón **eliminar** , que elimina el usuario que ha iniciado sesión.
 
-## <a name="add-custom-user-data-to-the-identity-db"></a>Agregar datos de usuario personalizados a la base de datos Identity
+## <a name="add-custom-user-data-to-the-no-locidentity-db"></a>Agregar datos de usuario personalizados a la base de datos Identity
 
 Actualice la `IdentityUser` clase derivada con propiedades personalizadas. Si ha llamado al proyecto WebApp1, el archivo se denomina *areas/ Identity /Data/WebApp1User.CS*. Actualice el archivo con el código siguiente:
 
@@ -237,7 +239,7 @@ Pruebe la aplicación:
 * Vea los datos de usuario personalizados en la `/Identity/Account/Manage` página.
 * Descargue y vea los datos personales de los usuarios en la `/Identity/Account/Manage/PersonalData` página.
 
-## <a name="add-claims-to-identity-using-iuserclaimsprincipalfactoryapplicationuser"></a>Adición de notificaciones al Identity uso de IUserClaimsPrincipalFactory<ApplicationUser>
+## <a name="add-claims-to-no-locidentity-using-iuserclaimsprincipalfactoryapplicationuser"></a>Adición de notificaciones al Identity uso de IUserClaimsPrincipalFactory<ApplicationUser>
 
 > [!NOTE]
 > Esta sección no es una extensión del tutorial anterior. Para aplicar los pasos siguientes a la aplicación compilada con el tutorial, consulte [este problema de github](https://github.com/dotnet/AspNetCore.Docs/issues/18797).

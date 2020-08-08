@@ -5,6 +5,8 @@ description: Obtenga información sobre las técnicas de scripting entre sitios 
 ms.author: riande
 ms.date: 10/02/2018
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -13,18 +15,18 @@ no-loc:
 - Razor
 - SignalR
 uid: security/cross-site-scripting
-ms.openlocfilehash: a94fe1612c023468238f09a91ddb0346b65d52ba
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 24fab313c3af30cfd4143ba29a33ba25bfcdf9a9
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85408024"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88021814"
 ---
 # <a name="prevent-cross-site-scripting-xss-in-aspnet-core"></a>Impedir el scripting entre sitios (XSS) en ASP.NET Core
 
 Por [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-El scripting entre sitios (XSS) es una vulnerabilidad de seguridad que permite a un atacante colocar scripts del lado cliente (normalmente JavaScript) en páginas Web. Cuando otros usuarios cargan las páginas afectadas, se ejecutarán los scripts del atacante, lo que permitirá al atacante robar cookies y tokens de sesión, cambiar el contenido de la página web a través de la manipulación del DOM o redirigir el explorador a otra página. Las vulnerabilidades XSS suelen producirse cuando una aplicación toma datos proporcionados por el usuario y los envía a una página sin validarla, codificarla o escapar de ella.
+El scripting entre sitios (XSS) es una vulnerabilidad de seguridad que permite a un atacante colocar scripts del lado cliente (normalmente JavaScript) en páginas Web. Cuando otros usuarios cargan las páginas afectadas, se ejecutarán los scripts del atacante, lo que permite que el atacante robe cookie s y tokens de sesión, cambie el contenido de la página web a través de la manipulación del Dom o redirija el explorador a otra página. Las vulnerabilidades XSS suelen producirse cuando una aplicación toma datos proporcionados por el usuario y los envía a una página sin validarla, codificarla o escapar de ella.
 
 ## <a name="protecting-your-application-against-xss"></a>Proteger la aplicación contra XSS
 
@@ -40,7 +42,7 @@ En un nivel básico, XSS funciona engañando a la aplicación para insertar una 
 
 5. Antes de colocar los datos que no son de confianza en una cadena de consulta de dirección URL, asegúrese de que su dirección URL está codificada.
 
-## <a name="html-encoding-using-razor"></a>Codificación HTML medianteRazor
+## <a name="html-encoding-using-no-locrazor"></a>Codificación HTML medianteRazor
 
 El Razor motor usado en MVC codifica automáticamente todas las salidas que se han generado a partir de variables, a menos que trabaje realmente difícil para evitar que lo haga. Usa reglas de codificación de atributos HTML siempre que se usa la *@* Directiva. Como la codificación de atributos HTML es un supraconjunto de codificación HTML, esto significa que no tiene que preocuparse de si debe usar la codificación HTML o la codificación de atributos HTML. Debe asegurarse de que solo usa @ en un contexto HTML, no cuando intenta insertar una entrada que no es de confianza directamente en JavaScript. Las aplicaciones auxiliares de etiquetas también codificarán la entrada que se usa en los parámetros de etiqueta.
 
@@ -63,7 +65,7 @@ Esta vista genera el contenido de la variable *untrustedInput* . Esta variable i
 >[!WARNING]
 > ASP.NET Core MVC proporciona una `HtmlString` clase que no se codifica automáticamente en la salida. Nunca debe usarse en combinación con una entrada que no sea de confianza, ya que esto expone una vulnerabilidad de XSS.
 
-## <a name="javascript-encoding-using-razor"></a>Codificación de JavaScript medianteRazor
+## <a name="javascript-encoding-using-no-locrazor"></a>Codificación de JavaScript medianteRazor
 
 Puede haber ocasiones en las que desee insertar un valor en JavaScript para procesarlo en la vista. Existen dos formas de hacerlo. La forma más segura de insertar valores es colocar el valor en un atributo de datos de una etiqueta y recuperarlo en el código JavaScript. Por ejemplo:
 

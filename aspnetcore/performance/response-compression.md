@@ -7,6 +7,8 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/response-compression
-ms.openlocfilehash: 83f5b2da8fdba784131e8d159171b8433b13a091
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 1dd931d0ee654b888814df8a0d0675d32b5c3a20
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85406477"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88020969"
 ---
 # <a name="response-compression-in-aspnet-core"></a>Compresión de respuesta en ASP.NET Core
 
@@ -55,10 +57,10 @@ Cuando un cliente puede procesar contenido comprimido, el cliente debe informar 
 | `br`                            | Sí (predeterminado)        | [Brotli formato de datos comprimidos](https://tools.ietf.org/html/rfc7932) |
 | `deflate`                       | No                   | [Desinflar formato de datos comprimidos](https://tools.ietf.org/html/rfc1951) |
 | `exi`                           | No                   | [Intercambio XML eficaz de W3C](https://tools.ietf.org/id/draft-varga-netconf-exi-capability-00.html) |
-| `gzip`                          | Yes                  | [Formato de archivo gzip](https://tools.ietf.org/html/rfc1952) |
-| `identity`                      | Yes                  | Identificador de "sin codificación": no se debe codificar la respuesta. |
+| `gzip`                          | Sí                  | [Formato de archivo gzip](https://tools.ietf.org/html/rfc1952) |
+| `identity`                      | Sí                  | Identificador de "sin codificación": no se debe codificar la respuesta. |
 | `pack200-gzip`                  | No                   | [Formato de transferencia de red para archivos de Java](https://jcp.org/aboutJava/communityprocess/review/jsr200/index.html) |
-| `*`                             | Yes                  | Cualquier codificación de contenido disponible no se ha solicitado explícitamente |
+| `*`                             | Sí                  | Cualquier codificación de contenido disponible no se ha solicitado explícitamente |
 
 Para obtener más información, consulte la [lista de codificación de contenido oficial de IANA](https://www.iana.org/assignments/http-parameters/http-parameters.xml#http-content-coding-registry).
 
@@ -70,7 +72,7 @@ Los algoritmos de compresión están sujetos a un equilibrio entre la velocidad 
 
 En la tabla siguiente se describen los encabezados implicados en la solicitud, el envío, el almacenamiento en caché y la recepción de contenido comprimido.
 
-| Header             | Rol |
+| Encabezado             | Role |
 | ------------------ | ---- |
 | `Accept-Encoding`  | Se envía desde el cliente al servidor para indicar los esquemas de codificación de contenido aceptables para el cliente. |
 | `Content-Encoding` | Se envía desde el servidor al cliente para indicar la codificación del contenido en la carga. |
@@ -84,7 +86,7 @@ Explore las características del middleware de compresión de respuesta con la [
 * Compresión de las respuestas de la aplicación mediante gzip y proveedores de compresión personalizados.
 * Cómo agregar un tipo MIME a la lista predeterminada de tipos MIME para la compresión.
 
-## <a name="package"></a>Paquete
+## <a name="package"></a>Package
 
 El middleware de compresión de respuesta lo proporciona el paquete [Microsoft. AspNetCore. ResponseCompression](https://www.nuget.org/packages/Microsoft.AspNetCore.ResponseCompression/) , que se incluye implícitamente en ASP.net Core aplicaciones.
 
@@ -301,10 +303,10 @@ Cuando un cliente puede procesar contenido comprimido, el cliente debe informar 
 | `br`                            | Sí (predeterminado)        | [Brotli formato de datos comprimidos](https://tools.ietf.org/html/rfc7932) |
 | `deflate`                       | No                   | [Desinflar formato de datos comprimidos](https://tools.ietf.org/html/rfc1951) |
 | `exi`                           | No                   | [Intercambio XML eficaz de W3C](https://tools.ietf.org/id/draft-varga-netconf-exi-capability-00.html) |
-| `gzip`                          | Yes                  | [Formato de archivo gzip](https://tools.ietf.org/html/rfc1952) |
-| `identity`                      | Yes                  | Identificador de "sin codificación": no se debe codificar la respuesta. |
+| `gzip`                          | Sí                  | [Formato de archivo gzip](https://tools.ietf.org/html/rfc1952) |
+| `identity`                      | Sí                  | Identificador de "sin codificación": no se debe codificar la respuesta. |
 | `pack200-gzip`                  | No                   | [Formato de transferencia de red para archivos de Java](https://jcp.org/aboutJava/communityprocess/review/jsr200/index.html) |
-| `*`                             | Yes                  | Cualquier codificación de contenido disponible no se ha solicitado explícitamente |
+| `*`                             | Sí                  | Cualquier codificación de contenido disponible no se ha solicitado explícitamente |
 
 Para obtener más información, consulte la [lista de codificación de contenido oficial de IANA](https://www.iana.org/assignments/http-parameters/http-parameters.xml#http-content-coding-registry).
 
@@ -316,7 +318,7 @@ Los algoritmos de compresión están sujetos a un equilibrio entre la velocidad 
 
 En la tabla siguiente se describen los encabezados implicados en la solicitud, el envío, el almacenamiento en caché y la recepción de contenido comprimido.
 
-| Header             | Rol |
+| Encabezado             | Role |
 | ------------------ | ---- |
 | `Accept-Encoding`  | Se envía desde el cliente al servidor para indicar los esquemas de codificación de contenido aceptables para el cliente. |
 | `Content-Encoding` | Se envía desde el servidor al cliente para indicar la codificación del contenido en la carga. |
@@ -330,7 +332,7 @@ Explore las características del middleware de compresión de respuesta con la [
 * Compresión de las respuestas de la aplicación mediante gzip y proveedores de compresión personalizados.
 * Cómo agregar un tipo MIME a la lista predeterminada de tipos MIME para la compresión.
 
-## <a name="package"></a>Paquete
+## <a name="package"></a>Package
 
 Para incluir el middleware en un proyecto, agregue una referencia al [metapaquete Microsoft. AspNetCore. app](xref:fundamentals/metapackage-app), que incluye el paquete [Microsoft. AspNetCore. ResponseCompression](https://www.nuget.org/packages/Microsoft.AspNetCore.ResponseCompression/) .
 
@@ -547,9 +549,9 @@ Cuando un cliente puede procesar contenido comprimido, el cliente debe informar 
 | `deflate`                       | No                   | [Desinflar formato de datos comprimidos](https://tools.ietf.org/html/rfc1951) |
 | `exi`                           | No                   | [Intercambio XML eficaz de W3C](https://tools.ietf.org/id/draft-varga-netconf-exi-capability-00.html) |
 | `gzip`                          | Sí (predeterminado)        | [Formato de archivo gzip](https://tools.ietf.org/html/rfc1952) |
-| `identity`                      | Yes                  | Identificador de "sin codificación": no se debe codificar la respuesta. |
+| `identity`                      | Sí                  | Identificador de "sin codificación": no se debe codificar la respuesta. |
 | `pack200-gzip`                  | No                   | [Formato de transferencia de red para archivos de Java](https://jcp.org/aboutJava/communityprocess/review/jsr200/index.html) |
-| `*`                             | Yes                  | Cualquier codificación de contenido disponible no se ha solicitado explícitamente |
+| `*`                             | Sí                  | Cualquier codificación de contenido disponible no se ha solicitado explícitamente |
 
 Para obtener más información, consulte la [lista de codificación de contenido oficial de IANA](https://www.iana.org/assignments/http-parameters/http-parameters.xml#http-content-coding-registry).
 
@@ -561,7 +563,7 @@ Los algoritmos de compresión están sujetos a un equilibrio entre la velocidad 
 
 En la tabla siguiente se describen los encabezados implicados en la solicitud, el envío, el almacenamiento en caché y la recepción de contenido comprimido.
 
-| Header             | Rol |
+| Encabezado             | Role |
 | ------------------ | ---- |
 | `Accept-Encoding`  | Se envía desde el cliente al servidor para indicar los esquemas de codificación de contenido aceptables para el cliente. |
 | `Content-Encoding` | Se envía desde el servidor al cliente para indicar la codificación del contenido en la carga. |
@@ -575,7 +577,7 @@ Explore las características del middleware de compresión de respuesta con la [
 * Compresión de las respuestas de la aplicación mediante gzip y proveedores de compresión personalizados.
 * Cómo agregar un tipo MIME a la lista predeterminada de tipos MIME para la compresión.
 
-## <a name="package"></a>Paquete
+## <a name="package"></a>Package
 
 Para incluir el middleware en un proyecto, agregue una referencia al [metapaquete Microsoft. AspNetCore. app](xref:fundamentals/metapackage-app), que incluye el paquete [Microsoft. AspNetCore. ResponseCompression](https://www.nuget.org/packages/Microsoft.AspNetCore.ResponseCompression/) .
 
