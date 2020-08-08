@@ -6,6 +6,8 @@ ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 04/17/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -14,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/advanced/formatting
-ms.openlocfilehash: e6b78af3eeb858310eb772fdf0034510c10351c0
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 8aa94bd1f33d1dd8ce8e7f50468ed60b4ccb2515
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85400367"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88019942"
 ---
 # <a name="format-response-data-in-aspnet-core-web-api"></a>Aplicación de formato a datos de respuesta en ASP.NET Core Web API
 
@@ -163,7 +165,7 @@ Antes de ASP.NET Core 3.0, los formateadores JSON usados de forma predeterminada
 
 Es posible que algunas características no funcionen bien con formateadores basados en `System.Text.Json` y requieren una referencia a los formateadores basados en `Newtonsoft.Json`. Siga usando los formateadores basados en `Newtonsoft.Json` si la aplicación:
 
-* Usa atributos `Newtonsoft.Json`. Por ejemplo: `[JsonProperty]` o `[JsonIgnore]`.
+* Usa atributos `Newtonsoft.Json`.  Por ejemplo, `[JsonProperty]` o `[JsonIgnore]`.
 * Proporciona la configuración de la serialización.
 * Se basa en las características que `Newtonsoft.Json` proporciona.
 * Configura `Microsoft.AspNetCore.Mvc.JsonResult.SerializerSettings`. Antes de ASP.NET Core 3.0, `JsonResult.SerializerSettings` acepta una instancia de `JsonSerializerSettings` específica de `Newtonsoft.Json`.
@@ -256,7 +258,7 @@ La asignación de la ruta de acceso de la solicitud debe especificarse en la rut
 
 Esta ruta anterior permite especificar el formato solicitado como una extensión de archivo opcional. El [`[FormatFilter]`](xref:Microsoft.AspNetCore.Mvc.FormatFilterAttribute) atributo comprueba la existencia del valor de formato en `RouteData` y asigna el formato de respuesta al formateador adecuado cuando se crea la respuesta.
 
-|           Ruta        |             Formateador              |
+|           Enrutar        |             Formateador              |
 |------------------------|------------------------------------|
 |   `/api/products/5`    |    Formateador de salida predeterminado    |
 | `/api/products/5.json` | Formateador JSON (si está configurado) |

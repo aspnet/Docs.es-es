@@ -6,6 +6,8 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/10/2018
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -14,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/tag-helpers/builtin-th/cache-tag-helper
-ms.openlocfilehash: 65d8bbcdaed76a308b924ba024219e8f520bb585
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 7d2ff774b7654993e2cd9b126db252f81a3032d3
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85399288"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88018759"
 ---
 # <a name="cache-tag-helper-in-aspnet-core-mvc"></a>Asistente de etiquetas de caché en ASP.NET Core MVC
 
@@ -41,7 +43,7 @@ La primera solicitud a la página que contiene el asistente de etiquetas muestra
 
 ### <a name="enabled"></a>enabled
 
-| Tipo de atributo  | Ejemplos        | Default |
+| Tipo de atributo  | Ejemplos        | Valor predeterminado |
 | --------------- | --------------- | ------- |
 | Boolean         | `true`, `false` | `true`  |
 
@@ -73,7 +75,7 @@ En este ejemplo se almacena en caché el contenido del asistente de etiquetas de
 
 ### <a name="expires-after"></a>expires-after
 
-| Tipo de atributo | Ejemplo                      | Default    |
+| Tipo de atributo | Ejemplo                      | Valor predeterminado    |
 | -------------- | ---------------------------- | ---------- |
 | `TimeSpan`     | `@TimeSpan.FromSeconds(120)` | 20 minutos |
 
@@ -163,15 +165,15 @@ routes.MapRoute(
 </cache>
 ```
 
-### <a name="vary-by-cookie"></a>vary-by-cookie
+### <a name="vary-by-no-loccookie"></a>variar porcookie
 
 | Tipo de atributo | Ejemplos                                                                         |
 | -------------- | -------------------------------------------------------------------------------- |
 | String         | `.AspNetCore.Identity.Application`, `.AspNetCore.Identity.Application,HairColor` |
 
-`vary-by-cookie` acepta una lista delimitada por comas de nombres de cookies que desencadenan una actualización de la caché cuando los valores de las cookies cambian.
+`vary-by-cookie`acepta una lista delimitada por comas de cookie nombres que desencadenan una actualización de la memoria caché cuando cookie cambian los valores.
 
-En el siguiente ejemplo se supervisa la cookie asociada a ASP.NET Core Identity . Cuando se autentica un usuario, un cambio en la Identity Cookie desencadena una actualización de la memoria caché:
+En el siguiente ejemplo se supervisa el cookie asociado a ASP.net Core Identity . Cuando se autentica un usuario, un cambio en Identity cookie desencadena una actualización de la memoria caché:
 
 ```cshtml
 <cache vary-by-cookie=".AspNetCore.Identity.Application">
@@ -181,7 +183,7 @@ En el siguiente ejemplo se supervisa la cookie asociada a ASP.NET Core Identity 
 
 ### <a name="vary-by-user"></a>vary-by-user
 
-| Tipo de atributo  | Ejemplos        | Default |
+| Tipo de atributo  | Ejemplos        | Valor predeterminado |
 | --------------- | --------------- | ------- |
 | Boolean         | `true`, `false` | `true`  |
 
@@ -195,7 +197,7 @@ En este ejemplo se supervisa el usuario actual que ha iniciado sesión para dese
 </cache>
 ```
 
-Con este atributo, se mantiene el contenido en caché a través de un ciclo de inicio y cierre de sesión. Cuando el valor se establece en `true`, un ciclo de autenticación invalida la memoria caché para el usuario autenticado. Se invalida la memoria caché porque se genera un nuevo valor único de cookie cuando se autentica un usuario. Se mantiene la memoria caché para el estado anónimo cuando no se presenta ninguna cookie o la cookie ha expirado. Si **no** se autentica el usuario, se mantiene la memoria caché.
+Con este atributo, se mantiene el contenido en caché a través de un ciclo de inicio y cierre de sesión. Cuando el valor se establece en `true`, un ciclo de autenticación invalida la memoria caché para el usuario autenticado. La memoria caché se invalida porque se genera un nuevo cookie valor único cuando se autentica un usuario. La memoria caché se mantiene para el estado anónimo cuando no cookie existe o cookie ha expirado. Si **no** se autentica el usuario, se mantiene la memoria caché.
 
 ### <a name="vary-by"></a>vary-by
 
@@ -230,7 +232,7 @@ public IActionResult Index(string myParam1, string myParam2, string myParam3)
 
 ### <a name="priority"></a>priority
 
-| Tipo de atributo      | Ejemplos                               | Default  |
+| Tipo de atributo      | Ejemplos                               | Valor predeterminado  |
 | ------------------- | -------------------------------------- | -------- |
 | `CacheItemPriority` | `High`, `Low`, `NeverRemove`, `Normal` | `Normal` |
 

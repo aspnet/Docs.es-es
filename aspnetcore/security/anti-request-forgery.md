@@ -6,6 +6,8 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/05/2019
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -14,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/anti-request-forgery
-ms.openlocfilehash: 5fbbb7a468a820ddad30bb4727a261fb01b4a23a
-ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
+ms.openlocfilehash: cc6f7c7e6692224f537f5eeba50b214aa84029db
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86212843"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88018837"
 ---
 # <a name="prevent-cross-site-request-forgery-xsrfcsrf-attacks-in-aspnet-core"></a>Prevención de ataques de falsificación de solicitud entre sitios (XSRF/CSRF) en ASP.NET Core
 
@@ -29,7 +31,7 @@ La falsificación de solicitudes entre sitios (también conocida como XSRF o CSR
 
 Un ejemplo de un ataque CSRF:
 
-1. Un usuario inicia sesión en `www.good-banking-site.com` mediante la autenticación de formularios. El servidor autentica al usuario y emite una respuesta que incluye una cookie de autenticación. El sitio es vulnerable a ataques porque confía en cualquier solicitud que reciba con una cookie de autenticación válida.
+1. Un usuario inicia sesión en `www.good-banking-site.com` mediante la autenticación de formularios. El servidor autentica al usuario y emite una respuesta que incluye una autenticación cookie . El sitio es vulnerable a ataques porque confía en cualquier solicitud que reciba con una autenticación válida cookie .
 1. El usuario visita un sitio malintencionado, `www.bad-crook-site.com` .
 
    El sitio malintencionado, `www.bad-crook-site.com` , contiene un formulario HTML similar al siguiente:
@@ -45,7 +47,7 @@ Un ejemplo de un ataque CSRF:
 
    Tenga en cuenta que las `action` entradas del formulario se publican en el sitio vulnerable, no en el sitio malintencionado. Esta es la parte "entre sitios" de CSRF.
 
-1. El usuario selecciona el botón Enviar. El explorador realiza la solicitud e incluye automáticamente la cookie de autenticación para el dominio solicitado, `www.good-banking-site.com` .
+1. El usuario selecciona el botón Enviar. El explorador realiza la solicitud e incluye automáticamente la autenticación cookie para el dominio solicitado, `www.good-banking-site.com` .
 1. La solicitud se ejecuta en el `www.good-banking-site.com` servidor con el contexto de autenticación del usuario y puede realizar cualquier acción que pueda realizar un usuario autenticado.
 
 Además del escenario en el que el usuario selecciona el botón para enviar el formulario, el sitio malintencionado podría:
@@ -60,42 +62,42 @@ El uso de HTTPS no impide un ataque CSRF. El sitio malintencionado puede enviar 
 
 Algunos ataques apuntan a los puntos de conexión que responden a las solicitudes GET, en cuyo caso se puede usar una etiqueta de imagen para realizar la acción. Esta forma de ataque es habitual en sitios de foros que permiten imágenes pero bloquean JavaScript. Las aplicaciones que cambian el estado en las solicitudes GET, donde se modifican las variables o los recursos, son vulnerables a ataques malintencionados. **Las solicitudes GET que cambian el estado son inseguras. Un procedimiento recomendado es no cambiar nunca el estado de una solicitud GET.**
 
-Los ataques CSRF son posibles en las aplicaciones web que usan cookies para la autenticación porque:
+Los ataques CSRF son posibles en las aplicaciones web que usan cookie para la autenticación porque:
 
-* Los exploradores almacenan las cookies emitidas por una aplicación Web.
-* Las cookies almacenadas incluyen cookies de sesión para los usuarios autenticados.
-* Los exploradores envían todas las cookies asociadas a un dominio a la aplicación web cada solicitud, con independencia de cómo se haya generado la solicitud a la aplicación en el explorador.
+* Almacenes de exploradores cookie emitidos por una aplicación Web.
+* cookieLos s almacenados incluyen sesiones cookie para los usuarios autenticados.
+* Los exploradores envían todos los cookie s asociados a un dominio a la aplicación web cada solicitud, con independencia de cómo se haya generado la solicitud a la aplicación en el explorador.
 
-Sin embargo, los ataques CSRF no se limitan a la explotación de cookies. Por ejemplo, la autenticación básica e implícita también son vulnerables. Después de que un usuario inicie sesión con la autenticación básica o implícita, el explorador enviará automáticamente las credenciales hasta que finalice la sesión &dagger; .
+Sin embargo, los ataques CSRF no se limitan a la explotación de cookie . Por ejemplo, la autenticación básica e implícita también son vulnerables. Después de que un usuario inicie sesión con la autenticación básica o implícita, el explorador enviará automáticamente las credenciales hasta que finalice la sesión &dagger; .
 
 &dagger;En este contexto, la *sesión* hace referencia a la sesión del lado cliente durante la que se autentica el usuario. No está relacionado con las sesiones del lado servidor o con el [middleware de sesión ASP.net Core](xref:fundamentals/app-state).
 
 Los usuarios pueden proteger contra las vulnerabilidades de CSRF tomando precauciones:
 
 * Cierre la sesión de las aplicaciones web cuando termine de usarlas.
-* Borre periódicamente las cookies del explorador.
+* Desactive exploradores cookie periódicamente.
 
 Sin embargo, las vulnerabilidades CSRF son fundamentalmente un problema con la aplicación Web, no con el usuario final.
 
 ## <a name="authentication-fundamentals"></a>Aspectos básicos de la autenticación
 
-La autenticación basada en cookies es una forma popular de autenticación. Los sistemas de autenticación basados en tokens están creciendo en popularidad, especialmente en el caso de las aplicaciones de una sola página (Spa).
+Cookiela autenticación basada en es una forma popular de autenticación. Los sistemas de autenticación basados en tokens están creciendo en popularidad, especialmente en el caso de las aplicaciones de una sola página (Spa).
 
-### <a name="cookie-based-authentication"></a>Autenticación basada en cookies
+### <a name="no-loccookie-based-authentication"></a>Cookieautenticación basada en
 
-Cuando un usuario se autentica con su nombre de usuario y contraseña, se le emite un token que contiene un vale de autenticación que se puede usar para la autenticación y la autorización. El token se almacena como una cookie que acompaña a cada solicitud que el cliente realiza. La generación y validación de esta cookie se realiza mediante el middleware de autenticación de cookies. El [middleware](xref:fundamentals/middleware/index) serializa una entidad de seguridad de usuario en una cookie cifrada. En las solicitudes posteriores, el middleware valida la cookie, vuelve a crear la entidad de seguridad y asigna la entidad de seguridad a la propiedad de [usuario](/dotnet/api/microsoft.aspnetcore.http.httpcontext.user) de [HttpContext](/dotnet/api/microsoft.aspnetcore.http.httpcontext).
+Cuando un usuario se autentica con su nombre de usuario y contraseña, se le emite un token que contiene un vale de autenticación que se puede usar para la autenticación y la autorización. El token se almacena como un cookie que acompaña a cada solicitud que el cliente realiza. La generación y validación cookie se realiza mediante el Cookie middleware de autenticación. El [middleware](xref:fundamentals/middleware/index) serializa una entidad de seguridad de usuario en un cifrado cookie . En las solicitudes posteriores, el middleware valida cookie , vuelve a crear la entidad de seguridad y asigna la entidad de seguridad a la propiedad [User](/dotnet/api/microsoft.aspnetcore.http.httpcontext.user) de [HttpContext](/dotnet/api/microsoft.aspnetcore.http.httpcontext).
 
 ### <a name="token-based-authentication"></a>Autenticación basada en token
 
-Cuando un usuario se autentica, se le emite un token (no un token antifalsificación). El token contiene información de usuario en forma de [notificaciones](/dotnet/framework/security/claims-based-identity-model) o un token de referencia que apunta a la aplicación para que el estado de usuario se mantenga en la aplicación. Cuando un usuario intenta acceder a un recurso que requiere autenticación, el token se envía a la aplicación con un encabezado de autorización adicional en forma de token de portador. Esto hace que la aplicación no tenga estado. En cada solicitud subsiguiente, el token se pasa en la solicitud de validación del lado servidor. Este token no está *cifrado*; está *codificado*. En el servidor, el token se descodifica para tener acceso a su información. Para enviar el token en solicitudes posteriores, almacene el token en el almacenamiento local del explorador. No se preocupe de la vulnerabilidad de CSRF si el token se almacena en el almacenamiento local del explorador. CSRF es un problema cuando el token se almacena en una cookie. Para obtener más información, consulte el código de ejemplo de GitHub problema [Spa agrega dos cookies](https://github.com/dotnet/AspNetCore.Docs/issues/13369).
+Cuando un usuario se autentica, se le emite un token (no un token antifalsificación). El token contiene información de usuario en forma de [notificaciones](/dotnet/framework/security/claims-based-identity-model) o un token de referencia que apunta a la aplicación para que el estado de usuario se mantenga en la aplicación. Cuando un usuario intenta acceder a un recurso que requiere autenticación, el token se envía a la aplicación con un encabezado de autorización adicional en forma de token de portador. Esto hace que la aplicación no tenga estado. En cada solicitud subsiguiente, el token se pasa en la solicitud de validación del lado servidor. Este token no está *cifrado*; está *codificado*. En el servidor, el token se descodifica para tener acceso a su información. Para enviar el token en solicitudes posteriores, almacene el token en el almacenamiento local del explorador. No se preocupe de la vulnerabilidad de CSRF si el token se almacena en el almacenamiento local del explorador. CSRF es un problema cuando el token se almacena en cookie . Para obtener más información, consulte el ejemplo de código de GitHub problema [Spa agrega dos cookie s](https://github.com/dotnet/AspNetCore.Docs/issues/13369).
 
 ### <a name="multiple-apps-hosted-at-one-domain"></a>Varias aplicaciones hospedadas en un dominio
 
 Los entornos de hospedaje compartidos son vulnerables al secuestro de sesión, el inicio de sesión CSRF y otros ataques.
 
-Aunque `example1.contoso.net` y `example2.contoso.net` son hosts diferentes, hay una relación de confianza implícita entre los hosts del `*.contoso.net` dominio. Esta relación de confianza implícita permite que los hosts potencialmente que no son de confianza afecten a las cookies de los demás (las directivas del mismo origen que rigen las solicitudes AJAX no se aplican necesariamente a las cookies HTTP).
+Aunque `example1.contoso.net` y `example2.contoso.net` son hosts diferentes, hay una relación de confianza implícita entre los hosts del `*.contoso.net` dominio. Esta relación de confianza implícita permite que los hosts potencialmente que no son de confianza afecten a cookie los s (las directivas del mismo origen que rigen las solicitudes Ajax no se aplican necesariamente a http cookie s).
 
-Los ataques que aprovechan las cookies de confianza entre las aplicaciones hospedadas en el mismo dominio se pueden evitar al no compartir dominios. Cuando cada aplicación se hospeda en su propio dominio, no hay ninguna relación de confianza de cookies implícita para la explotación.
+Los ataques que aprovechan cookie los elementos de confianza entre las aplicaciones hospedadas en el mismo dominio se pueden evitar al no compartir dominios. Cuando cada aplicación se hospeda en su propio dominio, no hay ninguna cookie relación de confianza implícita para la explotación.
 
 ## <a name="aspnet-core-antiforgery-configuration"></a>Configuración de ASP.NET Core antifalsificación
 
@@ -216,11 +218,11 @@ services.AddAntiforgery(options =>
 });
 ```
 
-&dagger;Establezca las propiedades de antifalsificación `Cookie` mediante las propiedades de la clase [CookieBuilder](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder) .
+&dagger;Establezca las propiedades antifalsificación `Cookie` mediante las propiedades de la clase de [ Cookie generador](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder) .
 
 | Opción | Descripción |
 | ------ | ----------- |
-| [Cookie](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookie) | Determina la configuración utilizada para crear las cookies antifalsificación. |
+| [Cookie](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookie) | Determina la configuración utilizada para crear la antifalsificación cookie . |
 | [FormFieldName](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.formfieldname) | Nombre del campo de formulario oculto utilizado por el sistema antifalsificación para representar los tokens antifalsificación en las vistas. |
 | [HeaderName](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.headername) | Nombre del encabezado que usa el sistema antifalsificación. Si es `null` , el sistema solo tiene en cuenta los datos de formulario. |
 | [SuppressXFrameOptionsHeader](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.suppressxframeoptionsheader) | Especifica si se va a suprimir la generación del `X-Frame-Options` encabezado. De forma predeterminada, el encabezado se genera con un valor de "SAMEORIGIN". Tiene como valor predeterminado `false`. |
@@ -244,22 +246,22 @@ services.AddAntiforgery(options =>
 
 | Opción | Descripción |
 | ------ | ----------- |
-| [Cookie](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookie) | Determina la configuración utilizada para crear las cookies antifalsificación. |
-| [CookieDomain](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookiedomain) | El dominio de la cookie. Tiene como valor predeterminado `null`. Esta propiedad está obsoleta y se quitará en una versión futura. La alternativa recomendada es cookie. domain. |
-| [CookieName predeterminado](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookiename) | El nombre de la cookie. Si no se establece, el sistema genera un nombre único que empieza por [DefaultCookiePrefix](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.defaultcookieprefix) (". AspNetCore. antifalsificación. "). Esta propiedad está obsoleta y se quitará en una versión futura. La alternativa recomendada es Cookie.Name. |
-| [CookiePath](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookiepath) | La ruta de acceso establecida en la cookie. Esta propiedad está obsoleta y se quitará en una versión futura. La alternativa recomendada es cookie. Path. |
+| [Cookie](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookie) | Determina la configuración utilizada para crear la antifalsificación cookie . |
+| [CookieDominio](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookiedomain) | Dominio de cookie . Tiene como valor predeterminado `null`. Esta propiedad está obsoleta y se quitará en una versión futura. La alternativa recomendada es Cookie . Dominio. |
+| [CookieNombre](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookiename) | Nombre del objeto cookie. Si no se establece, el sistema genera un nombre único que empieza con el [ Cookie prefijo predeterminado](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.defaultcookieprefix) (". AspNetCore. antifalsificación. "). Esta propiedad está obsoleta y se quitará en una versión futura. La alternativa recomendada es Cookie . Name. |
+| [CookieCamino](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookiepath) | La ruta de acceso establecida en cookie . Esta propiedad está obsoleta y se quitará en una versión futura. La alternativa recomendada es Cookie . Camino. |
 | [FormFieldName](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.formfieldname) | Nombre del campo de formulario oculto utilizado por el sistema antifalsificación para representar los tokens antifalsificación en las vistas. |
 | [HeaderName](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.headername) | Nombre del encabezado que usa el sistema antifalsificación. Si es `null` , el sistema solo tiene en cuenta los datos de formulario. |
-| [RequireSsl](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.requiressl) | Especifica si el sistema antifalsificación requiere HTTPS. Si `true` es, se produce un error en las solicitudes que no son https. Tiene como valor predeterminado `false`. Esta propiedad está obsoleta y se quitará en una versión futura. La alternativa recomendada es establecer cookie. SecurePolicy. |
+| [RequireSsl](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.requiressl) | Especifica si el sistema antifalsificación requiere HTTPS. Si `true` es, se produce un error en las solicitudes que no son https. Tiene como valor predeterminado `false`. Esta propiedad está obsoleta y se quitará en una versión futura. La alternativa recomendada es establecer Cookie . SecurePolicy. |
 | [SuppressXFrameOptionsHeader](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.suppressxframeoptionsheader) | Especifica si se va a suprimir la generación del `X-Frame-Options` encabezado. De forma predeterminada, el encabezado se genera con un valor de "SAMEORIGIN". Tiene como valor predeterminado `false`. |
 
 ::: moniker-end
 
-Para obtener más información, vea [CookieAuthenticationOptions](/dotnet/api/Microsoft.AspNetCore.Builder.CookieAuthenticationOptions).
+Para obtener más información, vea [ Cookie AuthenticationOptions](/dotnet/api/Microsoft.AspNetCore.Builder.CookieAuthenticationOptions).
 
 ## <a name="configure-antiforgery-features-with-iantiforgery"></a>Configuración de características antifalsificación con IAntiforgery
 
-[IAntiforgery](/dotnet/api/microsoft.aspnetcore.antiforgery.iantiforgery) proporciona la API para configurar las características antifalsificación. `IAntiforgery`se puede solicitar en el `Configure` método de la `Startup` clase. En el ejemplo siguiente se usa middleware desde la Página principal de la aplicación para generar un token antifalsificación y enviarlo en la respuesta como una cookie (mediante la Convención de nomenclatura predeterminada de angular que se describe más adelante en este tema):
+[IAntiforgery](/dotnet/api/microsoft.aspnetcore.antiforgery.iantiforgery) proporciona la API para configurar las características antifalsificación. `IAntiforgery`se puede solicitar en el `Configure` método de la `Startup` clase. En el ejemplo siguiente se usa middleware desde la Página principal de la aplicación para generar un token antifalsificación y enviarlo en la respuesta como cookie (mediante la Convención de nomenclatura predeterminada de angular que se describe más adelante en este tema):
 
 ```csharp
 public void Configure(IApplicationBuilder app, IAntiforgery antiforgery)
@@ -329,7 +331,7 @@ ASP.NET Core aplicaciones no generan tokens antifalsificación para métodos HTT
 
 Se recomienda usar `AutoValidateAntiforgeryToken` en general para escenarios que no son de API. Esto garantiza que las acciones POST están protegidas de forma predeterminada. La alternativa es omitir los tokens antifalsificación de forma predeterminada, a menos que `ValidateAntiForgeryToken` se aplique a los métodos de acción individuales. Es más probable que en este escenario un método POST de acción se deje sin protección por error, lo que deja la aplicación vulnerable a ataques CSRF. Todas las publicaciones deben enviar el token antifalsificación.
 
-Las API no tienen un mecanismo automático para enviar la parte que no es de cookie del token. La implementación probablemente depende de la implementación del código de cliente. A continuación se muestran algunos ejemplos:
+Las API no tienen un mecanismo automático para enviar el token que no cookie forma parte del token. La implementación probablemente depende de la implementación del código de cliente. A continuación se muestran algunos ejemplos:
 
 Ejemplo de nivel de clase:
 
@@ -381,9 +383,9 @@ Los tokens deben actualizarse después de que el usuario se autentique redirigie
 
 ## <a name="javascript-ajax-and-spas"></a>JavaScript, AJAX y Spa
 
-En las aplicaciones tradicionales basadas en HTML, los tokens antifalsificación se pasan al servidor mediante campos de formulario ocultos. En las aplicaciones modernas basadas en JavaScript y Spa, muchas solicitudes se realizan mediante programación. Estas solicitudes AJAX pueden usar otras técnicas (como encabezados de solicitud o cookies) para enviar el token.
+En las aplicaciones tradicionales basadas en HTML, los tokens antifalsificación se pasan al servidor mediante campos de formulario ocultos. En las aplicaciones modernas basadas en JavaScript y Spa, muchas solicitudes se realizan mediante programación. Estas solicitudes AJAX pueden usar otras técnicas (como encabezados de solicitud o cookie ) para enviar el token.
 
-Si las cookies se utilizan para almacenar tokens de autenticación y autenticar las solicitudes de API en el servidor, CSRF es un problema potencial. Si se usa el almacenamiento local para almacenar el token, la vulnerabilidad de CSRF podría mitigarse porque los valores del almacenamiento local no se envían automáticamente al servidor con cada solicitud. Por lo tanto, el uso del almacenamiento local para almacenar el token antifalsificación en el cliente y el envío del token como un encabezado de solicitud es un enfoque recomendado.
+Si cookie se usan para almacenar tokens de autenticación y autenticar las solicitudes de API en el servidor, CSRF es un problema potencial. Si se usa el almacenamiento local para almacenar el token, la vulnerabilidad de CSRF podría mitigarse porque los valores del almacenamiento local no se envían automáticamente al servidor con cada solicitud. Por lo tanto, el uso del almacenamiento local para almacenar el token antifalsificación en el cliente y el envío del token como un encabezado de solicitud es un enfoque recomendado.
 
 ### <a name="javascript"></a>JavaScript
 
@@ -391,11 +393,11 @@ Con JavaScript con vistas, el token se puede crear con un servicio de dentro de 
 
 [!code-cshtml[](anti-request-forgery/sample/MvcSample/Views/Home/Ajax.cshtml?highlight=4-10,12-13,35-36)]
 
-Este enfoque elimina la necesidad de tratar directamente con la configuración de cookies del servidor o de leerlas desde el cliente.
+Este enfoque elimina la necesidad de tratar directamente con los valores cookie de configuración del servidor o de leerlos desde el cliente.
 
 En el ejemplo anterior se usa JavaScript para leer el valor de campo oculto del encabezado POST de AJAX.
 
-JavaScript también puede acceder a los tokens de las cookies y usar el contenido de la cookie para crear un encabezado con el valor del token.
+JavaScript también puede acceder a los tokens en cookie s y usar el cookie contenido de para crear un encabezado con el valor del token.
 
 ```csharp
 context.Response.Cookies.Append("CSRF-TOKEN", tokens.RequestToken, 
@@ -447,11 +449,11 @@ xhttp.send(JSON.stringify({ "newPassword": "ReallySecurePassword999$$$" }));
 
 ### <a name="angularjs"></a>AngularJS
 
-AngularJS usa una Convención para direccionar CSRF. Si el servidor envía una cookie con el nombre `XSRF-TOKEN` , el `$http` servicio AngularJS agrega el valor de la cookie a un encabezado cuando envía una solicitud al servidor. Este proceso es automático. No es necesario establecer explícitamente el encabezado en el cliente. El nombre del encabezado es `X-XSRF-TOKEN` . El servidor debe detectar este encabezado y validar su contenido.
+AngularJS usa una Convención para direccionar CSRF. Si el servidor envía un cookie con el nombre `XSRF-TOKEN` , el `$http` servicio AngularJS agrega el cookie valor a un encabezado cuando envía una solicitud al servidor. Este proceso es automático. No es necesario establecer explícitamente el encabezado en el cliente. El nombre del encabezado es `X-XSRF-TOKEN` . El servidor debe detectar este encabezado y validar su contenido.
 
 Para que ASP.NET Core API funcione con esta Convención en el inicio de la aplicación:
 
-* Configure la aplicación para proporcionar un token en una cookie denominada `XSRF-TOKEN` .
+* Configure la aplicación para proporcionar un token en un cookie llamado `XSRF-TOKEN` .
 * Configure el servicio antifalsificación para buscar un encabezado denominado `X-XSRF-TOKEN` .
 
 ```csharp

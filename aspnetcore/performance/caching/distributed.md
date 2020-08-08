@@ -7,6 +7,8 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/caching/distributed
-ms.openlocfilehash: 56c67178bd5c63f08a812357a4f8e672dd483994
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 64a4b6f606a4f5f8e73ef08f53cbb6e4003245aa
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85405398"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88020683"
 ---
 # <a name="distributed-caching-in-aspnet-core"></a>Almacenamiento en caché distribuido en ASP.NET Core
 
@@ -134,7 +136,7 @@ Para configurar NCache:
 
 1. Instalación de [NuGet de código abierto de NCache](https://www.nuget.org/packages/Alachisoft.NCache.OpenSource.SDK/).
 1. Configure el clúster de caché en [Client. ncconf](https://www.alachisoft.com/resources/docs/ncache-oss/admin-guide/client-config.html).
-1. Agrega el código siguiente a `Startup.ConfigureServices`:
+1. Agregue el siguiente código a `Startup.ConfigureServices`:
 
    ```csharp
    services.AddNCacheDistributedCache(configuration =>    
@@ -304,7 +306,7 @@ Para configurar NCache:
 
 1. Instalación de [NuGet de código abierto de NCache](https://www.nuget.org/packages/Alachisoft.NCache.OpenSource.SDK/).
 1. Configure el clúster de caché en [Client. ncconf](https://www.alachisoft.com/resources/docs/ncache-oss/admin-guide/client-config.html).
-1. Agrega el código siguiente a `Startup.ConfigureServices`:
+1. Agregue el siguiente código a `Startup.ConfigureServices`:
 
    ```csharp
    services.AddNCacheDistributedCache(configuration =>    
@@ -480,7 +482,7 @@ Para configurar NCache:
 
 1. Instalación de [NuGet de código abierto de NCache](https://www.nuget.org/packages/Alachisoft.NCache.OpenSource.SDK/).
 1. Configure el clúster de caché en [Client. ncconf](https://www.alachisoft.com/resources/docs/ncache-oss/admin-guide/client-config.html).
-1. Agrega el código siguiente a `Startup.ConfigureServices`:
+1. Agregue el siguiente código a `Startup.ConfigureServices`:
 
    ```csharp
    services.AddNCacheDistributedCache(configuration =>    

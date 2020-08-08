@@ -6,6 +6,8 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -14,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/data-protection/introduction
-ms.openlocfilehash: bf41d5a756c988b239824c19ef7a9d177a93a4a1
-ms.sourcegitcommit: b0fa7ff0cb158277df61bcd08058a81222c3fe10
+ms.openlocfilehash: b29711e8e1ef1558731ba58ca2ff14000af19ca2
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87913816"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88019361"
 ---
 # <a name="aspnet-core-data-protection"></a>ASP.NET Core protección de datos
 
@@ -31,7 +33,7 @@ La ASP.NET Core pila de protección de datos está diseñada para servir como el
 
 La declaración del problema general se puede indicar sucintamente en una sola frase: necesito conservar información de confianza para su recuperación posterior, pero no confío en el mecanismo de persistencia. En términos Web, esto podría escribirse como "Necesito un estado de confianza de ida y vuelta a través de un cliente que no es de confianza".
 
-El ejemplo canónico de esto es una cookie de autenticación o un token de portador. El servidor genera un token "soy Groot y tiene permisos XYZ" y lo entrega al cliente. En una fecha futura, el cliente presentará ese token de vuelta al servidor, pero el servidor necesita algún tipo de garantía de que el cliente no haya falsificado el token. Por lo tanto, el primer requisito: autenticidad (también conocido como integridad, prueba de alteración).
+El ejemplo canónico de esto es un token de autenticación cookie o portador. El servidor genera un token "soy Groot y tiene permisos XYZ" y lo entrega al cliente. En una fecha futura, el cliente presentará ese token de vuelta al servidor, pero el servidor necesita algún tipo de garantía de que el cliente no haya falsificado el token. Por lo tanto, el primer requisito: autenticidad (también conocido como integridad, prueba de alteración).
 
 Puesto que el servidor confía en el estado persistente, se prevé que este estado puede contener información específica del entorno operativo. Puede ser una ruta de acceso de archivo, un permiso, un identificador u otra referencia indirecta, o algún otro tipo de datos específicos del servidor. Por lo general, esta información no se debe divulgar a un cliente que no sea de confianza. Por lo tanto, el segundo requisito: confidencialidad.
 

@@ -5,6 +5,8 @@ description: Obtenga información sobre la implementación de ASP.NET Core la de
 ms.author: riande
 ms.date: 10/14/2016
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -13,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/data-protection/implementation/subkeyderivation
-ms.openlocfilehash: 619a848eb96faab6997f9ddbf4d62a1e04ee66b1
-ms.sourcegitcommit: fa89d6553378529ae86b388689ac2c6f38281bb9
+ms.openlocfilehash: ef9c100df69f9f7a1b51819ebb5721cb4f875ffd
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86060376"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88019695"
 ---
 # <a name="subkey-derivation-and-authenticated-encryption-in-aspnet-core"></a>Derivación de subclaves y cifrado autenticado en ASP.NET Core
 

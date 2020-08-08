@@ -5,6 +5,8 @@ description: Obtenga información sobre la ASP.NET Core interfaz de ISecret de p
 ms.author: riande
 ms.date: 10/14/2016
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -13,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/data-protection/extensibility/misc-apis
-ms.openlocfilehash: 2e319cdcec1e005682555c4e03c52632e6d8521a
-ms.sourcegitcommit: b0fa7ff0cb158277df61bcd08058a81222c3fe10
+ms.openlocfilehash: 5ab8226779fb4209a7254b95eccac4be2d26b10d
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87913804"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88019045"
 ---
 # <a name="miscellaneous-aspnet-core-data-protection-apis"></a>Varias API de protección de datos ASP.NET Core
 

@@ -7,6 +7,8 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 01/14/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,14 +17,14 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/dotnet-client
-ms.openlocfilehash: 54e86479b9f9f0acc861769f9ab78958f79acfd3
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: a03598f887d628c8a2b6720d99826d4aef4e52fa
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85400146"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88020007"
 ---
-# <a name="aspnet-core-signalr-net-client"></a>Cliente de ASP.NET Core SignalR .net
+# <a name="aspnet-core-no-locsignalr-net-client"></a>Cliente de ASP.NET Core SignalR .net
 
 La SignalR biblioteca de cliente de ASP.net Core .net le permite comunicarse con los SignalR concentradores de aplicaciones .net.
 
@@ -30,7 +32,7 @@ La SignalR biblioteca de cliente de ASP.net Core .net le permite comunicarse con
 
 El ejemplo de código de este artículo es una aplicación de WPF que usa el SignalR cliente ASP.net Core .net.
 
-## <a name="install-the-signalr-net-client-package"></a>Instalar el SignalR paquete de cliente de .net
+## <a name="install-the-no-locsignalr-net-client-package"></a>Instalar el SignalR paquete de cliente de .net
 
 [Microsoft. AspNetCore. SignalR . ](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR.Client)El paquete de cliente es necesario para que los clientes de .net se conecten a los SignalR concentradores.
 
@@ -266,5 +268,5 @@ Controlar los errores con una instrucción try-catch. Inspeccione el `Exception`
 
 * [Concentradores](xref:signalr/hubs)
 * [Cliente de JavaScript](xref:signalr/javascript-client)
-* [Publicar en Azure](xref:signalr/publish-to-azure-web-app)
+* [Publicación en Azure](xref:signalr/publish-to-azure-web-app)
 * [Documentación sin servidor del servicio de Azure SignalR](/azure/azure-signalr/signalr-concept-serverless-development-config)

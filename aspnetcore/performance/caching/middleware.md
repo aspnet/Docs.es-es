@@ -7,6 +7,8 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/caching/middleware
-ms.openlocfilehash: 0d13c44b5538f617343a89a441856d4a3f0cc7f1
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 7e1463671323cddd2b95c03de994d497449d7884
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85399951"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88019097"
 ---
 # <a name="response-caching-middleware-in-aspnet-core"></a>Middleware de almacenamiento en caché de respuesta en ASP.NET Core
 
@@ -107,12 +109,12 @@ El uso de un valor único igual a `*` en `VaryByQueryKeys` varía la caché por 
 
 En la tabla siguiente se proporciona información sobre los encabezados HTTP que afectan al almacenamiento en caché de las respuestas.
 
-| Header | Detalles |
+| Encabezado | Detalles |
 | ------ | ------- |
 | `Authorization` | Si el encabezado existe, la respuesta no se almacena en caché. |
 | `Cache-Control` | El middleware solo tiene en cuenta las respuestas de almacenamiento en caché marcadas con la `public` Directiva de caché. Controlar el almacenamiento en caché con los parámetros siguientes:<ul><li>Max-Age</li><li>Max:&#8224; obsoleto</li><li>mín. actualizado</li><li>must-revalidate</li><li>sin caché</li><li>sin almacén</li><li>solo si se almacena en caché</li><li>privado</li><li>público</li><li>s-maxage</li><li>proxy: revalidar&#8225;</li></ul>&#8224;si no se especifica ningún límite en `max-stale` , el middleware no realiza ninguna acción.<br>&#8225;`proxy-revalidate` tiene el mismo efecto que `must-revalidate` .<br><br>Para obtener más información, vea [RFC 7231: directivas de control de caché de solicitudes](https://tools.ietf.org/html/rfc7234#section-5.2.1). |
 | `Pragma` | Un `Pragma: no-cache` encabezado en la solicitud produce el mismo efecto que `Cache-Control: no-cache` . Este encabezado es invalidado por las directivas pertinentes en el `Cache-Control` encabezado, si está presente. Se tiene en cuenta para la compatibilidad con versiones anteriores con HTTP/1.0. |
-| `Set-Cookie` | Si el encabezado existe, la respuesta no se almacena en caché. Cualquier middleware de la canalización de procesamiento de solicitudes que establece una o más cookies impide que el middleware de almacenamiento en caché de la respuesta almacene en caché la respuesta (por ejemplo, el [proveedor TempData basado en cookies](xref:fundamentals/app-state#tempdata)).  |
+| `Set-Cookie` | Si el encabezado existe, la respuesta no se almacena en caché. Cualquier middleware de la canalización de procesamiento de solicitudes que establezca una o más cookie s impide que el middleware de almacenamiento en caché de la respuesta almacene en caché la respuesta (por ejemplo, el [ cookie proveedor TempData basado](xref:fundamentals/app-state#tempdata)en).  |
 | `Vary` | El `Vary` encabezado se usa para modificar la respuesta almacenada en caché por otro encabezado. Por ejemplo, almacenar en caché las respuestas mediante la codificación incluyendo el `Vary: Accept-Encoding` encabezado, que almacena en caché las respuestas de las solicitudes con encabezados `Accept-Encoding: gzip` y `Accept-Encoding: text/plain` por separado. Nunca se almacena una respuesta con un valor de encabezado de `*` . |
 | `Expires` | Una respuesta considerada obsoleta por este encabezado no se almacena ni se recupera a menos que otros encabezados lo invalide `Cache-Control` . |
 | `If-None-Match` | La respuesta completa se sirve desde la memoria caché si el valor no es `*` y el `ETag` de la respuesta no coincide con ninguno de los valores proporcionados. De lo contrario, se proporciona una respuesta 304 (no modificada). |
@@ -251,12 +253,12 @@ El uso de un valor único igual a `*` en `VaryByQueryKeys` varía la caché por 
 
 En la tabla siguiente se proporciona información sobre los encabezados HTTP que afectan al almacenamiento en caché de las respuestas.
 
-| Header | Detalles |
+| Encabezado | Detalles |
 | ------ | ------- |
 | `Authorization` | Si el encabezado existe, la respuesta no se almacena en caché. |
 | `Cache-Control` | El middleware solo tiene en cuenta las respuestas de almacenamiento en caché marcadas con la `public` Directiva de caché. Controlar el almacenamiento en caché con los parámetros siguientes:<ul><li>Max-Age</li><li>Max:&#8224; obsoleto</li><li>mín. actualizado</li><li>must-revalidate</li><li>sin caché</li><li>sin almacén</li><li>solo si se almacena en caché</li><li>privado</li><li>público</li><li>s-maxage</li><li>proxy: revalidar&#8225;</li></ul>&#8224;si no se especifica ningún límite en `max-stale` , el middleware no realiza ninguna acción.<br>&#8225;`proxy-revalidate` tiene el mismo efecto que `must-revalidate` .<br><br>Para obtener más información, vea [RFC 7231: directivas de control de caché de solicitudes](https://tools.ietf.org/html/rfc7234#section-5.2.1). |
 | `Pragma` | Un `Pragma: no-cache` encabezado en la solicitud produce el mismo efecto que `Cache-Control: no-cache` . Este encabezado es invalidado por las directivas pertinentes en el `Cache-Control` encabezado, si está presente. Se tiene en cuenta para la compatibilidad con versiones anteriores con HTTP/1.0. |
-| `Set-Cookie` | Si el encabezado existe, la respuesta no se almacena en caché. Cualquier middleware de la canalización de procesamiento de solicitudes que establece una o más cookies impide que el middleware de almacenamiento en caché de la respuesta almacene en caché la respuesta (por ejemplo, el [proveedor TempData basado en cookies](xref:fundamentals/app-state#tempdata)).  |
+| `Set-Cookie` | Si el encabezado existe, la respuesta no se almacena en caché. Cualquier middleware de la canalización de procesamiento de solicitudes que establezca una o más cookie s impide que el middleware de almacenamiento en caché de la respuesta almacene en caché la respuesta (por ejemplo, el [ cookie proveedor TempData basado](xref:fundamentals/app-state#tempdata)en).  |
 | `Vary` | El `Vary` encabezado se usa para modificar la respuesta almacenada en caché por otro encabezado. Por ejemplo, almacenar en caché las respuestas mediante la codificación incluyendo el `Vary: Accept-Encoding` encabezado, que almacena en caché las respuestas de las solicitudes con encabezados `Accept-Encoding: gzip` y `Accept-Encoding: text/plain` por separado. Nunca se almacena una respuesta con un valor de encabezado de `*` . |
 | `Expires` | Una respuesta considerada obsoleta por este encabezado no se almacena ni se recupera a menos que otros encabezados lo invalide `Cache-Control` . |
 | `If-None-Match` | La respuesta completa se sirve desde la memoria caché si el valor no es `*` y el `ETag` de la respuesta no coincide con ninguno de los valores proporcionados. De lo contrario, se proporciona una respuesta 304 (no modificada). |

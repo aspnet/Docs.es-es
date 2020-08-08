@@ -6,6 +6,8 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/10/2018
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -14,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/tag-helpers/builtin-th/Index
-ms.openlocfilehash: 8ada1e5aff7e4a4ff53ca0ba9852a404fdc71189
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 5b8d136251a68bd5dc7ee2d75700f53cfd33817f
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85407465"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88018616"
 ---
 # <a name="aspnet-core-built-in-tag-helpers"></a>Asistentes de etiquetas integradas de ASP.NET Core
 

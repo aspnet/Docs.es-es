@@ -6,6 +6,8 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/11/2019
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -14,16 +16,16 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/identity-configuration
-ms.openlocfilehash: 5c999b426742cf75b1997f5b40223e2dda112901
-ms.sourcegitcommit: 1b89fc58114a251926abadfd5c69c120f1ba12d8
+ms.openlocfilehash: b7f6eaba1a0e819a077e3d63b4f997e75b8cd317
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87160295"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88020605"
 ---
 # <a name="configure-aspnet-core-no-locidentity"></a>Configurar ASP.NET CoreIdentity
 
-ASP.NET Core Identity usa valores predeterminados para la configuración, como la Directiva de contraseñas, el bloqueo y la configuración de cookies. Esta configuración se puede invalidar en la `Startup` clase.
+ASP.NET Core Identity usa valores predeterminados para la configuración, como la Directiva de contraseñas, el bloqueo y la cookie configuración. Esta configuración se puede invalidar en la `Startup` clase.
 
 ## <a name="no-locidentity-options"></a>IdentityOpciones
 
@@ -33,7 +35,7 @@ La clase [ Identity Options](/dotnet/api/microsoft.aspnetcore.identity.identityo
 
 [ Identity Options. Identity Claims](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.claimsidentity) especifica las [ Identity Opciones de notificaciones](/dotnet/api/microsoft.aspnetcore.identity.claimsidentityoptions) con las propiedades que se muestran en la tabla siguiente.
 
-| Propiedad | Descripción | Default |
+| Propiedad | Descripción | Valor predeterminado |
 | -------- | ----------- | :-----: |
 | [RoleClaimType](/dotnet/api/microsoft.aspnetcore.identity.claimsidentityoptions.roleclaimtype) | Obtiene o establece el tipo de demanda que se usa para una demanda de rol. | [Argumentos ClaimType. Role](/dotnet/api/system.security.claims.claimtypes.role) |
 | [SecurityStampClaimType](/dotnet/api/microsoft.aspnetcore.identity.claimsidentityoptions.securitystampclaimtype) | Obtiene o establece el tipo de notificaciones que se usa para la notificaciones de marca de seguridad. | `AspNet.Identity.SecurityStamp` |
@@ -58,7 +60,7 @@ Una autenticación correcta restablece el número de intentos de acceso incorrec
 
 [ Identity Options. bloquear](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.lockout) especifica el [LockoutOptions](/dotnet/api/microsoft.aspnetcore.identity.lockoutoptions) con las propiedades que se muestran en la tabla.
 
-| Propiedad | Descripción | Default |
+| Propiedad | Descripción | Valor predeterminado |
 | -------- | ----------- | :-----: |
 | [AllowedForNewUsers](/dotnet/api/microsoft.aspnetcore.identity.lockoutoptions.allowedfornewusers) | Determina si un nuevo usuario puede bloquearse. | `true` |
 | [DefaultLockoutTimeSpan](/dotnet/api/microsoft.aspnetcore.identity.lockoutoptions.defaultlockouttimespan) | La cantidad de tiempo que un usuario se bloquea cuando se produce un bloqueo. | 5 minutos |
@@ -79,7 +81,7 @@ Las contraseñas se configuran con:
 
 [ Identity Options. Password](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.password) especifica el [PasswordOptions](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions) con las propiedades que se muestran en la tabla.
 
-| Propiedad | Descripción | Default |
+| Propiedad | Descripción | Valor predeterminado |
 | -------- | ----------- | :-----: |
 | [RequireDigit](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions.requiredigit) | Requiere un número entre 0-9 en la contraseña. | `true` |
 | [RequiredLength](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions.requiredlength) | La longitud mínima de la contraseña. | 6 |
@@ -96,7 +98,7 @@ En el código siguiente `SignIn` se establece la configuración (en los valores 
 
 [ Identity Options. Signen](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.signin) especifica el [SignInOptions](/dotnet/api/microsoft.aspnetcore.identity.signinoptions) con las propiedades que se muestran en la tabla.
 
-| Propiedad | Descripción | Default |
+| Propiedad | Descripción | Valor predeterminado |
 | -------- | ----------- | :-----: |
 | [RequireConfirmedEmail](/dotnet/api/microsoft.aspnetcore.identity.signinoptions.requireconfirmedemail) | Requiere un correo electrónico confirmado para iniciar sesión. | `false` |
 | [RequireConfirmedPhoneNumber](/dotnet/api/microsoft.aspnetcore.identity.signinoptions.requireconfirmedphonenumber) | Requiere un número de teléfono confirmado para iniciar sesión. | `false` |
@@ -120,18 +122,18 @@ En el código siguiente `SignIn` se establece la configuración (en los valores 
 
 [ Identity Options. User](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.user) especifica el [UserOptions](/dotnet/api/microsoft.aspnetcore.identity.useroptions) con las propiedades que se muestran en la tabla.
 
-| Propiedad | Descripción | Default |
+| Propiedad | Descripción | Valor predeterminado |
 | -------- | ----------- | :-----: |
 | [AllowedUserNameCharacters](/dotnet/api/microsoft.aspnetcore.identity.useroptions.allowedusernamecharacters) | Caracteres permitidos en el nombre de usuario. | abcdefghijklmnopqrstuvwxyz<br>ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>0123456789<br>-.\_@+ |
 | [RequireUniqueEmail](/dotnet/api/microsoft.aspnetcore.identity.useroptions.requireuniqueemail) | Requiere que cada usuario tenga un correo electrónico único. | `false` |
 
-### <a name="cookie-settings"></a>Configuración de cookies
+### <a name="no-loccookie-settings"></a>Configuración deCookie
 
-Configure la cookie de la aplicación en `Startup.ConfigureServices` . Se debe llamar a [ConfigureApplicationCookie](/dotnet/api/microsoft.extensions.dependencyinjection.identityservicecollectionextensions.configureapplicationcookie#Microsoft_Extensions_DependencyInjection_IdentityServiceCollectionExtensions_ConfigureApplicationCookie_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Action_Microsoft_AspNetCore_Authentication_Cookies_CookieAuthenticationOptions__) **después** de llamar a `AddIdentity` o `AddDefaultIdentity` .
+Configure la aplicación cookie en `Startup.ConfigureServices` . [ConfigureApplication Cookie ](/dotnet/api/microsoft.extensions.dependencyinjection.identityservicecollectionextensions.configureapplicationcookie#Microsoft_Extensions_DependencyInjection_IdentityServiceCollectionExtensions_ConfigureApplicationCookie_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Action_Microsoft_AspNetCore_Authentication_Cookies_CookieAuthenticationOptions__) se debe llamar **después** de llamar a `AddIdentity` o `AddDefaultIdentity` .
 
 [!code-csharp[](identity-configuration/sample/Startup.cs?name=snippet_cookie)]
 
-Para obtener más información, vea [CookieAuthenticationOptions](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions).
+Para obtener más información, vea [ Cookie AuthenticationOptions](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions).
 
 ## <a name="password-hasher-options"></a>Opciones de hash de contraseña
 

@@ -7,6 +7,8 @@ ms.author: anurse
 ms.custom: mvc
 ms.date: 11/12/2019
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,14 +17,14 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/api-design
-ms.openlocfilehash: 9ad8d30da552d3d3084534b8c7ca57386ad111ac
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: ef0285c611bd41d7fe686a4b370b6daae9be9174
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85407803"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88018993"
 ---
-# <a name="signalr-api-design-considerations"></a>SignalRConsideraciones sobre el diseño de API
+# <a name="no-locsignalr-api-design-considerations"></a>SignalRConsideraciones sobre el diseño de API
 
 Por [Andrew Stanton-enfermera](https://twitter.com/anurse)
 

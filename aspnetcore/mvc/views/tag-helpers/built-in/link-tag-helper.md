@@ -6,6 +6,8 @@ description: Descubra los atributos del asistente de etiquetas de vínculo de AS
 ms.custom: mvc
 ms.date: 09/24/2019
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -14,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/tag-helpers/builtin-th/link-tag-helper
-ms.openlocfilehash: ac9f6449e2b7b135318ecf116e1dba7b33ddff83
-ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
+ms.openlocfilehash: 7487bc64f8e20f85ef95e5389409c0194ec31337
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86212401"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88018564"
 ---
 # <a name="link-tag-helper-in-aspnet-core"></a>Asistente de etiquetas de vínculo en ASP.NET Core
 

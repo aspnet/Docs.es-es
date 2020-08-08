@@ -6,6 +6,8 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
 ms.date: 11/21/2019
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -14,18 +16,18 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/version-differences
-ms.openlocfilehash: b5b5686f87d6e511672f6a50db7be8e2613a8a9e
-ms.sourcegitcommit: fa89d6553378529ae86b388689ac2c6f38281bb9
+ms.openlocfilehash: f52bf6c82cd5125e0905d9bcbda5dd5499d6455e
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86060155"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88020046"
 ---
-# <a name="differences-between-aspnet-signalr-and-aspnet-core-signalr"></a>Diferencias entre ASP.NET SignalR y ASP.net CoreSignalR
+# <a name="differences-between-aspnet-no-locsignalr-and-aspnet-core-no-locsignalr"></a>Diferencias entre ASP.NET SignalR y ASP.net CoreSignalR
 
 ASP.NET Core SignalR no es compatible con clientes o servidores de ASP.net SignalR . En este artículo se detallan las características que se han quitado o cambiado en ASP.NET Core SignalR .
 
-## <a name="how-to-identify-the-signalr-version"></a>Cómo identificar la SignalR versión
+## <a name="how-to-identify-the-no-locsignalr-version"></a>Cómo identificar la SignalR versión
 
 ::: moniker range=">= aspnetcore-3.0"
 

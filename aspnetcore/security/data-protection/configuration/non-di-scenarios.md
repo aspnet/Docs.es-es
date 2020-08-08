@@ -5,6 +5,8 @@ description: Obtenga información sobre cómo admitir escenarios de protección 
 ms.author: riande
 ms.date: 10/14/2016
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -13,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/data-protection/configuration/non-di-scenarios
-ms.openlocfilehash: 9ae3d1ec039768b1008702a7a29f4d9a716cb99c
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 633548eabe38508ff0cc76ae880220e1dac9b414
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85404852"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88020124"
 ---
 # <a name="non-di-aware-scenarios-for-data-protection-in-aspnet-core"></a>Escenarios no compatibles con DI para la protección de datos en ASP.NET Core
 

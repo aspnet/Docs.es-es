@@ -5,6 +5,8 @@ description: Obtenga información sobre cómo usar diseños comunes, compartir d
 ms.author: riande
 ms.date: 07/30/2019
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -13,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/layout
-ms.openlocfilehash: 08e6284a6c5fc8e8926651f6fe873a71df449acb
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 4d5032f02db28341d7781dd57d58d776636fd16d
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85406659"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88020449"
 ---
 # <a name="layout-in-aspnet-core"></a>Diseño en ASP.NET Core
 
@@ -41,7 +43,7 @@ La mayoría de las aplicaciones web tienen un diseño común que ofrece al usuar
 
 ![Ejemplo de diseño de página](layout/_static/page-layout.png)
 
-Las estructuras HTML comunes, como los scripts y las hojas de estilos también se usan con frecuencia en muchas páginas dentro de una aplicación. Todos estos elementos compartidos se pueden definir en un archivo de *diseño*, al que se puede hacer referencia por cualquier vista que se use en la aplicación. Los diseños reducen el código duplicado en las vistas.
+Las estructuras HTML comunes, como scripts y hojas de estilo, también se usan con frecuencia en muchas páginas dentro de una aplicación. Todos estos elementos compartidos se pueden definir en un archivo de *diseño* , al que se puede hacer referencia a través de cualquier vista usada dentro de la aplicación. Los diseños reducen el código duplicado en las vistas.
 
 Por convención, el diseño predeterminado para una aplicación ASP.NET Core se denomina *_Layout.cshtml*. Los archivos de diseño para los nuevos proyectos de ASP.NET Core creados con las plantillas son:
 
@@ -53,7 +55,7 @@ Por convención, el diseño predeterminado para una aplicación ASP.NET Core se 
 
   ![Carpeta Views del Explorador de soluciones](layout/_static/mvc-web-project-views.png)
 
-Este diseño define una plantilla de nivel superior para las vistas en la aplicación. Las aplicaciones no necesitan un diseño. Las aplicaciones pueden definir más de un diseño con distintas vistas que especifiquen diseños diferentes.
+Este diseño define una plantilla de nivel superior para las vistas en la aplicación. Las aplicaciones no requieren un diseño. Las aplicaciones pueden definir más de un diseño, con otras vistas que especifiquen otros diseños.
 
 Este código muestra el archivo de diseño para un proyecto creado mediante plantilla con un controlador y vistas:
 
