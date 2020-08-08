@@ -5,6 +5,8 @@ description: ''
 ms.author: riande
 ms.date: 12/07/2016
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -13,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: migration/http-modules
-ms.openlocfilehash: 362dd16db358f7ceb6730bde908fff9854c73a84
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 92672b2d05ee6bbdfcf0255ae14529a5c28c41b7
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85403656"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88014989"
 ---
 # <a name="migrate-http-handlers-and-modules-to-aspnet-core-middleware"></a>Migración de controladores y módulos HTTP a middleware de ASP.NET Core
 
@@ -291,7 +293,7 @@ Proporciona un identificador único para cada solicitud. Es muy útil incluir en
 
 [!code-csharp[](http-modules/sample/Asp.Net.Core/Middleware/HttpContextDemoMiddleware.cs?name=snippet_Host)]
 
-**HttpContext. request. cookies** se convierte en:
+**HttpContext. request. Cookie s** se convierte en:
 
 [!code-csharp[](http-modules/sample/Asp.Net.Core/Middleware/HttpContextDemoMiddleware.cs?name=snippet_Cookies)]
 
@@ -374,9 +376,9 @@ El `SetHeaders` método de devolución de llamada tendría el siguiente aspecto:
 
 [!code-csharp[](http-modules/sample/Asp.Net.Core/Middleware/HttpContextDemoMiddleware.cs?name=snippet_SetHeaders)]
 
-**HttpContext. Response. cookies**
+**HttpContext. Response. Cookie seg**
 
-Las cookies viajan al explorador en un encabezado de respuesta *Set-Cookie* . Como resultado, el envío de cookies requiere la misma devolución de llamada que se usa para enviar encabezados de respuesta:
+Cookiese desplaza al explorador en un encabezado *set- Cookie * Response. Como resultado, el envío cookie de s requiere la misma devolución de llamada que se usa para enviar encabezados de respuesta:
 
 ```csharp
 public async Task Invoke(HttpContext httpContext)

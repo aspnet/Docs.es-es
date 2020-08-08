@@ -5,6 +5,8 @@ description: Obtenga información sobre cómo migrar la autenticación y la iden
 ms.author: riande
 ms.date: 3/22/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -13,22 +15,22 @@ no-loc:
 - Razor
 - SignalR
 uid: migration/identity
-ms.openlocfilehash: 995de894bc77c4db5e5683b36e691b0c5a3463d3
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 8a6cc1e612dbf59dc2db2eca165dd1a03ab92f81
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85403760"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88014937"
 ---
-# <a name="migrate-authentication-and-identity-to-aspnet-core"></a>Migrar la autenticación y Identity ASP.net Core
+# <a name="migrate-authentication-and-no-locidentity-to-aspnet-core"></a>Migrar la autenticación y Identity ASP.net Core
 
 Por [Steve Smith](https://ardalis.com/)
 
 En el artículo anterior, se [migró la configuración de un proyecto de ASP.NET MVC a ASP.net Core MVC](xref:migration/configuration). En este artículo, migraremos las características de registro, Inicio de sesión y administración de usuarios.
 
-## <a name="configure-identity-and-membership"></a>Configurar Identity y pertenencia
+## <a name="configure-no-locidentity-and-membership"></a>Configurar Identity y pertenencia
 
-En ASP.NET MVC, las características de autenticación e identidad se configuran con ASP.NET Identity en *Startup.Auth.cs* y *IdentityConfig.CS*, que se encuentra en la carpeta *App_Start* . En ASP.NET Core MVC, estas características se configuran en *Startup.CS*.
+En ASP.NET MVC, las características de autenticación e identidad se configuran con ASP.NET Identity en *Startup.Auth.cs* y * Identity config.CS*, que se encuentra en la carpeta *App_Start* . En ASP.NET Core MVC, estas características se configuran en *Startup.CS*.
 
 Instale los siguientes paquetes NuGet:
 
@@ -53,7 +55,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-En este momento, hay dos tipos a los que se hace referencia en el código anterior que todavía no se han migrado desde el proyecto ASP.NET MVC: `ApplicationDbContext` y `ApplicationUser` . Cree una nueva carpeta *Models* en el proyecto de ASP.net Core y agregue dos clases a ella que se correspondan con estos tipos. Encontrará las versiones de ASP.NET MVC de estas clases en */Models/IdentityModels.CS*, pero usaremos un archivo por clase en el proyecto migrado, ya que eso es más claro.
+En este momento, hay dos tipos a los que se hace referencia en el código anterior que todavía no se han migrado desde el proyecto ASP.NET MVC: `ApplicationDbContext` y `ApplicationUser` . Cree una nueva carpeta *Models* en el proyecto de ASP.net Core y agregue dos clases a ella que se correspondan con estos tipos. Encontrará las versiones de ASP.NET MVC de estas clases en */Models/ Identity Models.CS*, pero usaremos un archivo por clase en el proyecto migrado, ya que eso es más claro.
 
 *ApplicationUser.CS*:
 

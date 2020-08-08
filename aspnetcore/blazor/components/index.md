@@ -7,6 +7,8 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/14/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,14 +17,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/index
-ms.openlocfilehash: 1312ae531b0acb0ce09137cc2bae6299ddda5c32
-ms.sourcegitcommit: e6b3dd344521ce320d5c2121bbc27c211df87e57
+ms.openlocfilehash: a145cfd551650445f9ff35259cbedf71ebb686f0
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/19/2020
-ms.locfileid: "86468852"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88014599"
 ---
-# <a name="create-and-use-aspnet-core-razor-components"></a>Creación y uso de componentes de Razor de ASP.NET Core
+# <a name="create-and-use-aspnet-core-no-locrazor-components"></a>Creación y uso de componentes de Razor de ASP.NET Core
 
 Por [Luke Latham](https://github.com/guardrex), [Daniel Roth](https://github.com/danroth27) y [Tobias Bartsch](https://www.aveo-solutions.com/)
 
@@ -34,7 +36,7 @@ Las aplicaciones Blazor se crean usando *componentes*. Un componente es un fragm
 
 Los componentes se implementan en archivos de componentes de [Razor](xref:mvc/views/razor) (`.razor`) mediante una combinación de C# y marcado HTML. Un componente de Blazor se conoce formalmente como *componente de Razor* .
 
-### <a name="razor-syntax"></a>Sintaxis de Razor
+### <a name="no-locrazor-syntax"></a>Sintaxis de Razor
 
 Los componentes Razor de las aplicaciones Blazor usan de manera generalizada la sintaxis de Razor. Si no está familiarizado con el lenguaje de marcado de Razor, se recomienda leer <xref:mvc/views/razor> antes de continuar.
 
@@ -796,7 +798,7 @@ En el siguiente ejemplo se describe cómo usar el tipo `MarkupString` para agreg
 }
 ```
 
-## <a name="razor-templates"></a>Plantillas de Razor
+## <a name="no-locrazor-templates"></a>Plantillas de Razor
 
 Los fragmentos de representación se pueden definir mediante la sintaxis de plantilla de Razor. Las plantillas de Razor son una forma de definir un fragmento de interfaz de usuario y asumen el siguiente formato:
 

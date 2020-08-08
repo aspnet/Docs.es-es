@@ -6,6 +6,8 @@ monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 02/12/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -14,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: razor-pages/index
-ms.openlocfilehash: bd9f991a2aba32cbbeb193ad422005f910e6795b
-ms.sourcegitcommit: ca6a1f100c1a3f59999189aa962523442dd4ead1
+ms.openlocfilehash: 203d77a2caaba9156419a04754fe162dd57052c1
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87444069"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88012714"
 ---
 # <a name="introduction-to-no-locrazor-pages-in-aspnet-core"></a>Introducción a Razor Pages en ASP.NET Core
 

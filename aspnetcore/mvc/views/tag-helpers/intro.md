@@ -6,6 +6,8 @@ ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 03/18/2019
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -14,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/tag-helpers/intro
-ms.openlocfilehash: d2791422e50082eab51c0735e2209e5b829d22f2
-ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
+ms.openlocfilehash: 067698687268ac072d8944fd5d9ae47c49fd4a24
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86212502"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88015016"
 ---
 # <a name="tag-helpers-in-aspnet-core"></a>Asistentes de etiquetas en ASP.NET Core
 
@@ -133,7 +135,7 @@ La directiva `@tagHelperPrefix` permite especificar una cadena de prefijo de eti
 
 En la imagen de código siguiente, el prefijo del asistente de etiquetas se establece en `th:`, por lo que solo los elementos con el prefijo `th:` admiten asistentes de etiquetas (los elementos habilitados para asistentes de etiquetas tienen una fuente distinta). Los elementos `<label>` y `<input>` tienen el prefijo de los asistentes de etiquetas y están habilitados para estas, a diferencia del elemento `<span>`.
 
-![image](intro/_static/thp.png)
+![imagen](intro/_static/thp.png)
 
 Las mismas reglas de jerarquía que se aplican a `@addTagHelper` también se aplican a `@tagHelperPrefix`.
 
@@ -163,33 +165,33 @@ Al crear una nueva ASP.NET Core aplicación web en Visual Studio, se agrega el p
 
 Considere la posibilidad de escribir un elemento HTML `<label>`. En cuanto escriba `<l` en el editor de Visual Studio, IntelliSense mostrará elementos coincidentes:
 
-![image](intro/_static/label.png)
+![imagen](intro/_static/label.png)
 
 No solo obtendrá ayuda HTML, sino el icono (el "@" symbol with "<>" situado debajo).
 
-![image](intro/_static/tagSym.png)
+![imagen](intro/_static/tagSym.png)
 
 Esto identifica el elemento como el destino de los asistentes de etiquetas. Los elementos HTML puros (como `fieldset`) muestran el icono "<>".
 
 Una etiqueta HTML pura `<label>` muestra la etiqueta HTML (con el tema de color de Visual Studio predeterminado) en una fuente marrón, con los atributos en rojo y los valores de atributo en azul.
 
-![image](intro/_static/LableHtmlTag.png)
+![imagen](intro/_static/LableHtmlTag.png)
 
 Después de escribir `<label`, IntelliSense muestra los atributos HTML/CSS disponibles y los atributos destinados al asistente de etiquetas:
 
-![image](intro/_static/labelattr.png)
+![imagen](intro/_static/labelattr.png)
 
 La finalización de instrucciones de IntelliSense permite presionar la tecla TAB para completar la instrucción con el valor seleccionado:
 
-![image](intro/_static/stmtcomplete.png)
+![imagen](intro/_static/stmtcomplete.png)
 
 En cuanto se especifica un atributo del asistente de etiquetas, las fuentes de las etiquetas y los atributos cambian. Si usa el tema de color predeterminado "Azul" o "Claro" de Visual Studio, la fuente es púrpura en negrita. Si usa el tema "Oscuro", la fuente es verde azulado en negrita. Las imágenes de este documento se han realizado con el tema predeterminado.
 
-![image](intro/_static/labelaspfor2.png)
+![imagen](intro/_static/labelaspfor2.png)
 
 Puede usar el acceso directo *CompleteWord* de Visual Studio (el valor [predeterminado](/visualstudio/ide/default-keyboard-shortcuts-in-visual-studio) es Ctrl+barra espaciadora) entre comillas dobles (""). Ahora se encuentra en C#, como si estuviera en una clase de C#. IntelliSense muestra todos los métodos y propiedades en el modelo de páginas. Los métodos y las propiedades están disponibles porque el tipo de propiedad es `ModelExpression`. En la imagen siguiente se edita la vista `Register`, por lo que `RegisterViewModel` está disponible.
 
-![image](intro/_static/intellemail.png)
+![imagen](intro/_static/intellemail.png)
 
 IntelliSense muestra las propiedades y los métodos disponibles para el modelo en la página. El entorno enriquecido de IntelliSense le ayuda a seleccionar la clase CSS:
 
@@ -221,13 +223,13 @@ Si usa `LabelTagHelper`, se puede escribir el mismo marcado de la manera siguien
 
 Con la versión del asistente de etiquetas, en cuanto escriba `<l` en el editor de Visual Studio, IntelliSense mostrará elementos coincidentes:
 
-![image](intro/_static/label.png)
+![imagen](intro/_static/label.png)
 
 IntelliSense le ayuda a escribir toda la línea.
 
 En la imagen de código siguiente se muestra la parte del formulario de la vista *views/Account/Register. cshtml* Razor generada a partir de la plantilla MVC de ASP.net 4.5. x incluida con Visual Studio.
 
-![image](intro/_static/regCS.png)
+![imagen](intro/_static/regCS.png)
 
 En el editor de Visual Studio se muestra el código de C# con un fondo gris. Por ejemplo, el asistente de HTML `AntiForgeryToken`:
 
@@ -237,7 +239,7 @@ En el editor de Visual Studio se muestra el código de C# con un fondo gris. Por
 
 Se muestra con un fondo gris. La mayor parte del marcado en la vista de registro es de C#. Compárelo con el método equivalente con asistentes de etiquetas:
 
-![image](intro/_static/regTH.png)
+![imagen](intro/_static/regTH.png)
 
 El marcado es mucho más ordenado y más fácil de leer, modificar y mantener que en el método de asistentes de HTML. El código de C# se reduce a la cantidad mínima que el servidor necesita conocer. En el editor de Visual Studio se muestra el marcado de destino de un asistente de etiquetas en una fuente distinta.
 
@@ -271,7 +273,7 @@ El editor de Visual Studio le ayuda a escribir **todo** el marcado en el método
 
 Puede personalizar la fuente y la coloración desde **herramientas**  >  **Opciones**  >  **entorno**  >  **fuentes y colores**:
 
-![image](intro/_static/fontoptions2.png)
+![imagen](intro/_static/fontoptions2.png)
 
 [!INCLUDE[](~/includes/built-in-TH.md)]
 

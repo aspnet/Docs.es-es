@@ -5,6 +5,8 @@ description: Obtenga información acerca de cómo limitar la duración de una ca
 ms.author: riande
 ms.date: 10/14/2016
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -13,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/data-protection/consumer-apis/limited-lifetime-payloads
-ms.openlocfilehash: d8c83ca46b1993af1f5e7985571ff012d90b1e01
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: c7bc86cd42a725f21cf66187c033376a8c5a9e65
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85408375"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88014833"
 ---
 # <a name="limit-the-lifetime-of-protected-payloads-in-aspnet-core"></a>Limitar la duración de las cargas protegidas en ASP.NET Core
 

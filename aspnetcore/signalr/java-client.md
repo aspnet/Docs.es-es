@@ -7,6 +7,8 @@ ms.author: mimengis
 ms.custom: mvc
 ms.date: 11/12/2019
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,14 +17,14 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/java-client
-ms.openlocfilehash: 27ab8cc1b6e419b59aadb97a8a1fbdddc3579276
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: ec1d83853b1596824914328d546c6c68cce3bfe7
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85408804"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88012558"
 ---
-# <a name="aspnet-core-signalr-java-client"></a>Cliente de ASP.NET Core SignalR Java
+# <a name="aspnet-core-no-locsignalr-java-client"></a>Cliente de ASP.NET Core SignalR Java
 
 Por [Mikael Mengistu](https://twitter.com/MikaelM_12)
 
@@ -32,7 +34,7 @@ La aplicación de consola de Java de ejemplo a la que se hace referencia en este
 
 [Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/java-client/sample) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
-## <a name="install-the-signalr-java-client-package"></a>Instalar el SignalR paquete de cliente de Java
+## <a name="install-the-no-locsignalr-java-client-package"></a>Instalar el SignalR paquete de cliente de Java
 
 El archivo jar *signalr-1.0.0* permite que los clientes se conecten a los SignalR concentradores. Para buscar el número de versión del archivo JAR más reciente, consulte los resultados de la [búsqueda de Maven](https://search.maven.org/search?q=g:com.microsoft.signalr%20AND%20a:signalr).
 

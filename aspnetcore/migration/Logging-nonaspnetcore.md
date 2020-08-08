@@ -6,6 +6,8 @@ ms.author: pakrym
 ms.custom: mvc
 ms.date: 01/04/2019
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -14,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: migration/logging-nonaspnetcore
-ms.openlocfilehash: 0c85ca637c1e93bbde93c7d5d12408637476558e
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: edb1c6456d0cbbac57d739f61b4c159f146e4f7e
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85399795"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88015119"
 ---
 # <a name="migrate-from-microsoftextensionslogging-21-to-22-or-30"></a>Migre desde Microsoft. Extensions. Logging 2,1 a 2,2 o 3,0
 

@@ -6,6 +6,8 @@ monikerRange: '>= aspnetcore-2.0'
 ms.author: scaddie
 ms.date: 06/12/2019
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -14,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/tag-helpers/th-components
-ms.openlocfilehash: 58781880764b26a67d71e70c225ab4ed4e5da109
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 736288b6e7d2e9be7f23f6df02183a813951eb56
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85406711"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88014729"
 ---
 # <a name="tag-helper-components-in-aspnet-core"></a>Componentes del asistente de etiquetas en ASP.NET Core
 
@@ -80,7 +82,7 @@ Si la clase de componente de asistente de etiquetas no se administran con <xref:
 
 [!code-csharp[](th-components/samples/RazorPagesSample/Startup.cs?name=snippet_ConfigureServices&highlight=12-15)]
 
-### <a name="registration-via-razor-file"></a>Registro a través de Razor archivo
+### <a name="registration-via-no-locrazor-file"></a>Registro a través de Razor archivo
 
 Si el componente de aplicación auxiliar de etiquetas no está registrado con DI, se puede registrar en una Razor Página de páginas o en una vista de MVC. Esta técnica se utiliza para controlar el marcado insertado y el orden de ejecución de los componentes desde un Razor archivo.
 
