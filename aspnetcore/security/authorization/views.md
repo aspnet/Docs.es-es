@@ -6,6 +6,8 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 11/08/2019
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -14,25 +16,25 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authorization/views
-ms.openlocfilehash: ce2365dbdcffc8c44d0d9d7cc6c9d29d0fe1895c
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: a9576a48ad6badc5130d89940e4112e69eada1b2
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85408934"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88021944"
 ---
-# <a name="view-based-authorization-in-aspnet-core-mvc"></a><span data-ttu-id="1e023-103">Autorización basada en vistas en ASP.NET Core MVC</span><span class="sxs-lookup"><span data-stu-id="1e023-103">View-based authorization in ASP.NET Core MVC</span></span>
+# <a name="view-based-authorization-in-aspnet-core-mvc"></a><span data-ttu-id="35e4b-103">Autorización basada en vistas en ASP.NET Core MVC</span><span class="sxs-lookup"><span data-stu-id="35e4b-103">View-based authorization in ASP.NET Core MVC</span></span>
 
-<span data-ttu-id="1e023-104">A menudo, un desarrollador desea mostrar, ocultar o modificar de otra forma una interfaz de usuario basada en la identidad del usuario actual.</span><span class="sxs-lookup"><span data-stu-id="1e023-104">A developer often wants to show, hide, or otherwise modify a UI based on the current user identity.</span></span> <span data-ttu-id="1e023-105">Puede tener acceso al servicio de autorización en las vistas de MVC a través de la [inserción de dependencias](xref:fundamentals/dependency-injection).</span><span class="sxs-lookup"><span data-stu-id="1e023-105">You can access the authorization service within MVC views via [dependency injection](xref:fundamentals/dependency-injection).</span></span> <span data-ttu-id="1e023-106">Para insertar el servicio de autorización en una Razor vista, use la `@inject` Directiva:</span><span class="sxs-lookup"><span data-stu-id="1e023-106">To inject the authorization service into a Razor view, use the `@inject` directive:</span></span>
+<span data-ttu-id="35e4b-104">A menudo, un desarrollador desea mostrar, ocultar o modificar de otra forma una interfaz de usuario basada en la identidad del usuario actual.</span><span class="sxs-lookup"><span data-stu-id="35e4b-104">A developer often wants to show, hide, or otherwise modify a UI based on the current user identity.</span></span> <span data-ttu-id="35e4b-105">Puede tener acceso al servicio de autorización en las vistas de MVC a través de la [inserción de dependencias](xref:fundamentals/dependency-injection).</span><span class="sxs-lookup"><span data-stu-id="35e4b-105">You can access the authorization service within MVC views via [dependency injection](xref:fundamentals/dependency-injection).</span></span> <span data-ttu-id="35e4b-106">Para insertar el servicio de autorización en una Razor vista, use la `@inject` Directiva:</span><span class="sxs-lookup"><span data-stu-id="35e4b-106">To inject the authorization service into a Razor view, use the `@inject` directive:</span></span>
 
 ```cshtml
 @using Microsoft.AspNetCore.Authorization
 @inject IAuthorizationService AuthorizationService
 ```
 
-<span data-ttu-id="1e023-107">Si desea usar el servicio de autorización en cada vista, coloque la `@inject` Directiva en el archivo *_ViewImports. cshtml* del directorio *views* .</span><span class="sxs-lookup"><span data-stu-id="1e023-107">If you want the authorization service in every view, place the `@inject` directive into the *_ViewImports.cshtml* file of the *Views* directory.</span></span> <span data-ttu-id="1e023-108">Para más información, vea [Dependency injection into views](xref:mvc/views/dependency-injection) (Inserción de dependencias en vistas).</span><span class="sxs-lookup"><span data-stu-id="1e023-108">For more information, see [Dependency injection into views](xref:mvc/views/dependency-injection).</span></span>
+<span data-ttu-id="35e4b-107">Si desea usar el servicio de autorización en cada vista, coloque la `@inject` Directiva en el archivo *_ViewImports. cshtml* del directorio *views* .</span><span class="sxs-lookup"><span data-stu-id="35e4b-107">If you want the authorization service in every view, place the `@inject` directive into the *_ViewImports.cshtml* file of the *Views* directory.</span></span> <span data-ttu-id="35e4b-108">Para más información, vea [Dependency injection into views](xref:mvc/views/dependency-injection) (Inserción de dependencias en vistas).</span><span class="sxs-lookup"><span data-stu-id="35e4b-108">For more information, see [Dependency injection into views](xref:mvc/views/dependency-injection).</span></span>
 
-<span data-ttu-id="1e023-109">Use el servicio de autorización insertado para invocar `AuthorizeAsync` exactamente de la misma manera que en la [autorización basada en recursos](xref:security/authorization/resourcebased#security-authorization-resource-based-imperative):</span><span class="sxs-lookup"><span data-stu-id="1e023-109">Use the injected authorization service to invoke `AuthorizeAsync` in exactly the same way you would check during [resource-based authorization](xref:security/authorization/resourcebased#security-authorization-resource-based-imperative):</span></span>
+<span data-ttu-id="35e4b-109">Use el servicio de autorización insertado para invocar `AuthorizeAsync` exactamente de la misma manera que en la [autorización basada en recursos](xref:security/authorization/resourcebased#security-authorization-resource-based-imperative):</span><span class="sxs-lookup"><span data-stu-id="35e4b-109">Use the injected authorization service to invoke `AuthorizeAsync` in exactly the same way you would check during [resource-based authorization](xref:security/authorization/resourcebased#security-authorization-resource-based-imperative):</span></span>
 
 ```cshtml
 @if ((await AuthorizationService.AuthorizeAsync(User, "PolicyName")).Succeeded)
@@ -41,7 +43,7 @@ ms.locfileid: "85408934"
 }
 ```
 
-<span data-ttu-id="1e023-110">En algunos casos, el recurso será el modelo de vista.</span><span class="sxs-lookup"><span data-stu-id="1e023-110">In some cases, the resource will be your view model.</span></span> <span data-ttu-id="1e023-111">Invoque `AuthorizeAsync` exactamente del mismo modo que lo haría durante la [autorización basada en recursos](xref:security/authorization/resourcebased#security-authorization-resource-based-imperative):</span><span class="sxs-lookup"><span data-stu-id="1e023-111">Invoke `AuthorizeAsync` in exactly the same way you would check during [resource-based authorization](xref:security/authorization/resourcebased#security-authorization-resource-based-imperative):</span></span>
+<span data-ttu-id="35e4b-110">En algunos casos, el recurso será el modelo de vista.</span><span class="sxs-lookup"><span data-stu-id="35e4b-110">In some cases, the resource will be your view model.</span></span> <span data-ttu-id="35e4b-111">Invoque `AuthorizeAsync` exactamente del mismo modo que lo haría durante la [autorización basada en recursos](xref:security/authorization/resourcebased#security-authorization-resource-based-imperative):</span><span class="sxs-lookup"><span data-stu-id="35e4b-111">Invoke `AuthorizeAsync` in exactly the same way you would check during [resource-based authorization](xref:security/authorization/resourcebased#security-authorization-resource-based-imperative):</span></span>
 
 ```cshtml
 @if ((await AuthorizationService.AuthorizeAsync(User, Model, Operations.Edit)).Succeeded)
@@ -51,7 +53,7 @@ ms.locfileid: "85408934"
 }
 ```
 
-<span data-ttu-id="1e023-112">En el código anterior, el modelo se pasa como un recurso que debería tener en cuenta la evaluación de la Directiva.</span><span class="sxs-lookup"><span data-stu-id="1e023-112">In the preceding code, the model is passed as a resource the policy evaluation should take into consideration.</span></span>
+<span data-ttu-id="35e4b-112">En el código anterior, el modelo se pasa como un recurso que debería tener en cuenta la evaluación de la Directiva.</span><span class="sxs-lookup"><span data-stu-id="35e4b-112">In the preceding code, the model is passed as a resource the policy evaluation should take into consideration.</span></span>
 
 > [!WARNING]
-> <span data-ttu-id="1e023-113">No se base en la alternancia de la visibilidad de los elementos de la interfaz de usuario de la aplicación como la única comprobación de autorización.</span><span class="sxs-lookup"><span data-stu-id="1e023-113">Don't rely on toggling visibility of your app's UI elements as the sole authorization check.</span></span> <span data-ttu-id="1e023-114">Ocultar un elemento de la interfaz de usuario puede no impedir completamente el acceso a su acción de controlador asociada.</span><span class="sxs-lookup"><span data-stu-id="1e023-114">Hiding a UI element may not completely prevent access to its associated controller action.</span></span> <span data-ttu-id="1e023-115">Por ejemplo, considere el botón en el fragmento de código anterior.</span><span class="sxs-lookup"><span data-stu-id="1e023-115">For example, consider the button in the preceding code snippet.</span></span> <span data-ttu-id="1e023-116">Un usuario puede invocar el `Edit` método de acción si sabe que la dirección URL relativa del recurso es */Document/Edit/1*.</span><span class="sxs-lookup"><span data-stu-id="1e023-116">A user can invoke the `Edit` action method if he or she knows the relative resource URL is */Document/Edit/1*.</span></span> <span data-ttu-id="1e023-117">Por esta razón, el `Edit` método de acción debe realizar su propia comprobación de autorización.</span><span class="sxs-lookup"><span data-stu-id="1e023-117">For this reason, the `Edit` action method should perform its own authorization check.</span></span>
+> <span data-ttu-id="35e4b-113">No se base en la alternancia de la visibilidad de los elementos de la interfaz de usuario de la aplicación como la única comprobación de autorización.</span><span class="sxs-lookup"><span data-stu-id="35e4b-113">Don't rely on toggling visibility of your app's UI elements as the sole authorization check.</span></span> <span data-ttu-id="35e4b-114">Ocultar un elemento de la interfaz de usuario puede no impedir completamente el acceso a su acción de controlador asociada.</span><span class="sxs-lookup"><span data-stu-id="35e4b-114">Hiding a UI element may not completely prevent access to its associated controller action.</span></span> <span data-ttu-id="35e4b-115">Por ejemplo, considere el botón en el fragmento de código anterior.</span><span class="sxs-lookup"><span data-stu-id="35e4b-115">For example, consider the button in the preceding code snippet.</span></span> <span data-ttu-id="35e4b-116">Un usuario puede invocar el `Edit` método de acción si sabe que la dirección URL relativa del recurso es */Document/Edit/1*.</span><span class="sxs-lookup"><span data-stu-id="35e4b-116">A user can invoke the `Edit` action method if he or she knows the relative resource URL is */Document/Edit/1*.</span></span> <span data-ttu-id="35e4b-117">Por esta razón, el `Edit` método de acción debe realizar su propia comprobación de autorización.</span><span class="sxs-lookup"><span data-stu-id="35e4b-117">For this reason, the `Edit` action method should perform its own authorization check.</span></span>
