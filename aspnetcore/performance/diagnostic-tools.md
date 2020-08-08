@@ -6,6 +6,8 @@ monikerRange: '>= aspnetcore-1.1'
 ms.author: riande
 ms.date: 04/11/2019
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -14,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/diagnostic-tools
-ms.openlocfilehash: 631dedddecfe3b443e38c6f5a1a182f98c79f0ad
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 53c613b208c142e1323e593d0c57a42de3150621
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85399600"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88018071"
 ---
 # <a name="performance-diagnostic-tools"></a>Herramientas de diagnóstico de rendimiento
 
