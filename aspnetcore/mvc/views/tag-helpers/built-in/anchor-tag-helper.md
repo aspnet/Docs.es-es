@@ -6,6 +6,8 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 10/13/2019
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -14,76 +16,76 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/tag-helpers/builtin-th/anchor-tag-helper
-ms.openlocfilehash: af0f07a0f50a79f25b6a14459402f9dd8b59dae2
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 25f1716b5c80492edb72bc9555954c9c93c02a49
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85408258"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88018771"
 ---
-# <a name="anchor-tag-helper-in-aspnet-core"></a><span data-ttu-id="773b3-103">Asistente de etiquetas delimitadoras en ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="773b3-103">Anchor Tag Helper in ASP.NET Core</span></span>
+# <a name="anchor-tag-helper-in-aspnet-core"></a><span data-ttu-id="dff14-103">Asistente de etiquetas delimitadoras en ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="dff14-103">Anchor Tag Helper in ASP.NET Core</span></span>
 
-<span data-ttu-id="773b3-104">De [Peter Kellner](https://peterkellner.net) y [Scott Addie](https://github.com/scottaddie)</span><span class="sxs-lookup"><span data-stu-id="773b3-104">By [Peter Kellner](https://peterkellner.net) and [Scott Addie](https://github.com/scottaddie)</span></span>
+<span data-ttu-id="dff14-104">De [Peter Kellner](https://peterkellner.net) y [Scott Addie](https://github.com/scottaddie)</span><span class="sxs-lookup"><span data-stu-id="dff14-104">By [Peter Kellner](https://peterkellner.net) and [Scott Addie](https://github.com/scottaddie)</span></span>
 
-<span data-ttu-id="773b3-105">El [asistente de etiquetas delimitadoras](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper) mejora la etiqueta delimitadora de código HTML estándar (`<a ... ></a>`) agregando nuevos atributos.</span><span class="sxs-lookup"><span data-stu-id="773b3-105">The [Anchor Tag Helper](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper) enhances the standard HTML anchor (`<a ... ></a>`) tag by adding new attributes.</span></span> <span data-ttu-id="773b3-106">Por convención, los nombres de atributo tienen el prefijo `asp-`.</span><span class="sxs-lookup"><span data-stu-id="773b3-106">By convention, the attribute names are prefixed with `asp-`.</span></span> <span data-ttu-id="773b3-107">El valor de atributo `href` del elemento delimitador representado se determina mediante los valores de los atributos `asp-`.</span><span class="sxs-lookup"><span data-stu-id="773b3-107">The rendered anchor element's `href` attribute value is determined by the values of the `asp-` attributes.</span></span>
+<span data-ttu-id="dff14-105">El [asistente de etiquetas delimitadoras](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper) mejora la etiqueta delimitadora de código HTML estándar (`<a ... ></a>`) agregando nuevos atributos.</span><span class="sxs-lookup"><span data-stu-id="dff14-105">The [Anchor Tag Helper](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper) enhances the standard HTML anchor (`<a ... ></a>`) tag by adding new attributes.</span></span> <span data-ttu-id="dff14-106">Por convención, los nombres de atributo tienen el prefijo `asp-`.</span><span class="sxs-lookup"><span data-stu-id="dff14-106">By convention, the attribute names are prefixed with `asp-`.</span></span> <span data-ttu-id="dff14-107">El valor de atributo `href` del elemento delimitador representado se determina mediante los valores de los atributos `asp-`.</span><span class="sxs-lookup"><span data-stu-id="dff14-107">The rendered anchor element's `href` attribute value is determined by the values of the `asp-` attributes.</span></span>
 
-<span data-ttu-id="773b3-108">Para obtener información general sobre asistentes de etiquetas, vea <xref:mvc/views/tag-helpers/intro>.</span><span class="sxs-lookup"><span data-stu-id="773b3-108">For an overview of Tag Helpers, see <xref:mvc/views/tag-helpers/intro>.</span></span>
+<span data-ttu-id="dff14-108">Para obtener información general sobre asistentes de etiquetas, vea <xref:mvc/views/tag-helpers/intro>.</span><span class="sxs-lookup"><span data-stu-id="dff14-108">For an overview of Tag Helpers, see <xref:mvc/views/tag-helpers/intro>.</span></span>
 
-<span data-ttu-id="773b3-109">[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/tag-helpers/built-in/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))</span><span class="sxs-lookup"><span data-stu-id="773b3-109">[View or download sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/tag-helpers/built-in/samples) ([how to download](xref:index#how-to-download-a-sample))</span></span>
+<span data-ttu-id="dff14-109">[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/tag-helpers/built-in/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))</span><span class="sxs-lookup"><span data-stu-id="dff14-109">[View or download sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/tag-helpers/built-in/samples) ([how to download](xref:index#how-to-download-a-sample))</span></span>
 
-<span data-ttu-id="773b3-110">En los ejemplos de todo este documento se usa *SpeakerController*:</span><span class="sxs-lookup"><span data-stu-id="773b3-110">*SpeakerController* is used in samples throughout this document:</span></span>
+<span data-ttu-id="dff14-110">En los ejemplos de todo este documento se usa *SpeakerController*:</span><span class="sxs-lookup"><span data-stu-id="dff14-110">*SpeakerController* is used in samples throughout this document:</span></span>
 
 [!code-csharp[](samples/TagHelpersBuiltIn/Controllers/SpeakerController.cs?name=snippet_SpeakerController)]
 
-## <a name="anchor-tag-helper-attributes"></a><span data-ttu-id="773b3-111">Atributos del asistente de etiquetas delimitadoras</span><span class="sxs-lookup"><span data-stu-id="773b3-111">Anchor Tag Helper attributes</span></span>
+## <a name="anchor-tag-helper-attributes"></a><span data-ttu-id="dff14-111">Atributos del asistente de etiquetas delimitadoras</span><span class="sxs-lookup"><span data-stu-id="dff14-111">Anchor Tag Helper attributes</span></span>
 
-### <a name="asp-controller"></a><span data-ttu-id="773b3-112">asp-controller</span><span class="sxs-lookup"><span data-stu-id="773b3-112">asp-controller</span></span>
+### <a name="asp-controller"></a><span data-ttu-id="dff14-112">asp-controller</span><span class="sxs-lookup"><span data-stu-id="dff14-112">asp-controller</span></span>
 
-<span data-ttu-id="773b3-113">El atributo [asp-controller](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Controller*) asigna el controlador usado para generar la dirección URL.</span><span class="sxs-lookup"><span data-stu-id="773b3-113">The [asp-controller](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Controller*) attribute assigns the controller used for generating the URL.</span></span> <span data-ttu-id="773b3-114">En el marcado siguiente se especifican todos los altavoces:</span><span class="sxs-lookup"><span data-stu-id="773b3-114">The following markup lists all speakers:</span></span>
+<span data-ttu-id="dff14-113">El atributo [asp-controller](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Controller*) asigna el controlador usado para generar la dirección URL.</span><span class="sxs-lookup"><span data-stu-id="dff14-113">The [asp-controller](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Controller*) attribute assigns the controller used for generating the URL.</span></span> <span data-ttu-id="dff14-114">En el marcado siguiente se especifican todos los altavoces:</span><span class="sxs-lookup"><span data-stu-id="dff14-114">The following markup lists all speakers:</span></span>
 
 [!code-cshtml[](samples/TagHelpersBuiltIn/Views/Home/Index.cshtml?name=snippet_AspController)]
 
-<span data-ttu-id="773b3-115">El código HTML generado:</span><span class="sxs-lookup"><span data-stu-id="773b3-115">The generated HTML:</span></span>
+<span data-ttu-id="dff14-115">El código HTML generado:</span><span class="sxs-lookup"><span data-stu-id="dff14-115">The generated HTML:</span></span>
 
 ```html
 <a href="/Speaker">All Speakers</a>
 ```
 
-<span data-ttu-id="773b3-116">Si el atributo `asp-controller` está especificado y `asp-action` no lo está, el valor `asp-action` predeterminado es la acción del controlador asociada a la vista que se está ejecutando.</span><span class="sxs-lookup"><span data-stu-id="773b3-116">If the `asp-controller` attribute is specified and `asp-action` isn't, the default `asp-action` value is the controller action associated with the currently executing view.</span></span> <span data-ttu-id="773b3-117">Si se omite `asp-action` en el marcado anterior y se usa el asistente de etiquetas delimitadoras en la vista *Index* de *HomeController* (*/Home*), el código HTML generado es el siguiente:</span><span class="sxs-lookup"><span data-stu-id="773b3-117">If `asp-action` is omitted from the preceding markup, and the Anchor Tag Helper is used in *HomeController*'s *Index* view (*/Home*), the generated HTML is:</span></span>
+<span data-ttu-id="dff14-116">Si el atributo `asp-controller` está especificado y `asp-action` no lo está, el valor `asp-action` predeterminado es la acción del controlador asociada a la vista que se está ejecutando.</span><span class="sxs-lookup"><span data-stu-id="dff14-116">If the `asp-controller` attribute is specified and `asp-action` isn't, the default `asp-action` value is the controller action associated with the currently executing view.</span></span> <span data-ttu-id="dff14-117">Si se omite `asp-action` en el marcado anterior y se usa el asistente de etiquetas delimitadoras en la vista *Index* de *HomeController* (*/Home*), el código HTML generado es el siguiente:</span><span class="sxs-lookup"><span data-stu-id="dff14-117">If `asp-action` is omitted from the preceding markup, and the Anchor Tag Helper is used in *HomeController*'s *Index* view (*/Home*), the generated HTML is:</span></span>
 
 ```html
 <a href="/Home">All Speakers</a>
 ```
 
-### <a name="asp-action"></a><span data-ttu-id="773b3-118">asp-action</span><span class="sxs-lookup"><span data-stu-id="773b3-118">asp-action</span></span>
+### <a name="asp-action"></a><span data-ttu-id="dff14-118">asp-action</span><span class="sxs-lookup"><span data-stu-id="dff14-118">asp-action</span></span>
 
-<span data-ttu-id="773b3-119">El valor del atributo [asp-action](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Action*) representa el nombre de la acción del controlador incluido en el atributo `href` generado.</span><span class="sxs-lookup"><span data-stu-id="773b3-119">The [asp-action](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Action*) attribute value represents the controller action name included in the generated `href` attribute.</span></span> <span data-ttu-id="773b3-120">El siguiente marcado establece el valor del atributo `href` generado en la página "Speaker Evaluations":</span><span class="sxs-lookup"><span data-stu-id="773b3-120">The following markup sets the generated `href` attribute value to the speaker evaluations page:</span></span>
+<span data-ttu-id="dff14-119">El valor del atributo [asp-action](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Action*) representa el nombre de la acción del controlador incluido en el atributo `href` generado.</span><span class="sxs-lookup"><span data-stu-id="dff14-119">The [asp-action](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Action*) attribute value represents the controller action name included in the generated `href` attribute.</span></span> <span data-ttu-id="dff14-120">El siguiente marcado establece el valor del atributo `href` generado en la página "Speaker Evaluations":</span><span class="sxs-lookup"><span data-stu-id="dff14-120">The following markup sets the generated `href` attribute value to the speaker evaluations page:</span></span>
 
 [!code-cshtml[](samples/TagHelpersBuiltIn/Views/Home/Index.cshtml?name=snippet_AspAction)]
 
-<span data-ttu-id="773b3-121">El código HTML generado:</span><span class="sxs-lookup"><span data-stu-id="773b3-121">The generated HTML:</span></span>
+<span data-ttu-id="dff14-121">El código HTML generado:</span><span class="sxs-lookup"><span data-stu-id="dff14-121">The generated HTML:</span></span>
 
 ```html
 <a href="/Speaker/Evaluations">Speaker Evaluations</a>
 ```
 
-<span data-ttu-id="773b3-122">Si no hay ningún atributo `asp-controller` especificado, se usará el controlador predeterminado que llama a la vista que se está ejecutando.</span><span class="sxs-lookup"><span data-stu-id="773b3-122">If no `asp-controller` attribute is specified, the default controller calling the view executing the current view is used.</span></span>
+<span data-ttu-id="dff14-122">Si no hay ningún atributo `asp-controller` especificado, se usará el controlador predeterminado que llama a la vista que se está ejecutando.</span><span class="sxs-lookup"><span data-stu-id="dff14-122">If no `asp-controller` attribute is specified, the default controller calling the view executing the current view is used.</span></span>
 
-<span data-ttu-id="773b3-123">Si el valor del atributo `asp-action` es `Index`, no se anexa ninguna acción a la dirección URL, lo que da lugar a la invocación de la acción `Index` predeterminada.</span><span class="sxs-lookup"><span data-stu-id="773b3-123">If the `asp-action` attribute value is `Index`, then no action is appended to the URL, leading to the invocation of the default `Index` action.</span></span> <span data-ttu-id="773b3-124">La acción especificada (o su valor predeterminado), debe existir en el controlador al que se hace referencia en `asp-controller`.</span><span class="sxs-lookup"><span data-stu-id="773b3-124">The action specified (or defaulted), must exist in the controller referenced in `asp-controller`.</span></span>
+<span data-ttu-id="dff14-123">Si el valor del atributo `asp-action` es `Index`, no se anexa ninguna acción a la dirección URL, lo que da lugar a la invocación de la acción `Index` predeterminada.</span><span class="sxs-lookup"><span data-stu-id="dff14-123">If the `asp-action` attribute value is `Index`, then no action is appended to the URL, leading to the invocation of the default `Index` action.</span></span> <span data-ttu-id="dff14-124">La acción especificada (o su valor predeterminado), debe existir en el controlador al que se hace referencia en `asp-controller`.</span><span class="sxs-lookup"><span data-stu-id="dff14-124">The action specified (or defaulted), must exist in the controller referenced in `asp-controller`.</span></span>
 
-### <a name="asp-route-value"></a><span data-ttu-id="773b3-125">asp-route-{valor}</span><span class="sxs-lookup"><span data-stu-id="773b3-125">asp-route-{value}</span></span>
+### <a name="asp-route-value"></a><span data-ttu-id="dff14-125">asp-route-{valor}</span><span class="sxs-lookup"><span data-stu-id="dff14-125">asp-route-{value}</span></span>
 
-<span data-ttu-id="773b3-126">El atributo [asp-route-{value}](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.RouteValues*) permite indicar un prefijo de ruta comodín.</span><span class="sxs-lookup"><span data-stu-id="773b3-126">The [asp-route-{value}](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.RouteValues*) attribute enables a wildcard route prefix.</span></span> <span data-ttu-id="773b3-127">Cualquier valor que ocupe el marcador de posición `{value}` se interpretará como un parámetro de ruta potencial.</span><span class="sxs-lookup"><span data-stu-id="773b3-127">Any value occupying the `{value}` placeholder is interpreted as a potential route parameter.</span></span> <span data-ttu-id="773b3-128">Si no se encuentra ninguna ruta predeterminada, este prefijo de ruta se anexará al atributo `href` generado como valor y parámetro de solicitud.</span><span class="sxs-lookup"><span data-stu-id="773b3-128">If a default route isn't found, this route prefix is appended to the generated `href` attribute as a request parameter and value.</span></span> <span data-ttu-id="773b3-129">En caso contrario, se sustituirá en la plantilla de ruta.</span><span class="sxs-lookup"><span data-stu-id="773b3-129">Otherwise, it's substituted in the route template.</span></span>
+<span data-ttu-id="dff14-126">El atributo [asp-route-{value}](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.RouteValues*) permite indicar un prefijo de ruta comodín.</span><span class="sxs-lookup"><span data-stu-id="dff14-126">The [asp-route-{value}](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.RouteValues*) attribute enables a wildcard route prefix.</span></span> <span data-ttu-id="dff14-127">Cualquier valor que ocupe el marcador de posición `{value}` se interpretará como un parámetro de ruta potencial.</span><span class="sxs-lookup"><span data-stu-id="dff14-127">Any value occupying the `{value}` placeholder is interpreted as a potential route parameter.</span></span> <span data-ttu-id="dff14-128">Si no se encuentra ninguna ruta predeterminada, este prefijo de ruta se anexará al atributo `href` generado como valor y parámetro de solicitud.</span><span class="sxs-lookup"><span data-stu-id="dff14-128">If a default route isn't found, this route prefix is appended to the generated `href` attribute as a request parameter and value.</span></span> <span data-ttu-id="dff14-129">En caso contrario, se sustituirá en la plantilla de ruta.</span><span class="sxs-lookup"><span data-stu-id="dff14-129">Otherwise, it's substituted in the route template.</span></span>
 
-<span data-ttu-id="773b3-130">Observe la siguiente acción del controlador:</span><span class="sxs-lookup"><span data-stu-id="773b3-130">Consider the following controller action:</span></span>
+<span data-ttu-id="dff14-130">Observe la siguiente acción del controlador:</span><span class="sxs-lookup"><span data-stu-id="dff14-130">Consider the following controller action:</span></span>
 
 [!code-csharp[](samples/TagHelpersBuiltIn/Controllers/BuiltInTagController.cs?name=snippet_AnchorTagHelperAction)]
 
-<span data-ttu-id="773b3-131">Con una plantilla de ruta predeterminada definida en *Startup.Configure*:</span><span class="sxs-lookup"><span data-stu-id="773b3-131">With a default route template defined in *Startup.Configure*:</span></span>
+<span data-ttu-id="dff14-131">Con una plantilla de ruta predeterminada definida en *Startup.Configure*:</span><span class="sxs-lookup"><span data-stu-id="dff14-131">With a default route template defined in *Startup.Configure*:</span></span>
 
 [!code-csharp[](samples/TagHelpersBuiltIn/Startup.cs?name=snippet_UseMvc&highlight=8-10)]
 
-<span data-ttu-id="773b3-132">La vista de MVC usa el modelo, proporcionado por la acción, como se indica a continuación:</span><span class="sxs-lookup"><span data-stu-id="773b3-132">The MVC view uses the model, provided by the action, as follows:</span></span>
+<span data-ttu-id="dff14-132">La vista de MVC usa el modelo, proporcionado por la acción, como se indica a continuación:</span><span class="sxs-lookup"><span data-stu-id="dff14-132">The MVC view uses the model, provided by the action, as follows:</span></span>
 
 ```cshtml
 @model Speaker
@@ -97,13 +99,13 @@ ms.locfileid: "85408258"
 </html>
 ```
 
-<span data-ttu-id="773b3-133">Se hace coincidir el marcador de posición `{id?}` de la ruta predeterminada.</span><span class="sxs-lookup"><span data-stu-id="773b3-133">The default route's `{id?}` placeholder was matched.</span></span> <span data-ttu-id="773b3-134">El código HTML generado:</span><span class="sxs-lookup"><span data-stu-id="773b3-134">The generated HTML:</span></span>
+<span data-ttu-id="dff14-133">Se hace coincidir el marcador de posición `{id?}` de la ruta predeterminada.</span><span class="sxs-lookup"><span data-stu-id="dff14-133">The default route's `{id?}` placeholder was matched.</span></span> <span data-ttu-id="dff14-134">El código HTML generado:</span><span class="sxs-lookup"><span data-stu-id="dff14-134">The generated HTML:</span></span>
 
 ```html
 <a href="/Speaker/Detail/12">SpeakerId: 12</a>
 ```
 
-<span data-ttu-id="773b3-135">Supongamos que el prefijo de ruta no forma parte de la plantilla de enrutamiento coincidente, al igual que con la siguiente vista de MVC:</span><span class="sxs-lookup"><span data-stu-id="773b3-135">Assume the route prefix isn't part of the matching routing template, as with the following MVC view:</span></span>
+<span data-ttu-id="dff14-135">Supongamos que el prefijo de ruta no forma parte de la plantilla de enrutamiento coincidente, al igual que con la siguiente vista de MVC:</span><span class="sxs-lookup"><span data-stu-id="dff14-135">Assume the route prefix isn't part of the matching routing template, as with the following MVC view:</span></span>
 
 ```cshtml
 @model Speaker
@@ -117,205 +119,205 @@ ms.locfileid: "85408258"
 </html>
 ```
 
-<span data-ttu-id="773b3-136">Se genera el siguiente código HTML porque no se encontró `speakerid` en la ruta coincidente:</span><span class="sxs-lookup"><span data-stu-id="773b3-136">The following HTML is generated because `speakerid` wasn't found in the matching route:</span></span>
+<span data-ttu-id="dff14-136">Se genera el siguiente código HTML porque no se encontró `speakerid` en la ruta coincidente:</span><span class="sxs-lookup"><span data-stu-id="dff14-136">The following HTML is generated because `speakerid` wasn't found in the matching route:</span></span>
 
 ```html
 <a href="/Speaker/Detail?speakerid=12">SpeakerId: 12</a>
 ```
 
-<span data-ttu-id="773b3-137">Si no se especifica `asp-controller` o `asp-action`, se sigue el mismo proceso predeterminado que en el atributo `asp-route`.</span><span class="sxs-lookup"><span data-stu-id="773b3-137">If either `asp-controller` or `asp-action` aren't specified, then the same default processing is followed as is in the `asp-route` attribute.</span></span>
+<span data-ttu-id="dff14-137">Si no se especifica `asp-controller` o `asp-action`, se sigue el mismo proceso predeterminado que en el atributo `asp-route`.</span><span class="sxs-lookup"><span data-stu-id="dff14-137">If either `asp-controller` or `asp-action` aren't specified, then the same default processing is followed as is in the `asp-route` attribute.</span></span>
 
-### <a name="asp-route"></a><span data-ttu-id="773b3-138">asp-route</span><span class="sxs-lookup"><span data-stu-id="773b3-138">asp-route</span></span>
+### <a name="asp-route"></a><span data-ttu-id="dff14-138">asp-route</span><span class="sxs-lookup"><span data-stu-id="dff14-138">asp-route</span></span>
 
-<span data-ttu-id="773b3-139">El atributo [asp-route](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Route*) se usa para crear una dirección URL que se vincula directamente con una ruta con nombre.</span><span class="sxs-lookup"><span data-stu-id="773b3-139">The [asp-route](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Route*) attribute is used for creating a URL linking directly to a named route.</span></span> <span data-ttu-id="773b3-140">Mediante [atributos de enrutamiento](xref:mvc/controllers/routing#attribute-routing) puede asignarse un nombre a una ruta tal y como se muestra en `SpeakerController` y usarse en su acción `Evaluations`:</span><span class="sxs-lookup"><span data-stu-id="773b3-140">Using [routing attributes](xref:mvc/controllers/routing#attribute-routing), a route can be named as shown in the `SpeakerController` and used in its `Evaluations` action:</span></span>
+<span data-ttu-id="dff14-139">El atributo [asp-route](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Route*) se usa para crear una dirección URL que se vincula directamente con una ruta con nombre.</span><span class="sxs-lookup"><span data-stu-id="dff14-139">The [asp-route](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Route*) attribute is used for creating a URL linking directly to a named route.</span></span> <span data-ttu-id="dff14-140">Mediante [atributos de enrutamiento](xref:mvc/controllers/routing#attribute-routing) puede asignarse un nombre a una ruta tal y como se muestra en `SpeakerController` y usarse en su acción `Evaluations`:</span><span class="sxs-lookup"><span data-stu-id="dff14-140">Using [routing attributes](xref:mvc/controllers/routing#attribute-routing), a route can be named as shown in the `SpeakerController` and used in its `Evaluations` action:</span></span>
 
 [!code-csharp[](samples/TagHelpersBuiltIn/Controllers/SpeakerController.cs?range=22-24)]
 
-<span data-ttu-id="773b3-141">En el siguiente marcado, el atributo `asp-route` hace referencia a la ruta con nombre:</span><span class="sxs-lookup"><span data-stu-id="773b3-141">In the following markup, the `asp-route` attribute references the named route:</span></span>
+<span data-ttu-id="dff14-141">En el siguiente marcado, el atributo `asp-route` hace referencia a la ruta con nombre:</span><span class="sxs-lookup"><span data-stu-id="dff14-141">In the following markup, the `asp-route` attribute references the named route:</span></span>
 
 [!code-cshtml[](samples/TagHelpersBuiltIn/Views/Home/Index.cshtml?name=snippet_AspRoute)]
 
-<span data-ttu-id="773b3-142">El asistente de etiquetas delimitadoras genera una ruta directamente a esa acción de controlador mediante la dirección URL */Speaker/Evaluations*.</span><span class="sxs-lookup"><span data-stu-id="773b3-142">The Anchor Tag Helper generates a route directly to that controller action using the URL */Speaker/Evaluations*.</span></span> <span data-ttu-id="773b3-143">El código HTML generado:</span><span class="sxs-lookup"><span data-stu-id="773b3-143">The generated HTML:</span></span>
+<span data-ttu-id="dff14-142">El asistente de etiquetas delimitadoras genera una ruta directamente a esa acción de controlador mediante la dirección URL */Speaker/Evaluations*.</span><span class="sxs-lookup"><span data-stu-id="dff14-142">The Anchor Tag Helper generates a route directly to that controller action using the URL */Speaker/Evaluations*.</span></span> <span data-ttu-id="dff14-143">El código HTML generado:</span><span class="sxs-lookup"><span data-stu-id="dff14-143">The generated HTML:</span></span>
 
 ```html
 <a href="/Speaker/Evaluations">Speaker Evaluations</a>
 ```
 
-<span data-ttu-id="773b3-144">Si además de `asp-route` se especifica `asp-controller` o `asp-action`, la ruta generada puede no ser la esperada.</span><span class="sxs-lookup"><span data-stu-id="773b3-144">If `asp-controller` or `asp-action` is specified in addition to `asp-route`, the route generated may not be what you expect.</span></span> <span data-ttu-id="773b3-145">Para evitar un conflicto de ruta, no se debe usar `asp-route` con los atributos `asp-controller` y `asp-action`.</span><span class="sxs-lookup"><span data-stu-id="773b3-145">To avoid a route conflict, `asp-route` shouldn't be used with the `asp-controller` and `asp-action` attributes.</span></span>
+<span data-ttu-id="dff14-144">Si además de `asp-route` se especifica `asp-controller` o `asp-action`, la ruta generada puede no ser la esperada.</span><span class="sxs-lookup"><span data-stu-id="dff14-144">If `asp-controller` or `asp-action` is specified in addition to `asp-route`, the route generated may not be what you expect.</span></span> <span data-ttu-id="dff14-145">Para evitar un conflicto de ruta, no se debe usar `asp-route` con los atributos `asp-controller` y `asp-action`.</span><span class="sxs-lookup"><span data-stu-id="dff14-145">To avoid a route conflict, `asp-route` shouldn't be used with the `asp-controller` and `asp-action` attributes.</span></span>
 
-### <a name="asp-all-route-data"></a><span data-ttu-id="773b3-146">asp-all-route-data</span><span class="sxs-lookup"><span data-stu-id="773b3-146">asp-all-route-data</span></span>
+### <a name="asp-all-route-data"></a><span data-ttu-id="dff14-146">asp-all-route-data</span><span class="sxs-lookup"><span data-stu-id="dff14-146">asp-all-route-data</span></span>
 
-<span data-ttu-id="773b3-147">El atributo [asp-all-route-data](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.RouteValues*) permite crear un diccionario de pares clave-valor.</span><span class="sxs-lookup"><span data-stu-id="773b3-147">The [asp-all-route-data](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.RouteValues*) attribute supports the creation of a dictionary of key-value pairs.</span></span> <span data-ttu-id="773b3-148">La clave es el nombre del parámetro, mientras que el valor es el valor del parámetro.</span><span class="sxs-lookup"><span data-stu-id="773b3-148">The key is the parameter name, and the value is the parameter value.</span></span>
+<span data-ttu-id="dff14-147">El atributo [asp-all-route-data](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.RouteValues*) permite crear un diccionario de pares clave-valor.</span><span class="sxs-lookup"><span data-stu-id="dff14-147">The [asp-all-route-data](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.RouteValues*) attribute supports the creation of a dictionary of key-value pairs.</span></span> <span data-ttu-id="dff14-148">La clave es el nombre del parámetro, mientras que el valor es el valor del parámetro.</span><span class="sxs-lookup"><span data-stu-id="dff14-148">The key is the parameter name, and the value is the parameter value.</span></span>
 
-<span data-ttu-id="773b3-149">En el ejemplo siguiente, se inicializa un diccionario y se pasa a una Razor vista.</span><span class="sxs-lookup"><span data-stu-id="773b3-149">In the following example, a dictionary is initialized and passed to a Razor view.</span></span> <span data-ttu-id="773b3-150">Los datos también se podrían pasar con el modelo.</span><span class="sxs-lookup"><span data-stu-id="773b3-150">Alternatively, the data could be passed in with your model.</span></span>
+<span data-ttu-id="dff14-149">En el ejemplo siguiente, se inicializa un diccionario y se pasa a una Razor vista.</span><span class="sxs-lookup"><span data-stu-id="dff14-149">In the following example, a dictionary is initialized and passed to a Razor view.</span></span> <span data-ttu-id="dff14-150">Los datos también se podrían pasar con el modelo.</span><span class="sxs-lookup"><span data-stu-id="dff14-150">Alternatively, the data could be passed in with your model.</span></span>
 
 [!code-cshtml[](samples/TagHelpersBuiltIn/Views/Home/Index.cshtml?name=snippet_AspAllRouteData)]
 
-<span data-ttu-id="773b3-151">El código anterior genera el siguiente código HTML:</span><span class="sxs-lookup"><span data-stu-id="773b3-151">The preceding code generates the following HTML:</span></span>
+<span data-ttu-id="dff14-151">El código anterior genera el siguiente código HTML:</span><span class="sxs-lookup"><span data-stu-id="dff14-151">The preceding code generates the following HTML:</span></span>
 
 ```html
 <a href="/Speaker/EvaluationsCurrent?speakerId=11&currentYear=true">Speaker Evaluations</a>
 ```
 
-<span data-ttu-id="773b3-152">Se acopla el diccionario `asp-all-route-data` para generar una cadena de consulta que cumpla los requisitos de la acción `Evaluations` sobrecargada:</span><span class="sxs-lookup"><span data-stu-id="773b3-152">The `asp-all-route-data` dictionary is flattened to produce a querystring meeting the requirements of the overloaded `Evaluations` action:</span></span>
+<span data-ttu-id="dff14-152">Se acopla el diccionario `asp-all-route-data` para generar una cadena de consulta que cumpla los requisitos de la acción `Evaluations` sobrecargada:</span><span class="sxs-lookup"><span data-stu-id="dff14-152">The `asp-all-route-data` dictionary is flattened to produce a querystring meeting the requirements of the overloaded `Evaluations` action:</span></span>
 
 [!code-csharp[](samples/TagHelpersBuiltIn/Controllers/SpeakerController.cs?range=26-30)]
 
-<span data-ttu-id="773b3-153">Si alguna de las claves del diccionario coincide con los parámetros de ruta, esos valores se sustituirán en la ruta según corresponda.</span><span class="sxs-lookup"><span data-stu-id="773b3-153">If any keys in the dictionary match route parameters, those values are substituted in the route as appropriate.</span></span> <span data-ttu-id="773b3-154">Los demás valores no coincidentes se generarán como parámetros de solicitud.</span><span class="sxs-lookup"><span data-stu-id="773b3-154">The other non-matching values are generated as request parameters.</span></span>
+<span data-ttu-id="dff14-153">Si alguna de las claves del diccionario coincide con los parámetros de ruta, esos valores se sustituirán en la ruta según corresponda.</span><span class="sxs-lookup"><span data-stu-id="dff14-153">If any keys in the dictionary match route parameters, those values are substituted in the route as appropriate.</span></span> <span data-ttu-id="dff14-154">Los demás valores no coincidentes se generarán como parámetros de solicitud.</span><span class="sxs-lookup"><span data-stu-id="dff14-154">The other non-matching values are generated as request parameters.</span></span>
 
-### <a name="asp-fragment"></a><span data-ttu-id="773b3-155">asp-fragment</span><span class="sxs-lookup"><span data-stu-id="773b3-155">asp-fragment</span></span>
+### <a name="asp-fragment"></a><span data-ttu-id="dff14-155">asp-fragment</span><span class="sxs-lookup"><span data-stu-id="dff14-155">asp-fragment</span></span>
 
-<span data-ttu-id="773b3-156">El atributo [asp-fragment](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Fragment*) define un fragmento de dirección URL que se anexará a la dirección URL.</span><span class="sxs-lookup"><span data-stu-id="773b3-156">The [asp-fragment](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Fragment*) attribute defines a URL fragment to append to the URL.</span></span> <span data-ttu-id="773b3-157">El asistente de etiquetas delimitadoras agrega el carácter de almohadilla (#).</span><span class="sxs-lookup"><span data-stu-id="773b3-157">The Anchor Tag Helper adds the hash character (#).</span></span> <span data-ttu-id="773b3-158">Observe el siguiente marcado:</span><span class="sxs-lookup"><span data-stu-id="773b3-158">Consider the following markup:</span></span>
+<span data-ttu-id="dff14-156">El atributo [asp-fragment](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Fragment*) define un fragmento de dirección URL que se anexará a la dirección URL.</span><span class="sxs-lookup"><span data-stu-id="dff14-156">The [asp-fragment](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Fragment*) attribute defines a URL fragment to append to the URL.</span></span> <span data-ttu-id="dff14-157">El asistente de etiquetas delimitadoras agrega el carácter de almohadilla (#).</span><span class="sxs-lookup"><span data-stu-id="dff14-157">The Anchor Tag Helper adds the hash character (#).</span></span> <span data-ttu-id="dff14-158">Observe el siguiente marcado:</span><span class="sxs-lookup"><span data-stu-id="dff14-158">Consider the following markup:</span></span>
 
 [!code-cshtml[](samples/TagHelpersBuiltIn/Views/Home/Index.cshtml?name=snippet_AspFragment)]
 
-<span data-ttu-id="773b3-159">El código HTML generado:</span><span class="sxs-lookup"><span data-stu-id="773b3-159">The generated HTML:</span></span>
+<span data-ttu-id="dff14-159">El código HTML generado:</span><span class="sxs-lookup"><span data-stu-id="dff14-159">The generated HTML:</span></span>
 
 ```html
 <a href="/Speaker/Evaluations#SpeakerEvaluations">Speaker Evaluations</a>
 ```
 
-<span data-ttu-id="773b3-160">Las etiquetas hash son útiles al crear aplicaciones del lado cliente.</span><span class="sxs-lookup"><span data-stu-id="773b3-160">Hash tags are useful when building client-side apps.</span></span> <span data-ttu-id="773b3-161">Por ejemplo, se pueden usar para el marcado y la búsqueda en JavaScript.</span><span class="sxs-lookup"><span data-stu-id="773b3-161">They can be used for easy marking and searching in JavaScript, for example.</span></span>
+<span data-ttu-id="dff14-160">Las etiquetas hash son útiles al crear aplicaciones del lado cliente.</span><span class="sxs-lookup"><span data-stu-id="dff14-160">Hash tags are useful when building client-side apps.</span></span> <span data-ttu-id="dff14-161">Por ejemplo, se pueden usar para el marcado y la búsqueda en JavaScript.</span><span class="sxs-lookup"><span data-stu-id="dff14-161">They can be used for easy marking and searching in JavaScript, for example.</span></span>
 
-### <a name="asp-area"></a><span data-ttu-id="773b3-162">asp-area</span><span class="sxs-lookup"><span data-stu-id="773b3-162">asp-area</span></span>
+### <a name="asp-area"></a><span data-ttu-id="dff14-162">asp-area</span><span class="sxs-lookup"><span data-stu-id="dff14-162">asp-area</span></span>
 
-<span data-ttu-id="773b3-163">El atributo [asp-area](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Area*) establece el nombre de área que se usa para establecer la ruta adecuada.</span><span class="sxs-lookup"><span data-stu-id="773b3-163">The [asp-area](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Area*) attribute sets the area name used to set the appropriate route.</span></span> <span data-ttu-id="773b3-164">En el siguiente ejemplo se muestra cómo el atributo `asp-area` provoca una reasignación de rutas.</span><span class="sxs-lookup"><span data-stu-id="773b3-164">The following examples depict how the `asp-area` attribute causes a remapping of routes.</span></span>
+<span data-ttu-id="dff14-163">El atributo [asp-area](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Area*) establece el nombre de área que se usa para establecer la ruta adecuada.</span><span class="sxs-lookup"><span data-stu-id="dff14-163">The [asp-area](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Area*) attribute sets the area name used to set the appropriate route.</span></span> <span data-ttu-id="dff14-164">En el siguiente ejemplo se muestra cómo el atributo `asp-area` provoca una reasignación de rutas.</span><span class="sxs-lookup"><span data-stu-id="dff14-164">The following examples depict how the `asp-area` attribute causes a remapping of routes.</span></span>
 
-#### <a name="usage-in-razor-pages"></a><span data-ttu-id="773b3-165">Uso en Razor páginas</span><span class="sxs-lookup"><span data-stu-id="773b3-165">Usage in Razor Pages</span></span>
+#### <a name="usage-in-no-locrazor-pages"></a><span data-ttu-id="dff14-165">Uso en Razor páginas</span><span class="sxs-lookup"><span data-stu-id="dff14-165">Usage in Razor Pages</span></span>
 
-Razor<span data-ttu-id="773b3-166">Las áreas de páginas se admiten en ASP.NET Core 2,1 o posterior.</span><span class="sxs-lookup"><span data-stu-id="773b3-166"> Pages areas are supported in ASP.NET Core 2.1 or later.</span></span>
+<span data-ttu-id="dff14-166">RazorLas áreas de páginas se admiten en ASP.NET Core 2,1 o posterior.</span><span class="sxs-lookup"><span data-stu-id="dff14-166">Razor Pages areas are supported in ASP.NET Core 2.1 or later.</span></span>
 
-<span data-ttu-id="773b3-167">Tenga en cuenta la siguiente jerarquía de directorios:</span><span class="sxs-lookup"><span data-stu-id="773b3-167">Consider the following directory hierarchy:</span></span>
+<span data-ttu-id="dff14-167">Tenga en cuenta la siguiente jerarquía de directorios:</span><span class="sxs-lookup"><span data-stu-id="dff14-167">Consider the following directory hierarchy:</span></span>
 
-* <span data-ttu-id="773b3-168">**{Nombre del proyecto}**</span><span class="sxs-lookup"><span data-stu-id="773b3-168">**{Project name}**</span></span>
-  * <span data-ttu-id="773b3-169">**wwwroot**</span><span class="sxs-lookup"><span data-stu-id="773b3-169">**wwwroot**</span></span>
-  * <span data-ttu-id="773b3-170">**Áreas**</span><span class="sxs-lookup"><span data-stu-id="773b3-170">**Areas**</span></span>
-    * <span data-ttu-id="773b3-171">**Sesiones**</span><span class="sxs-lookup"><span data-stu-id="773b3-171">**Sessions**</span></span>
-      * <span data-ttu-id="773b3-172">**Páginas**</span><span class="sxs-lookup"><span data-stu-id="773b3-172">**Pages**</span></span>
-        * <span data-ttu-id="773b3-173">*\_ViewStart. cshtml*</span><span class="sxs-lookup"><span data-stu-id="773b3-173">*\_ViewStart.cshtml*</span></span>
-        * <span data-ttu-id="773b3-174">*Index.cshtml*</span><span class="sxs-lookup"><span data-stu-id="773b3-174">*Index.cshtml*</span></span>
-        * <span data-ttu-id="773b3-175">*Index.cshtml.cs*</span><span class="sxs-lookup"><span data-stu-id="773b3-175">*Index.cshtml.cs*</span></span>
-  * <span data-ttu-id="773b3-176">**Páginas**</span><span class="sxs-lookup"><span data-stu-id="773b3-176">**Pages**</span></span>
+* <span data-ttu-id="dff14-168">**{Nombre del proyecto}**</span><span class="sxs-lookup"><span data-stu-id="dff14-168">**{Project name}**</span></span>
+  * <span data-ttu-id="dff14-169">**wwwroot**</span><span class="sxs-lookup"><span data-stu-id="dff14-169">**wwwroot**</span></span>
+  * <span data-ttu-id="dff14-170">**Áreas**</span><span class="sxs-lookup"><span data-stu-id="dff14-170">**Areas**</span></span>
+    * <span data-ttu-id="dff14-171">**Sesiones**</span><span class="sxs-lookup"><span data-stu-id="dff14-171">**Sessions**</span></span>
+      * <span data-ttu-id="dff14-172">**Páginas**</span><span class="sxs-lookup"><span data-stu-id="dff14-172">**Pages**</span></span>
+        * <span data-ttu-id="dff14-173">*\_ViewStart. cshtml*</span><span class="sxs-lookup"><span data-stu-id="dff14-173">*\_ViewStart.cshtml*</span></span>
+        * <span data-ttu-id="dff14-174">*Index.cshtml*</span><span class="sxs-lookup"><span data-stu-id="dff14-174">*Index.cshtml*</span></span>
+        * <span data-ttu-id="dff14-175">*Index.cshtml.cs*</span><span class="sxs-lookup"><span data-stu-id="dff14-175">*Index.cshtml.cs*</span></span>
+  * <span data-ttu-id="dff14-176">**Páginas**</span><span class="sxs-lookup"><span data-stu-id="dff14-176">**Pages**</span></span>
 
-<span data-ttu-id="773b3-177">El marcado para hacer referencia a la página de *Índice* del área de *sesiones* Razor es:</span><span class="sxs-lookup"><span data-stu-id="773b3-177">The markup to reference the *Sessions* area *Index* Razor Page is:</span></span>
+<span data-ttu-id="dff14-177">El marcado para hacer referencia a la página de *Índice* del área de *sesiones* Razor es:</span><span class="sxs-lookup"><span data-stu-id="dff14-177">The markup to reference the *Sessions* area *Index* Razor Page is:</span></span>
 
 [!code-cshtml[](samples/TagHelpersBuiltIn/Views/Home/Index.cshtml?name=snippet_AspAreaRazorPages)]
 
-<span data-ttu-id="773b3-178">El código HTML generado:</span><span class="sxs-lookup"><span data-stu-id="773b3-178">The generated HTML:</span></span>
+<span data-ttu-id="dff14-178">El código HTML generado:</span><span class="sxs-lookup"><span data-stu-id="dff14-178">The generated HTML:</span></span>
 
 ```html
 <a href="/Sessions">View Sessions</a>
 ```
 
 > [!TIP]
-> <span data-ttu-id="773b3-179">Para admitir áreas en una Razor aplicación de páginas, realice una de las siguientes acciones en `Startup.ConfigureServices` :</span><span class="sxs-lookup"><span data-stu-id="773b3-179">To support areas in a Razor Pages app, do one of the following in `Startup.ConfigureServices`:</span></span>
+> <span data-ttu-id="dff14-179">Para admitir áreas en una Razor aplicación de páginas, realice una de las siguientes acciones en `Startup.ConfigureServices` :</span><span class="sxs-lookup"><span data-stu-id="dff14-179">To support areas in a Razor Pages app, do one of the following in `Startup.ConfigureServices`:</span></span>
 >
-> * <span data-ttu-id="773b3-180">Establezca la [versión de compatibilidad](xref:mvc/compatibility-version) en 2.1 o posterior.</span><span class="sxs-lookup"><span data-stu-id="773b3-180">Set the [compatibility version](xref:mvc/compatibility-version) to 2.1 or later.</span></span>
-> * <span data-ttu-id="773b3-181">Establezca la propiedad [RazorPagesOptions.AllowAreas](xref:Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions.AllowAreas*) en `true`:</span><span class="sxs-lookup"><span data-stu-id="773b3-181">Set the [RazorPagesOptions.AllowAreas](xref:Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions.AllowAreas*) property to `true`:</span></span>
+> * <span data-ttu-id="dff14-180">Establezca la [versión de compatibilidad](xref:mvc/compatibility-version) en 2.1 o posterior.</span><span class="sxs-lookup"><span data-stu-id="dff14-180">Set the [compatibility version](xref:mvc/compatibility-version) to 2.1 or later.</span></span>
+> * <span data-ttu-id="dff14-181">Establezca la propiedad [ Razor PagesOptions. AllowAreas](xref:Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions.AllowAreas*) en `true` :</span><span class="sxs-lookup"><span data-stu-id="dff14-181">Set the [RazorPagesOptions.AllowAreas](xref:Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions.AllowAreas*) property to `true`:</span></span>
 >
 >   [!code-csharp[](samples/TagHelpersBuiltIn/Startup.cs?name=snippet_AllowAreas)]
 
-#### <a name="usage-in-mvc"></a><span data-ttu-id="773b3-182">Uso en MVC</span><span class="sxs-lookup"><span data-stu-id="773b3-182">Usage in MVC</span></span>
+#### <a name="usage-in-mvc"></a><span data-ttu-id="dff14-182">Uso en MVC</span><span class="sxs-lookup"><span data-stu-id="dff14-182">Usage in MVC</span></span>
 
-<span data-ttu-id="773b3-183">Tenga en cuenta la siguiente jerarquía de directorios:</span><span class="sxs-lookup"><span data-stu-id="773b3-183">Consider the following directory hierarchy:</span></span>
+<span data-ttu-id="dff14-183">Tenga en cuenta la siguiente jerarquía de directorios:</span><span class="sxs-lookup"><span data-stu-id="dff14-183">Consider the following directory hierarchy:</span></span>
 
-* <span data-ttu-id="773b3-184">**{Nombre del proyecto}**</span><span class="sxs-lookup"><span data-stu-id="773b3-184">**{Project name}**</span></span>
-  * <span data-ttu-id="773b3-185">**wwwroot**</span><span class="sxs-lookup"><span data-stu-id="773b3-185">**wwwroot**</span></span>
-  * <span data-ttu-id="773b3-186">**Áreas**</span><span class="sxs-lookup"><span data-stu-id="773b3-186">**Areas**</span></span>
-    * <span data-ttu-id="773b3-187">**Blogs**</span><span class="sxs-lookup"><span data-stu-id="773b3-187">**Blogs**</span></span>
-      * <span data-ttu-id="773b3-188">**Controladores**</span><span class="sxs-lookup"><span data-stu-id="773b3-188">**Controllers**</span></span>
-        * <span data-ttu-id="773b3-189">*HomeController.cs*</span><span class="sxs-lookup"><span data-stu-id="773b3-189">*HomeController.cs*</span></span>
-      * <span data-ttu-id="773b3-190">**Vistas**</span><span class="sxs-lookup"><span data-stu-id="773b3-190">**Views**</span></span>
-        * <span data-ttu-id="773b3-191">**Inicio**</span><span class="sxs-lookup"><span data-stu-id="773b3-191">**Home**</span></span>
-          * <span data-ttu-id="773b3-192">*AboutBlog.cshtml*</span><span class="sxs-lookup"><span data-stu-id="773b3-192">*AboutBlog.cshtml*</span></span>
-          * <span data-ttu-id="773b3-193">*Index.cshtml*</span><span class="sxs-lookup"><span data-stu-id="773b3-193">*Index.cshtml*</span></span>
-        * <span data-ttu-id="773b3-194">*\_ViewStart. cshtml*</span><span class="sxs-lookup"><span data-stu-id="773b3-194">*\_ViewStart.cshtml*</span></span>
-  * <span data-ttu-id="773b3-195">**Controladores**</span><span class="sxs-lookup"><span data-stu-id="773b3-195">**Controllers**</span></span>
+* <span data-ttu-id="dff14-184">**{Nombre del proyecto}**</span><span class="sxs-lookup"><span data-stu-id="dff14-184">**{Project name}**</span></span>
+  * <span data-ttu-id="dff14-185">**wwwroot**</span><span class="sxs-lookup"><span data-stu-id="dff14-185">**wwwroot**</span></span>
+  * <span data-ttu-id="dff14-186">**Áreas**</span><span class="sxs-lookup"><span data-stu-id="dff14-186">**Areas**</span></span>
+    * <span data-ttu-id="dff14-187">**Blogs**</span><span class="sxs-lookup"><span data-stu-id="dff14-187">**Blogs**</span></span>
+      * <span data-ttu-id="dff14-188">**Controladores**</span><span class="sxs-lookup"><span data-stu-id="dff14-188">**Controllers**</span></span>
+        * <span data-ttu-id="dff14-189">*HomeController.cs*</span><span class="sxs-lookup"><span data-stu-id="dff14-189">*HomeController.cs*</span></span>
+      * <span data-ttu-id="dff14-190">**Vistas**</span><span class="sxs-lookup"><span data-stu-id="dff14-190">**Views**</span></span>
+        * <span data-ttu-id="dff14-191">**Página principal**</span><span class="sxs-lookup"><span data-stu-id="dff14-191">**Home**</span></span>
+          * <span data-ttu-id="dff14-192">*AboutBlog.cshtml*</span><span class="sxs-lookup"><span data-stu-id="dff14-192">*AboutBlog.cshtml*</span></span>
+          * <span data-ttu-id="dff14-193">*Index.cshtml*</span><span class="sxs-lookup"><span data-stu-id="dff14-193">*Index.cshtml*</span></span>
+        * <span data-ttu-id="dff14-194">*\_ViewStart. cshtml*</span><span class="sxs-lookup"><span data-stu-id="dff14-194">*\_ViewStart.cshtml*</span></span>
+  * <span data-ttu-id="dff14-195">**Controladores**</span><span class="sxs-lookup"><span data-stu-id="dff14-195">**Controllers**</span></span>
 
-<span data-ttu-id="773b3-196">Al establecer `asp-area` en "Blogs", el directorio *Areas/Blogs* se prefija en las rutas de los controladores y vistas asociados de esta etiqueta delimitadora.</span><span class="sxs-lookup"><span data-stu-id="773b3-196">Setting `asp-area` to "Blogs" prefixes the directory *Areas/Blogs* to the routes of the associated controllers and views for this anchor tag.</span></span> <span data-ttu-id="773b3-197">El marcado para hacer referencia a la vista *AboutBlog* es:</span><span class="sxs-lookup"><span data-stu-id="773b3-197">The markup to reference the *AboutBlog* view is:</span></span>
+<span data-ttu-id="dff14-196">Al establecer `asp-area` en "Blogs", el directorio *Areas/Blogs* se prefija en las rutas de los controladores y vistas asociados de esta etiqueta delimitadora.</span><span class="sxs-lookup"><span data-stu-id="dff14-196">Setting `asp-area` to "Blogs" prefixes the directory *Areas/Blogs* to the routes of the associated controllers and views for this anchor tag.</span></span> <span data-ttu-id="dff14-197">El marcado para hacer referencia a la vista *AboutBlog* es:</span><span class="sxs-lookup"><span data-stu-id="dff14-197">The markup to reference the *AboutBlog* view is:</span></span>
 
 [!code-cshtml[](samples/TagHelpersBuiltIn/Views/Home/Index.cshtml?name=snippet_AspArea)]
 
-<span data-ttu-id="773b3-198">El código HTML generado:</span><span class="sxs-lookup"><span data-stu-id="773b3-198">The generated HTML:</span></span>
+<span data-ttu-id="dff14-198">El código HTML generado:</span><span class="sxs-lookup"><span data-stu-id="dff14-198">The generated HTML:</span></span>
 
 ```html
 <a href="/Blogs/Home/AboutBlog">About Blog</a>
 ```
 
 > [!TIP]
-> <span data-ttu-id="773b3-199">Para admitir áreas en una aplicación de MVC, la plantilla de ruta debe incluir una referencia al área, en el caso de que exista.</span><span class="sxs-lookup"><span data-stu-id="773b3-199">To support areas in an MVC app, the route template must include a reference to the area, if it exists.</span></span> <span data-ttu-id="773b3-200">Esta plantilla se representa mediante el segundo parámetro de la llamada de método `routes.MapRoute` en *Startup.Configure*:</span><span class="sxs-lookup"><span data-stu-id="773b3-200">That template is represented by the second parameter of the `routes.MapRoute` method call in *Startup.Configure*:</span></span>
+> <span data-ttu-id="dff14-199">Para admitir áreas en una aplicación de MVC, la plantilla de ruta debe incluir una referencia al área, en el caso de que exista.</span><span class="sxs-lookup"><span data-stu-id="dff14-199">To support areas in an MVC app, the route template must include a reference to the area, if it exists.</span></span> <span data-ttu-id="dff14-200">Esta plantilla se representa mediante el segundo parámetro de la llamada de método `routes.MapRoute` en *Startup.Configure*:</span><span class="sxs-lookup"><span data-stu-id="dff14-200">That template is represented by the second parameter of the `routes.MapRoute` method call in *Startup.Configure*:</span></span>
 >
 > [!code-csharp[](samples/TagHelpersBuiltIn/Startup.cs?name=snippet_UseMvc&highlight=5)]
 
-### <a name="asp-protocol"></a><span data-ttu-id="773b3-201">asp-protocol</span><span class="sxs-lookup"><span data-stu-id="773b3-201">asp-protocol</span></span>
+### <a name="asp-protocol"></a><span data-ttu-id="dff14-201">asp-protocol</span><span class="sxs-lookup"><span data-stu-id="dff14-201">asp-protocol</span></span>
 
-<span data-ttu-id="773b3-202">El atributo [asp-protocol](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Protocol*) sirve para especificar un protocolo (por ejemplo, `https`) en la dirección URL.</span><span class="sxs-lookup"><span data-stu-id="773b3-202">The [asp-protocol](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Protocol*) attribute is for specifying a protocol (such as `https`) in your URL.</span></span> <span data-ttu-id="773b3-203">Por ejemplo:</span><span class="sxs-lookup"><span data-stu-id="773b3-203">For example:</span></span>
+<span data-ttu-id="dff14-202">El atributo [asp-protocol](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Protocol*) sirve para especificar un protocolo (por ejemplo, `https`) en la dirección URL.</span><span class="sxs-lookup"><span data-stu-id="dff14-202">The [asp-protocol](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Protocol*) attribute is for specifying a protocol (such as `https`) in your URL.</span></span> <span data-ttu-id="dff14-203">Por ejemplo:</span><span class="sxs-lookup"><span data-stu-id="dff14-203">For example:</span></span>
 
 [!code-cshtml[](samples/TagHelpersBuiltIn/Views/Home/Index.cshtml?name=snippet_AspProtocol)]
 
-<span data-ttu-id="773b3-204">El código HTML generado:</span><span class="sxs-lookup"><span data-stu-id="773b3-204">The generated HTML:</span></span>
+<span data-ttu-id="dff14-204">El código HTML generado:</span><span class="sxs-lookup"><span data-stu-id="dff14-204">The generated HTML:</span></span>
 
 ```html
 <a href="https://localhost/Home/About">About</a>
 ```
 
-<span data-ttu-id="773b3-205">El nombre de host en el ejemplo es localhost.</span><span class="sxs-lookup"><span data-stu-id="773b3-205">The host name in the example is localhost.</span></span> <span data-ttu-id="773b3-206">El asistente de etiquetas delimitadoras utiliza el dominio público del sitio web al generar la dirección URL.</span><span class="sxs-lookup"><span data-stu-id="773b3-206">The Anchor Tag Helper uses the website's public domain when generating the URL.</span></span>
+<span data-ttu-id="dff14-205">El nombre de host en el ejemplo es localhost.</span><span class="sxs-lookup"><span data-stu-id="dff14-205">The host name in the example is localhost.</span></span> <span data-ttu-id="dff14-206">El asistente de etiquetas delimitadoras utiliza el dominio público del sitio web al generar la dirección URL.</span><span class="sxs-lookup"><span data-stu-id="dff14-206">The Anchor Tag Helper uses the website's public domain when generating the URL.</span></span>
 
-### <a name="asp-host"></a><span data-ttu-id="773b3-207">asp-host</span><span class="sxs-lookup"><span data-stu-id="773b3-207">asp-host</span></span>
+### <a name="asp-host"></a><span data-ttu-id="dff14-207">asp-host</span><span class="sxs-lookup"><span data-stu-id="dff14-207">asp-host</span></span>
 
-<span data-ttu-id="773b3-208">El atributo [asp-host](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Host*) sirve para especificar un nombre de host en la dirección URL.</span><span class="sxs-lookup"><span data-stu-id="773b3-208">The [asp-host](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Host*) attribute is for specifying a host name in your URL.</span></span> <span data-ttu-id="773b3-209">Por ejemplo:</span><span class="sxs-lookup"><span data-stu-id="773b3-209">For example:</span></span>
+<span data-ttu-id="dff14-208">El atributo [asp-host](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Host*) sirve para especificar un nombre de host en la dirección URL.</span><span class="sxs-lookup"><span data-stu-id="dff14-208">The [asp-host](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Host*) attribute is for specifying a host name in your URL.</span></span> <span data-ttu-id="dff14-209">Por ejemplo:</span><span class="sxs-lookup"><span data-stu-id="dff14-209">For example:</span></span>
 
 [!code-cshtml[](samples/TagHelpersBuiltIn/Views/Home/Index.cshtml?name=snippet_AspHost)]
 
-<span data-ttu-id="773b3-210">El código HTML generado:</span><span class="sxs-lookup"><span data-stu-id="773b3-210">The generated HTML:</span></span>
+<span data-ttu-id="dff14-210">El código HTML generado:</span><span class="sxs-lookup"><span data-stu-id="dff14-210">The generated HTML:</span></span>
 
 ```html
 <a href="https://microsoft.com/Home/About">About</a>
 ```
 
-### <a name="asp-page"></a><span data-ttu-id="773b3-211">asp-page</span><span class="sxs-lookup"><span data-stu-id="773b3-211">asp-page</span></span>
+### <a name="asp-page"></a><span data-ttu-id="dff14-211">asp-page</span><span class="sxs-lookup"><span data-stu-id="dff14-211">asp-page</span></span>
 
-<span data-ttu-id="773b3-212">El atributo [asp-Page](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Page*) se usa con Razor las páginas.</span><span class="sxs-lookup"><span data-stu-id="773b3-212">The [asp-page](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Page*) attribute is used with Razor Pages.</span></span> <span data-ttu-id="773b3-213">Úselo para establecer el valor del atributo `href` de una etiqueta delimitadora en una página específica.</span><span class="sxs-lookup"><span data-stu-id="773b3-213">Use it to set an anchor tag's `href` attribute value to a specific page.</span></span> <span data-ttu-id="773b3-214">La dirección URL se crea al prefijar el nombre de la página con una barra diagonal ("/").</span><span class="sxs-lookup"><span data-stu-id="773b3-214">Prefixing the page name with a forward slash ("/") creates the URL.</span></span>
+<span data-ttu-id="dff14-212">El atributo [asp-Page](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Page*) se usa con Razor las páginas.</span><span class="sxs-lookup"><span data-stu-id="dff14-212">The [asp-page](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Page*) attribute is used with Razor Pages.</span></span> <span data-ttu-id="dff14-213">Úselo para establecer el valor del atributo `href` de una etiqueta delimitadora en una página específica.</span><span class="sxs-lookup"><span data-stu-id="dff14-213">Use it to set an anchor tag's `href` attribute value to a specific page.</span></span> <span data-ttu-id="dff14-214">La dirección URL se crea al prefijar el nombre de la página con una barra diagonal ("/").</span><span class="sxs-lookup"><span data-stu-id="dff14-214">Prefixing the page name with a forward slash ("/") creates the URL.</span></span>
 
-<span data-ttu-id="773b3-215">El siguiente ejemplo señala a la página de asistentes Razor :</span><span class="sxs-lookup"><span data-stu-id="773b3-215">The following sample points to the attendee Razor Page:</span></span>
+<span data-ttu-id="dff14-215">El siguiente ejemplo señala a la página de asistentes Razor :</span><span class="sxs-lookup"><span data-stu-id="dff14-215">The following sample points to the attendee Razor Page:</span></span>
 
 [!code-cshtml[](samples/TagHelpersBuiltIn/Views/Home/Index.cshtml?name=snippet_AspPage)]
 
-<span data-ttu-id="773b3-216">El código HTML generado:</span><span class="sxs-lookup"><span data-stu-id="773b3-216">The generated HTML:</span></span>
+<span data-ttu-id="dff14-216">El código HTML generado:</span><span class="sxs-lookup"><span data-stu-id="dff14-216">The generated HTML:</span></span>
 
 ```html
 <a href="/Attendee">All Attendees</a>
 ```
 
-<span data-ttu-id="773b3-217">El atributo `asp-page` es mutuamente excluyente con los atributos `asp-route`, `asp-controller` y `asp-action`.</span><span class="sxs-lookup"><span data-stu-id="773b3-217">The `asp-page` attribute is mutually exclusive with the `asp-route`, `asp-controller`, and `asp-action` attributes.</span></span> <span data-ttu-id="773b3-218">Pero se puede usar `asp-page` con `asp-route-{value}` para controlar el enrutamiento, como se muestra en el siguiente marcado:</span><span class="sxs-lookup"><span data-stu-id="773b3-218">However, `asp-page` can be used with `asp-route-{value}` to control routing, as the following markup demonstrates:</span></span>
+<span data-ttu-id="dff14-217">El atributo `asp-page` es mutuamente excluyente con los atributos `asp-route`, `asp-controller` y `asp-action`.</span><span class="sxs-lookup"><span data-stu-id="dff14-217">The `asp-page` attribute is mutually exclusive with the `asp-route`, `asp-controller`, and `asp-action` attributes.</span></span> <span data-ttu-id="dff14-218">Pero se puede usar `asp-page` con `asp-route-{value}` para controlar el enrutamiento, como se muestra en el siguiente marcado:</span><span class="sxs-lookup"><span data-stu-id="dff14-218">However, `asp-page` can be used with `asp-route-{value}` to control routing, as the following markup demonstrates:</span></span>
 
 [!code-cshtml[](samples/TagHelpersBuiltIn/Views/Home/Index.cshtml?name=snippet_AspPageAspRouteId)]
 
-<span data-ttu-id="773b3-219">El código HTML generado:</span><span class="sxs-lookup"><span data-stu-id="773b3-219">The generated HTML:</span></span>
+<span data-ttu-id="dff14-219">El código HTML generado:</span><span class="sxs-lookup"><span data-stu-id="dff14-219">The generated HTML:</span></span>
 
 ```html
 <a href="/Attendee?attendeeid=10">View Attendee</a>
 ```
 
-### <a name="asp-page-handler"></a><span data-ttu-id="773b3-220">asp-page-handler</span><span class="sxs-lookup"><span data-stu-id="773b3-220">asp-page-handler</span></span>
+### <a name="asp-page-handler"></a><span data-ttu-id="dff14-220">asp-page-handler</span><span class="sxs-lookup"><span data-stu-id="dff14-220">asp-page-handler</span></span>
 
-<span data-ttu-id="773b3-221">El atributo [asp-Page-handler](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.PageHandler*) se usa con Razor las páginas.</span><span class="sxs-lookup"><span data-stu-id="773b3-221">The [asp-page-handler](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.PageHandler*) attribute is used with Razor Pages.</span></span> <span data-ttu-id="773b3-222">Está diseñado para crear un vínculo con controladores de página específicos.</span><span class="sxs-lookup"><span data-stu-id="773b3-222">It's intended for linking to specific page handlers.</span></span>
+<span data-ttu-id="dff14-221">El atributo [asp-Page-handler](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.PageHandler*) se usa con Razor las páginas.</span><span class="sxs-lookup"><span data-stu-id="dff14-221">The [asp-page-handler](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.PageHandler*) attribute is used with Razor Pages.</span></span> <span data-ttu-id="dff14-222">Está diseñado para crear un vínculo con controladores de página específicos.</span><span class="sxs-lookup"><span data-stu-id="dff14-222">It's intended for linking to specific page handlers.</span></span>
 
-<span data-ttu-id="773b3-223">Observe el siguiente controlador de página:</span><span class="sxs-lookup"><span data-stu-id="773b3-223">Consider the following page handler:</span></span>
+<span data-ttu-id="dff14-223">Observe el siguiente controlador de página:</span><span class="sxs-lookup"><span data-stu-id="dff14-223">Consider the following page handler:</span></span>
 
 [!code-csharp[](samples/TagHelpersBuiltIn/Pages/Attendee.cshtml.cs?name=snippet_OnGetProfileHandler)]
 
-<span data-ttu-id="773b3-224">El marcado asociado del modelo de página se vincula con el controlador de página `OnGetProfile`.</span><span class="sxs-lookup"><span data-stu-id="773b3-224">The page model's associated markup links to the `OnGetProfile` page handler.</span></span> <span data-ttu-id="773b3-225">Tenga en cuenta que el prefijo `On<Verb>` del nombre de método del controlador de página se omite en el valor del atributo `asp-page-handler`.</span><span class="sxs-lookup"><span data-stu-id="773b3-225">Note the `On<Verb>` prefix of the page handler method name is omitted in the `asp-page-handler` attribute value.</span></span> <span data-ttu-id="773b3-226">Cuando el método es asincrónico, también se omite el sufijo `Async`.</span><span class="sxs-lookup"><span data-stu-id="773b3-226">When the method is asynchronous, the `Async` suffix is omitted, too.</span></span>
+<span data-ttu-id="dff14-224">El marcado asociado del modelo de página se vincula con el controlador de página `OnGetProfile`.</span><span class="sxs-lookup"><span data-stu-id="dff14-224">The page model's associated markup links to the `OnGetProfile` page handler.</span></span> <span data-ttu-id="dff14-225">Tenga en cuenta que el prefijo `On<Verb>` del nombre de método del controlador de página se omite en el valor del atributo `asp-page-handler`.</span><span class="sxs-lookup"><span data-stu-id="dff14-225">Note the `On<Verb>` prefix of the page handler method name is omitted in the `asp-page-handler` attribute value.</span></span> <span data-ttu-id="dff14-226">Cuando el método es asincrónico, también se omite el sufijo `Async`.</span><span class="sxs-lookup"><span data-stu-id="dff14-226">When the method is asynchronous, the `Async` suffix is omitted, too.</span></span>
 
 [!code-cshtml[](samples/TagHelpersBuiltIn/Views/Home/Index.cshtml?name=snippet_AspPageHandler)]
 
-<span data-ttu-id="773b3-227">El código HTML generado:</span><span class="sxs-lookup"><span data-stu-id="773b3-227">The generated HTML:</span></span>
+<span data-ttu-id="dff14-227">El código HTML generado:</span><span class="sxs-lookup"><span data-stu-id="dff14-227">The generated HTML:</span></span>
 
 ```html
 <a href="/Attendee?attendeeid=12&handler=Profile">Attendee Profile</a>
 ```
 
-## <a name="additional-resources"></a><span data-ttu-id="773b3-228">Recursos adicionales</span><span class="sxs-lookup"><span data-stu-id="773b3-228">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="dff14-228">Recursos adicionales</span><span class="sxs-lookup"><span data-stu-id="dff14-228">Additional resources</span></span>
 
 * <xref:mvc/controllers/areas>
 * <xref:razor-pages/index>
