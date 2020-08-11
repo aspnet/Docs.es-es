@@ -5,7 +5,7 @@ description: Obtenga información sobre cómo depurar aplicaciones Blazor.
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/27/2020
+ms.date: 07/30/2020
 no-loc:
 - Blazor
 - Blazor Server
@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/debug
-ms.openlocfilehash: b4199c3a99af5875c5d9a87f29f7c7e2758ffd71
-ms.sourcegitcommit: 5a36758cca2861aeb10840093e46d273a6e6e91d
+ms.openlocfilehash: cb0a8737fb975db285986d18b995e488f09580e8
+ms.sourcegitcommit: 37f6f2e13ceb4eae268d20973d76e4b83acf6a24
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87303565"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87526295"
 ---
 # <a name="debug-aspnet-core-no-locblazor-webassembly"></a>Depuración de Blazor WebAssembly en ASP.NET Core
 
@@ -245,3 +245,33 @@ Si se encuentra con errores, las sugerencias siguientes pueden ser útiles:
 * En la pestaña **Depurador**, abra las herramientas para desarrolladores en el explorador. En la consola, ejecute `localStorage.clear()` para quitar los puntos de interrupción.
 * Confirme que instaló el certificado de desarrollo HTTPS de ASP.NET Core y que es de confianza. Para obtener más información, vea <xref:security/enforcing-ssl#troubleshoot-certificate-problems>.
 * Visual Studio requiere la opción **Habilitar depuración de JavaScript para ASP.NET (IE, Edge y Chrome)** , en **Herramientas** > **Opciones** > **Depuración** > **General**. Es el valor predeterminado para Visual Studio. Si la depuración no funciona, confirme que la opción está seleccionada.
+
+### <a name="breakpoints-in-oninitializedasync-not-hit"></a>Puntos de interrupción de `OnInitialized{Async}` no ejecutados
+
+El proxy de depuración del marco de trabajo de Blazor tarda poco tiempo en iniciarse, por lo que es posible que no se ejecuten los puntos de interrupción en el [método de ciclo de vida `OnInitialized{Async}`](xref:blazor/components/lifecycle#component-initialization-methods). Se recomienda agregar un retraso al principio del cuerpo del método para dar al proxy de depuración un tiempo para que se inicie antes de que se ejecute el punto de interrupción. Puede incluir el retraso según una [directiva de compilador `if`](/dotnet/csharp/language-reference/preprocessor-directives/preprocessor-if) para asegurarse de que el retraso no está presente en una compilación de versión de la aplicación.
+
+<xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitialized%2A>:
+
+```csharp
+protected override void OnInitialized()
+{
+#if DEBUG
+    Thread.Sleep(10000)
+#endif
+
+    ...
+}
+```
+
+<xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A>:
+
+```csharp
+protected override async Task OnInitializedAsync()
+{
+#if DEBUG
+    await Task.Delay(10000)
+#endif
+
+    ...
+}
+```

@@ -7,20 +7,20 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/05/2019
 no-loc:
-- '[Blazor'
-- '[Blazor Server'
-- '[Blazor WebAssembly'
-- '[Identity'
-- "[Let's Encrypt"
-- '[Razor'
-- '[SignalR'
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: fundamentals/error-handling
-ms.openlocfilehash: 857b4935816d0010fa425ce98f938c87eb35a581
-ms.sourcegitcommit: 895e952aec11c91d703fbdd3640a979307b8cc67
+ms.openlocfilehash: 7bc21901fe1e9ddf604abf3b5bfecdb8a319f12c
+ms.sourcegitcommit: ca6a1f100c1a3f59999189aa962523442dd4ead1
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85793453"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87444095"
 ---
 # <a name="handle-errors-in-aspnet-core"></a>Controlar errores en ASP.NET Core
 
@@ -36,7 +36,7 @@ En la *Página de excepciones para el desarrollador* se muestra información det
 
 [!code-csharp[](error-handling/samples/2.x/ErrorHandlingSample/Startup.cs?name=snippet_DevPageAndHandlerPage&highlight=1-4)]
 
-Realice una llamada a <xref:Microsoft.AspNetCore.Builder.DeveloperExceptionPageExtensions.UseDeveloperExceptionPage*> antes de cualquier middleware donde quiera capturar excepciones.
+Realice una llamada a <xref:Microsoft.AspNetCore.Builder.DeveloperExceptionPageExtensions.UseDeveloperExceptionPage%2A> antes de cualquier middleware donde quiera capturar excepciones.
 
 > [!WARNING]
 > Habilite la página de excepciones para el desarrollador **solo cuando la aplicación se ejecute en el entorno de desarrollo**. No le interesa compartir públicamente información detallada sobre las excepciones cuando la aplicación se ejecute en producción. Para más información sobre la configuración de entornos, consulte <xref:fundamentals/environments>.
@@ -57,11 +57,11 @@ Para configurar una página de control de errores personalizada para el entorno 
 * Captura y registra las excepciones.
 * Vuelve a ejecutar la solicitud en una canalización alternativa correspondiente a la página o el controlador indicados. La solicitud no se vuelve a ejecutar si se ha iniciado la respuesta.
 
-En el ejemplo siguiente, <xref:Microsoft.AspNetCore.Builder.ExceptionHandlerExtensions.UseExceptionHandler*> agrega middleware de control de excepciones en entornos que no son de desarrollo:
+En el ejemplo siguiente, <xref:Microsoft.AspNetCore.Builder.ExceptionHandlerExtensions.UseExceptionHandler%2A> agrega middleware de control de excepciones en entornos que no son de desarrollo:
 
 [!code-csharp[](error-handling/samples/2.x/ErrorHandlingSample/Startup.cs?name=snippet_DevPageAndHandlerPage&highlight=5-9)]
 
-La plantilla de aplicación de [Razor Pages proporciona una página de error ( *.cshtml*) y una clase <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel> (`ErrorModel`) en la carpeta *Pages*. Para una aplicación de MVC, la plantilla de proyecto incluye un método de acción para el error y una vista del error. Este es el método de acción:
+La plantilla de aplicación de Razor Pages proporciona una página de error ( *.cshtml*) y una clase <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel> (`ErrorModel`) en la carpeta *Pages*. Para una aplicación de MVC, la plantilla de proyecto incluye un método de acción para el error y una vista del error. Este es el método de acción:
 
 ```csharp
 [AllowAnonymous]
@@ -87,7 +87,7 @@ Para ver la página de control de excepciones en la [aplicación de ejemplo](htt
 
 ## <a name="exception-handler-lambda"></a>Lambda del controlador de excepciones
 
-Una alternativa a una [página del controlador de excepciones personalizada](#exception-handler-page) es proporcionar una expresión lambda en <xref:Microsoft.AspNetCore.Builder.ExceptionHandlerExtensions.UseExceptionHandler*>. Usar una expresión lambda permite acceder al error antes de devolver la respuesta.
+Una alternativa a una [página del controlador de excepciones personalizada](#exception-handler-page) es proporcionar una expresión lambda en <xref:Microsoft.AspNetCore.Builder.ExceptionHandlerExtensions.UseExceptionHandler%2A>. Usar una expresión lambda permite acceder al error antes de devolver la respuesta.
 
 Este es un ejemplo del uso de una expresión lambda para el control de excepciones:
 
@@ -106,7 +106,7 @@ Una aplicación ASP.NET Core no proporciona de forma predeterminada una página 
 
 El middleware está disponible mediante el paquete [Microsoft.AspNetCore.Diagnostics](https://www.nuget.org/packages/Microsoft.AspNetCore.Diagnostics/), que se encuentra en el [metapaquete Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app).
 
-Para habilitar los controladores de solo texto predeterminados para los códigos de estado de error comunes, llame a <xref:Microsoft.AspNetCore.Builder.StatusCodePagesExtensions.UseStatusCodePages*> en el método `Startup.Configure`:
+Para habilitar los controladores de solo texto predeterminados para los códigos de estado de error comunes, llame a <xref:Microsoft.AspNetCore.Builder.StatusCodePagesExtensions.UseStatusCodePages%2A> en el método `Startup.Configure`:
 
 [!code-csharp[](error-handling/samples/2.x/ErrorHandlingSample/Startup.cs?name=snippet_StatusCodePages)]
 
@@ -122,26 +122,26 @@ Para ver alguno de los distintos formatos de la página de códigos de estado en
 
 ## <a name="usestatuscodepages-with-format-string"></a>UseStatusCodePages con cadena de formato
 
-Para personalizar el texto y el tipo de contenido de la respuesta, use la sobrecarga de <xref:Microsoft.AspNetCore.Builder.StatusCodePagesExtensions.UseStatusCodePages*> que adopta una cadena de tipo de contenido y formato:
+Para personalizar el texto y el tipo de contenido de la respuesta, use la sobrecarga de <xref:Microsoft.AspNetCore.Builder.StatusCodePagesExtensions.UseStatusCodePages%2A> que adopta una cadena de tipo de contenido y formato:
 
 [!code-csharp[](error-handling/samples/2.x/ErrorHandlingSample/Startup.cs?name=snippet_StatusCodePagesFormatString)]
 
 ## <a name="usestatuscodepages-with-lambda"></a>UseStatusCodePages con una expresión lambda
 
-Para especificar el código de escritura de respuesta y control de errores personalizado, use la sobrecarga de <xref:Microsoft.AspNetCore.Builder.StatusCodePagesExtensions.UseStatusCodePages*> que adopta una expresión lambda:
+Para especificar el código de escritura de respuesta y control de errores personalizado, use la sobrecarga de <xref:Microsoft.AspNetCore.Builder.StatusCodePagesExtensions.UseStatusCodePages%2A> que adopta una expresión lambda:
 
 [!code-csharp[](error-handling/samples/2.x/ErrorHandlingSample/Startup.cs?name=snippet_StatusCodePagesLambda)]
 
 ## <a name="usestatuscodepageswithredirects"></a>UseStatusCodePagesWithRedirects
 
-Método de extensión <xref:Microsoft.AspNetCore.Builder.StatusCodePagesExtensions.UseStatusCodePagesWithRedirects*>:
+Método de extensión <xref:Microsoft.AspNetCore.Builder.StatusCodePagesExtensions.UseStatusCodePagesWithRedirects%2A>:
 
 * Envía un código de estado *302 - Encontrado* al cliente.
 * Redirige al cliente a la ubicación proporcionada en la plantilla de dirección URL.
 
 [!code-csharp[](error-handling/samples/2.x/ErrorHandlingSample/Startup.cs?name=snippet_StatusCodePagesWithRedirect)]
 
-La plantilla de dirección URL puede incluir un marcador de posición `{0}` para el código de estado, como se muestra en el ejemplo. Si la plantilla de dirección URL comienza con una tilde (~), esta se sustituye por el atributo `PathBase` de la aplicación. Si apunta a un punto de conexión de dentro de la aplicación, cree una vista de MVC o una página de [Razor para ese punto de conexión. Para obtener un ejemplo de [Razor Pages, vea *Pages/StatusCode.cshtml* en la [aplicación de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/error-handling/samples).
+La plantilla de dirección URL puede incluir un marcador de posición `{0}` para el código de estado, como se muestra en el ejemplo. Si la plantilla de dirección URL comienza con una tilde (~), esta se sustituye por el atributo `PathBase` de la aplicación. Si apunta a un punto de conexión de dentro de la aplicación, cree una vista de MVC o una página de Razor para ese punto de conexión. Para obtener un ejemplo de Razor Pages, vea *Pages/StatusCode.cshtml* en la [aplicación de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/error-handling/samples).
 
 Este método se usa normalmente cuando la aplicación:
 
@@ -150,21 +150,21 @@ Este método se usa normalmente cuando la aplicación:
 
 ## <a name="usestatuscodepageswithreexecute"></a>UseStatusCodePagesWithReExecute
 
-Método de extensión <xref:Microsoft.AspNetCore.Builder.StatusCodePagesExtensions.UseStatusCodePagesWithReExecute*>:
+Método de extensión <xref:Microsoft.AspNetCore.Builder.StatusCodePagesExtensions.UseStatusCodePagesWithReExecute%2A>:
 
 * Devuelve el código de estado original al cliente.
 * Genera el cuerpo de respuesta, para lo cual vuelve a ejecutar la canalización de solicitud mediante una ruta de acceso alternativa.
 
 [!code-csharp[](error-handling/samples/2.x/ErrorHandlingSample/Startup.cs?name=snippet_StatusCodePagesWithReExecute)]
 
-Si apunta a un punto de conexión de dentro de la aplicación, cree una vista de MVC o una página de [Razor para ese punto de conexión. Para obtener un ejemplo de [Razor Pages, vea *Pages/StatusCode.cshtml* en la [aplicación de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/error-handling/samples).
+Si apunta a un punto de conexión de dentro de la aplicación, cree una vista de MVC o una página de Razor para ese punto de conexión. Asegúrese de que `UseStatusCodePagesWithReExecute` se coloca antes de `UseRouting` para que la solicitud se pueda volver a enrutar a la página de estado. Para obtener un ejemplo de Razor Pages, vea *Pages/StatusCode.cshtml* en la [aplicación de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/error-handling/samples).
 
 Este método se usa normalmente cuando la aplicación debe:
 
 * Procesar la solicitud sin redirigirla a un punto de conexión diferente. En el caso de aplicaciones web, la barra de direcciones del explorador del cliente refleja el punto de conexión solicitado originalmente.
 * Conservar y devolver el código de estado original con la respuesta.
 
-Las plantillas de dirección URL y cadena de consulta pueden incluir un marcador de posición (`{0}`) relativo al código de estado. La plantilla de dirección URL debe empezar con una barra diagonal (`/`). Cuando se use un marcador de posición en la ruta de acceso, confirme que el punto de conexión (página o controlador) puede procesar el segmento de línea. Por ejemplo, una página de [Razor de errores debe aceptar el valor de segmento de línea opcional con la directiva `@page`:
+Las plantillas de dirección URL y cadena de consulta pueden incluir un marcador de posición (`{0}`) relativo al código de estado. La plantilla de dirección URL debe empezar con una barra diagonal (`/`). Cuando se use un marcador de posición en la ruta de acceso, confirme que el punto de conexión (página o controlador) puede procesar el segmento de línea. Por ejemplo, una página de Razor de errores debe aceptar el valor de segmento de línea opcional con la directiva `@page`:
 
 ```cshtml
 @page "{code?}"
@@ -178,7 +178,7 @@ El punto de conexión que procesa el error puede obtener la dirección URL origi
 
 Para deshabilitar las páginas de códigos de estado de un método de acción o controlador MVC, use el atributo [`[SkipStatusCodePages]`](xref:Microsoft.AspNetCore.Mvc.SkipStatusCodePagesAttribute).
 
-Para deshabilitar las páginas de códigos de estado de solicitudes específicas de un método de controlador de [Razor Pages o un controlador MVC, use <xref:Microsoft.AspNetCore.Diagnostics.IStatusCodePagesFeature>:
+Para deshabilitar las páginas de códigos de estado de solicitudes específicas de un método de controlador de Razor Pages o un controlador MVC, use <xref:Microsoft.AspNetCore.Diagnostics.IStatusCodePagesFeature>:
 
 ```csharp
 var statusCodePagesFeature = HttpContext.Features.Get<IStatusCodePagesFeature>();
@@ -233,7 +233,7 @@ if (env.IsDevelopment())
 
 ## <a name="exception-filters"></a>Filtros de excepciones
 
-En las aplicaciones de MVC, los filtros de excepciones se pueden configurar globalmente, o bien por controlador o por acción. En las aplicaciones de [Razor Pages, se pueden configurar a nivel global o por modelo de página. Estos filtros controlan todas las excepciones no controladas que se hayan producido durante la ejecución de una acción de controlador o de otro filtro. Para obtener más información, vea <xref:mvc/controllers/filters#exception-filters>.
+En las aplicaciones de MVC, los filtros de excepciones se pueden configurar globalmente, o bien por controlador o por acción. En las aplicaciones de Razor Pages, se pueden configurar a nivel global o por modelo de página. Estos filtros controlan todas las excepciones no controladas que se hayan producido durante la ejecución de una acción de controlador o de otro filtro. Para obtener más información, vea <xref:mvc/controllers/filters#exception-filters>.
 
 > [!TIP]
 > Los filtros de excepciones son útiles para interceptar las excepciones que se producen en las acciones de MVC, pero no son tan flexibles como el middleware de control de excepciones. Se recomienda usar el middleware. Use filtros únicamente cuando deba realizar el control de errores de manera diferente según la acción de MVC elegida.

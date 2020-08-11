@@ -5,7 +5,7 @@ description: Obtenga información sobre cómo configurar Blazor WebAssembly en o
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 06/24/2020
+ms.date: 08/03/2020
 no-loc:
 - Blazor
 - Blazor Server
@@ -15,29 +15,79 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/additional-scenarios
-ms.openlocfilehash: 79f7b2177d6d07101c73cde841c062b0e1468593
-ms.sourcegitcommit: 384833762c614851db653b841cc09fbc944da463
+ms.openlocfilehash: 81ab2bb139dfcbea712d4eb51acfc9d7f6767d46
+ms.sourcegitcommit: 84150702757cf7a7b839485382420e8db8e92b9c
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/17/2020
-ms.locfileid: "86445156"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87818838"
 ---
-# <a name="aspnet-core-blazor-webassembly-additional-security-scenarios"></a>Otros escenarios de seguridad de Blazor WebAssembly en ASP.NET Core
+# <a name="aspnet-core-no-locblazor-webassembly-additional-security-scenarios"></a>Otros escenarios de seguridad de Blazor WebAssembly en ASP.NET Core
 
 Por [Javier Calvarro Nelson](https://github.com/javiercn) y [Luke Latham](https://github.com/guardrex)
 
 ## <a name="attach-tokens-to-outgoing-requests"></a>Adjuntar tokens a solicitudes salientes
 
-El servicio <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler> se puede usar con <xref:System.Net.Http.HttpClient> para adjuntar tokens de acceso a solicitudes salientes. Los tokens se obtienen usando el servicio <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.IAccessTokenProvider> existente. Si no se puede obtener un token, se produce una excepción <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AccessTokenNotAvailableException>. <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AccessTokenNotAvailableException> tiene un método <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AccessTokenNotAvailableException.Redirect%2A> que se puede usar para llevar al usuario al proveedor de identidades para obtener un nuevo token. <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler> se puede configurar con las direcciones URL, los ámbitos y la dirección URL de retorno autorizados usando el método <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler.ConfigureHandler%2A>.
+<xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler> es un elemento <xref:System.Net.Http.DelegatingHandler> que se usa para asociar los tokens de acceso a las instancias de <xref:System.Net.Http.HttpResponseMessage> salientes. Los tokens se adquieren mediante el servicio <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.IAccessTokenProvider>, registrado por el marco de trabajo. Si no se puede obtener un token, se produce una excepción <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AccessTokenNotAvailableException>. <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AccessTokenNotAvailableException> tiene un método <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AccessTokenNotAvailableException.Redirect%2A> que se puede usar para llevar al usuario al proveedor de identidades para obtener un nuevo token.
 
-Siga cualquiera de los métodos siguientes para configurar un controlador de mensajes para solicitudes salientes:
+Para mayor comodidad, el marco de trabajo proporciona el elemento <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.BaseAddressAuthorizationMessageHandler> preconfigurado con la dirección base de la aplicación como una dirección URL autorizada. **Los tokens de acceso solo se agregan cuando el URI de solicitud se encuentra dentro del URI base de la aplicación**. Cuando los URI de solicitud de salida no están dentro del URI base de la aplicación, use una [clase `AuthorizationMessageHandler` personalizada (*recomendado*)](#custom-authorizationmessagehandler-class) o [configure `AuthorizationMessageHandler`](#configure-authorizationmessagehandler).
 
-* [Clase `AuthorizationMessageHandler` personalizada](#custom-authorizationmessagehandler-class) (*recomendado*)
-* [Configurar `AuthorizationMessageHandler`](#configure-authorizationmessagehandler)
+> [!NOTE]
+> Además de la configuración de la aplicación cliente para el acceso a la API del servidor, la API del servidor también debe permitir solicitudes entre orígenes (CORS) cuando el cliente y el servidor no residen en la misma dirección base. Para obtener más información sobre la configuración de CORS del lado servidor, consulte la sección [Uso compartido de recursos entre orígenes (CORS)](#cross-origin-resource-sharing-cors) más adelante en este artículo.
 
-### <a name="custom-authorizationmessagehandler-class"></a>Clase AuthorizationMessageHandler personalizada
+En el ejemplo siguiente:
 
-En el siguiente ejemplo, una clase personalizada amplía <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler>, que se puede usar para configurar un cliente <xref:System.Net.Http.HttpClient>:
+* <xref:Microsoft.Extensions.DependencyInjection.HttpClientFactoryServiceCollectionExtensions.AddHttpClient%2A> agrega <xref:System.Net.Http.IHttpClientFactory> y los servicios relacionados a la colección de servicios y configura un objeto <xref:System.Net.Http.HttpClient> con nombre (`ServerAPI`). <xref:System.Net.Http.HttpClient.BaseAddress?displayProperty=nameWithType> es la dirección base del URI del recurso cuando se envían solicitudes. <xref:System.Net.Http.IHttpClientFactory> lo proporciona el paquete de NuGet [`Microsoft.Extensions.Http`](https://www.nuget.org/packages/Microsoft.Extensions.Http).
+* <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.BaseAddressAuthorizationMessageHandler> es el elemento <xref:System.Net.Http.DelegatingHandler> que se usa para asociar los tokens de acceso a las instancias de <xref:System.Net.Http.HttpResponseMessage> salientes. Los tokens de acceso solo se agregan cuando el URI de solicitud se encuentra dentro del URI base de la aplicación.
+* <xref:System.Net.Http.IHttpClientFactory.CreateClient%2A?displayProperty=nameWithType> crea y configura una instancia de <xref:System.Net.Http.HttpClient> para las solicitudes salientes mediante la configuración que corresponde al elemento denominado <xref:System.Net.Http.HttpClient> (`ServerAPI`).
+
+```csharp
+using System.Net.Http;
+using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
+
+...
+
+builder.Services.AddHttpClient("ServerAPI", 
+        client => client.BaseAddress = new Uri("https://www.example.com/base"))
+    .AddHttpMessageHandler<BaseAddressAuthorizationMessageHandler>();
+
+builder.Services.AddScoped(sp => sp.GetRequiredService<IHttpClientFactory>()
+    .CreateClient("ServerAPI"));
+```
+
+En el caso de una aplicación Blazor basada en la plantilla del proyecto hospedada Blazor WebAssembly, los URI de solicitud se encuentran en el URI base de la aplicación de forma predeterminada. Por lo tanto, <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType> (`new Uri(builder.HostEnvironment.BaseAddress)`) se asigna al elemento <xref:System.Net.Http.HttpClient.BaseAddress?displayProperty=nameWithType> en una aplicación generada a partir de la plantilla del proyecto.
+
+El cliente <xref:System.Net.Http.HttpClient> configurado se usa para realizar solicitudes autorizadas por medio del patrón [`try-catch`](/dotnet/csharp/language-reference/keywords/try-catch):
+
+```razor
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+@inject HttpClient Client
+
+...
+
+protected override async Task OnInitializedAsync()
+{
+    private ExampleType[] examples;
+
+    try
+    {
+        examples = 
+            await Client.GetFromJsonAsync<ExampleType[]>("ExampleAPIMethod");
+
+        ...
+    }
+    catch (AccessTokenNotAvailableException exception)
+    {
+        exception.Redirect();
+    }
+}
+```
+
+### <a name="custom-authorizationmessagehandler-class"></a>Clase `AuthorizationMessageHandler` personalizada
+
+*Las instrucciones de esta sección se recomiendan para las aplicaciones cliente que realizan solicitudes salientes a los URI que no están dentro del URI base de la aplicación*.
+
+En el ejemplo siguiente, una clase personalizada extiende <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler> para su uso como <xref:System.Net.Http.DelegatingHandler> de un <xref:System.Net.Http.HttpClient>. <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler.ConfigureHandler%2A> configura este controlador para autorizar las solicitudes HTTP salientes mediante un token de acceso. El token de acceso solo se adjunta si al menos una de las direcciones URL autorizadas es una base del URI de solicitud (<xref:System.Net.Http.HttpRequestMessage.RequestUri?displayProperty=nameWithType>).
 
 ```csharp
 using Microsoft.AspNetCore.Components;
@@ -56,7 +106,7 @@ public class CustomAuthorizationMessageHandler : AuthorizationMessageHandler
 }
 ```
 
-En `Program.Main` (`Program.cs`), un cliente <xref:System.Net.Http.HttpClient> se configura con el controlador de mensajes de autorización personalizado:
+En `Program.Main` (`Program.cs`), `CustomAuthorizationMessageHandler` se registra como un servicio con ámbito y se configura como <xref:System.Net.Http.DelegatingHandler> para las instancias de <xref:System.Net.Http.HttpResponseMessage> salientes realizadas por un elemento llamado <xref:System.Net.Http.HttpClient>:
 
 ```csharp
 builder.Services.AddScoped<CustomAuthorizationMessageHandler>();
@@ -66,9 +116,9 @@ builder.Services.AddHttpClient("ServerAPI",
     .AddHttpMessageHandler<CustomAuthorizationMessageHandler>();
 ```
 
-En el caso de una aplicación Blazor basada en la plantilla hospedada Blazor WebAssembly, <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType> (`new Uri(builder.HostEnvironment.BaseAddress)`) se puede asignar a <xref:System.Net.Http.HttpClient.BaseAddress?displayProperty=nameWithType>.
+En el caso de una aplicación Blazor basada en la plantilla del proyecto hospedada Blazor WebAssembly, <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType> (`new Uri(builder.HostEnvironment.BaseAddress)`) se asigna al elemento <xref:System.Net.Http.HttpClient.BaseAddress?displayProperty=nameWithType> de forma predeterminada.
 
-El cliente <xref:System.Net.Http.HttpClient> configurado se usa para realizar solicitudes autorizadas por medio del patrón [`try-catch`](/dotnet/csharp/language-reference/keywords/try-catch). Cuando el cliente se crea con <xref:System.Net.Http.IHttpClientFactory.CreateClient%2A> (paquete [`Microsoft.Extensions.Http`](https://www.nuget.org/packages/Microsoft.Extensions.Http)), se proporcionan instancias al cliente <xref:System.Net.Http.HttpClient> que incluyen tokens de acceso al realizar solicitudes a la API de servidor:
+El cliente <xref:System.Net.Http.HttpClient> configurado se usa para realizar solicitudes autorizadas por medio del patrón [`try-catch`](/dotnet/csharp/language-reference/keywords/try-catch). Cuando el cliente se crea con <xref:System.Net.Http.IHttpClientFactory.CreateClient%2A> (paquete [`Microsoft.Extensions.Http`](https://www.nuget.org/packages/Microsoft.Extensions.Http)), se proporcionan instancias al cliente <xref:System.Net.Http.HttpClient> que incluyen tokens de acceso al realizar solicitudes a la API de servidor. Si el URI de solicitud es un URI relativo, como en el ejemplo siguiente (`ExampleAPIMethod`), se combina con el elemento <xref:System.Net.Http.HttpClient.BaseAddress> cuando la aplicación cliente realiza la solicitud:
 
 ```razor
 @inject IHttpClientFactory ClientFactory
@@ -85,7 +135,7 @@ El cliente <xref:System.Net.Http.HttpClient> configurado se usa para realizar so
             var client = ClientFactory.CreateClient("ServerAPI");
 
             examples = 
-                await client.GetFromJsonAsync<ExampleType[]>("{API METHOD}");
+                await client.GetFromJsonAsync<ExampleType[]>("ExampleAPIMethod");
 
             ...
         }
@@ -93,12 +143,13 @@ El cliente <xref:System.Net.Http.HttpClient> configurado se usa para realizar so
         {
             exception.Redirect();
         }
-        
     }
 }
 ```
 
-### <a name="configure-authorizationmessagehandler"></a>Configurar AuthorizationMessageHandler
+### <a name="configure-authorizationmessagehandler"></a>Configuración de `AuthorizationMessageHandler`
+
+<xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler> se puede configurar con las direcciones URL, los ámbitos y una dirección URL de retorno autorizados usando el método <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler.ConfigureHandler%2A>. <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler.ConfigureHandler%2A> configura el controlador para autorizar las solicitudes HTTP salientes mediante un token de acceso. El token de acceso solo se adjunta si al menos una de las direcciones URL autorizadas es una base del URI de solicitud (<xref:System.Net.Http.HttpRequestMessage.RequestUri?displayProperty=nameWithType>). Si el URI de solicitud es un URI relativo, se combina con el elemento <xref:System.Net.Http.HttpClient.BaseAddress>.
 
 En el siguiente ejemplo, <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler> configura un cliente <xref:System.Net.Http.HttpClient> en `Program.Main` (`Program.cs`):
 
@@ -118,58 +169,12 @@ builder.Services.AddScoped(sp => new HttpClient(
     });
 ```
 
-En el caso de una aplicación Blazor basada en la plantilla hospedada Blazor WebAssembly, <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType> se puede asignar a:
+En el caso de una aplicación Blazor basada en la plantilla del proyecto hospedada Blazor WebAssembly, <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType> se asigna al elemento siguiente de forma predeterminada:
 
 * <xref:System.Net.Http.HttpClient.BaseAddress?displayProperty=nameWithType> (`new Uri(builder.HostEnvironment.BaseAddress)`).
 * Dirección URL de la matriz de `authorizedUrls`.
 
-Para mayor comodidad, se incluye un controlador <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.BaseAddressAuthorizationMessageHandler> ya preconfigurado con la dirección base de la aplicación como dirección URL autorizada. Las plantillas de Blazor WebAssembly habilitadas para la autenticación usan <xref:System.Net.Http.IHttpClientFactory> (paquete [`Microsoft.Extensions.Http`](https://www.nuget.org/packages/Microsoft.Extensions.Http)) en el proyecto de API de servidor para configurar un cliente <xref:System.Net.Http.HttpClient> con el controlador <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.BaseAddressAuthorizationMessageHandler>:
-
-```csharp
-using System.Net.Http;
-using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
-
-...
-
-builder.Services.AddHttpClient("ServerAPI", 
-        client => client.BaseAddress = new Uri("https://www.example.com/base"))
-    .AddHttpMessageHandler<BaseAddressAuthorizationMessageHandler>();
-
-builder.Services.AddScoped(sp => sp.GetRequiredService<IHttpClientFactory>()
-    .CreateClient("ServerAPI"));
-```
-
-En el caso de una aplicación Blazor basada en la plantilla hospedada Blazor WebAssembly, <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType> (`new Uri(builder.HostEnvironment.BaseAddress)`) se puede asignar a <xref:System.Net.Http.HttpClient.BaseAddress?displayProperty=nameWithType>.
-
-Cuando el cliente se crea con <xref:System.Net.Http.IHttpClientFactory.CreateClient%2A> en el ejemplo anterior, se proporcionan instancias al cliente <xref:System.Net.Http.HttpClient> que incluyen tokens de acceso al realizar solicitudes al proyecto de servidor.
-
-El cliente <xref:System.Net.Http.HttpClient> configurado se usa para realizar solicitudes autorizadas por medio del patrón [`try-catch`](/dotnet/csharp/language-reference/keywords/try-catch):
-
-```razor
-@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
-@inject HttpClient Client
-
-...
-
-protected override async Task OnInitializedAsync()
-{
-    private ExampleType[] examples;
-
-    try
-    {
-        examples = 
-            await Client.GetFromJsonAsync<ExampleType[]>("{API METHOD}");
-
-        ...
-    }
-    catch (AccessTokenNotAvailableException exception)
-    {
-        exception.Redirect();
-    }
-}
-```
-
-## <a name="typed-httpclient"></a>HttpClient con tipo
+## <a name="typed-httpclient"></a>Con tipo `HttpClient`
 
 Se puede definir un cliente con tipo que controle todos los problemas de obtención de tokens y HTTP dentro de una misma clase.
 
@@ -225,7 +230,7 @@ builder.Services.AddHttpClient<WeatherForecastClient>(
     .AddHttpMessageHandler<BaseAddressAuthorizationMessageHandler>();
 ```
 
-En el caso de una aplicación Blazor basada en la plantilla hospedada Blazor WebAssembly, <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType> (`new Uri(builder.HostEnvironment.BaseAddress)`) se puede asignar a <xref:System.Net.Http.HttpClient.BaseAddress?displayProperty=nameWithType>.
+En el caso de una aplicación Blazor basada en la plantilla del proyecto hospedada Blazor WebAssembly, <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType> (`new Uri(builder.HostEnvironment.BaseAddress)`) se asigna al elemento <xref:System.Net.Http.HttpClient.BaseAddress?displayProperty=nameWithType> de forma predeterminada.
 
 Componente `FetchData` (`Pages/FetchData.razor`):
 
@@ -240,7 +245,7 @@ protected override async Task OnInitializedAsync()
 }
 ```
 
-## <a name="configure-the-httpclient-handler"></a>Configurar el controlador HttpClient
+## <a name="configure-the-httpclient-handler"></a>Configuración del controlador `HttpClient`
 
 El controlador se puede seguir configurando con <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler.ConfigureHandler%2A> para las solicitudes HTTP salientes.
 
@@ -255,7 +260,7 @@ builder.Services.AddHttpClient<WeatherForecastClient>(
         scopes: new[] { "example.read", "example.write" }));
 ```
 
-En el caso de una aplicación Blazor basada en la plantilla hospedada Blazor WebAssembly, <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType> se puede asignar a:
+En el caso de una aplicación Blazor basada en la plantilla del proyecto hospedada Blazor WebAssembly, <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType> se asigna al elemento siguiente de forma predeterminada:
 
 * <xref:System.Net.Http.HttpClient.BaseAddress?displayProperty=nameWithType> (`new Uri(builder.HostEnvironment.BaseAddress)`).
 * Dirección URL de la matriz de `authorizedUrls`.
@@ -271,7 +276,7 @@ builder.Services.AddHttpClient("ServerAPI.NoAuthenticationClient",
     client => client.BaseAddress = new Uri("https://www.example.com/base"));
 ```
 
-En el caso de una aplicación Blazor basada en la plantilla hospedada Blazor WebAssembly, <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType> (`new Uri(builder.HostEnvironment.BaseAddress)`) se puede asignar a <xref:System.Net.Http.HttpClient.BaseAddress?displayProperty=nameWithType>.
+En el caso de una aplicación Blazor basada en la plantilla del proyecto hospedada Blazor WebAssembly, <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType> (`new Uri(builder.HostEnvironment.BaseAddress)`) se asigna al elemento <xref:System.Net.Http.HttpClient.BaseAddress?displayProperty=nameWithType> de forma predeterminada.
 
 El registro anterior se realiza además del registro de <xref:System.Net.Http.HttpClient> predeterminado seguro existente.
 
@@ -350,7 +355,7 @@ if (tokenResult.TryGetToken(out var token))
 * `true` con el `token` para su uso.
 * `false` si el token no se obtiene.
 
-## <a name="httpclient-and-httprequestmessage-with-fetch-api-request-options"></a>HttpClient y HttpRequestMessage con las opciones de solicitud de Fetch API
+## <a name="httpclient-and-httprequestmessage-with-fetch-api-request-options"></a>`HttpClient` y `HttpRequestMessage` con las opciones de solicitud de Fetch API
 
 Al ejecutar WebAssembly en una aplicación Blazor WebAssembly, [`HttpClient`](xref:fundamentals/http-requests) ([documentación de API](xref:System.Net.Http.HttpClient)) y <xref:System.Net.Http.HttpRequestMessage> se pueden usar para personalizar las solicitudes. Por ejemplo, se puede especificar el método HTTP y los encabezados de solicitud. El siguiente componente realiza una solicitud `POST` a un punto de conexión de API de lista de tareas pendientes en el servidor y muestra el cuerpo de la respuesta:
 
@@ -456,11 +461,13 @@ app.UseCors(policy =>
     .AllowCredentials());
 ```
 
+Una solución hospedada Blazor basada en la plantilla del proyecto hospedada Blazor utiliza la misma dirección base para las aplicaciones cliente y servidor. De forma predeterminada, el elemento <xref:System.Net.Http.HttpClient.BaseAddress?displayProperty=nameWithType> de la aplicación cliente está establecido en un URI de `builder.HostEnvironment.BaseAddress`. La configuración de CORS **no** es necesaria en la configuración predeterminada de una aplicación hospedada creada a partir de la plantilla del proyecto hospedada de Blazor. Las aplicaciones cliente adicionales que no se hospedan en el proyecto de servidor y no comparten la dirección base de la aplicación de servidor **no** requieren la configuración de CORS en el proyecto de servidor.
+
 Para obtener más información, vea <xref:security/cors> y el componente del evaluador de solicitudes HTTP de la aplicación de ejemplo (`Components/HTTPRequestTester.razor`).
 
 ## <a name="handle-token-request-errors"></a>Controlar los errores de solicitudes de token
 
-Cuando una aplicación de página única autentica a un usuario a través de Open ID Connect (OIDC), el estado de autenticación se conserva localmente en dicha aplicación de página única y también en el proveedor de Identity en forma de cookie de sesión que se establece como consecuencia de que un usuario haya especificado sus credenciales.
+Cuando una aplicación de página única autentica a un usuario a través de OpenID Connect (OIDC), el estado de autenticación se conserva localmente en dicha aplicación de página única y también en el proveedor de Identity en forma de cookie de sesión que se establece como consecuencia de que un usuario haya especificado sus credenciales.
 
 Normalmente, los tokens que el proveedor de identidades emite para el usuario son válidos durante un breve período de tiempo (aproximadamente una hora), por lo que la aplicación cliente debe capturar nuevos tokens de manera regular. De lo contrario, se cerrará la sesión del usuario después de que los tokens concedidos expiren. En la mayoría de los casos, los clientes de OIDC pueden aprovisionar nuevos tokens sin necesidad de que el usuario tenga que autenticarse otra vez, gracias al estado de autenticación o a la "sesión" que el proveedor de identidades conserva.
 
@@ -552,7 +559,7 @@ El ejemplo siguiente muestra cómo:
 
 Durante una operación de autenticación, hay casos en los que conviene guardar el estado de la aplicación antes de que el explorador se redirija a la dirección IP. Esto puede suceder cuando se usa un contenedor de estado y se quiere restaurar el estado después de que la autenticación se realice correctamente. Se puede usar un objeto de estado de autenticación personalizado para conservar el estado específico de la aplicación o una referencia a este, y restaurar el estado después de que la operación de autenticación se complete correctamente. Este método se describe en el siguiente ejemplo.
 
-Se crea una clase de contenedor de estado en la aplicación con propiedades que contienen los valores de estado de la aplicación. En el siguiente ejemplo, el contenedor se usa para mantener el valor de contador del componente `Counter` de la plantilla predeterminada (`Pages/Counter.razor`). Los métodos para serializar y deserializar el contenedor se basan en <xref:System.Text.Json>.
+Se crea una clase de contenedor de estado en la aplicación con propiedades que contienen los valores de estado de la aplicación. En el siguiente ejemplo, el contenedor se usa para mantener el valor de contador del componente `Counter` de la plantilla del proyecto predeterminada (`Pages/Counter.razor`). Los métodos para serializar y deserializar el contenedor se basan en <xref:System.Text.Json>.
 
 ```csharp
 using System.Text.Json;
@@ -952,7 +959,7 @@ app.UseEndpoints(endpoints =>
 });
 ```
 
-En la aplicación de servidor, cree una carpeta `Pages`, si todavía no existe. Cree una página `_Host.cshtml` dentro de la carpeta `Pages` de la aplicación de Server. Pegue el contenido del archivo `wwwroot/index.html` de la aplicación cliente en el archivo `Pages/_Host.cshtml`. Actualice el contenido del archivo:
+En la aplicación de servidor, cree una carpeta `Pages`, si todavía no existe. Cree una página `_Host.cshtml` dentro de la carpeta `Pages` de la aplicación de servidor. Pegue el contenido del archivo `wwwroot/index.html` de la aplicación cliente en el archivo `Pages/_Host.cshtml`. Actualice el contenido del archivo:
 
 * Agregue `@page "_Host"` a la parte superior del archivo.
 * Reemplace la etiqueta `<app>Loading...</app>` por la siguiente:
@@ -1015,9 +1022,9 @@ Aunque este enfoque requiere un salto de red adicional a través del servidor pa
 * El servidor puede almacenar tokens de actualización y asegurarse de que la aplicación no pierde el acceso a recursos de terceros.
 * La aplicación no puede filtrar los tokens de acceso del servidor que puedan contener permisos más confidenciales.
 
-## <a name="use-open-id-connect-oidc-v20-endpoints"></a>Usar puntos de conexión de Open ID Connect (OIDC) versión 2.0
+## <a name="use-openid-connect-oidc-v20-endpoints"></a>Uso de puntos de conexión de OpenID Connect (OIDC) v2.0
 
-La Biblioteca de autenticación y las plantillas de Blazor usan puntos de conexión la versión 1.0 de Open ID Connect (OIDC). Para usar un punto de conexión de la versión 2.0, configure la opción <xref:Microsoft.AspNetCore.Builder.JwtBearerOptions.Authority?displayProperty=nameWithType> del portador de JWT. En el siguiente ejemplo, AAD se ha configurado para la versión 2.0 anexando un segmento `v2.0` a la propiedad <xref:Microsoft.AspNetCore.Builder.JwtBearerOptions.Authority>:
+La biblioteca de autenticación y las plantillas de proyecto Blazor usan puntos de conexión de OpenID Connect (OIDC) v1.0. Para usar un punto de conexión de la versión 2.0, configure la opción <xref:Microsoft.AspNetCore.Builder.JwtBearerOptions.Authority?displayProperty=nameWithType> del portador de JWT. En el siguiente ejemplo, AAD se ha configurado para la versión 2.0 anexando un segmento `v2.0` a la propiedad <xref:Microsoft.AspNetCore.Builder.JwtBearerOptions.Authority>:
 
 ```csharp
 builder.Services.Configure<JwtBearerOptions>(

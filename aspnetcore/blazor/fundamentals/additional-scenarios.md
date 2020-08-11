@@ -15,20 +15,20 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/additional-scenarios
-ms.openlocfilehash: b28e4e43b88fcf8eab9e8959142cca21223c57ff
-ms.sourcegitcommit: e216e8f4afa21215dc38124c28d5ee19f5ed7b1e
+ms.openlocfilehash: b32710e515d111b7dd6556f1db55082cd56a82b5
+ms.sourcegitcommit: 84150702757cf7a7b839485382420e8db8e92b9c
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86239639"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87819007"
 ---
-# <a name="aspnet-core-blazor-hosting-model-configuration"></a>Configuración del modelo de hospedaje de Blazor en ASP.NET Core
+# <a name="aspnet-core-no-locblazor-hosting-model-configuration"></a>Configuración del modelo de hospedaje de Blazor en ASP.NET Core
 
-Por [Daniel Roth](https://github.com/danroth27) y [Luke Latham](https://github.com/guardrex)
+Por [Daniel Roth](https://github.com/danroth27), [Mackinnon Buck](https://github.com/MackinnonBuck) y [Luke Latham](https://github.com/guardrex)
 
 En este artículo se describe la configuración del modelo de hospedaje.
 
-### <a name="signalr-cross-origin-negotiation-for-authentication"></a>Negociación entre orígenes de SignalR para la autenticación
+### <a name="no-locsignalr-cross-origin-negotiation-for-authentication"></a>Negociación entre orígenes de SignalR para la autenticación
 
 *Esta sección es aplicable a Blazor WebAssembly.*
 
@@ -125,7 +125,7 @@ Las aplicaciones Blazor Server se configuran de forma predeterminada para realiz
 
 No se admite la representación de componentes de servidor desde una página HTML estática.
 
-## <a name="configure-the-signalr-client-for-blazor-server-apps"></a>Configuración del cliente de SignalR para aplicaciones Blazor Server
+## <a name="configure-the-no-locsignalr-client-for-no-locblazor-server-apps"></a>Configuración del cliente de SignalR para aplicaciones Blazor Server
 
 *Esta sección es aplicable a Blazor Server.*
 
@@ -141,7 +141,7 @@ Para configurar el registro de cliente de SignalR:
 ```cshtml
     ...
 
-    <script src="_framework/blazor.server.js" autostart="false"></script>
+    <script autostart="false" src="_framework/blazor.server.js"></script>
     <script>
       Blazor.start({
         configureSignalR: function (builder) {
@@ -169,7 +169,7 @@ Para modificar los eventos de conexión:
 ```cshtml
     ...
 
-    <script src="_framework/blazor.server.js" autostart="false"></script>
+    <script autostart="false" src="_framework/blazor.server.js"></script>
     <script>
       Blazor.start({
         reconnectionHandler: {
@@ -191,7 +191,7 @@ Para ajustar el número y el intervalo de reintentos de reconexión, siga estos 
 ```cshtml
     ...
 
-    <script src="_framework/blazor.server.js" autostart="false"></script>
+    <script autostart="false" src="_framework/blazor.server.js"></script>
     <script>
       Blazor.start({
         reconnectionOptions: {
@@ -213,7 +213,7 @@ Para ocultar la pantalla de reconexión:
 ```cshtml
     ...
 
-    <script src="_framework/blazor.server.js" autostart="false"></script>
+    <script autostart="false" src="_framework/blazor.server.js"></script>
     <script>
       window.addEventListener('beforeunload', function () {
         Blazor.defaultReconnectionHandler._reconnectionDisplay = {};
@@ -230,6 +230,41 @@ Blazor.defaultReconnectionHandler._reconnectionDisplay =
 ```
 
 El marcador de posición `{ELEMENT ID}` es el identificador del elemento HTML que se va a mostrar.
+
+::: moniker range=">= aspnetcore-5.0"
+
+## <a name="influence-html-head-tag-elements"></a>Influencia en los elementos de etiqueta `<head>`
+
+*Esta sección es aplicable a Blazor WebAssembly y Blazor Server.*
+
+Cuando se representan, los componentes `Title`, `Link` y `Meta` agregan o actualizan los datos en los elementos de etiqueta `<head>` HTML:
+
+```razor
+@using Microsoft.AspNetCore.Components.Web.Extensions.Head
+
+<Title Value="{TITLE}" />
+<Link href="{URL}" rel="stylesheet" />
+<Meta content="{DESCRIPTION}" name="description" />
+```
+
+En el ejemplo anterior, los marcadores de posición de `{TITLE}`, `{URL}` y `{DESCRIPTION}` son valores de cadena, variables de Razor o expresiones de Razor.
+
+Se aplican las siguientes características:
+
+* Se admite la representación previa del lado servidor.
+* El parámetro `Value` es el único parámetro válido para el componente `Title`.
+* Los atributos HTML proporcionados a los componentes `Meta` y `Link` se capturan en [atributos adicionales](xref:blazor/components/index#attribute-splatting-and-arbitrary-parameters) y se pasan a la etiqueta HTML representada.
+* Si se trata de varios componentes `Title`, el título de la página refleja el elemento `Value` del último componente `Title` representado.
+* Si se incluyen varios componentes `Meta` o `Link` con atributos idénticos, hay exactamente una etiqueta HTML representada por componente `Meta` o `Link`. Dos componentes `Meta` o `Link` no pueden hacer referencia a la misma etiqueta HTML representada.
+* Los cambios en los parámetros de los componentes `Meta` o `Link` existentes se reflejan en sus etiquetas HTML representadas.
+* Cuando los componentes `Link` o `Meta` ya no se representan y, por lo tanto, el marco de trabajo los elimina, se quitan sus etiquetas HTML representadas.
+
+Cuando se usa uno de los componentes de .NET Framework en un componente secundario, la etiqueta HTML representada influye en cualquier otro componente secundario del componente primario, siempre que se represente el componente secundario que contiene el componente del marco de trabajo. La distinción entre el uso de uno de estos componentes del marco de trabajo en un componente secundario y la colocación de una etiqueta HTML en `wwwroot/index.html` o `Pages/_Host.cshtml` es que la etiqueta HTML representada de un componente del marco de trabajo:
+
+* Se puede modificar según el estado de la aplicación. No se puede modificar una etiqueta HTML codificada de forma rígida según el estado de la aplicación.
+* Se quita del elemento HTML `<head>` cuando ya no se representa el componente primario.
+
+::: moniker-end
 
 ## <a name="additional-resources"></a>Recursos adicionales
 

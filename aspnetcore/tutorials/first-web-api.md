@@ -14,12 +14,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-web-api
-ms.openlocfilehash: 2383934070a65b8131e890a170186b736d3fcec0
-ms.sourcegitcommit: d00a200bc8347af794b24184da14ad5c8b6bba9a
+ms.openlocfilehash: b6a189907f521d7d9d18c1373747a13ab38a621f
+ms.sourcegitcommit: ca6a1f100c1a3f59999189aa962523442dd4ead1
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/21/2020
-ms.locfileid: "86869996"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87444170"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>Tutorial: Creación de una API web con ASP.NET Core
 
@@ -238,7 +238,7 @@ El *contexto de base de datos* es la clase principal que coordina la funcionalid
 * Seleccione la pestaña **Examinar** y escriba **Microsoft.EntityFrameworkCore.SqlServer** en el cuadro de búsqueda.
 * Seleccione **Microsoft.EntityFrameworkCore.SqlServer** en el panel izquierdo.
 * Active la casilla **Proyecto** en el panel derecho y, después, seleccione **Instalar**.
-* Siga las instrucciones anteriores para agregar el paquete NuGet `Microsoft.EntityFrameworkCore.InMemory`.
+* Use las instrucciones anteriores para agregar el paquete NuGet **Microsoft.EntityFrameworkCore.InMemory**.
 
 ![Administrador de paquetes de NuGet](first-web-api/_static/vs3NuGet.png)
 
@@ -304,7 +304,7 @@ Los comandos anteriores:
 
 El código generado:
 
-* Marca la clase con el atributo [`[ApiController]`](/dotnet/api/microsoft.aspnetcore.mvc.apicontrollerattribute). Este atributo indica que el controlador responde a las solicitudes de la API web. Para información sobre comportamientos específicos que permite el atributo, consulte <xref:web-api/index>.
+* Marca la clase con el atributo [`[ApiController]`](xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute). Este atributo indica que el controlador responde a las solicitudes de la API web. Para información sobre comportamientos específicos que permite el atributo, consulte <xref:web-api/index>.
 * Utiliza la inserción de dependencias para insertar el contexto de base de datos (`TodoContext`) en el controlador. El contexto de base de datos se usa en cada uno de los métodos [CRUD](https://wikipedia.org/wiki/Create,_read,_update_and_delete) del controlador.
 
 Las plantillas de ASP.NET Core para:
@@ -320,7 +320,7 @@ Reemplace la instrucción return en `PostTodoItem` para usar el operador [nameof
 
 [!code-csharp[](first-web-api/samples/3.0/TodoApi/Controllers/TodoItemsController.cs?name=snippet_Create)]
 
-El código anterior es un método HTTP POST, indicado por el atributo [`[HttpPost]`](/dotnet/api/microsoft.aspnetcore.mvc.httppostattribute). El método obtiene el valor de tareas pendientes del cuerpo de la solicitud HTTP.
+El código anterior es un método HTTP POST, indicado por el atributo [`[HttpPost]`](xref:Microsoft.AspNetCore.Mvc.HttpPostAttribute). El método obtiene el valor de tareas pendientes del cuerpo de la solicitud HTTP.
 
 El método <xref:Microsoft.AspNetCore.Mvc.ControllerBase.CreatedAtAction*> realiza las acciones siguientes:
 
@@ -409,7 +409,7 @@ Esta aplicación utiliza una base de datos en memoria. Si la aplicación se deti
 
 ## <a name="routing-and-url-paths"></a>Enrutamiento y rutas URL
 
-El atributo [`[HttpGet]`](/dotnet/api/microsoft.aspnetcore.mvc.httpgetattribute) indica un método que responde a una solicitud HTTP GET. La ruta de dirección URL para cada método se construye como sigue:
+El atributo [`[HttpGet]`](xref:Microsoft.AspNetCore.Mvc.HttpGetAttribute) indica un método que responde a una solicitud HTTP GET. La ruta de dirección URL para cada método se construye como sigue:
 
 * Comience por la cadena de plantilla en el atributo `Route` del controlador:
 
@@ -428,7 +428,7 @@ El tipo de valor devuelto de los métodos `GetTodoItems` y `GetTodoItem` es [Act
 
 Los tipos de valores devueltos `ActionResult` pueden representar una gama amplia de códigos de estado HTTP. Por ejemplo, `GetTodoItem` puede devolver dos valores de estado diferentes:
 
-* Si no hay ningún elemento que coincida con el identificador solicitado, el método devolverá un código de error 404 [NotFound](/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.notfound).
+* Si no hay ningún elemento que coincida con el identificador solicitado, el método devolverá un código de error 404 <xref:Microsoft.AspNetCore.Mvc.ControllerBase.NotFound%2A>.
 * En caso contrario, el método devuelve 200 con un cuerpo de respuesta JSON. Devolver `item` genera una respuesta HTTP 200.
 
 ## <a name="the-puttodoitem-method"></a>Método PutTodoItem
@@ -720,7 +720,7 @@ El código anterior:
 El código anterior:
 
 * Define una clase de controlador de API sin métodos.
-* Marca la clase con el atributo [`[ApiController]`](/dotnet/api/microsoft.aspnetcore.mvc.apicontrollerattribute). Este atributo indica que el controlador responde a las solicitudes de la API web. Para información sobre comportamientos específicos que permite el atributo, consulte <xref:web-api/index>.
+* Marca la clase con el atributo [`[ApiController]`](xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute). Este atributo indica que el controlador responde a las solicitudes de la API web. Para información sobre comportamientos específicos que permite el atributo, consulte <xref:web-api/index>.
 * Utiliza la inserción de dependencias para insertar el contexto de base de datos (`TodoContext`) en el controlador. El contexto de base de datos se usa en cada uno de los métodos [CRUD](https://wikipedia.org/wiki/Create,_read,_update_and_delete) del controlador.
 * Si la base de datos está vacía, le agrega un elemento denominado `Item1`. Este código está en el constructor, de manera que se ejecuta cada vez que hay una nueva solicitud HTTP. Si elimina todos los elementos, el constructor volverá a crear `Item1` la próxima vez que se llame a un método de API. De este modo, es posible que parezca que la eliminación no ha funcionado, cuando en realidad sí lo ha hecho.
 
@@ -756,7 +756,7 @@ La llamada a `GetTodoItems` genera la siguiente respuesta HTTP:
 
 ## <a name="routing-and-url-paths"></a>Enrutamiento y rutas URL
 
-El atributo [`[HttpGet]`](/dotnet/api/microsoft.aspnetcore.mvc.httpgetattribute) indica un método que responde a una solicitud HTTP GET. La ruta de dirección URL para cada método se construye como sigue:
+El atributo [`[HttpGet]`](xref:Microsoft.AspNetCore.Mvc.HttpGetAttribute) indica un método que responde a una solicitud HTTP GET. La ruta de dirección URL para cada método se construye como sigue:
 
 * Comience por la cadena de plantilla en el atributo `Route` del controlador:
 
@@ -775,7 +775,7 @@ El tipo de valor devuelto de los métodos `GetTodoItems` y `GetTodoItem` es [Act
 
 Los tipos de valores devueltos `ActionResult` pueden representar una gama amplia de códigos de estado HTTP. Por ejemplo, `GetTodoItem` puede devolver dos valores de estado diferentes:
 
-* Si no hay ningún elemento que coincida con el identificador solicitado, el método devolverá un código de error 404 [NotFound](/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.notfound).
+* Si no hay ningún elemento que coincida con el identificador solicitado, el método devolverá un código de error 404 <xref:Microsoft.AspNetCore.Mvc.ControllerBase.NotFound%2A>.
 * En caso contrario, el método devuelve 200 con un cuerpo de respuesta JSON. Devolver `item` genera una respuesta HTTP 200.
 
 ## <a name="test-the-gettodoitems-method"></a>Prueba del método GetTodoItems
@@ -814,7 +814,7 @@ Agregue el siguiente método `PostTodoItem` en *Controllers/TodoController.cs*:
 
 [!code-csharp[](first-web-api/samples/2.2/TodoApi/Controllers/TodoController.cs?name=snippet_Create)]
 
-El código anterior es un método HTTP POST, indicado por el atributo [`[HttpPost]`](/dotnet/api/microsoft.aspnetcore.mvc.httppostattribute). El método obtiene el valor de tareas pendientes del cuerpo de la solicitud HTTP.
+El código anterior es un método HTTP POST, indicado por el atributo [`[HttpPost]`](xref:Microsoft.AspNetCore.Mvc.HttpPostAttribute). El método obtiene el valor de tareas pendientes del cuerpo de la solicitud HTTP.
 
 El método `CreatedAtAction` realiza las acciones siguientes:
 
@@ -907,7 +907,7 @@ La aplicación de ejemplo permite eliminar todos los elementos. Sin embargo, al 
 
 En esta sección, se agrega una página HTML que usa JavaScript para llamar a la API web. JQuery inicia la solicitud. JavaScript actualiza la página con los detalles de la respuesta de la API web.
 
-Configure la aplicación para [atender archivos estáticos](/dotnet/api/microsoft.aspnetcore.builder.staticfileextensions.usestaticfiles#Microsoft_AspNetCore_Builder_StaticFileExtensions_UseStaticFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_) y [habilitar la asignación de archivos predeterminada](/dotnet/api/microsoft.aspnetcore.builder.defaultfilesextensions.usedefaultfiles#Microsoft_AspNetCore_Builder_DefaultFilesExtensions_UseDefaultFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_) mediante la actualización de *Startup.cs* con el siguiente código resaltado:
+Configure la aplicación para [atender archivos estáticos](xref:Microsoft.AspNetCore.Builder.StaticFileExtensions.UseStaticFiles%2A) y [habilitar la asignación de archivos predeterminada](xref:Microsoft.AspNetCore.Builder.DefaultFilesExtensions.UseDefaultFiles%2A) mediante la actualización de *Startup.cs* con el siguiente código resaltado:
 
 [!code-csharp[](first-web-api/samples/2.2/TodoApi/Startup.cs?highlight=14-15&name=snippet_configure)]
 
@@ -960,11 +960,11 @@ Para eliminar una tarea pendiente, hay que establecer el valor `type` de la llam
 
 [!INCLUDE[](~/includes/IdentityServer4.md)]
 
-## <a name="additional-resources"></a>[!INCLUDE[](~/includes/IdentityServer4.md)]
+## <a name="additional-resources"></a>Recursos adicionales
 
-Recursos adicionales [Vea o descargue el código de ejemplo para este tutorial](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/first-web-api/samples).
+[Vea o descargue el código de ejemplo para este tutorial](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/first-web-api/samples). Vea [cómo descargarlo](xref:index#how-to-download-a-sample).
 
-Vea [cómo descargarlo](xref:index#how-to-download-a-sample).
+Para obtener más información, vea los siguientes recursos:
 
 * <xref:web-api/index>
 * <xref:tutorials/web-api-help-pages-using-swagger>
@@ -973,4 +973,4 @@ Vea [cómo descargarlo](xref:index#how-to-download-a-sample).
 * <xref:web-api/action-return-types>
 * <xref:host-and-deploy/azure-apps/index>
 * <xref:host-and-deploy/index>
-* Para obtener más información, vea los siguientes recursos:
+* [Versión en YouTube de este tutorial](https://www.youtube.com/watch?v=TTkhEyGBfAk)

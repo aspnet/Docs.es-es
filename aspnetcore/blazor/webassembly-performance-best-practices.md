@@ -1,36 +1,36 @@
 ---
-title: Procedimientos recomendados de rendimiento de [Blazor WebAssembly en ASP.NET Core
+title: Procedimientos recomendados de rendimiento de Blazor WebAssembly en ASP.NET Core
 author: pranavkm
-description: Sugerencias para aumentar el rendimiento de las aplicaciones [Blazor WebAssembly en ASP.NET Core y evitar problemas de rendimiento comunes.
+description: Sugerencias para aumentar el rendimiento de las aplicaciones Blazor WebAssembly en ASP.NET Core y evitar problemas de rendimiento comunes.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 06/25/2020
 no-loc:
-- '[Blazor'
-- '[Blazor Server'
-- '[Blazor WebAssembly'
-- '[Identity'
-- "[Let's Encrypt"
-- '[Razor'
-- '[SignalR'
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: blazor/webassembly-performance-best-practices
-ms.openlocfilehash: f7bd0d356030e6ddb95c77d7376995320e3ec40e
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 6bd3d2f7902baf16e278e58feb83abb13f6e6821
+ms.sourcegitcommit: 84150702757cf7a7b839485382420e8db8e92b9c
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85401888"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87818617"
 ---
-# <a name="aspnet-core-blazor-webassembly-performance-best-practices"></a>Procedimientos recomendados de rendimiento de [Blazor WebAssembly en ASP.NET Core
+# <a name="aspnet-core-no-locblazor-webassembly-performance-best-practices"></a>Procedimientos recomendados de rendimiento de Blazor WebAssembly en ASP.NET Core
 
 Por [Pranav Krishnamoorthy](https://github.com/pranavkm)
 
-En este artículo se proporcionan instrucciones relativas a procedimientos recomendados de rendimiento de [Blazor WebAssembly en ASP.NET Core.
+En este artículo se proporcionan instrucciones relativas a procedimientos recomendados de rendimiento de Blazor WebAssembly en ASP.NET Core.
 
 ## <a name="avoid-unnecessary-component-renders"></a>Evitar representaciones de componentes innecesarias
 
-El algoritmo de diferenciación de [Blazor evita que un componente se represente cuando dicho algoritmo percibe que ese componente no ha cambiado. Invalide <xref:Microsoft.AspNetCore.Components.ComponentBase.ShouldRender%2A?displayProperty=nameWithType> si prefiere tener un control específico sobre la representación de componentes.
+El algoritmo de diferenciación de Blazor evita que un componente se represente cuando dicho algoritmo percibe que ese componente no ha cambiado. Invalide <xref:Microsoft.AspNetCore.Components.ComponentBase.ShouldRender%2A?displayProperty=nameWithType> si prefiere tener un control específico sobre la representación de componentes.
 
 Si crea un componente de solo interfaz de usuario que nunca cambia tras la representación inicial, configure <xref:Microsoft.AspNetCore.Components.ComponentBase.ShouldRender%2A> para que devuelva `false`:
 
@@ -85,17 +85,17 @@ Por ejemplo, una cuadrícula o una lista que representa cientos de filas que con
 
 ## <a name="avoid-javascript-interop-to-marshal-data"></a>Evitar la interoperabilidad de JavaScript para serializar datos
 
-En [Blazor WebAssembly, una llamada de interoperabilidad de JavaScript debe atravesar el límite WebAssembly-JS. Al serializar y deserializar contenido en los dos contextos, se crea una sobrecarga de procesamiento para la aplicación. Las llamadas de interoperabilidad de JavaScript frecuentes suelen afectar negativamente al rendimiento. Para reducir la serialización de datos en el límite, determine si la aplicación es capaz de aglutinar muchas cargas pequeñas en una sola carga grande para evitar el gran volumen de cambios de contexto entre WebAssembly y JavaScript.
+En Blazor WebAssembly, una llamada de interoperabilidad de JavaScript debe atravesar el límite WebAssembly-JS. Al serializar y deserializar contenido en los dos contextos, se crea una sobrecarga de procesamiento para la aplicación. Las llamadas de interoperabilidad de JavaScript frecuentes suelen afectar negativamente al rendimiento. Para reducir la serialización de datos en el límite, determine si la aplicación es capaz de aglutinar muchas cargas pequeñas en una sola carga grande para evitar el gran volumen de cambios de contexto entre WebAssembly y JavaScript.
 
 ## <a name="use-systemtextjson"></a>Uso de System.Text.Json
 
-La implementación de interoperabilidad de JavaScript de [Blazor se basa en <xref:System.Text.Json>, que es una biblioteca de serialización de JSON de alto rendimiento con una asignación de memoria reducida. El uso de <xref:System.Text.Json> no da como resultado un mayor tamaño de carga de aplicación frente a la adición de una o varias bibliotecas JSON alternativas.
+La implementación de interoperabilidad de JavaScript de Blazor se basa en <xref:System.Text.Json>, que es una biblioteca de serialización de JSON de alto rendimiento con una asignación de memoria reducida. El uso de <xref:System.Text.Json> no da como resultado un mayor tamaño de carga de aplicación frente a la adición de una o varias bibliotecas JSON alternativas.
 
 Para obtener instrucciones sobre la migración, vea [Procedimiento para realizar la migración de `Newtonsoft.Json` a `System.Text.Json`](/dotnet/standard/serialization/system-text-json-migrate-from-newtonsoft-how-to).
 
 ## <a name="use-synchronous-and-unmarshalled-js-interop-apis-where-appropriate"></a>Uso de API de interoperabilidad de JavaScript sincrónicas y no serializadas cuando sea necesario
 
-[Blazor WebAssembly ofrece dos versiones más de <xref:Microsoft.JSInterop.IJSRuntime> con respecto a la única versión disponible en las aplicaciones [Blazor Server:
+Blazor WebAssembly ofrece dos versiones más de <xref:Microsoft.JSInterop.IJSRuntime> con respecto a la única versión disponible en las aplicaciones Blazor Server:
 
 * <xref:Microsoft.JSInterop.IJSInProcessRuntime> permite invocar llamadas de interoperabilidad de JavaScript sincrónicamente, lo que genera una sobrecarga menor que las versiones asincrónicas:
 
@@ -140,21 +140,25 @@ Para obtener instrucciones sobre la migración, vea [Procedimiento para realizar
 
 ### <a name="intermediate-language-il-linking"></a>Vinculación de lenguaje intermedio
 
-[Cuando una aplicación [Blazor WebAssembly se vincula](xref:blazor/host-and-deploy/configure-linker), el tamaño de la aplicación se reduce recortando el código que no se usa en los archivos binarios de la aplicación. El vinculador solo está habilitado de forma predeterminada cuando se compila en la configuración `Release`. Para sacar partido de esto, publique la aplicación de implementación con el comando [`dotnet publish`](/dotnet/core/tools/dotnet-publish), con la opción [-c|--configuration](/dotnet/core/tools/dotnet-publish#options) establecida en `Release`:
+[Cuando una aplicación Blazor WebAssembly se vincula](xref:blazor/host-and-deploy/configure-linker), el tamaño de la aplicación se reduce recortando el código que no se usa en los archivos binarios de la aplicación. El vinculador solo está habilitado de forma predeterminada cuando se compila en la configuración `Release`. Para sacar partido de esto, publique la aplicación de implementación con el comando [`dotnet publish`](/dotnet/core/tools/dotnet-publish), con la opción [-c|--configuration](/dotnet/core/tools/dotnet-publish#options) establecida en `Release`:
 
 ```dotnetcli
 dotnet publish -c Release
 ```
 
+### <a name="lazy-load-assemblies"></a>Ensamblados de carga diferida
+
+Cargue los ensamblados en tiempo de ejecución cuando una ruta los requiera. Para obtener más información, vea <xref:blazor/webassembly-lazy-load-assemblies>.
+
 ### <a name="compression"></a>Compresión
 
-Cuando se publica una aplicación [Blazor WebAssembly, la salida se comprime estáticamente durante la publicación para reducir el tamaño de la aplicación y acabar con la necesidad de compresión en tiempo de ejecución. [Blazor se basa en el servidor para realizar negociación de contenido y proporcionar archivos comprimidos estáticamente.
+Cuando se publica una aplicación Blazor WebAssembly, la salida se comprime estáticamente durante la publicación para reducir el tamaño de la aplicación y acabar con la necesidad de compresión en tiempo de ejecución. Blazor se basa en el servidor para realizar negociación de contenido y proporcionar archivos comprimidos estáticamente.
 
 Cuando una aplicación se haya implementado, compruebe que proporciona archivos comprimidos. Inspeccione la pestaña Red de las herramientas de desarrollo del explorador y compruebe que los archivos se proporcionan con `Content-Encoding: br` o `Content-Encoding: gz`. Si el host no proporciona archivos comprimidos, siga las instrucciones de <xref:blazor/host-and-deploy/webassembly#compression>.
 
 ### <a name="disable-unused-features"></a>Deshabilitar las características sin usar
 
-El runtime de [Blazor WebAssembly incluye las siguientes características de .NET, que se pueden deshabilitar si la aplicación no las necesita cuando el tamaño de la carga útil es más pequeño:
+El runtime de Blazor WebAssembly incluye las siguientes características de .NET, que se pueden deshabilitar si la aplicación no las necesita cuando el tamaño de la carga útil es más pequeño:
 
 * Se incluye un archivo de datos para que la información de zona horaria sea correcta. Si la aplicación no necesita esta característica, considere la posibilidad de deshabilitarla estableciendo en `false` la propiedad de MSBuild `BlazorEnableTimeZoneSupport` del archivo de proyecto de la aplicación:
 

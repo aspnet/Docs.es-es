@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/http-requests
-ms.openlocfilehash: 578263978959100e266626aeccccc0830d9462b7
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: fb9001c06228b4290ca1e0c7cfb6b1338f431cd6
+ms.sourcegitcommit: ca6a1f100c1a3f59999189aa962523442dd4ead1
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85399119"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87444119"
 ---
 # <a name="make-http-requests-using-ihttpclientfactory-in-aspnet-core"></a>Realización de solicitudes HTTP mediante IHttpClientFactory en ASP.NET Core
 

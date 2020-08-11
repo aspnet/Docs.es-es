@@ -5,7 +5,7 @@ description: Descubra cómo se pueden incluir componentes en aplicaciones de Bla
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/23/2020
+ms.date: 07/27/2020
 no-loc:
 - Blazor
 - Blazor Server
@@ -15,14 +15,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/class-libraries
-ms.openlocfilehash: b172059407f9a08dacc0fadd804864c7aee7fb90
-ms.sourcegitcommit: 66fca14611eba141d455fe0bd2c37803062e439c
+ms.openlocfilehash: 8293d61f88f53e55d94b114ca2143fdfb6fd8468
+ms.sourcegitcommit: 84150702757cf7a7b839485382420e8db8e92b9c
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85944500"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87819072"
 ---
-# <a name="aspnet-core-razor-components-class-libraries"></a>Bibliotecas de clases de componentes de Razor de ASP.NET Core
+# <a name="aspnet-core-no-locrazor-components-class-libraries"></a>Bibliotecas de clases de componentes de Razor de ASP.NET Core
 
 Por [Simon Timms](https://github.com/stimms)
 
@@ -41,7 +41,7 @@ Del mismo modo que los componentes son tipos normales de .NET, los componentes p
 1. Cree un nuevo proyecto.
 1. Seleccione **Biblioteca de clases de Razor** . Seleccione **Siguiente**.
 1. En el cuadro de diálogo **Crear una biblioteca de clases de Razor** , seleccione **Crear**.
-1. Proporcione un nombre para el proyecto en el campo **Nombre del proyecto** o acepte el predeterminado. En los ejemplos de este tema se usa el nombre de proyecto `MyComponentLib1`. Seleccione **Crear**.
+1. Proporcione un nombre para el proyecto en el campo **Nombre del proyecto** o acepte el predeterminado. En los ejemplos de este tema se usa el nombre de proyecto `ComponentLibrary`. Seleccione **Crear**.
 1. Agregue la RCL a una solución:
    1. Haga clic con el botón derecho en la solución. Seleccione **Agregar** > **Proyecto existente**.
    1. Navegue hasta el archivo del proyecto de la RCL.
@@ -61,10 +61,10 @@ Del mismo modo que los componentes son tipos normales de .NET, los componentes p
 
 # <a name="net-core-cli"></a>[CLI de .NET Core](#tab/netcore-cli)
 
-1. Use la plantilla **Biblioteca de clases de Razor** (`razorclasslib`) con el comando [`dotnet new`](/dotnet/core/tools/dotnet-new) en un shell de comandos. En el ejemplo siguiente, se crea una RCL llamada `MyComponentLib1`. La carpeta que contiene `MyComponentLib1` se crea automáticamente cuando se ejecuta el comando:
+1. Use la plantilla **Biblioteca de clases de Razor** (`razorclasslib`) con el comando [`dotnet new`](/dotnet/core/tools/dotnet-new) en un shell de comandos. En el ejemplo siguiente, se crea una RCL llamada `ComponentLibrary`. La carpeta que contiene `ComponentLibrary` se crea automáticamente cuando se ejecuta el comando:
 
    ```dotnetcli
-   dotnet new razorclasslib -o MyComponentLib1
+   dotnet new razorclasslib -o ComponentLibrary
    ```
 
    > [!NOTE]
@@ -91,35 +91,82 @@ Para consumir los componentes definidos en una biblioteca de otro proyecto, siga
 * Use el nombre de tipo completo con el espacio de nombres.
 * Use la directiva [`@using`](xref:mvc/views/razor#using) de Razor. Los componentes individuales se pueden agregar por nombre.
 
-En los ejemplos siguientes, `MyComponentLib1` es una biblioteca de componentes que contiene un componente `SalesReport`.
+En los ejemplos siguientes, `ComponentLibrary` es una biblioteca de componentes que contiene el componente `Component1` (`Component1.razor`). El componente `Component1` es un componente de ejemplo que la plantilla de proyecto de RCL agrega automáticamente cuando se crea la biblioteca.
 
-Se puede hacer referencia al componente `SalesReport` usando su nombre de tipo completo con el espacio de nombres:
+Haga referencia al componente `Component1` mediante su espacio de nombres:
 
 ```razor
 <h1>Hello, world!</h1>
 
 Welcome to your new app.
 
-<MyComponentLib1.SalesReport />
+<ComponentLibrary.Component1 />
 ```
 
-También se puede hacer referencia al componente si la biblioteca se incluye en el ámbito con una directiva `@using`:
+Como alternativa, coloque la biblioteca en el ámbito con una directiva [`@using`](xref:mvc/views/razor#using) y use el componente sin su espacio de nombres:
 
 ```razor
-@using MyComponentLib1
+@using ComponentLibrary
 
 <h1>Hello, world!</h1>
 
 Welcome to your new app.
 
-<SalesReport />
+<Component1 />
 ```
 
-Incluya la directiva `@using MyComponentLib1` en el archivo de nivel superior `_Import.razor` a fin de que los componentes de la biblioteca estén disponibles para un proyecto completo. Agregue la directiva a un archivo `_Import.razor` en cualquier nivel para aplicar el espacio de nombres a una sola página o a un conjunto de páginas dentro de una carpeta.
+De manera opcional, incluya la directiva `@using ComponentLibrary` en el archivo de nivel superior `_Import.razor` a fin de que los componentes de la biblioteca estén disponibles para un proyecto completo. Agregue la directiva a un archivo `_Import.razor` en cualquier nivel para aplicar el espacio de nombres a un solo componente o a un conjunto de componentes dentro de una carpeta.
 
-## <a name="create-a-razor-components-class-library-with-static-assets"></a>Creación de una biblioteca de clases de componentes de Razor con recursos estáticos
+::: moniker range=">= aspnetcore-5.0"
+
+Para proporcionar la clase CSS `my-component` de `Component1` al componente, establezca un vínculo con la hoja de estilo de la biblioteca mediante el componente [`Link` del marco de trabajo](xref:blazor/fundamentals/additional-scenarios#influence-html-head-tag-elements) en `Component1.razor`:
+
+```razor
+<div class="my-component">
+    <Link href="_content/ComponentLibrary/styles.css" rel="stylesheet" />
+
+    <p>
+        This Blazor component is defined in the <strong>ComponentLibrary</strong> package.
+    </p>
+</div>
+```
+
+Para proporcionar la hoja de estilo en la aplicación, como alternativa, puede establecer un vínculo con la hoja de estilo de la biblioteca en el archivo `wwwroot/index.html` (Blazor WebAssembly) o el archivo `Pages/_Host.cshtml` (Blazor Server) de la aplicación:
+
+```html
+<head>
+    ...
+    <link href="_content/ComponentLibrary/styles.css" rel="stylesheet" />
+</head>
+```
+
+Cuando se usa el componente `Link` en un componente secundario, el recurso vinculado también está disponible para cualquier otro componente secundario del componente primario, siempre que se represente el elemento secundario con el componente `Link`. La distinción entre el uso del componente `Link` en un componente secundario y la colocación de una etiqueta HTML `<link>` en `wwwroot/index.html` o `Pages/_Host.cshtml` es que la etiqueta HTML representada de un componente del marco de trabajo:
+
+* Se puede modificar según el estado de la aplicación. No se puede modificar una etiqueta HTML `<link>` codificada de forma rígida según el estado de la aplicación.
+* Se quita del elemento HTML `<head>` cuando ya no se representa el componente primario.
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
+Para proporcionar la clase CSS `my-component` de `Component1`, establezca un vínculo con la hoja de estilo de la biblioteca en el archivo `wwwroot/index.html` (Blazor WebAssembly) o el archivo `Pages/_Host.cshtml` (Blazor Server) de la aplicación:
+
+```html
+<head>
+    ...
+    <link href="_content/ComponentLibrary/styles.css" rel="stylesheet" />
+</head>
+```
+
+::: moniker-end
+
+## <a name="create-a-no-locrazor-components-class-library-with-static-assets"></a>Creación de una biblioteca de clases de componentes de Razor con recursos estáticos
 
 Una RCL puede incluir recursos estáticos. Los recursos estáticos están disponibles para cualquier aplicación que use la biblioteca. Para obtener más información, vea <xref:razor-pages/ui-class#create-an-rcl-with-static-assets>.
+
+## <a name="supply-components-and-static-assets-to-multiple-hosted-no-locblazor-apps"></a>Proporcionar componentes y recursos estáticos a varias aplicaciones de Blazor hospedadas
+
+Para obtener más información, vea <xref:blazor/host-and-deploy/webassembly#static-assets-and-class-libraries>.
 
 ## <a name="build-pack-and-ship-to-nuget"></a>Compilación, empaquetado y envío de bibliotecas a NuGet
 

@@ -5,7 +5,7 @@ description: Cree una aplicación Blazor paso a paso.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/02/2020
+ms.date: 07/30/2020
 no-loc:
 - Blazor
 - Blazor Server
@@ -15,14 +15,14 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/build-a-blazor-app
-ms.openlocfilehash: 174a8e561701bb3ebd68ed05e42dfc3d70a9b450
-ms.sourcegitcommit: 14c3d111f9d656c86af36ecb786037bf214f435c
+ms.openlocfilehash: b58c0c3db685d0a5b082aaf2eb434635bd10e2eb
+ms.sourcegitcommit: ca6a1f100c1a3f59999189aa962523442dd4ead1
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86176228"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87444035"
 ---
-# <a name="build-a-blazor-todo-list-app"></a>Creación de una aplicación de lista de tareas pendientes Blazor
+# <a name="build-a-no-locblazor-todo-list-app"></a>Creación de una aplicación de lista de tareas pendientes Blazor
 
 Por [Daniel Roth](https://github.com/danroth27) y [Luke Latham](https://github.com/guardrex)
 
@@ -32,9 +32,15 @@ En este tutorial se muestra cómo crear y modificar una aplicación Blazor. Apre
 > * Crear un proyecto de aplicación Blazor de lista de tareas
 > * Modificar los componentes de Razor
 > * Usar el control de eventos y el enlace de datos en los componentes
-> * Usar la inserción de dependencias (DI) y el enrutamiento en una aplicación Blazor
+> * Uso del enrutamiento en una aplicación Blazor
 
 Al final de este tutorial, tendrá una aplicación de lista de tareas funcional.
+
+## <a name="prerequisites"></a>Requisitos previos
+
+[!INCLUDE[](~/includes/3.1-SDK.md)]
+
+## <a name="create-a-todo-list-no-locblazor-app"></a>Creación de una aplicación Blazor de lista de tareas
 
 1. Cree una nueva aplicación de Blazor denominada `TodoList` en un shell de comandos:
 
@@ -140,7 +146,7 @@ En este tutorial ha aprendido a:
 > * Crear un proyecto de aplicación Blazor de lista de tareas
 > * Modificar los componentes de Razor
 > * Usar el control de eventos y el enlace de datos en los componentes
-> * Usar la inserción de dependencias (DI) y el enrutamiento en una aplicación Blazor
+> * Uso del enrutamiento en una aplicación Blazor
 
 Más información sobre las herramientas de ASP.NET Core Blazor:
 

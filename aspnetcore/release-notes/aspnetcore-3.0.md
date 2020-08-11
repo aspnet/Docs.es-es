@@ -6,58 +6,58 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/05/2019
 no-loc:
-- '[Blazor'
-- '[Blazor Server'
-- '[Blazor WebAssembly'
-- '[Identity'
-- "[Let's Encrypt"
-- '[Razor'
-- '[SignalR'
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: aspnetcore-3.0
-ms.openlocfilehash: 6e31a8f49ca535f98f4e073af13896386a4a0feb
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: cebfc88a8a8313bfd975001b50db6e41b6939aed
+ms.sourcegitcommit: 84150702757cf7a7b839485382420e8db8e92b9c
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85408219"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87819153"
 ---
 # <a name="whats-new-in-aspnet-core-30"></a>Novedades de ASP.NET Core 3.0
 
 En este artículo se resaltan los cambios más importantes de ASP.NET Core 3.0, con vínculos a la documentación pertinente.
 
-## [Blazor
+## Blazor
 
-[Blazor es un marco nuevo en ASP.NET Core para la creación de interfaces de usuario web interactivas del lado cliente con .NET:
+Blazor es un marco nuevo en ASP.NET Core para la creación de interfaces de usuario web interactivas del lado cliente con .NET:
 
 * Cree interfaces de usuario completamente interactivas con C# en lugar de JavaScript.
 * Comparta la lógica de aplicación del lado cliente y servidor escrita con .NET.
 * Represente la interfaz de usuario como HTML y CSS para la compatibilidad con todos los exploradores, incluidos los móviles.
 
-Escenarios compatibles con el marco [Blazor:
+Escenarios compatibles con el marco Blazor:
 
-* Componentes de interfaz de usuario reutilizables (componentes de [Razor)
+* Componentes de interfaz de usuario reutilizables (componentes de Razor)
 * Enrutamiento del lado cliente
 * Diseños de componentes
 * Compatibilidad con la inserción de dependencias
 * Formularios y validación
-* Compilación de bibliotecas de componentes con bibliotecas de clases de [Razor
+* Compilación de bibliotecas de componentes con bibliotecas de clases de Razor
 * Interoperabilidad de JavaScript
 
 Para obtener más información, vea <xref:blazor/index>.
 
-### [Blazor Server
+### Blazor Server
 
-[Blazor separa la lógica de representación de componentes del modo en el que se aplican las actualizaciones de la interfaz de usuario. [Blazor Server admite el hospedaje de componentes de [Razor en el servidor de una aplicación de ASP.NET Core. Las actualizaciones de la interfaz de usuario se administran mediante una conexión de [SignalR. [Blazor Server se admite en ASP.NET Core 3.0.
+Blazor separa la lógica de representación de componentes del modo en el que se aplican las actualizaciones de la interfaz de usuario. Blazor Server admite el hospedaje de componentes de Razor en el servidor de una aplicación de ASP.NET Core. Las actualizaciones de la interfaz de usuario se administran mediante una conexión de SignalR. Blazor Server se admite en ASP.NET Core 3.0.
 
-### <a name="blazor-webassembly-preview"></a>[Blazor WebAssembly (versión preliminar)
+### <a name="no-locblazor-webassembly-preview"></a>Blazor WebAssembly (versión preliminar)
 
-Las aplicaciones [Blazor también se pueden ejecutar directamente en el explorador mediante un entorno de ejecución .NET basado en WebAssembly. [Blazor WebAssembly se encuentra en versión preliminar y *no* se admite en ASP.NET Core 3.0. [Blazor WebAssembly se admitirá en una versión futura de ASP.NET Core.
+Las aplicaciones Blazor también se pueden ejecutar directamente en el explorador mediante un entorno de ejecución .NET basado en WebAssembly. Blazor WebAssembly se encuentra en versión preliminar y *no* se admite en ASP.NET Core 3.0. Blazor WebAssembly se admitirá en una versión futura de ASP.NET Core.
 
-### <a name="razor-components"></a>Componentes de [Razor
+### <a name="no-locrazor-components"></a>Componentes de Razor
 
-Las aplicaciones [Blazor se crean a partir de componentes. Los componentes son fragmentos independientes de la interfaz de usuario, como una página, un cuadro de diálogo o un formulario. Los componentes son clases .NET normales que definen la lógica de representación de la interfaz de usuario y los controladores de eventos del lado cliente. Puede crear aplicaciones web interactivas enriquecidas sin JavaScript.
+Las aplicaciones Blazor se crean a partir de componentes. Los componentes son fragmentos independientes de la interfaz de usuario, como una página, un cuadro de diálogo o un formulario. Los componentes son clases .NET normales que definen la lógica de representación de la interfaz de usuario y los controladores de eventos del lado cliente. Puede crear aplicaciones web interactivas enriquecidas sin JavaScript.
 
-Los componentes de [Blazor normalmente se crean mediante la sintaxis de [Razor, una mezcla natural de HTML y C#. Los componentes de [Razor se asemejan a las vistas de [Razor Pages y MVC en que ambos usan [Razor. A diferencia de las páginas y las vistas, que se basan en un modelo de solicitud y respuesta, los componentes se usan específicamente para controlar la composición de la interfaz de usuario.
+Los componentes de Blazor normalmente se crean mediante la sintaxis de Razor, una mezcla natural de HTML y C#. Los componentes de Razor se asemejan a las vistas de Razor Pages y MVC en que ambos usan Razor. A diferencia de las páginas y las vistas, que se basan en un modelo de solicitud y respuesta, los componentes se usan específicamente para controlar la composición de la interfaz de usuario.
 
 ## <a name="grpc"></a>gRPC
 
@@ -84,11 +84,11 @@ La funcionalidad gRPC en ASP.NET Core 3.0 incluye:
 
 Para obtener más información, vea <xref:grpc/index>.
 
-## [SignalR
+## SignalR
 
-Consulte [Actualización del código [SignalR](xref:migration/22-to-30#signalr) para ver las instrucciones de migración. [SignalR ahora usa `System.Text.Json` para serializar o deserializar los mensajes JSON. Consulte [Cambiar a Newtonsoft.Json](xref:migration/22-to-30#switch-to-newtonsoftjson) para obtener instrucciones sobre cómo restaurar el serializador basado en `Newtonsoft.Json`.
+Consulte [Actualización del código SignalR](xref:migration/22-to-30#signalr) para ver las instrucciones de migración. SignalR ahora usa `System.Text.Json` para serializar o deserializar los mensajes JSON. Consulte [Cambiar a Newtonsoft.Json](xref:migration/22-to-30#switch-to-newtonsoftjson) para obtener instrucciones sobre cómo restaurar el serializador basado en `Newtonsoft.Json`.
 
-En los clientes de JavaScript y .NET para [SignalR, se agregó compatibilidad para la reconexión automática. De forma predeterminada, el cliente intenta conectarse de nuevo inmediatamente y lo vuelve a intentar después de dos, diez y treinta segundos si es necesario. Si el cliente se vuelve a conectar correctamente, recibe un nuevo identificador de conexión. La reconexión automática es opcional:
+En los clientes de JavaScript y .NET para SignalR, se agregó compatibilidad para la reconexión automática. De forma predeterminada, el cliente intenta conectarse de nuevo inmediatamente y lo vuelve a intentar después de dos, diez y treinta segundos si es necesario. Si el cliente se vuelve a conectar correctamente, recibe un nuevo identificador de conexión. La reconexión automática es opcional:
 
 ```javascript
 const connection = new signalR.HubConnectionBuilder()
@@ -113,7 +113,7 @@ Si se produce un error en la reconexión después del último intervalo de recon
 
 Durante los intentos de reconexión, actualice la interfaz de usuario de la aplicación para notificar al usuario que se está intentando la reconexión.
 
-Para proporcionar comentarios sobre la interfaz de usuario cuando la conexión se interrumpe, la API de cliente de [SignalR se ha ampliado para incluir los siguientes controladores de eventos:
+Para proporcionar comentarios sobre la interfaz de usuario cuando la conexión se interrumpe, la API de cliente de SignalR se ha ampliado para incluir los siguientes controladores de eventos:
 
 * `onreconnecting`:  ofrece a los desarrolladores una oportunidad para deshabilitar la interfaz de usuario o para que los usuarios sepan que la aplicación está sin conexión.
 * `onreconnected`: ofrece a los desarrolladores una oportunidad para actualizar la interfaz de usuario una vez que se restablece la conexión.
@@ -140,7 +140,7 @@ connection.onreconnected((connectionId) => {
 });
 ```
 
-[SignalR 3.0 y las versiones posteriores proporcionan un recurso personalizado a los controladores de autorización cuando un método Hub requiere autorización. El recurso es una instancia de `HubInvocationContext`. `HubInvocationContext` incluye:
+SignalR 3.0 y las versiones posteriores proporcionan un recurso personalizado a los controladores de autorización cuando un método Hub requiere autorización. El recurso es una instancia de `HubInvocationContext`. `HubInvocationContext` incluye:
 
 * `HubCallerContext`
 * Nombre del método Hub que se va a invocar.
@@ -157,12 +157,12 @@ public class DomainRestrictedRequirement :
         DomainRestrictedRequirement requirement,
         HubInvocationContext resource)
     {
-        if (context.User?.[Identity?.Name == null)
+        if (context.User?.Identity?.Name == null)
         {
             return Task.CompletedTask;
         }
 
-        if (IsUserAllowedToDoThis(resource.HubMethodName, context.User.[Identity.Name))
+        if (IsUserAllowedToDoThis(resource.HubMethodName, context.User.Identity.Name))
         {
             context.Succeed(requirement);
         }
@@ -230,7 +230,7 @@ services
     });
 ```
 
-Los métodos Hub de [SignalR usan el [enrutamiento de punto de conexión](xref:fundamentals/routing). La conexión de los métodos Hub de [SignalR se hizo previamente de manera explícita:
+Los métodos Hub de SignalR usan el [enrutamiento de punto de conexión](xref:fundamentals/routing). La conexión de los métodos Hub de SignalR se hizo previamente de manera explícita:
 
 ```csharp
 app.UseSignalR(routes =>
@@ -239,7 +239,7 @@ app.UseSignalR(routes =>
 });
 ```
 
-En la versión anterior, los desarrolladores debían conectar controladores, páginas de [Razor y centros de conectividad en distintos lugares. La conexión explícita da lugar a una serie de segmentos de enrutamiento casi idénticos:
+En la versión anterior, los desarrolladores debían conectar controladores, páginas de Razor y centros de conectividad en distintos lugares. La conexión explícita da lugar a una serie de segmentos de enrutamiento casi idénticos:
 
 ```csharp
 app.UseSignalR(routes =>
@@ -253,7 +253,7 @@ app.UseRouting(routes =>
 });
 ```
 
-Los métodos Hub de [SignalR 3.0 se pueden enrutar a través del enrutamiento de punto de conexión. Con el enrutamiento de punto de conexión, normalmente todo el enrutamiento se puede configurar en `UseRouting`:
+Los métodos Hub de SignalR 3.0 se pueden enrutar a través del enrutamiento de punto de conexión. Con el enrutamiento de punto de conexión, normalmente todo el enrutamiento se puede configurar en `UseRouting`:
 
 ```csharp
 app.UseRouting(routes =>
@@ -263,7 +263,7 @@ app.UseRouting(routes =>
 });
 ```
 
-Se agregó ASP.NET Core 3.0 [SignalR:
+Se agregó ASP.NET Core 3.0 SignalR:
 
 Streaming de cliente a servidor. Con el streaming de cliente a servidor, los métodos del lado servidor pueden tomar instancias de `IAsyncEnumerable<T>` o `ChannelReader<T>`. En el ejemplo de C# siguiente, el método `UploadStream` del método Hub recibirá un flujo de cadenas del cliente:
 
@@ -294,7 +294,7 @@ async IAsyncEnumerable<string> clientStreamData()
 await connection.SendAsync("UploadStream", clientStreamData());
 ```
 
-Las aplicaciones cliente de JavaScript usan [SignalR `Subject` (o [RxJS Subject](https://rxjs.dev/api/index/class/Subject)) como argumento `stream` del método Hub `UploadStream` anterior.
+Las aplicaciones cliente de JavaScript usan SignalR `Subject` (o [RxJS Subject](https://rxjs.dev/api/index/class/Subject)) como argumento `stream` del método Hub `UploadStream` anterior.
 
 ```javascript
 let subject = new signalR.Subject();
@@ -320,25 +320,25 @@ ASP.NET Core 3.0 ahora usa <xref:System.Text.Json> de forma predeterminada para 
 
 Para agregar Json.NET a ASP.NET Core 3.0, consulte [Adición de compatibilidad con el formato JSON basado en Newtonsoft.Json](xref:web-api/advanced/formatting#add-newtonsoftjson-based-json-format-support).
 
-## <a name="new-razor-directives"></a>Nuevas directivas de [Razor
+## <a name="new-no-locrazor-directives"></a>Nuevas directivas de Razor
 
-La lista siguiente contiene nuevas directivas de [Razor:
+La lista siguiente contiene nuevas directivas de Razor:
 
 * [`@attribute`](xref:mvc/views/razor#attribute): la directiva `@attribute` aplica el atributo especificado a la clase de la página o vista generada. Por ejemplo: `@attribute [Authorize]`.
 * [`@implements`](xref:mvc/views/razor#implements): La directiva `@implements` implementa una interfaz para la clase generada. Por ejemplo: `@implements IDisposable`.
 
-## <a name="identityserver4-supports-authentication-and-authorization-for-web-apis-and-spas"></a>IdentityServer4 admite la autenticación y la autorización de SPA y API web
+## <a name="no-locidentityserver4-supports-authentication-and-authorization-for-web-apis-and-spas"></a>IdentityServer4 admite la autenticación y la autorización de SPA y API web
 
-ASP.NET Core 3.0 ofrece autenticación en aplicaciones de página única (SPA) mediante la compatibilidad con la autorización de API web. ASP.NET Core [Identity para autenticar y almacenar usuarios se combina con [IdentityServer4](https://identityserver.io/) para implementar OpenID Connect.
+ASP.NET Core 3.0 ofrece autenticación en aplicaciones de página única (SPA) mediante la compatibilidad con la autorización de API web. ASP.NET Core Identity para autenticar y almacenar usuarios se combina con [IdentityServer4](https://identityserver.io/) para implementar OpenID Connect.
 
-IdentityServer4 es un marco de OpenID Connect y OAuth 2.0 para ASP.NET Core 3.0. Habilita las características de seguridad siguientes:
+IdentityServer4 es un marco de trabajo de OpenID Connect y OAuth 2.0 para ASP.NET Core 3.0. Habilita las características de seguridad siguientes:
 
 * Autenticación como servicio (AaaS)
 * Inicio de sesión único (SSO) mediante varios tipos de aplicaciones
 * Control de acceso para API
 * Federation Gateway
 
-Para más información, vea [la documentación de IdentityServer4](http://docs.identityserver.io/en/latest/index.html) o [Autenticación y autorización para SPA](xref:security/authentication/identity/spa).
+Para más información, vea la [documentación de IdentityServer4](http://docs.identityserver.io/en/latest/index.html) o [Autenticación y autorización para SPA](xref:security/authentication/identity/spa).
 
 ## <a name="certificate-and-kerberos-authentication"></a>Autenticación de certificados y Kerberos
 
@@ -400,14 +400,14 @@ Para obtener más información, vea <xref:security/authentication/windowsauth>.
 
 ## <a name="template-changes"></a>Cambios en la plantilla
 
-Se ha eliminado lo siguiente de las plantillas de interfaz de usuario web ([Razor Pages, MVC con controlador y vistas):
+Se ha eliminado lo siguiente de las plantillas de interfaz de usuario web (Razor Pages, MVC con controlador y vistas):
 
 * La interfaz de usuario de consentimiento de cookies ya no está incluida. Para habilitar la función de consentimiento de cookies en una aplicación ASP.NET Core 3.0 generada por plantillas, vea <xref:security/gdpr>.
 * Ahora se hace referencia a los scripts y los recursos estáticos relacionados como archivos locales en lugar de usar CDN. Para más información, consulte [Ahora se hace referencia a los scripts y recursos estáticos relacionados como archivos locales en lugar de usar CDN en base al entorno actual (aspnet/AspNetCore.Docs nº 14350)](https://github.com/dotnet/AspNetCore.Docs/issues/14350).
 
 La plantilla de Angular se ha actualizado para usar Angular 8.
 
-De forma predeterminada, la plantilla de la biblioteca de clases de [Razor (RCL) usa el desarrollo de componentes de [Razor. Una nueva opción de plantilla en Visual Studio proporciona compatibilidad con plantillas para páginas y vistas. Al crear una biblioteca de clases de Razor a partir de la plantilla en un shell de comandos, pase la opción `--support-pages-and-views` (`dotnet new razorclasslib --support-pages-and-views`).
+De forma predeterminada, la plantilla de la biblioteca de clases de Razor (RCL) usa el desarrollo de componentes de Razor. Una nueva opción de plantilla en Visual Studio proporciona compatibilidad con plantillas para páginas y vistas. Al crear una biblioteca de clases de Razor a partir de la plantilla en un shell de comandos, pase la opción `--support-pages-and-views` (`dotnet new razorclasslib --support-pages-and-views`).
 
 ## <a name="generic-host"></a>Host genérico
 

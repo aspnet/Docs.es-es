@@ -15,14 +15,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/hosting-models
-ms.openlocfilehash: 56681e713e008188d57166da9c8fd4eb6923928c
-ms.sourcegitcommit: 66fca14611eba141d455fe0bd2c37803062e439c
+ms.openlocfilehash: 6e3753131388c294130f11aa913a0bb7e8127fa3
+ms.sourcegitcommit: 84150702757cf7a7b839485382420e8db8e92b9c
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85944222"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87818955"
 ---
-# <a name="aspnet-core-blazor-hosting-models"></a>Modelos de hospedaje Blazor en ASP.NET Core
+# <a name="aspnet-core-no-locblazor-hosting-models"></a>Modelos de hospedaje Blazor en ASP.NET Core
 
 Por [Daniel Roth](https://github.com/danroth27)
 
@@ -32,7 +32,7 @@ Blazor es un marco web diseñado para ejecutar el lado cliente en el explorador 
 
 El modelo de hospedaje principal de Blazor se está ejecutando del lado cliente en el explorador en WebAssembly. La aplicación Blazor, sus dependencias y el entorno de ejecución de .NET se descargan en el explorador. La aplicación se ejecuta directamente en el subproceso de interfaz de usuario del explorador. Las actualizaciones de la interfaz de usuario y el control de eventos se producen en el mismo proceso. Los recursos de la aplicación se implementan como archivos estáticos en un servidor o servicio web capaz de servir contenido estático a los clientes.
 
-![Blazor WebAssembly: la aplicación Blazor se ejecuta en un subproceso de interfaz de usuario dentro del explorador ](hosting-models/_static/blazor-webassembly.png).
+![Blazor WebAssembly: La aplicación Blazor se ejecuta en un subproceso de interfaz de usuario dentro del explorador.](hosting-models/_static/blazor-webassembly.png)
 
 Para crear una aplicación Blazor mediante el modelo de hospedaje del lado cliente, use la plantilla **Aplicación Blazor WebAssembly** ([`dotnet new blazorwasm`](/dotnet/core/tools/dotnet-new)).
 
@@ -57,13 +57,13 @@ También hay desventajas en el hospedaje de Blazor WebAssembly:
 * El tamaño de descarga es mayor y las aplicaciones tardan más tiempo en cargarse.
 * La compatibilidad con las herramientas y el tiempo de ejecución de .NET está menos desarrollada. Por ejemplo, existen limitaciones en la compatibilidad y la depuración de [.NET Standard](/dotnet/standard/net-standard).
 
-El modelo de aplicación hospedada en Blazor admite los [contenedores de Docker](/dotnet/standard/microservices-architecture/container-docker-introduction/index). Haga clic con el botón derecho en el proyecto de servidor en Visual Studio y seleccione **Agregar** > **Compatibilidad con Docker**.
+El modelo de aplicación hospedada de Blazor admite los [contenedores de Docker](/dotnet/standard/microservices-architecture/container-docker-introduction/index). Haga clic con el botón derecho en el proyecto de servidor en Visual Studio y seleccione **Agregar** > **Compatibilidad con Docker**.
 
 ## Blazor Server
 
 Con el modelo de hospedaje de Blazor Server, la aplicación se ejecuta en el servidor desde una aplicación ASP.NET Core. Las actualizaciones de la interfaz de usuario, el control de eventos y las llamadas de JavaScript se controlan mediante una conexión [SignalR](xref:signalr/introduction).
 
-![El explorador interactúa con la aplicación (hospedada en una aplicación ASP.NET Core) en el servidor a través de una conexión SignalR](hosting-models/_static/blazor-server.png).
+![El explorador interactúa con la aplicación (hospedada en una aplicación ASP.NET Core) en el servidor a través de una conexión SignalR.](hosting-models/_static/blazor-server.png)
 
 Para crear una aplicación Blazor mediante el modelo de hospedaje de Blazor Server, use la plantilla de **Aplicación Blazor Server** de ASP.NET Core ([`dotnet new blazorserver`](/dotnet/core/tools/dotnet-new)). La aplicación ASP.NET Core hospeda la aplicación Blazor Server y crea el punto de conexión de SignalR donde se conectan los clientes.
 

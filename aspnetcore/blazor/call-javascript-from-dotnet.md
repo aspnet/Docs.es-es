@@ -15,14 +15,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/call-javascript-from-dotnet
-ms.openlocfilehash: 5c22220871fdba7fea43c38fa4bc826c07135ffc
-ms.sourcegitcommit: fa89d6553378529ae86b388689ac2c6f38281bb9
+ms.openlocfilehash: f3afa9592422da911799a137f9943631ed12ab59
+ms.sourcegitcommit: 84150702757cf7a7b839485382420e8db8e92b9c
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86060038"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87819131"
 ---
-# <a name="call-javascript-functions-from-net-methods-in-aspnet-core-blazor"></a>Llamada a funciones de JavaScript con métodos de .NET en Blazor de ASP.NET Core
+# <a name="call-javascript-functions-from-net-methods-in-aspnet-core-no-locblazor"></a>Llamada a funciones de JavaScript con métodos de .NET en Blazor de ASP.NET Core
 
 Por [Javier Calvarro Nelson](https://github.com/javiercn), [Daniel Roth](https://github.com/danroth27) y [Luke Latham](https://github.com/guardrex)
 
@@ -154,7 +154,7 @@ El marcador de posición `{APP ASSEMBLY}` es el nombre de ensamblado de la aplic
 
 Las funciones de JavaScript que devuelven [void(0)/void 0](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/void) o [undefined](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/undefined) se llaman con <xref:Microsoft.JSInterop.JSRuntimeExtensions.InvokeVoidAsync%2A?displayProperty=nameWithType>.
 
-## <a name="detect-when-a-blazor-server-app-is-prerendering"></a>Detección de cuándo se está obteniendo una representación previa de la aplicación Blazor Server
+## <a name="detect-when-a-no-locblazor-server-app-is-prerendering"></a>Detección de cuándo se está obteniendo una representación previa de la aplicación Blazor Server
  
 [!INCLUDE[](~/includes/blazor-prerendering.md)]
 

@@ -1,7 +1,7 @@
 ---
 title: Protección de una aplicación hospedada Blazor WebAssembly de ASP.NET Core con Identity Server
 author: guardrex
-description: Para crear en Visual Studio una aplicación hospedada Blazor con autenticación que usa un back-end de [IdentityServer](https://identityserver.io/)
+description: Para crear en Visual Studio una solución hospedada Blazor con autenticación que usa un back-end de [IdentityServer](https://identityserver.io/)
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
@@ -15,18 +15,18 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/hosted-with-identity-server
-ms.openlocfilehash: a27d31345cfe6a4212e3c61d0d99ae6745eab052
-ms.sourcegitcommit: 384833762c614851db653b841cc09fbc944da463
+ms.openlocfilehash: 87424f413ab21ae51fc1b1b2033069f5a41da566
+ms.sourcegitcommit: 84150702757cf7a7b839485382420e8db8e92b9c
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/17/2020
-ms.locfileid: "86445182"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87818890"
 ---
-# <a name="secure-an-aspnet-core-blazor-webassembly-hosted-app-with-identity-server"></a>Protección de una aplicación hospedada Blazor WebAssembly de ASP.NET Core con Identity Server
+# <a name="secure-an-aspnet-core-no-locblazor-webassembly-hosted-app-with-no-locidentity-server"></a>Protección de una aplicación hospedada Blazor WebAssembly de ASP.NET Core con Identity Server
 
 Por [Javier Calvarro Nelson](https://github.com/javiercn) y [Luke Latham](https://github.com/guardrex)
 
-En este artículo se explica cómo crear una aplicación hospedada Blazor que usa [IdentityServer](https://identityserver.io/) para autenticar usuarios y llamadas API.
+En este artículo se explica cómo crear una solución hospedada Blazor que usa [IdentityServer](https://identityserver.io/) para autenticar usuarios y llamadas API.
 
 > [!NOTE]
 > Para configurar una aplicación Blazor WebAssembly independiente u hospedada para que use una instancia de Identity Server externa existente, siga las instrucciones de <xref:blazor/security/webassembly/standalone-with-authentication-library>.
@@ -107,7 +107,7 @@ La clase `Startup` tiene las siguientes adiciones.
 
 * En `Startup.Configure`:
 
-  * El middleware IdentityServer expone los puntos de conexión de Open ID Connect (OIDC):
+  * El middleware IdentityServer expone los puntos de conexión de OpenID Connect (OIDC):
 
     ```csharp
     app.UseIdentityServer();
@@ -130,7 +130,7 @@ La clase `Startup` tiene las siguientes adiciones.
 
 El método auxiliar <xref:Microsoft.Extensions.DependencyInjection.IdentityServerBuilderConfigurationExtensions.AddApiAuthorization%2A> configura [IdentityServer](https://identityserver.io/) en escenarios de ASP.NET Core. IdentityServer es un marco eficaz y extensible que sirve para abordar los problemas de seguridad de las aplicaciones. IdentityServer expone las complejidades innecesarias en los escenarios más comunes. En consecuencia, se proporciona un conjunto de convenciones y opciones de configuración que consideramos un buen punto de partida. Cuando sus necesidades de autenticación cambien, tendrá a su disposición toda la eficacia de IdentityServer para personalizar la autenticación para adaptarse a los requisitos de una aplicación.
 
-### <a name="addidentityserverjwt"></a>AddIdentityServerJwt
+### <a name="addno-locidentityserverjwt"></a>AddIdentityServerJwt
 
 El método auxiliar <xref:Microsoft.AspNetCore.Authentication.AuthenticationBuilderExtensions.AddIdentityServerJwt%2A> configura un esquema de directiva para la aplicación como el controlador de autenticación predeterminado. La directiva está configurada para permitir que Identity controle todas las solicitudes enrutadas a cualquier subruta en el espacio de dirección URL de Identity `/Identity`. <xref:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler> se encarga de todas las demás solicitudes. Este método también hace lo siguiente:
 
@@ -364,7 +364,7 @@ services.AddDefaultIdentity<ApplicationUser>(options =>
     .AddEntityFrameworkStores<ApplicationDbContext>();
 ```
 
-### <a name="configure-identity-server"></a>Configuración de Identity Server
+### <a name="configure-no-locidentity-server"></a>Configuración de Identity Server
 
 Siga **uno** de estos procedimientos:
 

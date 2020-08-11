@@ -5,7 +5,7 @@ description: Aprenda a hospedar e implementar una aplicación Blazor con ASP.NET
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/09/2020
+ms.date: 08/03/2020
 no-loc:
 - Blazor
 - Blazor Server
@@ -15,14 +15,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/webassembly
-ms.openlocfilehash: 2a2b0dabc26c14624144ce7eceb5861fe56f1054
-ms.sourcegitcommit: 384833762c614851db653b841cc09fbc944da463
+ms.openlocfilehash: 9d596e38a1d8350cd4a27f2fec4b262a0edf1015
+ms.sourcegitcommit: 84150702757cf7a7b839485382420e8db8e92b9c
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/17/2020
-ms.locfileid: "86445143"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87818851"
 ---
-# <a name="host-and-deploy-aspnet-core-blazor-webassembly"></a>Hospedaje e implementación de ASP.NET Core Blazor WebAssembly
+# <a name="host-and-deploy-aspnet-core-no-locblazor-webassembly"></a>Hospedaje e implementación de ASP.NET Core Blazor WebAssembly
 
 Por [Luke Latham](https://github.com/guardrex), [Rainer Stropek](https://www.timecockpit.com), [Daniel Roth](https://github.com/danroth27), [Ben Adams](https://twitter.com/ben_a_adams) y [Safia Abdalla](https://safia.rocks)
 
@@ -48,32 +48,32 @@ Blazor se basa en el host para proporcionar los archivos comprimidos adecuados. 
 * Para ver la configuración de compresión de `web.config` de IIS, vea la sección [IIS: compresión Brotli y Gzip](#brotli-and-gzip-compression). 
 * Al hospedar en soluciones de hospedaje estáticas que no admiten la negociación de contenido de archivos comprimidos estáticamente (como es el caso de las páginas de GitHub), considere la posibilidad de configurar la aplicación para capturar y descodificar archivos comprimidos Brotli:
 
-  * Haga referencia al descodificador Brotli del [repositorio de GitHub google/brotli](https://github.com/google/brotli/) en la aplicación.
+  * Obtenga el descodificador Brotli de JavaScript del [repositorio de GitHub google/brotli](https://github.com/google/brotli). A partir de julio de 2020, el archivo del descodificador se llama `decode.min.js` y se encuentra en la [carpeta `js`](https://github.com/google/brotli/tree/master/js) del repositorio.
   * Actualice la aplicación para que use el descodificador. Cambie el marcado de la etiqueta `<body>` de cierre en `wwwroot/index.html` por lo siguiente:
   
     ```html
-    <script src="brotli.decode.min.js"></script>
+    <script src="decode.min.js"></script>
     <script src="_framework/blazor.webassembly.js" autostart="false"></script>
     <script>
-    Blazor.start({
-      loadBootResource: function (type, name, defaultUri, integrity) {
-        if (type !== 'dotnetjs' && location.hostname !== 'localhost') {
-          return (async function () {
-            const response = await fetch(defaultUri + '.br', { cache: 'no-cache' });
-            if (!response.ok) {
-              throw new Error(response.statusText);
-            }
-            const originalResponseBuffer = await response.arrayBuffer();
-            const originalResponseArray = new Int8Array(originalResponseBuffer);
-            const decompressedResponseArray = BrotliDecode(originalResponseArray);
-            const contentType = type === 
-              'dotnetwasm' ? 'application/wasm' : 'application/octet-stream';
-            return new Response(decompressedResponseArray, 
-              { headers: { 'content-type': contentType } });
-          })();
+      Blazor.start({
+        loadBootResource: function (type, name, defaultUri, integrity) {
+          if (type !== 'dotnetjs' && location.hostname !== 'localhost') {
+            return (async function () {
+              const response = await fetch(defaultUri + '.br', { cache: 'no-cache' });
+              if (!response.ok) {
+                throw new Error(response.statusText);
+              }
+              const originalResponseBuffer = await response.arrayBuffer();
+              const originalResponseArray = new Int8Array(originalResponseBuffer);
+              const decompressedResponseArray = BrotliDecode(originalResponseArray);
+              const contentType = type === 
+                'dotnetwasm' ? 'application/wasm' : 'application/octet-stream';
+              return new Response(decompressedResponseArray, 
+                { headers: { 'content-type': contentType } });
+            })();
+          }
         }
-      }
-    });
+      });
     </script>
     ```
  
@@ -116,6 +116,289 @@ La aplicación cliente de Blazor WebAssembly se publica en la carpeta `/bin/Rele
 Para obtener más información sobre la implementación y el hospedaje de aplicaciones de ASP.NET Core, consulte <xref:host-and-deploy/index>.
 
 Para obtener información sobre cómo implementar en Azure App Service, vea <xref:tutorials/publish-to-azure-webapp-using-vs>.
+
+## <a name="hosted-deployment-with-multiple-no-locblazor-webassembly-apps"></a>Implementación hospedada con varias aplicaciones Blazor WebAssembly
+
+### <a name="app-configuration"></a>Configuración de la aplicación
+
+Para configurar una solución de Blazor hospedada para atender a varias aplicaciones Blazor WebAssembly:
+
+* Use una solución de Blazor hospedada existente o cree una solución a partir de la plantilla de proyecto hospedada de Blazor.
+
+* En el archivo de proyecto de la aplicación cliente, agregue una propiedad `<StaticWebAssetBasePath>` a `<PropertyGroup>` con un valor de `FirstApp` para establecer la ruta de acceso base para los recursos estáticos del proyecto:
+
+  ```xml
+  <PropertyGroup>
+    ...
+    <StaticWebAssetBasePath>FirstApp</StaticWebAssetBasePath>
+  </PropertyGroup>
+  ```
+
+* Agregue una segunda aplicación cliente a la solución:
+
+  * Agregue una carpeta denominada `SecondClient` a la carpeta de la solución.
+  * Cree una aplicación Blazor WebAssembly denominada `SecondBlazorApp.Client` en la carpeta `SecondClient` de la plantilla de proyecto de Blazor WebAssembly.
+  * En el archivo de proyecto de la aplicación:
+
+    * Agregue una propiedad `<StaticWebAssetBasePath>` a `<PropertyGroup>` con un valor de `SecondApp`:
+
+      ```xml
+      <PropertyGroup>
+        ...
+        <StaticWebAssetBasePath>SecondApp</StaticWebAssetBasePath>
+      </PropertyGroup>
+      ```
+
+    * Agregue una referencia de proyecto al proyecto `Shared`:
+
+      ```xml
+      <ItemGroup>
+        <ProjectReference Include="..\Shared\{SOLUTION NAME}.Shared.csproj" />
+      </ItemGroup>
+      ```
+
+      El marcador de posición `{SOLUTION NAME}` es el nombre de la solución.
+
+* En el archivo del proyecto de la aplicación de servidor, cree una referencia de proyecto para la aplicación cliente agregada:
+
+  ```xml
+  <ItemGroup>
+    ...
+    <ProjectReference Include="..\SecondClient\SecondBlazorApp.Client.csproj" />
+  </ItemGroup>
+  ```
+
+* En el archivo `Properties/launchSettings.json` de la aplicación de servidor, configure el elemento `applicationUrl` del perfil de Kestrel (`{SOLUTION NAME}.Server`) para acceder a las aplicaciones cliente en los puertos 5001 y 5002:
+
+  ```json
+  "applicationUrl": "https://localhost:5001;https://localhost:5002",
+  ```
+
+* En el método `Startup.Configure` de la aplicación de servidor (`Startup.cs`), quite las líneas siguientes, que aparecen después de la llamada a <xref:Microsoft.AspNetCore.Builder.HttpsPolicyBuilderExtensions.UseHttpsRedirection%2A>:
+
+  ```csharp
+  app.UseBlazorFrameworkFiles();
+  app.UseStaticFiles();
+
+  app.UseRouting();
+
+  app.UseEndpoints(endpoints =>
+  {
+      endpoints.MapRazorPages();
+      endpoints.MapControllers();
+      endpoints.MapFallbackToFile("index.html");
+  });
+  ```
+
+  Agregue middleware que asigna solicitudes a las aplicaciones cliente. En el ejemplo siguiente se configura el middleware para que se ejecute cuando:
+
+  * El puerto de solicitud es 5001 para la aplicación cliente original o 5002 para la aplicación cliente agregada.
+  * El host de solicitud es `firstapp.com` para la aplicación cliente original o `secondapp.com` para la aplicación cliente agregada.
+
+    > [!NOTE]
+    > El ejemplo que se muestra en esta sección requiere una configuración adicional para:
+    >
+    > * Acceder a las aplicaciones en los dominios de host de ejemplo, `firstapp.com` y `secondapp.com`.
+    > * Certificados que permitan a las aplicaciones cliente habilitar la seguridad TLS (HTTPS).
+    >
+    > La configuración necesaria queda fuera del ámbito de este artículo y depende de cómo se hospede la solución. Para más información, vea los [artículos sobre hospedaje e implementación](xref:host-and-deploy/index).
+
+  Coloque el código siguiente donde se quitaron las líneas anteriormente:
+
+  ```csharp
+  app.MapWhen(ctx => ctx.Request.Host.Port == 5001 || 
+      ctx.Request.Host.Equals("firstapp.com"), first =>
+  {
+      first.Use((ctx, nxt) =>
+      {
+          ctx.Request.Path = "/FirstApp" + ctx.Request.Path;
+          return nxt();
+      });
+
+      first.UseBlazorFrameworkFiles("/FirstApp");
+      first.UseStaticFiles();
+      first.UseStaticFiles("/FirstApp");
+      first.UseRouting();
+
+      first.UseEndpoints(endpoints =>
+      {
+          endpoints.MapControllers();
+          endpoints.MapFallbackToFile("/FirstApp/{*path:nonfile}", 
+              "FirstApp/index.html");
+      });
+  });
+  
+  app.MapWhen(ctx => ctx.Request.Host.Port == 5002 || 
+      ctx.Request.Host.Equals("secondapp.com"), second =>
+  {
+      second.Use((ctx, nxt) =>
+      {
+          ctx.Request.Path = "/SecondApp" + ctx.Request.Path;
+          return nxt();
+      });
+
+      second.UseBlazorFrameworkFiles("/SecondApp");
+      second.UseStaticFiles();
+      second.UseStaticFiles("/SecondApp");
+      second.UseRouting();
+
+      second.UseEndpoints(endpoints =>
+      {
+          endpoints.MapControllers();
+          endpoints.MapFallbackToFile("/SecondApp/{*path:nonfile}", 
+              "SecondApp/index.html");
+      });
+  });
+  ```
+
+* En el controlador de pronóstico meteorológico (`Controllers/WeatherForecastController.cs`) de la aplicación de servidor, reemplace la ruta existente (`[Route("[controller]")]`) a `WeatherForecastController` por las rutas siguientes:
+
+  ```csharp
+  [Route("FirstApp/[controller]")]
+  [Route("SecondApp/[controller]")]
+  ```
+
+  El middleware agregado al método `Startup.Configure` de la aplicación de servidor anteriormente modifica las solicitudes entrantes a `/WeatherForecast` por `/FirstApp/WeatherForecast` o `/SecondApp/WeatherForecast` en función del puerto (5001/5002) o el dominio (`firstapp.com`/`secondapp.com`). Las rutas de controlador anteriores son necesarias para devolver datos meteorológicos de la aplicación de servidor a las aplicaciones cliente.
+
+### <a name="static-assets-and-class-libraries"></a>Recursos estáticos y bibliotecas de clases
+
+Use los métodos siguientes para los recursos estáticos:
+
+* Cuando el recurso se encuentra en la carpeta `wwwroot` de la aplicación cliente, proporcione sus rutas de acceso de la forma habitual:
+
+  ```razor
+  <img alt="..." src="/{ASSET FILE NAME}" />
+  ```
+
+* Cuando el recurso se encuentra en la carpeta `wwwroot` de una [biblioteca de clases de Razor (RCL)](xref:blazor/components/class-libraries), haga referencia al recurso estático de la aplicación cliente según las instrucciones del [artículo de RCL](xref:razor-pages/ui-class#consume-content-from-a-referenced-rcl):
+
+  ```razor
+  <img alt="..." src="_content/{LIBRARY NAME}/{ASSET FILE NAME}" />
+  ```
+
+::: moniker range=">= aspnetcore-5.0"
+
+Se hace referencia de la forma habitual a los componentes que una biblioteca de clases proporciona a una aplicación cliente. Si algún componente requiere hojas de estilo o archivos JavaScript, use cualquiera de los métodos siguientes para obtener los recursos estáticos:
+
+* El archivo `wwwroot/index.html` de la aplicación cliente se puede vincular (`<link>`) con los recursos estáticos.
+* El componente puede usar el [componente `Link`](xref:blazor/fundamentals/additional-scenarios#influence-html-head-tag-elements) del marco de trabajo para obtener los recursos estáticos.
+
+Los enfoques anteriores se demuestran en los ejemplos siguientes.
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
+Se hace referencia de la forma habitual a los componentes que una biblioteca de clases proporciona a una aplicación cliente. Si algún componente requiere hojas de estilo o archivos JavaScript, el archivo `wwwroot/index.html` de la aplicación cliente debe incluir los vínculos de recursos estáticos correctos. Estos enfoques se demuestran en los ejemplos siguientes.
+
+::: moniker-end
+
+Agregue el siguiente componente `Jeep` a una de las aplicaciones cliente. El componente `Jeep` usa:
+
+* Una imagen de la carpeta `wwwroot` de la aplicación cliente (`jeep-cj.png`).
+* Una imagen de una carpeta `wwwroot` de la [biblioteca de componentes de Razor agregada](xref:blazor/components/class-libraries) (`JeepImage`) (`jeep-yj.png`).
+* La plantilla del proyecto de RCL crea automáticamente el componente de ejemplo (`Component1`) cuando se agrega la biblioteca `JeepImage` a la solución.
+
+```razor
+@page "/Jeep"
+
+<h1>1979 Jeep CJ-5&trade;</h1>
+
+<p>
+    <img alt="1979 Jeep CJ-5&trade;" src="/jeep-cj.png" />
+</p>
+
+<h1>1991 Jeep YJ&trade;</h1>
+
+<p>
+    <img alt="1991 Jeep YJ&trade;" src="_content/JeepImage/jeep-yj.png" />
+</p>
+
+<p>
+    <em>Jeep CJ-5</em> and <em>Jeep YJ</em> are a trademarks of 
+    <a href="https://www.fcagroup.com">Fiat Chrysler Automobiles</a>.
+</p>
+
+<JeepImage.Component1 />
+```
+
+> [!WARNING]
+> **No** publique imágenes de vehículos a menos que sean de su titularidad. De lo contrario, corre el riesgo de infringir los derechos de autor.
+
+::: moniker range=">= aspnetcore-5.0"
+
+También se puede agregar la imagen `jeep-yj.png` de la biblioteca al componente `Component1` de la biblioteca (`Component1.razor`). Para proporcionar la clase CSS `my-component` a la página de la aplicación cliente, establezca un vínculo con la hoja de estilo de la biblioteca mediante el [componente `Link`](xref:blazor/fundamentals/additional-scenarios#influence-html-head-tag-elements) del marco de trabajo:
+
+```razor
+<div class="my-component">
+    <Link href="_content/JeepImage/styles.css" rel="stylesheet" />
+
+    <h1>JeepImage.Component1</h1>
+
+    <p>
+        This Blazor component is defined in the <strong>JeepImage</strong> package.
+    </p>
+
+    <p>
+        <img alt="1991 Jeep YJ&trade;" src="_content/JeepImage/jeep-yj.png" />
+    </p>
+</div>
+```
+
+Una alternativa al uso del [componente `Link`](xref:blazor/fundamentals/additional-scenarios#influence-html-head-tag-elements) es cargar la hoja de estilo del archivo `wwwroot/index.html` de la aplicación cliente. Este enfoque hace que la hoja de estilo esté disponible para todos los componentes de la aplicación cliente:
+
+```html
+<head>
+    ...
+    <link href="_content/JeepImage/styles.css" rel="stylesheet" />
+</head>
+```
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
+También se puede agregar la imagen `jeep-yj.png` de la biblioteca al componente `Component1` de la biblioteca (`Component1.razor`):
+
+```razor
+<div class="my-component">
+    <h1>JeepImage.Component1</h1>
+
+    <p>
+        This Blazor component is defined in the <strong>JeepImage</strong> package.
+    </p>
+
+    <p>
+        <img alt="1991 Jeep YJ&trade;" src="_content/JeepImage/jeep-yj.png" />
+    </p>
+</div>
+```
+
+El archivo `wwwroot/index.html` de la aplicación cliente solicita la hoja de estilo de la biblioteca con la siguiente etiqueta `<link>` agregada:
+
+```html
+<head>
+    ...
+    <link href="_content/JeepImage/styles.css" rel="stylesheet" />
+</head>
+```
+
+::: moniker-end
+
+Agregue la navegación al componente `Jeep` en el componente `NavMenu` de la aplicación cliente (`Shared/NavMenu.razor`):
+
+```razor
+<li class="nav-item px-3">
+    <NavLink class="nav-link" href="Jeep">
+        <span class="oi oi-list-rich" aria-hidden="true"></span> Jeep
+    </NavLink>
+</li>
+```
+
+Para obtener más información sobre RCL, vea:
+
+* <xref:blazor/components/class-libraries>
+* <xref:razor-pages/ui-class>
 
 ## <a name="standalone-deployment"></a>Implementación independiente
 
@@ -333,9 +616,15 @@ Para más información, vea [`mod_mime`](https://httpd.apache.org/docs/2.4/mod/m
 
 ### <a name="github-pages"></a>GitHub Pages
 
-Para controlar las reescrituras de URL, agregue un archivo `404.html` con un script que controle el redireccionamiento de la solicitud a la página `index.html`. Para consultar una implementación de ejemplo que ha proporcionado la comunidad, vea [Single Page Apps for GitHub Pages](https://spa-github-pages.rafrex.com/) ([rafrex/spa-github-pages on GitHub](https://github.com/rafrex/spa-github-pages#readme)) (Aplicaciones de página única para GitHub Pages [rafrex/spa-github-pages en GitHub]). Se puede ver un ejemplo del enfoque de la comunidad en [blazor-demo/blazor-demo.github.io en GitHub](https://github.com/blazor-demo/blazor-demo.github.io) ([sitio activo](https://blazor-demo.github.io/)).
+Para controlar las reescrituras de URL, agregue un archivo `wwwroot/404.html` con un script que controle el redireccionamiento de la solicitud a la página `index.html`. Para obtener un ejemplo, vea el [repositorio de GitHub SteveSandersonMS/BlazorOnGitHubPages](https://github.com/SteveSandersonMS/BlazorOnGitHubPages):
 
-Si usa un sitio de proyecto en lugar de un sitio de la organización, agregue o actualice la etiqueta `<base>` en `index.html`. Defina el valor del atributo `href` con el nombre del repositorio de GitHub con una barra diagonal final (por ejemplo, `my-repository/`).
+* [`wwwroot/404.html`](https://github.com/SteveSandersonMS/BlazorOnGitHubPages/blob/master/wwwroot/404.html)
+* [Sitio activo](https://stevesandersonms.github.io/BlazorOnGitHubPages/)
+
+Si usa un sitio de proyecto en lugar de un sitio de la organización, actualice la etiqueta `<base>` en `wwwroot/index.html`. Defina el valor del atributo `href` con el nombre del repositorio de GitHub con una barra diagonal final (por ejemplo, `/my-repository/`). En el [repositorio de GitHub SteveSandersonMS/BlazorOnGitHubPages](https://github.com/SteveSandersonMS/BlazorOnGitHubPages), el elemento `href` base se actualiza cuando el [archivo de configuración `.github/workflows/main.yml`](https://github.com/SteveSandersonMS/BlazorOnGitHubPages/blob/master/.github/workflows/main.yml) realiza la publicación.
+
+> [!NOTE]
+> El [repositorio de GitHub SteveSandersonMS/BlazorOnGitHubPages](https://github.com/SteveSandersonMS/BlazorOnGitHubPages) no es propiedad de .NET Foundation o Microsoft, ni tampoco se encargan de su mantenimiento ni es compatible con ellos.
 
 ## <a name="host-configuration-values"></a>Valores de configuración de host
 
@@ -552,4 +841,3 @@ En el archivo del proyecto, el script se ejecuta después de publicar la aplicac
 ```
 
 Para proporcionar comentarios, visite [aspnetcore/issues #5477](https://github.com/dotnet/aspnetcore/issues/5477).
- 

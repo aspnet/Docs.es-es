@@ -15,14 +15,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/standalone-with-authentication-library
-ms.openlocfilehash: 02960e6c7d70be3ea1be3ed9e2280e5b5847c926
-ms.sourcegitcommit: f7873c02c1505c99106cbc708f37e18fc0a496d1
+ms.openlocfilehash: d3611e26414f5dd1103ca9af15b17f9813023e21
+ms.sourcegitcommit: 84150702757cf7a7b839485382420e8db8e92b9c
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147680"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87818864"
 ---
-# <a name="secure-an-aspnet-core-blazor-webassembly-standalone-app-with-the-authentication-library"></a>Protección de una aplicación independiente Blazor WebAssembly de ASP.NET Core con la biblioteca de autenticación
+# <a name="secure-an-aspnet-core-no-locblazor-webassembly-standalone-app-with-the-authentication-library"></a>Protección de una aplicación independiente Blazor WebAssembly de ASP.NET Core con la biblioteca de autenticación
 
 Por [Javier Calvarro Nelson](https://github.com/javiercn) y [Luke Latham](https://github.com/guardrex)
 
@@ -100,7 +100,7 @@ La configuración se suministra a través del archivo `wwwroot/appsettings.json`
 }
 ```
 
-La compatibilidad con la autenticación de aplicaciones independientes se ofrece por medio de Open ID Connect (OIDC). El método <xref:Microsoft.Extensions.DependencyInjection.WebAssemblyAuthenticationServiceCollectionExtensions.AddOidcAuthentication%2A> acepta una devolución de llamada para configurar los parámetros necesarios para autenticar una aplicación por medio de OIDC. Los valores necesarios para configurar la aplicación se pueden obtener a partir del proveedor de identidades compatible con OIDC. Obtenga los valores cuando registre la aplicación, lo que suele realizarse en el portal en línea del proveedor de identidades en cuestión.
+La compatibilidad con la autenticación de aplicaciones independientes se ofrece por medio de OpenID Connect (OIDC). El método <xref:Microsoft.Extensions.DependencyInjection.WebAssemblyAuthenticationServiceCollectionExtensions.AddOidcAuthentication%2A> acepta una devolución de llamada para configurar los parámetros necesarios para autenticar una aplicación por medio de OIDC. Los valores necesarios para configurar la aplicación se pueden obtener a partir del proveedor de identidades compatible con OIDC. Obtenga los valores cuando registre la aplicación, lo que suele realizarse en el portal en línea del proveedor de identidades en cuestión.
 
 ## <a name="access-token-scopes"></a>Ámbitos de token de acceso
 
