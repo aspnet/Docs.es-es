@@ -7,6 +7,8 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/19/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,14 +17,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/index
-ms.openlocfilehash: 85446ac18608b39c469da766e1a9f2e92a1f5e11
-ms.sourcegitcommit: 384833762c614851db653b841cc09fbc944da463
+ms.openlocfilehash: d2ebb5d3c3a1c3629a5bf563aecfd6fc147715d6
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/17/2020
-ms.locfileid: "86445117"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88014027"
 ---
-# <a name="aspnet-core-blazor-authentication-and-authorization"></a>Autenticación y autorización de ASP.NET Core Blazor
+# <a name="aspnet-core-no-locblazor-authentication-and-authorization"></a>Autenticación y autorización de ASP.NET Core Blazor
 
 De [Steve Sanderson](https://github.com/SteveSandersonMS) y [Luke Latham](https://github.com/guardrex)
 
@@ -44,7 +46,7 @@ Las [convenciones de autorización de Razor Pages](xref:security/authorization/r
 
 Blazor usa los mecanismos de autenticación de ASP.NET Core existentes para establecer la identidad del usuario. El mecanismo exacto depende de la forma en la que se hospeda la aplicación de Blazor: Blazor WebAssembly o Blazor Server.
 
-### <a name="blazor-webassembly-authentication"></a>autenticación Blazor WebAssembly
+### <a name="no-locblazor-webassembly-authentication"></a>autenticación Blazor WebAssembly
 
 En las aplicaciones de Blazor WebAssembly, las comprobaciones de autenticación pueden omitirse porque los usuarios pueden modificar todos los códigos del lado cliente. Lo mismo se aplica a todas las tecnologías de aplicaciones del lado cliente, incluidas las plataformas JavaScript SPA o las aplicaciones nativas para cualquier sistema operativo.
 
@@ -53,19 +55,19 @@ Agregue la siguiente línea de código:
 * Una referencia de paquete para [`Microsoft.AspNetCore.Components.Authorization`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.Authorization/) al archivo de proyecto de la aplicación.
 * El espacio de nombres de `Microsoft.AspNetCore.Components.Authorization` al archivo `_Imports.razor` de la aplicación.
 
-Para controlar la autenticación, la implementación de un servicio <xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider> integrado o personalizado se describe en las secciones siguientes.
+Para controlar la autenticación, el uso de un servicio <xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider> integrado o personalizado se describe en las secciones siguientes.
 
 Para más información sobre cómo crear aplicaciones y su configuración, consulte <xref:blazor/security/webassembly/index>.
 
-### <a name="blazor-server-authentication"></a>autenticación Blazor Server
+### <a name="no-locblazor-server-authentication"></a>autenticación Blazor Server
 
 Las aplicaciones de Blazor Server funcionan mediante una conexión en tiempo real que se crea con SignalR. La [autenticación en aplicaciones basadas en SignalR](xref:signalr/authn-and-authz) se controla cuando se establece la conexión. La autenticación se puede basar en una cookie o en cualquier otro token de portador.
+
+El servicio <xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider> integrado para aplicaciones Blazor Server obtiene datos de estado de autenticación de `HttpContext.User` de ASP.NET Core. Así es como el estado de autenticación se integra con los mecanismos de autenticación de ASP.NET Core.
 
 Para más información sobre cómo crear aplicaciones y su configuración, consulte <xref:blazor/security/server/index>.
 
 ## <a name="authenticationstateprovider-service"></a>Servicio AuthenticationStateProvider
-
-El servicio <xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider> integrado obtiene datos de estado de autenticación de `HttpContext.User` de ASP.NET Core. Así es como el estado de autenticación se integra con los mecanismos de autenticación de ASP.NET Core.
 
 <xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider> es el servicio subyacente utilizado por el componente <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView> y el componente <xref:Microsoft.AspNetCore.Components.Authorization.CascadingAuthenticationState> para obtener el estado de autenticación.
 

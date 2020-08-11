@@ -7,6 +7,8 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 5/7/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: 951ae53876edf345af1a3eb32cb9be1b9668fa53
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 0594303f3ae8c57a0a7776900e6b2a6781c919db
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85404176"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88015834"
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>Hospedaje de ASP.NET Core en Windows con IIS
 
@@ -414,9 +416,9 @@ La [pila de protección de datos de ASP.NET Core](xref:security/data-protection/
 
 Si el conjunto de claves se almacena en memoria cuando se reinicia la aplicación:
 
-* Todos los tokens de autenticación basados en cookies se invalidan. 
+* Todos los tokens de autenticación basados en cookie se invalidan. 
 * Los usuarios tienen que iniciar sesión de nuevo en la siguiente solicitud. 
-* Ya no se pueden descifrar los datos protegidos con el conjunto de claves. Esto puede incluir [tokens CSRF](xref:security/anti-request-forgery#aspnet-core-antiforgery-configuration) y [cookies de TempData de ASP.NET Core MVC](xref:fundamentals/app-state#tempdata).
+* Ya no se pueden descifrar los datos protegidos con el conjunto de claves. Esto puede incluir [tokens CSRF](xref:security/anti-request-forgery#aspnet-core-antiforgery-configuration) y [cookies](xref:fundamentals/app-state#tempdata) de TempData de ASP.NET Core MVC.
 
 Para configurar la protección de datos en IIS para conservar el conjunto de claves, use **uno** de los enfoques siguientes:
 
@@ -510,9 +512,9 @@ El aislamiento de los grupos de aplicaciones se determinan mediante el modelo de
 
 El valor predeterminado del cuadro de diálogo **Agregar sitio web** de IIS es un único grupo de aplicaciones por aplicación. Cuando se proporciona el **Nombre del sitio**, el texto se transfiere automáticamente al cuadro de texto **Grupo de aplicaciones**. Al agregar el sitio se crea un grupo de aplicaciones con el nombre del sitio.
 
-## <a name="application-pool-identity"></a>Identity del grupo de aplicaciones
+## <a name="application-pool-no-locidentity"></a>Identity del grupo de aplicaciones
 
-Una cuenta de identidad del grupo de aplicaciones permite ejecutar una aplicación en una cuenta única sin tener que crear ni administrar dominios o cuentas locales. En IIS 8.0 o versiones posteriores, el proceso de trabajo de administración de IIS (WAS) crea una cuenta virtual con el nombre del nuevo grupo de aplicaciones y ejecuta los procesos de trabajo del grupo de aplicaciones en esta cuenta de forma predeterminada. En la Consola de administración de IIS, en la opción **Configuración avanzada** del grupo de aplicaciones, asegúrese de que **Identity** esté establecido para usar **ApplicationPoolIdentity**:
+Una cuenta de identidad del grupo de aplicaciones permite ejecutar una aplicación en una cuenta única sin tener que crear ni administrar dominios o cuentas locales. En IIS 8.0 o versiones posteriores, el proceso de trabajo de administración de IIS (WAS) crea una cuenta virtual con el nombre del nuevo grupo de aplicaciones y ejecuta los procesos de trabajo del grupo de aplicaciones en esta cuenta de forma predeterminada. En la Consola de administración de IIS, en la opción **Configuración avanzada** del grupo de aplicaciones, asegúrese de que **Identity** esté establecido para usar **ApplicationPoolIdentity** :
 
 ![Cuadro de diálogo Configuración avanzada del grupo de aplicaciones](index/_static/apppool-identity.png)
 
@@ -1014,9 +1016,9 @@ La [pila de protección de datos de ASP.NET Core](xref:security/data-protection/
 
 Si el conjunto de claves se almacena en memoria cuando se reinicia la aplicación:
 
-* Todos los tokens de autenticación basados en cookies se invalidan. 
+* Todos los tokens de autenticación basados en cookie se invalidan. 
 * Los usuarios tienen que iniciar sesión de nuevo en la siguiente solicitud. 
-* Ya no se pueden descifrar los datos protegidos con el conjunto de claves. Esto puede incluir [tokens CSRF](xref:security/anti-request-forgery#aspnet-core-antiforgery-configuration) y [cookies de TempData de ASP.NET Core MVC](xref:fundamentals/app-state#tempdata).
+* Ya no se pueden descifrar los datos protegidos con el conjunto de claves. Esto puede incluir [tokens CSRF](xref:security/anti-request-forgery#aspnet-core-antiforgery-configuration) y [cookies](xref:fundamentals/app-state#tempdata) de TempData de ASP.NET Core MVC.
 
 Para configurar la protección de datos en IIS para conservar el conjunto de claves, use **uno** de los enfoques siguientes:
 
@@ -1110,9 +1112,9 @@ El aislamiento de los grupos de aplicaciones se determinan mediante el modelo de
 
 El valor predeterminado del cuadro de diálogo **Agregar sitio web** de IIS es un único grupo de aplicaciones por aplicación. Cuando se proporciona el **Nombre del sitio**, el texto se transfiere automáticamente al cuadro de texto **Grupo de aplicaciones**. Al agregar el sitio se crea un grupo de aplicaciones con el nombre del sitio.
 
-## <a name="application-pool-identity"></a>Identity del grupo de aplicaciones
+## <a name="application-pool-no-locidentity"></a>Identity del grupo de aplicaciones
 
-Una cuenta de identidad del grupo de aplicaciones permite ejecutar una aplicación en una cuenta única sin tener que crear ni administrar dominios o cuentas locales. En IIS 8.0 o versiones posteriores, el proceso de trabajo de administración de IIS (WAS) crea una cuenta virtual con el nombre del nuevo grupo de aplicaciones y ejecuta los procesos de trabajo del grupo de aplicaciones en esta cuenta de forma predeterminada. En la Consola de administración de IIS, en la opción **Configuración avanzada** del grupo de aplicaciones, asegúrese de que **Identity** esté establecido para usar **ApplicationPoolIdentity**:
+Una cuenta de identidad del grupo de aplicaciones permite ejecutar una aplicación en una cuenta única sin tener que crear ni administrar dominios o cuentas locales. En IIS 8.0 o versiones posteriores, el proceso de trabajo de administración de IIS (WAS) crea una cuenta virtual con el nombre del nuevo grupo de aplicaciones y ejecuta los procesos de trabajo del grupo de aplicaciones en esta cuenta de forma predeterminada. En la Consola de administración de IIS, en la opción **Configuración avanzada** del grupo de aplicaciones, asegúrese de que **Identity** esté establecido para usar **ApplicationPoolIdentity** :
 
 ![Cuadro de diálogo Configuración avanzada del grupo de aplicaciones](index/_static/apppool-identity.png)
 
@@ -1582,9 +1584,9 @@ La [pila de protección de datos de ASP.NET Core](xref:security/data-protection/
 
 Si el conjunto de claves se almacena en memoria cuando se reinicia la aplicación:
 
-* Todos los tokens de autenticación basados en cookies se invalidan. 
+* Todos los tokens de autenticación basados en cookie se invalidan. 
 * Los usuarios tienen que iniciar sesión de nuevo en la siguiente solicitud. 
-* Ya no se pueden descifrar los datos protegidos con el conjunto de claves. Esto puede incluir [tokens CSRF](xref:security/anti-request-forgery#aspnet-core-antiforgery-configuration) y [cookies de TempData de ASP.NET Core MVC](xref:fundamentals/app-state#tempdata).
+* Ya no se pueden descifrar los datos protegidos con el conjunto de claves. Esto puede incluir [tokens CSRF](xref:security/anti-request-forgery#aspnet-core-antiforgery-configuration) y [cookies](xref:fundamentals/app-state#tempdata) de TempData de ASP.NET Core MVC.
 
 Para configurar la protección de datos en IIS para conservar el conjunto de claves, use **uno** de los enfoques siguientes:
 
@@ -1706,9 +1708,9 @@ Las aplicaciones de ASP.NET Core se configuran mediante otros proveedores de con
 
 Al hospedar varios sitios web en un servidor, nuestra recomendación es aislar las aplicaciones entre sí ejecutándolas en su propio grupo de aplicaciones. El valor predeterminado del cuadro de diálogo **Agregar sitio web** es esta configuración. Cuando se proporciona el **Nombre del sitio**, el texto se transfiere automáticamente al cuadro de texto **Grupo de aplicaciones**. Al agregar el sitio se crea un grupo de aplicaciones con el nombre del sitio.
 
-## <a name="application-pool-identity"></a>Identity del grupo de aplicaciones
+## <a name="application-pool-no-locidentity"></a>Identity del grupo de aplicaciones
 
-Una cuenta de identidad del grupo de aplicaciones permite ejecutar una aplicación en una cuenta única sin tener que crear ni administrar dominios o cuentas locales. En IIS 8.0 o versiones posteriores, el proceso de trabajo de administración de IIS (WAS) crea una cuenta virtual con el nombre del nuevo grupo de aplicaciones y ejecuta los procesos de trabajo del grupo de aplicaciones en esta cuenta de forma predeterminada. En la Consola de administración de IIS, en la opción **Configuración avanzada** del grupo de aplicaciones, asegúrese de que **Identity** esté establecido para usar **ApplicationPoolIdentity**:
+Una cuenta de identidad del grupo de aplicaciones permite ejecutar una aplicación en una cuenta única sin tener que crear ni administrar dominios o cuentas locales. En IIS 8.0 o versiones posteriores, el proceso de trabajo de administración de IIS (WAS) crea una cuenta virtual con el nombre del nuevo grupo de aplicaciones y ejecuta los procesos de trabajo del grupo de aplicaciones en esta cuenta de forma predeterminada. En la Consola de administración de IIS, en la opción **Configuración avanzada** del grupo de aplicaciones, asegúrese de que **Identity** esté establecido para usar **ApplicationPoolIdentity** :
 
 ![Cuadro de diálogo Configuración avanzada del grupo de aplicaciones](index/_static/apppool-identity.png)
 

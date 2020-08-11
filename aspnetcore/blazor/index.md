@@ -7,6 +7,8 @@ ms.author: riande
 ms.custom: mvc, seoapril2019
 ms.date: 06/19/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,14 +17,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/index
-ms.openlocfilehash: 30f11a137e711b1cf7a8b036af92fbb5fa2a1f05
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: ad543087243658f09a23e4f6d957d0c6aa77b361
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85402577"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88014183"
 ---
-# <a name="introduction-to-aspnet-core-blazor"></a>Introducción a ASP.NET Core Blazor
+# <a name="introduction-to-aspnet-core-no-locblazor"></a>Introducción a ASP.NET Core Blazor
 
 Por [Daniel Roth](https://github.com/danroth27) y [Luke Latham](https://github.com/guardrex)
 
@@ -140,7 +142,7 @@ El entorno de ejecución controla el envío de eventos de la interfaz de usuario
 
 La conexión que usa el servidor de Blazor Server para comunicarse con el explorador también se emplea para administrar las llamadas de interoperabilidad de JavaScript.
 
-![Blazor Server ejecuta código de .NET en el servidor e interactúa con Document Object Model en el cliente mediante una conexión de SignalR](index/_static/blazor-server.png).
+![Blazor Server ejecuta código de .NET en el servidor e interactúa con Document Object Model en el cliente mediante una conexión de SignalR](index/_static/blazor-server.png)
 
 ## <a name="javascript-interop"></a>Interoperabilidad de JavaScript
 

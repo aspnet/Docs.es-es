@@ -6,6 +6,8 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 03/03/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -14,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/index
-ms.openlocfilehash: a230e1ae85a54ddf16900b2ee7ed4a18d45e4ea2
-ms.sourcegitcommit: 1b89fc58114a251926abadfd5c69c120f1ba12d8
+ms.openlocfilehash: b0258118e116b1686abbebf1c8d89135ae3cb1f6
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87160200"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88019321"
 ---
 # <a name="overview-of-aspnet-core-authentication"></a>Información general sobre la autenticación de ASP.NET Core
 
@@ -37,7 +39,7 @@ Para especificar esquemas de autenticación, es necesario registrar servicios de
 * Mediante una llamada a un método de extensión específico del esquema tras una llamada a `services.AddAuthentication` (por ejemplo, `AddJwtBearer` o `AddCookie`). Estos métodos de extensión usan [AuthenticationBuilder.AddScheme](xref:Microsoft.AspNetCore.Authentication.AuthenticationBuilder.AddScheme*) para registrar esquemas con la configuración adecuada.
 * Con menos frecuencia, mediante una llamada directa a [AuthenticationBuilder.AddScheme](xref:Microsoft.AspNetCore.Authentication.AuthenticationBuilder.AddScheme*).
 
-Por ejemplo, el código siguiente registra los servicios de autenticación y los controladores para los esquemas de autenticación de portador de JWT y de cookies:
+Por ejemplo, el código siguiente registra los servicios de autenticación y los controladores para los esquemas de autenticación de portador de JWT y de cookie:
 
 ```csharp
 services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -47,7 +49,7 @@ services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 El parámetro `JwtBearerDefaults.AuthenticationScheme` de `AddAuthentication` es el nombre del esquema que se usará de forma predeterminada si no se solicita un esquema específico.
 
-Si se usan varios esquemas, las directivas de autorización (o los atributos de autorización) pueden [especificar el esquema (o esquemas) de autenticación](xref:security/authorization/limitingidentitybyscheme) del que dependen para autenticar al usuario. En el ejemplo anterior, se podría especificar el nombre del esquema de autenticación de cookies (`CookieAuthenticationDefaults.AuthenticationScheme` de forma predeterminada, aunque se podría proporcionar otro nombre al llamar a `AddCookie`).
+Si se usan varios esquemas, las directivas de autorización (o los atributos de autorización) pueden [especificar el esquema (o esquemas) de autenticación](xref:security/authorization/limitingidentitybyscheme) del que dependen para autenticar al usuario. En el ejemplo anterior, se podría especificar el nombre del esquema de autenticación de cookie (`CookieAuthenticationDefaults.AuthenticationScheme` de forma predeterminada, aunque se podría proporcionar otro nombre al llamar a `AddCookie`).
 
 En algunos casos, la llamada a `AddAuthentication` se realiza automáticamente mediante otros métodos de extensión. Por ejemplo, al usar [ASP.NET Core Identity](xref:security/authentication/identity), se llama a `AddAuthentication` internamente.
 
@@ -90,14 +92,14 @@ Según la configuración del esquema de autenticación y el contexto de la solic
 
 La acción de autenticación de un esquema de autenticación es la responsable de construir la identidad del usuario basándose en el contexto de la solicitud. Devuelve <xref:Microsoft.AspNetCore.Authentication.AuthenticateResult>, que indica si la autenticación se realizó correctamente y, en caso afirmativo, la identidad del usuario en un vale de autenticación. Vea <xref:Microsoft.AspNetCore.Authentication.AuthenticationHttpContextExtensions.AuthenticateAsync%2A>. Ejemplos de autenticación:
 
-* Un esquema de autenticación de cookies que crea la identidad del usuario a partir de las cookies.
+* Un esquema de autenticación de cookie que crea la identidad del usuario a partir de las cookies.
 * Un esquema portador JWT que deserializa y valida un token de portador JWT para construir la identidad del usuario.
 
 ### <a name="challenge"></a>Desafío
 
 La autorización invoca un desafío de autenticación si un usuario no autenticado solicita un punto de conexión que requiere autenticación. Se emite un desafío de autenticación si, por ejemplo, un usuario anónimo solicita un recurso restringido o hace clic en un vínculo de inicio de sesión. La autorización invoca un desafío con los esquemas de autenticación especificados o con el valor predeterminado, si no se especifica ningún esquema. Vea <xref:Microsoft.AspNetCore.Authentication.AuthenticationHttpContextExtensions.ChallengeAsync%2A>. Ejemplos de desafío de autenticación:
 
-* Un esquema de autenticación de cookies que redirige al usuario a una página de inicio de sesión.
+* Un esquema de autenticación de cookie que redirige al usuario a una página de inicio de sesión.
 * Un esquema portador JWT que devuelve un resultado 401 con un encabezado `www-authenticate: bearer`.
 
 Una acción de desafío debe permitir que el usuario sepa qué mecanismo de autenticación hay que emplear para tener acceso al recurso solicitado.
@@ -105,7 +107,7 @@ Una acción de desafío debe permitir que el usuario sepa qué mecanismo de aute
 ### <a name="forbid"></a>Prohibición
 
 La autorización llama a una acción de prohibición del esquema de autenticación cuando un usuario autenticado intenta tener acceso a un recurso para el que no tiene permiso de acceso. Vea <xref:Microsoft.AspNetCore.Authentication.AuthenticationHttpContextExtensions.ForbidAsync%2A>. Ejemplos de prohibición de autenticación:
-* Un esquema de autenticación de cookies que redirige al usuario a una página que indica que se ha prohibido el acceso.
+* Un esquema de autenticación de cookie que redirige al usuario a una página que indica que se ha prohibido el acceso.
 * Un esquema portador JWT que devuelve un resultado 403.
 * Un esquema de autenticación personalizado que redirige a una página en la que el usuario puede solicitar acceso al recurso.
 

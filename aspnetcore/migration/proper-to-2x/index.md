@@ -5,6 +5,8 @@ description: Obtenga instrucciones para migrar aplicaciones existentes de ASP.NE
 ms.author: scaddie
 ms.date: 10/18/2019
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -13,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: migration/proper-to-2x/index
-ms.openlocfilehash: 1530a5e6cc4b241b916ed7c64587b515186cc6ca
-ms.sourcegitcommit: d306407dc5bfe6fdfbac482214b3f59371b582bc
+ms.openlocfilehash: defdb190acf915eaa7c4aa8469ee47888f771526
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/04/2020
-ms.locfileid: "85951931"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88014924"
 ---
 # <a name="migrate-from-aspnet-to-aspnet-core"></a>Migración de ASP.NET a ASP.NET Core
 
@@ -163,9 +165,9 @@ Por ejemplo, el explorador puede acceder a un recurso de imagen en la carpeta *w
 > [!NOTE]
 > Para acceder a referencias más detalladas sobre cómo trabajar con archivos estáticos en ASP.NET Core, consulte [Archivos estáticos](xref:fundamentals/static-files).
 
-## <a name="multi-value-cookies"></a>Cookies de varios valores
+## <a name="multi-value-no-loccookies"></a>cookies de varios valores
 
-Las [cookies de varios valores](xref:System.Web.HttpCookie.Values) no se admiten en ASP.NET Core. Cree una cookie por valor.
+[cookies](xref:System.Web.HttpCookie.Values) de varios valores no se admiten en ASP.NET Core. Cree una cookie por valor.
 
 ## <a name="partial-app-migration"></a>Migración parcial de aplicaciones
 
