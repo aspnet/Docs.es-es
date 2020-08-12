@@ -164,8 +164,13 @@
           displayName: tutorial
           href: /learn/modules/build-web-api-net-core/
         - name: Microservicios nativos de nube >>
-          displayName: 'tutorial, kubernetes, aks, acr, docker'
-          href: /learn/modules/microservices-aspnet-core/
+          items:
+            - name: Creación e implementación >>
+              displayName: 'tutorial, kubernetes, aks, acr, docker'
+              href: /learn/modules/microservices-aspnet-core/
+            - name: Implementación de resistencia >>
+              displayName: 'tutorial, kubernetes, aks, acr, docker'
+              href: /learn/modules/microservices-resiliency-aspnet-core/
         - name: Acceso a datos >>
           displayName: 'tutorial, ef, entity framework'
           href: /learn/modules/persist-data-ef-core/
@@ -940,7 +945,7 @@
   items:
     - name: Información general
       uid: security/index
-    - name: Autenticación
+    - name: Authentication
       items:
         - name: Información general
           uid: security/authentication/index
@@ -1191,6 +1196,8 @@
       uid: performance/diagnostic-tools
     - name: Pruebas de esfuerzo y carga
       uid: test/loadtests
+    - name: Contadores de eventos
+      href: /dotnet/core/diagnostics/event-counter-perf
 - name: Globalización y localización
   items:
     - name: Información general
