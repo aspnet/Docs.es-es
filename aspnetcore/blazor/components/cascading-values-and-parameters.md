@@ -7,6 +7,8 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/06/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,14 +17,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/cascading-values-and-parameters
-ms.openlocfilehash: c426be21b520520c6745ada95be35816f7365c21
-ms.sourcegitcommit: fa89d6553378529ae86b388689ac2c6f38281bb9
+ms.openlocfilehash: 1ee30a84e0869f6b9ee937648eb87bd41e8702e3
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86059934"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88014716"
 ---
-# <a name="aspnet-core-blazor-cascading-values-and-parameters"></a>Valores y parámetros en cascada de Blazor en ASP.NET Core
+# <a name="aspnet-core-no-locblazor-cascading-values-and-parameters"></a>Valores y parámetros en cascada de Blazor en ASP.NET Core
 
 Por [Luke Latham](https://github.com/guardrex) y [Daniel Roth](https://github.com/danroth27)
 

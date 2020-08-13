@@ -7,6 +7,8 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/servers/httpsys
-ms.openlocfilehash: 27ee69130bc455ab2570556091692053d59e89a5
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 384b6559b4ee6140da5cf785ffda3978aafbb132
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85408232"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88016770"
 ---
 # <a name="httpsys-web-server-implementation-in-aspnet-core"></a>Implementación del servidor web HTTP.sys en ASP.NET Core
 
@@ -169,7 +171,7 @@ En Visual Studio, el perfil de inicio predeterminado es para IIS Express. Para e
 
    La configuración de `UrlPrefixes` invalida la configuración de `UseUrls`/`urls`/`ASPNETCORE_URLS`. Por lo tanto, la ventaja de `UseUrls`, `urls` y la variable de entorno `ASPNETCORE_URLS` es que resulta más fácil de cambiar entre Kestrel y HTTP.sys.
 
-   HTTP.sys usa los [formatos de cadena UrlPrefix de la API HTTP Server](https://msdn.microsoft.com/library/windows/desktop/aa364698.aspx).
+   HTTP.sys usa los [formatos de cadena UrlPrefix de la API HTTP Server](/windows/win32/http/urlprefix-strings).
 
    > [!WARNING]
    > Los enlaces de carácter comodín de nivel superior (`http://*:80/` y `http://+:80`) **no** se deben usar. Los enlaces de carácter comodín de nivel superior generan vulnerabilidades de seguridad en la aplicación. Esto se aplica tanto a los caracteres comodín fuertes como a los débiles. Use nombres de host explícitos o direcciones IP en lugar de caracteres comodín. Los enlaces de carácter comodín de subdominio (por ejemplo, `*.mysub.com`) no suponen ningún riesgo de seguridad si se controla todo el dominio primario (a diferencia de `*.com`, que sí es vulnerable). Para obtener más información, vea [RFC 7230: Sección 5.4: Host](https://tools.ietf.org/html/rfc7230#section-5.4).
@@ -253,7 +255,7 @@ En Visual Studio, el perfil de inicio predeterminado es para IIS Express. Para e
    Documentación de referencia de *netsh.exe*:
 
    * [Comandos Netsh para protocolo de transferencia de hipertexto (HTTP)](https://technet.microsoft.com/library/cc725882.aspx)
-   * [Cadenas de UrlPrefix](https://msdn.microsoft.com/library/windows/desktop/aa364698.aspx)
+   * [Cadenas de UrlPrefix](/windows/win32/http/urlprefix-strings)
 
 1. Ejecutar la aplicación.
 
@@ -272,7 +274,7 @@ En el caso de las aplicaciones hospedadas por HTTP.sys que interactúan con las 
 ## <a name="additional-resources"></a>Recursos adicionales
 
 * [Habilitación de la autenticación de Windows con HTTP.sys](xref:security/authentication/windowsauth#httpsys)
-* [API HTTP Server](https://msdn.microsoft.com/library/windows/desktop/aa364510.aspx)
+* [API HTTP Server](/windows/win32/http/http-api-start-page)
 * [Repositorio aspnet/HttpSysServer de GitHub (código fuente)](https://github.com/aspnet/HttpSysServer/)
 * [El host](xref:fundamentals/index#host)
 * <xref:test/troubleshoot>
@@ -420,7 +422,7 @@ En Visual Studio, el perfil de inicio predeterminado es para IIS Express. Para e
 
    La configuración de `UrlPrefixes` invalida la configuración de `UseUrls`/`urls`/`ASPNETCORE_URLS`. Por lo tanto, la ventaja de `UseUrls`, `urls` y la variable de entorno `ASPNETCORE_URLS` es que resulta más fácil de cambiar entre Kestrel y HTTP.sys.
 
-   HTTP.sys usa los [formatos de cadena UrlPrefix de la API HTTP Server](https://msdn.microsoft.com/library/windows/desktop/aa364698.aspx).
+   HTTP.sys usa los [formatos de cadena UrlPrefix de la API HTTP Server](/windows/win32/http/urlprefix-strings).
 
    > [!WARNING]
    > Los enlaces de carácter comodín de nivel superior (`http://*:80/` y `http://+:80`) **no** se deben usar. Los enlaces de carácter comodín de nivel superior generan vulnerabilidades de seguridad en la aplicación. Esto se aplica tanto a los caracteres comodín fuertes como a los débiles. Use nombres de host explícitos o direcciones IP en lugar de caracteres comodín. Los enlaces de carácter comodín de subdominio (por ejemplo, `*.mysub.com`) no suponen ningún riesgo de seguridad si se controla todo el dominio primario (a diferencia de `*.com`, que sí es vulnerable). Para obtener más información, vea [RFC 7230: Sección 5.4: Host](https://tools.ietf.org/html/rfc7230#section-5.4).
@@ -504,7 +506,7 @@ En Visual Studio, el perfil de inicio predeterminado es para IIS Express. Para e
    Documentación de referencia de *netsh.exe*:
 
    * [Comandos Netsh para protocolo de transferencia de hipertexto (HTTP)](https://technet.microsoft.com/library/cc725882.aspx)
-   * [Cadenas de UrlPrefix](https://msdn.microsoft.com/library/windows/desktop/aa364698.aspx)
+   * [Cadenas de UrlPrefix](/windows/win32/http/urlprefix-strings)
 
 1. Ejecutar la aplicación.
 
@@ -523,7 +525,7 @@ En el caso de las aplicaciones hospedadas por HTTP.sys que interactúan con las 
 ## <a name="additional-resources"></a>Recursos adicionales
 
 * [Habilitación de la autenticación de Windows con HTTP.sys](xref:security/authentication/windowsauth#httpsys)
-* [API HTTP Server](https://msdn.microsoft.com/library/windows/desktop/aa364510.aspx)
+* [API HTTP Server](/windows/win32/http/http-api-start-page)
 * [Repositorio aspnet/HttpSysServer de GitHub (código fuente)](https://github.com/aspnet/HttpSysServer/)
 * [El host](xref:fundamentals/index#host)
 * <xref:test/troubleshoot>
@@ -673,7 +675,7 @@ En Visual Studio, el perfil de inicio predeterminado es para IIS Express. Para e
 
    La configuración de `UrlPrefixes` invalida la configuración de `UseUrls`/`urls`/`ASPNETCORE_URLS`. Por lo tanto, la ventaja de `UseUrls`, `urls` y la variable de entorno `ASPNETCORE_URLS` es que resulta más fácil de cambiar entre Kestrel y HTTP.sys.
 
-   HTTP.sys usa los [formatos de cadena UrlPrefix de la API HTTP Server](https://msdn.microsoft.com/library/windows/desktop/aa364698.aspx).
+   HTTP.sys usa los [formatos de cadena UrlPrefix de la API HTTP Server](/windows/win32/http/urlprefix-strings).
 
    > [!WARNING]
    > Los enlaces de carácter comodín de nivel superior (`http://*:80/` y `http://+:80`) **no** se deben usar. Los enlaces de carácter comodín de nivel superior generan vulnerabilidades de seguridad en la aplicación. Esto se aplica tanto a los caracteres comodín fuertes como a los débiles. Use nombres de host explícitos o direcciones IP en lugar de caracteres comodín. Los enlaces de carácter comodín de subdominio (por ejemplo, `*.mysub.com`) no suponen ningún riesgo de seguridad si se controla todo el dominio primario (a diferencia de `*.com`, que sí es vulnerable). Para obtener más información, vea [RFC 7230: Sección 5.4: Host](https://tools.ietf.org/html/rfc7230#section-5.4).
@@ -757,7 +759,7 @@ En Visual Studio, el perfil de inicio predeterminado es para IIS Express. Para e
    Documentación de referencia de *netsh.exe*:
 
    * [Comandos Netsh para protocolo de transferencia de hipertexto (HTTP)](https://technet.microsoft.com/library/cc725882.aspx)
-   * [Cadenas de UrlPrefix](https://msdn.microsoft.com/library/windows/desktop/aa364698.aspx)
+   * [Cadenas de UrlPrefix](/windows/win32/http/urlprefix-strings)
 
 1. Ejecutar la aplicación.
 
@@ -776,7 +778,7 @@ En el caso de las aplicaciones hospedadas por HTTP.sys que interactúan con las 
 ## <a name="additional-resources"></a>Recursos adicionales
 
 * [Habilitación de la autenticación de Windows con HTTP.sys](xref:security/authentication/windowsauth#httpsys)
-* [API HTTP Server](https://msdn.microsoft.com/library/windows/desktop/aa364510.aspx)
+* [API HTTP Server](/windows/win32/http/http-api-start-page)
 * [Repositorio aspnet/HttpSysServer de GitHub (código fuente)](https://github.com/aspnet/HttpSysServer/)
 * [El host](xref:fundamentals/index#host)
 * <xref:test/troubleshoot>
@@ -926,7 +928,7 @@ En Visual Studio, el perfil de inicio predeterminado es para IIS Express. Para e
 
    La configuración de `UrlPrefixes` invalida la configuración de `UseUrls`/`urls`/`ASPNETCORE_URLS`. Por lo tanto, la ventaja de `UseUrls`, `urls` y la variable de entorno `ASPNETCORE_URLS` es que resulta más fácil de cambiar entre Kestrel y HTTP.sys.
 
-   HTTP.sys usa los [formatos de cadena UrlPrefix de la API HTTP Server](https://msdn.microsoft.com/library/windows/desktop/aa364698.aspx).
+   HTTP.sys usa los [formatos de cadena UrlPrefix de la API HTTP Server](/windows/win32/http/urlprefix-strings).
 
    > [!WARNING]
    > Los enlaces de carácter comodín de nivel superior (`http://*:80/` y `http://+:80`) **no** se deben usar. Los enlaces de carácter comodín de nivel superior generan vulnerabilidades de seguridad en la aplicación. Esto se aplica tanto a los caracteres comodín fuertes como a los débiles. Use nombres de host explícitos o direcciones IP en lugar de caracteres comodín. Los enlaces de carácter comodín de subdominio (por ejemplo, `*.mysub.com`) no suponen ningún riesgo de seguridad si se controla todo el dominio primario (a diferencia de `*.com`, que sí es vulnerable). Para obtener más información, vea [RFC 7230: Sección 5.4: Host](https://tools.ietf.org/html/rfc7230#section-5.4).
@@ -1010,7 +1012,7 @@ En Visual Studio, el perfil de inicio predeterminado es para IIS Express. Para e
    Documentación de referencia de *netsh.exe*:
 
    * [Comandos Netsh para protocolo de transferencia de hipertexto (HTTP)](https://technet.microsoft.com/library/cc725882.aspx)
-   * [Cadenas de UrlPrefix](https://msdn.microsoft.com/library/windows/desktop/aa364698.aspx)
+   * [Cadenas de UrlPrefix](/windows/win32/http/urlprefix-strings)
 
 1. Ejecutar la aplicación.
 
@@ -1029,7 +1031,7 @@ En el caso de las aplicaciones hospedadas por HTTP.sys que interactúan con las 
 ## <a name="additional-resources"></a>Recursos adicionales
 
 * [Habilitación de la autenticación de Windows con HTTP.sys](xref:security/authentication/windowsauth#httpsys)
-* [API HTTP Server](https://msdn.microsoft.com/library/windows/desktop/aa364510.aspx)
+* [API HTTP Server](/windows/win32/http/http-api-start-page)
 * [Repositorio aspnet/HttpSysServer de GitHub (código fuente)](https://github.com/aspnet/HttpSysServer/)
 * [El host](xref:fundamentals/index#host)
 * <xref:test/troubleshoot>

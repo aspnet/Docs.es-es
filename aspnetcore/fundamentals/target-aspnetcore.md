@@ -6,20 +6,22 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 12/16/2019
 no-loc:
-- '[Blazor'
-- '[Blazor Server'
-- '[Blazor WebAssembly'
-- '[Identity'
-- "[Let's Encrypt"
-- '[Razor'
-- '[SignalR'
+- cookie
+- Cookie
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: fundamentals/target-aspnetcore
-ms.openlocfilehash: 1c794092b856a916a318956d7cfb357d46a22d1d
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: a6c20c61f7f33706e620fcbc239b2cc4bace15f0
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85399652"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88016497"
 ---
 # <a name="use-aspnet-core-apis-in-a-class-library"></a>Uso de las API de ASP.NET Core en una biblioteca de clases
 
@@ -40,7 +42,7 @@ A medida que se lanzan versiones preliminares de ASP.NET Core, se publican los c
 
 Con el lanzamiento de .NET Core 3,0, muchos ensamblados de ASP.NET Core ya no se publican en NuGet como paquetes. Ahora, los ensamblados se incluyen en el marco compartido de `Microsoft.AspNetCore.App`, que se instala con los instaladores del SDK de .NET Core y el entorno de ejecución. Para obtener una lista de los paquetes que ya no se publican, vea [Quitar referencias de paquetes obsoletas](xref:migration/22-to-30#remove-obsolete-package-references).
 
-A partir de .NET Core 3.0, los proyectos que usan el SDK de MSBuild `Microsoft.NET.Sdk.Web` hacen referencia implícitamente al marco compartido. Los proyectos que usan el SDK de `Microsoft.NET.Sdk` o `Microsoft.NET.Sdk.[Razor` deben hacer referencia a ASP.NET Core para usar las API de ASP.NET Core en el marco compartido.
+A partir de .NET Core 3.0, los proyectos que usan el SDK de MSBuild `Microsoft.NET.Sdk.Web` hacen referencia implícitamente al marco compartido. Los proyectos que usan el SDK de `Microsoft.NET.Sdk` o `Microsoft.NET.Sdk.Razor` deben hacer referencia a ASP.NET Core para usar las API de ASP.NET Core en el marco compartido.
 
 Para hacer referencia a ASP.NET Core, agregue el siguiente elemento `<FrameworkReference>` al archivo del proyecto:
 
@@ -48,17 +50,17 @@ Para hacer referencia a ASP.NET Core, agregue el siguiente elemento `<FrameworkR
 
 La referencia a ASP.NET Core de esta manera solo se admite para los proyectos que tienen como destino .NET Core 3.x.
 
-## <a name="include-blazor-extensibility"></a>Inclusión de la extensibilidad [Blazor
+## <a name="include-no-locblazor-extensibility"></a>Inclusión de la extensibilidad Blazor
 
-[Blazor admite los [modelos de hospedaje](xref:blazor/hosting-models) de WebAssembly (WASM) y Server. A menos que haya un motivo específico para no hacerlo, una biblioteca de [componentes [Razor](xref:blazor/components/index) debe admitir ambos modelos de hospedaje. Una biblioteca de componentes [Razor debe usar el [SDK Microsoft.NET.Sdk.[Razor](xref:razor-pages/sdk)
+Blazor admite los [modelos de hospedaje](xref:blazor/hosting-models) de WebAssembly (WASM) y Server. A menos que haya un motivo específico para no hacerlo, una biblioteca de [componentes Razor](xref:blazor/components/index) debe admitir ambos modelos de hospedaje. Una biblioteca de componentes Razor debe usar el [SDK Microsoft.NET.Sdk.Razor](xref:razor-pages/sdk)
 
 ### <a name="support-both-hosting-models"></a>Compatibilidad con ambos modelos de hospedaje
 
-Para permitir el uso de componentes [Razor desde proyectos tanto de [[Blazor Server](xref:blazor/hosting-models#blazor-server) como de [[BlazorWebAssembly de ](xref:blazor/hosting-models#blazor-webassembly), use las instrucciones siguientes de su editor.
+Para permitir el uso de componentes Razor desde proyectos tanto de [Blazor Server](xref:blazor/hosting-models#blazor-server) como de [BlazorWebAssembly de ](xref:blazor/hosting-models#blazor-webassembly), use las instrucciones siguientes de su editor.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-Use la plantilla de proyecto de **Biblioteca de clases de [Razor** . Se debe desactivar la casilla **Support pages and views** (Admitir páginas y vistas) de la plantilla.
+Use la plantilla de proyecto de **Biblioteca de clases de Razor** . Se debe desactivar la casilla **Support pages and views** (Admitir páginas y vistas) de la plantilla.
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -70,7 +72,7 @@ dotnet new razorclasslib
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)
 
-Use la plantilla de proyecto de **Biblioteca de clases de [Razor** .
+Use la plantilla de proyecto de **Biblioteca de clases de Razor** .
 
 ---
 
@@ -88,7 +90,7 @@ Por ejemplo:
 
 ### <a name="support-a-specific-hosting-model"></a>Compatibilidad con un modelo de hospedaje específico
 
-Es mucho menos común admitir un único modelo de hospedaje de [Blazor. Por ejemplo, para admitir el uso de componentes [Razor únicamente desde proyectos de [[Blazor Server](xref:blazor/hosting-models#blazor-server):
+Es mucho menos común admitir un único modelo de hospedaje de Blazor. Por ejemplo, para admitir el uso de componentes Razor únicamente desde proyectos de [Blazor Server](xref:blazor/hosting-models#blazor-server):
 
 * Diríjase a .NET Core 3.x.
 * Agregue un elemento `<FrameworkReference>` para el marco compartido.
@@ -97,32 +99,32 @@ Por ejemplo:
 
 [!code-xml[](target-aspnetcore/samples/single-tfm/netcoreapp3.0-razor-components-library.csproj)]
 
-Para más información sobre las bibliotecas que contienen componentes [Razor, vea [Bibliotecas de clases de componentes [Razor de ASP.NET Core](xref:blazor/components/class-libraries).
+Para más información sobre las bibliotecas que contienen componentes Razor, vea [Bibliotecas de clases de componentes Razor de ASP.NET Core](xref:blazor/components/class-libraries).
 
 ## <a name="include-mvc-extensibility"></a>Inclusión de la extensibilidad MVC
 
 En esta sección se describen las recomendaciones para las bibliotecas que incluyen:
 
-* [Vistas de [Razor o [Razor Pages](#razor-views-or-razor-pages)
+* [Vistas de Razor o Razor Pages](#razor-views-or-razor-pages)
 * [Asistentes de etiquetas](#tag-helpers)
 * [Visualización de componentes](#view-components)
 
 En esta sección no se explica la compatibilidad con múltiples versiones de MVC. Para obtener instrucciones sobre cómo admitir varias versiones de ASP.NET Core, consulte [Compatibilidad con varias versiones de ASP.NET Core](#support-multiple-aspnet-core-versions).
 
-### <a name="razor-views-or-razor-pages"></a>Vistas de [Razor o [Razor Pages
+### <a name="no-locrazor-views-or-no-locrazor-pages"></a>Vistas de Razor o Razor Pages
 
-Un proyecto que incluya [vistas de [Razor](xref:mvc/views/overview) o [[Razor Pages](xref:razor-pages/index) debe usar el [SDK Microsoft.NET.Sdk.[Razor](xref:razor-pages/sdk)
+Un proyecto que incluya [vistas de Razor](xref:mvc/views/overview) o [Razor Pages](xref:razor-pages/index) debe usar el [SDK Microsoft.NET.Sdk.Razor](xref:razor-pages/sdk)
 
 Si el proyecto tiene como destino .NET Core 3.x, requiere lo siguiente:
 
 * Una propiedad de MSBuild `AddRazorSupportForMvc` establecida en `true`.
 * Un elemento `<FrameworkReference>` para el marco compartido.
 
-La plantilla de proyecto **Biblioteca de clases de [Razor** cumple los requisitos anteriores de los proyectos que tienen como destino .NET Core 3.x. Utilice las instrucciones siguientes para su editor.
+La plantilla de proyecto **Biblioteca de clases de Razor** cumple los requisitos anteriores de los proyectos que tienen como destino .NET Core 3.x. Utilice las instrucciones siguientes para su editor.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-Use la plantilla de proyecto de **Biblioteca de clases de [Razor** . Se activa la casilla **Support pages and views** (Admitir páginas y vistas) de la plantilla.
+Use la plantilla de proyecto de **Biblioteca de clases de Razor** . Se activa la casilla **Support pages and views** (Admitir páginas y vistas) de la plantilla.
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -152,7 +154,7 @@ Un proyecto que incluye [asistentes de etiquetas](xref:mvc/views/tag-helpers/int
 
 [!code-xml[](target-aspnetcore/samples/single-tfm/netcoreapp3.0-basic-library.csproj)]
 
-Si el destino es .NET Standard (para admitir versiones anteriores a ASP.NET Core 3.x), agregue una referencia de paquete a [Microsoft.AspNetCore.Mvc.[Razor](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.[Razor). El paquete de `Microsoft.AspNetCore.Mvc.[Razor` se ha migrado al marco compartido y, por tanto, ya no se publica. Por ejemplo:
+Si el destino es .NET Standard (para admitir versiones anteriores a ASP.NET Core 3.x), agregue una referencia de paquete a [Microsoft.AspNetCore.Mvc.Razor](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Razor). El paquete de `Microsoft.AspNetCore.Mvc.Razor` se ha migrado al marco compartido y, por tanto, ya no se publica. Por ejemplo:
 
 [!code-xml[](target-aspnetcore/samples/single-tfm/netstandard2.0-tag-helpers-library.csproj)]
 
@@ -181,8 +183,8 @@ El siguiente archivo de proyecto admite estas variantes a través de la propieda
 Con el archivo de proyecto anterior:
 
 * El paquete de `Markdig` se agrega a todos los consumidores.
-* Se ha agregado una referencia a [Microsoft.AspNetCore.Mvc.[Razor](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.[Razor) para los consumidores cuyo destino es .NET Framework 4.6.1 o posterior o .NET Core 2.x. La versión 2.1.0 del paquete funciona con ASP.NET Core 2.2 gracias a la compatibilidad con versiones anteriores.
-* Se hace referencia al marco compartido para los consumidores que tienen como destino .NET Core 3.x. El paquete de `Microsoft.AspNetCore.Mvc.[Razor` se incluye en el marco compartido.
+* Se ha agregado una referencia a [Microsoft.AspNetCore.Mvc.Razor](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Razor) para los consumidores cuyo destino es .NET Framework 4.6.1 o posterior o .NET Core 2.x. La versión 2.1.0 del paquete funciona con ASP.NET Core 2.2 gracias a la compatibilidad con versiones anteriores.
+* Se hace referencia al marco compartido para los consumidores que tienen como destino .NET Core 3.x. El paquete de `Microsoft.AspNetCore.Mvc.Razor` se incluye en el marco compartido.
 
 Como alternativa, se podría tomar como destino .NET Standard 2.0 en lugar de .NET Core 2.1 y .NET Framework 4.6.1:
 

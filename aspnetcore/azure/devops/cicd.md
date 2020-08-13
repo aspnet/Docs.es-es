@@ -4,22 +4,24 @@ author: CamSoper
 description: Integración e implementación continuas en DevOps con ASP.NET Core y Azure
 ms.author: scaddie
 ms.date: 10/24/2018
-ms.custom: mvc, seodec18
+ms.custom: devx-track-csharp, mvc, seodec18
 no-loc:
-- '[Blazor'
-- '[Blazor Server'
-- '[Blazor WebAssembly'
-- '[Identity'
-- "[Let's Encrypt"
-- '[Razor'
-- '[SignalR'
+- cookie
+- Cookie
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: azure/devops/cicd
-ms.openlocfilehash: 0edded18d766d6f2af08f6be5dbecbfd52a14a35
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 26ca6c416691c75c4bad73dca4c8383325af025d
+ms.sourcegitcommit: ba4872dd5a93780fe6cfacb2711ec1e69e0df92c
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85400562"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88130476"
 ---
 # <a name="continuous-integration-and-deployment"></a>Integración e implementación continuas
 

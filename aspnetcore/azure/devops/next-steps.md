@@ -3,9 +3,11 @@ title: 'Pasos siguientes: DevOps con ASP.NET Core y Azure'
 author: CamSoper
 description: Rutas de aprendizaje adicionales para DevOps con ASP.NET Core y Azure.
 ms.author: casoper
-ms.custom: mvc, seodec18
+ms.custom: devx-track-csharp, mvc, seodec18
 ms.date: 10/24/2018
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -14,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: azure/devops/next-steps
-ms.openlocfilehash: 6e7f46a0c78575e52a8182829f7b3d2bddec70f6
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: a9a6b0a588b7813f9d6e2b215630a1b9100be890
+ms.sourcegitcommit: ba4872dd5a93780fe6cfacb2711ec1e69e0df92c
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85400341"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88130436"
 ---
 # <a name="next-steps"></a>Pasos siguientes
 

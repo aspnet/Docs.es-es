@@ -7,6 +7,8 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 7/22/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,14 +17,14 @@ no-loc:
 - Razor
 - SignalR
 uid: test/razor-pages-tests
-ms.openlocfilehash: ed048d600b629335b8267b63b3cfd57b525d608e
-ms.sourcegitcommit: c86b4e2955dc1724f2eaa7c97894ad8b3bf763fb
+ms.openlocfilehash: 21810f00548ad9f9c399ec4e453dd914dc186f5d
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/22/2020
-ms.locfileid: "86949099"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88018954"
 ---
-# <a name="razor-pages-unit-tests-in-aspnet-core"></a>Pruebas unitarias de Razor Pages en ASP.NET Core
+# <a name="no-locrazor-pages-unit-tests-in-aspnet-core"></a>Pruebas unitarias de Razor Pages en ASP.NET Core
 
 ::: moniker range=">= aspnetcore-3.0"
 

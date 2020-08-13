@@ -6,6 +6,8 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/22/2019
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -14,14 +16,14 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-rp/sort-filter-page
-ms.openlocfilehash: 496221bb4e34e1f9e4177d1934786a77d8c9b411
-ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
+ms.openlocfilehash: 5bfea63cc1ff85adbe5ce572858b78a8e86b2280
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86212537"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88017732"
 ---
-# <a name="part-3-razor-pages-with-ef-core-in-aspnet-core---sort-filter-paging"></a>Página 3. Razor Pages con EF Core en ASP.NET Core: Ordenación, filtrado y paginación
+# <a name="part-3-no-locrazor-pages-with-ef-core-in-aspnet-core---sort-filter-paging"></a>Página 3. Razor Pages con EF Core en ASP.NET Core: Ordenación, filtrado y paginación
 
 Por [Tom Dykstra](https://github.com/tdykstra), [Rick Anderson](https://twitter.com/RickAndMSFT) y [Jon P Smith](https://twitter.com/thereformedprog)
 
@@ -134,7 +136,7 @@ Hay una disminución del rendimiento por llamar a `ToUpper`. El código `ToUpper
 
 Para obtener más información, vea este artículo, en el que se describen [los procedimientos para usar consultas que no distinguen mayúsculas de minúsculas con el proveedor de SQLite](https://github.com/aspnet/EntityFrameworkCore/issues/11414).
 
-### <a name="update-the-razor-page"></a>Actualización de la página de Razor
+### <a name="update-the-no-locrazor-page"></a>Actualización de la página de Razor
 
 Reemplace el código de *Pages/Student/Index.cshtml* para crear un botón **Search** y cromo ordenado.
 
@@ -211,7 +213,7 @@ Si se cambia la cadena de búsqueda durante la paginación, la página se restab
 
   Los dos signos de interrogación después de `pageIndex` en la llamada a `PaginatedList.CreateAsync` representan el [operador de uso combinado de NULL](/dotnet/csharp/language-reference/operators/null-conditional-operator). El operador de uso combinado de NULL define un valor predeterminado para un tipo que acepta valores NULL. La expresión `(pageIndex ?? 1)` significa devolver el valor de `pageIndex` si tiene un valor. Devuelve 1 si `pageIndex` no tiene ningún valor.
 
-### <a name="add-paging-links-to-the-razor-page"></a>Adición de vínculos de paginación a la instancia de Razor Pages
+### <a name="add-paging-links-to-the-no-locrazor-page"></a>Adición de vínculos de paginación a la instancia de Razor Pages
 
 Reemplace el código de *Students/Index.cshtml* con el código siguiente. Se resaltan los cambios:
 
@@ -247,7 +249,7 @@ Cree *SchoolViewModels/EnrollmentDateGroup.cs* con el código siguiente:
 
 [!code-csharp[Main](intro/samples/cu30/Models/SchoolViewModels/EnrollmentDateGroup.cs)]
 
-### <a name="create-the-razor-page"></a>Creación de la instancia de Razor Pages
+### <a name="create-the-no-locrazor-page"></a>Creación de la instancia de Razor Pages
 
 Cree un archivo *Pages/About.cshtml* con el código siguiente:
 
@@ -467,7 +469,7 @@ El método `PaginatedList.CreateAsync` convierte la consulta del alumno en una s
 
 Los dos signos de interrogación en `PaginatedList.CreateAsync` representan el [operador de uso combinado de NULL](/dotnet/csharp/language-reference/operators/null-conditional-operator). El operador de uso combinado de NULL define un valor predeterminado para un tipo que acepta valores NULL. La expresión `(pageIndex ?? 1)` significa devolver el valor de `pageIndex` si tiene un valor. Devuelve 1 si `pageIndex` no tiene ningún valor.
 
-## <a name="add-paging-links-to-the-student-razor-page"></a>Incorporación de vínculos de paginación a la página de Razor de alumnos
+## <a name="add-paging-links-to-the-student-no-locrazor-page"></a>Incorporación de vínculos de paginación a la página de Razor de alumnos
 
 Actualice el marcado en *Students/Index.cshtml*. Se resaltan los cambios:
 
@@ -521,7 +523,7 @@ Actualice el archivo *Pages/About.cshtml.cs* con el código siguiente:
 
 La instrucción LINQ agrupa las entidades de alumnos por fecha de inscripción, calcula la cantidad de entidades que se incluyen en cada grupo y almacena los resultados en una colección de objetos de modelo de la vista `EnrollmentDateGroup`.
 
-### <a name="modify-the-about-razor-page"></a>Modificación de la página de Razor About
+### <a name="modify-the-about-no-locrazor-page"></a>Modificación de la página de Razor About
 
 Reemplace el código del archivo *Pages/About.cshtml* por el código siguiente:
 

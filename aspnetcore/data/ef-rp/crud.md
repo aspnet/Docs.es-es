@@ -5,6 +5,8 @@ description: Parte 2 de la serie de tutoriales sobre Razor Pages y Entity Frame
 ms.author: riande
 ms.date: 07/22/2019
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -13,14 +15,14 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-rp/crud
-ms.openlocfilehash: 46846d99230620e45d8a2baab46df320425cfb6c
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: f205e7741c8e901e9219bec2028c7bee98129161
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85401212"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88018369"
 ---
-# <a name="part-2-razor-pages-with-ef-core-in-aspnet-core---crud"></a>Parte 2. Razor Pages con EF Core en ASP.NET Core: CRUD
+# <a name="part-2-no-locrazor-pages-with-ef-core-in-aspnet-core---crud"></a>Parte 2. Razor Pages con EF Core en ASP.NET Core: CRUD
 
 Por [Tom Dykstra](https://github.com/tdykstra), [Jon P Smith](https://twitter.com/thereformedprog) y [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -393,7 +395,7 @@ En el código anterior se recupera la entidad seleccionada y después se llama a
 * Se detecta la excepción de base de datos.
 * Se llama al método `OnGetAsync` de las páginas Delete con `saveChangesError=true`.
 
-### <a name="update-the-delete-razor-page"></a>Actualización de la página de Razor Delete
+### <a name="update-the-delete-no-locrazor-page"></a>Actualización de la página de Razor Delete
 
 Agregue el siguiente mensaje de error resaltado a la página de Razor Delete.
 <!--

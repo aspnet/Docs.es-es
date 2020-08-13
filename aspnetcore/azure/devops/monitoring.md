@@ -3,23 +3,25 @@ title: 'Supervisión y depuración: DevOps con ASP.NET Core y Azure'
 author: CamSoper
 description: Supervisión y depuración del código como parte de una solución de DevOps con ASP.NET Core y Azure
 ms.author: casoper
-ms.custom: mvc, seodec18
+ms.custom: devx-track-csharp, mvc, seodec18
 ms.date: 07/10/2019
 no-loc:
-- '[Blazor'
-- '[Blazor Server'
-- '[Blazor WebAssembly'
-- '[Identity'
-- "[Let's Encrypt"
-- '[Razor'
-- '[SignalR'
+- cookie
+- Cookie
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: azure/devops/monitor
-ms.openlocfilehash: a94b1e0b5ce2a24cf22eb665c9bcd03c25ffa67f
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 98d7c820b20f4f4c6b57f283ef718ce056dcdcae
+ms.sourcegitcommit: ba4872dd5a93780fe6cfacb2711ec1e69e0df92c
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85400380"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88130501"
 ---
 # <a name="monitor-and-debug"></a>Supervisión y depuración
 

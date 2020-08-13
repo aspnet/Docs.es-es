@@ -1,38 +1,40 @@
 ---
-title: Configuración del enlazador de ASP.NET Core [Blazor
+title: Configuración del enlazador de ASP.NET Core Blazor
 author: guardrex
-description: Aprenda a controlar al enlazador de lenguaje intermedio (IL) al crear una aplicación [Blazor.
+description: Aprenda a controlar al enlazador de lenguaje intermedio (IL) al crear una aplicación Blazor.
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 05/19/2020
 no-loc:
-- '[Blazor'
-- '[Blazor Server'
-- '[Blazor WebAssembly'
-- '[Identity'
-- "[Let's Encrypt"
-- '[Razor'
-- '[SignalR'
+- cookie
+- Cookie
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: blazor/host-and-deploy/configure-linker
-ms.openlocfilehash: 568efe9971aefc11841c42789ac7f2af3004003f
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: e76d25dbbf5c7a166e5f58a5ad1f9b5a2ecacf79
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85402707"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88014260"
 ---
-# <a name="configure-the-linker-for-aspnet-core-blazor"></a>Configuración del enlazador de ASP.NET Core [Blazor
+# <a name="configure-the-linker-for-aspnet-core-no-locblazor"></a>Configuración del enlazador de ASP.NET Core Blazor
 
 Por [Luke Latham](https://github.com/guardrex)
 
-[Blazor WebAssembly realiza la vinculación de [lenguaje intermedio (IL)](/dotnet/standard/managed-code#intermediate-language--execution) durante una compilación para reducir el IL innecesario de los ensamblados de salida de la aplicación. El enlazador está deshabilitado durante la compilación en la configuración Debug. Las aplicaciones deben compilarse en la configuración Release para habilitar el enlazador. Se recomienda compilar en Release cuando se implementen las aplicaciones [Blazor WebAssembly. 
+Blazor WebAssembly realiza la vinculación de [lenguaje intermedio (IL)](/dotnet/standard/managed-code#intermediate-language--execution) durante una compilación para reducir el IL innecesario de los ensamblados de salida de la aplicación. El enlazador está deshabilitado durante la compilación en la configuración Debug. Las aplicaciones deben compilarse en la configuración Release para habilitar el enlazador. Se recomienda compilar en Release cuando se implementen las aplicaciones Blazor WebAssembly. 
 
 La vinculación de una aplicación optimiza el tamaño, pero puede tener efectos perjudiciales. Las aplicaciones que usan la reflexión o características dinámicas relacionadas pueden verse interrumpidas cuando se reduzcan porque el enlazador no conoce este comportamiento dinámico y no puede determinar, en general, qué tipos son necesarios para la reflexión en el entorno de ejecución. Para reducir estas aplicaciones, se debe informar al vinculador de los tipos necesarios para la reflexión en el código y en los paquetes o marcos de trabajo de los que depende la aplicación. 
 
 Para asegurarse de que la aplicación reducida funciona correctamente una vez implementada, es importante probar las compilaciones de Release de la aplicación con frecuencia durante el desarrollo.
 
-La vinculación de las aplicaciones de [Blazor se puede configurar con estas características de MSBuild:
+La vinculación de las aplicaciones de Blazor se puede configurar con estas características de MSBuild:
 
 * Configuración de la vinculación global con una [propiedad de MSBuild](#control-linking-with-an-msbuild-property).
 * Control de la vinculación por cada ensamblado con un [archivo de configuración](#control-linking-with-a-configuration-file).
@@ -62,7 +64,7 @@ Control de la vinculación por cada ensamblado al proporcionar un archivo de con
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-  This file specifies which parts of the BCL or [Blazor packages must not be
+  This file specifies which parts of the BCL or Blazor packages must not be
   stripped by the IL Linker even if they aren't referenced by user code.
 -->
 <linker>
@@ -107,7 +109,7 @@ En el ejemplo siguiente, el archivo `LinkerConfig.xml` se especifica como un rec
 
 ### <a name="configure-the-linker-for-internationalization"></a>Configuración del enlazador para la internacionalización
 
-De forma predeterminada, la configuración del enlazador de [Blazor para aplicaciones [Blazor WebAssembly quita información de internacionalización, excepto para las configuraciones regionales solicitadas de forma explícita. Al quitar estos ensamblados se minimiza el tamaño de la aplicación.
+De forma predeterminada, la configuración del enlazador de Blazor para aplicaciones Blazor WebAssembly quita información de internacionalización, excepto para las configuraciones regionales solicitadas de forma explícita. Al quitar estos ensamblados se minimiza el tamaño de la aplicación.
 
 Para controlar qué ensamblados de I18N se conservan, establezca la propiedad `<BlazorWebAssemblyI18NAssemblies>` de MSBuild en el archivo de proyecto:
 

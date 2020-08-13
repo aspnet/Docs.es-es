@@ -3,9 +3,11 @@ title: 'Implementación de una aplicación en App Service: DevOps con ASP.NET Co
 author: CamSoper
 description: Implemente una aplicación ASP.NET Core en Azure App Service, el primer paso para DevOps con ASP.NET Core y Azure.
 ms.author: casoper
-ms.custom: mvc, seodec18
+ms.custom: devx-track-csharp, mvc, seodec18
 ms.date: 10/24/2018
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -14,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: azure/devops/deploy-to-app-service
-ms.openlocfilehash: 7cf6395b6f57413d85532ed15e5a875af10f905b
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: f27c33d692512130ba0a36e9d00d46dffe90da16
+ms.sourcegitcommit: ba4872dd5a93780fe6cfacb2711ec1e69e0df92c
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85400393"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88130241"
 ---
 # <a name="deploy-an-app-to-app-service"></a>Implementación de una aplicación en App Service
 

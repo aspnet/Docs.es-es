@@ -6,6 +6,8 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 2/18/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -14,14 +16,14 @@ no-loc:
 - Razor
 - SignalR
 uid: razor-pages/filter
-ms.openlocfilehash: 626003ad75333cfaf17a3ea97549ca82650469a8
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: b8942020e98d0f985e5445bb1816c540bcb7829b
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85407374"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88021411"
 ---
-# <a name="filter-methods-for-razor-pages-in-aspnet-core"></a>Métodos de filtrado de Razor Pages de ASP.NET Core
+# <a name="filter-methods-for-no-locrazor-pages-in-aspnet-core"></a>Métodos de filtrado de Razor Pages de ASP.NET Core
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -57,7 +59,7 @@ Los filtros de páginas de Razor proporcionan los siguientes métodos, que se pu
 
 Implemente la versión sincrónica **o** la versión asincrónica de una interfaz de filtro, pero **no** ambas. El marco comprueba primero si el filtro implementa la interfaz asincrónica y, si es así, es a la interfaz que llama. De lo contrario, llamará a métodos de interfaz sincrónicos. Si se implementan ambas interfaces, solo se llamará a los métodos asincrónicos. La misma regla se cumple con las invalidaciones en páginas: implemente la versión sincrónica o asincrónica de la invalidación, pero no ambas.
 
-## <a name="implement-razor-page-filters-globally"></a>Implementación de filtros de páginas de Razor globalmente
+## <a name="implement-no-locrazor-page-filters-globally"></a>Implementación de filtros de páginas de Razor globalmente
 
 El siguiente código implementa `IAsyncPageFilter`:
 
@@ -81,7 +83,7 @@ El siguiente código habilita `SamplePageFilter`:
 
 [!code-csharp[Main](filter/3.1sample/PageFilter/StartupSync.cs?name=snippet2)]
 
-## <a name="implement-razor-page-filters-by-overriding-filter-methods"></a>Implementación de filtros de páginas de Razor mediante la invalidación de métodos de filtro
+## <a name="implement-no-locrazor-page-filters-by-overriding-filter-methods"></a>Implementación de filtros de páginas de Razor mediante la invalidación de métodos de filtro
 
 El código siguiente invalida los filtros de páginas de Razor asincrónicos:
 
@@ -149,7 +151,7 @@ Los filtros de páginas de Razor proporcionan los siguientes métodos, que se pu
 > [!NOTE]
 > Implemente la versión sincrónica **o** la versión asincrónica de una interfaz de filtro, pero no ambas. El marco comprueba primero si el filtro implementa la interfaz asincrónica y, si es así, es a la interfaz que llama. De lo contrario, llamará a métodos de interfaz sincrónicos. Si se implementan ambas interfaces, solo se llamará a los métodos asincrónicos. La misma regla se cumple con las invalidaciones en páginas: implemente la versión sincrónica o asincrónica de la invalidación, pero no ambas.
 
-## <a name="implement-razor-page-filters-globally"></a>Implementación de filtros de páginas de Razor globalmente
+## <a name="implement-no-locrazor-page-filters-globally"></a>Implementación de filtros de páginas de Razor globalmente
 
 El siguiente código implementa `IAsyncPageFilter`:
 
@@ -177,7 +179,7 @@ El siguiente código habilita `SamplePageFilter`:
 
 [!code-csharp[Main](filter/sample/PageFilter/StartupSync.cs?name=snippet2&highlight=11)]
 
-## <a name="implement-razor-page-filters-by-overriding-filter-methods"></a>Implementación de filtros de páginas de Razor mediante la invalidación de métodos de filtro
+## <a name="implement-no-locrazor-page-filters-by-overriding-filter-methods"></a>Implementación de filtros de páginas de Razor mediante la invalidación de métodos de filtro
 
 El código siguiente invalida los filtros de páginas de Razor sincrónicos:
 

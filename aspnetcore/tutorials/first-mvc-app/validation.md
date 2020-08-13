@@ -5,6 +5,8 @@ description: Parte 9 de la serie de tutoriales sobre ASP.NET Core MVC.
 ms.author: riande
 ms.date: 04/13/2017
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -13,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/validation
-ms.openlocfilehash: 9a04beab6c00c24e47acca11cfa61d7ca59ab333
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 43e8fbb46a3154cf2c4a50cc1683defeb5f898b6
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85407933"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88020787"
 ---
 # <a name="part-9-add-validation-to-an-aspnet-core-mvc-app"></a>Parte 9. Adición de validación a una aplicación de ASP.NET Core MVC
 

@@ -6,6 +6,8 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
 ms.date: 05/26/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -14,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/authn-and-authz
-ms.openlocfilehash: 4216a6f28d7c4fdcd45fbd639617fa99b91e784c
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: edaf96fb9c7f0f175efe82f8b85d4d1a41da87a5
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85407491"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88016354"
 ---
 # <a name="authentication-and-authorization-in-grpc-for-aspnet-core"></a>Autenticación y autorización en gRPC para ASP.NET Core
 
@@ -148,7 +150,7 @@ Muchos mecanismos de autenticación admitidos por ASP.NET Core funcionan con gRP
 
 * Azure Active Directory
 * Certificado de cliente
-* IdentityServer
+* IdentityServidor
 * Token de JWT
 * OAuth 2.0
 * OpenID Connect

@@ -6,6 +6,8 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
 ms.date: 09/25/2019
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -14,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/migration
-ms.openlocfilehash: 2f0cd5f224453ee7be16f8a1d10e383de2a0d426
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 8098d3a629eb7e5902c5379c00ea7090900a87d2
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85407257"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88016029"
 ---
 # <a name="migrating-grpc-services-from-c-core-to-aspnet-core"></a>Migración de servicios gRPC de C-core a ASP.NET Core
 

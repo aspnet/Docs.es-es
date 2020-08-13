@@ -5,6 +5,8 @@ description: En este artículo se presentan los archivos de objeto portátil y s
 ms.author: scaddie
 ms.date: 09/26/2017
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -13,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/portable-object-localization
-ms.openlocfilehash: 531e836db8613cc3382ef2f38f336a0986116334
-ms.sourcegitcommit: 66fca14611eba141d455fe0bd2c37803062e439c
+ms.openlocfilehash: 1c60f98ce08c5282986f688487339d378f28aaf7
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85944489"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88016809"
 ---
 # <a name="configure-portable-object-localization-in-aspnet-core"></a>Configurar la localización de objetos portátiles en ASP.NET Core
 

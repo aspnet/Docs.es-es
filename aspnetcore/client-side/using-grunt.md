@@ -5,20 +5,22 @@ description: Uso de Grunt en ASP.NET Core
 ms.author: riande
 ms.date: 12/05/2019
 no-loc:
-- '[Blazor'
-- '[Blazor Server'
-- '[Blazor WebAssembly'
-- '[Identity'
-- "[Let's Encrypt"
-- '[Razor'
-- '[SignalR'
+- cookie
+- Cookie
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: client-side/using-grunt
-ms.openlocfilehash: fc871e22f9bd5a9c137008f1d87019542c45b5d2
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 019f31c1a6fa3a33783f78f2fee71f710642ce6d
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85401771"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88013208"
 ---
 # <a name="use-grunt-in-aspnet-core"></a>Uso de Grunt en ASP.NET Core
 

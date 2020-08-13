@@ -6,6 +6,8 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 09/24/2019
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -14,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/metapackage-app
-ms.openlocfilehash: 89f447699e8219ec4dd48b2342095d86a011860f
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 182d167a1848492846a04c938749a6de30bce377
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85407972"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88017069"
 ---
 # <a name="microsoftaspnetcoreapp-for-aspnet-core"></a>Microsoft.AspNetCore.App para ASP.NET Core
 

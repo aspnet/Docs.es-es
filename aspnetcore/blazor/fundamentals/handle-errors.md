@@ -7,6 +7,8 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/23/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,14 +17,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/handle-errors
-ms.openlocfilehash: e3ce3a62f351255fd059adaa6e9b0a8e9bdc2ce7
-ms.sourcegitcommit: fa89d6553378529ae86b388689ac2c6f38281bb9
+ms.openlocfilehash: 5f7112d9a072f28d387e07bdf69ec0b7595ff6b4
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86059882"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88014443"
 ---
-# <a name="handle-errors-in-aspnet-core-blazor-apps"></a>Control de errores en aplicaciones Blazor de ASP.NET Core
+# <a name="handle-errors-in-aspnet-core-no-locblazor-apps"></a>Control de errores en aplicaciones Blazor de ASP.NET Core
 
 Por [Steve Sanderson](https://github.com/SteveSandersonMS)
 
@@ -85,7 +87,7 @@ Los estilos incluidos en las plantillas de Blazor (`wwwroot/css/app.css` o `wwwr
 }
 ```
 
-## <a name="how-a-blazor-server-app-reacts-to-unhandled-exceptions"></a>Cómo reacciona una aplicación Blazor Server a las excepciones no controladas
+## <a name="how-a-no-locblazor-server-app-reacts-to-unhandled-exceptions"></a>Cómo reacciona una aplicación Blazor Server a las excepciones no controladas
 
 Blazor Server es un marco con estado. Mientras los usuarios interactúan con una aplicación, mantienen una conexión con el servidor, lo que se denomina *circuito*. El circuito contiene instancias de componentes activas, además de muchos otros aspectos del estado, como:
 
@@ -221,7 +223,7 @@ Para obtener más información, vea los artículos siguientes:
 * <xref:blazor/call-javascript-from-dotnet>
 * <xref:blazor/call-dotnet-from-javascript>
 
-### <a name="blazor-server-prerendering"></a>Representación previa de Blazor Server
+### <a name="no-locblazor-server-prerendering"></a>Representación previa de Blazor Server
 
 Se puede realizar la representación previa de los componentes de Blazor mediante el [asistente de etiquetas de componente](xref:mvc/views/tag-helpers/builtin-th/component-tag-helper) para que su marcado HTML representado se devuelva como parte de la solicitud HTTP inicial del usuario. El funcionamiento es el siguiente:
 

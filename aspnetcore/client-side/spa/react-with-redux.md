@@ -7,6 +7,8 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 02/13/2019
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: spa/react-with-redux
-ms.openlocfilehash: d44e1afabd909b7d46d3355a5d66848458416873
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 96ee4a06360d6cca8d48c300ecebab9014da9c56
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85401745"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88013143"
 ---
 # <a name="use-the-react-with-redux-project-template-with-aspnet-core"></a>Uso de la plantilla de proyecto React-with-Redux con ASP.NET Core
 

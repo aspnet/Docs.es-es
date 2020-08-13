@@ -7,6 +7,8 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/04/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/templates
-ms.openlocfilehash: 65d6a3156419b57eae6c7e41a9778fa25fd88f4f
-ms.sourcegitcommit: 6eacadf1be61679ab8e6f781ece76b7395512879
+ms.openlocfilehash: 8f5792bc5cde358105f396112ed1b17b7695f248
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87758533"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88013546"
 ---
 # <a name="aspnet-core-no-locblazor-templates"></a>Plantillas de Blazor de ASP.NET Core
 

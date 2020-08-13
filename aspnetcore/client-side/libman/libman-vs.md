@@ -6,20 +6,22 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 08/20/2018
 no-loc:
-- '[Blazor'
-- '[Blazor Server'
-- '[Blazor WebAssembly'
-- '[Identity'
-- "[Let's Encrypt"
-- '[Razor'
-- '[SignalR'
+- cookie
+- Cookie
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: client-side/libman/libman-vs
-ms.openlocfilehash: 504c34ccd8813273161b86504700704f8a932538
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 2dc944ffd4307aa108a54b70d58f298c26959ce0
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85403175"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88013351"
 ---
 # <a name="use-libman-with-aspnet-core-in-visual-studio"></a>Uso de LibMan con ASP.NET Core en Visual Studio
 
@@ -68,7 +70,7 @@ Siga estos pasos para instalar una biblioteca del lado cliente:
     * Se usa *lib* si *wwwroot* no existe.
   * Si se ha iniciado desde una carpeta de proyecto, se usa el nombre de carpeta correspondiente.
 
-  La sugerencia de carpeta tiene como sufijo el nombre de la biblioteca. En la tabla siguiente se muestran sugerencias de carpeta al instalar jQuery en un proyecto de [Razor Pages.
+  La sugerencia de carpeta tiene como sufijo el nombre de la biblioteca. En la tabla siguiente se muestran sugerencias de carpeta al instalar jQuery en un proyecto de Razor Pages.
   
   |Ubicación de inicio                           |Carpeta sugerida      |
   |------------------------------------------|----------------------|

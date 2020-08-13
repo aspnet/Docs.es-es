@@ -7,6 +7,8 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/29/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/configuration
-ms.openlocfilehash: 9ae0dcc16b9debd47a61010953243b0abe499c4f
-ms.sourcegitcommit: ca6a1f100c1a3f59999189aa962523442dd4ead1
+ms.openlocfilehash: 437e7be6b805ad836df60e831f5e0dc0bda4f5a5
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87443974"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88014456"
 ---
 # <a name="aspnet-core-no-locblazor-configuration"></a>Configuración de Blazor en ASP.NET Core
 
