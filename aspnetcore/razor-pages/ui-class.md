@@ -6,6 +6,8 @@ ms.author: riande
 ms.date: 01/25/2020
 ms.custom: mvc, seodec18
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -14,14 +16,14 @@ no-loc:
 - Razor
 - SignalR
 uid: razor-pages/ui-class
-ms.openlocfilehash: 1d37ebaa913a2815b79b16875049bbf91f9fb941
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 042ef8dcc7135e0c60baec972d405380d85a6a10
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85404397"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88019227"
 ---
-# <a name="create-reusable-ui-using-the-razor-class-library-project-in-aspnet-core"></a>Creación de una interfaz de usuario reutilizable con el proyecto de biblioteca de clases de Razor en ASP.NET Core
+# <a name="create-reusable-ui-using-the-no-locrazor-class-library-project-in-aspnet-core"></a>Creación de una interfaz de usuario reutilizable con el proyecto de biblioteca de clases de Razor en ASP.NET Core
 
 Por [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -31,7 +33,7 @@ Las vistas, páginas, controladores y modelos de página de Razor, los [componen
 
 [Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/ui-class/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
-## <a name="create-a-class-library-containing-razor-ui"></a>Creación de una biblioteca de clases que contenga interfaz de usuario de Razor
+## <a name="create-a-class-library-containing-no-locrazor-ui"></a>Creación de una biblioteca de clases que contenga interfaz de usuario de Razor
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -198,7 +200,7 @@ Las vistas, páginas, controladores y modelos de página de Razor, los [componen
 
 [Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/ui-class/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
-## <a name="create-a-class-library-containing-razor-ui"></a>Creación de una biblioteca de clases que contenga interfaz de usuario de Razor
+## <a name="create-a-class-library-containing-no-locrazor-ui"></a>Creación de una biblioteca de clases que contenga interfaz de usuario de Razor
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -235,7 +237,7 @@ Los siguientes elementos pueden hacer referencia a la RCL:
 * Paquete NuGet. Vea [Creación de paquetes NuGet](/nuget/create-packages/creating-a-package), [dotnet add package](/dotnet/core/tools/dotnet-add-package) y [Creación y publicación de un paquete NuGet](/nuget/quickstart/create-and-publish-a-package-using-visual-studio).
 * *{NombreDeProyecto}.csproj*. Vea [dotnet-add reference](/dotnet/core/tools/dotnet-add-reference).
 
-## <a name="walkthrough-create-an-rcl-project-and-use-from-a-razor-pages-project"></a>Tutorial: Creación y uso de un proyecto de RCL desde un proyecto de Razor Pages
+## <a name="walkthrough-create-an-rcl-project-and-use-from-a-no-locrazor-pages-project"></a>Tutorial: Creación y uso de un proyecto de RCL desde un proyecto de Razor Pages
 
 En lugar de crearlo, puede descargar el [proyecto completo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/ui-class/samples) y comprobarlo. La descarga de ejemplo contiene más código y vínculos que hacen que el proyecto sea fácil de comprobar. Puede dejar sus comentarios en [este problema de GitHub](https://github.com/dotnet/AspNetCore.Docs/issues/6098) sobre las descargas de ejemplo en comparación con las instrucciones paso a paso.
 
@@ -300,7 +302,7 @@ El archivo *_ViewStart.cshtml* es necesario para poder usar el diseño del proye
 
 ---
 
-### <a name="add-razor-files-and-folders-to-the-project"></a>Adición de archivos y carpetas de Razor al proyecto
+### <a name="add-no-locrazor-files-and-folders-to-the-project"></a>Adición de archivos y carpetas de Razor al proyecto
 
 * Reemplace el marcado de *RazorUIClassLib/Areas/MyFeature/Pages/Shared/_Message.cshtml* por el siguiente código:
 
@@ -324,9 +326,9 @@ El archivo *_ViewStart.cshtml* es necesario para poder usar el diseño del proye
   dotnet build RazorUIClassLib
   ```
 
-El resultado de la compilación contiene *RazorUIClassLib.dll* y *RazorUIClassLib.Views.dll*. *RazorUIClassLib.Views.dll* incluye el contenido de Razor compilado.
+La salida de la compilación contiene *RazorUIClassLib. dll* y *RazorUIClassLib. views.dll*. *RazorUIClassLib.Views.dll* incluye el contenido de Razor compilado.
 
-### <a name="use-the-razor-ui-library-from-a-razor-pages-project"></a>Uso de la biblioteca de interfaz de usuario de Razor desde un proyecto de Razor Pages
+### <a name="use-the-no-locrazor-ui-library-from-a-no-locrazor-pages-project"></a>Uso de la biblioteca de interfaz de usuario de Razor desde un proyecto de Razor Pages
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 

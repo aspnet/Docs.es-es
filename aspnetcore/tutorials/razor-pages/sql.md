@@ -5,6 +5,8 @@ description: Parte 4 de la serie de tutoriales sobre Razor Pages.
 ms.author: riande
 ms.date: 7/22/2019
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -13,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/sql
-ms.openlocfilehash: 68764a5b8c908012cc0053aa4e3ea071f2ce423d
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 6d1a93a9cab49d33181e88b7fdc0f203a1e2546c
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85400913"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88022425"
 ---
 # <a name="part-4-with-a-database-and-aspnet-core"></a>Parte 4. Trabajo con una base de datos y ASP.NET Core
 

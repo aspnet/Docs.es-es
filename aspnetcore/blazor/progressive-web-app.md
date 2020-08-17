@@ -1,32 +1,34 @@
 ---
-title: Creación de aplicaciones web progresivas con ASP.NET Core [Blazor WebAssembly
+title: Creación de aplicaciones web progresivas con ASP.NET Core Blazor WebAssembly
 author: guardrex
-description: Obtenga información sobre cómo compilar aplicaciones web progresivas (PWA) basadas en [Blazor que usan características de exploradores modernos para comportarse como aplicaciones de escritorio.
+description: Obtenga información sobre cómo compilar aplicaciones web progresivas (PWA) basadas en Blazor que usan características de exploradores modernos para comportarse como aplicaciones de escritorio.
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 06/10/2020
 no-loc:
-- '[Blazor'
-- '[Blazor Server'
-- '[Blazor WebAssembly'
-- '[Identity'
-- "[Let's Encrypt"
-- '[Razor'
-- '[SignalR'
+- cookie
+- Cookie
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: blazor/progressive-web-app
-ms.openlocfilehash: 237a8fceb75ba724625f018cf94c8d5bc5acfdad
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 1c33a3abd2ebee60a4025d4598495d276663dc9b
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85402590"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88014170"
 ---
-# <a name="build-progressive-web-applications-with-aspnet-core-blazor-webassembly"></a>Creación de aplicaciones web progresivas con ASP.NET Core [Blazor WebAssembly
+# <a name="build-progressive-web-applications-with-aspnet-core-no-locblazor-webassembly"></a>Creación de aplicaciones web progresivas con ASP.NET Core Blazor WebAssembly
 
 Por [Steve Sanderson](https://github.com/SteveSandersonMS)
 
-Una aplicación web progresiva suele ser una aplicación de página única que usa las API y funciones de exploradores modernos para comportarse como una aplicación de escritorio. [Blazor WebAssembly es una plataforma de aplicaciones web del lado cliente basada en estándares, por lo que puede usar cualquier API de explorador, incluidas las de PWA necesarias para las siguientes funcionalidades:
+Una aplicación web progresiva suele ser una aplicación de página única que usa las API y funciones de exploradores modernos para comportarse como una aplicación de escritorio. Blazor WebAssembly es una plataforma de aplicaciones web del lado cliente basada en estándares, por lo que puede usar cualquier API de explorador, incluidas las de PWA necesarias para las siguientes funcionalidades:
 
 * Trabajo sin conexión y carga instantánea, con independencia de la velocidad de la red.
 * Ejecución en una ventana de aplicación propia, no solo en una ventana del explorador.
@@ -43,7 +45,7 @@ La palabra *progresiva* se usa para describir estas aplicaciones porque:
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-Al crear una **aplicación [Blazor WebAssembly** en el cuadro de diálogo **Crear un nuevo proyecto**, active la casilla **Aplicación web progresiva**:
+Al crear una **aplicación Blazor WebAssembly** en el cuadro de diálogo **Crear un nuevo proyecto**, active la casilla **Aplicación web progresiva**:
 
 ![La casilla "Aplicación web progresiva" está activada en el cuadro de diálogo Nuevo proyecto de Visual Studio.](progressive-web-app/_static/image1.png)
 
@@ -87,7 +89,7 @@ De forma predeterminada, las aplicaciones creadas mediante la plantilla PWA tien
 > La compatibilidad con el desarrollo interferiría con el ciclo de desarrollo habitual de realización y prueba de los cambios. Por tanto, la compatibilidad sin conexión solo está habilitada para las aplicaciones *publicadas*. 
 
 > [!WARNING]
-> Si tiene previsto distribuir una PWA habilitada para su uso sin conexión, hay [varias advertencias importantes](#caveats-for-offline-pwas). Estos escenarios son propios de la PWA sin conexión y no específicos de [Blazor. Asegúrese de leer y comprender estas advertencias antes de realizar suposiciones sobre cómo funcionará la aplicación habilitada para su uso sin conexión.
+> Si tiene previsto distribuir una PWA habilitada para su uso sin conexión, hay [varias advertencias importantes](#caveats-for-offline-pwas). Estos escenarios son propios de la PWA sin conexión y no específicos de Blazor. Asegúrese de leer y comprender estas advertencias antes de realizar suposiciones sobre cómo funcionará la aplicación habilitada para su uso sin conexión.
 
 Para ver cómo funciona la compatibilidad sin conexión:
 
@@ -108,9 +110,9 @@ Para ver cómo funciona la compatibilidad sin conexión:
 
    ![Pestaña "Red" de las herramientas para desarrolladores de Google Chrome con el cambio de "En línea" a "Sin conexión" en la lista desplegable del modo de explorador.](progressive-web-app/_static/image6.png)
 
-La compatibilidad sin conexión mediante un trabajo de servicio es un estándar web, no específico de [Blazor. Para obtener más información sobre los trabajo de servicio, vea [Documentación web de MDN: API de trabajo de servicio](https://developer.mozilla.org/docs/Web/API/Service_Worker_API). Para obtener más información sobre los patrones de uso comunes de los trabajos de servicio, vea [Google Web: El ciclo de vida del trabajo de servicio](https://developers.google.com/web/fundamentals/primers/service-workers/lifecycle).
+La compatibilidad sin conexión mediante un trabajo de servicio es un estándar web, no específico de Blazor. Para obtener más información sobre los trabajo de servicio, vea [Documentación web de MDN: API de trabajo de servicio](https://developer.mozilla.org/docs/Web/API/Service_Worker_API). Para obtener más información sobre los patrones de uso comunes de los trabajos de servicio, vea [Google Web: El ciclo de vida del trabajo de servicio](https://developers.google.com/web/fundamentals/primers/service-workers/lifecycle).
 
-La plantilla de PWA de [Blazor genera dos archivos de trabajo de servicio:
+La plantilla de PWA de Blazor genera dos archivos de trabajo de servicio:
 
 * `wwwroot/service-worker.js`, que se usa durante el desarrollo.
 * `wwwroot/service-worker.published.js`, que se usa después de publicar la aplicación.
@@ -139,7 +141,7 @@ La estrategia de almacenar primero en caché es valiosa porque:
 
 Como modelo mental, puede pensar que una PWA primero sin conexión se comporta como una aplicación móvil que se puede instalar. La aplicación se inicia inmediatamente, con independencia de la conectividad de la red, pero la lógica de la aplicación instalada procede de una instantánea de un momento dado que podría no ser la versión más reciente.
 
-La plantilla de PWA [Blazor genera aplicaciones que intentan actualizarse de forma automática en segundo plano cada vez que el usuario realiza una visita y tiene una conexión de red operativa. Así es como funciona:
+La plantilla de PWA Blazor genera aplicaciones que intentan actualizarse de forma automática en segundo plano cada vez que el usuario realiza una visita y tiene una conexión de red operativa. Así es como funciona:
 
 * Durante la compilación, el proyecto genera un *manifiesto de recursos de trabajo de servicio*. De forma predeterminada, se denomina `service-worker-assets.js`. En el manifiesto se enumeran todos los recursos estáticos que la aplicación necesita para funcionar sin conexión, como los ensamblados .NET, los archivos JavaScript y CSS, incluidos sus hash de contenido. Esta lista la carga el trabajo de servicio para saber qué recursos almacenar en la caché.
 * Cada vez que el usuario visita la aplicación, el explorador vuelve a solicitar `service-worker.js` y `service-worker-assets.js` en segundo plano. Los archivos se comparan byte a byte con el trabajo de servicio instalado existente. Si el servidor devuelve contenido cambiado para cualquiera de estos archivos, el trabajo de servicio intenta instalar una nueva versión de sí mismo.
@@ -147,24 +149,24 @@ La plantilla de PWA [Blazor genera aplicaciones que intentan actualizarse de for
 * El proceso se completa correctamente cuando todos los recursos se cargan sin errores y todos los hashes de contenido coinciden. Si se realiza correctamente, el nuevo trabajo de servicio entra en un estado de *espera de la activación*. En cuanto el usuario cierra la aplicación (no quedan pestañas de aplicación ni ventanas), el nuevo trabajo de servicio se *activa* y se usa para las posteriores visitas a la aplicación. El trabajo de servicio anterior y su memoria caché se eliminan.
 * Si el proceso no se completa correctamente, se descarta la nueva instancia del trabajo de servicio. El proceso de actualización se vuelve a intentar en la próxima visita del usuario; con suerte, tendrá una mejor conexión de red que permita completar las solicitudes.
 
-Para personalizar este proceso, modifique la lógica del trabajo de servicio. Ninguno de los comportamientos anteriores es específico de [Blazor; simplemente es la experiencia predeterminada proporcionada por la opción de plantilla de PWA. Para obtener más información, vea [Documentación web de MDN: API de trabajo de servicio](https://developer.mozilla.org/docs/Web/API/Service_Worker_API).
+Para personalizar este proceso, modifique la lógica del trabajo de servicio. Ninguno de los comportamientos anteriores es específico de Blazor; simplemente es la experiencia predeterminada proporcionada por la opción de plantilla de PWA. Para obtener más información, vea [Documentación web de MDN: API de trabajo de servicio](https://developer.mozilla.org/docs/Web/API/Service_Worker_API).
 
 ### <a name="how-requests-are-resolved"></a>Procedimientos para resolver las solicitudes
 
 Como se ha descrito en la sección [Estrategia de captura desde la caché](#cache-first-fetch-strategy), el trabajo de servicio predeterminado usa una estrategia *desde la caché*, lo que significa que intenta servir contenido almacenado en caché cuando esté disponible. Si no hay contenido en caché para una dirección URL determinada (por ejemplo, cuando se solicitan datos de una API de back-end), el trabajo de servicio recurre a una solicitud de red normal. La solicitud de red se realiza correctamente si se puede acceder al servidor. Esta lógica se implementa dentro de la función `onFetch` en `service-worker.published.js`.
 
-Si los componentes de [Razor de la aplicación dependen de la solicitud de datos a las API de back-end y quiere proporcionar una experiencia de usuario sencilla para las solicitudes erróneas por falta de disponibilidad de la red, implemente lógica en los componentes de la aplicación. Por ejemplo, use solicitudes `try/catch` en torno a <xref:System.Net.Http.HttpClient>.
+Si los componentes de Razor de la aplicación dependen de la solicitud de datos a las API de back-end y quiere proporcionar una experiencia de usuario sencilla para las solicitudes erróneas por falta de disponibilidad de la red, implemente lógica en los componentes de la aplicación. Por ejemplo, use solicitudes `try/catch` en torno a <xref:System.Net.Http.HttpClient>.
 
 ### <a name="support-server-rendered-pages"></a>Compatibilidad de las páginas representadas por el servidor
 
-Tenga en cuenta lo que sucede cuando el usuario navega por primera vez a una dirección URL como `/counter` o cualquier otro vínculo profundo de la aplicación. En estos casos, no le interesa devolver el contenido en caché como `/counter`, sino que necesita que el explorador cargue el contenido en caché como `/index.html` para iniciar la aplicación [Blazor WebAssembly. Estas solicitudes iniciales se conocen como solicitudes de *navegación*, en lugar de:
+Tenga en cuenta lo que sucede cuando el usuario navega por primera vez a una dirección URL como `/counter` o cualquier otro vínculo profundo de la aplicación. En estos casos, no le interesa devolver el contenido en caché como `/counter`, sino que necesita que el explorador cargue el contenido en caché como `/index.html` para iniciar la aplicación Blazor WebAssembly. Estas solicitudes iniciales se conocen como solicitudes de *navegación*, en lugar de:
 
 * Solicitudes de `subresource` para imágenes, hojas de estilo u otros archivos.
 * Solicitudes de `fetch/XHR` para datos de API.
 
 El trabajo de servicio predeterminado contiene lógica de casos especiales para las solicitudes de navegación. Para resolver las solicitudes, el trabajo de servicio devuelve el contenido en caché para `/index.html`, independientemente de la dirección URL solicitada. Esta lógica se implementa en la función `onFetch` dentro de `service-worker.published.js`.
 
-Si la aplicación tiene determinadas direcciones URL que deben devolver el código HTML representado por el servidor (y no servir `/index.html` desde la caché), tendrá que editar la lógica en el trabajo de servicio. Si todas las direcciones URL que contienen `/[Identity/` se deben controlar como solicitudes normales solo en línea en el servidor, modifique la lógica `onFetch` de `service-worker.published.js`. Busque el código siguiente:
+Si la aplicación tiene determinadas direcciones URL que deben devolver el código HTML representado por el servidor (y no servir `/index.html` desde la caché), tendrá que editar la lógica en el trabajo de servicio. Si todas las direcciones URL que contienen `/Identity/` se deben controlar como solicitudes normales solo en línea en el servidor, modifique la lógica `onFetch` de `service-worker.published.js`. Busque el código siguiente:
 
 ```javascript
 const shouldServeIndexHtml = event.request.mode === 'navigate';
@@ -174,14 +176,14 @@ Cambie el código por lo siguiente:
 
 ```javascript
 const shouldServeIndexHtml = event.request.mode === 'navigate'
-    && !event.request.url.includes('/[Identity/');
+    && !event.request.url.includes('/Identity/');
 ```
 
 Si no lo hace, independientemente de la conectividad de red, el trabajo de servicio intercepta las solicitudes de esas direcciones URL y las resuelve mediante `/index.html`.
 
 ### <a name="control-asset-caching"></a>Control del almacenamiento en caché de recursos
 
-Si el proyecto define la propiedad `ServiceWorkerAssetsManifest` de MSBuild, las herramientas de compilación de [Blazor generan un manifiesto de recursos de trabajo de servicio con el nombre especificado. La plantilla de PWA predeterminada produce un archivo de proyecto que contiene la propiedad siguiente:
+Si el proyecto define la propiedad `ServiceWorkerAssetsManifest` de MSBuild, las herramientas de compilación de Blazor generan un manifiesto de recursos de trabajo de servicio con el nombre especificado. La plantilla de PWA predeterminada produce un archivo de proyecto que contiene la propiedad siguiente:
 
 ```xml
 <ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
@@ -191,10 +193,10 @@ El archivo se coloca en el directorio de salida `wwwroot`, por lo que el explora
 
 De forma predeterminada, este manifiesto muestra:
 
-* Los recursos administrados por [Blazor, como los ensamblados .NET y los archivos de runtime de WebAssembly .NET necesarios para funcionar sin conexión.
+* Los recursos administrados por Blazor, como los ensamblados .NET y los archivos de runtime de WebAssembly .NET necesarios para funcionar sin conexión.
 * Todos los recursos para publicar contenido en el directorio `wwwroot` de la aplicación, como imágenes, hojas de estilos y archivos JavaScript, incluidos los recursos web estáticos proporcionados por los proyectos externos y los paquetes NuGet.
 
-Puede controlar cuál de estos recursos captura y almacena en caché el trabajo de servicio mediante la edición de la lógica `onInstall` en `service-worker.published.js`. De forma predeterminada, el trabajo de servicio captura y almacena en caché los archivos que coinciden con las extensiones de nombre de archivo web típicas, como `.html`, `.css`, `.js` y `.wasm`, además de tipos de archivo específicos de [Blazor WebAssembly (`.dll`, `.pdb`).
+Puede controlar cuál de estos recursos captura y almacena en caché el trabajo de servicio mediante la edición de la lógica `onInstall` en `service-worker.published.js`. De forma predeterminada, el trabajo de servicio captura y almacena en caché los archivos que coinciden con las extensiones de nombre de archivo web típicas, como `.html`, `.css`, `.js` y `.wasm`, además de tipos de archivo específicos de Blazor WebAssembly (`.dll`, `.pdb`).
 
 Para incluir recursos adicionales que no están presentes en el directorio `wwwroot` de la aplicación, defina entradas `ItemGroup` de MSBuild adicionales, como se muestra en el ejemplo siguiente:
 
@@ -212,11 +214,11 @@ Los metadatos de `AssetUrl` especifican la dirección URL de base relativa que d
 
 ## <a name="push-notifications"></a>Notificaciones de inserción
 
-Al igual que cualquier otra PWA, una PWA [Blazor WebAssembly puede recibir notificaciones de inserción de un servidor back-end. El servidor puede enviar notificaciones push en cualquier momento, incluso cuando el usuario no utiliza la aplicación de forma activa. Por ejemplo, se pueden enviar notificaciones push cuando otro usuario realiza una acción pertinente.
+Al igual que cualquier otra PWA, una PWA Blazor WebAssembly puede recibir notificaciones de inserción de un servidor back-end. El servidor puede enviar notificaciones push en cualquier momento, incluso cuando el usuario no utiliza la aplicación de forma activa. Por ejemplo, se pueden enviar notificaciones push cuando otro usuario realiza una acción pertinente.
 
-El mecanismo para enviar una notificación de inserción es totalmente independiente de [Blazor WebAssembly, ya que lo implementa el servidor back-end, que puede usar cualquier tecnología. Si quiere enviar notificaciones push desde un servidor de ASP.NET Core, considere la posibilidad de [usar una técnica similar al enfoque adoptado en el taller de Blazing Pizza](https://github.com/dotnet-presentations/blazor-workshop/blob/master/docs/09-progressive-web-app.md#sending-push-notifications).
+El mecanismo para enviar una notificación de inserción es totalmente independiente de Blazor WebAssembly, ya que lo implementa el servidor back-end, que puede usar cualquier tecnología. Si quiere enviar notificaciones push desde un servidor de ASP.NET Core, considere la posibilidad de [usar una técnica similar al enfoque adoptado en el taller de Blazing Pizza](https://github.com/dotnet-presentations/blazor-workshop/blob/master/docs/09-progressive-web-app.md#sending-push-notifications).
 
-El mecanismo para recibir y mostrar una notificación de inserción en el cliente también es independiente de [Blazor WebAssembly, ya que se implementa en el archivo JavaScript del trabajo de servicio. Para obtener un ejemplo, vea el [enfoque que se usa en el taller de Blazing Pizza](https://github.com/dotnet-presentations/blazor-workshop/blob/master/docs/09-progressive-web-app.md#displaying-notifications).
+El mecanismo para recibir y mostrar una notificación de inserción en el cliente también es independiente de Blazor WebAssembly, ya que se implementa en el archivo JavaScript del trabajo de servicio. Para obtener un ejemplo, vea el [enfoque que se usa en el taller de Blazing Pizza](https://github.com/dotnet-presentations/blazor-workshop/blob/master/docs/09-progressive-web-app.md#displaying-notifications).
 
 ## <a name="caveats-for-offline-pwas"></a>Advertencias de PWA sin conexión
 
@@ -232,7 +234,7 @@ Además, las PWA con capacidad sin conexión deben tratar con una gran variedad 
 
 ### <a name="offline-support-only-when-published"></a>Compatibilidad sin conexión solo al realizar la publicación
 
-Durante el desarrollo, normalmente le interesará ver cada cambio reflejado inmediatamente en el explorador, sin pasar por un proceso de actualización en segundo plano. Por tanto, la plantilla de PWA de [Blazor solo habilita la compatibilidad sin conexión cuando se publica.
+Durante el desarrollo, normalmente le interesará ver cada cambio reflejado inmediatamente en el explorador, sin pasar por un proceso de actualización en segundo plano. Por tanto, la plantilla de PWA de Blazor solo habilita la compatibilidad sin conexión cuando se publica.
 
 Al compilar una aplicación compatible sin conexión, no basta con probarla en el entorno de desarrollo. Tendrá que probar la aplicación en su estado publicado para entender cómo responde a otras condiciones de red.
 
@@ -240,7 +242,7 @@ Al compilar una aplicación compatible sin conexión, no basta con probarla en e
 
 Las actualizaciones no se completan hasta que el usuario haya navegado fuera de la aplicación en todas las pestañas. Como se ha explicado en la sección [Actualizaciones en segundo plano](#background-updates), después de implementar una actualización en la aplicación, el explorador captura los archivos de trabajo de servicio actualizados para comenzar el proceso de actualización.
 
-Lo que sorprende a muchos desarrolladores es que, incluso cuando se completa esta actualización, **no** surtirá efecto hasta que el usuario haya navegado fuera de todas las pestañas. **No** basta con actualizar la pestaña en la que se muestra la aplicación, incluso si es la única. Hasta que la aplicación se cierre por completo, el nuevo trabajo de servicio permanece en el estado *en espera de activación*. **Esto no es específico de [Blazor, sino que es un comportamiento estándar de la plataforma web.**
+Lo que sorprende a muchos desarrolladores es que, incluso cuando se completa esta actualización, **no** surtirá efecto hasta que el usuario haya navegado fuera de todas las pestañas. **No** basta con actualizar la pestaña en la que se muestra la aplicación, incluso si es la única. Hasta que la aplicación se cierre por completo, el nuevo trabajo de servicio permanece en el estado *en espera de activación*. **Esto no es específico de Blazor, sino que es un comportamiento estándar de la plataforma web.**
 
 Habitualmente, esto trae problemas a los desarrolladores que intentan probar las actualizaciones de su trabajo de servicio o de los recursos almacenados en la caché sin conexión. Si inserta en el repositorio las herramientas para desarrolladores del explorador, puede ver algo parecido a lo siguiente:
 
@@ -297,4 +299,4 @@ La aplicación de ejemplo [`CarChecker`](https://github.com/SteveSandersonMS/Car
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
-* [Negociación entre orígenes de [SignalR para la autenticación](xref:blazor/fundamentals/additional-scenarios#signalr-cross-origin-negotiation-for-authentication)
+* [Negociación entre orígenes de SignalR para la autenticación](xref:blazor/fundamentals/additional-scenarios#signalr-cross-origin-negotiation-for-authentication)

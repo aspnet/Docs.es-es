@@ -7,6 +7,8 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/13/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/web-farm
-ms.openlocfilehash: 13c4a8e287e4b62a1429f67fbe83ff5b0dc65f52
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 58409b5c47d71c96ece6f4ecfab6f18df47f798b
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85408284"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88015444"
 ---
 # <a name="host-aspnet-core-in-a-web-farm"></a>Hospedaje de ASP.NET Core en una granja de servidores web
 
@@ -80,7 +82,7 @@ Los escenarios siguientes no requieren configuración adicional, pero dependen d
 
 Cuando la protección de datos o el almacenamiento en caché no están configurados para un entorno de granja de servidores web, se producen errores intermitentes cuando se procesan las solicitudes. Esto ocurre porque los nodos no comparten los mismos recursos y las solicitudes de usuario no se enrutan siempre de vuelta al mismo nodo.
 
-Piense en un usuario que inicia sesión en la aplicación a través de la autenticación de cookies. El usuario inicia sesión en la aplicación en un nodo de la granja de servidores web. Si la solicitud siguiente llega al mismo nodo en el que iniciaron sesión, la aplicación puede descifrar la cookie de autenticación y permite el acceso al recurso de la aplicación. Si la solicitud siguiente llega a otro nodo, la aplicación no puede descifra la cookie de autenticación desde el nodo donde el usuario inició sesión y se produce un error en la autorización del recurso solicitado.
+Piense en un usuario que inicia sesión en la aplicación a través de la autenticación de cookies. El usuario inicia sesión en la aplicación en un nodo de la granja de servidores web. Si la solicitud siguiente llega al mismo nodo en el que iniciaron sesión, la aplicación puede descifrar la cookie de autenticación y permite el acceso al recurso de la aplicación. Si la solicitud siguiente llega a otro nodo, la aplicación no puede descifrar la cookie de autenticación desde el nodo donde el usuario inició sesión y se produce un error en la autorización del recurso solicitado.
 
 Cuando cualquiera de los síntomas siguientes se producen de manera **intermitente**, se suele hacer un seguimiento del problema hasta la configuración inadecuada de la protección de datos o del almacenamiento en caché para un entorno de granja de servidores web:
 

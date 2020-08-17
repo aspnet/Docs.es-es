@@ -7,20 +7,22 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/05/2019
 no-loc:
-- '[Blazor'
-- '[Blazor Server'
-- '[Blazor WebAssembly'
-- '[Identity'
-- "[Let's Encrypt"
-- '[Razor'
-- '[SignalR'
+- cookie
+- Cookie
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: fundamentals/startup
-ms.openlocfilehash: 0d1bf0dd23b7f3b99d6e9383ffc72291c1b138ec
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 84b2aa6185654789b925dc4a9262f446de6c0a3c
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85400718"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88016601"
 ---
 # <a name="app-startup-in-aspnet-core"></a>Inicio de la aplicación en ASP.NET Core
 
@@ -41,7 +43,7 @@ El tiempo de ejecución ASP.NET Core llama a `ConfigureServices` y `Configure` c
 
 [!code-csharp[](startup/3.0_samples/StartupFilterSample/Startup.cs?name=snippet)]
 
-El ejemplo anterior corresponde a [[Razor Pages](xref:razor-pages/index); la versión para MVC es similar.
+El ejemplo anterior corresponde a [Razor Pages](xref:razor-pages/index); la versión para MVC es similar.
 
 
 La clase `Startup` se especifica cuando se crea el [host](xref:fundamentals/index#host) de la aplicación. Habitualmente, la clase `Startup` se especifica mediante una llamada al método[WebHostBuilderExtensions.UseStartup\<TStartup>](xref:Microsoft.AspNetCore.Hosting.WebHostBuilderExtensions.UseStartup*) en el generador de host:
@@ -93,12 +95,12 @@ Las [plantillas de ASP.NET Core](/dotnet/core/tools/dotnet-new) configuran la ca
 * [Seguridad de transporte estricta de HTTP (HSTS)](xref:security/enforcing-ssl#http-strict-transport-security-protocol-hsts)
 * [Redireccionamiento de HTTPS](xref:security/enforcing-ssl)
 * [Archivos estáticos](xref:fundamentals/static-files)
-* ASP.NET Core [MVC](xref:mvc/overview) y [[Razor Pages](xref:razor-pages/index)
+* ASP.NET Core [MVC](xref:mvc/overview) y [Razor Pages](xref:razor-pages/index)
 
 
 [!code-csharp[](startup/3.0_samples/StartupFilterSample/Startup.cs?name=snippet)]
 
-El ejemplo anterior corresponde a [[Razor Pages](xref:razor-pages/index); la versión para MVC es similar.
+El ejemplo anterior corresponde a [Razor Pages](xref:razor-pages/index); la versión para MVC es similar.
 
 Cada método de extensión `Use` agrega uno o más componentes de middleware a la canalización de solicitudes. Por ejemplo, <xref:Microsoft.AspNetCore.Builder.StaticFileExtensions.UseStaticFiles*> configura [middleware](xref:fundamentals/middleware/index) para proporcionar [archivos estáticos](xref:fundamentals/static-files).
 
@@ -227,7 +229,7 @@ Las [plantillas de ASP.NET Core](/dotnet/core/tools/dotnet-new) configuran la ca
 * [Seguridad de transporte estricta de HTTP (HSTS)](xref:security/enforcing-ssl#http-strict-transport-security-protocol-hsts)
 * [Redireccionamiento de HTTPS](xref:security/enforcing-ssl)
 * [Archivos estáticos](xref:fundamentals/static-files)
-* ASP.NET Core [MVC](xref:mvc/overview) y [[Razor Pages](xref:razor-pages/index)
+* ASP.NET Core [MVC](xref:mvc/overview) y [Razor Pages](xref:razor-pages/index)
 * [Reglamento General de Protección de Datos (GDPR)](xref:security/gdpr)
 
 [!code-csharp[](startup/sample_snapshot/Startup4.cs)]

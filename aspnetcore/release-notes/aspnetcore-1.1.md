@@ -5,6 +5,8 @@ description: Obtenga información sobre las nuevas características de ASP.NET C
 ms.author: riande
 ms.date: 12/18/2018
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -13,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: aspnetcore-1.1
-ms.openlocfilehash: ea9605c60e05f2a9cea962aa744850e07ef4d2f5
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 9b3e0a368fdcd9e1044cfe6bf6a13ca11d3039cc
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85403669"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88020670"
 ---
 # <a name="whats-new-in-aspnet-core-11"></a>Novedades de ASP.NET Core 1.1
 
@@ -28,7 +30,7 @@ ASP.NET Core 1.1 incluye las siguientes características nuevas:
 - [Middleware de almacenamiento en caché de respuestas](xref:performance/caching/middleware)
 - [Componentes de vista como asistentes de etiquetas](xref:mvc/views/view-components#invoking-a-view-component-as-a-tag-helper)
 - [Middleware como filtros de MVC](xref:mvc/controllers/filters#using-middleware-in-the-filter-pipeline)
-- [Proveedor TempData basado en cookies](xref:fundamentals/app-state#tempdata)
+- [Proveedor TempData basado en Cookies](xref:fundamentals/app-state#tempdata)
 - [Proveedor de registros de Azure App Service](xref:fundamentals/logging/index#azure-app-service-provider)
 - [Proveedor de configuración de Azure Key Vault](xref:security/key-vault-configuration)
 - [Repositorios de claves de protección de datos de almacenamiento de Azure y Redis](xref:security/data-protection/implementation/key-storage-providers)

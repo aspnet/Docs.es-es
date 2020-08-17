@@ -6,6 +6,8 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 03/06/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -14,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/app-state
-ms.openlocfilehash: 30123e043a7c152b5719af8092b2ab42a70d2787
-ms.sourcegitcommit: 6fb27ea41a92f6d0e91dfd0eba905d2ac1a707f7
+ms.openlocfilehash: c05129c0f239fb28c83ab1c561dd910305eeb54b
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/15/2020
-ms.locfileid: "86407624"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88017641"
 ---
 # <a name="session-and-state-management-in-aspnet-core"></a>Administración del estado y la sesión en ASP.NET Core
 
@@ -37,21 +39,21 @@ El estado se puede almacenar mediante varios enfoques. Cada enfoque se describe 
 
 | Enfoque de almacenamiento | Mecanismo de almacenamiento |
 | ---------------- | ----------------- |
-| [Cookies](#cookies) | Cookies HTTP. Pueden incluir los datos almacenados mediante el código de aplicación del lado servidor. |
-| [Estado de sesión](#session-state) | Cookies HTTP y código de aplicación del lado servidor |
-| [TempData](#tempdata) | Cookies HTTP o estado de sesión |
+| [Cookies](#cookies) | cookies HTTP. Pueden incluir los datos almacenados mediante el código de aplicación del lado servidor. |
+| [Estado de sesión](#session-state) | cookies HTTP y código de aplicación del lado servidor |
+| [TempData](#tempdata) | cookies HTTP o estado de sesión |
 | [Cadenas de consulta](#query-strings) | Cadenas de consulta HTTP |
 | [Campos ocultos](#hidden-fields) | Campos de formularios HTTP |
 | [HttpContext.Items](#httpcontextitems) | Código de aplicación del lado servidor |
 | [Caché](#cache) | Código de aplicación del lado servidor |
 
-## <a name="cookies"></a>Cookies
+## <a name="no-loccookies"></a>Cookies
 
-Las cookies almacenan datos de todas las solicitudes. Dado que las cookies se envían con cada solicitud, su tamaño debe reducirse al mínimo. Lo ideal es que en cada cookie se almacene un solo identificador con los datos almacenados por la aplicación. La mayoría de los exploradores restringen el tamaño de las cookies a 4096 bytes. Solo hay disponible un número limitado de cookies para cada dominio.
+Las Cookies almacenan datos de todas las solicitudes. Dado que las cookies se envían con cada solicitud, su tamaño debe reducirse al mínimo. Lo ideal es que en cada cookie se almacene un solo identificador con los datos almacenados por la aplicación. La mayoría de los exploradores restringen el tamaño de las cookies a 4096 bytes. Solo hay disponible un número limitado de cookies para cada dominio.
 
-Como las cookies están expuestas a alteraciones, deben validarse por la aplicación. Los usuarios pueden eliminar las cookies y estas pueden caducar en los clientes. Pero las cookies generalmente son la forma más duradera de persistencia de datos en el cliente.
+Como las cookies están expuestas a alteraciones, deben validarse por la aplicación. Los usuarios pueden eliminar las Cookies y estas pueden caducar en los clientes. Pero las cookies generalmente son la forma más duradera de persistencia de datos en el cliente.
 
-Las cookies suelen utilizarse para personalizar el contenido ofrecido a un usuario conocido. En la mayoría de los casos, el usuario solo se identifica y no se autentica. La cookie puede almacenar el nombre de usuario, el nombre de cuenta o el identificador único del usuario (por ejemplo, un GUID). Se puede usar la cookie para tener acceso a la configuración personalizada del usuario, como su color de fondo preferido del sitio web.
+Las Cookies suelen utilizarse para personalizar el contenido ofrecido a un usuario conocido. En la mayoría de los casos, el usuario solo se identifica y no se autentica. La cookie puede almacenar el nombre de usuario, el nombre de cuenta o el identificador único del usuario, por ejemplo, un GUID. Se puede usar la cookie para tener acceso a la configuración personalizada del usuario, como su color de fondo preferido del sitio web.
 
 Consulte el [Reglamento general de protección de datos (RGPD) de la Unión Europea](https://ec.europa.eu/info/law/law-topic/data-protection) al emitir cookies y tratar con casos relativos a la privacidad. Para obtener más información, vea [Compatibilidad con el Reglamento general de protección de datos (RGPD) en ASP.NET Core](xref:security/gdpr).
 
@@ -61,7 +63,7 @@ El estado de sesión es un escenario de ASP.NET Core para el almacenamiento de d
 
 La sesión no se admite en aplicaciones [SignalR](xref:signalr/index) porque un [SignalRconcentrador de ](xref:signalr/hubs) se podría ejecutar con independencia de un contexto HTTP. Por ejemplo, esto puede ocurrir cuando un concentrador mantiene abierta una solicitud de sondeo larga más allá de la duración del contexto HTTP de la solicitud.
 
-Para mantener el estado de sesión, ASP.NET Core proporciona una cookie al cliente que contiene un identificador de sesión. El identificador de sesión de la cookie:
+Para mantener el estado de sesión, ASP.NET Core proporciona una cookie al cliente que contiene un identificador de sesión. El identificador de sesión de la cookie:
 
 * Se envía a la aplicación con cada solicitud.
 * Lo usa la aplicación para capturar los datos de la sesión.
@@ -213,7 +215,7 @@ El código siguiente muestra `TempData["Message"]`, pero al final de la solicitu
 
 El proveedor TempData basado en cookies se usa de forma predeterminada para almacenar TempData en cookies.
 
-Los datos de cookies se cifran mediante <xref:Microsoft.AspNetCore.DataProtection.IDataProtector>, codificados con <xref:Microsoft.AspNetCore.WebUtilities.Base64UrlTextEncoder> para posteriormente fragmentarse. El tamaño máximo de la cookie es [4096 bytes](http://www.faqs.org/rfcs/rfc2965.html) debido al cifrado y a la fragmentación. Los datos de cookie no se comprimen porque la compresión de datos cifrados puede provocar problemas de seguridad como los ataques [CRIME](https://wikipedia.org/wiki/CRIME_(security_exploit)) y [BREACH](https://wikipedia.org/wiki/BREACH_(security_exploit)). Para más información sobre el proveedor TempData basado en cookies, consulte <xref:Microsoft.AspNetCore.Mvc.ViewFeatures.CookieTempDataProvider>.
+Los datos de cookies se cifran mediante <xref:Microsoft.AspNetCore.DataProtection.IDataProtector>, codificados con <xref:Microsoft.AspNetCore.WebUtilities.Base64UrlTextEncoder> para posteriormente fragmentarse. El tamaño máximo de la cookie es inferior a [4096 bytes](http://www.faqs.org/rfcs/rfc2965.html) debido al cifrado y a la fragmentación. Los datos de cookie no se comprimen porque la compresión de datos cifrados puede provocar problemas de seguridad como los ataques [CRIME](https://wikipedia.org/wiki/CRIME_(security_exploit)) y [BREACH](https://wikipedia.org/wiki/BREACH_(security_exploit)). Para más información sobre el proveedor TempData basado en cookies, consulte <xref:Microsoft.AspNetCore.Mvc.ViewFeatures.CookieTempDataProvider>.
 
 ### <a name="choose-a-tempdata-provider"></a>Elegir un proveedor TempData
 
@@ -284,7 +286,7 @@ El middleware de sesión puede no conservar una sesión si la memoria auxiliar n
 
 El enfoque recomendado para comprobar si hay errores es llamar a `await feature.Session.CommitAsync` cuando la aplicación haya terminado de escribir en la sesión. <xref:Microsoft.AspNetCore.Http.ISession.CommitAsync*> produce una excepción si la memoria auxiliar no está disponible. Si `CommitAsync` produce un error, la aplicación puede procesar la excepción. <xref:Microsoft.AspNetCore.Http.ISession.LoadAsync*> se produce en las mismas condiciones cuando el almacén de datos no está disponible.
   
-## <a name="signalr-and-session-state"></a>SignalR y estado de la sesión
+## <a name="no-locsignalr-and-session-state"></a>SignalR y estado de la sesión
 
 Las aplicaciones SignalR no deben usar el estado de sesión para almacenar información. Las aplicaciones SignalR pueden almacenarse por estado de conexión en `Context.Items` en el concentrador. <!-- https://github.com/aspnet/SignalR/issues/2139 -->
 
@@ -307,22 +309,22 @@ El estado se puede almacenar mediante varios enfoques. Cada enfoque se describe 
 
 | Enfoque de almacenamiento | Mecanismo de almacenamiento |
 | ---------------- | ----------------- |
-| [Cookies](#cookies) | Cookies HTTP (pueden incluir los datos almacenados mediante el código de aplicación del lado servidor) |
-| [Estado de sesión](#session-state) | Cookies HTTP y código de aplicación del lado servidor |
-| [TempData](#tempdata) | Cookies HTTP o estado de sesión |
+| [Cookies](#cookies) | cookies HTTP (pueden incluir los datos almacenados mediante el código de aplicación del lado servidor) |
+| [Estado de sesión](#session-state) | cookies HTTP y código de aplicación del lado servidor |
+| [TempData](#tempdata) | cookies HTTP o estado de sesión |
 | [Cadenas de consulta](#query-strings) | Cadenas de consulta HTTP |
 | [Campos ocultos](#hidden-fields) | Campos de formularios HTTP |
 | [HttpContext.Items](#httpcontextitems) | Código de aplicación del lado servidor |
 | [Caché](#cache) | Código de aplicación del lado servidor |
 | [Inserción de dependencias](#dependency-injection) | Código de aplicación del lado servidor |
 
-## <a name="cookies"></a>Cookies
+## <a name="no-loccookies"></a>Cookies
 
-Las cookies almacenan datos de todas las solicitudes. Dado que las cookies se envían con cada solicitud, su tamaño debe reducirse al mínimo. Lo ideal es que en cada cookie se almacene un solo identificador con los datos almacenados por la aplicación. La mayoría de los exploradores restringen el tamaño de las cookies a 4096 bytes. Solo hay disponible un número limitado de cookies para cada dominio.
+Las Cookies almacenan datos de todas las solicitudes. Dado que las cookies se envían con cada solicitud, su tamaño debe reducirse al mínimo. Lo ideal es que en cada cookie se almacene un solo identificador con los datos almacenados por la aplicación. La mayoría de los exploradores restringen el tamaño de las cookies a 4096 bytes. Solo hay disponible un número limitado de cookies para cada dominio.
 
-Como las cookies están expuestas a alteraciones, deben validarse por la aplicación. Los usuarios pueden eliminar las cookies y estas pueden caducar en los clientes. Pero las cookies generalmente son la forma más duradera de persistencia de datos en el cliente.
+Como las cookies están expuestas a alteraciones, deben validarse por la aplicación. Los usuarios pueden eliminar las Cookies y estas pueden caducar en los clientes. Pero las cookies generalmente son la forma más duradera de persistencia de datos en el cliente.
 
-Las cookies suelen utilizarse para personalizar el contenido ofrecido a un usuario conocido. En la mayoría de los casos, el usuario solo se identifica y no se autentica. La cookie puede almacenar el nombre de usuario, el nombre de cuenta o el id. de usuario único (por ejemplo, un GUID). Después, puede usar la cookie para tener acceso a la configuración personalizada del usuario, como su color de fondo del sitio web preferido.
+Las Cookies suelen utilizarse para personalizar el contenido ofrecido a un usuario conocido. En la mayoría de los casos, el usuario solo se identifica y no se autentica. La cookie puede almacenar el nombre de usuario, el nombre de cuenta o el identificador único del usuario (por ejemplo, un GUID). Después, puede usar la cookie para tener acceso a la configuración personalizada del usuario, como su color de fondo del sitio web preferido.
 
 Preste atención al [reglamento general de protección de datos (GDPR) de la Unión Europea](https://ec.europa.eu/info/law/law-topic/data-protection) cuando emita cookies y trate con casos de privacidad. Para obtener más información, vea [Compatibilidad con el Reglamento general de protección de datos (RGPD) en ASP.NET Core](xref:security/gdpr).
 
@@ -333,7 +335,7 @@ El estado de sesión es un escenario de ASP.NET Core para el almacenamiento de d
 > [!NOTE]
 > La sesión no se admite en aplicaciones [SignalR](xref:signalr/index) porque un [SignalRconcentrador de ](xref:signalr/hubs) se podría ejecutar con independencia de un contexto HTTP. Por ejemplo, esto puede ocurrir cuando un concentrador mantiene abierta una solicitud de sondeo larga más allá de la duración del contexto HTTP de la solicitud.
 
-Para mantener el estado de sesión, ASP.NET Core proporciona una cookie al cliente que contiene un identificador de sesión, que se envía a la aplicación con cada solicitud. La aplicación usa el identificador de sesión para capturar los datos de sesión.
+Para mantener el estado de sesión, ASP.NET Core proporciona una cookie al cliente que contiene un identificador de sesión, que se envía a la aplicación con cada solicitud. La aplicación usa el identificador de sesión para capturar los datos de sesión.
 
 El estado de sesión muestra los siguientes comportamientos:
 
@@ -347,7 +349,7 @@ El estado de sesión muestra los siguientes comportamientos:
 * Las plantillas de Razor Pages y ASP.NET Core MVC guardan conformidad con el Reglamento general de protección de datos (RGPD). Las cookies de estado de sesión no se marcan como esenciales de forma predeterminada, por lo que el estado de sesión no será funcional a menos que el visitante del sitio permita el seguimiento. Para obtener más información, vea <xref:security/gdpr#tempdata-provider-and-session-state-cookies-arent-essential>.
 
 > [!WARNING]
-> No almacene datos confidenciales en un estado de sesión. El usuario podría no cerrar el explorador y borrar la cookie de sesión. Algunos exploradores mantienen las cookies de sesión válidas en las ventanas del explorador. Es posible que una sesión no esté restringida a un único usuario y que el siguiente usuario continúe examinando la aplicación con la misma cookie de sesión.
+> No almacene datos confidenciales en un estado de sesión. El usuario podría no cerrar el explorador y borrar la cookie de sesión. Algunos exploradores mantienen las cookies de sesión válidas en las ventanas del explorador. Es posible que una sesión no esté restringida a un único usuario&mdash;el siguiente usuario continúa examinando la aplicación con la misma cookie de sesión.
 
 El proveedor de caché en memoria almacena datos de sesión en la memoria del servidor donde reside la aplicación. En un escenario de granja de servidores:
 
@@ -470,7 +472,7 @@ El código siguiente muestra `TempData["Message"]`, pero al final de la solicitu
 
 El proveedor TempData basado en cookies se usa de forma predeterminada para almacenar TempData en cookies.
 
-Los datos de cookies se cifran mediante <xref:Microsoft.AspNetCore.DataProtection.IDataProtector>, codificados con <xref:Microsoft.AspNetCore.WebUtilities.Base64UrlTextEncoder> para posteriormente fragmentarse. Como la cookie está fragmentada, no se aplica el límite de tamaño único de cookie que se encuentra en ASP.NET Core 1.x. Los datos de cookie no se comprimen porque la compresión de datos cifrados puede provocar problemas de seguridad como los ataques [CRIME](https://wikipedia.org/wiki/CRIME_(security_exploit)) y [BREACH](https://wikipedia.org/wiki/BREACH_(security_exploit)). Para más información sobre el proveedor TempData basado en cookies, consulte <xref:Microsoft.AspNetCore.Mvc.ViewFeatures.CookieTempDataProvider>.
+Los datos de cookies se cifran mediante <xref:Microsoft.AspNetCore.DataProtection.IDataProtector>, codificados con <xref:Microsoft.AspNetCore.WebUtilities.Base64UrlTextEncoder> para posteriormente fragmentarse. Como la cookie está fragmentada, no se aplica el límite de tamaño único de cookie que se encuentra en ASP.NET Core 1.x. Los datos de cookie no se comprimen porque la compresión de datos cifrados puede provocar problemas de seguridad como los ataques [CRIME](https://wikipedia.org/wiki/CRIME_(security_exploit)) y [BREACH](https://wikipedia.org/wiki/BREACH_(security_exploit)). Para más información sobre el proveedor TempData basado en cookies, consulte <xref:Microsoft.AspNetCore.Mvc.ViewFeatures.CookieTempDataProvider>.
 
 ### <a name="choose-a-tempdata-provider"></a>Elegir un proveedor TempData
 
@@ -481,7 +483,7 @@ Elegir un proveedor TempData implica una serie de consideraciones:
 3. ¿La aplicación se ejecuta en una granja de servidores en varios servidores? Si es así, no es necesaria ninguna configuración adicional para usar el proveedor de TempData de cookies además de la protección de datos (vea <xref:security/data-protection/introduction> y [Proveedores de almacenamiento de claves](xref:security/data-protection/implementation/key-storage-providers)).
 
 > [!NOTE]
-> La mayoría de los clientes de web (por ejemplo, los exploradores web) aplican límites en el tamaño máximo de cada cookie, el número total de cookies o ambos. Cuando use el proveedor TempData de cookies, compruebe que la aplicación no supera esos límites. Tenga en cuenta el tamaño total de los datos. Cuenta para los aumentos de tamaño de cookie debidos a la fragmentación y el cifrado.
+> La mayoría de los clientes de web (por ejemplo, los exploradores web) aplican límites en el tamaño máximo de cada cookie, el número total de cookies o ambos. Cuando use el proveedor TempData de cookies, asegúrese de que la aplicación no supera esos límites. Tenga en cuenta el tamaño total de los datos. Cuenta para los aumentos de tamaño de cookie debidos a la fragmentación y el cifrado.
 
 ### <a name="configure-the-tempdata-provider"></a>Configurar el proveedor TempData
 
@@ -595,7 +597,7 @@ Use [inserción de dependencias](xref:fundamentals/dependency-injection) para qu
 
   El enfoque recomendado para comprobar los errores es llamar a `await feature.Session.CommitAsync();` desde el código de la aplicación cuando esta haya terminado de escribir en la sesión. `CommitAsync` produce una excepción si la memoria auxiliar no está disponible. Si `CommitAsync` produce un error, la aplicación puede procesar la excepción. `LoadAsync` se produce en las mismas condiciones donde el almacén de datos no está disponible.
   
-## <a name="signalr-and-session-state"></a>SignalR y estado de la sesión
+## <a name="no-locsignalr-and-session-state"></a>SignalR y estado de la sesión
 
 Las aplicaciones SignalR no deben usar el estado de sesión para almacenar información. Las aplicaciones SignalR pueden almacenarse por estado de conexión en `Context.Items` en el concentrador. <!-- https://github.com/aspnet/SignalR/issues/2139 -->
 

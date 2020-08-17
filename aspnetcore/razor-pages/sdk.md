@@ -7,6 +7,8 @@ ms.author: riande
 ms.custom: mvc, seodec18
 ms.date: 03/26/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,14 +17,14 @@ no-loc:
 - Razor
 - SignalR
 uid: razor-pages/sdk
-ms.openlocfilehash: 56b4d4c13023918a4ac25c8c5d8ad1ee2c346ac6
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: b960460a50558a11bc47f9a1844931aa32e3d696
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85403045"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88021424"
 ---
-# <a name="aspnet-core-razor-sdk"></a>SDK de Razor de ASP.NET Core
+# <a name="aspnet-core-no-locrazor-sdk"></a>SDK de Razor de ASP.NET Core
 
 Por [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -52,7 +54,7 @@ El SDK de Razor incluye un elemento `Content` con un atributo `Include` establec
 
 [!INCLUDE[](~/includes/2.1-SDK.md)]
 
-## <a name="use-the-razor-sdk"></a>Uso del SDK de Razor
+## <a name="use-the-no-locrazor-sdk"></a>Uso del SDK de Razor
 
 En la mayoría de las aplicaciones web no es necesario hacer referencia de forma explícita al SDK de Razor.
 
@@ -177,13 +179,13 @@ El SDK de Razor define dos destinos principales:
 * `RazorCompile`: compila los archivos *.cs* generados en un ensamblado de Razor. Use `RazorCompileDependsOn` para especificar más destinos que se puedan ejecutar antes o después de este destino.
 * `RazorComponentGenerate`: el código genera archivos *.cs* para elementos `RazorComponent`. Use la propiedad `RazorComponentGenerateDependsOn` para especificar más destinos que se puedan ejecutar antes o después de este destino.
 
-### <a name="runtime-compilation-of-razor-views"></a>Compilación en tiempo de ejecución de vistas de Razor
+### <a name="runtime-compilation-of-no-locrazor-views"></a>Compilación en tiempo de ejecución de vistas de Razor
 
 * De forma predeterminada, el SDK de Razor no publica los ensamblados de referencia necesarios para realizar una compilación en tiempo de ejecución. Como consecuencia, se producen errores de compilación cuando el modelo de aplicación se basa en la compilación en tiempo de ejecución; por ejemplo, la aplicación usa vistas incrustadas o cambia vistas tras haber sido publicada. Establezca `CopyRefAssembliesToPublishDirectory` en `true` para seguir publicando ensamblados de referencia.
 
 * En el caso de una aplicación web, asegúrese de que se destina al SDK `Microsoft.NET.Sdk.Web`.
 
-## <a name="razor-language-version"></a>Versión del lenguaje Razor
+## <a name="no-locrazor-language-version"></a>Versión del lenguaje Razor
 
 Si el destino es el SDK `Microsoft.NET.Sdk.Web`, la versión del lenguaje Razor se deduce de la versión del marco de destino de la aplicación. En los proyectos que tienen como destino el SDK de `Microsoft.NET.Sdk.Razor` o en el caso excepcional de que la aplicación requiera una versión del lenguaje Razor diferente al valor deducido, se puede configurar una versión si se establece la propiedad `<RazorLangVersion>` en el archivo de proyecto de la aplicación:
 

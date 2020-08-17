@@ -7,6 +7,8 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/14/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: test/integration-tests
-ms.openlocfilehash: c050665f630c0973abe6c9d08a4652597441639f
-ms.sourcegitcommit: 384833762c614851db653b841cc09fbc944da463
+ms.openlocfilehash: 508c2d2cb668f5dbf416d341c1d9a966f9d16fd4
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/17/2020
-ms.locfileid: "86445286"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88021047"
 ---
 # <a name="integration-tests-in-aspnet-core"></a>Pruebas de integración en ASP.NET Core
 
@@ -144,7 +146,7 @@ La siguiente clase de prueba, `BasicTests`, usa `WebApplicationFactory` para arr
 
 [!code-csharp[](integration-tests/samples/3.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/IntegrationTests/BasicTests.cs?name=snippet1)]
 
-De forma predeterminada, las cookies no esenciales no se conservan entre solicitudes si está habilitada la [directiva de consentimiento de RGPD](xref:security/gdpr). Para conservar las cookies no esenciales, como las usadas por el proveedor TempData, márquelas como esenciales en las pruebas. Para obtener instrucciones sobre cómo marcar una cookie como esencial, vea [Cookies esenciales](xref:security/gdpr#essential-cookies).
+De forma predeterminada, las cookies no esenciales no se conservan entre solicitudes si está habilitada la [directiva de consentimiento de RGPD](xref:security/gdpr). Para conservar las cookies no esenciales, como las usadas por el proveedor TempData, márquelas como esenciales en las pruebas. Para obtener instrucciones sobre cómo marcar una cookie como esencial, vea [cookies esenciales](xref:security/gdpr#essential-cookies).
 
 ## <a name="customize-webapplicationfactory"></a>Personalización de WebApplicationFactory
 
@@ -526,7 +528,7 @@ La siguiente clase de prueba, `BasicTests`, usa `WebApplicationFactory` para arr
 
 [!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/IntegrationTests/BasicTests.cs?name=snippet1)]
 
-De forma predeterminada, las cookies no esenciales no se conservan entre solicitudes si está habilitada la [directiva de consentimiento de RGPD](xref:security/gdpr). Para conservar las cookies no esenciales, como las usadas por el proveedor TempData, márquelas como esenciales en las pruebas. Para obtener instrucciones sobre cómo marcar una cookie como esencial, vea [Cookies esenciales](xref:security/gdpr#essential-cookies).
+De forma predeterminada, las cookies no esenciales no se conservan entre solicitudes si está habilitada la [directiva de consentimiento de RGPD](xref:security/gdpr). Para conservar las cookies no esenciales, como las usadas por el proveedor TempData, márquelas como esenciales en las pruebas. Para obtener instrucciones sobre cómo marcar una cookie como esencial, vea [cookies esenciales](xref:security/gdpr#essential-cookies).
 
 ## <a name="customize-webapplicationfactory"></a>Personalización de WebApplicationFactory
 

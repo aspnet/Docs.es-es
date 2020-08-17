@@ -7,20 +7,22 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/13/2020
 no-loc:
-- '[Blazor'
-- '[Blazor Server'
-- '[Blazor WebAssembly'
-- '[Identity'
-- "[Let's Encrypt"
-- '[Razor'
-- '[SignalR'
+- cookie
+- Cookie
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: host-and-deploy/iis/modules
-ms.openlocfilehash: 124f2a629ebd14210cb21351a720e007bba48f02
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: c526fc779d778cd0f99bcdaae283b6a5a0fe09ab
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85404020"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88015613"
 ---
 # <a name="iis-modules-with-aspnet-core"></a>Módulos de IIS con ASP.NET Core
 
@@ -62,7 +64,7 @@ En la tabla se indican los módulos nativos de IIS que son funcionales con aplic
 | **Contenido estático**<br>`StaticFileModule`                                                         | No  | [Middleware de archivos estáticos](xref:fundamentals/static-files) |
 | **Almacenamiento en caché de tokens**.<br>`TokenCacheModule`                                                          | Sí | |
 | **Almacenamiento en caché de URI**<br>`UriCacheModule`                                                              | Sí | |
-| **Autorización de URL**<br>`UrlAuthorizationModule`                                                | Sí | [ASP.NET Core [Identity](xref:security/authentication/identity) |
+| **Autorización de URL**<br>`UrlAuthorizationModule`                                                | Sí | [ASP.NET Core Identity](xref:security/authentication/identity) |
 | **Autenticación de Windows**<br>`WindowsAuthenticationModule`                                      | Sí | |
 
 &#8224;Los tipos de coincidencia `isFile` y `isDirectory` del módulo de reescritura de direcciones URL no funcionan con las aplicaciones ASP.NET Core debido a los cambios en la [estructura de directorios](xref:host-and-deploy/directory-structure).
@@ -76,7 +78,7 @@ Los módulos administrados *no* son funcionales cuando la versión de CLR de .NE
 | AnonymousIdentification | |
 | DefaultAuthentication   | |
 | FileAuthorization       | |
-| FormsAuthentication     | [Middleware de autenticación de cookies](xref:security/authentication/cookie) |
+| FormsAuthentication     | [Middleware de autenticación de Cookies](xref:security/authentication/cookie) |
 | OutputCache             | [Middleware de almacenamiento en caché de respuestas](xref:performance/caching/middleware) |
 | Perfil                 | |
 | RoleManager             | |
@@ -84,7 +86,7 @@ Los módulos administrados *no* son funcionales cuando la versión de CLR de .NE
 | Sesión                 | [Middleware de sesión](xref:fundamentals/app-state) |
 | UrlAuthorization        | |
 | UrlMappingsModule       | [Middleware de reescritura de dirección URL](xref:fundamentals/url-rewriting) |
-| UrlRoutingModule 4.0    | [ASP.NET Core [Identity](xref:security/authentication/identity) |
+| UrlRoutingModule 4.0    | [ASP.NET Core Identity](xref:security/authentication/identity) |
 | WindowsAuthentication   | |
 
 ## <a name="iis-manager-application-changes"></a>Cambios en la aplicación del Administrador de IIS

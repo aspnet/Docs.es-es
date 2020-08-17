@@ -7,6 +7,8 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 5/5/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,18 +17,18 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/httpcontext
-ms.openlocfilehash: d4512c9fa136e518fa0230c0cf9c607519eed6d8
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 2b8ac1d6c6cdeee14b74c5b14206bff51982c711
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85399457"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88017251"
 ---
 # <a name="access-httpcontext-in-aspnet-core"></a>Acceso a HttpContext en ASP.NET Core
 
 Las aplicaciones ASP.NET Core acceden `HttpContext` a través de la interfaz <xref:Microsoft.AspNetCore.Http.IHttpContextAccessor> y su implementación predeterminada <xref:Microsoft.AspNetCore.Http.HttpContextAccessor>. Solo es necesario utilizar `IHttpContextAccessor` si necesita acceder al valor `HttpContext` dentro de un servicio.
 
-## <a name="use-httpcontext-from-razor-pages"></a>Uso de HttpContext desde Razor Pages
+## <a name="use-httpcontext-from-no-locrazor-pages"></a>Uso de HttpContext desde Razor Pages
 
 <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel> de Razor Pages expone la propiedad <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel.HttpContext>:
 
@@ -42,7 +44,7 @@ public class AboutModel : PageModel
 }
 ```
 
-## <a name="use-httpcontext-from-a-razor-view"></a>Uso de HttpContext desde una vista de Razor
+## <a name="use-httpcontext-from-a-no-locrazor-view"></a>Uso de HttpContext desde una vista de Razor
 
 Las vistas de Razor exponen el valor `HttpContext` directamente mediante una propiedad [RazorPage.Context](xref:Microsoft.AspNetCore.Mvc.Razor.RazorPage.Context) de la vista. En el ejemplo siguiente se recupera el nombre de usuario actual de una aplicación de intranet mediante Autenticación de Windows:
 
@@ -173,6 +175,6 @@ public class EmailController : Controller
 }
 ```
 
-## <a name="blazor-and-shared-state"></a>Blazor y estado compartido
+## <a name="no-locblazor-and-shared-state"></a>Blazor y estado compartido
 
 [!INCLUDE[](~/includes/blazor-security/blazor-shared-state.md)]

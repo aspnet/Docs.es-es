@@ -5,6 +5,8 @@ description: Parte 2 de la serie de tutoriales sobre ASP.NET Core MVC.
 ms.author: riande
 ms.date: 08/05/2017
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -13,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/adding-controller
-ms.openlocfilehash: 30272900b2ff19879921f1954a1c9b3eba203ca4
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 46f8cbc5ef3d9fe00a5151160a9119f68a9fe572
+ms.sourcegitcommit: 68d03d1aee8906b53bda66f8f1e0747efc3007e6
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85400458"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88051815"
 ---
 # <a name="part-2-add-a-controller-to-an-aspnet-core-mvc-app"></a>Parte 2. Adición de un controlador a una aplicación de ASP.NET Core MVC
 
@@ -45,7 +47,7 @@ En esta serie de tutoriales se tratarán estos conceptos y se mostrará cómo us
 * En el **Explorador de soluciones**, haga clic con el botón derecho en **Controladores > Agregar > Controlador**
   ![Menú contextual](adding-controller/_static/add_controller.png).
 
-* En el cuadro de diálogo **Agregar Scaffold**, seleccione **MVC Controller - Empty** (Controlador MVC: en blanco)
+* En el cuadro de diálogo **Agregar Scaffold**, seleccione **Controller Class - Empty** (Clase de controlador: en blanco)
 
   ![Agregar un controlador de MVC y asignarle un nombre](adding-controller/_static/ac.png)
 
@@ -62,7 +64,7 @@ Seleccione el icono **EXPLORADOR**, presione Ctrl y haga clic con el botón dere
 En el **Explorador de soluciones**, haga clic con el botón derecho en **Controladores > Agregar > Nuevo archivo**.
 ![Menú contextual](~/tutorials/first-mvc-app-mac/adding-controller/_static/add_controller.png)
 
-Seleccione **ASP.NET Core** y **Clase de controlador de MVC**.
+Seleccione **ASP.NET Core** y **Clase de controlador**.
 
 Asigne al controlador el nombre **HelloWorldController**.
 

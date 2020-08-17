@@ -5,20 +5,22 @@ description: Obtenga información sobre la manera en que ASP.NET Core proporcion
 ms.author: riande
 ms.date: 11/30/2019
 no-loc:
-- '[Blazor'
-- '[Blazor Server'
-- '[Blazor WebAssembly'
-- '[Identity'
-- "[Let's Encrypt"
-- '[Razor'
-- '[SignalR'
+- cookie
+- Cookie
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: fundamentals/localization
-ms.openlocfilehash: 412cd7a39a0eed6800e15d235102ed367da5f746
-ms.sourcegitcommit: 895e952aec11c91d703fbdd3640a979307b8cc67
+ms.openlocfilehash: 9fd68d3b412c2cef6125c657653f605689ca6e70
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85793481"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88017225"
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>Globalización y localización en ASP.NET Core
 
@@ -75,7 +77,7 @@ El servicio `IViewLocalizer` proporciona cadenas localizadas para una [vista](xr
 
 [!code-cshtml[](localization/sample/3.x/Localization/Views/Home/About.cshtml)]
 
-La implementación predeterminada de `IViewLocalizer` busca el archivo de recursos según el nombre del archivo de vista. No se puede usar un archivo de recursos compartidos global. `ViewLocalizer` implementa el localizador mediante `IHtmlLocalizer`, por lo que [Razor no codifica como HTML la cadena localizada. Puede parametrizar las cadenas de recursos y `IViewLocalizer` codificará como HTML los parámetros, pero no la cadena de recursos. Observe el siguiente marcado [Razor:
+La implementación predeterminada de `IViewLocalizer` busca el archivo de recursos según el nombre del archivo de vista. No se puede usar un archivo de recursos compartidos global. `ViewLocalizer` implementa el localizador mediante `IHtmlLocalizer`, por lo que Razor no codifica como HTML la cadena localizada. Puede parametrizar las cadenas de recursos y `IViewLocalizer` codificará como HTML los parámetros, pero no la cadena de recursos. Observe el siguiente marcado Razor:
 
 ```cshtml
 @Localizer["<i>Hello</i> <b>{0}!</b>", UserManager.GetUserName(User)]
@@ -163,7 +165,7 @@ En el proyecto de ejemplo, el método `ConfigureServices` establece `ResourcesPa
 | Resources/Controllers.HomeController.fr.resx | Punto  |
 | Resources/Controllers/HomeController.fr.resx  | Ruta de acceso |
 
-Los archivos de recursos que usan `@inject IViewLocalizer` en las vistas de [Razor siguen un patrón similar. Para asignar un nombre al archivo de recursos de una vista, se puede usar la nomenclatura de punto o de ruta de acceso. Los archivos de recursos de una vista de [Razor imitan la ruta de acceso de su archivo de vista asociado. Supongamos que establecemos `ResourcesPath` en "Resources". En ese caso, el archivo de recursos de francés asociado a la vista *Views/Home/About.cshtml* podría ser uno de los siguientes:
+Los archivos de recursos que usan `@inject IViewLocalizer` en las vistas de Razor siguen un patrón similar. Para asignar un nombre al archivo de recursos de una vista, se puede usar la nomenclatura de punto o de ruta de acceso. Los archivos de recursos de una vista de Razor imitan la ruta de acceso de su archivo de vista asociado. Supongamos que establecemos `ResourcesPath` en "Resources". En ese caso, el archivo de recursos de francés asociado a la vista *Views/Home/About.cshtml* podría ser uno de los siguientes:
 
 * Resources/Views/Home/About.fr.resx
 
@@ -257,9 +259,9 @@ Si solo pasa uno de los dos parámetros (`culture` o `ui-culture`), el proveedor
 http://localhost:5000/?culture=es-MX
 ```
 
-### <a name="cookierequestcultureprovider"></a>CookieRequestCultureProvider
+### <a name="no-loccookierequestcultureprovider"></a>CookieRequestCultureProvider
 
-Las aplicaciones de producción suelen proporcionar un mecanismo para establecer la referencia cultural con la cookie de la referencia cultural de ASP.NET Core. Use el método `MakeCookieValue` para crear una cookie.
+Las aplicaciones de producción suelen proporcionar un mecanismo para establecer la referencia cultural con la cookie de la referencia cultural de ASP.NET Core. Use el método `MakeCookieValue` para crear una cookie.
 
 `CookieRequestCultureProvider` `DefaultCookieName` devuelve el nombre de cookie predeterminado usado para realizar un seguimiento de la información de la referencia cultural preferida del usuario. El nombre de cookie predeterminado es `.AspNetCore.Culture`.
 
@@ -334,7 +336,7 @@ El método `SetLanguage` establece la cookie de la referencia cultural.
 
 [!code-csharp[](localization/sample/3.x/Localization/Controllers/HomeController.cs?range=57-67)]
 
-No se puede conectar el archivo *_SelectLanguagePartial.cshtml* con código de ejemplo para este proyecto. El proyecto **Localization.StarterWeb** de [GitHub](https://github.com/aspnet/entropy) tiene código para enviar `RequestLocalizationOptions` a una vista parcial de [Razor a través del contenedor de [inserción de dependencias](dependency-injection.md).
+No se puede conectar el archivo *_SelectLanguagePartial.cshtml* con código de ejemplo para este proyecto. El proyecto **Localization.StarterWeb** de [GitHub](https://github.com/aspnet/entropy) tiene código para enviar `RequestLocalizationOptions` a una vista parcial de Razor a través del contenedor de [inserción de dependencias](dependency-injection.md).
 
 ## <a name="model-binding-route-data-and-query-strings"></a>Datos de ruta y cadenas de consulta de enlace de modelos
 
@@ -429,7 +431,7 @@ El servicio `IViewLocalizer` proporciona cadenas localizadas para una [vista](xr
 
 [!code-cshtml[](localization/sample/3.x/Localization/Views/Home/About.cshtml)]
 
-La implementación predeterminada de `IViewLocalizer` busca el archivo de recursos según el nombre del archivo de vista. No se puede usar un archivo de recursos compartidos global. `ViewLocalizer` implementa el localizador mediante `IHtmlLocalizer`, por lo que [Razor no codifica como HTML la cadena localizada. Puede parametrizar las cadenas de recursos y `IViewLocalizer` codificará como HTML los parámetros, pero no la cadena de recursos. Observe el siguiente marcado [Razor:
+La implementación predeterminada de `IViewLocalizer` busca el archivo de recursos según el nombre del archivo de vista. No se puede usar un archivo de recursos compartidos global. `ViewLocalizer` implementa el localizador mediante `IHtmlLocalizer`, por lo que Razor no codifica como HTML la cadena localizada. Puede parametrizar las cadenas de recursos y `IViewLocalizer` codificará como HTML los parámetros, pero no la cadena de recursos. Observe el siguiente marcado Razor:
 
 ```cshtml
 @Localizer["<i>Hello</i> <b>{0}!</b>", UserManager.GetUserName(User)]
@@ -517,7 +519,7 @@ En el proyecto de ejemplo, el método `ConfigureServices` establece `ResourcesPa
 | Resources/Controllers.HomeController.fr.resx | Punto  |
 | Resources/Controllers/HomeController.fr.resx  | Ruta de acceso |
 
-Los archivos de recursos que usan `@inject IViewLocalizer` en las vistas de [Razor siguen un patrón similar. Para asignar un nombre al archivo de recursos de una vista, se puede usar la nomenclatura de punto o de ruta de acceso. Los archivos de recursos de una vista de [Razor imitan la ruta de acceso de su archivo de vista asociado. Supongamos que establecemos `ResourcesPath` en "Resources". En ese caso, el archivo de recursos de francés asociado a la vista *Views/Home/About.cshtml* podría ser uno de los siguientes:
+Los archivos de recursos que usan `@inject IViewLocalizer` en las vistas de Razor siguen un patrón similar. Para asignar un nombre al archivo de recursos de una vista, se puede usar la nomenclatura de punto o de ruta de acceso. Los archivos de recursos de una vista de Razor imitan la ruta de acceso de su archivo de vista asociado. Supongamos que establecemos `ResourcesPath` en "Resources". En ese caso, el archivo de recursos de francés asociado a la vista *Views/Home/About.cshtml* podría ser uno de los siguientes:
 
 * Resources/Views/Home/About.fr.resx
 
@@ -613,9 +615,9 @@ Si solo pasa uno de los dos parámetros (`culture` o `ui-culture`), el proveedor
 http://localhost:5000/?culture=es-MX
 ```
 
-### <a name="cookierequestcultureprovider"></a>CookieRequestCultureProvider
+### <a name="no-loccookierequestcultureprovider"></a>CookieRequestCultureProvider
 
-Las aplicaciones de producción suelen proporcionar un mecanismo para establecer la referencia cultural con la cookie de la referencia cultural de ASP.NET Core. Use el método `MakeCookieValue` para crear una cookie.
+Las aplicaciones de producción suelen proporcionar un mecanismo para establecer la referencia cultural con la cookie de la referencia cultural de ASP.NET Core. Use el método `MakeCookieValue` para crear una cookie.
 
 `CookieRequestCultureProvider` `DefaultCookieName` devuelve el nombre de cookie predeterminado usado para realizar un seguimiento de la información de la referencia cultural preferida del usuario. El nombre de cookie predeterminado es `.AspNetCore.Culture`.
 
@@ -690,7 +692,7 @@ El método `SetLanguage` establece la cookie de la referencia cultural.
 
 [!code-csharp[](localization/sample/3.x/Localization/Controllers/HomeController.cs?range=57-67)]
 
-No se puede conectar el archivo *_SelectLanguagePartial.cshtml* con código de ejemplo para este proyecto. El proyecto **Localization.StarterWeb** de [GitHub](https://github.com/aspnet/entropy) tiene código para enviar `RequestLocalizationOptions` a una vista parcial de [Razor a través del contenedor de [inserción de dependencias](dependency-injection.md).
+No se puede conectar el archivo *_SelectLanguagePartial.cshtml* con código de ejemplo para este proyecto. El proyecto **Localization.StarterWeb** de [GitHub](https://github.com/aspnet/entropy) tiene código para enviar `RequestLocalizationOptions` a una vista parcial de Razor a través del contenedor de [inserción de dependencias](dependency-injection.md).
 
 ## <a name="model-binding-route-data-and-query-strings"></a>Datos de ruta y cadenas de consulta de enlace de modelos
 
@@ -784,7 +786,7 @@ El servicio `IViewLocalizer` proporciona cadenas localizadas para una [vista](xr
 
 [!code-cshtml[](localization/sample/3.x/Localization/Views/Home/About.cshtml)]
 
-La implementación predeterminada de `IViewLocalizer` busca el archivo de recursos según el nombre del archivo de vista. No se puede usar un archivo de recursos compartidos global. `ViewLocalizer` implementa el localizador mediante `IHtmlLocalizer`, por lo que [Razor no codifica como HTML la cadena localizada. Puede parametrizar las cadenas de recursos y `IViewLocalizer` codificará como HTML los parámetros, pero no la cadena de recursos. Observe el siguiente marcado [Razor:
+La implementación predeterminada de `IViewLocalizer` busca el archivo de recursos según el nombre del archivo de vista. No se puede usar un archivo de recursos compartidos global. `ViewLocalizer` implementa el localizador mediante `IHtmlLocalizer`, por lo que Razor no codifica como HTML la cadena localizada. Puede parametrizar las cadenas de recursos y `IViewLocalizer` codificará como HTML los parámetros, pero no la cadena de recursos. Observe el siguiente marcado Razor:
 
 ```cshtml
 @Localizer["<i>Hello</i> <b>{0}!</b>", UserManager.GetUserName(User)]
@@ -872,7 +874,7 @@ En el proyecto de ejemplo, el método `ConfigureServices` establece `ResourcesPa
 | Resources/Controllers.HomeController.fr.resx | Punto  |
 | Resources/Controllers/HomeController.fr.resx  | Ruta de acceso |
 
-Los archivos de recursos que usan `@inject IViewLocalizer` en las vistas de [Razor siguen un patrón similar. Para asignar un nombre al archivo de recursos de una vista, se puede usar la nomenclatura de punto o de ruta de acceso. Los archivos de recursos de una vista de [Razor imitan la ruta de acceso de su archivo de vista asociado. Supongamos que establecemos `ResourcesPath` en "Resources". En ese caso, el archivo de recursos de francés asociado a la vista *Views/Home/About.cshtml* podría ser uno de los siguientes:
+Los archivos de recursos que usan `@inject IViewLocalizer` en las vistas de Razor siguen un patrón similar. Para asignar un nombre al archivo de recursos de una vista, se puede usar la nomenclatura de punto o de ruta de acceso. Los archivos de recursos de una vista de Razor imitan la ruta de acceso de su archivo de vista asociado. Supongamos que establecemos `ResourcesPath` en "Resources". En ese caso, el archivo de recursos de francés asociado a la vista *Views/Home/About.cshtml* podría ser uno de los siguientes:
 
 * Resources/Views/Home/About.fr.resx
 
@@ -968,9 +970,9 @@ Si solo pasa uno de los dos parámetros (`culture` o `ui-culture`), el proveedor
 http://localhost:5000/?culture=es-MX
 ```
 
-### <a name="cookierequestcultureprovider"></a>CookieRequestCultureProvider
+### <a name="no-loccookierequestcultureprovider"></a>CookieRequestCultureProvider
 
-Las aplicaciones de producción suelen proporcionar un mecanismo para establecer la referencia cultural con la cookie de la referencia cultural de ASP.NET Core. Use el método `MakeCookieValue` para crear una cookie.
+Las aplicaciones de producción suelen proporcionar un mecanismo para establecer la referencia cultural con la cookie de la referencia cultural de ASP.NET Core. Use el método `MakeCookieValue` para crear una cookie.
 
 `CookieRequestCultureProvider` `DefaultCookieName` devuelve el nombre de cookie predeterminado usado para realizar un seguimiento de la información de la referencia cultural preferida del usuario. El nombre de cookie predeterminado es `.AspNetCore.Culture`.
 
@@ -1068,7 +1070,7 @@ El método `SetLanguage` establece la cookie de la referencia cultural.
 
 [!code-csharp[](localization/sample/3.x/Localization/Controllers/HomeController.cs?range=57-67)]
 
-No se puede conectar el archivo *_SelectLanguagePartial.cshtml* con código de ejemplo para este proyecto. El proyecto **Localization.StarterWeb** de [GitHub](https://github.com/aspnet/entropy) tiene código para enviar `RequestLocalizationOptions` a una vista parcial de [Razor a través del contenedor de [inserción de dependencias](dependency-injection.md).
+No se puede conectar el archivo *_SelectLanguagePartial.cshtml* con código de ejemplo para este proyecto. El proyecto **Localization.StarterWeb** de [GitHub](https://github.com/aspnet/entropy) tiene código para enviar `RequestLocalizationOptions` a una vista parcial de Razor a través del contenedor de [inserción de dependencias](dependency-injection.md).
 
 ## <a name="model-binding-route-data-and-query-strings"></a>Datos de ruta y cadenas de consulta de enlace de modelos
 

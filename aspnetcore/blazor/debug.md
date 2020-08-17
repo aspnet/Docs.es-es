@@ -7,6 +7,8 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/30/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/debug
-ms.openlocfilehash: cb0a8737fb975db285986d18b995e488f09580e8
-ms.sourcegitcommit: 37f6f2e13ceb4eae268d20973d76e4b83acf6a24
+ms.openlocfilehash: 225916411550cc8e89c604e1426316843bb0ff52
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87526295"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88014547"
 ---
 # <a name="debug-aspnet-core-no-locblazor-webassembly"></a>Depuración de Blazor WebAssembly en ASP.NET Core
 
@@ -76,6 +78,10 @@ Para depurar una aplicación Blazor WebAssembly en Visual Studio:
 
 1. Cree una aplicación hospedada Blazor WebAssembly de ASP.NET Core.
 1. Presione <kbd>F5</kbd> para ejecutar la aplicación en el depurador.
+
+   > [!NOTE]
+   > No admite **Iniciar sin depuración** (<kbd>Ctrl</kbd>+<kbd>F5</kbd>).
+
 1. Establezca un punto de interrupción en `Pages/Counter.razor` en el método `IncrementCount`.
 1. Vaya a la pestaña **`Counter`** y seleccione el botón para alcanzar el punto de interrupción:
 
@@ -116,10 +122,13 @@ Al depurar la aplicación de Blazor WebAssembly, también puede depurar el códi
    Si recibe la notificación:
 
    * Confirme que está instalada la [extensión de C# para Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) más reciente. Para inspeccionar las extensiones instaladas, abra **Ver** > **Extensiones** en la barra de menús o seleccione el icono **Extensiones** en la barra lateral **Actividad**.
-   * Confirme que está habilitada la depuración de JavaScript en versión preliminar. Abra la configuración en la barra de menús (**Archivo** > **Preferencias** > **Configuración**). Busque con las palabras clave `debug preview`. En los resultados de la búsqueda, confirme que la casilla **Depurar > JavaScript: Usar vista previa** está activada.
+   * Confirme que está habilitada la depuración de JavaScript en versión preliminar. Abra la configuración en la barra de menús (**Archivo** > **Preferencias** > **Configuración**). Busque con las palabras clave `debug preview`. En los resultados de la búsqueda, confirme que la casilla **Depurar > JavaScript: Usar vista previa** está activada. Si la opción para habilitar la depuración de vista previa no está presente, actualice a la versión más reciente de VS Code o instale la [extensión del depurador de JavaScript](https://marketplace.visualstudio.com/items?itemName=ms-vscode.js-debug-nightly) (VS Code 1.46 o versiones anteriores).
    * Recargue la ventana.
 
 1. Para iniciar la depuración, use el método abreviado de teclado <kbd>F5</kbd> o el elemento de menú.
+
+   > [!NOTE]
+   > No admite **Ejecutar sin depuración** (<kbd>Ctrl</kbd>+<kbd>F5</kbd>).
 
 1. Cuando se le pida, seleccione la opción **Blazor WebAssembly Debug** (Depuración de Blazor WebAssembly) para iniciar la depuración.
 

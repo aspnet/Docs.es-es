@@ -7,6 +7,8 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 02/09/2020
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/http-requests
-ms.openlocfilehash: fb9001c06228b4290ca1e0c7cfb6b1338f431cd6
-ms.sourcegitcommit: ca6a1f100c1a3f59999189aa962523442dd4ead1
+ms.openlocfilehash: ef6ed0911c2615ea543b1c2cea31a9a453f0c604
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87444119"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88017238"
 ---
 # <a name="make-http-requests-using-ihttpclientfactory-in-aspnet-core"></a>Realización de solicitudes HTTP mediante IHttpClientFactory en ASP.NET Core
 
@@ -359,11 +361,11 @@ Los enfoques anteriores solucionan los problemas de administración de recursos 
 - `SocketsHttpHandler` comparte las conexiones entre las instancias de `HttpClient`. Este uso compartido impide el agotamiento del socket.
 - `SocketsHttpHandler` recorre las conexiones según `PooledConnectionLifetime` para evitar problemas de DNS obsoletos.
 
-### <a name="cookies"></a>Cookies
+### <a name="no-loccookies"></a>Cookies
 
 Las instancias de `HttpMessageHandler` agrupadas generan objetos `CookieContainer` que se comparten. El uso compartido de objetos `CookieContainer` no previsto suele generar código incorrecto. En el caso de las aplicaciones que requieren cookies, tenga en cuenta lo siguiente:
 
- - Deshabilitar el control automático de las cookies
+ - Deshabilitación del control automático de cookies
  - Evitar `IHttpClientFactory`
 
 Llame a <xref:Microsoft.Extensions.DependencyInjection.HttpClientBuilderExtensions.ConfigurePrimaryHttpMessageHandler*> para deshabilitar el control automático de cookies:
@@ -677,11 +679,11 @@ Los enfoques anteriores solucionan los problemas de administración de recursos 
 - `SocketsHttpHandler` comparte las conexiones entre las instancias de `HttpClient`. Este uso compartido impide el agotamiento del socket.
 - `SocketsHttpHandler` recorre las conexiones según `PooledConnectionLifetime` para evitar problemas de DNS obsoletos.
 
-### <a name="cookies"></a>Cookies
+### <a name="no-loccookies"></a>Cookies
 
 Las instancias de `HttpMessageHandler` agrupadas generan objetos `CookieContainer` que se comparten. El uso compartido de objetos `CookieContainer` no previsto suele generar código incorrecto. En el caso de las aplicaciones que requieren cookies, tenga en cuenta lo siguiente:
 
- - Deshabilitar el control automático de las cookies
+ - Deshabilitación del control automático de cookies
  - Evitar `IHttpClientFactory`
 
 Llame a <xref:Microsoft.Extensions.DependencyInjection.HttpClientBuilderExtensions.ConfigurePrimaryHttpMessageHandler*> para deshabilitar el control automático de cookies:
@@ -985,11 +987,11 @@ Los enfoques anteriores solucionan los problemas de administración de recursos 
 - `SocketsHttpHandler` comparte las conexiones entre las instancias de `HttpClient`. Este uso compartido impide el agotamiento del socket.
 - `SocketsHttpHandler` recorre las conexiones según `PooledConnectionLifetime` para evitar problemas de DNS obsoletos.
 
-### <a name="cookies"></a>Cookies
+### <a name="no-loccookies"></a>Cookies
 
 Las instancias de `HttpMessageHandler` agrupadas generan objetos `CookieContainer` que se comparten. El uso compartido de objetos `CookieContainer` no previsto suele generar código incorrecto. En el caso de las aplicaciones que requieren cookies, tenga en cuenta lo siguiente:
 
- - Deshabilitar el control automático de las cookies
+ - Deshabilitación del control automático de cookies
  - Evitar `IHttpClientFactory`
 
 Llame a <xref:Microsoft.Extensions.DependencyInjection.HttpClientBuilderExtensions.ConfigurePrimaryHttpMessageHandler*> para deshabilitar el control automático de cookies:

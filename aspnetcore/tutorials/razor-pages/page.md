@@ -5,6 +5,8 @@ description: Parte 3 de la serie de tutoriales sobre Razor Pages.
 ms.author: riande
 ms.date: 08/17/2019
 no-loc:
+- cookie
+- Cookie
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -13,14 +15,14 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/page
-ms.openlocfilehash: 898f3be045755a0ee14c738b6ffc104408ded7b6
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: f8942e52b3b438817e3d1041a2c6b568eb662469
+ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85407777"
+ms.lasthandoff: 08/08/2020
+ms.locfileid: "88020397"
 ---
-# <a name="part-3-scaffolded-razor-pages-in-aspnet-core"></a>Parte 3. Razor Pages con scaffolding en ASP.NET Core
+# <a name="part-3-scaffolded-no-locrazor-pages-in-aspnet-core"></a>Parte 3. Razor Pages con scaffolding en ASP.NET Core
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -72,7 +74,7 @@ La directiva `@model` especifica el tipo del modelo que se pasa a una instancia 
 
 ### <a name="the-layout-page"></a>Página de diseño
 
-Seleccione los vínculos de menú (**RazorPagesMovie** [Película de Razor Pages], **Home** [Inicio] y **Privacy** [Privacidad]). Cada página muestra el mismo diseño de menú. El diseño de menú se implementa en el archivo *Pages/Shared/_Layout.cshtml*. Abra el archivo *Pages/Shared/_Layout.cshtml*.
+Seleccione los vínculos de menú ( **RazorPagesMovie** [Película de Razor Pages], **Home** [Inicio] y **Privacy** [Privacidad]). Cada página muestra el mismo diseño de menú. El diseño de menú se implementa en el archivo *Pages/Shared/_Layout.cshtml*. Abra el archivo *Pages/Shared/_Layout.cshtml*.
 
 Las plantillas de [diseño](xref:mvc/views/layout) permiten que el diseño del contenedor HTML:
 
@@ -153,7 +155,7 @@ Si hay algún error de modelo, se vuelve a mostrar el formulario, junto con los 
 
 Si no hay ningún error de modelo, los datos se guardan y el explorador se redirige a la página Índice.
 
-### <a name="the-create-razor-page"></a>La página de creación de instancias de Razor Pages
+### <a name="the-create-no-locrazor-page"></a>La página de creación de instancias de Razor Pages
 
 Examine el archivo de instancia de Razor Pages *Pages/Movies/Create.cshtml*:
 
@@ -263,7 +265,7 @@ La directiva `@model` especifica el tipo del modelo que se pasa a una instancia 
 
 ### <a name="the-layout-page"></a>Página de diseño
 
-Seleccione los vínculos de menú (**RazorPagesMovie** [Película de Razor Pages], **Home** [Inicio] y **Privacy** [Privacidad]). Cada página muestra el mismo diseño de menú. El diseño de menú se implementa en el archivo *Pages/Shared/_Layout.cshtml*. Abra el archivo *Pages/Shared/_Layout.cshtml*.
+Seleccione los vínculos de menú ( **RazorPagesMovie** [Película de Razor Pages], **Home** [Inicio] y **Privacy** [Privacidad]). Cada página muestra el mismo diseño de menú. El diseño de menú se implementa en el archivo *Pages/Shared/_Layout.cshtml*. Abra el archivo *Pages/Shared/_Layout.cshtml*.
 
 Las plantillas de [diseño](xref:mvc/views/layout) permiten especificar el diseño del contenedor HTML del sitio en un solo lugar y, después, aplicarlo en varias páginas del sitio. Busque la línea `@RenderBody()`. `RenderBody` es un marcador de posición donde se mostrarán todas las vistas específicas de página que cree, *encapsuladas* en la página de diseño. Por ejemplo, si selecciona el vínculo **Privacy** (Privacidad), la vista **Pages/Privacy.cshtml** se representará dentro del método `RenderBody`.
 
@@ -339,7 +341,7 @@ Si hay algún error de modelo, se vuelve a mostrar el formulario, junto con los 
 
 Si no hay ningún error de modelo, los datos se guardan y el explorador se redirige a la página Índice.
 
-### <a name="the-create-razor-page"></a>La página de creación de instancias de Razor Pages
+### <a name="the-create-no-locrazor-page"></a>La página de creación de instancias de Razor Pages
 
 Examine el archivo de instancia de Razor Pages *Pages/Movies/Create.cshtml*:
 
