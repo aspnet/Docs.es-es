@@ -1,5 +1,5 @@
 ---
-title: IdentityPersonalización del modelo en ASP.NET Core
+title: Identity Personalización del modelo en ASP.NET Core
 author: ajcvickers
 description: En este artículo se describe cómo personalizar el modelo de datos Entity Framework Core subyacente para ASP.NET Core Identity .
 ms.author: avickers
@@ -15,20 +15,20 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/customize_identity_model
-ms.openlocfilehash: 4e6d91de013755f1ae998e36481f4c3b659270ae
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 7c325bbc96ad4a8c5e4686073266d730eb924c10
+ms.sourcegitcommit: dfea24471f4f3d7904faa92fe60c000853bddc3b
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88022009"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88504676"
 ---
-# <a name="no-locidentity-model-customization-in-aspnet-core"></a>IdentityPersonalización del modelo en ASP.NET Core
+# <a name="no-locidentity-model-customization-in-aspnet-core"></a>Identity Personalización del modelo en ASP.NET Core
 
 Por [Arthur Vickers](https://github.com/ajcvickers)
 
-ASP.NET Core Identity proporciona un marco para administrar y almacenar cuentas de usuario en ASP.net Core aplicaciones. Identityse agrega al proyecto cuando se selecciona **cuentas de usuario individuales** como mecanismo de autenticación. De forma predeterminada, Identity hace uso de un modelo de datos básico de Entity Framework (EF). En este artículo se describe cómo personalizar el Identity modelo.
+ASP.NET Core Identity proporciona un marco para administrar y almacenar cuentas de usuario en ASP.net Core aplicaciones. Identity se agrega al proyecto cuando se selecciona **cuentas de usuario individuales** como mecanismo de autenticación. De forma predeterminada, Identity hace uso de un modelo de datos básico de Entity Framework (EF). En este artículo se describe cómo personalizar el Identity modelo.
 
-## <a name="no-locidentity-and-ef-core-migrations"></a>Identityy EF Core migraciones
+## <a name="no-locidentity-and-ef-core-migrations"></a>Identity y EF Core migraciones
 
 Antes de examinar el modelo, es útil entender cómo Identity funciona con migraciones de [EF Core](/ef/core/managing-schemas/migrations/) para crear y actualizar una base de datos. En el nivel superior, el proceso es:
 
@@ -56,7 +56,7 @@ Repita los pasos anteriores a medida que se realicen cambios en el modelo.
 
 ## <a name="the-no-locidentity-model"></a>El Identity modelo
 
-### <a name="entity-types"></a>Tipos de entidad
+### <a name="entity-types"></a>Tipos de entidades
 
 El Identity modelo consta de los siguientes tipos de entidad.
 
@@ -82,7 +82,7 @@ Los [tipos de entidad](#entity-types) se relacionan entre sí de las siguientes 
 
 ### <a name="default-model-configuration"></a>Configuración de modelo predeterminada
 
-Identitydefine muchas *clases de contexto* que heredan de [DbContext](/dotnet/api/microsoft.entityframeworkcore.dbcontext) para configurar y usar el modelo. Esta configuración se realiza mediante el [EF Core Code First API fluida](/ef/core/modeling/) en el método [OnModelCreating](/dotnet/api/microsoft.entityframeworkcore.dbcontext.onmodelcreating) de la clase de contexto. La configuración predeterminada es la siguiente:
+Identity define muchas *clases de contexto* que heredan de [DbContext](/dotnet/api/microsoft.entityframeworkcore.dbcontext) para configurar y usar el modelo. Esta configuración se realiza mediante el [EF Core Code First API fluida](/ef/core/modeling/) en el método [OnModelCreating](/dotnet/api/microsoft.entityframeworkcore.dbcontext.onmodelcreating) de la clase de contexto. La configuración predeterminada es la siguiente:
 
 ```csharp
 builder.Entity<TUser>(b =>
@@ -207,7 +207,7 @@ builder.Entity<TUserRole>(b =>
 
 ### <a name="model-generic-types"></a>Tipos genéricos de modelo
 
-Identitydefine los tipos de [Common Language Runtime](/dotnet/standard/glossary#clr) (CLR) predeterminados para cada uno de los tipos de entidad enumerados anteriormente. Todos estos tipos tienen el prefijo *Identity* :
+Identity define los tipos de [Common Language Runtime](/dotnet/standard/glossary#clr) (CLR) predeterminados para cada uno de los tipos de entidad enumerados anteriormente. Todos estos tipos tienen el prefijo *Identity* :
 
 * `IdentityUser`
 * `IdentityRole`
@@ -365,10 +365,10 @@ services.AddIdentity<ApplicationUser>()
         .AddDefaultUI();
 ```
 
-En ASP.NET Core 2,1 o posterior, Identity se proporciona como una Razor biblioteca de clases. Para obtener más información, vea <xref:security/authentication/scaffold-identity>. Por consiguiente, el código anterior requiere una llamada a <xref:Microsoft.AspNetCore.Identity.IdentityBuilderUIExtensions.AddDefaultUI*> . Si el Identity scaffolding se utilizó para agregar Identity archivos al proyecto, quite la llamada a `AddDefaultUI` . Para obtener más información, consulte:
+En ASP.NET Core 2,1 o posterior, Identity se proporciona como una Razor biblioteca de clases. Para obtener más información, vea <xref:security/authentication/scaffold-identity>. Por consiguiente, el código anterior requiere una llamada a <xref:Microsoft.AspNetCore.Identity.IdentityBuilderUIExtensions.AddDefaultUI*> . Si el Identity scaffolding se utilizó para agregar Identity archivos al proyecto, quite la llamada a `AddDefaultUI` . Para más información, consulte:
 
-* [ScaffoldIdentity](xref:security/authentication/scaffold-identity)
-* [Agregar, descargar y eliminar datos de usuario personalizados aIdentity](xref:security/authentication/add-user-data)
+* [Scaffold Identity](xref:security/authentication/scaffold-identity)
+* [Agregar, descargar y eliminar datos de usuario personalizados a Identity](xref:security/authentication/add-user-data)
 
 ### <a name="change-the-primary-key-type"></a>Cambiar el tipo de clave principal
 
@@ -403,7 +403,7 @@ Siga estos pasos para cambiar el tipo de PK:
 
     ::: moniker-end
 
-    `Startup.ConfigureServices`debe actualizarse para usar el usuario genérico:
+    `Startup.ConfigureServices` debe actualizarse para usar el usuario genérico:
 
     ::: moniker range=">= aspnetcore-2.1"
 
@@ -744,8 +744,8 @@ public class ApplicationDbContext
 Notas:
 
 * En este ejemplo también se incluye la `UserRole` entidad de combinación, que es necesaria para navegar por la relación de varios a varios entre usuarios y roles.
-* Recuerde cambiar los tipos de las propiedades de navegación para reflejar que `ApplicationXxx` ahora se usan tipos en lugar de `IdentityXxx` tipos.
-* Recuerde usar `ApplicationXxx` en la `ApplicationContext` definición genérica.
+* Recuerde cambiar los tipos de las propiedades de navegación para reflejar que `Application{...}` ahora se usan tipos en lugar de `Identity{...}` tipos.
+* Recuerde usar `Application{...}` en la `ApplicationContext` definición genérica.
 
 ### <a name="add-all-navigation-properties"></a>Agregar todas las propiedades de navegación
 
