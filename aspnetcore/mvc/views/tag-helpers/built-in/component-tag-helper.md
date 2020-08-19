@@ -6,6 +6,7 @@ description: Aprenda a usar la aplicación auxiliar de etiquetas de componentes 
 ms.custom: mvc
 ms.date: 04/15/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/tag-helpers/builtin-th/component-tag-helper
-ms.openlocfilehash: 09291b537e35d00df6f8006aaccdf4db12acfaea
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 1a0422da6bd48049cac73debe7d335da91e311be
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88018694"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88633921"
 ---
 # <a name="component-tag-helper-in-aspnet-core"></a>Aplicación auxiliar de etiquetas de componentes en ASP.NET Core
 
@@ -29,7 +30,7 @@ Por [Daniel Roth](https://github.com/danroth27) y [Luke Latham](https://github.c
 
 Para representar un componente a partir de una página o vista, use el [asistente de etiquetas de componente](xref:Microsoft.AspNetCore.Mvc.TagHelpers.ComponentTagHelper).
 
-## <a name="prerequisites"></a>Requisitos previos
+## <a name="prerequisites"></a>Prerrequisitos
 
 Siga las instrucciones de la sección *preparación de la aplicación para usar componentes en páginas y vistas* del <xref:blazor/components/integrate-components-into-razor-pages-and-mvc-apps#prepare-the-app> artículo.
 
@@ -155,7 +156,7 @@ public class MyClass
     param-MyObject="@myObject" />
 ```
 
-En el ejemplo anterior se supone que el `MyComponent` componente está en la carpeta *compartida* de la aplicación. El marcador de posición `{APP ASSEMBLY}` es el nombre de ensamblado de la aplicación (por ejemplo, `@using BlazorSample` y `@using BlazorSample.Shared` ). `MyClass`está en el espacio de nombres de la aplicación.
+En el ejemplo anterior se supone que el `MyComponent` componente está en la carpeta *compartida* de la aplicación. El marcador de posición `{APP ASSEMBLY}` es el nombre de ensamblado de la aplicación (por ejemplo, `@using BlazorSample` y `@using BlazorSample.Shared` ). `MyClass` está en el espacio de nombres de la aplicación.
 
 <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode> configura si el componente:
 

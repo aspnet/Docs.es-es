@@ -7,6 +7,7 @@ ms.author: mimengis
 ms.custom: mvc
 ms.date: 11/12/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/java-client
-ms.openlocfilehash: 36994c9e579dc365de543c9b27bc8b7bfd34c81c
-ms.sourcegitcommit: dfea24471f4f3d7904faa92fe60c000853bddc3b
+ms.openlocfilehash: 5351bcf5adb4a79efc993f48acbb959f113c814f
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88504780"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88634961"
 ---
 # <a name="aspnet-core-no-locsignalr-java-client"></a>Cliente de ASP.NET Core SignalR Java
 

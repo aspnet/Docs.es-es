@@ -5,6 +5,7 @@ description: En este artículo se describen los pasos más comunes para migrar l
 ms.author: scaddie
 ms.date: 06/21/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -15,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: migration/1x-to-2x/identity-2x
-ms.openlocfilehash: 46f10df25235b532f188eda2a079aef71070cd6d
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 63f2fadc328650063078339467e65c6b0e97a08e
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88015295"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88634324"
 ---
 # <a name="migrate-authentication-and-no-locidentity-to-aspnet-core-20"></a>Migración de la autenticación y Identity a ASP.NET Core 2,0
 
@@ -92,7 +93,7 @@ A continuación se muestran 2,0 instrucciones de migración para cada esquema de
 
 Seleccione una de las dos opciones siguientes y realice los cambios necesarios en *Startup.CS*:
 
-1. Usar cookie s conIdentity
+1. Usar cookie s con Identity
     - Reemplace `UseIdentity` por `UseAuthentication` en el `Configure` método:
 
         ```csharp
@@ -110,7 +111,7 @@ Seleccione una de las dos opciones siguientes y realice los cambios necesarios e
         services.ConfigureApplicationCookie(options => options.LoginPath = "/Account/LogIn");
         ```
 
-2. Usar cookie s sinIdentity
+2. Usar cookie s sin Identity
     - Reemplace la `UseCookieAuthentication` llamada al método en el `Configure` método por `UseAuthentication` :
 
         ```csharp
@@ -340,7 +341,7 @@ Hay dos variaciones de la autenticación de Windows:
 
   > `System.InvalidOperationException`: No se especificó ningún authenticationScheme y no se encontró ningún DefaultChallengeScheme.
 
-Para obtener más información, vea <xref:security/authentication/windowsauth>.
+Para más información, consulte <xref:security/authentication/windowsauth>.
 
 <a name="identity-cookie-options"></a>
 

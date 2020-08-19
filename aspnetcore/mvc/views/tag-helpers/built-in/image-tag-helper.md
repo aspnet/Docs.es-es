@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/06/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/tag-helpers/builtin-th/image-tag-helper
-ms.openlocfilehash: a877078356b54a3d0bba6a1be24307e6e1c075c8
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: c72dd4f6da796364756d001a6e424eb3a96710a4
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88018603"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88633843"
 ---
 # <a name="image-tag-helper-in-aspnet-core"></a>Asistente de etiquetas de imagen en ASP.NET Core
 

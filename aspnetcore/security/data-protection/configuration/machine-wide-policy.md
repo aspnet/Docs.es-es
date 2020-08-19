@@ -5,6 +5,7 @@ description: Obtenga información sobre la compatibilidad con la configuración 
 ms.author: riande
 ms.date: 10/14/2016
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -15,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/data-protection/configuration/machine-wide-policy
-ms.openlocfilehash: f4b8dc379c0219ff9fc363df55df1103ef40a5ce
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: dea34a3c0fcee26bcf6bffb92f1b3fdcce0e9386
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88022412"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88632881"
 ---
 # <a name="data-protection-machine-wide-policy-support-in-aspnet-core"></a>Compatibilidad con la Directiva de protección de datos en ASP.NET Core
 
@@ -41,7 +42,7 @@ Si se encuentra en un sistema operativo de 64 bits y quiere afectar al comportam
 
 Los valores admitidos se muestran a continuación.
 
-| Valor              | Tipo   | Descripción |
+| Value              | Tipo   | Descripción |
 | ------------------ | :----: | ----------- |
 | EncryptionType     | string | Especifica los algoritmos que se deben usar para la protección de datos. El valor debe ser CNG-CBC, CNG-GCM o administrado y se describe con más detalle a continuación. |
 | DefaultKeyLifetime | DWORD  | Especifica la duración de las claves generadas recientemente. El valor se especifica en días y debe ser >= 7. |
@@ -51,7 +52,7 @@ Los valores admitidos se muestran a continuación.
 
 Si EncryptionType es CNG-CBC, el sistema está configurado para usar un cifrado de bloques simétricos de modo CBC para confidencialidad y HMAC para la autenticidad con los servicios proporcionados por CNG de Windows (consulte [especificación de algoritmos CNG personalizados de Windows](xref:security/data-protection/configuration/overview#specifying-custom-windows-cng-algorithms) para obtener más detalles). Se admiten los siguientes valores adicionales, cada uno de los cuales corresponde a una propiedad en el tipo CngCbcAuthenticatedEncryptionSettings.
 
-| Valor                       | Tipo   | Descripción |
+| Value                       | Tipo   | Descripción |
 | --------------------------- | :----: | ----------- |
 | EncryptionAlgorithm         | string | Nombre de un algoritmo de cifrado de bloques simétricos entendido por CNG. Este algoritmo se abre en modo CBC. |
 | EncryptionAlgorithmProvider | string | El nombre de la implementación del proveedor de CNG que puede generar el algoritmo EncryptionAlgorithm. |
@@ -61,7 +62,7 @@ Si EncryptionType es CNG-CBC, el sistema está configurado para usar un cifrado 
 
 Si EncryptionType es CNG-GCM, el sistema está configurado para usar un cifrado de bloques simétricos de modo Galois/Counter para la confidencialidad y la autenticidad con los servicios proporcionados por CNG de Windows (consulte [especificación de algoritmos CNG personalizados de Windows](xref:security/data-protection/configuration/overview#specifying-custom-windows-cng-algorithms) para obtener más detalles). Se admiten los siguientes valores adicionales, cada uno de los cuales corresponde a una propiedad en el tipo CngGcmAuthenticatedEncryptionSettings.
 
-| Valor                       | Tipo   | Descripción |
+| Value                       | Tipo   | Descripción |
 | --------------------------- | :----: | ----------- |
 | EncryptionAlgorithm         | string | Nombre de un algoritmo de cifrado de bloques simétricos entendido por CNG. Este algoritmo se abre en el modo Galois/Counter. |
 | EncryptionAlgorithmProvider | string | El nombre de la implementación del proveedor de CNG que puede generar el algoritmo EncryptionAlgorithm. |
@@ -69,7 +70,7 @@ Si EncryptionType es CNG-GCM, el sistema está configurado para usar un cifrado 
 
 Si EncryptionType está administrado, el sistema está configurado para usar un SymmetricAlgorithm administrado para la confidencialidad y para KeyedHashAlgorithm para la autenticidad (consulte [especificación de algoritmos administrados personalizados](xref:security/data-protection/configuration/overview#specifying-custom-managed-algorithms) para obtener más detalles). Se admiten los siguientes valores adicionales, cada uno de los cuales corresponde a una propiedad en el tipo ManagedAuthenticatedEncryptionSettings.
 
-| Valor                      | Tipo   | Descripción |
+| Value                      | Tipo   | Descripción |
 | -------------------------- | :----: | ----------- |
 | EncryptionAlgorithmType    | string | Nombre calificado con el ensamblado de un tipo que implementa SymmetricAlgorithm. |
 | EncryptionAlgorithmKeySize | DWORD  | La longitud (en bits) de la clave que se va a derivar para el algoritmo de cifrado simétrico. |

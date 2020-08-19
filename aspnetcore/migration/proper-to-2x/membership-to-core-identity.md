@@ -1,11 +1,12 @@
 ---
-title: Migración de la autenticación de pertenencia de ASP.NET a ASP.NET Core 2,0Identity
+title: Migración de la autenticación de pertenencia de ASP.NET a ASP.NET Core 2,0 Identity
 author: isaac2004
 description: Obtenga información sobre cómo migrar aplicaciones existentes de ASP.NET mediante la autenticación de pertenencia a ASP.NET Core 2,0 Identity .
 ms.author: scaddie
 ms.custom: mvc
 ms.date: 01/10/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,21 +17,21 @@ no-loc:
 - Razor
 - SignalR
 uid: migration/proper-to-2x/membership-to-core-identity
-ms.openlocfilehash: 97039ac1c7bcd6a1ff7b53e1579c623b26564d26
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: de9d1e5f6f595269595212fbab60d12dfd5a29e4
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88014898"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88633648"
 ---
-# <a name="migrate-from-aspnet-membership-authentication-to-aspnet-core-20-no-locidentity"></a>Migración de la autenticación de pertenencia de ASP.NET a ASP.NET Core 2,0Identity
+# <a name="migrate-from-aspnet-membership-authentication-to-aspnet-core-20-no-locidentity"></a>Migración de la autenticación de pertenencia de ASP.NET a ASP.NET Core 2,0 Identity
 
 Por [Isaac Levin](https://isaaclevin.com)
 
 En este artículo se muestra cómo migrar el esquema de la base de datos para aplicaciones ASP.NET que usan la autenticación de pertenencia a ASP.NET Core 2,0 Identity .
 
 > [!NOTE]
-> En este documento se proporcionan los pasos necesarios para migrar el esquema de la base de datos para las aplicaciones basadas en la pertenencia a ASP.NET al esquema de la base de datos que se usa para ASP.NET Core Identity . Para obtener más información sobre la migración de la autenticación basada en pertenencia de ASP.NET a ASP.NET Identity , vea [migrar una aplicación existente de Identity pertenencia a SQL a ASP.net ](/aspnet/identity/overview/migrations/migrating-an-existing-website-from-sql-membership-to-aspnet-identity). Para obtener más información acerca de ASP.NET Core Identity , consulte [Introducción a Identity en ASP.net Core](xref:security/authentication/identity).
+> En este documento se proporcionan los pasos necesarios para migrar el esquema de la base de datos para las aplicaciones basadas en la pertenencia a ASP.NET al esquema de base de datos usado para ASP.NET Core Identity . Para obtener más información sobre la migración de la autenticación basada en pertenencia de ASP.NET a ASP.NET Identity , vea [migrar una aplicación existente de Identity pertenencia a SQL a ASP.net ](/aspnet/identity/overview/migrations/migrating-an-existing-website-from-sql-membership-to-aspnet-identity). Para obtener más información acerca de ASP.NET Core Identity , consulte [Introducción a Identity en ASP.net Core](xref:security/authentication/identity).
 
 ## <a name="review-of-membership-schema"></a>Revisión del esquema de pertenencia
 
@@ -40,7 +41,7 @@ Antes de ASP.NET 2,0, los desarrolladores tenían que crear todo el proceso de a
 
 Para migrar las aplicaciones existentes a ASP.NET Core 2,0 Identity , los datos de estas tablas deben migrarse a las tablas que utiliza el nuevo Identity esquema.
 
-## <a name="aspnet-core-no-locidentity-20-schema"></a>ASP.NET Core Identity esquema 2,0
+## <a name="no-locaspnet-core-identity-20-schema"></a>ASP.NET Core Identity esquema 2,0
 
 ASP.NET Core 2,0 sigue el [Identity](/aspnet/identity/index) principio incluido en ASP.NET 4,5. Aunque se comparte el principio, la implementación entre los marcos de trabajo es diferente, incluso entre las versiones de ASP.NET Core (consulte migración de la [autenticación y Identity a ASP.net Core 2,0](xref:migration/1x-to-2x/index)).
 
@@ -49,7 +50,7 @@ La manera más rápida de ver el esquema para ASP.NET Core 2,0 Identity es crear
 1. Seleccione **File (Archivo)**  > **New (Nuevo)**  > **Project (Proyecto)** .
 1. Cree un nuevo proyecto de **aplicación Web de ASP.net Core** llamado *Core Identity Sample*.
 1. Seleccione **ASP.NET Core 2,0** en la lista desplegable y, a continuación, seleccione **aplicación web**. Esta plantilla crea una aplicación de [ Razor páginas](xref:razor-pages/index) . Antes de hacer clic en **Aceptar**, haga clic en **cambiar autenticación**.
-1. Elija las **cuentas de usuario individuales** para las Identity plantillas. Por último, haga clic en **Aceptar**y en **Aceptar**. Visual Studio crea un proyecto mediante la Identity plantilla ASP.net Core.
+1. Elija las **cuentas de usuario individuales** para las Identity plantillas. Por último, haga clic en **Aceptar**y en **Aceptar**. Visual Studio crea un proyecto mediante la ASP.NET Core Identity plantilla.
 1. Seleccione **herramientas**administrador  >  de**paquetes NuGet**  >  **consola del administrador** de paquetes para abrir la ventana de la consola del administrador de **paquetes** (PMC).
 1. Vaya a la raíz del proyecto en PMC y ejecute el comando de [Entity Framework (EF) Core](/ef/core) `Update-Database` .
 
@@ -88,7 +89,7 @@ Existen sutiles diferencias en las estructuras de tabla y los campos de pertenen
 | `LockoutEnabled`                | `bit`   | `aspnet_Membership.IsLockedOut`                            | `bit`    |
 
 > [!NOTE]
-> No todas las asignaciones de campos se parecen a las relaciones uno a uno de la pertenencia a ASP.NET Core Identity . La tabla anterior toma el esquema de usuario de pertenencia predeterminado y lo asigna al esquema de ASP.NET Core Identity . Cualquier otro campo personalizado que se usara para la pertenencia debe asignarse manualmente. En esta asignación, no hay ninguna asignación para las contraseñas, ya que los criterios de contraseña y las sales de contraseña no se migran entre los dos. **Se recomienda dejar la contraseña como NULL y pedir a los usuarios que restablezcan sus contraseñas.** En ASP.NET Core Identity , `LockoutEnd` debe establecerse en una fecha futura si el usuario está bloqueado. Esto se muestra en el script de migración.
+> No todas las asignaciones de campos se parecen a las relaciones uno a uno de la pertenencia a ASP.NET Core Identity . La tabla anterior toma el esquema de usuario de pertenencia predeterminado y lo asigna al ASP.NET Core Identity esquema. Cualquier otro campo personalizado que se usara para la pertenencia debe asignarse manualmente. En esta asignación, no hay ninguna asignación para las contraseñas, ya que los criterios de contraseña y las sales de contraseña no se migran entre los dos. **Se recomienda dejar la contraseña como NULL y pedir a los usuarios que restablezcan sus contraseñas.** En ASP.NET Core Identity , `LockoutEnd` debe establecerse en una fecha futura si el usuario está bloqueado. Esto se muestra en el script de migración.
 
 ### <a name="roles"></a>Roles
 
@@ -194,7 +195,7 @@ IF @@ERROR <> 0
 COMMIT TRANSACTION MigrateUsersAndRoles
 ```
 
-Después de completar el script anterior, la Identity aplicación ASP.net Core creada anteriormente se rellena con usuarios de pertenencia. Los usuarios deben cambiar sus contraseñas antes de iniciar sesión.
+Después de completar el script anterior, la ASP.NET Core Identity aplicación creada anteriormente se rellena con usuarios de pertenencia. Los usuarios deben cambiar sus contraseñas antes de iniciar sesión.
 
 > [!NOTE]
 > Si el sistema de pertenencia tuviera usuarios con nombres de usuario que no coincidían con su dirección de correo electrónico, se requieren cambios en la aplicación que se creó anteriormente para dar cabida a este. La plantilla predeterminada espera `UserName` y `Email` para ser la misma. En situaciones en las que son diferentes, el proceso de inicio de sesión debe modificarse para usar en `UserName` lugar de `Email` .
