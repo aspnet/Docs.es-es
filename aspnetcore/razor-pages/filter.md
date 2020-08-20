@@ -6,6 +6,7 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 2/18/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: razor-pages/filter
-ms.openlocfilehash: b8942020e98d0f985e5445bb1816c540bcb7829b
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: b6d6585c0cbd52715c4192d4ab3bee756dbb41b3
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88021411"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88635052"
 ---
 # <a name="filter-methods-for-no-locrazor-pages-in-aspnet-core"></a>Métodos de filtrado de Razor Pages de ASP.NET Core
 

@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 03/06/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/app-state
-ms.openlocfilehash: c05129c0f239fb28c83ab1c561dd910305eeb54b
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 95035ec372ab6adb5bafb40f2b939c549ac6f839
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88017641"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88633817"
 ---
 # <a name="session-and-state-management-in-aspnet-core"></a>Administración del estado y la sesión en ASP.NET Core
 
@@ -239,7 +240,7 @@ Para habilitar el proveedor TempData basado en sesión, use el método de extens
 
 Se puede pasar una cantidad limitada de datos de una solicitud a otra si agrega los datos a la cadena de consulta de la solicitud nueva. Esto es útil para capturar el estado de una forma persistente que permita que los vínculos con estado insertado se compartan a través del correo electrónico o las redes sociales. Dado que las cadenas de consulta de direcciones URL son públicas, nunca use las cadenas de consulta para datos confidenciales.
 
-Además del uso compartido no intencionado, la inclusión de datos en cadenas de consulta puede exponer la aplicación a ataques de [falsificación de solicitud entre sitios (CSRF)](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)). Cualquier estado de sesión conservado debe protegerse contra los ataques CSRF. Para más información, vea [Preventing Cross-Site Request Forgery (XSRF/CSRF) Attacks](xref:security/anti-request-forgery) (Evitar los ataques de falsificación de solicitud entre sitios [XSRF/CSRF]).
+Además del uso compartido no intencionado, la inclusión de datos en cadenas de consulta puede exponer la aplicación a ataques de [falsificación de solicitud entre sitios (CSRF)](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)). Cualquier estado de sesión conservado debe protegerse contra los ataques CSRF. Para obtener más información, vea <xref:security/anti-request-forgery>.
 
 ## <a name="hidden-fields"></a>Campos ocultos
 
@@ -502,7 +503,7 @@ El orden del middleware es importante. En el ejemplo anterior, se produce una ex
 
 Se puede pasar una cantidad limitada de datos de una solicitud a otra si agrega los datos a la cadena de consulta de la solicitud nueva. Esto es útil para capturar el estado de una forma persistente que permita que los vínculos con estado insertado se compartan a través del correo electrónico o las redes sociales. Dado que las cadenas de consulta de direcciones URL son públicas, nunca use las cadenas de consulta para datos confidenciales.
 
-Además del uso compartido no intencionado, la inclusión de datos en las cadenas de consulta puede propiciar ataques de [falsificación de solicitud entre sitios (CSRF)](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)), cuya intención es engañar a los usuarios para que visiten sitios malintencionados mientras están autenticados. Después, los atacantes pueden robar los datos de usuario de la aplicación o realizar acciones malintencionadas en nombre del usuario. Cualquier estado de sesión o aplicación conservado debe protegerse contra los ataques CSRF. Para más información, vea [Preventing Cross-Site Request Forgery (XSRF/CSRF) Attacks](xref:security/anti-request-forgery) (Evitar los ataques de falsificación de solicitud entre sitios [XSRF/CSRF]).
+Además del uso compartido no intencionado, la inclusión de datos en las cadenas de consulta puede propiciar ataques de [falsificación de solicitud entre sitios (CSRF)](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)), cuya intención es engañar a los usuarios para que visiten sitios malintencionados mientras están autenticados. Después, los atacantes pueden robar los datos de usuario de la aplicación o realizar acciones malintencionadas en nombre del usuario. Cualquier estado de sesión o aplicación conservado debe protegerse contra los ataques CSRF. Para obtener más información, vea <xref:security/anti-request-forgery>.
 
 ## <a name="hidden-fields"></a>Campos ocultos
 

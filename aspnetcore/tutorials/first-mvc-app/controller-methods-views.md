@@ -5,6 +5,7 @@ description: Parte 6. Adición de un modelo a una aplicación de ASP.NET Core M
 ms.author: riande
 ms.date: 12/13/2018
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -15,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/controller-methods-views
-ms.openlocfilehash: b5b54adb1d86e4ab982647dc8207839cc9afdac9
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 07b67cd7c267c39b99277114b73642b5caa3e312
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88021073"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88632842"
 ---
 # <a name="part-6-controller-methods-and-views-in-aspnet-core"></a>Parte 6. Vistas y métodos de controlador en ASP.NET Core
 
@@ -110,7 +111,7 @@ El atributo `ValidateAntiForgeryToken` se usa para [impedir la falsificación de
 
 [!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Movies/Edit.cshtml?range=9)]
 
-El [asistente de etiquetas de formulario](xref:mvc/views/working-with-forms) genera un token antifalsificación oculto que debe coincidir con el token antifalsificación generado por `[ValidateAntiForgeryToken]` en el método `Edit` del controlador Movies. Para más información, vea [Prevención de ataques de falsificación de solicitudes](xref:security/anti-request-forgery).
+El [asistente de etiquetas de formulario](xref:mvc/views/working-with-forms) genera un token antifalsificación oculto que debe coincidir con el token antifalsificación generado por `[ValidateAntiForgeryToken]` en el método `Edit` del controlador Movies. Para obtener más información, vea <xref:security/anti-request-forgery>.
 
 El método `HttpGet Edit` toma el parámetro `ID` de la película, busca la película con el método `FindAsync` de Entity Framework y devuelve la película seleccionada a la vista de edición. Si no se encuentra una película, se devuelve `NotFound` (HTTP 404).
 
@@ -161,7 +162,7 @@ Todos los métodos `HttpGet` del controlador de películas siguen un patrón sim
 * [Globalización y localización](xref:fundamentals/localization)
 * [Introducción a los asistentes de etiquetas](xref:mvc/views/tag-helpers/intro)
 * [Creación de asistentes de etiquetas](xref:mvc/views/tag-helpers/authoring)
-* [Prevención de ataques de falsificación de solicitudes](xref:security/anti-request-forgery)
+* <xref:security/anti-request-forgery>
 * Protección del controlador frente al [exceso de publicación](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application)
 * [ViewModels](https://rachelappel.com/use-viewmodels-to-manage-data-amp-organize-code-in-asp-net-mvc-applications/)
 * [Asistente de etiquetas de formulario](xref:mvc/views/working-with-forms)
