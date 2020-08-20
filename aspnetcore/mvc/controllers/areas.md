@@ -5,6 +5,7 @@ description: Obtenga información sobre las áreas, una característica de ASP.N
 ms.author: riande
 ms.date: 03/21/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -15,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/areas
-ms.openlocfilehash: af765eebfa8bfd147bd3b721508b5794d15d64a7
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 033b57f5406d0344347b2f787fa2b2fbb2da8604
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88018447"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88630255"
 ---
 # <a name="areas-in-aspnet-core"></a>Áreas de ASP.NET Core
 
@@ -70,7 +71,7 @@ Considere una aplicación que tiene dos grupos lógicos, *Productos* y *Servicio
         * HomeController.cs
         * ManageController.cs
       * Vistas
-        * Inicio
+        * Página principal
           * Index.cshtml
         * Administrar
           * Index.cshtml
@@ -79,7 +80,7 @@ Considere una aplicación que tiene dos grupos lógicos, *Productos* y *Servicio
       * Controladores
         * HomeController.cs
       * Vistas
-        * Inicio
+        * Página principal
           * Index.cshtml
 
 Aunque el diseño anterior es típico cuando se usan áreas, solo los archivos de vista tienen que usar esta estructura de carpetas. La detección de vista busca un archivo de vista de área coincidente en el orden siguiente:
@@ -101,7 +102,7 @@ Los controladores de área se designan con el atributo de [ &lbrack; área &rbra
 
 ### <a name="add-area-route"></a>Adición de la ruta de área
 
-Las rutas de área suelen usar [enrutamiento convencional](xref:mvc/controllers/routing#cr) en lugar de [enrutamiento de atributos](xref:mvc/controllers/routing#ar). El enrutamiento convencional depende del orden. En general, las rutas con áreas deben colocarse antes en la tabla de rutas, ya que son más específicas que las rutas sin un área.
+Las rutas de área suelen usar  [enrutamiento convencional](xref:mvc/controllers/routing#cr) en lugar de [enrutamiento de atributos](xref:mvc/controllers/routing#ar). El enrutamiento convencional depende del orden. En general, las rutas con áreas deben colocarse antes en la tabla de rutas, ya que son más específicas que las rutas sin un área.
 
 Se puede `{area:...}` usar como un token en las plantillas de ruta, si el espacio de direcciones URL es uniforme en todas las áreas:
 
@@ -272,7 +273,7 @@ Considere una aplicación que tiene dos grupos lógicos, *Productos* y *Servicio
         * HomeController.cs
         * ManageController.cs
       * Vistas
-        * Inicio
+        * Página principal
           * Index.cshtml
         * Administrar
           * Index.cshtml
@@ -281,7 +282,7 @@ Considere una aplicación que tiene dos grupos lógicos, *Productos* y *Servicio
       * Controladores
         * HomeController.cs
       * Vistas
-        * Inicio
+        * Página principal
           * Index.cshtml
 
 Aunque el diseño anterior es típico cuando se usan áreas, solo los archivos de vista tienen que usar esta estructura de carpetas. La detección de vista busca un archivo de vista de área coincidente en el orden siguiente:

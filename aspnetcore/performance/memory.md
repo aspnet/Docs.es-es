@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 4/05/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,18 +17,18 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/memory
-ms.openlocfilehash: 09df67657c9b6e4e59d6a1379bf801c289028819
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: c409eaaf07109d363581ee7d61dc76521d6818d0
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88020943"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88630671"
 ---
 # <a name="memory-management-and-garbage-collection-gc-in-aspnet-core"></a>Administración de memoria y recolección de elementos no utilizados (GC) en ASP.NET Core
 
 Por [Sébastien Ros](https://github.com/sebastienros) y [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-La administración de memoria es compleja, incluso en un marco administrado como .NET. Analizar y comprender los problemas de memoria puede ser desafiante. Este artículo:
+La administración de memoria es compleja, incluso en un marco administrado como .NET. Analizar y comprender los problemas de memoria puede ser desafiante. En este artículo:
 
 * Estaba motivada por muchos problemas de *pérdida de memoria* y el *GC no funciona* . La mayoría de estos problemas se debieron a no comprender cómo funciona el consumo de memoria en .NET Core o no comprender cómo se mide.
 * Muestra el uso de memoria problemático y sugiere enfoques alternativos.
@@ -149,7 +150,7 @@ El modo GC se puede establecer explícitamente en el archivo de proyecto o en el
 
 Cambiar `ServerGarbageCollection` en el archivo de proyecto requiere que se vuelva a generar la aplicación.
 
-**Nota:** La recolección de elementos **no** utilizados de servidor no está disponible en equipos con un solo núcleo. Para obtener más información, vea <xref:System.Runtime.GCSettings.IsServerGC>.
+**Nota:** La recolección de elementos **no** utilizados de servidor no está disponible en equipos con un solo núcleo. Para más información, consulte <xref:System.Runtime.GCSettings.IsServerGC>.
 
 En la imagen siguiente se muestra el perfil de memoria en un 5.000 RPS mediante el GC de la estación de trabajo.
 
@@ -291,7 +292,7 @@ En los siguientes vínculos se muestra el enfoque ASP.NET Core para mantener obj
 * [ResponseCaching/streams/StreamUtilities. CS](https://github.com/dotnet/AspNetCore/blob/v3.0.0/src/Middleware/ResponseCaching/src/Streams/StreamUtilities.cs#L16)
 * [ResponseCaching/MemoryResponseCache. CS](https://github.com/aspnet/ResponseCaching/blob/c1cb7576a0b86e32aec990c22df29c780af29ca5/src/Microsoft.AspNetCore.ResponseCaching/Internal/MemoryResponseCache.cs#L55)
 
-Para obtener más información, consulte:
+Para más información, consulte:
 
 * [Montón de objetos grandes descubierto](https://devblogs.microsoft.com/dotnet/large-object-heap-uncovered-from-an-old-msdn-article/)
 * [Montón de objetos grandes](/dotnet/standard/garbage-collection/large-object-heap)
@@ -305,9 +306,9 @@ El uso incorrecto <xref:System.Net.Http.HttpClient> de puede dar lugar a una pé
 
 Los desarrolladores de .NET experimentados saben llamar a <xref:System.IDisposable.Dispose*> en objetos que implementan <xref:System.IDisposable> . Si no se desechan los objetos que implementan `IDisposable` normalmente se produce una pérdida de memoria o de recursos del sistema perdidos.
 
-`HttpClient`implementa `IDisposable` , pero **no** debe desecharse en cada invocación. En su lugar, debe volver a `HttpClient` usarse.
+`HttpClient` implementa `IDisposable` , pero **no** debe desecharse en cada invocación. En su lugar, debe volver a `HttpClient` usarse.
 
-El siguiente punto de conexión crea y desecha una nueva `HttpClient` instancia en cada solicitud:
+El siguiente punto de conexión crea y desecha una nueva  `HttpClient` instancia en cada solicitud:
 
 ```csharp
 [HttpGet("httpclient1")]
@@ -402,7 +403,7 @@ Para configurar la eliminación del objeto:
 * Encapsula la matriz agrupada en un objeto descartable.
 * Registre el objeto agrupado con [HttpContext. Response. RegisterForDispose](xref:Microsoft.AspNetCore.Http.HttpResponse.RegisterForDispose*).
 
-`RegisterForDispose`se encargará de llamar a `Dispose` en el objeto de destino para que solo se libere cuando se complete la solicitud HTTP.
+`RegisterForDispose` se encargará de llamar a `Dispose` en el objeto de destino para que solo se libere cuando se complete la solicitud HTTP.
 
 ```csharp
 private static ArrayPool<byte> _arrayPool = ArrayPool<byte>.Create();

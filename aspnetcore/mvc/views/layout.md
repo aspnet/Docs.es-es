@@ -5,6 +5,7 @@ description: Obtenga información sobre cómo usar diseños comunes, compartir d
 ms.author: riande
 ms.date: 07/30/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -15,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/layout
-ms.openlocfilehash: 4d5032f02db28341d7781dd57d58d776636fd16d
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 308e567e0480f83972ab7a55c7b957af83a164fd
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88020449"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88630697"
 ---
 # <a name="layout-in-aspnet-core"></a>Diseño en ASP.NET Core
 
@@ -34,7 +35,7 @@ Las páginas y las vistas a menudo comparten elementos visuales y elementos medi
 
 En este documento se describen los diseños de los dos enfoques diferentes para ASP.NET Core MVC: Razor páginas y controladores con vistas. Para este tema, las diferencias son mínimas:
 
-* RazorLas páginas se encuentran en la carpeta *pages* .
+* Razor Las páginas se encuentran en la carpeta *pages* .
 * Los controladores con vistas usan una carpeta *Vistas* para las vistas.
 
 ## <a name="what-is-a-layout"></a>Qué es un diseño
@@ -47,7 +48,7 @@ Las estructuras HTML comunes, como scripts y hojas de estilo, también se usan c
 
 Por convención, el diseño predeterminado para una aplicación ASP.NET Core se denomina *_Layout.cshtml*. Los archivos de diseño para los nuevos proyectos de ASP.NET Core creados con las plantillas son:
 
-* RazorPáginas: *pages/Shared/_Layout. cshtml*
+* Razor Páginas: *pages/Shared/_Layout. cshtml*
 
   ![Carpeta Pages del Explorador de soluciones](layout/_static/rp-web-project-views.png)
 
@@ -63,7 +64,7 @@ Este código muestra el archivo de diseño para un proyecto creado mediante plan
 
 ## <a name="specifying-a-layout"></a>Especificar un diseño
 
-Razorlas vistas tienen una `Layout` propiedad. Las vistas individuales especifican un diseño al configurar esta propiedad:
+Razor las vistas tienen una `Layout` propiedad. Las vistas individuales especifican un diseño al configurar esta propiedad:
 
 [!code-cshtml[](../../common/samples/WebApplication1/Views/_ViewStart.cshtml?highlight=2)]
 

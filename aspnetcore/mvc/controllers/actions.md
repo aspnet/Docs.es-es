@@ -5,6 +5,7 @@ description: ''
 ms.author: riande
 ms.date: 12/05/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -15,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/actions
-ms.openlocfilehash: 05985acb559f63eb5f1d9854041be737291a3809
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 9542a7c0fd16c00f46ee69c5873878a7c70ef626
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88019916"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88630333"
 ---
 # <a name="handle-requests-with-controllers-in-aspnet-core-mvc"></a>Control de solicitudes con controladores en ASP.NET Core MVC
 
@@ -71,7 +72,7 @@ No se incluye ningún encabezado de respuesta HTTP `Content-Type`, ya que el cue
 
 Hay dos tipos de resultados en esta categoría: redireccionamiento y código de estado HTTP.
 
-* **Código de Estado HTTP**
+* **Código de estado HTTP**
 
     Este tipo devuelve un código de estado HTTP. `BadRequest`, `NotFound` y `Ok` son ejemplos de métodos del asistente de este tipo. Por ejemplo, `return BadRequest();` genera un código de estado 400 cuando se ejecuta. Cuando métodos como `BadRequest`, `NotFound` y `Ok` están sobrecargados, ya no se consideran respondedores de código de estado HTTP, dado que se lleva a cabo una negociación de contenido.
 
@@ -87,7 +88,7 @@ La mayoría de los métodos del asistente de esta categoría incluye una propied
 
 Hay dos tipos de resultados en esta categoría: [vista](xref:mvc/views/overview) y [respuesta con formato](xref:web-api/advanced/formatting).
 
-* **Ver**
+* **Vista**
 
     Este tipo devuelve una vista que usa un modelo para representar HTML. Por ejemplo, `return View(customer);` pasa un modelo a la vista para el enlace de datos.
 

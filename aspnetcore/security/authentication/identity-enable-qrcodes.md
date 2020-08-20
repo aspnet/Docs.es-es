@@ -5,6 +5,7 @@ description: Descubra cómo habilitar la generación de código QR para las apli
 ms.author: riande
 ms.date: 08/14/2018
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -15,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/identity-enable-qrcodes
-ms.openlocfilehash: 4ccfd83c273f7179ac26b075eb33f138e724b967
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: e61aa925262fc9fe25c7bb2d37958cfaa308aeaf
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88019565"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88630801"
 ---
 # <a name="enable-qr-code-generation-for-totp-authenticator-apps-in-aspnet-core"></a>Habilitar la generación de código QR para las aplicaciones de TOTP Authenticator en ASP.NET Core
 
@@ -128,8 +129,8 @@ Puede reemplazar la biblioteca de códigos QR por su biblioteca preferida. El c�
 
 La dirección URL con el formato correcto para el código QR está disponible en:
 
-* `AuthenticatorUri`propiedad del modelo.
-* `data-url`propiedad del `qrCodeData` elemento.
+* `AuthenticatorUri` propiedad del modelo.
+* `data-url` propiedad del `qrCodeData` elemento.
 
 ## <a name="totp-client-and-server-time-skew"></a>Desfase de tiempo de servidor y cliente de TOTP
 

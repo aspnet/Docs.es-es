@@ -7,6 +7,7 @@ ms.author: rick-anderson
 ms.custom: mvc
 ms.date: 03/17/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/mfa
-ms.openlocfilehash: 4538030b4ce6aba6c78edb69cf44fc5812ddff76
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 048d88a121d0a4a7ab3d3adee9b426b95fd68a80
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88017862"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88629592"
 ---
 # <a name="multi-factor-authentication-in-aspnet-core"></a>Multi-factor Authentication en ASP.NET Core
 
@@ -33,7 +34,7 @@ Multi-factor Authentication (MFA) es un proceso en el que se solicita un usuario
 En este artículo se tratan las siguientes áreas:
 
 * ¿Qué es MFA y qué flujos de MFA se recomiendan?
-* Configurar MFA para páginas de administración mediante ASP.NET CoreIdentity
+* Configurar MFA para páginas de administración mediante ASP.NET Core Identity
 * Envío del requisito de inicio de sesión de MFA al servidor OpenID Connect
 * Forzar ASP.NET Core cliente de OpenID Connect para que requiera MFA
 
@@ -71,9 +72,9 @@ MFA con SMS aumenta la seguridad de forma masiva en comparación con la autentic
 
 [Directrices para NIST](https://pages.nist.gov/800-63-3/sp800-63b.html)
 
-## <a name="configure-mfa-for-administration-pages-using-aspnet-core-no-locidentity"></a>Configurar MFA para páginas de administración mediante ASP.NET CoreIdentity
+## <a name="configure-mfa-for-administration-pages-using-no-locaspnet-core-identity"></a>Configurar MFA para páginas de administración mediante ASP.NET Core Identity
 
-MFA podría verse obligado a los usuarios a acceder a páginas confidenciales dentro de una Identity aplicación ASP.net Core. Esto puede ser útil para las aplicaciones en las que existen distintos niveles de acceso para las distintas identidades. Por ejemplo, es posible que los usuarios puedan ver los datos del perfil mediante un inicio de sesión de contraseña, pero es necesario que un administrador use MFA para tener acceso a las páginas administrativas.
+MFA podría verse obligado a los usuarios para acceder a las páginas confidenciales dentro de una ASP.NET Core Identity aplicación. Esto puede ser útil para las aplicaciones en las que existen distintos niveles de acceso para las distintas identidades. Por ejemplo, es posible que los usuarios puedan ver los datos del perfil mediante un inicio de sesión de contraseña, pero es necesario que un administrador use MFA para tener acceso a las páginas administrativas.
 
 ### <a name="extend-the-login-with-an-mfa-claim"></a>Extensión del inicio de sesión con una notificaciones de MFA
 
@@ -304,9 +305,9 @@ public void ConfigureServices(IServiceCollection services)
     });
 ```
 
-### <a name="example-openid-connect-no-locidentityserver-4-server-with-aspnet-core-no-locidentity"></a>Ejemplo Identity de servidor OpenID Connect 4 con ASP.net CoreIdentity
+### <a name="example-openid-connect-no-locidentityserver-4-server-with-no-locaspnet-core-identity"></a>Ejemplo Identity de servidor OpenID Connect 4 con ASP.NET Core Identity
 
-En el servidor de OpenID Connect, que se implementa mediante ASP.NET Core Identity con las vistas de MVC, se crea una nueva vista denominada *ErrorEnable2FA. cshtml* . La vista:
+En el servidor de OpenID Connect, que se implementa mediante las ASP.NET Core Identity vistas de MVC, se crea una nueva vista denominada *ErrorEnable2FA. cshtml* . La vista:
 
 * Muestra si Identity procede de una aplicación que requiere MFA, pero el usuario no lo activó en Identity .
 * Informa al usuario y agrega un vínculo para activarlo.
@@ -329,7 +330,7 @@ You can enable MFA to login here:
 
 En el `Login` método, `IIdentityServerInteractionService` se usa la implementación de la interfaz `_interaction` para tener acceso a los parámetros de solicitud de OpenID Connect. `acr_values`Se tiene acceso al parámetro mediante la `AcrValues` propiedad. A medida que el cliente lo envía con `mfa` Set, esto se puede comprobar.
 
-Si se requiere MFA y el usuario de ASP.NET Core Identity tiene MFA habilitado, el inicio de sesión continúa. Cuando el usuario no tiene MFA habilitado, el usuario se redirige a la vista personalizada *ErrorEnable2FA. cshtml*. A continuación ASP.NET Core Identity inicia la sesión del usuario.
+Si se requiere MFA y el usuario de ASP.NET Core Identity tiene habilitado MFA, el inicio de sesión continúa. Cuando el usuario no tiene MFA habilitado, el usuario se redirige a la vista personalizada *ErrorEnable2FA. cshtml*. Después, ASP.NET Core Identity inicia la sesión del usuario en.
 
 ```csharp
 //
@@ -410,7 +411,7 @@ public async Task<IActionResult> ExternalLoginCallback(
 Si el usuario ya ha iniciado sesión, la aplicación cliente:
 
 * Sigue validando la `amr` demanda.
-* Puede configurar MFA con un vínculo a la Identity vista ASP.net Core.
+* Puede configurar MFA con un vínculo a la ASP.NET Core Identity vista.
 
 ![acr_values-1](mfa/_static/acr_values-1.png)
 
@@ -433,7 +434,7 @@ namespace AspNetCoreRequireMfaOidc
 
 El valor devuelto depende de cómo se autentique la identidad y en la implementación del servidor OpenID Connect.
 
-El `AuthorizationHandler` usa el `RequireMfa` requisito y valida la `amr` solicitud. El servidor OpenID Connect se puede implementar mediante Identity 4 con ASP.net Core Identity . Cuando un usuario inicia sesión con TOTP, la `amr` demanda se devuelve con un valor de MFA. Si usa una implementación de servidor OpenID Connect diferente o un tipo de MFA diferente, la `amr` demanda tendrá o puede tener un valor diferente. El código debe extenderse para que lo acepte también.
+El `AuthorizationHandler` usa el `RequireMfa` requisito y valida la `amr` solicitud. El servidor OpenID Connect se puede implementar mediante Identity 4 con ASP.NET Core Identity . Cuando un usuario inicia sesión con TOTP, la `amr` demanda se devuelve con un valor de MFA. Si usa una implementación de servidor OpenID Connect diferente o un tipo de MFA diferente, la `amr` demanda tendrá o puede tener un valor diferente. El código debe extenderse para que lo acepte también.
 
 ```csharp
 using Microsoft.AspNetCore.Authorization;

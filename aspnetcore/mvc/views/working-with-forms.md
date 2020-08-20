@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/05/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/working-with-forms
-ms.openlocfilehash: 3f5b0287a4f9c6c6c05a47297e3e602b80bf6015
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: c337e727a4683b0b3c67307af93ef8efa246e2ad
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88021489"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88631022"
 ---
 # <a name="tag-helpers-in-forms-in-aspnet-core"></a>Asistentes de etiquetas en formularios de ASP.NET Core
 
@@ -90,8 +91,8 @@ Atributos [AnchorTagHelper](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-hel
 |[asp-area](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-area)|El nombre del área.|
 |[asp-page](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-page)|Nombre de la Razor página.|
 |[asp-page-handler](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-page-handler)|Nombre del controlador de la Razor página.|
-|[asp-route](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-route)|El nombre de la ruta.|
-|[asp-route-{value}](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-route-value)|Un valor único de ruta de dirección URL. Por ejemplo: `asp-route-id="1234"`.|
+|[asp-route](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-route)|Nombre de la ruta.|
+|[asp-route-{value}](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-route-value)|Un valor único de ruta de dirección URL. Por ejemplo, `asp-route-id="1234"`.|
 |[asp-all-route-data](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-all-route-data)|Todos los valores de ruta.|
 |[asp-fragment](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-fragment)|El fragmento de dirección URL.|
 
@@ -464,9 +465,9 @@ Cuando se produce un error de validación del lado servidor (por ejemplo, porque
 |--- |--- |
 |ValidationSummary.All|Nivel de modelo y de propiedad|
 |ValidationSummary.ModelOnly|Modelo|
-|ValidationSummary.None|Ninguno|
+|ValidationSummary.None|None|
 
-### <a name="sample"></a>Ejemplo
+### <a name="sample"></a>Muestra
 
 En el siguiente ejemplo, el modelo de datos tiene atributos `DataAnnotation`, lo que genera mensajes de error de validación sobre el elemento `<input>`.  Cuando se produce un error de validación, el asistente de etiquetas de validación muestra el mensaje de error:
 
@@ -580,7 +581,7 @@ Se genera el siguiente código HTML:
 
 ### <a name="option-group"></a>Agrupamiento de opciones
 
-El [\<optgroup>](https://www.w3.org/wiki/HTML/Elements/optgroup) elemento HTML se genera cuando el modelo de vista contiene uno o más `SelectListGroup` objetos.
+El  [\<optgroup>](https://www.w3.org/wiki/HTML/Elements/optgroup) elemento HTML se genera cuando el modelo de vista contiene uno o más `SelectListGroup` objetos.
 
 `CountryViewModelGroup` agrupa los elementos `SelectListItem` en los grupos "North America" y "Europe":
 

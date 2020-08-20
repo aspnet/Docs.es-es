@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 06/12/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/partial
-ms.openlocfilehash: 826d7cf96d95ee7eb98b0f05a233401a1e3bff33
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 7a370042520adfe5b06784b76acf41a81eb2c72d
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88020839"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88630632"
 ---
 # <a name="partial-views-in-aspnet-core"></a>Vistas parciales en ASP.NET Core
 
@@ -147,7 +148,7 @@ Cuando hay una extensión de archivo, el asistente de etiquetas hace referencia 
 
 En el ejemplo siguiente se hace referencia a una vista parcial desde la raíz de la aplicación. Las rutas de acceso que comienzan con una tilde de la ñ y una barra diagonal (`~/`) o una barra diagonal (`/`) hacen referencia a la raíz de la aplicación:
 
-**RazorPáginas**
+**Razor Páginas**
 
 ```cshtml
 <partial name="~/Pages/Folder/_PartialName.cshtml" />
@@ -167,7 +168,7 @@ En el ejemplo siguiente se hace referencia a una vista parcial con una ruta de a
 <partial name="../Account/_PartialName.cshtml" />
 ```
 
-Para obtener más información, vea <xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper>.
+Para más información, consulte <xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper>.
 
 ::: moniker-end
 
@@ -189,7 +190,7 @@ En el ejemplo siguiente se hace referencia a una vista parcial desde la raíz de
 
 ::: moniker range=">= aspnetcore-2.1"
 
-**RazorPáginas**
+**Razor Páginas**
 
 ```cshtml
 @await Html.PartialAsync("~/Pages/Folder/_PartialName.cshtml")
@@ -240,7 +241,7 @@ Cuando se hace referencia a una vista parcial por su nombre sin una extensión d
 
 ::: moniker range=">= aspnetcore-2.1"
 
-**RazorPáginas**
+**Razor Páginas**
 
 1. Carpeta de la página en ejecución actualmente
 1. Gráfico de directorio por encima de la carpeta de la página
@@ -296,7 +297,7 @@ Puede pasar un modelo a una vista parcial. El modelo puede ser un objeto persona
 
 ::: moniker range=">= aspnetcore-2.1"
 
-**RazorPáginas**
+**Razor Páginas**
 
 El siguiente marcado de la aplicación de ejemplo proviene de la página *Pages/ArticlesRP/ReadRP.cshtml*. La página contiene dos vistas parciales. La segunda vista parcial se pasa a un modelo y `ViewData` a la vista parcial. La sobrecarga del constructor de `ViewDataDictionary` se usa para pasar un nuevo diccionario `ViewData` a la vez que conserva el diccionario `ViewData` existente.
 

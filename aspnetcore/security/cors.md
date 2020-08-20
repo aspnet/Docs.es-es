@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/17/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/cors
-ms.openlocfilehash: ee640ded37f40175e3e150f713fa970e9705b62c
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: cebaa9ae65557ca5d938c5728882382830deca9d
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88021112"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88629267"
 ---
 # <a name="enable-cross-origin-requests-cors-in-aspnet-core"></a>Habilitación de solicitudes entre orígenes (CORS) en ASP.NET Core
 
@@ -69,7 +70,7 @@ Hay tres maneras de habilitar CORS:
 El uso del atributo [[EnableCors]](#attr) con una directiva con nombre proporciona el control más fino para limitar los puntos de conexión que admiten CORS.
 
 > [!WARNING]
-> <xref:Owin.CorsExtensions.UseCors%2A>se debe llamar a antes de <xref:Microsoft.AspNetCore.Builder.ResponseCachingExtensions.UseResponseCaching%2A> usar `UseResponseCaching` .
+> <xref:Owin.CorsExtensions.UseCors%2A> se debe llamar a antes de <xref:Microsoft.AspNetCore.Builder.ResponseCachingExtensions.UseResponseCaching%2A> usar `UseResponseCaching` .
 
 Cada enfoque se detalla en las secciones siguientes.
 
@@ -84,7 +85,7 @@ Middleware de CORS controla las solicitudes entre orígenes. En el código sigui
 El código anterior:
 
 * Establece el nombre de la Directiva en `_myAllowSpecificOrigins` . El nombre de la Directiva es arbitrario.
-* Llama al <xref:Microsoft.AspNetCore.Builder.CorsMiddlewareExtensions.UseCors*> método de extensión y especifica la `_myAllowSpecificOrigins` Directiva CORS. `UseCors`agrega el middleware de CORS. La llamada a `UseCors` debe colocarse después `UseRouting` de, pero antes de `UseAuthorization` . Para obtener más información, vea [orden de middleware](xref:fundamentals/middleware/index#middleware-order).
+* Llama al <xref:Microsoft.AspNetCore.Builder.CorsMiddlewareExtensions.UseCors*> método de extensión y especifica la  `_myAllowSpecificOrigins` Directiva CORS. `UseCors` agrega el middleware de CORS. La llamada a `UseCors` debe colocarse después `UseRouting` de, pero antes de `UseAuthorization` . Para obtener más información, vea [orden de middleware](xref:fundamentals/middleware/index#middleware-order).
 * Llama a <xref:Microsoft.Extensions.DependencyInjection.CorsServiceCollectionExtensions.AddCors*> con una [expresión lambda](/dotnet/csharp/programming-guide/statements-expressions-operators/lambda-expressions). La expresión lambda toma un <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder> objeto. [Las opciones de configuración](#cors-policy-options), como `WithOrigins` , se describen más adelante en este artículo.
 * Habilita la `_myAllowSpecificOrigins` Directiva CORS para todos los puntos de conexión del controlador. Consulte [enrutamiento de puntos de conexión](#ecors) para aplicar una directiva de CORS a puntos de conexión específicos.
 * Al usar el [middleware de almacenamiento en caché de respuestas](xref:performance/caching/middleware), llame a antes de <xref:Owin.CorsExtensions.UseCors%2A> <xref:Microsoft.AspNetCore.Builder.ResponseCachingExtensions.UseResponseCaching%2A> .
@@ -127,11 +128,11 @@ Con el enrutamiento de punto de conexión, CORS se puede habilitar en cada punto
 
 En el código anterior:
 
-* `app.UseCors`habilita el middleware de CORS. Dado que no se ha configurado una directiva predeterminada, `app.UseCors()` solo no habilita CORS.
+* `app.UseCors` habilita el middleware de CORS. Dado que no se ha configurado una directiva predeterminada, `app.UseCors()` solo no habilita CORS.
 * Los `/echo` puntos de conexión del controlador y permiten solicitudes entre orígenes mediante la Directiva especificada.
 * Los `/echo2` extremos de las Razor páginas y **no** permiten solicitudes entre orígenes porque no se especificó ninguna directiva predeterminada.
 
-El atributo [[DisableCors]](#dc) **no** deshabilita CORS habilitado por el enrutamiento de puntos de conexión con `RequireCors` .
+El atributo [[DisableCors]](#dc) **no**  deshabilita CORS habilitado por el enrutamiento de puntos de conexión con `RequireCors` .
 
 Consulte [prueba de CORS con enrutamiento de punto de conexión y [HttpOptions]](#tcer) para obtener instrucciones sobre cómo probar código similar al anterior.
 
@@ -143,13 +144,13 @@ La habilitación de CORS con el atributo [[EnableCors]](xref:Microsoft.AspNetCor
 
 El atributo [[EnableCors]](xref:Microsoft.AspNetCore.Cors.EnableCorsAttribute) proporciona una alternativa a la aplicación de CORS globalmente. El `[EnableCors]` atributo habilita CORS para los puntos de conexión seleccionados, en lugar de todos los extremos:
 
-* `[EnableCors]`Especifica la directiva predeterminada.
-* `[EnableCors("{Policy String}")]`especifica una directiva con nombre.
+* `[EnableCors]` Especifica la directiva predeterminada.
+* `[EnableCors("{Policy String}")]` especifica una directiva con nombre.
 
 El `[EnableCors]` atributo se puede aplicar a:
 
-* RazorDel`PageModel`
-* Controlador
+* Razor Del `PageModel`
+* Controller
 * Método de acción del controlador
 
 Se pueden aplicar directivas diferentes a los controladores, modelos de página o métodos de acción con el `[EnableCors]` atributo. Cuando el `[EnableCors]` atributo se aplica a un controlador, un modelo de página o un método de acción y CORS está habilitado en middleware, se aplican **ambas** directivas. **Se recomienda no combinar directivas. Use el** `[EnableCors]` **atributo o middleware, no ambos en la misma aplicación.**
@@ -176,7 +177,7 @@ Consulte [prueba de CORS](#testc) para obtener instrucciones sobre cómo probar 
 
 ### <a name="disable-cors"></a>Deshabilitar CORS
 
-El atributo [[DisableCors]](xref:Microsoft.AspNetCore.Cors.DisableCorsAttribute) **no** deshabilita CORS habilitado por el enrutamiento de [puntos de conexión](#ecors).
+El atributo [[DisableCors]](xref:Microsoft.AspNetCore.Cors.DisableCorsAttribute) **no**  deshabilita CORS habilitado por el enrutamiento de [puntos de conexión](#ecors).
 
 En el código siguiente se define la Directiva CORS `"MyPolicy"` :
 
@@ -208,16 +209,16 @@ En esta sección se describen las distintas opciones que se pueden establecer en
 * [Credenciales en solicitudes entre orígenes](#credentials-in-cross-origin-requests)
 * [Establecer la hora de expiración de la comprobación previa](#set-the-preflight-expiration-time)
 
-<xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsOptions.AddPolicy*>se llama a en `Startup.ConfigureServices` . Para algunas opciones, puede resultar útil leer la sección [Cómo funciona CORS](#how-cors) en primer lugar.
+<xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsOptions.AddPolicy*> se llama a en `Startup.ConfigureServices` . Para algunas opciones, puede resultar útil leer la sección [Cómo funciona CORS](#how-cors) en primer lugar.
 
 ## <a name="set-the-allowed-origins"></a>Establecer los orígenes permitidos
 
-<xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.AllowAnyOrigin*>: Permite solicitudes de CORS de todos los orígenes con cualquier esquema ( `http` o `https` ). `AllowAnyOrigin`no es seguro porque *cualquier sitio web* puede realizar solicitudes entre orígenes a la aplicación.
+<xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.AllowAnyOrigin*>: Permite solicitudes de CORS de todos los orígenes con cualquier esquema ( `http` o `https` ). `AllowAnyOrigin` no es seguro porque *cualquier sitio web* puede realizar solicitudes entre orígenes a la aplicación.
 
 > [!NOTE]
 > Especificar `AllowAnyOrigin` y `AllowCredentials` es una configuración no segura y puede dar lugar a la falsificación de solicitudes entre sitios. El servicio CORS devuelve una respuesta de CORS no válida cuando se configura una aplicación con ambos métodos.
 
-`AllowAnyOrigin`afecta a las solicitudes preparatorias y al `Access-Control-Allow-Origin` encabezado. Para obtener más información, consulte la sección [solicitudes preparatorias](#preflight-requests) .
+`AllowAnyOrigin` afecta a las solicitudes preparatorias y al `Access-Control-Allow-Origin` encabezado. Para obtener más información, consulte la sección [solicitudes preparatorias](#preflight-requests) .
 
 <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.SetIsOriginAllowedToAllowWildcardSubdomains*>: Establece la <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicy.IsOriginAllowed*> propiedad de la Directiva para que sea una función que permita que los orígenes coincidan con un dominio comodín configurado al evaluar si se permite el origen.
 
@@ -240,7 +241,7 @@ Para permitir todos los [encabezados de solicitud de autor](https://www.w3.org/T
 
 [!code-csharp[](cors/3.1sample/Cors/WebAPI/StartupAllowSubdomain.cs?name=snippet3)]
 
-`AllowAnyHeader`afecta a las solicitudes preparatorias y al encabezado [Access-Control-request-headers](https://developer.mozilla.org/docs/Web/HTTP/Headers/Access-Control-Request-Method) . Para obtener más información, consulte la sección [solicitudes preparatorias](#preflight-requests) .
+`AllowAnyHeader` afecta a las solicitudes preparatorias y al encabezado [Access-Control-request-headers](https://developer.mozilla.org/docs/Web/HTTP/Headers/Access-Control-Request-Method) . Para obtener más información, consulte la sección [solicitudes preparatorias](#preflight-requests) .
 
 Una coincidencia de directiva de middleware de CORS con encabezados específicos especificados por `WithHeaders` solo es posible cuando los encabezados enviados `Access-Control-Request-Headers` coinciden exactamente con los encabezados indicados en `WithHeaders` .
 
@@ -385,8 +386,8 @@ Para permitir todos los [encabezados de solicitud de autor](https://www.w3.org/T
 
 Los exploradores no son coherentes en el modo en que se establecen `Access-Control-Request-Headers` . Si:
 
-* Los encabezados se establecen en un valor distinto de`"*"`
-* <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicy.AllowAnyHeader*>se llama a: incluye al menos `Accept` , `Content-Type` y `Origin` , además de los encabezados personalizados que desee admitir.
+* Los encabezados se establecen en un valor distinto de `"*"`
+* <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicy.AllowAnyHeader*> se llama a: incluye al menos `Accept` , `Content-Type` y `Origin` , además de los encabezados personalizados que desee admitir.
 
 <a name="apf"></a>
 
@@ -524,7 +525,7 @@ User-Agent: Mozilla/5.0
 
 En los **encabezados de respuesta**anteriores, el servidor establece el encabezado [Access-Control-Allow-Origin](https://developer.mozilla.org/docs/Web/HTTP/Headers/Access-Control-Allow-Origin) en la respuesta. El `https://cors1.azurewebsites.net` valor de este encabezado coincide con el `Origin` encabezado de la solicitud.
 
-Si <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.AllowAnyOrigin*> se llama a, `Access-Control-Allow-Origin: *` se devuelve el valor del carácter comodín. `AllowAnyOrigin`permite cualquier origen.
+Si <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.AllowAnyOrigin*> se llama a, `Access-Control-Allow-Origin: *` se devuelve el valor del carácter comodín. `AllowAnyOrigin` permite cualquier origen.
 
 Si la respuesta no incluye el `Access-Control-Allow-Origin` encabezado, se produce un error en la solicitud de origen cruzado. En concreto, el explorador no permite la solicitud. Aunque el servidor devuelva una respuesta correcta, el explorador no pone la respuesta a disposición de la aplicación cliente.
 
@@ -553,7 +554,7 @@ La [descarga de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/a
 [!code-csharp[](cors/3.1sample/Cors/WebAPI/StartupTest2.cs?name=snippet2)]
 
   > [!WARNING]
-  > `WithOrigins("https://localhost:<port>");`solo se debe usar para probar una aplicación de ejemplo similar a la [descarga del código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/live/aspnetcore/security/cors/3.1sample/Cors).
+  > `WithOrigins("https://localhost:<port>");` solo se debe usar para probar una aplicación de ejemplo similar a la [descarga del código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/live/aspnetcore/security/cors/3.1sample/Cors).
 
 A continuación se `ValuesController` proporcionan los puntos de conexión para las pruebas:
 
@@ -718,11 +719,11 @@ El atributo [ &lbrack; EnableCors &rbrack; ](xref:Microsoft.AspNetCore.Cors.Enab
 
 El `[EnableCors]` atributo se puede aplicar a:
 
-* RazorDel`PageModel`
-* Controlador
+* Razor Del `PageModel`
+* Controller
 * Método de acción del controlador
 
-Puede aplicar diferentes directivas al controlador/página-modelo o acción con el `[EnableCors]` atributo. Cuando el `[EnableCors]` atributo se aplica a un método de acción/modelo de página/controladores y CORS está habilitado en middleware, se aplican **ambas** directivas. Se recomienda **no** combinar directivas. Use el `[EnableCors]` atributo o middleware, **no ambos**. Al usar `[EnableCors]` , **no** defina una directiva predeterminada.
+Puede aplicar diferentes directivas al controlador/página-modelo o acción con el  `[EnableCors]` atributo. Cuando el `[EnableCors]` atributo se aplica a un método de acción/modelo de página/controladores y CORS está habilitado en middleware, se aplican **ambas** directivas. Se recomienda **no** combinar directivas. Use el `[EnableCors]` atributo o middleware, **no ambos**. Al usar `[EnableCors]` , **no** defina una directiva predeterminada.
 
 En el código siguiente se aplica una directiva diferente a cada método:
 
@@ -749,16 +750,16 @@ En esta sección se describen las distintas opciones que se pueden establecer en
 * [Credenciales en solicitudes entre orígenes](#credentials-in-cross-origin-requests)
 * [Establecer la hora de expiración de la comprobación previa](#set-the-preflight-expiration-time)
 
-<xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsOptions.AddPolicy*>se llama a en `Startup.ConfigureServices` . Para algunas opciones, puede resultar útil leer la sección [Cómo funciona CORS](#how-cors) en primer lugar.
+<xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsOptions.AddPolicy*> se llama a en `Startup.ConfigureServices` . Para algunas opciones, puede resultar útil leer la sección [Cómo funciona CORS](#how-cors) en primer lugar.
 
 ## <a name="set-the-allowed-origins"></a>Establecer los orígenes permitidos
 
-<xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.AllowAnyOrigin*>: Permite solicitudes de CORS de todos los orígenes con cualquier esquema ( `http` o `https` ). `AllowAnyOrigin`no es seguro porque *cualquier sitio web* puede realizar solicitudes entre orígenes a la aplicación.
+<xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.AllowAnyOrigin*>: Permite solicitudes de CORS de todos los orígenes con cualquier esquema ( `http` o `https` ). `AllowAnyOrigin` no es seguro porque *cualquier sitio web* puede realizar solicitudes entre orígenes a la aplicación.
 
 > [!NOTE]
 > Especificar `AllowAnyOrigin` y `AllowCredentials` es una configuración no segura y puede dar lugar a la falsificación de solicitudes entre sitios. En el caso de una aplicación segura, especifique una lista exacta de orígenes si el cliente debe autorizarse para obtener acceso a los recursos del servidor.
 
-`AllowAnyOrigin`afecta a las solicitudes preparatorias y al `Access-Control-Allow-Origin` encabezado. Para obtener más información, consulte la sección [solicitudes preparatorias](#preflight-requests) .
+`AllowAnyOrigin` afecta a las solicitudes preparatorias y al `Access-Control-Allow-Origin` encabezado. Para obtener más información, consulte la sección [solicitudes preparatorias](#preflight-requests) .
 
 <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.SetIsOriginAllowedToAllowWildcardSubdomains*>: Establece la <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicy.IsOriginAllowed*> propiedad de la Directiva para que sea una función que permita que los orígenes coincidan con un dominio comodín configurado al evaluar si se permite el origen.
 
@@ -995,7 +996,7 @@ Para probar CORS:
   [!code-csharp[](cors/sample/Cors/WebAPI/StartupTest.cs?name=snippet2&highlight=13-18)]
 
   > [!WARNING]
-  > `WithOrigins("https://localhost:<port>");`solo se debe usar para probar una aplicación de ejemplo similar a la [descarga del código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/live/aspnetcore/security/cors/sample/Cors).
+  > `WithOrigins("https://localhost:<port>");` solo se debe usar para probar una aplicación de ejemplo similar a la [descarga del código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/live/aspnetcore/security/cors/sample/Cors).
 
 1. Cree un proyecto de aplicación web ( Razor páginas o MVC). El ejemplo utiliza Razor páginas. Puede crear la aplicación web en la misma solución que el proyecto de API.
 1. Agregue el siguiente código resaltado al archivo *index. cshtml* :
@@ -1010,7 +1011,7 @@ Para probar CORS:
 
    * Uso de Microsoft Edge:
 
-     **SEC7120: [CORS] el origen `https://localhost:44375` no se encontró `https://localhost:44375` en el encabezado de respuesta Access-Control-Allow-Origin para el recurso entre orígenes en`https://webapi.azurewebsites.net/api/values/1`**
+     **SEC7120: [CORS] el origen `https://localhost:44375` no se encontró `https://localhost:44375` en el encabezado de respuesta Access-Control-Allow-Origin para el recurso entre orígenes en `https://webapi.azurewebsites.net/api/values/1`**
 
    * Usar Chrome:
 

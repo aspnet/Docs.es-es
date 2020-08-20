@@ -1,5 +1,5 @@
 ---
-title: Registro y diagnósticos en ASP.NET CoreSignalR
+title: Registro y diagnósticos en ASP.NET Core SignalR
 author: anurse
 description: Obtenga información sobre cómo recopilar diagnósticos desde la SignalR aplicación ASP.net Core.
 monikerRange: '>= aspnetcore-2.1'
@@ -7,6 +7,7 @@ ms.author: anurse
 ms.custom: devx-track-csharp, signalr
 ms.date: 06/12/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,14 +18,14 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/diagnostics
-ms.openlocfilehash: 922b2ca0aa7933e1010db7ca319631766ffbf753
-ms.sourcegitcommit: ba4872dd5a93780fe6cfacb2711ec1e69e0df92c
+ms.openlocfilehash: 649398a3868117b2e7f3358aa25544c99cc625b3
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88130540"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88631347"
 ---
-# <a name="logging-and-diagnostics-in-aspnet-core-no-locsignalr"></a>Registro y diagnósticos en ASP.NET CoreSignalR
+# <a name="logging-and-diagnostics-in-aspnet-core-no-locsignalr"></a>Registro y diagnósticos en ASP.NET Core SignalR
 
 Por [Andrew Stanton-enfermera](https://twitter.com/anurse)
 
@@ -37,7 +38,7 @@ En este artículo se proporcionan instrucciones para recopilar diagnósticos de 
 
 Dado que SignalR forma parte de ASP.net Core, utiliza el sistema de registro de ASP.net Core. En la configuración predeterminada, SignalR registra muy poca información, pero esto puede configurarse. Vea la documentación sobre el [registro de ASP.NET Core](xref:fundamentals/logging/index#configuration) para obtener más información sobre la configuración del registro de ASP.NET Core.
 
-SignalRutiliza dos categorías de registrador:
+SignalR utiliza dos categorías de registrador:
 
 * `Microsoft.AspNetCore.SignalR`: Para los registros relacionados con los protocolos del concentrador, la activación de los concentradores, la invocación de métodos y otras actividades relacionadas con el concentrador.
 * `Microsoft.AspNetCore.Http.Connections`: Para registros relacionados con transportes, como WebSockets, sondeos largos, eventos enviados por el servidor e infraestructura de bajo nivel SignalR .
@@ -65,7 +66,7 @@ La forma de acceder a los registros del lado servidor depende del entorno que se
 
 ### <a name="as-a-console-app-outside-iis"></a>Como aplicación de consola fuera de IIS
 
-Si se ejecuta en una aplicación de consola, el [registrador de la consola](xref:fundamentals/logging/index#console) debe estar habilitado de forma predeterminada. SignalRlos registros aparecerán en la consola de.
+Si se ejecuta en una aplicación de consola, el [registrador de la consola](xref:fundamentals/logging/index#console) debe estar habilitado de forma predeterminada. SignalR los registros aparecerán en la consola de.
 
 ### <a name="within-iis-express-from-visual-studio"></a>Dentro de IIS Express desde Visual Studio
 
@@ -131,7 +132,7 @@ También puede configurar los registros para ir a la ventana de **salida** de Vi
 
 ### <a name="other-logging-providers"></a>Otros proveedores de registro
 
-SignalRadmite otros proveedores de registro, como Serilog, SEQ, NLog o cualquier otro sistema de registro que se integre con `Microsoft.Extensions.Logging` . Si el sistema de registro proporciona un `ILoggerProvider` , puede registrarlo con `AddProvider` :
+SignalR admite otros proveedores de registro, como Serilog, SEQ, NLog o cualquier otro sistema de registro que se integre con `Microsoft.Extensions.Logging` . Si el sistema de registro proporciona un `ILoggerProvider` , puede registrarlo con `AddProvider` :
 
 [!code-csharp[](diagnostics/net-client-custom-log.cs?highlight=6)]
 
@@ -220,9 +221,9 @@ Puede adjuntar archivos de diagnóstico a problemas de GitHub cambiando su nombr
 
 Métricas es una representación de medidas de datos a lo largo de intervalos de tiempo. Por ejemplo, solicitudes por segundo. Los datos de las métricas permiten la observación del estado de una aplicación en un nivel alto. Las métricas gRPC de .NET se emiten mediante <xref:System.Diagnostics.Tracing.EventCounter>.
 
-### <a name="no-locsignalr-server-metrics"></a>SignalRmétricas de servidor
+### <a name="no-locsignalr-server-metrics"></a>SignalR métricas de servidor
 
-SignalRlas métricas del servidor se indican en el <xref:Microsoft.AspNetCore.Http.Connections> origen del evento.
+SignalR las métricas del servidor se indican en el <xref:Microsoft.AspNetCore.Http.Connections> origen del evento.
 
 | Nombre                    | Descripción                 |
 |-------------------------|-----------------------------|

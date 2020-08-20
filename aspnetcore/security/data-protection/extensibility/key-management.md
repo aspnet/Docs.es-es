@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc, seodec18
 ms.date: 10/24/2018
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/data-protection/extensibility/key-management
-ms.openlocfilehash: 5f55b56bd35a583e1f078a5a281788b68412e4f7
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 797df457a5584233043210e9ba2657b7fd7f3893
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88021697"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88631009"
 ---
 # <a name="key-management-extensibility-in-aspnet-core"></a>Extensibilidad de la administración de claves en ASP.NET Core
 
@@ -73,7 +74,7 @@ La `IKeyManager` interfaz representa un objeto responsable del almacenamiento, l
 
 El `XmlKeyManager` tipo es la implementación concreta de `IKeyManager` . Proporciona varios recursos útiles, como el custodia de claves y el cifrado de claves en reposo. Las claves de este sistema se representan como elementos XML (específicamente, [XElement](/dotnet/csharp/programming-guide/concepts/linq/xelement-class-overview)).
 
-`XmlKeyManager`depende de otros componentes en el transcurso de la realización de sus tareas:
+`XmlKeyManager` depende de otros componentes en el transcurso de la realización de sus tareas:
 
 ::: moniker range=">= aspnetcore-2.0"
 
@@ -81,9 +82,9 @@ El `XmlKeyManager` tipo es la implementación concreta de `IKeyManager` . Propor
 
 * `IXmlRepository`, que controla dónde se conservan las claves en el almacenamiento.
 
-* `IXmlEncryptor`[Optional], que permite cifrar las claves en reposo.
+* `IXmlEncryptor` [Optional], que permite cifrar las claves en reposo.
 
-* `IKeyEscrowSink`[opcional], que proporciona servicios de custodia de claves.
+* `IKeyEscrowSink` [opcional], que proporciona servicios de custodia de claves.
 
 ::: moniker-end
 
@@ -91,9 +92,9 @@ El `XmlKeyManager` tipo es la implementación concreta de `IKeyManager` . Propor
 
 * `IXmlRepository`, que controla dónde se conservan las claves en el almacenamiento.
 
-* `IXmlEncryptor`[Optional], que permite cifrar las claves en reposo.
+* `IXmlEncryptor` [Optional], que permite cifrar las claves en reposo.
 
-* `IKeyEscrowSink`[opcional], que proporciona servicios de custodia de claves.
+* `IKeyEscrowSink` [opcional], que proporciona servicios de custodia de claves.
 
 ::: moniker-end
 
@@ -125,7 +126,7 @@ En la implementación de `CreateNewKey` , el `IAuthenticatedEncryptorConfigurati
 
 *Recuperación de clave/GetAllKeys*
 
-En la implementación de `GetAllKeys` , los documentos XML que representan claves y revocación se leen del subyacente `IXmlRepository` . Si estos documentos están cifrados, el sistema los descifrará automáticamente. `XmlKeyManager`crea las `IAuthenticatedEncryptorDescriptorDeserializer` instancias adecuadas para deserializar los documentos en `IAuthenticatedEncryptorDescriptor` instancias de, que después se encapsulan en `IKey` instancias individuales. Esta colección de `IKey` instancias se devuelve al autor de la llamada.
+En la implementación de `GetAllKeys` , los documentos XML que representan claves y revocación se leen del subyacente `IXmlRepository` . Si estos documentos están cifrados, el sistema los descifrará automáticamente. `XmlKeyManager` crea las `IAuthenticatedEncryptorDescriptorDeserializer` instancias adecuadas para deserializar los documentos en `IAuthenticatedEncryptorDescriptor` instancias de, que después se encapsulan en `IKey` instancias individuales. Esta colección de `IKey` instancias se devuelve al autor de la llamada.
 
 Puede encontrar más información sobre los elementos XML concretos en el [documento formato de almacenamiento de claves](xref:security/data-protection/implementation/key-storage-format#data-protection-implementation-key-storage-format).
 

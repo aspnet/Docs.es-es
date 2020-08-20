@@ -1,11 +1,12 @@
 ---
-title: Proveedores de almacenamiento personalizados para ASP.NET CoreIdentity
+title: Proveedores de almacenamiento personalizados para ASP.NET Core Identity
 author: ardalis
 description: Aprenda a configurar proveedores de almacenamiento personalizados para ASP.NET Core Identity .
 ms.author: riande
 ms.custom: mvc
 ms.date: 07/23/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,14 +17,14 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/identity-custom-storage-providers
-ms.openlocfilehash: 27f6130742e25e07d4b908973e1ebf26288fdbfd
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: a8414efeece1afd55d0f30d232ef360d0a21714c
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88021541"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88630138"
 ---
-# <a name="custom-storage-providers-for-aspnet-core-no-locidentity"></a>Proveedores de almacenamiento personalizados para ASP.NET CoreIdentity
+# <a name="custom-storage-providers-for-no-locaspnet-core-identity"></a>Proveedores de almacenamiento personalizados para ASP.NET Core Identity
 
 Por [Steve Smith](https://ardalis.com/)
 
@@ -33,7 +34,7 @@ ASP.NET Core Identity es un sistema extensible que permite crear un proveedor de
 
 ## <a name="introduction"></a>Introducción
 
-De forma predeterminada, el Identity sistema ASP.net Core almacena información de usuario en una base de datos de SQL Server mediante Entity Framework Core. En muchas aplicaciones, este enfoque funciona bien. Sin embargo, es posible que prefiera usar un mecanismo de persistencia o un esquema de datos diferente. Por ejemplo:
+De forma predeterminada, el ASP.NET Core Identity sistema almacena información de usuario en una base de datos de SQL Server mediante Entity Framework Core. En muchas aplicaciones, este enfoque funciona bien. Sin embargo, es posible que prefiera usar un mecanismo de persistencia o un esquema de datos diferente. Por ejemplo:
 
 * Use [Azure Table Storage](/azure/storage/) u otro almacén de datos.
 * Las tablas de base de datos tienen una estructura diferente. 
@@ -49,7 +50,7 @@ Al usar el CLI de .NET Core, agregue `-au Individual` :
 dotnet new mvc -au Individual
 ```
 
-## <a name="the-aspnet-core-no-locidentity-architecture"></a>Arquitectura de ASP.NET Core Identity
+## <a name="the-no-locaspnet-core-identity-architecture"></a>La ASP.NET Core Identity arquitectura
 
 ASP.NET Core Identity consta de clases denominadas administradores y almacenes. Los *administradores* son clases de alto nivel que un desarrollador de aplicaciones usa para realizar operaciones, como la creación de un Identity usuario. Los *almacenes* son clases de nivel inferior que especifican cómo se conservan las entidades, como usuarios y roles. Los almacenes siguen el patrón del repositorio y se acoplan estrechamente con el mecanismo de persistencia. Los administradores se desacoplan de las tiendas, lo que significa que puede reemplazar el mecanismo de persistencia sin cambiar el código de aplicación (excepto para la configuración).
 
@@ -63,9 +64,9 @@ Al crear una nueva instancia de `UserManager` o `RoleManager` se proporciona el 
 
 [Volver a configurar la aplicación para usar el nuevo proveedor de almacenamiento](#reconfigure-app-to-use-a-new-storage-provider) muestra cómo crear una instancia de `UserManager` y `RoleManager` con un almacén personalizado.
 
-## <a name="aspnet-core-no-locidentity-stores-data-types"></a>ASP.NET Core Identity almacena tipos de datos
+## <a name="no-locaspnet-core-identity-stores-data-types"></a>ASP.NET Core Identity almacena tipos de datos
 
-[ASP.net Core Identity ](https://github.com/aspnet/identity) los tipos de datos se detallan en las secciones siguientes:
+[ASP.NET Core Identity](https://github.com/aspnet/identity) los tipos de datos se detallan en las secciones siguientes:
 
 ### <a name="users"></a>Usuarios
 
@@ -247,5 +248,5 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="references"></a>Referencias
 
-* [Proveedores de almacenamiento personalizados para ASP.NET 4. xIdentity](/aspnet/identity/overview/extensibility/overview-of-custom-storage-providers-for-aspnet-identity)
-* [ASP.net Core Identity ](https://github.com/dotnet/AspNetCore/tree/master/src/Identity): este repositorio incluye vínculos a los proveedores de almacenes de mantenidos de la comunidad.
+* [Proveedores de almacenamiento personalizados para ASP.NET 4. x Identity](/aspnet/identity/overview/extensibility/overview-of-custom-storage-providers-for-aspnet-identity)
+* [ASP.NET Core Identity](https://github.com/dotnet/AspNetCore/tree/master/src/Identity): Este repositorio incluye vínculos a proveedores de almacenes de mantenidos por la comunidad.

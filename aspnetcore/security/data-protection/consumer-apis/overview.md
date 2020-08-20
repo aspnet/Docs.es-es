@@ -5,6 +5,7 @@ description: Reciba una breve descripción de las distintas API de consumidor di
 ms.author: riande
 ms.date: 06/11/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -15,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/data-protection/consumer-apis/overview
-ms.openlocfilehash: 985c8cdc3518a51b9ec764407f4e2e3e5ff07e12
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 0cdc5d8700357f33fcd3d361f10a5d66cccb067d
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88021138"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88629904"
 ---
 # <a name="consumer-apis-overview-for-aspnet-core"></a>Información general sobre las API de consumidor para ASP.NET Core
 

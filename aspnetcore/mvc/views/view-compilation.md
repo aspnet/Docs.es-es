@@ -1,11 +1,12 @@
 ---
-title: Razorcompilación de archivos en ASP.NET Core
+title: Razor compilación de archivos en ASP.NET Core
 author: rick-anderson
 description: Obtenga información sobre cómo Razor se produce la compilación de archivos en una aplicación ASP.net Core.
 ms.author: riande
 ms.custom: mvc
 ms.date: 04/14/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,14 +17,14 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/view-compilation
-ms.openlocfilehash: fc7924f8f8b321ae017b7acd729fe11c4e0e3c7e
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 3d76eff93d5c7c53b57136e5183e1ca5287dec81
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88021086"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88631126"
 ---
-# <a name="no-locrazor-file-compilation-in-aspnet-core"></a>Razorcompilación de archivos en ASP.NET Core
+# <a name="no-locrazor-file-compilation-in-aspnet-core"></a>Razor compilación de archivos en ASP.NET Core
 
 Por [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -31,7 +32,7 @@ Por [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 Razorlos archivos con una extensión *. cshtml* se compilan en el momento de la compilación y de la publicación mediante el [ Razor SDK](xref:razor-pages/sdk). La compilación en tiempo de ejecución puede habilitarse opcionalmente mediante la configuración del proyecto.
 
-## <a name="no-locrazor-compilation"></a>Razorprevia
+## <a name="no-locrazor-compilation"></a>Razor previa
 
 RazorEl SDK habilita de forma predeterminada la compilación de archivos en tiempo de compilación y en tiempo de publicación Razor . Cuando está habilitada, la compilación en tiempo de ejecución complementa la compilación en tiempo de compilación, lo que permite Razor actualizar los archivos si se modifican.
 
@@ -60,7 +61,7 @@ dotnet new webapp --razor-runtime-compilation
 
 Para habilitar la compilación en tiempo de ejecución para todos los entornos de un proyecto existente:
 
-1. Instale [Microsoft. AspNetCore. Mvc. Razor . ](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation/)Paquete NuGet de RuntimeCompilation.
+1. Instale [Microsoft. AspNetCore. Mvc. Razor . ](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation/) Paquete NuGet de RuntimeCompilation.
 1. Actualizar el método `Startup.ConfigureServices` del proyecto para incluir una llamada a <xref:Microsoft.Extensions.DependencyInjection.RazorRuntimeCompilationMvcBuilderExtensions.AddRazorRuntimeCompilation*>. Por ejemplo:
 
     ```csharp
@@ -82,7 +83,7 @@ La compilación en tiempo de ejecución se puede habilitar para que solo esté d
 
 Para habilitar la compilación en tiempo de ejecución solo en el entorno de desarrollo:
 
-1. Instale [Microsoft. AspNetCore. Mvc. Razor . ](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation/)Paquete NuGet de RuntimeCompilation.
+1. Instale [Microsoft. AspNetCore. Mvc. Razor . ](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation/) Paquete NuGet de RuntimeCompilation.
 1. Modifique la sección de perfil `environmentVariables` de inicio de *launchSettings.jsen*:
     * Compruebe `ASPNETCORE_ENVIRONMENT` que está establecido en `"Development"` .
     * Establezca `ASPNETCORE_HOSTINGSTARTUPASSEMBLIES` en `"Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation"`.
@@ -117,7 +118,7 @@ Considere un escenario en el que un Razor proyecto de páginas hace referencia a
 
 Razorlos archivos con una extensión *. cshtml* se compilan en el momento de la compilación y de la publicación mediante el [ Razor SDK](xref:razor-pages/sdk). La compilación en tiempo de ejecución se puede habilitar opcionalmente mediante la configuración de la aplicación
 
-## <a name="no-locrazor-compilation"></a>Razorprevia
+## <a name="no-locrazor-compilation"></a>Razor previa
 
 RazorEl SDK habilita de forma predeterminada la compilación de archivos en tiempo de compilación y en tiempo de publicación Razor . Cuando está habilitada, la compilación en tiempo de ejecución complementa la compilación en tiempo de compilación, lo que permite Razor actualizar los archivos si se modifican.
 
@@ -125,7 +126,7 @@ RazorEl SDK habilita de forma predeterminada la compilación de archivos en tiem
 
 Para habilitar la compilación en tiempo de ejecución para todos los entornos y modos de configuración:
 
-1. Instale [Microsoft. AspNetCore. Mvc. Razor . ](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation/)Paquete NuGet de RuntimeCompilation.
+1. Instale [Microsoft. AspNetCore. Mvc. Razor . ](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation/) Paquete NuGet de RuntimeCompilation.
 
 1. Actualizar el método `Startup.ConfigureServices` del proyecto para incluir una llamada a <xref:Microsoft.Extensions.DependencyInjection.RazorRuntimeCompilationMvcBuilderExtensions.AddRazorRuntimeCompilation*>. Por ejemplo:
 
@@ -173,7 +174,7 @@ Para habilitar la compilación en tiempo de ejecución basada en el modo de conf
 
 Un Razor archivo se compila en tiempo de ejecución, cuando Razor se invoca la vista de MVC o la página asociada. Razorlos archivos se compilan en el momento de la compilación y de la publicación mediante el [ Razor SDK](xref:razor-pages/sdk).
 
-## <a name="no-locrazor-compilation"></a>Razorprevia
+## <a name="no-locrazor-compilation"></a>Razor previa
 
 RazorEl SDK habilita de forma predeterminada la compilación de archivos en tiempo de compilación y de publicación Razor . La edición Razor de archivos tras su actualización se admite en tiempo de compilación. De forma predeterminada, solo se implementan en la aplicación los archivos *Views.dll* compilados y los archivos *. cshtml* o los ensamblados de referencia necesarios para compilar Razor archivos.
 

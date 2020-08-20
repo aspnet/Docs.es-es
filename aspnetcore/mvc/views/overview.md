@@ -5,6 +5,7 @@ description: Obtenga información sobre la forma en que las vistas controlan la 
 ms.author: riande
 ms.date: 12/05/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -15,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/overview
-ms.openlocfilehash: 8630df0ad8ea556c6edf0ab251b3c86493f751e2
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 6afd69414f2dc0158f724c6e6f7b3a3e51c1e92c
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88020878"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88630684"
 ---
 # <a name="views-in-aspnet-core-mvc"></a>Vistas de ASP.NET Core MVC
 
@@ -28,7 +29,7 @@ Por [Steve Smith](https://ardalis.com/)
 
 En este documento se explican las vistas utilizadas en las aplicaciones de ASP.NET Core MVC. Para obtener información sobre Razor las páginas, consulte [Introducción a Razor las páginas](xref:razor-pages/index).
 
-En el patrón de controlador de vista de modelos (MVC), la *vista* se encarga de la presentación de los datos y de la interacción del usuario. Una vista es una plantilla HTML con [ Razor marcado](xref:mvc/views/razor)incrustado. Razorel marcado es código que interactúa con el marcado HTML para generar una página web que se envía al cliente.
+En el patrón de controlador de vista de modelos (MVC), la *vista* se encarga de la presentación de los datos y de la interacción del usuario. Una vista es una plantilla HTML con [ Razor marcado](xref:mvc/views/razor)incrustado. Razor el marcado es código que interactúa con el marcado HTML para generar una página web que se envía al cliente.
 
 En ASP.NET Core MVC, las vistas son archivos *. cshtml* que usan el [lenguaje de programación C#](/dotnet/csharp/) en el Razor marcado. Por lo general, los archivos de vistas se agrupan en carpetas con el nombre de cada uno de los [controladores](xref:mvc/controllers/actions) de la aplicación. Las carpetas se almacenan en una carpeta llamada *Views* que está ubicada en la raíz de la aplicación:
 
@@ -369,7 +370,7 @@ Es posible utilizar `ViewData` y `ViewBag` al mismo tiempo, al igual que combina
 
 **Resumen de las diferencias entre ViewData y ViewBag**
 
- `ViewBag`no está disponible en las Razor páginas.
+ `ViewBag` no está disponible en las Razor páginas.
 
 * `ViewData`
   * Se deriva de [ViewDataDictionary](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.viewdatadictionary), por lo que tiene propiedades de diccionario que pueden ser útiles, como `ContainsKey` ,, `Add` `Remove` y `Clear` .
