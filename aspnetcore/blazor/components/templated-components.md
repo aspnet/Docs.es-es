@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 03/18/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/templated-components
-ms.openlocfilehash: 408fc433dd6c81ac84f2198465b3191441ad0fc4
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 293154658e9d39166213c0a465bed1166ba39b54
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88014521"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88628357"
 ---
 # <a name="aspnet-core-no-locblazor-templated-components"></a>Componentes con plantilla de Blazor en ASP.NET Core
 

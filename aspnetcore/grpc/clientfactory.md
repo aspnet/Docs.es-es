@@ -6,6 +6,7 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
 ms.date: 05/26/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/clientfactory
-ms.openlocfilehash: 3ba7130f532777da72e3c84c9b0f6a375c2f1814
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: dfdcb8d73017c0c1ccb4cf2aaffdbe7c49030179
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88016263"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88633739"
 ---
 # <a name="grpc-client-factory-integration-in-net-core"></a>Integración de la fábrica de cliente de gRPC en .NET Core
 

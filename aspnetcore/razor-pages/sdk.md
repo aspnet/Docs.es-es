@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc, seodec18
 ms.date: 03/26/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: razor-pages/sdk
-ms.openlocfilehash: b960460a50558a11bc47f9a1844931aa32e3d696
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: d11600af88d499d63adf9eae90d6deb929f9d92a
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88021424"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88632920"
 ---
 # <a name="aspnet-core-no-locrazor-sdk"></a>SDK de Razor de ASP.NET Core
 

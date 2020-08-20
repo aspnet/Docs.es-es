@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/04/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/templates
-ms.openlocfilehash: 8f5792bc5cde358105f396112ed1b17b7695f248
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 0069a6d25c1a8edcfaa454623a95702aae58ca22
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88013546"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88625900"
 ---
 # <a name="aspnet-core-no-locblazor-templates"></a>Plantillas de Blazor de ASP.NET Core
 

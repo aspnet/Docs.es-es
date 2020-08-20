@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 06/10/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/environments
-ms.openlocfilehash: 8a672b3d2aff4dd2b80465b0f6dac038d299eaa9
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 5f9de91eeab932dd139abdd1bf2eedadc8d396b5
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88014430"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88628266"
 ---
 # <a name="aspnet-core-no-locblazor-environments"></a>Entornos de Blazor de ASP.NET Core
 

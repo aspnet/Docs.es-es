@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/19/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/content-security-policy
-ms.openlocfilehash: bbe4bf1b0999d66471743c9efa1a9a9f121f2e05
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 09f4cb5ba11feb7d81a410dd3869f9863d104d0e
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88014041"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88627850"
 ---
 # <a name="enforce-a-content-security-policy-for-aspnet-core-no-locblazor"></a>Aplicación de una directiva de seguridad de contenido para Blazor de ASP.NET Core
 

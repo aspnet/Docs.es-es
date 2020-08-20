@@ -6,6 +6,7 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
 ms.date: 10/17/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/dotnet-grpc
-ms.openlocfilehash: d41958d586f54d5944af187933f2b0248f763171
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 18d504d7a130aeaa9f8ab6cca6c92dab5febfae6
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88016134"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88633245"
 ---
 # <a name="manage-protobuf-references-with-dotnet-grpc"></a>Administración de referencias de Protobuf con dotnet-grpc
 

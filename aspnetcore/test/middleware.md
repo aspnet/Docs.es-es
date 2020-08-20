@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 5/12/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: test/middleware
-ms.openlocfilehash: 235010c95cdd0c7ce1368b4abd91e75d81ae094b
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: ed0925259bf3d4fee6c903ff55cdf1dae2355af7
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88021905"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88631906"
 ---
 # <a name="test-aspnet-core-middleware"></a>Prueba del middleware de ASP.NET Core
 

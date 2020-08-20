@@ -6,6 +6,7 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
 ms.date: 12/05/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/comparison
-ms.openlocfilehash: cdddb14e62f42bc9c0ec0bbe2a8595fe1cb27ceb
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: d20740950f7ac56a3a3b2951b474151aaf9c6f5a
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88016211"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88631230"
 ---
 # <a name="compare-grpc-services-with-http-apis"></a>Comparación entre los servicios gRPC y las API HTTP
 

@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/14/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/routing
-ms.openlocfilehash: 2e0c1a479554b704b4a8cd87bc177d0f76ddc7e2
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 0c878a05a50e5a6879278ee737ada167669ee0ff
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88014353"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88626485"
 ---
 # <a name="aspnet-core-no-locblazor-routing"></a>Enrutamiento de Blazor de ASP.NET Core
 

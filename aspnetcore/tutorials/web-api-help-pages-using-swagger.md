@@ -6,6 +6,7 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 07/06/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/web-api-help-pages-using-swagger
-ms.openlocfilehash: a3b8efcdb1f196fc878e0ad29580d305bb24f50a
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: c40aede044c78122a9057613f0eece9acf84df7b
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88021983"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88633999"
 ---
 # <a name="aspnet-core-web-api-help-pages-with-swagger--openapi"></a>Páginas de ayuda de ASP.NET Core Web API con Swagger/Open API
 

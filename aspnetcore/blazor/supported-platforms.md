@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/19/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/supported-platforms
-ms.openlocfilehash: 67896bcdd5d99ff2c9cf22e3902262f9513eb4f6
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 692ab63bb48dbfa29021d59cdf035e9549d3039c
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88013533"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88625952"
 ---
 # <a name="aspnet-core-no-locblazor-supported-platforms"></a>Plataformas admitidas de Blazor de ASP.NET Core
 

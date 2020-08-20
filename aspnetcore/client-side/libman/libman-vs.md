@@ -6,6 +6,7 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 08/20/2018
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: client-side/libman/libman-vs
-ms.openlocfilehash: 2dc944ffd4307aa108a54b70d58f298c26959ce0
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 77cfced18edd9db5be21265469b42f32e3de274d
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88013351"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88625679"
 ---
 # <a name="use-libman-with-aspnet-core-in-visual-studio"></a>Uso de LibMan con ASP.NET Core en Visual Studio
 

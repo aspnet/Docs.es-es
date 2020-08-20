@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/10/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: test/troubleshoot
-ms.openlocfilehash: a05b5f85ee9e399daf35c32dabe0149be38ff6c2
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 24781e7689a1a238e9d2fa9666fa61a8642135c3
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88021359"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88632140"
 ---
 # <a name="troubleshoot-and-debug-aspnet-core-projects"></a>Solución de problemas y depuración de proyectos de ASP.NET Core
 

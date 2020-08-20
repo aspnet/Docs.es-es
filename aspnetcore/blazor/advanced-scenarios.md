@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/18/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/advanced-scenarios
-ms.openlocfilehash: 4bd73acd821a8791d7f6cc93545edc2e39a6f2c7
-ms.sourcegitcommit: 68d03d1aee8906b53bda66f8f1e0747efc3007e6
+ms.openlocfilehash: ce1786f644d1c0a70487f44ec3051de8189c5381
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88051789"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88625328"
 ---
 # <a name="aspnet-core-no-locblazor-advanced-scenarios"></a>Escenarios avanzados de ASP.NET Core Blazor
 

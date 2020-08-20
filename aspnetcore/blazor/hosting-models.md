@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/11/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/hosting-models
-ms.openlocfilehash: 14fa13bafa984c0ca7b9fd8cde538042cc0ec2cc
-ms.sourcegitcommit: ba4872dd5a93780fe6cfacb2711ec1e69e0df92c
+ms.openlocfilehash: 53293ae9780129530ce5a41639e19284f47aa245
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88130449"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88628084"
 ---
 # <a name="aspnet-core-no-locblazor-hosting-models"></a>Modelos de hospedaje Blazor en ASP.NET Core
 

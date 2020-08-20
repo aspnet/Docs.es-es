@@ -5,6 +5,7 @@ description: Parte 2 de la serie de tutoriales sobre ASP.NET Core MVC.
 ms.author: riande
 ms.date: 08/05/2017
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -15,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/adding-controller
-ms.openlocfilehash: 46f8cbc5ef3d9fe00a5151160a9119f68a9fe572
-ms.sourcegitcommit: 68d03d1aee8906b53bda66f8f1e0747efc3007e6
+ms.openlocfilehash: b5ef99d5645e0bbd453d09809a446bf4af38a975
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88051815"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88634051"
 ---
 # <a name="part-2-add-a-controller-to-an-aspnet-core-mvc-app"></a>Parte 2. Adición de un controlador a una aplicación de ASP.NET Core MVC
 

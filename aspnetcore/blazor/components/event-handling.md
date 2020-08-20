@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/06/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/event-handling
-ms.openlocfilehash: c306d5dd65cc1e56cb0b2993b7a07a3af35150f7
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 57eff50370219324037756f4605f7f9708b012fa
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88014690"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88628527"
 ---
 # <a name="aspnet-core-no-locblazor-event-handling"></a>Control de eventos de Blazor en ASP.NET Core
 

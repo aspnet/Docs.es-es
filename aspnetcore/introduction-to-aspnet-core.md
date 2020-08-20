@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/17/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: index
-ms.openlocfilehash: 9cf721b381d3c4c737c15225edcf7918dd1fcf5b
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: f1235337748bacdb6eaa775a5853238bf729e605
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88015353"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88634558"
 ---
 # <a name="introduction-to-aspnet-core"></a>Introducción a ASP.NET Core
 

@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/22/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -18,12 +19,12 @@ no-loc:
 - SignalR
 uid: blazor/state-management
 zone_pivot_groups: blazor-hosting-models
-ms.openlocfilehash: 28ca3b5c4472dc21e709d01705dc64168107ca61
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 43794fad36efe44cad6fbb2f1a1cae293a2ddad1
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88013559"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88625965"
 ---
 # <a name="aspnet-core-no-locblazor-state-management"></a>Administración de estado de Blazor en ASP.NET Core
 

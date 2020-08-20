@@ -7,6 +7,7 @@ ms.author: jamesnk
 ms.custom: mvc
 ms.date: 07/07/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/security
-ms.openlocfilehash: 4c805ab1e01b4c70644a12c277441d1d242ce720
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: ca03a129281377af9271d56e2400d1a238358554
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88016003"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88632660"
 ---
 # <a name="security-considerations-in-grpc-for-aspnet-core"></a>Consideraciones de seguridad en gRPC para ASP.NET Core
 

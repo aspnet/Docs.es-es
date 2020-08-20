@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 06/25/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/webassembly-performance-best-practices
-ms.openlocfilehash: 64205dcf7aeecbe594b0164a7966b7f96bcca68b
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 819947be90e7f09c7ba853df1af1f3c7066c0219
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88013364"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88625822"
 ---
 # <a name="aspnet-core-no-locblazor-webassembly-performance-best-practices"></a>Procedimientos recomendados de rendimiento de Blazor WebAssembly en ASP.NET Core
 

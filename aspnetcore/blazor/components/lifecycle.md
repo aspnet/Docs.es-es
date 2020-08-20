@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/06/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/lifecycle
-ms.openlocfilehash: 601bb218df989c15c631633be26501ae426fab52
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: d1a17f26ac89a2d1d722e37faf3a90f735b23f94
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88014574"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88628448"
 ---
 # <a name="aspnet-core-no-locblazor-lifecycle"></a>Ciclo de vida de ASP.NET Core Blazor
 

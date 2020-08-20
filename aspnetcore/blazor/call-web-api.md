@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 06/24/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/call-web-api
-ms.openlocfilehash: ef31d3d9b3914f3c86aa397ff214778fe295964b
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: cffd9e33636f98d50300de851d696ae753c10a0d
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88012595"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88625341"
 ---
 # <a name="call-a-web-api-from-aspnet-core-no-locblazor"></a>Llamada a una API web desde Blazor de ASP.NET Core
 
@@ -42,7 +43,7 @@ Vea los componentes siguientes en la aplicación de ejemplo `BlazorWebAssemblySa
 
 ## <a name="packages"></a>Paquetes
 
-Haga referencia al paquete NuGet [`System.Net.Http.Json`](https://www.nuget.org/packages/System.Net.Http.Json/) en el archivo del proyecto.
+Haga referencia al paquete NuGet [`System.Net.Http.Json`](https://www.nuget.org/packages/System.Net.Http.Json) en el archivo del proyecto.
 
 ## <a name="add-the-httpclient-service"></a>Agregar el servicio HttpClient
 
@@ -186,7 +187,7 @@ En el código siguiente, el elemento `<button>` Delete llama al método `DeleteI
 
 Se admiten servicios <xref:System.Net.Http.IHttpClientFactory> y la configuración de una instancia de <xref:System.Net.Http.HttpClient> con nombre.
 
-Haga referencia al paquete NuGet [`Microsoft.Extensions.Http`](https://www.nuget.org/packages/Microsoft.Extensions.Http/) en el archivo del proyecto.
+Haga referencia al paquete NuGet [`Microsoft.Extensions.Http`](https://www.nuget.org/packages/Microsoft.Extensions.Http) en el archivo del proyecto.
 
 `Program.Main` (`Program.cs`):
 
