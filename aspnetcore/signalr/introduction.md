@@ -7,6 +7,7 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 11/27/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/introduction
-ms.openlocfilehash: 6f3cec83c9af5ec6e820db4a15061eddac613f36
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: ab850fa8afbee9d2664868937362388a03374908
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88022178"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88634701"
 ---
 # <a name="introduction-to-aspnet-core-no-locsignalr"></a>Introducción a ASP.NET Core SignalR
 
@@ -37,7 +38,7 @@ Buenos candidatos para SignalR :
 * Aplicaciones de colaboración. Las aplicaciones de pizarra y el software de reuniones de equipo son ejemplos de aplicaciones de colaboración.
 * Aplicaciones que requieren notificaciones. Redes sociales, correo electrónico, chat, juegos, alertas de viaje y muchas otras aplicaciones utilizan notificaciones.
 
-SignalRproporciona una API para crear [llamadas a procedimiento remoto (RPC)](https://wikipedia.org/wiki/Remote_procedure_call)de servidor a cliente. Las RPC llaman a funciones de JavaScript en los clientes desde el código de .NET Core del lado servidor.
+SignalR proporciona una API para crear [llamadas a procedimiento remoto (RPC)](https://wikipedia.org/wiki/Remote_procedure_call)de servidor a cliente. Las RPC llaman a funciones de JavaScript en los clientes desde el código de .NET Core del lado servidor.
 
 Estas son algunas características de SignalR para ASP.net Core:
 
@@ -50,19 +51,19 @@ El origen se hospeda en un [ SignalR repositorio de github](https://github.com/d
 
 ## <a name="transports"></a>Transportes
 
-SignalRadmite las siguientes técnicas para controlar la comunicación en tiempo real (en orden de reserva correcta):
+SignalR admite las siguientes técnicas para controlar la comunicación en tiempo real (en orden de reserva correcta):
 
 * [WebSockets](https://tools.ietf.org/html/rfc7118)
 * Eventos enviados por el servidor
 * Sondeo largo
 
-SignalRelige automáticamente el mejor método de transporte que se encuentra dentro de las capacidades del servidor y del cliente.
+SignalR elige automáticamente el mejor método de transporte que se encuentra dentro de las capacidades del servidor y del cliente.
 
 ## <a name="hubs"></a>Concentradores
 
-SignalRusa *hubs* para la comunicación entre clientes y servidores.
+SignalR usa *hubs* para la comunicación entre clientes y servidores.
 
-Un concentrador es una canalización de alto nivel que permite a un cliente y un servidor llamar a métodos entre sí. SignalRcontrola el envío automático de los límites de la máquina, lo que permite a los clientes llamar a métodos en el servidor y viceversa. Puede pasar parámetros fuertemente tipados a métodos, lo que permite el enlace de modelos. SignalRproporciona dos protocolos de concentrador integrados: un protocolo de texto basado en JSON y un protocolo binario basado en [MessagePack](https://msgpack.org/).  MessagePack suele crear mensajes más pequeños en comparación con JSON. Los exploradores más antiguos deben admitir el [nivel 2 de XHR](https://caniuse.com/#feat=xhr2) para proporcionar compatibilidad con el protocolo MessagePack.
+Un concentrador es una canalización de alto nivel que permite a un cliente y un servidor llamar a métodos entre sí. SignalR controla el envío automático de los límites de la máquina, lo que permite a los clientes llamar a métodos en el servidor y viceversa. Puede pasar parámetros fuertemente tipados a métodos, lo que permite el enlace de modelos. SignalR proporciona dos protocolos de concentrador integrados: un protocolo de texto basado en JSON y un protocolo binario basado en [MessagePack](https://msgpack.org/).  MessagePack suele crear mensajes más pequeños en comparación con JSON. Los exploradores más antiguos deben admitir el [nivel 2 de XHR](https://caniuse.com/#feat=xhr2) para proporcionar compatibilidad con el protocolo MessagePack.
 
 Los concentradores llaman a código de cliente mediante el envío de mensajes que contienen el nombre y los parámetros del método del lado cliente. Los objetos enviados como parámetros de método se deserializan mediante el protocolo configurado. El cliente intenta hacer coincidir el nombre con un método en el código del lado cliente. Cuando el cliente encuentra una coincidencia, llama al método y le pasa los datos del parámetro deserializado.
 

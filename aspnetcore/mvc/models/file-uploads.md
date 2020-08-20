@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/03/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/models/file-uploads
-ms.openlocfilehash: a11e6325143b9db57d6fbd1cd67478dc1dd6122d
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 93ffa3a5313e63a1e9b98fb5bf9788944254213f
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88021255"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88635221"
 ---
 # <a name="upload-files-in-aspnet-core"></a>Carga de archivos en ASP.NET Core
 
@@ -34,7 +35,7 @@ ASP.NET Core admite la carga de uno o varios archivos mediante el enlace de mod
 
 [Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
-## <a name="security-considerations"></a>Consideraciones de seguridad
+## <a name="security-considerations"></a>Consideraciones sobre la seguridad
 
 Tenga precaución al proporcionar a los usuarios la capacidad de cargar archivos en un servidor. Es posible que los atacantes intenten lo siguiente:
 
@@ -238,7 +239,7 @@ Es posible acceder a archivos individuales cargados en el servidor a través del
 >
 > Los ejemplos proporcionados hasta ahora no tienen en cuenta las consideraciones de seguridad. Se proporciona información adicional en las secciones siguientes y en la [aplicación de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/):
 >
-> * [Consideraciones de seguridad](#security-considerations)
+> * [Consideraciones sobre la seguridad](#security-considerations)
 > * [Validación](#validation)
 
 Al cargar archivos mediante el enlace de modelos y <xref:Microsoft.AspNetCore.Http.IFormFile>, el método de acción puede aceptar:
@@ -409,7 +410,7 @@ El ejemplo anterior es similar a un escenario que se muestra en la aplicación d
 >
 > Los ejemplos proporcionados no tienen en cuenta las consideraciones de seguridad. Se proporciona información adicional en las secciones siguientes y en la [aplicación de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/):
 >
-> * [Consideraciones de seguridad](#security-considerations)
+> * [Consideraciones sobre la seguridad](#security-considerations)
 > * [Validación](#validation)
 
 ### <a name="upload-large-files-with-streaming"></a>Carga de archivos de gran tamaño con streaming
@@ -512,7 +513,7 @@ Para obtener firmas de archivo adicionales, consulte la [base de datos de firmas
 
 Nunca use un nombre de archivo proporcionado por el cliente para guardar un archivo en el almacenamiento físico. Cree un nombre de archivo seguro para el archivo con [Path.GetRandomFileName](xref:System.IO.Path.GetRandomFileName*) o [Path.GetTempFileName](xref:System.IO.Path.GetTempFileName*) para crear una ruta de acceso completa (incluido el nombre de archivo) para el almacenamiento temporal.
 
-RazorHTML codifica automáticamente los valores de propiedad para la presentación. El código siguiente es seguro de usar:
+Razor HTML codifica automáticamente los valores de propiedad para la presentación. El código siguiente es seguro de usar:
 
 ```cshtml
 @foreach (var file in Model.DatabaseFiles) {
@@ -726,7 +727,7 @@ Esto solo ocurre en IIS; este comportamiento no sucede de forma predeterminada c
 
 Las limitaciones del módulo ASP.NET Core o la presencia del módulo de filtrado de solicitudes de IIS pueden limitar las cargas a 2 GB o 4 GB. Para obtener más información, consulte el artículo que indica que [no se pueden cargar archivos con un tamaño superior a 2 GB (aspnet/AspNetCore #2711)](https://github.com/dotnet/AspNetCore/issues/2711).
 
-## <a name="troubleshoot"></a>Solucionar problemas
+## <a name="troubleshoot"></a>Solución de problemas
 
 Aquí incluimos algunos problemas comunes que pueden surgir al cargar archivos, así como sus posibles soluciones.
 
@@ -761,7 +762,7 @@ ASP.NET Core admite la carga de uno o varios archivos mediante el enlace de mod
 
 [Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
-## <a name="security-considerations"></a>Consideraciones de seguridad
+## <a name="security-considerations"></a>Consideraciones sobre la seguridad
 
 Tenga precaución al proporcionar a los usuarios la capacidad de cargar archivos en un servidor. Es posible que los atacantes intenten lo siguiente:
 
@@ -965,7 +966,7 @@ Es posible acceder a archivos individuales cargados en el servidor a través del
 >
 > Los ejemplos proporcionados hasta ahora no tienen en cuenta las consideraciones de seguridad. Se proporciona información adicional en las secciones siguientes y en la [aplicación de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/):
 >
-> * [Consideraciones de seguridad](#security-considerations)
+> * [Consideraciones sobre la seguridad](#security-considerations)
 > * [Validación](#validation)
 
 Al cargar archivos mediante el enlace de modelos y <xref:Microsoft.AspNetCore.Http.IFormFile>, el método de acción puede aceptar:
@@ -1136,7 +1137,7 @@ El ejemplo anterior es similar a un escenario que se muestra en la aplicación d
 >
 > Los ejemplos proporcionados no tienen en cuenta las consideraciones de seguridad. Se proporciona información adicional en las secciones siguientes y en la [aplicación de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/):
 >
-> * [Consideraciones de seguridad](#security-considerations)
+> * [Consideraciones sobre la seguridad](#security-considerations)
 > * [Validación](#validation)
 
 ### <a name="upload-large-files-with-streaming"></a>Carga de archivos de gran tamaño con streaming
@@ -1239,7 +1240,7 @@ Para obtener firmas de archivo adicionales, consulte la [base de datos de firmas
 
 Nunca use un nombre de archivo proporcionado por el cliente para guardar un archivo en el almacenamiento físico. Cree un nombre de archivo seguro para el archivo con [Path.GetRandomFileName](xref:System.IO.Path.GetRandomFileName*) o [Path.GetTempFileName](xref:System.IO.Path.GetTempFileName*) para crear una ruta de acceso completa (incluido el nombre de archivo) para el almacenamiento temporal.
 
-RazorHTML codifica automáticamente los valores de propiedad para la presentación. El código siguiente es seguro de usar:
+Razor HTML codifica automáticamente los valores de propiedad para la presentación. El código siguiente es seguro de usar:
 
 ```cshtml
 @foreach (var file in Model.DatabaseFiles) {
@@ -1448,7 +1449,7 @@ Esto solo ocurre en IIS; este comportamiento no sucede de forma predeterminada c
 
 Las limitaciones del módulo ASP.NET Core o la presencia del módulo de filtrado de solicitudes de IIS pueden limitar las cargas a 2 GB o 4 GB. Para obtener más información, consulte el artículo que indica que [no se pueden cargar archivos con un tamaño superior a 2 GB (aspnet/AspNetCore #2711)](https://github.com/dotnet/AspNetCore/issues/2711).
 
-## <a name="troubleshoot"></a>Solucionar problemas
+## <a name="troubleshoot"></a>Solución de problemas
 
 Aquí incluimos algunos problemas comunes que pueden surgir al cargar archivos, así como sus posibles soluciones.
 

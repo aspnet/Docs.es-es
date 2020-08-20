@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/11/2018
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/otherlogins
-ms.openlocfilehash: 3de76b303c469341ba022fa3d33d3cd2a17581db
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: f410f9ade34c3ffb19dc9f6e5409f44d0a6e5d32
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88014911"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88634246"
 ---
 # <a name="external-oauth-authentication-providers"></a>Proveedores de autenticación OAuth externos
 

@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/10/2018
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/tag-helpers/builtin-th/cache-tag-helper
-ms.openlocfilehash: 7d2ff774b7654993e2cd9b126db252f81a3032d3
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: b1cab7ab8b491529ee4208d92fb30082be795eda
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88018759"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88635065"
 ---
 # <a name="cache-tag-helper-in-aspnet-core-mvc"></a>Asistente de etiquetas de caché en ASP.NET Core MVC
 
@@ -47,7 +48,7 @@ La primera solicitud a la página que contiene el asistente de etiquetas muestra
 | --------------- | --------------- | ------- |
 | Boolean         | `true`, `false` | `true`  |
 
-`enabled` determina si se almacena en caché el contenido incluido por el asistente de etiquetas de caché. De manera predeterminada, es `true`. Si establece en `false`, el resultado representado **no** se almacena en caché.
+`enabled` determina si se almacena en caché el contenido incluido por el asistente de etiquetas de caché. El valor predeterminado es `true`. Si establece en `false`, el resultado representado **no** se almacena en caché.
 
 Ejemplo:
 
@@ -171,9 +172,9 @@ routes.MapRoute(
 | -------------- | -------------------------------------------------------------------------------- |
 | String         | `.AspNetCore.Identity.Application`, `.AspNetCore.Identity.Application,HairColor` |
 
-`vary-by-cookie`acepta una lista delimitada por comas de cookie nombres que desencadenan una actualización de la memoria caché cuando cookie cambian los valores.
+`vary-by-cookie` acepta una lista delimitada por comas de cookie nombres que desencadenan una actualización de la memoria caché cuando cookie cambian los valores.
 
-En el siguiente ejemplo se supervisa el cookie asociado a ASP.net Core Identity . Cuando se autentica un usuario, un cambio en Identity cookie desencadena una actualización de la memoria caché:
+En el siguiente ejemplo se supervisa el cookie asociado a ASP.NET Core Identity . Cuando se autentica un usuario, un cambio en Identity cookie desencadena una actualización de la memoria caché:
 
 ```cshtml
 <cache vary-by-cookie=".AspNetCore.Identity.Application">

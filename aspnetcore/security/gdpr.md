@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/11/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/gdpr
-ms.openlocfilehash: 6392a22e316f903da18cd1a91d1eb779d8dde1b3
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 35a12cb8d2a9617e51d886e798cff5ee60b0a8ad
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88020020"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88634714"
 ---
 # <a name="eu-general-data-protection-regulation-gdpr-support-in-aspnet-core"></a>Compatibilidad con Reglamento general de protección de datos de la Unión Europea (RGPD) en ASP.NET Core
 
@@ -67,7 +68,7 @@ La [aplicación de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/live/
 
 ## <a name="aspnet-core-gdpr-support-in-template-generated-code"></a>Compatibilidad de ASP.NET Core RGPD en el código generado por plantillas
 
-RazorLas páginas y los proyectos de MVC creados con las plantillas de proyecto incluyen la siguiente compatibilidad con RGPD:
+Razor Las páginas y los proyectos de MVC creados con las plantillas de proyecto incluyen la siguiente compatibilidad con RGPD:
 
 * [ Cookie PolicyOptions](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions) y [la Cookie Directiva de uso](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyappbuilderextensions.usecookiepolicy) se establecen en la `Startup` clase.
 * [Vista parcial](xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper)de * \_ Cookie ConsentPartial. cshtml* . En este archivo se incluye un botón **Aceptar** . Cuando el usuario hace clic en el botón **Aceptar** , se proporciona el consentimiento a la tienda cookie .
@@ -80,7 +81,7 @@ RazorLas páginas y los proyectos de MVC creados con las plantillas de proyecto 
 
 [!code-csharp[Main](gdpr/sample/Startup.cs?name=snippet1&highlight=14-20)]
 
-[Usar Cookie ](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyappbuilderextensions.usecookiepolicy)Se llama a la Directiva en `Startup.Configure` :
+[Usar Cookie ](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyappbuilderextensions.usecookiepolicy) Se llama a la Directiva en `Startup.Configure` :
 
 [!code-csharp[](gdpr/sample/Startup.cs?name=snippet1&highlight=51)]
 

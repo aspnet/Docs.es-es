@@ -6,6 +6,7 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 04/06/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/performance-best-practices
-ms.openlocfilehash: 0d99c5881b1ca786287d8643c82cab6a3f98f988
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 94ae9e52ed99c3fe8e7044f474cdf5b702dc5adf
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88019864"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88634467"
 ---
 # <a name="aspnet-core-performance-best-practices"></a>Procedimientos recomendados de ASP.NET Core rendimiento
 
@@ -31,7 +32,7 @@ En este artículo se proporcionan instrucciones para las prácticas recomendadas
 
 ## <a name="cache-aggressively"></a>Caché agresiva
 
-El almacenamiento en caché se describe en varias partes de este documento. Para obtener más información, vea <xref:performance/caching/response>.
+El almacenamiento en caché se describe en varias partes de este documento. Para más información, consulte <xref:performance/caching/response>.
 
 ## <a name="understand-hot-code-paths"></a>Comprender las rutas de acceso de código activas
 
@@ -83,7 +84,7 @@ Recomendaciones:
 
 * **Llame a** todas las API de acceso a datos de forma asincrónica.
 * **No** recupere más datos de los necesarios. Escribir consultas para devolver solo los datos necesarios para la solicitud HTTP actual.
-* **Considere la** posibilidad de almacenar en caché los datos a los que se accede con frecuencia recuperados de una base de datos o servicio remoto si se aceptan ligeramente datos desactualizados. En función del escenario, use [MemoryCache](xref:performance/caching/memory) o [DistributedCache](xref:performance/caching/distributed). Para obtener más información, vea <xref:performance/caching/response>.
+* **Considere la** posibilidad de almacenar en caché los datos a los que se accede con frecuencia recuperados de una base de datos o servicio remoto si se aceptan ligeramente datos desactualizados. En función del escenario, use [MemoryCache](xref:performance/caching/memory) o [DistributedCache](xref:performance/caching/distributed). Para más información, consulte <xref:performance/caching/response>.
 * **Minimice los** recorridos de ida y vuelta de red. El objetivo es recuperar los datos necesarios en una sola llamada en lugar de varias llamadas.
 * **Use** [consultas sin seguimiento](/ef/core/querying/tracking#no-tracking-queries) en Entity Framework Core al obtener acceso a los datos con fines de solo lectura. EF Core puede devolver los resultados de las consultas sin seguimiento de forma más eficaz.
 * **Filtre y** agregue consultas LINQ (con `.Where` `.Select` instrucciones, o `.Sum` , por ejemplo) para que la base de datos realice el filtrado.
@@ -110,7 +111,7 @@ Recomendaciones:
 
 ## <a name="keep-common-code-paths-fast"></a>Mantenga las rutas de acceso de código comunes con rapidez
 
-Desea que todo el código sea rápido. Las rutas de acceso de código llamadas con frecuencia son las más críticas para optimizar. Estas incluyen:
+Desea que todo el código sea rápido. Las rutas de acceso de código llamadas con frecuencia son las más críticas para optimizar. Entre ellas se incluyen las siguientes:
 
 * Los componentes de middleware en la canalización de procesamiento de solicitudes de la aplicación, especialmente el middleware se ejecutan al principio de la canalización. Estos componentes tienen un gran impacto en el rendimiento.
 * Código que se ejecuta para cada solicitud o varias veces por solicitud. Por ejemplo, registro personalizado, controladores de autorización o inicialización de servicios transitorios.
@@ -195,12 +196,12 @@ El código anterior deserializa de forma asincrónica el cuerpo de la solicitud 
 ## <a name="prefer-readformasync-over-requestform"></a>Preferir ReadFormAsync sobre solicitud. formulario
 
 Use `HttpContext.Request.ReadFormAsync` en lugar de `HttpContext.Request.Form`.
-`HttpContext.Request.Form`solo se puede leer de forma segura con las siguientes condiciones:
+`HttpContext.Request.Form` solo se puede leer de forma segura con las siguientes condiciones:
 
 * El formulario se ha leído mediante una llamada a `ReadFormAsync` , y
-* El valor del formulario almacenado en caché se está leyendo usando`HttpContext.Request.Form`
+* El valor del formulario almacenado en caché se está leyendo usando `HttpContext.Request.Form`
 
-No **lo haga:** En el ejemplo siguiente se utiliza `HttpContext.Request.Form` .  `HttpContext.Request.Form`usa la [sincronización a través de Async](https://github.com/davidfowl/AspNetCoreDiagnosticScenarios/blob/master/AsyncGuidance.md#warning-sync-over-async
+No **lo haga:** En el ejemplo siguiente se utiliza `HttpContext.Request.Form` .  `HttpContext.Request.Form` usa la [sincronización a través de Async](https://github.com/davidfowl/AspNetCoreDiagnosticScenarios/blob/master/AsyncGuidance.md#warning-sync-over-async
 ) y puede conducir a la colapso del grupo de subprocesos.
 
 [!code-csharp[](performance-best-practices/samples/3.0/Controllers/MySecondController.cs?name=snippet1)]
@@ -229,7 +230,7 @@ Almacenar de un cuerpo de solicitud o de respuesta de gran tamaño en un único 
 
 ## <a name="working-with-a-synchronous-data-processing-api"></a>Trabajar con una API de procesamiento de datos sincrónicos
 
-Cuando se usa un serializador/deserializador que solo admite lecturas y escrituras sincrónicas (por ejemplo, [JSON.net](https://www.newtonsoft.com/json/help/html/Introduction.htm)):
+Cuando se usa un serializador/deserializador que solo admite lecturas y escrituras sincrónicas (por ejemplo,  [JSON.net](https://www.newtonsoft.com/json/help/html/Introduction.htm)):
 
 * Almacene los datos en memoria de forma asincrónica antes de pasarlos al serializador/deserializador.
 
@@ -273,7 +274,7 @@ No **lo haga:** En el ejemplo siguiente se realizan tres solicitudes paralelas y
 
 ## <a name="do-not-use-the-httpcontext-after-the-request-is-complete"></a>No usar HttpContext una vez completada la solicitud
 
-`HttpContext`solo es válido mientras haya una solicitud HTTP activa en la canalización ASP.NET Core. Toda la canalización de ASP.NET Core es una cadena asincrónica de delegados que ejecuta cada solicitud. Cuando `Task` se completa la devuelta desde esta cadena, `HttpContext` se recicla.
+`HttpContext` solo es válido mientras haya una solicitud HTTP activa en la canalización ASP.NET Core. Toda la canalización de ASP.NET Core es una cadena asincrónica de delegados que ejecuta cada solicitud. Cuando `Task` se completa la devuelta desde esta cadena, `HttpContext` se recicla.
 
 No **lo haga:** En el ejemplo siguiente `async void` se utiliza la solicitud HTTP completada cuando `await` se alcanza la primera:
 
@@ -313,7 +314,7 @@ No **lo haga:** En el ejemplo siguiente se muestra un cierre que captura `DbCont
 
 **Haga lo siguiente:** En el ejemplo siguiente:
 
-* Inserta un <xref:Microsoft.Extensions.DependencyInjection.IServiceScopeFactory> objeto para crear un ámbito en el elemento de trabajo en segundo plano. `IServiceScopeFactory`es un singleton.
+* Inserta un <xref:Microsoft.Extensions.DependencyInjection.IServiceScopeFactory> objeto para crear un ámbito en el elemento de trabajo en segundo plano. `IServiceScopeFactory` es un singleton.
 * Crea un nuevo ámbito de inserción de dependencias en el subproceso en segundo plano.
 * No hace referencia a nada del controlador.
 * No captura el `ContosoDbContext` de la solicitud entrante.

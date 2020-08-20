@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 7/22/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/testing
-ms.openlocfilehash: 311f1ce9eb2b0e358ddc01a1982dc39379f53b8f
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: d6c70d828d6c2f62f9e7b849a299df3077f2da32
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88020917"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88635234"
 ---
 # <a name="unit-test-controller-logic-in-aspnet-core"></a>Lógica del controlador de pruebas unitarias en ASP.NET Core
 

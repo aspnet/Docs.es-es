@@ -6,6 +6,7 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 4/20/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/app-secrets
-ms.openlocfilehash: 917e698d34a5d4b6c2c3f4737c08f1a590f5df1a
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 74c9ae63ffbe39d6ba6e77aee8f6adcc8c8a157a
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88017953"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88634909"
 ---
 # <a name="safe-storage-of-app-secrets-in-development-in-aspnet-core"></a>Almacenamiento seguro de secretos de aplicación en el desarrollo en ASP.NET Core
 
@@ -37,7 +38,7 @@ En este documento se explican técnicas para almacenar y recuperar datos confide
 
 Las variables de entorno se usan para evitar el almacenamiento de secretos de aplicación en código o en archivos de configuración local. Las variables de entorno invalidan los valores de configuración de todos los orígenes de configuración especificados previamente.
 
-Considere una ASP.NET Core aplicación web en la que está habilitada la seguridad de **cuentas de usuario individuales** . Se incluye una cadena de conexión de base de datos predeterminada en elappsettings.jsdel proyecto *en* el archivo con la clave `DefaultConnection` . La cadena de conexión predeterminada es para LocalDB, que se ejecuta en modo de usuario y no requiere una contraseña. Durante la implementación de la aplicación, el `DefaultConnection` valor de clave se puede invalidar con el valor de una variable de entorno. La variable de entorno puede almacenar la cadena de conexión completa con credenciales confidenciales.
+Considere una ASP.NET Core aplicación web en la que está habilitada la seguridad de **cuentas de usuario individuales** . Se incluye una cadena de conexión de base de datos predeterminada en elappsettings.jsdel proyecto * en* el archivo con la clave `DefaultConnection` . La cadena de conexión predeterminada es para LocalDB, que se ejecuta en modo de usuario y no requiere una contraseña. Durante la implementación de la aplicación, el `DefaultConnection` valor de clave se puede invalidar con el valor de una variable de entorno. La variable de entorno puede almacenar la cadena de conexión completa con credenciales confidenciales.
 
 > [!WARNING]
 > Normalmente, las variables de entorno se almacenan en texto sin cifrar. Si el equipo o el proceso se ve comprometido, las entidades de entorno pueden tener acceso a las variables de entorno que no son de confianza. Pueden ser necesarias medidas adicionales para evitar la divulgación de secretos de usuario.
@@ -152,7 +153,7 @@ Abra un shell de comandos y ejecute el siguiente comando:
 
 La [API de configuración de ASP.net Core](xref:fundamentals/configuration/index) proporciona acceso a los secretos del administrador de secretos.
 
-El origen de configuración de secretos de usuario se agrega automáticamente en modo de desarrollo cuando el proyecto llama <xref:Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder%2A> a para inicializar una nueva instancia del host con los valores predeterminados preconfigurados. `CreateDefaultBuilder`llama a <xref:Microsoft.Extensions.Configuration.UserSecretsConfigurationExtensions.AddUserSecrets%2A> cuando <xref:Microsoft.Extensions.Hosting.IHostEnvironment.EnvironmentName> es <xref:Microsoft.Extensions.Hosting.EnvironmentName.Development> :
+El origen de configuración de secretos de usuario se agrega automáticamente en modo de desarrollo cuando el proyecto llama <xref:Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder%2A> a para inicializar una nueva instancia del host con los valores predeterminados preconfigurados. `CreateDefaultBuilder` llama a <xref:Microsoft.Extensions.Configuration.UserSecretsConfigurationExtensions.AddUserSecrets%2A> cuando <xref:Microsoft.Extensions.Hosting.IHostEnvironment.EnvironmentName> es <xref:Microsoft.Extensions.Hosting.EnvironmentName.Development> :
 
 [!code-csharp[](app-secrets/samples/3.x/UserSecrets/Program.cs?name=snippet_CreateHostBuilder&highlight=2)]
 
@@ -208,7 +209,7 @@ Ejecute el siguiente comando desde el directorio en el que existe el archivo *. 
 dotnet user-secrets list
 ```
 
-Aparece el siguiente resultado:
+Se mostrará la siguiente salida:
 
 ```console
 Movies:ConnectionString = Server=(localdb)\mssqllocaldb;Database=Movie-1;Trusted_Connection=True;MultipleActiveResultSets=true
@@ -237,7 +238,7 @@ Se modificó el *secrets.jsde* la aplicación en el archivo para quitar el par c
 }
 ```
 
-`dotnet user-secrets list`muestra el siguiente mensaje:
+`dotnet user-secrets list` muestra el siguiente mensaje:
 
 ```console
 Movies:ServiceApiKey = 12345
@@ -285,7 +286,7 @@ En este documento se explican técnicas para almacenar y recuperar datos confide
 
 Las variables de entorno se usan para evitar el almacenamiento de secretos de aplicación en código o en archivos de configuración local. Las variables de entorno invalidan los valores de configuración de todos los orígenes de configuración especificados previamente.
 
-Considere una ASP.NET Core aplicación web en la que está habilitada la seguridad de **cuentas de usuario individuales** . Se incluye una cadena de conexión de base de datos predeterminada en elappsettings.jsdel proyecto *en* el archivo con la clave `DefaultConnection` . La cadena de conexión predeterminada es para LocalDB, que se ejecuta en modo de usuario y no requiere una contraseña. Durante la implementación de la aplicación, el `DefaultConnection` valor de clave se puede invalidar con el valor de una variable de entorno. La variable de entorno puede almacenar la cadena de conexión completa con credenciales confidenciales.
+Considere una ASP.NET Core aplicación web en la que está habilitada la seguridad de **cuentas de usuario individuales** . Se incluye una cadena de conexión de base de datos predeterminada en elappsettings.jsdel proyecto * en* el archivo con la clave `DefaultConnection` . La cadena de conexión predeterminada es para LocalDB, que se ejecuta en modo de usuario y no requiere una contraseña. Durante la implementación de la aplicación, el `DefaultConnection` valor de clave se puede invalidar con el valor de una variable de entorno. La variable de entorno puede almacenar la cadena de conexión completa con credenciales confidenciales.
 
 > [!WARNING]
 > Normalmente, las variables de entorno se almacenan en texto sin cifrar. Si el equipo o el proceso se ve comprometido, las entidades de entorno pueden tener acceso a las variables de entorno que no son de confianza. Pueden ser necesarias medidas adicionales para evitar la divulgación de secretos de usuario.
@@ -395,9 +396,9 @@ Abra un shell de comandos y ejecute el siguiente comando:
 
 La [API de configuración de ASP.net Core](xref:fundamentals/configuration/index) proporciona acceso a los secretos del administrador de secretos.
 
-Si el proyecto tiene como destino .NET Framework, instale el [Microsoft.Extensions.Configprimario. ](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.UserSecrets)Paquete NuGet de UserSecrets.
+Si el proyecto tiene como destino .NET Framework, instale el [Microsoft.Extensions.Configprimario. ](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.UserSecrets) Paquete NuGet de UserSecrets.
 
-En ASP.NET Core 2,0 o posterior, el origen de configuración de los secretos de usuario se agrega automáticamente en modo de desarrollo cuando el proyecto llama <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder%2A> a para inicializar una nueva instancia del host con los valores predeterminados preconfigurados. `CreateDefaultBuilder`llama a <xref:Microsoft.Extensions.Configuration.UserSecretsConfigurationExtensions.AddUserSecrets%2A> cuando <xref:Microsoft.AspNetCore.Hosting.IHostingEnvironment.EnvironmentName> es <xref:Microsoft.AspNetCore.Hosting.EnvironmentName.Development> :
+En ASP.NET Core 2,0 o posterior, el origen de configuración de los secretos de usuario se agrega automáticamente en modo de desarrollo cuando el proyecto llama <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder%2A> a para inicializar una nueva instancia del host con los valores predeterminados preconfigurados. `CreateDefaultBuilder` llama a <xref:Microsoft.Extensions.Configuration.UserSecretsConfigurationExtensions.AddUserSecrets%2A> cuando <xref:Microsoft.AspNetCore.Hosting.IHostingEnvironment.EnvironmentName> es <xref:Microsoft.AspNetCore.Hosting.EnvironmentName.Development> :
 
 [!code-csharp[](app-secrets/samples/2.x/UserSecrets/Program.cs?name=snippet_CreateWebHostBuilder&highlight=2)]
 
@@ -453,7 +454,7 @@ Ejecute el siguiente comando desde el directorio en el que existe el archivo *. 
 dotnet user-secrets list
 ```
 
-Aparece el siguiente resultado:
+Se mostrará la siguiente salida:
 
 ```console
 Movies:ConnectionString = Server=(localdb)\mssqllocaldb;Database=Movie-1;Trusted_Connection=True;MultipleActiveResultSets=true

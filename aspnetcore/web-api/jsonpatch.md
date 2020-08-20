@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/02/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/jsonpatch
-ms.openlocfilehash: 09da557d678889ba16abe6f9af40ae1b33583d8b
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: e57c5185323305ccbef7960653c9174931e45d75
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88022373"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88635403"
 ---
 # <a name="jsonpatch-in-aspnet-core-web-api"></a>JsonPatch en la API web de ASP.NET Core
 
@@ -52,7 +53,7 @@ Para habilitar la compatibilidad con la revisión de JSON en la aplicación, com
 
 ## <a name="json-patch-addnewtonsoftjson-and-systemtextjson"></a>Revisión de JSON, AddNewtonsoftJson y System.Text.Jsen
 
-`AddNewtonsoftJson`reemplaza los `System.Text.Json` formateadores de entrada y salida basados en que se usan para dar formato a **todo** el contenido JSON. Para agregar compatibilidad con la revisión de JSON mediante `Newtonsoft.Json` , sin modificar los otros formateadores, actualice el método del proyecto `Startup.ConfigureServices` como se indica a continuación:
+`AddNewtonsoftJson` reemplaza los `System.Text.Json` formateadores de entrada y salida basados en que se usan para dar formato a **todo** el contenido JSON. Para agregar compatibilidad con la revisión de JSON mediante `Newtonsoft.Json` , sin modificar los otros formateadores, actualice el método del proyecto `Startup.ConfigureServices` como se indica a continuación:
 
 [!code-csharp[](jsonpatch/samples/3.0/WebApp1/Startup.cs?name=snippet)]
 
@@ -112,7 +113,7 @@ Los cambios realizados al aplicar un documento de revisión de JSON a un recurso
 
 ## <a name="path-syntax"></a>Sintaxis de path
 
-La propiedad [path](https://tools.ietf.org/html/rfc6901) de un objeto de operación tiene barras inversas entre niveles. Por ejemplo: `"/address/zipCode"`.
+La propiedad [path](https://tools.ietf.org/html/rfc6901) de un objeto de operación tiene barras inversas entre niveles. Por ejemplo, `"/address/zipCode"`.
 
 Para especificar elementos de matriz se usan índices de base cero. El primer elemento de la matriz `addresses` estaría en `/addresses/0`. Hasta `add` el final de una matriz, use un guion ( `-` ) en lugar de un número de índice: `/addresses/-` .
 
@@ -141,7 +142,7 @@ En un controlador de API, un método de acción para JSON Patch:
 * Acepta `JsonPatchDocument<T>`, normalmente con `[FromBody]`.
 * Llama a `ApplyTo` en el documento de revisión para aplicar los cambios.
 
-Este es un ejemplo:
+Veamos un ejemplo:
 
 [!code-csharp[](jsonpatch/samples/2.2/Controllers/HomeController.cs?name=snippet_PatchAction&highlight=1,3,9)]
 
@@ -324,7 +325,7 @@ Los cambios realizados mediante la aplicación de un documento JSON Patch a un r
 
 ## <a name="path-syntax"></a>Sintaxis de path
 
-La propiedad [path](https://tools.ietf.org/html/rfc6901) de un objeto de operación tiene barras inversas entre niveles. Por ejemplo: `"/address/zipCode"`.
+La propiedad [path](https://tools.ietf.org/html/rfc6901) de un objeto de operación tiene barras inversas entre niveles. Por ejemplo, `"/address/zipCode"`.
 
 Para especificar elementos de matriz se usan índices de base cero. El primer elemento de la matriz `addresses` estaría en `/addresses/0`. Para usar `add` al final de una matriz, use un guion (-) en lugar de un número de índice: `/addresses/-`.
 
@@ -353,7 +354,7 @@ En un controlador de API, un método de acción para JSON Patch:
 * Acepta `JsonPatchDocument<T>`, normalmente con `[FromBody]`.
 * Llama a `ApplyTo` en el documento de revisión para aplicar los cambios.
 
-Este es un ejemplo:
+Veamos un ejemplo:
 
 [!code-csharp[](jsonpatch/samples/2.2/Controllers/HomeController.cs?name=snippet_PatchAction&highlight=1,3,9)]
 

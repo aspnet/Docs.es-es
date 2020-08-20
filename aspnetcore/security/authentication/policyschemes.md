@@ -5,6 +5,7 @@ description: Los esquemas de directivas de autenticación facilitan el uso de un
 ms.author: riande
 ms.date: 12/05/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -15,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/policyschemes
-ms.openlocfilehash: ddee613bf9c603542f17adf59a835a2ddbdc25a3
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 60ac9914ef811a705c61ab3b2bec61643acc6ec0
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88017810"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88634987"
 ---
 # <a name="policy-schemes-in-aspnet-core"></a>Esquemas de directiva en ASP.NET Core
 

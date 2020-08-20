@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/response-compression
-ms.openlocfilehash: 1dd931d0ee654b888814df8a0d0675d32b5c3a20
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: b8947e3c3c4f634fbd838c22ff60799257143480
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88020969"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88635000"
 ---
 # <a name="response-compression-in-aspnet-core"></a>Compresión de respuesta en ASP.NET Core
 
@@ -52,7 +53,7 @@ Normalmente, cualquier respuesta no comprimida de forma nativa puede beneficiars
 
 Cuando un cliente puede procesar contenido comprimido, el cliente debe informar al servidor de sus funcionalidades enviando el `Accept-Encoding` encabezado con la solicitud. Cuando un servidor envía contenido comprimido, debe incluir información en el `Content-Encoding` encabezado sobre cómo se codifica la respuesta comprimida. En la tabla siguiente se muestran las designaciones de codificación de contenido que admite el middleware.
 
-| `Accept-Encoding`valores de encabezado | Middleware compatible | Descripción |
+| `Accept-Encoding` valores de encabezado | Middleware compatible | Descripción |
 | ------------------------------- | :------------------: | ----------- |
 | `br`                            | Sí (predeterminado)        | [Brotli formato de datos comprimidos](https://tools.ietf.org/html/rfc7932) |
 | `deflate`                       | No                   | [Desinflar formato de datos comprimidos](https://tools.ietf.org/html/rfc1951) |
@@ -86,7 +87,7 @@ Explore las características del middleware de compresión de respuesta con la [
 * Compresión de las respuestas de la aplicación mediante gzip y proveedores de compresión personalizados.
 * Cómo agregar un tipo MIME a la lista predeterminada de tipos MIME para la compresión.
 
-## <a name="package"></a>Package
+## <a name="package"></a>Paquete
 
 El middleware de compresión de respuesta lo proporciona el paquete [Microsoft. AspNetCore. ResponseCompression](https://www.nuget.org/packages/Microsoft.AspNetCore.ResponseCompression/) , que se incluye implícitamente en ASP.net Core aplicaciones.
 
@@ -111,7 +112,7 @@ public class Startup
 
 Notas:
 
-* `app.UseResponseCompression`se debe llamar antes de cualquier middleware que comprime las respuestas. Para obtener más información, vea <xref:fundamentals/middleware/index#middleware-order>.
+* `app.UseResponseCompression` se debe llamar antes de cualquier middleware que comprime las respuestas. Para más información, consulte <xref:fundamentals/middleware/index#middleware-order>.
 * Use una herramienta como [Fiddler](https://www.telerik.com/fiddler), [Firebug](https://getfirebug.com/)o [Postman](https://www.getpostman.com/) para establecer el encabezado de la `Accept-Encoding` solicitud y estudiar los encabezados de respuesta, el tamaño y el cuerpo.
 
 Envíe una solicitud a la aplicación de ejemplo sin el `Accept-Encoding` encabezado y observe que la respuesta se ha descomprimido. Los `Content-Encoding` `Vary` encabezados y no están presentes en la respuesta.
@@ -298,7 +299,7 @@ Normalmente, cualquier respuesta no comprimida de forma nativa puede beneficiars
 
 Cuando un cliente puede procesar contenido comprimido, el cliente debe informar al servidor de sus funcionalidades enviando el `Accept-Encoding` encabezado con la solicitud. Cuando un servidor envía contenido comprimido, debe incluir información en el `Content-Encoding` encabezado sobre cómo se codifica la respuesta comprimida. En la tabla siguiente se muestran las designaciones de codificación de contenido que admite el middleware.
 
-| `Accept-Encoding`valores de encabezado | Middleware compatible | Descripción |
+| `Accept-Encoding` valores de encabezado | Middleware compatible | Descripción |
 | ------------------------------- | :------------------: | ----------- |
 | `br`                            | Sí (predeterminado)        | [Brotli formato de datos comprimidos](https://tools.ietf.org/html/rfc7932) |
 | `deflate`                       | No                   | [Desinflar formato de datos comprimidos](https://tools.ietf.org/html/rfc1951) |
@@ -332,7 +333,7 @@ Explore las características del middleware de compresión de respuesta con la [
 * Compresión de las respuestas de la aplicación mediante gzip y proveedores de compresión personalizados.
 * Cómo agregar un tipo MIME a la lista predeterminada de tipos MIME para la compresión.
 
-## <a name="package"></a>Package
+## <a name="package"></a>Paquete
 
 Para incluir el middleware en un proyecto, agregue una referencia al [metapaquete Microsoft. AspNetCore. app](xref:fundamentals/metapackage-app), que incluye el paquete [Microsoft. AspNetCore. ResponseCompression](https://www.nuget.org/packages/Microsoft.AspNetCore.ResponseCompression/) .
 
@@ -357,7 +358,7 @@ public class Startup
 
 Notas:
 
-* `app.UseResponseCompression`se debe llamar antes de cualquier middleware que comprime las respuestas. Para obtener más información, vea <xref:fundamentals/middleware/index#middleware-order>.
+* `app.UseResponseCompression` se debe llamar antes de cualquier middleware que comprime las respuestas. Para más información, consulte <xref:fundamentals/middleware/index#middleware-order>.
 * Use una herramienta como [Fiddler](https://www.telerik.com/fiddler), [Firebug](https://getfirebug.com/)o [Postman](https://www.getpostman.com/) para establecer el encabezado de la `Accept-Encoding` solicitud y estudiar los encabezados de respuesta, el tamaño y el cuerpo.
 
 Envíe una solicitud a la aplicación de ejemplo sin el `Accept-Encoding` encabezado y observe que la respuesta se ha descomprimido. Los `Content-Encoding` `Vary` encabezados y no están presentes en la respuesta.
@@ -543,7 +544,7 @@ Normalmente, cualquier respuesta no comprimida de forma nativa puede beneficiars
 
 Cuando un cliente puede procesar contenido comprimido, el cliente debe informar al servidor de sus funcionalidades enviando el `Accept-Encoding` encabezado con la solicitud. Cuando un servidor envía contenido comprimido, debe incluir información en el `Content-Encoding` encabezado sobre cómo se codifica la respuesta comprimida. En la tabla siguiente se muestran las designaciones de codificación de contenido que admite el middleware.
 
-| `Accept-Encoding`valores de encabezado | Middleware compatible | Descripción |
+| `Accept-Encoding` valores de encabezado | Middleware compatible | Descripción |
 | ------------------------------- | :------------------: | ----------- |
 | `br`                            | No                   | [Brotli formato de datos comprimidos](https://tools.ietf.org/html/rfc7932) |
 | `deflate`                       | No                   | [Desinflar formato de datos comprimidos](https://tools.ietf.org/html/rfc1951) |
@@ -577,7 +578,7 @@ Explore las características del middleware de compresión de respuesta con la [
 * Compresión de las respuestas de la aplicación mediante gzip y proveedores de compresión personalizados.
 * Cómo agregar un tipo MIME a la lista predeterminada de tipos MIME para la compresión.
 
-## <a name="package"></a>Package
+## <a name="package"></a>Paquete
 
 Para incluir el middleware en un proyecto, agregue una referencia al [metapaquete Microsoft. AspNetCore. app](xref:fundamentals/metapackage-app), que incluye el paquete [Microsoft. AspNetCore. ResponseCompression](https://www.nuget.org/packages/Microsoft.AspNetCore.ResponseCompression/) .
 
@@ -602,7 +603,7 @@ public class Startup
 
 Notas:
 
-* `app.UseResponseCompression`se debe llamar antes de cualquier middleware que comprime las respuestas. Para obtener más información, vea <xref:fundamentals/middleware/index#middleware-order>.
+* `app.UseResponseCompression` se debe llamar antes de cualquier middleware que comprime las respuestas. Para más información, consulte <xref:fundamentals/middleware/index#middleware-order>.
 * Use una herramienta como [Fiddler](https://www.telerik.com/fiddler), [Firebug](https://getfirebug.com/)o [Postman](https://www.getpostman.com/) para establecer el encabezado de la `Accept-Encoding` solicitud y estudiar los encabezados de respuesta, el tamaño y el cuerpo.
 
 Envíe una solicitud a la aplicación de ejemplo sin el `Accept-Encoding` encabezado y observe que la respuesta se ha descomprimido. Los `Content-Encoding` `Vary` encabezados y no están presentes en la respuesta.

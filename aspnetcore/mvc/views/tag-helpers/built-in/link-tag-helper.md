@@ -6,6 +6,7 @@ description: Descubra los atributos del asistente de etiquetas de vínculo de AS
 ms.custom: mvc
 ms.date: 09/24/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/tag-helpers/builtin-th/link-tag-helper
-ms.openlocfilehash: 7487bc64f8e20f85ef95e5389409c0194ec31337
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 09507294b90f08bbaf134f611aad0b91504ccffb
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88018564"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88635078"
 ---
 # <a name="link-tag-helper-in-aspnet-core"></a>Asistente de etiquetas de vínculo en ASP.NET Core
 
@@ -57,11 +58,11 @@ La dirección URL de una hoja de estilos CSS en la que se va a realizar la reser
 
 ### <a name="asp-fallback-test-class"></a>asp-fallback-test-class
 
-El nombre de clase definido en la hoja de estilos que se va a usar para la prueba de reserva. Para obtener más información, vea <xref:Microsoft.AspNetCore.Mvc.TagHelpers.LinkTagHelper.FallbackTestClass>.
+El nombre de clase definido en la hoja de estilos que se va a usar para la prueba de reserva. Para más información, consulte <xref:Microsoft.AspNetCore.Mvc.TagHelpers.LinkTagHelper.FallbackTestClass>.
 
 ### <a name="asp-fallback-test-property"></a>asp-fallback-test-property
 
-El nombre de la propiedad de CSS que se va a usar para la prueba de reserva. Para obtener más información, vea <xref:Microsoft.AspNetCore.Mvc.TagHelpers.LinkTagHelper.FallbackTestProperty>.
+El nombre de la propiedad de CSS que se va a usar para la prueba de reserva. Para más información, consulte <xref:Microsoft.AspNetCore.Mvc.TagHelpers.LinkTagHelper.FallbackTestProperty>.
 
 ### <a name="asp-fallback-test-value"></a>asp-fallback-test-value
 

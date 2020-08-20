@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/04/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/filters
-ms.openlocfilehash: 11d0c514dd15e787224510991ffb81680c9fc479
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 7134344abb5bc724aceb9a2adb117b3749435f55
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88019347"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88634857"
 ---
 # <a name="filters-in-aspnet-core"></a>Filtros en ASP.NET Core
 
@@ -408,7 +409,7 @@ Ejemplos de filtros de recursos:
 
 ## <a name="action-filters"></a>Filtros de acciones
 
-Los filtros de acción **no** se aplican a Razor las páginas. RazorPages admite <xref:Microsoft.AspNetCore.Mvc.Filters.IPageFilter> y <xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncPageFilter> . Para obtener más información, vea [Métodos de filtrado de Razor Pages](xref:razor-pages/filter).
+Los filtros de acción **no** se aplican a Razor las páginas. Razor Pages admite <xref:Microsoft.AspNetCore.Mvc.Filters.IPageFilter> y <xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncPageFilter> . Para obtener más información, vea [Métodos de filtrado de Razor Pages](xref:razor-pages/filter).
 
 Filtros de acciones:
 
@@ -564,7 +565,7 @@ El filtro se aplica en el código siguiente:
 Pruebe el código anterior mediante la ejecución del [ejemplo de descarga](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/3.1sample):
 
 * Invoque las herramientas de desarrollador de F12.
-* Navegue a `https://localhost:5001/Sample/HeaderWithFactory`.
+* Vaya a `https://localhost:5001/Sample/HeaderWithFactory`.
 
 Las herramientas de desarrollador F12 muestran los siguientes encabezados de respuesta agregados por el código de ejemplo:
 
@@ -737,10 +738,10 @@ El ejemplo siguiente que ilustra el orden en el que se llama a los métodos de f
 | Secuencia | Ámbito del filtro | Método de filtro |
 |:--------:|:------------:|:-------------:|
 | 1 | Global | `OnActionExecuting` |
-| 2 | Controlador | `OnActionExecuting` |
+| 2 | Controller | `OnActionExecuting` |
 | 3 | Método | `OnActionExecuting` |
 | 4 | Método | `OnActionExecuted` |
-| 5 | Controlador | `OnActionExecuted` |
+| 5 | Controller | `OnActionExecuted` |
 | 6 | Global | `OnActionExecuted` |
 
 Esta secuencia pone de manifiesto lo siguiente:
@@ -794,13 +795,13 @@ La propiedad `Order` se puede establecer con un parámetro de constructor:
 
 Considere los mismos tres filtros de acción que se muestran en el ejemplo anterior. Si la propiedad `Order` del controlador y de los filtros globales está establecida en 1 y 2 respectivamente, el orden de ejecución se invierte.
 
-| Secuencia | Ámbito del filtro | Propiedad de `Order` | Método de filtro |
+| Secuencia | Ámbito del filtro | Propiedad `Order` | Método de filtro |
 |:--------:|:------------:|:-----------------:|:-------------:|
 | 1 | Método | 0 | `OnActionExecuting` |
-| 2 | Controlador | 1  | `OnActionExecuting` |
+| 2 | Controller | 1  | `OnActionExecuting` |
 | 3 | Global | 2  | `OnActionExecuting` |
 | 4 | Global | 2  | `OnActionExecuted` |
-| 5 | Controlador | 1  | `OnActionExecuted` |
+| 5 | Controller | 1  | `OnActionExecuted` |
 | 6 | Método | 0  | `OnActionExecuted` |
 
 La propiedad `Order` invalida el ámbito al determinar el orden en el que se ejecutarán los filtros. Los filtros se clasifican por orden en primer lugar y, después, se usa el ámbito para priorizar en caso de igualdad. Todos los filtros integrados implementan `IOrderedFilter` y establecen el valor predeterminado de `Order` en 0. En los filtros integrados, el ámbito determina el orden, a menos que `Order` se establezca en un valor distinto de cero.
@@ -942,7 +943,7 @@ Ejemplos de filtros de recursos:
 ## <a name="action-filters"></a>Filtros de acciones
 
 > [!IMPORTANT]
-> Los filtros de acción **no** se aplican a Razor las páginas. RazorPages admite <xref:Microsoft.AspNetCore.Mvc.Filters.IPageFilter> y <xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncPageFilter> . Para obtener más información, vea [Métodos de filtrado de Razor Pages](xref:razor-pages/filter).
+> Los filtros de acción **no** se aplican a Razor las páginas. Razor Pages admite <xref:Microsoft.AspNetCore.Mvc.Filters.IPageFilter> y <xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncPageFilter> . Para obtener más información, vea [Métodos de filtrado de Razor Pages](xref:razor-pages/filter).
 
 Filtros de acciones:
 
@@ -1087,7 +1088,7 @@ Puede implementar `IFilterFactory` con las implementaciones de atributos persona
 El código anterior se puede probar mediante la ejecución del [ejemplo de descargar](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/sample):
 
 * Invoque las herramientas de desarrollador de F12.
-* Navegue a `https://localhost:5001/Sample/HeaderWithFactory`.
+* Vaya a `https://localhost:5001/Sample/HeaderWithFactory`.
 
 Las herramientas de desarrollador F12 muestran los siguientes encabezados de respuesta agregados por el código de ejemplo:
 

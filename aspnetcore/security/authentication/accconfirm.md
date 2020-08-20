@@ -5,6 +5,7 @@ description: Obtenga información sobre cómo crear una aplicación ASP.NET Core
 ms.author: riande
 ms.date: 03/11/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -15,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/accconfirm
-ms.openlocfilehash: 7016c2c1997d961f4b3d3cf513fc1769bd65247b
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 57607390e7d5e58df9f27437faecd57504ad64df
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88021619"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88635377"
 ---
 # <a name="account-confirmation-and-password-recovery-in-aspnet-core"></a>Confirmación de las cuentas y recuperación de contraseñas en ASP.NET Core
 
@@ -36,7 +37,7 @@ En este tutorial se muestra cómo crear una aplicación ASP.NET Core con confirm
 
 ::: moniker range=">= aspnetcore-3.0"
 
-## <a name="prerequisites"></a>Requisitos previos
+## <a name="prerequisites"></a>Prerrequisitos
 
 [SDK de .NET Core 3.0 o versiones posteriores](https://dotnet.microsoft.com/download/dotnet-core/3.0)
 
@@ -52,7 +53,7 @@ dotnet run
 
 Ejecute la aplicación, seleccione el vínculo **registrar** y registre un usuario. Una vez registrado, se le redirigirá a la `/Identity/Account/RegisterConfirmation` página a que contiene un vínculo para simular la confirmación de correo electrónico:
 
-* Seleccione el `Click here to confirm your account` vínculo.
+* Seleccione el vínculo `Click here to confirm your account`.
 * Seleccione el vínculo de **Inicio de sesión** e inicie sesión con las mismas credenciales.
 * Seleccione el `Hello YourEmail@provider.com!` vínculo, que le redirigirá a la `/Identity/Account/Manage/PersonalData` página.
 * Seleccione la pestaña **datos personales** de la izquierda y, a continuación, seleccione **eliminar**.
@@ -233,11 +234,11 @@ La habilitación de la confirmación de cuenta en un sitio con usuarios bloquea 
 
 ::: moniker range="< aspnetcore-3.0"
 
-## <a name="prerequisites"></a>Requisitos previos
+## <a name="prerequisites"></a>Prerrequisitos
 
 [SDK de .NET Core 2,2 o posterior](https://dotnet.microsoft.com/download/dotnet-core)
 
-## <a name="create-a-web--app-and-scaffold-no-locidentity"></a>Creación de una aplicación web y scaffoldingIdentity
+## <a name="create-a-web--app-and-scaffold-no-locidentity"></a>Creación de una aplicación web y scaffolding Identity
 
 Ejecute los siguientes comandos para crear una aplicación web con autenticación.
 
@@ -273,11 +274,11 @@ Se recomienda confirmar el correo electrónico de un nuevo registro de usuario. 
 
 Por lo general, querrá evitar que los nuevos usuarios publiquen datos en el sitio Web antes de que tengan un correo electrónico confirmado.
 
-Actualización `Startup.ConfigureServices` para requerir un correo electrónico confirmado:
+Actualización `Startup.ConfigureServices`  para requerir un correo electrónico confirmado:
 
 [!code-csharp[](accconfirm/sample/WebPWrecover22/Startup.cs?name=snippet1&highlight=8-11)]
 
-`config.SignIn.RequireConfirmedEmail = true;`impide que los usuarios registrados inicien sesión hasta que se confirme su correo electrónico.
+`config.SignIn.RequireConfirmedEmail = true;` impide que los usuarios registrados inicien sesión hasta que se confirme su correo electrónico.
 
 ### <a name="configure-email-provider"></a>Configurar proveedor de correo electrónico
 

@@ -5,6 +5,7 @@ description: Obtenga información sobre cómo los controladores de ASP.NET Core 
 ms.author: riande
 ms.date: 02/24/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -15,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/dependency-injection
-ms.openlocfilehash: aabb7f893fd9650e2e901dcfdfe845faba391435
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 74c43e4f01e5b0d6923bf06f8859341c49088ef6
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88019178"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88635247"
 ---
 # <a name="dependency-injection-into-controllers-in-aspnet-core"></a>Inserción de dependencias en controladores en ASP.NET Core
 

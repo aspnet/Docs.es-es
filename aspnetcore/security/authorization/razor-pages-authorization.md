@@ -1,5 +1,5 @@
 ---
-title: RazorConvenciones de autorización de páginas en ASP.NET Core
+title: Razor Convenciones de autorización de páginas en ASP.NET Core
 author: rick-anderson
 description: Obtenga información sobre cómo controlar el acceso a las páginas con convenciones que autorizan a los usuarios y permiten a los usuarios anónimos acceder a páginas o carpetas de páginas.
 monikerRange: '>= aspnetcore-2.1'
@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/12/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,14 +18,14 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authorization/razor-pages-authorization
-ms.openlocfilehash: 5e0c76ea6c6b4af8e24693b1bfe8ac28bf2ce3a9
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: b17717e7b3cbaa64d4ff00661f15439728f161d3
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88022282"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88634896"
 ---
-# <a name="no-locrazor-pages-authorization-conventions-in-aspnet-core"></a>RazorConvenciones de autorización de páginas en ASP.NET Core
+# <a name="no-locrazor-pages-authorization-conventions-in-aspnet-core"></a>Razor Convenciones de autorización de páginas en ASP.NET Core
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -32,7 +33,7 @@ Una manera de controlar el acceso en la Razor aplicación páginas es usar las c
 
 [Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/razor-pages-authorization/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
-La aplicación de ejemplo usa la [ cookie autenticación Identity sin ASP.net Core ](xref:security/authentication/cookie). Los conceptos y los ejemplos que se muestran en este tema se aplican igualmente a las aplicaciones que usan ASP.NET Core Identity . Para usar ASP.NET Core Identity , siga las instrucciones de <xref:security/authentication/identity> .
+La aplicación de ejemplo usa la [ cookie autenticación sin ASP.NET Core Identity ](xref:security/authentication/cookie). Los conceptos y los ejemplos que se muestran en este tema se aplican igualmente a las aplicaciones que usan ASP.NET Core Identity . Para usar ASP.NET Core Identity , siga las instrucciones de <xref:security/authentication/identity> .
 
 ## <a name="require-authorization-to-access-a-page"></a>Requerir autorización para tener acceso a una página
 
@@ -144,7 +145,7 @@ Una manera de controlar el acceso en la Razor aplicación páginas es usar las c
 
 [Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/razor-pages-authorization/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
-La aplicación de ejemplo usa la [ cookie autenticación Identity sin ASP.net Core ](xref:security/authentication/cookie). Los conceptos y los ejemplos que se muestran en este tema se aplican igualmente a las aplicaciones que usan ASP.NET Core Identity . Para usar ASP.NET Core Identity , siga las instrucciones de <xref:security/authentication/identity> .
+La aplicación de ejemplo usa la [ cookie autenticación sin ASP.NET Core Identity ](xref:security/authentication/cookie). Los conceptos y los ejemplos que se muestran en este tema se aplican igualmente a las aplicaciones que usan ASP.NET Core Identity . Para usar ASP.NET Core Identity , siga las instrucciones de <xref:security/authentication/identity> .
 
 ## <a name="require-authorization-to-access-a-page"></a>Requerir autorización para tener acceso a una página
 

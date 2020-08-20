@@ -7,6 +7,7 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 11/08/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,16 +18,16 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/identity/spa
-ms.openlocfilehash: 21bd1db322a984b5644b817e82a293b6c0b2d91e
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 913f8f1e43586ce71353c080e72be3b80f4c0573
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88019334"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88634272"
 ---
 # <a name="authentication-and-authorization-for-spas"></a>Autenticación y autorización para spa
 
-ASP.NET Core 3,0 o posterior ofrece autenticación en aplicaciones de una sola página (Spa) mediante la compatibilidad con la autorización de la API. ASP.NET Core Identity para la autenticación y el almacenamiento de usuarios se combinan con el [ Identity servidor](https://identityserver.io/) para implementar OpenID Connect.
+ASP.NET Core 3,0 o posterior ofrece autenticación en aplicaciones de una sola página (Spa) mediante la compatibilidad con la autorización de la API. ASP.NET Core Identitypara la autenticación y el almacenamiento de usuarios se combina con el [ Identity servidor](https://identityserver.io/) para implementar OpenID Connect.
 
 Se ha agregado un parámetro de autenticación a las plantillas de proyecto **angular** y **reAct** que es similar al parámetro de autenticación en las plantillas de proyecto **aplicación web (controlador de vista de modelos)** (MVC) y **aplicación web** ( Razor páginas). Los valores de parámetro permitidos son **None** y **individual**. La plantilla de proyecto **React.js y Redux** no admite el parámetro de autenticación en este momento.
 
@@ -54,12 +55,12 @@ En las secciones siguientes se describen las adiciones al proyecto cuando se inc
 
 ### <a name="startup-class"></a>Clase Startup
 
-Los ejemplos de código siguientes se basan en [Microsoft. AspNetCore. ApiAuthorization. Identity ](https://www.nuget.org/packages/Microsoft.AspNetCore.ApiAuthorization.IdentityServer)Paquete NuGet de servidor. En los ejemplos se configura la autenticación y autorización de API mediante los <xref:Microsoft.Extensions.DependencyInjection.IdentityServerBuilderConfigurationExtensions.AddApiAuthorization%2A> <xref:Microsoft.AspNetCore.ApiAuthorization.IdentityServer.ApiResourceCollection.AddIdentityServerJwt%2A> métodos de extensión y. Los proyectos que usan las plantillas de proyecto reAct o angular SPA con autenticación incluyen una referencia a este paquete.
+Los ejemplos de código siguientes se basan en [Microsoft. AspNetCore. ApiAuthorization. Identity ](https://www.nuget.org/packages/Microsoft.AspNetCore.ApiAuthorization.IdentityServer) Paquete NuGet de servidor. En los ejemplos se configura la autenticación y autorización de API mediante los <xref:Microsoft.Extensions.DependencyInjection.IdentityServerBuilderConfigurationExtensions.AddApiAuthorization%2A> <xref:Microsoft.AspNetCore.ApiAuthorization.IdentityServer.ApiResourceCollection.AddIdentityServerJwt%2A> métodos de extensión y. Los proyectos que usan las plantillas de proyecto reAct o angular SPA con autenticación incluyen una referencia a este paquete.
 
 La `Startup` clase tiene las siguientes adiciones:
 
 * Dentro del `Startup.ConfigureServices` método:
-  * Identitycon la interfaz de usuario predeterminada:
+  * Identity con la interfaz de usuario predeterminada:
 
     ```csharp
     services.AddDbContext<ApplicationDbContext>(options =>
@@ -285,7 +286,7 @@ Para implementar la aplicación en producción, se deben aprovisionar los siguie
 
 En esta sección se describe la implementación de la aplicación en Azure App Service mediante un certificado almacenado en el almacén de certificados. Para modificar la aplicación para cargar un certificado desde el almacén de certificados, se requiere un plan de servicio de nivel estándar o superior cuando se configura la aplicación en el Azure Portal en un paso posterior.
 
-En elappsettings.jsde la aplicación *en* el archivo, modifique la `IdentityServer` sección para incluir los detalles de la clave:
+En elappsettings.jsde la aplicación * en* el archivo, modifique la `IdentityServer` sección para incluir los detalles de la clave:
 
 ```json
 "IdentityServer": {

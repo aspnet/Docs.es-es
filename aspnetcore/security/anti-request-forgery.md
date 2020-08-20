@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/05/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/anti-request-forgery
-ms.openlocfilehash: cc6f7c7e6692224f537f5eeba50b214aa84029db
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: d0cce4f48151ab56774ab28eb6d89a687b3747af
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88018837"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88635130"
 ---
 # <a name="prevent-cross-site-request-forgery-xsrfcsrf-attacks-in-aspnet-core"></a>Prevención de ataques de falsificación de solicitud entre sitios (XSRF/CSRF) en ASP.NET Core
 
@@ -87,7 +88,7 @@ Cookiela autenticación basada en es una forma popular de autenticación. Los si
 
 Cuando un usuario se autentica con su nombre de usuario y contraseña, se le emite un token que contiene un vale de autenticación que se puede usar para la autenticación y la autorización. El token se almacena como un cookie que acompaña a cada solicitud que el cliente realiza. La generación y validación cookie se realiza mediante el Cookie middleware de autenticación. El [middleware](xref:fundamentals/middleware/index) serializa una entidad de seguridad de usuario en un cifrado cookie . En las solicitudes posteriores, el middleware valida cookie , vuelve a crear la entidad de seguridad y asigna la entidad de seguridad a la propiedad [User](/dotnet/api/microsoft.aspnetcore.http.httpcontext.user) de [HttpContext](/dotnet/api/microsoft.aspnetcore.http.httpcontext).
 
-### <a name="token-based-authentication"></a>Autenticación basada en token
+### <a name="token-based-authentication"></a>Autenticación basada en tokens
 
 Cuando un usuario se autentica, se le emite un token (no un token antifalsificación). El token contiene información de usuario en forma de [notificaciones](/dotnet/framework/security/claims-based-identity-model) o un token de referencia que apunta a la aplicación para que el estado de usuario se mantenga en la aplicación. Cuando un usuario intenta acceder a un recurso que requiere autenticación, el token se envía a la aplicación con un encabezado de autorización adicional en forma de token de portador. Esto hace que la aplicación no tenga estado. En cada solicitud subsiguiente, el token se pasa en la solicitud de validación del lado servidor. Este token no está *cifrado*; está *codificado*. En el servidor, el token se descodifica para tener acceso a su información. Para enviar el token en solicitudes posteriores, almacene el token en el almacenamiento local del explorador. No se preocupe de la vulnerabilidad de CSRF si el token se almacena en el almacenamiento local del explorador. CSRF es un problema cuando el token se almacena en cookie . Para obtener más información, consulte el ejemplo de código de GitHub problema [Spa agrega dos cookie s](https://github.com/dotnet/AspNetCore.Docs/issues/13369).
 
@@ -117,7 +118,7 @@ El middleware antifalsificación se agrega al contenedor de [inserción de depen
 
 ::: moniker range="< aspnetcore-3.0"
 
-El middleware antifalsificación se agrega al contenedor de [inserción de dependencias](xref:fundamentals/dependency-injection) cuando <xref:Microsoft.Extensions.DependencyInjection.MvcServiceCollectionExtensions.AddMvc*> se llama a en.`Startup.ConfigureServices`
+El middleware antifalsificación se agrega al contenedor de [inserción de dependencias](xref:fundamentals/dependency-injection) cuando <xref:Microsoft.Extensions.DependencyInjection.MvcServiceCollectionExtensions.AddMvc*> se llama a en. `Startup.ConfigureServices`
 
 ::: moniker-end
 
@@ -248,7 +249,7 @@ services.AddAntiforgery(options =>
 | ------ | ----------- |
 | [Cookie](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookie) | Determina la configuración utilizada para crear la antifalsificación cookie . |
 | [CookieDominio](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookiedomain) | Dominio de cookie . Tiene como valor predeterminado `null`. Esta propiedad está obsoleta y se quitará en una versión futura. La alternativa recomendada es Cookie . Dominio. |
-| [CookieNombre](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookiename) | Nombre del objeto cookie. Si no se establece, el sistema genera un nombre único que empieza con el [ Cookie prefijo predeterminado](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.defaultcookieprefix) (". AspNetCore. antifalsificación. "). Esta propiedad está obsoleta y se quitará en una versión futura. La alternativa recomendada es Cookie . Name. |
+| [CookieName](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookiename) | Nombre del objeto cookie. Si no se establece, el sistema genera un nombre único que empieza con el [ Cookie prefijo predeterminado](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.defaultcookieprefix) (". AspNetCore. antifalsificación. "). Esta propiedad está obsoleta y se quitará en una versión futura. La alternativa recomendada es Cookie . Name. |
 | [CookieCamino](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookiepath) | La ruta de acceso establecida en cookie . Esta propiedad está obsoleta y se quitará en una versión futura. La alternativa recomendada es Cookie . Camino. |
 | [FormFieldName](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.formfieldname) | Nombre del campo de formulario oculto utilizado por el sistema antifalsificación para representar los tokens antifalsificación en las vistas. |
 | [HeaderName](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.headername) | Nombre del encabezado que usa el sistema antifalsificación. Si es `null` , el sistema solo tiene en cuenta los datos de formulario. |
@@ -261,7 +262,7 @@ Para obtener más información, vea [ Cookie AuthenticationOptions](/dotnet/api/
 
 ## <a name="configure-antiforgery-features-with-iantiforgery"></a>Configuración de características antifalsificación con IAntiforgery
 
-[IAntiforgery](/dotnet/api/microsoft.aspnetcore.antiforgery.iantiforgery) proporciona la API para configurar las características antifalsificación. `IAntiforgery`se puede solicitar en el `Configure` método de la `Startup` clase. En el ejemplo siguiente se usa middleware desde la Página principal de la aplicación para generar un token antifalsificación y enviarlo en la respuesta como cookie (mediante la Convención de nomenclatura predeterminada de angular que se describe más adelante en este tema):
+[IAntiforgery](/dotnet/api/microsoft.aspnetcore.antiforgery.iantiforgery) proporciona la API para configurar las características antifalsificación. `IAntiforgery` se puede solicitar en el `Configure` método de la `Startup` clase. En el ejemplo siguiente se usa middleware desde la Página principal de la aplicación para generar un token antifalsificación y enviarlo en la respuesta como cookie (mediante la Convención de nomenclatura predeterminada de angular que se describe más adelante en este tema):
 
 ```csharp
 public void Configure(IApplicationBuilder app, IAntiforgery antiforgery)

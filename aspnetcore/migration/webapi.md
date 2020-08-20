@@ -6,6 +6,7 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 05/26/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: migration/webapi
-ms.openlocfilehash: 4888de6ad55037be540cb62b6e4f02878e2b57ab
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: e3e46f8050ba87c3108885341675c9d2a2cb7847
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88014820"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88635169"
 ---
 # <a name="migrate-from-aspnet-web-api-to-aspnet-core"></a>Migrar de ASP.NET Web API a ASP.NET Core
 
@@ -84,7 +85,7 @@ La clase `Startup`:
 * Reemplaza a *global. asax*.
 * Controla todas las tareas de inicio de la aplicación.
 
-Para obtener más información, vea <xref:fundamentals/startup>.
+Para más información, consulte <xref:fundamentals/startup>.
 
 ## <a name="migrate-models-and-controllers"></a>Migración de modelos y controladores
 
@@ -155,7 +156,7 @@ Ejecute el proyecto migrado y vaya a `/api/products` . Aparece una lista complet
 ::: moniker-end
 
 ::: moniker range="<= aspnetcore-2.2"
-## <a name="prerequisites"></a>Requisitos previos
+## <a name="prerequisites"></a>Prerrequisitos
 
 [!INCLUDE [prerequisites](../includes/net-core-prereqs-vs2019-2.2.md)]
 
@@ -197,7 +198,7 @@ La clase `Startup`:
 * Reemplaza a *global. asax*.
 * Controla todas las tareas de inicio de la aplicación.
 
-Para obtener más información, vea <xref:fundamentals/startup>.
+Para más información, consulte <xref:fundamentals/startup>.
 
 En ASP.NET Core MVC, el enrutamiento de atributos se incluye de forma predeterminada cuando <xref:Microsoft.AspNetCore.Builder.MvcApplicationBuilderExtensions.UseMvc*> se llama a en `Startup.Configure` . La siguiente `UseMvc` llamada reemplaza el archivo *App_Start/webapiconfig.CS* del proyecto *ProductsApp* :
 
@@ -205,7 +206,7 @@ En ASP.NET Core MVC, el enrutamiento de atributos se incluye de forma predetermi
 
 ## <a name="migrate-models-and-controllers"></a>Migración de modelos y controladores
 
-En el código siguiente se muestra la `ProductsController` actualización para ASP.net Core:[!code-csharp[](webapi/sample/2.x/ProductsApp/Controllers/ProductsController.cs)]
+En el código siguiente se muestra la `ProductsController` actualización para ASP.net Core: [!code-csharp[](webapi/sample/2.x/ProductsApp/Controllers/ProductsController.cs)]
 
 Actualice el `ProductsController` para ASP.net Core:
 
@@ -272,7 +273,7 @@ Las características de compatibilidad incluidas en `Microsoft.AspNetCore.Mvc.We
 * Extiende el enlace de modelos para que las acciones de controlador puedan tomar parámetros de tipo `HttpRequestMessage` .
 * Agrega formateadores de mensajes que permiten que las acciones devuelvan resultados de tipo `HttpResponseMessage` .
 * Agrega métodos de respuesta adicionales que pueden usar las acciones de Web API 2 para servir respuestas:
-  * `HttpResponseMessage`productores
+  * `HttpResponseMessage` productores
     * `CreateResponse<T>`
     * `CreateErrorResponse`
   * Métodos del resultado de la acción:

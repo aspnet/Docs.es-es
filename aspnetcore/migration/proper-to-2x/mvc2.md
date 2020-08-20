@@ -6,6 +6,7 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 10/24/2018
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: migration/mvc2
-ms.openlocfilehash: afbc5196eaaaa402ddbf50f6330a683ee88984eb
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: bd2c33d35a3433532b48f6615a81adac8d03b9ee
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88014872"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88634545"
 ---
 # <a name="migrate-from-aspnet-to-aspnet-core-20"></a>Migración de ASP.NET a ASP.NET Core 2.0
 
@@ -29,7 +30,7 @@ Por [Isaac Levin](https://isaaclevin.com)
 
 Este artículo sirve de guía de referencia para migrar aplicaciones de ASP.NET a ASP.NET Core 2.0.
 
-## <a name="prerequisites"></a>Requisitos previos
+## <a name="prerequisites"></a>Prerrequisitos
 
 Instale **una** de las siguientes opciones desde [descargas de .net: Windows](https://dotnet.microsoft.com/download):
 
