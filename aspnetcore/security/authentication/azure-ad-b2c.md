@@ -6,6 +6,7 @@ ms.author: casoper
 ms.custom: devx-track-csharp, mvc
 ms.date: 01/21/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/azure-ad-b2c
-ms.openlocfilehash: ccd3868c4b3294098e692f7a20e06d59ba482e7c
-ms.sourcegitcommit: ba4872dd5a93780fe6cfacb2711ec1e69e0df92c
+ms.openlocfilehash: a1bac04944d9671df3f804a9724c9f0fd6f1fb27
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88130527"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88633635"
 ---
 # <a name="cloud-authentication-with-azure-active-directory-b2c-in-aspnet-core"></a>Autenticación en la nube con Azure Active Directory B2C en ASP.NET Core
 
@@ -40,12 +41,12 @@ En este tutorial, aprenderá a:
 > * Usar Visual Studio para crear una aplicación Web de ASP.NET Core configurada para usar el inquilino de Azure AD B2C para la autenticación
 > * Configuración de directivas que controlan el comportamiento del inquilino de Azure AD B2C
 
-## <a name="prerequisites"></a>Requisitos previos
+## <a name="prerequisites"></a>Prerrequisitos
 
 Para este tutorial se requiere lo siguiente:
 
-* [Suscripción de Microsoft Azure](https://azure.microsoft.com/free/dotnet/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
-* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019)
+* [Microsoft Azure suscripción](https://azure.microsoft.com/free/dotnet/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
+* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019)
 
 ## <a name="create-the-azure-active-directory-b2c-tenant"></a>Crear el inquilino de Azure Active Directory B2C
 
@@ -57,13 +58,13 @@ En el inquilino de Azure AD B2C recién creado, registre la aplicación con [los
 
 Use los valores siguientes:
 
-| Parámetro                       | Value                     | Notas                                                                                                                                                                                              |
+| Configuración                       | Value                     | Notas                                                                                                                                                                                              |
 |-------------------------------|---------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Nombre**                      | *&lt;nombre de la aplicación&gt;*        | Escriba un **nombre** para la aplicación que describa la aplicación a los consumidores.                                                                                                                                 |
 | **Incluir aplicación web o API web** | Sí                       |                                                                                                                                                                                                    |
 | **Permitir flujo implícito**       | Sí                       |                                                                                                                                                                                                    |
 | **URL de respuesta**                 | `https://localhost:44300/signin-oidc` | Las direcciones URL de respuesta son puntos de conexión en los que Azure AD B2C devolverá los tokens que su aplicación solicite. Visual Studio proporciona la dirección URL de respuesta que se va a usar. Por ahora, escriba `https://localhost:44300/signin-oidc` para completar el formulario. |
-| **URI de id. de aplicación**                | Déjelo en blanco               | No es necesario para este tutorial.                                                                                                                                                                    |
+| **URI de id. de aplicación**                | Déjelo en blanco.               | No es necesario para este tutorial.                                                                                                                                                                    |
 | **Incluir cliente nativo**     | No                        |                                                                                                                                                                                                    |
 
 > [!WARNING]
@@ -91,7 +92,7 @@ En Visual Studio:
 
 5. Complete el formulario con los siguientes valores:
     
-    | Parámetro                       | Value                                                 |
+    | Configuración                       | Value                                                 |
     |-------------------------------|-------------------------------------------------------|
     | **Nombre de dominio**               | *&lt;el nombre de dominio del inquilino de B2C.&gt;*          |
     | **Identificador de la aplicación**            | *&lt;pegar el identificador de la aplicación del portapapeles&gt;* |
@@ -140,7 +141,7 @@ services.Configure<JwtBearerOptions>(
     });
 ```
 
-## <a name="run-the-app"></a>Ejecutar la aplicación
+## <a name="run-the-app"></a>Ejecución de la aplicación
 
 En Visual Studio, presione **F5** para compilar y ejecutar la aplicación. Una vez iniciada la aplicación Web, seleccione **Aceptar** para aceptar el uso de cookie s (si se le solicita) y, a continuación, seleccione **iniciar sesión**.
 
@@ -156,7 +157,7 @@ Después de iniciar sesión correctamente, el explorador se redirige a la aplica
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-En este tutorial ha aprendido a:
+En este tutorial, ha aprendido a:
 
 > [!div class="checklist"]
 > * Creación de un inquilino de Azure Active Directory B2C

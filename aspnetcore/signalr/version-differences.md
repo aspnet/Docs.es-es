@@ -1,11 +1,12 @@
 ---
-title: Diferencias entre SignalR y ASP.net CoreSignalR
+title: Diferencias entre SignalR y ASP.net Core SignalR
 author: bradygaster
-description: Diferencias entre SignalR y ASP.net CoreSignalR
+description: Diferencias entre SignalR y ASP.net Core SignalR
 monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
 ms.date: 11/21/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,14 +17,14 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/version-differences
-ms.openlocfilehash: f52bf6c82cd5125e0905d9bcbda5dd5499d6455e
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: a8336a6c13c502f5a0fad150785cd9d484064618
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88020046"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88633011"
 ---
-# <a name="differences-between-aspnet-no-locsignalr-and-aspnet-core-no-locsignalr"></a>Diferencias entre ASP.NET SignalR y ASP.net CoreSignalR
+# <a name="differences-between-aspnet-no-locsignalr-and-aspnet-core-no-locsignalr"></a>Diferencias entre ASP.NET SignalR y ASP.net Core SignalR
 
 ASP.NET Core SignalR no es compatible con clientes o servidores de ASP.net SignalR . En este artículo se detallan las características que se han quitado o cambiado en ASP.NET Core SignalR .
 
@@ -31,7 +32,7 @@ ASP.NET Core SignalR no es compatible con clientes o servidores de ASP.net Signa
 
 ::: moniker range=">= aspnetcore-3.0"
 
-|                      | ASP.NETSignalR | ASP.NET CoreSignalR |
+|                      | ASP.NET SignalR | ASP.NET Core SignalR |
 | -------------------- | --------------- | -------------------- |
 | **Paquete NuGet de servidor** | [Microsoft. AspNet.SignalR](https://www.nuget.org/packages/Microsoft.AspNet.SignalR/) | Ninguno. Se incluye en el marco de trabajo compartido [Microsoft. AspNetCore. app](xref:fundamentals/metapackage-app) . |
 | **Paquetes NuGet de cliente** | [Microsoft. AspNet. SignalR . Nº](https://www.nuget.org/packages/Microsoft.AspNet.SignalR.Client/)<br>[Microsoft. AspNet. SignalR . ASPX](https://www.nuget.org/packages/Microsoft.AspNet.SignalR.JS/) | [Microsoft. AspNetCore. SignalR . Nº](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR.Client/) |
@@ -44,7 +45,7 @@ ASP.NET Core SignalR no es compatible con clientes o servidores de ASP.net Signa
 
 ::: moniker range="<= aspnetcore-2.2"
 
-|                      | ASP.NETSignalR | ASP.NET CoreSignalR |
+|                      | ASP.NET SignalR | ASP.NET Core SignalR |
 | -------------------- | --------------- | -------------------- |
 | **Paquete NuGet de servidor** | [Microsoft. AspNet.SignalR](https://www.nuget.org/packages/Microsoft.AspNet.SignalR/) | [Microsoft. AspNetCore. app](https://www.nuget.org/packages/Microsoft.AspNetCore.App/) (.net Core)<br>[Microsoft. AspNetCore.SignalR](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR/) (.NET Framework) |
 | **Paquetes NuGet de cliente** | [Microsoft. AspNet. SignalR . Nº](https://www.nuget.org/packages/Microsoft.AspNet.SignalR.Client/)<br>[Microsoft. AspNet. SignalR . ASPX](https://www.nuget.org/packages/Microsoft.AspNet.SignalR.JS/) | [Microsoft. AspNetCore. SignalR . Nº](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR.Client/) |
@@ -149,7 +150,7 @@ En ASP.NET Core SignalR , se ha simplificado el modelo de conexión. Las conexio
 
 ASP.NET Core SignalR ahora admite el [streaming de datos](xref:signalr/streaming) desde el concentrador al cliente.
 
-### <a name="state"></a>State
+### <a name="state"></a>Estado
 
 Se ha quitado la capacidad de pasar el estado arbitrario entre los clientes y el concentrador (a menudo denominado `HubState` ), así como la compatibilidad con los mensajes de progreso. En este momento no hay ningún homólogo de servidores proxy de concentrador.
 
@@ -279,9 +280,9 @@ ASP.NET SignalR admite SQL Server y Redis. ASP.NET Core SignalR admite el Signal
 
 ### <a name="aspnet"></a>ASP.NET
 
-* [SignalRAmpliación con Azure Service Bus](/aspnet/signalr/overview/performance/scaleout-with-windows-azure-service-bus)
-* [SignalRAmpliación con Redis](/aspnet/signalr/overview/performance/scaleout-with-redis)
-* [SignalRAmpliación con SQL Server](/aspnet/signalr/overview/performance/scaleout-with-sql-server)
+* [SignalR Ampliación con Azure Service Bus](/aspnet/signalr/overview/performance/scaleout-with-windows-azure-service-bus)
+* [SignalR Ampliación con Redis](/aspnet/signalr/overview/performance/scaleout-with-redis)
+* [SignalR Ampliación con SQL Server](/aspnet/signalr/overview/performance/scaleout-with-sql-server)
 
 ### <a name="aspnet-core"></a>ASP.NET Core
 

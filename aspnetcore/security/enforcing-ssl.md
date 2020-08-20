@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/06/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/enforcing-ssl
-ms.openlocfilehash: 5dcdf50ff9f750e4966ed3bdf24a71b9f433240a
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 1cb2c2d18b717dc99c6ef4dac9954fef149c6deb
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88019006"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88631568"
 ---
 # <a name="enforce-https-in-aspnet-core"></a>Aplicación de HTTPS en ASP.NET Core
 
@@ -39,7 +40,7 @@ Ninguna API puede impedir que un cliente envíe datos confidenciales en la prime
 > [!WARNING]
 > ## <a name="api-projects"></a>Proyectos de API
 >
-> **No** use [RequireHttpsAttribute](/dotnet/api/microsoft.aspnetcore.mvc.requirehttpsattribute) en las API Web que reciben información confidencial. `RequireHttpsAttribute`utiliza códigos de Estado HTTP para redirigir exploradores de HTTP a HTTPS. Es posible que los clientes de API no conozcan o cumplan las redirecciones de HTTP a HTTPS. Estos clientes pueden enviar información a través de HTTP. Las API Web deben:
+> **No** use [RequireHttpsAttribute](/dotnet/api/microsoft.aspnetcore.mvc.requirehttpsattribute) en las API Web que reciben información confidencial. `RequireHttpsAttribute` utiliza códigos de Estado HTTP para redirigir exploradores de HTTP a HTTPS. Es posible que los clientes de API no conozcan o cumplan las redirecciones de HTTP a HTTPS. Estos clientes pueden enviar información a través de HTTP. Las API Web deben:
 >
 > * No escuche en HTTP.
 > * Cierre la conexión con el código de estado 400 (solicitud incorrecta) y no atienda la solicitud.
@@ -55,7 +56,7 @@ Ninguna API puede impedir que un cliente envíe datos confidenciales en la prime
 > [!WARNING]
 > ## <a name="api-projects"></a>Proyectos de API
 >
-> **No** use [RequireHttpsAttribute](/dotnet/api/microsoft.aspnetcore.mvc.requirehttpsattribute) en las API Web que reciben información confidencial. `RequireHttpsAttribute`utiliza códigos de Estado HTTP para redirigir exploradores de HTTP a HTTPS. Es posible que los clientes de API no conozcan o cumplan las redirecciones de HTTP a HTTPS. Estos clientes pueden enviar información a través de HTTP. Las API Web deben:
+> **No** use [RequireHttpsAttribute](/dotnet/api/microsoft.aspnetcore.mvc.requirehttpsattribute) en las API Web que reciben información confidencial. `RequireHttpsAttribute` utiliza códigos de Estado HTTP para redirigir exploradores de HTTP a HTTPS. Es posible que los clientes de API no conozcan o cumplan las redirecciones de HTTP a HTTPS. Estos clientes pueden enviar información a través de HTTP. Las API Web deben:
 >
 > * No escuche en HTTP.
 > * Cierre la conexión con el código de estado 400 (solicitud incorrecta) y no atienda la solicitud.
@@ -234,7 +235,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="https-redirection-middleware-alternative-approach"></a>Enfoque alternativo de middleware de redirección de HTTPS
 
-Una alternativa al uso del middleware de redirección de HTTPS ( `UseHttpsRedirection` ) es usar el middleware de reescritura de direcciones URL ( `AddRedirectToHttps` ). `AddRedirectToHttps`también puede establecer el código de estado y el puerto cuando se ejecuta la redirección. Para obtener más información, vea [middleware de reescritura de direcciones URL](xref:fundamentals/url-rewriting).
+Una alternativa al uso del middleware de redirección de HTTPS ( `UseHttpsRedirection` ) es usar el middleware de reescritura de direcciones URL ( `AddRedirectToHttps` ). `AddRedirectToHttps` también puede establecer el código de estado y el puerto cuando se ejecuta la redirección. Para obtener más información, vea [middleware de reescritura de direcciones URL](xref:fundamentals/url-rewriting).
 
 Al redirigir a HTTPS sin necesidad de reglas de redirección adicionales, se recomienda usar el middleware de redireccionamiento `UseHttpsRedirection` de HTTPS () que se describe en este tema.
 
@@ -267,7 +268,7 @@ ASP.NET Core 2,1 y posteriores implementa HSTS con el `UseHsts` método de exten
 
 ::: moniker-end
 
-`UseHsts`no se recomienda en el desarrollo porque los exploradores pueden almacenar en memoria caché los valores de HSTS. De forma predeterminada, `UseHsts` excluye la dirección de bucle invertido local.
+`UseHsts` no se recomienda en el desarrollo porque los exploradores pueden almacenar en memoria caché los valores de HSTS. De forma predeterminada, `UseHsts` excluye la dirección de bucle invertido local.
 
 En el caso de los entornos de producción que implementan HTTPS por primera vez, establezca [HstsOptions. MaxAge](xref:Microsoft.AspNetCore.HttpsPolicy.HstsOptions.MaxAge*) inicial en un valor pequeño utilizando uno de los <xref:System.TimeSpan> métodos. Establezca el valor de horas en no más de un día único en caso de que necesite revertir la infraestructura HTTPS a HTTP. Después de estar seguro de la sostenibilidad de la configuración de HTTPS, aumente el `max-age` valor de HSTS; un valor de uso común es de un año.
 
@@ -287,16 +288,16 @@ El código siguiente:
 ::: moniker-end
 
 
-* Establece el parámetro preload del `Strict-Transport-Security` encabezado. La precarga no forma parte de la [especificación RFC HSTS](https://tools.ietf.org/html/rfc6797), pero es compatible con los exploradores Web para precargar sitios de HSTS en la instalación nueva. Para obtener más información, vea [https://hstspreload.org/](https://hstspreload.org/).
+* Establece el parámetro preload del `Strict-Transport-Security` encabezado. La precarga no forma parte de la [especificación RFC HSTS](https://tools.ietf.org/html/rfc6797), pero es compatible con los exploradores Web para precargar sitios de HSTS en la instalación nueva. Para más información, consulte [https://hstspreload.org/](https://hstspreload.org/).
 * Habilita [includeSubDomain](https://tools.ietf.org/html/rfc6797#section-6.1.2), que aplica la Directiva HSTS para hospedar subdominios.
 * Establece explícitamente el `max-age` parámetro del `Strict-Transport-Security` encabezado en 60 días. Si no se establece, el valor predeterminado es 30 días. Para obtener más información, vea la [Directiva Max-Age](https://tools.ietf.org/html/rfc6797#section-6.1.1).
 * Agrega `example.com` a la lista de hosts que se van a excluir.
 
-`UseHsts`excluye los siguientes hosts de bucle invertido:
+`UseHsts` excluye los siguientes hosts de bucle invertido:
 
-* `localhost`: La dirección de bucle invertido IPv4.
-* `127.0.0.1`: La dirección de bucle invertido IPv4.
-* `[::1]`: Dirección de bucle invertido IPv6.
+* `localhost` : La dirección de bucle invertido IPv4.
+* `127.0.0.1` : La dirección de bucle invertido IPv4.
+* `[::1]` : Dirección de bucle invertido IPv6.
 
 ## <a name="opt-out-of-httpshsts-on-project-creation"></a>No participar en HTTPS/HSTS en la creación de proyectos
 
@@ -362,6 +363,14 @@ dotnet dev-certs https --help
 
 Consulte [este problema de GitHub](https://github.com/dotnet/AspNetCore.Docs/issues/6199).
 
+<a name="ssl-linux"></a>
+
+## <a name="trust-https-certificate-on-linux"></a>Confiar en el certificado HTTPS en Linux
+
+<!-- Instructions to be updated by engineering team after 5.0 RTM. -->
+
+Para obtener instrucciones sobre Linux, consulte la documentación de distribución.
+
 <a name="wsl"></a>
 
 ## <a name="trust-https-certificate-from-windows-subsystem-for-linux"></a>Confiar en el certificado HTTPS del subsistema de Windows para Linux
@@ -408,7 +417,7 @@ Los comandos anteriores solucionan la mayoría de los problemas de confianza del
 
 ### <a name="windows---certificate-not-trusted"></a>Windows-certificado no confiable
 
-* Compruebe los certificados en el almacén de certificados. Debe haber un `localhost` certificado con el `ASP.NET Core HTTPS development certificate` nombre descriptivo en `Current User > Personal > Certificates` y`Current User > Trusted root certification authorities > Certificates`
+* Compruebe los certificados en el almacén de certificados. Debe haber un `localhost` certificado con el `ASP.NET Core HTTPS development certificate` nombre descriptivo en `Current User > Personal > Certificates` y `Current User > Trusted root certification authorities > Certificates`
 * Quite todos los certificados encontrados de las entidades de certificación personales y de confianza. **No** Quite el certificado de host local IIS Express.
 * Ejecute los comandos siguientes:
 

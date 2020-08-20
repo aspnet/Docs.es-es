@@ -7,6 +7,7 @@ ms.custom: mvc
 ms.date: 03/19/2020
 monikerRange: '>= aspnetcore-3.0'
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/twitter-logins
-ms.openlocfilehash: 977ab550dab0e654352f20264e7b032e063690e4
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: da0c5579b0828aee7f1c78ec7f5731db50151e90
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88021827"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88634064"
 ---
 # <a name="twitter-external-sign-in-setup-with-aspnet-core"></a>Configuración de inicio de sesión externo de Twitter con ASP.NET Core
 

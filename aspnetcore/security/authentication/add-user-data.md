@@ -6,6 +6,7 @@ ms.author: riande
 ms.date: 03/26/2020
 ms.custom: mvc, seodec18
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/add-user-data
-ms.openlocfilehash: d65974e9ff8e2f5be52ab79b063ed9d2dca557ea
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: a71395e82ed15dae753888a438471495208a14da
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88020865"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88631854"
 ---
 # <a name="add-download-and-delete-custom-user-data-to-no-locidentity-in-an-aspnet-core-project"></a>Agregar, descargar y eliminar datos de usuario personalizados Identity en un proyecto de ASP.net Core
 
@@ -90,7 +91,7 @@ dotnet new webapp -o WebApp1
 * En **Explorador de soluciones**, haga clic con el botón derecho en el proyecto > **Agregar**  >  **nuevo elemento con scaffolding**.
 * En el panel izquierdo del cuadro de diálogo **Agregar scaffold** , seleccione **Identity**  >  **Agregar**.
 * En el cuadro de diálogo **agregar Identity ** , las siguientes opciones:
-  * Seleccione el archivo de diseño existente *~/Pages/Shared/_Layout. cshtml*
+  * Seleccione el archivo de diseño existente  *~/Pages/Shared/_Layout. cshtml*
   * Seleccione los siguientes archivos para invalidar:
     * **Cuenta/registro**
     * **Cuenta/administración/índice**
@@ -244,7 +245,7 @@ Pruebe la aplicación:
 > [!NOTE]
 > Esta sección no es una extensión del tutorial anterior. Para aplicar los pasos siguientes a la aplicación compilada con el tutorial, consulte [este problema de github](https://github.com/dotnet/AspNetCore.Docs/issues/18797).
 
-Se pueden agregar notificaciones adicionales a ASP.NET Core mediante Identity la `IUserClaimsPrincipalFactory<T>` interfaz. Esta clase se puede Agregar a la aplicación en el `Startup.ConfigureServices` método. Agregue la implementación personalizada de la clase como se indica a continuación:
+Se pueden agregar notificaciones adicionales a ASP.NET Core Identity mediante la `IUserClaimsPrincipalFactory<T>` interfaz. Esta clase se puede Agregar a la aplicación en el `Startup.ConfigureServices` método. Agregue la implementación personalizada de la clase como se indica a continuación:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)

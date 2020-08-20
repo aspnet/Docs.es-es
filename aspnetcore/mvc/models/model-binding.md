@@ -6,6 +6,7 @@ ms.assetid: 0be164aa-1d72-4192-bd6b-192c9c301164
 ms.author: riande
 ms.date: 12/18/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/models/model-binding
-ms.openlocfilehash: 6ec531a04a220f75f5793cb2c7b5232908dbd883
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: ec36ff6d646e0554550a4372389aed89aa267b1f
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88019162"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88633986"
 ---
 # <a name="model-binding-in-aspnet-core"></a>Enlace de modelos en ASP.NET Core
 
@@ -65,7 +66,7 @@ Después, el marco llama al método `GetById` y pasa 2 para el parámetro `id` y
 
 En el ejemplo anterior, los destinos de enlace de modelos son parámetros de método que son tipos simples. Los destinos también pueden ser las propiedades de un tipo complejo. Después de que cada propiedad se haya enlazado correctamente, se produce la [validación de modelos](xref:mvc/models/validation) para esa propiedad. El registro de qué datos se han enlazado al modelo y los errores de enlace o validación se almacenan en [ControllerBase.ModelState](xref:Microsoft.AspNetCore.Mvc.ControllerBase.ModelState) o [PageModel.ModelState](xref:Microsoft.AspNetCore.Mvc.ControllerBase.ModelState). Para averiguar si este proceso se ha realizado correctamente, la aplicación comprueba la marca [ModelState.IsValid](xref:Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary.IsValid).
 
-## <a name="targets"></a>Destinos
+## <a name="targets"></a>Targets
 
 El enlace de modelos intenta encontrar valores para los tipos de destinos siguientes:
 
@@ -108,11 +109,11 @@ Para cada parámetro o propiedad de destino, se examinan los orígenes en el ord
 
 Si el origen predeterminado no es correcto, use uno de los atributos siguientes para especificar el origen:
 
-* [`[FromQuery]`](xref:Microsoft.AspNetCore.Mvc.FromQueryAttribute): Obtiene los valores de la cadena de consulta. 
-* [`[FromRoute]`](xref:Microsoft.AspNetCore.Mvc.FromRouteAttribute): Obtiene los valores de los datos de ruta.
-* [`[FromForm]`](xref:Microsoft.AspNetCore.Mvc.FromFormAttribute): Obtiene los valores de los campos de formulario publicados.
-* [`[FromBody]`](xref:Microsoft.AspNetCore.Mvc.FromBodyAttribute): Obtiene valores del cuerpo de la solicitud.
-* [`[FromHeader]`](xref:Microsoft.AspNetCore.Mvc.FromHeaderAttribute): Obtiene valores de los encabezados HTTP.
+* [`[FromQuery]`](xref:Microsoft.AspNetCore.Mvc.FromQueryAttribute) : Obtiene los valores de la cadena de consulta. 
+* [`[FromRoute]`](xref:Microsoft.AspNetCore.Mvc.FromRouteAttribute) : Obtiene los valores de los datos de ruta.
+* [`[FromForm]`](xref:Microsoft.AspNetCore.Mvc.FromFormAttribute) : Obtiene los valores de los campos de formulario publicados.
+* [`[FromBody]`](xref:Microsoft.AspNetCore.Mvc.FromBodyAttribute) : Obtiene valores del cuerpo de la solicitud.
+* [`[FromHeader]`](xref:Microsoft.AspNetCore.Mvc.FromHeaderAttribute) : Obtiene valores de los encabezados HTTP.
 
 Estos atributos:
 
@@ -209,14 +210,14 @@ Los tipos simples a los que el enlazador de modelos puede convertir las cadenas 
 * [DateTimeOffset](xref:System.ComponentModel.DateTimeOffsetConverter)
 * [Decimal](xref:System.ComponentModel.DecimalConverter)
 * [Double](xref:System.ComponentModel.DoubleConverter)
-* [Enumeración](xref:System.ComponentModel.EnumConverter)
+* [Enum](xref:System.ComponentModel.EnumConverter)
 * [Volumen](xref:System.ComponentModel.GuidConverter)
 * [Int16](xref:System.ComponentModel.Int16Converter), [Int32](xref:System.ComponentModel.Int32Converter), [Int64](xref:System.ComponentModel.Int64Converter)
 * [Single](xref:System.ComponentModel.SingleConverter)
 * [TimeSpan](xref:System.ComponentModel.TimeSpanConverter)
 * [UInt16](xref:System.ComponentModel.UInt16Converter), [UInt32](xref:System.ComponentModel.UInt32Converter), [UInt64](xref:System.ComponentModel.UInt64Converter)
 * [Uri](xref:System.UriTypeConverter)
-* [Version](xref:System.ComponentModel.VersionConverter)
+* [Versión](xref:System.ComponentModel.VersionConverter)
 
 ## <a name="complex-types"></a>Tipos complejos
 
@@ -273,30 +274,16 @@ El enlace de modelos se inicia mediante el examen de los orígenes para la clave
 
 Existen varios atributos integrados para controlar el enlace de modelos de tipos complejos:
 
+* `[Bind]`
 * `[BindRequired]`
 * `[BindNever]`
-* `[Bind]`
 
-> [!NOTE]
-> Estos atributos afectan al enlace de modelos cuando el origen de los valores son datos de formulario publicados. No afectan a los formateadores de entrada, que procesan los cuerpos de la solicitud JSON y XML publicados. Los formateadores de entrada se explican [más adelante en este artículo](#input-formatters).
->
-> Vea también la explicación del atributo `[Required]` en [Validación de modelos](xref:mvc/models/validation#required-attribute).
-
-### <a name="bindrequired-attribute"></a>Atributo [BindRequired]
-
-Solo se puede aplicar a propiedades del modelo, no a parámetros de método. Hace que el enlace de modelos agregue un error de estado de modelo si no se puede realizar el enlace para la propiedad de un modelo. Este es un ejemplo:
-
-[!code-csharp[](model-binding/samples/3.x/ModelBindingSample/Models/InstructorWithCollection.cs?name=snippet_BindRequired&highlight=8-9)]
-
-### <a name="bindnever-attribute"></a>Atributo [BindNever]
-
-Solo se puede aplicar a propiedades del modelo, no a parámetros de método. Impide que el enlace de modelos establezca la propiedad de un modelo. Este es un ejemplo:
-
-[!code-csharp[](model-binding/samples/3.x/ModelBindingSample/Models/InstructorWithDictionary.cs?name=snippet_BindNever&highlight=3-4)]
+> [!WARNING]
+> Estos atributos afectan al enlace de modelos cuando el origen de los valores son datos de formulario publicados. ***No*** afectan a los formateadores de entrada, que procesan los cuerpos de solicitud JSON y XML publicados. Los formateadores de entrada se explican [más adelante en este artículo](#input-formatters).
 
 ### <a name="bind-attribute"></a>Atributo [Bind]
 
-Se puede aplicar a una clase o un parámetro de método. Especifica qué propiedades de un modelo se deben incluir en el enlace de modelos.
+Se puede aplicar a una clase o un parámetro de método. Especifica qué propiedades de un modelo se deben incluir en el enlace de modelos. `[Bind]`***no*** afecta a los formateadores de entrada.
 
 En el ejemplo siguiente, solo se enlazan las propiedades especificadas del modelo `Instructor` cuando se llama a cualquier método de acción o controlador:
 
@@ -313,6 +300,20 @@ public IActionResult OnPost([Bind("LastName,FirstMidName,HireDate")] Instructor 
 ```
 
 El atributo `[Bind]` se puede usar para protegerse de la publicación excesiva en escenarios de *creación*. No funciona bien en escenarios de edición porque las propiedades excluidas se establecen en NULL o en un valor predeterminado en lugar de mantenerse sin cambios. Para defenderse de la publicación excesiva, se recomiendan modelos de vista en lugar del atributo `[Bind]`. Para más información, vea [Nota de seguridad sobre la publicación excesiva](xref:data/ef-mvc/crud#security-note-about-overposting).
+
+### <a name="bindrequired-attribute"></a>Atributo [BindRequired]
+
+Solo se puede aplicar a propiedades del modelo, no a parámetros de método. Hace que el enlace de modelos agregue un error de estado de modelo si no se puede realizar el enlace para la propiedad de un modelo. Veamos un ejemplo:
+
+[!code-csharp[](model-binding/samples/3.x/ModelBindingSample/Models/InstructorWithCollection.cs?name=snippet_BindRequired&highlight=8-9)]
+
+Vea también la explicación del atributo `[Required]` en [Validación de modelos](xref:mvc/models/validation#required-attribute).
+
+### <a name="bindnever-attribute"></a>Atributo [BindNever]
+
+Solo se puede aplicar a propiedades del modelo, no a parámetros de método. Impide que el enlace de modelos establezca la propiedad de un modelo. Veamos un ejemplo:
+
+[!code-csharp[](model-binding/samples/3.x/ModelBindingSample/Models/InstructorWithDictionary.cs?name=snippet_BindNever&highlight=3-4)]
 
 ## <a name="collections"></a>Colecciones
 
@@ -490,7 +491,7 @@ Puede ampliar el enlace de modelos si escribe un enlazador de modelos personaliz
 
 ## <a name="manual-model-binding"></a>Enlace de modelos manual 
 
-El enlace de modelos se puede invocar de forma manual mediante el método <xref:Microsoft.AspNetCore.Mvc.ControllerBase.TryUpdateModelAsync*>. El método se define en las clases `ControllerBase` y `PageModel`. Las sobrecargas de método permiten especificar el prefijo y el proveedor de valores que se van a usar. El método devuelve `false` si se produce un error en el enlace de modelos. Este es un ejemplo:
+El enlace de modelos se puede invocar de forma manual mediante el método <xref:Microsoft.AspNetCore.Mvc.ControllerBase.TryUpdateModelAsync*>. El método se define en las clases `ControllerBase` y `PageModel`. Las sobrecargas de método permiten especificar el prefijo y el proveedor de valores que se van a usar. El método devuelve `false` si se produce un error en el enlace de modelos. Veamos un ejemplo:
 
 [!code-csharp[](model-binding/samples/3.x/ModelBindingSample/Pages/InstructorsWithCollection/Create.cshtml.cs?name=snippet_TryUpdate&highlight=1-4)]
 
@@ -551,7 +552,7 @@ Después, el marco llama al método `GetById` y pasa 2 para el parámetro `id` y
 
 En el ejemplo anterior, los destinos de enlace de modelos son parámetros de método que son tipos simples. Los destinos también pueden ser las propiedades de un tipo complejo. Después de que cada propiedad se haya enlazado correctamente, se produce la [validación de modelos](xref:mvc/models/validation) para esa propiedad. El registro de qué datos se han enlazado al modelo y los errores de enlace o validación se almacenan en [ControllerBase.ModelState](xref:Microsoft.AspNetCore.Mvc.ControllerBase.ModelState) o [PageModel.ModelState](xref:Microsoft.AspNetCore.Mvc.ControllerBase.ModelState). Para averiguar si este proceso se ha realizado correctamente, la aplicación comprueba la marca [ModelState.IsValid](xref:Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary.IsValid).
 
-## <a name="targets"></a>Destinos
+## <a name="targets"></a>Targets
 
 El enlace de modelos intenta encontrar valores para los tipos de destinos siguientes:
 
@@ -594,11 +595,11 @@ Para cada parámetro o propiedad de destino, se examinan los orígenes en el ord
 
 Si el origen predeterminado no es correcto, use uno de los atributos siguientes para especificar el origen:
 
-* [`[FromQuery]`](xref:Microsoft.AspNetCore.Mvc.FromQueryAttribute): Obtiene los valores de la cadena de consulta. 
-* [`[FromRoute]`](xref:Microsoft.AspNetCore.Mvc.FromRouteAttribute): Obtiene los valores de los datos de ruta.
-* [`[FromForm]`](xref:Microsoft.AspNetCore.Mvc.FromFormAttribute): Obtiene los valores de los campos de formulario publicados.
-* [`[FromBody]`](xref:Microsoft.AspNetCore.Mvc.FromBodyAttribute): Obtiene valores del cuerpo de la solicitud.
-* [`[FromHeader]`](xref:Microsoft.AspNetCore.Mvc.FromHeaderAttribute): Obtiene valores de los encabezados HTTP.
+* [`[FromQuery]`](xref:Microsoft.AspNetCore.Mvc.FromQueryAttribute) : Obtiene los valores de la cadena de consulta. 
+* [`[FromRoute]`](xref:Microsoft.AspNetCore.Mvc.FromRouteAttribute) : Obtiene los valores de los datos de ruta.
+* [`[FromForm]`](xref:Microsoft.AspNetCore.Mvc.FromFormAttribute) : Obtiene los valores de los campos de formulario publicados.
+* [`[FromBody]`](xref:Microsoft.AspNetCore.Mvc.FromBodyAttribute) : Obtiene valores del cuerpo de la solicitud.
+* [`[FromHeader]`](xref:Microsoft.AspNetCore.Mvc.FromHeaderAttribute) : Obtiene valores de los encabezados HTTP.
 
 Estos atributos:
 
@@ -695,14 +696,14 @@ Los tipos simples a los que el enlazador de modelos puede convertir las cadenas 
 * [DateTimeOffset](xref:System.ComponentModel.DateTimeOffsetConverter)
 * [Decimal](xref:System.ComponentModel.DecimalConverter)
 * [Double](xref:System.ComponentModel.DoubleConverter)
-* [Enumeración](xref:System.ComponentModel.EnumConverter)
+* [Enum](xref:System.ComponentModel.EnumConverter)
 * [Volumen](xref:System.ComponentModel.GuidConverter)
 * [Int16](xref:System.ComponentModel.Int16Converter), [Int32](xref:System.ComponentModel.Int32Converter), [Int64](xref:System.ComponentModel.Int64Converter)
 * [Single](xref:System.ComponentModel.SingleConverter)
 * [TimeSpan](xref:System.ComponentModel.TimeSpanConverter)
 * [UInt16](xref:System.ComponentModel.UInt16Converter), [UInt32](xref:System.ComponentModel.UInt32Converter), [UInt64](xref:System.ComponentModel.UInt64Converter)
 * [Uri](xref:System.UriTypeConverter)
-* [Version](xref:System.ComponentModel.VersionConverter)
+* [Versión](xref:System.ComponentModel.VersionConverter)
 
 ## <a name="complex-types"></a>Tipos complejos
 
@@ -770,13 +771,13 @@ Existen varios atributos integrados para controlar el enlace de modelos de tipos
 
 ### <a name="bindrequired-attribute"></a>Atributo [BindRequired]
 
-Solo se puede aplicar a propiedades del modelo, no a parámetros de método. Hace que el enlace de modelos agregue un error de estado de modelo si no se puede realizar el enlace para la propiedad de un modelo. Este es un ejemplo:
+Solo se puede aplicar a propiedades del modelo, no a parámetros de método. Hace que el enlace de modelos agregue un error de estado de modelo si no se puede realizar el enlace para la propiedad de un modelo. Veamos un ejemplo:
 
 [!code-csharp[](model-binding/samples/2.x/ModelBindingSample/Models/InstructorWithCollection.cs?name=snippet_BindRequired&highlight=8-9)]
 
 ### <a name="bindnever-attribute"></a>Atributo [BindNever]
 
-Solo se puede aplicar a propiedades del modelo, no a parámetros de método. Impide que el enlace de modelos establezca la propiedad de un modelo. Este es un ejemplo:
+Solo se puede aplicar a propiedades del modelo, no a parámetros de método. Impide que el enlace de modelos establezca la propiedad de un modelo. Veamos un ejemplo:
 
 [!code-csharp[](model-binding/samples/2.x/ModelBindingSample/Models/InstructorWithDictionary.cs?name=snippet_BindNever&highlight=3-4)]
 
@@ -958,7 +959,7 @@ Puede ampliar el enlace de modelos si escribe un enlazador de modelos personaliz
 
 ## <a name="manual-model-binding"></a>Enlace de modelos manual
 
-El enlace de modelos se puede invocar de forma manual mediante el método <xref:Microsoft.AspNetCore.Mvc.ControllerBase.TryUpdateModelAsync*>. El método se define en las clases `ControllerBase` y `PageModel`. Las sobrecargas de método permiten especificar el prefijo y el proveedor de valores que se van a usar. El método devuelve `false` si se produce un error en el enlace de modelos. Este es un ejemplo:
+El enlace de modelos se puede invocar de forma manual mediante el método <xref:Microsoft.AspNetCore.Mvc.ControllerBase.TryUpdateModelAsync*>. El método se define en las clases `ControllerBase` y `PageModel`. Las sobrecargas de método permiten especificar el prefijo y el proveedor de valores que se van a usar. El método devuelve `false` si se produce un error en el enlace de modelos. Veamos un ejemplo:
 
 [!code-csharp[](model-binding/samples/2.x/ModelBindingSample/Pages/InstructorsWithCollection/Create.cshtml.cs?name=snippet_TryUpdate&highlight=1-4)]
 

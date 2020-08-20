@@ -6,6 +6,7 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 03/26/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: migration/claimsprincipal-current
-ms.openlocfilehash: faa3db1a4b9cb7ff3fb54ec8a7caf21e8a9bfb7b
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 426fd90374a460cb283d0d3ba921e1312fb17940
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88015132"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88634077"
 ---
 # <a name="migrate-from-claimsprincipalcurrent"></a>Migrar desde ClaimsPrincipal. Current
 
@@ -38,7 +39,7 @@ Hay varias opciones para recuperar el usuario autenticado actual `ClaimsPrincipa
 * **ControllerBase. usuario**. Los controladores MVC pueden tener acceso al usuario autenticado actual con su propiedad [User](/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.user) .
 * **HttpContext. User**. Los componentes con acceso al actual `HttpContext` (por ejemplo, middleware) pueden obtener el del usuario actual `ClaimsPrincipal` de [HttpContext. User](/dotnet/api/microsoft.aspnetcore.http.httpcontext.user).
 * **Pasado del llamador**. A menudo se llama a las bibliotecas que no tienen acceso al actual `HttpContext` desde los controladores o los componentes de middleware, y puede tener la identidad del usuario actual pasada como argumento.
-* **IHttpContextAccessor**. El proyecto que se va a migrar a ASP.NET Core puede ser demasiado grande para pasar fácilmente la identidad del usuario actual a todas las ubicaciones necesarias. En tales casos, [IHttpContextAccessor](/dotnet/api/microsoft.aspnetcore.http.ihttpcontextaccessor) se puede usar como solución alternativa. `IHttpContextAccessor`puede tener acceso al actual `HttpContext` (si existe). Si se usa DI, vea <xref:fundamentals/httpcontext> . Una solución a corto plazo para obtener la identidad del usuario actual en el código que todavía no se ha actualizado para funcionar con la arquitectura basada en DI de ASP.NET Core sería:
+* **IHttpContextAccessor**. El proyecto que se va a migrar a ASP.NET Core puede ser demasiado grande para pasar fácilmente la identidad del usuario actual a todas las ubicaciones necesarias. En tales casos, [IHttpContextAccessor](/dotnet/api/microsoft.aspnetcore.http.ihttpcontextaccessor) se puede usar como solución alternativa. `IHttpContextAccessor` puede tener acceso al actual `HttpContext` (si existe). Si se usa DI, vea <xref:fundamentals/httpcontext> . Una solución a corto plazo para obtener la identidad del usuario actual en el código que todavía no se ha actualizado para funcionar con la arquitectura basada en DI de ASP.NET Core sería:
 
   * Haga que `IHttpContextAccessor` esté disponible en el contenedor de di llamando a [AddHttpContextAccessor](https://github.com/aspnet/Hosting/issues/793) en `Startup.ConfigureServices` .
   * Obtiene una instancia de `IHttpContextAccessor` durante el inicio y la almacena en una variable estática. La instancia de se pone a disposición del código que antes recuperaba el usuario actual de una propiedad estática.

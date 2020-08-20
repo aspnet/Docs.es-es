@@ -7,6 +7,7 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 05/20/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/http-repl
-ms.openlocfilehash: 0fb19aa19703e68812b83f0631f029dd66a3d64e
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: e6263f19cdb7f9957fa8360f9e782e622589ea18
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88021333"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88633323"
 ---
 # <a name="test-web-apis-with-the-http-repl"></a>Prueba de las API web HTTP REPL
 
@@ -365,7 +366,7 @@ pref set editor.command.default "C:\Program Files\Microsoft VS Code\Code.exe"
 
 ---
 
-Para iniciar el editor de texto predeterminado con argumentos específicos de la CLI, establezca la clave `editor.command.default.arguments`. Por ejemplo, supongamos que Visual Studio Code es el editor de texto predeterminado y que siempre quiere que HTTP REPL abra Visual Studio Code en una nueva sesión con las extensiones deshabilitadas. Ejecute el comando siguiente:
+Para iniciar el editor de texto predeterminado con argumentos específicos de la CLI, establezca la clave `editor.command.default.arguments`. Por ejemplo, supongamos que Visual Studio Code es el editor de texto predeterminado y que siempre quiere que HTTP REPL abra Visual Studio Code en una nueva sesión con las extensiones deshabilitadas. Ejecute el siguiente comando:
 
 ```console
 pref set editor.command.default.arguments "--disable-extensions --new-window"
@@ -998,7 +999,7 @@ Si ejecuta con frecuencia el mismo conjunto de comandos de HTTP REPL, considere 
     https://localhost:5001/~ run C:\http-repl-scripts\people-script.txt
     ```
 
-    Aparece el siguiente resultado:
+    Se mostrará la siguiente salida:
 
     ```console
     https://localhost:5001/~ set base https://localhost:5001

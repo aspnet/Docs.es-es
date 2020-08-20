@@ -1,5 +1,5 @@
 ---
-title: Usar streaming en ASP.NET CoreSignalR
+title: Usar streaming en ASP.NET Core SignalR
 author: bradygaster
 description: Obtenga información acerca de cómo transmitir datos entre el cliente y el servidor.
 monikerRange: '>= aspnetcore-2.1'
@@ -7,6 +7,7 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 11/12/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,14 +18,14 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/streaming
-ms.openlocfilehash: e0eabe711fd69e42bd9bfa5e03a92e1df780e4db
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 29748ebe24fea03415b5a01b21300433e3fbc0f0
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88022516"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88634220"
 ---
-# <a name="use-streaming-in-aspnet-core-no-locsignalr"></a>Usar streaming en ASP.NET CoreSignalR
+# <a name="use-streaming-in-aspnet-core-no-locsignalr"></a>Usar streaming en ASP.NET Core SignalR
 
 Por [Brennan Conroy](https://github.com/BrennanConroy)
 
@@ -269,7 +270,7 @@ Los clientes de JavaScript llaman a los métodos de streaming de servidor a clie
 * Nombre del método de concentrador. En el ejemplo siguiente, el nombre del método del concentrador es `Counter` .
 * Argumentos definidos en el método de concentrador. En el ejemplo siguiente, los argumentos son un recuento del número de elementos de secuencia que se van a recibir y el retraso entre los elementos de la secuencia.
 
-`connection.stream`Devuelve un `IStreamResult` , que contiene un `subscribe` método. Pase `IStreamSubscriber` a `subscribe` y establezca las `next` `error` `complete` devoluciones de llamada, y para recibir notificaciones de la `stream` invocación.
+`connection.stream` Devuelve un `IStreamResult` , que contiene un `subscribe` método. Pase `IStreamSubscriber` a `subscribe` y establezca las `next` `error` `complete` devoluciones de llamada, y para recibir notificaciones de la `stream` invocación.
 
 ::: moniker range=">= aspnetcore-2.2"
 
@@ -303,7 +304,7 @@ Para finalizar el flujo, llame a `subject.complete()` .
 
 ### <a name="server-to-client-streaming"></a>Streaming de servidor a cliente
 
-El SignalR cliente de Java usa el `stream` método para invocar métodos de streaming. `stream`acepta tres o más argumentos:
+El SignalR cliente de Java usa el `stream` método para invocar métodos de streaming. `stream` acepta tres o más argumentos:
 
 * Tipo esperado de los elementos de la secuencia.
 * Nombre del método de concentrador.

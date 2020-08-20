@@ -5,6 +5,7 @@ description: Obtenga información sobre la Razor Sintaxis de marcado para insert
 ms.author: riande
 ms.date: 02/12/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -15,18 +16,18 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/razor
-ms.openlocfilehash: 4b418c53535965eae6b41f3297b0c6336fb993d5
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: b62fcb685b1c6d0c504c685c600d0316b32d7f57
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88020592"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88632504"
 ---
-# <a name="no-locrazor-syntax-reference-for-aspnet-core"></a>Razorreferencia de sintaxis para ASP.NET Core
+# <a name="no-locrazor-syntax-reference-for-aspnet-core"></a>Razor referencia de sintaxis para ASP.NET Core
 
 Por [Rick Anderson](https://twitter.com/RickAndMSFT), [Taylor Mullen](https://twitter.com/ntaylormullen)y [dan Vicarel](https://github.com/Rabadash8820)
 
-Razores una sintaxis de marcado para insertar código basado en servidor en páginas Web. La Razor Sintaxis consta de Razor marcado, C# y HTML. Los archivos que contienen Razor generalmente tienen una extensión de archivo *. cshtml* . Razortambién se encuentra en archivos de [ Razor componentes](xref:blazor/components/index) (*. Razor*).
+Razor es una sintaxis de marcado para insertar código basado en servidor en páginas Web. La Razor Sintaxis consta de Razor marcado, C# y HTML. Los archivos que contienen Razor generalmente tienen una extensión de archivo *. cshtml* . Razortambién se encuentra en archivos de [ Razor componentes](xref:blazor/components/index) (*. Razor*).
 
 ## <a name="rendering-html"></a>Representación de HTML
 
@@ -34,7 +35,7 @@ El Razor idioma predeterminado es HTML. La representación de HTML a partir del 
 
 ## <a name="no-locrazor-syntax"></a>Sintaxis de Razor
 
-Razoradmite C# y usa el `@` símbolo para pasar de HTML a C#. Razorevalúa las expresiones de C# y las representa en la salida HTML.
+Razor admite C# y usa el `@` símbolo para pasar de HTML a C#. Razor evalúa las expresiones de C# y las representa en la salida HTML.
 
 Cuando un `@` símbolo va seguido de una [ Razor palabra clave reservada](#razor-reserved-keywords), realiza la transición a un Razor marcado específico. en caso contrario, realiza la transición a C# simple.
 
@@ -157,9 +158,9 @@ El código representa el siguiente HTML:
 <span>Hello World</span>
 ```
 
-## <a name="no-locrazor-code-blocks"></a>Razorbloques de código
+## <a name="no-locrazor-code-blocks"></a>Razor bloques de código
 
-Razorlos bloques de código comienzan con `@` y se incluyen en `{}` . A diferencia de las expresiones, el código de C# dentro de los bloques de código no se representa. Las expresiones y los bloques de código de una vista comparten el mismo ámbito y se definen en orden:
+Razor los bloques de código comienzan con `@` y se incluyen en `{}` . A diferencia de las expresiones, el código de C# dentro de los bloques de código no se representa. Las expresiones y los bloques de código de una vista comparten el mismo ámbito y se definen en orden:
 
 ```cshtml
 @{
@@ -257,7 +258,7 @@ Sin `@:` en el código, Razor se genera un error de tiempo de ejecución.
 
 Las estructuras de control son una extensión de los bloques de código. Todos los aspectos de los bloques de código (transición a marcado, C# en línea) son válidos también en las siguientes estructuras:
 
-### <a name="conditionals-if-else-if-else-and-switch"></a>Condicionales`@if, else if, else, and @switch`
+### <a name="conditionals-if-else-if-else-and-switch"></a>Condicionales `@if, else if, else, and @switch`
 
 `@if` controla cuándo se ejecuta el código:
 
@@ -302,7 +303,7 @@ En el siguiente marcado se muestra cómo usar una instrucción switch:
 }
 ```
 
-### <a name="looping-for-foreach-while-and-do-while"></a>Bucle`@for, @foreach, @while, and @do while`
+### <a name="looping-for-foreach-while-and-do-while"></a>Bucle `@for, @foreach, @while, and @do while`
 
 El HTML con plantilla se puede representar con instrucciones de control en bucle. Para representar una lista de personas:
 
@@ -390,7 +391,7 @@ El control de excepciones es similar a C#:
 
 ### `@lock`
 
-Razortiene la capacidad de proteger las secciones críticas con instrucciones Lock:
+Razor tiene la capacidad de proteger las secciones críticas con instrucciones Lock:
 
 ```cshtml
 @lock (SomeLock)
@@ -401,7 +402,7 @@ Razortiene la capacidad de proteger las secciones críticas con instrucciones Lo
 
 ### <a name="comments"></a>Comentarios
 
-Razoradmite comentarios de C# y HTML:
+Razor admite comentarios de C# y HTML:
 
 ```cshtml
 @{
@@ -417,7 +418,7 @@ El código representa el siguiente HTML:
 <!-- HTML comment -->
 ```
 
-Razorel servidor quita los comentarios antes de que se represente la Página Web. Razorutiliza `@*  *@` para delimitar los comentarios. El siguiente código está comentado, de modo que el servidor no representa ningún marcado:
+Razor el servidor quita los comentarios antes de que se represente la Página Web. Razor utiliza `@*  *@` para delimitar los comentarios. El siguiente código está comentado, de modo que el servidor no representa ningún marcado:
 
 ```cshtml
 @*
@@ -431,7 +432,7 @@ Razorel servidor quita los comentarios antes de que se represente la Página Web
 
 ## <a name="directives"></a>Directivas
 
-Razorlas directivas se representan mediante expresiones implícitas con palabras clave reservadas después del `@` símbolo. Normalmente, una directiva cambia la forma en que una vista se analiza, o bien habilita una funcionalidad diferente.
+Razor las directivas se representan mediante expresiones implícitas con palabras clave reservadas después del `@` símbolo. Normalmente, una directiva cambia la forma en que una vista se analiza, o bien habilita una funcionalidad diferente.
 
 Entender cómo Razor genera código para una vista facilita la comprensión del funcionamiento de las directivas.
 
@@ -611,7 +612,7 @@ La `@inject` directiva permite Razor que la página Inserte un servicio del [con
 
 *Este escenario solo se aplica a Razor los componentes de (. Razor).*
 
-La `@layout` Directiva especifica un diseño para un Razor componente. Los componentes de diseño se usan para evitar incoherencias y contenido duplicado en el código. Para obtener más información, vea <xref:blazor/layouts>.
+La `@layout` Directiva especifica un diseño para un Razor componente. Los componentes de diseño se usan para evitar incoherencias y contenido duplicado en el código. Para más información, consulte <xref:blazor/layouts>.
 
 ::: moniker-end
 
@@ -637,7 +638,7 @@ La clase generada se hereda de `RazorPage<dynamic>`:
 public class _Views_Account_Login_cshtml : RazorPage<LoginViewModel>
 ```
 
-Razorexpone una `Model` propiedad para obtener acceso al modelo que se pasa a la vista:
+Razor expone una `Model` propiedad para obtener acceso al modelo que se pasa a la vista:
 
 ```cshtml
 <div>The Login Email: @Model.Email</div>
@@ -687,13 +688,13 @@ Si la carpeta *EvenMorePages* del ejemplo anterior tiene un archivo de importaci
 La directiva `@page` tiene efectos diferentes en función del tipo de archivo en el que aparece. Directiva:
 
 * En en un archivo *. cshtml* indica que el archivo es una Razor página. Para más información, consulte [Rutas personalizadas](xref:razor-pages/index#custom-routes) y <xref:razor-pages/index>.
-* Especifica que un Razor componente debe controlar las solicitudes directamente. Para obtener más información, vea <xref:blazor/fundamentals/routing>.
+* Especifica que un Razor componente debe controlar las solicitudes directamente. Para más información, consulte <xref:blazor/fundamentals/routing>.
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-3.0"
 
-La `@page` Directiva en la primera línea de un archivo *. cshtml* indica que el archivo es una Razor página. Para obtener más información, vea <xref:razor-pages/index>.
+La `@page` Directiva en la primera línea de un archivo *. cshtml* indica que el archivo es una Razor página. Para más información, consulte <xref:razor-pages/index>.
 
 ::: moniker-end
 
@@ -701,7 +702,7 @@ La `@page` Directiva en la primera línea de un archivo *. cshtml* indica que el
 
 *Este escenario solo se aplica a las vistas y páginas de MVC Razor (. cshtml).*
 
-La `@section` Directiva se usa junto con los [diseños MVC y Razor pages](xref:mvc/views/layout) para permitir que las vistas o páginas representen el contenido en diferentes partes de la página HTML. Para obtener más información, vea <xref:mvc/views/layout>.
+La `@section` Directiva se usa junto con los [diseños MVC y Razor pages](xref:mvc/views/layout) para permitir que las vistas o páginas representen el contenido en diferentes partes de la página HTML. Para más información, consulte <xref:mvc/views/layout>.
 
 ### `@using`
 
@@ -719,25 +720,25 @@ En [ Razor Components](xref:blazor/components/index), `@using` también controla
 
 ## <a name="directive-attributes"></a>Atributos de la directiva
 
-Razorlos atributos de Directiva se representan mediante expresiones implícitas con palabras clave reservadas después del `@` símbolo. Un atributo de directiva suele cambiar la forma en que se analiza un elemento o habilita una funcionalidad diferente.
+Razor los atributos de Directiva se representan mediante expresiones implícitas con palabras clave reservadas después del `@` símbolo. Un atributo de directiva suele cambiar la forma en que se analiza un elemento o habilita una funcionalidad diferente.
 
 ### `@attributes`
 
 *Este escenario solo se aplica a Razor los componentes de (. Razor).*
 
-`@attributes` permite que un componente represente atributos no declarados. Para obtener más información, vea <xref:blazor/components/index#attribute-splatting-and-arbitrary-parameters>.
+`@attributes` permite que un componente represente atributos no declarados. Para más información, consulte <xref:blazor/components/index#attribute-splatting-and-arbitrary-parameters>.
 
 ### `@bind`
 
 *Este escenario solo se aplica a Razor los componentes de (. Razor).*
 
-El enlace de datos en los componentes se logra mediante el atributo `@bind`. Para obtener más información, vea <xref:blazor/components/data-binding>.
+El enlace de datos en los componentes se logra mediante el atributo `@bind`. Para más información, consulte <xref:blazor/components/data-binding>.
 
 ### `@on{EVENT}`
 
 *Este escenario solo se aplica a Razor los componentes de (. Razor).*
 
-Razorproporciona características de control de eventos para los componentes de. Para obtener más información, vea <xref:blazor/components/event-handling>.
+Razor proporciona características de control de eventos para los componentes de. Para más información, consulte <xref:blazor/components/event-handling>.
 
 ::: moniker-end
 
@@ -763,25 +764,25 @@ Detiene la propagación de eventos para el evento.
 
 *Este escenario solo se aplica a Razor los componentes de (. Razor).*
 
-El atributo de directiva `@key` hace que el algoritmo de comparación de componentes garantice la preservación de elementos o componentes en función del valor de la clave. Para obtener más información, vea <xref:blazor/components/index#use-key-to-control-the-preservation-of-elements-and-components>.
+El atributo de directiva `@key` hace que el algoritmo de comparación de componentes garantice la preservación de elementos o componentes en función del valor de la clave. Para más información, consulte <xref:blazor/components/index#use-key-to-control-the-preservation-of-elements-and-components>.
 
 ### `@ref`
 
 *Este escenario solo se aplica a Razor los componentes de (. Razor).*
 
-Las referencias de componentes (`@ref`) proporcionan una forma de hacer referencia a la instancia de un componente para poder emitir comandos a dicha instancia. Para obtener más información, vea <xref:blazor/components/index#capture-references-to-components>.
+Las referencias de componentes (`@ref`) proporcionan una forma de hacer referencia a la instancia de un componente para poder emitir comandos a dicha instancia. Para más información, consulte <xref:blazor/components/index#capture-references-to-components>.
 
 ### `@typeparam`
 
 *Este escenario solo se aplica a Razor los componentes de (. Razor).*
 
-La directiva `@typeparam` declara un parámetro de tipo genérico para la clase de componente generada. Para obtener más información, vea <xref:blazor/components/templated-components#generic-typed-components>.
+La directiva `@typeparam` declara un parámetro de tipo genérico para la clase de componente generada. Para más información, consulte <xref:blazor/components/templated-components#generic-typed-components>.
 
 ::: moniker-end
 
 ## <a name="templated-no-locrazor-delegates"></a>Delegados con plantilla Razor
 
-Razorlas plantillas permiten definir un fragmento de la interfaz de usuario con el siguiente formato:
+Razor las plantillas permiten definir un fragmento de la interfaz de usuario con el siguiente formato:
 
 ```cshtml
 @<tag>...</tag>
@@ -890,19 +891,19 @@ Hay tres directivas que pertenecen a los [asistentes de etiquetas](xref:mvc/view
 | [`@removeTagHelper`](xref:mvc/views/tag-helpers/intro#remove-razor-directives-label) | Quita los asistentes de etiquetas agregadas anteriormente desde una vista. |
 | [`@tagHelperPrefix`](xref:mvc/views/tag-helpers/intro#prefix-razor-directives-label) | Especifica una cadena de prefijo de etiqueta para permitir la compatibilidad con el asistente de etiquetas y hacer explícito su uso. |
 
-## <a name="no-locrazor-reserved-keywords"></a>RazorPalabras clave reservadas
+## <a name="no-locrazor-reserved-keywords"></a>Razor Palabras clave reservadas
 
-### <a name="no-locrazor-keywords"></a>Razorpalabra
+### <a name="no-locrazor-keywords"></a>Razor palabra
 
-* `page`(Requiere ASP.NET Core 2,1 o posterior)
+* `page` (Requiere ASP.NET Core 2,1 o posterior)
 * `namespace`
 * `functions`
 * `inherits`
 * `model`
 * `section`
-* `helper`(Actualmente no es compatible con ASP.NET Core)
+* `helper` (Actualmente no es compatible con ASP.NET Core)
 
-Razorlas palabras clave se incluyen en secuencias `@(Razor Keyword)` de escape (por ejemplo, `@(functions)` ).
+Razor las palabras clave se incluyen en secuencias `@(Razor Keyword)` de escape (por ejemplo, `@(functions)` ).
 
 ### <a name="c-no-locrazor-keywords"></a>RazorPalabras clave de C#
 
@@ -923,7 +924,7 @@ Razorlas palabras clave se incluyen en secuencias `@(Razor Keyword)` de escape (
 
 Las Razor palabras clave de C# deben tener un doble escape con `@(@C# Razor Keyword)` (por ejemplo, `@(@case)` ). El primero `@` convierte el analizador en caracteres de escape Razor . y el segundo `@`, en el analizador de C#.
 
-### <a name="reserved-keywords-not-used-by-no-locrazor"></a>Palabras clave reservadas no utilizadas porRazor
+### <a name="reserved-keywords-not-used-by-no-locrazor"></a>Palabras clave reservadas no utilizadas por Razor
 
 * `class`
 
@@ -1001,7 +1002,7 @@ El Razor motor de vista realiza búsquedas con distinción de mayúsculas y min�
 Por tanto, se anima a todos los desarrolladores a intentar que las mayúsculas y minúsculas de los nombres de archivo y de directorio sean las mismas que las mayúsculas y minúsculas de:
 
 * Nombres de acciones, controladores y áreas.
-* RazorPáginas.
+* Razor Páginas.
 
 La coincidencia de mayúsculas y minúsculas garantiza que las implementaciones van a encontrar sus vistas, independientemente de cuál sea el sistema de archivos subyacente.
 

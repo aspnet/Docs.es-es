@@ -5,6 +5,7 @@ description: Obtenga información sobre los detalles de implementación de ASP.N
 ms.author: riande
 ms.date: 10/14/2016
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -15,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/data-protection/implementation/context-headers
-ms.openlocfilehash: 572f930dbf78aaef1ed47d1a154b5ba56633b4f1
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 2f07db4b7d8bca9f64aee5d60e88fc92dc8965eb
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88018824"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88633713"
 ---
 # <a name="context-headers-in-aspnet-core"></a>Encabezados de contexto en ASP.NET Core
 
@@ -95,15 +96,15 @@ DB 6F D4 79 11 84 B9 96 09 2E E1 20 2F 36 E8 60
 
 Este encabezado de contexto es la huella digital del par de algoritmos de cifrado autenticados (cifrado AES-192-CBC + validación HMACSHA256). Los componentes, como se describió [anteriormente](xref:security/data-protection/implementation/context-headers#data-protection-implementation-context-headers-cbc-components) , son los siguientes:
 
-* el marcador`(00 00)`
+* el marcador `(00 00)`
 
-* la longitud de la clave de cifrado de bloques`(00 00 00 18)`
+* la longitud de la clave de cifrado de bloques `(00 00 00 18)`
 
-* tamaño de bloque de cifrado de bloques`(00 00 00 10)`
+* tamaño de bloque de cifrado de bloques `(00 00 00 10)`
 
-* la longitud de la clave HMAC`(00 00 00 20)`
+* la longitud de la clave HMAC `(00 00 00 20)`
 
-* el tamaño de síntesis de HMAC`(00 00 00 20)`
+* el tamaño de síntesis de HMAC `(00 00 00 20)`
 
 * la salida de cifrado de bloqueo PRP `(F4 74 - DB 6F)` y
 
@@ -140,15 +141,15 @@ Esto genera el encabezado de contexto completo, que es una huella digital del pa
 
 Los componentes se desglosan de la manera siguiente:
 
-* el marcador`(00 00)`
+* el marcador `(00 00)`
 
-* la longitud de la clave de cifrado de bloques`(00 00 00 18)`
+* la longitud de la clave de cifrado de bloques `(00 00 00 18)`
 
-* tamaño de bloque de cifrado de bloques`(00 00 00 08)`
+* tamaño de bloque de cifrado de bloques `(00 00 00 08)`
 
-* la longitud de la clave HMAC`(00 00 00 14)`
+* la longitud de la clave HMAC `(00 00 00 14)`
 
-* el tamaño de síntesis de HMAC`(00 00 00 14)`
+* el tamaño de síntesis de HMAC `(00 00 00 14)`
 
 * la salida de cifrado de bloqueo PRP `(AB B1 - E1 0E)` y
 
@@ -170,7 +171,7 @@ El encabezado de contexto consta de los siguientes componentes:
 
 * [128 bits] La etiqueta de `Enc_GCM (K_E, nonce, "")` , que es la salida del algoritmo de cifrado de bloques simétricos dada una entrada de cadena vacía y en la que el valor de nonce es un vector de 96 bits todo-cero.
 
-`K_E`se deriva mediante el mismo mecanismo que en el escenario CBC Encryption + HMAC Authentication. Sin embargo, puesto que no hay nada `K_H` en juego, esencialmente tenemos `| K_H | = 0` y el algoritmo se contrae en el formulario siguiente.
+`K_E` se deriva mediante el mismo mecanismo que en el escenario CBC Encryption + HMAC Authentication. Sin embargo, puesto que no hay nada `K_H` en juego, esencialmente tenemos `| K_H | = 0` y el algoritmo se contrae en el formulario siguiente.
 
 `K_E = SP800_108_CTR(prf = HMACSHA512, key = "", label = "", context = "")`
 
@@ -194,13 +195,13 @@ BE 45
 
 Los componentes se desglosan de la manera siguiente:
 
-* el marcador`(00 01)`
+* el marcador `(00 01)`
 
-* la longitud de la clave de cifrado de bloques`(00 00 00 20)`
+* la longitud de la clave de cifrado de bloques `(00 00 00 20)`
 
-* el tamaño del nonce`(00 00 00 0C)`
+* el tamaño del nonce `(00 00 00 0C)`
 
-* tamaño de bloque de cifrado de bloques`(00 00 00 10)`
+* tamaño de bloque de cifrado de bloques `(00 00 00 10)`
 
 * el tamaño de la etiqueta de autenticación `(00 00 00 10)` y
 

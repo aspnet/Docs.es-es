@@ -6,6 +6,7 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 11/12/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,18 +17,18 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/client-features
-ms.openlocfilehash: 4f5fa2f4ff1ac3d00b04845aedc26fb0118b9991
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: df0084411134167df31506a01362a0520821e577
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88021476"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88631763"
 ---
 # <a name="aspnet-core-no-locsignalr-clients"></a>SignalRClientes ASP.net Core
 
 ## <a name="versioning-support-and-compatibility"></a>Control de versiones, compatibilidad y compatibilidad
 
-Los SignalR clientes se incluyen junto con los componentes del servidor y tienen versiones para que coincidan. Cualquier cliente compatible puede conectarse de forma segura a cualquier servidor compatible y se considera que los problemas de compatibilidad se han corregido. SignalRlos clientes se admiten en el mismo ciclo de vida de soporte técnico que el resto de .NET Core. Consulte [la Directiva de soporte técnico de .net Core](https://dotnet.microsoft.com/platform/support/policy/dotnet-core) para obtener más información.
+Los SignalR clientes se incluyen junto con los componentes del servidor y tienen versiones para que coincidan. Cualquier cliente compatible puede conectarse de forma segura a cualquier servidor compatible y se considera que los problemas de compatibilidad se han corregido. SignalR los clientes se admiten en el mismo ciclo de vida de soporte técnico que el resto de .NET Core. Consulte [la Directiva de soporte técnico de .net Core](https://dotnet.microsoft.com/platform/support/policy/dotnet-core) para obtener más información.
 
 Muchas características requieren un cliente **y** un servidor compatibles. Consulte a continuación una tabla que muestra las versiones mínimas de las distintas características.
 

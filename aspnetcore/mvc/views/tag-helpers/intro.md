@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 03/18/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/tag-helpers/intro
-ms.openlocfilehash: 067698687268ac072d8944fd5d9ae47c49fd4a24
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 42a7231b529dd9f8ecbce4f8116111e1c96c830d
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88015016"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88633102"
 ---
 # <a name="tag-helpers-in-aspnet-core"></a>Asistentes de etiquetas en ASP.NET Core
 

@@ -6,6 +6,7 @@ ms.author: pakrym
 ms.custom: mvc
 ms.date: 01/04/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: migration/logging-nonaspnetcore
-ms.openlocfilehash: edb1c6456d0cbbac57d739f61b4c159f146e4f7e
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 8ef07118e3a885e41221402bdfc2d7e942c6dd73
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88015119"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88634103"
 ---
 # <a name="migrate-from-microsoftextensionslogging-21-to-22-or-30"></a>Migre desde Microsoft. Extensions. Logging 2,1 a 2,2 o 3,0
 

@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/05/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/docker-https
-ms.openlocfilehash: bba72a8c795312b3f7fe3fbf16514ba9f2448fbf
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 5e29882414d49c0971bc11c688067878714d3b2d
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88020345"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88634194"
 ---
 # <a name="hosting-aspnet-core-images-with-docker-over-https"></a>Hospedaje de imágenes de ASP.NET Core con Docker a través de HTTPS
 
@@ -36,13 +37,13 @@ Consulte [desarrollo de aplicaciones ASP.net Core con Docker a través de https]
 
 Este ejemplo requiere [docker 17,06](https://docs.docker.com/release-notes/docker-ce) o posterior del [cliente de Docker](https://www.docker.com/products/docker).
 
-## <a name="prerequisites"></a>Requisitos previos
+## <a name="prerequisites"></a>Prerrequisitos
 
 El [SDK de .net Core 2,2](https://dotnet.microsoft.com/download) o posterior es necesario para algunas de las instrucciones de este documento.
 
 ## <a name="certificates"></a>Certificados
 
-Se requiere un certificado de una [entidad de certificación](https://wikipedia.org/wiki/Certificate_authority) para el [hospedaje de producción](https://blogs.msdn.microsoft.com/webdev/2017/11/29/configuring-https-in-asp-net-core-across-different-platforms/) en un dominio. [Let's Encrypt](https://letsencrypt.org/)es una entidad de certificación que ofrece certificados gratuitos.
+Se requiere un certificado de una [entidad de certificación](https://wikipedia.org/wiki/Certificate_authority) para el [hospedaje de producción](https://blogs.msdn.microsoft.com/webdev/2017/11/29/configuring-https-in-asp-net-core-across-different-platforms/) en un dominio. [Let's Encrypt](https://letsencrypt.org/) es una entidad de certificación que ofrece certificados gratuitos.
 
 En este documento se usan [certificados de desarrollo autofirmados](https://en.wikipedia.org/wiki/Self-signed_certificate) para hospedar imágenes pregeneradas en `localhost` . Las instrucciones son similares a usar certificados de producción.
 
@@ -92,7 +93,7 @@ dotnet dev-certs https -ep ${HOME}/.aspnet/https/aspnetapp.pfx -p { password her
 dotnet dev-certs https --trust
 ```
 
-`dotnet dev-certs https --trust`solo se admite en macOS y Windows. Debe confiar en los certificados en Linux de la manera que sea compatible con la distribución. Es probable que necesite confiar en el certificado en el explorador.
+`dotnet dev-certs https --trust` solo se admite en macOS y Windows. Debe confiar en los certificados en Linux de la manera que sea compatible con la distribución. Es probable que necesite confiar en el certificado en el explorador.
 
 En los comandos anteriores, reemplace `{ password here }` por una contraseña.
 

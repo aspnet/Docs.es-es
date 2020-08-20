@@ -1,11 +1,12 @@
 ---
-title: Configurar ASP.NET CoreIdentity
+title: Configuración de ASP.NET Core Identity
 author: AdrienTorris
-description: Comprenda ASP.NET Core Identity valores predeterminados y aprenda a configurar Identity las propiedades para usar valores personalizados.
+description: Comprenda ASP.NET Core Identity los valores predeterminados y aprenda a configurar Identity las propiedades para usar valores personalizados.
 ms.author: riande
 ms.custom: mvc
 ms.date: 02/11/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,22 +17,22 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/identity-configuration
-ms.openlocfilehash: b7f6eaba1a0e819a077e3d63b4f997e75b8cd317
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: ae4a2eb9d95339651c3810a9f8489d703d73a3fe
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88020605"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88632686"
 ---
-# <a name="configure-aspnet-core-no-locidentity"></a>Configurar ASP.NET CoreIdentity
+# <a name="configure-no-locaspnet-core-identity"></a>Configuración de ASP.NET Core Identity
 
 ASP.NET Core Identity usa valores predeterminados para la configuración, como la Directiva de contraseñas, el bloqueo y la cookie configuración. Esta configuración se puede invalidar en la `Startup` clase.
 
-## <a name="no-locidentity-options"></a>IdentityOpciones
+## <a name="no-locidentity-options"></a>Identity Opciones
 
-La clase [ Identity Options](/dotnet/api/microsoft.aspnetcore.identity.identityoptions) representa las opciones que se pueden utilizar para configurar el Identity sistema. `IdentityOptions`debe establecerse **después** de llamar a `AddIdentity` o `AddDefaultIdentity` .
+La clase [ Identity Options](/dotnet/api/microsoft.aspnetcore.identity.identityoptions) representa las opciones que se pueden utilizar para configurar el Identity sistema. `IdentityOptions` debe establecerse **después** de llamar a `AddIdentity` o `AddDefaultIdentity` .
 
-### <a name="claims-no-locidentity"></a>SurjaIdentity
+### <a name="claims-no-locidentity"></a>Surja Identity
 
 [ Identity Options. Identity Claims](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.claimsidentity) especifica las [ Identity Opciones de notificaciones](/dotnet/api/microsoft.aspnetcore.identity.claimsidentityoptions) con las propiedades que se muestran en la tabla siguiente.
 
@@ -137,7 +138,7 @@ Para obtener más información, vea [ Cookie AuthenticationOptions](/dotnet/api/
 
 ## <a name="password-hasher-options"></a>Opciones de hash de contraseña
 
-<xref:Microsoft.AspNetCore.Identity.PasswordHasherOptions>Obtiene y establece las opciones para el hash de contraseña.
+<xref:Microsoft.AspNetCore.Identity.PasswordHasherOptions> Obtiene y establece las opciones para el hash de contraseña.
 
 | Opción | Descripción |
 | ------ | ----------- |

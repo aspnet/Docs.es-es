@@ -5,6 +5,7 @@ description: Conozca ASP.NET Core MVC, un marco completo para crear aplicaciones
 ms.author: riande
 ms.date: 02/12/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -15,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/overview
-ms.openlocfilehash: 64bee1966eff40e9057166adfafbf78d0cc5b6aa
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 29701506d9f6c1ff90081a548d524bc0deb65cda
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88021450"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88633622"
 ---
 # <a name="overview-of-aspnet-core-mvc"></a>Información general de ASP.NET Core MVC
 
@@ -77,7 +78,7 @@ ASP.NET Core MVC incluye lo siguiente:
 * [Áreas](#areas)
 * [API web](#web-apis)
 * [Capacidad de prueba](#testability)
-* [Razormotor de vista](#razor-view-engine)
+* [Razor motor de vista](#razor-view-engine)
 * [Vistas fuertemente tipadas](#strongly-typed-views)
 * [Aplicaciones auxiliares de etiquetas](#tag-helpers)
 * [Ver componentes](#view-components)
@@ -196,9 +197,9 @@ Use la generación de vínculos para habilitar la compatibilidad con hipermedios
 
 Al usar interfaces e inserción de dependencias, el marco es adecuado para realizar pruebas unitarias. También incluye características (por ejemplo, un proveedor TestHost e InMemory para Entity Framework) con las que resulta muy fácil y rápido realizar [pruebas de integración](xref:test/integration-tests). Obtenga más información sobre [cómo probar la lógica del controlador](controllers/testing.md).
 
-### <a name="no-locrazor-view-engine"></a>Razormotor de vista
+### <a name="no-locrazor-view-engine"></a>Razor motor de vista
 
-[ASP.net Core vistas de MVC](views/overview.md) usan el [ Razor motor de vistas](views/razor.md) para representar las vistas. Razores un lenguaje de marcado de plantilla compacto, expresivo y fluido para definir vistas mediante código C# incrustado. Razorse utiliza para generar dinámicamente contenido web en el servidor. Permite combinar de manera limpia el código del servidor con el código y el contenido del lado cliente.
+[ASP.net Core vistas de MVC](views/overview.md) usan el [ Razor motor de vistas](views/razor.md) para representar las vistas. Razor es un lenguaje de marcado de plantilla compacto, expresivo y fluido para definir vistas mediante código C# incrustado. Razor se utiliza para generar dinámicamente contenido web en el servidor. Permite combinar de manera limpia el código del servidor con el código y el contenido del lado cliente.
 
 ```cshtml
 <ul>
@@ -212,7 +213,7 @@ Con el Razor motor de vistas puede definir [diseños](views/layout.md), [vistas 
 
 ### <a name="strongly-typed-views"></a>Vistas fuertemente tipadas
 
-Razorlas vistas de MVC se pueden fuertemente tipadas en función del modelo. Los controladores pueden pasar un modelo fuertemente tipado a las vistas para que estas admitan IntelliSense y la comprobación de tipos.
+Razor las vistas de MVC se pueden fuertemente tipadas en función del modelo. Los controladores pueden pasar un modelo fuertemente tipado a las vistas para que estas admitan IntelliSense y la comprobación de tipos.
 
 Por ejemplo, en esta vista se representa un modelo de tipo `IEnumerable<Product>`:
 

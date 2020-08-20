@@ -1,5 +1,5 @@
 ---
-title: SignalRHubContext
+title: SignalR HubContext
 author: bradygaster
 description: Aprenda a usar el servicio ASP.NET Core SignalR HubContext para enviar notificaciones a los clientes desde fuera de un concentrador.
 monikerRange: '>= aspnetcore-2.1'
@@ -7,6 +7,7 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 11/12/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/hubcontext
-ms.openlocfilehash: b9adc54c1928d6ec11f707b2bd5e1e297973f1ae
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: c6a4926be008feb2c9b708c56597070b96d8bd3f
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88021931"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88633024"
 ---
 # <a name="send-messages-from-outside-a-hub"></a>Envío de mensajes desde fuera de un concentrador
 
@@ -30,7 +31,7 @@ Por [Mikael Mengistu](https://twitter.com/MikaelM_12)
 
 El SignalR concentrador es la abstracción principal para enviar mensajes a los clientes conectados SignalR al servidor. También es posible enviar mensajes desde otros lugares de la aplicación mediante el `IHubContext` servicio. En este artículo se explica cómo acceder a SignalR `IHubContext` para enviar notificaciones a los clientes desde fuera de un concentrador.
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/hubcontext/sample/) [(cómo descargarlo)](xref:index#how-to-download-a-sample).
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/hubcontext/sample/) [(cómo descargarlo)](xref:index#how-to-download-a-sample)
 
 ## <a name="get-an-instance-of-ihubcontext"></a>Obtener una instancia de IHubContext
 

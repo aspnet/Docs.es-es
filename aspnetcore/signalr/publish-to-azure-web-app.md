@@ -7,6 +7,7 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 11/12/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/publish-to-azure-web-app
-ms.openlocfilehash: 3163a2743c544d0a07d92eb7547e77c3b200ac83
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: b9d32e2f3c37f652be15c5857d14ac48f66695ad
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88022542"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88631932"
 ---
 # <a name="publish-an-aspnet-core-no-locsignalr-app-to-azure-app-service"></a>Publicación de una SignalR aplicación ASP.net Core en Azure App Service
 
@@ -33,7 +34,7 @@ Por el [Brady](https://twitter.com/bradygaster)
 > [!NOTE]
 > En este artículo se hace referencia a la publicación SignalR de una aplicación ASP.net Core desde Visual Studio. Para obtener más información, consulte [ SignalR servicio de Azure](https://azure.microsoft.com/services/signalr-service).
 
-## <a name="publish-the-app"></a>Publicar la aplicación
+## <a name="publish-the-app"></a>Publicación de la aplicación
 
 En este artículo se describe la publicación con las herramientas de Visual Studio. Visual Studio Code los usuarios pueden usar [CLI de Azure](/cli/azure) comandos para publicar aplicaciones en Azure. Para obtener más información, consulte [publicación de una aplicación ASP.net Core en Azure con herramientas de línea de comandos](/azure/app-service/app-service-web-get-started-dotnet).
 

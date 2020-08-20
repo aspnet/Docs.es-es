@@ -7,6 +7,7 @@ ms.author: riande
 ms.date: 09/22/2018
 ms.custom: mvc, seodec18
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/2fa
-ms.openlocfilehash: 28aef65234eaf162ba6e18a2594feb575c93b02f
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: e5e606afaf0219f3a0eb7301203b7142a00322be
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88019496"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88634116"
 ---
 # <a name="two-factor-authentication-with-sms-in-aspnet-core"></a>Autenticación en dos fases con SMS en ASP.NET Core
 
@@ -96,7 +97,7 @@ info: Successfully saved SMSAccountIdentification = 12345 to the secret store.
 **ASPSMS:**  
 [!code-csharp[](2fa/sample/Web2FA/Services/MessageServices_ASPSMS.cs)]
 
-### <a name="configure-startup-to-use-smsoptions"></a>Configurar el inicio para usar`SMSoptions`
+### <a name="configure-startup-to-use-smsoptions"></a>Configurar el inicio para usar `SMSoptions`
 
 Agregue `SMSoptions` al contenedor de servicios en el `ConfigureServices` método en *Startup.CS*:
 
@@ -146,7 +147,7 @@ Si no recibe un mensaje de texto, consulte la página de registro de Twilio.
 
 * Escriba el código que se obtiene en el mensaje SMS.
 
-* Al hacer clic en la casilla **recordar este explorador** , no es necesario usar 2FA para iniciar sesión cuando se usa el mismo dispositivo y explorador. Al habilitar 2FA y hacer clic en **recordar, este explorador** le proporcionará protección de 2FA segura a los usuarios malintencionados que intentan acceder a su cuenta, siempre y cuando no tengan acceso a su dispositivo. Puede hacerlo en cualquier dispositivo privado que use con regularidad. Al establecer la opción **recordar este explorador**, obtendrá la seguridad agregada de 2FA de los dispositivos que no use con regularidad y que le resulte más cómodo no tener que ir a través de 2FA en sus propios dispositivos.
+* Al hacer clic en la casilla **recordar este explorador** , no es necesario usar 2FA para iniciar sesión cuando se usa el mismo dispositivo y explorador. Al habilitar 2FA y hacer clic en **recordar, este explorador** le proporcionará protección de 2FA segura a los usuarios malintencionados que intentan acceder a su cuenta, siempre y cuando no tengan acceso a su dispositivo. Puede hacerlo en cualquier dispositivo privado que use con regularidad. Al establecer la opción  **recordar este explorador**, obtendrá la seguridad agregada de 2FA de los dispositivos que no use con regularidad y que le resulte más cómodo no tener que ir a través de 2FA en sus propios dispositivos.
 
 ![Comprobar vista](2fa/_static/login2fa8.png)
 

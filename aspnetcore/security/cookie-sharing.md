@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/05/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/cookie-sharing
-ms.openlocfilehash: f4762871cbae77f690d8478e1342e0d53918eb51
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 6ac808d11790ae27e82606b442ff215d95b93e41
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88022204"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88631373"
 ---
 # <a name="share-authentication-no-loccookies-among-aspnet-apps"></a>Uso compartido de la autenticación cookie entre aplicaciones ASP.net
 
@@ -35,20 +36,20 @@ En los ejemplos siguientes:
 * El cookie nombre de autenticación se establece en un valor común de `.AspNet.SharedCookie` .
 * `AuthenticationType`Se establece en `Identity.Application` explícitamente o de forma predeterminada.
 * Se usa un nombre de aplicación común para habilitar el sistema de protección de datos para compartir las claves de protección de datos ( `SharedCookieApp` ).
-* `Identity.Application`se utiliza como esquema de autenticación. Sea cual sea el esquema que se use, se debe usar de forma coherente *dentro y entre* las aplicaciones compartidas, cookie ya sea como esquema predeterminado o mediante su configuración explícita. El esquema se usa al cifrar y descifrar cookie , por lo que se debe usar un esquema coherente entre las aplicaciones.
+* `Identity.Application` se utiliza como esquema de autenticación. Sea cual sea el esquema que se use, se debe usar de forma coherente *dentro y entre* las aplicaciones compartidas, cookie ya sea como esquema predeterminado o mediante su configuración explícita. El esquema se usa al cifrar y descifrar cookie , por lo que se debe usar un esquema coherente entre las aplicaciones.
 * Se utiliza una ubicación de almacenamiento de [claves de protección de datos](xref:security/data-protection/implementation/key-management) común.
   * En ASP.NET Core aplicaciones, <xref:Microsoft.AspNetCore.DataProtection.DataProtectionBuilderExtensions.PersistKeysToFileSystem*> se usa para establecer la ubicación de almacenamiento de la clave.
-  * En .NET Framework aplicaciones, el Cookie middleware de autenticación utiliza una implementación de <xref:Microsoft.AspNetCore.DataProtection.DataProtectionProvider> . `DataProtectionProvider`proporciona servicios de protección de datos para el cifrado y descifrado de los datos de carga de autenticación cookie . La `DataProtectionProvider` instancia está aislada del sistema de protección de datos usado por otras partes de la aplicación. [DataProtectionProvider. Create (System. IO. DirectoryInfo, Action \<IDataProtectionBuilder> )](xref:Microsoft.AspNetCore.DataProtection.DataProtectionProvider.Create*) acepta un <xref:System.IO.DirectoryInfo> para especificar la ubicación del almacenamiento de la clave de protección de datos.
-* `DataProtectionProvider`requiere el paquete NuGet [Microsoft. AspNetCore. bioprotection. Extensions](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.Extensions/) :
+  * En .NET Framework aplicaciones, el Cookie middleware de autenticación utiliza una implementación de <xref:Microsoft.AspNetCore.DataProtection.DataProtectionProvider> . `DataProtectionProvider` proporciona servicios de protección de datos para el cifrado y descifrado de los datos de carga de autenticación cookie . La `DataProtectionProvider` instancia está aislada del sistema de protección de datos usado por otras partes de la aplicación. [DataProtectionProvider. Create (System. IO. DirectoryInfo, Action \<IDataProtectionBuilder> )](xref:Microsoft.AspNetCore.DataProtection.DataProtectionProvider.Create*) acepta un <xref:System.IO.DirectoryInfo> para especificar la ubicación del almacenamiento de la clave de protección de datos.
+* `DataProtectionProvider` requiere el paquete NuGet [Microsoft. AspNetCore. bioprotection. Extensions](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.Extensions/) :
   * En ASP.NET Core aplicaciones 2. x, haga referencia al [metapaquete Microsoft. AspNetCore. app](xref:fundamentals/metapackage-app).
   * En .NET Framework aplicaciones, agregue una referencia de paquete a [Microsoft. AspNetCore. desproteccion. Extensions](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.Extensions/).
-* <xref:Microsoft.AspNetCore.DataProtection.DataProtectionBuilderExtensions.SetApplicationName*>establece el nombre común de la aplicación.
+* <xref:Microsoft.AspNetCore.DataProtection.DataProtectionBuilderExtensions.SetApplicationName*> establece el nombre común de la aplicación.
 
-## <a name="share-authentication-no-loccookies-with-aspnet-core-no-locidentity"></a>Compartir autenticación cookie s con ASP.net CoreIdentity
+## <a name="share-authentication-no-loccookies-with-no-locaspnet-core-identity"></a>Compartir autenticación cookie con ASP.NET Core Identity
 
-Al usar ASP.NET Core Identity :
+Al usar ASP.NET Core Identity:
 
-* Las claves de protección de datos y el nombre de la aplicación se deben compartir entre las aplicaciones. Se proporciona una ubicación de almacenamiento de claves común al <xref:Microsoft.AspNetCore.DataProtection.DataProtectionBuilderExtensions.PersistKeysToFileSystem*> método en los ejemplos siguientes. Use <xref:Microsoft.AspNetCore.DataProtection.DataProtectionBuilderExtensions.SetApplicationName*> para configurar un nombre común de aplicación compartida ( `SharedCookieApp` en los ejemplos siguientes). Para obtener más información, vea <xref:security/data-protection/configuration/overview>.
+* Las claves de protección de datos y el nombre de la aplicación se deben compartir entre las aplicaciones. Se proporciona una ubicación de almacenamiento de claves común al <xref:Microsoft.AspNetCore.DataProtection.DataProtectionBuilderExtensions.PersistKeysToFileSystem*> método en los ejemplos siguientes. Use <xref:Microsoft.AspNetCore.DataProtection.DataProtectionBuilderExtensions.SetApplicationName*> para configurar un nombre común de aplicación compartida ( `SharedCookieApp` en los ejemplos siguientes). Para más información, consulte <xref:security/data-protection/configuration/overview>.
 * Use el <xref:Microsoft.Extensions.DependencyInjection.IdentityServiceCollectionExtensions.ConfigureApplicationCookie*> método de extensión para configurar el servicio de protección de datos para cookie s.
 * El tipo de autenticación predeterminado es `Identity.Application` .
 
@@ -64,9 +65,9 @@ services.ConfigureApplicationCookie(options => {
 });
 ```
 
-## <a name="share-authentication-no-loccookies-without-aspnet-core-no-locidentity"></a>Compartir autenticación cookie s sin ASP.net CoreIdentity
+## <a name="share-authentication-no-loccookies-without-no-locaspnet-core-identity"></a>Compartir autenticación cookie s sin ASP.NET Core Identity
 
-Cuando use cookie s directamente sin ASP.net Core Identity , configure la protección de datos y la autenticación en `Startup.ConfigureServices` . En el ejemplo siguiente, el tipo de autenticación se establece en `Identity.Application` :
+Cuando use cookie s directamente sin ASP.NET Core Identity , configure la protección de datos y la autenticación en `Startup.ConfigureServices` . En el ejemplo siguiente, el tipo de autenticación se establece en `Identity.Application` :
 
 ```csharp
 services.AddDataProtection()
@@ -105,7 +106,7 @@ options.Cookie.Domain = ".contoso.com";
 
 ## <a name="encrypt-data-protection-keys-at-rest"></a>Cifrado de claves de protección de datos en reposo
 
-En el caso de las implementaciones de producción, configure el `DataProtectionProvider` para cifrar las claves en reposo con DPAPI o un X509Certificate. Para obtener más información, vea <xref:security/data-protection/implementation/key-encryption-at-rest>. En el ejemplo siguiente, se proporciona una huella digital de certificado para <xref:Microsoft.AspNetCore.DataProtection.DataProtectionBuilderExtensions.ProtectKeysWithCertificate*> :
+En el caso de las implementaciones de producción, configure el `DataProtectionProvider` para cifrar las claves en reposo con DPAPI o un X509Certificate. Para más información, consulte <xref:security/data-protection/implementation/key-encryption-at-rest>. En el ejemplo siguiente, se proporciona una huella digital de certificado para <xref:Microsoft.AspNetCore.DataProtection.DataProtectionBuilderExtensions.ProtectKeysWithCertificate*> :
 
 ```csharp
 services.AddDataProtection()

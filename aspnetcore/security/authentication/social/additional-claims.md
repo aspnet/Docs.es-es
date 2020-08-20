@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/15/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/social/additional-claims
-ms.openlocfilehash: f7a440a13891cd51226cad12924cfc65684632ea
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: eeddc75e7bcf368b476f62900c14575c9937e1f7
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88020189"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88631529"
 ---
 # <a name="persist-additional-claims-and-tokens-from-external-providers-in-aspnet-core"></a>Conservar notificaciones y tokens adicionales de proveedores externos en ASP.NET Core
 
@@ -34,7 +35,7 @@ Una aplicación ASP.NET Core puede establecer notificaciones y tokens adicionale
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-Decida qué proveedores de autenticación externos admitir en la aplicación. Para cada proveedor, registre la aplicación y obtenga un identificador de cliente y un secreto de cliente. Para obtener más información, vea <xref:security/authentication/social/index>. La aplicación de ejemplo usa el [proveedor de autenticación de Google](xref:security/authentication/google-logins).
+Decida qué proveedores de autenticación externos admitir en la aplicación. Para cada proveedor, registre la aplicación y obtenga un identificador de cliente y un secreto de cliente. Para más información, consulte <xref:security/authentication/social/index>. La aplicación de ejemplo usa el [proveedor de autenticación de Google](xref:security/authentication/google-logins).
 
 ## <a name="set-the-client-id-and-client-secret"></a>Establecimiento del identificador de cliente y el secreto de cliente
 
@@ -94,7 +95,7 @@ Si se requiere una gran cantidad de datos de usuario para el procesamiento de so
 
 ## <a name="save-the-access-token"></a>Guardar el token de acceso
 
-<xref:Microsoft.AspNetCore.Authentication.RemoteAuthenticationOptions.SaveTokens*>define si los tokens de acceso y de actualización deben almacenarse en <xref:Microsoft.AspNetCore.Http.Authentication.AuthenticationProperties> después de una autorización correcta. `SaveTokens`se establece en de `false` forma predeterminada para reducir el tamaño de la autenticación final cookie .
+<xref:Microsoft.AspNetCore.Authentication.RemoteAuthenticationOptions.SaveTokens*> define si los tokens de acceso y de actualización deben almacenarse en <xref:Microsoft.AspNetCore.Http.Authentication.AuthenticationProperties> después de una autorización correcta. `SaveTokens` se establece en de `false` forma predeterminada para reducir el tamaño de la autenticación final cookie .
 
 La aplicación de ejemplo establece el valor `SaveTokens` de `true` en en <xref:Microsoft.AspNetCore.Authentication.Google.GoogleOptions> :
 
@@ -118,11 +119,11 @@ El marco de trabajo proporciona acciones comunes y métodos de extensión para c
 
 Los usuarios pueden definir acciones personalizadas derivando de <xref:Microsoft.AspNetCore.Authentication.OAuth.Claims.ClaimAction> e implementando el <xref:Microsoft.AspNetCore.Authentication.OAuth.Claims.ClaimAction.Run*> método abstracto.
 
-Para obtener más información, vea <xref:Microsoft.AspNetCore.Authentication.OAuth.Claims>.
+Para más información, consulte <xref:Microsoft.AspNetCore.Authentication.OAuth.Claims>.
 
 ## <a name="removal-of-claim-actions-and-claims"></a>Eliminación de las notificaciones y las acciones de notificación
 
-[ClaimActionCollection. Remove (String)](xref:Microsoft.AspNetCore.Authentication.OAuth.Claims.ClaimActionCollection.Remove*) quita todas las acciones de notificaciones del especificado <xref:Microsoft.AspNetCore.Authentication.OAuth.Claims.ClaimAction.ClaimType> de la colección. [ClaimActionCollectionMapExtensions. DeleteClaim (ClaimActionCollection, String)](xref:Microsoft.AspNetCore.Authentication.ClaimActionCollectionMapExtensions.DeleteClaim*) elimina una demanda del proporcionado <xref:Microsoft.AspNetCore.Authentication.OAuth.Claims.ClaimAction.ClaimType> de la identidad. <xref:Microsoft.AspNetCore.Authentication.ClaimActionCollectionMapExtensions.DeleteClaim*>se usa principalmente con [OpenID Connect (OIDC)](/azure/active-directory/develop/v2-protocols-oidc) para quitar notificaciones generadas por el protocolo.
+[ClaimActionCollection. Remove (String)](xref:Microsoft.AspNetCore.Authentication.OAuth.Claims.ClaimActionCollection.Remove*) quita todas las acciones de notificaciones del especificado <xref:Microsoft.AspNetCore.Authentication.OAuth.Claims.ClaimAction.ClaimType> de la colección. [ClaimActionCollectionMapExtensions. DeleteClaim (ClaimActionCollection, String)](xref:Microsoft.AspNetCore.Authentication.ClaimActionCollectionMapExtensions.DeleteClaim*) elimina una demanda del proporcionado <xref:Microsoft.AspNetCore.Authentication.OAuth.Claims.ClaimAction.ClaimType> de la identidad. <xref:Microsoft.AspNetCore.Authentication.ClaimActionCollectionMapExtensions.DeleteClaim*> se usa principalmente con [OpenID Connect (OIDC)](/azure/active-directory/develop/v2-protocols-oidc) para quitar notificaciones generadas por el protocolo.
 
 ## <a name="sample-app-output"></a>Salida de la aplicación de ejemplo
 
@@ -174,7 +175,7 @@ Una aplicación ASP.NET Core puede establecer notificaciones y tokens adicionale
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-Decida qué proveedores de autenticación externos admitir en la aplicación. Para cada proveedor, registre la aplicación y obtenga un identificador de cliente y un secreto de cliente. Para obtener más información, vea <xref:security/authentication/social/index>. La aplicación de ejemplo usa el [proveedor de autenticación de Google](xref:security/authentication/google-logins).
+Decida qué proveedores de autenticación externos admitir en la aplicación. Para cada proveedor, registre la aplicación y obtenga un identificador de cliente y un secreto de cliente. Para más información, consulte <xref:security/authentication/social/index>. La aplicación de ejemplo usa el [proveedor de autenticación de Google](xref:security/authentication/google-logins).
 
 ## <a name="set-the-client-id-and-client-secret"></a>Establecimiento del identificador de cliente y el secreto de cliente
 
@@ -234,7 +235,7 @@ Si se requiere una gran cantidad de datos de usuario para el procesamiento de so
 
 ## <a name="save-the-access-token"></a>Guardar el token de acceso
 
-<xref:Microsoft.AspNetCore.Authentication.RemoteAuthenticationOptions.SaveTokens*>define si los tokens de acceso y de actualización deben almacenarse en <xref:Microsoft.AspNetCore.Http.Authentication.AuthenticationProperties> después de una autorización correcta. `SaveTokens`se establece en de `false` forma predeterminada para reducir el tamaño de la autenticación final cookie .
+<xref:Microsoft.AspNetCore.Authentication.RemoteAuthenticationOptions.SaveTokens*> define si los tokens de acceso y de actualización deben almacenarse en <xref:Microsoft.AspNetCore.Http.Authentication.AuthenticationProperties> después de una autorización correcta. `SaveTokens` se establece en de `false` forma predeterminada para reducir el tamaño de la autenticación final cookie .
 
 La aplicación de ejemplo establece el valor `SaveTokens` de `true` en en <xref:Microsoft.AspNetCore.Authentication.Google.GoogleOptions> :
 
@@ -258,11 +259,11 @@ El marco de trabajo proporciona acciones comunes y métodos de extensión para c
 
 Los usuarios pueden definir acciones personalizadas derivando de <xref:Microsoft.AspNetCore.Authentication.OAuth.Claims.ClaimAction> e implementando el <xref:Microsoft.AspNetCore.Authentication.OAuth.Claims.ClaimAction.Run*> método abstracto.
 
-Para obtener más información, vea <xref:Microsoft.AspNetCore.Authentication.OAuth.Claims>.
+Para más información, consulte <xref:Microsoft.AspNetCore.Authentication.OAuth.Claims>.
 
 ## <a name="removal-of-claim-actions-and-claims"></a>Eliminación de las notificaciones y las acciones de notificación
 
-[ClaimActionCollection. Remove (String)](xref:Microsoft.AspNetCore.Authentication.OAuth.Claims.ClaimActionCollection.Remove*) quita todas las acciones de notificaciones del especificado <xref:Microsoft.AspNetCore.Authentication.OAuth.Claims.ClaimAction.ClaimType> de la colección. [ClaimActionCollectionMapExtensions. DeleteClaim (ClaimActionCollection, String)](xref:Microsoft.AspNetCore.Authentication.ClaimActionCollectionMapExtensions.DeleteClaim*) elimina una demanda del proporcionado <xref:Microsoft.AspNetCore.Authentication.OAuth.Claims.ClaimAction.ClaimType> de la identidad. <xref:Microsoft.AspNetCore.Authentication.ClaimActionCollectionMapExtensions.DeleteClaim*>se usa principalmente con [OpenID Connect (OIDC)](/azure/active-directory/develop/v2-protocols-oidc) para quitar notificaciones generadas por el protocolo.
+[ClaimActionCollection. Remove (String)](xref:Microsoft.AspNetCore.Authentication.OAuth.Claims.ClaimActionCollection.Remove*) quita todas las acciones de notificaciones del especificado <xref:Microsoft.AspNetCore.Authentication.OAuth.Claims.ClaimAction.ClaimType> de la colección. [ClaimActionCollectionMapExtensions. DeleteClaim (ClaimActionCollection, String)](xref:Microsoft.AspNetCore.Authentication.ClaimActionCollectionMapExtensions.DeleteClaim*) elimina una demanda del proporcionado <xref:Microsoft.AspNetCore.Authentication.OAuth.Claims.ClaimAction.ClaimType> de la identidad. <xref:Microsoft.AspNetCore.Authentication.ClaimActionCollectionMapExtensions.DeleteClaim*> se usa principalmente con [OpenID Connect (OIDC)](/azure/active-directory/develop/v2-protocols-oidc) para quitar notificaciones generadas por el protocolo.
 
 ## <a name="sample-app-output"></a>Salida de la aplicación de ejemplo
 

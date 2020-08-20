@@ -5,6 +5,7 @@ description: Obtenga información sobre cómo iniciar la migración de un proyec
 ms.author: wpickett
 ms.date: 06/18/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -15,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: migration/mvc
-ms.openlocfilehash: 17f2a2532c58c3796835328260231d63f8fb2e40
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: cd1a7ff57d911f96f0adfe4b548fa80ec844886d
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88015054"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88632244"
 ---
 # <a name="migrate-from-aspnet-mvc-to-aspnet-core-mvc"></a>Migración de ASP.NET MVC a ASP.NET Core MVC
 
@@ -37,7 +38,7 @@ La migración de ASP.NET MVC es un proceso de varios pasos. En este artículo se
 
 Para migrar la configuración y el Identity código, vea [migrar la configuración a ASP.net Core](xref:migration/configuration) y [migrar la autenticación y Identity a ASP.net Core](xref:migration/identity).
 
-## <a name="prerequisites"></a>Requisitos previos
+## <a name="prerequisites"></a>Prerrequisitos
 
 [!INCLUDE [prerequisites](../includes/net-core-prereqs-vs-3.1.md)]
 
@@ -76,7 +77,7 @@ En ASP.NET Core, la `Startup` clase:
 * Reemplaza a *global. asax*.
 * Controla todas las tareas de inicio de la aplicación.
 
-Para obtener más información, vea <xref:fundamentals/startup>.
+Para más información, consulte <xref:fundamentals/startup>.
 
 En el proyecto de ASP.NET Core, abra el archivo *Startup.CS* :
 
@@ -85,8 +86,8 @@ En el proyecto de ASP.NET Core, abra el archivo *Startup.CS* :
 ASP.NET Core aplicaciones deben participar en las características de .NET Framework con middleware. El código generado anteriormente por la plantilla agrega los siguientes servicios y middleware:
 
 * El <xref:Microsoft.Extensions.DependencyInjection.MvcServiceCollectionExtensions.AddControllersWithViews%2A> método de extensión registra la compatibilidad del servicio MVC con los controladores, las características relacionadas con la API y las vistas. Para obtener más información sobre las opciones de registro del servicio MVC, consulte [registro del servicio MVC](xref:migration/22-to-30#mvc-service-registration)
-* El <xref:Microsoft.AspNetCore.Builder.StaticFileExtensions.UseStaticFiles%2A> método de extensión agrega el controlador de archivos estáticos `Microsoft.AspNetCore.StaticFiles` . `UseStaticFiles`Se debe llamar antes al método de extensión `UseRouting` . Para obtener más información, vea <xref:fundamentals/static-files>.
-* El <xref:Microsoft.AspNetCore.Builder.EndpointRoutingApplicationBuilderExtensions.UseRouting%2A> método de extensión agrega enrutamiento. Para obtener más información, vea <xref:fundamentals/routing>.
+* El <xref:Microsoft.AspNetCore.Builder.StaticFileExtensions.UseStaticFiles%2A> método de extensión agrega el controlador de archivos estáticos `Microsoft.AspNetCore.StaticFiles` . `UseStaticFiles`Se debe llamar antes al método de extensión `UseRouting` . Para más información, consulte <xref:fundamentals/static-files>.
+* El <xref:Microsoft.AspNetCore.Builder.EndpointRoutingApplicationBuilderExtensions.UseRouting%2A> método de extensión agrega enrutamiento. Para más información, consulte <xref:fundamentals/routing>.
 
 Esta configuración existente incluye lo que se necesita para migrar el proyecto de ejemplo ASP.NET MVC. Para obtener más información acerca de ASP.NET Core opciones de middleware, vea <xref:fundamentals/startup> .
 
@@ -108,7 +109,7 @@ Para obtener más información, vea <xref:mvc/controllers/actions> y <xref:mvc/v
 Los puntos de conexión de cada controlador se pueden probar, sin embargo, el diseño y los estilos se describen más adelante en el documento.
 
 1. Ejecute la aplicación ASP.NET Core.
-1. Invoque las vistas representadas desde el explorador en la aplicación ASP.NET Core en ejecución reemplazando el número de puerto actual por el número de Puerto usado en el proyecto de ASP.NET Core. Por ejemplo: `https://localhost:44375/home/about`.
+1. Invoque las vistas representadas desde el explorador en la aplicación ASP.NET Core en ejecución reemplazando el número de puerto actual por el número de Puerto usado en el proyecto de ASP.NET Core. Por ejemplo, `https://localhost:44375/home/about`.
 
 ## <a name="migrate-static-content"></a>Migrar contenido estático
 
@@ -230,7 +231,7 @@ Cree una nueva aplicación Web *vacía* de ASP.net Core con el mismo nombre que 
 
 * Cuando el destino es .NET Core, se hace referencia al [metapaquete Microsoft. AspNetCore. app](xref:fundamentals/metapackage-app) de forma predeterminada. Este paquete contiene los paquetes que usan normalmente las aplicaciones MVC. Si el destino es .NET Framework, las referencias del paquete deben aparecer de forma individual en el archivo del proyecto.
 
-`Microsoft.AspNetCore.Mvc`es el marco de MVC ASP.NET Core. `Microsoft.AspNetCore.StaticFiles`es el controlador de archivos estático. ASP.NET Core aplicaciones optan explícitamente a un middleware, como para servir archivos estáticos. Para obtener más información, consulte [Archivos estáticos](xref:fundamentals/static-files).
+`Microsoft.AspNetCore.Mvc` es el marco de MVC ASP.NET Core. `Microsoft.AspNetCore.StaticFiles` es el controlador de archivos estático. ASP.NET Core aplicaciones optan explícitamente a un middleware, como para servir archivos estáticos. Para obtener más información, consulte [Archivos estáticos](xref:fundamentals/static-files).
 
 * Abra el archivo *Startup.CS* y cambie el código para que coincida con lo siguiente:
 
@@ -266,7 +267,7 @@ Reemplace el contenido del archivo *Views/Home/Index.cshtml* por el marcado sigu
 <h1>Hello world!</h1>
 ```
 
-Ejecute la aplicación.
+Ejecutar la aplicación.
 
 ![Aplicación web abierta en Microsoft Edge](mvc/_static/hello-world.png)
 
@@ -290,7 +291,7 @@ La funcionalidad siguiente requiere la migración del proyecto de ejemplo ASP.NE
 
 ## <a name="controllers-and-views"></a>Controladores y vistas
 
-* Copie cada uno de los métodos de MVC de ASP.NET `HomeController` al nuevo `HomeController` . En ASP.NET MVC, el tipo de valor devuelto del método de acción del controlador de la plantilla integrada es [ActionResult](https://msdn.microsoft.com/library/system.web.mvc.actionresult(v=vs.118).aspx). en ASP.NET Core MVC, los métodos de acción devuelven en `IActionResult` su lugar. `ActionResult`implementa `IActionResult` , por lo que no es necesario cambiar el tipo de valor devuelto de los métodos de acción.
+* Copie cada uno de los métodos de MVC de ASP.NET `HomeController` al nuevo `HomeController` . En ASP.NET MVC, el tipo de valor devuelto del método de acción del controlador de la plantilla integrada es [ActionResult](https://msdn.microsoft.com/library/system.web.mvc.actionresult(v=vs.118).aspx). en ASP.NET Core MVC, los métodos de acción devuelven en `IActionResult` su lugar. `ActionResult` implementa `IActionResult` , por lo que no es necesario cambiar el tipo de valor devuelto de los métodos de acción.
 
 * Copie los archivos de vista *About. cshtml*, *Contact. cshtml*e *Index. cshtml* Razor del proyecto ASP.NET MVC en el proyecto ASP.net Core.
 
@@ -416,7 +417,7 @@ Cree una nueva aplicación Web *vacía* de ASP.net Core con el mismo nombre que 
 
 * Cuando el destino es .NET Core, se hace referencia al [metapaquete Microsoft. AspNetCore. app](xref:fundamentals/metapackage-app) de forma predeterminada. Este paquete contiene los paquetes que usan normalmente las aplicaciones MVC. Si el destino es .NET Framework, las referencias del paquete deben aparecer de forma individual en el archivo del proyecto.
 
-`Microsoft.AspNetCore.Mvc`es el marco de MVC ASP.NET Core. `Microsoft.AspNetCore.StaticFiles`es el controlador de archivos estático. ASP.NET Core aplicaciones optan explícitamente a un middleware, como para servir archivos estáticos. Para obtener más información, consulte [Archivos estáticos](xref:fundamentals/static-files).
+`Microsoft.AspNetCore.Mvc` es el marco de MVC ASP.NET Core. `Microsoft.AspNetCore.StaticFiles` es el controlador de archivos estático. ASP.NET Core aplicaciones optan explícitamente a un middleware, como para servir archivos estáticos. Para obtener más información, consulte [Archivos estáticos](xref:fundamentals/static-files).
 
 * Abra el archivo *Startup.CS* y cambie el código para que coincida con lo siguiente:
 
@@ -452,7 +453,7 @@ Reemplace el contenido del archivo *Views/Home/Index.cshtml* por el marcado sigu
 <h1>Hello world!</h1>
 ```
 
-Ejecute la aplicación.
+Ejecutar la aplicación.
 
 ![Aplicación web abierta en Microsoft Edge](mvc/_static/hello-world.png)
 
@@ -476,7 +477,7 @@ La funcionalidad siguiente requiere la migración del proyecto de ejemplo ASP.NE
 
 ## <a name="controllers-and-views"></a>Controladores y vistas
 
-* Copie cada uno de los métodos de MVC de ASP.NET `HomeController` al nuevo `HomeController` . En ASP.NET MVC, el tipo de valor devuelto del método de acción del controlador de la plantilla integrada es [ActionResult](https://msdn.microsoft.com/library/system.web.mvc.actionresult(v=vs.118).aspx). en ASP.NET Core MVC, los métodos de acción devuelven en `IActionResult` su lugar. `ActionResult`implementa `IActionResult` , por lo que no es necesario cambiar el tipo de valor devuelto de los métodos de acción.
+* Copie cada uno de los métodos de MVC de ASP.NET `HomeController` al nuevo `HomeController` . En ASP.NET MVC, el tipo de valor devuelto del método de acción del controlador de la plantilla integrada es [ActionResult](https://msdn.microsoft.com/library/system.web.mvc.actionresult(v=vs.118).aspx). en ASP.NET Core MVC, los métodos de acción devuelven en `IActionResult` su lugar. `ActionResult` implementa `IActionResult` , por lo que no es necesario cambiar el tipo de valor devuelto de los métodos de acción.
 
 * Copie los archivos de vista *About. cshtml*, *Contact. cshtml*e *Index. cshtml* Razor del proyecto ASP.NET MVC en el proyecto ASP.net Core.
 

@@ -5,6 +5,7 @@ description: Descubra artículos basados en ASP.NET Core proyectos creados con c
 ms.author: riande
 ms.date: 12/11/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -15,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/individual
-ms.openlocfilehash: 6b72612c12d52cfc1736c141bdad95ace6c84546
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 0cbde7cf0be830dab9dd094df6d102d81f9f0949
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88022295"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88632621"
 ---
 # <a name="articles-based-on-aspnet-core-projects-created-with-individual-user-accounts"></a>Artículos basados en proyectos de ASP.NET Core creados con cuentas de usuario individuales
 
@@ -73,7 +74,7 @@ En la tabla siguiente se muestran las opciones de autenticación disponibles par
 
 | Opción | Tipo de autenticación | Vínculo para más información |
  | ----------------- | ------------ | ---------- |
-| Ninguno            |  Sin autenticación | | 
+| None            |  Sin autenticación | | 
 | Individual      |  Autenticación individual | <xref:security/authentication/identity>
 | IndividualB2C   |  Autenticación individual hospedada en la nube con Azure AD B2C | [Azure AD B2C](/azure/active-directory-b2c/) |
 | SingleOrg       |  Autenticación organizativa para un solo inquilino | [Azure AD](/azure/active-directory/develop/quickstart-v2-aspnet-core-webapp) |
@@ -86,7 +87,7 @@ En la tabla siguiente se muestran las opciones de autenticación disponibles al 
 
 | Opción | Tipo de autenticación | Vínculo para más información |
  | ----------------- | ------------ | ---------- |
-| Ninguno            |  Sin autenticación | | 
+| None            |  Sin autenticación | | 
 | Cuentas de usuario individuales/almacenar cuentas de usuario en la aplicación |  Autenticación individual | <xref:security/authentication/identity> |
 | Cuentas de usuario individuales/conectarse a un almacén de usuario existente en la nube |  Autenticación individual hospedada en la nube con Azure AD B2C | [Azure AD B2C](/azure/active-directory-b2c/) |
 | Nube profesional o educativa/organización única  |  Autenticación organizativa para un solo inquilino | [Azure AD](/azure/active-directory/develop/quickstart-v2-aspnet-core-webapp) |
