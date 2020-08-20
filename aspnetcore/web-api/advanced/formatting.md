@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 04/17/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/advanced/formatting
-ms.openlocfilehash: 8aa94bd1f33d1dd8ce8e7f50468ed60b4ccb2515
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 618bb60ea382437b2787adb814f319b1f0cea4ca
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88019942"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88626537"
 ---
 # <a name="format-response-data-in-aspnet-core-web-api"></a>Aplicación de formato a datos de respuesta en ASP.NET Core Web API
 
@@ -35,7 +36,7 @@ ASP.NET Core MVC tiene compatibilidad para formatear datos de respuesta. Se pued
 
 Algunos tipos de resultado de acción son específicos de un formato determinado, como <xref:Microsoft.AspNetCore.Mvc.JsonResult> y <xref:Microsoft.AspNetCore.Mvc.ContentResult>. Las acciones pueden devolver resultados con un formato determinado, independientemente de las preferencias del cliente. Por ejemplo, la devolución de `JsonResult` devuelve datos con formato JSON. Al devolver `ContentResult` o una cadena se devuelven datos de cadena con formato de texto sin formato.
 
-No se requiere una acción para devolver ningún tipo específico. ASP.NET Core admite cualquier valor devuelto de objeto.  Los resultados de acciones que devuelven objetos que no son tipos <xref:Microsoft.AspNetCore.Mvc.IActionResult> se serializan con la implementación <xref:Microsoft.AspNetCore.Mvc.Formatters.IOutputFormatter> correspondiente. Para obtener más información, vea <xref:web-api/action-return-types>.
+No se requiere una acción para devolver ningún tipo específico. ASP.NET Core admite cualquier valor devuelto de objeto.  Los resultados de acciones que devuelven objetos que no son tipos <xref:Microsoft.AspNetCore.Mvc.IActionResult> se serializan con la implementación <xref:Microsoft.AspNetCore.Mvc.Formatters.IOutputFormatter> correspondiente. Para más información, consulte <xref:web-api/action-return-types>.
 
 El método auxiliar integrado <xref:Microsoft.AspNetCore.Mvc.ControllerBase.Ok*> devuelve datos con formato JSON: [!code-csharp[](./formatting/sample/Controllers/AuthorsController.cs?name=snippet_get)]
 
@@ -258,7 +259,7 @@ La asignación de la ruta de acceso de la solicitud debe especificarse en la rut
 
 Esta ruta anterior permite especificar el formato solicitado como una extensión de archivo opcional. El [`[FormatFilter]`](xref:Microsoft.AspNetCore.Mvc.FormatFilterAttribute) atributo comprueba la existencia del valor de formato en `RouteData` y asigna el formato de respuesta al formateador adecuado cuando se crea la respuesta.
 
-|           Enrutar        |             Formateador              |
+|           Ruta        |             Formateador              |
 |------------------------|------------------------------------|
 |   `/api/products/5`    |    Formateador de salida predeterminado    |
 | `/api/products/5.json` | Formateador JSON (si está configurado) |

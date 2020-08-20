@@ -7,6 +7,7 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 12/05/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/advanced/conventions
-ms.openlocfilehash: e18a2096c3b9fa788ba2a9713d0f25c1e76af2db
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 425f1aaf1fa86f10d857c34e621c302f2db258e5
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88019968"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88626797"
 ---
 # <a name="use-web-api-conventions"></a>Uso de convenciones de API web
 

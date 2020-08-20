@@ -1,5 +1,5 @@
 ---
-title: Usar filtros de Hub en ASP.NET CoreSignalR
+title: Usar filtros de Hub en ASP.NET Core SignalR
 author: brecon
 description: Aprenda a usar filtros de Hub en ASP.NET Core SignalR .
 monikerRange: '>= aspnetcore-5.0'
@@ -7,6 +7,7 @@ ms.author: brecon
 ms.custom: mvc
 ms.date: 05/22/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,14 +18,14 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/hub-filters
-ms.openlocfilehash: db6439ab4e61d0412148c5ea72b52d429367491b
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: c3c44efcb3702f3edb51c821d042c2e7eb1748cd
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88022152"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88626671"
 ---
-# <a name="use-hub-filters-in-aspnet-core-no-locsignalr"></a>Usar filtros de Hub en ASP.NET CoreSignalR
+# <a name="use-hub-filters-in-aspnet-core-no-locsignalr"></a>Usar filtros de Hub en ASP.NET Core SignalR
 
 Filtros de Hub:
 

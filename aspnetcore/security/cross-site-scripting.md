@@ -5,6 +5,7 @@ description: Obtenga información sobre las técnicas de scripting entre sitios 
 ms.author: riande
 ms.date: 10/02/2018
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -15,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/cross-site-scripting
-ms.openlocfilehash: 24fab313c3af30cfd4143ba29a33ba25bfcdf9a9
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: ec8b321be08447ca634a1e28799f790f723f17d1
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88021814"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88625627"
 ---
 # <a name="prevent-cross-site-scripting-xss-in-aspnet-core"></a>Impedir el scripting entre sitios (XSS) en ASP.NET Core
 
@@ -42,7 +43,7 @@ En un nivel básico, XSS funciona engañando a la aplicación para insertar una 
 
 5. Antes de colocar los datos que no son de confianza en una cadena de consulta de dirección URL, asegúrese de que su dirección URL está codificada.
 
-## <a name="html-encoding-using-no-locrazor"></a>Codificación HTML medianteRazor
+## <a name="html-encoding-using-no-locrazor"></a>Codificación HTML mediante Razor
 
 El Razor motor usado en MVC codifica automáticamente todas las salidas que se han generado a partir de variables, a menos que trabaje realmente difícil para evitar que lo haga. Usa reglas de codificación de atributos HTML siempre que se usa la *@* Directiva. Como la codificación de atributos HTML es un supraconjunto de codificación HTML, esto significa que no tiene que preocuparse de si debe usar la codificación HTML o la codificación de atributos HTML. Debe asegurarse de que solo usa @ en un contexto HTML, no cuando intenta insertar una entrada que no es de confianza directamente en JavaScript. Las aplicaciones auxiliares de etiquetas también codificarán la entrada que se usa en los parámetros de etiqueta.
 
@@ -65,7 +66,7 @@ Esta vista genera el contenido de la variable *untrustedInput* . Esta variable i
 >[!WARNING]
 > ASP.NET Core MVC proporciona una `HtmlString` clase que no se codifica automáticamente en la salida. Nunca debe usarse en combinación con una entrada que no sea de confianza, ya que esto expone una vulnerabilidad de XSS.
 
-## <a name="javascript-encoding-using-no-locrazor"></a>Codificación de JavaScript medianteRazor
+## <a name="javascript-encoding-using-no-locrazor"></a>Codificación de JavaScript mediante Razor
 
 Puede haber ocasiones en las que desee insertar un valor en JavaScript para procesarlo en la vista. Existen dos formas de hacerlo. La forma más segura de insertar valores es colocar el valor en un atributo de datos de una etiqueta y recuperarlo en el código JavaScript. Por ejemplo:
 

@@ -5,6 +5,7 @@ description: Obtenga información sobre cómo crear y utilizar formateadores per
 ms.author: riande
 ms.date: 06/25/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -15,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/advanced/custom-formatters
-ms.openlocfilehash: ecf233273a28df9b2d35edf3264b8c73b16759e5
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 9f87d02dd3abe6dca8db495e482ccf9c440a2469
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88021879"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88627551"
 ---
 # <a name="custom-formatters-in-aspnet-core-web-api"></a>Formateadores personalizados en ASP.NET Core Web API
 

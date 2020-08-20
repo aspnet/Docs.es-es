@@ -7,6 +7,7 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 04/06/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/tag-helpers/builtin-th/partial-tag-helper
-ms.openlocfilehash: 5925594b5429f011a0694dbe14218211a52d6377
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 4a9f1958cd26bb57fcf3944aabacd57c470fb17e
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88018460"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88626953"
 ---
 # <a name="partial-tag-helper-in-aspnet-core"></a>Asistente de etiquetas parciales en ASP.NET Core
 
@@ -32,7 +33,7 @@ Para obtener información general sobre asistentes de etiquetas, vea <xref:mvc/v
 
 [Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/tag-helpers/built-in/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
-## <a name="overview"></a>Introducción
+## <a name="overview"></a>Información general
 
 La aplicación auxiliar de etiquetas parciales se usa para representar una [vista parcial](xref:mvc/views/partial) en Razor páginas y aplicaciones MVC. Tenga en cuenta lo siguiente:
 
@@ -73,7 +74,7 @@ La vista parcial se enlaza a la propiedad `Product` del modelo de página asocia
 
 [!code-csharp[](samples/TagHelpersBuiltIn/Pages/Product.cshtml.cs?highlight=8)]
 
-## <a name="model"></a>modelo
+## <a name="model"></a>model
 
 El atributo `model` asigna una instancia de modelo para pasarla a la vista parcial. El atributo `model` no se puede usar con el atributo [for](#for).
 

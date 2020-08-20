@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/07/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/data-protection/configuration/overview
-ms.openlocfilehash: 0ff211624b7cf363da393a627c761302d9f3d8ed
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: aa7f6f3c1ff8042bd11bba485a2d7b8aaa6ef88a
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88019760"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88626719"
 ---
 # <a name="configure-aspnet-core-data-protection"></a>Configurar la protección de datos en ASP.NET Core
 
@@ -35,7 +36,7 @@ En estos casos, el sistema de protección de datos ofrece una API de configuraci
 > [!WARNING]
 > Al igual que los archivos de configuración, el anillo de claves de protección de datos debe protegerse con los permisos adecuados. Puede optar por cifrar las claves en reposo, pero esto no impide que los atacantes creen nuevas claves. Por lo tanto, la seguridad de la aplicación se ve afectada. La ubicación de almacenamiento configurada con la protección de datos debe tener su acceso limitado a la propia aplicación, de manera similar a la forma en que se protegen los archivos de configuración. Por ejemplo, si decide almacenar el anillo de claves en el disco, use los permisos del sistema de archivos. Asegúrese de que solo la identidad en la que se ejecuta la aplicación web tenga acceso de lectura, escritura y creación a ese directorio. Si usa Azure Blob Storage, solo la aplicación Web debe tener la capacidad de leer, escribir o crear nuevas entradas en el almacén de blobs, etc.
 >
-> El método de extensión [AddDataProtection](/dotnet/api/microsoft.extensions.dependencyinjection.dataprotectionservicecollectionextensions.adddataprotection) devuelve un [IDataProtectionBuilder](/dotnet/api/microsoft.aspnetcore.dataprotection.idataprotectionbuilder). `IDataProtectionBuilder`Expone métodos de extensión que se pueden encadenar juntos para configurar las opciones de protección de datos.
+> El método de extensión [AddDataProtection](/dotnet/api/microsoft.extensions.dependencyinjection.dataprotectionservicecollectionextensions.adddataprotection) devuelve un [IDataProtectionBuilder](/dotnet/api/microsoft.aspnetcore.dataprotection.idataprotectionbuilder). `IDataProtectionBuilder` Expone métodos de extensión que se pueden encadenar juntos para configurar las opciones de protección de datos.
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -65,7 +66,7 @@ Establezca la ubicación de almacenamiento del anillo de claves (por ejemplo, [P
 
 `keyIdentifier`Es el identificador de clave del almacén de claves que se usa para el cifrado de claves. Por ejemplo, una clave creada en el almacén de claves denominado `dataprotection` en `contosokeyvault` tiene el identificador de clave `https://contosokeyvault.vault.azure.net/keys/dataprotection/` . Proporcione la aplicación con los permisos clave de **desencapsulado** y **clave de encapsulado** en el almacén de claves.
 
-`ProtectKeysWithAzureKeyVault`sobrecargas
+`ProtectKeysWithAzureKeyVault` sobrecargas
 
 * [ProtectKeysWithAzureKeyVault (IDataProtectionBuilder, KeyVaultClient, String)](/dotnet/api/microsoft.aspnetcore.dataprotection.azuredataprotectionbuilderextensions.protectkeyswithazurekeyvault#Microsoft_AspNetCore_DataProtection_AzureDataProtectionBuilderExtensions_ProtectKeysWithAzureKeyVault_Microsoft_AspNetCore_DataProtection_IDataProtectionBuilder_Microsoft_Azure_KeyVault_KeyVaultClient_System_String_) permite el uso de una [KeyVaultClient](/dotnet/api/microsoft.azure.keyvault.keyvaultclient) para permitir que el sistema de protección de datos use el almacén de claves.
 * [ProtectKeysWithAzureKeyVault (IDataProtectionBuilder, String, String, X509Certificate2)](/dotnet/api/microsoft.aspnetcore.dataprotection.azuredataprotectionbuilderextensions.protectkeyswithazurekeyvault#Microsoft_AspNetCore_DataProtection_AzureDataProtectionBuilderExtensions_ProtectKeysWithAzureKeyVault_Microsoft_AspNetCore_DataProtection_IDataProtectionBuilder_System_String_System_String_System_Security_Cryptography_X509Certificates_X509Certificate2_) permite el uso de `ClientId` y [X509Certificate](/dotnet/api/system.security.cryptography.x509certificates.x509certificate2) para permitir que el sistema de protección de datos use el almacén de claves.

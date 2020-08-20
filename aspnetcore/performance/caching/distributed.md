@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/caching/distributed
-ms.openlocfilehash: 64a4b6f606a4f5f8e73ef08f53cbb6e4003245aa
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: a25cbaf9a4e7dc5f1bd3706d01f409208a39aaa3
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88020683"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88626732"
 ---
 # <a name="distributed-caching-in-aspnet-core"></a>Almacenamiento en caché distribuido en ASP.NET Core
 
@@ -174,7 +175,7 @@ A la hora de decidir qué implementación de <xref:Microsoft.Extensions.Caching.
 
 * Infraestructura existente
 * Requisitos de rendimiento
-* Coste
+* Costo
 * Experiencia del equipo
 
 Las soluciones de almacenamiento en caché suelen basarse en el almacenamiento en memoria para proporcionar una recuperación rápida de los datos almacenados en memoria caché, pero la memoria es un recurso limitado y se amplía de forma costosa. Almacene solo los datos usados habitualmente en una memoria caché.
@@ -344,7 +345,7 @@ A la hora de decidir qué implementación de <xref:Microsoft.Extensions.Caching.
 
 * Infraestructura existente
 * Requisitos de rendimiento
-* Coste
+* Costo
 * Experiencia del equipo
 
 Las soluciones de almacenamiento en caché suelen basarse en el almacenamiento en memoria para proporcionar una recuperación rápida de los datos almacenados en memoria caché, pero la memoria es un recurso limitado y se amplía de forma costosa. Almacene solo los datos usados habitualmente en una memoria caché.
@@ -520,7 +521,7 @@ A la hora de decidir qué implementación de <xref:Microsoft.Extensions.Caching.
 
 * Infraestructura existente
 * Requisitos de rendimiento
-* Coste
+* Costo
 * Experiencia del equipo
 
 Las soluciones de almacenamiento en caché suelen basarse en el almacenamiento en memoria para proporcionar una recuperación rápida de los datos almacenados en memoria caché, pero la memoria es un recurso limitado y se amplía de forma costosa. Almacene solo los datos usados habitualmente en una memoria caché.

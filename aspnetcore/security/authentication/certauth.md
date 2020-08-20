@@ -6,6 +6,7 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: bdorrans
 ms.date: 07/16/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,16 +17,16 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/certauth
-ms.openlocfilehash: 7a23f2b17cc8fb3a4989b9fddd5c128add13db5b
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 54780e2d67c70d945fd875c41c8d6483aa358bbf
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88021957"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88627200"
 ---
 # <a name="configure-certificate-authentication-in-aspnet-core"></a>Configurar la autenticación de certificados en ASP.NET Core
 
-`Microsoft.AspNetCore.Authentication.Certificate`contiene una implementación similar a la [autenticación de certificado](https://tools.ietf.org/html/rfc5246#section-7.4.4) para ASP.net Core. La autenticación de certificados se realiza en el nivel de TLS, mucho antes de que llegue a ASP.NET Core. Más concretamente, se trata de un controlador de autenticación que valida el certificado y, a continuación, le proporciona un evento en el que puede resolver ese certificado en un `ClaimsPrincipal` . 
+`Microsoft.AspNetCore.Authentication.Certificate` contiene una implementación similar a la [autenticación de certificado](https://tools.ietf.org/html/rfc5246#section-7.4.4) para ASP.net Core. La autenticación de certificados se realiza en el nivel de TLS, mucho antes de que llegue a ASP.NET Core. Más concretamente, se trata de un controlador de autenticación que valida el certificado y, a continuación, le proporciona un evento en el que puede resolver ese certificado en un `ClaimsPrincipal` . 
 
 [Configure el servidor para la](#configure-your-server-to-require-certificates) autenticación de certificados, ya sea IIS, Kestrel, Azure Web Apps o cualquier otra cosa que esté usando.
 
@@ -38,7 +39,7 @@ La autenticación de certificados es un escenario con estado que se usa principa
 
 Una alternativa a la autenticación de certificados en entornos en los que se usan servidores proxy y equilibradores de carga es Active Directory Federated Services (ADFS) con OpenID Connect (OIDC).
 
-## <a name="get-started"></a>Primeros pasos
+## <a name="get-started"></a>Introducción
 
 Adquiera un certificado HTTPS, aplíquelo y [Configure el servidor](#configure-your-server-to-require-certificates) para que requiera certificados.
 
@@ -325,7 +326,7 @@ private static byte[] StringToByteArray(string hex)
 }
 ```
 
-`Startup.Configure`Después, el método agrega el middleware. `UseCertificateForwarding`se llama a antes de llamar a `UseAuthentication` y `UseAuthorization` :
+`Startup.Configure`Después, el método agrega el middleware. `UseCertificateForwarding` se llama a antes de llamar a `UseAuthentication` y `UseAuthorization` :
 
 ```csharp
 public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -616,7 +617,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-La implementación de almacenamiento en caché predeterminada almacena los resultados en memoria. Puede proporcionar su propia memoria caché implementando `ICertificateValidationCache` y registrando la inserción de dependencias. Por ejemplo: `services.AddSingleton<ICertificateValidationCache, YourCache>()`.
+La implementación de almacenamiento en caché predeterminada almacena los resultados en memoria. Puede proporcionar su propia memoria caché implementando `ICertificateValidationCache` y registrando la inserción de dependencias. Por ejemplo, `services.AddSingleton<ICertificateValidationCache, YourCache>()`.
 
 ::: moniker-end
 
@@ -638,7 +639,7 @@ El siguiente enfoque admite certificados de cliente opcionales:
 
 * Configure el enlace para el dominio y el subdominio:
   * Por ejemplo, configure los enlaces en `contoso.com` y `myClient.contoso.com` . El `contoso.com` host no requiere un certificado de cliente, pero sí lo `myClient.contoso.com` hace.
-  * Para obtener más información, consulte:
+  * Para más información, consulte:
     * [Kestrel](/fundamentals/servers/kestrel):
       * [ListenOptions.UseHttps](xref:fundamentals/servers/kestrel#listenoptionsusehttps)
       * <xref:Microsoft.AspNetCore.Server.Kestrel.Https.HttpsConnectionAdapterOptions.ClientCertificateMode>
@@ -650,8 +651,8 @@ El siguiente enfoque admite certificados de cliente opcionales:
 * Para las solicitudes a la aplicación web que requieren un certificado de cliente y no tienen una:
   * Redirigir a la misma página mediante el subdominio protegido por el certificado de cliente.
   * Por ejemplo, redirigir a `myClient.contoso.com/requestedPage` . Dado que la solicitud a `myClient.contoso.com/requestedPage` es un nombre de host diferente que `contoso.com/requestedPage` , el cliente establece una conexión diferente y se proporciona el certificado de cliente.
-  * Para obtener más información, vea <xref:security/authorization/introduction>.
+  * Para más información, consulte <xref:security/authorization/introduction>.
 
 Deje preguntas, comentarios y otros comentarios sobre los certificados de cliente opcionales en este problema de [discusión de github](https://github.com/dotnet/AspNetCore.Docs/issues/18720) .
 
-&dagger;Indicación de nombre de servidor (SNI) es una extensión de TLS para incluir un dominio virtual como parte de la negociación SSL. Esto significa que el nombre de dominio virtual, o un nombre de host, se puede usar para identificar el extremo de la red.
+&dagger; Indicación de nombre de servidor (SNI) es una extensión de TLS para incluir un dominio virtual como parte de la negociación SSL. Esto significa que el nombre de dominio virtual, o un nombre de host, se puede usar para identificar el extremo de la red.
