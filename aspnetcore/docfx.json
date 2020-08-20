@@ -28,7 +28,8 @@
           "**/*.jpg",
           "**/*.gif",
           "**/*.svg",
-          "**/*.pdf"
+          "**/*.pdf",
+          "**/zone-pivot-groups.json"
         ],
         "exclude": [
           "**/obj/**",
@@ -52,10 +53,11 @@
       "feedback_system": "GitHub",
       "ms.prod": "aspnet-core",
       "ms.topic": "conceptual",
-      "uhfHeaderId": [],
+      "uhfHeaderId": "MSDocsHeader-AspNet",
       "searchScope": [
         "ASP.NET Core"
       ],
+      "zone_pivot_group_filename": "core/zone-pivot-groups.json",
       "disable_contribution_on_translation_quality": [
         "MT",
         "MTE75",
