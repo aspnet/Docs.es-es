@@ -28,7 +28,8 @@
           "**/*.jpg",
           "**/*.gif",
           "**/*.svg",
-          "**/*.pdf"
+          "**/*.pdf",
+          "**/zone-pivot-groups.json"
         ],
         "exclude": [
           "**/obj/**",
@@ -43,20 +44,21 @@
     "overwrite": [],
     "externalReference": [],
     "globalMetadata": {
+      "bilingual_type": "hover over",
       "_navPath": "/foo",
       "_navRel": "/foo",
       "breadcrumb_path": "/aspnet/core/breadcrumb/toc.json",
-      "bilingual_type": "hover over",
       "extendBreadcrumb": true,
       "feedback_github_repo": "dotnet/AspNetCore.Docs.es-es",
       "feedback_product_url": "https://github.com/dotnet/aspnetcore/blob/master/CONTRIBUTING.md",
       "feedback_system": "GitHub",
       "ms.prod": "aspnet-core",
       "ms.topic": "conceptual",
-      "uhfHeaderId": [],
+      "uhfHeaderId": "MSDocsHeader-AspNet",
       "searchScope": [
         "ASP.NET Core"
       ],
+      "zone_pivot_group_filename": "core/zone-pivot-groups.json",
       "disable_contribution_on_translation_quality": [
         "MT",
         "MTE75",
