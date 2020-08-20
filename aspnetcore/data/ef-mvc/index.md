@@ -5,6 +5,7 @@ description: ''
 ms.author: riande
 ms.date: 03/27/2017
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -15,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/index
-ms.openlocfilehash: c41f601311b1f9487199009d596d6cf3aed07d48
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 0accf0f7f4c64334d2fd8e6b1edce3316f3b0ab2
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88012818"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88629163"
 ---
 # <a name="aspnet-core-mvc-with-ef-core---tutorial-series"></a>ASP.NET Core MVC con EF Core: serie de tutoriales
 

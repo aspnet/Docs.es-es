@@ -6,6 +6,7 @@ ms.author: riande
 ms.date: 01/21/2020
 ms.custom: mvc, seodec18
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/azure-active-directory/index
-ms.openlocfilehash: a321747a609dbb23f75165d4992a4dd55c10c1d5
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: b807681e00b196449c74dbe4240e9d6996af51fc
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88021736"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88633089"
 ---
 # <a name="azure-active-directory-with-aspnet-core"></a>Azure Active Directory con ASP.NET Core
 
