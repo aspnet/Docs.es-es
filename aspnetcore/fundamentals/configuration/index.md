@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 3/29/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/configuration/index
-ms.openlocfilehash: 8f39d6f460faaab3d54178daf3730f5a6662df40
-ms.sourcegitcommit: ba4872dd5a93780fe6cfacb2711ec1e69e0df92c
+ms.openlocfilehash: fe0a0d3dbb87455be602234825d702fab02df936
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88130696"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88634597"
 ---
 # <a name="configuration-in-aspnet-core"></a>Configuración en ASP.NET Core
 
@@ -254,14 +255,6 @@ El siguiente comando sirve para probar el reemplazo de claves:
 
 ```dotnetcli
 dotnet run -k1 value1 -k2 value2 --alt3=value2 /alt4=value3 --alt5 value5 /alt6 value6
-```
-
-<!-- Run the following command to test the key replacement: -->
-
-Nota: Actualmente, no se puede usar `=` para establecer los valores de reemplazo de clave con un solo guion `-`. Consulte [este problema de GitHub](https://github.com/dotnet/extensions/issues/3059).
-
-```dotnetcli
-dotnet run -k1=value1 -k2 value2 --alt3=value2 /alt4=value3 --alt5 value5 /alt6 value6
 ```
 
 En el caso de las aplicaciones que usen las asignaciones de modificador, la llamada a `CreateDefaultBuilder` no tiene que pasar argumentos. En la llamada de `AddCommandLine` al método `CreateDefaultBuilder`, no se incluyen modificadores asignados y no hay forma de pasar el diccionario de asignación de modificador a `CreateDefaultBuilder`. La solución no es pasar los argumentos de `CreateDefaultBuilder`, sino permitir que el método `AddCommandLine` del método `ConfigurationBuilder` procese tanto los argumentos como el diccionario de asignación de modificador.
