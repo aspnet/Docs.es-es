@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/caching/distributed
-ms.openlocfilehash: a25cbaf9a4e7dc5f1bd3706d01f409208a39aaa3
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 0d27206412a098f4ea749ec10189bf24d2322de1
+ms.sourcegitcommit: 9a90b956af8d8584d597f1e5c1dbfb0ea9bb8454
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88626732"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88712485"
 ---
 # <a name="distributed-caching-in-aspnet-core"></a>Almacenamiento en caché distribuido en ASP.NET Core
 
@@ -116,16 +116,13 @@ La aplicación de ejemplo implementa <xref:Microsoft.Extensions.Caching.SqlServe
 
 ### <a name="distributed-redis-cache"></a>Redis Cache distribuido
 
-[Redis](https://redis.io/) es un almacén de datos en memoria de código abierto, que a menudo se usa como caché distribuida. Puede usar Redis localmente, y puede configurar un [Azure Redis cache](https://azure.microsoft.com/services/cache/) para una aplicación de ASP.net Core hospedada en Azure.
+[Redis](https://redis.io/) es un almacén de datos en memoria de código abierto, que a menudo se usa como caché distribuida.  Puede configurar un [Azure Redis cache](https://azure.microsoft.com/services/cache/) para una aplicación de ASP.net Core hospedada en Azure y usar una Azure Redis cache para el desarrollo local.
 
-Una aplicación configura la implementación de la memoria caché mediante una <xref:Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache> instancia <xref:Microsoft.Extensions.DependencyInjection.StackExchangeRedisCacheServiceCollectionExtensions.AddStackExchangeRedisCache*> de () en un entorno que no es de desarrollo en `Startup.ConfigureServices` :
+Una aplicación configura la implementación de la memoria caché mediante una <xref:Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache> instancia de ( <xref:Microsoft.Extensions.DependencyInjection.StackExchangeRedisCacheServiceCollectionExtensions.AddStackExchangeRedisCache*> ).
 
-[!code-csharp[](distributed/samples/3.x/DistCacheSample/Startup.cs?name=snippet_AddStackExchangeRedisCache)]
+Para más información, consulte [Azure Cache for Redis](/azure/azure-cache-for-redis/cache-overview).
 
-Para instalar Redis en el equipo local:
-
-1. Instale el [paquete chocolatey Redis](https://chocolatey.org/packages/redis-64/).
-1. Ejecute `redis-server` desde un símbolo del sistema.
+Consulte [este problema de github](https://github.com/dotnet/AspNetCore.Docs/issues/19542) para obtener una explicación sobre métodos alternativos para una caché en Redis local.
 
 ### <a name="distributed-ncache-cache"></a>Caché de NCache distribuida
 
@@ -175,7 +172,7 @@ A la hora de decidir qué implementación de <xref:Microsoft.Extensions.Caching.
 
 * Infraestructura existente
 * Requisitos de rendimiento
-* Costo
+* Coste
 * Experiencia del equipo
 
 Las soluciones de almacenamiento en caché suelen basarse en el almacenamiento en memoria para proporcionar una recuperación rápida de los datos almacenados en memoria caché, pero la memoria es un recurso limitado y se amplía de forma costosa. Almacene solo los datos usados habitualmente en una memoria caché.
@@ -345,7 +342,7 @@ A la hora de decidir qué implementación de <xref:Microsoft.Extensions.Caching.
 
 * Infraestructura existente
 * Requisitos de rendimiento
-* Costo
+* Coste
 * Experiencia del equipo
 
 Las soluciones de almacenamiento en caché suelen basarse en el almacenamiento en memoria para proporcionar una recuperación rápida de los datos almacenados en memoria caché, pero la memoria es un recurso limitado y se amplía de forma costosa. Almacene solo los datos usados habitualmente en una memoria caché.
@@ -521,7 +518,7 @@ A la hora de decidir qué implementación de <xref:Microsoft.Extensions.Caching.
 
 * Infraestructura existente
 * Requisitos de rendimiento
-* Costo
+* Coste
 * Experiencia del equipo
 
 Las soluciones de almacenamiento en caché suelen basarse en el almacenamiento en memoria para proporcionar una recuperación rápida de los datos almacenados en memoria caché, pero la memoria es un recurso limitado y se amplía de forma costosa. Almacene solo los datos usados habitualmente en una memoria caché.
@@ -544,4 +541,3 @@ Cuando SQL Server se usa como un almacén de respaldo de caché distribuida, el 
 * <xref:host-and-deploy/web-farm>
 
 ::: moniker-end
- 
