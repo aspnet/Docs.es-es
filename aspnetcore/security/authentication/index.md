@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 03/03/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/index
-ms.openlocfilehash: b0258118e116b1686abbebf1c8d89135ae3cb1f6
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 2511d68dd049ca47dea002d8960e7d2fd0207383
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88019321"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88632647"
 ---
 # <a name="overview-of-aspnet-core-authentication"></a>Información general sobre la autenticación de ASP.NET Core
 
@@ -51,7 +52,7 @@ El parámetro `JwtBearerDefaults.AuthenticationScheme` de `AddAuthentication` es
 
 Si se usan varios esquemas, las directivas de autorización (o los atributos de autorización) pueden [especificar el esquema (o esquemas) de autenticación](xref:security/authorization/limitingidentitybyscheme) del que dependen para autenticar al usuario. En el ejemplo anterior, se podría especificar el nombre del esquema de autenticación de cookie (`CookieAuthenticationDefaults.AuthenticationScheme` de forma predeterminada, aunque se podría proporcionar otro nombre al llamar a `AddCookie`).
 
-En algunos casos, la llamada a `AddAuthentication` se realiza automáticamente mediante otros métodos de extensión. Por ejemplo, al usar [ASP.NET Core Identity](xref:security/authentication/identity), se llama a `AddAuthentication` internamente.
+En algunos casos, la llamada a `AddAuthentication` se realiza automáticamente mediante otros métodos de extensión. Por ejemplo, al usar [ASP.NET Core Identity](xref:security/authentication/identity), se llama a `AddAuthentication` de manera interna.
 
 Para agregar el middleware de autenticación en `Startup.Configure`, se llama al método de extensión <xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication*> en el elemento `IApplicationBuilder` de la aplicación. La llamada a `UseAuthentication` registra el middleware que usa los esquemas de autenticación previamente registrados. Llame a `UseAuthentication` antes de registrar cualquier middleware que dependa de que los usuarios se autentiquen. Al usar el enrutamiento de punto de conexión, la llamada a `UseAuthentication` debe ir:
 

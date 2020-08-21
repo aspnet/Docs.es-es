@@ -5,8 +5,9 @@ description: Aprenda a crear y usar componentes de Razor, lo que incluye cómo e
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/14/2020
+ms.date: 08/19/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/index
-ms.openlocfilehash: a145cfd551650445f9ff35259cbedf71ebb686f0
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 6ee767ee76b622e15a1dc5a7fe2f3e05f03dabd0
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88014599"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88628500"
 ---
 # <a name="create-and-use-aspnet-core-no-locrazor-components"></a>Creación y uso de componentes de Razor de ASP.NET Core
 
@@ -265,7 +266,7 @@ En el siguiente ejemplo de la aplicación de muestra, `ParentComponent` establec
 [!code-razor[](index/samples_snapshot/ParentComponent.razor?highlight=5-6)]
 
 > [!WARNING]
-> No cree componentes que escriban en sus propios *parámetros de componente*; en su lugar, use un campo privado. Para más información, consulte la sección [No crear componentes que escriban en sus propias propiedades de parámetro](#dont-create-components-that-write-to-their-own-parameter-properties).
+> No cree componentes que escriban en sus propios *parámetros de componente* cuando el contenido del componente se represente con un elemento<xref:Microsoft.AspNetCore.Components.RenderFragment>; en su lugar, use un campo privado. Para más información, consulte la sección [Parámetros sobrescritos con `RenderFragment`](#overwritten-parameters-with-renderfragment).
 
 ## <a name="child-content"></a>Contenido secundario
 
@@ -317,28 +318,20 @@ En el siguiente ejemplo, el primer elemento `<input>` (`id="useIndividualParams"
 
 ```razor
 <input id="useIndividualParams"
-       maxlength="@Maxlength"
-       placeholder="@Placeholder"
-       required="@Required"
-       size="@Size" />
+       maxlength="@maxlength"
+       placeholder="@placeholder"
+       required="@required"
+       size="@size" />
 
 <input id="useAttributesDict"
        @attributes="InputAttributes" />
 
 @code {
-    [Parameter]
-    public string Maxlength { get; set; } = "10";
+    public string maxlength = "10";
+    public string placeholder = "Input placeholder text";
+    public string required = "required";
+    public string size = "50";
 
-    [Parameter]
-    public string Placeholder { get; set; } = "Input placeholder text";
-
-    [Parameter]
-    public string Required { get; set; } = "required";
-
-    [Parameter]
-    public string Size { get; set; } = "50";
-
-    [Parameter]
     public Dictionary<string, object> InputAttributes { get; set; } =
         new Dictionary<string, object>()
         {
@@ -350,7 +343,7 @@ En el siguiente ejemplo, el primer elemento `<input>` (`id="useIndividualParams"
 }
 ```
 
-El tipo del parámetro debe implementar `IEnumerable<KeyValuePair<string, object>>` con claves de cadena. El uso de `IReadOnlyDictionary<string, object>` también es una opción en este escenario.
+El tipo del parámetro debe implementar `IEnumerable<KeyValuePair<string, object>>` o `IReadOnlyDictionary<string, object>` con claves de cadena.
 
 Los elementos `<input>` representados con ambos métodos son idénticos:
 
@@ -433,10 +426,10 @@ Las referencias de componentes son una forma de hacer referencia a una instancia
 * Defina un campo con el mismo tipo que el componente secundario.
 
 ```razor
-<MyLoginDialog @ref="loginDialog" ... />
+<CustomLoginDialog @ref="loginDialog" ... />
 
 @code {
-    private MyLoginDialog loginDialog;
+    private CustomLoginDialog loginDialog;
 
     private void OnSomething()
     {
@@ -632,7 +625,7 @@ Por lo general, lo lógico es proporcionar uno de los siguientes tipos de valor 
 
 Asegúrese de que los valores usados en [`@key`][5] no entran en conflicto. Si se detectan valores en conflicto en el mismo elemento primario, Blazor produce una excepción porque no puede asignar de forma determinista elementos o componentes antiguos a nuevos elementos o componentes. Use exclusivamente valores distintos, como instancias de objeto o valores de clave principal.
 
-## <a name="dont-create-components-that-write-to-their-own-parameter-properties"></a>No crear componentes que escriban en sus propias propiedades de parámetro
+## <a name="overwritten-parameters-with-renderfragment"></a>Parámetros sobrescritos con `RenderFragment`
 
 Los parámetros se sobrescriben en las condiciones siguientes:
 
@@ -647,17 +640,13 @@ Considere el componente `Expander` siguiente que:
 * Alterna la visualización del contenido secundario con un parámetro de componente.
 
 ```razor
-<div @onclick="@Toggle" class="card text-white bg-success mb-3">
+<div @onclick="@Toggle" class="card bg-light mb-3" style="width:30rem">
     <div class="card-body">
-        <div class="panel-heading">
-            <h2>Toggle (<code>Expanded</code> = @Expanded)</h2>
-        </div>
+        <h2 class="card-title">Toggle (<code>Expanded</code> = @Expanded)</h2>
 
         @if (Expanded)
         {
-            <div class="card-text">
-                @ChildContent
-            </div>
+            <p class="card-text">@ChildContent</p>
         }
     </div>
 </div>
@@ -703,17 +692,13 @@ El siguiente componente `Expander` revisado:
 * Usa el campo privado para mantener su estado de alternancia interno.
 
 ```razor
-<div @onclick="@Toggle" class="card text-white bg-success mb-3">
+<div @onclick="@Toggle" class="card bg-light mb-3" style="width:30rem">
     <div class="card-body">
-        <div class="panel-heading">
-            <h2>Toggle (<code>expanded</code> = @expanded)</h2>
-        </div>
+        <h2 class="card-title">Toggle (<code>expanded</code> = @expanded)</h2>
 
         @if (expanded)
         {
-            <div class="card-text">
-                @ChildContent
-            </div>
+            <p class="card-text">@ChildContent</p>
         }
     </div>
 </div>

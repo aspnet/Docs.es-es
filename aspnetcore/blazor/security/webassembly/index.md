@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/16/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/index
-ms.openlocfilehash: fe9bd270ce509e8389dd3d4f3f6f3a6dda03d425
-ms.sourcegitcommit: dfea24471f4f3d7904faa92fe60c000853bddc3b
+ms.openlocfilehash: 391a38e9af42b162fc74bac803e6aa3cf687e7d5
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88504546"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88626069"
 ---
 # <a name="secure-aspnet-core-no-locblazor-webassembly"></a>Protección de ASP.NET Core Blazor WebAssembly
 

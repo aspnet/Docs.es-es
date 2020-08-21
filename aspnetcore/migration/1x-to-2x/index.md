@@ -6,6 +6,7 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 12/05/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: migration/1x-to-2x/index
-ms.openlocfilehash: cad1cd868ef8c972d7e0fbfec79cd1d8b49c3b6e
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 6160dfd117235065ba4b990b95bbc1f4abdf1626
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88015340"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88634350"
 ---
 # <a name="migrate-from-aspnet-core-1x-to-20"></a>Migración de ASP.NET Core 1.x a 2.0
 
@@ -202,7 +203,7 @@ Si usa el SDK de Application Insights directamente, siga haciéndolo. El [metapa
 
 ## <a name="adopt-authenticationno-locidentity-improvements"></a>Mejoras de Identity y adopción de la autenticación
 
-ASP.NET Core 2.0 tiene un nuevo modelo de autenticación y presenta una serie de cambios significativos en ASP.NET Core Identity. Si ha creado el proyecto con la opción Cuentas de usuario individuales habilitada, o bien si ha agregado manualmente la autenticación o Identity, vea [Migración de la autenticación e Identity a ASP.NET Core 2.0](xref:migration/1x-to-2x/identity-2x).
+ASP.NET Core 2.0 tiene un nuevo modelo de autenticación y presenta una serie de cambios significativos en ASP.NET Core Identity. Si ha creado el proyecto con la opción Cuentas de usuario individuales habilitada, o bien si ha agregado manualmente la autenticación o Identity, vea [Migración de la autenticación e Identity a ASP.NET Core 2.0](xref:migration/1x-to-2x/identity-2x).
 
 ## <a name="additional-resources"></a>Recursos adicionales
 

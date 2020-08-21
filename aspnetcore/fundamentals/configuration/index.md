@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/configuration/index
-ms.openlocfilehash: fe0a0d3dbb87455be602234825d702fab02df936
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: ed40800f3e363cc3fd6f57492d76a42095e5b97b
+ms.sourcegitcommit: 9a90b956af8d8584d597f1e5c1dbfb0ea9bb8454
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634597"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88712563"
 ---
 # <a name="configuration-in-aspnet-core"></a>Configuración en ASP.NET Core
 
@@ -98,6 +98,8 @@ Los valores de *appsettings*.`Environment`.*json* invalidan las claves de *appse
 Si usa la configuración [predeterminada](#default), los archivos *appsettings.json* y *appsettings.* `Environment` *.json* están habilitados con [reloadOnChange: true](https://github.com/dotnet/extensions/blob/release/3.1/src/Hosting/Hosting/src/Host.cs#L74-L75). Los cambios realizados en los archivos *appsettings.json* y *appsettings.* `Environment` *.json* ***después*** de iniciar la aplicación los lee el [proveedor de configuración JSON](#jcp).
 
 Consulte la sección [Proveedor de configuración JSON](#jcp) en este artículo para obtener información sobre cómo agregar archivos de configuración JSON adicionales.
+
+## <a name="combining-service-collection"></a>Combinación de colecciones de servicios
 
 [!INCLUDE[](~/includes/combine-di.md)]
 
@@ -1105,7 +1107,7 @@ En el caso de las aplicaciones que usen las asignaciones de modificador, la llam
 
 Después de crear el diccionario de asignaciones de modificador, contiene los datos que se muestran en la tabla siguiente.
 
-| Clave       | Value             |
+| Clave       | Valor             |
 | --------- | ----------------- |
 | `-CLKey1` | `CommandLineKey1` |
 | `-CLKey2` | `CommandLineKey2` |
@@ -1682,7 +1684,7 @@ config.AddJsonFile(
 
 El par clave-valor que se muestra en la tabla se carga en la configuración.
 
-| Clave             | Value  |
+| Clave             | Valor  |
 | :-------------: | :----: |
 | array:entries:3 | value3 |
 
@@ -1705,7 +1707,7 @@ Si un archivo JSON contiene una matriz, se crean claves de configuración para l
 
 El proveedor de configuración JSON lee los datos de configuración en los siguientes pares clave-valor:
 
-| Key                     | Value  |
+| Key                     | Valor  |
 | ----------------------- | :----: |
 | json_array:key          | valueA |
 | json_array:subsection:0 | valueB |
