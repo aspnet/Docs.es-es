@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/performance-best-practices
-ms.openlocfilehash: 94ae9e52ed99c3fe8e7044f474cdf5b702dc5adf
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 587872b269d897d7c86eb77c110a4b6432218ed3
+ms.sourcegitcommit: dd0e87abf2bb50ee992d9185bb256ed79d48f545
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634467"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88746564"
 ---
 # <a name="aspnet-core-performance-best-practices"></a>Procedimientos recomendados de ASP.NET Core rendimiento
 
@@ -32,7 +32,7 @@ En este artículo se proporcionan instrucciones para las prácticas recomendadas
 
 ## <a name="cache-aggressively"></a>Caché agresiva
 
-El almacenamiento en caché se describe en varias partes de este documento. Para más información, consulte <xref:performance/caching/response>.
+El almacenamiento en caché se describe en varias partes de este documento. Para obtener más información, vea <xref:performance/caching/response>.
 
 ## <a name="understand-hot-code-paths"></a>Comprender las rutas de acceso de código activas
 
@@ -57,6 +57,12 @@ Un problema de rendimiento común en ASP.NET Core aplicaciones es el bloqueo de 
 * Hacer que las acciones de controlador/ Razor Página sean asincrónicas. Toda la pila de llamadas es asincrónica para beneficiarse de los patrones [Async/Await](/dotnet/csharp/programming-guide/concepts/async/) .
 
 Se puede usar un generador de perfiles, como [PerfView](https://github.com/Microsoft/perfview), para buscar subprocesos que se agregan con frecuencia al [grupo de subprocesos](/windows/desktop/procthread/thread-pools). El `Microsoft-Windows-DotNETRuntime/ThreadPoolWorkerThread/Start` evento indica que un subproceso se ha agregado al grupo de subprocesos. <!--  For more information, see [async guidance docs](TBD-Link_To_Davifowl_Doc)  -->
+
+## <a name="return-ienumerablet-or-iasyncenumerablet"></a>Devolver IEnumerable \<T> o IAsyncEnumerable\<T>
+
+`IEnumerable<T>`Al devolver desde una acción, el serializador genera una iteración sincrónica de la colección. El resultado es el bloqueo de llamadas y una posibilidad de colapso del grupo de subprocesos. Para evitar la enumeración sincrónica, use `ToListAsync` antes de devolver el Enumerable.
+
+A partir de ASP.NET Core 3,0, `IAsyncEnumerable<T>` se puede usar como alternativa a `IEnumerable<T>` que enumera de forma asincrónica. Para obtener más información, vea [tipos de valor devuelto de acción del controlador](xref:web-api/action-return-types#return-ienumerablet-or-iasyncenumerablet).
 
 ## <a name="minimize-large-object-allocations"></a>Minimizar las asignaciones de objetos grandes
 
@@ -84,7 +90,7 @@ Recomendaciones:
 
 * **Llame a** todas las API de acceso a datos de forma asincrónica.
 * **No** recupere más datos de los necesarios. Escribir consultas para devolver solo los datos necesarios para la solicitud HTTP actual.
-* **Considere la** posibilidad de almacenar en caché los datos a los que se accede con frecuencia recuperados de una base de datos o servicio remoto si se aceptan ligeramente datos desactualizados. En función del escenario, use [MemoryCache](xref:performance/caching/memory) o [DistributedCache](xref:performance/caching/distributed). Para más información, consulte <xref:performance/caching/response>.
+* **Considere la** posibilidad de almacenar en caché los datos a los que se accede con frecuencia recuperados de una base de datos o servicio remoto si se aceptan ligeramente datos desactualizados. En función del escenario, use [MemoryCache](xref:performance/caching/memory) o [DistributedCache](xref:performance/caching/distributed). Para obtener más información, vea <xref:performance/caching/response>.
 * **Minimice los** recorridos de ida y vuelta de red. El objetivo es recuperar los datos necesarios en una sola llamada en lugar de varias llamadas.
 * **Use** [consultas sin seguimiento](/ef/core/querying/tracking#no-tracking-queries) en Entity Framework Core al obtener acceso a los datos con fines de solo lectura. EF Core puede devolver los resultados de las consultas sin seguimiento de forma más eficaz.
 * **Filtre y** agregue consultas LINQ (con `.Where` `.Select` instrucciones, o `.Sum` , por ejemplo) para que la base de datos realice el filtrado.
@@ -111,7 +117,7 @@ Recomendaciones:
 
 ## <a name="keep-common-code-paths-fast"></a>Mantenga las rutas de acceso de código comunes con rapidez
 
-Desea que todo el código sea rápido. Las rutas de acceso de código llamadas con frecuencia son las más críticas para optimizar. Entre ellas se incluyen las siguientes:
+Desea que todo el código sea rápido. Las rutas de acceso de código llamadas con frecuencia son las más críticas para optimizar. Se incluyen los siguientes:
 
 * Los componentes de middleware en la canalización de procesamiento de solicitudes de la aplicación, especialmente el middleware se ejecutan al principio de la canalización. Estos componentes tienen un gran impacto en el rendimiento.
 * Código que se ejecuta para cada solicitud o varias veces por solicitud. Por ejemplo, registro personalizado, controladores de autorización o inicialización de servicios transitorios.
@@ -357,3 +363,11 @@ La comprobación de si la respuesta no se ha iniciado permite registrar una devo
 ## <a name="do-not-call-next-if-you-have-already-started-writing-to-the-response-body"></a>No llame a Next () si ya ha empezado a escribir en el cuerpo de la respuesta.
 
 Los componentes solo esperan ser llamados si es posible que puedan controlar y manipular la respuesta.
+
+## <a name="use-in-process-hosting-with-iis"></a>Usar el hospedaje en proceso con IIS
+
+Con el hospedaje en proceso, una aplicación ASP.NET Core se ejecuta en el mismo proceso que su proceso de trabajo de IIS. El hospedaje en proceso proporciona un rendimiento mejorado en el hospedaje fuera de proceso, ya que las solicitudes no se procesan en proxy a través del adaptador de bucle invertido. El adaptador de bucle invertido es una interfaz de red que devuelve el tráfico de red saliente al mismo equipo. IIS controla la administración de procesos con el [Servicio de activación de procesos de Windows (WAS)](/iis/manage/provisioning-and-managing-iis/features-of-the-windows-process-activation-service-was).
+
+Los proyectos tienen como valor predeterminado el modelo de hospedaje en proceso en ASP.NET Core 3,0 y versiones posteriores.
+
+Para obtener más información, consulte [Host ASP.net Core en Windows con IIS](xref:host-and-deploy/iis/index) .
