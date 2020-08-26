@@ -5,8 +5,9 @@ description: Obtenga información sobre las características de enlace de datos 
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/26/2020
+ms.date: 08/19/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,48 +18,56 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/data-binding
-ms.openlocfilehash: 6f5ad6b8f225834c92d6e33d8bcf608b56678e67
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 3b41aedcbd0d2c22b20d8fa3a21b8af97d1fbb2c
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88014677"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88628565"
 ---
-# <a name="aspnet-core-no-locblazor-data-binding"></a><span data-ttu-id="edd85-103">Enlace de datos de ASP.NET Core Blazor</span><span class="sxs-lookup"><span data-stu-id="edd85-103">ASP.NET Core Blazor data binding</span></span>
+# <a name="aspnet-core-no-locblazor-data-binding"></a><span data-ttu-id="416ee-103">Enlace de datos de ASP.NET Core Blazor</span><span class="sxs-lookup"><span data-stu-id="416ee-103">ASP.NET Core Blazor data binding</span></span>
 
-<span data-ttu-id="edd85-104">Por [Luke Latham](https://github.com/guardrex) y [Daniel Roth](https://github.com/danroth27)</span><span class="sxs-lookup"><span data-stu-id="edd85-104">By [Luke Latham](https://github.com/guardrex) and [Daniel Roth](https://github.com/danroth27)</span></span>
+<span data-ttu-id="416ee-104">Por [Luke Latham](https://github.com/guardrex) y [Daniel Roth](https://github.com/danroth27)</span><span class="sxs-lookup"><span data-stu-id="416ee-104">By [Luke Latham](https://github.com/guardrex) and [Daniel Roth](https://github.com/danroth27)</span></span>
 
-<span data-ttu-id="edd85-105">Los componentes de Razor proporcionan características de enlace de datos por medio de un atributo de elemento HTML denominado [`@bind`](xref:mvc/views/razor#bind) con un valor de campo, propiedad o expresión de Razor.</span><span class="sxs-lookup"><span data-stu-id="edd85-105">Razor components provide data binding features via an HTML element attribute named [`@bind`](xref:mvc/views/razor#bind) with a field, property, or Razor expression value.</span></span>
+<span data-ttu-id="416ee-105">Los componentes de Razor proporcionan características de enlace de datos por medio de un atributo de elemento HTML denominado [`@bind`](xref:mvc/views/razor#bind) con un valor de campo, propiedad o expresión de Razor.</span><span class="sxs-lookup"><span data-stu-id="416ee-105">Razor components provide data binding features via an HTML element attribute named [`@bind`](xref:mvc/views/razor#bind) with a field, property, or Razor expression value.</span></span>
 
-<span data-ttu-id="edd85-106">En el ejemplo siguiente se enlaza la propiedad `CurrentValue` al valor del cuadro de texto:</span><span class="sxs-lookup"><span data-stu-id="edd85-106">The following example binds the `CurrentValue` property to the text box's value:</span></span>
+<span data-ttu-id="416ee-106">En el ejemplo siguiente se enlaza un elemento `<input>` al campo `currentValue` y un elemento `<input>` a la propiedad `CurrentValue`:</span><span class="sxs-lookup"><span data-stu-id="416ee-106">The following example binds an `<input>` element to the `currentValue` field and an `<input>` element to the `CurrentValue` property:</span></span>
 
 ```razor
-<input @bind="CurrentValue" />
+<p>
+    <input @bind="currentValue" /> Current value: @currentValue
+</p>
+
+<p>
+    <input @bind="CurrentValue" /> Current value: @CurrentValue
+</p>
 
 @code {
+    private string currentValue;
+
     private string CurrentValue { get; set; }
 }
 ```
 
-<span data-ttu-id="edd85-107">Cuando el cuadro de texto pierde el foco, se actualiza el valor de la propiedad.</span><span class="sxs-lookup"><span data-stu-id="edd85-107">When the text box loses focus, the property's value is updated.</span></span>
+<span data-ttu-id="416ee-107">Cuando uno de los elementos pierde el foco, se actualiza su campo o propiedad enlazada.</span><span class="sxs-lookup"><span data-stu-id="416ee-107">When one of the elements looses focus, its bound field or property is updated.</span></span>
 
-<span data-ttu-id="edd85-108">El cuadro de texto se actualiza en la interfaz de usuario solo cuando se representa el componente, no en respuesta al cambio de valor de la propiedad.</span><span class="sxs-lookup"><span data-stu-id="edd85-108">The text box is updated in the UI only when the component is rendered, not in response to changing the property's value.</span></span> <span data-ttu-id="edd85-109">Como los componentes se representan a sí mismos después de que se ejecute el código del controlador de eventos, las actualizaciones de propiedades *normalmente* se reflejan en la interfaz de usuario justo después de que se desencadene un controlador de eventos.</span><span class="sxs-lookup"><span data-stu-id="edd85-109">Since components render themselves after event handler code executes, property updates are *usually* reflected in the UI immediately after an event handler is triggered.</span></span>
+<span data-ttu-id="416ee-108">El cuadro de texto se actualiza en la interfaz de usuario solo cuando se representa el componente, no en respuesta al cambio de valor del campo o la propiedad.</span><span class="sxs-lookup"><span data-stu-id="416ee-108">The text box is updated in the UI only when the component is rendered, not in response to changing the field's or property's value.</span></span> <span data-ttu-id="416ee-109">Como los componentes se representan a sí mismos después de que se ejecute el código del controlador de eventos, las actualizaciones de campos y propiedades *normalmente* se reflejan en la interfaz de usuario justo después de que se desencadene un controlador de eventos.</span><span class="sxs-lookup"><span data-stu-id="416ee-109">Since components render themselves after event handler code executes, field and property updates are *usually* reflected in the UI immediately after an event handler is triggered.</span></span>
 
-<span data-ttu-id="edd85-110">Usar [`@bind`](xref:mvc/views/razor#bind) con la propiedad `CurrentValue` (`<input @bind="CurrentValue" />`) es prácticamente igual que usar lo siguiente:</span><span class="sxs-lookup"><span data-stu-id="edd85-110">Using [`@bind`](xref:mvc/views/razor#bind) with the `CurrentValue` property (`<input @bind="CurrentValue" />`) is essentially equivalent to the following:</span></span>
+<span data-ttu-id="416ee-110">Usar [`@bind`](xref:mvc/views/razor#bind) con la propiedad `CurrentValue` (`<input @bind="CurrentValue" />`) es prácticamente igual que usar lo siguiente:</span><span class="sxs-lookup"><span data-stu-id="416ee-110">Using [`@bind`](xref:mvc/views/razor#bind) with the `CurrentValue` property (`<input @bind="CurrentValue" />`) is essentially equivalent to the following:</span></span>
 
 ```razor
 <input value="@CurrentValue"
     @onchange="@((ChangeEventArgs __e) => CurrentValue = 
         __e.Value.ToString())" />
-        
+
 @code {
     private string CurrentValue { get; set; }
 }
 ```
 
-<span data-ttu-id="edd85-111">Cuando se representa el componente, el valor (`value`) del elemento de entrada procede de la propiedad `CurrentValue`.</span><span class="sxs-lookup"><span data-stu-id="edd85-111">When the component is rendered, the `value` of the input element comes from the `CurrentValue` property.</span></span> <span data-ttu-id="edd85-112">Cuando el usuario escribe en el cuadro de texto y cambia el foco del elemento, se desencadena el evento `onchange` y la propiedad `CurrentValue` se establece en el valor modificado.</span><span class="sxs-lookup"><span data-stu-id="edd85-112">When the user types in the text box and changes element focus, the `onchange` event is fired and the `CurrentValue` property is set to the changed value.</span></span> <span data-ttu-id="edd85-113">En realidad, la generación de código es más compleja, porque [`@bind`](xref:mvc/views/razor#bind) administra los casos en los que se realizan conversiones de tipos.</span><span class="sxs-lookup"><span data-stu-id="edd85-113">In reality, the code generation is more complex because [`@bind`](xref:mvc/views/razor#bind) handles cases where type conversions are performed.</span></span> <span data-ttu-id="edd85-114">En principio, [`@bind`](xref:mvc/views/razor#bind) asocia el valor actual de una expresión con un atributo `value` y controla los cambios mediante el controlador registrado.</span><span class="sxs-lookup"><span data-stu-id="edd85-114">In principle, [`@bind`](xref:mvc/views/razor#bind) associates the current value of an expression with a `value` attribute and handles changes using the registered handler.</span></span>
+<span data-ttu-id="416ee-111">Cuando se representa el componente, el valor (`value`) del elemento de entrada procede de la propiedad `CurrentValue`.</span><span class="sxs-lookup"><span data-stu-id="416ee-111">When the component is rendered, the `value` of the input element comes from the `CurrentValue` property.</span></span> <span data-ttu-id="416ee-112">Cuando el usuario escribe en el cuadro de texto y cambia el foco del elemento, se desencadena el evento `onchange` y la propiedad `CurrentValue` se establece en el valor modificado.</span><span class="sxs-lookup"><span data-stu-id="416ee-112">When the user types in the text box and changes element focus, the `onchange` event is fired and the `CurrentValue` property is set to the changed value.</span></span> <span data-ttu-id="416ee-113">En realidad, la generación de código es más compleja, porque [`@bind`](xref:mvc/views/razor#bind) controla casos en los que se realizan conversiones de tipos.</span><span class="sxs-lookup"><span data-stu-id="416ee-113">In reality, the code generation is more complex than that because [`@bind`](xref:mvc/views/razor#bind) handles cases where type conversions are performed.</span></span> <span data-ttu-id="416ee-114">En principio, [`@bind`](xref:mvc/views/razor#bind) asocia el valor actual de una expresión con un atributo `value` y controla los cambios mediante el controlador registrado.</span><span class="sxs-lookup"><span data-stu-id="416ee-114">In principle, [`@bind`](xref:mvc/views/razor#bind) associates the current value of an expression with a `value` attribute and handles changes using the registered handler.</span></span>
 
-<span data-ttu-id="edd85-115">También puede enlazar una propiedad o un campo con otros eventos incluyendo un atributo `@bind:event` con un parámetro `event`.</span><span class="sxs-lookup"><span data-stu-id="edd85-115">Bind a property or field on other events by also including an `@bind:event` attribute with an `event` parameter.</span></span> <span data-ttu-id="edd85-116">En el siguiente ejemplo se enlaza la propiedad `CurrentValue` en el evento `oninput`:</span><span class="sxs-lookup"><span data-stu-id="edd85-116">The following example binds the `CurrentValue` property on the `oninput` event:</span></span>
+<span data-ttu-id="416ee-115">También puede enlazar una propiedad o un campo con otros eventos incluyendo un atributo `@bind:event` con un parámetro `event`.</span><span class="sxs-lookup"><span data-stu-id="416ee-115">Bind a property or field on other events by also including an `@bind:event` attribute with an `event` parameter.</span></span> <span data-ttu-id="416ee-116">En el siguiente ejemplo se enlaza la propiedad `CurrentValue` en el evento `oninput`:</span><span class="sxs-lookup"><span data-stu-id="416ee-116">The following example binds the `CurrentValue` property on the `oninput` event:</span></span>
 
 ```razor
 <input @bind="CurrentValue" @bind:event="oninput" />
@@ -68,13 +77,17 @@ ms.locfileid: "88014677"
 }
 ```
 
-<span data-ttu-id="edd85-117">A diferencia de `onchange`, que se activa cuando el elemento pierde el foco, `oninput` se desencadena cuando cambia el valor del cuadro de texto.</span><span class="sxs-lookup"><span data-stu-id="edd85-117">Unlike `onchange`, which fires when the element loses focus, `oninput` fires when the value of the text box changes.</span></span>
+<span data-ttu-id="416ee-117">A diferencia de `onchange`, que se activa cuando el elemento pierde el foco, `oninput` se desencadena cuando cambia el valor del cuadro de texto.</span><span class="sxs-lookup"><span data-stu-id="416ee-117">Unlike `onchange`, which fires when the element loses focus, `oninput` fires when the value of the text box changes.</span></span>
 
-<span data-ttu-id="edd85-118">Use `@bind-{ATTRIBUTE}` con la sintaxis `@bind-{ATTRIBUTE}:event` para enlazar atributos de elementos que no sean `value`.</span><span class="sxs-lookup"><span data-stu-id="edd85-118">Use `@bind-{ATTRIBUTE}` with `@bind-{ATTRIBUTE}:event` syntax to bind element attributes other than `value`.</span></span> <span data-ttu-id="edd85-119">En el ejemplo siguiente, el estilo del párrafo se actualiza cuando cambia el valor de `paragraphStyle`:</span><span class="sxs-lookup"><span data-stu-id="edd85-119">In the following example, the paragraph's style is updated when the `paragraphStyle` value changes:</span></span>
+<span data-ttu-id="416ee-118">Use `@bind-{ATTRIBUTE}` con la sintaxis `@bind-{ATTRIBUTE}:event` para enlazar atributos de elementos que no sean `value`.</span><span class="sxs-lookup"><span data-stu-id="416ee-118">Use `@bind-{ATTRIBUTE}` with `@bind-{ATTRIBUTE}:event` syntax to bind element attributes other than `value`.</span></span> <span data-ttu-id="416ee-119">En el ejemplo siguiente:</span><span class="sxs-lookup"><span data-stu-id="416ee-119">In the following example:</span></span>
+
+* <span data-ttu-id="416ee-120">El estilo del párrafo es **red** (rojo) cuando se carga el componente (`style="color:red"`).</span><span class="sxs-lookup"><span data-stu-id="416ee-120">The paragraph's style is **red** when the component loads (`style="color:red"`).</span></span>
+* <span data-ttu-id="416ee-121">El usuario cambia el valor del cuadro de texto para que refleje otro estilo de color CSS y cambia el foco del elemento de la página.</span><span class="sxs-lookup"><span data-stu-id="416ee-121">The user changes the value of the text box to reflect a different CSS color style and changes the page's element focus.</span></span> <span data-ttu-id="416ee-122">Por ejemplo, el usuario cambia el valor del cuadro de texto a `color:blue` y presiona la tecla <kbd>TAB</kbd> del teclado.</span><span class="sxs-lookup"><span data-stu-id="416ee-122">For example, the user changes the text box value to `color:blue` and presses the <kbd>Tab</kbd> key on the keyboard.</span></span>
+* <span data-ttu-id="416ee-123">Cuando cambia el foco del elemento:</span><span class="sxs-lookup"><span data-stu-id="416ee-123">When the element focus changes:</span></span>
+  * <span data-ttu-id="416ee-124">El valor de `paragraphStyle` se asigna a partir del valor del elemento `<input>`.</span><span class="sxs-lookup"><span data-stu-id="416ee-124">The value of `paragraphStyle` is assigned from the `<input>` element's value.</span></span>
+  * <span data-ttu-id="416ee-125">El estilo de párrafo se actualiza para reflejar el nuevo estilo en `paragraphStyle`.</span><span class="sxs-lookup"><span data-stu-id="416ee-125">The paragraph style is updated to reflect the new style in `paragraphStyle`.</span></span> <span data-ttu-id="416ee-126">Si el estilo se actualiza a `color:blue`, el color del texto cambia a **blue** (azul).</span><span class="sxs-lookup"><span data-stu-id="416ee-126">If the style is updated to `color:blue`, the text color changes to **blue**.</span></span>
 
 ```razor
-@page "/binding-example"
-
 <p>
     <input type="text" @bind="paragraphStyle" />
 </p>
@@ -88,172 +101,154 @@ ms.locfileid: "88014677"
 }
 ```
 
-<span data-ttu-id="edd85-120">El enlace de atributos distingue mayúsculas de minúsculas:</span><span class="sxs-lookup"><span data-stu-id="edd85-120">Attribute binding is case sensitive:</span></span>
+<span data-ttu-id="416ee-127">El enlace de atributos distingue mayúsculas de minúsculas:</span><span class="sxs-lookup"><span data-stu-id="416ee-127">Attribute binding is case sensitive:</span></span>
 
-* <span data-ttu-id="edd85-121">`@bind` es válido.</span><span class="sxs-lookup"><span data-stu-id="edd85-121">`@bind` is valid.</span></span>
-* <span data-ttu-id="edd85-122">`@Bind` ni `@BIND` son válidos.</span><span class="sxs-lookup"><span data-stu-id="edd85-122">`@Bind` and `@BIND` are invalid.</span></span>
+* <span data-ttu-id="416ee-128">`@bind` es válido.</span><span class="sxs-lookup"><span data-stu-id="416ee-128">`@bind` is valid.</span></span>
+* <span data-ttu-id="416ee-129">`@Bind` ni `@BIND` son válidos.</span><span class="sxs-lookup"><span data-stu-id="416ee-129">`@Bind` and `@BIND` are invalid.</span></span>
 
-## <a name="unparsable-values"></a><span data-ttu-id="edd85-123">Valores no analizables</span><span class="sxs-lookup"><span data-stu-id="edd85-123">Unparsable values</span></span>
+## <a name="unparsable-values"></a><span data-ttu-id="416ee-130">Valores no analizables</span><span class="sxs-lookup"><span data-stu-id="416ee-130">Unparsable values</span></span>
 
-<span data-ttu-id="edd85-124">Cuando un usuario proporciona un valor no analizable a un elemento enlazado a datos, el valor no analizable se revierte automáticamente a su valor anterior al desencadenar el evento de enlace.</span><span class="sxs-lookup"><span data-stu-id="edd85-124">When a user provides an unparsable value to a databound element, the unparsable value is automatically reverted to its previous value when the bind event is triggered.</span></span>
+<span data-ttu-id="416ee-131">Cuando un usuario proporciona un valor no analizable a un elemento enlazado a datos, el valor no analizable se revierte automáticamente a su valor anterior al desencadenar el evento de enlace.</span><span class="sxs-lookup"><span data-stu-id="416ee-131">When a user provides an unparsable value to a databound element, the unparsable value is automatically reverted to its previous value when the bind event is triggered.</span></span>
 
-<span data-ttu-id="edd85-125">Considere el caso siguiente:</span><span class="sxs-lookup"><span data-stu-id="edd85-125">Consider the following scenario:</span></span>
+<span data-ttu-id="416ee-132">Considere el caso siguiente:</span><span class="sxs-lookup"><span data-stu-id="416ee-132">Consider the following scenario:</span></span>
 
-* <span data-ttu-id="edd85-126">Un elemento `<input>` se enlaza a un tipo `int` con un valor inicial de `123`:</span><span class="sxs-lookup"><span data-stu-id="edd85-126">An `<input>` element is bound to an `int` type with an initial value of `123`:</span></span>
+* <span data-ttu-id="416ee-133">Un elemento `<input>` se enlaza a un tipo `int` con un valor inicial de `123`:</span><span class="sxs-lookup"><span data-stu-id="416ee-133">An `<input>` element is bound to an `int` type with an initial value of `123`:</span></span>
 
   ```razor
-  <input @bind="MyProperty" />
+  <input @bind="inputValue" />
 
   @code {
-      [Parameter]
-      public int MyProperty { get; set; } = 123;
+      private int inputValue = 123;
   }
   ```
-* <span data-ttu-id="edd85-127">El usuario actualiza el valor del elemento a `123.45` en la página y cambia el foco del elemento.</span><span class="sxs-lookup"><span data-stu-id="edd85-127">The user updates the value of the element to `123.45` in the page and changes the element focus.</span></span>
 
-<span data-ttu-id="edd85-128">En el escenario anterior, el valor del elemento se revierte a `123`.</span><span class="sxs-lookup"><span data-stu-id="edd85-128">In the preceding scenario, the element's value is reverted to `123`.</span></span> <span data-ttu-id="edd85-129">Cuando el valor `123.45` se rechaza en favor del valor original de `123`, el usuario entiende que no se ha aceptado su valor.</span><span class="sxs-lookup"><span data-stu-id="edd85-129">When the value `123.45` is rejected in favor of the original value of `123`, the user understands that their value wasn't accepted.</span></span>
+* <span data-ttu-id="416ee-134">El usuario actualiza el valor del elemento a `123.45` en la página y cambia el foco del elemento.</span><span class="sxs-lookup"><span data-stu-id="416ee-134">The user updates the value of the element to `123.45` in the page and changes the element focus.</span></span>
 
-<span data-ttu-id="edd85-130">De forma predeterminada, el enlace de datos se aplica al evento `onchange` del elemento (`@bind="{PROPERTY OR FIELD}"`).</span><span class="sxs-lookup"><span data-stu-id="edd85-130">By default, binding applies to the element's `onchange` event (`@bind="{PROPERTY OR FIELD}"`).</span></span> <span data-ttu-id="edd85-131">Use `@bind="{PROPERTY OR FIELD}" @bind:event={EVENT}` para desencadenar el enlace en un evento diferente.</span><span class="sxs-lookup"><span data-stu-id="edd85-131">Use `@bind="{PROPERTY OR FIELD}" @bind:event={EVENT}` to trigger binding on a different event.</span></span> <span data-ttu-id="edd85-132">En el caso del evento `oninput` (`@bind:event="oninput"`), la reversión se produce después de cualquier pulsación de tecla que introduzca un valor no analizable.</span><span class="sxs-lookup"><span data-stu-id="edd85-132">For the `oninput` event (`@bind:event="oninput"`), the reversion occurs after any keystroke that introduces an unparsable value.</span></span> <span data-ttu-id="edd85-133">Cuando el destino es el evento `oninput` con un tipo enlazado a `int`, se impide que el usuario escriba el carácter `.`.</span><span class="sxs-lookup"><span data-stu-id="edd85-133">When targeting the `oninput` event with an `int`-bound type, a user is prevented from typing a `.` character.</span></span> <span data-ttu-id="edd85-134">El carácter `.` se elimina de forma inmediata, por lo que el usuario recibe un comentario al instante informándole de que solo se permiten números enteros.</span><span class="sxs-lookup"><span data-stu-id="edd85-134">A `.` character is immediately removed, so the user receives immediate feedback that only whole numbers are permitted.</span></span> <span data-ttu-id="edd85-135">Hay escenarios en los que la reversión del valor del evento `oninput` no es ideal, por ejemplo, cuando se debe permitir que el usuario borre un valor `<input>` que no se puede analizar.</span><span class="sxs-lookup"><span data-stu-id="edd85-135">There are scenarios where reverting the value on the `oninput` event isn't ideal, such as when the user should be allowed to clear an unparsable `<input>` value.</span></span> <span data-ttu-id="edd85-136">De forma alternativa, puede hacer lo siguiente:</span><span class="sxs-lookup"><span data-stu-id="edd85-136">Alternatives include:</span></span>
+<span data-ttu-id="416ee-135">En el escenario anterior, el valor del elemento se revierte a `123`.</span><span class="sxs-lookup"><span data-stu-id="416ee-135">In the preceding scenario, the element's value is reverted to `123`.</span></span> <span data-ttu-id="416ee-136">Cuando el valor `123.45` se rechaza en favor del valor original de `123`, el usuario entiende que no se ha aceptado su valor.</span><span class="sxs-lookup"><span data-stu-id="416ee-136">When the value `123.45` is rejected in favor of the original value of `123`, the user understands that their value wasn't accepted.</span></span>
 
-* <span data-ttu-id="edd85-137">No use el evento `oninput`.</span><span class="sxs-lookup"><span data-stu-id="edd85-137">Don't use the `oninput` event.</span></span> <span data-ttu-id="edd85-138">Use el evento `onchange` predeterminado (especifique solo `@bind="{PROPERTY OR FIELD}"`) para que no se revierta un valor no válido hasta que el elemento pierda el foco.</span><span class="sxs-lookup"><span data-stu-id="edd85-138">Use the default `onchange` event (only specify `@bind="{PROPERTY OR FIELD}"`), where an invalid value isn't reverted until the element loses focus.</span></span>
-* <span data-ttu-id="edd85-139">Enlace a un tipo que acepte valores NULL, como `int?` o `string`, y proporcione una lógica personalizada para administrar las entradas no válidas.</span><span class="sxs-lookup"><span data-stu-id="edd85-139">Bind to a nullable type, such as `int?` or `string`, and provide custom logic to handle invalid entries.</span></span>
-* <span data-ttu-id="edd85-140">Use un [componente de validación de formularios](xref:blazor/forms-validation), como <xref:Microsoft.AspNetCore.Components.Forms.InputNumber%601> o <xref:Microsoft.AspNetCore.Components.Forms.InputDate%601>.</span><span class="sxs-lookup"><span data-stu-id="edd85-140">Use a [form validation component](xref:blazor/forms-validation), such as <xref:Microsoft.AspNetCore.Components.Forms.InputNumber%601> or <xref:Microsoft.AspNetCore.Components.Forms.InputDate%601>.</span></span> <span data-ttu-id="edd85-141">Los componentes de validación de formularios tienen compatibilidad integrada para administrar entradas no válidas.</span><span class="sxs-lookup"><span data-stu-id="edd85-141">Form validation components have built-in support to manage invalid inputs.</span></span> <span data-ttu-id="edd85-142">Componentes de validación de formularios:</span><span class="sxs-lookup"><span data-stu-id="edd85-142">Form validation components:</span></span>
-  * <span data-ttu-id="edd85-143">Permiten que el usuario proporcione entradas no válidas y reciba errores de validación en la clase <xref:Microsoft.AspNetCore.Components.Forms.EditContext> asociada.</span><span class="sxs-lookup"><span data-stu-id="edd85-143">Permit the user to provide invalid input and receive validation errors on the associated <xref:Microsoft.AspNetCore.Components.Forms.EditContext>.</span></span>
-  * <span data-ttu-id="edd85-144">Muestran errores de validación en la interfaz de usuario sin impedir que el usuario escriba datos adicionales en el formulario web.</span><span class="sxs-lookup"><span data-stu-id="edd85-144">Display validation errors in the UI without interfering with the user entering additional webform data.</span></span>
+<span data-ttu-id="416ee-137">De forma predeterminada, el enlace de datos se aplica al evento `onchange` del elemento (`@bind="{PROPERTY OR FIELD}"`).</span><span class="sxs-lookup"><span data-stu-id="416ee-137">By default, binding applies to the element's `onchange` event (`@bind="{PROPERTY OR FIELD}"`).</span></span> <span data-ttu-id="416ee-138">Use `@bind="{PROPERTY OR FIELD}" @bind:event={EVENT}` para desencadenar el enlace en un evento diferente.</span><span class="sxs-lookup"><span data-stu-id="416ee-138">Use `@bind="{PROPERTY OR FIELD}" @bind:event={EVENT}` to trigger binding on a different event.</span></span> <span data-ttu-id="416ee-139">En el caso del evento `oninput` (`@bind:event="oninput"`), la reversión se produce después de cualquier pulsación de tecla que introduzca un valor no analizable.</span><span class="sxs-lookup"><span data-stu-id="416ee-139">For the `oninput` event (`@bind:event="oninput"`), the reversion occurs after any keystroke that introduces an unparsable value.</span></span> <span data-ttu-id="416ee-140">Cuando el destino es el evento `oninput` con un tipo enlazado a `int`, se impide que el usuario escriba el carácter `.`.</span><span class="sxs-lookup"><span data-stu-id="416ee-140">When targeting the `oninput` event with an `int`-bound type, a user is prevented from typing a `.` character.</span></span> <span data-ttu-id="416ee-141">El carácter `.` se elimina de forma inmediata, por lo que el usuario recibe un comentario al instante informándole de que solo se permiten números enteros.</span><span class="sxs-lookup"><span data-stu-id="416ee-141">A `.` character is immediately removed, so the user receives immediate feedback that only whole numbers are permitted.</span></span> <span data-ttu-id="416ee-142">Hay escenarios en los que la reversión del valor del evento `oninput` no es ideal, por ejemplo, cuando se debe permitir que el usuario borre un valor `<input>` que no se puede analizar.</span><span class="sxs-lookup"><span data-stu-id="416ee-142">There are scenarios where reverting the value on the `oninput` event isn't ideal, such as when the user should be allowed to clear an unparsable `<input>` value.</span></span> <span data-ttu-id="416ee-143">De forma alternativa, puede hacer lo siguiente:</span><span class="sxs-lookup"><span data-stu-id="416ee-143">Alternatives include:</span></span>
 
-## <a name="format-strings"></a><span data-ttu-id="edd85-145">Cadenas de formato</span><span class="sxs-lookup"><span data-stu-id="edd85-145">Format strings</span></span>
+* <span data-ttu-id="416ee-144">No use el evento `oninput`.</span><span class="sxs-lookup"><span data-stu-id="416ee-144">Don't use the `oninput` event.</span></span> <span data-ttu-id="416ee-145">Use el evento `onchange` predeterminado (especifique solo `@bind="{PROPERTY OR FIELD}"`) para que no se revierta un valor no válido hasta que el elemento pierda el foco.</span><span class="sxs-lookup"><span data-stu-id="416ee-145">Use the default `onchange` event (only specify `@bind="{PROPERTY OR FIELD}"`), where an invalid value isn't reverted until the element loses focus.</span></span>
+* <span data-ttu-id="416ee-146">Enlace a un tipo que acepte valores NULL, como `int?` o `string`, y proporcione lógica personalizada para administrar las entradas no válidas.</span><span class="sxs-lookup"><span data-stu-id="416ee-146">Bind to a nullable type, such as `int?` or `string` and provide custom logic to handle invalid entries.</span></span>
+* <span data-ttu-id="416ee-147">Use un [componente de validación de formularios](xref:blazor/forms-validation), como <xref:Microsoft.AspNetCore.Components.Forms.InputNumber%601> o <xref:Microsoft.AspNetCore.Components.Forms.InputDate%601>.</span><span class="sxs-lookup"><span data-stu-id="416ee-147">Use a [form validation component](xref:blazor/forms-validation), such as <xref:Microsoft.AspNetCore.Components.Forms.InputNumber%601> or <xref:Microsoft.AspNetCore.Components.Forms.InputDate%601>.</span></span> <span data-ttu-id="416ee-148">Los componentes de validación de formularios tienen compatibilidad integrada para administrar entradas no válidas.</span><span class="sxs-lookup"><span data-stu-id="416ee-148">Form validation components have built-in support to manage invalid inputs.</span></span> <span data-ttu-id="416ee-149">Para obtener más información, vea <xref:blazor/forms-validation>.</span><span class="sxs-lookup"><span data-stu-id="416ee-149">For more information, see <xref:blazor/forms-validation>.</span></span> <span data-ttu-id="416ee-150">Componentes de validación de formularios:</span><span class="sxs-lookup"><span data-stu-id="416ee-150">Form validation components:</span></span>
+  * <span data-ttu-id="416ee-151">Permiten que el usuario proporcione entradas no válidas y reciba errores de validación en la clase <xref:Microsoft.AspNetCore.Components.Forms.EditContext> asociada.</span><span class="sxs-lookup"><span data-stu-id="416ee-151">Permit the user to provide invalid input and receive validation errors on the associated <xref:Microsoft.AspNetCore.Components.Forms.EditContext>.</span></span>
+  * <span data-ttu-id="416ee-152">Muestran errores de validación en la interfaz de usuario sin impedir que el usuario escriba datos adicionales en el formulario web.</span><span class="sxs-lookup"><span data-stu-id="416ee-152">Display validation errors in the UI without interfering with the user entering additional webform data.</span></span>
 
-<span data-ttu-id="edd85-146">El enlace de datos funciona con cadenas de formato <xref:System.DateTime> mediante `@bind:format`.</span><span class="sxs-lookup"><span data-stu-id="edd85-146">Data binding works with <xref:System.DateTime> format strings using `@bind:format`.</span></span> <span data-ttu-id="edd85-147">Otras expresiones de formato, como los formatos de moneda o número, no están disponibles en este momento.</span><span class="sxs-lookup"><span data-stu-id="edd85-147">Other format expressions, such as currency or number formats, aren't available at this time.</span></span>
+## <a name="format-strings"></a><span data-ttu-id="416ee-153">Cadenas de formato</span><span class="sxs-lookup"><span data-stu-id="416ee-153">Format strings</span></span>
+
+<span data-ttu-id="416ee-154">El enlace de datos funciona con cadenas de formato <xref:System.DateTime> mediante `@bind:format`.</span><span class="sxs-lookup"><span data-stu-id="416ee-154">Data binding works with <xref:System.DateTime> format strings using `@bind:format`.</span></span> <span data-ttu-id="416ee-155">Otras expresiones de formato, como los formatos de moneda o número, no están disponibles en este momento.</span><span class="sxs-lookup"><span data-stu-id="416ee-155">Other format expressions, such as currency or number formats, aren't available at this time.</span></span>
 
 ```razor
-<input @bind="StartDate" @bind:format="yyyy-MM-dd" />
+<input @bind="startDate" @bind:format="yyyy-MM-dd" />
 
 @code {
-    [Parameter]
-    public DateTime StartDate { get; set; } = new DateTime(2020, 1, 1);
+    private DateTime startDate = new DateTime(2020, 1, 1);
 }
 ```
 
-<span data-ttu-id="edd85-148">En el código anterior, el tipo de campo (`type`) del elemento `<input>` tiene como valor predeterminado `text`.</span><span class="sxs-lookup"><span data-stu-id="edd85-148">In the preceding code, the `<input>` element's field type (`type`) defaults to `text`.</span></span> <span data-ttu-id="edd85-149">`@bind:format` se admite para enlazar los siguientes tipos de .NET:</span><span class="sxs-lookup"><span data-stu-id="edd85-149">`@bind:format` is supported for binding the following .NET types:</span></span>
+<span data-ttu-id="416ee-156">En el código anterior, el tipo de campo (`type`) del elemento `<input>` tiene como valor predeterminado `text`.</span><span class="sxs-lookup"><span data-stu-id="416ee-156">In the preceding code, the `<input>` element's field type (`type`) defaults to `text`.</span></span> <span data-ttu-id="416ee-157">`@bind:format` se admite para enlazar los siguientes tipos de .NET:</span><span class="sxs-lookup"><span data-stu-id="416ee-157">`@bind:format` is supported for binding the following .NET types:</span></span>
 
 * <xref:System.DateTime?displayProperty=fullName>
-* <span data-ttu-id="edd85-150"><xref:System.DateTime?displayProperty=fullName>?</span><span class="sxs-lookup"><span data-stu-id="edd85-150"><xref:System.DateTime?displayProperty=fullName>?</span></span>
+* <span data-ttu-id="416ee-158"><xref:System.DateTime?displayProperty=fullName>?</span><span class="sxs-lookup"><span data-stu-id="416ee-158"><xref:System.DateTime?displayProperty=fullName>?</span></span>
 * <xref:System.DateTimeOffset?displayProperty=fullName>
-* <span data-ttu-id="edd85-151"><xref:System.DateTimeOffset?displayProperty=fullName>?</span><span class="sxs-lookup"><span data-stu-id="edd85-151"><xref:System.DateTimeOffset?displayProperty=fullName>?</span></span>
+* <span data-ttu-id="416ee-159"><xref:System.DateTimeOffset?displayProperty=fullName>?</span><span class="sxs-lookup"><span data-stu-id="416ee-159"><xref:System.DateTimeOffset?displayProperty=fullName>?</span></span>
 
-<span data-ttu-id="edd85-152">El atributo `@bind:format` especifica el formato de fecha que se va a aplicar al valor (`value`) del elemento `<input>`.</span><span class="sxs-lookup"><span data-stu-id="edd85-152">The `@bind:format` attribute specifies the date format to apply to the `value` of the `<input>` element.</span></span> <span data-ttu-id="edd85-153">El formato también se usa para analizar el valor cuando se produce un evento `onchange`.</span><span class="sxs-lookup"><span data-stu-id="edd85-153">The format is also used to parse the value when an `onchange` event occurs.</span></span>
+<span data-ttu-id="416ee-160">El atributo `@bind:format` especifica el formato de fecha que se va a aplicar al valor (`value`) del elemento `<input>`.</span><span class="sxs-lookup"><span data-stu-id="416ee-160">The `@bind:format` attribute specifies the date format to apply to the `value` of the `<input>` element.</span></span> <span data-ttu-id="416ee-161">El formato también se usa para analizar el valor cuando se produce un evento `onchange`.</span><span class="sxs-lookup"><span data-stu-id="416ee-161">The format is also used to parse the value when an `onchange` event occurs.</span></span>
 
-<span data-ttu-id="edd85-154">No se recomienda especificar un formato para el tipo de campo `date` porque Blazor tiene compatibilidad integrada para dar formato a las fechas.</span><span class="sxs-lookup"><span data-stu-id="edd85-154">Specifying a format for the `date` field type isn't recommended because Blazor has built-in support to format dates.</span></span> <span data-ttu-id="edd85-155">A pesar de la recomendación, use solo el formato de fecha `yyyy-MM-dd` para que el enlace funcione correctamente si se proporciona un formato con el tipo de campo `date`:</span><span class="sxs-lookup"><span data-stu-id="edd85-155">In spite of the recommendation, only use the `yyyy-MM-dd` date format for binding to work correctly if a format is supplied with the `date` field type:</span></span>
+<span data-ttu-id="416ee-162">No se recomienda especificar un formato para el tipo de campo `date` porque Blazor tiene compatibilidad integrada para dar formato a las fechas.</span><span class="sxs-lookup"><span data-stu-id="416ee-162">Specifying a format for the `date` field type isn't recommended because Blazor has built-in support to format dates.</span></span> <span data-ttu-id="416ee-163">A pesar de la recomendación, use solo el formato de fecha `yyyy-MM-dd` para que el enlace funcione correctamente si se proporciona un formato con el tipo de campo `date`:</span><span class="sxs-lookup"><span data-stu-id="416ee-163">In spite of the recommendation, only use the `yyyy-MM-dd` date format for binding to function correctly if a format is supplied with the `date` field type:</span></span>
 
 ```razor
-<input type="date" @bind="StartDate" @bind:format="yyyy-MM-dd">
+<input type="date" @bind="startDate" @bind:format="yyyy-MM-dd">
 ```
 
-## <a name="parent-to-child-binding-with-component-parameters"></a><span data-ttu-id="edd85-156">Enlace de componentes primarios a secundarios con parámetros de componente</span><span class="sxs-lookup"><span data-stu-id="edd85-156">Parent-to-child binding with component parameters</span></span>
+## <a name="parent-to-child-binding-with-component-parameters"></a><span data-ttu-id="416ee-164">Enlace de componentes primarios a secundarios con parámetros de componente</span><span class="sxs-lookup"><span data-stu-id="416ee-164">Parent-to-child binding with component parameters</span></span>
 
-<span data-ttu-id="edd85-157">El enlace reconoce los parámetros de componente, por lo que `@bind-{PROPERTY}` puede enlazar un valor de propiedad de un componente primario con un componente secundario.</span><span class="sxs-lookup"><span data-stu-id="edd85-157">Binding recognizes component parameters, where `@bind-{PROPERTY}` can bind a property value from a parent component down to a child component.</span></span> <span data-ttu-id="edd85-158">En la sección [Enlace de componentes secundarios a primarios con un enlace encadenado](#child-to-parent-binding-with-chained-bind) se describe como enlazar un elemento secundario con uno primario.</span><span class="sxs-lookup"><span data-stu-id="edd85-158">Binding from a child to a parent is covered in the [Child-to-parent binding with chained bind](#child-to-parent-binding-with-chained-bind) section.</span></span>
+<span data-ttu-id="416ee-165">Los parámetros de componente permiten el enlace de propiedades y campos de un componente primario con la sintaxis `@bind-{PROPERTY OR FIELD}`.</span><span class="sxs-lookup"><span data-stu-id="416ee-165">Component parameters permit binding properties and fields of a parent component with `@bind-{PROPERTY OR FIELD}` syntax.</span></span>
 
-<span data-ttu-id="edd85-159">El siguiente componente secundario (`ChildComponent`) tiene un parámetro de componente `Year` y un evento `YearChanged`:</span><span class="sxs-lookup"><span data-stu-id="edd85-159">The following child component (`ChildComponent`) has a `Year` component parameter and `YearChanged` callback:</span></span>
+<span data-ttu-id="416ee-166">El siguiente componente `Child` (`Child.razor`) tiene un parámetro de componente `Year` y la devolución de llamada `YearChanged`:</span><span class="sxs-lookup"><span data-stu-id="416ee-166">The following `Child` component (`Child.razor`) has a `Year` component parameter and `YearChanged` callback:</span></span>
 
 ```razor
-<h2>Child Component</h2>
-
-<p>Year: @Year</p>
+<div class="card bg-light mt-3" style="width:18rem ">
+    <div class="card-body">
+        <h3 class="card-title">Child Component</h3>
+        <p class="card-text">Child <code>Year</code>: @Year</p>
+        <p>
+            <button @onclick="UpdateYear">
+                Update Child <code>Year</code> and call 
+                <code>YearChanged.InvokeAsync(Year)</code>
+            </button>
+        </p>
+    </div>
+</div>
 
 @code {
+    private Random r = new Random();
+
     [Parameter]
     public int Year { get; set; }
 
     [Parameter]
     public EventCallback<int> YearChanged { get; set; }
-}
-```
 
-<span data-ttu-id="edd85-160"><xref:Microsoft.AspNetCore.Components.EventCallback%601> debe tener el nombre del parámetro del componente seguido del sufijo `Changed` (`{PARAMETER NAME}Changed`), `YearChanged` en el ejemplo anterior.</span><span class="sxs-lookup"><span data-stu-id="edd85-160">The <xref:Microsoft.AspNetCore.Components.EventCallback%601> must be named as the component parameter name followed by the `Changed` suffix (`{PARAMETER NAME}Changed`), `YearChanged` in the preceding example.</span></span> <span data-ttu-id="edd85-161">Para más información sobre <xref:Microsoft.AspNetCore.Components.EventCallback%601>, consulte <xref:blazor/components/event-handling#eventcallback>.</span><span class="sxs-lookup"><span data-stu-id="edd85-161">For more information on <xref:Microsoft.AspNetCore.Components.EventCallback%601>, see <xref:blazor/components/event-handling#eventcallback>.</span></span>
-
-<span data-ttu-id="edd85-162">El siguiente componente primario usa:</span><span class="sxs-lookup"><span data-stu-id="edd85-162">The following parent component uses:</span></span>
-
-* <span data-ttu-id="edd85-163">`ChildComponent` y enlaza el parámetro `ParentYear` desde el elemento primario con el parámetro `Year` en el componente secundario.</span><span class="sxs-lookup"><span data-stu-id="edd85-163">`ChildComponent` and binds the `ParentYear` parameter from the parent to the `Year` parameter on the child component.</span></span>
-* <span data-ttu-id="edd85-164">El evento `onclick` se usa para desencadenar el método `ChangeTheYear`.</span><span class="sxs-lookup"><span data-stu-id="edd85-164">The `onclick` event is used to trigger the `ChangeTheYear` method.</span></span> <span data-ttu-id="edd85-165">Para obtener más información, vea <xref:blazor/components/event-handling>.</span><span class="sxs-lookup"><span data-stu-id="edd85-165">For more information, see <xref:blazor/components/event-handling>.</span></span>
-
-```razor
-@page "/ParentComponent"
-
-<h1>Parent Component</h1>
-
-<p>ParentYear: @ParentYear</p>
-
-<ChildComponent @bind-Year="ParentYear" />
-
-<button class="btn btn-primary" @onclick="ChangeTheYear">
-    Change Year to 1986
-</button>
-
-@code {
-    [Parameter]
-    public int ParentYear { get; set; } = 1978;
-
-    private void ChangeTheYear()
+    private Task UpdateYear()
     {
-        ParentYear = 1986;
+        Year = r.Next(10050, 12021);
+
+        return YearChanged.InvokeAsync(Year);
     }
 }
 ```
 
-<span data-ttu-id="edd85-166">Al cargar el componente primario, `ParentComponent`, se produce el siguiente marcado:</span><span class="sxs-lookup"><span data-stu-id="edd85-166">Loading the `ParentComponent` produces the following markup:</span></span>
+<span data-ttu-id="416ee-167">La devolución de llamada (<xref:Microsoft.AspNetCore.Components.EventCallback%601>) debe tener el nombre del parámetro del componente seguido del sufijo "`Changed`" (`{PARAMETER NAME}Changed`).</span><span class="sxs-lookup"><span data-stu-id="416ee-167">The callback (<xref:Microsoft.AspNetCore.Components.EventCallback%601>) must be named as the component parameter name followed by the "`Changed`" suffix (`{PARAMETER NAME}Changed`).</span></span> <span data-ttu-id="416ee-168">En el ejemplo anterior, el nombre de la devolución de llamada es `YearChanged`.</span><span class="sxs-lookup"><span data-stu-id="416ee-168">In the preceding example, the callback is named `YearChanged`.</span></span> <span data-ttu-id="416ee-169">Para más información sobre <xref:Microsoft.AspNetCore.Components.EventCallback%601>, consulte <xref:blazor/components/event-handling#eventcallback>.</span><span class="sxs-lookup"><span data-stu-id="416ee-169">For more information on <xref:Microsoft.AspNetCore.Components.EventCallback%601>, see <xref:blazor/components/event-handling#eventcallback>.</span></span>
 
-```html
-<h1>Parent Component</h1>
-
-<p>ParentYear: 1978</p>
-
-<h2>Child Component</h2>
-
-<p>Year: 1978</p>
-```
-
-<span data-ttu-id="edd85-167">Si el valor de la propiedad `ParentYear` se cambia seleccionando el botón del componente primario (`ParentComponent`), se actualiza la propiedad `Year` del componente secundario (`ChildComponent`).</span><span class="sxs-lookup"><span data-stu-id="edd85-167">If the value of the `ParentYear` property is changed by selecting the button in the `ParentComponent`, the `Year` property of the `ChildComponent` is updated.</span></span> <span data-ttu-id="edd85-168">El nuevo valor de `Year` se representa en la interfaz de usuario junto con el componente primario (`ParentComponent`):</span><span class="sxs-lookup"><span data-stu-id="edd85-168">The new value of `Year` is rendered in the UI when the `ParentComponent` is rerendered:</span></span>
-
-```html
-<h1>Parent Component</h1>
-
-<p>ParentYear: 1986</p>
-
-<h2>Child Component</h2>
-
-<p>Year: 1986</p>
-```
-
-<span data-ttu-id="edd85-169">El parámetro `Year` se puede enlazar porque tiene un evento `YearChanged` complementario que coincide con el tipo del parámetro `Year`.</span><span class="sxs-lookup"><span data-stu-id="edd85-169">The `Year` parameter is bindable because it has a companion `YearChanged` event that matches the type of the `Year` parameter.</span></span>
-
-<span data-ttu-id="edd85-170">Por convención, `<ChildComponent @bind-Year="ParentYear" />` es equivalente a escribir:</span><span class="sxs-lookup"><span data-stu-id="edd85-170">By convention, `<ChildComponent @bind-Year="ParentYear" />` is essentially equivalent to writing:</span></span>
+<span data-ttu-id="416ee-170">En el siguiente componente `Parent` (`Parent.razor`), el campo `year` se enlaza al parámetro `Year` del componente secundario:</span><span class="sxs-lookup"><span data-stu-id="416ee-170">In the following `Parent` component (`Parent.razor`), the `year` field is bound to the `Year` parameter of the child component:</span></span>
 
 ```razor
-<ChildComponent @bind-Year="ParentYear" @bind-Year:event="YearChanged" />
+@page "/Parent"
+
+<h1>Parent Component</h1>
+
+<p>Parent <code>year</code>: @year</p>
+
+<button @onclick="UpdateYear">Update Parent <code>year</code></button>
+
+<Child @bind-Year="year" />
+
+@code {
+    private Random r = new Random();
+    private int year = 1978;
+
+    private void UpdateYear()
+    {
+        year = r.Next(1950, 2021);
+    }
+}
 ```
 
-<span data-ttu-id="edd85-171">En general, una propiedad se puede enlazar a un controlador de eventos correspondiente si se incluye un atributo `@bind-{PROPRETY}:event`.</span><span class="sxs-lookup"><span data-stu-id="edd85-171">In general, a property can be bound to a corresponding event handler by including an `@bind-{PROPRETY}:event` attribute.</span></span> <span data-ttu-id="edd85-172">Por ejemplo, la propiedad `MyProp` se puede enlazar a `MyEventHandler` mediante los dos atributos siguientes:</span><span class="sxs-lookup"><span data-stu-id="edd85-172">For example, the property `MyProp` can be bound to `MyEventHandler` using the following two attributes:</span></span>
+<span data-ttu-id="416ee-171">El parámetro `Year` se puede enlazar porque tiene un evento `YearChanged` complementario que coincide con el tipo del parámetro `Year`.</span><span class="sxs-lookup"><span data-stu-id="416ee-171">The `Year` parameter is bindable because it has a companion `YearChanged` event that matches the type of the `Year` parameter.</span></span>
+
+<span data-ttu-id="416ee-172">Por convención, una propiedad se puede enlazar a un controlador de eventos correspondiente si se incluye un atributo `@bind-{PROPERTY}:event` asignado al controlador.</span><span class="sxs-lookup"><span data-stu-id="416ee-172">By convention, a property can be bound to a corresponding event handler by including an `@bind-{PROPERTY}:event` attribute assigned to the handler.</span></span> <span data-ttu-id="416ee-173">`<Child @bind-Year="year" />` equivale a escribir lo siguiente:</span><span class="sxs-lookup"><span data-stu-id="416ee-173">`<Child @bind-Year="year" />` is equivalent to writing:</span></span>
 
 ```razor
-<MyComponent @bind-MyProp="MyValue" @bind-MyProp:event="MyEventHandler" />
+<Child @bind-Year="year" @bind-Year:event="YearChanged" />
 ```
 
-## <a name="child-to-parent-binding-with-chained-bind"></a><span data-ttu-id="edd85-173">Enlace de componentes secundarios a primarios con un enlace encadenado</span><span class="sxs-lookup"><span data-stu-id="edd85-173">Child-to-parent binding with chained bind</span></span>
+## <a name="child-to-parent-binding-with-chained-bind"></a><span data-ttu-id="416ee-174">Enlace de componentes secundarios a primarios con un enlace encadenado</span><span class="sxs-lookup"><span data-stu-id="416ee-174">Child-to-parent binding with chained bind</span></span>
 
-<span data-ttu-id="edd85-174">Un escenario común es encadenar un parámetro enlazado a datos a un elemento de página en la salida del componente.</span><span class="sxs-lookup"><span data-stu-id="edd85-174">A common scenario is chaining a data-bound parameter to a page element in the component's output.</span></span> <span data-ttu-id="edd85-175">Este escenario se denomina *enlace encadenado* porque se producen varios niveles de enlace simultáneamente.</span><span class="sxs-lookup"><span data-stu-id="edd85-175">This scenario is called a *chained bind* because multiple levels of binding occur simultaneously.</span></span>
+<span data-ttu-id="416ee-175">Un escenario común es encadenar un parámetro enlazado a datos a un elemento de página en la salida del componente.</span><span class="sxs-lookup"><span data-stu-id="416ee-175">A common scenario is chaining a data-bound parameter to a page element in the component's output.</span></span> <span data-ttu-id="416ee-176">Este escenario se denomina *enlace encadenado* porque se producen varios niveles de enlace simultáneamente.</span><span class="sxs-lookup"><span data-stu-id="416ee-176">This scenario is called a *chained bind* because multiple levels of binding occur simultaneously.</span></span>
 
-<span data-ttu-id="edd85-176">No se puede implementar un enlace encadenado con sintaxis [`@bind`](xref:mvc/views/razor#bind) en el elemento de la página.</span><span class="sxs-lookup"><span data-stu-id="edd85-176">A chained bind can't be implemented with [`@bind`](xref:mvc/views/razor#bind) syntax in the page's element.</span></span> <span data-ttu-id="edd85-177">El controlador de eventos y el valor se deben especificar por separado.</span><span class="sxs-lookup"><span data-stu-id="edd85-177">The event handler and value must be specified separately.</span></span> <span data-ttu-id="edd85-178">Sin embargo, un componente primario puede usar la sintaxis [`@bind`](xref:mvc/views/razor#bind) con el parámetro del componente.</span><span class="sxs-lookup"><span data-stu-id="edd85-178">A parent component, however, can use [`@bind`](xref:mvc/views/razor#bind) syntax with the component's parameter.</span></span>
+<span data-ttu-id="416ee-177">No se puede implementar un enlace encadenado con sintaxis [`@bind`](xref:mvc/views/razor#bind) en el componente secundario.</span><span class="sxs-lookup"><span data-stu-id="416ee-177">A chained bind can't be implemented with [`@bind`](xref:mvc/views/razor#bind) syntax in the child component.</span></span> <span data-ttu-id="416ee-178">El controlador de eventos y el valor se deben especificar por separado.</span><span class="sxs-lookup"><span data-stu-id="416ee-178">The event handler and value must be specified separately.</span></span> <span data-ttu-id="416ee-179">Pero un componente primario puede usar la sintaxis [`@bind`](xref:mvc/views/razor#bind) con el parámetro del componente secundario.</span><span class="sxs-lookup"><span data-stu-id="416ee-179">A parent component, however, can use [`@bind`](xref:mvc/views/razor#bind) syntax with the child component's parameter.</span></span>
 
-<span data-ttu-id="edd85-179">El siguiente componente `PasswordField` (`PasswordField.razor`):</span><span class="sxs-lookup"><span data-stu-id="edd85-179">The following `PasswordField` component (`PasswordField.razor`):</span></span>
+<span data-ttu-id="416ee-180">El siguiente componente `PasswordField` (`PasswordField.razor`):</span><span class="sxs-lookup"><span data-stu-id="416ee-180">The following `PasswordField` component (`PasswordField.razor`):</span></span>
 
-* <span data-ttu-id="edd85-180">Establece el valor del elemento `<input>` en una propiedad `Password`.</span><span class="sxs-lookup"><span data-stu-id="edd85-180">Sets an `<input>` element's value to a `Password` property.</span></span>
-* <span data-ttu-id="edd85-181">Expone los cambios de la propiedad `Password` en un componente primario con [`EventCallback`](xref:blazor/components/event-handling#eventcallback).</span><span class="sxs-lookup"><span data-stu-id="edd85-181">Exposes changes of the `Password` property to a parent component with an [`EventCallback`](xref:blazor/components/event-handling#eventcallback).</span></span>
-* <span data-ttu-id="edd85-182">Usa el evento `onclick` para desencadenar el método `ToggleShowPassword`.</span><span class="sxs-lookup"><span data-stu-id="edd85-182">Uses the `onclick` event to trigger the `ToggleShowPassword` method.</span></span> <span data-ttu-id="edd85-183">Para obtener más información, vea <xref:blazor/components/event-handling>.</span><span class="sxs-lookup"><span data-stu-id="edd85-183">For more information, see <xref:blazor/components/event-handling>.</span></span>
+* <span data-ttu-id="416ee-181">Establece el valor del elemento `<input>` en una propiedad `Password`.</span><span class="sxs-lookup"><span data-stu-id="416ee-181">Sets an `<input>` element's value to a `Password` property.</span></span>
+* <span data-ttu-id="416ee-182">Expone los cambios de la propiedad `Password` en un componente primario con [`EventCallback`](xref:blazor/components/event-handling#eventcallback).</span><span class="sxs-lookup"><span data-stu-id="416ee-182">Exposes changes of the `Password` property to a parent component with an [`EventCallback`](xref:blazor/components/event-handling#eventcallback).</span></span>
+* <span data-ttu-id="416ee-183">Usa el evento `onclick` para desencadenar el método `ToggleShowPassword`.</span><span class="sxs-lookup"><span data-stu-id="416ee-183">Uses the `onclick` event to trigger the `ToggleShowPassword` method.</span></span> <span data-ttu-id="416ee-184">Para obtener más información, vea <xref:blazor/components/event-handling>.</span><span class="sxs-lookup"><span data-stu-id="416ee-184">For more information, see <xref:blazor/components/event-handling>.</span></span>
 
 ```razor
 <h1>Child Component</h1>
 
-Password: 
+Password:
 
 <input @oninput="OnPasswordChanged" 
        required 
@@ -287,10 +282,10 @@ Password:
 }
 ```
 
-<span data-ttu-id="edd85-184">El componente `PasswordField` se usa en otro componente:</span><span class="sxs-lookup"><span data-stu-id="edd85-184">The `PasswordField` component is used in another component:</span></span>
+<span data-ttu-id="416ee-185">El componente `PasswordField` se usa en otro componente:</span><span class="sxs-lookup"><span data-stu-id="416ee-185">The `PasswordField` component is used in another component:</span></span>
 
 ```razor
-@page "/ParentComponent"
+@page "/Parent"
 
 <h1>Parent Component</h1>
 
@@ -301,12 +296,12 @@ Password:
 }
 ```
 
-<span data-ttu-id="edd85-185">Para realizar comprobaciones o detectar errores en la contraseña en el ejemplo anterior:</span><span class="sxs-lookup"><span data-stu-id="edd85-185">To perform checks or trap errors on the password in the preceding example:</span></span>
+<span data-ttu-id="416ee-186">Para realizar comprobaciones o detectar errores en la contraseña en el ejemplo anterior:</span><span class="sxs-lookup"><span data-stu-id="416ee-186">To perform checks or trap errors on the password in the preceding example:</span></span>
 
-* <span data-ttu-id="edd85-186">Cree un campo de respaldo para `Password` (`password` en el siguiente código de ejemplo).</span><span class="sxs-lookup"><span data-stu-id="edd85-186">Create a backing field for `Password` (`password` in the following example code).</span></span>
-* <span data-ttu-id="edd85-187">Realice las comprobaciones o detecte los errores en el establecedor de `Password`.</span><span class="sxs-lookup"><span data-stu-id="edd85-187">Perform the checks or trap errors in the `Password` setter.</span></span>
+* <span data-ttu-id="416ee-187">Cree un campo de respaldo para `Password` (`password` en el siguiente código de ejemplo).</span><span class="sxs-lookup"><span data-stu-id="416ee-187">Create a backing field for `Password` (`password` in the following example code).</span></span>
+* <span data-ttu-id="416ee-188">Realice las comprobaciones o detecte los errores en el establecedor de `Password`.</span><span class="sxs-lookup"><span data-stu-id="416ee-188">Perform the checks or trap errors in the `Password` setter.</span></span>
 
-<span data-ttu-id="edd85-188">El ejemplo siguiente informa de inmediato al usuario si se usa un espacio en el valor de la contraseña:</span><span class="sxs-lookup"><span data-stu-id="edd85-188">The following example provides immediate feedback to the user if a space is used in the password's value:</span></span>
+<span data-ttu-id="416ee-189">El ejemplo siguiente informa de inmediato al usuario si se usa un espacio en el valor de la contraseña:</span><span class="sxs-lookup"><span data-stu-id="416ee-189">The following example provides immediate feedback to the user if a space is used in the password's value:</span></span>
 
 ```razor
 <h1>Child Component</h1>
@@ -367,7 +362,7 @@ Password:
 }
 ```
 
-## <a name="additional-resources"></a><span data-ttu-id="edd85-189">Recursos adicionales</span><span class="sxs-lookup"><span data-stu-id="edd85-189">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="416ee-190">Recursos adicionales</span><span class="sxs-lookup"><span data-stu-id="416ee-190">Additional resources</span></span>
 
-* [<span data-ttu-id="edd85-190">Enlace a botones de radio en un formulario</span><span class="sxs-lookup"><span data-stu-id="edd85-190">Binding to radio buttons in a form</span></span>](xref:blazor/forms-validation#radio-buttons)
-* [<span data-ttu-id="edd85-191">Enlace de opciones del elemento `<select>` a valores `null` de un objeto C# en un formulario</span><span class="sxs-lookup"><span data-stu-id="edd85-191">Binding `<select>` element options to C# object `null` values in a form</span></span>](xref:blazor/forms-validation#binding-select-element-options-to-c-object-null-values)
+* [<span data-ttu-id="416ee-191">Enlace a botones de radio en un formulario</span><span class="sxs-lookup"><span data-stu-id="416ee-191">Binding to radio buttons in a form</span></span>](xref:blazor/forms-validation#radio-buttons)
+* [<span data-ttu-id="416ee-192">Enlace de opciones del elemento `<select>` a valores `null` de un objeto C# en un formulario</span><span class="sxs-lookup"><span data-stu-id="416ee-192">Binding `<select>` element options to C# object `null` values in a form</span></span>](xref:blazor/forms-validation#binding-select-element-options-to-c-object-null-values)
