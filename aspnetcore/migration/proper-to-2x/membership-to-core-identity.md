@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: migration/proper-to-2x/membership-to-core-identity
-ms.openlocfilehash: de9d1e5f6f595269595212fbab60d12dfd5a29e4
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: a9ec02381b156a6599042d8e504a476036246302
+ms.sourcegitcommit: f09407d128634d200c893bfb1c163e87fa47a161
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633648"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88865556"
 ---
 # <a name="migrate-from-aspnet-membership-authentication-to-aspnet-core-20-no-locidentity"></a>Migración de la autenticación de pertenencia de ASP.NET a ASP.NET Core 2,0 Identity
 
@@ -35,7 +35,7 @@ En este artículo se muestra cómo migrar el esquema de la base de datos para ap
 
 ## <a name="review-of-membership-schema"></a>Revisión del esquema de pertenencia
 
-Antes de ASP.NET 2,0, los desarrolladores tenían que crear todo el proceso de autenticación y autorización para sus aplicaciones. Con ASP.NET 2,0, se presentó la pertenencia, que proporciona una solución reutilizable para controlar la seguridad en las aplicaciones de ASP.NET. Los desarrolladores ahora podían arrancar un esquema en una base de datos de SQL Server con el comando [aspnet_regsql.exe](https://msdn.microsoft.com/library/ms229862.aspx) . Después de ejecutar este comando, se crearon las tablas siguientes en la base de datos.
+Antes de ASP.NET 2,0, los desarrolladores tenían que crear todo el proceso de autenticación y autorización para sus aplicaciones. Con ASP.NET 2,0, se presentó la pertenencia, que proporciona una solución reutilizable para controlar la seguridad en las aplicaciones de ASP.NET. Los desarrolladores ahora podían arrancar un esquema en una base de datos de SQL Server con el <https://docs.microsoft.com/previous-versions/ms229862(v=vs.140)> comando. Después de ejecutar este comando, se crearon las tablas siguientes en la base de datos.
 
   ![Tablas de pertenencia](identity/_static/membership-tables.png)
 

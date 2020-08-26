@@ -18,12 +18,12 @@ no-loc:
 - SignalR
 - Electron
 uid: security/samesite
-ms.openlocfilehash: c95952face8763dc9f2dd12312cab1a1bc07528a
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 3ba033b4165b19131d11311e5ae9d64e6afe48ca
+ms.sourcegitcommit: f09407d128634d200c893bfb1c163e87fa47a161
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88632348"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88865430"
 ---
 # <a name="work-with-samesite-no-loccookies-in-aspnet-core"></a>Trabajar con SameSite cookie s en ASP.net Core
 
@@ -73,11 +73,11 @@ El ejemplo siguiente se puede descargar y probar:
 
 ## <a name="net-core-support-for-the-samesite-attribute"></a>Compatibilidad de .NET Core con el atributo sameSite
 
-.NET Core 2,2 admite el estándar de borrador 2019 para SameSite desde la publicación de actualizaciones en diciembre de 2019. Los desarrolladores pueden controlar mediante programación el valor del atributo sameSite mediante la `HttpCookie.SameSite` propiedad. Si se establece la `SameSite` propiedad en Strict, LAX o None, los valores se escriben en la red con cookie . Si el valor es igual a (SameSiteMode) (-1), indica que no debe incluirse ningún atributo sameSite en la red con el parámetro cookie
+.NET Core 2,2 y versiones posteriores admiten el borrador estándar 2019 de SameSite desde la publicación de actualizaciones en diciembre de 2019. Los desarrolladores pueden controlar mediante programación el valor del atributo sameSite mediante la `HttpCookie.SameSite` propiedad. Si se establece la `SameSite` propiedad en Strict, LAX o None, los valores se escriben en la red con cookie . Si se establece en, `(SameSiteMode)(-1)` indica que no se debe incluir ningún atributo sameSite en la red con el parámetro cookie
 
 [!code-csharp[](samesite/snippets/Privacy.cshtml.cs?name=snippet)]
 
-.NET Core 3,0 admite los valores de SameSite actualizados y agrega un valor de enumeración adicional `SameSiteMode.Unspecified` a la `SameSiteMode` enumeración.
+.NET Core 3,0 y versiones posteriores admiten los valores de SameSite actualizados y agrega un valor de enumeración adicional `SameSiteMode.Unspecified` a la `SameSiteMode` enumeración.
 Este nuevo valor indica que no se debe enviar ningún sameSite con cookie .
 
 ::: moniker-end
@@ -100,7 +100,7 @@ El valor predeterminado de SameSite para la autenticación de formularios y el e
 
 Todos los componentes de ASP.NET Core que emiten cookie s invalidan los valores predeterminados anteriores con la configuración adecuada para sus escenarios. Los valores predeterminados anteriores invalidados no han cambiado.
 
-| Componente | cookie | Valor predeterminado |
+| Componente | cookie | Default |
 | ------------- | ------------- |
 | <xref:Microsoft.AspNetCore.Http.CookieBuilder> | <xref:Microsoft.AspNetCore.Http.CookieBuilder.SameSite> | `Unspecified` |
 | <xref:Microsoft.AspNetCore.Http.HttpContext.Session>  | [SessionOptions.Cookie](xref:Microsoft.AspNetCore.Builder.SessionOptions.Cookie) |`Lax` |

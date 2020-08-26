@@ -16,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: migration/identity
-ms.openlocfilehash: 85674d7ed02f189f78da92bffdf927a3ca21357d
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: c8e6a1a8bf9ef06d98db0e7e0a6a0e5ff393e322
+ms.sourcegitcommit: f09407d128634d200c893bfb1c163e87fa47a161
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88629514"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88865541"
 ---
 # <a name="migrate-authentication-and-no-locidentity-to-aspnet-core"></a>Migrar la autenticación y Identity ASP.net Core
 

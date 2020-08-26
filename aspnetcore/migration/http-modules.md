@@ -16,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: migration/http-modules
-ms.openlocfilehash: 8be09171991964540cd41a1324fb87503591151f
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 213807634a2a6990e9025de7871295cf97a81faf
+ms.sourcegitcommit: f09407d128634d200c893bfb1c163e87fa47a161
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88632179"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88865586"
 ---
 # <a name="migrate-http-handlers-and-modules-to-aspnet-core-middleware"></a>Migración de controladores y módulos HTTP a middleware de ASP.NET Core
 
@@ -55,7 +55,7 @@ Antes de continuar con ASP.NET Core middleware, vamos a resumir primero cómo fu
 
 **El orden en que los módulos procesan las solicitudes entrantes viene determinado por:**
 
-1. [Ciclo de vida](https://msdn.microsoft.com/library/ms227673.aspx)de la aplicación, que es una serie de eventos desencadenados por ASP.net: [BeginRequest](/dotnet/api/system.web.httpapplication.beginrequest), [AuthenticateRequest](/dotnet/api/system.web.httpapplication.authenticaterequest), etc. Cada módulo puede crear un controlador para uno o más eventos.
+1. <https://docs.microsoft.com/previous-versions/ms227673(v=vs.140)>, Que es una serie de eventos desencadenados por ASP.net: [BeginRequest](/dotnet/api/system.web.httpapplication.beginrequest), [AuthenticateRequest](/dotnet/api/system.web.httpapplication.authenticaterequest), etc. Cada módulo puede crear un controlador para uno o más eventos.
 
 2. Para el mismo evento, el orden en el que están configurados en *Web.config*.
 
@@ -92,7 +92,7 @@ Además de los módulos, puede agregar controladores para los eventos de ciclo d
 
 **El middleware y los módulos se procesan en un orden diferente:**
 
-* El orden de middleware se basa en el orden en que se insertan en la canalización de solicitudes, mientras que el orden de los módulos se basa principalmente en los eventos del [ciclo de vida](https://msdn.microsoft.com/library/ms227673.aspx) de la aplicación.
+* El orden de middleware se basa en el orden en que se insertan en la canalización de solicitudes, mientras que el orden de los módulos se basa principalmente en <https://docs.microsoft.com/previous-versions/ms227673(v=vs.140)> eventos
 
 * El orden de las respuestas es el orden inverso al de las solicitudes, mientras que el orden de los módulos es el mismo para las solicitudes y las respuestas.
 

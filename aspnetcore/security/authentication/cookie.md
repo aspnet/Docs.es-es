@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/cookie
-ms.openlocfilehash: 2e9eb58837d74343d8de6903372146570b43f330
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 48b9c41b468f04134164a9c499e7fadca107cab2
+ms.sourcegitcommit: f09407d128634d200c893bfb1c163e87fa47a161
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88627148"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88865104"
 ---
 # <a name="use-no-loccookie-authentication-without-no-locaspnet-core-identity"></a>Usar cookie autenticación sin ASP.NET Core Identity
 
@@ -48,7 +48,7 @@ En el `Startup.ConfigureServices` método, cree los servicios de middleware de a
 
 El esquema de autenticación de la aplicación es diferente del esquema de autenticación de la aplicación cookie . Cuando cookie no se proporciona un esquema de autenticación a <xref:Microsoft.Extensions.DependencyInjection.CookieExtensions.AddCookie*> , usa `CookieAuthenticationDefaults.AuthenticationScheme` (" Cookie s").
 
-La cookie propiedad de la autenticación <xref:Microsoft.AspNetCore.Http.CookieBuilder.IsEssential> se establece en de `true` forma predeterminada. Se permiten las autenticaciones cookie cuando un visitante del sitio no ha dado su consentimiento a la recopilación de datos. Para más información, consulte <xref:security/gdpr#essential-cookies>.
+La cookie propiedad de la autenticación <xref:Microsoft.AspNetCore.Http.CookieBuilder.IsEssential> se establece en de `true` forma predeterminada. Se permiten las autenticaciones cookie cuando un visitante del sitio no ha dado su consentimiento a la recopilación de datos. Para obtener más información, vea <xref:security/gdpr#essential-cookies>.
 
 En `Startup.Configure` , llame a `UseAuthentication` y `UseAuthorization` para establecer la `HttpContext.User` propiedad y ejecutar el middleware de autorización para las solicitudes. Llame a `UseAuthentication` los `UseAuthorization` métodos y antes de llamar a `UseEndpoints` :
 
@@ -251,7 +251,7 @@ await HttpContext.SignInAsync(
 
 ::: moniker range="< aspnetcore-3.0"
 
-ASP.NET Core Identity es un proveedor de autenticación completo con todas las características para crear y mantener inicios de sesión. Sin embargo, cookie se puede usar un proveedor de autenticación de autenticación basado en ASP.NET Core Identity . Para obtener más información, vea <xref:security/authentication/identity>.
+ASP.NET Core Identity es un proveedor de autenticación completo con todas las características para crear y mantener inicios de sesión. Sin embargo, cookie se puede usar un proveedor de autenticación basado en ASP.NET Core Identity . Para obtener más información, vea <xref:security/authentication/identity>.
 
 [Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/cookie/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
@@ -269,7 +269,7 @@ En el `Startup.ConfigureServices` método, cree el servicio de middleware de aut
 
 El esquema de autenticación de la aplicación es diferente del esquema de autenticación de la aplicación cookie . Cuando cookie no se proporciona un esquema de autenticación a <xref:Microsoft.Extensions.DependencyInjection.CookieExtensions.AddCookie*> , usa `CookieAuthenticationDefaults.AuthenticationScheme` (" Cookie s").
 
-La cookie propiedad de la autenticación <xref:Microsoft.AspNetCore.Http.CookieBuilder.IsEssential> se establece en de `true` forma predeterminada. Se permiten las autenticaciones cookie cuando un visitante del sitio no ha dado su consentimiento a la recopilación de datos. Para más información, consulte <xref:security/gdpr#essential-cookies>.
+La cookie propiedad de la autenticación <xref:Microsoft.AspNetCore.Http.CookieBuilder.IsEssential> se establece en de `true` forma predeterminada. Se permiten las autenticaciones cookie cuando un visitante del sitio no ha dado su consentimiento a la recopilación de datos. Para obtener más información, vea <xref:security/gdpr#essential-cookies>.
 
 En el `Startup.Configure` método, llame al `UseAuthentication` método para invocar el middleware de autenticación que establece la `HttpContext.User` propiedad. Llame al `UseAuthentication` método antes de llamar a `UseMvcWithDefaultRoute` o a `UseMvc` :
 

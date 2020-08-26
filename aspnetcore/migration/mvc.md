@@ -16,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: migration/mvc
-ms.openlocfilehash: cd1a7ff57d911f96f0adfe4b548fa80ec844886d
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: d615f67fc5cb23499ee7e14b747390a7a1b5a693
+ms.sourcegitcommit: f09407d128634d200c893bfb1c163e87fa47a161
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88632244"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88865132"
 ---
 # <a name="migrate-from-aspnet-mvc-to-aspnet-core-mvc"></a>Migración de ASP.NET MVC a ASP.NET Core MVC
 
@@ -38,7 +38,7 @@ La migración de ASP.NET MVC es un proceso de varios pasos. En este artículo se
 
 Para migrar la configuración y el Identity código, vea [migrar la configuración a ASP.net Core](xref:migration/configuration) y [migrar la autenticación y Identity a ASP.net Core](xref:migration/identity).
 
-## <a name="prerequisites"></a>Prerrequisitos
+## <a name="prerequisites"></a>Requisitos previos
 
 [!INCLUDE [prerequisites](../includes/net-core-prereqs-vs-3.1.md)]
 
@@ -77,7 +77,7 @@ En ASP.NET Core, la `Startup` clase:
 * Reemplaza a *global. asax*.
 * Controla todas las tareas de inicio de la aplicación.
 
-Para más información, consulte <xref:fundamentals/startup>.
+Para obtener más información, vea <xref:fundamentals/startup>.
 
 En el proyecto de ASP.NET Core, abra el archivo *Startup.CS* :
 
@@ -86,8 +86,8 @@ En el proyecto de ASP.NET Core, abra el archivo *Startup.CS* :
 ASP.NET Core aplicaciones deben participar en las características de .NET Framework con middleware. El código generado anteriormente por la plantilla agrega los siguientes servicios y middleware:
 
 * El <xref:Microsoft.Extensions.DependencyInjection.MvcServiceCollectionExtensions.AddControllersWithViews%2A> método de extensión registra la compatibilidad del servicio MVC con los controladores, las características relacionadas con la API y las vistas. Para obtener más información sobre las opciones de registro del servicio MVC, consulte [registro del servicio MVC](xref:migration/22-to-30#mvc-service-registration)
-* El <xref:Microsoft.AspNetCore.Builder.StaticFileExtensions.UseStaticFiles%2A> método de extensión agrega el controlador de archivos estáticos `Microsoft.AspNetCore.StaticFiles` . `UseStaticFiles`Se debe llamar antes al método de extensión `UseRouting` . Para más información, consulte <xref:fundamentals/static-files>.
-* El <xref:Microsoft.AspNetCore.Builder.EndpointRoutingApplicationBuilderExtensions.UseRouting%2A> método de extensión agrega enrutamiento. Para más información, consulte <xref:fundamentals/routing>.
+* El <xref:Microsoft.AspNetCore.Builder.StaticFileExtensions.UseStaticFiles%2A> método de extensión agrega el controlador de archivos estáticos `Microsoft.AspNetCore.StaticFiles` . `UseStaticFiles`Se debe llamar antes al método de extensión `UseRouting` . Para obtener más información, vea <xref:fundamentals/static-files>.
+* El <xref:Microsoft.AspNetCore.Builder.EndpointRoutingApplicationBuilderExtensions.UseRouting%2A> método de extensión agrega enrutamiento. Para obtener más información, vea <xref:fundamentals/routing>.
 
 Esta configuración existente incluye lo que se necesita para migrar el proyecto de ejemplo ASP.NET MVC. Para obtener más información acerca de ASP.NET Core opciones de middleware, vea <xref:fundamentals/startup> .
 
@@ -97,7 +97,7 @@ En el proyecto de ASP.NET Core, se agregaría una nueva clase de controlador vac
 
 El proyecto de ASP.NET Core *WebApp1* ya incluye un controlador de ejemplo mínimo y una vista con el mismo nombre que el proyecto de MVC de ASP.net. Por lo tanto, estos actuarán como marcadores de posición para el controlador ASP.NET MVC y las vistas que se van a migrar desde el proyecto de ASP.NET MVC *WebApp1* .
 
-1. Copie los métodos de MVC de ASP.NET `HomeController` para reemplazar los nuevos métodos de ASP.net Core `HomeController` . No es necesario cambiar el tipo de valor devuelto de los métodos de acción. El tipo de valor devuelto del método de acción del controlador de la plantilla integrada de ASP.NET MVC es [ActionResult](https://msdn.microsoft.com/library/system.web.mvc.actionresult(v=vs.118).aspx). en ASP.NET Core MVC, los métodos de acción devuelven en `IActionResult` su lugar. `ActionResult` implementa `IActionResult`.
+1. Copie los métodos de MVC de ASP.NET `HomeController` para reemplazar los nuevos métodos de ASP.net Core `HomeController` . No es necesario cambiar el tipo de valor devuelto de los métodos de acción. El tipo de valor devuelto del método de acción del controlador de la plantilla integrada de ASP.NET MVC es <https://docs.microsoft.com/dotnet/api/system.web.mvc.actionresult?view=aspnet-mvc-5.2> ; en ASP.net Core MVC, los métodos de acción devuelven en `IActionResult` su lugar. `ActionResult` implementa `IActionResult`.
 1. En el proyecto de ASP.net Core, haga clic con el botón derecho en el directorio *views/Home* y seleccione **Agregar** > **elemento existente**.
 1. En el cuadro de diálogo **Add Existing Item (Agregar elemento existente** ), desplácese hasta el directorio de *inicios/* del proyecto de ASP.NET MVC *WebApp1* .
 1. Seleccione los archivos *de vista about. cshtml*, *Contact. cshtml*e *index. cshtml* y, Razor a continuación, seleccione **Agregar**y reemplace los archivos existentes.
@@ -291,7 +291,7 @@ La funcionalidad siguiente requiere la migración del proyecto de ejemplo ASP.NE
 
 ## <a name="controllers-and-views"></a>Controladores y vistas
 
-* Copie cada uno de los métodos de MVC de ASP.NET `HomeController` al nuevo `HomeController` . En ASP.NET MVC, el tipo de valor devuelto del método de acción del controlador de la plantilla integrada es [ActionResult](https://msdn.microsoft.com/library/system.web.mvc.actionresult(v=vs.118).aspx). en ASP.NET Core MVC, los métodos de acción devuelven en `IActionResult` su lugar. `ActionResult` implementa `IActionResult` , por lo que no es necesario cambiar el tipo de valor devuelto de los métodos de acción.
+* Copie cada uno de los métodos de MVC de ASP.NET `HomeController` al nuevo `HomeController` . En ASP.NET MVC, el tipo de valor devuelto del método de acción del controlador de la plantilla integrada es <https://docs.microsoft.com/dotnet/api/system.web.mvc.actionresult?view=aspnet-mvc-5.2> ; en ASP.net Core MVC, los métodos de acción devuelven en `IActionResult` su lugar. `ActionResult` implementa `IActionResult` , por lo que no es necesario cambiar el tipo de valor devuelto de los métodos de acción.
 
 * Copie los archivos de vista *About. cshtml*, *Contact. cshtml*e *Index. cshtml* Razor del proyecto ASP.NET MVC en el proyecto ASP.net Core.
 
@@ -477,7 +477,7 @@ La funcionalidad siguiente requiere la migración del proyecto de ejemplo ASP.NE
 
 ## <a name="controllers-and-views"></a>Controladores y vistas
 
-* Copie cada uno de los métodos de MVC de ASP.NET `HomeController` al nuevo `HomeController` . En ASP.NET MVC, el tipo de valor devuelto del método de acción del controlador de la plantilla integrada es [ActionResult](https://msdn.microsoft.com/library/system.web.mvc.actionresult(v=vs.118).aspx). en ASP.NET Core MVC, los métodos de acción devuelven en `IActionResult` su lugar. `ActionResult` implementa `IActionResult` , por lo que no es necesario cambiar el tipo de valor devuelto de los métodos de acción.
+* Copie cada uno de los métodos de MVC de ASP.NET `HomeController` al nuevo `HomeController` . En ASP.NET MVC, el tipo de valor devuelto del método de acción del controlador de la plantilla integrada es <https://docs.microsoft.com/dotnet/api/system.web.mvc.actionresult?view=aspnet-mvc-5.2> ; en ASP.net Core MVC, los métodos de acción devuelven en `IActionResult` su lugar. `ActionResult` implementa `IActionResult` , por lo que no es necesario cambiar el tipo de valor devuelto de los métodos de acción.
 
 * Copie los archivos de vista *About. cshtml*, *Contact. cshtml*e *Index. cshtml* Razor del proyecto ASP.NET MVC en el proyecto ASP.net Core.
 

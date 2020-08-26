@@ -16,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/advanced/custom-model-binding
-ms.openlocfilehash: 4bef68fffbdfaff023f71964a27ead56863e4192
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 7e1151b04f39f637f889e690bccc97eb6f0c91ea
+ms.sourcegitcommit: f09407d128634d200c893bfb1c163e87fa47a161
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88630437"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88865570"
 ---
 # <a name="custom-model-binding-in-aspnet-core"></a>Enlace de modelos personalizado en ASP.NET Core
 
@@ -127,7 +127,7 @@ Para usar un proveedor de enlazadores de modelos personalizado, agréguelo a `Co
 
 [!code-csharp[](custom-model-binding/samples/3.x/CustomModelBindingSample/Startup.cs?name=snippet_ConfigureServices&highlight=5-8)]
 
-Al evaluar enlazadores de modelos, la colección de proveedores se examina en orden. Se usará el primer proveedor que devuelva un enlazador. Si su proveedor se agrega al final de la colección, puede ocurrir que se llame a un enlazador de modelos integrado antes que al suyo. En este ejemplo, el proveedor personalizado se agrega al principio de la colección para procurar que se use en los argumentos de acción de `Author`.
+Al evaluar enlazadores de modelos, la colección de proveedores se examina en orden. Se utiliza el primer proveedor que devuelve un enlazador que coincide con el modelo de entrada. Al agregar el proveedor al final de la colección, es posible que se llame a un enlazador de modelos integrado antes de que el enlazador personalizado tenga la oportunidad. En este ejemplo, el proveedor personalizado se agrega al principio de la colección para asegurarse de que siempre se usa para los `Author` argumentos de acción.
 
 ### <a name="polymorphic-model-binding"></a>Enlace de modelos polimórfico
 

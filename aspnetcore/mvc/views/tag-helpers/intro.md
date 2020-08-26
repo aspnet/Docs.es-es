@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/tag-helpers/intro
-ms.openlocfilehash: 42a7231b529dd9f8ecbce4f8116111e1c96c830d
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 345d20494111b808dac9678637de060169730a53
+ms.sourcegitcommit: f09407d128634d200c893bfb1c163e87fa47a161
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633102"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88865357"
 ---
 # <a name="tag-helpers-in-aspnet-core"></a>Asistentes de etiquetas en ASP.NET Core
 
@@ -254,9 +254,9 @@ El editor de Visual Studio le ayuda a escribir **todo** el marcado en el método
 
 ## <a name="tag-helpers-compared-to-web-server-controls"></a>Comparación entre los asistentes de etiquetas y los controles de servidor web
 
-* Los asistentes de etiquetas no poseen el elemento al que están asociadas; simplemente participan en la representación del elemento y el contenido. Los [controles de servidor web](https://msdn.microsoft.com/library/7698y1f0.aspx) de ASP.NET se declaran y se invocan en una página.
+* Los asistentes de etiquetas no poseen el elemento al que están asociadas; simplemente participan en la representación del elemento y el contenido. ASP.NET <https://docs.microsoft.com/previous-versions/dotnet/netframework-3.0/7698y1f0(v=vs.85)> se declaran y se invocan en una página.
 
-* Los [controles de servidor web](https://msdn.microsoft.com/library/zsyt68f1.aspx) tienen un ciclo de vida no trivial que puede dificultar el desarrollo y la depuración.
+* <https://docs.microsoft.com/previous-versions/zsyt68f1(v=vs.140)> tener un ciclo de vida no trivial que pueda dificultar el desarrollo y la depuración.
 
 * Los controles de servidor web permiten agregar funcionalidad a los elementos Document Object Model (DOM) de cliente mediante el uso de un control cliente. Los asistentes de etiquetas no tienen ningún DOM.
 
