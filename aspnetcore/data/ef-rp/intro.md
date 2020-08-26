@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc, seodec18
 ms.date: 09/26/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-rp/intro
-ms.openlocfilehash: cd6624d107fb19da92a7e58a747cc85e876a6ba4
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 00d5c348b7ab06f9044e6705026e43feb7807ae3
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88018642"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88630318"
 ---
 # <a name="no-locrazor-pages-with-entity-framework-core-in-aspnet-core---tutorial-1-of-8"></a>Razor Pages con Entity Framework Core en ASP.NET Core: Tutorial 1 de 8
 
@@ -89,7 +90,7 @@ Para ejecutar la aplicación después de descargar el proyecto completado:
 Para ejecutar la aplicación después de descargar el proyecto completado:
 
 * Elimine *ContosoUniversity.csproj* y cambie el nombre de *ContosoUniversitySQLite.csproj* por *ContosoUniversity.csproj*.
-* Elimine *Startup.cs*, y cambie el nombre de *StartupSQLite.cs* por *Startup.cs*.
+* En *Program.cs*, convierta `#define Startup` en comentario para que se use `StartupSQLite`.
 * Elimine *appSettings.json* y cambie el nombre de *appSettingsSQLite.json* por *appSettings.json*.
 * Elimine la carpeta *Migrations* y cambie el nombre de *MigrationsSQL* por *Migrations*.
 * Realice una búsqueda global `#if SQLiteVersion` y quite `#if SQLiteVersion` y la instrucción `#endif` asociada.

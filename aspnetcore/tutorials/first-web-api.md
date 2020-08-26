@@ -4,8 +4,9 @@ author: rick-anderson
 description: Aprenda a crear de una API web con ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 2/25/2020
+ms.date: 08/13/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-web-api
-ms.openlocfilehash: ad6eac246e5bc7039158981bbe96036389512e4f
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: ce0dfdf1ce88b55790d33918a2d20bc19a09b288
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88019240"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88626901"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>Tutorial: Creación de una API web con ASP.NET Core
 
@@ -116,7 +117,7 @@ En el diagrama siguiente, se muestra el diseño de la aplicación.
 
   ![Selección de plantilla de API de macOS](first-web-api-mac/_static/api_template.png)
 
-* En el cuadro de diálogo **Configure your new ASP.NET Core Web API** (Configurar la nueva API web de ASP.NET Core), seleccione la **plataforma de destino** .NET Core 3.x más reciente. Seleccione **Siguiente**.
+* En el cuadro de diálogo **Configurar la nueva API web de ASP.NET Core**, seleccione la **plataforma de destino** .NET Core 3.x más reciente. Seleccione **Siguiente**.
 
 * Escriba *TodoApi* en **Nombre del proyecto** y seleccione **Crear**.
 
@@ -293,7 +294,8 @@ Ejecute los comandos siguientes:
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
 dotnet add package Microsoft.EntityFrameworkCore.Design
 dotnet tool install --global dotnet-aspnet-codegenerator
-dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m TodoItem -dc TodoContext -outDir Controllers
+dotnet tool update -g Dotnet-aspnet-codegenerator
+dotnet-aspnet-codegenerator controller -name TodoItemsController -async -api -m TodoItem -dc TodoContext -outDir Controllers
 ```
 
 Los comandos anteriores:
@@ -324,6 +326,8 @@ Reemplace la instrucción return en `PostTodoItem` para usar el operador [nameof
 
 El código anterior es un método HTTP POST, indicado por el atributo [`[HttpPost]`](xref:Microsoft.AspNetCore.Mvc.HttpPostAttribute). El método obtiene el valor de tareas pendientes del cuerpo de la solicitud HTTP.
 
+Para más información, vea [Enrutamiento mediante atributos con atributos Http[Verb]](xref:mvc/controllers/routing#attribute-routing-with-httpverb-attributes).
+
 El método <xref:Microsoft.AspNetCore.Mvc.ControllerBase.CreatedAtAction*> realiza las acciones siguientes:
 
 * Devuelve un código de estado HTTP 201 cuando se ha ejecutado correctamente. HTTP 201 es la respuesta estándar para un método HTTP POST que crea un recurso en el servidor.
@@ -348,6 +352,7 @@ En este tutorial se usa Postman para probar la API web.
 
 * Cree una nueva solicitud.
 * Establezca el método HTTP en `POST`.
+* Establezca el URI en `https://localhost:<port>/api/TodoItems`. Por ejemplo: `https://localhost:5001/api/TodoItems`.
 * Seleccione la pestaña **Cuerpo**.
 * Seleccione el botón de radio **Raw** (Sin formato).
 * Establezca el tipo en **JSON (application/json)** .
@@ -364,15 +369,15 @@ En este tutorial se usa Postman para probar la API web.
 
   ![Postman con solicitud de creación](first-web-api/_static/3/create.png)
 
-### <a name="test-the-location-header-uri"></a>Prueba del URI del encabezado de ubicación
+### <a name="test-the-location-header-uri-with-postman"></a>Prueba del URI del encabezado de ubicación con Postman
 
 * Seleccione la pestaña **Encabezados** en el panel **Respuesta**.
 * Copie el valor de encabezado **Ubicación**:
 
   ![Pestaña Encabezados de la consola de Postman](first-web-api/_static/3/create.png)
 
-* Establezca el método en GET.
-* Pegue el URI (por ejemplo, `https://localhost:5001/api/TodoItems/1`).
+* Establezca el método HTTP en `GET`.
+* Establezca el URI en `https://localhost:<port>/api/TodoItems/1`. Por ejemplo: `https://localhost:5001/api/TodoItems/1`.
 * Seleccione **Enviar**.
 
 ## <a name="examine-the-get-methods"></a>Examen de los métodos GET
@@ -403,7 +408,7 @@ La llamada a `GetTodoItems` genera una respuesta similar a la siguiente:
 
 * Cree una nueva solicitud.
 * Establezca el método HTTP en **GET**.
-* Establezca la dirección URL de la solicitud en `https://localhost:<port>/api/TodoItems`. Por ejemplo: `https://localhost:5001/api/TodoItems`.
+* Establezca el URI de solicitud en `https://localhost:<port>/api/TodoItems`. Por ejemplo: `https://localhost:5001/api/TodoItems`.
 * Establezca **Vista de dos paneles** en Postman.
 * Seleccione **Enviar**.
 
@@ -534,7 +539,7 @@ En este tutorial se crea la siguiente API:
 
 |API | Descripción | Cuerpo de la solicitud | Cuerpo de la respuesta |
 |--- | ---- | ---- | ---- |
-|GET /api/TodoItems | Obtener todas las tareas pendientes | Ninguna | Matriz de tareas pendientes|
+|GET /api/TodoItems | Obtener todas las tareas pendientes | None | Matriz de tareas pendientes|
 |GET /api/TodoItems/{id} | Obtener un elemento por identificador | None | Tarea pendiente|
 |POST /api/TodoItems | Incorporación de un nuevo elemento | Tarea pendiente | Tarea pendiente |
 |PUT /api/TodoItems/{id} | Actualizar un elemento existente &nbsp; | Tarea pendiente | None |
@@ -594,7 +599,7 @@ En el diagrama siguiente, se muestra el diseño de la aplicación.
 
 * En las versiones de Visual Studio para Mac anteriores a 8.6, seleccione **.NET Core** > **Aplicación** > **API** > **Siguiente**. En la versión 8.6 o posteriores, seleccione **Web y consola** > **Aplicación** > **API** > **Siguiente**.
   
-* En el cuadro de diálogo **Configure your new ASP.NET Core Web API** (Configurar la nueva API web de ASP.NET Core), seleccione la **plataforma de destino** .NET Core 2.x más reciente. Seleccione **Siguiente**.
+* En el cuadro de diálogo **Configurar la nueva API web de ASP.NET Core**, seleccione la **plataforma de destino** .NET Core 2.x más reciente. Seleccione **Siguiente**.
 
 * Escriba *TodoApi* en **Nombre del proyecto** y seleccione **Crear**.
 
@@ -804,7 +809,7 @@ En este tutorial se usa Postman para probar la API web.
 
 * Cree una nueva solicitud.
   * Establezca el método HTTP en **GET**.
-  * Establezca la dirección URL de la solicitud en `https://localhost:<port>/api/todo`. Por ejemplo: `https://localhost:5001/api/todo`.
+  * Establezca el URI de solicitud en `https://localhost:<port>/api/todo`. Por ejemplo: `https://localhost:5001/api/todo`.
 * Establezca **Vista de dos paneles** en Postman.
 * Seleccione **Enviar**.
 
@@ -830,6 +835,7 @@ El método `CreatedAtAction` realiza las acciones siguientes:
 
 * Compile el proyecto.
 * En Postman, establezca el método HTTP en `POST`.
+* Establezca el URI en `https://localhost:<port>/api/TodoItem`. Por ejemplo: `https://localhost:5001/api/TodoItem`.
 * Seleccione la pestaña **Cuerpo**.
 * Seleccione el botón de radio **Raw** (Sin formato).
 * Establezca el tipo en **JSON (application/json)** .
@@ -856,7 +862,7 @@ El método `CreatedAtAction` realiza las acciones siguientes:
   ![Pestaña Encabezados de la consola de Postman](first-web-api/_static/pmc2.png)
 
 * Establezca el método en GET.
-* Pegue el URI (por ejemplo, `https://localhost:5001/api/Todo/2`).
+* Establezca el URI en  `https://localhost:<port>/api/TodoItems/2`. Por ejemplo,  `https://localhost:5001/api/TodoItems/2`.
 * Seleccione **Enviar**.
 
 ## <a name="add-a-puttodoitem-method"></a>Incorporación de un método PutTodoItem

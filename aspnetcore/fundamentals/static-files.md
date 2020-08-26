@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 6/23/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -14,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/static-files
-ms.openlocfilehash: 32f794d498533e846343831d2360e98939105fb1
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 24fda96dbe48945d172eb36e8a91af31f168ff7f
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88016685"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88627668"
 ---
 # <a name="static-files-in-aspnet-core"></a>Archivos estáticos en ASP.NET Core
 
@@ -103,6 +104,19 @@ Los archivos estáticos se almacenan en caché públicamente durante 600 segundo
 ## <a name="static-file-authorization"></a>Autorización de archivos estáticos
 
 El middleware de archivos estáticos no proporciona comprobaciones de autorización. Los archivos que proporciona, incluidos los de `wwwroot`, están accesibles de forma pública. Para proporcionar archivos según su autorización:
+
+* Almacénelos fuera de `wwwroot` y cualquier directorio al que el middleware de archivos estáticos predeterminado tenga acceso.
+* Llame a `UseStaticFiles` después de `UseAuthorization` y especifique la ruta de acceso:
+
+  [!code-csharp[](static-files/samples/3.x/StaticFileAuth/Startup.cs?name=snippet2)]
+  
+  Para el enfoque anterior se necesita la autenticación de los usuarios:
+
+  [!code-csharp[](static-files/samples/3.x/StaticFileAuth/Startup.cs?name=snippet1&highlight=20-99)]
+
+   [!INCLUDE[](~/includes/requireAuth.md)]
+
+Un enfoque alternativo consiste en proporcionar archivos según la autorización:
 
 * Almacénelos fuera de `wwwroot` y cualquier directorio al que el middleware de archivos estáticos tenga acceso.
 * Proporciónelos a través de un método de acción al que se aplica la autorización y devuelva un objeto <xref:Microsoft.AspNetCore.Mvc.FileResult>:
@@ -445,6 +459,8 @@ La clase <xref:Microsoft.AspNetCore.StaticFiles.FileExtensionContentTypeProvider
 [!code-csharp[](static-files/samples/1.x/StaticFilesSample/StartupFileExtensionContentTypeProvider.cs?name=snippet_ConfigureMethod&highlight=3-12,19)]
 
 Vea [Tipos de contenido MIME](https://www.iana.org/assignments/media-types/media-types.xhtml).
+
+Para obtener información sobre el uso de un objeto <xref:Microsoft.AspNetCore.StaticFiles.FileExtensionContentTypeProvider> personalizado o para configurar otras instancias de <xref:Microsoft.AspNetCore.Builder.StaticFileOptions> en aplicaciones Blazor Server, vea <xref:blazor/fundamentals/additional-scenarios#static-files>.
 
 ## <a name="non-standard-content-types"></a>Tipos de contenido no estándar
 

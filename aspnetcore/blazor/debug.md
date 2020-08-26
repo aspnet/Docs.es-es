@@ -5,8 +5,9 @@ description: Obtenga información sobre cómo depurar aplicaciones Blazor.
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/30/2020
+ms.date: 08/17/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/debug
-ms.openlocfilehash: 225916411550cc8e89c604e1426316843bb0ff52
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 5aeb333dc36ebc4c3a324b397793343e0335b1e1
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88014547"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88628370"
 ---
 # <a name="debug-aspnet-core-no-locblazor-webassembly"></a>Depuración de Blazor WebAssembly en ASP.NET Core
 
@@ -42,7 +43,7 @@ Entre los escenarios disponibles se incluyen los siguientes:
 Por ahora, *no puede*:
 
 * Interrumpir las operaciones ante excepciones no controladas.
-* Alcanzar puntos de interrupción durante el inicio de la aplicación.
+* Alcanzar puntos de interrupción durante el inicio de la aplicación antes de que se ejecute el proxy de depuración. Esto incluye los puntos de interrupción de `Program.Main` (`Program.cs`) y los de los [métodos `OnInitialized{Async}`](xref:blazor/components/lifecycle#component-initialization-methods) de los componentes que se cargan en la primera página solicitada desde la aplicación.
 
 Seguiremos mejorando la experiencia de depuración en las próximas versiones.
 
@@ -80,7 +81,7 @@ Para depurar una aplicación Blazor WebAssembly en Visual Studio:
 1. Presione <kbd>F5</kbd> para ejecutar la aplicación en el depurador.
 
    > [!NOTE]
-   > No admite **Iniciar sin depuración** (<kbd>Ctrl</kbd>+<kbd>F5</kbd>).
+   > No admite **Iniciar sin depuración** (<kbd>Ctrl</kbd>+<kbd>F5</kbd>). Cuando la aplicación se ejecuta en la configuración de depuración, la sobrecarga de depuración siempre genera una pequeña reducción del rendimiento.
 
 1. Establezca un punto de interrupción en `Pages/Counter.razor` en el método `IncrementCount`.
 1. Vaya a la pestaña **`Counter`** y seleccione el botón para alcanzar el punto de interrupción:
@@ -128,7 +129,7 @@ Al depurar la aplicación de Blazor WebAssembly, también puede depurar el códi
 1. Para iniciar la depuración, use el método abreviado de teclado <kbd>F5</kbd> o el elemento de menú.
 
    > [!NOTE]
-   > No admite **Ejecutar sin depuración** (<kbd>Ctrl</kbd>+<kbd>F5</kbd>).
+   > No admite **Iniciar sin depuración** (<kbd>Ctrl</kbd>+<kbd>F5</kbd>). Cuando la aplicación se ejecuta en la configuración de depuración, la sobrecarga de depuración siempre genera una pequeña reducción del rendimiento.
 
 1. Cuando se le pida, seleccione la opción **Blazor WebAssembly Debug** (Depuración de Blazor WebAssembly) para iniciar la depuración.
 
@@ -284,3 +285,13 @@ protected override async Task OnInitializedAsync()
     ...
 }
 ```
+
+### <a name="visual-studio-timeout"></a>Tiempo de espera de Visual Studio
+
+Si Visual Studio inicia una excepción relacionada con que el adaptador de depuración no ha podido iniciarse en la que se menciona que se ha alcanzado el tiempo de espera, puede ajustar el tiempo de espera con una configuración del Registro:
+
+```console
+VsRegEdit.exe set "<VSInstallFolder>" HKCU JSDebugger\Options\Debugging "BlazorTimeoutInMilliseconds" dword {TIMEOUT}
+```
+
+El marcador de posición `{TIMEOUT}` del comando anterior se expresa en milisegundos. Por ejemplo, un minuto se asigna como `60000`.

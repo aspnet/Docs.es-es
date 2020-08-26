@@ -5,8 +5,9 @@ description: Obtenga información sobre cómo invocar métodos de .NET desde fun
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/07/2020
+ms.date: 08/12/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/call-dotnet-from-javascript
-ms.openlocfilehash: 5a0731b45424ffd8560bb3b0d9123c686ae9e247
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 3df0fafe85d6decac3be41d4e25a4db51d8d72d8
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88012571"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88627057"
 ---
 # <a name="call-net-methods-from-javascript-functions-in-aspnet-core-no-locblazor"></a>Llamada a métodos de .NET desde funciones de JavaScript en ASP.NET Core Blazor
 
@@ -233,11 +234,16 @@ Para invocar los métodos de .NET de un componente:
 * Use la función `invokeMethod` o `invokeMethodAsync` para hacer una llamada de método estático al componente.
 * El método estático del componente encapsula la llamada a su método de instancia como un objeto <xref:System.Action> invocado.
 
+> [!NOTE]
+> Para las aplicaciones Blazor Server, donde es posible que varios usuarios utilicen simultáneamente el mismo componente, use una clase auxiliar para invocar métodos de instancia.
+>
+> Para obtener más información, vea la sección [Clase auxiliar de método de instancia de componente](#component-instance-method-helper-class).
+
 En el código JavaScript del lado cliente:
 
 ```javascript
 function updateMessageCallerJS() {
-  DotNet.invokeMethod('{APP ASSEMBLY}', 'UpdateMessageCaller');
+  DotNet.invokeMethodAsync('{APP ASSEMBLY}', 'UpdateMessageCaller');
 }
 ```
 
@@ -279,7 +285,70 @@ El marcador de posición `{APP ASSEMBLY}` es el nombre de ensamblado de la aplic
 }
 ```
 
-Cuando hay varios componentes, cada uno con métodos de instancia a los que llamar, se usa una clase auxiliar para invocar los métodos de instancia (como objetos <xref:System.Action>) de cada componente.
+Para pasar argumentos al método de instancia:
+
+* Agregue parámetros a la invocación del método de JS. En el ejemplo siguiente, se pasa un nombre al método. Se pueden agregar parámetros adicionales a la lista según sea necesario.
+
+  ```javascript
+  function updateMessageCallerJS(name) {
+    DotNet.invokeMethodAsync('{APP ASSEMBLY}', 'UpdateMessageCaller', name);
+  }
+  ```
+  
+  El marcador de posición `{APP ASSEMBLY}` es el nombre de ensamblado de la aplicación (por ejemplo, `BlazorSample`).
+
+* Proporcione los tipos correctos al objeto <xref:System.Action> para los parámetros. Proporcione la lista de parámetros a los métodos de C#. Invoque <xref:System.Action> (`UpdateMessage`) con los parámetros (`action.Invoke(name)`).
+
+  `Pages/JSInteropComponent.razor`:
+
+  ```razor
+  @page "/JSInteropComponent"
+
+  <p>
+      Message: @message
+  </p>
+
+  <p>
+      <button onclick="updateMessageCallerJS('Sarah Jane')">
+          Call JS Method
+      </button>
+  </p>
+
+  @code {
+      private static Action<string> action;
+      private string message = "Select the button.";
+
+      protected override void OnInitialized()
+      {
+          action = UpdateMessage;
+      }
+
+      private void UpdateMessage(string name)
+      {
+          message = $"{name}, UpdateMessage Called!";
+          StateHasChanged();
+      }
+
+      [JSInvokable]
+      public static void UpdateMessageCaller(string name)
+      {
+          action.Invoke(name);
+      }
+  }
+  ```
+
+  `message` de salida cuando se selecciona el botón **Call JS Method** (Llamar al método JS):
+
+  ```
+  Sarah Jane, UpdateMessage Called!
+  ```
+
+## <a name="component-instance-method-helper-class"></a>Clase auxiliar de método de instancia de componente
+
+La clase auxiliar se usa para invocar un método de instancia como <xref:System.Action>. Las clases auxiliares son útiles cuando:
+
+* Se representan varios componentes del mismo tipo en la misma página.
+* Se usa una aplicación Blazor Server, en la que es posible que varios usuarios utilicen un componente simultáneamente.
 
 En el ejemplo siguiente:
 

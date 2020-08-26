@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/05/2019
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/error-handling
-ms.openlocfilehash: 2e6aabda449a24496916c6ea9fcbd38062b54c04
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: a1f40bdcdd4f2472aa86b311bfd9302e6aa8adc0
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88017459"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88635104"
 ---
 # <a name="handle-errors-in-aspnet-core"></a>Controlar errores en ASP.NET Core
 
@@ -34,7 +35,7 @@ Este artículo trata sobre los métodos comunes para controlar errores en aplica
 
 ## <a name="developer-exception-page"></a>Página de excepciones para el desarrollador
 
-En la *Página de excepciones para el desarrollador* se muestra información detallada sobre las excepciones de la solicitud. La página está disponible mediante el paquete [Microsoft.AspNetCore.Diagnostics](https://www.nuget.org/packages/Microsoft.AspNetCore.Diagnostics/), que se encuentra en el [metapaquete Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app). Agregue código al método `Startup.Configure` para habilitar la página cuando la aplicación se ejecuta en el [entorno](xref:fundamentals/environments) de desarrollo:
+En la *Página de excepciones para el desarrollador* se muestra información detallada sobre las excepciones de la solicitud. El ensamblado `Microsoft.AspNetCore.Diagnostics`, que se encuentra en el [marco compartido `Microsoft.AspNetCore.App`](xref:fundamentals/metapackage-app), hace que la página esté disponible. Agregue código al método `Startup.Configure` para habilitar la página cuando la aplicación se ejecuta en el [entorno](xref:fundamentals/environments) de desarrollo:
 
 [!code-csharp[](error-handling/samples/2.x/ErrorHandlingSample/Startup.cs?name=snippet_DevPageAndHandlerPage&highlight=1-4)]
 

@@ -6,6 +6,7 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
 ms.date: 07/27/2020
 no-loc:
+- ASP.NET Core Identity
 - cookie
 - Cookie
 - Blazor
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/client
-ms.openlocfilehash: 5aca81da34e5ed51b2dc4f404c1ba4d7377a422f
-ms.sourcegitcommit: 497be502426e9d90bb7d0401b1b9f74b6a384682
+ms.openlocfilehash: 28e4f372e301a673644bfa97763ebc930f2d0ad5
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/08/2020
-ms.locfileid: "88016250"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88634337"
 ---
 # <a name="call-grpc-services-with-the-net-client"></a>Llamada a servicios gRPC con el cliente .NET
 
@@ -136,7 +137,7 @@ await foreach (var response in call.ResponseStream.ReadAllAsync())
 
 ### <a name="client-streaming-call"></a>Llamada de streaming de cliente
 
-Una llamada de streaming de cliente comienza *sin* el envío de un mensaje por parte del cliente. El cliente puede elegir enviar mensajes con `RequestStream.WriteAsync`. Cuando el cliente ha terminado de enviar mensajes, se debe llamar a `RequestStream.CompleteAsync` para notificar al servicio. La llamada finaliza cuando el servicio devuelve un mensaje de respuesta.
+Una llamada de streaming de cliente comienza *sin* el envío de un mensaje por parte del cliente. El cliente puede elegir enviar mensajes con `RequestStream.WriteAsync`. Cuando el cliente ha terminado de enviar mensajes, se debe llamar a `RequestStream.CompleteAsync()` para notificar al servicio. La llamada finaliza cuando el servicio devuelve un mensaje de respuesta.
 
 ```csharp
 var client = new Counter.CounterClient(channel);
@@ -188,6 +189,14 @@ Console.WriteLine("Disconnecting");
 await call.RequestStream.CompleteAsync();
 await readTask;
 ```
+
+Para obtener el mejor rendimiento y evitar errores innecesarios en el cliente y el servicio, intente completar correctamente las llamadas de streaming bidireccionales. Una llamada bidireccional se completa correctamente cuando tanto el servidor como el cliente han terminado de leer la secuencia de solicitud. La llamada de ejemplo anterior es una llamada bidireccional que finaliza correctamente. En la llamada, el cliente:
+
+1. Inicia una nueva llamada de streaming bidireccional mediante la llamada a `EchoClient.Echo`.
+2. Crea una tarea en segundo plano para leer los mensajes del servicio mediante `ResponseStream.ReadAllAsync()`.
+3. Envía mensajes al servidor con `RequestStream.WriteAsync`.
+4. Notifica al servidor que ha finalizado el envío de mensajes con `RequestStream.CompleteAsync()`.
+5. Espera hasta que la tarea en segundo plano haya leído todos los mensajes entrantes.
 
 Durante una llamada de streaming bidireccional, el cliente y el servicio se pueden enviar mensajes entre sí en cualquier momento. La mejor lógica de cliente para interactuar con una llamada bidireccional varía en función de la lógica del servicio.
 

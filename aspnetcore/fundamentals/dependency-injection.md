@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 7/21/2020
 no-loc:
+- ASP.NET Core Identity
 - Blazor
 - Blazor Server
 - Blazor WebAssembly
@@ -15,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/dependency-injection
-ms.openlocfilehash: 0d8b349d0381e2902907ea841e07bbc96db5b847
-ms.sourcegitcommit: ba4872dd5a93780fe6cfacb2711ec1e69e0df92c
+ms.openlocfilehash: ececea3c7cc2f0cdf39bbfd29feec061f9bc6764
+ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88130678"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88628799"
 ---
 # <a name="dependency-injection-in-aspnet-core"></a>Inserción de dependencias en ASP.NET Core
 
@@ -608,6 +609,7 @@ El método `Startup.ConfigureServices` se encarga de definir los servicios que l
 * <xref:mvc/controllers/dependency-injection>
 * <xref:security/authorization/dependencyinjection>
 * <xref:blazor/fundamentals/dependency-injection>
+* [Patrones de la Conferencia NDC para el desarrollo de aplicaciones de inserción de dependencias](https://www.youtube.com/watch?v=x-C-CNBVTaY)
 * <xref:fundamentals/startup>
 * <xref:fundamentals/middleware/extensibility>
 * [Cuatro formas de eliminar IDisposables en ASP.NET Core](https://andrewlock.net/four-ways-to-dispose-idisposables-in-asp-net-core/)
