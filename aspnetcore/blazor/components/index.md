@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/index
-ms.openlocfilehash: 6ee767ee76b622e15a1dc5a7fe2f3e05f03dabd0
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 26e8239634c3edb99c7606ab2e250c69af4e746f
+ms.sourcegitcommit: f09407d128634d200c893bfb1c163e87fa47a161
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88628500"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88865282"
 ---
 # <a name="create-and-use-aspnet-core-no-locrazor-components"></a>Creación y uso de componentes de Razor de ASP.NET Core
 
@@ -249,7 +249,7 @@ Los componentes pueden recibir parámetros de ruta de la plantilla de ruta propo
 
 No se admiten parámetros opcionales, por lo que en el ejemplo anterior se aplican dos directivas [`@page`][9]. La primera permite navegar al componente sin un parámetro, mientras que la segunda directiva [`@page`][9] recibe el parámetro de ruta `{text}` y asigna el valor a la propiedad `Text`.
 
-Los componentes de Razor (`.razor`) **no** admiten la sintaxis de parámetro *comodín* (`*`/`**`), que captura la ruta de acceso a lo largo de varios límites de carpeta.
+Para obtener información sobre los parámetros de ruta comodín (`{*pageRoute}`), que capturan rutas de acceso en varios límites de carpeta, vea <xref:blazor/fundamentals/routing#catch-all-route-parameters>.
 
 ### <a name="component-parameters"></a>Parámetros del componente
 

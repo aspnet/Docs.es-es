@@ -16,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/localization
-ms.openlocfilehash: 254cae2b66773d7bb71aa6313fd08b6f739b7682
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: d5be01c67f455a2706a654574ef9f5e273551e70
+ms.sourcegitcommit: f09407d128634d200c893bfb1c163e87fa47a161
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634649"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88865443"
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>Globalización y localización en ASP.NET Core
 
@@ -250,7 +250,7 @@ La lista predeterminada va de más específico a menos específico. Más adelant
 
 ### <a name="querystringrequestcultureprovider"></a>QueryStringRequestCultureProvider
 
-Algunas aplicaciones usarán una cadena de consulta para establecer [la referencia cultural y la referencia cultural de la interfaz de usuario](https://msdn.microsoft.com/library/system.globalization.cultureinfo.aspx). Para las aplicaciones que usan el método de cookie o de encabezado Accept-Language, es útil agregar una cadena de consulta a la dirección URL para depurar y probar el código. De forma predeterminada, `QueryStringRequestCultureProvider` está registrado como primer proveedor de localización en la lista `RequestCultureProvider`. Debe pasar los parámetros de cadena de consulta `culture` y `ui-culture`. En el ejemplo siguiente, la referencia cultural específica (idioma y región) se establece en español (México):
+Algunas aplicaciones usarán una cadena de consulta para establecer <https://docs.microsoft.com/dotnet/api/system.globalization.cultureinfo?view=netcore-3.1>. Para las aplicaciones que usan el método de cookie o de encabezado Accept-Language, es útil agregar una cadena de consulta a la dirección URL para depurar y probar el código. De forma predeterminada, `QueryStringRequestCultureProvider` está registrado como primer proveedor de localización en la lista `RequestCultureProvider`. Debe pasar los parámetros de cadena de consulta `culture` y `ui-culture`. En el ejemplo siguiente, la referencia cultural específica (idioma y región) se establece en español (México):
 
    `http://localhost:5000/?culture=es-MX&ui-culture=es-MX`
 
@@ -349,7 +349,7 @@ Para localizar una aplicación también es necesario contar con unos conocimient
 
 La [localizabilidad](/dotnet/standard/globalization-localization/localizability-review) es un proceso intermedio para comprobar que una aplicación globalizada está preparada para la localización.
 
-El formato [RFC 4646](https://www.ietf.org/rfc/rfc4646.txt) para el nombre de la referencia cultural es `<languagecode2>-<country/regioncode2>`, donde `<languagecode2>` es el código de idioma y `<country/regioncode2>` es el código de la referencia cultural secundaria. Por ejemplo, `es-CL` para español (Chile), `en-US` para inglés (Estados Unidos) y `en-AU` para inglés (Australia). [RFC 4646](https://www.ietf.org/rfc/rfc4646.txt) es una combinación de un código de referencia cultural ISO 639 de dos letras en minúsculas asociado con un idioma y un código de referencia cultural secundaria ISO 3166 de dos letras en mayúsculas asociado con un país o región. Vea [Language Culture Name](https://msdn.microsoft.com/library/ee825488(v=cs.20).aspx) (Nombre de la referencia cultural del idioma).
+El formato [RFC 4646](https://www.ietf.org/rfc/rfc4646.txt) para el nombre de la referencia cultural es `<languagecode2>-<country/regioncode2>`, donde `<languagecode2>` es el código de idioma y `<country/regioncode2>` es el código de la referencia cultural secundaria. Por ejemplo, `es-CL` para español (Chile), `en-US` para inglés (Estados Unidos) y `en-AU` para inglés (Australia). [RFC 4646](https://www.ietf.org/rfc/rfc4646.txt) es una combinación de un código de referencia cultural ISO 639 de dos letras en minúsculas asociado con un idioma y un código de referencia cultural secundaria ISO 3166 de dos letras en mayúsculas asociado con un país o región. Vea <https://docs.microsoft.com/previous-versions/commerce-server/ee825488(v=cs.20)>.
 
 "Internacionalización" suele abreviarse como "I18N". La abreviatura toma la primera y la última letra de la palabra, y el número de letras que hay entre ellas, es decir, el 18 representa el número de letras que hay entre la "I" inicial y la "N" final. Lo mismo se puede decir de "globalización" (G11N) y "localización" (L10N).
 
@@ -604,7 +604,7 @@ La lista predeterminada va de más específico a menos específico. Más adelant
 
 ### <a name="querystringrequestcultureprovider"></a>QueryStringRequestCultureProvider
 
-Algunas aplicaciones usarán una cadena de consulta para establecer [la referencia cultural y la referencia cultural de la interfaz de usuario](https://msdn.microsoft.com/library/system.globalization.cultureinfo.aspx). Para las aplicaciones que usan el método de cookie o de encabezado Accept-Language, es útil agregar una cadena de consulta a la dirección URL para depurar y probar el código. De forma predeterminada, `QueryStringRequestCultureProvider` está registrado como primer proveedor de localización en la lista `RequestCultureProvider`. Debe pasar los parámetros de cadena de consulta `culture` y `ui-culture`. En el ejemplo siguiente, la referencia cultural específica (idioma y región) se establece en español (México):
+Algunas aplicaciones usarán una cadena de consulta para establecer <https://docs.microsoft.com/dotnet/api/system.globalization.cultureinfo?view=netcore-3.1>. Para las aplicaciones que usan el método de cookie o de encabezado Accept-Language, es útil agregar una cadena de consulta a la dirección URL para depurar y probar el código. De forma predeterminada, `QueryStringRequestCultureProvider` está registrado como primer proveedor de localización en la lista `RequestCultureProvider`. Debe pasar los parámetros de cadena de consulta `culture` y `ui-culture`. En el ejemplo siguiente, la referencia cultural específica (idioma y región) se establece en español (México):
 
 ```
 http://localhost:5000/?culture=es-MX&ui-culture=es-MX
@@ -705,7 +705,7 @@ Para localizar una aplicación también es necesario contar con unos conocimient
 
 La [localizabilidad](/dotnet/standard/globalization-localization/localizability-review) es un proceso intermedio para comprobar que una aplicación globalizada está preparada para la localización.
 
-El formato [RFC 4646](https://www.ietf.org/rfc/rfc4646.txt) para el nombre de la referencia cultural es `<languagecode2>-<country/regioncode2>`, donde `<languagecode2>` es el código de idioma y `<country/regioncode2>` es el código de la referencia cultural secundaria. Por ejemplo, `es-CL` para español (Chile), `en-US` para inglés (Estados Unidos) y `en-AU` para inglés (Australia). [RFC 4646](https://www.ietf.org/rfc/rfc4646.txt) es una combinación de un código de referencia cultural ISO 639 de dos letras en minúsculas asociado con un idioma y un código de referencia cultural secundaria ISO 3166 de dos letras en mayúsculas asociado con un país o región. Vea [Language Culture Name](https://msdn.microsoft.com/library/ee825488(v=cs.20).aspx) (Nombre de la referencia cultural del idioma).
+El formato [RFC 4646](https://www.ietf.org/rfc/rfc4646.txt) para el nombre de la referencia cultural es `<languagecode2>-<country/regioncode2>`, donde `<languagecode2>` es el código de idioma y `<country/regioncode2>` es el código de la referencia cultural secundaria. Por ejemplo, `es-CL` para español (Chile), `en-US` para inglés (Estados Unidos) y `en-AU` para inglés (Australia). [RFC 4646](https://www.ietf.org/rfc/rfc4646.txt) es una combinación de un código de referencia cultural ISO 639 de dos letras en minúsculas asociado con un idioma y un código de referencia cultural secundaria ISO 3166 de dos letras en mayúsculas asociado con un país o región. Vea <https://docs.microsoft.com/previous-versions/commerce-server/ee825488(v=cs.20)>.
 
 "Internacionalización" suele abreviarse como "I18N". La abreviatura toma la primera y la última letra de la palabra, y el número de letras que hay entre ellas, es decir, el 18 representa el número de letras que hay entre la "I" inicial y la "N" final. Lo mismo se puede decir de "globalización" (G11N) y "localización" (L10N).
 
@@ -959,7 +959,7 @@ La lista predeterminada va de más específico a menos específico. Más adelant
 
 ### <a name="querystringrequestcultureprovider"></a>QueryStringRequestCultureProvider
 
-Algunas aplicaciones usarán una cadena de consulta para establecer [la referencia cultural y la referencia cultural de la interfaz de usuario](https://msdn.microsoft.com/library/system.globalization.cultureinfo.aspx). Para las aplicaciones que usan el método de cookie o de encabezado Accept-Language, es útil agregar una cadena de consulta a la dirección URL para depurar y probar el código. De forma predeterminada, `QueryStringRequestCultureProvider` está registrado como primer proveedor de localización en la lista `RequestCultureProvider`. Debe pasar los parámetros de cadena de consulta `culture` y `ui-culture`. En el ejemplo siguiente, la referencia cultural específica (idioma y región) se establece en español (México):
+Algunas aplicaciones usarán una cadena de consulta para establecer <https://docs.microsoft.com/dotnet/api/system.globalization.cultureinfo?view=netcore-3.1>. Para las aplicaciones que usan el método de cookie o de encabezado Accept-Language, es útil agregar una cadena de consulta a la dirección URL para depurar y probar el código. De forma predeterminada, `QueryStringRequestCultureProvider` está registrado como primer proveedor de localización en la lista `RequestCultureProvider`. Debe pasar los parámetros de cadena de consulta `culture` y `ui-culture`. En el ejemplo siguiente, la referencia cultural específica (idioma y región) se establece en español (México):
 
 ```
 http://localhost:5000/?culture=es-MX&ui-culture=es-MX
@@ -1007,7 +1007,7 @@ El [encabezado Accept-Language](https://www.w3.org/International/questions/qa-ac
 
 ### <a name="the-content-language-http-header"></a>El encabezado HTTP Content-Language
 
-El encabezado de entidad [Content-Language](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Language):
+El encabezado de entidad [Content-Language](https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Language):
 
 * Se usa para describir los lenguajes destinados a la audiencia.
 * Permite a un usuario diferenciar según el propio idioma preferido de los usuarios.
@@ -1083,7 +1083,7 @@ Para localizar una aplicación también es necesario contar con unos conocimient
 
 La [localizabilidad](/dotnet/standard/globalization-localization/localizability-review) es un proceso intermedio para comprobar que una aplicación globalizada está preparada para la localización.
 
-El formato [RFC 4646](https://www.ietf.org/rfc/rfc4646.txt) para el nombre de la referencia cultural es `<languagecode2>-<country/regioncode2>`, donde `<languagecode2>` es el código de idioma y `<country/regioncode2>` es el código de la referencia cultural secundaria. Por ejemplo, `es-CL` para español (Chile), `en-US` para inglés (Estados Unidos) y `en-AU` para inglés (Australia). [RFC 4646](https://www.ietf.org/rfc/rfc4646.txt) es una combinación de un código de referencia cultural ISO 639 de dos letras en minúsculas asociado con un idioma y un código de referencia cultural secundaria ISO 3166 de dos letras en mayúsculas asociado con un país o región. Vea [Language Culture Name](https://msdn.microsoft.com/library/ee825488(v=cs.20).aspx) (Nombre de la referencia cultural del idioma).
+El formato [RFC 4646](https://www.ietf.org/rfc/rfc4646.txt) para el nombre de la referencia cultural es `<languagecode2>-<country/regioncode2>`, donde `<languagecode2>` es el código de idioma y `<country/regioncode2>` es el código de la referencia cultural secundaria. Por ejemplo, `es-CL` para español (Chile), `en-US` para inglés (Estados Unidos) y `en-AU` para inglés (Australia). [RFC 4646](https://www.ietf.org/rfc/rfc4646.txt) es una combinación de un código de referencia cultural ISO 639 de dos letras en minúsculas asociado con un idioma y un código de referencia cultural secundaria ISO 3166 de dos letras en mayúsculas asociado con un país o región. Vea <https://docs.microsoft.com/previous-versions/commerce-server/ee825488(v=cs.20)>.
 
 "Internacionalización" suele abreviarse como "I18N". La abreviatura toma la primera y la última letra de la palabra, y el número de letras que hay entre ellas, es decir, el 18 representa el número de letras que hay entre la "I" inicial y la "N" final. Lo mismo se puede decir de "globalización" (G11N) y "localización" (L10N).
 

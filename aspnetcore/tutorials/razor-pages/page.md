@@ -16,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/page
-ms.openlocfilehash: 9fc44d228a31b8ae6c78dc12988392806dd95823
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 03febbd71df19cd3524d26e229a8bd8798a874b5
+ms.sourcegitcommit: f09407d128634d200c893bfb1c163e87fa47a161
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633440"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88865125"
 ---
 # <a name="part-3-scaffolded-no-locrazor-pages-in-aspnet-core"></a>Parte 3. Razor Pages con scaffolding en ASP.NET Core
 
@@ -98,9 +98,8 @@ La clase base `PageModel` contiene una propiedad de diccionario `ViewData` que s
 
 La propiedad `"Title"` se usa en el archivo *Pages/Shared/_Layout.cshtml*. En el siguiente marcado se muestran las primeras líneas del archivo *_Layout.cshtml*.
 
-<!-- we need a snapshot copy of layout because we are
-changing in in the next step.
--->
+<!-- We need a snapshot copy of layout because we are changing in the next step. -->
+
 [!code-cshtml[](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/NU/_Layout.cshtml?highlight=6)]
 
 La línea `@*Markup removed for brevity.*@` es un comentario de Razor. A diferencia de los comentarios HTML (`<!-- -->`), los comentarios de Razor no se envían al cliente.
@@ -284,9 +283,8 @@ La clase base `PageModel` tiene una propiedad de diccionario `ViewData` que se p
 
 La propiedad "Title" se usa en el archivo *Pages/Shared/_Layout.cshtml*. En el siguiente marcado se muestran las primeras líneas del archivo *_Layout.cshtml*.
 
-<!-- we need a snapshot copy of layout because we are
-changing in in the next step.
--->
+<!-- We need a snapshot copy of layout because we are changing in the next step. -->
+
 [!code-cshtml[](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/NU/_Layout.cshtml?highlight=6-99)]
 
 La línea `@*Markup removed for brevity.*@` es un comentario de Razor que no aparece en el archivo de diseño. A diferencia de los comentarios HTML (`<!-- -->`), los comentarios de Razor no se envían al cliente.

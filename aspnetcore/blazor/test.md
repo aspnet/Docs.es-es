@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/test
-ms.openlocfilehash: 8a6fa8f25c8209584488fb2578c70e884877d666
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 572b9a293e2fd6f51431cd1de6ada737addf5efa
+ms.sourcegitcommit: dd0e87abf2bb50ee992d9185bb256ed79d48f545
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88625874"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88746538"
 ---
 # <a name="test-components-in-aspnet-core-no-locblazor"></a>Prueba de componentes en Blazor de ASP.NET Core
 
@@ -127,7 +127,7 @@ La prueba de bUnit siguiente comprueba que el contador del CUT se incrementa cor
 public void CounterShouldIncrementWhenSelected()
 {
     // Arrange
-    using var cxt = new TestContext();
+    using var ctx = new TestContext();
     var cut = ctx.RenderComponent<Counter>();
     var paraElm = cut.Find("p");
 
