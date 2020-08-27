@@ -16,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/accconfirm
-ms.openlocfilehash: 57607390e7d5e58df9f27437faecd57504ad64df
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: d6ea37ceb83ffbaa94187e0c541c79428594e4b4
+ms.sourcegitcommit: 2039e60eb7b482da8298f82dcd5eda27cf747f32
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88635377"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88906454"
 ---
 # <a name="account-confirmation-and-password-recovery-in-aspnet-core"></a>Confirmación de las cuentas y recuperación de contraseñas en ASP.NET Core
 
@@ -37,7 +37,7 @@ En este tutorial se muestra cómo crear una aplicación ASP.NET Core con confirm
 
 ::: moniker range=">= aspnetcore-3.0"
 
-## <a name="prerequisites"></a>Prerrequisitos
+## <a name="prerequisites"></a>Requisitos previos
 
 [SDK de .NET Core 3.0 o versiones posteriores](https://dotnet.microsoft.com/download/dotnet-core/3.0)
 
@@ -160,7 +160,13 @@ Ejecute la aplicación web y pruebe el flujo de recuperación de la contraseña 
 * Escriba el correo electrónico que usó para registrar la cuenta.
 * Se envía un correo electrónico con un vínculo para restablecer la contraseña. Compruebe su correo electrónico y haga clic en el vínculo para restablecer la contraseña. Una vez que la contraseña se haya restablecido correctamente, puede iniciar sesión con el correo electrónico y la nueva contraseña.
 
-## <a name="change-email-and-activity-timeout"></a>Cambiar el tiempo de espera del correo electrónico y la actividad
+<a name="resend"></a>
+
+## <a name="resend-email-confirmation"></a>Confirmación de reenvío de correo electrónico
+
+En ASP.NET Core 5,0 y versiones posteriores, seleccione el vínculo **reenviar confirmación de correo electrónico** en la página de **Inicio de sesión** .
+
+### <a name="change-email-and-activity-timeout"></a>Cambiar el tiempo de espera del correo electrónico y la actividad
 
 El tiempo de espera de inactividad predeterminado es de 14 días. El código siguiente establece el tiempo de espera de inactividad en 5 días:
 
@@ -185,10 +191,6 @@ Agregue un [DataProtectorTokenProvider \<TUser> ](/dotnet/api/microsoft.aspnetco
 Agregue el proveedor personalizado al contenedor de servicio:
 
 [!code-csharp[](accconfirm/sample/WebPWrecover30/StartupEmail.cs?name=snippet1&highlight=10-16)]
-
-### <a name="resend-email-confirmation"></a>Confirmación de reenvío de correo electrónico
-
-Consulte [este problema de GitHub](https://github.com/dotnet/AspNetCore/issues/5410).
 
 <a name="debug"></a>
 
@@ -234,7 +236,7 @@ La habilitación de la confirmación de cuenta en un sitio con usuarios bloquea 
 
 ::: moniker range="< aspnetcore-3.0"
 
-## <a name="prerequisites"></a>Prerrequisitos
+## <a name="prerequisites"></a>Requisitos previos
 
 [SDK de .NET Core 2,2 o posterior](https://dotnet.microsoft.com/download/dotnet-core)
 
