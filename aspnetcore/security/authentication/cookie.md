@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/cookie
-ms.openlocfilehash: 04d2f0d289e2c9ec13aeb880df47240bec19d3ec
-ms.sourcegitcommit: 4df148cbbfae9ec8d377283ee71394944a284051
+ms.openlocfilehash: 24ba49828db08fdd67723c81ac0c8d9981ab3404
+ms.sourcegitcommit: 47c9a59ff8a359baa6bca2637d3af87ddca1245b
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88876768"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88945420"
 ---
 # <a name="use-no-loccookie-authentication-without-no-locaspnet-core-identity"></a>Usar cookie autenticación sin ASP.NET Core Identity
 
@@ -117,7 +117,7 @@ Para cerrar la sesión del usuario actual y eliminar su cookie , llame a <xref:M
 
 Si `CookieAuthenticationDefaults.AuthenticationScheme` (o " Cookie s") no se usa como esquema (por ejemplo, "Contoso Cookie "), proporcione el esquema que se usa al configurar el proveedor de autenticación. De lo contrario, se usa el esquema predeterminado.
 
-El servidor no tiene control sobre el explorador de clientes. Si el usuario cierra el explorador o la pestaña, el servidor no puede cerrar la sesión del usuario. Para implementar el cierre de sesión del usuario cuando se cierra el explorador, debe detectarlo con JavaScript. Busque "Cómo detectar el evento de cierre de pestaña de la ventana del explorador".
+Cuando el explorador se cierra automáticamente, se eliminan los elementos basados en sesión cookie (no persistentes cookie ), pero no cookie se borran los s cuando se cierra una pestaña individual. El servidor no recibe notificaciones de eventos de cierre de pestaña o de explorador.
 
 ## <a name="react-to-back-end-changes"></a>Reaccionar a los cambios de back-end
 
