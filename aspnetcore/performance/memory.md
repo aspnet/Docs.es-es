@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/memory
-ms.openlocfilehash: c409eaaf07109d363581ee7d61dc76521d6818d0
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 9bb055670b73c9a1ae04083bc326200a42151708
+ms.sourcegitcommit: 7258e94cf60c16e5b6883138e5e68516751ead0f
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88630671"
+ms.lasthandoff: 08/29/2020
+ms.locfileid: "89102801"
 ---
 # <a name="memory-management-and-garbage-collection-gc-in-aspnet-core"></a>Administración de memoria y recolección de elementos no utilizados (GC) en ASP.NET Core
 
@@ -150,7 +150,7 @@ El modo GC se puede establecer explícitamente en el archivo de proyecto o en el
 
 Cambiar `ServerGarbageCollection` en el archivo de proyecto requiere que se vuelva a generar la aplicación.
 
-**Nota:** La recolección de elementos **no** utilizados de servidor no está disponible en equipos con un solo núcleo. Para más información, consulte <xref:System.Runtime.GCSettings.IsServerGC>.
+**Nota:** La recolección de elementos **no** utilizados de servidor no está disponible en equipos con un solo núcleo. Para obtener más información, vea <xref:System.Runtime.GCSettings.IsServerGC>.
 
 En la imagen siguiente se muestra el perfil de memoria en un 5.000 RPS mediante el GC de la estación de trabajo.
 
@@ -235,7 +235,7 @@ La misma fuga podría producirse en el código de usuario, mediante una de las s
 
 ### <a name="large-objects-heap"></a>Montón de objetos grandes
 
-Los ciclos gratuitos y de asignación de memoria frecuentes pueden fragmentar la memoria, especialmente cuando se asignan grandes fragmentos de memoria. Los objetos se asignan en bloques de memoria contiguos. Para mitigar la fragmentación, cuando el GC libera memoria, trys para desfragmentarla. Este proceso se denomina **compactación**. La compactación implica mover objetos. Mover objetos grandes impone una reducción del rendimiento. Por esta razón, el GC crea una zona de memoria especial para objetos _grandes_ , denominada [montón de objetos grandes](/dotnet/standard/garbage-collection/large-object-heap) (montón). Los objetos que tienen más de 85.000 bytes (aproximadamente 83 KB) son:
+Los ciclos gratuitos y de asignación de memoria frecuentes pueden fragmentar la memoria, especialmente cuando se asignan grandes fragmentos de memoria. Los objetos se asignan en bloques de memoria contiguos. Para mitigar la fragmentación, cuando el GC libera memoria, intenta desfragmentarla. Este proceso se denomina **compactación**. La compactación implica mover objetos. Mover objetos grandes impone una reducción del rendimiento. Por esta razón, el GC crea una zona de memoria especial para objetos _grandes_ , denominada [montón de objetos grandes](/dotnet/standard/garbage-collection/large-object-heap) (montón). Los objetos que tienen más de 85.000 bytes (aproximadamente 83 KB) son:
 
 * Se coloca en el montón.
 * No compactado.

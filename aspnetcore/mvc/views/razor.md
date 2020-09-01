@@ -16,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/razor
-ms.openlocfilehash: e42ee7a80475e784ea4791395d9b0665aca94a03
-ms.sourcegitcommit: f09407d128634d200c893bfb1c163e87fa47a161
+ms.openlocfilehash: 9c2bbd2d463af8a2ea7db716d01bf1436338ea77
+ms.sourcegitcommit: cd861463faf44956855e3c4b3669483bbc4a7463
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88865170"
+ms.lasthandoff: 08/29/2020
+ms.locfileid: "89101366"
 ---
 # <a name="no-locrazor-syntax-reference-for-aspnet-core"></a>Razor referencia de sintaxis para ASP.NET Core
 
@@ -131,17 +131,15 @@ Las expresiones de C# que se evalúan como una cadena están codificadas en HTML
 @("<span>Hello World</span>")
 ```
 
-El código representa el siguiente HTML:
+El código anterior representa el siguiente HTML:
 
 ```html
 &lt;span&gt;Hello World&lt;/span&gt;
 ```
 
-El HTML se muestra en el explorador como:
+El código HTML se muestra en el explorador como texto sin formato:
 
-```html
-<span>Hello World</span>
-```
+&lt;intervalo &gt; Hola mundo &lt; /span&gt;
 
 La salida de `HtmlHelper.Raw` no está codificada, pero se representa como marcado HTML.
 
