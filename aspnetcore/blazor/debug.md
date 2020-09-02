@@ -5,7 +5,7 @@ description: Obtenga información sobre cómo depurar aplicaciones Blazor.
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/17/2020
+ms.date: 08/26/2020
 no-loc:
 - ASP.NET Core Identity
 - cookie
@@ -18,34 +18,36 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/debug
-ms.openlocfilehash: 5aeb333dc36ebc4c3a324b397793343e0335b1e1
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 7681deb70610a8fbc27ccda7317b73921646794a
+ms.sourcegitcommit: 4df148cbbfae9ec8d377283ee71394944a284051
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88628370"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88876781"
 ---
 # <a name="debug-aspnet-core-no-locblazor-webassembly"></a>Depuración de Blazor WebAssembly en ASP.NET Core
 
 [Daniel Roth](https://github.com/danroth27)
 
-Las aplicaciones Blazor WebAssembly se pueden depurar con las herramientas de desarrollo del explorador en exploradores basados en Chromium (Edge/Chrome). También puede depurar la aplicación con Visual Studio o Visual Studio Code.
+Las aplicaciones Blazor WebAssembly se pueden depurar con las herramientas de desarrollo del explorador en exploradores basados en Chromium (Edge/Chrome). También puede depurar la aplicación con los siguientes entornos de desarrollo integrado (IDE):
+
+* Visual Studio
+* Visual Studio para Mac
+* Visual Studio Code
 
 Entre los escenarios disponibles se incluyen los siguientes:
 
 * Establecimiento y eliminación de puntos de interrupción.
-* Ejecute la aplicación con compatibilidad de depuración en Visual Studio y Visual Studio Code (compatibilidad con <kbd>F5</kbd>).
-* Un solo paso (<kbd>F10</kbd>) por el código.
-* Reanude la ejecución de código con <kbd>F8</kbd> en un explorador o con <kbd>F5</kbd> en Visual Studio o Visual Studio Code.
-* En la pantalla *Variables locales*, observe los valores de las variables locales.
-* Vea la pila de llamadas, incluidas las cadenas de llamadas que van desde JavaScript hasta .NET y desde .NET a JavaScript.
+* Ejecute la aplicación con compatibilidad de depuración en IDE.
+* Examine el código en un solo paso.
+* Reanude la ejecución de código con un método abreviado de teclado en IDE.
+* En la ventana *Variables locales*, observe los valores de las variables locales.
+* Vea la pila de llamadas, incluidas las cadenas de llamadas entre JavaScript y .NET.
 
 Por ahora, *no puede*:
 
 * Interrumpir las operaciones ante excepciones no controladas.
 * Alcanzar puntos de interrupción durante el inicio de la aplicación antes de que se ejecute el proxy de depuración. Esto incluye los puntos de interrupción de `Program.Main` (`Program.cs`) y los de los [métodos `OnInitialized{Async}`](xref:blazor/components/lifecycle#component-initialization-methods) de los componentes que se cargan en la primera página solicitada desde la aplicación.
-
-Seguiremos mejorando la experiencia de depuración en las próximas versiones.
 
 ## <a name="prerequisites"></a>Requisitos previos
 
@@ -54,7 +56,15 @@ La depuración requiere cualquiera de los exploradores siguientes:
 * Google Chrome (versión 70 o posterior) (predeterminado)
 * Microsoft Edge (versión 80 o posterior)
 
-## <a name="enable-debugging-for-visual-studio-and-visual-studio-code"></a>Habilitación de la depuración para Visual Studio y Visual Studio Code
+Visual Studio para Mac requiere la versión 8.8 (compilación 1532) o una posterior:
+
+1. Instale la versión más reciente de Visual Studio para Mac seleccionando el botón **Descargar Visual Studio para Mac** en [Microsoft: Visual Studio para Mac](https://visualstudio.microsoft.com/vs/mac/).
+1. Seleccione el canal *Vista preliminar* en Visual Studio. Para obtener más información, vea [Instalación de la versión más reciente de Visual Studio para Mac](/visualstudio/mac/install-preview).
+
+> [!NOTE]
+> Apple Safari en macOS no se admite actualmente.
+
+## <a name="enable-debugging"></a>Habilitar la depuración
 
 Para habilitar la depuración de una aplicación Blazor WebAssembly, actualice el archivo `launchSettings.json` del proyecto de inicio para incluir la propiedad `inspectUri` siguiente en cada perfil de inicio:
 
@@ -73,7 +83,7 @@ La propiedad `inspectUri`:
 
 El marco de trabajo proporciona los valores de marcador de posición para el protocolo WebSocket (`wsProtocol`), el host (`url.hostname`), el puerto (`url.port`) y el identificador URI del inspector en el explorador iniciado (`browserInspectUri`).
 
-## <a name="visual-studio"></a>Programa para la mejora
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Para depurar una aplicación Blazor WebAssembly en Visual Studio:
 
@@ -83,43 +93,34 @@ Para depurar una aplicación Blazor WebAssembly en Visual Studio:
    > [!NOTE]
    > No admite **Iniciar sin depuración** (<kbd>Ctrl</kbd>+<kbd>F5</kbd>). Cuando la aplicación se ejecuta en la configuración de depuración, la sobrecarga de depuración siempre genera una pequeña reducción del rendimiento.
 
-1. Establezca un punto de interrupción en `Pages/Counter.razor` en el método `IncrementCount`.
-1. Vaya a la pestaña **`Counter`** y seleccione el botón para alcanzar el punto de interrupción:
-
-   ![Depuración del contador](https://devblogs.microsoft.com/aspnet/wp-content/uploads/sites/16/2020/03/vs-debug-counter.png)
-
-1. Revise el valor del campo `currentCount` en la ventana de variables locales:
-
-   ![Vista de las variables locales](https://devblogs.microsoft.com/aspnet/wp-content/uploads/sites/16/2020/03/vs-debug-locals.png)
-
+1. En la aplicación *Cliente*, establezca un punto de interrupción en la línea `currentCount++;` en `Pages/Counter.razor`.
+1. En el explorador, vaya a la página `Counter` y seleccione el botón **Hacer clic aquí** para alcanzar el punto de interrupción.
+1. En Visual Studio, revise el valor del campo `currentCount` en la ventana **Variables locales**.
 1. Presione <kbd>F5</kbd> para continuar la ejecución.
 
-Al depurar la aplicación de Blazor WebAssembly, también puede depurar el código del servidor:
+Al depurar una aplicación de Blazor WebAssembly, también puede depurar el código del servidor:
 
 1. Establezca un punto de interrupción en la página `Pages/FetchData.razor` de <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A>.
 1. Establezca un punto de interrupción en `WeatherForecastController` en el método de acción `Get`.
-1. Vaya a la pestaña **`Fetch Data`** para alcanzar el primer punto de recuperación en el componente `FetchData` justo antes de que emita una solicitud HTTP al servidor:
+1. Vaya a la página `Fetch Data` para alcanzar el primer punto de interrupción en el componente `FetchData` justo antes de que emita una solicitud HTTP al servidor.
+1. Presione <kbd>F5</kbd> para continuar la ejecución y, luego, alcance el punto de interrupción en el servidor en `WeatherForecastController`.
+1. Vuelva a presionar <kbd>F5</kbd> para permitir que la ejecución continúe y ver la tabla de pronóstico meteorológico representada en el explorador.
 
-   ![Depuración de captura de datos](https://devblogs.microsoft.com/aspnet/wp-content/uploads/sites/16/2020/03/vs-debug-fetch-data.png)
+> [!NOTE]
+> Los puntos de interrupción **no** se alcanzan durante el inicio de la aplicación antes de que se ejecute el proxy de depuración. Esto incluye los puntos de interrupción de `Program.Main` (`Program.cs`) y los de los [métodos `OnInitialized{Async}`](xref:blazor/components/lifecycle#component-initialization-methods) de los componentes que se cargan en la primera página solicitada desde la aplicación.
 
-1. Presione <kbd>F5</kbd> para continuar la ejecución y, luego, alcance el punto de interrupción en el servidor en `WeatherForecastController`:
-
-   ![Depuración del servidor](https://devblogs.microsoft.com/aspnet/wp-content/uploads/sites/16/2020/03/vs-debug-server.png)
-
-1. Vuelva a presionar <kbd>F5</kbd> para permitir que la ejecución continúe y vea la tabla de pronóstico meteorológico representada.
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 <a id="vscode"></a>
 
-## <a name="visual-studio-code"></a>Visual Studio Code
-
-### <a name="debug-standalone-no-locblazor-webassembly"></a>Depuración de una aplicación independiente Blazor WebAssembly
+## <a name="debug-standalone-no-locblazor-webassembly"></a>Depuración de una aplicación independiente Blazor WebAssembly
 
 1. Abra la aplicación independiente Blazor WebAssembly en VS Code.
 
-   Puede recibir la notificación siguiente que indica que se requiere más información para habilitar la depuración:
-   
-   ![Se requiere configuración adicional](https://devblogs.microsoft.com/aspnet/wp-content/uploads/sites/16/2020/03/vscode-additional-setup.png)
-   
+   Puede recibir una notificación que indica que se requiere más información para habilitar la depuración:
+
+   > Se necesita una configuración adicional para depurar aplicaciones Blazor WebAssembly.
+
    Si recibe la notificación:
 
    * Confirme que está instalada la [extensión de C# para Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) más reciente. Para inspeccionar las extensiones instaladas, abra **Ver** > **Extensiones** en la barra de menús o seleccione el icono **Extensiones** en la barra lateral **Actividad**.
@@ -133,27 +134,28 @@ Al depurar la aplicación de Blazor WebAssembly, también puede depurar el códi
 
 1. Cuando se le pida, seleccione la opción **Blazor WebAssembly Debug** (Depuración de Blazor WebAssembly) para iniciar la depuración.
 
-   ![Lista de opciones de depuración disponibles](index/_static/blazor-vscode-debugtypes.png)
-
 1. Se inicia la aplicación independiente y se abre un explorador de depuración.
 
-1. Establezca el punto de interrupción en el método `IncrementCount` en el componente `Counter` y seleccione el botón para alcanzar el punto de interrupción:
+1. En la aplicación *Cliente*, establezca un punto de interrupción en la línea `currentCount++;` en `Pages/Counter.razor`.
 
-   ![Depuración del contenedor en VS Code](https://devblogs.microsoft.com/aspnet/wp-content/uploads/sites/16/2020/03/vscode-debug-counter.png)
+1. En el explorador, vaya a la página `Counter` y seleccione el botón **Hacer clic aquí** para alcanzar el punto de interrupción.
 
-### <a name="debug-hosted-no-locblazor-webassembly"></a>Depuración de una aplicación hospedada Blazor WebAssembly
+> [!NOTE]
+> Los puntos de interrupción **no** se alcanzan durante el inicio de la aplicación antes de que se ejecute el proxy de depuración. Esto incluye los puntos de interrupción de `Program.Main` (`Program.cs`) y los de los [métodos `OnInitialized{Async}`](xref:blazor/components/lifecycle#component-initialization-methods) de los componentes que se cargan en la primera página solicitada desde la aplicación.
+
+## <a name="debug-hosted-no-locblazor-webassembly"></a>Depuración de una aplicación hospedada Blazor WebAssembly
 
 1. Abra la carpeta de la solución de la aplicación Blazor WebAssembly hospedada en VS Code.
 
 1. Si no hay ninguna configuración de inicio establecida para el proyecto, aparece la notificación siguiente. Seleccione **Sí**.
 
-   ![Agregar los recursos necesarios](https://devblogs.microsoft.com/aspnet/wp-content/uploads/sites/16/2020/03/vscode-required-assets.png)
+   > Faltan los recursos necesarios para compilar y depurar desde "{NOMBRE DE LA APLICACIÓN}". Add them?"
 
 1. En la paleta de comandos de la parte superior de la ventana, seleccione el proyecto *Server* en la solución hospedada.
 
 Se genera un archivo `launch.json` con la configuración de inicio para iniciar el depurador.
 
-### <a name="attach-to-an-existing-debugging-session"></a>Adjuntar a una sesión de depuración existente
+## <a name="attach-to-an-existing-debugging-session"></a>Adjuntar a una sesión de depuración existente
 
 Para adjuntar a una aplicación Blazor en ejecución, cree un archivo `launch.json` con la configuración siguiente:
 
@@ -168,7 +170,7 @@ Para adjuntar a una aplicación Blazor en ejecución, cree un archivo `launch.js
 > [!NOTE]
 > Solo se permite adjuntar a una sesión de depuración en el caso de las aplicaciones independientes. Para usar la depuración de pila completa, debe iniciar la aplicación desde VS Code.
 
-### <a name="launch-configuration-options"></a>Opciones de configuración de inicio
+## <a name="launch-configuration-options"></a>Opciones de configuración de inicio
 
 Estas opciones de configuración de inicio son compatibles con el tipo de depuración `blazorwasm` (`.vscode/launch.json`).
 
@@ -185,9 +187,9 @@ Estas opciones de configuración de inicio son compatibles con el tipo de depura
 | `cwd`     | El directorio de trabajo en el que se va a iniciar la aplicación. Se debe establecer si `hosted` es `true`. |
 | `env`     | Las variables de entorno que se van a proporcionar al proceso iniciado. Solo se aplica si `hosted` está establecido en `true`. |
 
-### <a name="example-launch-configurations"></a>Configuraciones de inicio de ejemplo
+## <a name="example-launch-configurations"></a>Configuraciones de inicio de ejemplo
 
-#### <a name="launch-and-debug-a-standalone-no-locblazor-webassembly-app"></a>Inicio y depuración de una aplicación independiente Blazor WebAssembly
+### <a name="launch-and-debug-a-standalone-no-locblazor-webassembly-app"></a>Inicio y depuración de una aplicación independiente Blazor WebAssembly
 
 ```json
 {
@@ -197,7 +199,7 @@ Estas opciones de configuración de inicio son compatibles con el tipo de depura
 }
 ```
 
-#### <a name="attach-to-a-running-app-at-a-specified-url"></a>Adjuntar a una aplicación en ejecución en una dirección URL especificada
+### <a name="attach-to-a-running-app-at-a-specified-url"></a>Adjuntar a una aplicación en ejecución en una dirección URL especificada
 
 ```json
 {
@@ -208,7 +210,7 @@ Estas opciones de configuración de inicio son compatibles con el tipo de depura
 }
 ```
 
-#### <a name="launch-and-debug-a-hosted-no-locblazor-webassembly-app-with-microsoft-edge"></a>Inicio y depuración de una aplicación Blazor WebAssembly hospedada con Microsoft Edge
+### <a name="launch-and-debug-a-hosted-no-locblazor-webassembly-app-with-microsoft-edge"></a>Inicio y depuración de una aplicación Blazor WebAssembly hospedada con Microsoft Edge
 
 La configuración predeterminada del explorador es Google Chrome. Al usar Microsoft Edge para la depuración, establezca `browser` en `edge`. Para usar Google Chrome, no establezca la opción `browser` ni establezca el valor de la opción en `chrome`.
 
@@ -226,7 +228,42 @@ La configuración predeterminada del explorador es Google Chrome. Al usar Micros
 
 En el ejemplo anterior, `MyHostedApp.Server.dll` es el ensamblado de la aplicación *Server*. La carpeta `.vscode` se encuentra en la carpeta de la solución junto a las carpetas `Client`, `Server` y `Shared`.
 
+# <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)
+
+Para depurar una aplicación Blazor WebAssembly en Visual Studio para Mac, haga lo siguiente:
+
+1. Cree una aplicación hospedada Blazor WebAssembly de ASP.NET Core.
+1. Presione <kbd>&#8984;</kbd>+<kbd>&#8617;</kbd> para ejecutar la aplicación en el depurador.
+
+   > [!NOTE]
+   > No se admite la opción **Iniciar sin depurar** (<kbd>&#8997;</kbd>+<kbd>&#8984;</kbd>+<kbd>&#8617;</kbd>). Cuando la aplicación se ejecuta en la configuración de depuración, la sobrecarga de depuración siempre genera una pequeña reducción del rendimiento.
+
+   > [!IMPORTANT]
+   > El explorador seleccionado para la sesión de depuración debe ser Google Chrome o Microsoft Edge.
+
+1. En la aplicación *Cliente*, establezca un punto de interrupción en la línea `currentCount++;` en `Pages/Counter.razor`.
+1. En el explorador, vaya a la página `Counter` y seleccione el botón **Hacer clic aquí** para alcanzar el punto de interrupción:
+1. En Visual Studio, revise el valor del campo `currentCount` en la ventana **Variables locales**.
+1. Presione <kbd>&#8984;</kbd>+<kbd>&#8617;</kbd> para continuar la ejecución.
+
+Al depurar una aplicación de Blazor WebAssembly, también puede depurar el código del servidor:
+
+1. Establezca un punto de interrupción en la página `Pages/FetchData.razor` de <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A>.
+1. Establezca un punto de interrupción en `WeatherForecastController` en el método de acción `Get`.
+1. Vaya a la página `Fetch Data` para alcanzar el primer punto de interrupción en el componente `FetchData` justo antes de que emita una solicitud HTTP al servidor.
+1. Presione <kbd>&#8984;</kbd>+<kbd>&#8617;</kbd> para continuar la ejecución y, luego, alcance el punto de interrupción en el servidor en `WeatherForecastController`.
+1. Vuelva a presionar <kbd>&#8984;</kbd>+<kbd>&#8617;</kbd> para permitir que la ejecución continúe y ver la tabla de pronóstico meteorológico representada en el explorador.
+
+> [!NOTE]
+> Los puntos de interrupción **no** se alcanzan durante el inicio de la aplicación antes de que se ejecute el proxy de depuración. Esto incluye los puntos de interrupción de `Program.Main` (`Program.cs`) y los de los [métodos `OnInitialized{Async}`](xref:blazor/components/lifecycle#component-initialization-methods) de los componentes que se cargan en la primera página solicitada desde la aplicación.
+
+Para obtener más información, vea [Depuración con Visual Studio para Mac](/visualstudio/mac/debugging?view=vsmac-2019).
+
+---
+
 ## <a name="debug-in-the-browser"></a>Depuración en el explorador
+
+*La guía de esta sección se aplica a Google Chrome y Microsoft Edge en Windows.*
 
 1. Ejecute una compilación de depuración de la aplicación en el entorno de desarrollo.
 
@@ -236,7 +273,16 @@ En el ejemplo anterior, `MyHostedApp.Server.dll` es el ensamblado de la aplicaci
 
    El explorador debe ejecutarse con la depuración remota habilitada, lo cual no es el valor predeterminado. Si la depuración remota está deshabilitada, aparece una página de error que informa de que **no se puede encontrar la pestaña del explorador depurable** con instrucciones para iniciar el explorador con el puerto de depuración abierto. Siga las instrucciones del explorador, que abre una nueva ventana del explorador. Cierre la ventana anterior del explorador.
 
-1. Una vez que el explorador se ejecute con la depuración remota habilitada, el método abreviado de teclado de depuración (<kbd>Mayús</kbd>+<kbd>Alt</kbd>+<kbd>D</kbd>) abre una nueva pestaña del depurador.
+<!-- HOLD 
+1. In the browser, attempt to commence remote debugging by pressing:
+
+   * <kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>d</kbd> on Windows.
+   * <kbd>Shift</kbd>+<kbd>&#8984;</kbd>+<kbd>d</kbd> on macOS.
+
+   The browser must be running with remote debugging enabled, which isn't the default. If remote debugging is disabled, an **Unable to find debuggable browser tab** error page is rendered with instructions for launching the browser with the debugging port open. Follow the instructions for your browser, which opens a new browser window. Close the previous browser window.
+-->
+
+1. Una vez que el explorador se ejecute con la depuración remota habilitada, el método abreviado de teclado de depuración del paso anterior abre una nueva pestaña del depurador.
 
 1. Tras unos instantes, en la pestaña **Orígenes** se mostrará una lista de los ensamblados .NET de la aplicación en el nodo `file://`.
 
@@ -286,7 +332,7 @@ protected override async Task OnInitializedAsync()
 }
 ```
 
-### <a name="visual-studio-timeout"></a>Tiempo de espera de Visual Studio
+### <a name="visual-studio-windows-timeout"></a>Tiempo de espera de Visual Studio (Windows)
 
 Si Visual Studio inicia una excepción relacionada con que el adaptador de depuración no ha podido iniciarse en la que se menciona que se ha alcanzado el tiempo de espera, puede ajustar el tiempo de espera con una configuración del Registro:
 

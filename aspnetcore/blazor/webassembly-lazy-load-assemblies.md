@@ -5,7 +5,7 @@ description: Descubra cómo cargar ensamblados de forma diferida en aplicaciones
 monikerRange: '>= aspnetcore-5.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/16/2020
+ms.date: 08/25/2020
 no-loc:
 - ASP.NET Core Identity
 - cookie
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/webassembly-lazy-load-assemblies
-ms.openlocfilehash: 31e6c9638d3262d3cb0a5e0fbcf34d24e2d1e91c
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 46f98080ad40f614f9cb1af2190f263d205c1016
+ms.sourcegitcommit: f09407d128634d200c893bfb1c163e87fa47a161
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88625809"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88865159"
 ---
 # <a name="lazy-load-assemblies-in-aspnet-core-no-locblazor-webassembly"></a>Ensamblados de carga diferida en Blazor WebAssembly de ASP.NET Core
 
@@ -47,6 +47,15 @@ Marque los ensamblados para la carga diferida en el archivo del proyecto de la a
 ```
 
 Solo se pueden cargar de forma diferida los ensamblados utilizados por la aplicación. El enlazador quita los ensamblados que no se usan de la salida publicada.
+
+> [!NOTE]
+> En la versión candidata para lanzamiento 1 (RC1) de .NET 5 o una posterior, que se publicará a mediados de septiembre, el nombre de ensamblado requerirá la extensión `.dll`:
+>
+> ```xml
+> <ItemGroup>
+>  <BlazorWebAssemblyLazyLoad Include="GrantImaharaRobotControls.dll" />
+> </ItemGroup>
+> ```
 
 ## <a name="router-component"></a>Componente de `Router`
 
@@ -170,6 +179,15 @@ Si un usuario navega a la ruta A e inmediatamente después a la ruta B, la aplic
 
 > [!NOTE]
 > Cuando no se ejecuta si el token de cancelación de `NavigationContext` se cancela, puede resultar en un comportamiento imprevisto, como la representación de un componente de una navegación anterior.
+
+### <a name="onnavigateasync-events-and-renamed-assembly-files"></a>Eventos y archivos de ensamblado con nombre cambiado `OnNavigateAsync`
+
+El cargador de recursos se basa en los nombres de ensamblado que se definen en el archivo `blazor.boot.json`. Si se [cambia el nombre de los ensamblados](xref:blazor/host-and-deploy/webassembly#change-the-filename-extension-of-dll-files), los nombres de ensamblado utilizados en los métodos `OnNavigateAsync` y los nombres de ensamblado del archivo `blazor.boot.json` no estarán sincronizados.
+
+Para rectificar esto, haga lo siguiente:
+
+* Compruebe si la aplicación se ejecuta en el entorno de producción al determinar los nombres de ensamblado que se van a usar.
+* Almacene los nombres de ensamblado con el nombre cambiado en un archivo independiente y lea desde ese archivo para determinar el nombre de ensamblado que se va a usar en los métodos `LazyLoadAssemblyService` y `OnNavigateAsync`.
 
 ### <a name="complete-example"></a>Ejemplo completo
 

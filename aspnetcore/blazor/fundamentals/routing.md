@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/routing
-ms.openlocfilehash: 0c878a05a50e5a6879278ee737ada167669ee0ff
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: eb9e3cbddd2eaca8fef9a6782c28bbce4c029f58
+ms.sourcegitcommit: f09407d128634d200c893bfb1c163e87fa47a161
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88626485"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88865330"
 ---
 # <a name="aspnet-core-no-locblazor-routing"></a>Enrutamiento de Blazor de ASP.NET Core
 
@@ -169,13 +169,43 @@ En las aplicaciones Blazor Server, la ruta predeterminada en `_Host.cshtml` es `
 
 La plantilla `"/{**path}"` incluye lo siguiente:
 
-* Una sintaxis de *captura general* de doble asterisco (`**`) para capturar la ruta de acceso en varios límites de carpeta sin codificar las barras diagonales (`/`)
+* Una sintaxis de *captura general* de doble asterisco (`**`) para capturar la ruta de acceso en varios límites de carpeta sin descodificar las barras diagonales (`/`).
 * El nombre del parámetro de ruta `path`
 
-> [!NOTE]
-> La sintaxis de parámetro *Catch-all* (`*`/`**`) **no** se admite en componentes Razor (`.razor`).
-
 Para obtener más información, vea <xref:fundamentals/routing>.
+
+## <a name="catch-all-route-parameters"></a>Parámetros de ruta de captura general
+
+::: moniker range=">= aspnetcore-5.0"
+
+*Esta sección se aplica a la versión candidata para lanzamiento 1 (RC1) de .NET 5 o una posterior, que se publicará a mediados de septiembre.*
+
+Los parámetros de ruta de captura general, que capturan rutas de acceso en varios límites de carpeta, se admiten en los componentes. El parámetro de ruta de captura general debe ser:
+
+* Con nombre para que coincida con el nombre del segmento de ruta. La nomenclatura no distingue mayúsculas de minúsculas.
+* Tipo `string`. El marco no proporciona conversión automática.
+* Al final de la dirección URL.
+
+```razor
+@page "/page/{*pageRoute}"
+
+@code {
+    [Parameter]
+    public string PageRoute { get; set; }
+}
+```
+
+Para la dirección URL `/page/this/is/a/test` con una plantilla de ruta de `/page/{*pageRoute}`, el valor de `PageRoute` se establece en `this/is/a/test`.
+
+Las barras diagonales y los segmentos de la ruta de acceso capturada están descodificados. En el caso de una plantilla de ruta de `/page/{*pageRoute}`, la dirección URL `/page/this/is/a%2Ftest%2A` produce `this/is/a/test*`.
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
+Los parámetros de ruta de captura general se admitirán en la versión candidata para lanzamiento 1 (RC1) de .NET 5 o una posterior, que se publicará a mediados de septiembre.*
+
+::: moniker-end
 
 ## <a name="navlink-component"></a>Componente NavLink
 
