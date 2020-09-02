@@ -6,17 +6,19 @@ metadata:
   description: Obtenga información sobre el contenido nuevo y actualizado de la documentación de ASP.NET Core.
   ms.topic: landing-page
   ms.date: 08/03/2020
-  ms.openlocfilehash: 3ca3a87e748c5f563bbbd38e4d4d0166964fc263
-  ms.sourcegitcommit: 37f6f2e13ceb4eae268d20973d76e4b83acf6a24
+  ms.openlocfilehash: 5d8bc150d91010cce31d885b3a15e80a8efc7ac3
+  ms.sourcegitcommit: 8ed9a413bdc2d665ad11add8828898d726ccb106
   ms.translationtype: HT
   ms.contentlocale: es-ES
-  ms.lasthandoff: 08/03/2020
-  ms.locfileid: "87526269"
+  ms.lasthandoff: 09/01/2020
+  ms.locfileid: "89280418"
 landingContent:
 - title: Búsqueda de actualizaciones de la documentación de ASP.NET Core
   linkLists:
   - linkListType: whats-new
     links:
+    - text: Agosto de 2020
+      url: 2020-08.md
     - text: Julio de 2020
       url: 2020-07.md
     - text: Junio de 2020
@@ -27,8 +29,6 @@ landingContent:
       url: 2020-04.md
     - text: Marzo de 2020
       url: 2020-03.md
-    - text: Febrero de 2020
-      url: 2020-02.md
 - title: Contribución a la documentación de ASP.NET Core
   linkLists:
   - linkListType: overview
@@ -45,7 +45,7 @@ landingContent:
       url: https://github.com/dotnet/AspNetCore.Docs/blob/master/CONTRIBUTING.md
     - text: Guía para colaboradores de la documentación de referencia de API de ASP.NET Core
       url: https://github.com/dotnet/AspNetApiDocs/blob/master/CONTRIBUTING.md
-- title: Comunidad
+- title: comunidad
   linkLists:
   - linkListType: whats-new
     links:
