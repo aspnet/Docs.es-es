@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/forms-validation
-ms.openlocfilehash: 6fde5800a6a791c4a5923c13964c34977a59c017
-ms.sourcegitcommit: f09407d128634d200c893bfb1c163e87fa47a161
+ms.openlocfilehash: b485a62c61d404a91134f49cf2a49134ec9f5123
+ms.sourcegitcommit: 8ed9a413bdc2d665ad11add8828898d726ccb106
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88865306"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89280392"
 ---
 # <a name="aspnet-core-no-locblazor-forms-and-validation"></a>Formularios y validación de Blazor de ASP.NET Core
 
@@ -1064,7 +1064,8 @@ public class Starship
     ...
 
     [ValidateComplexType]
-    public ShipDescription ShipDescription { get; set; }
+    public ShipDescription ShipDescription { get; set; } = 
+        new ShipDescription();
 
     ...
 }
