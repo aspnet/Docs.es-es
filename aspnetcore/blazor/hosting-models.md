@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/hosting-models
-ms.openlocfilehash: 53293ae9780129530ce5a41639e19284f47aa245
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: a8d2ceaffb670723d7662234f3dc964c864e6763
+ms.sourcegitcommit: 8ed9a413bdc2d665ad11add8828898d726ccb106
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88628084"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89280431"
 ---
 # <a name="aspnet-core-no-locblazor-hosting-models"></a>Modelos de hospedaje Blazor en ASP.NET Core
 
@@ -84,6 +84,9 @@ El modelo de hospedaje de Blazor Server ofrece varias ventajas:
 * .NET Core en el servidor se usa para ejecutar la aplicación, por lo que las herramientas de .NET existentes, como la depuración, funcionan según lo previsto.
 * Se admiten clientes ligeros. Por ejemplo, las aplicaciones Blazor Server funcionan con los exploradores que no admiten WebAssembly y en los dispositivos con restricción de recursos.
 * La base del código de la aplicación .NET/C#, incluido el código de componente de la aplicación, no se sirve a los clientes.
+
+> [!IMPORTANT]
+> Una aplicación Blazor Server se representa previamente en respuesta a la primera solicitud de cliente, que configura el estado de la interfaz de usuario en el servidor. Cuando el cliente intenta crear una conexión SignalR, **debe volver a conectarse al mismo servidor**. Las aplicaciones Blazor Server que usen más de un servidor back-end deben implementar *sesiones permanentes* para conexiones SignalR. Para obtener más información, vea la sección [Conexión al servidor](#connection-to-the-server).
 
 También hay desventajas en el hospedaje de Blazor Server:
 

@@ -16,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/dependency-injection
-ms.openlocfilehash: 0a51647463362d6cfac335688d42d4be013f8b9c
-ms.sourcegitcommit: 9a90b956af8d8584d597f1e5c1dbfb0ea9bb8454
+ms.openlocfilehash: 2d002e075f9d57654589b540e522307c363d9660
+ms.sourcegitcommit: 4cce99cbd44372fd4575e8da8c0f4345949f4d9a
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88712523"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89153550"
 ---
 # <a name="dependency-injection-in-aspnet-core"></a>Inserción de dependencias en ASP.NET Core
 
@@ -345,7 +345,6 @@ Cuando la aplicación se ejecuta en el [entorno de desarrollo](xref:fundamentals
 
 * Los servicios con ámbito no se resuelven desde el proveedor de servicios raíz.
 * Los servicios con ámbito no se insertan en singletons.
-* Los servicios transitorios no se insertan en singletons o servicios con ámbito.
 
 El proveedor de servicios raíz se crea cuando se llama a <xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionContainerBuilderExtensions.BuildServiceProvider%2A>. La vigencia del proveedor de servicios raíz es la misma que la de la aplicación cuando el proveedor se inicia con la aplicación, y se elimina cuando la aplicación se cierra.
 
@@ -518,7 +517,7 @@ El patrón de diseño Factory Method de un servicio único, como el segundo argu
   [!code-csharp[](dependency-injection/samples/3.x/AntiPattern3/Startup.cs?name=snippet)]
 
 * El contenedor captura a los servicios transitorios descartables para su eliminación. Esto puede convertirse en una pérdida de memoria si se resuelve desde el contenedor de nivel superior.
-* Habilite la validación con ámbito para asegurarse de que la aplicación no tenga servicios con ámbito que capturen los singletons. Para más información, vea [Validación del ámbito](#scope-validation).
+* Habilite la validación con ámbito para asegurarse de que la aplicación no tenga singletons que capturen los servicios con ámbito. Para más información, vea [Validación del ámbito](#scope-validation).
 
 Al igual que sucede con todas las recomendaciones, podría verse en una situación que le obligue a ignorar alguna de ellas. Las excepciones son poco frecuentes, principalmente en casos especiales dentro del marco de trabajo mismo.
 

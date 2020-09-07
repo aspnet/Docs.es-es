@@ -1,5 +1,5 @@
 ---
-title: Procedimientos recomendados de rendimiento en gRPC para ASP.NET Core
+title: Procedimientos recomendados de rendimiento con gRPC
 author: jamesnk
 description: Conozca los procedimientos recomendados para la compilación de servicios de gRPC de alto rendimiento.
 monikerRange: '>= aspnetcore-3.0'
@@ -17,20 +17,20 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/performance
-ms.openlocfilehash: f9cefa89ec6e533920b33223b34333f6ebe38428
-ms.sourcegitcommit: 4df148cbbfae9ec8d377283ee71394944a284051
+ms.openlocfilehash: a0a1a6901e07fb0074ca403870378f267d3d4403
+ms.sourcegitcommit: c9b03d8a6a4dcc59e4aacb30a691f349235a74c8
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88876729"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89379450"
 ---
-# <a name="performance-best-practices-in-grpc-for-aspnet-core"></a>Procedimientos recomendados de rendimiento en gRPC para ASP.NET Core
+# <a name="performance-best-practices-with-grpc"></a>Procedimientos recomendados de rendimiento con gRPC
 
 Por [James Newton-King](https://twitter.com/jamesnk)
 
 gRPC está diseñado para servicios de alto rendimiento. En este documento se explica cómo obtener el mejor rendimiento posible de gRPC.
 
-## <a name="reuse-channel"></a>Reutilización de un canal
+## <a name="reuse-grpc-channels"></a>Reutilización de canales gRPC
 
 Se debe reutilizar un canal gRPC al realizar llamadas gRPC. La reutilización de un canal permite multiplexar las llamadas a través de una conexión HTTP/2 existente.
 
@@ -48,6 +48,8 @@ Los canales se pueden compartir y reutilizar de forma segura entre llamadas gRPC
 * Se pueden crear varios clientes gRPC a partir de un canal, incluidos distintos tipos de clientes.
 * Varios subprocesos pueden usar de forma segura un canal y los clientes creados a partir del canal.
 * Los clientes creados a partir del canal pueden realizar varias llamadas simultáneas.
+
+La fábrica de cliente de gRPC ofrece una manera centralizada de configurar canales. Reutiliza automáticamente los canales subyacentes. Para obtener más información, vea <xref:grpc/clientfactory>.
 
 ## <a name="connection-concurrency"></a>Simultaneidad de conexiones
 
@@ -85,6 +87,38 @@ Hay un par de soluciones alternativas para las aplicaciones de .NET Core 3.1:
 >
 > * Se crea una contención de subprocesos entre flujos que intentan escribir en la conexión.
 > * La pérdida de paquetes de conexión provoca que todas las llamadas se bloqueen en el nivel TCP.
+
+## <a name="load-balancing"></a>Equilibrio de carga
+
+Algunos equilibradores de carga no funcionan de forma eficaz con gRPC. Los equilibradores de carga L4 (transporte) operan en un nivel de conexión, para lo que distribuyen las conexiones TCP a través de puntos de conexión. Este enfoque funciona bien para el equilibrio de carga de llamadas API realizadas con HTTP/1.1. Las llamadas simultáneas realizadas con HTTP/1.1 se envían en conexiones diferentes, lo que permite equilibrar la carga de las llamadas entre los puntos de conexión.
+
+Dado que los equilibradores de carga L4 operan en un nivel de conexión, no funcionan bien con gRPC. gRPC usa HTTP/2, que multiplexa varias llamadas en una sola conexión TCP. Todas las llamadas gRPC a través de esa conexión van a un punto de conexión.
+
+Hay dos opciones para equilibrar la carga de gRPC de forma eficaz:
+
+* Equilibrio de carga del lado cliente
+* Equilibrio de carga de proxy L7 (aplicación)
+
+> [!NOTE]
+> Solo se puede equilibrar la carga de las llamadas gRPC entre los puntos de conexión. Una vez que se ha establecido una llamada gRPC de streaming, todos los mensajes enviados a través de la secuencia van a un punto de conexión.
+
+### <a name="client-side-load-balancing"></a>Equilibrio de carga del lado cliente
+
+Con el equilibrio de carga del lado cliente, el cliente conoce los puntos de conexión. Para cada llamada gRPC, selecciona un punto de conexión diferente al que se envía la llamada. El equilibrio de carga del lado cliente es una buena opción cuando la latencia es importante. No hay ningún proxy entre el cliente y el servicio, por lo que la llamada se envía directamente al servicio. El inconveniente del equilibrio de carga del lado cliente es que cada cliente debe realizar un seguimiento de los puntos de conexión disponibles que debe usar.
+
+El equilibrio de carga de cliente de lista de direcciones es una técnica en la que el estado del equilibrio de carga se almacena en una ubicación central. Los clientes consultan periódicamente la ubicación central para obtener información que usarán al tomar decisiones sobre el equilibrio de carga.
+
+`Grpc.Net.Client` actualmente no admite el equilibrio de carga del lado cliente. [Grpc.Core](https://www.nuget.org/packages/Grpc.Core) es una buena opción si se requiere el equilibrio de carga del lado cliente en .NET.
+
+### <a name="proxy-load-balancing"></a>Equilibrio de carga de proxy
+
+Un proxy L7 (aplicación) funciona en un nivel superior que un proxy L4 (transporte). Los proxies L7 entienden HTTP/2 y pueden distribuir llamadas gRPC multiplexadas en el proxy en una conexión HTTP/2 a través de varios puntos de conexión. El uso de un proxy es más sencillo que el equilibrio de carga del lado cliente, pero puede agregar latencia adicional a las llamadas gRPC.
+
+Hay muchos servidores proxy L7 disponibles. Estas son algunas opciones:
+
+* [Envoy](https://www.envoyproxy.io/): popular proxy de código abierto.
+* [Linkerd](https://linkerd.io/): malla de servicio para Kubernetes.
+* [YARP: A Reverse Proxy](https://microsoft.github.io/reverse-proxy/): proxy de código abierto en versión preliminar escrito en .NET.
 
 ::: moniker range=">= aspnetcore-5.0"
 

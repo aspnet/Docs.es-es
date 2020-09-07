@@ -17,18 +17,18 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/protobuf
-ms.openlocfilehash: b8149b79c1e7b204e52cc8595d1193b623bb0008
-ms.sourcegitcommit: 47c9a59ff8a359baa6bca2637d3af87ddca1245b
+ms.openlocfilehash: 60af1add9ae2f8b2b94bc19b65667d7af91fb122
+ms.sourcegitcommit: 7258e94cf60c16e5b6883138e5e68516751ead0f
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88945582"
+ms.lasthandoff: 08/29/2020
+ms.locfileid: "89102671"
 ---
 # <a name="create-protobuf-messages-for-net-apps"></a>Creación de mensajes de Protobuf para aplicaciones .NET
 
 Por [James Newton-King](https://twitter.com/jamesnk) y [Mark Rendle](https://twitter.com/markrendle)
 
-gRPC usa [Protobuf](https://developers.google.com/protocol-buffers) como lenguaje de definición de interfaz (IDL). El IDL de Protobuf es un formato neutro de lenguaje para especificar los mensajes que envían y reciben los servicios gRPC. Los mensajes de Protobuf se definen en archivos *.proto*. En este documento se explica cómo se relacionan los conceptos de Protobuf con .NET.
+gRPC usa [Protobuf](https://developers.google.com/protocol-buffers) como lenguaje de definición de interfaz (IDL). El IDL de Protobuf es un formato neutro de lenguaje para especificar los mensajes que envían y reciben los servicios gRPC. Los mensajes de Protobuf se definen en archivos `.proto`. En este documento se explica cómo se relacionan los conceptos de Protobuf con .NET.
 
 ## <a name="protobuf-messages"></a>Mensajes de Protobuf
 
@@ -50,7 +50,7 @@ La definición de mensaje anterior especifica tres campos como pares de nombre-v
 
 Además de un nombre, cada campo de la definición del mensaje tiene un número único. Los números del campo se utilizan para identificar los campos cuando el mensaje se serializa en Protobuf. Serializar un número pequeño es más rápido que serializar todo el nombre del campo. Dado que los números del campo identifican un campo, es importante tener cuidado al cambiarlos. Para obtener más información sobre cómo cambiar los mensajes de Protobuf, vea <xref:grpc/versioning>.
 
-Cuando se compila una aplicación, las herramientas de Protobuf generan tipos .NET a partir de archivos *.proto*. El mensaje `Person` genera una clase .NET:
+Cuando se compila una aplicación, las herramientas de Protobuf generan tipos .NET a partir de archivos `.proto`. El mensaje `Person` genera una clase .NET:
 
 ```csharp
 public class Person
@@ -87,15 +87,15 @@ Protobuf admite una gama de tipos de valores escalares nativos. En la tabla sigu
 
 ### <a name="dates-and-times"></a>Fechas y horas
 
-Los tipos escalares nativos no proporcionan valores de fecha y hora, equivalentes a los valores <xref:System.DateTimeOffset>, <xref:System.DateTime> y <xref:System.TimeSpan> de .NET. Estos tipos se pueden especificar mediante el uso de algunas de las extensiones de "Tipos conocidos" de Protobuf. Estas extensiones proporcionan compatibilidad con el entorno de ejecución y la generación de código para los tipos de campo complejos en las plataformas admitidas.
+Los tipos escalares nativos no proporcionan valores de fecha y hora, equivalentes a los valores <xref:System.DateTimeOffset>, <xref:System.DateTime> y <xref:System.TimeSpan> de .NET. Estos tipos se pueden especificar mediante el uso de algunas de las extensiones de *Tipos conocidos* de Protobuf. Estas extensiones proporcionan compatibilidad con el entorno de ejecución y la generación de código para los tipos de campo complejos en las plataformas admitidas.
 
 En la tabla siguiente se muestran los tipos de fecha y hora:
 
-| Tipo de .NET | Tipo conocido de Protobuf |
-| ------- | ------------------------ |
+| Tipo de .NET        | Tipo conocido de Protobuf    |
+| ---------------- | --------------------------- |
 | `DateTimeOffset` | `google.protobuf.Timestamp` |
-| `DateTime` | `google.protobuf.Timestamp` |
-| `TimeSpan` | `google.protobuf.Duration` |
+| `DateTime`       | `google.protobuf.Timestamp` |
+| `TimeSpan`       | `google.protobuf.Duration`  |
 
 ```protobuf  
 syntax = "proto3"
@@ -132,7 +132,7 @@ var duration = meeting.Duration?.ToTimeSpan();
 
 La generación de código de Protobuf para C# usa los tipos nativos, como `int` para `int32`. Por lo tanto, los valores siempre se incluyen y no pueden ser `null`.
 
-En el caso de los valores que requieren elementos `null` explícitos, como el uso de `int?` en el código C#, los "Tipos conocidos" de Protobuf incluyen contenedores que se compilan en tipos de C# que admiten un valor NULL. Para usarlos, importe `wrappers.proto` en el archivo `.proto`, como el código siguiente:
+En el caso de los valores que requieren elementos `null` explícitos, como el uso de `int?` en el código C#, los Tipos conocidos de Protobuf incluyen contenedores que se compilan en tipos de C# que admiten un valor NULL. Para usarlos, importe `wrappers.proto` en el archivo `.proto`, como el código siguiente:
 
 ```protobuf  
 syntax = "proto3"
@@ -161,7 +161,7 @@ En la tabla siguiente se muestra la lista completa de tipos de contenedor con su
 
 ### <a name="decimals"></a>Decimals
 
-Protobuf no admite de forma nativa el tipo `decimal` de .NET, solo `double` y `float`. Existe un debate en curso en el proyecto Protobuf sobre la posibilidad de agregar un tipo decimal estándar a los tipos conocidos, con compatibilidad de plataforma para los lenguajes y marcos que lo admitan. Todavía no se ha implementado nada.
+Protobuf no admite de forma nativa el tipo `decimal` de .NET, solo `double` y `float`. Existe un debate en curso en el proyecto Protobuf sobre la posibilidad de agregar un tipo decimal estándar a los Tipos conocidos, con compatibilidad de plataforma para los lenguajes y marcos que lo admitan. Todavía no se ha implementado nada.
 
 Es posible crear una definición de mensaje para representar el tipo `decimal` que funciona para la serialización segura entre clientes y servidores .NET. Sin embargo, los desarrolladores de otras plataformas tendrían que conocer el formato que se usa e implementar su propio control.
 
@@ -284,11 +284,17 @@ person.Attributes.Add(attributes);
 
 ## <a name="unstructured-and-conditional-messages"></a>Mensajes no estructurados y condicionales
 
-Protobuf es un formato de mensajería en el que primero se diseña el modo de comunicación entre los servicios y, después, los propios servicios. En este sentido, es necesario especificar los mensajes de las aplicaciones en los archivos *.proto* cuando se compila la aplicación. En el caso de escenarios avanzados, Protobuf ofrece características de lenguaje y tipos conocidos para admitir mensajes condicionales y desconocidos.
+Protobuf es un formato de mensajería de contrato primero. Los mensajes de una aplicación, incluidos los campos y los tipos, deben especificarse en archivos `.proto` cuando se compila la aplicación. El diseño de contrato primero de Protobuf es ideal para aplicar el contenido del mensaje, pero puede resultar limitado en los casos en los que no se requiere un contrato estricto:
+
+* Mensajes con cargas desconocidas. Por ejemplo, un mensaje con un campo que podría contener cualquier mensaje.
+* Mensajes condicionales. Por ejemplo, un mensaje devuelto desde un servicio gRPC podría ser un resultado correcto o un error.
+* Valores dinámicos. Por ejemplo, un mensaje con un campo que contiene una colección no estructurada de valores, similar a JSON.
+
+Protobuf ofrece tipos y características de lenguaje para admitir estos escenarios.
 
 ### <a name="any"></a>Any
 
-El tipo `Any` permite usar mensajes como tipos insertados sin tener su definición de *.proto*. Para usar el tipo `Any`, importe `any.proto`.
+El tipo `Any` permite usar mensajes como tipos insertados sin tener su definición de `.proto`. Para usar el tipo `Any`, importe `any.proto`.
 
 ```protobuf
 import "google/protobuf/any.proto";
@@ -338,7 +344,7 @@ Los campos del conjunto de `oneof` deben tener números de campo únicos en la d
 Cuando se usa `oneof`, el código C# generado incluye una enumeración que especifica cuál de los campos se ha establecido. Puede probar la enumeración para buscar el campo que se establece. Los campos que no se establecen devuelven `null` o el valor predeterminado, en lugar de generar una excepción.
 
 ```csharp
-var response = client.GetPersonAsync(new RequestMessage());
+var response = await client.GetPersonAsync(new RequestMessage());
 
 switch (response.ResultCase)
 {
@@ -355,7 +361,7 @@ switch (response.ResultCase)
 
 ### <a name="value"></a>Value
 
-El tipo `Value` representa un valor de tipo dinámico. Puede ser `null`, un número, una cadena, un valor booleano, un diccionario de valores (`Struct`) o una lista de valores (`ValueList`). `Value` es un tipo conocido que utiliza la característica de `oneof` descrita anteriormente. Para usar el tipo `Value`, importe `struct.proto`.
+El tipo `Value` representa un valor de tipo dinámico. Puede ser `null`, un número, una cadena, un valor booleano, un diccionario de valores (`Struct`) o una lista de valores (`ValueList`). `Value` es un Tipo conocido de Protobuf que usa la característica de `oneof` descrita anteriormente. Para usar el tipo `Value`, importe `struct.proto`.
 
 ```protobuf
 import "google/protobuf/struct.proto";
