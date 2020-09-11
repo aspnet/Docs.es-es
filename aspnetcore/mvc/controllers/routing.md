@@ -16,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/routing
-ms.openlocfilehash: 83ddb49f60058ecc744163faa2f5c454abc7b42d
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 08cd6396cca78488827dfa7c2cca62a35c500dbd
+ms.sourcegitcommit: 8fcb08312a59c37e3542e7a67dad25faf5bb8e76
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88630319"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90009705"
 ---
 # <a name="routing-to-controller-actions-in-aspnet-core"></a>Enrutar a acciones de controlador de ASP.NET Core
 
@@ -152,7 +152,7 @@ La mayoría de las aplicaciones deben elegir un esquema de enrutamiento básico 
 
 * Admite un esquema de enrutamiento básico y descriptivo.
 * Se trata de un punto de partida útil para las aplicaciones basadas en la interfaz de usuario.
-* Es la única plantilla de ruta necesaria para muchas aplicaciones de interfaz de usuario Web. En el caso de las aplicaciones de interfaz de usuario Web más grandes, otra ruta que usa [áreas](#areas) , si suele ser necesario.
+* Es la única plantilla de ruta necesaria para muchas aplicaciones de interfaz de usuario Web. En el caso de las aplicaciones de interfaz de usuario Web más grandes, otra ruta que usa [áreas](#areas) suele ser necesaria.
 
 <xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapControllerRoute%2A> y <xref:Microsoft.AspNetCore.Builder.MvcAreaRouteBuilderExtensions.MapAreaRoute%2A> :
 
@@ -189,7 +189,7 @@ Dado `controller` `action` que y no aparecen en la plantilla de ruta `"blog/{*ar
 
 `/Blog`, `/Blog/Article` y `/Blog/{any-string}` son las únicas rutas de acceso URL que coinciden con la ruta del blog.
 
-El ejemplo anterior:
+Ejemplo anterior:
 
 * `blog` la ruta tiene una prioridad más alta para las coincidencias que la `default` ruta porque se agrega en primer lugar.
 * Es un ejemplo de enrutamiento de estilo de [indicaciones](https://developer.mozilla.org/docs/Glossary/Slug) en el que es habitual tener un nombre de artículo como parte de la dirección URL.
