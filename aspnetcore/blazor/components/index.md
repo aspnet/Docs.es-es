@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/index
-ms.openlocfilehash: 26e8239634c3edb99c7606ab2e250c69af4e746f
-ms.sourcegitcommit: f09407d128634d200c893bfb1c163e87fa47a161
+ms.openlocfilehash: be1584e72fc1504ac9f8ca10a6b084c95a579b5b
+ms.sourcegitcommit: 8fcb08312a59c37e3542e7a67dad25faf5bb8e76
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88865282"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90009627"
 ---
 # <a name="create-and-use-aspnet-core-no-locrazor-components"></a>Creación y uso de componentes de Razor de ASP.NET Core
 
@@ -266,7 +266,7 @@ En el siguiente ejemplo de la aplicación de muestra, `ParentComponent` establec
 [!code-razor[](index/samples_snapshot/ParentComponent.razor?highlight=5-6)]
 
 > [!WARNING]
-> No cree componentes que escriban en sus propios *parámetros de componente* cuando el contenido del componente se represente con un elemento<xref:Microsoft.AspNetCore.Components.RenderFragment>; en su lugar, use un campo privado. Para más información, consulte la sección [Parámetros sobrescritos con `RenderFragment`](#overwritten-parameters-with-renderfragment).
+> No cree componentes que escriban en sus propios *parámetros de componente*; en su lugar, use un campo privado. Para obtener más información, vea la sección [Parámetros sobrescritos](#overwritten-parameters).
 
 ## <a name="child-content"></a>Contenido secundario
 
@@ -625,14 +625,9 @@ Por lo general, lo lógico es proporcionar uno de los siguientes tipos de valor 
 
 Asegúrese de que los valores usados en [`@key`][5] no entran en conflicto. Si se detectan valores en conflicto en el mismo elemento primario, Blazor produce una excepción porque no puede asignar de forma determinista elementos o componentes antiguos a nuevos elementos o componentes. Use exclusivamente valores distintos, como instancias de objeto o valores de clave principal.
 
-## <a name="overwritten-parameters-with-renderfragment"></a>Parámetros sobrescritos con `RenderFragment`
+## <a name="overwritten-parameters"></a>Parámetros sobrescritos
 
-Los parámetros se sobrescriben en las condiciones siguientes:
-
-* El contenido de un componente secundario se representa con un <xref:Microsoft.AspNetCore.Components.RenderFragment>.
-* <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> se llama en el componente principal.
-
-Los parámetros se restablecen porque el componente principal se vuelve a representar cuando se llama a <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> y se suministran valores de parámetro nuevos al componente secundario.
+Se proporcionan nuevos valores de los parámetros, que normalmente sobrescriben los existentes, cuando se vuelve a representar el componente primario.
 
 Considere el componente `Expander` siguiente que:
 
