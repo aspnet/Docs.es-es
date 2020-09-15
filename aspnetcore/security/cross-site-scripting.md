@@ -16,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/cross-site-scripting
-ms.openlocfilehash: 03bdfe9260ef6433456ba53d0cab8c7bf9f86377
-ms.sourcegitcommit: 422e02bad384775bfe19a90910737340ad106c5b
+ms.openlocfilehash: 38e9e102e9ac18ec14bceebf391c11a434492ac9
+ms.sourcegitcommit: 6ecdc481d5b9a10d2c6e091217f017b36bdba957
 ms.translationtype: MT
 ms.contentlocale: es-ES
 ms.lasthandoff: 09/15/2020
-ms.locfileid: "90083471"
+ms.locfileid: "90456067"
 ---
 # <a name="prevent-cross-site-scripting-xss-in-aspnet-core"></a>Impedir el scripting entre sitios (XSS) en ASP.NET Core
 
@@ -133,8 +133,8 @@ El marcado anterior genera el siguiente código HTML:
         injectedData.dataset.untrustedinput;
 
     // Put the injected, untrusted data into the scriptedWrite div tag.
-// Do NOT use document.write() on dynamically generated data as it can
-// lead to XSS.
+    // Do NOT use document.write() on dynamically generated data as it can
+    // lead to XSS.
 
     document.getElementById("scriptedWrite").innerText += clientSideUntrustedInputOldStyle;
 
