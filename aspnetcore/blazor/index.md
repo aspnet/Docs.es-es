@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/index
-ms.openlocfilehash: abebd5fde514975b1dcb642a3d378e33c3836fa9
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: ace2285e3265e7bb2ec50c8afce2eb9c296fd524
+ms.sourcegitcommit: 600666440398788db5db25dc0496b9ca8fe50915
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88628071"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90080347"
 ---
 # <a name="introduction-to-aspnet-core-no-locblazor"></a>Introducción a ASP.NET Core Blazor
 
@@ -131,9 +131,21 @@ Cuando se compila y ejecuta una aplicación de Blazor WebAssembly en un explorad
 
 El tamaño de la aplicación publicada, su *tamaño de carga*, es un factor de rendimiento crítico para la facilidad de uso de una aplicación. Una aplicación grande tarda un tiempo relativamente largo en descargarse en un explorador, lo que repercute en la experiencia del usuario. Blazor WebAssembly optimiza el tamaño de carga para reducir los tiempos de descarga:
 
+::: moniker range=">= aspnetcore-5.0"
+
+* Se ha quitado el código sin usar de la aplicación cuando se publica mediante el [recortador del lenguaje intermedio (IL)](xref:blazor/host-and-deploy/configure-trimmer).
+* Las respuestas HTTP se comprimen.
+* El entorno de ejecución .NET y los ensamblados se almacenan en caché en el explorador.
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
 * Se ha quitado el código sin usar de la aplicación cuando se publica mediante el [enlazador del lenguaje intermedio (IL)](xref:blazor/host-and-deploy/configure-linker).
 * Las respuestas HTTP se comprimen.
 * El entorno de ejecución .NET y los ensamblados se almacenan en caché en el explorador.
+
+::: moniker-end
 
 ## Blazor Server
 

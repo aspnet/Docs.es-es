@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/index
-ms.openlocfilehash: 391a38e9af42b162fc74bac803e6aa3cf687e7d5
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: e1af8f1de61edd934505a44e75ea07e0f09a67b5
+ms.sourcegitcommit: a07f83b00db11f32313045b3492e5d1ff83c4437
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88626069"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90592961"
 ---
 # <a name="secure-aspnet-core-no-locblazor-webassembly"></a>Protección de ASP.NET Core Blazor WebAssembly
 
@@ -98,6 +98,13 @@ Aplique el [atributo `[Authorize]`](xref:blazor/security/index#authorize-attribu
 Los tokens de actualización no se pueden proteger en el lado cliente en aplicaciones de Blazor WebAssembly. Por lo tanto, no se deben enviar a la aplicación para su uso directo.
 
 Los tokens de actualización se pueden mantener y usar en la aplicación del lado servidor en una solución Blazor WebAssembly hospedada para acceder a las API de terceros. Para obtener más información, vea <xref:blazor/security/webassembly/additional-scenarios#authenticate-users-with-a-third-party-provider-and-call-protected-apis-on-the-host-server-and-the-third-party>.
+
+## <a name="establish-claims-for-users"></a>Establecimiento de notificaciones para usuarios
+
+Las aplicaciones a menudo requieren notificaciones para usuarios basadas en una llamada de API web a un servidor. Por ejemplo, las notificaciones se usan con frecuencia para [establecer autorizaciones](xref:blazor/security/index#authorization) en una aplicación. En estos casos, la aplicación solicita un token de acceso para acceder al servicio y usa dicho token para obtener los datos de usuario para las notificaciones. En los siguientes temas podrá ver algunos ejemplo:
+
+* [Otros escenarios: Personalizar el usuario](xref:blazor/security/webassembly/additional-scenarios#customize-the-user)
+* <xref:blazor/security/webassembly/aad-groups-roles>
 
 ## <a name="implementation-guidance"></a>Guía de implementación
 

@@ -447,6 +447,8 @@
               uid: blazor/host-and-deploy/server
             - name: Configurar el enlazador
               uid: blazor/host-and-deploy/configure-linker
+            - name: Configurar el recortador
+              uid: blazor/host-and-deploy/configure-trimmer
         - name: Blazor Server y EF Core
           uid: blazor/blazor-server-ef-core
         - name: Escenarios avanzados
