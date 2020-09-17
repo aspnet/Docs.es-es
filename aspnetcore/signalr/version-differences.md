@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/version-differences
-ms.openlocfilehash: a8336a6c13c502f5a0fad150785cd9d484064618
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 965fbb3d8007cb64aaf51d82d87ed7a3a5298e9b
+ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633011"
+ms.lasthandoff: 09/17/2020
+ms.locfileid: "90721793"
 ---
 # <a name="differences-between-aspnet-no-locsignalr-and-aspnet-core-no-locsignalr"></a>Diferencias entre ASP.NET SignalR y ASP.net Core SignalR
 
@@ -150,13 +150,13 @@ En ASP.NET Core SignalR , se ha simplificado el modelo de conexión. Las conexio
 
 ASP.NET Core SignalR ahora admite el [streaming de datos](xref:signalr/streaming) desde el concentrador al cliente.
 
-### <a name="state"></a>Estado
+### <a name="state"></a>State
 
 Se ha quitado la capacidad de pasar el estado arbitrario entre los clientes y el concentrador (a menudo denominado `HubState` ), así como la compatibilidad con los mensajes de progreso. En este momento no hay ningún homólogo de servidores proxy de concentrador.
 
 ### <a name="persistentconnection-removal"></a>Eliminación de PersistentConnection
 
-En ASP.NET Core SignalR , se ha quitado la clase [PersistentConnection](https://docs.microsoft.com/previous-versions/aspnet/jj919047(v%3dvs.118)) .
+En ASP.NET Core SignalR , se ha quitado la clase [PersistentConnection](/previous-versions/aspnet/jj919047(v=vs.118)) .
 
 ### <a name="globalhost"></a>Host global
 

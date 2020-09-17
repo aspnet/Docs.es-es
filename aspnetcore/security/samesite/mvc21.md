@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/samesite/mvc21
-ms.openlocfilehash: 0a719ae48199f7854ded534446045eb304d4d9f0
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 38e5f0d1a2ecf5b46f73bf8574f73934a070880f
+ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88632361"
+ms.lasthandoff: 09/17/2020
+ms.locfileid: "90722610"
 ---
 # <a name="aspnet-core-21-mvc-samesite-no-loccookie-sample"></a>ASP.NET Core 2,1 MVC SameSite cookie ejemplo
 
@@ -57,7 +57,7 @@ Response.Cookies.Append(CookieName, "cookieValue", cookieOptions);
 
 ## <a name="setting-no-loccookie-authentication-and-session-state-no-loccookies"></a>Establecimiento Cookie de la autenticación y el estado de la sesión cookie
 
-Cookie autenticación, estado de sesión y [otros componentes](https://docs.microsoft.com/aspnet/core/security/samesite?view=aspnetcore-2.1) establecen sus opciones de sameSite a través Cookie de opciones, por ejemplo
+Cookie autenticación, estado de sesión y [otros componentes](../samesite.md?view=aspnetcore-2.1) establecen sus opciones de sameSite a través Cookie de opciones, por ejemplo
 
 ```c#
 services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
@@ -172,5 +172,5 @@ Para obtener los cambios de ASP.NET Core para .NET Framework Asegúrese de que t
 ### <a name="more-information"></a>Más información
  
 [Actualizaciones](https://www.chromium.org/updates/same-site) 
- de Chrome [ASP.net Core documentación](https://docs.microsoft.com/aspnet/core/security/samesite?view=aspnetcore-2.1) 
+ de Chrome [ASP.net Core documentación](../samesite.md?view=aspnetcore-2.1) 
  de SameSite [ASP.NET Core 2,1 SameSite cambio de anuncio](https://github.com/dotnet/aspnetcore/issues/8212)

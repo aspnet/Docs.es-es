@@ -18,17 +18,17 @@ no-loc:
 - Razor
 - SignalR
 uid: security/docker-compose-https
-ms.openlocfilehash: 75a205c1eb21394ed36c00359f0dc4ca7e6d09e0
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 71ead7dcce32dab090a9b0b3573aa855d00fa7f1
+ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88631646"
+ms.lasthandoff: 09/17/2020
+ms.locfileid: "90722766"
 ---
 # <a name="hosting-aspnet-core-images-with-docker-compose-over-https"></a>Hospedaje de imágenes de ASP.NET Core con Docker Compose a través de HTTPS
 
 
-[De forma predeterminada](/aspnet/core/security/enforcing-ssl)ASP.net Core usa https. [Https](https://en.wikipedia.org/wiki/HTTPS) se basa en los [certificados](https://en.wikipedia.org/wiki/Public_key_certificate) de confianza, identidad y cifrado.
+[De forma predeterminada](./enforcing-ssl.md)ASP.net Core usa https. [Https](https://en.wikipedia.org/wiki/HTTPS) se basa en los [certificados](https://en.wikipedia.org/wiki/Public_key_certificate) de confianza, identidad y cifrado.
 
 En este documento se explica cómo ejecutar imágenes de contenedor creadas previamente con HTTPS.
 
@@ -36,7 +36,7 @@ Consulte [desarrollo de aplicaciones ASP.net Core con Docker a través de https]
 
 Este ejemplo requiere [docker 17,06](https://docs.docker.com/release-notes/docker-ce) o posterior del [cliente de Docker](https://www.docker.com/products/docker).
 
-## <a name="prerequisites"></a>Prerrequisitos
+## <a name="prerequisites"></a>Requisitos previos
 
 El [SDK de .net Core 2,2](https://dotnet.microsoft.com/download) o posterior es necesario para algunas de las instrucciones de este documento.
 

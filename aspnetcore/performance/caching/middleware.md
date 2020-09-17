@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/caching/middleware
-ms.openlocfilehash: 43b0ef1dcbf6d0137b14be9e58eb056f06ae093d
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 7fe9629e1c60a6156c69e546736049653a4229b7
+ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633453"
+ms.lasthandoff: 09/17/2020
+ms.locfileid: "90722649"
 ---
 # <a name="response-caching-middleware-in-aspnet-core"></a>Middleware de almacenamiento en caché de respuesta en ASP.NET Core
 
@@ -59,7 +59,7 @@ La aplicación de ejemplo agrega encabezados para controlar el almacenamiento en
 
 Los encabezados anteriores no se escriben en la respuesta y se invalidan cuando se trata de un controlador, una acción o una Razor página:
 
-* Tiene un atributo [[ResponseCache]](xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute) . Esto se aplica incluso si no se establece una propiedad. Por ejemplo, si se omite la propiedad [VaryByHeader](/aspnet/core/performance/caching/response#vary) , el encabezado correspondiente se quitará de la respuesta.
+* Tiene un atributo [[ResponseCache]](xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute) . Esto se aplica incluso si no se establece una propiedad. Por ejemplo, si se omite la propiedad [VaryByHeader](./response.md#vary) , el encabezado correspondiente se quitará de la respuesta.
 
 El middleware de almacenamiento en caché de respuestas solo almacena en caché las respuestas del servidor que dan como resultado un código de estado 200 (correcto). El middleware omite cualquier otra respuesta, incluidas [las páginas de error](xref:fundamentals/error-handling).
 
@@ -91,7 +91,7 @@ services.AddResponseCaching(options =>
 
 ## <a name="varybyquerykeys"></a>VaryByQueryKeys
 
-Al usar los modelos de página de MVC/controladores de API Web o Razor páginas, el [`[ResponseCache]`](xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute) atributo especifica los parámetros necesarios para establecer los encabezados adecuados para el almacenamiento en caché de respuestas. El único parámetro del `[ResponseCache]` atributo que requiere estrictamente el middleware es <xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute.VaryByQueryKeys> , que no se corresponde con un encabezado HTTP real. Para más información, consulte <xref:performance/caching/response#responsecache-attribute>.
+Al usar los modelos de página de MVC/controladores de API Web o Razor páginas, el [`[ResponseCache]`](xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute) atributo especifica los parámetros necesarios para establecer los encabezados adecuados para el almacenamiento en caché de respuestas. El único parámetro del `[ResponseCache]` atributo que requiere estrictamente el middleware es <xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute.VaryByQueryKeys> , que no se corresponde con un encabezado HTTP real. Para obtener más información, vea <xref:performance/caching/response#responsecache-attribute>.
 
 Cuando no se usa el `[ResponseCache]` atributo, el almacenamiento en caché de respuestas puede variar con `VaryByQueryKeys` . Use <xref:Microsoft.AspNetCore.ResponseCaching.ResponseCachingFeature> directamente desde [HttpContext. Features](xref:Microsoft.AspNetCore.Http.HttpContext.Features):
 
@@ -148,7 +148,7 @@ Al probar y solucionar problemas de comportamiento de almacenamiento en caché, 
 
 * La solicitud debe dar como resultado una respuesta del servidor con un código de estado 200 (correcto).
 * El método de solicitud debe ser GET o HEAD.
-* En `Startup.Configure` , el middleware de almacenamiento en caché de respuestas debe colocarse antes que el middleware que requiere almacenamiento en caché. Para más información, consulte <xref:fundamentals/middleware/index>.
+* En `Startup.Configure` , el middleware de almacenamiento en caché de respuestas debe colocarse antes que el middleware que requiere almacenamiento en caché. Para obtener más información, vea <xref:fundamentals/middleware/index>.
 * El `Authorization` encabezado no debe estar presente.
 * `Cache-Control` los parámetros de encabezado deben ser válidos y la respuesta debe estar marcada `public` y no marcada `private` .
 * El `Pragma: no-cache` encabezado no debe estar presente si el `Cache-Control` encabezado no está presente, ya que el `Cache-Control` encabezado invalida el `Pragma` encabezado cuando está presente.
@@ -203,7 +203,7 @@ La aplicación de ejemplo agrega encabezados para controlar el almacenamiento en
 
 Los encabezados anteriores no se escriben en la respuesta y se invalidan cuando se trata de un controlador, una acción o una Razor página:
 
-* Tiene un atributo [[ResponseCache]](xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute) . Esto se aplica incluso si no se establece una propiedad. Por ejemplo, si se omite la propiedad [VaryByHeader](/aspnet/core/performance/caching/response#vary) , el encabezado correspondiente se quitará de la respuesta.
+* Tiene un atributo [[ResponseCache]](xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute) . Esto se aplica incluso si no se establece una propiedad. Por ejemplo, si se omite la propiedad [VaryByHeader](./response.md#vary) , el encabezado correspondiente se quitará de la respuesta.
 
 El middleware de almacenamiento en caché de respuestas solo almacena en caché las respuestas del servidor que dan como resultado un código de estado 200 (correcto). El middleware omite cualquier otra respuesta, incluidas [las páginas de error](xref:fundamentals/error-handling).
 
@@ -235,7 +235,7 @@ services.AddResponseCaching(options =>
 
 ## <a name="varybyquerykeys"></a>VaryByQueryKeys
 
-Al usar los modelos de página de MVC/controladores de API Web o Razor páginas, el [`[ResponseCache]`](xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute) atributo especifica los parámetros necesarios para establecer los encabezados adecuados para el almacenamiento en caché de respuestas. El único parámetro del `[ResponseCache]` atributo que requiere estrictamente el middleware es <xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute.VaryByQueryKeys> , que no se corresponde con un encabezado HTTP real. Para más información, consulte <xref:performance/caching/response#responsecache-attribute>.
+Al usar los modelos de página de MVC/controladores de API Web o Razor páginas, el [`[ResponseCache]`](xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute) atributo especifica los parámetros necesarios para establecer los encabezados adecuados para el almacenamiento en caché de respuestas. El único parámetro del `[ResponseCache]` atributo que requiere estrictamente el middleware es <xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute.VaryByQueryKeys> , que no se corresponde con un encabezado HTTP real. Para obtener más información, vea <xref:performance/caching/response#responsecache-attribute>.
 
 Cuando no se usa el `[ResponseCache]` atributo, el almacenamiento en caché de respuestas puede variar con `VaryByQueryKeys` . Use <xref:Microsoft.AspNetCore.ResponseCaching.ResponseCachingFeature> directamente desde [HttpContext. Features](xref:Microsoft.AspNetCore.Http.HttpContext.Features):
 
@@ -292,7 +292,7 @@ Al probar y solucionar problemas de comportamiento de almacenamiento en caché, 
 
 * La solicitud debe dar como resultado una respuesta del servidor con un código de estado 200 (correcto).
 * El método de solicitud debe ser GET o HEAD.
-* En `Startup.Configure` , el middleware de almacenamiento en caché de respuestas debe colocarse antes que el middleware que requiere almacenamiento en caché. Para más información, consulte <xref:fundamentals/middleware/index>.
+* En `Startup.Configure` , el middleware de almacenamiento en caché de respuestas debe colocarse antes que el middleware que requiere almacenamiento en caché. Para obtener más información, vea <xref:fundamentals/middleware/index>.
 * El `Authorization` encabezado no debe estar presente.
 * `Cache-Control` los parámetros de encabezado deben ser válidos y la respuesta debe estar marcada `public` y no marcada `private` .
 * El `Pragma: no-cache` encabezado no debe estar presente si el `Cache-Control` encabezado no está presente, ya que el `Cache-Control` encabezado invalida el `Pragma` encabezado cuando está presente.

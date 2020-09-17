@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/enforcing-ssl
-ms.openlocfilehash: 1cb2c2d18b717dc99c6ef4dac9954fef149c6deb
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: b5260084c2fdd296168e918f06d8b54faf1865d5
+ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88631568"
+ms.lasthandoff: 09/17/2020
+ms.locfileid: "90722662"
 ---
 # <a name="enforce-https-in-aspnet-core"></a>Aplicación de HTTPS en ASP.NET Core
 
@@ -109,7 +109,7 @@ Especifique el Puerto HTTPS mediante cualquiera de los métodos siguientes:
 
 ::: moniker range=">= aspnetcore-3.0"
 
-* Establezca la `https_port` [configuración de host](/aspnet/core/fundamentals/host/generic-host?view=aspnetcore-3.0#https_port):
+* Establezca la `https_port` [configuración de host](../fundamentals/host/generic-host.md?view=aspnetcore-3.0#https_port):
 
   * En configuración de host.
   * Estableciendo la `ASPNETCORE_HTTPS_PORT` variable de entorno.
@@ -117,7 +117,7 @@ Especifique el Puerto HTTPS mediante cualquiera de los métodos siguientes:
 
     [!code-json[](enforcing-ssl/sample-snapshot/3.x/appsettings.json?highlight=2)]
 
-* Indique un puerto con el esquema seguro mediante la [variable de entorno ASPNETCORE_URLS](/aspnet/core/fundamentals/host/generic-host?view=aspnetcore-3.0#urls). La variable de entorno configura el servidor. El middleware detecta indirectamente el Puerto HTTPS a través de <xref:Microsoft.AspNetCore.Hosting.Server.Features.IServerAddressesFeature> . Este enfoque no funciona en las implementaciones de proxy inverso.
+* Indique un puerto con el esquema seguro mediante la [variable de entorno ASPNETCORE_URLS](../fundamentals/host/generic-host.md?view=aspnetcore-3.0#urls). La variable de entorno configura el servidor. El middleware detecta indirectamente el Puerto HTTPS a través de <xref:Microsoft.AspNetCore.Hosting.Server.Features.IServerAddressesFeature> . Este enfoque no funciona en las implementaciones de proxy inverso.
 
 ::: moniker-end
 
@@ -288,7 +288,7 @@ El código siguiente:
 ::: moniker-end
 
 
-* Establece el parámetro preload del `Strict-Transport-Security` encabezado. La precarga no forma parte de la [especificación RFC HSTS](https://tools.ietf.org/html/rfc6797), pero es compatible con los exploradores Web para precargar sitios de HSTS en la instalación nueva. Para más información, consulte [https://hstspreload.org/](https://hstspreload.org/).
+* Establece el parámetro preload del `Strict-Transport-Security` encabezado. La precarga no forma parte de la [especificación RFC HSTS](https://tools.ietf.org/html/rfc6797), pero es compatible con los exploradores Web para precargar sitios de HSTS en la instalación nueva. Para obtener más información, vea [https://hstspreload.org/](https://hstspreload.org/).
 * Habilita [includeSubDomain](https://tools.ietf.org/html/rfc6797#section-6.1.2), que aplica la Directiva HSTS para hospedar subdominios.
 * Establece explícitamente el `max-age` parámetro del `Strict-Transport-Security` encabezado en 60 días. Si no se establece, el valor predeterminado es 30 días. Para obtener más información, vea la [Directiva Max-Age](https://tools.ietf.org/html/rfc6797#section-6.1.1).
 * Agrega `example.com` a la lista de hosts que se van a excluir.

@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/scale
-ms.openlocfilehash: bba965e14058663c3ed9c0f15afc6a8d78997aea
-ms.sourcegitcommit: 8fcb08312a59c37e3542e7a67dad25faf5bb8e76
+ms.openlocfilehash: 2bfe05748e6740043be7f1ccc6dbe22ad4b0ca44
+ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90009757"
+ms.lasthandoff: 09/17/2020
+ms.locfileid: "90722571"
 ---
 # <a name="aspnet-core-no-locsignalr-hosting-and-scaling"></a>SignalRHospedaje y escalado de ASP.net Core
 
@@ -33,7 +33,7 @@ En este artículo se explican las consideraciones sobre el hospedaje y el escala
 
 ## <a name="sticky-sessions"></a>Sesiones permanentes
 
-SignalR requiere que todas las solicitudes HTTP para una conexión específica se controlen mediante el mismo proceso de servidor. Cuando SignalR se ejecuta en una granja de servidores (varios servidores), se deben usar "sesiones permanentes". En algunos equilibradores de carga también se denominan "sesiones permanentes". Azure App Service usa el [enrutamiento de solicitud de aplicaciones](https://docs.microsoft.com/iis/extensions/planning-for-arr/application-request-routing-version-2-overview) (arr) para enrutar las solicitudes. Al habilitar la configuración de "afinidad ARR" en el Azure App Service, se habilitarán las "sesiones permanentes". Las únicas circunstancias en las que no se requieren sesiones permanentes son:
+SignalR requiere que todas las solicitudes HTTP para una conexión específica se controlen mediante el mismo proceso de servidor. Cuando SignalR se ejecuta en una granja de servidores (varios servidores), se deben usar "sesiones permanentes". En algunos equilibradores de carga también se denominan "sesiones permanentes". Azure App Service usa el [enrutamiento de solicitud de aplicaciones](/iis/extensions/planning-for-arr/application-request-routing-version-2-overview) (arr) para enrutar las solicitudes. Al habilitar la configuración de "afinidad ARR" en el Azure App Service, se habilitarán las "sesiones permanentes". Las únicas circunstancias en las que no se requieren sesiones permanentes son:
 
 1. Al hospedar en un solo servidor, en un único proceso.
 1. Al usar el servicio de Azure SignalR .
@@ -136,7 +136,7 @@ Para obtener más información, vea [NGINX como proxy de WebSocket](https://www.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Para obtener más información, consulte los siguientes recursos:
+Para obtener más información, vea los siguientes recursos:
 
 * [Documentación del servicio de Azure SignalR](/azure/azure-signalr/signalr-overview)
 * [Configuración de un backplane de Redis](xref:signalr/redis-backplane)

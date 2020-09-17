@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/redis-backplane
-ms.openlocfilehash: bc28eb3096e88455347f68ca381c9a280d5a153e
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: a57176409c5f9bcc620db7e070f6616951eb9a54
+ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633661"
+ms.lasthandoff: 09/17/2020
+ms.locfileid: "90722779"
 ---
 # <a name="set-up-a-redis-backplane-for-aspnet-core-no-locsignalr-scale-out"></a>Configuración de un backplane de Redis para ASP.NET Core SignalR la escalabilidad horizontal
 
@@ -38,11 +38,11 @@ En este artículo se explican los SignalR aspectos específicos de la configurac
   > [!IMPORTANT] 
   > Para su uso en producción, se recomienda un backplane de Redis solo cuando se ejecuta en el mismo centro de datos que la SignalR aplicación. De lo contrario, la latencia de red degrada el rendimiento. Si la SignalR aplicación se ejecuta en la nube de Azure, se recomienda el SignalR servicio de Azure en lugar de un backplane de Redis. Puede usar el servicio de Azure Redis Cache para entornos de desarrollo y pruebas.
 
-  Para obtener más información, consulte los siguientes recursos:
+  Para obtener más información, vea los siguientes recursos:
 
   * <xref:signalr/scale>
   * [Documentación de Redis](https://redis.io/)
-  * [Documentación de Azure Redis Cache](https://docs.microsoft.com/azure/redis-cache/)
+  * [Documentación de Azure Redis Cache](/azure/redis-cache/)
 
 ::: moniker range="= aspnetcore-2.1"
 
@@ -235,9 +235,9 @@ La [agrupación en clústeres de Redis](https://redis.io/topics/cluster-spec) es
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Para obtener más información, consulte los siguientes recursos:
+Para obtener más información, vea los siguientes recursos:
 
 * <xref:signalr/scale>
 * [Documentación de Redis](https://redis.io/documentation)
 * [Documentación de Redis StackExchange](https://stackexchange.github.io/StackExchange.Redis/)
-* [Documentación de Azure Redis Cache](https://docs.microsoft.com/azure/redis-cache/)
+* [Documentación de Azure Redis Cache](/azure/redis-cache/)
