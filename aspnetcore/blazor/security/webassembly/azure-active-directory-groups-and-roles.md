@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/aad-groups-roles
-ms.openlocfilehash: adc16989e5b4e2e639896e5fe9562e42cb8ceeb4
-ms.sourcegitcommit: 7258e94cf60c16e5b6883138e5e68516751ead0f
+ms.openlocfilehash: 81114768a3600544dda46efbc886e2f56932aba7
+ms.sourcegitcommit: a07f83b00db11f32313045b3492e5d1ff83c4437
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2020
-ms.locfileid: "89102749"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90592934"
 ---
 # <a name="azure-ad-groups-administrative-roles-and-user-defined-roles"></a>Grupos de Azure AD, roles administrativos y roles definidos por el usuario
 
@@ -163,16 +163,16 @@ using Microsoft.Extensions.Logging;
 public class CustomUserFactory
     : AccountClaimsPrincipalFactory<CustomUserAccount>
 {
-    private readonly ILogger<CustomUserFactory> _logger;
-    private readonly IHttpClientFactory _clientFactory;
+    private readonly ILogger<CustomUserFactory> logger;
+    private readonly IHttpClientFactory clientFactory;
 
     public CustomUserFactory(IAccessTokenProviderAccessor accessor, 
         IHttpClientFactory clientFactory, 
         ILogger<CustomUserFactory> logger)
         : base(accessor)
     {
-        _clientFactory = clientFactory;
-        _logger = logger;
+        this.clientFactory = clientFactory;
+        this.logger = logger;
     }
 
     public async override ValueTask<ClaimsPrincipal> CreateUserAsync(
@@ -194,7 +194,7 @@ public class CustomUserFactory
             {
                 try
                 {
-                    var client = _clientFactory.CreateClient("GraphAPI");
+                    var client = clientFactory.CreateClient("GraphAPI");
 
                     var response = await client.GetAsync("v1.0/me/memberOf");
 
@@ -215,13 +215,13 @@ public class CustomUserFactory
                     }
                     else
                     {
-                        _logger.LogError("Graph API request failure: {REASON}", 
+                        logger.LogError("Graph API request failure: {REASON}", 
                             response.ReasonPhrase);
                     }
                 }
                 catch (AccessTokenNotAvailableException exception)
                 {
-                    _logger.LogError("Graph API access token failure: {MESSAGE}", 
+                    logger.LogError("Graph API access token failure: {MESSAGE}", 
                         exception.Message);
                 }
             }
