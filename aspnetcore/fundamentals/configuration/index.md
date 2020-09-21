@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/configuration/index
-ms.openlocfilehash: ed40800f3e363cc3fd6f57492d76a42095e5b97b
-ms.sourcegitcommit: 9a90b956af8d8584d597f1e5c1dbfb0ea9bb8454
+ms.openlocfilehash: c6b77f20792c32a697fff8d1d78ef3c2536c5f8f
+ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88712563"
+ms.lasthandoff: 09/17/2020
+ms.locfileid: "90722902"
 ---
 # <a name="configuration-in-aspnet-core"></a>Configuración en ASP.NET Core
 
@@ -732,7 +732,7 @@ Antes de configurar e iniciar la aplicación, se configura e inicia un *host*. E
 
 ## <a name="default-host-configuration"></a>Configuración predeterminada del host
 
-Para obtener más información sobre la configuración predeterminada al usar el [host de web](xref:fundamentals/host/web-host), vea la [versión de este tema para ASP.NET Core 2.2](/aspnet/core/fundamentals/configuration/?view=aspnetcore-2.2).
+Para obtener más información sobre la configuración predeterminada al usar el [host de web](xref:fundamentals/host/web-host), vea la [versión de este tema para ASP.NET Core 2.2](?view=aspnetcore-2.2).
 
 * La configuración del host la proporcionan los siguientes elementos:
   * Las variables de entorno con el prefijo `DOTNET_` (por ejemplo, `DOTNET_ENVIRONMENT`) mediante el [proveedor de configuración de variables de entorno](#environment-variables). El prefijo (`DOTNET_`) se quita cuando se cargan los pares clave-valor de configuración.
@@ -1107,7 +1107,7 @@ En el caso de las aplicaciones que usen las asignaciones de modificador, la llam
 
 Después de crear el diccionario de asignaciones de modificador, contiene los datos que se muestran en la tabla siguiente.
 
-| Clave       | Valor             |
+| Clave       | Value             |
 | --------- | ----------------- |
 | `-CLKey1` | `CommandLineKey1` |
 | `-CLKey2` | `CommandLineKey2` |
@@ -1684,7 +1684,7 @@ config.AddJsonFile(
 
 El par clave-valor que se muestra en la tabla se carga en la configuración.
 
-| Clave             | Valor  |
+| Clave             | Value  |
 | :-------------: | :----: |
 | array:entries:3 | value3 |
 
@@ -1707,7 +1707,7 @@ Si un archivo JSON contiene una matriz, se crean claves de configuración para l
 
 El proveedor de configuración JSON lee los datos de configuración en los siguientes pares clave-valor:
 
-| Key                     | Valor  |
+| Key                     | Value  |
 | ----------------------- | :----: |
 | json_array:key          | valueA |
 | json_array:subsection:0 | valueB |
