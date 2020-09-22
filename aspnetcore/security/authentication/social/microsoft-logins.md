@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/microsoft-logins
-ms.openlocfilehash: 3430d842b6a4f7da30370977f72e6f132e28bb7f
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 36341a0e439be57d7da4f787aa6103b92c624e96
+ms.sourcegitcommit: 62cc131969b2379f7a45c286a751e22d961dfbdb
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634259"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90847590"
 ---
 # <a name="microsoft-account-external-login-setup-with-aspnet-core"></a>Configuración de inicio de sesión externo de cuenta de Microsoft con ASP.NET Core
 
@@ -41,6 +41,8 @@ Si no tiene un cuenta de Microsoft, seleccione **crear uno**. Después de inicia
 * Seleccionar **nuevo registro**
 * Escriba un **nombre**.
 * Seleccione una opción para los **tipos de cuenta compatibles**.  <!-- Accounts for any org work with MS domain accounts. Most folks probably want the last option, personal MS accounts. It took 24 hours after setting this up for the keys to work -->
+  * El `MicrosoftAccount` paquete admite los registros de aplicaciones creados con las opciones "cuentas en cualquier directorio de la organización" o "cuentas de cualquier directorio de la organización y cuentas de Microsoft" de forma predeterminada.
+  * Para usar otras opciones, establezca `AuthorizationEndpoint` y `TokenEndpoint` los miembros de `MicrosoftAccountOptions` se usan para inicializar la autenticación de la cuenta Microsoft en las direcciones URL que se muestran en la página **puntos de conexión** del registro de la aplicación después de crearla (disponible al hacer clic en puntos de conexión en la página **información general** ).
 * En **URI de redirección**, escriba la dirección URL de desarrollo con `/signin-microsoft` anexado. Por ejemplo, `https://localhost:5001/signin-microsoft`. El esquema de autenticación de Microsoft configurado más adelante en este ejemplo administrará automáticamente las solicitudes en `/signin-microsoft` la ruta para implementar el flujo de OAuth.
 * Seleccione **Registrar**.
 
