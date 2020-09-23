@@ -5,7 +5,7 @@ description: Obtenga información sobre cómo enrutar solicitudes en aplicacione
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/14/2020
+ms.date: 09/02/2020
 no-loc:
 - ASP.NET Core Identity
 - cookie
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/routing
-ms.openlocfilehash: eb9e3cbddd2eaca8fef9a6782c28bbce4c029f58
-ms.sourcegitcommit: f09407d128634d200c893bfb1c163e87fa47a161
+ms.openlocfilehash: 09e7ca9c03103de116c566352496174e97fbc3ce
+ms.sourcegitcommit: a07f83b00db11f32313045b3492e5d1ff83c4437
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88865330"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90593013"
 ---
 # <a name="aspnet-core-no-locblazor-routing"></a>Enrutamiento de Blazor de ASP.NET Core
 
@@ -161,16 +161,35 @@ En la siguiente tabla figuran las restricciones de ruta que hay disponibles. Par
 
 ### <a name="routing-with-urls-that-contain-dots"></a>Enrutamiento con direcciones URL que contienen puntos
 
-En las aplicaciones Blazor Server, la ruta predeterminada en `_Host.cshtml` es `/` (`@page "/"`). Una dirección URL de solicitud que contiene un punto (`.`) no coincide con la ruta predeterminada porque la dirección URL parece que solicita un archivo. Una aplicación Blazor devuelve una respuesta *404 No encontrado* cuando un archivo estático no existe. Para usar rutas que contienen un punto, configure `_Host.cshtml` con la siguiente plantilla de ruta:
+En el caso de las aplicaciones hospedadas de Blazor WebAssembly y Blazor Server, la plantilla de ruta predeterminada del lado servidor presupone que, si el último segmento de una dirección URL de solicitud contiene un punto (`.`), se solicita un archivo (por ejemplo, `https://localhost.com:5001/example/some.thing`). Sin configuración adicional, una aplicación devuelve una respuesta *404: no encontrado* si se pretendía enrutar a un componente. Para usar una ruta con uno o más parámetros que contengan un punto, la aplicación debe configurar la ruta con una plantilla personalizada.
 
-```cshtml
-@page "/{**path}"
+Tenga en cuenta el siguiente componente de `Example` que puede recibir un parámetro de ruta del último segmento de la dirección URL:
+
+```razor
+@page "/example"
+@page "/example/{param}"
+
+<p>
+    Param: @Param
+</p>
+
+@code {
+    [Parameter]
+    public string Param { get; set; }
+}
 ```
 
-La plantilla `"/{**path}"` incluye lo siguiente:
+Para permitir que la aplicación *Server* de una solución de Blazor WebAssembly hospedada enrute la solicitud con un punto en el parámetro `param`, agregue una plantilla de ruta de archivo de reserva con el parámetro opcional en `Startup.Configure` (`Startup.cs`):
 
-* Una sintaxis de *captura general* de doble asterisco (`**`) para capturar la ruta de acceso en varios límites de carpeta sin descodificar las barras diagonales (`/`).
-* El nombre del parámetro de ruta `path`
+```csharp
+endpoints.MapFallbackToFile("/example/{param?}", "index.html");
+```
+
+Para configurar una aplicación Blazor Server para enrutar la solicitud con un punto en el parámetro `param`+, agregue una plantilla de ruta de página de reserva con el parámetro opcional en `Startup.Configure` (`Startup.cs`):
+
+```csharp
+endpoints.MapFallbackToPage("/example/{param?}", "/_Host");
+```
 
 Para obtener más información, vea <xref:fundamentals/routing>.
 
@@ -178,7 +197,7 @@ Para obtener más información, vea <xref:fundamentals/routing>.
 
 ::: moniker range=">= aspnetcore-5.0"
 
-*Esta sección se aplica a la versión candidata para lanzamiento 1 (RC1) de .NET 5 o una posterior, que se publicará a mediados de septiembre.*
+*Esta sección se aplica a ASP.NET Core en la versión candidata para lanzamiento 1 (RC1) de .NET 5 o una posterior.*
 
 Los parámetros de ruta de captura general, que capturan rutas de acceso en varios límites de carpeta, se admiten en los componentes. El parámetro de ruta de captura general debe ser:
 
@@ -203,7 +222,7 @@ Las barras diagonales y los segmentos de la ruta de acceso capturada están desc
 
 ::: moniker range="< aspnetcore-5.0"
 
-Los parámetros de ruta de captura general se admitirán en la versión candidata para lanzamiento 1 (RC1) de .NET 5 o una posterior, que se publicará a mediados de septiembre.*
+Los parámetros de ruta de captura general se admiten en ASP.NET Core en la versión candidata para lanzamiento 1 (RC1) de .NET 5 o una posterior. *
 
 ::: moniker-end
 

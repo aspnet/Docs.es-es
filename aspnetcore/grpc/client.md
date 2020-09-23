@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/client
-ms.openlocfilehash: 28e4f372e301a673644bfa97763ebc930f2d0ad5
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 9406c2a34126f3e5cd1406a55c3585e7a28f3dd9
+ms.sourcegitcommit: a07f83b00db11f32313045b3492e5d1ff83c4437
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634337"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90593052"
 ---
 # <a name="call-grpc-services-with-the-net-client"></a>Llamada a servicios gRPC con el cliente .NET
 
@@ -260,7 +260,18 @@ catch (RpcException ex)
 }
 ```
 
+## <a name="configure-deadline"></a>Configuración de la fecha límite
+
+Se recomienda configurar una fecha límite de llamada a gRPC porque proporciona un límite superior para el tiempo durante el que se puede ejecutar una llamada. Impide que los servicios de comportamiento incorrecto se ejecuten indefinidamente y agoten los recursos del servidor. Las fechas límite son una herramienta útil para compilar aplicaciones confiables.
+
+Configure `CallOptions.Deadline` para establecer una fecha límite para una llamada a gRPC:
+
+[!code-csharp[](~/grpc/deadlines-cancellation/deadline-client.cs?highlight=7,12)]
+
+Para obtener más información, vea <xref:grpc/deadlines-cancellation#deadlines>.
+
 ## <a name="additional-resources"></a>Recursos adicionales
 
 * <xref:grpc/clientfactory>
+* <xref:grpc/deadlines-cancellation>
 * <xref:grpc/basics>

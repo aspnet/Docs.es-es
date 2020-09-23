@@ -5,7 +5,7 @@ description: Sugerencias para aumentar el rendimiento de las aplicaciones Blazor
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 06/25/2020
+ms.date: 09/09/2020
 no-loc:
 - ASP.NET Core Identity
 - cookie
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/webassembly-performance-best-practices
-ms.openlocfilehash: 819947be90e7f09c7ba853df1af1f3c7066c0219
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 5d3cd1480dd37f437b2d6d5a89af0a842286be95
+ms.sourcegitcommit: 600666440398788db5db25dc0496b9ca8fe50915
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88625822"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90080269"
 ---
 # <a name="aspnet-core-no-locblazor-webassembly-performance-best-practices"></a>Procedimientos recomendados de rendimiento de Blazor WebAssembly en ASP.NET Core
 
@@ -141,9 +141,21 @@ Blazor WebAssembly ofrece dos versiones más de <xref:Microsoft.JSInterop.IJSRun
 
 ## <a name="reduce-app-size"></a>Reducción del tamaño de la aplicación
 
+::: moniker range=">= aspnetcore-5.0"
+
+### <a name="intermediate-language-il-trimming"></a>Recorte de lenguaje intermedio (IL)
+
+[Cuando una aplicación Blazor WebAssembly se recorta](xref:blazor/host-and-deploy/configure-trimmer), el tamaño de la aplicación se reduce quitando el código que no se usa en los archivos binarios de la aplicación. De forma predeterminada, el recortador se ejecuta al publicar una aplicación. Para sacar partido del recorte, publique la aplicación de implementación mediante el comando [`dotnet publish`](/dotnet/core/tools/dotnet-publish), con la opción [-c|--configuration](/dotnet/core/tools/dotnet-publish#options) establecida en `Release`:
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
 ### <a name="intermediate-language-il-linking"></a>Vinculación de lenguaje intermedio
 
-[Cuando una aplicación Blazor WebAssembly se vincula](xref:blazor/host-and-deploy/configure-linker), el tamaño de la aplicación se reduce recortando el código que no se usa en los archivos binarios de la aplicación. El vinculador solo está habilitado de forma predeterminada cuando se compila en la configuración `Release`. Para sacar partido de esto, publique la aplicación de implementación con el comando [`dotnet publish`](/dotnet/core/tools/dotnet-publish), con la opción [-c|--configuration](/dotnet/core/tools/dotnet-publish#options) establecida en `Release`:
+[Cuando una aplicación Blazor WebAssembly se vincula](xref:blazor/host-and-deploy/configure-linker), el tamaño de la aplicación se reduce recortando el código que no se usa en los archivos binarios de la aplicación. De forma predeterminada, el enlazador de lenguaje intermedio (IL) solo está habilitado cuando se compila en la configuración de `Release`. Para sacar partido de esto, publique la aplicación de implementación con el comando [`dotnet publish`](/dotnet/core/tools/dotnet-publish), con la opción [-c|--configuration](/dotnet/core/tools/dotnet-publish#options) establecida en `Release`:
+
+::: moniker-end
 
 ```dotnetcli
 dotnet publish -c Release
@@ -171,6 +183,20 @@ El runtime de Blazor WebAssembly incluye las siguientes características de .NET
   </PropertyGroup>
   ```
 
+::: moniker range=">= aspnetcore-5.0"
+
+* De forma predeterminada, Blazor WebAssembly incluye los recursos de globalización necesarios para mostrar valores, como las fechas y la moneda, en la referencia cultural del usuario. Si la aplicación no requiere localización, es posible [configurar la aplicación para que admita la referencia cultural invariable](xref:blazor/globalization-localization), que se basa en la referencia cultural `en-US`:
+
+  ```xml
+  <PropertyGroup>
+    <InvariantGlobalization>true</InvariantGlobalization>
+  </PropertyGroup>
+  ```
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
 * Se incluye información de intercalación para que API como <xref:System.StringComparison.InvariantCultureIgnoreCase?displayProperty=nameWithType> funcionen correctamente. Si está convencido de que la aplicación no necesita datos de intercalación, considere la posibilidad de deshabilitarla estableciendo en `false` la propiedad de MSBuild `BlazorWebAssemblyPreserveCollationData` del archivo de proyecto de la aplicación:
 
   ```xml
@@ -178,3 +204,5 @@ El runtime de Blazor WebAssembly incluye las siguientes características de .NET
     <BlazorWebAssemblyPreserveCollationData>false</BlazorWebAssemblyPreserveCollationData>
   </PropertyGroup>
   ```
+
+::: moniker-end

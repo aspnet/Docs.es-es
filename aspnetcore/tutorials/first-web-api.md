@@ -16,13 +16,14 @@ no-loc:
 - Let's Encrypt
 - Razor
 - SignalR
+- Models
 uid: tutorials/first-web-api
-ms.openlocfilehash: 3d83141b8b638a369b08b0fadafccd96c0b48214
-ms.sourcegitcommit: 4df148cbbfae9ec8d377283ee71394944a284051
+ms.openlocfilehash: ebce9f2f4992d83c6b28edb5c771cdfc8a7a0b6a
+ms.sourcegitcommit: 600666440398788db5db25dc0496b9ca8fe50915
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88876794"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90080386"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>Tutorial: Creación de una API web con ASP.NET Core
 
@@ -197,7 +198,7 @@ Un *modelo* es un conjunto de clases que representan los datos que la aplicació
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* En el **Explorador de soluciones**, haga clic con el botón derecho en el proyecto. Seleccione **Agregar** > **Nueva carpeta**. Asigne a la carpeta el nombre *Models*.
+* En el **Explorador de soluciones**, haga clic con el botón derecho en el proyecto. Seleccione **Agregar** > **Nueva carpeta**. Asigne a la carpeta el nombre *Models* .
 
 * Haga clic con el botón derecho en la carpeta *Models* y seleccione **Agregar** > **Clase**. Asigne a la clase el nombre *TodoItem* y seleccione **Agregar**.
 
@@ -205,17 +206,17 @@ Un *modelo* es un conjunto de clases que representan los datos que la aplicació
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-* Agregue una carpeta denominada *Models*.
+* Agregue una carpeta denominada *Models* .
 
 * Agregue una clase `TodoItem` a la carpeta *Models* con el código siguiente:
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)
 
-* Haga clic con el botón derecho en el proyecto. Seleccione **Agregar** > **Nueva carpeta**. Asigne a la carpeta el nombre *Models*.
+* Haga clic con el botón derecho en el proyecto. Seleccione **Agregar** > **Nueva carpeta**. Asigne a la carpeta el nombre *Models* .
 
   ![nueva carpeta](first-web-api-mac/_static/folder.png)
 
-* Haga clic con el botón derecho en la carpeta *Modelos* y seleccione **Agregar** > **Nuevo archivo** > **General** > **Clase vacía**.
+* Haga clic con el botón derecho en la carpeta *Models* y seleccione **Agregar** > **Nuevo archivo** > **General** > **Clase vacía**.
 
 * Asigne a la clase el nombre *TodoItem* y haga clic en **Nuevo**.
 
@@ -227,7 +228,7 @@ Un *modelo* es un conjunto de clases que representan los datos que la aplicació
 
 La propiedad `Id` funciona como clave única en una base de datos relacional.
 
-Las clases de modelo pueden ir en cualquier lugar del proyecto, pero convencionalmente e usa la carpeta *Models*.
+Las clases de modelo pueden ir en cualquier lugar del proyecto, pero, por convención, se usa la carpeta *Models* .
 
 ## <a name="add-a-database-context"></a>Incorporación de un contexto de base de datos
 
@@ -251,7 +252,7 @@ El *contexto de base de datos* es la clase principal que coordina la funcionalid
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code/Visual Studio para Mac](#tab/visual-studio-code+visual-studio-mac)
 
-* Agregue una clase `TodoContext` a la carpeta *Models*.
+* Agregue una clase `TodoContext` a la carpeta *Models* .
 
 ---
 
@@ -282,8 +283,8 @@ El código anterior:
 * Seleccione **Controlador de API con acciones mediante Entity Framework** y, después, seleccione **Agregar**.
 * En el cuadro de diálogo **Add API Controller with actions, using Entity Framework** (Agregar controlador de API con acciones mediante Entity Framework):
 
-  * Seleccione **TodoItem (TodoApi.Models)** en **Clase de modelo**.
-  * Seleccione **TodoContext (TodoApi.Models)** en **Clase de contexto de datos**.
+  * Seleccione **TodoItem (TodoApi.Models)** en la **Clase de modelo**.
+  * Seleccione **TodoContext (TodoApi.Models)** en la **Clase de contexto de datos**.
   * Seleccione **Agregar**.
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code/Visual Studio para Mac](#tab/visual-studio-code+visual-studio-mac)
@@ -639,7 +640,7 @@ Un *modelo* es un conjunto de clases que representan los datos que la aplicació
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* En el **Explorador de soluciones**, haga clic con el botón derecho en el proyecto. Seleccione **Agregar** > **Nueva carpeta**. Asigne a la carpeta el nombre *Models*.
+* En el **Explorador de soluciones**, haga clic con el botón derecho en el proyecto. Seleccione **Agregar** > **Nueva carpeta**. Asigne a la carpeta el nombre *Models* .
 
 * Haga clic con el botón derecho en la carpeta *Models* y seleccione **Agregar** > **Clase**. Asigne a la clase el nombre *TodoItem* y seleccione **Agregar**.
 
@@ -647,17 +648,17 @@ Un *modelo* es un conjunto de clases que representan los datos que la aplicació
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-* Agregue una carpeta denominada *Models*.
+* Agregue una carpeta denominada *Models* .
 
 * Agregue una clase `TodoItem` a la carpeta *Models* con el código siguiente:
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)
 
-* Haga clic con el botón derecho en el proyecto. Seleccione **Agregar** > **Nueva carpeta**. Asigne a la carpeta el nombre *Models*.
+* Haga clic con el botón derecho en el proyecto. Seleccione **Agregar** > **Nueva carpeta**. Asigne a la carpeta el nombre *Models* .
 
   ![nueva carpeta](first-web-api-mac/_static/folder.png)
 
-* Haga clic con el botón derecho en la carpeta *Modelos* y seleccione **Agregar** > **Nuevo archivo** > **General** > **Clase vacía**.
+* Haga clic con el botón derecho en la carpeta *Models* y seleccione **Agregar** > **Nuevo archivo** > **General** > **Clase vacía**.
 
 * Asigne a la clase el nombre *TodoItem* y haga clic en **Nuevo**.
 
@@ -669,7 +670,7 @@ Un *modelo* es un conjunto de clases que representan los datos que la aplicació
 
 La propiedad `Id` funciona como clave única en una base de datos relacional.
 
-Las clases de modelo pueden ir en cualquier lugar del proyecto, pero convencionalmente e usa la carpeta *Models*.
+Las clases de modelo pueden ir en cualquier lugar del proyecto, pero, por convención, se usa la carpeta *Models* .
 
 ## <a name="add-a-database-context"></a>Incorporación de un contexto de base de datos
 
@@ -681,7 +682,7 @@ El *contexto de base de datos* es la clase principal que coordina la funcionalid
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code/Visual Studio para Mac](#tab/visual-studio-code+visual-studio-mac)
 
-* Agregue una clase `TodoContext` a la carpeta *Models*.
+* Agregue una clase `TodoContext` a la carpeta *Models* .
 
 ---
 

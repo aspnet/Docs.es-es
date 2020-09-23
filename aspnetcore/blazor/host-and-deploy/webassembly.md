@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/webassembly
-ms.openlocfilehash: 6b4c3d55d77af104c969cac0fcbf642f35c7dd7f
-ms.sourcegitcommit: f09407d128634d200c893bfb1c163e87fa47a161
+ms.openlocfilehash: dadf6076e7f07c07381856aa225667a6eb38046a
+ms.sourcegitcommit: 600666440398788db5db25dc0496b9ca8fe50915
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88865266"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90080321"
 ---
 # <a name="host-and-deploy-aspnet-core-no-locblazor-webassembly"></a>Hospedaje e implementación de ASP.NET Core Blazor WebAssembly
 
@@ -708,9 +708,21 @@ El argumento `--urls` establece las direcciones IP o las direcciones de host con
   --urls=http://127.0.0.1:0
   ```
 
+::: moniker range=">= aspnetcore-5.0"
+
+## <a name="configure-the-trimmer"></a>Configurar el recortador
+
+Blazor realiza el recorte de lenguaje intermedio (IL) en cada compilación de lanzamiento para quitar el IL innecesario de los ensamblados de salida. Para obtener más información, vea <xref:blazor/host-and-deploy/configure-trimmer>.
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
 ## <a name="configure-the-linker"></a>Configurar el enlazador
 
 Blazor realiza la vinculación de lenguaje intermedio (IL) en cada compilación de lanzamiento para quitar el IL innecesario de los ensamblados de salida. Para obtener más información, vea <xref:blazor/host-and-deploy/configure-linker>.
+
+::: moniker-end
 
 ## <a name="custom-boot-resource-loading"></a>Carga de recursos de arranque personalizados
 
