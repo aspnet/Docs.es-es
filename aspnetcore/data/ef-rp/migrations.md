@@ -16,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-rp/migrations
-ms.openlocfilehash: d922e3a4ad3660bdd1c70dc262acc2f87bdd4214
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 78eb466fcfeb130e411df490f033114b3fdebeef
+ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88627005"
+ms.lasthandoff: 09/17/2020
+ms.locfileid: "90722636"
 ---
 # <a name="part-4-no-locrazor-pages-with-ef-core-migrations-in-aspnet-core"></a>Parte 4. Razor Pages con migraciones de EF Core en ASP.NET Core
 
@@ -132,7 +132,7 @@ Ejecute la aplicación y compruebe que la base de datos se ha inicializado.
 
 ## <a name="applying-migrations-in-production"></a>Aplicar las migraciones en producción
 
-Se recomienda que las aplicaciones de producción **no** llamen a [Database.Migrate](/dotnet/api/microsoft.entityframeworkcore.relationaldatabasefacadeextensions.migrate?view=efcore-2.0#Microsoft_EntityFrameworkCore_RelationalDatabaseFacadeExtensions_Migrate_Microsoft_EntityFrameworkCore_Infrastructure_DatabaseFacade_) al iniciar la aplicación. `Migrate` no se debe llamar desde una aplicación que se implementa en una granja de servidores. Si la aplicación se escala horizontalmente en varias instancias de servidor, es difícil garantizar que las actualizaciones del esquema de la base de datos no se realicen en varios servidores o que estén en conflicto con el acceso de lectura y escritura.
+Se recomienda que las aplicaciones de producción **no** llamen a [Database.Migrate](/dotnet/api/microsoft.entityframeworkcore.relationaldatabasefacadeextensions.migrate#Microsoft_EntityFrameworkCore_RelationalDatabaseFacadeExtensions_Migrate_Microsoft_EntityFrameworkCore_Infrastructure_DatabaseFacade_) al iniciar la aplicación. `Migrate` no se debe llamar desde una aplicación que se implementa en una granja de servidores. Si la aplicación se escala horizontalmente en varias instancias de servidor, es difícil garantizar que las actualizaciones del esquema de la base de datos no se realicen en varios servidores o que estén en conflicto con el acceso de lectura y escritura.
 
 La migración de bases de datos debe realizarse como parte de la implementación y de un modo controlado. Entre los métodos de migración de base de datos de producción se incluyen:
 
@@ -295,7 +295,7 @@ Ejecute la aplicación y compruebe que todo funciona correctamente.
 
 ## <a name="applying-migrations-in-production"></a>Aplicar las migraciones en producción
 
-Se recomienda que las aplicaciones de producción **no** llamen a [Database.Migrate](/dotnet/api/microsoft.entityframeworkcore.relationaldatabasefacadeextensions.migrate?view=efcore-2.0#Microsoft_EntityFrameworkCore_RelationalDatabaseFacadeExtensions_Migrate_Microsoft_EntityFrameworkCore_Infrastructure_DatabaseFacade_) al iniciar la aplicación. No debe llamarse a `Migrate` desde una aplicación en la granja de servidores. Por ejemplo, si la aplicación se ha implementado en la nube con escalado horizontal (se ejecutan varias instancias de la aplicación).
+Se recomienda que las aplicaciones de producción **no** llamen a [Database.Migrate](/dotnet/api/microsoft.entityframeworkcore.relationaldatabasefacadeextensions.migrate#Microsoft_EntityFrameworkCore_RelationalDatabaseFacadeExtensions_Migrate_Microsoft_EntityFrameworkCore_Infrastructure_DatabaseFacade_) al iniciar la aplicación. No debe llamarse a `Migrate` desde una aplicación en la granja de servidores. Por ejemplo, si la aplicación se ha implementado en la nube con escalado horizontal (se ejecutan varias instancias de la aplicación).
 
 La migración de bases de datos debe realizarse como parte de la implementación y de un modo controlado. Entre los métodos de migración de base de datos de producción se incluyen:
 

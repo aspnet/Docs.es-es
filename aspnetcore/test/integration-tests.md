@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: test/integration-tests
-ms.openlocfilehash: b06c06fb5e525a0bdc3df1de50236fa8f76daca9
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 9b36a77730a43c7515fcd2c56621412453784c9d
+ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88635117"
+ms.lasthandoff: 09/17/2020
+ms.locfileid: "90722545"
 ---
 # <a name="integration-tests-in-aspnet-core"></a>Pruebas de integración en ASP.NET Core
 
@@ -388,7 +388,7 @@ El sistema a prueba es un sistema de mensajes de Razor Pages con las siguientes 
 
 &#8224;En el tema de EF, [Pruebas con InMemory](/ef/core/miscellaneous/testing/in-memory), se explica cómo usar una base de datos en memoria para las pruebas con MSTest. En este tema se usa el marco de pruebas [xUnit](https://xunit.github.io/). Los conceptos y las implementaciones de prueba de diferentes marcos de pruebas son similares, pero no idénticos.
 
-Aunque la aplicación no usa el patrón del repositorio y no es un buen ejemplo del [patrón de unidad de trabajo (UoW)](https://martinfowler.com/eaaCatalog/unitOfWork.html), Razor Pages admite estos patrones de desarrollo. Para obtener más información, vea [Diseño del nivel de persistencia de infraestructura](/dotnet/standard/microservices-architecture/microservice-ddd-cqrs-patterns/infrastructure-persistence-layer-design) y [Lógica del controlador de pruebas](/aspnet/core/mvc/controllers/testing) (el ejemplo implementa el patrón del repositorio).
+Aunque la aplicación no usa el patrón del repositorio y no es un buen ejemplo del [patrón de unidad de trabajo (UoW)](https://martinfowler.com/eaaCatalog/unitOfWork.html), Razor Pages admite estos patrones de desarrollo. Para obtener más información, vea [Diseño del nivel de persistencia de infraestructura](/dotnet/standard/microservices-architecture/microservice-ddd-cqrs-patterns/infrastructure-persistence-layer-design) y [Lógica del controlador de pruebas](../mvc/controllers/testing.md) (el ejemplo implementa el patrón del repositorio).
 
 ### <a name="test-app-organization"></a>Organización de la aplicación de prueba
 
@@ -779,7 +779,7 @@ El sistema a prueba es un sistema de mensajes de Razor Pages con las siguientes 
 
 &#8224;En el tema de EF, [Pruebas con InMemory](/ef/core/miscellaneous/testing/in-memory), se explica cómo usar una base de datos en memoria para las pruebas con MSTest. En este tema se usa el marco de pruebas [xUnit](https://xunit.github.io/). Los conceptos y las implementaciones de prueba de diferentes marcos de pruebas son similares, pero no idénticos.
 
-Aunque la aplicación no usa el patrón del repositorio y no es un buen ejemplo del [patrón de unidad de trabajo (UoW)](https://martinfowler.com/eaaCatalog/unitOfWork.html), Razor Pages admite estos patrones de desarrollo. Para obtener más información, vea [Diseño del nivel de persistencia de infraestructura](/dotnet/standard/microservices-architecture/microservice-ddd-cqrs-patterns/infrastructure-persistence-layer-design) y [Lógica del controlador de pruebas](/aspnet/core/mvc/controllers/testing) (el ejemplo implementa el patrón del repositorio).
+Aunque la aplicación no usa el patrón del repositorio y no es un buen ejemplo del [patrón de unidad de trabajo (UoW)](https://martinfowler.com/eaaCatalog/unitOfWork.html), Razor Pages admite estos patrones de desarrollo. Para obtener más información, vea [Diseño del nivel de persistencia de infraestructura](/dotnet/standard/microservices-architecture/microservice-ddd-cqrs-patterns/infrastructure-persistence-layer-design) y [Lógica del controlador de pruebas](../mvc/controllers/testing.md) (el ejemplo implementa el patrón del repositorio).
 
 ### <a name="test-app-organization"></a>Organización de la aplicación de prueba
 

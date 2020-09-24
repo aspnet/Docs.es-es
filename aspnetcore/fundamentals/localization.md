@@ -16,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/localization
-ms.openlocfilehash: d5be01c67f455a2706a654574ef9f5e273551e70
-ms.sourcegitcommit: f09407d128634d200c893bfb1c163e87fa47a161
+ms.openlocfilehash: 478e9e58f265a8c372dd048f9ba8593424050e01
+ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88865443"
+ms.lasthandoff: 09/17/2020
+ms.locfileid: "90722675"
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>Globalización y localización en ASP.NET Core
 
@@ -66,7 +66,7 @@ En el código anterior se muestran los dos métodos factory.Create.
 
 Puede dividir las cadenas localizadas por controlador o por área, o bien tener un solo contenedor. En la aplicación de ejemplo, se usa una clase ficticia denominada `SharedResource` para los recursos compartidos.
 
-[!code-csharp[](localization/sample/3.x/Localization/Resources/SharedResource.cs)]
+[!code-csharp[](localization/sample/3.x/Localization/SharedResource.cs)]
 
 Algunos programadores usan la clase `Startup` para contener cadenas globales o compartidas. En el ejemplo siguiente, se usan los localizadores `InfoController` y `SharedResource`:
 
@@ -420,7 +420,7 @@ En el código anterior se muestran los dos métodos factory.Create.
 
 Puede dividir las cadenas localizadas por controlador o por área, o bien tener un solo contenedor. En la aplicación de ejemplo, se usa una clase ficticia denominada `SharedResource` para los recursos compartidos.
 
-[!code-csharp[](localization/sample/3.x/Localization/Resources/SharedResource.cs)]
+[!code-csharp[](localization/sample/3.x/Localization/SharedResource.cs)]
 
 Algunos programadores usan la clase `Startup` para contener cadenas globales o compartidas. En el ejemplo siguiente, se usan los localizadores `InfoController` y `SharedResource`:
 
@@ -775,7 +775,7 @@ En el código anterior se muestran los dos métodos factory.Create.
 
 Puede dividir las cadenas localizadas por controlador o por área, o bien tener un solo contenedor. En la aplicación de ejemplo, se usa una clase ficticia denominada `SharedResource` para los recursos compartidos.
 
-[!code-csharp[](localization/sample/3.x/Localization/Resources/SharedResource.cs)]
+[!code-csharp[](localization/sample/3.x/Localization/SharedResource.cs)]
 
 Algunos programadores usan la clase `Startup` para contener cadenas globales o compartidas. En el ejemplo siguiente, se usan los localizadores `InfoController` y `SharedResource`:
 

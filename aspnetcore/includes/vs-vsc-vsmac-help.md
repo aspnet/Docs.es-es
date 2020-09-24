@@ -2,8 +2,8 @@
 
 ## <a name="visual-studio-help"></a>Ayuda de Visual Studio
 
-* [Información sobre cómo depurar código de C# con Visual Studio](https://docs.microsoft.com/visualstudio/debugger/getting-started-with-the-debugger?view=vs-2017)
-* [Introducción al IDE de Visual Studio](https://docs.microsoft.com/visualstudio/ide/visual-studio-ide?view=vs-2017)
+* [Información sobre cómo depurar código de C# con Visual Studio](/visualstudio/debugger/getting-started-with-the-debugger?view=vs-2017)
+* [Introducción al IDE de Visual Studio](/visualstudio/ide/visual-studio-ide?view=vs-2017)
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -22,7 +22,7 @@
 
 ## <a name="visual-studio-for-mac-help"></a>Ayuda de Visual Studio para Mac
 
-* [Paseo por Visual Studio para Mac](https://docs.microsoft.com/visualstudio/mac/ide-tour)
-* [Presentación de Visual Studio para Mac](https://docs.microsoft.com/visualstudio/mac/)
+* [Paseo por Visual Studio para Mac](/visualstudio/mac/ide-tour)
+* [Presentación de Visual Studio para Mac](/visualstudio/mac/)
 
 ---

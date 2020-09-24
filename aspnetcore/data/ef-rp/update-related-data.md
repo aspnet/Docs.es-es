@@ -16,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-rp/update-related-data
-ms.openlocfilehash: 603c5e7c9f095c380461f8c6e4ead783ad35abe2
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 17b200f0ba90035c417c96689798263af16551de
+ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88630866"
+ms.lasthandoff: 09/17/2020
+ms.locfileid: "90722824"
 ---
 # <a name="part-7-no-locrazor-pages-with-ef-core-in-aspnet-core---update-related-data"></a>Parte 7. Razor Pages con EF Core en ASP.NET Core: Actualización de datos relacionados
 
@@ -46,7 +46,7 @@ Cree un archivo *Pages/Courses/DepartmentNamePageModel.cs* con el código siguie
 
 [!code-csharp[](intro/samples/cu30/Pages/Courses/DepartmentNamePageModel.cs)]
 
-En el código anterior se crea una clase [SelectList](/dotnet/api/microsoft.aspnetcore.mvc.rendering.selectlist?view=aspnetcore-2.0) para que contenga la lista de nombres de departamento. Si se especifica `selectedDepartment`, se selecciona ese departamento en la `SelectList`.
+En el código anterior se crea una clase [SelectList](/dotnet/api/microsoft.aspnetcore.mvc.rendering.selectlist) para que contenga la lista de nombres de departamento. Si se especifica `selectedDepartment`, se selecciona ese departamento en la `SelectList`.
 
 Las clases de modelo de página de Create y Edit se derivan de `DepartmentNamePageModel`.
 
@@ -111,7 +111,7 @@ La página contiene un campo oculto (`<input type="hidden">`) para el número de
 
 ## <a name="update-the-course-details-and-delete-pages"></a>Actualización de las páginas Course Details y Delete
 
-[AsNoTracking](/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.asnotracking?view=efcore-2.0#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_AsNoTracking__1_System_Linq_IQueryable___0__) puede mejorar el rendimiento cuando el seguimiento no es necesario.
+[AsNoTracking](/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.asnotracking#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_AsNoTracking__1_System_Linq_IQueryable___0__) puede mejorar el rendimiento cuando el seguimiento no es necesario.
 
 ### <a name="update-the-course-page-models"></a>Actualización de los modelos de página Course
 
@@ -263,7 +263,7 @@ En las páginas Courses/Create y Courses/Edit se necesita una lista de nombres d
 
 [!code-csharp[](intro/samples/cu/Pages/Courses/DepartmentNamePageModel.cshtml.cs?highlight=9,11,20-21)]
 
-En el código anterior se crea una clase [SelectList](/dotnet/api/microsoft.aspnetcore.mvc.rendering.selectlist?view=aspnetcore-2.0) para que contenga la lista de nombres de departamento. Si se especifica `selectedDepartment`, se selecciona ese departamento en la `SelectList`.
+En el código anterior se crea una clase [SelectList](/dotnet/api/microsoft.aspnetcore.mvc.rendering.selectlist) para que contenga la lista de nombres de departamento. Si se especifica `selectedDepartment`, se selecciona ese departamento en la `SelectList`.
 
 Las clases de modelo de página de Create y Edit se derivan de `DepartmentNamePageModel`.
 
@@ -328,7 +328,7 @@ Pruebe el código actualizado. Cree, modifique y elimine un curso.
 
 ## <a name="add-asnotracking-to-the-details-and-delete-page-models"></a>Agregar AsNoTracking a los modelos de página de Details y Delete
 
-[AsNoTracking](/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.asnotracking?view=efcore-2.0#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_AsNoTracking__1_System_Linq_IQueryable___0__) puede mejorar el rendimiento cuando el seguimiento no es necesario. Agregue `AsNoTracking` al modelo de página de Delete y Details. En el código siguiente se muestra el modelo de página de Delete actualizado:
+[AsNoTracking](/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.asnotracking#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_AsNoTracking__1_System_Linq_IQueryable___0__) puede mejorar el rendimiento cuando el seguimiento no es necesario. Agregue `AsNoTracking` al modelo de página de Delete y Details. En el código siguiente se muestra el modelo de página de Delete actualizado:
 
 [!code-csharp[](intro/samples/cu/Pages/Courses/Delete.cshtml.cs?name=snippet&highlight=21,23,40,41)]
 

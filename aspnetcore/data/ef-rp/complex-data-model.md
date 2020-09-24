@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-rp/complex-data-model
-ms.openlocfilehash: 3fab57df84e6902a8041940939c067da41f1674c
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 55269c6985534b49cc2567b2d197e46d9b7b1fd7
+ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88629735"
+ms.lasthandoff: 09/17/2020
+ms.locfileid: "90722532"
 ---
 # <a name="part-5-no-locrazor-pages-with-ef-core-in-aspnet-core---data-model"></a>Parte 5. Razor Pages con EF Core en ASP.NET Core: Modelo de datos
 
@@ -70,7 +70,7 @@ En el código anterior se agrega una propiedad `FullName` y los atributos siguie
 
 Para las fechas de inscripción de alumnos, en todas las páginas se muestra actualmente la hora del día junto con la fecha, aunque solo es relevante la fecha. Mediante los atributos de anotación de datos, puede realizar un cambio de código que fijará el formato de presentación en todas las páginas en la que se muestren los datos. 
 
-El atributo [DataType](/dotnet/api/system.componentmodel.dataannotations.datatypeattribute?view=netframework-4.7.1) especifica un tipo de datos más específico que el tipo intrínseco de base de datos. En este caso solo se debe mostrar la fecha, no la fecha y hora. La [enumeración DataType](/dotnet/api/system.componentmodel.dataannotations.datatype?view=netframework-4.7.1) proporciona muchos tipos de datos, como Date (Fecha), Time (Hora), PhoneNumber (Número de teléfono), Currency (Divisa), EmailAddress (Dirección de correo electrónico), etc. El atributo `DataType` también puede permitir que la aplicación proporcione automáticamente características específicas del tipo. Por ejemplo:
+El atributo [DataType](/dotnet/api/system.componentmodel.dataannotations.datatypeattribute) especifica un tipo de datos más específico que el tipo intrínseco de base de datos. En este caso solo se debe mostrar la fecha, no la fecha y hora. La [enumeración DataType](/dotnet/api/system.componentmodel.dataannotations.datatype) proporciona muchos tipos de datos, como Date (Fecha), Time (Hora), PhoneNumber (Número de teléfono), Currency (Divisa), EmailAddress (Dirección de correo electrónico), etc. El atributo `DataType` también puede permitir que la aplicación proporcione automáticamente características específicas del tipo. Por ejemplo:
 
 * El vínculo `mailto:` se crea automáticamente para `DataType.EmailAddress`.
 * El selector de fecha se proporciona para `DataType.Date` en la mayoría de los exploradores.
@@ -100,11 +100,11 @@ Para obtener más información, vea la [documentación del asistente de etiqueta
 [StringLength(50, ErrorMessage = "First name cannot be longer than 50 characters.")]
 ```
 
-Las reglas de validación de datos y los mensajes de error de validación se pueden especificar con atributos. El atributo [StringLength](/dotnet/api/system.componentmodel.dataannotations.stringlengthattribute?view=netframework-4.7.1) especifica la longitud mínima y máxima de caracteres que se permite en un campo de datos. En el código que se muestra se limitan los nombres a un máximo de 50 caracteres. [Más adelante](#the-required-attribute) se muestra un ejemplo en el que se establece la longitud mínima de la cadena.
+Las reglas de validación de datos y los mensajes de error de validación se pueden especificar con atributos. El atributo [StringLength](/dotnet/api/system.componentmodel.dataannotations.stringlengthattribute) especifica la longitud mínima y máxima de caracteres que se permite en un campo de datos. En el código que se muestra se limitan los nombres a un máximo de 50 caracteres. [Más adelante](#the-required-attribute) se muestra un ejemplo en el que se establece la longitud mínima de la cadena.
 
 El atributo `StringLength` también proporciona validación del lado cliente y del lado servidor. El valor mínimo no influye en el esquema de base de datos.
 
-El atributo `StringLength` no impide que un usuario escriba un espacio en blanco para un nombre. El atributo [RegularExpression](/dotnet/api/system.componentmodel.dataannotations.regularexpressionattribute?view=netframework-4.7.1) se puede usar para aplicar restricciones a la entrada. Por ejemplo, el código siguiente requiere que el primer carácter sea una letra mayúscula y el resto de caracteres sean alfabéticos:
+El atributo `StringLength` no impide que un usuario escriba un espacio en blanco para un nombre. El atributo [RegularExpression](/dotnet/api/system.componentmodel.dataannotations.regularexpressionattribute) se puede usar para aplicar restricciones a la entrada. Por ejemplo, el código siguiente requiere que el primer carácter sea una letra mayúscula y el resto de caracteres sean alfabéticos:
 
 ```csharp
 [RegularExpression(@"^[A-Z]+[a-zA-Z]*$")]
@@ -760,7 +760,7 @@ Actualice *Models/Student.cs* con el siguiente código resaltado:
 
 [!code-csharp[](intro/samples/cu21/Models/Student.cs?name=snippet_DataType&highlight=3,12-13)]
 
-El atributo [DataType](/dotnet/api/system.componentmodel.dataannotations.datatypeattribute?view=netframework-4.7.1) especifica un tipo de datos más específico que el tipo intrínseco de base de datos. En este caso solo se debe mostrar la fecha, no la fecha y hora. La [enumeración DataType](/dotnet/api/system.componentmodel.dataannotations.datatype?view=netframework-4.7.1) proporciona muchos tipos de datos, como Date (Fecha), Time (Hora), PhoneNumber (Número de teléfono), Currency (Divisa), EmailAddress (Dirección de correo electrónico), etc. El atributo `DataType` también puede permitir que la aplicación proporcione automáticamente características específicas del tipo. Por ejemplo:
+El atributo [DataType](/dotnet/api/system.componentmodel.dataannotations.datatypeattribute) especifica un tipo de datos más específico que el tipo intrínseco de base de datos. En este caso solo se debe mostrar la fecha, no la fecha y hora. La [enumeración DataType](/dotnet/api/system.componentmodel.dataannotations.datatype) proporciona muchos tipos de datos, como Date (Fecha), Time (Hora), PhoneNumber (Número de teléfono), Currency (Divisa), EmailAddress (Dirección de correo electrónico), etc. El atributo `DataType` también puede permitir que la aplicación proporcione automáticamente características específicas del tipo. Por ejemplo:
 
 * El vínculo `mailto:` se crea automáticamente para `DataType.EmailAddress`.
 * El selector de fecha se proporciona para `DataType.Date` en la mayoría de los exploradores.
@@ -790,13 +790,13 @@ Ejecutar la aplicación. Vaya a la página de índice de Students. Ya no se mues
 
 ### <a name="the-stringlength-attribute"></a>El atributo StringLength
 
-Las reglas de validación de datos y los mensajes de error de validación se pueden especificar con atributos. El atributo [StringLength](/dotnet/api/system.componentmodel.dataannotations.stringlengthattribute?view=netframework-4.7.1) especifica la longitud mínima y máxima de caracteres que se permite en un campo de datos. El atributo `StringLength` también proporciona validación del lado cliente y del lado servidor. El valor mínimo no influye en el esquema de base de datos.
+Las reglas de validación de datos y los mensajes de error de validación se pueden especificar con atributos. El atributo [StringLength](/dotnet/api/system.componentmodel.dataannotations.stringlengthattribute) especifica la longitud mínima y máxima de caracteres que se permite en un campo de datos. El atributo `StringLength` también proporciona validación del lado cliente y del lado servidor. El valor mínimo no influye en el esquema de base de datos.
 
 Actualice el modelo `Student` con el código siguiente:
 
 [!code-csharp[](intro/samples/cu21/Models/Student.cs?name=snippet_StringLength&highlight=10,12)]
 
-El código anterior limita los nombres a no más de 50 caracteres. El atributo `StringLength` no impide que un usuario escriba un espacio en blanco para un nombre. El atributo [RegularExpression](/dotnet/api/system.componentmodel.dataannotations.regularexpressionattribute?view=netframework-4.7.1) se usa para aplicar restricciones a la entrada. Por ejemplo, el código siguiente requiere que el primer carácter sea una letra mayúscula y el resto de caracteres sean alfabéticos:
+El código anterior limita los nombres a no más de 50 caracteres. El atributo `StringLength` no impide que un usuario escriba un espacio en blanco para un nombre. El atributo [RegularExpression](/dotnet/api/system.componentmodel.dataannotations.regularexpressionattribute) se usa para aplicar restricciones a la entrada. Por ejemplo, el código siguiente requiere que el primer carácter sea una letra mayúscula y el resto de caracteres sean alfabéticos:
 
 ```csharp
 [RegularExpression(@"^[A-Z]+[a-zA-Z]*$")]

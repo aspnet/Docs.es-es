@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/docker/building-net-docker-images
-ms.openlocfilehash: dfb807d5e8d8b949feb0ea87f7f6bcecd04817e8
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 791cc14feac30ad8a571d155624ab821dfd77981
+ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88627330"
+ms.lasthandoff: 09/17/2020
+ms.locfileid: "90722863"
 ---
 # <a name="docker-images-for-aspnet-core"></a>Imágenes de Docker para ASP.NET Core
 
@@ -264,8 +264,8 @@ Como se indicó en el archivo Dockerfile anterior, los archivos `*.csproj` se co
 * [Comando de compilación de Docker](https://docs.docker.com/engine/reference/commandline/build)
 * [Comando de ejecución de Docker](https://docs.docker.com/engine/reference/commandline/run)
 * [Ejemplo de Docker de ASP.NET Core](https://github.com/dotnet/dotnet-docker) (el usado en este tutorial).
-* [Configurar ASP.NET Core para trabajar con servidores proxy y equilibradores de carga](/aspnet/core/host-and-deploy/proxy-load-balancer)
-* [Working with Visual Studio Docker Tools](https://docs.microsoft.com/aspnet/core/publishing/visual-studio-tools-for-docker) (Trabajo con Visual Studio Docker Tools)
+* [Configurar ASP.NET Core para trabajar con servidores proxy y equilibradores de carga](../proxy-load-balancer.md)
+* [Working with Visual Studio Docker Tools](./visual-studio-tools-for-docker.md) (Trabajo con Visual Studio Docker Tools)
 * [Depuración con Visual Studio Code](https://code.visualstudio.com/docs/nodejs/debugging-recipes#_debug-nodejs-in-docker-containers)
 * [GC mediante Docker y contenedores pequeños](xref:performance/memory#sc)
 

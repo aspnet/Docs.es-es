@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/routing
-ms.openlocfilehash: cf450385db3c7327de233357d4c13d556ee44bad
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 1b8ccb510927fbc8a40f7424ae1ca4a131799095
+ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633682"
+ms.lasthandoff: 09/17/2020
+ms.locfileid: "90722889"
 ---
 # <a name="routing-in-aspnet-core"></a>Enrutamiento en ASP.NET Core
 
@@ -50,7 +50,7 @@ En este documento se describen los detalles de bajo nivel del enrutamiento de AS
 El sistema de enrutamiento de puntos de conexión descrito en este documento se aplica a ASP.NET Core 3.0 y versiones posteriores. Para obtener información sobre el sistema de enrutamiento anterior basado en <xref:Microsoft.AspNetCore.Routing.IRouter>, seleccione la versión ASP.NET Core 2.1 mediante uno de los enfoques siguientes:
 
 * El selector de versión de una versión anterior.
-* Seleccione [Enrutamiento de ASP.NET Core 2.1](https://docs.microsoft.com/aspnet/core/fundamentals/routing?view=aspnetcore-2.1).
+* Seleccione [Enrutamiento de ASP.NET Core 2.1](?view=aspnetcore-2.1).
 
 [Vea o descargue el código de ejemplo](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/routing/samples/3.x) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
@@ -1025,7 +1025,7 @@ services.AddMvc(options => options.EnableEndpointRouting = false)
     .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 ```
 
-Para obtener más información sobre el enrutamiento basado en <xref:Microsoft.AspNetCore.Routing.IRouter>, vea la [versión para ASP.NET Core 2.1 de este tema](/aspnet/core/fundamentals/routing?view=aspnetcore-2.1).
+Para obtener más información sobre el enrutamiento basado en <xref:Microsoft.AspNetCore.Routing.IRouter>, vea la [versión para ASP.NET Core 2.1 de este tema](?view=aspnetcore-2.1).
 
 > [!IMPORTANT]
 > En este documento se describe el enrutamiento de ASP.NET Core de bajo nivel. Para obtener información sobre el enrutamiento de ASP.NET Core MVC, vea <xref:mvc/controllers/routing>. Para obtener más información sobre las convenciones de enrutamiento en Razor Pages, consulte <xref:razor-pages/razor-pages-conventions>.
@@ -1557,8 +1557,8 @@ Con la ruta anterior, la acción `SubscriptionManagementController.GetAll` coinc
 
 ASP.NET Core proporciona las convenciones de API para usar transformadores de parámetros con rutas generadas:
 
-* ASP.NET Core MVC tiene la convención de API `Microsoft.AspNetCore.Mvc.ApplicationModels.RouteTokenTransformerConvention`. Esta convención aplica un transformador de parámetro especificado a todas las rutas de atributo de la aplicación. El transformador de parámetro transforma los tokens de rutas de atributo a medida que se reemplazan. Para más información, consulte [Usar un transformador de parámetro para personalizar el reemplazo de tokens](/aspnet/core/mvc/controllers/routing#use-a-parameter-transformer-to-customize-token-replacement).
-* `Microsoft.AspNetCore.Mvc.ApplicationModels.PageRouteTransformerConvention` Pages tiene la convención de API Razor. Esta convención aplica un transformador de parámetros especificado a todas las instancias de Razor Pages detectadas de forma automática. El transformador de parámetros transforma los segmentos de nombre de archivo y carpeta de las rutas de Razor Pages. Para más información, consulte el artículo sobre cómo [usar un transformador de parámetro para personalizar rutas de Razor Pages](/aspnet/core/razor-pages/razor-pages-conventions#use-a-parameter-transformer-to-customize-page-routes).
+* ASP.NET Core MVC tiene la convención de API `Microsoft.AspNetCore.Mvc.ApplicationModels.RouteTokenTransformerConvention`. Esta convención aplica un transformador de parámetro especificado a todas las rutas de atributo de la aplicación. El transformador de parámetro transforma los tokens de rutas de atributo a medida que se reemplazan. Para más información, consulte [Usar un transformador de parámetro para personalizar el reemplazo de tokens](xref:mvc/controllers/routing#use-a-parameter-transformer-to-customize-token-replacement).
+* `Microsoft.AspNetCore.Mvc.ApplicationModels.PageRouteTransformerConvention` Pages tiene la convención de API Razor. Esta convención aplica un transformador de parámetros especificado a todas las instancias de Razor Pages detectadas de forma automática. El transformador de parámetros transforma los segmentos de nombre de archivo y carpeta de las rutas de Razor Pages. Para más información, consulte el artículo sobre cómo [usar un transformador de parámetro para personalizar rutas de Razor Pages](xref:razor-pages/razor-pages-conventions#use-a-parameter-transformer-to-customize-page-routes).
 
 ## <a name="url-generation-reference"></a>Referencia de generación de direcciones URL
 

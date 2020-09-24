@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/publish-to-azure-webapp-using-vs
-ms.openlocfilehash: 380e18d1826159fa0780909aba58fe8334ede8bb
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: ebfe89d68725d597d6975015bbf84414ff818829
+ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88631945"
+ms.lasthandoff: 09/17/2020
+ms.locfileid: "90722915"
 ---
 # <a name="publish-an-aspnet-core-app-to-azure-with-visual-studio"></a>Publicar una aplicación de ASP.NET Core en Azure con Visual Studio
 
@@ -34,7 +34,7 @@ Por [Rick Anderson](https://twitter.com/RickAndMSFT)
 ::: moniker-end
 
 
-Consulte [Publicación de una aplicación web en Azure App Service mediante Visual Studio para Mac](https://docs.microsoft.com/visualstudio/mac/publish-app-svc?view=vsmac-2019) si trabaja en macOS.
+Consulte [Publicación de una aplicación web en Azure App Service mediante Visual Studio para Mac](/visualstudio/mac/publish-app-svc?view=vsmac-2019) si trabaja en macOS.
 
 Para solucionar un problema de implementación de App Service, vea <xref:test/troubleshoot-azure-iis>.
 
