@@ -17,18 +17,18 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/partial
-ms.openlocfilehash: 7a370042520adfe5b06784b76acf41a81eb2c72d
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: bb75d8b7d78c82c9c32605ac645b8895fdfb78e3
+ms.sourcegitcommit: 74f4a4ddbe3c2f11e2e09d05d2a979784d89d3f5
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88630632"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91393657"
 ---
 # <a name="partial-views-in-aspnet-core"></a>Vistas parciales en ASP.NET Core
 
 Por [Steve Smith](https://ardalis.com/), [Maher JENDOUBI](https://twitter.com/maherjend), [Rick Anderson](https://twitter.com/RickAndMSFT) y [Scott Sauber](https://twitter.com/scottsauber)
 
-Una vista parcial es un [Razor](xref:mvc/views/razor) archivo de marcado (*. cshtml*) que representa la salida HTML *dentro de* otra salida representada de un archivo de marcado.
+Una vista parcial es un [Razor](xref:mvc/views/razor) archivo de marcado (*. cshtml*) sin una [`@page`](xref:mvc/views/razor#page) Directiva que representa la salida HTML *dentro* de otra salida representada de un archivo de marcado.
 
 ::: moniker range=">= aspnetcore-2.1"
 
@@ -57,7 +57,7 @@ No utilice una vista parcial donde se requiera la ejecución de código o lógic
 
 ::: moniker range=">= aspnetcore-2.0"
 
-Una vista parcial es un archivo de marcado *. cshtml* que se mantiene en la carpeta *views* (MVC) o en la carpeta *pages* ( Razor pages).
+Una vista parcial es un archivo de marcado *. cshtml* sin una [`@page`](xref:mvc/views/razor#page) Directiva que se mantiene en la carpeta *views* (MVC) o en la carpeta *pages* ( Razor pages).
 
 En ASP.NET Core MVC, la clase <xref:Microsoft.AspNetCore.Mvc.ViewResult> de un controlador es capaz de devolver una vista o una vista parcial. En Razor las páginas, un <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel> puede devolver una vista parcial representada como un <xref:Microsoft.AspNetCore.Mvc.PartialViewResult> objeto. La referencia y representación de vistas parciales se describe en la sección [Referencia a una vista parcial](#reference-a-partial-view).
 
@@ -168,7 +168,7 @@ En el ejemplo siguiente se hace referencia a una vista parcial con una ruta de a
 <partial name="../Account/_PartialName.cshtml" />
 ```
 
-Para más información, consulte <xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper>.
+Para obtener más información, vea <xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper>.
 
 ::: moniker-end
 

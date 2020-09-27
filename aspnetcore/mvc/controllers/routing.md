@@ -16,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/routing
-ms.openlocfilehash: 08cd6396cca78488827dfa7c2cca62a35c500dbd
-ms.sourcegitcommit: 8fcb08312a59c37e3542e7a67dad25faf5bb8e76
+ms.openlocfilehash: e451d511ab7791a05024d88635d8005132ad4edd
+ms.sourcegitcommit: 74f4a4ddbe3c2f11e2e09d05d2a979784d89d3f5
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90009705"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91393930"
 ---
 # <a name="routing-to-controller-actions-in-aspnet-core"></a>Enrutar a acciones de controlador de ASP.NET Core
 
@@ -353,7 +353,7 @@ Considere el siguiente controlador:
 En el código anterior:
 
 * Cada acción contiene el `[HttpGet]` atributo, que limita la coincidencia a las solicitudes HTTP GET únicamente.
-* La `GetProduct` acción incluye la `"{id}"` plantilla, por lo `id` que se anexa a la `"api/[controller]"` plantilla en el controlador. La plantilla de métodos es `"api/[controller]/"{id}""` . Por lo tanto, esta acción solo coincide con las solicitudes GET de para el formulario `/api/test2/xyz` , `/api/test2/123` , `/api/test2/{any string}` , etc.
+* La `GetProduct` acción incluye la `"{id}"` plantilla, por lo `id` que se anexa a la `"api/[controller]"` plantilla en el controlador. La plantilla de métodos es `"api/[controller]/"{id}""` . Por lo tanto, esta acción solo coincide con las solicitudes GET del formulario `/api/test2/xyz` ,, `/api/test2/123` `/api/test2/{any string}` , etc.
   [!code-csharp[](routing/samples/3.x/main/Controllers/Test2Controller.cs?name=snippet2)]
 * La `GetIntProduct` acción contiene la `"int/{id:int}")` plantilla. La `:int` parte de la plantilla restringe los `id` valores de ruta a cadenas que se pueden convertir en un entero. Una solicitud GET a `/api/test2/int/abc` :
   * No coincide con esta acción.
@@ -1410,7 +1410,7 @@ Las acciones se enrutan bien mediante convención o bien mediante atributos. Col
 
 ## <a name="complex-segments"></a>Segmentos complejos
 
-Los segmentos complejos (por ejemplo, `[Route("/dog{token}cat")]`), se procesan buscando coincidencias de literales de derecha a izquierda de un modo no expansivo. Para ver una descripción, eche un vistazo al [código fuente](https://github.com/aspnet/Routing/blob/9cea167cfac36cf034dbb780e3f783114ef94780/src/Microsoft.AspNetCore.Routing/Patterns/RoutePatternMatcher.cs#L296). Para más información, vea [este problema](https://github.com/dotnet/AspNetCore.Docs/issues/8197).
+Los segmentos complejos (por ejemplo, `[Route("/dog{token}cat")]`), se procesan buscando coincidencias de literales de derecha a izquierda de un modo no expansivo. Para ver una descripción, eche un vistazo al [código fuente](https://github.com/aspnet/Routing/blob/9cea167cfac36cf034dbb780e3f783114ef94780/src/Microsoft.AspNetCore.Routing/Patterns/RoutePatternMatcher.cs#L296). Para obtener más información, consulte [este problema](https://github.com/dotnet/AspNetCore.Docs/issues/8197).
 
 <a name="routing-url-gen-ref-label"></a>
 

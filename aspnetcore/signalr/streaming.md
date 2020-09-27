@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/streaming
-ms.openlocfilehash: 29748ebe24fea03415b5a01b21300433e3fbc0f0
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 5a172818f8910a637b731dc1b1315965f448b2ba
+ms.sourcegitcommit: 74f4a4ddbe3c2f11e2e09d05d2a979784d89d3f5
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634220"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91393579"
 ---
 # <a name="use-streaming-in-aspnet-core-no-locsignalr"></a>Usar streaming en ASP.NET Core SignalR
 
@@ -74,7 +74,7 @@ En el ejemplo siguiente se muestran los aspectos básicos de la transmisión de 
 > [!NOTE]
 > Escriba en `ChannelWriter<T>` en un subproceso en segundo plano y devuelva lo `ChannelReader` antes posible. Otras invocaciones del concentrador se bloquean hasta que `ChannelReader` se devuelve un.
 >
-> Ajusta la lógica en un `try ... catch` . Complete el `Channel` en `catch` y fuera de `catch` para asegurarse de que la invocación del método del concentrador se ha completado correctamente.
+> Ajuste la lógica en una [ `try ... catch` instrucción](/dotnet/csharp/language-reference/keywords/try-catch). Complete el `Channel` en un [ `finally` bloque](/dotnet/csharp/language-reference/keywords/try-catch-finally). Si desea fluir un error, Capture dentro del `catch` bloque y escríbalo en el `finally` bloque.
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -327,4 +327,4 @@ El `stream` método en `HubConnection` devuelve un objeto observable del tipo de
 * [Concentradores](xref:signalr/hubs)
 * [Cliente .NET](xref:signalr/dotnet-client)
 * [Cliente de JavaScript](xref:signalr/javascript-client)
-* [Publicación en Azure](xref:signalr/publish-to-azure-web-app)
+* [Publicar en Azure](xref:signalr/publish-to-azure-web-app)
