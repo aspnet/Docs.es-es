@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/comparison
-ms.openlocfilehash: d20740950f7ac56a3a3b2951b474151aaf9c6f5a
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 3f0e44bb374214328f589c6ca3952c6d7aab88d8
+ms.sourcegitcommit: 9c031530d2e652fe422e786bd43392bc500d622f
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88631230"
+ms.lasthandoff: 09/18/2020
+ms.locfileid: "90770134"
 ---
 # <a name="compare-grpc-services-with-http-apis"></a>Comparación entre los servicios gRPC y las API HTTP
 
@@ -95,6 +95,7 @@ gRPC se adapta perfectamente a los escenarios siguientes:
 * **Comunicación punto a punto en tiempo real**: gRPC tiene una excelente compatibilidad con el streaming bidireccional. Los servicios gRPC pueden insertar mensajes en tiempo real sin sondeos.
 * **Entornos políglotas**: las herramientas de gRPC admiten todos los lenguajes de desarrollo más populares, lo que convierte a gRPC en una buena opción para entornos de varios lenguajes.
 * **Entornos restringidos de red**: los mensajes gRPC se serializan con Protobuf, un formato de mensaje ligero. Un mensaje gRPC siempre es más pequeño que un mensaje JSON equivalente.
+* **(IPC)** : los transportes de IPC, como los sockets de dominio de Unix y las canalizaciones con nombre, se pueden usar con gRPC para la comunicación entre aplicaciones en el mismo equipo. Para obtener más información, vea <xref:grpc/interprocess>.
 
 ## <a name="grpc-weaknesses"></a>Inconvenientes de gRPC
 
@@ -102,12 +103,15 @@ gRPC se adapta perfectamente a los escenarios siguientes:
 
 En la actualidad no es posible llamar directamente a un servicio gRPC desde un explorador. gRPC usa intensamente características de HTTP/2 y ningún explorador proporciona el nivel de control requerido a través de solicitudes web para admitir un cliente de gRPC. Por ejemplo, los exploradores no permiten que el autor de la llamada exija el uso de HTTP/2, ni proporcionan acceso a los marcos HTTP/2 subyacentes.
 
-[gRPC-Web](https://grpc.io/docs/tutorials/basic/web.html) es una tecnología adicional del equipo de gRPC que proporciona compatibilidad limitada con gRPC en el explorador. gRPC-Web consta de dos partes: un cliente de JavaScript que admite todos los exploradores modernos y un proxy gRPC-Web en el servidor. El cliente gRPC-Web llama al proxy y este reenviará las solicitudes a gRPC al servidor gRPC.
+Los métodos comunes para llevar gRPC a las aplicaciones de explorador son dos:
 
-No todas las características de gRPC son compatibles con gRPC-Web. No se admite el streaming de cliente y bidireccional, y existe compatibilidad limitada para el streaming de servidor.
+* [gRPC-Web](https://grpc.io/docs/tutorials/basic/web.html) es una tecnología adicional del equipo de gRPC que proporciona compatibilidad con gRPC en el explorador. gRPC-Web permite que las aplicaciones de explorador saquen partido del uso de red de alto rendimiento y bajo nivel de gRPC. No todas las características de gRPC son compatibles con gRPC-Web. No se admite el streaming de cliente y bidireccional, y existe compatibilidad limitada para el streaming de servidor.
 
-> [!TIP]
-> .NET Core es compatible con gRPC-Web. Visite <xref:grpc/browser> para más información.
+  .NET Core es compatible con gRPC-Web. Para obtener más información, vea <xref:grpc/browser>.
+
+* Se pueden crear API web de JSON de RESTful automáticamente desde servicios gRPC, anotando para ello el archivo *.proto* con [metadatos HTTP](https://cloud.google.com/service-infrastructure/docs/service-management/reference/rpc/google.api#google.api.HttpRule). Esto permite que una aplicación admita API web de JSON y gRPC, sin duplicar el esfuerzo de tener que crear servicios independientes para cada uno de ellos.
+
+  .NET Core tiene compatibilidad experimental para crear API web de JSON desde servicios gRPC. Para obtener más información, vea <xref:grpc/httpapi>.
 
 ### <a name="not-human-readable"></a>No es legible por el usuario
 
@@ -123,7 +127,6 @@ En los escenarios siguientes se recomiendan otros marcos de trabajo antes que gR
 
 * **API accesibles de explorador**: gRPC no se admite de forma completa en el explorador. gRPC-Web puede ofrecer compatibilidad con el explorador, pero tiene limitaciones e introduce un proxy de servidor.
 * **Retransmisión de la comunicación en tiempo real**: gRPC admite la comunicación en tiempo real a través de streaming, pero no existe el concepto de retransmisión de un mensaje a las conexiones registradas. Por ejemplo, en un escenario de salón de chat en el que se deben enviar nuevos mensajes de chat a todos los clientes, es necesario que cada llamada gRPC transmita de forma individual los nuevos mensajes de chat al cliente. [SignalR](xref:signalr/introduction) es un marco útil para este escenario. SignalR tiene el concepto de conexiones persistentes y compatibilidad integrada para la retransmisión de mensajes.
-* **Comunicación entre procesos**: un proceso debe hospedar un servidor HTTP/2 para aceptar llamadas gRPC entrantes. En Windows, las [canalizaciones](/dotnet/standard/io/pipe-operations) de comunicación entre procesos son un método rápido y ligero de comunicación.
 
 ## <a name="additional-resources"></a>Recursos adicionales
 

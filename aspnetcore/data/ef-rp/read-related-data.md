@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-rp/read-related-data
-ms.openlocfilehash: 41b2ce35a6910df7587af7ebabe8a4984cda6ae5
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: dd00b9d7faf467857ec1e47f4cfb0296d84e5d3f
+ms.sourcegitcommit: 62cc131969b2379f7a45c286a751e22d961dfbdb
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634974"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90847707"
 ---
 # <a name="part-6-no-locrazor-pages-with-ef-core-in-aspnet-core---read-related-data"></a>Parte 6. Razor Pages con EF Core en ASP.NET Core: Lectura de datos relacionados
 
@@ -63,7 +63,7 @@ EF Core puede cargar datos relacionados en las propiedades de navegación de una
 
   ![Ejemplo de carga explícita](read-related-data/_static/explicit-loading.png)
 
-* [Carga diferida](/ef/core/querying/related-data#lazy-loading). [Se ha agregado la carga diferida a EF Core en la versión 2.1](/ef/core/querying/related-data#lazy-loading). Cuando la entidad se lee por primera vez, no se recuperan datos relacionados. La primera vez que se obtiene acceso a una propiedad de navegación, se recuperan automáticamente los datos necesarios para esa propiedad de navegación. Cada vez que se accede por primera vez a una propiedad de navegación, se envía una consulta a la base de datos.
+* [Carga diferida](/ef/core/querying/related-data#lazy-loading). Cuando la entidad se lee por primera vez, no se recuperan datos relacionados. La primera vez que se obtiene acceso a una propiedad de navegación, se recuperan automáticamente los datos necesarios para esa propiedad de navegación. Cada vez que se accede por primera vez a una propiedad de navegación, se envía una consulta a la base de datos. La carga diferida puede afectar negativamente al rendimiento, por ejemplo, cuando los desarrolladores usan patrones N+1, al cargar un elemento primario y enumerar los elementos secundarios.
 
 ## <a name="create-course-pages"></a>Creación de las páginas Course
 

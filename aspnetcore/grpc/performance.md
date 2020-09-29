@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/performance
-ms.openlocfilehash: a0a1a6901e07fb0074ca403870378f267d3d4403
-ms.sourcegitcommit: c9b03d8a6a4dcc59e4aacb30a691f349235a74c8
+ms.openlocfilehash: 4d50698b8c55f7fb3ef9a2c3102e73e046a22a9c
+ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89379450"
+ms.lasthandoff: 09/17/2020
+ms.locfileid: "90722850"
 ---
 # <a name="performance-best-practices-with-grpc"></a>Procedimientos recomendados de rendimiento con gRPC
 
@@ -121,6 +121,12 @@ Hay muchos servidores proxy L7 disponibles. Estas son algunas opciones:
 * [YARP: A Reverse Proxy](https://microsoft.github.io/reverse-proxy/): proxy de código abierto en versión preliminar escrito en .NET.
 
 ::: moniker range=">= aspnetcore-5.0"
+
+## <a name="inter-process-communication"></a>Comunicación entre procesos
+
+Las llamadas gRPC entre un cliente y un servicio se envían normalmente a través de sockets TCP. TCP es excelente para la comunicación a través de una red, pero la [comunicación entre procesos](https://wikipedia.org/wiki/Inter-process_communication) (IPC) es más eficaz cuando el cliente y el servicio están en la misma máquina.
+
+Considere la posibilidad de usar un transporte como sockets de dominio de Unix o canalizaciones con nombre en las llamadas gRPC entre procesos en el mismo equipo. Para obtener más información, vea <xref:grpc/interprocess>.
 
 ## <a name="keep-alive-pings"></a>Pings de mantenimiento de conexión
 

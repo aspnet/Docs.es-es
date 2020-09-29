@@ -5,7 +5,7 @@ description: Obtenga información sobre cómo usar los escenarios de formularios
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/18/2020
+ms.date: 09/17/2020
 no-loc:
 - ASP.NET Core Identity
 - cookie
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/forms-validation
-ms.openlocfilehash: 5efea1728a1460c728a0d90002fb1504fe5b3bbb
-ms.sourcegitcommit: a07f83b00db11f32313045b3492e5d1ff83c4437
+ms.openlocfilehash: 63cda3348073418e95dd9a0cbdb62e0b5f606383
+ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90593026"
+ms.lasthandoff: 09/17/2020
+ms.locfileid: "90721806"
 ---
 # <a name="aspnet-core-no-locblazor-forms-and-validation"></a>Formularios y validación de Blazor de ASP.NET Core
 
@@ -86,6 +86,7 @@ Hay disponible un conjunto de componentes integrados para recibir y validar las 
 | --------------- | ------------------- |
 | <xref:Microsoft.AspNetCore.Components.Forms.InputCheckbox> | `<input type="checkbox">` |
 | <xref:Microsoft.AspNetCore.Components.Forms.InputDate%601> | `<input type="date">` |
+| [`InputFile`](xref:blazor/file-uploads) | `<input type="file">` |
 | <xref:Microsoft.AspNetCore.Components.Forms.InputNumber%601> | `<input type="number">` |
 | [`InputRadio`](#radio-buttons) | `<input type="radio">` |
 | [`InputRadioGroup`](#radio-buttons) | `<input type="radio">` |
@@ -239,7 +240,7 @@ En el ejemplo siguiente:
 * El código adicional se ejecuta según el resultado de la validación. Coloque la lógica de negocios en el método asignado a <xref:Microsoft.AspNetCore.Components.Forms.EditForm.OnSubmit>.
 
 ```razor
-<EditForm EditContext="@editContext" OnSubmit="HandleSubmit">
+<EditForm EditContext="@editContext" OnSubmit="@HandleSubmit">
 
     ...
 
@@ -1030,6 +1031,32 @@ private class CustomValidator : ValidationAttribute
 > [!NOTE]
 > <xref:System.ComponentModel.DataAnnotations.ValidationContext.GetService%2A?displayProperty=nameWithType> es `null`. No se admite la inserción de servicios para la validación en el método `IsValid`.
 
+::: moniker range=">= aspnetcore-5.0"
+
+## <a name="custom-validation-class-attributes"></a>Atributos de clase de validación personalizados
+
+Los nombres de clase de validación personalizados son útiles al integrar con marcos de CSS, como [Bootstrap](https://getbootstrap.com/). Para especificar nombres de clase de validación personalizados, cree una clase derivada de `FieldCssClassProvider` y establezca dicha clase en la instancia <xref:Microsoft.AspNetCore.Components.Forms.EditContext>:
+
+```csharp
+var editContext = new EditContext(model);
+editContext.SetFieldCssClassProvider(new MyFieldClassProvider());
+
+...
+
+private class MyFieldClassProvider : FieldCssClassProvider
+{
+    public override string GetFieldCssClass(EditContext editContext, 
+        in FieldIdentifier fieldIdentifier)
+    {
+        var isValid = !editContext.GetValidationMessages(fieldIdentifier).Any();
+
+        return isValid ? "good field" : "bad field";
+    }
+}
+```
+
+::: moniker-end
+
 ### <a name="no-locblazor-data-annotations-validation-package"></a>Paquete de validación de anotaciones de datos de Blazor
 
 [`Microsoft.AspNetCore.Components.DataAnnotations.Validation`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.DataAnnotations.Validation) es un paquete que llena los huecos de experiencia de validación mediante el componente <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator>. Actualmente, el paquete está en fase *experimental*.
@@ -1085,7 +1112,7 @@ public class ShipDescription
     [Required]
     [StringLength(40, ErrorMessage = "Description too long (40 char).")]
     public string ShortDescription { get; set; }
-    
+
     [Required]
     [StringLength(240, ErrorMessage = "Description too long (240 char).")]
     public string LongDescription { get; set; }
@@ -1182,3 +1209,7 @@ Al asignar un parámetro <xref:Microsoft.AspNetCore.Components.Forms.EditForm.Mo
 ```csharp
 private ExampleModel exampleModel = new ExampleModel();
 ```
+
+## <a name="additional-resources"></a>Recursos adicionales
+
+* <xref:blazor/file-uploads>

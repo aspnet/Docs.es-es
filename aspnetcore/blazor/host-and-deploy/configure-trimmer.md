@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/configure-trimmer
-ms.openlocfilehash: 2923f76c586465e4e6044763f18527a7d36ad57c
-ms.sourcegitcommit: 600666440398788db5db25dc0496b9ca8fe50915
+ms.openlocfilehash: 57d8f069c79b558020253968d736f350bc8a6f03
+ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90080853"
+ms.lasthandoff: 09/17/2020
+ms.locfileid: "90721741"
 ---
 # <a name="configure-the-trimmer-for-aspnet-core-no-locblazor"></a>Configuración del recortador de ASP.NET Core Blazor
 
@@ -42,6 +42,7 @@ El recorte para aplicaciones .NET se puede deshabilitar estableciendo la propied
   <PublishTrimmed>false</PublishTrimmed>
 </PropertyGroup>
 ```
+Encontrará más opciones para configurar el recortador en [Opciones de recorte](/dotnet/core/deploying/trimming-options).
 
 ## <a name="additional-resources"></a>Recursos adicionales
 

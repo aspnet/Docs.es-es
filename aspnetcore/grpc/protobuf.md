@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/protobuf
-ms.openlocfilehash: 60af1add9ae2f8b2b94bc19b65667d7af91fb122
-ms.sourcegitcommit: 7258e94cf60c16e5b6883138e5e68516751ead0f
+ms.openlocfilehash: ea46e04bc4aa6269efbf8917d5f32194402a66ef
+ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2020
-ms.locfileid: "89102671"
+ms.lasthandoff: 09/17/2020
+ms.locfileid: "90722701"
 ---
 # <a name="create-protobuf-messages-for-net-apps"></a>Creación de mensajes de Protobuf para aplicaciones .NET
 
@@ -85,6 +85,10 @@ Protobuf admite una gama de tipos de valores escalares nativos. En la tabla sigu
 | `string`      | `string`     |
 | `bytes`       | `ByteString` |
 
+Los valores escalares siempre tienen un valor predeterminado y no se pueden establecer en `null`. Esta restricción incluye `string` y `ByteString`, que son clases de C#. `string` se establece de forma predeterminada en un valor de cadena vacía y `ByteString`, en un valor de bytes vacío. Al intentar establecerlos en `null`, se produce un error.
+
+Se pueden usar [tipos de contenedores que admiten valores NULL](#nullable-types) para admitir dichos valores.
+
 ### <a name="dates-and-times"></a>Fechas y horas
 
 Los tipos escalares nativos no proporcionan valores de fecha y hora, equivalentes a los valores <xref:System.DateTimeOffset>, <xref:System.DateTime> y <xref:System.TimeSpan> de .NET. Estos tipos se pueden especificar mediante el uso de algunas de las extensiones de *Tipos conocidos* de Protobuf. Estas extensiones proporcionan compatibilidad con el entorno de ejecución y la generación de código para los tipos de campo complejos en las plataformas admitidas.
@@ -145,19 +149,42 @@ message Person {
 }
 ```
 
-Protobuf usa tipos que admiten un valor NULL de .NET, por ejemplo, `int?`, para la propiedad de mensaje generada.
+Los tipos `wrappers.proto` no se exponen en las propiedades generadas. Protobuf los asigna automáticamente a los tipos adecuados que aceptan valores NULL de .NET en los mensajes de C#. Por ejemplo, un campo `google.protobuf.Int32Value` genera una propiedad `int?`. Las propiedades de tipo de referencia como `string` y `ByteString` no se alteran, excepto que se les puede asignar `null` sin errores.
 
 En la tabla siguiente se muestra la lista completa de tipos de contenedor con su tipo C# equivalente:
 
-| Tipo de C#   | Contenedor de Tipo conocido       |
-| --------- | ----------------------------- |
-| `bool?`   | `google.protobuf.BoolValue`   |
-| `double?` | `google.protobuf.DoubleValue` |
-| `float?`  | `google.protobuf.FloatValue`  |
-| `int?`    | `google.protobuf.Int32Value`  |
-| `long?`   | `google.protobuf.Int64Value`  |
-| `uint?`   | `google.protobuf.UInt32Value` |
-| `ulong?`  | `google.protobuf.UInt64Value` |
+| Tipo de C#      | Contenedor de Tipo conocido       |
+| ------------ | ----------------------------- |
+| `bool?`      | `google.protobuf.BoolValue`   |
+| `double?`    | `google.protobuf.DoubleValue` |
+| `float?`     | `google.protobuf.FloatValue`  |
+| `int?`       | `google.protobuf.Int32Value`  |
+| `long?`      | `google.protobuf.Int64Value`  |
+| `uint?`      | `google.protobuf.UInt32Value` |
+| `ulong?`     | `google.protobuf.UInt64Value` |
+| `string`     | `google.protobuf.StringValue` |
+| `ByteString` | `google.protobuf.BytesValue`  |
+
+### <a name="bytes"></a>Bytes
+
+Las cargas binarias se admiten en Protobuf con el tipo de valor escalar `bytes`. Una propiedad generada en C# usa `ByteString` como tipo de propiedad.
+
+Use `ByteString.CopyFrom(byte[] data)` para crear una instancia a partir de una matriz de bytes:
+
+```csharp
+var data = await File.ReadAllBytesAsync(path);
+
+var payload = new PayloadResponse();
+payload.Data = ByteString.CopyFrom(data);
+```
+
+El acceso a los datos de `ByteString` se realiza directamente por medio de `ByteString.Span` o `ByteString.Memory`. También se puede llamar a `ByteString.ToByteArray()` para volver a convertir una instancia en una matriz de bytes:
+
+```csharp
+var payload = await client.GetPayload(new PayloadRequest());
+
+await File.WriteAllBytesAsync(path, payload.Data.ToByteArray());
+```
 
 ### <a name="decimals"></a>Decimals
 
