@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/certauth
-ms.openlocfilehash: 54780e2d67c70d945fd875c41c8d6483aa358bbf
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 57d46e34993148943b1e9680a372405be9c80605
+ms.sourcegitcommit: 6c82d78662332cd40d614019b9ed17c46e25be28
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88627200"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91424209"
 ---
 # <a name="configure-certificate-authentication-in-aspnet-core"></a>Configurar la autenticación de certificados en ASP.NET Core
 
@@ -198,7 +198,7 @@ services.AddAuthentication(
             {
                 var validationService =
                     context.HttpContext.RequestServices
-                        .GetService<ICertificateValidationService>();
+                        .GetRequiredService<ICertificateValidationService>();
                 
                 if (validationService.ValidateCertificate(
                     context.ClientCertificate))
@@ -643,7 +643,7 @@ El siguiente enfoque admite certificados de cliente opcionales:
     * [Kestrel](/fundamentals/servers/kestrel):
       * [ListenOptions.UseHttps](xref:fundamentals/servers/kestrel#listenoptionsusehttps)
       * <xref:Microsoft.AspNetCore.Server.Kestrel.Https.HttpsConnectionAdapterOptions.ClientCertificateMode>
-      * Nota Kestrel no admite actualmente varias configuraciones de TLS en un enlace, necesitará dos enlaces con direcciones IP o puertos únicos. Vea https://github.com/dotnet/runtime/issues/31097.
+      * Nota Kestrel no admite actualmente varias configuraciones de TLS en un enlace, necesitará dos enlaces con direcciones IP o puertos únicos. Consulta https://github.com/dotnet/runtime/issues/31097.
     * IIS
       * [Hospedaje de IIS](xref:host-and-deploy/iis/index#create-the-iis-site)
       * [Configurar la seguridad en IIS](/iis/manage/configuring-security/how-to-set-up-ssl-on-iis#configure-ssl-settings-2)
@@ -651,7 +651,7 @@ El siguiente enfoque admite certificados de cliente opcionales:
 * Para las solicitudes a la aplicación web que requieren un certificado de cliente y no tienen una:
   * Redirigir a la misma página mediante el subdominio protegido por el certificado de cliente.
   * Por ejemplo, redirigir a `myClient.contoso.com/requestedPage` . Dado que la solicitud a `myClient.contoso.com/requestedPage` es un nombre de host diferente que `contoso.com/requestedPage` , el cliente establece una conexión diferente y se proporciona el certificado de cliente.
-  * Para más información, consulte <xref:security/authorization/introduction>.
+  * Para obtener más información, vea <xref:security/authorization/introduction>.
 
 Deje preguntas, comentarios y otros comentarios sobre los certificados de cliente opcionales en este problema de [discusión de github](https://github.com/dotnet/AspNetCore.Docs/issues/18720) .
 
