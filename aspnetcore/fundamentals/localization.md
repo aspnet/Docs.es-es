@@ -16,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/localization
-ms.openlocfilehash: 478e9e58f265a8c372dd048f9ba8593424050e01
-ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
+ms.openlocfilehash: fcf69bdaaed5cf0283ae27440c28061857d2cbcb
+ms.sourcegitcommit: d1a897ebd89daa05170ac448e4831d327f6b21a8
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90722675"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91606773"
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>Globalización y localización en ASP.NET Core
 
@@ -959,7 +959,7 @@ La lista predeterminada va de más específico a menos específico. Más adelant
 
 ### <a name="querystringrequestcultureprovider"></a>QueryStringRequestCultureProvider
 
-Algunas aplicaciones usarán una cadena de consulta para establecer <https://docs.microsoft.com/dotnet/api/system.globalization.cultureinfo?view=netcore-3.1>. Para las aplicaciones que usan el método de cookie o de encabezado Accept-Language, es útil agregar una cadena de consulta a la dirección URL para depurar y probar el código. De forma predeterminada, `QueryStringRequestCultureProvider` está registrado como primer proveedor de localización en la lista `RequestCultureProvider`. Debe pasar los parámetros de cadena de consulta `culture` y `ui-culture`. En el ejemplo siguiente, la referencia cultural específica (idioma y región) se establece en español (México):
+Algunas aplicaciones usarán una cadena de consulta para establecer <xref:System.Globalization.CultureInfo>. Para las aplicaciones que usan el método de cookie o de encabezado Accept-Language, es útil agregar una cadena de consulta a la dirección URL para depurar y probar el código. De forma predeterminada, `QueryStringRequestCultureProvider` está registrado como primer proveedor de localización en la lista `RequestCultureProvider`. Debe pasar los parámetros de cadena de consulta `culture` y `ui-culture`. En el ejemplo siguiente, la referencia cultural específica (idioma y región) se establece en español (México):
 
 ```
 http://localhost:5000/?culture=es-MX&ui-culture=es-MX

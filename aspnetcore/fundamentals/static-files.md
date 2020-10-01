@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/static-files
-ms.openlocfilehash: 24fda96dbe48945d172eb36e8a91af31f168ff7f
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 36eeb3532ed5ea6f5f75c20cbe14331ed840a788
+ms.sourcegitcommit: 74f4a4ddbe3c2f11e2e09d05d2a979784d89d3f5
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88627668"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91393943"
 ---
 # <a name="static-files-in-aspnet-core"></a>Archivos estáticos en ASP.NET Core
 
@@ -127,7 +127,7 @@ Un enfoque alternativo consiste en proporcionar archivos según la autorización
 
 El examen de directorios permite enumerar directorios dentro de los directorios especificados.
 
-Por motivos de seguridad, el examen de directorios está deshabilitado de forma predeterminada. Para más información, consulte [Consideraciones](#sc).
+Por motivos de seguridad, el examen de directorios está deshabilitado de forma predeterminada. Para más información, consulte [Consideraciones](#considerations).
 
 Habilite el examen de directorios con:
 
@@ -363,7 +363,7 @@ El middleware de archivos estáticos no proporciona comprobaciones de autorizaci
 
 ## <a name="enable-directory-browsing"></a>Habilite el examen de directorios
 
-El examen de directorios permite a los usuarios de su aplicación web ver una lista de directorios y archivos contenidos en un directorio especificado. Por motivos de seguridad, el examen de directorios está deshabilitado de forma predeterminada (consulte [Consideraciones](#sc)). Habilite el examen de directorios invocando el método <xref:Microsoft.AspNetCore.Builder.DirectoryBrowserExtensions.UseDirectoryBrowser%2A> en `Startup.Configure`:
+El examen de directorios permite a los usuarios de su aplicación web ver una lista de directorios y archivos contenidos en un directorio especificado. Por motivos de seguridad, el examen de directorios está deshabilitado de forma predeterminada (consulte [Consideraciones](#considerations)). Habilite el examen de directorios invocando el método <xref:Microsoft.AspNetCore.Builder.DirectoryBrowserExtensions.UseDirectoryBrowser%2A> en `Startup.Configure`:
 
 [!code-csharp[](static-files/samples/1.x/StaticFilesSample/StartupBrowse.cs?name=snippet_ConfigureMethod&highlight=12-17)]
 

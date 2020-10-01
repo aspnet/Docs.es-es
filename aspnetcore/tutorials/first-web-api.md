@@ -18,12 +18,12 @@ no-loc:
 - SignalR
 - Models
 uid: tutorials/first-web-api
-ms.openlocfilehash: 7f684d96ee9fd640abdc750503bed1b2a836a459
-ms.sourcegitcommit: 62cc131969b2379f7a45c286a751e22d961dfbdb
+ms.openlocfilehash: 212d8a80bdc466479c34bc5fbd9c3261ca9d54c4
+ms.sourcegitcommit: 74f4a4ddbe3c2f11e2e09d05d2a979784d89d3f5
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90847757"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91393917"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>Tutorial: Creación de una API web con ASP.NET Core
 
@@ -983,7 +983,7 @@ Actualice el elemento to-do que tiene el Id = 1 y establezca su nombre en "fee
 
 ```json
   {
-    "Id":1,
+    "id":1,
     "name":"feed fish",
     "isComplete":true
   }
@@ -1410,7 +1410,7 @@ Actualice el elemento to-do que tiene el Id = 1 y establezca su nombre en "fee
 
 ```json
   {
-    "Id":1,
+    "id":1,
     "name":"feed fish",
     "isComplete":true
   }
