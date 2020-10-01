@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/advanced/formatting
-ms.openlocfilehash: 618bb60ea382437b2787adb814f319b1f0cea4ca
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: b89be93fc33d1eba5c2ad9508adf93fa54014ff8
+ms.sourcegitcommit: d1a897ebd89daa05170ac448e4831d327f6b21a8
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88626537"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91606789"
 ---
 # <a name="format-response-data-in-aspnet-core-web-api"></a>Aplicación de formato a datos de respuesta en ASP.NET Core Web API
 
@@ -36,7 +36,7 @@ ASP.NET Core MVC tiene compatibilidad para formatear datos de respuesta. Se pued
 
 Algunos tipos de resultado de acción son específicos de un formato determinado, como <xref:Microsoft.AspNetCore.Mvc.JsonResult> y <xref:Microsoft.AspNetCore.Mvc.ContentResult>. Las acciones pueden devolver resultados con un formato determinado, independientemente de las preferencias del cliente. Por ejemplo, la devolución de `JsonResult` devuelve datos con formato JSON. Al devolver `ContentResult` o una cadena se devuelven datos de cadena con formato de texto sin formato.
 
-No se requiere una acción para devolver ningún tipo específico. ASP.NET Core admite cualquier valor devuelto de objeto.  Los resultados de acciones que devuelven objetos que no son tipos <xref:Microsoft.AspNetCore.Mvc.IActionResult> se serializan con la implementación <xref:Microsoft.AspNetCore.Mvc.Formatters.IOutputFormatter> correspondiente. Para más información, consulte <xref:web-api/action-return-types>.
+No se requiere una acción para devolver ningún tipo específico. ASP.NET Core admite cualquier valor devuelto de objeto.  Los resultados de acciones que devuelven objetos que no son tipos <xref:Microsoft.AspNetCore.Mvc.IActionResult> se serializan con la implementación <xref:Microsoft.AspNetCore.Mvc.Formatters.IOutputFormatter> correspondiente. Para obtener más información, vea <xref:web-api/action-return-types>.
 
 El método auxiliar integrado <xref:Microsoft.AspNetCore.Mvc.ControllerBase.Ok*> devuelve datos con formato JSON: [!code-csharp[](./formatting/sample/Controllers/AuthorsController.cs?name=snippet_get)]
 
@@ -164,9 +164,17 @@ Antes de ASP.NET Core 3.0, los formateadores JSON usados de forma predeterminada
 
 [!code-csharp[](./formatting/3.0sample/StartupNewtonsoftJson.cs?name=snippet)]
 
+En el código anterior, la llamada a `AddNewtonsoftJson` configura las siguientes características de API Web, MVC y Razor pages que se van a usar `Newtonsoft.Json` :
+
+* Formateadores de entrada y salida que leen y escriben JSON
+* <xref:Microsoft.AspNetCore.Mvc.JsonResult>
+* [JSON Patch](xref:web-api/jsonpatch)
+* <xref:Microsoft.AspNetCore.Mvc.Rendering.IJsonHelper>
+* [TempData](xref:fundamentals/app-state#tempdata)
+
 Es posible que algunas características no funcionen bien con formateadores basados en `System.Text.Json` y requieren una referencia a los formateadores basados en `Newtonsoft.Json`. Siga usando los formateadores basados en `Newtonsoft.Json` si la aplicación:
 
-* Usa atributos `Newtonsoft.Json`.  Por ejemplo, `[JsonProperty]` o `[JsonIgnore]`.
+* Usa atributos `Newtonsoft.Json`. Por ejemplo, `[JsonProperty]` o `[JsonIgnore]`.
 * Proporciona la configuración de la serialización.
 * Se basa en las características que `Newtonsoft.Json` proporciona.
 * Configura `Microsoft.AspNetCore.Mvc.JsonResult.SerializerSettings`. Antes de ASP.NET Core 3.0, `JsonResult.SerializerSettings` acepta una instancia de `JsonSerializerSettings` específica de `Newtonsoft.Json`.
