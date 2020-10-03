@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: 1338ecd6205a351b54a58522b1713a6d70e2d22a
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: f648837ce42bef4a828d7eda1a6abdfdd8ac07a2
+ms.sourcegitcommit: e519d95d17443abafba8f712ac168347b15c8b57
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634753"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91654041"
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>Hospedaje de ASP.NET Core en Windows con IIS
 
@@ -548,24 +548,6 @@ ICACLS C:\sites\MyWebApp /grant "IIS AppPool\DefaultAppPool":F
 ```
 
 Para más información, consulte el tema [icacls](/windows-server/administration/windows-commands/icacls).
-
-## <a name="http2-support"></a>Compatibilidad con HTTP/2
-
-[HTTP/2](https://httpwg.org/specs/rfc7540.html) es compatible con ASP.NET Core en los escenarios de implementación de IIS siguientes:
-
-* En proceso
-  * Windows Server 2016/Windows 10 o posterior; IIS 10 o posterior
-  * Conexión con TLS 1.2 o una versión posterior
-* Fuera de proceso
-  * Windows Server 2016/Windows 10 o posterior; IIS 10 o posterior
-  * Las conexiones de servidor perimetral de acceso público usan HTTP/2, pero la conexión de proxy inverso al [servidor de Kestrel](xref:fundamentals/servers/kestrel) usa HTTP/1.1.
-  * Conexión con TLS 1.2 o una versión posterior
-
-Para una implementación en proceso cuando se establece una conexión HTTP/2, [HttpRequest.Protocol](xref:Microsoft.AspNetCore.Http.HttpRequest.Protocol*) notifica `HTTP/2`. Para una implementación fuera de proceso cuando se establece una conexión HTTP/2, [HttpRequest.Protocol](xref:Microsoft.AspNetCore.Http.HttpRequest.Protocol*) notifica `HTTP/1.1`.
-
-Para obtener más información sobre los modelos de hospedaje en proceso y fuera de proceso, consulte <xref:host-and-deploy/aspnet-core-module>.
-
-HTTP/2 está habilitado de forma predeterminada. Las conexiones vuelven a HTTP/1.1 si no se establece una conexión HTTP/2. Para más información sobre la configuración HTTP/2 con implementaciones de IIS, vea [HTTP/2 en IIS](/iis/get-started/whats-new-in-iis-10/http2-on-iis).
 
 ## <a name="cors-preflight-requests"></a>Solicitudes CORS de preflight
 
