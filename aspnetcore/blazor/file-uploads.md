@@ -5,7 +5,7 @@ description: Información sobre cómo cargar archivos en Blazor con el component
 monikerRange: '>= aspnetcore-5.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/17/2020
+ms.date: 09/29/2020
 no-loc:
 - ASP.NET Core Identity
 - cookie
@@ -18,24 +18,38 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/file-uploads
-ms.openlocfilehash: de4654f2efc401143e066628b096052efa65d7a0
-ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
+ms.openlocfilehash: 06d1464cb731a8008362fc911f463e4ff8a37b6b
+ms.sourcegitcommit: d1a897ebd89daa05170ac448e4831d327f6b21a8
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90722960"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91606658"
 ---
 # <a name="aspnet-core-no-locblazor-file-uploads"></a>Cargas de archivos de ASP.NET Core Blazor
 
-Por [Daniel Roth](https://github.com/danroth27)
+De [Daniel Roth](https://github.com/danroth27) y [Pranav Krishnamoorthy](https://github.com/pranavkm)
 
-Use el componente `InputFile` para leer los datos del archivo de explorador en código .NET, incluidos los relativos a las cargas de archivos. El componente `InputFile` se representa como una entrada HTML de tipo `file`.
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/file-uploads/samples/) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+
+Use el componente `InputFile` para leer los datos del archivo de explorador en código .NET, incluidos los relativos a las cargas de archivos.
+
+> [!WARNING]
+> Siga siempre los procedimientos recomendados de seguridad de carga de archivos. Para obtener más información, vea <xref:mvc/models/file-uploads#security-considerations>.
+
+## <a name="inputfile-component"></a>Componente de `InputFile`
+
+El componente `InputFile` se representa como una entrada HTML de tipo `file`.
 
 De forma predeterminada, los usuarios seleccionan archivos individuales. Agregue el atributo `multiple` para que sea posible cargar varios archivos a la vez. Cuando un usuario selecciona uno o varios archivos, el componente `InputFile` activa un evento `OnChange` y pasa un elemento `InputFileChangeEventArgs` que proporciona acceso a la lista de archivos seleccionados y detalles de cada archivo.
 
+Para leer datos de un archivo seleccionado por el usuario:
+
+* Llame a `OpenReadStream` en el archivo y lea desde el flujo devuelto. Para obtener más información, vea la sección [Flujos de archivos](#file-streams).
+* Use `ReadAsync`. De forma predeterminada, `ReadAsync` solo permite leer un archivo con un tamaño inferior a 524 288 bytes (512 KB). Este límite está presente para evitar que los desarrolladores lean accidentalmente archivos de gran tamaño en la memoria. Especifique una aproximación razonable para el tamaño de archivo máximo esperado si deben admitirse archivos más grandes. Evite leer el flujo de archivos entrantes directamente en la memoria. Por ejemplo, no copie los bytes de un archivo en un elemento <xref:System.IO.MemoryStream> o lo lea como una matriz de bytes. Estos enfoques pueden dar lugar a problemas de rendimiento y seguridad, sobre todo en Blazor Server. En su lugar, considere la posibilidad de copiar bytes de un archivo en un almacén externo, como un blob o un archivo en disco.
+
 Un componente que recibe un archivo de imagen puede llamar al método de conveniencia `RequestImageFileAsync` en el archivo para cambiar el tamaño de los datos de imagen en el runtime de JavaScript del explorador antes de que la imagen se transmita a la aplicación.
 
-En el siguiente ejemplo se muestra la carga de varios archivos de imagen en un componente:
+En el ejemplo siguiente se muestra la carga de varios archivos de imagen en un componente. `InputFileChangeEventArgs.GetMultipleFiles` permite leer varios archivos. Especifique el número máximo de archivos que espera leer para evitar que un usuario malintencionado cargue más de los que la aplicación espera. `InputFileChangeEventArgs.File` permite leer el primer y único archivo si la carga de archivos no admite varios.
 
 ```razor
 <h3>Upload PNG images</h3>
@@ -46,7 +60,7 @@ En el siguiente ejemplo se muestra la carga de varios archivos de imagen en un c
 
 @if (imageDataUrls.Count > 0)
 {
-    <h3>Images</h3>
+    <h4>Images</h4>
 
     <div class="card" style="width:30rem;">
         <div class="card-body">
@@ -63,10 +77,10 @@ En el siguiente ejemplo se muestra la carga de varios archivos de imagen en un c
 
     private async Task OnInputFileChange(InputFileChangeEventArgs e)
     {
-        var imageFiles = e.GetMultipleFiles();
+        var maxAllowedFiles = 3;
         var format = "image/png";
 
-        foreach (var imageFile in imageFiles)
+        foreach (var imageFile in e.GetMultipleFiles(maxAllowedFiles))
         {
             var resizedImageFile = await imageFile.RequestImageFileAsync(format, 
                 100, 100);
@@ -80,4 +94,15 @@ En el siguiente ejemplo se muestra la carga de varios archivos de imagen en un c
 }
 ```
 
-Para leer datos de un archivo seleccionado por el usuario, llame a `OpenReadStream` en el archivo y lea del flujo devuelto. En una aplicación Blazor WebAssembly, los datos se transmiten directamente al código .NET dentro del explorador. En una aplicación Blazor Server, los datos de archivo se transmiten al código .NET en el servidor a medida que el archivo se lee desde la secuencia. 
+`IBrowserFile` devuelve metadatos [que expone el explorador](https://developer.mozilla.org/docs/Web/API/File#Instance_properties) como propiedades. Estos metadatos pueden ser útiles para la validación preliminar. Por ejemplo, vea los [componentes de ejemplo `FileUpload.razor` y `FilePreview.razor`](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/file-uploads/samples/).
+
+## <a name="file-streams"></a>Flujos de archivos
+
+En una aplicación Blazor WebAssembly, los datos se transmiten directamente al código .NET dentro del explorador.
+
+En una aplicación Blazor Server, los datos de archivo se transmiten en la conexión SignalR al código .NET en el servidor a medida que el archivo se lee desde el flujo. [`Forms.RemoteBrowserFileStreamOptions`](https://github.com/dotnet/aspnetcore/blob/master/src/Components/Web/src/Forms/InputFile/RemoteBrowserFileStreamOptions.cs) permite configurar las características de carga de archivos para Blazor Server.
+
+## <a name="additional-resources"></a>Recursos adicionales
+
+* <xref:mvc/models/file-uploads#security-considerations>
+* <xref:blazor/forms-validation>

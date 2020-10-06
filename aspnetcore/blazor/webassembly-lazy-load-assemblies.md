@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/webassembly-lazy-load-assemblies
-ms.openlocfilehash: eb4aaa2f3d412cdf650ed2daf7c12166991d92a1
-ms.sourcegitcommit: a07f83b00db11f32313045b3492e5d1ff83c4437
+ms.openlocfilehash: e874ec6f24d8b03fc6c7133013147498cbbc293a
+ms.sourcegitcommit: 4febe4efaf6e1a7be65d772b500c00fca0af216a
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90592909"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91451166"
 ---
 # <a name="lazy-load-assemblies-in-aspnet-core-no-locblazor-webassembly"></a>Ensamblados de carga diferida en Blazor WebAssembly de ASP.NET Core
 
@@ -38,7 +38,7 @@ La característica de carga diferida de Blazor permite marcar los ensamblados de
 
 ## <a name="project-file"></a>Archivo del proyecto
 
-Marque los ensamblados para la carga diferida en el archivo del proyecto de la aplicación (`.csproj`) mediante el elemento `BlazorWebAssemblyLazyLoad`. Use el nombre de ensamblado sin la extensión `.dll`. El marco de trabajo de Blazor impide que los ensamblados especificados por este grupo de elementos se carguen al iniciar la aplicación. En el ejemplo siguiente se marca un ensamblado personalizado grande (`GrantImaharaRobotControls.dll`) para la carga diferida. Si un ensamblado que está marcado para la carga diferida tiene dependencias, también se deben marcar para la carga diferida en el archivo del proyecto.
+Marque los ensamblados para la carga diferida en el archivo del proyecto de la aplicación (`.csproj`) mediante el elemento `BlazorWebAssemblyLazyLoad`. Use el nombre de ensamblado con la extensión `.dll`. El marco de trabajo de Blazor impide que los ensamblados especificados por este grupo de elementos se carguen al iniciar la aplicación. En el ejemplo siguiente se marca un ensamblado personalizado grande (`GrantImaharaRobotControls.dll`) para la carga diferida. Si un ensamblado que está marcado para la carga diferida tiene dependencias, también se deben marcar para la carga diferida en el archivo del proyecto.
 
 ```xml
 <ItemGroup>
@@ -106,7 +106,7 @@ Dentro de `OnNavigateAsync`, implemente la lógica para determinar los ensamblad
 La implementación de carga diferida del marco admite la carga diferida con representación previa en una solución de Blazor hospedada. Durante la representación previa, se supone que se cargan todos los ensamblados, incluidos los marcados para la carga diferida. Registre manualmente `LazyAssemblyLoader` en el método `Startup.ConfigureServices` del proyecto de *Server* (`Startup.cs`):
 
 ```csharp
-services.AddSingleton<LazyAssemblyLoader>();
+services.AddScoped<LazyAssemblyLoader>();
 ```
 
 ### <a name="user-interaction-with-navigating-content"></a>Interacción del usuario con el contenido de `<Navigating>`

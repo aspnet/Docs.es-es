@@ -19,12 +19,12 @@ no-loc:
 - SignalR
 uid: blazor/state-management
 zone_pivot_groups: blazor-hosting-models
-ms.openlocfilehash: 43794fad36efe44cad6fbb2f1a1cae293a2ddad1
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: a74f056447839c4cf057948f26a9ece9b5799656
+ms.sourcegitcommit: d1a897ebd89daa05170ac448e4831d327f6b21a8
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88625965"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91606713"
 ---
 # <a name="aspnet-core-no-locblazor-state-management"></a>Administración de estado de Blazor en ASP.NET Core
 
@@ -58,11 +58,12 @@ Una aplicación solo puede conservar el *estado de la aplicación*. Las interfac
 
 ## <a name="where-to-persist-state"></a>Dónde conservar el estado
 
-Existen tres ubicaciones comunes para el estado persistente:
+Existen ubicaciones comunes para el estado persistente:
 
 * [Almacenamiento del lado servidor](#server-side-storage)
 * [URL](#url)
 * [Almacenamiento del explorador](#browser-storage)
+* [Servicio de contenedor de estado en memoria](#in-memory-state-container-service)
 
 ### <a name="server-side-storage"></a>Almacenamiento del lado servidor
 
@@ -119,6 +120,10 @@ Por lo general, es más seguro usar `sessionStorage`. `sessionStorage` evita el 
 > [!WARNING]
 > Los usuarios pueden ver o alterar los datos almacenados en `localStorage` y `sessionStorage`.
 
+## <a name="in-memory-state-container-service"></a>Servicio de contenedor de estado en memoria
+
+[!INCLUDE[](~/includes/blazor-state-management/state-container.md)]
+
 ## <a name="additional-resources"></a>Recursos adicionales
 
 * [Guardar el estado de la aplicación antes de una operación de autenticación](xref:blazor/security/webassembly/additional-scenarios#save-app-state-before-an-authentication-operation)
@@ -162,11 +167,12 @@ Una aplicación solo puede conservar el *estado de la aplicación*. Las interfac
 
 ## <a name="where-to-persist-state"></a>Dónde conservar el estado
 
-Existen tres ubicaciones comunes para el estado persistente:
+Existen ubicaciones comunes para el estado persistente:
 
 * [Almacenamiento del lado servidor](#server-side-storage)
 * [URL](#url)
 * [Almacenamiento del explorador](#browser-storage)
+* [Servicio de contenedor de estado en memoria](#in-memory-state-container-service)
 
 ### <a name="server-side-storage"></a>Almacenamiento del lado servidor
 
@@ -701,5 +707,9 @@ En general, se recomienda el patrón *componente primario del proveedor de estad
 Para conservar muchos objetos de estado diferentes y consumir distintos subconjuntos de objetos en distintos lugares, es mejor evitar la conservación global del estado.
 
 ::: moniker-end
+
+## <a name="in-memory-state-container-service"></a>Servicio de contenedor de estado en memoria
+
+[!INCLUDE[](~/includes/blazor-state-management/state-container.md)]
 
 ::: zone-end

@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-rp/intro
-ms.openlocfilehash: 9dd8d293e189eebe6b61f6f0b35aee71977d2f77
-ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
+ms.openlocfilehash: 35a5758500ae2bc691c8d08eccb22340f9998c39
+ms.sourcegitcommit: 6c82d78662332cd40d614019b9ed17c46e25be28
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90722558"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91424298"
 ---
 # <a name="no-locrazor-pages-with-entity-framework-core-in-aspnet-core---tutorial-1-of-8"></a>Razor Pages con Entity Framework Core en ASP.NET Core: Tutorial 1 de 8
 
@@ -40,11 +40,11 @@ Este es el primero de una serie de tutoriales en los que se muestra cómo usar E
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-[!INCLUDE[VS prereqs](~/includes/net-core-prereqs-vs-3.0.md)]
+[!INCLUDE[VS prereqs](~/includes/net-core-prereqs-vs-5.0.md)]
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-[!INCLUDE[VS Code prereqs](~/includes/net-core-prereqs-vsc-3.0.md)]
+[!INCLUDE[VS Code prereqs](~/includes/net-core-prereqs-vsc-5.0.md)]
 
 ---
 
@@ -68,49 +68,51 @@ La aplicación compilada en estos tutoriales es un sitio web básico de una univ
 
 ![Página de edición de estudiantes](intro/_static/student-edit30.png)
 
-El estilo de la interfaz de usuario de este sitio se basa en las plantillas de proyecto integradas. El enfoque del tutorial es cómo usar EF Core, no cómo personalizar la interfaz de usuario.
+El estilo de la interfaz de usuario de este sitio se basa en las plantillas de proyecto integradas. El enfoque del tutorial es cómo usar EF Core con ASP.NET Core, no cómo personalizar la interfaz de usuario.
 
-Siga el vínculo de la parte superior de la página para obtener el código fuente para el proyecto completado. La carpeta *cu30* contiene el código para la versión ASP.NET Core 3.0 del tutorial. Los archivos que reflejan el estado del código para los tutoriales 1-7 se pueden encontrar en la carpeta *cu30snapshots*.
+<!-- 
+Follow the link at the top of the page to get the source code for the completed project. The *cu50* folder has the code for the ASP.NET Core 5.0 version of the tutorial. Files that reflect the state of the code for tutorials 1-7 can be found in the *cu50snapshots* folder.
 
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+# [Visual Studio](#tab/visual-studio)
 
-Para ejecutar la aplicación después de descargar el proyecto completado:
+To run the app after downloading the completed project:
 
-* Compile el proyecto.
-* En la Consola del administrador de paquetes (PMC), ejecute el comando siguiente:
+* Build the project.
+* In Package Manager Console (PMC) run the following command:
 
   ```powershell
   Update-Database
   ```
 
-* Ejecute el proyecto para inicializar la base de datos.
+* Run the project to seed the database.
 
-# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# [Visual Studio Code](#tab/visual-studio-code)
 
-Para ejecutar la aplicación después de descargar el proyecto completado:
+To run the app after downloading the completed project:
 
-* Elimine *ContosoUniversity.csproj* y cambie el nombre de *ContosoUniversitySQLite.csproj* por *ContosoUniversity.csproj*.
-* En *Program.cs*, convierta `#define Startup` en comentario para que se use `StartupSQLite`.
-* Elimine *appSettings.json* y cambie el nombre de *appSettingsSQLite.json* por *appSettings.json*.
-* Elimine la carpeta *Migrations* y cambie el nombre de *MigrationsSQL* por *Migrations*.
-* Realice una búsqueda global `#if SQLiteVersion` y quite `#if SQLiteVersion` y la instrucción `#endif` asociada.
-* Compile el proyecto.
-* En un símbolo del sistema en la carpeta del proyecto, ejecute los comandos siguientes:
+* In *Program.cs*, remove the comments from `// webBuilder.UseStartup<StartupSQLite>();`  so `StartupSQLite` is used.
+* Copy the contents of *appSettingsSQLite.json* into *appSettings.json*.
+* Delete the *Migrations* folder, and rename *MigrationsSQL* to *Migrations*.
+* Do a global search for `#if SQLiteVersion` and remove `#if SQLiteVersion` and the associated `#endif` statement.
+* Build the project.
+* At a command prompt in the project folder, run the following commands:
 
   ```dotnetcli
-  dotnet tool install --global dotnet-ef
+  dotnet tool install --global dotnet-ef -v 5.0.0-*
   dotnet ef database update
   ```
 
-* En la herramienta SQLite, ejecute la siguiente instrucción SQL:
+* In your SQLite tool, run the following SQL statement:
 
   ```sql
   UPDATE Department SET RowVersion = randomblob(8)
   ```
 
-* Ejecute el proyecto para inicializar la base de datos.
+* Run the project to seed the database.
 
 ---
+
+-->
 
 ## <a name="create-the-web-app-project"></a>Creación del proyecto de aplicación web
 
@@ -119,36 +121,35 @@ Para ejecutar la aplicación después de descargar el proyecto completado:
 * En el menú **Archivo** de Visual Studio, seleccione **Nuevo** > **Proyecto**.
 * Seleccione **Aplicación web de ASP.NET Core**.
 * Asigne el nombre *ContosoUniversity* al proyecto. Es importante usar este nombre exacto incluido el uso de mayúsculas, para que los espacios de nombres coincidan cuando se copie y pegue el código.
-* Seleccione **.NET Core** y **ASP.NET Core 3.0** en las listas desplegables y, luego, **Aplicación web**.
+* Seleccione **.NET Core** y **ASP.NET Core 5.0** en las listas desplegables y, luego, **Aplicación web**.
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * En un terminal, vaya a la carpeta en la que se debe crear la carpeta del proyecto.
-
 * Ejecute los comandos siguientes para crear un proyecto de Razor Pages y `cd` para acceder a la nueva carpeta del proyecto:
 
   ```dotnetcli
   dotnet new webapp -o ContosoUniversity
-  cd ContosoUniversity
+  cd ContosoUniversity  
   ```
 
 ---
 
 ## <a name="set-up-the-site-style"></a>Configurar el estilo del sitio
 
-Configure el encabezado, el pie de página y el menú del sitio mediante la actualización de *Pages/Shared/_Layout.cshtml*:
+Copie el código siguiente y péguelo en el archivo *Pages/Shared/_Layout.cshtml*: [!code-cshtml[Main](intro/samples/cu50/Pages/Shared/_Layout.cshtml?highlight=6,14,21-35,49)].
 
-* Cambie todas las repeticiones de "ContosoUniversity" por "Contoso University". Hay tres repeticiones.
+El archivo de diseño establece el encabezado, el pie de página y el menú del sitio. En el código anterior se realizan los cambios siguientes:
 
-* Elimine las entradas de menú **Home** y **Privacy**, y agregue entradas para **About**, **Students**, **Courses**, **Instructors** y **Departments**.
+* Todas las repeticiones de "ContosoUniversity" por "Contoso University". Hay tres repeticiones.
+* Se eliminan las entradas del menú de **Inicio** y **Privacidad**.
+* Se han agregado entradas para **Acerca de**, **Estudiantes**, **Cursos**, **Instructores** y **Departamentos**.
 
-Los cambios aparecen resaltados.
+En *Pages/Index.cshtml*, reemplace el contenido del archivo por el código siguiente:
 
-[!code-cshtml[Main](intro/samples/cu30/Pages/Shared/_Layout.cshtml?highlight=6,14,21-35,49)]
+[!code-cshtml[Main](intro/samples/cu50/Pages/Index.cshtml)]
 
-En *Pages/Index.cshtml*, reemplace el contenido del archivo con el código siguiente para reemplazar el texto sobre ASP.NET Core con texto sobre esta aplicación:
-
-[!code-cshtml[Main](intro/samples/cu30/Pages/Index.cshtml)]
+El código anterior reemplaza el texto sobre ASP.NET Core con texto sobre esta aplicación.
 
 Ejecute la aplicación para comprobar que aparece la página principal.
 
@@ -214,51 +215,50 @@ Compile el proyecto para comprobar que no hay errores de compilación.
 
 En esta sección, se usa la herramienta de scaffolding de ASP.NET Core para generar lo siguiente:
 
-* Una clase de *contexto* de EF Core. El contexto es la clase principal que coordina la funcionalidad de Entity Framework para un modelo de datos determinado. Se deriva de la clase `Microsoft.EntityFrameworkCore.DbContext`.
+* Una clase de `DbContext` de EF Core. El contexto es la clase principal que coordina la funcionalidad de Entity Framework para un modelo de datos determinado. Se deriva de la clase <xref:Microsoft.EntityFrameworkCore.DbContext?displayProperty=fullName>.
 * Razor Pages que controlan las operaciones de creación, lectura, actualización y eliminación (CRUD) de la entidad `Student`.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Cree una carpeta *Students* en la carpeta *Pages*.
+* Cree una carpeta *Pages/Students*.
 * En el **Explorador de soluciones**, haga clic con el botón derecho en la carpeta *Pages/Students* y seleccione **Agregar** > **Nuevo elemento con scaffold**.
-* En el cuadro de diálogo **Agregar scaffold**, seleccione **Páginas de Razor que usan Entity Framework (CRUD)** > **AGREGAR**.
+* En el cuadro de diálogo **Agregar nuevo elemento scaffold**:
+  * En la pestaña de la izquierda, seleccione **Instalado > Común > Páginas Razor** .
+  * Seleccione **Páginas de Razor que usan Entity Framework (CRUD)** > **Agregar**.
 * En el cuadro de diálogo para **agregar instancias de Razor Pages que usan Entity Framework (CRUD)** :
   * En la lista desplegable **Clase de modelo**, seleccione **Student (ContosoUniversity.Models)** .
   * En la fila **Clase de contexto de datos**, seleccione el signo **+** (más).
-  * Cambie el nombre del contexto de datos *ContosoUniversity.Models.ContosoUniversityContext* por *ContosoUniversity.Data.SchoolContext*.
-  * Seleccione **Agregar**.
+    * Cambie el nombre del contexto de datos para que acabe en `SchoolContext` en lugar de `ContosoUniversityContext`. Nombre del contexto actualizado: `ContosoUniversity.Data.SchoolContext`.
+   * Seleccione **Agregar**.
 
 Los paquetes siguientes se instalan de forma automática:
 
-* `Microsoft.VisualStudio.Web.CodeGeneration.Design`
 * `Microsoft.EntityFrameworkCore.SqlServer`
-* `Microsoft.Extensions.Logging.Debug`
 * `Microsoft.EntityFrameworkCore.Tools`
+* `Microsoft.VisualStudio.Web.CodeGeneration.Design`
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * Ejecute los siguientes comandos de la CLI de .NET Core para instalar los paquetes NuGet necesarios:
-<!-- TO DO  After testing, Replace with
-[!INCLUDE[](~/includes/includes/add-EF-NuGet-SQLite-CLI.md)]
-remove dotnet tool install --global  below
- -->
+
   ```dotnetcli
-  dotnet add package Microsoft.EntityFrameworkCore.SQLite
-  dotnet add package Microsoft.EntityFrameworkCore.SqlServer
-  dotnet add package Microsoft.EntityFrameworkCore.Design
-  dotnet add package Microsoft.EntityFrameworkCore.Tools
-  dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
-  dotnet add package Microsoft.Extensions.Logging.Debug
+  dotnet add package Microsoft.EntityFrameworkCore.SQLite -v 5.0.0-*
+  dotnet add package Microsoft.EntityFrameworkCore.SqlServer -v 5.0.0-*
+  dotnet add package Microsoft.EntityFrameworkCore.Design -v 5.0.0-*
+  dotnet add package Microsoft.EntityFrameworkCore.Tools -v 5.0.0-*
+  dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design -v 5.0.0-*
+  dotnet add package Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore -v 5.0.0-*  
   ```
 
-  El paquete Microsoft.VisualStudio.Web.CodeGeneration.Design es necesario para scaffolding. Aunque en la aplicación no se usará SQL Server, la herramienta de scaffolding necesita el paquete de SQL Server.
+   El paquete Microsoft.VisualStudio.Web.CodeGeneration.Design es necesario para scaffolding. Aunque en la aplicación no se usará SQL Server, la herramienta de scaffolding necesita el paquete de SQL Server.
 
 * Cree una carpeta *Pages/Students*.
 
 * Ejecute el comando siguiente para instalar la [herramienta de scaffolding aspnet-codegenerator](xref:fundamentals/tools/dotnet-aspnet-codegenerator).
 
   ```dotnetcli
-  dotnet tool install --global dotnet-aspnet-codegenerator
+  dotnet tool uninstall --global dotnet-aspnet-codegenerator
+  dotnet tool install --global dotnet-aspnet-codegenerator --version 5.0.0-*  
   ```
 
 * Ejecute el comando siguiente para aplicar scaffolding a las páginas Student.
@@ -266,18 +266,18 @@ remove dotnet tool install --global  below
   **En Windows**
 
   ```dotnetcli
-  dotnet aspnet-codegenerator razorpage -m Student -dc ContosoUniversity.Data.SchoolContext -udl -outDir Pages\Students --referenceScriptLibraries
+  dotnet aspnet-codegenerator razorpage -m Student -dc ContosoUniversity.Data.SchoolContext -udl -outDir Pages\Students --referenceScriptLibraries -sqlite  
   ```
 
   **En macOS o Linux**
 
   ```dotnetcli
-  dotnet aspnet-codegenerator razorpage -m Student -dc ContosoUniversity.Data.SchoolContext -udl -outDir Pages/Students --referenceScriptLibraries
+  dotnet aspnet-codegenerator razorpage -m Student -dc ContosoUniversity.Data.SchoolContext -udl -outDir Pages/Students --referenceScriptLibraries -sqlite  
   ```
 
 ---
 
-Si tiene un problema con el paso anterior, compile el proyecto y vuelva a intentar el paso de scaffolding.
+Si el paso anterior falla, compile el proyecto y vuelva a intentar el paso de scaffolding.
 
 El proceso de scaffolding:
 
@@ -293,19 +293,21 @@ El proceso de scaffolding:
 
 ## <a name="database-connection-string"></a>Cadena de conexión de base de datos
 
+La herramienta de scaffolding genera una cadena de conexión en el archivo *appsettings.json*.
+
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-La cadena de conexión especifica [SQL Server LocalDB](/sql/database-engine/configure-windows/sql-server-2016-express-localdb). 
+La cadena de conexión especifica [SQL Server LocalDB](/sql/database-engine/configure-windows/sql-server-2016-express-localdb):
 
-[!code-json[Main](intro/samples/cu30/appsettings.json?highlight=11)]
+[!code-json[Main](intro/samples/cu50/appsettings.json?highlight=11)]
 
 LocalDB es una versión ligera del motor de base de datos de SQL Server Express y está dirigida al desarrollo de aplicaciones, no al uso en producción. De forma predeterminada, LocalDB crea archivos *.mdf* en el directorio `C:/Users/<user>`.
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-Cambie la cadena de conexión para que apunte a un archivo de base de datos de SQLite denominado *CU.db*:
+Acorte la cadena de conexión de SQLite a *CU.dB*:
 
-[!code-json[Main](intro/samples/cu30/appsettingsSQLite.json?highlight=11)]
+[!code-json[Main](intro/samples/cu50/appsettingsSQLite.json?highlight=11)]
 
 ---
 
@@ -313,42 +315,76 @@ Cambie la cadena de conexión para que apunte a un archivo de base de datos de S
 
 La clase principal que coordina la funcionalidad de EF Core para un modelo de datos determinado es la clase de contexto de base de datos. El contexto se deriva de [Microsoft.EntityFrameworkCore.DbContext](/dotnet/api/microsoft.entityframeworkcore.dbcontext). En el contexto se especifica qué entidades se incluyen en el modelo de datos. En este proyecto, la clase se denomina `SchoolContext`.
 
-Actualice *SchoolContext.cs* con el código siguiente:
+Actualice *Data/SchoolContext.cs* con el código siguiente:
 
 [!code-csharp[Main](intro/samples/cu30snapshots/1-intro/Data/SchoolContext.cs?highlight=13-22)]
 
-El código resaltado crea una propiedad [DbSet\<TEntity>](/dotnet/api/microsoft.entityframeworkcore.dbset-1) para cada conjunto de entidades. En la terminología de EF Core:
+El código anterior cambia del elemento `DbSet<Student> Student` singular al `DbSet<Student> Students` plural. Para que el código de las páginas Razor coincida con el nombre nuevo de `DBSet`, realice un cambio global de: `_context.Student.`
+a: `_context.Students.`.
 
-* Un conjunto de entidades normalmente se corresponde a una tabla de base de datos.
-* Una entidad se corresponde con una fila de la tabla.
+Hay ocho repeticiones.
 
-Puesto que un conjunto de entidades contiene varias entidades, las propiedades DBSet deben ser nombres en plural. Como la herramienta de scaffolding ha creado una instancia `Student` de DBSet, en este paso se cambia a `Students` en plural. 
+Dado que un conjunto de entidades contiene varias entidades, muchos desarrolladores prefieren que los nombres de la propiedad `DBSet` sean plurales.
 
-Para que el código de Razor Pages coincida con el nuevo nombre de DBSet, realice un cambio global de `_context.Student` a `_context.Students` en todo el proyecto.  Hay ocho repeticiones.
+El código resaltado:
+
+* Crea una propiedad [DbSet\<TEntity>](/dotnet/api/microsoft.entityframeworkcore.dbset-1) para cada conjunto de entidades. En la terminología de EF Core:
+  * Un conjunto de entidades normalmente se corresponde a una tabla de base de datos.
+  * Una entidad se corresponde con una fila de la tabla.
+* Llama a <xref:Microsoft.EntityFrameworkCore.DbContext.OnModelCreating%2A>. `OnModelCreating`:
+  * se llama cuando `SchoolContext` se ha inicializado, pero antes de que el modelo se haya bloqueado y utilizado para inicializar el contexto.
+  * Es necesario porque, más adelante en el tutorial, la entidad `Student` tendrá referencias a las demás entidades.
+  <!-- Review, OnModelCreating needs review -->
 
 Compile el proyecto para comprobar que no haya errores del compilador.
 
 ## <a name="startupcs"></a>Startup.cs
 
-ASP.NET Core integra la [inserción de dependencias](xref:fundamentals/dependency-injection). Los servicios (como el contexto de base de datos de EF Core) se registran con la inserción de dependencias durante el inicio de la aplicación. Estos servicios se proporcionan a los componentes que los necesitan (como Razor Pages) a través de parámetros de constructor. El código de constructor que obtiene una instancia de contexto de base de datos se muestra más adelante en el tutorial.
+ASP.NET Core integra la [inserción de dependencias](xref:fundamentals/dependency-injection). Los servicios como `SchoolContext` se registran con inserción de dependencias durante el inicio de la aplicación. Estos servicios se proporcionan a los componentes que los necesitan, como páginas Razor, a través de parámetros de constructor. El código de constructor que obtiene una instancia de contexto de base de datos se muestra más adelante en el tutorial.
 
 La herramienta de scaffolding ha registrado de forma automática la clase de contexto con el contenedor de inserción de dependencias.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* En `ConfigureServices`, el proveedor de scaffolding ha agregado la línea resaltada:
+El proveedor de scaffolding ha agregado las líneas resaltadas siguientes:
 
-  [!code-csharp[Main](intro/samples/cu30/Startup.cs?name=snippet_ConfigureServices&highlight=5-6)]
+[!code-csharp[Main](intro/samples/cu30/Startup.cs?name=snippet_ConfigureServices&highlight=5-6)]
 
-# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>Tener [Visual Studio Code](#tab/visual-studio-code)
 
-* En `ConfigureServices`, asegúrese de que el código agregado por el proveedor de scaffolding llama a `UseSqlite`.
+Compruebe que el código que agrega el proveedor de scaffolding llama a `UseSqlite`.
 
-  [!code-csharp[Main](intro/samples/cu30/StartupSQLite.cs?name=snippet_ConfigureServices&highlight=5-6)]
+[!code-csharp[Main](intro/samples/cu30/StartupSQLite.cs?name=snippet_ConfigureServices&highlight=5-6)]
+
+Para obtener información sobre el uso de una base de datos de producción, vea [Uso de SQLite para desarrollo, SQL Server para producción](xref:tutorials/razor-pages/model#use-sqlite-for-development-sql-server-for-production).
 
 ---
 
 El nombre de la cadena de conexión se pasa al contexto mediante una llamada a un método en un objeto [DbContextOptions](/dotnet/api/microsoft.entityframeworkcore.dbcontextoptions). Para el desarrollo local, el [sistema de configuración de ASP.NET Core](xref:fundamentals/configuration/index) lee la cadena de conexión desde el archivo *appsettings.json*.
+
+### <a name="add-the-database-exception-filter"></a>Incorporación del filtro de excepción de base de datos
+
+Agregue `AddDatabaseDeveloperPageExceptionFilter` a `ConfigureServices`, tal como se muestra en el código siguiente:
+
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+[!code-csharp[Main](intro/samples/cu50/Startup.cs?name=snippet_ConfigureServices&highlight=8)]
+
+Agregue el paquete NuGet [Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore](https://www.nuget.org/packages/Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore).
+
+En la PMC, escriba el comando siguiente para agregar el paquete NuGet:
+
+```powershell
+Install-Package Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore -Version 5.0.0-rc.1.20451.17
+```
+
+# <a name="visual-studio-code"></a>Tener [Visual Studio Code](#tab/visual-studio-code)
+
+[!code-csharp[Main](intro/samples/cu50/StartupSQLite.cs?name=snippet_ConfigureServices&highlight=8)]
+
+---
+
+El paquete NuGet de `Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore` proporciona middleware de ASP.NET Core para páginas de error de Entity Framework Core. Este middleware ayuda a detectar y diagnosticar errores con migraciones de Entity Framework Core.
 
 ## <a name="create-the-database"></a>Creación de la base de datos
 
@@ -383,7 +419,7 @@ Cree *Data/DbInitializer.cs* con el código siguiente:
 
   El código comprueba si hay alumnos en la base de datos. Si no hay ningún alumno, agrega datos de prueba a la base de datos. Crea los datos de prueba en matrices en lugar de colecciones `List<T>` para optimizar el rendimiento.
 
-* En *Program.cs*, reemplace la llamada a `EnsureCreated` con una llamada a `DbInitializer.Initialize`:
+En *Program.cs*, reemplace la llamada a `EnsureCreated` con una llamada a `DbInitializer.Initialize`:
 
   ```csharp
   // context.Database.EnsureCreated();
@@ -395,8 +431,10 @@ Cree *Data/DbInitializer.cs* con el código siguiente:
 Detenga la aplciación si se está ejecutando y ejecute el comando siguiente en la **Consola del Administrador de paquetes** (PMC):
 
 ```powershell
-Drop-Database
+Drop-Database -Confirm
 ```
+
+Responda con `Y` para eliminar la base de datos.
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -405,7 +443,6 @@ Drop-Database
 ---
 
 * Reinicie la aplicación.
-
 * Seleccione la página Students para ver los datos inicializados.
 
 ## <a name="view-the-database"></a>Consulta la base de datos
@@ -455,6 +492,21 @@ Algunos aspectos que tener en cuenta al escribir código asincrónico en el que 
 * Para aprovechar las ventajas de rendimiento del código asincrónico, compruebe que en los paquetes de biblioteca (por ejemplo para la paginación) se usa async si llaman a métodos de EF Core que envían consultas a la base de datos.
 
 Para obtener más información sobre la programación asincrónica en .NET, vea [Programación asincrónica](/dotnet/standard/async) y [Programación asincrónica con async y await](/dotnet/csharp/programming-guide/concepts/async/).
+
+<!-- Review: See https://github.com/dotnet/AspNetCore.Docs/issues/14528 -->
+## <a name="performance-considerations"></a>Consideraciones de rendimiento
+
+En general, una página web no debe cargar un número arbitrario de filas. Una consulta debe utilizar la paginación o un enfoque de limitación. Por ejemplo, la consulta anterior podría usar `Take` para limitar las filas devueltas:
+
+[!code-csharp[Main](intro/samples/cu50snapshots/Index.cshtml.cs?name=snippet)]
+
+Enumerar una tabla grande en una vista podría devolver una respuesta HTTP 200 parcialmente construida si se produce una excepción de base de datos en mitad de la enumeración.
+
+<xref:Microsoft.AspNetCore.Mvc.MvcOptions.MaxModelBindingCollectionSize> tiene como valor predeterminado 1024. El código siguiente establece `MaxModelBindingCollectionSize`:
+
+[!code-csharp[Main](intro/samples/cu50/StartupMaxMBsize.cs?name=snippet_ConfigureServices)]
+
+La paginación se trata más adelante en el tutorial.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
@@ -533,7 +585,8 @@ Para ejecutar la aplicación después de descargar el proyecto completado:
 * En un símbolo del sistema en la carpeta del proyecto, ejecute los comandos siguientes:
 
   ```dotnetcli
-  dotnet tool install --global dotnet-ef
+  dotnet tool uninstall --global dotnet-ef
+  dotnet tool install --global dotnet-ef --version 5.0.0-*
   dotnet ef database update
   ```
 
@@ -542,7 +595,7 @@ Para ejecutar la aplicación después de descargar el proyecto completado:
   ```sql
   UPDATE Department SET RowVersion = randomblob(8)
   ```
-
+  
 * Ejecute el proyecto para inicializar la base de datos.
 
 ---
@@ -599,8 +652,7 @@ Un alumno se puede inscribir en cualquier número de cursos y un curso puede ten
 
 ![Diagrama de la entidad Student](intro/_static/student-entity.png)
 
-* Cree una carpeta *Models* en la carpeta del proyecto. 
-
+* Cree una carpeta *Models* en la carpeta del proyecto.
 * Cree *Models/Student.cs* con el código siguiente:
 
   [!code-csharp[Main](intro/samples/cu30snapshots/1-intro/Models/Student.cs)]
@@ -730,7 +782,7 @@ El proceso de scaffolding:
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-La cadena de conexión especifica [SQL Server LocalDB](/sql/database-engine/configure-windows/sql-server-2016-express-localdb). 
+El archivo *appsettings.json* especifica la cadena de conexión [SQL Server LocalDB](/sql/database-engine/configure-windows/sql-server-2016-express-localdb).
 
 [!code-json[Main](intro/samples/cu30/appsettings.json?highlight=11)]
 
@@ -748,7 +800,7 @@ Cambie la cadena de conexión para que apunte a un archivo de base de datos de S
 
 La clase principal que coordina la funcionalidad de EF Core para un modelo de datos determinado es la clase de contexto de base de datos. El contexto se deriva de [Microsoft.EntityFrameworkCore.DbContext](/dotnet/api/microsoft.entityframeworkcore.dbcontext). En el contexto se especifica qué entidades se incluyen en el modelo de datos. En este proyecto, la clase se denomina `SchoolContext`.
 
-Actualice *SchoolContext.cs* con el código siguiente:
+Actualice *Data/SchoolContext.cs* con el código siguiente:
 
 [!code-csharp[Main](intro/samples/cu30snapshots/1-intro/Data/SchoolContext.cs?highlight=13-22)]
 

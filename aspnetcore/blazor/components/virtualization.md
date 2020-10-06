@@ -5,7 +5,7 @@ description: Información sobre cómo usar la virtualización de componentes en 
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/21/2020
+ms.date: 09/22/2020
 no-loc:
 - ASP.NET Core Identity
 - cookie
@@ -18,34 +18,31 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/virtualization
-ms.openlocfilehash: 911eeeb445741aa1519e1464dd4a75e26f6f12ab
-ms.sourcegitcommit: 62cc131969b2379f7a45c286a751e22d961dfbdb
+ms.openlocfilehash: 9c3e53bee7535b36bba3474ff50a881568bbd690
+ms.sourcegitcommit: 74f4a4ddbe3c2f11e2e09d05d2a979784d89d3f5
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90847577"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91393813"
 ---
 # <a name="aspnet-core-no-locblazor-component-virtualization"></a>Virtualización de componentes de ASP.NET Core Blazor
 
 Por [Daniel Roth](https://github.com/danroth27)
 
-Mejore el rendimiento percibido de la representación de componentes usando la compatibilidad de virtualización integrada del marco Blazor. La virtualización es una técnica para limitar la representación de la interfaz de usuario a únicamente las partes visibles actualmente. Por ejemplo, la virtualización es útil cuando la aplicación debe representar una lista larga o una tabla con muchas filas, y solo es necesario que haya un subconjunto de elementos visible en un momento dado. Blazor proporciona el componente `Virtualize`, que se puede usar para agregar virtualización a los componentes de una aplicación.
+Mejore el rendimiento percibido de la representación de componentes usando la compatibilidad de virtualización integrada del marco Blazor. La virtualización es una técnica para limitar la representación de la interfaz de usuario a únicamente las partes visibles actualmente. Por ejemplo, la virtualización es útil cuando la aplicación debe representar una lista larga de elementos y solo es necesario que haya un subconjunto de elementos visible en un momento dado. Blazor proporciona el componente `Virtualize`, que se puede usar para agregar virtualización a los componentes de una aplicación.
 
 ::: moniker range=">= aspnetcore-5.0"
 
-Sin la virtualización, el típico componente basado en una tabla o en una lista podría usar un bucle [`foreach`](/dotnet/csharp/language-reference/keywords/foreach-in) de C# para representar cada elemento de la lista o de cada fila de la tabla:
+Sin la virtualización, una lista típica podría usar un bucle [`foreach`](/dotnet/csharp/language-reference/keywords/foreach-in) de C# para representar cada elemento de la lista:
 
 ```razor
-<table>
-    @foreach (var employee in employees)
-    {
-        <tr>
-            <td>@employee.FirstName</td>
-            <td>@employee.LastName</td>
-            <td>@employee.JobTitle</td>
-        </tr>
-    }
-</table>
+@foreach (var employee in employees)
+{
+    <p>
+        @employee.FirstName @employee.LastName has the 
+        job title of @employee.JobTitle.
+    </p>
+}
 ```
 
 Si la lista contiene miles de elementos, la representación de la lista podría tardar mucho tiempo, con el consiguiente retraso de la interfaz de usuario que puede experimentarse.
@@ -53,47 +50,44 @@ Si la lista contiene miles de elementos, la representación de la lista podría 
 En lugar de representar todos y cada uno de los elementos de la lista a la vez, reemplace el bucle [`foreach`](/dotnet/csharp/language-reference/keywords/foreach-in) por el componente `Virtualize` y especifique un origen de elemento fijo con `Items`. Solo se representarán los elementos visibles actualmente:
 
 ```razor
-<table>
-    <Virtualize Context="employee" Items="@employees">
-        <tr>
-            <td>@employee.FirstName</td>
-            <td>@employee.LastName</td>
-            <td>@employee.JobTitle</td>
-        </tr>
-    </Virtualize>
-</table>
+<Virtualize Context="employee" Items="@employees">
+    <p>
+        @employee.FirstName @employee.LastName has the 
+        job title of @employee.JobTitle.
+    </p>
+</Virtualize>
 ```
 
 Si no especifica un contexto en el componente con `Context`, use el valor de `context` (`@context.{PROPERTY}`) en la plantilla de contenido del elemento:
 
 ```razor
-<table>
-    <Virtualize Items="@employees">
-        <tr>
-            <td>@context.FirstName</td>
-            <td>@context.LastName</td>
-            <td>@context.JobTitle</td>
-        </tr>
-    </Virtualize>
-</table>
+<Virtualize Items="@employees">
+    <p>
+        @context.FirstName @context.LastName has the 
+        job title of @context.JobTitle.
+    </p>
+</Virtualize>
 ```
 
 El componente `Virtualize` calcula el número de elementos que se van a representar en función del alto del contenedor y del tamaño de los elementos representados.
+
+El contenido del elemento para el componente `Virtualize` puede incluir lo siguiente:
+
+* HTML sin formato y código Razor, tal como se muestra en el ejemplo anterior.
+* Uno o más componentes Razor.
+* Una combinación de componentes HTML/Razor y Razor.
 
 ## <a name="item-provider-delegate"></a>Delegado de proveedor de elementos
 
 Si no se quieren cargar todos los elementos en la memoria, se puede especificar un método de delegado de proveedor de elementos en el parámetro `ItemsProvider` del componente, que recupera los elementos solicitados a petición de manera asincrónica:
 
 ```razor
-<table>
-    <Virtualize Context="employee" ItemsProvider="@LoadEmployees">
-         <tr>
-            <td>@employee.FirstName</td>
-            <td>@employee.LastName</td>
-            <td>@employee.JobTitle</td>
-        </tr>
-    </Virtualize>
-</table>
+<Virtualize Context="employee" ItemsProvider="@LoadEmployees">
+    <p>
+        @employee.FirstName @employee.LastName has the 
+        job title of @employee.JobTitle.
+    </p>
+</Virtualize>
 ```
 
 El proveedor de elementos recibe un objeto `ItemsProviderRequest`, que especifica el número necesario de elementos empezando por un índice de inicio específico. Luego, el proveedor de elementos recupera los elementos solicitados de una base de datos u otro servicio y los devuelve como un objeto `ItemsProviderResult<TItem>` junto con un recuento total de elementos. El proveedor de elementos puede elegir entre recuperar los elementos con cada solicitud o almacenarlos en la memoria caché para que estén disponibles fácilmente. No intente usar un proveedor de elementos y asignar una colección a `Items` con el mismo componente `Virtualize`.
@@ -117,22 +111,19 @@ private async ValueTask<ItemsProviderResult<Employee>> LoadEmployees(
 Dado que la solicitud de elementos de un origen de datos remoto puede tardar tiempo, existe la posibilidad de representar un marcador de posición (`<Placeholder>...</Placeholder>`) hasta que los datos del elemento estén disponibles:
 
 ```razor
-<table>
-    <Virtualize Context="employee" ItemsProvider="@LoadEmployees">
-        <ItemContent>
-            <tr>
-                <td>@employee.FirstName</td>
-                <td>@employee.LastName</td>
-                <td>@employee.JobTitle</td>
-            </tr>
-        </ItemContent>
-        <Placeholder>
-            <tr>
-                <td>Loading...</td>
-            </tr>
-        </Placeholder>
-    </Virtualize>
-</table>
+<Virtualize Context="employee" ItemsProvider="@LoadEmployees">
+    <ItemContent>
+        <p>
+            @employee.FirstName @employee.LastName has the 
+            job title of @employee.JobTitle.
+        </p>
+    </ItemContent>
+    <Placeholder>
+        <p>
+            Loading&hellip;
+        </p>
+    </Placeholder>
+</Virtualize>
 ```
 
 ## <a name="item-size"></a>Tamaño del elemento
@@ -140,11 +131,9 @@ Dado que la solicitud de elementos de un origen de datos remoto puede tardar tie
 El tamaño de cada elemento en píxeles se puede establecer con `ItemSize` (valor predeterminado: 50 px):
 
 ```razor
-<table>
-    <Virtualize Context="employee" Items="@employees" ItemSize="25">
-        ...
-    </Virtualize>
-</table>
+<Virtualize Context="employee" Items="@employees" ItemSize="25">
+    ...
+</Virtualize>
 ```
 
 ## <a name="overscan-count"></a>Recuento de sobrebarridos
@@ -152,11 +141,9 @@ El tamaño de cada elemento en píxeles se puede establecer con `ItemSize` (valo
 `OverscanCount` determina el número de elementos adicionales que se representan antes y después del área visible. Esta configuración ayuda a reducir la frecuencia de representación durante el desplazamiento. Pese a esto, unos valores superiores hacen que se representen más elementos en la página (valor predeterminado: 3):
 
 ```razor
-<table>
-    <Virtualize Context="employee" Items="@employees" OverscanCount="4">
-        ...
-    </Virtualize>
-</table>
+<Virtualize Context="employee" Items="@employees" OverscanCount="4">
+    ...
+</Virtualize>
 ```
 
 ::: moniker-end
