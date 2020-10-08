@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/data-binding
-ms.openlocfilehash: 3f823ca9cf96b7ff439ade59f946db222b7f7e60
-ms.sourcegitcommit: d1a897ebd89daa05170ac448e4831d327f6b21a8
+ms.openlocfilehash: 0884b0bedd9ed31b8c85790c6950c7c5d63bdf44
+ms.sourcegitcommit: e519d95d17443abafba8f712ac168347b15c8b57
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91606692"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653911"
 ---
 # <a name="aspnet-core-no-locblazor-data-binding"></a>Enlace de datos de ASP.NET Core Blazor
 
@@ -293,6 +293,8 @@ Password:
 
     private Task OnPasswordChanged(ChangeEventArgs e)
     {
+        password = e.Value.ToString();
+        
         if (password.Contains(' '))
         {
             validationMessage = "Spaces not allowed!";

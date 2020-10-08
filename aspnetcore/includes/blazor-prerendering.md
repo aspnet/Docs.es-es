@@ -1,5 +1,3 @@
----
----
 Durante la representación previa de una aplicación Blazor Server, no es posible realizar ciertas acciones (como llamar a JavaScript), ya que no se ha establecido una conexión con el explorador. Es posible que los componentes tengan que representarse de forma diferente cuando se representen previamente.
 
 Para retrasar las llamadas de interoperabilidad de JavaScript hasta que se establezca la conexión con el explorador, puede usar el [evento de ciclo de vida del componente OnAfterRenderAsync](xref:blazor/components/lifecycle#after-component-render). Solo se llama a este evento después de que la aplicación se represente por completo y se establezca la conexión con el cliente.

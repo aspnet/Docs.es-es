@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/configuration/index
-ms.openlocfilehash: c6b77f20792c32a697fff8d1d78ef3c2536c5f8f
-ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
+ms.openlocfilehash: 7565ede55acd936072fc1930918d46808548f287
+ms.sourcegitcommit: d7991068bc6b04063f4bd836fc5b9591d614d448
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90722902"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91762352"
 ---
 # <a name="configuration-in-aspnet-core"></a>Configuración en ASP.NET Core
 
@@ -41,6 +41,8 @@ La configuración de ASP.NET Core se realiza mediante uno o varios [proveedores 
 * Proveedores personalizados (instalados o creados)
 * Archivos de directorio
 * Objetos de .NET en memoria
+
+En este tema se proporciona información sobre la configuración de ASP.NET Core. Para más información sobre el uso de la configuración en las aplicaciones de consola, consulte [Configuración de .NET](/dotnet/core/extensions/configuration).
 
 [Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/index/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
@@ -1107,7 +1109,7 @@ En el caso de las aplicaciones que usen las asignaciones de modificador, la llam
 
 Después de crear el diccionario de asignaciones de modificador, contiene los datos que se muestran en la tabla siguiente.
 
-| Clave       | Value             |
+| Clave       | Valor             |
 | --------- | ----------------- |
 | `-CLKey1` | `CommandLineKey1` |
 | `-CLKey2` | `CommandLineKey2` |
@@ -1684,7 +1686,7 @@ config.AddJsonFile(
 
 El par clave-valor que se muestra en la tabla se carga en la configuración.
 
-| Clave             | Value  |
+| Clave             | Valor  |
 | :-------------: | :----: |
 | array:entries:3 | value3 |
 
@@ -1707,7 +1709,7 @@ Si un archivo JSON contiene una matriz, se crean claves de configuración para l
 
 El proveedor de configuración JSON lee los datos de configuración en los siguientes pares clave-valor:
 
-| Key                     | Value  |
+| Key                     | Valor  |
 | ----------------------- | :----: |
 | json_array:key          | valueA |
 | json_array:subsection:0 | valueB |

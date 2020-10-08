@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/inheritance
-ms.openlocfilehash: 34c4ea28103b9eb12601b383a46091084391f120
-ms.sourcegitcommit: 62cc131969b2379f7a45c286a751e22d961dfbdb
+ms.openlocfilehash: fabb0ed9c0f64a529b516d521d60a7d862e2654a
+ms.sourcegitcommit: d60bfd52bfb559e805abd654b87a2a0c7eb69cf8
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90847603"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91754572"
 ---
 # <a name="tutorial-implement-inheritance---aspnet-mvc-with-ef-core"></a>Tutorial: Implementación de la herencia: ASP.NET MVC con EF Core
 
@@ -64,7 +64,7 @@ Este patrón, que consiste en generar una estructura de herencia de la entidad a
 Una alternativa consiste en hacer que la base de datos se parezca más a la estructura de herencia. Por ejemplo, podría tener solo los campos de nombre en la tabla Person y tener tablas Instructor y Student independientes con los campos de fecha.
 
 > [!WARNING]
-> La tabla por tipo (TPT) no es compatible con EF Core 3.x, pero se ha implementado en [EF Core 5.0](https://docs.microsoft.com/ef/core/what-is-new/ef-core-5.0/plan).
+> La tabla por tipo (TPT) no es compatible con EF Core 3.x, pero se ha implementado en [EF Core 5.0](/ef/core/what-is-new/ef-core-5.0/plan).
 
 ![Herencia de tabla por tipo](inheritance/_static/tpt.png)
 
