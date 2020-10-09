@@ -5,7 +5,7 @@ description: Aprenda a proteger las aplicaciones de Blazor Server igual que las 
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/02/2020
+ms.date: 10/06/2020
 no-loc:
 - ASP.NET Core Identity
 - cookie
@@ -18,18 +18,18 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/server/index
-ms.openlocfilehash: ba9fe3c0149679fa5760c0c9214cd426f1804c31
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: d6d0f6f859dbaef98c6c8a9c53fe9858705cdc0a
+ms.sourcegitcommit: 139c998d37e9f3e3d0e3d72e10dbce8b75957d89
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88626459"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91805510"
 ---
 # <a name="secure-aspnet-core-no-locblazor-server-apps"></a>Protección de aplicaciones de ASP.NET Core Blazor Server
 
 Por [Luke Latham](https://github.com/guardrex)
 
-La seguridad de las aplicaciones de Blazor Server se configura de la misma forma que la de las aplicaciones de ASP.NET Core. Para obtener más información, vea los artículos en <xref:security/index>. Los temas de esta información general se aplican específicamente a Blazor Server. 
+La seguridad de las aplicaciones de Blazor Server se configura de la misma forma que la de las aplicaciones de ASP.NET Core. Para obtener más información, vea los artículos en <xref:security/index>. Los temas de esta información general se aplican específicamente a Blazor Server.
 
 ## <a name="no-locblazor-server-project-template"></a>Plantilla de proyecto de Blazor Server
 
@@ -108,7 +108,14 @@ Con la opción `-o|--output`, el comando usa el valor proporcionado para el marc
 * Cree una carpeta para el proyecto.
 * Asigne el nombre al proyecto.
 
-Para más información, consulte el comando [`dotnet new`](/dotnet/core/tools/dotnet-new) de la guía de .NET Core.
+Para obtener más información:
+
+* Consulte el comando [`dotnet new`](/dotnet/core/tools/dotnet-new) en la guía de .NET Core.
+* Ejecute el comando de ayuda para la plantilla de Blazor Server (`blazorserver`) en un shell de comandos:
+
+  ```dotnetcli
+  dotnet new blazorserver --help
+  ```
 
 ---
 
@@ -118,3 +125,8 @@ Scaffolding para Identity en un proyecto de Blazor Server:
 
 * [Sin autorización existente](xref:security/authentication/scaffold-identity#scaffold-identity-into-a-blazor-server-project-without-existing-authorization)
 * [Con autorización](xref:security/authentication/scaffold-identity#scaffold-identity-into-a-blazor-server-project-with-authorization)
+
+## <a name="additional-resources"></a>Recursos adicionales
+
+* [Inicio rápido: Adición del inicio de sesión con Microsoft en una aplicación web de ASP.NET Core](/azure/active-directory/develop/quickstart-v2-aspnet-core-webapp)
+* [Inicio rápido: Protección de una API web de ASP.NET Core con la plataforma de identidad de Microsoft](/azure/active-directory/develop/quickstart-v2-aspnet-core-web-api)
