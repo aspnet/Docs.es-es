@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/servers/httpsys
-ms.openlocfilehash: e5346c1e58127747d777b5040fe7bc7d99b9a489
-ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
+ms.openlocfilehash: 8ed9ec3447205107194ffa5c329c0e5ae0fc5553
+ms.sourcegitcommit: e519d95d17443abafba8f712ac168347b15c8b57
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90722876"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653976"
 ---
 # <a name="httpsys-web-server-implementation-in-aspnet-core"></a>Implementación del servidor web HTTP.sys en ASP.NET Core
 
@@ -271,6 +271,23 @@ En Visual Studio, el perfil de inicio predeterminado es para IIS Express. Para e
 ## <a name="proxy-server-and-load-balancer-scenarios"></a>Escenarios de servidor proxy y equilibrador de carga
 
 En el caso de las aplicaciones hospedadas por HTTP.sys que interactúan con las solicitudes de Internet o de una red corporativa, puede que sea necesario configurar más elementos si esas aplicaciones se hospedan detrás de servidores proxy y equilibradores de carga. Para más información, vea [Configurar ASP.NET Core para trabajar con servidores proxy y equilibradores de carga](xref:host-and-deploy/proxy-load-balancer).
+
+## <a name="advanced-http2-features-to-support-grpc"></a>Características avanzadas de HTTP/2 para admitir gRPC
+
+Las características adicionales de HTTP/2 en HTTP.sys admiten gRPC, incluida la compatibilidad con los finalizadores de respuesta y el envío de marcos de restablecimiento.
+
+Requisitos para ejecutar gRPC con HTTP.SYS:
+
+* Windows 10, compilación del sistema operativo 19041.508 o posterior
+* Conexión con TLS 1.2 o una versión posterior
+
+### <a name="trailers"></a>Clips finales
+
+[!INCLUDE[](~/includes/trailers.md)]
+
+### <a name="reset"></a>Reset
+
+[!INCLUDE[](~/includes/reset.md)]
 
 ## <a name="additional-resources"></a>Recursos adicionales
 

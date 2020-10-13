@@ -5,7 +5,7 @@ description: Obtenga información sobre las herramientas disponibles para compil
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/07/2020
+ms.date: 09/28/2020
 no-loc:
 - ASP.NET Core Identity
 - cookie
@@ -19,12 +19,12 @@ no-loc:
 - SignalR
 uid: blazor/tooling
 zone_pivot_groups: operating-systems
-ms.openlocfilehash: d7e3743d12c235c20cc27f6a3263e2994a9e160a
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: d1626fe753782d524bf75c398c11235c3110633a
+ms.sourcegitcommit: d7991068bc6b04063f4bd836fc5b9591d614d448
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88625835"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91762157"
 ---
 # <a name="tooling-for-aspnet-core-no-locblazor"></a>Herramientas para ASP.NET Core Blazor
 
@@ -52,13 +52,13 @@ Para obtener más información sobre la confianza en el certificado de desarroll
 
 ::: zone pivot="linux"
 
-1. Instale la última versión del [SDK de .NET Core 3.1](https://dotnet.microsoft.com/download/dotnet-core/3.1). Si ya ha instalado el SDK anteriormente, puede averiguar la versión instalada ejecutando el siguiente comando en un shell de comandos:
+1. Instale la última versión del [SDK de .NET Core](https://dotnet.microsoft.com/download). Si ya ha instalado el SDK anteriormente, puede averiguar la versión instalada ejecutando el siguiente comando en un shell de comandos:
 
    ```dotnetcli
    dotnet --version
    ```
 
-1. Instale la versión más reciente de [Visual Studio Code](https://code.visualstudio.com/).
+1. Instale la versión más reciente de [Visual Studio Code](https://code.visualstudio.com).
 
 1. Instale la [extensión de C# para Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) más reciente.
 
@@ -90,7 +90,7 @@ No existe una manera centralizada de confiar en un certificado en Linux. Normalm
 * Confiar en todos los certificados autofirmados para `localhost`.
 * Agregar el certificado a la lista de certificados de confianza en el explorador.
 
-Para más información, consulte las instrucciones proporcionadas por el explorador y la distribución de Linux.
+Para más información, consulte las instrucciones proporcionadas por el fabricante de su explorador y la distribución de Linux.
 
 ::: zone-end
 

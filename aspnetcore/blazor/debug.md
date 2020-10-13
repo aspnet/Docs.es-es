@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/debug
-ms.openlocfilehash: e12b0e6d1bf9eab751f6605b9a156f637f2b0c0f
-ms.sourcegitcommit: 74f4a4ddbe3c2f11e2e09d05d2a979784d89d3f5
+ms.openlocfilehash: d4fd0d501ff14e37bb55b78bb6493ad43f9e5a87
+ms.sourcegitcommit: 139c998d37e9f3e3d0e3d72e10dbce8b75957d89
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91393839"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91805575"
 ---
 # <a name="debug-aspnet-core-no-locblazor-webassembly"></a>Depuración de Blazor WebAssembly en ASP.NET Core
 
@@ -345,6 +345,9 @@ Si se encuentra con errores, las sugerencias siguientes pueden ser útiles:
 * En la pestaña **Depurador**, abra las herramientas para desarrolladores en el explorador. En la consola, ejecute `localStorage.clear()` para quitar los puntos de interrupción.
 * Confirme que instaló el certificado de desarrollo HTTPS de ASP.NET Core y que es de confianza. Para obtener más información, vea <xref:security/enforcing-ssl#troubleshoot-certificate-problems>.
 * Visual Studio requiere la opción **Habilitar depuración de JavaScript para ASP.NET (IE, Edge y Chrome)** , en **Herramientas** > **Opciones** > **Depuración** > **General**. Es el valor predeterminado para Visual Studio. Si la depuración no funciona, confirme que la opción está seleccionada.
+* Si su entorno usa un proxy HTTP, asegúrese de que `localhost` esté incluido en la configuración de omisión del proxy. Esto puede hacerse al establecer la variable de entorno `NO_PROXY` en alguna de las siguientes opciones:
+  * Archivo `launchSettings.json` del proyecto.
+  * En el nivel de usuario o de entorno del sistema para que se aplique a todas las aplicaciones. Si usa una variable de entorno, reinicie Visual Studio para que el cambio surta efecto.
 
 ### <a name="breakpoints-in-oninitializedasync-not-hit"></a>Puntos de interrupción de `OnInitialized{Async}` no ejecutados
 

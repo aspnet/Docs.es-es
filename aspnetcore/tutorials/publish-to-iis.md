@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/publish-to-iis
-ms.openlocfilehash: 34707def9728211b9c2aa36d255f2467d1e3d661
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 40c47da472257862414ba33be582eb19d3f0b29c
+ms.sourcegitcommit: d60bfd52bfb559e805abd654b87a2a0c7eb69cf8
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88627798"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91754559"
 ---
 # <a name="publish-an-aspnet-core-app-to-iis"></a>Publicación de una aplicación ASP.NET Core en IIS
 
@@ -60,15 +60,22 @@ Descargue al instalador mediante el vínculo siguiente:
 
 1. Ejecute el instalador en el servidor IIS.
 
-1. Reinicie el servidor o ejecute **net stop was /y**, seguido de **net start w3svc** en un shell de comandos.
+1. Reinicie el servidor o ejecute `net stop was /y`, seguido de `net start w3svc` en un shell de comandos.
 
 ## <a name="create-the-iis-site"></a>Creación del sitio de IIS
 
-1. En el servidor IIS, cree una carpeta para que contenga los archivos y las carpetas publicados de la aplicación. En un paso posterior, la ruta de acceso de la carpeta se proporciona a IIS como la ruta de acceso física a la aplicación.
+1. En el servidor IIS, cree una carpeta para que contenga los archivos y las carpetas publicados de la aplicación. En un paso posterior, la ruta de acceso de la carpeta se proporciona a IIS como la ruta de acceso física a la aplicación. Para obtener más información sobre el diseño de carpetas y archivos de implementación de una aplicación, consulte <xref:host-and-deploy/directory-structure>.
 
 1. En Administrador de IIS, abra el nodo del servidor en el panel **Conexiones**. Haga clic con el botón derecho en la carpeta **Sitios**. Haga clic en **Agregar sitio web** en el menú contextual.
 
 1. Proporcione el **Nombre del sitio** y establezca la **Ruta de acceso física** a la carpeta de implementación de la aplicación que ha creado. Proporcione la configuración de **Enlace** y seleccione **Aceptar** para crear el sitio web.
+
+   > [!WARNING]
+   > Los enlaces de carácter comodín de nivel superior (`http://*:80/` y `http://+:80`) **no** se deben usar. Los enlaces de carácter comodín de nivel superior pueden exponer su aplicación a vulnerabilidades de seguridad. Esto se aplica tanto a los caracteres comodín fuertes como a los débiles. Use nombres de host explícitos en lugar de caracteres comodín. Los enlaces de carácter comodín de subdominio (por ejemplo, `*.mysub.com`) no suponen este riesgo de seguridad si se controla todo el dominio primario (a diferencia de `*.com`, que sí es vulnerable). Vea la [sección 5.4 de RFC 7230](https://tools.ietf.org/html/rfc7230#section-5.4) para obtener más información.
+
+1. Confirme que la identidad del modelo de proceso tiene los permisos adecuados.
+
+   Si cambia la identidad predeterminada del grupo de aplicaciones (**Modelo de proceso** >  **Identity** ) de `ApplicationPoolIdentity` a otra identidad, compruebe que la nueva tenga los permisos necesarios para acceder a la carpeta de la aplicación, la base de datos y otros recursos necesarios. Por ejemplo, el grupo de aplicaciones requiere acceso de lectura y escritura a las carpetas donde la aplicación lee y escribe archivos.
 
 ## <a name="create-an-aspnet-core-no-locrazor-pages-app"></a>Creación de una aplicación Razor Pages de ASP.NET Core
 
@@ -77,7 +84,7 @@ Siga el tutorial <xref:getting-started> para crear una aplicación Razor Pages.
 ## <a name="publish-and-deploy-the-app"></a>Publicar e implementar la aplicación
 
 *Publicar una aplicación* significa generar una aplicación compilada que se puede hospedar en un servidor. *Implementar una aplicación* significa trasladar la aplicación publicada a un sistema de hospedaje. El paso de publicación lo controla el [SDK de .NET Core](/dotnet/core/sdk), mientras que el paso de implementación se puede controlar mediante distintos enfoques. En este tutorial se adopta el enfoque de implementación de *carpetas*, donde:
-
+ 
 * La aplicación se publica en una carpeta.
 * El contenido de la carpeta se mueve a la carpeta del sitio de IIS (la **ruta de acceso física** al sitio en el Administrador de IIS).
 
@@ -87,7 +94,7 @@ Siga el tutorial <xref:getting-started> para crear una aplicación Razor Pages.
 1. En el cuadro de diálogo **Elegir un destino de publicación**, seleccione la opción de publicación **Carpeta**.
 1. Establezca la ruta de acceso **Recurso compartido de archivos o carpeta**.
    * Si ha creado una carpeta para el sitio de IIS que está disponible en el equipo de desarrollo como un recurso compartido de red, proporcione la ruta de acceso al recurso compartido. El usuario actual debe tener acceso de escritura para publicar en el recurso compartido.
-   * Si no puede realizar la implementación directamente en la carpeta del sitio de IIS en el servidor IIS, publique en una carpeta de un medio extraíble y mueva físicamente la aplicación publicada a la carpeta del sitio de IIS en el servidor, que es la **ruta de acceso física** del sitio en el Administrador de IIS. Mueva el contenido de la carpeta *bin/Release/{PLATAFORMA DE DESTINO}/publish* a la carpeta del sitio de IIS en el servidor, que es la **ruta de acceso física** del sitio en el Administrador de IIS.
+   * Si no puede realizar la implementación directamente en la carpeta del sitio de IIS en el servidor IIS, publique en una carpeta de un medio extraíble y mueva físicamente la aplicación publicada a la carpeta del sitio de IIS en el servidor, que es la **ruta de acceso física** del sitio en el Administrador de IIS. Mueva el contenido de la carpeta `bin/Release/{TARGET FRAMEWORK}/publish` a la carpeta del sitio de IIS en el servidor, que es la **ruta de acceso física** del sitio en el Administrador de IIS.
 
 # <a name="net-core-cli"></a>[CLI de .NET Core](#tab/netcore-cli)
 
@@ -97,14 +104,14 @@ Siga el tutorial <xref:getting-started> para crear una aplicación Razor Pages.
    dotnet publish --configuration Release
    ```
 
-1. Mueva el contenido de la carpeta *bin/Release/{PLATAFORMA DE DESTINO}/publish* a la carpeta del sitio de IIS en el servidor, que es la **ruta de acceso física** del sitio en el Administrador de IIS.
+1. Mueva el contenido de la carpeta `bin/Release/{TARGET FRAMEWORK}/publish` a la carpeta del sitio de IIS en el servidor, que es la **ruta de acceso física** del sitio en el Administrador de IIS.
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)
 
 1. Haga clic con el botón derecho en el proyecto en **Solución** y seleccione **Publicar** > **Publicación en carpeta**.
 1. Establezca la ruta de acceso **Elegir una carpeta**.
    * Si ha creado una carpeta para el sitio de IIS que está disponible en el equipo de desarrollo como un recurso compartido de red, proporcione la ruta de acceso al recurso compartido. El usuario actual debe tener acceso de escritura para publicar en el recurso compartido.
-   * Si no puede realizar la implementación directamente en la carpeta del sitio de IIS en el servidor IIS, publique en una carpeta de un medio extraíble y mueva físicamente la aplicación publicada a la carpeta del sitio de IIS en el servidor, que es la **ruta de acceso física** del sitio en el Administrador de IIS. Mueva el contenido de la carpeta *bin/Release/{PLATAFORMA DE DESTINO}/publish* a la carpeta del sitio de IIS en el servidor, que es la **ruta de acceso física** del sitio en el Administrador de IIS.
+   * Si no puede realizar la implementación directamente en la carpeta del sitio de IIS en el servidor IIS, publique en una carpeta de un medio extraíble y mueva físicamente la aplicación publicada a la carpeta del sitio de IIS en el servidor, que es la **ruta de acceso física** del sitio en el Administrador de IIS. Mueva el contenido de la carpeta `bin/Release/{TARGET FRAMEWORK}/publish` a la carpeta del sitio de IIS en el servidor, que es la **ruta de acceso física** del sitio en el Administrador de IIS.
 
 ---
 
@@ -151,3 +158,15 @@ Para obtener más información sobre cómo hospedar aplicaciones ASP.NET Core en
 
 * [Sitio oficial de Microsoft IIS](https://www.iis.net/)
 * [Biblioteca de contenido técnico de Windows Server](/windows-server/windows-server)
+
+### <a name="deployment-resources-for-iis-administrators"></a>Recursos de implementación para administradores de IIS
+
+* [Documentación de IIS](/iis)
+* [Introducción al Administrador de IIS en IIS](/iis/get-started/getting-started-with-iis/getting-started-with-the-iis-manager-in-iis-7-and-iis-8)
+* [Implementación de aplicaciones .NET Core](/dotnet/core/deploying/)
+* <xref:host-and-deploy/aspnet-core-module>
+* <xref:host-and-deploy/directory-structure>
+* <xref:host-and-deploy/iis/modules>
+* <xref:test/troubleshoot-azure-iis>
+* <xref:host-and-deploy/azure-iis-errors-reference>
+
