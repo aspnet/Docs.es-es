@@ -1,4 +1,4 @@
-## <a name="troubleshoot"></a>Solucionar problemas
+## <a name="troubleshoot"></a>Solución de problemas
 
 ### <a name="cookies-and-site-data"></a>Cookies y datos de sitios
 
@@ -21,9 +21,9 @@ El enfoque siguiente sirve para evitar que las cookies persistentes y los datos 
     * Google Chrome: `C:\Program Files (x86)\Google\Chrome\Application\chrome.exe`
     * Mozilla Firefox: `C:\Program Files\Mozilla Firefox\firefox.exe`
   * En el campo **Argumentos**, proporcione la opción de línea de comandos que utiliza el explorador para abrirse en el modo incógnito o privado. Algunos exploradores requieren la dirección URL de la aplicación.
-    * Microsoft Edge: `-inprivate`
-    * Google Chrome: `--incognito --new-window https://localhost:5001`
-    * Mozilla Firefox: `-private -url https://localhost:5001`
+    * Microsoft Edge: Use `-inprivate`.
+    * Google Chrome: Use `--incognito --new-window {URL}`, donde el marcador de posición `{URL}` es la dirección URL que se va a abrir (por ejemplo, `https://localhost:5001`).
+    * Mozilla Firefox: Use `-private -url {URL}`, donde el marcador de posición `{URL}` es la dirección URL que se va a abrir (por ejemplo, `https://localhost:5001`).
   * Proporcione un nombre en el campo **Nombre descriptivo**. Por ejemplo: `Firefox Auth Testing`.
   * Seleccione el botón **Aceptar**.
   * Para evitar tener que seleccionar el perfil de explorador para cada iteración de pruebas con una aplicación, establezca el perfil como predeterminado con el botón **Establecer como predeterminado**.
