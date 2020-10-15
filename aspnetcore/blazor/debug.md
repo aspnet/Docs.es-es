@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/debug
-ms.openlocfilehash: d4fd0d501ff14e37bb55b78bb6493ad43f9e5a87
-ms.sourcegitcommit: 139c998d37e9f3e3d0e3d72e10dbce8b75957d89
+ms.openlocfilehash: b8dd272d673e84b45a39272531385ebfd1d06175
+ms.sourcegitcommit: daa9ccf580df531254da9dce8593441ac963c674
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91805575"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91900991"
 ---
 # <a name="debug-aspnet-core-no-locblazor-webassembly"></a>Depuración de Blazor WebAssembly en ASP.NET Core
 
@@ -93,7 +93,7 @@ Para depurar una aplicación Blazor WebAssembly en Visual Studio:
    > [!NOTE]
    > No admite **Iniciar sin depuración** (<kbd>Ctrl</kbd>+<kbd>F5</kbd>). Cuando la aplicación se ejecuta en la configuración de depuración, la sobrecarga de depuración siempre genera una pequeña reducción del rendimiento.
 
-1. En la aplicación *Cliente*, establezca un punto de interrupción en la línea `currentCount++;` en `Pages/Counter.razor`.
+1. En la aplicación `*Client*`, establezca un punto de interrupción en la línea `currentCount++;` en `Pages/Counter.razor`.
 1. En el explorador, vaya a la página `Counter` y seleccione el botón **Hacer clic aquí** para alcanzar el punto de interrupción.
 1. En Visual Studio, revise el valor del campo `currentCount` en la ventana **Variables locales**.
 1. Presione <kbd>F5</kbd> para continuar la ejecución.
@@ -180,7 +180,7 @@ Para obtener información sobre el uso de una ruta de acceso base de la aplicaci
 
 1. Se inicia la aplicación independiente y se abre un explorador de depuración.
 
-1. En la aplicación *Cliente*, establezca un punto de interrupción en la línea `currentCount++;` en `Pages/Counter.razor`.
+1. En la aplicación `*Client*`, establezca un punto de interrupción en la línea `currentCount++;` en `Pages/Counter.razor`.
 
 1. En el explorador, vaya a la página `Counter` y seleccione el botón **Hacer clic aquí** para alcanzar el punto de interrupción.
 
@@ -285,7 +285,7 @@ Para depurar una aplicación Blazor WebAssembly en Visual Studio para Mac, haga
    > [!IMPORTANT]
    > El explorador seleccionado para la sesión de depuración debe ser Google Chrome o Microsoft Edge.
 
-1. En la aplicación *Cliente*, establezca un punto de interrupción en la línea `currentCount++;` en `Pages/Counter.razor`.
+1. En la aplicación `*Client*`, establezca un punto de interrupción en la línea `currentCount++;` en `Pages/Counter.razor`.
 1. En el explorador, vaya a la página `Counter` y seleccione el botón **Hacer clic aquí** para alcanzar el punto de interrupción:
 1. En Visual Studio, revise el valor del campo `currentCount` en la ventana **Variables locales**.
 1. Presione <kbd>&#8984;</kbd>+<kbd>&#8617;</kbd> para continuar la ejecución.
