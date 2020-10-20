@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/iis/logging-and-diagnostics
-ms.openlocfilehash: 9af2311dd1f42cce3547c8215af22d2613453510
-ms.sourcegitcommit: d60bfd52bfb559e805abd654b87a2a0c7eb69cf8
+ms.openlocfilehash: 523eec53d7d21723dcf136c4e5ce299533a78cc6
+ms.sourcegitcommit: daa9ccf580df531254da9dce8593441ac963c674
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91755218"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91901030"
 ---
 # <a name="log-creation-and-redirection"></a>Creación y redireccionamiento de registros
 
@@ -98,4 +98,4 @@ También se puede proporcionar la configuración de controlador a través de var
 > [!WARNING]
 > **No** deje habilitado el registro de depuración más tiempo del necesario en la implementación para solucionar un problema. El tamaño del registro no es limitado. Dejar habilitado el registro de depuración puede agotar el espacio disponible en disco y bloquear el servidor o el servicio de aplicación.
 
-Consulte [Configuración con `web.config`](xref:host-and-deploy/iis/web-config#configuration-with-webconfig) para ver un ejemplo del elemento `aspNetCore` en el archivo `web.config`.
+Consulte [Configuración del módulo de ASP.NET Core con `web.config`](xref:host-and-deploy/iis/web-config#configuration-of-aspnet-core-module-with-webconfig) para ver un ejemplo del elemento `aspNetCore` en el archivo `web.config`.

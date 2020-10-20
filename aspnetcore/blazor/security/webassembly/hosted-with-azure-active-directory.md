@@ -5,7 +5,7 @@ description: Obtenga información sobre cómo proteger una aplicación hospedada
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: devx-track-csharp, mvc
-ms.date: 07/08/2020
+ms.date: 10/08/2020
 no-loc:
 - ASP.NET Core Identity
 - cookie
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/hosted-with-azure-active-directory
-ms.openlocfilehash: 12a2509998bb9b4d56e250518b2db91f73dd0e67
-ms.sourcegitcommit: 9a90b956af8d8584d597f1e5c1dbfb0ea9bb8454
+ms.openlocfilehash: e6f514793a2efde120f70ac58f4ad4be7516ada7
+ms.sourcegitcommit: daa9ccf580df531254da9dce8593441ac963c674
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88712420"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91900859"
 ---
 # <a name="secure-an-aspnet-core-no-locblazor-webassembly-hosted-app-with-azure-active-directory"></a>Protección de una aplicación hospedada Blazor WebAssembly de ASP.NET Core con Azure Active Directory
 
@@ -68,23 +68,43 @@ En **Exponer una API**:
 
 Registre la siguiente información:
 
-* URI del identificador de aplicación (por ejemplo, `https://contoso.onmicrosoft.com/41451fa7-82d9-4673-8fa5-69eff5a761fd`, `api://41451fa7-82d9-4673-8fa5-69eff5a761fd` o el valor personalizado que haya proporcionado)
+* URI del identificador de aplicación (por ejemplo, `api://41451fa7-82d9-4673-8fa5-69eff5a761fd`, `https://contoso.onmicrosoft.com/41451fa7-82d9-4673-8fa5-69eff5a761fd` o el valor personalizado que haya proporcionado)
 * Nombre del ámbito (por ejemplo, `API.Access`)
 
-El URI de identificador de aplicación puede requerir una configuración especial en la aplicación cliente, que se describe en la sección [Ámbitos de token de acceso](#access-token-scopes) más adelante en este tema.
+### <a name="register-a-client-app"></a>Registrar una aplicación cliente
 
-### <a name="register-a-client-app"></a>Registro de una aplicación cliente
+Siga las instrucciones que encontrará en [Inicio rápido: Registro de una aplicación en la plataforma de identidad de Microsoft](/azure/active-directory/develop/quickstart-register-app) y en temas de Azure AAD posteriores para registrar una aplicación de AAD para la aplicación *`Client`* . Tras ello, haga lo siguiente:
 
-Siga las instrucciones que encontrará en [Inicio rápido: Registro de una aplicación en la plataforma de identidad de Microsoft](/azure/active-directory/develop/quickstart-register-app) y en temas de Azure AAD posteriores para registrar una aplicación de AAD para la *aplicación cliente*. Tras ello, haga lo siguiente:
+::: moniker range=">= aspnetcore-5.0"
 
 1. En **Azure Active Directory** > **Registros de aplicaciones**, seleccione **Nuevo registro**.
 1. Indique un **Nombre** para la aplicación (por ejemplo, **Blazor Client AAD**).
 1. Elija un **tipo de cuenta compatible**. En esta experiencia puede seleccionar **Solo cuentas de este directorio organizativo** (inquilino único).
-1. Deje la lista desplegable **URI de redirección** establecida en **Web** y proporcione el siguiente URI de redirección: `https://localhost:{PORT}/authentication/login-callback`. El puerto predeterminado de una aplicación que se ejecuta en Kestrel es 5001. Si la aplicación se ejecuta en otro puerto de Kestrel, use el puerto de la aplicación. En el caso de IIS Express, el puerto generado aleatoriamente para la aplicación se encuentra en las propiedades de la aplicación de servidor, en el panel **Depurar**. Dado que la aplicación no existe en este momento y no conocemos el puerto de IIS Express, vuelva a este paso después de crear la aplicación y actualice el URI de redirección. En la sección [Creación de la aplicación](#create-the-app) aparece un comentario para recordar a los usuarios de IIS Express que actualicen el URI de redirección.
-1. Desactive la casilla **Permisos** > **Conceda consentimiento del administrador a los permisos openid y offline_access**.
+1. Establezca la lista desplegable **URI de redirección** en **Aplicación de página única** y proporcione el siguiente URI de redirección: `https://localhost:{PORT}/authentication/login-callback`. El puerto predeterminado de una aplicación que se ejecuta en Kestrel es 5001. Si la aplicación se ejecuta en otro puerto de Kestrel, use el puerto de la aplicación. En el caso de IIS Express, el puerto generado aleatoriamente para la aplicación se encuentra en las propiedades de la aplicación *`Server`* , en el panel **Depurar**. Dado que la aplicación no existe en este momento y no conocemos el puerto de IIS Express, vuelva a este paso después de crear la aplicación y actualice el URI de redirección. En la sección [Creación de la aplicación](#create-the-app) aparece un comentario para recordar a los usuarios de IIS Express que actualicen el URI de redirección.
+1. Desactive la casilla **Permisos**>**Conceda consentimiento del administrador a los permisos openid y offline_access**.
 1. Seleccione **Registrar**.
 
-Registre el identificador de aplicación (cliente) de la *aplicación cliente*; por ejemplo, `4369008b-21fa-427c-abaa-9b53bf58e538`.
+Registre el identificador de la aplicación *`Client`* (cliente); por ejemplo, `4369008b-21fa-427c-abaa-9b53bf58e538`.
+
+En **Autenticación** > **Configuraciones de plataforma** > **Aplicación de página única**:
+
+1. Confirme que el **URI de redirección** de `https://localhost:{PORT}/authentication/login-callback` está presente.
+1. En **Concesión implícita**, asegúrese de que las casillas **Tokens de acceso** y **Tokens de id.** **no** están seleccionadas.
+1. Los valores predeterminados restantes de la aplicación son aceptables en esta experiencia.
+1. Seleccione el botón **Guardar**.
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
+1. En **Azure Active Directory** > **Registros de aplicaciones**, seleccione **Nuevo registro**.
+1. Indique un **Nombre** para la aplicación (por ejemplo, **Blazor Client AAD**).
+1. Elija un **tipo de cuenta compatible**. En esta experiencia puede seleccionar **Solo cuentas de este directorio organizativo** (inquilino único).
+1. Deje la lista desplegable **URI de redirección** establecida en **Web** y proporcione el siguiente URI de redirección: `https://localhost:{PORT}/authentication/login-callback`. El puerto predeterminado de una aplicación que se ejecuta en Kestrel es 5001. Si la aplicación se ejecuta en otro puerto de Kestrel, use el puerto de la aplicación. En el caso de IIS Express, el puerto generado aleatoriamente para la aplicación se encuentra en las propiedades de la aplicación *`Server`* , en el panel **Depurar**. Dado que la aplicación no existe en este momento y no conocemos el puerto de IIS Express, vuelva a este paso después de crear la aplicación y actualice el URI de redirección. En la sección [Creación de la aplicación](#create-the-app) aparece un comentario para recordar a los usuarios de IIS Express que actualicen el URI de redirección.
+1. Desactive la casilla **Permisos**>**Conceda consentimiento del administrador a los permisos openid y offline_access**.
+1. Seleccione **Registrar**.
+
+Registre el identificador de la aplicación *`Client`* (cliente); por ejemplo, `4369008b-21fa-427c-abaa-9b53bf58e538`.
 
 En **Autenticación** > **Configuraciones de plataforma** > **Web**:
 
@@ -92,6 +112,8 @@ En **Autenticación** > **Configuraciones de plataforma** > **Web**:
 1. En **Concesión implícita**, active las casillas **Tokens de acceso** y **Tokens de id.**
 1. Los valores predeterminados restantes de la aplicación son aceptables en esta experiencia.
 1. Seleccione el botón **Guardar**.
+
+::: moniker-end
 
 En **Permisos de API**:
 
@@ -111,33 +133,62 @@ Reemplace los marcadores de posición del siguiente comando por la información 
 dotnet new blazorwasm -au SingleOrg --api-client-id "{SERVER API APP CLIENT ID}" --app-id-uri "{SERVER API APP ID URI}" --client-id "{CLIENT APP CLIENT ID}" --default-scope "{DEFAULT SCOPE}" --domain "{TENANT DOMAIN}" -ho -o {APP NAME} --tenant-id "{TENANT ID}"
 ```
 
-| Marcador de posición                  | Nombre de Azure Portal                                     | Ejemplo                                |
-| ---------------------------- | ----------------------------------------------------- | -------------------------------------- |
-| `{APP NAME}`                 | &mdash;                                               | `BlazorSample`                         |
-| `{CLIENT APP CLIENT ID}`     | Identificador de aplicación (cliente) para la *aplicación cliente*          | `4369008b-21fa-427c-abaa-9b53bf58e538` |
-| `{DEFAULT SCOPE}`            | Nombre de ámbito                                            | `API.Access`                           |
-| `{SERVER API APP CLIENT ID}` | Identificador de aplicación (cliente) para la *aplicación de API de servidor*      | `41451fa7-82d9-4673-8fa5-69eff5a761fd` |
-| `{SERVER API APP ID URI}`    | URI de identificador de aplicación ([consultar nota](#access-token-scopes)) | `41451fa7-82d9-4673-8fa5-69eff5a761fd` |
-| `{TENANT DOMAIN}`            | Dominio Principal/Publicador/Inquilino                       | `contoso.onmicrosoft.com`              |
-| `{TENANT ID}`                | Id. de directorio (inquilino)                                 | `e86c78e2-8bb4-4c41-aefd-918e0565a45e` |
+| Marcador de posición                  | Nombre de Azure Portal                                     | Ejemplo                                      |
+| ---------------------------- | ----------------------------------------------------- | -------------------------------------------- |
+| `{APP NAME}`                 | &mdash;                                               | `BlazorSample`                               |
+| `{CLIENT APP CLIENT ID}`     | Identificador de aplicación (cliente) para la aplicación *`Client`*        | `4369008b-21fa-427c-abaa-9b53bf58e538`       |
+| `{DEFAULT SCOPE}`            | Nombre de ámbito                                            | `API.Access`                                 |
+| `{SERVER API APP CLIENT ID}` | Identificador de aplicación (cliente) para la *aplicación de API de servidor*      | `41451fa7-82d9-4673-8fa5-69eff5a761fd`       |
+| `{SERVER API APP ID URI}`    | URI de Id. de aplicación                                    | `api://41451fa7-82d9-4673-8fa5-69eff5a761fd` |
+| `{TENANT DOMAIN}`            | Dominio Principal/Publicador/Inquilino                       | `contoso.onmicrosoft.com`                    |
+| `{TENANT ID}`                | Id. de directorio (inquilino)                                 | `e86c78e2-8bb4-4c41-aefd-918e0565a45e`       |
 
 La ubicación de salida especificada con la opción `-o|--output` crea una carpeta de proyecto si no existe y se convierte en parte del nombre de la aplicación.
 
-> [!NOTE]
-> Pase el URI de identificador de aplicación a la opción `app-id-uri`, pero tenga en cuenta que puede que deba realizar un cambio de configuración en la aplicación cliente; esto se describe en la sección [Ámbitos de token de acceso](#access-token-scopes).
+::: moniker range=">= aspnetcore-5.0"
 
 > [!NOTE]
-> En Azure Portal, el valor de **Autenticación** > **Configuraciones de plataforma** > **Web** > **URI de redirección** de la *aplicación cliente* se establece en el puerto 5001 en el caso de las aplicaciones que se ejecutan en el servidor Kestrel con la configuración predeterminada.
->
-> Si la *aplicación cliente* se ejecuta en un puerto de IIS Express aleatorio, el puerto de la aplicación se encuentra en las propiedades de la *aplicación de API de servidor*, en el panel **Depurar**.
->
-> Si el puerto no se configuró anteriormente con el puerto conocido de la *aplicación cliente*, vuelva al registro de la *aplicación cliente* en Azure Portal y actualice el URI de redirección con el puerto correcto.
+> Es posible que se requiera un cambio de configuración al usar un inquilino de Azure con un dominio de publicador no comprobado, lo cual se describe en la sección [Configuración de la aplicación](#app-settings).
 
-## <a name="server-app-configuration"></a>Configuración de la aplicación de servidor
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
+> [!NOTE]
+> Es posible que se requiera un cambio de configuración al usar un inquilino de Azure con un dominio de publicador no comprobado, lo cual se describe en la sección [Ámbitos de token de acceso](#access-token-scopes).
+
+::: moniker-end
+
+> [!NOTE]
+> En Azure Portal, el valor de configuración de plataforma de la aplicación *`Client`* **URI de redirección** de la aplicación se establece en el puerto 5001 en el caso de las aplicaciones que se ejecutan en el servidor Kestrel con la configuración predeterminada.
+>
+> Si la aplicación *`Client`* se ejecuta en un puerto de IIS Express aleatorio, el puerto de la aplicación se encuentra en las propiedades de la *aplicación de API de servidor*, en el panel **Depurar**.
+>
+> Si el puerto no se configuró anteriormente con el puerto conocido de la aplicación *`Client`* , vuelva al registro de la aplicación *`Client`* en Azure Portal y actualice el URI de redirección con el puerto correcto.
+
+## <a name="server-app-configuration"></a>Configuración de la aplicación *`Server`*
 
 *Esta sección atañe a la aplicación **`Server`** de la solución.*
 
 ### <a name="authentication-package"></a>Paquete de autenticación
+
+::: moniker range=">= aspnetcore-5.0"
+
+La compatibilidad con la autenticación y autorización de llamadas realizadas a las API web de ASP.NET Core con Microsoft Identity Platform se proporciona mediante los paquetes siguientes:
+
+* [`Microsoft.Identity.Web`](https://www.nuget.org/packages/Microsoft.Identity.Web)
+* [`Microsoft.Identity.Web.UI`](https://www.nuget.org/packages/Microsoft.Identity.Web.UI)
+
+```xml
+<PackageReference Include="Microsoft.Identity.Web" Version="{VERSION}" />
+<PackageReference Include="Microsoft.Identity.Web.UI" Version="{VERSION}" />
+```
+
+En el caso del marcador de posición `{VERSION}`, la versión estable más reciente del paquete que coincide con la versión del marco compartida de la aplicación se puede encontrar en el **historial de versiones** del paquete en NuGet.org.
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
 
 La compatibilidad con la autenticación y autorización de llamadas realizadas a API web de ASP.NET Core se proporciona a través del paquete [`Microsoft.AspNetCore.Authentication.AzureAD.UI`](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.AzureAD.UI):
 
@@ -148,7 +199,22 @@ La compatibilidad con la autenticación y autorización de llamadas realizadas a
 
 En el caso del marcador de posición `{VERSION}`, la versión estable más reciente del paquete que coincide con la versión del marco compartida de la aplicación se puede encontrar en el **historial de versiones** del paquete en [NuGet.org](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.AzureAD.UI).
 
+::: moniker-end
+
 ### <a name="authentication-service-support"></a>Compatibilidad con el servicio de autenticación
+
+::: moniker range=">= aspnetcore-5.0"
+
+El método `AddAuthentication` configura los servicios de autenticación dentro de la aplicación y, asimismo, configura el controlador de portador JWT como el método de autenticación predeterminado. El método <xref:Microsoft.Identity.Web.MicrosoftIdentityWebApiAuthenticationBuilderExtensions.AddMicrosoftIdentityWebApi%2A> configura servicios para proteger la API web con Microsoft Identity Platform v2.0. Este método espera una sección `AzureAd` en la configuración de la aplicación con los ajustes necesarios para inicializar las opciones de autenticación.
+
+```csharp
+services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddMicrosoftIdentityWebApi(Configuration.GetSection("AzureAd"));
+```
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
 
 El método `AddAuthentication` configura los servicios de autenticación dentro de la aplicación y, asimismo, configura el controlador de portador JWT como el método de autenticación predeterminado. El método <xref:Microsoft.AspNetCore.Authentication.AzureADAuthenticationBuilderExtensions.AddAzureADBearer%2A> configura los parámetros específicos del controlador de portador JWT necesarios para validar los tokens emitidos por la instancia de Azure Active Directory:
 
@@ -156,6 +222,8 @@ El método `AddAuthentication` configura los servicios de autenticación dentro 
 services.AddAuthentication(AzureADDefaults.BearerAuthenticationScheme)
     .AddAzureADBearer(options => Configuration.Bind("AzureAd", options));
 ```
+
+::: moniker-end
 
 <xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication%2A> y <xref:Microsoft.AspNetCore.Builder.AuthorizationAppBuilderExtensions.UseAuthorization%2A> garantizan que sucede lo siguiente:
 
@@ -169,7 +237,7 @@ app.UseAuthorization();
 
 ### <a name="userno-locidentityname"></a>User.Identity.Name
 
-La API de la aplicación de servidor rellena `User.Identity.Name` de forma predeterminada con el valor del tipo de notificación `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` (por ejemplo, `2d64b3da-d9d5-42c6-9352-53d8df33d770@contoso.onmicrosoft.com`).
+De manera predeterminada, la API de la aplicación *`Server`* rellena `User.Identity.Name` con el valor del tipo de notificación `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` (por ejemplo, `2d64b3da-d9d5-42c6-9352-53d8df33d770@contoso.onmicrosoft.com`).
 
 Para configurar la aplicación con el fin de recibir el valor del tipo de notificación `name`, establezca <xref:Microsoft.IdentityModel.Tokens.TokenValidationParameters.NameClaimType?displayProperty=nameWithType> de <xref:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerOptions> en `Startup.ConfigureServices`:
 
@@ -186,6 +254,42 @@ services.Configure<JwtBearerOptions>(
 ```
 
 ### <a name="app-settings"></a>Configuración de la aplicación
+
+::: moniker range=">= aspnetcore-5.0"
+
+El archivo `appsettings.json` contiene las opciones para configurar el controlador de portador JWT que se usa para validar los tokens de acceso:
+
+```json
+{
+  "AzureAd": {
+    "Instance": "https://login.microsoftonline.com/",
+    "Domain": "{DOMAIN}",
+    "TenantId": "{TENANT ID}",
+    "ClientId": "{SERVER API APP CLIENT ID}",
+    "CallbackPath": "/signin-oidc"
+  }
+}
+```
+
+Ejemplo:
+
+```json
+{
+  "AzureAd": {
+    "Instance": "https://login.microsoftonline.com/",
+    "Domain": "contoso.onmicrosoft.com",
+    "TenantId": "e86c78e2-8bb4-4c41-aefd-918e0565a45e",
+    "ClientId": "41451fa7-82d9-4673-8fa5-69eff5a761fd",
+    "CallbackPath": "/signin-oidc"
+  }
+}
+```
+
+[!INCLUDE[](~/includes/blazor-security/azure-scope-5x.md)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
 
 El archivo `appsettings.json` contiene las opciones para configurar el controlador de portador JWT que se usa para validar los tokens de acceso:
 
@@ -213,6 +317,8 @@ Ejemplo:
 }
 ```
 
+::: moniker-end
+
 ### <a name="weatherforecast-controller"></a>Controlador WeatherForecast
 
 El controlador WeatherForecast (*Controllers/WeatherForecastController.cs*) expone una API protegida con el atributo [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) aplicado al controlador. Es **importante** comprender esto:
@@ -234,7 +340,7 @@ public class WeatherForecastController : ControllerBase
 }
 ```
 
-## <a name="client-app-configuration"></a>Configuración de la aplicación cliente
+## <a name="client-app-configuration"></a>Configuración de la aplicación *`Client`*
 
 *Esta sección atañe a la aplicación **`Client`** de la solución.*
 
@@ -325,7 +431,17 @@ builder.Services.AddMsalAuthentication(options =>
 });
 ```
 
-[!INCLUDE[](~/includes/blazor-security/azure-scope.md)]
+Especifique ámbitos adicionales con `AdditionalScopesToConsent`:
+
+```csharp
+options.ProviderOptions.AdditionalScopesToConsent.Add("{ADDITIONAL SCOPE URI}");
+```
+
+::: moniker range="< aspnetcore-5.0"
+
+[!INCLUDE[](~/includes/blazor-security/azure-scope-3x.md)]
+
+::: moniker-end
 
 Para más información, vea las siguientes secciones del artículo *Otros escenarios*:
 

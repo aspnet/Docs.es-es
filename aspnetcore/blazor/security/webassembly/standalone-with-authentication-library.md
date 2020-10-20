@@ -5,7 +5,7 @@ description: Obtenga información sobre cómo proteger una aplicación independi
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/08/2020
+ms.date: 10/08/2020
 no-loc:
 - ASP.NET Core Identity
 - cookie
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/standalone-with-authentication-library
-ms.openlocfilehash: 795709853941f35b1645f72d6865fe1ebf935112
-ms.sourcegitcommit: 9a90b956af8d8584d597f1e5c1dbfb0ea9bb8454
+ms.openlocfilehash: 03abaf0676860f50a3e4c1cba64039070910ff9d
+ms.sourcegitcommit: daa9ccf580df531254da9dce8593441ac963c674
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88712368"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91900886"
 ---
 # <a name="secure-an-aspnet-core-no-locblazor-webassembly-standalone-app-with-the-authentication-library"></a>Protección de una aplicación independiente Blazor WebAssembly de ASP.NET Core con la biblioteca de autenticación
 
@@ -109,6 +109,8 @@ La compatibilidad con la autenticación de aplicaciones independientes se ofrece
 
 ## <a name="access-token-scopes"></a>Ámbitos de token de acceso
 
+La plantilla Blazor WebAssembly configura automáticamente los ámbitos predeterminados para `openid` y `profile`.
+
 La plantilla de Blazor WebAssembly no configura la aplicación automáticamente para solicitar un token de acceso relativo a una API segura. Para aprovisionar un token de acceso como parte del flujo de inicio de sesión, agregue el ámbito a los ámbitos de token predeterminados de <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.OidcProviderOptions>:
 
 ```csharp
@@ -119,7 +121,7 @@ builder.Services.AddOidcAuthentication(options =>
 });
 ```
 
-[!INCLUDE[](~/includes/blazor-security/azure-scope.md)]
+[!INCLUDE[](~/includes/blazor-security/azure-scope-3x.md)]
 
 Para más información, vea las siguientes secciones del artículo *Otros escenarios*:
 

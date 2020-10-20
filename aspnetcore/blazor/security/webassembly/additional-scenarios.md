@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/additional-scenarios
-ms.openlocfilehash: 2881b5d01f3b2e41659e3166a4e77b64a450f017
-ms.sourcegitcommit: a07f83b00db11f32313045b3492e5d1ff83c4437
+ms.openlocfilehash: 50d455b37c51fdd6d3b52b10b3e819eb45526de4
+ms.sourcegitcommit: daa9ccf580df531254da9dce8593441ac963c674
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90592924"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91900965"
 ---
 # <a name="aspnet-core-no-locblazor-webassembly-additional-security-scenarios"></a>Otros escenarios de seguridad de Blazor WebAssembly en ASP.NET Core
 
@@ -177,7 +177,7 @@ En el caso de una aplicación Blazor basada en la plantilla del proyecto hospeda
 
 ### <a name="graph-api-example"></a>Ejemplo de Graph API
 
-En el ejemplo siguiente, se usa un <xref:System.Net.Http.HttpClient> con nombre para Graph API para obtener el número de teléfono móvil de un usuario para procesar una llamada. Después de agregar el permiso `User.Read` de Microsoft Graph API en el área de AAD de Azure Portal, el ámbito se configura para el cliente con nombre en la aplicación independiente o la aplicación cliente de una solución de Blazor hospedada.
+En el ejemplo siguiente, se usa un <xref:System.Net.Http.HttpClient> con nombre para Graph API para obtener el número de teléfono móvil de un usuario para procesar una llamada. Después de agregar el permiso `User.Read` de Microsoft Graph API en el área de AAD de Azure Portal, el ámbito se configura para el cliente con nombre en la aplicación independiente o la aplicación *`Client`* de una solución de Blazor hospedada.
 
 > [!NOTE]
 > En el ejemplo de esta sección se obtienen datos de Graph API para el usuario en el *código del componente*. Para crear notificaciones de usuario a partir de Graph API, consulte los siguientes recursos:
@@ -1070,7 +1070,7 @@ Después de seguir las instrucciones que aparecen en uno de los temas de la apli
 * Representa previamente las rutas de acceso para las que no se requiere autorización.
 * No representa previamente las rutas de acceso para las que se requiere autorización.
 
-En la clase `Program` de la aplicación cliente (`Program.cs`), factorice los registros de servicio comunes en un método independiente (por ejemplo, `ConfigureCommonServices`):
+En la clase `Program` de la aplicación *`Client`* (`Program.cs`), factorice los registros de servicio comunes en un método independiente (por ejemplo, `ConfigureCommonServices`):
 
 ```csharp
 public class Program
@@ -1130,7 +1130,7 @@ app.UseEndpoints(endpoints =>
 });
 ```
 
-En la aplicación de servidor, cree una carpeta `Pages`, si todavía no existe. Cree una página `_Host.cshtml` dentro de la carpeta `Pages` de la aplicación de servidor. Pegue el contenido del archivo `wwwroot/index.html` de la aplicación cliente en el archivo `Pages/_Host.cshtml`. Actualice el contenido del archivo:
+En la aplicación de servidor, cree una carpeta `Pages`, si todavía no existe. Cree una página `_Host.cshtml` dentro de la carpeta `Pages` de la aplicación de servidor. Pegue el contenido del archivo `wwwroot/index.html` de la aplicación *`Client`* en el archivo `Pages/_Host.cshtml`. Actualice el contenido del archivo:
 
 * Agregue `@page "_Host"` a la parte superior del archivo.
 * Reemplace la etiqueta `<app>Loading...</app>` por la siguiente:

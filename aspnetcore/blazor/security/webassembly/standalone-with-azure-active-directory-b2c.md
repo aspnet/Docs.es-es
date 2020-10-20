@@ -5,7 +5,7 @@ description: Obtenga información sobre cómo proteger una aplicación independi
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/08/2020
+ms.date: 10/08/2020
 no-loc:
 - ASP.NET Core Identity
 - cookie
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/standalone-with-azure-active-directory-b2c
-ms.openlocfilehash: 93644484cbff4c03fb25136afe9c1646104b652a
-ms.sourcegitcommit: 9a90b956af8d8584d597f1e5c1dbfb0ea9bb8454
+ms.openlocfilehash: 76486c7170849bb184ec8573e747df095b631632
+ms.sourcegitcommit: daa9ccf580df531254da9dce8593441ac963c674
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88712472"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91900938"
 ---
 # <a name="secure-an-aspnet-core-no-locblazor-webassembly-standalone-app-with-azure-active-directory-b2c"></a>Protección de una aplicación independiente Blazor WebAssembly de ASP.NET Core con Azure Active Directory B2C
 
@@ -40,7 +40,29 @@ Registre la siguiente información:
 * Instancia de AAD B2C (por ejemplo, `https://contoso.b2clogin.com/`, barra diagonal final incluida): La instancia es el esquema y el host de un registro de la aplicación de Azure B2C, que se puede encontrar abriendo la ventana **Puntos de conexión** de la página **Registros de aplicaciones** de Azure Portal.
 * Dominio de AAD B2C Principal/Publicador/Inquilino (por ejemplo, `contoso.onmicrosoft.com`): El dominio está disponible como **Dominio del publicador** en la hoja **Personalización de marca** de Azure Portal de la aplicación registrada.
 
-Siga de nuevo las instrucciones que encontrará en [Tutorial: Registro de una aplicación en Azure Active Directory B2C](/azure/active-directory-b2c/tutorial-register-applications) para registrar una aplicación de AAD para la *aplicación cliente* y, después, haga lo siguiente:
+Siga de nuevo las instrucciones que encontrará en [Tutorial: Registro de una aplicación en Azure Active Directory B2C](/azure/active-directory-b2c/tutorial-register-applications) para registrar una aplicación de AAD para la aplicación *`Client`* y, después, haga lo siguiente:
+
+::: moniker range=">= aspnetcore-5.0"
+
+1. En **Azure Active Directory** > **Registros de aplicaciones**, seleccione **Nuevo registro**.
+1. Indique un **Nombre** para la aplicación (por ejemplo, **Blazor Standalone AAD B2C**).
+1. En **Tipos de cuenta compatibles**, seleccione la opción multiinquilino: **Cuentas de cualquier directorio de la organización o proveedor de identidades. Elija esta opción para realizar la autenticación con Azure AD B2C.**
+1. Establezca la lista desplegable **URI de redirección** en **Aplicación de página única** y proporcione el siguiente URI de redirección: `https://localhost:{PORT}/authentication/login-callback`. El puerto predeterminado de una aplicación que se ejecuta en Kestrel es 5001. Si la aplicación se ejecuta en otro puerto de Kestrel, use el puerto de la aplicación. En el caso de IIS Express, el puerto generado aleatoriamente para la aplicación se encuentra en las propiedades de la aplicación, en el panel **Depurar**. Dado que la aplicación no existe en este momento y no conocemos el puerto de IIS Express, vuelva a este paso después de crear la aplicación y actualice el URI de redirección. Más adelante en este tema aparece un comentario para recordar a los usuarios de IIS Express que actualicen el URI de redirección.
+1. Confirme que la casilla **Permisos** > **Conceda consentimiento del administrador a los permisos openid y offline_access** está activada.
+1. Seleccione **Registrar**.
+
+Registre el identificador de aplicación (cliente); por ejemplo, `41451fa7-82d9-4673-8fa5-69eff5a761fd`.
+
+En **Autenticación** > **Configuraciones de plataforma** > **Aplicación de página única**:
+
+1. Confirme que el **URI de redirección** de `https://localhost:{PORT}/authentication/login-callback` está presente.
+1. En **Concesión implícita**, asegúrese de que las casillas **Tokens de acceso** y **Tokens de id.** **no** están seleccionadas.
+1. Los valores predeterminados restantes de la aplicación son aceptables en esta experiencia.
+1. Seleccione el botón **Guardar**.
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
 
 1. En **Azure Active Directory** > **Registros de aplicaciones**, seleccione **Nuevo registro**.
 1. Indique un **Nombre** para la aplicación (por ejemplo, **Blazor Standalone AAD B2C**).
@@ -57,6 +79,8 @@ En **Autenticación** > **Configuraciones de plataforma** > **Web**:
 1. En **Concesión implícita**, active las casillas **Tokens de acceso** y **Tokens de id.**
 1. Los valores predeterminados restantes de la aplicación son aceptables en esta experiencia.
 1. Seleccione el botón **Guardar**.
+
+::: moniker-end
 
 En **Inicio** > **Azure AD B2C** > **Flujos de usuario**:
 
@@ -83,11 +107,17 @@ dotnet new blazorwasm -au IndividualB2C --aad-b2c-instance "{AAD B2C INSTANCE}" 
 La ubicación de salida especificada con la opción `-o|--output` crea una carpeta de proyecto si no existe y se convierte en parte del nombre de la aplicación.
 
 > [!NOTE]
-> En Azure Portal, el valor de **Autenticación** > **Configuraciones de plataforma** > **Web** > **URI de redirección** de la aplicación se establece en el puerto 5001 en el caso de las aplicaciones que se ejecutan en el servidor Kestrel con la configuración predeterminada.
+> En Azure Portal, el valor de configuración de plataforma **URI de redirección** de la aplicación se establece en el puerto 5001 en el caso de las aplicaciones que se ejecutan en el servidor Kestrel con la configuración predeterminada.
 >
 > Si la aplicación se ejecuta en un puerto de IIS Express aleatorio, el puerto de la aplicación se encuentra en las propiedades de la aplicación, en el panel **Depurar**.
 >
 > Si el puerto no se configuró anteriormente con el puerto conocido de la aplicación, vuelva al registro de la aplicación en Azure Portal y actualice el URI de redirección con el puerto correcto.
+
+::: moniker range=">= aspnetcore-5.0"
+
+[!INCLUDE[](~/includes/blazor-security/additional-scopes-standalone-nonAAD.md)]
+
+::: moniker-end
 
 Después de crear la aplicación, debe poder hacer lo siguiente:
 
@@ -162,7 +192,11 @@ builder.Services.AddMsalAuthentication(options =>
 });
 ```
 
-[!INCLUDE[](~/includes/blazor-security/azure-scope.md)]
+Especifique ámbitos adicionales con `AdditionalScopesToConsent`:
+
+```csharp
+options.ProviderOptions.AdditionalScopesToConsent.Add("{ADDITIONAL SCOPE URI}");
+```
 
 Para más información, vea las siguientes secciones del artículo *Otros escenarios*:
 

@@ -5,7 +5,7 @@ description: Obtenga información sobre cómo proteger una aplicación hospedada
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/08/2020
+ms.date: 10/08/2020
 no-loc:
 - ASP.NET Core Identity
 - cookie
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/hosted-with-azure-active-directory-b2c
-ms.openlocfilehash: adc45293a6dfd324c12482d2dfffdeaa25eee4a3
-ms.sourcegitcommit: 9a90b956af8d8584d597f1e5c1dbfb0ea9bb8454
+ms.openlocfilehash: aa6c865f5fd51d1634bde3ac96e1fddc7216a801
+ms.sourcegitcommit: daa9ccf580df531254da9dce8593441ac963c674
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88712446"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91900952"
 ---
 # <a name="secure-an-aspnet-core-no-locblazor-webassembly-hosted-app-with-azure-active-directory-b2c"></a>Protección de una aplicación hospedada Blazor WebAssembly de ASP.NET Core con Azure Active Directory B2C
 
@@ -67,19 +67,39 @@ En **Exponer una API**:
 
 Registre la siguiente información:
 
-* URI del identificador de aplicación (por ejemplo, `https://contoso.onmicrosoft.com/41451fa7-82d9-4673-8fa5-69eff5a761fd`, `api://41451fa7-82d9-4673-8fa5-69eff5a761fd` o el valor personalizado que haya proporcionado)
+* URI del identificador de aplicación (por ejemplo, `api://41451fa7-82d9-4673-8fa5-69eff5a761fd`, `https://contoso.onmicrosoft.com/41451fa7-82d9-4673-8fa5-69eff5a761fd` o el valor personalizado que haya proporcionado)
 * Nombre del ámbito (por ejemplo, `API.Access`)
 
-El URI de identificador de aplicación puede requerir una configuración especial en la aplicación cliente, que se describe en la sección [Ámbitos de token de acceso](#access-token-scopes) más adelante en este tema.
+### <a name="register-a-client-app"></a>Registrar una aplicación cliente
 
-### <a name="register-a-client-app"></a>Registro de una aplicación cliente
+Siga de nuevo las instrucciones que encontrará en [Tutorial: Registro de una aplicación en Azure Active Directory B2C](/azure/active-directory-b2c/tutorial-register-applications) para registrar una aplicación de AAD para la aplicación *`Client`* y, después, haga lo siguiente:
 
-Siga de nuevo las instrucciones que encontrará en [Tutorial: Registro de una aplicación en Azure Active Directory B2C](/azure/active-directory-b2c/tutorial-register-applications) para registrar una aplicación de AAD para la *aplicación cliente* y, después, haga lo siguiente:
+::: moniker range=">= aspnetcore-5.0"
 
 1. En **Azure Active Directory** > **Registros de aplicaciones**, seleccione **Nuevo registro**.
 1. Indique un **Nombre** para la aplicación (por ejemplo, **Blazor Client AAD B2C**).
 1. En **Tipos de cuenta compatibles**, seleccione la opción multiinquilino: **Cuentas de cualquier directorio de la organización o proveedor de identidades. Elija esta opción para realizar la autenticación con Azure AD B2C.**
-1. Deje la lista desplegable **URI de redirección** establecida en **Web** y proporcione el siguiente URI de redirección: `https://localhost:{PORT}/authentication/login-callback`. El puerto predeterminado de una aplicación que se ejecuta en Kestrel es 5001. Si la aplicación se ejecuta en otro puerto de Kestrel, use el puerto de la aplicación. En el caso de IIS Express, el puerto generado aleatoriamente para la aplicación se encuentra en las propiedades de la aplicación de servidor, en el panel **Depurar**. Dado que la aplicación no existe en este momento y no conocemos el puerto de IIS Express, vuelva a este paso después de crear la aplicación y actualice el URI de redirección. En la sección [Creación de la aplicación](#create-the-app) aparece un comentario para recordar a los usuarios de IIS Express que actualicen el URI de redirección.
+1. Establezca la lista desplegable **URI de redirección** en **Aplicación de página única** y proporcione el siguiente URI de redirección: `https://localhost:{PORT}/authentication/login-callback`. El puerto predeterminado de una aplicación que se ejecuta en Kestrel es 5001. Si la aplicación se ejecuta en otro puerto de Kestrel, use el puerto de la aplicación. En el caso de IIS Express, el puerto generado aleatoriamente para la aplicación se encuentra en las propiedades de la aplicación *`Server`* , en el panel **Depurar**. Dado que la aplicación no existe en este momento y no conocemos el puerto de IIS Express, vuelva a este paso después de crear la aplicación y actualice el URI de redirección. En la sección [Creación de la aplicación](#create-the-app) aparece un comentario para recordar a los usuarios de IIS Express que actualicen el URI de redirección.
+1. Confirme que la casilla **Permisos** >**Conceda consentimiento del administrador a los permisos openid y offline_access** está activada.
+1. Seleccione **Registrar**.
+
+1. Registre el identificador de aplicación (cliente); por ejemplo, `4369008b-21fa-427c-abaa-9b53bf58e538`.
+
+En **Autenticación** > **Configuraciones de plataforma** > **Aplicación de página única**:
+
+1. Confirme que el **URI de redirección** de `https://localhost:{PORT}/authentication/login-callback` está presente.
+1. En **Concesión implícita**, asegúrese de que las casillas **Tokens de acceso** y **Tokens de id.** **no** están seleccionadas.
+1. Los valores predeterminados restantes de la aplicación son aceptables en esta experiencia.
+1. Seleccione el botón **Guardar**.
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
+1. En **Azure Active Directory** > **Registros de aplicaciones**, seleccione **Nuevo registro**.
+1. Indique un **Nombre** para la aplicación (por ejemplo, **Blazor Client AAD B2C**).
+1. En **Tipos de cuenta compatibles**, seleccione la opción multiinquilino: **Cuentas de cualquier directorio de la organización o proveedor de identidades. Elija esta opción para realizar la autenticación con Azure AD B2C.**
+1. Deje la lista desplegable **URI de redirección** establecida en **Web** y proporcione el siguiente URI de redirección: `https://localhost:{PORT}/authentication/login-callback`. El puerto predeterminado de una aplicación que se ejecuta en Kestrel es 5001. Si la aplicación se ejecuta en otro puerto de Kestrel, use el puerto de la aplicación. En el caso de IIS Express, el puerto generado aleatoriamente para la aplicación se encuentra en las propiedades de la aplicación *`Server`* , en el panel **Depurar**. Dado que la aplicación no existe en este momento y no conocemos el puerto de IIS Express, vuelva a este paso después de crear la aplicación y actualice el URI de redirección. En la sección [Creación de la aplicación](#create-the-app) aparece un comentario para recordar a los usuarios de IIS Express que actualicen el URI de redirección.
 1. Confirme que la casilla **Permisos** > **Conceda consentimiento del administrador a los permisos openid y offline_access** está activada.
 1. Seleccione **Registrar**.
 
@@ -91,6 +111,8 @@ En **Autenticación** > **Configuraciones de plataforma** > **Web**:
 1. En **Concesión implícita**, active las casillas **Tokens de acceso** y **Tokens de id.**
 1. Los valores predeterminados restantes de la aplicación son aceptables en esta experiencia.
 1. Seleccione el botón **Guardar**.
+
+::: moniker-end
 
 En **Permisos de API**:
 
@@ -117,32 +139,30 @@ Reemplace los marcadores de posición del siguiente comando por la información 
 dotnet new blazorwasm -au IndividualB2C --aad-b2c-instance "{AAD B2C INSTANCE}" --api-client-id "{SERVER API APP CLIENT ID}" --app-id-uri "{SERVER API APP ID URI}" --client-id "{CLIENT APP CLIENT ID}" --default-scope "{DEFAULT SCOPE}" --domain "{TENANT DOMAIN}" -ho -o {APP NAME} -ssp "{SIGN UP OR SIGN IN POLICY}"
 ```
 
-| Marcador de posición                   | Nombre de Azure Portal                                     | Ejemplo                                |
-| ----------------------------- | ----------------------------------------------------- | -------------------------------------- |
-| `{AAD B2C INSTANCE}`          | Instancia                                              | `https://contoso.b2clogin.com/`        |
-| `{APP NAME}`                  | &mdash;                                               | `BlazorSample`                         |
-| `{CLIENT APP CLIENT ID}`      | Identificador de aplicación (cliente) para la *aplicación cliente*          | `4369008b-21fa-427c-abaa-9b53bf58e538` |
-| `{DEFAULT SCOPE}`             | Nombre de ámbito                                            | `API.Access`                           |
-| `{SERVER API APP CLIENT ID}`  | Identificador de aplicación (cliente) para la *aplicación de API de servidor*      | `41451fa7-82d9-4673-8fa5-69eff5a761fd` |
-| `{SERVER API APP ID URI}`     | URI de identificador de aplicación ([consultar nota](#access-token-scopes)) | `41451fa7-82d9-4673-8fa5-69eff5a761fd` |
-| `{SIGN UP OR SIGN IN POLICY}` | Flujo de usuario de registro o de inicio de sesión                             | `B2C_1_signupsignin1`                  |
-| `{TENANT DOMAIN}`             | Dominio Principal/Publicador/Inquilino                       | `contoso.onmicrosoft.com`              |
+| Marcador de posición                   | Nombre de Azure Portal                                     | Ejemplo                                      |
+| ----------------------------- | ----------------------------------------------------- | -------------------------------------------- |
+| `{AAD B2C INSTANCE}`          | Instancia                                              | `https://contoso.b2clogin.com/`              |
+| `{APP NAME}`                  | &mdash;                                               | `BlazorSample`                               |
+| `{CLIENT APP CLIENT ID}`      | Identificador de aplicación (cliente) para la aplicación *`Client`*        | `4369008b-21fa-427c-abaa-9b53bf58e538`       |
+| `{DEFAULT SCOPE}`             | Nombre de ámbito                                            | `API.Access`                                 |
+| `{SERVER API APP CLIENT ID}`  | Identificador de aplicación (cliente) para la *aplicación de API de servidor*      | `41451fa7-82d9-4673-8fa5-69eff5a761fd`       |
+| `{SERVER API APP ID URI}`     | URI de Id. de aplicación                                    | `api://41451fa7-82d9-4673-8fa5-69eff5a761fd` |
+| `{SIGN UP OR SIGN IN POLICY}` | Flujo de usuario de registro o de inicio de sesión                             | `B2C_1_signupsignin1`                        |
+| `{TENANT DOMAIN}`             | Dominio Principal/Publicador/Inquilino                       | `contoso.onmicrosoft.com`                    |
 
 La ubicación de salida especificada con la opción `-o|--output` crea una carpeta de proyecto si no existe y se convierte en parte del nombre de la aplicación.
 
 > [!NOTE]
-> Pase el URI de identificador de aplicación a la opción `app-id-uri`, pero tenga en cuenta que puede que deba realizar un cambio de configuración en la aplicación cliente; esto se describe en la sección [Ámbitos de token de acceso](#access-token-scopes).
->
-> De igual modo, el ámbito configurado por la plantilla de Blazor hospedada podría tener repetido el host de URI de identificador de aplicación. Confirme que el ámbito configurado para la colección `DefaultAccessTokenScopes` es correcto en `Program.Main` (`Program.cs`) en la *aplicación cliente*.
+> El ámbito configurado por la plantilla de Blazor hospedada podría tener repetido el host de URI de identificador de aplicación. Confirme que el ámbito configurado para la colección `DefaultAccessTokenScopes` es correcto en `Program.Main` (`Program.cs`) de la aplicación *`Client`* .
 
 > [!NOTE]
-> En Azure Portal, el valor de **Autenticación** > **Configuraciones de plataforma** > **Web** > **URI de redirección** de la *aplicación cliente* se establece en el puerto 5001 en el caso de las aplicaciones que se ejecutan en el servidor Kestrel con la configuración predeterminada.
+> En Azure Portal, el valor de configuración de plataforma de la aplicación *`Client`* **URI de redirección** de la aplicación se establece en el puerto 5001 en el caso de las aplicaciones que se ejecutan en el servidor Kestrel con la configuración predeterminada.
 >
-> Si la *aplicación cliente* se ejecuta en un puerto de IIS Express aleatorio, el puerto de la aplicación se encuentra en las propiedades de la *aplicación de API de servidor*, en el panel **Depurar**.
+> Si la aplicación *`Client`* se ejecuta en un puerto de IIS Express aleatorio, el puerto de la aplicación se encuentra en las propiedades de la *aplicación de API de servidor*, en el panel **Depurar**.
 >
-> Si el puerto no se configuró anteriormente con el puerto conocido de la *aplicación cliente*, vuelva al registro de la *aplicación cliente* en Azure Portal y actualice el URI de redirección con el puerto correcto.
+> Si el puerto no se configuró anteriormente con el puerto conocido de la aplicación *`Client`* , vuelva al registro de la aplicación *`Client`* en Azure Portal y actualice el URI de redirección con el puerto correcto.
 
-## <a name="server-app-configuration"></a>Configuración de la aplicación de servidor
+## <a name="server-app-configuration"></a>Configuración de la aplicación *`Server`*
 
 *Esta sección atañe a la aplicación **`Server`** de la solución.*
 
@@ -243,7 +263,7 @@ public class WeatherForecastController : ControllerBase
 }
 ```
 
-## <a name="client-app-configuration"></a>Configuración de la aplicación cliente
+## <a name="client-app-configuration"></a>Configuración de la aplicación *`Client`*
 
 *Esta sección atañe a la aplicación **`Client`** de la solución.*
 
@@ -334,7 +354,11 @@ builder.Services.AddMsalAuthentication(options =>
 });
 ```
 
-[!INCLUDE[](~/includes/blazor-security/azure-scope.md)]
+Especifique ámbitos adicionales con `AdditionalScopesToConsent`:
+
+```csharp
+options.ProviderOptions.AdditionalScopesToConsent.Add("{ADDITIONAL SCOPE URI}");
+```
 
 Para más información, vea las siguientes secciones del artículo *Otros escenarios*:
 

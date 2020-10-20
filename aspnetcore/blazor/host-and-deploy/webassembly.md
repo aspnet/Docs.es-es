@@ -5,7 +5,7 @@ description: Aprenda a hospedar e implementar una aplicación Blazor con ASP.NET
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/25/2020
+ms.date: 10/09/2020
 no-loc:
 - ASP.NET Core Identity
 - cookie
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/webassembly
-ms.openlocfilehash: 3436620123618ab32daa44c4a37057aaadb89563
-ms.sourcegitcommit: 74f4a4ddbe3c2f11e2e09d05d2a979784d89d3f5
+ms.openlocfilehash: 63954bd2fbb8fdb2e347d552a10adc52263c3ad6
+ms.sourcegitcommit: daa9ccf580df531254da9dce8593441ac963c674
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91393696"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91900718"
 ---
 # <a name="host-and-deploy-aspnet-core-no-locblazor-webassembly"></a>Hospedaje e implementación de ASP.NET Core Blazor WebAssembly
 
@@ -867,3 +867,76 @@ En el archivo del proyecto, el script se ejecuta después de publicar la aplicac
 
 > [!NOTE]
 > Al cambiar el nombre y la carga diferida de los mismos ensamblados, vea la guía de <xref:blazor/webassembly-lazy-load-assemblies#onnavigateasync-events-and-renamed-assembly-files>.
+
+## <a name="resolve-integrity-check-failures"></a>Resolución de errores de comprobación de integridad
+
+Cuando Blazor WebAssembly descarga los archivos de inicio de una aplicación, le indica al navegador que realice comprobaciones de integridad en las respuestas. Usa la información del archivo `blazor.boot.json` para especificar los valores hash de SHA-256 esperados para `.dll`, `.wasm` y otros archivos. Esto es beneficioso por los siguientes motivos:
+
+* Garantiza que no se corre el riesgo de cargar un conjunto de archivos incoherentes, por ejemplo, si se aplica una nueva implementación al servidor web mientras el usuario se encuentra en el proceso de descarga de los archivos de aplicación. Los archivos incoherentes pueden provocar un comportamiento indefinido.
+* Garantiza que el explorador del usuario nunca almacene en caché las respuestas incoherentes o no válidas, lo que podría impedir que se inicie la aplicación aunque actualice manualmente la página.
+* Hace que sea seguro almacenar en caché las respuestas y ni siquiera comprobar los cambios en el servidor hasta que cambien los algoritmos hash SHA-256 esperados, por lo que las cargas de páginas posteriores implican menos solicitudes y se completan mucho más rápido.
+
+Si el servidor web devuelve respuestas que no coinciden con los algoritmos hash SHA-256 esperados, verá un error similar al siguiente en la consola del desarrollador del explorador:
+
+```
+Failed to find a valid digest in the 'integrity' attribute for resource 'https://myapp.example.com/_framework/MyBlazorApp.dll' with computed SHA-256 integrity 'IIa70iwvmEg5WiDV17OpQ5eCztNYqL186J56852RpJY='. The resource has been blocked.
+```
+
+En la mayoría de los casos, esto *no* supone un problema con la propia comprobación de la integridad. Significa en realidad que hay algún otro problema del cual le está advirtiendo la comprobación de la integridad.
+
+### <a name="diagnosing-integrity-problems"></a>Diagnóstico de problemas de integridad
+
+Cuando se compila una aplicación, el manifiesto de `blazor.boot.json` generado describe los algoritmos hash SHA-256 de los recursos de arranque (por ejemplo, `.dll`, `.wasm` y otros archivos) en el momento en que se genera el resultado de la compilación. La comprobación de integridad se supera siempre que los algoritmos hash SHA-256 de `blazor.boot.json` coincidan con los archivos entregados al explorador.
+
+Los motivos comunes por los que se produce un error son:
+
+ * La respuesta del servidor web es un error (por ejemplo, *404 No encontrado* o *500 Error interno del servidor*) en lugar del archivo solicitado por el explorador. El explorador lo detecta como un error de comprobación de integridad y no como un error de respuesta.
+ * Algo ha cambiado el contenido de los archivos entre la compilación y la entrega de los archivos al explorador. Esto puede ocurrir:
+   * Si el usuario o las herramientas de compilación modifican manualmente la salida de compilación.
+   * Si algún aspecto del proceso de implementación ha modificado los archivos. Por ejemplo, si usa un mecanismo de implementación basado en Git, tenga en cuenta que Git convierte de forma transparente los finales de línea de estilo Windows en finales de línea de estilo Unix si confirma archivos en Windows y los comprueba en Linux. El cambio de los finales de línea de archivo cambia los algoritmos hash SHA-256. Para evitar este problema, considere la posibilidad de [usar `.gitattributes` para tratar los artefactos de compilación como archivos `binary`](https://git-scm.com/book/en/v2/Customizing-Git-Git-Attributes).
+   * El servidor web modifica el contenido del archivo como parte del servicio. Por ejemplo, algunas redes de distribución de contenido (CDN) intentan automáticamente [minimizar](xref:client-side/bundling-and-minification#minification) HTML, con lo que se modifica. Es posible que tenga que deshabilitar estas características.
+
+Para diagnosticar cuál de ellas se aplica en su caso:
+
+ 1. Lea el mensaje de error para darse cuenta de qué archivo está desencadenando el error.
+ 1. Abra las herramientas de desarrollo del explorador y mire en la pestaña *Red*. Si es necesario, vuelva a cargar la página para ver la lista de solicitudes y respuestas. Busque el archivo que desencadena el error en esa lista.
+ 1. Compruebe el código de estado HTTP en la respuesta. Si el servidor devuelve un valor distinto de *200 - Correcto* (u otro código de estado 2XX), tiene un problema de servidor por diagnosticar. Por ejemplo, el código de estado 403 significa que hay un problema de autorización, mientras que el código de estado 500 significa que el servidor está dando error de una manera no especificada. Consulte los registros del servidor para diagnosticar y corregir la aplicación.
+ 1. Si el código de estado es *200 - Correcto* para el recurso, examine el contenido de la respuesta en las herramientas de desarrollo del explorador y compruebe que el contenido coincida con los datos esperados. Por ejemplo, un problema común es configurar erróneamente el enrutamiento de modo que las solicitudes devuelvan los datos de `index.html` incluso para otros archivos. Asegúrese de que las respuestas a las solicitudes de `.wasm` son archivos binarios de WebAssembly y que las respuestas a las solicitudes de `.dll` son archivos binarios de ensamblado de .NET. Si no es así, tiene un problema de enrutamiento del lado servidor por diagnosticar.
+
+Si confirma que el servidor está devolviendo datos plausiblemente correctos, debe haber algo más que modifique el contenido entre la compilación y la entrega del archivo. Para investigarlo:
+
+ * Examine la cadena de herramientas de compilación y el mecanismo de implementación en caso de que estén modificando archivos después de compilarlos. Un ejemplo de esto es cuando GIT transforma los finales de línea de los archivos, tal y como se ha descrito anteriormente.
+ * Examine el servidor web o la configuración de CDN en caso de que estén configurados para modificar las respuestas de forma dinámica (por ejemplo, intentando minimizar HTML). Está adecuado que el servidor web implemente la compresión HTTP (por ejemplo, devolviendo `content-encoding: br` o `content-encoding: gzip`), ya que esto no afecta al resultado después de la descompresión. Sin embargo, *no* es adecuado que el servidor web modifique los datos sin comprimir.
+
+### <a name="disable-integrity-checking-for-non-pwa-apps"></a>Deshabilitación de la comprobación de integridad para aplicaciones que no son de PWA
+
+En la mayoría de los casos, no deshabilite la comprobación de integridad. Al deshabilitar la comprobación de integridad, no se soluciona el problema subyacente que ha causado las respuestas inesperadas y se pierden las ventajas mencionadas anteriormente.
+
+Puede haber casos en los que no se pueda confiar en el servidor web para que devuelva respuestas coherentes, y solo le queda la opción de deshabilitar las comprobaciones de integridad. Para deshabilitar las comprobaciones de integridad, agregue lo siguiente a un grupo de propiedades en el archivo de `.csproj` del proyecto de Blazor WebAssembly:
+
+```xml
+<BlazorCacheBootResources>false</BlazorCacheBootResources>
+```
+
+`BlazorCacheBootResources` también deshabilita el comportamiento predeterminado de Blazorde almacenar en caché `.dll`, `.wasm` y otros archivos según sus algoritmos hash SHA-256, ya que la propiedad indica que no se puede confiar en la exactitud de los algoritmos hash SHA-256. Incluso con esta configuración, es posible que la memoria caché HTTP normal del explorador siga almacenando en caché esos archivos, pero que esto suceda o no depende de la configuración del servidor web y de los encabezados de `cache-control` a los que sirve.
+
+> [!NOTE]
+> La propiedad `BlazorCacheBootResources` no deshabilita las comprobaciones de integridad de las [aplicaciones web progresivas (PWA)](xref:blazor/progressive-web-app). Para obtener instrucciones relativas a las PWA, consulte la sección [Deshabilitación de la comprobación de integridad para aplicaciones PWA](#disable-integrity-checking-for-pwas).
+
+### <a name="disable-integrity-checking-for-pwas"></a>Deshabilitación de la comprobación de integridad para aplicaciones PWA
+
+La plantilla de aplicación web progresiva (PWA) de Blazor contiene un archivo `service-worker.published.js` sugerido que es responsable de capturar y almacenar archivos de la aplicación para su uso sin conexión. Se trata de un proceso independiente del mecanismo de inicio de la aplicación normal y tiene su propia lógica de comprobación de integridad independiente.
+
+Dentro del archivo `service-worker.published.js`, está presente la línea siguiente:
+
+```javascript
+.map(asset => new Request(asset.url, { integrity: asset.hash }));
+```
+
+Para deshabilitar la comprobación de la integridad, quite el parámetro `integrity` cambiando la línea por lo siguiente:
+
+```javascript
+.map(asset => new Request(asset.url));
+```
+
+De nuevo, deshabilitar la comprobación de la integridad significa que se pierden las garantías de seguridad que ofrece este servicio. Por ejemplo, existe el riesgo de que si el explorador del usuario almacena en caché la aplicación en el momento exacto en que implementa una nueva versión, podría almacenar en caché algunos archivos de la implementación anterior y otros de la implementación nueva. Si eso sucede, la aplicación se bloquea en un estado interrumpido hasta que implemente una actualización adicional.
