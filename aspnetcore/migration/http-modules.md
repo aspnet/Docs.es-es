@@ -16,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: migration/http-modules
-ms.openlocfilehash: 213807634a2a6990e9025de7871295cf97a81faf
-ms.sourcegitcommit: f09407d128634d200c893bfb1c163e87fa47a161
+ms.openlocfilehash: 808215d103db9c5d63fe63b6875a222e6b0ba1fa
+ms.sourcegitcommit: b5ebaf42422205d212e3dade93fcefcf7f16db39
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88865586"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92326610"
 ---
 # <a name="migrate-http-handlers-and-modules-to-aspnet-core-middleware"></a>Migración de controladores y módulos HTTP a middleware de ASP.NET Core
 
@@ -356,7 +356,7 @@ Proporciona un identificador único para cada solicitud. Es muy útil incluir en
 
 **HttpContext. Response. TransmitFile**
 
-El servicio de un archivo se describe [aquí](../fundamentals/request-features.md#middleware-and-request-features).
+El servicio de un archivo se describe en [características de middleware y de solicitud](xref:fundamentals/request-features#middleware-and-request-features).
 
 **HttpContext. Response. Headers**
 

@@ -16,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: migration/mvc
-ms.openlocfilehash: d615f67fc5cb23499ee7e14b747390a7a1b5a693
-ms.sourcegitcommit: f09407d128634d200c893bfb1c163e87fa47a161
+ms.openlocfilehash: 51228e59284b5edf0554e9929b16deafe08ea31e
+ms.sourcegitcommit: b5ebaf42422205d212e3dade93fcefcf7f16db39
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88865132"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92326623"
 ---
 # <a name="migrate-from-aspnet-mvc-to-aspnet-core-mvc"></a>Migración de ASP.NET MVC a ASP.NET Core MVC
 
@@ -38,7 +38,7 @@ La migración de ASP.NET MVC es un proceso de varios pasos. En este artículo se
 
 Para migrar la configuración y el Identity código, vea [migrar la configuración a ASP.net Core](xref:migration/configuration) y [migrar la autenticación y Identity a ASP.net Core](xref:migration/identity).
 
-## <a name="prerequisites"></a>Requisitos previos
+## <a name="prerequisites"></a>Prerrequisitos
 
 [!INCLUDE [prerequisites](../includes/net-core-prereqs-vs-3.1.md)]
 
@@ -57,7 +57,7 @@ Cree una nueva solución con un nuevo proyecto de ASP.NET Core al que migrar:
 
 1. Inicie una segunda instancia de Visual Studio.
 1. En el menú **Archivo**, seleccione **Nuevo** > **Proyecto**.
-1. Seleccione **ASP.net web Core Web Application** y, a continuación, seleccione **siguiente**.
+1. Seleccione **Aplicación web ASP.NET Core** y, después, **Siguiente**.
 1. En el cuadro de diálogo **configurar el nuevo proyecto** , asigne al proyecto el nombre *WebApp1*.
 1. Establezca la ubicación en un directorio diferente al proyecto anterior para usar el mismo nombre de proyecto. El uso del mismo espacio de nombres facilita la copia de código entre los dos proyectos. Seleccione **Crear**.
 1. En el cuadro de diálogo **Crear una aplicación web ASP.NET Core**, confirme que las opciones **.NET Core** y **ASP.NET Core 3.1** estén seleccionadas. Seleccione la plantilla de proyecto **aplicación web (controlador de vista de modelos)** y seleccione **crear**.
@@ -77,7 +77,7 @@ En ASP.NET Core, la `Startup` clase:
 * Reemplaza a *global. asax*.
 * Controla todas las tareas de inicio de la aplicación.
 
-Para obtener más información, vea <xref:fundamentals/startup>.
+Para más información, consulte <xref:fundamentals/startup>.
 
 En el proyecto de ASP.NET Core, abra el archivo *Startup.CS* :
 
@@ -86,8 +86,8 @@ En el proyecto de ASP.NET Core, abra el archivo *Startup.CS* :
 ASP.NET Core aplicaciones deben participar en las características de .NET Framework con middleware. El código generado anteriormente por la plantilla agrega los siguientes servicios y middleware:
 
 * El <xref:Microsoft.Extensions.DependencyInjection.MvcServiceCollectionExtensions.AddControllersWithViews%2A> método de extensión registra la compatibilidad del servicio MVC con los controladores, las características relacionadas con la API y las vistas. Para obtener más información sobre las opciones de registro del servicio MVC, consulte [registro del servicio MVC](xref:migration/22-to-30#mvc-service-registration)
-* El <xref:Microsoft.AspNetCore.Builder.StaticFileExtensions.UseStaticFiles%2A> método de extensión agrega el controlador de archivos estáticos `Microsoft.AspNetCore.StaticFiles` . `UseStaticFiles`Se debe llamar antes al método de extensión `UseRouting` . Para obtener más información, vea <xref:fundamentals/static-files>.
-* El <xref:Microsoft.AspNetCore.Builder.EndpointRoutingApplicationBuilderExtensions.UseRouting%2A> método de extensión agrega enrutamiento. Para obtener más información, vea <xref:fundamentals/routing>.
+* El <xref:Microsoft.AspNetCore.Builder.StaticFileExtensions.UseStaticFiles%2A> método de extensión agrega el controlador de archivos estáticos `Microsoft.AspNetCore.StaticFiles` . `UseStaticFiles`Se debe llamar antes al método de extensión `UseRouting` . Para más información, consulte <xref:fundamentals/static-files>.
+* El <xref:Microsoft.AspNetCore.Builder.EndpointRoutingApplicationBuilderExtensions.UseRouting%2A> método de extensión agrega enrutamiento. Para más información, consulte <xref:fundamentals/routing>.
 
 Esta configuración existente incluye lo que se necesita para migrar el proyecto de ejemplo ASP.NET MVC. Para obtener más información acerca de ASP.NET Core opciones de middleware, vea <xref:fundamentals/startup> .
 
@@ -267,7 +267,7 @@ Reemplace el contenido del archivo *Views/Home/Index.cshtml* por el marcado sigu
 <h1>Hello world!</h1>
 ```
 
-Ejecutar la aplicación.
+Ejecute la aplicación.
 
 ![Aplicación web abierta en Microsoft Edge](mvc/_static/hello-world.png)
 
@@ -453,7 +453,7 @@ Reemplace el contenido del archivo *Views/Home/Index.cshtml* por el marcado sigu
 <h1>Hello world!</h1>
 ```
 
-Ejecutar la aplicación.
+Ejecute la aplicación.
 
 ![Aplicación web abierta en Microsoft Edge](mvc/_static/hello-world.png)
 
