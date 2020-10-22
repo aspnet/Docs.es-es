@@ -18,12 +18,12 @@ no-loc:
 - SignalR
 - Models
 uid: tutorials/first-web-api
-ms.openlocfilehash: 212d8a80bdc466479c34bc5fbd9c3261ca9d54c4
-ms.sourcegitcommit: 74f4a4ddbe3c2f11e2e09d05d2a979784d89d3f5
+ms.openlocfilehash: 9f67f8104eb5c21f244449ca3a4aaa96c750836d
+ms.sourcegitcommit: fad0cd264c9d07a48a8c6ba1690807e0f8728898
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91393917"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92379479"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>Tutorial: Creación de una API web con ASP.NET Core
 
@@ -520,7 +520,7 @@ Use Postman para eliminar una tarea pendiente:
 * Establezca el URI del objeto que quiera eliminar (por ejemplo, `https://localhost:5001/api/TodoItems/1`).
 * Seleccione **Enviar**.
 
-<a name="over-post"></a>
+<a name="over-post-v5"></a>
 
 ## <a name="prevent-over-posting"></a>Prevención del exceso de publicación
 
@@ -1008,6 +1008,7 @@ Use Postman para eliminar una tarea pendiente:
 * Seleccione **Enviar**.
 
 <a name="over-post"></a>
+<a name="over-post-v3"></a>
 
 ## <a name="prevent-over-posting"></a>Prevención del exceso de publicación
 
@@ -1389,7 +1390,7 @@ El método `CreatedAtAction` realiza las acciones siguientes:
   ![Pestaña Encabezados de la consola de Postman](first-web-api/_static/pmc2.png)
 
 * Establezca el método en GET.
-* Establezca el URI en  `https://localhost:<port>/api/TodoItems/2`. Por ejemplo,  `https://localhost:5001/api/TodoItems/2`.
+* Establezca el URI en `https://localhost:<port>/api/TodoItems/2`. Por ejemplo: `https://localhost:5001/api/TodoItems/2`.
 * Seleccione **Enviar**.
 
 ## <a name="add-a-puttodoitem-method-21"></a>Incorporación de un método PutTodoItem (2.1)

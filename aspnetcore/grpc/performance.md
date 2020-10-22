@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/performance
-ms.openlocfilehash: 4d50698b8c55f7fb3ef9a2c3102e73e046a22a9c
-ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
+ms.openlocfilehash: b54d13bfd9207a7b8961c1c4fa9908d3d54a4270
+ms.sourcegitcommit: ecae2aa432628b9181d1fa11037c231c7dd56c9e
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90722850"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92113860"
 ---
 # <a name="performance-best-practices-with-grpc"></a>Procedimientos recomendados de rendimiento con gRPC
 
@@ -53,7 +53,7 @@ La fábrica de cliente de gRPC ofrece una manera centralizada de configurar cana
 
 ## <a name="connection-concurrency"></a>Simultaneidad de conexiones
 
-Las conexiones HTTP/2 suelen tener un límite en el número de [flujos simultáneos máximos (solicitudes HTTP activas)](https://http2.github.io/http2-spec/#rfc.section.5.1.2) en una conexión al mismo tiempo. De forma predeterminada, la mayoría de los servidores establecen este límite en 100 flujos simultáneos.
+Las conexiones HTTP/2 suelen tener un límite en el número de [flujos simultáneos máximos (solicitudes HTTP activas)](https://httpwg.github.io/specs/rfc7540.html#rfc.section.5.1.2) en una conexión al mismo tiempo. De forma predeterminada, la mayoría de los servidores establecen este límite en 100 flujos simultáneos.
 
 Un canal gRPC usa una única conexión HTTP/2 y las llamadas simultáneas se multiplexan en esa conexión. Cuando el número de llamadas activas alcanza el límite del flujo de conexiones, las llamadas adicionales se ponen en cola en el cliente. Las llamadas en cola esperan a que se completen las activas antes de enviarse. Las aplicaciones con una carga elevada o las llamadas gRPC de streaming de larga duración podrían ver las incidencias de rendimiento que provocan las llamadas en cola debido a este límite.
 

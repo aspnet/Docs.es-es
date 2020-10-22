@@ -18,10 +18,10 @@ no-loc:
 - SignalR
 uid: test/loadtests
 ms.openlocfilehash: 8e3ca41312922cbf44361601c38e455b342e9fe1
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.sourcegitcommit: b5ebaf42422205d212e3dade93fcefcf7f16db39
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/22/2020
 ms.locfileid: "88632816"
 ---
 # <a name="aspnet-core-loadstress-testing"></a>Pruebas de carga y de esfuerzo de ASP.NET Core

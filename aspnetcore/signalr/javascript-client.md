@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/javascript-client
-ms.openlocfilehash: 6fc586d144547585ef75d653bf54193def5c8b7f
-ms.sourcegitcommit: d1a897ebd89daa05170ac448e4831d327f6b21a8
+ms.openlocfilehash: 6f611e56ec62ad7aea8a93e4761e1f67d0f76574
+ms.sourcegitcommit: fad0cd264c9d07a48a8c6ba1690807e0f8728898
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91606688"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92379461"
 ---
 # <a name="aspnet-core-no-locsignalr-javascript-client"></a>Cliente de ASP.NET Core SignalR JavaScript
 
@@ -278,56 +278,17 @@ En el código siguiente se muestra un enfoque típico de reconexión manual:
 
 Una implementación del mundo real usaría una interrupción exponencial o reintentará un número especificado de veces antes de abandonarlo.
 
-## <a name="troubleshoot-websocket-handshake-errors"></a>Solución de problemas de errores de protocolo de enlace de WebSocket
-
-En esta sección se proporciona ayuda sobre la excepción *"error durante el protocolo de enlace de WebSocket"* que se produce al intentar establecer la conexión con ASP.net Core SignalR concentrador.
-
-### <a name="response-code-400-or-503"></a>Código de respuesta 400 o 503
-
-Para el siguiente error:
-
-```log
-WebSocket connection to 'wss://xxx/HubName' failed: Error during WebSocket handshake: Unexpected response code: 400
-
-Error: Failed to start the connection: Error: There was an error with the transport.
-```
-
-El error suele deberse a que el cliente solo usa el transporte de WebSockets, pero el protocolo WebSockets no está habilitado en el servidor.
-
-### <a name="response-code-307"></a>Código de respuesta 307
-
-```log
-WebSocket connection to 'ws://xxx/HubName' failed: Error during WebSocket handshake: Unexpected response code: 307
-```
-
-Con frecuencia, esto se produce cuando el SignalR servidor del concentrador:
-
-* Escucha y responde a través de HTTP y HTTPS.
-* Está configurado para exigir HTTPS llamando a `UseHttpsRedirection` en `Startup` , o aplica https a través de la regla de reescritura de URL.
-
-Este error puede deberse a la especificación de la dirección URL HTTP en el lado cliente mediante `.withUrl("http://xxx/HubName")` . La corrección para este caso es la modificación del código para usar una dirección URL HTTPS.
-
-### <a name="response-code-404"></a>Código de respuesta 404
-
-```log
-WebSocket connection to 'wss://xxx/HubName' failed: Error during WebSocket handshake: Unexpected response code: 404
-```
-
-Si la aplicación funciona en localhost, pero devuelve este error después de publicar en el servidor IIS:
-
-* Compruebe que la SignalR aplicación ASP.net Core se hospeda como una subaplicación de IIS.
-* No establezca la dirección URL con la pathbase de la aplicación secundaria en el SignalR cliente de JavaScript `.withUrl("/SubAppName/HubName")` .
-
 ## <a name="additional-resources"></a>Recursos adicionales
 
 * [Referencia de API de JavaScript](/javascript/api/?view=signalr-js-latest&preserve-view=true )
 * [Tutorial de JavaScript](xref:tutorials/signalr)
 * [Tutorial de WebPack y TypeScript](xref:tutorials/signalr-typescript-webpack)
-* [Concentradores](xref:signalr/hubs)
+* [Directorios](xref:signalr/hubs)
 * [Cliente .NET](xref:signalr/dotnet-client)
 * [Publicar en Azure](xref:signalr/publish-to-azure-web-app)
 * [Solicitudes entre orígenes (CORS)](xref:security/cors)
 * [Documentación sin servidor del servicio de Azure SignalR](/azure/azure-signalr/signalr-concept-serverless-development-config)
+* [Solución de problemas de conexión](xref:signalr/troubleshoot)
 
 ::: moniker-end
 
@@ -467,7 +428,7 @@ Una implementación del mundo real usaría una interrupción exponencial o reint
 * [Referencia de API de JavaScript](/javascript/api/?view=signalr-js-latest)
 * [Tutorial de JavaScript](xref:tutorials/signalr)
 * [Tutorial de WebPack y TypeScript](xref:tutorials/signalr-typescript-webpack)
-* [Concentradores](xref:signalr/hubs)
+* [Directorios](xref:signalr/hubs)
 * [Cliente .NET](xref:signalr/dotnet-client)
 * [Publicar en Azure](xref:signalr/publish-to-azure-web-app)
 * [Solicitudes entre orígenes (CORS)](xref:security/cors)
