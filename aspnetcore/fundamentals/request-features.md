@@ -3,7 +3,8 @@ title: Características de solicitud de ASP.NET Core
 author: ardalis
 description: Obtenga información sobre los detalles de implementación del servidor web relacionados con las solicitudes HTTP y las respuestas que se definen en las interfaces de ASP.NET Core.
 ms.author: riande
-ms.date: 10/14/2016
+ms.custom: mvc
+ms.date: 10/20/2020
 no-loc:
 - ASP.NET Core Identity
 - cookie
@@ -16,70 +17,140 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/request-features
-ms.openlocfilehash: 3b5c929519407de5dc582c10a86745efddc8a38a
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 879b775ba2998ee803708ebf231b5fcd363b811c
+ms.sourcegitcommit: b5ebaf42422205d212e3dade93fcefcf7f16db39
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634519"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92326438"
 ---
 # <a name="request-features-in-aspnet-core"></a>Características de solicitud de ASP.NET Core
 
 Por [Steve Smith](https://ardalis.com/)
 
-Los detalles de implementación del servidor web relacionados con las solicitudes HTTP y las respuestas se definen en las interfaces. Estas interfaces se usan en implementaciones de servidor web y middleware para crear y modificar la canalización de hospedaje de la aplicación.
-
-## <a name="feature-interfaces"></a>Interfaces de características
-
-ASP.NET Core define una serie de interfaces de características HTTP en `Microsoft.AspNetCore.Http.Features` que los servidores usan para identificar las características que admiten. Las siguientes interfaces de características controlan las solicitudes y devuelven respuestas:
-
-`IHttpRequestFeature` Define la estructura de una solicitud HTTP; esto es, el protocolo, la ruta de acceso, la cadena de consulta, los encabezados y el cuerpo.
-
-`IHttpResponseFeature` Define la estructura de una respuesta HTTP; esto es, el código de estado, los encabezados y el cuerpo de la respuesta.
-
-`IHttpAuthenticationFeature` Define la capacidad para identificar usuarios según un `ClaimsPrincipal` y para especificar un controlador de autenticación.
-
-`IHttpUpgradeFeature` Define la compatibilidad con [actualizaciones HTTP](https://tools.ietf.org/html/rfc2616.html#section-14.42), que permiten al cliente especificar otros protocolos que le gustaría usar en caso de que el servidor cambie de protocolo.
-
-`IHttpBufferingFeature` Define métodos para deshabilitar el almacenamiento en búfer de solicitudes o respuestas.
-
-`IHttpConnectionFeature` Define las propiedades de las direcciones y los puertos tanto locales como remotos.
-
-`IHttpRequestLifetimeFeature` Define la capacidad para anular conexiones o para detectar si una solicitud ha finalizado antes de tiempo (por ejemplo, debido a una desconexión del cliente).
-
-`IHttpSendFileFeature` Define un método para enviar archivos de forma asincrónica.
-
-`IHttpWebSocketFeature` Define una API para admitir sockets web.
-
-`IHttpRequestIdentifierFeature` Agrega una propiedad que se puede implementar para distinguir solicitudes de forma única.
-
-`ISessionFeature` Define abstracciones `ISessionFactory` e `ISession` para admitir sesiones de usuario.
-
-`ITlsConnectionFeature` Define una API para recuperar certificados de cliente.
-
-`ITlsTokenBindingFeature` Define métodos para trabajar con parámetros de enlace de tokens de TLS.
-
-> [!NOTE]
-> `ISessionFeature` no es una característica de servidor, pero se implementa por medio de `SessionMiddleware`. Vea [Introduction to session and application state in ASP.NET Core](app-state.md) (Introducción al estado de sesión y la aplicación de ASP.NET Core).
+La API `HttpContext` que las aplicaciones y el middleware usan para procesar solicitudes tiene una capa de abstracción debajo de ella llamada *interfaces de características* . Cada interfaz de características proporciona un subconjunto granular de la funcionalidad expuesta por `HttpContext`. El servidor o el middleware pueden agregar, modificar, ajustar, reemplazar o incluso quitar estas interfaces a medida que se procesa la solicitud sin tener que volver a implementar `HttpContext` íntegramente. También se pueden usar para simular la funcionalidad durante las pruebas.
 
 ## <a name="feature-collections"></a>Colecciones de características
 
-La propiedad `Features` de `HttpContext` proporciona una interfaz para obtener y establecer las características HTTP disponibles para la solicitud actual. Puesto que la colección de características es mutable incluso en el contexto de una solicitud, se puede usar middleware para modificarla y para agregar compatibilidad con más características.
+La propiedad <xref:Microsoft.AspNetCore.Http.HttpContext.Features> de `HttpContext` proporciona acceso a la colección de interfaces de características para la solicitud actual. Puesto que la colección de características es mutable incluso en el contexto de una solicitud, se puede usar middleware para modificarla y para agregar compatibilidad con más características. Algunas características avanzadas solo están disponibles al acceder a la interfaz asociada a través de la colección de características.
 
-## <a name="middleware-and-request-features"></a>Middleware y características de solicitud
+## <a name="feature-interfaces"></a>Interfaces de características
 
-Los servidores se encargan de crear la colección de características; el middleware, por su parte, puede agregarse a esta colección y usar las características de dicha colección. Por ejemplo, `StaticFileMiddleware` tiene acceso a la característica `IHttpSendFileFeature`. Si la característica existe, se usa para enviar el archivo estático solicitado desde la ruta de acceso física correspondiente. Si no, se usará otro método más lento para enviarlo. Si está disponible, `IHttpSendFileFeature` permite al sistema operativo abrir el archivo y realizar una copia directa en modo kernel en la tarjeta de red.
+ASP.NET Core define una serie de interfaces de características HTTP comunes en <xref:Microsoft.AspNetCore.Http.Features?displayProperty=fullName>, que diferentes servidores y el middleware comparten para identificar las características que admiten. Los servidores y el middleware también pueden proporcionar sus propias interfaces con funcionalidad adicional.
 
-Además, se puede agregar middleware a la colección de características establecida por el servidor. De hecho, las características existentes pueden incluso reemplazarse por el middleware, lo que permite que este aumente la funcionalidad del servidor. Las características agregadas a la colección están disponibles de inmediato para otros middleware, o bien para la propia aplicación subyacente más adelante en la canalización de solicitudes.
+La mayoría de las interfaces de características proporcionan una funcionalidad opcional y ligera, y sus API `HttpContext` asociadas proporcionan valores predeterminados si la característica no existe. Algunas interfaces se indican en el siguiente contenido según sea necesario, ya que proporcionan la funcionalidad de solicitud y respuesta básica y deben implementarse para procesar la solicitud.
 
-Al combinar implementaciones de servidor personalizadas y mejoras de middleware específicas, se puede construir el conjunto preciso de características que una aplicación necesita. Gracias a esto, se pueden agregar las características que faltan sin necesidad de cambiar nada en el servidor y, asimismo, se garantiza que solo quede expuesta la cantidad mínima de características, lo que reduce el área de superficie de ataques y dispara el rendimiento.
+Las siguientes interfaces de características son de <xref:Microsoft.AspNetCore.Http.Features?displayProperty=fullName>:
 
-## <a name="summary"></a>Resumen
+<xref:Microsoft.AspNetCore.Http.Features.IHttpRequestFeature>: define la estructura de una solicitud HTTP; es decir, el protocolo, la ruta de acceso, la cadena de consulta, los encabezados y el cuerpo. Esta característica es necesaria para procesar las solicitudes.
 
-Las interfaces de características definen las características HTTP concretas que una solicitud determinada puede admitir. Los servidores definen colecciones de características y el conjunto inicial de características admitidas por esos servidores, pero el middleware puede servir para mejorar estas características.
+<xref:Microsoft.AspNetCore.Http.Features.IHttpResponseFeature>: define la estructura de una respuesta HTTP; es decir, el código de estado, los encabezados y el cuerpo de la respuesta. Esta característica es necesaria para procesar las solicitudes.
+
+::: moniker range=">= aspnetcore-3.0"
+
+<xref:Microsoft.AspNetCore.Http.Features.IHttpResponseBodyFeature>: define diferentes formas de escribir el cuerpo de la respuesta, mediante una clase `Stream` o `PipeWriter`, o un archivo. Esta característica es necesaria para procesar las solicitudes. Reemplaza `IHttpResponseFeature.Body` y `IHttpSendFileFeature`.
+
+::: moniker-end
+
+<xref:Microsoft.AspNetCore.Http.Features.Authentication.IHttpAuthenticationFeature>: contiene la clase <xref:System.Security.Claims.ClaimsPrincipal> asociada actualmente con la solicitud.
+
+<xref:Microsoft.AspNetCore.Http.Features.IFormFeature>: se usa para analizar y almacenar en caché los envíos de formularios HTTP y de varias partes entrantes.
+
+::: moniker range=">= aspnetcore-2.0"
+
+<xref:Microsoft.AspNetCore.Http.Features.IHttpBodyControlFeature>: se utiliza para controlar si se permiten las operaciones de E/S sincrónicas para los cuerpos de solicitud o respuesta.
+
+::: moniker-end
+   
+::: moniker range="< aspnetcore-3.0"
+
+<xref:Microsoft.AspNetCore.Http.Features.IHttpBufferingFeature>: define métodos para deshabilitar el almacenamiento en búfer de solicitudes o respuestas.
+
+::: moniker-end
+
+<xref:Microsoft.AspNetCore.Http.Features.IHttpConnectionFeature>: define las propiedades del identificador de conexión y las direcciones y los puertos tanto locales como remotos.
+
+::: moniker range=">= aspnetcore-2.0"
+
+<xref:Microsoft.AspNetCore.Http.Features.IHttpMaxRequestBodySizeFeature>: controla el tamaño máximo permitido del cuerpo de la solicitud para la solicitud actual.
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-5.0"
+
+`IHttpRequestBodyDetectionFeature`: indica si la solicitud puede tener un cuerpo.
+
+::: moniker-end
+
+<xref:Microsoft.AspNetCore.Http.Features.IHttpRequestIdentifierFeature>: agrega una propiedad que se puede implementar para distinguir solicitudes de forma única.
+
+<xref:Microsoft.AspNetCore.Http.Features.IHttpRequestLifetimeFeature>: define la capacidad para anular conexiones o para detectar si una solicitud ha finalizado antes de tiempo (por ejemplo, debido a una desconexión del cliente).
+
+::: moniker range=">= aspnetcore-3.0"
+
+<xref:Microsoft.AspNetCore.Http.Features.IHttpRequestTrailersFeature>: proporciona acceso a los encabezados del finalizador de la solicitud, si existen.
+
+<xref:Microsoft.AspNetCore.Http.Features.IHttpResetFeature>: se usa para enviar mensajes de restablecimiento para los protocolos que los admiten, como HTTP/2 o HTTP/3.
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.2"
+
+<xref:Microsoft.AspNetCore.Http.Features.IHttpResponseTrailersFeature>: permite que la aplicación proporcione encabezados del finalizador de respuesta si se admiten.
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
+<xref:Microsoft.AspNetCore.Http.Features.IHttpSendFileFeature>: define un método para enviar archivos de forma asincrónica.
+
+::: moniker-end
+
+<xref:Microsoft.AspNetCore.Http.Features.IHttpUpgradeFeature>: define la compatibilidad con [actualizaciones HTTP](https://tools.ietf.org/html/rfc2616.html#section-14.42), que permiten al cliente especificar otros protocolos que le gustaría usar en caso de que el servidor cambie de protocolo.
+
+<xref:Microsoft.AspNetCore.Http.Features.IHttpWebSocketFeature>: define una API para admitir sockets web.
+
+::: moniker range=">= aspnetcore-3.0"
+
+<xref:Microsoft.AspNetCore.Http.Features.IHttpsCompressionFeature>: controla si se debe usar la compresión de respuesta a través de conexiones HTTPS.
+
+::: moniker-end
+
+<xref:Microsoft.AspNetCore.Http.Features.IItemsFeature>: almacena la colección de <xref:Microsoft.AspNetCore.Http.Features.IItemsFeature.Items> para cada estado de la aplicación de solicitud.
+
+<xref:Microsoft.AspNetCore.Http.Features.IQueryFeature>: analiza y almacena en caché la cadena de consulta.
+   
+::: moniker range=">= aspnetcore-3.0"
+
+<xref:Microsoft.AspNetCore.Http.Features.IRequestBodyPipeFeature>: representa el cuerpo de la solicitud como una clase <xref:System.IO.Pipelines.PipeReader>.
+ 
+::: moniker-end
+
+<xref:Microsoft.AspNetCore.Http.Features.IRequestCookiesFeature>: analiza y almacena en caché los valores del encabezado `Cookie` de solicitud.
+
+<xref:Microsoft.AspNetCore.Http.Features.IResponseCookiesFeature>: controla cómo las cookies de respuesta se aplican al encabezado `Set-Cookie`.
+
+::: moniker range=">= aspnetcore-2.2"
+
+<xref:Microsoft.AspNetCore.Http.Features.IServerVariablesFeature>: esta característica proporciona acceso a las variables del servidor de solicitudes, como las proporcionadas por IIS.
+
+::: moniker-end
+   
+<xref:Microsoft.AspNetCore.Http.Features.IServiceProvidersFeature>: proporciona acceso a una clase <xref:System.IServiceProvider> mediante servicios de solicitud con ámbito.
+
+<xref:Microsoft.AspNetCore.Http.Features.ISessionFeature>: define abstracciones `ISessionFactory` y <xref:Microsoft.AspNetCore.Http.ISession> para admitir sesiones de usuario. `ISessionFeature` se implementa mediante <xref:Microsoft.AspNetCore.Session.SessionMiddleware> (vea <xref:fundamentals/app-state>).
+
+<xref:Microsoft.AspNetCore.Http.Features.ITlsConnectionFeature>: define una API para recuperar certificados de cliente.
+
+<xref:Microsoft.AspNetCore.Http.Features.ITlsTokenBindingFeature>: define métodos para trabajar con parámetros de enlace de tokens de TLS.
+   
+::: moniker range=">= aspnetcore-2.2"
+   
+<xref:Microsoft.AspNetCore.Http.Features.ITrackingConsentFeature>: se usa para consultar, conceder y retirar el consentimiento del usuario en relación con el almacenamiento de la información de usuario relacionada con la actividad y la funcionalidad del sitio.
+   
+::: moniker-end
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
-* [Servidores](xref:fundamentals/servers/index)
-* [Middleware](xref:fundamentals/middleware/index)
-* [Apertura de la interfaz web para .NET (OWIN)](xref:fundamentals/owin)
+* <xref:fundamentals/servers/index>
+* <xref:fundamentals/middleware/index>

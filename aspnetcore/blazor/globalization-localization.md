@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/globalization-localization
-ms.openlocfilehash: 2b8820acba564bdfb85f8338ed5482573960fbb4
-ms.sourcegitcommit: 600666440398788db5db25dc0496b9ca8fe50915
+ms.openlocfilehash: 4345dd8525c2e72aaddc8e45a4fd4d9bfdd63040
+ms.sourcegitcommit: b5ebaf42422205d212e3dade93fcefcf7f16db39
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90080282"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92326528"
 ---
 # <a name="aspnet-core-no-locblazor-globalization-and-localization"></a>Globalización y localización de Blazor de ASP.NET Core
 
@@ -76,7 +76,28 @@ Para configurar explícitamente la referencia cultural, establezca <xref:System.
 
 ::: moniker range=">= aspnetcore-5.0"
 
-De forma predeterminada, Blazor WebAssembly incluye los recursos de globalización necesarios para mostrar valores, como las fechas y la moneda, en la referencia cultural del usuario. Si la aplicación no requiere localización, es posible configurar la aplicación para que admita la referencia cultural invariable, que se basa en la referencia cultural `en-US`:
+De forma predeterminada, Blazor WebAssembly incluye los recursos de globalización mínimos necesarios para mostrar valores, como las fechas y la moneda, en la referencia cultural del usuario. Las aplicaciones que deben admitir el cambio dinámico de la referencia cultural deben configurar `BlazorWebAssemblyLoadAllGlobalizationData` en el archivo de proyecto:
+
+```xml
+<PropertyGroup>
+  <BlazorWebAssemblyLoadAllGlobalizationData>true</BlazorWebAssemblyLoadAllGlobalizationData>
+</PropertyGroup>
+```
+
+También se puede configurar Blazor WebAssembly para que se inicie con una referencia cultural de aplicación específica mediante las opciones que se pasan a `Blazor.start`. Por ejemplo, en el ejemplo siguiente se muestra una aplicación configurada para iniciarse con la referencia cultural `en-GB`:
+
+```html
+<script src="_framework/blazor.webassembly.js" autostart="false"></script>
+<script>
+  Blazor.start({
+    applicationCulture: 'en-GB'
+  });
+</script>
+```
+
+El valor de `applicationCulture` debe ajustarse al [formato de etiqueta de idioma BCP-47](https://tools.ietf.org/html/bcp47).
+
+Si la aplicación no requiere localización, es posible configurar la aplicación para que admita la referencia cultural invariable, que se basa en la referencia cultural `en-US`:
 
 ```xml
 <PropertyGroup>
@@ -146,7 +167,7 @@ La aplicación controla la localización en la siguiente secuencia de eventos:
 
 #### <a name="provide-ui-to-choose-the-culture"></a>Especificación de una interfaz de usuario para elegir la referencia cultural
 
-Para especificar una interfaz de usuario que permita a los usuarios seleccionar una referencia cultural, se recomienda usar un *método basado en el redireccionamiento*. El proceso es similar a lo que ocurre en una aplicación web cuando un usuario intenta acceder a un recurso seguro. El usuario se redirige a una página de inicio de sesión y, a continuación, se redirige de vuelta al recurso original. 
+Para especificar una interfaz de usuario que permita a los usuarios seleccionar una referencia cultural, se recomienda usar un *método basado en el redireccionamiento* . El proceso es similar a lo que ocurre en una aplicación web cuando un usuario intenta acceder a un recurso seguro. El usuario se redirige a una página de inicio de sesión y, a continuación, se redirige de vuelta al recurso original. 
 
 La aplicación conserva la referencia cultural seleccionada por el usuario a través de un redireccionamiento a un controlador. Este controlador establece la referencia cultural seleccionada del usuario en una cookie y redirige al usuario de nuevo al URI original.
 

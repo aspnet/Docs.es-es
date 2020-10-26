@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/new-field
-ms.openlocfilehash: a0c53755bd56b6c169437ca9f0ea915e46ad79ec
-ms.sourcegitcommit: d1a897ebd89daa05170ac448e4831d327f6b21a8
+ms.openlocfilehash: 2a80a9c4848703802b15348a30f2564f9580a24b
+ms.sourcegitcommit: ecae2aa432628b9181d1fa11037c231c7dd56c9e
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91606743"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92113886"
 ---
 # <a name="part-8-add-a-new-field-to-an-aspnet-core-mvc-app"></a>Parte 8. Adición de un nuevo campo a una aplicación de ASP.NET Core MVC
 
@@ -40,7 +40,7 @@ Al usar Code First de EF para crear una base de datos automáticamente, Code Fir
 
 ## <a name="add-a-rating-property-to-the-movie-model"></a>Adición de una propiedad de clasificación al modelo Movie
 
-Agregue una `Rating` propiedad a *Models/Movie.cs*:
+Agregue una `Rating` propiedad a *Models/Movie.cs* :
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Models/MovieDateRating.cs?highlight=13&name=snippet)]
 
@@ -62,7 +62,7 @@ Comando (⌘) + B
 
 ------
 
-Dado que ha agregado un campo nuevo a la clase `Movie`, debe actualizar la lista de enlaces de propiedades para que se incluya esta propiedad nueva. En *MoviesController.cs*, actualice el atributo `[Bind]` de los métodos de acción `Create` y `Edit` para incluir la propiedad `Rating`:
+Dado que ha agregado un campo nuevo a la clase `Movie`, debe actualizar la lista de enlaces de propiedades para que se incluya esta propiedad nueva. En *MoviesController.cs* , actualice el atributo `[Bind]` de los métodos de acción `Create` y `Edit` para incluir la propiedad `Rating`:
 
 ```csharp
 [Bind("Id,Title,ReleaseDate,Genre,Price,Rating")]
@@ -112,7 +112,7 @@ En este tutorial se usa Migraciones de Code First.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-En el menú **Herramientas**, seleccione **Administrador de paquetes NuGet > Consola del Administrador de paquetes**.
+En el menú **Herramientas** , seleccione **Administrador de paquetes NuGet > Consola del Administrador de paquetes** .
 
   ![Menú de PMC](adding-model/_static/pmc.png)
 
@@ -133,11 +133,16 @@ Si se eliminan todos los registros de la base de datos, el método de inicializa
 
 [!INCLUDE[](~/includes/RP-mvc-shared/sqlite-warn.md)]
 
-Elimine la base de datos y use las migraciones para volver a crear la base de datos. Para eliminar la base de datos, elimine el archivo de base de datos *MvcMovie.db*. Luego, ejecute el comando `ef database update`:
+Elimine la base de datos y la migración anterior y use las migraciones para volver a crear la base de datos:
 
 ```dotnetcli
+dotnet ef migrations remove
+dotnet ef database drop
+dotnet ef migrations add InitialCreate
 dotnet ef database update
 ```
+
+`dotnet ef migrations remove` quita la última migración. Si hay más de una migración, elimine la carpeta Migrations.
 
 ---
 <!-- End of VS tabs -->

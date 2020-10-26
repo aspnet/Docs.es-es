@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/docker/building-net-docker-images
-ms.openlocfilehash: 791cc14feac30ad8a571d155624ab821dfd77981
-ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
+ms.openlocfilehash: 6f94323873937d1428d6cfa1b0ef15e44611fd47
+ms.sourcegitcommit: b3ec60f7682e43211c2b40c60eab3d4e45a48ab1
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90722863"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92153644"
 ---
 # <a name="docker-images-for-aspnet-core"></a>Imágenes de Docker para ASP.NET Core
 
@@ -85,7 +85,7 @@ El Dockerfile de ejemplo usa la [característica de compilación en varias fases
 
 ## <a name="run-the-app-locally"></a>Probar la aplicación localmente
 
-* Vaya a la carpeta de proyecto en *dotnet-docker/samples/aspnetapp/aspnetapp*.
+* Vaya a la carpeta de proyecto en *dotnet-docker/samples/aspnetapp/aspnetapp* .
 
 * Ejecute el siguiente comando para compilar y ejecutar localmente la aplicación:
 
@@ -99,9 +99,9 @@ El Dockerfile de ejemplo usa la [característica de compilación en varias fases
 
 ## <a name="run-in-a-linux-container"></a>Ejecución en un contenedor de Linux
 
-* En el cliente de Docker, cambie a contenedores de Linux.
+* En el cliente de Docker, [cambie a contenedores de Linux](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers).
 
-* Vaya a la carpeta de Dockerfile en *dotnet-docker/samples/aspnetapp*.
+* Vaya a la carpeta de Dockerfile en *dotnet-docker/samples/aspnetapp* .
 
 * Ejecute los siguientes comandos para compilar y ejecutar el ejemplo en Docker:
 
@@ -125,7 +125,7 @@ El Dockerfile de ejemplo usa la [característica de compilación en varias fases
 
 ## <a name="run-in-a-windows-container"></a>Ejecución en un contenedor de Windows
 
-* En el cliente de Docker, cambie a los contenedores de Windows.
+* En el cliente de Docker, [cambie a los contenedores de Windows](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers).
 
 Vaya a la carpeta de archivos de Docker en `dotnet-docker/samples/aspnetapp`.
 
@@ -157,7 +157,7 @@ Vaya a la carpeta de archivos de Docker en `dotnet-docker/samples/aspnetapp`.
 
 En algunos escenarios, puede que quiera implementar una aplicación en un contenedor mediante la copia de los archivos de aplicación que son necesarios en tiempo de ejecución. En esta sección se muestra cómo realizar una implementación manual.
 
-* Vaya a la carpeta de proyecto en *dotnet-docker/samples/aspnetapp/aspnetapp*.
+* Vaya a la carpeta de proyecto en *dotnet-docker/samples/aspnetapp/aspnetapp* .
 
 * Ejecute el comando [dotnet publish](/dotnet/core/tools/dotnet-publish):
 
@@ -167,7 +167,7 @@ En algunos escenarios, puede que quiera implementar una aplicación en un conten
 
   Los argumentos del comando:
   * Compile la aplicación en modo de versión (el valor predeterminado es modo de depuración).
-  * Cree los archivos en la carpeta *publicada*.
+  * Cree los archivos en la carpeta *publicada* .
 
 * Ejecute la aplicación.
 

@@ -16,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/start-mvc
-ms.openlocfilehash: 9d70b292a93a5d19cc25b2fc592ec88ce8262434
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 177112106d143a6826c1f927aac807da0aa9f2b4
+ms.sourcegitcommit: ecae2aa432628b9181d1fa11037c231c7dd56c9e
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88629995"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92113834"
 ---
 # <a name="get-started-with-aspnet-core-mvc"></a>Introducción a ASP.NET Core MVC
 
@@ -65,17 +65,17 @@ Al final, tendrá una aplicación que le permitirá administrar y mostrar datos 
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* En Visual Studio, seleccione **Crear un proyecto**.
+* En Visual Studio, seleccione **Crear un proyecto** .
 
-* Seleccione **Aplicación web ASP.NET Core** y, después, **Siguiente**.
+* Seleccione **Aplicación web de ASP.NET Core** > **Siguiente** .
 
 ![Nueva aplicación web de ASP.NET Core](start-mvc/_static/np_2.1.png)
 
-* Asigne el nombre **MvcMovie** al proyecto y seleccione **Crear**. Es importante que el proyecto se llame **MvcMovie** para que, al copiar el código, coincida con el espacio de nombres.
+* Asigne el nombre **MvcMovie** al proyecto y seleccione **Crear** . Es importante que el proyecto se llame **MvcMovie** para que, al copiar el código, coincida con el espacio de nombres.
 
   ![Nueva aplicación web de ASP.NET Core](start-mvc/_static/config.png)
 
-* Seleccione **Aplicación web (Modelo-Vista-Controlador)** y, luego, **Crear**.
+* Seleccione **Aplicación web (Modelo-Vista-Controlador)** . En las listas desplegables, seleccione **.NET Core** y **ASP.NET Core 3.1** y, después, **Crear** .
 
 ![Cuadro de diálogo Nuevo proyecto, .NET CORE en el panel izquierdo, Aplicación web ASP.NET Core ](start-mvc/_static/new_project30.png)
 
@@ -94,29 +94,29 @@ Para realizar el tutorial debe estar familiarizado con VS Code. Para más inform
    code -r MvcMovie
    ```
 
-  * Se muestra un cuadro de diálogo con el texto **Required assets to build and debug are missing from 'MvcMovie'. Add them?** (Faltan los activos necesarios para compilar y depurar en "RazorPagesMovie". ¿Desea agregarlos?).  Seleccione **Sí**.
+  * Se muestra un cuadro de diálogo con el texto **Required assets to build and debug are missing from 'MvcMovie'. Add them?** (Faltan los activos necesarios para compilar y depurar en "RazorPagesMovie". ¿Desea agregarlos?).  Seleccione **Sí** .
 
-  * `dotnet new mvc -o MvcMovie`: crea un nuevo proyecto de ASP.NET Core MVC en la carpeta *MvcMovie*.
+  * `dotnet new mvc -o MvcMovie`: crea un nuevo proyecto de ASP.NET Core MVC en la carpeta *MvcMovie* .
   * `code -r MvcMovie`: carga el archivo de proyecto *MvcMovie.csproj* en Visual Studio Code.
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)
 
-* Seleccione **Archivo** > **Nueva solución**.
+* Seleccione **Archivo** > **Nueva solución** .
 
   ![macOS: Nueva solución](start-mvc/_static/new_project_vsmac.png)
 
-* En las versiones de Visual Studio para Mac anteriores a 8.6, seleccione **.NET Core** > **Aplicación** > **Aplicación web (controlador de vista de modelos)**  > **Siguiente**. En la versión 8.6 o posteriores, seleccione **Web y consola** > **Aplicación** > **Aplicación web (controlador de vista de modelos)**  > **Siguiente**.
+* En las versiones de Visual Studio para Mac anteriores a 8.6, seleccione **.NET Core** > **Aplicación** > **Aplicación web (controlador de vista de modelos)**  > **Siguiente** . En la versión 8.6 o posteriores, seleccione **Web y consola** > **Aplicación** > **Aplicación web (controlador de vista de modelos)**  > **Siguiente** .
 
   ![Selección de plantilla de aplicación web de macOS](start-mvc/_static/web_app_template_vsmac.png)
 
 * En el cuadro de diálogo **Configure your new Web Application** (Configurar la nueva aplicación web):
 
-  * Asegúrese de que la **autenticación** esté establecida en **Sin autenticación**.
-  * Si se presenta una opción para seleccionar una **plataforma de destino**, seleccione la versión 3.x más reciente.
+  * Asegúrese de que la **autenticación** esté establecida en **Sin autenticación** .
+  * Si se presenta una opción para seleccionar una **plataforma de destino** , seleccione la versión 3.x más reciente.
 
-  Seleccione **Siguiente**.
+  Seleccione **Siguiente** .
 
-* Asigne el nombre **MvcMovie** al proyecto y, después, seleccione **Crear**.
+* Asigne el nombre **MvcMovie** al proyecto y, después, seleccione **Crear** .
 
   ![Nombre del proyecto en macOS](start-mvc/_static/MvcMovie.png)
 
@@ -132,11 +132,11 @@ Presione **Ctrl-F5** para ejecutar la aplicación en modo de no depuración.
 
 * Visual Studio inicia [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview) y ejecuta la aplicación. Tenga en cuenta que en la barra de direcciones aparece `localhost:port#` (y no algo como `example.com`). Esto es así porque `localhost` es el nombre de host estándar del equipo local. Cuando Visual Studio crea un proyecto web, se usa un puerto aleatorio para el servidor web.
 * El inicio de la aplicación con Ctrl+F5 (modo de no depuración) permite realizar cambios en el código, guardar el archivo, actualizar el explorador y ver los cambios de código. Muchos desarrolladores prefieren usar el modo de no depuración para iniciar la aplicación rápidamente y ver los cambios.
-* Puede iniciar la aplicación en modo de depuración o en modo de no depuración desde el elemento de menú **Depurar**:
+* Puede iniciar la aplicación en modo de depuración o en modo de no depuración desde el elemento de menú **Depurar** :
 
   ![Menú Depurar](start-mvc/_static/debug_menu.png)
 
-* Puede depurar la aplicación seleccionando el botón **IIS Express**.
+* Puede depurar la aplicación seleccionando el botón **IIS Express** .
 
   ![IIS Express](start-mvc/_static/iis_express.png)
 
@@ -163,7 +163,7 @@ Seleccione **Ejecutar** > **Iniciar sin depurar** para iniciar la aplicación. V
 [!INCLUDE[](~/includes/trustCertMac.md)]
 
 * En la barra de direcciones aparece `localhost:port#` (y no algo como `example.com`). Esto es así porque `localhost` es el nombre de host estándar del equipo local. Cuando Visual Studio crea un proyecto web, se usa un puerto aleatorio para el servidor web. Al ejecutar la aplicación verá otro puerto distinto.
-* Puede iniciar la aplicación en modo de depuración o en modo de no depuración desde el menú **Ejecutar**.
+* Puede iniciar la aplicación en modo de depuración o en modo de no depuración desde el menú **Ejecutar** .
 
   En la imagen siguiente se muestra la aplicación:
 
@@ -217,18 +217,18 @@ Al final, tendrá una aplicación que le permitirá administrar y mostrar datos 
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* En Visual Studio, seleccione **Crear un proyecto**.
+* En Visual Studio, seleccione **Crear un proyecto** .
 
-* Seleccione **Aplicación web ASP.NET Core** y, después, **Siguiente**.
+* Seleccione **Aplicación web ASP.NET Core** y, después, **Siguiente** .
 
 ![Nueva aplicación web de ASP.NET Core](start-mvc/_static/np_2.1.png)
 
-* Asigne el nombre **MvcMovie** al proyecto y seleccione **Crear**. Es importante que el proyecto se llame **MvcMovie** para que, al copiar el código, coincida con el espacio de nombres.
+* Asigne el nombre **MvcMovie** al proyecto y seleccione **Crear** . Es importante que el proyecto se llame **MvcMovie** para que, al copiar el código, coincida con el espacio de nombres.
 
   ![Nueva aplicación web de ASP.NET Core](start-mvc/_static/config.png)
 
 
-* Seleccione **Aplicación web (Modelo-Vista-Controlador)** y, luego, **Crear**.
+* Seleccione **Aplicación web (Modelo-Vista-Controlador)** y, luego, **Crear** .
 
 ![Cuadro de diálogo Nuevo proyecto, .NET CORE en el panel izquierdo, Aplicación web ASP.NET Core ](start-mvc/_static/new_project22-21.png)
 
@@ -247,27 +247,27 @@ Para realizar el tutorial debe estar familiarizado con VS Code. Para más inform
    code -r MvcMovie
    ```
 
-  * Se muestra un cuadro de diálogo con el texto **Required assets to build and debug are missing from 'MvcMovie'. Add them?** (Faltan los activos necesarios para compilar y depurar en "RazorPagesMovie". ¿Desea agregarlos?).  Seleccione **Sí**.
+  * Se muestra un cuadro de diálogo con el texto **Required assets to build and debug are missing from 'MvcMovie'. Add them?** (Faltan los activos necesarios para compilar y depurar en "RazorPagesMovie". ¿Desea agregarlos?).  Seleccione **Sí** .
 
-  * `dotnet new mvc -o MvcMovie`: crea un nuevo proyecto de ASP.NET Core MVC en la carpeta *MvcMovie*.
+  * `dotnet new mvc -o MvcMovie`: crea un nuevo proyecto de ASP.NET Core MVC en la carpeta *MvcMovie* .
   * `code -r MvcMovie`: carga el archivo de proyecto *MvcMovie.csproj* en Visual Studio Code.
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)
 
-* Seleccione **Archivo** > **Nueva solución**.
+* Seleccione **Archivo** > **Nueva solución** .
 
   ![macOS: Nueva solución](./start-mvc/_static/new_project_vsmac.png)
 
-* En las versiones de Visual Studio para Mac anteriores a 8.6, seleccione **.NET Core** > **Aplicación** > **Aplicación web (controlador de vista de modelos)**  > **Siguiente**. En la versión 8.6 o posteriores, seleccione **Web y consola** > **Aplicación** > **Aplicación web (controlador de vista de modelos)**  > **Siguiente**.
+* En las versiones de Visual Studio para Mac anteriores a 8.6, seleccione **.NET Core** > **Aplicación** > **Aplicación web (controlador de vista de modelos)**  > **Siguiente** . En la versión 8.6 o posteriores, seleccione **Web y consola** > **Aplicación** > **Aplicación web (controlador de vista de modelos)**  > **Siguiente** .
 
 * En el cuadro de diálogo **Configure your new Web Application** (Configurar la nueva aplicación web):
 
-  * Asegúrese de que la **autenticación** esté establecida en **Sin autenticación**.
-  * Si se presenta una opción para seleccionar una **plataforma de destino**, seleccione la versión 2.x más reciente.
+  * Asegúrese de que la **autenticación** esté establecida en **Sin autenticación** .
+  * Si se presenta una opción para seleccionar una **plataforma de destino** , seleccione la versión 2.x más reciente.
 
-  Seleccione **Siguiente**.
+  Seleccione **Siguiente** .
 
-* Asigne el nombre **MvcMovie** al proyecto y, después, seleccione **Crear**.
+* Asigne el nombre **MvcMovie** al proyecto y, después, seleccione **Crear** .
 
 ---
 
@@ -281,11 +281,11 @@ Presione **Ctrl-F5** para ejecutar la aplicación en modo de no depuración.
 
 * Visual Studio inicia [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview) y ejecuta la aplicación. Tenga en cuenta que en la barra de direcciones aparece `localhost:port#` (y no algo como `example.com`). Esto es así porque `localhost` es el nombre de host estándar del equipo local. Cuando Visual Studio crea un proyecto web, se usa un puerto aleatorio para el servidor web.
 * El inicio de la aplicación con Ctrl+F5 (modo de no depuración) permite realizar cambios en el código, guardar el archivo, actualizar el explorador y ver los cambios de código. Muchos desarrolladores prefieren usar el modo de no depuración para iniciar la aplicación rápidamente y ver los cambios.
-* Puede iniciar la aplicación en modo de depuración o en modo de no depuración desde el elemento de menú **Depurar**:
+* Puede iniciar la aplicación en modo de depuración o en modo de no depuración desde el elemento de menú **Depurar** :
 
   ![Menú Depurar](start-mvc/_static/debug_menu.png)
 
-* Puede depurar la aplicación seleccionando el botón **IIS Express**.
+* Puede depurar la aplicación seleccionando el botón **IIS Express** .
 
   ![IIS Express](start-mvc/_static/iis_express.png)
 
@@ -322,7 +322,7 @@ Seleccione **Ejecutar** > **Iniciar sin depurar** para iniciar la aplicación. V
 [!INCLUDE[](~/includes/trustCertMac.md)]
 
 * En la barra de direcciones aparece `localhost:port#` (y no algo como `example.com`). Esto es así porque `localhost` es el nombre de host estándar del equipo local. Cuando Visual Studio crea un proyecto web, se usa un puerto aleatorio para el servidor web. Al ejecutar la aplicación verá otro puerto distinto.
-* Puede iniciar la aplicación en modo de depuración o en modo de no depuración desde el menú **Ejecutar**.
+* Puede iniciar la aplicación en modo de depuración o en modo de no depuración desde el menú **Ejecutar** .
 
 * Seleccione **Aceptar** para dar su consentimiento al seguimiento. Esta aplicación no lleva un seguimiento de la información personal. El código generado con plantilla incluye activos que sirven para cumplir el [Reglamento general de protección de datos (RGPD)](xref:security/gdpr).
 

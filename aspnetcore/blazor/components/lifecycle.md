@@ -5,7 +5,7 @@ description: Aprenda a usar los métodos de ciclo de vida de los componentes de 
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/06/2020
+ms.date: 10/14/2020
 no-loc:
 - ASP.NET Core Identity
 - cookie
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/lifecycle
-ms.openlocfilehash: 0acf757c21d444136e7a6d81d5958be5bc72c2fc
-ms.sourcegitcommit: 139c998d37e9f3e3d0e3d72e10dbce8b75957d89
+ms.openlocfilehash: 035de12d17b676aac6af42e706f3741937d90fb3
+ms.sourcegitcommit: b3ec60f7682e43211c2b40c60eab3d4e45a48ab1
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91805549"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92153594"
 ---
 # <a name="aspnet-core-no-locblazor-lifecycle"></a>Ciclo de vida de ASP.NET Core Blazor
 
@@ -41,14 +41,14 @@ Eventos del ciclo de vida del componente:
    * Llame a [`OnInitialized{Async}`](#component-initialization-methods). Si se devuelve <xref:System.Threading.Tasks.Task>, se esperará <xref:System.Threading.Tasks.Task> y, a continuación, se representará el componente. Si no se devuelve <xref:System.Threading.Tasks.Task>, represente el componente.
 1. Llame a [`OnParametersSet{Async}`](#after-parameters-are-set). Si se devuelve <xref:System.Threading.Tasks.Task>, se esperará <xref:System.Threading.Tasks.Task> y, a continuación, se representará el componente. Si no se devuelve <xref:System.Threading.Tasks.Task>, represente el componente.
 
-<img src="lifecycle/_static/lifecycle1.png" alt="Component lifecycle events of a Razor component in Blazor" data-linktype="relative-path" style="max-width:350px;display:block;margin:0 auto">
+![Eventos de ciclo de vida de componentes de un componente Razor en Blazor](lifecycle/_static/lifecycle1.png)
 
 Procesamiento de eventos de Document Object Model (DOM):
 
 1. Se ejecuta el controlador de eventos.
 1. Si se devuelve <xref:System.Threading.Tasks.Task>, se esperará <xref:System.Threading.Tasks.Task> y, a continuación, se representará el componente. Si no se devuelve <xref:System.Threading.Tasks.Task>, se representa el componente.
 
-<img src="lifecycle/_static/lifecycle2.png" alt="Document Object Model (DOM) event processing" data-linktype="relative-path" style="max-width:350px;display:block;margin:0 auto">
+![Procesamiento de eventos de Document Object Model (DOM)](lifecycle/_static/lifecycle2.png)
 
 Ciclo de vida de `Render`:
 
@@ -57,7 +57,7 @@ Ciclo de vida de `Render`:
 1. Espere a que se actualice DOM.
 1. Llame a [`OnAfterRender{Async}`](#after-component-render).
 
-<img src="lifecycle/_static/lifecycle3.png" alt="Render lifecycle" data-linktype="relative-path" style="max-width:350px;display:block;margin:0 auto">
+![Ciclo de vida de representación](lifecycle/_static/lifecycle3.png)
 
 Las llamadas del desarrollador a [`StateHasChanged`](#state-changes) producen una representación.
 
@@ -108,7 +108,7 @@ protected override async Task OnInitializedAsync()
 }
 ```
 
-Las aplicaciones Blazor Server que [representan previamente su contenido](xref:blazor/fundamentals/additional-scenarios#render-mode) llaman a <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A> **_dos veces_**:
+Las aplicaciones Blazor Server que [representan previamente su contenido](xref:blazor/fundamentals/additional-scenarios#render-mode) llaman a <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A> **_dos veces_** :
 
 * Una primera vez cuando el componente se representa inicialmente de forma estática como parte de la página.
 * Una segunda vez cuando el explorador establece una conexión de vuelta al servidor.
@@ -229,7 +229,7 @@ Para obtener información sobre cómo controlar los errores durante la ejecució
 
 ## <a name="stateful-reconnection-after-prerendering"></a>Reconexión con estado después de la representación previa
 
-En una aplicación Blazor Server, cuando <xref:Microsoft.AspNetCore.Mvc.TagHelpers.ComponentTagHelper.RenderMode> es <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.ServerPrerendered>, el componente se representa inicialmente de forma estática como parte de la página. Una vez que el explorador vuelve a establecer una conexión con el servidor, el componente se representa *otra vez* y el componente ahora es interactivo. Si el método de ciclo de vida [`OnInitialized{Async}`](#component-initialization-methods) para inicializar el componente está presente, el método se ejecuta *dos veces*:
+En una aplicación Blazor Server, cuando <xref:Microsoft.AspNetCore.Mvc.TagHelpers.ComponentTagHelper.RenderMode> es <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.ServerPrerendered>, el componente se representa inicialmente de forma estática como parte de la página. Una vez que el explorador vuelve a establecer una conexión con el servidor, el componente se representa *otra vez* y el componente ahora es interactivo. Si el método de ciclo de vida [`OnInitialized{Async}`](#component-initialization-methods) para inicializar el componente está presente, el método se ejecuta *dos veces* :
 
 * Cuando el componente se representa previamente de forma estática.
 * Después de establecerse la conexión con el servidor.

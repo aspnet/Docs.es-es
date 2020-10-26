@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/webassembly
-ms.openlocfilehash: 63954bd2fbb8fdb2e347d552a10adc52263c3ad6
-ms.sourcegitcommit: daa9ccf580df531254da9dce8593441ac963c674
+ms.openlocfilehash: c3f537ff3b55f295db478cb097bc99023cc71a87
+ms.sourcegitcommit: b5ebaf42422205d212e3dade93fcefcf7f16db39
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91900718"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92326509"
 ---
 # <a name="host-and-deploy-aspnet-core-no-locblazor-webassembly"></a>Hospedaje e implementación de ASP.NET Core Blazor WebAssembly
 
@@ -114,7 +114,7 @@ Cuando se solicita el documento predeterminado de la aplicación mediante la bar
 
 En la página principal, la selección del vínculo al componente `About` funciona en el cliente porque el enrutador de Blazor impide que el explorador haga una solicitud en Internet a `www.contoso.com` sobre `About` y presenta el propio componente `About` representado. Todas las solicitudes de puntos de conexión internos *dentro de la aplicación Blazor WebAssembly* funcionan del mismo modo: Las solicitudes no desencadenan solicitudes basadas en el explorador a recursos hospedados en el servidor en Internet. El enrutador controla las solicitudes de forma interna.
 
-Si se realiza una solicitud mediante la barra de direcciones del explorador para `www.contoso.com/About`, se produce un error. Este recurso no existe en el host de Internet de la aplicación, por lo que se devuelve una respuesta *404 No encontrado*.
+Si se realiza una solicitud mediante la barra de direcciones del explorador para `www.contoso.com/About`, se produce un error. Este recurso no existe en el host de Internet de la aplicación, por lo que se devuelve una respuesta *404 No encontrado* .
 
 Dado que los exploradores solicitan páginas del lado cliente a hosts basados en Internet, los servidores web y los servicios de hospedaje deben reescribir todas las solicitudes de recursos que no estén físicamente en el servidor a la página `index.html`. Cuando se devuelve `index.html`, el enrutador Blazor de la aplicación se hace cargo y responde con el recurso correcto.
 
@@ -450,7 +450,13 @@ Cuando se publica un proyecto de Blazor, se crea un archivo `web.config` con la 
   
 #### <a name="use-a-custom-webconfig"></a>Uso de un archivo web.config personalizado
 
-Para usar un archivo `web.config` personalizado, coloque el archivo `web.config` personalizado en la raíz de la carpeta del proyecto y publique el proyecto.
+Para usar un archivo `web.config` personalizado, coloque el archivo `web.config` personalizado en la raíz de la carpeta del proyecto. Configure el proyecto para publicar recursos específicos de IIS mediante `PublishIISAssets` en el archivo de proyecto de la aplicación y publique el proyecto:
+
+```xml
+<PropertyGroup>
+  <PublishIISAssets>true</PublishIISAssets>
+</PropertyGroup>
+```
 
 #### <a name="install-the-url-rewrite-module"></a>Instalación del módulo URL Rewrite
 
@@ -515,7 +521,7 @@ El hospedaje de archivos estáticos de [Azure Storage](/azure/storage/) permite 
 Cuando el servicio de blob está habilitado para el hospedaje de sitios web estáticos en una cuenta de almacenamiento:
 
 * Establece el **nombre de documento de índice** en `index.html`.
-* Establece la **ruta de acceso del documento de error** en `index.html`. Los componentes Razor y otros puntos de conexión que no son de archivo no residen en las rutas de acceso físicas del contenido estático almacenado por el servicio de blob. Cuando se recibe una solicitud de uno de estos recursos que debe controlar el enrutador de Blazor, el error *404 - No encontrado* generado por el servicio de blob enruta la solicitud a la **ruta de acceso del documento de error**. Se devuelve el blob `index.html`, y el enrutador de Blazor carga y procesa la ruta de acceso.
+* Establece la **ruta de acceso del documento de error** en `index.html`. Los componentes Razor y otros puntos de conexión que no son de archivo no residen en las rutas de acceso físicas del contenido estático almacenado por el servicio de blob. Cuando se recibe una solicitud de uno de estos recursos que debe controlar el enrutador de Blazor, el error *404 - No encontrado* generado por el servicio de blob enruta la solicitud a la **ruta de acceso del documento de error** . Se devuelve el blob `index.html`, y el enrutador de Blazor carga y procesa la ruta de acceso.
 
 Si los archivos no se cargan en tiempo de ejecución debido a tipos MIME inadecuados en los encabezados `Content-Type` de los archivos, haga algunas de las acciones siguientes:
 
@@ -524,8 +530,8 @@ Si los archivos no se cargan en tiempo de ejecución debido a tipos MIME inadecu
 
   En cada archivo del Explorador de Storage (Azure Portal) haga lo siguiente:
   
-  1. Haga clic con el botón derecho en el archivo y seleccione **Propiedades**.
-  1. Establezca el valor de **ContentType** y seleccione el botón **Guardar**.
+  1. Haga clic con el botón derecho en el archivo y seleccione **Propiedades** .
+  1. Establezca el valor de **ContentType** y seleccione el botón **Guardar** .
 
 Para más información, consulte [Hospedaje de sitios web estáticos en Azure Storage](/azure/storage/blobs/storage-blob-static-website).
 
@@ -563,7 +569,7 @@ http {
 }
 ```
 
-Aumente el valor si las herramientas de desarrollo del explorador o la herramienta de tráfico de red indican que las solicitudes reciben un código de estado *503: Servicio no disponible*.
+Aumente el valor si las herramientas de desarrollo del explorador o la herramienta de tráfico de red indican que las solicitudes reciben un código de estado *503: Servicio no disponible* .
 
 Para obtener más información sobre la configuración del servidor web de producción de Nginx, consulte [Creating NGINX Plus and NGINX Configuration Files](https://docs.nginx.com/nginx/admin-guide/basic-functionality/managing-configuration-files/) (Creación de archivos de configuración de NGINX y NGINX Plus).
 
@@ -653,13 +659,13 @@ El argumento `--contentroot` establece la ruta de acceso absoluta al directorio 
   dotnet run --contentroot=/content-root-path
   ```
 
-* Agregue una entrada al archivo `launchSettings.json` de la aplicación en el perfil **IIS Express**. Esta configuración se utiliza cuando se ejecuta la aplicación mediante el depurador de Visual Studio y desde un símbolo del sistema con `dotnet run`.
+* Agregue una entrada al archivo `launchSettings.json` de la aplicación en el perfil **IIS Express** . Esta configuración se utiliza cuando se ejecuta la aplicación mediante el depurador de Visual Studio y desde un símbolo del sistema con `dotnet run`.
 
   ```json
   "commandLineArgs": "--contentroot=/content-root-path"
   ```
 
-* En Visual Studio, especifique el argumento en **Propiedades** > **Depuración** > **Argumentos de la aplicación**. Al establecer el argumento en la página de propiedades de Visual Studio, se agrega el argumento al archivo `launchSettings.json`.
+* En Visual Studio, especifique el argumento en **Propiedades** > **Depuración** > **Argumentos de la aplicación** . Al establecer el argumento en la página de propiedades de Visual Studio, se agrega el argumento al archivo `launchSettings.json`.
 
   ```console
   --contentroot=/content-root-path
@@ -678,13 +684,13 @@ El argumento `--pathbase` establece la ruta de acceso base de la aplicación par
   dotnet run --pathbase=/relative-URL-path
   ```
 
-* Agregue una entrada al archivo `launchSettings.json` de la aplicación en el perfil **IIS Express**. Esta configuración se utiliza cuando se ejecuta la aplicación mediante el depurador de Visual Studio y desde un símbolo del sistema con `dotnet run`.
+* Agregue una entrada al archivo `launchSettings.json` de la aplicación en el perfil **IIS Express** . Esta configuración se utiliza cuando se ejecuta la aplicación mediante el depurador de Visual Studio y desde un símbolo del sistema con `dotnet run`.
 
   ```json
   "commandLineArgs": "--pathbase=/relative-URL-path"
   ```
 
-* En Visual Studio, especifique el argumento en **Propiedades** > **Depuración** > **Argumentos de la aplicación**. Al establecer el argumento en la página de propiedades de Visual Studio, se agrega el argumento al archivo `launchSettings.json`.
+* En Visual Studio, especifique el argumento en **Propiedades** > **Depuración** > **Argumentos de la aplicación** . Al establecer el argumento en la página de propiedades de Visual Studio, se agrega el argumento al archivo `launchSettings.json`.
 
   ```console
   --pathbase=/relative-URL-path
@@ -700,13 +706,13 @@ El argumento `--urls` establece las direcciones IP o las direcciones de host con
   dotnet run --urls=http://127.0.0.1:0
   ```
 
-* Agregue una entrada al archivo `launchSettings.json` de la aplicación en el perfil **IIS Express**. Esta configuración se utiliza cuando se ejecuta la aplicación mediante el depurador de Visual Studio y desde un símbolo del sistema con `dotnet run`.
+* Agregue una entrada al archivo `launchSettings.json` de la aplicación en el perfil **IIS Express** . Esta configuración se utiliza cuando se ejecuta la aplicación mediante el depurador de Visual Studio y desde un símbolo del sistema con `dotnet run`.
 
   ```json
   "commandLineArgs": "--urls=http://127.0.0.1:0"
   ```
 
-* En Visual Studio, especifique el argumento en **Propiedades** > **Depuración** > **Argumentos de la aplicación**. Al establecer el argumento en la página de propiedades de Visual Studio, se agrega el argumento al archivo `launchSettings.json`.
+* En Visual Studio, especifique el argumento en **Propiedades** > **Depuración** > **Argumentos de la aplicación** . Al establecer el argumento en la página de propiedades de Visual Studio, se agrega el argumento al archivo `launchSettings.json`.
 
   ```console
   --urls=http://127.0.0.1:0
@@ -890,7 +896,7 @@ Cuando se compila una aplicación, el manifiesto de `blazor.boot.json` generado 
 
 Los motivos comunes por los que se produce un error son:
 
- * La respuesta del servidor web es un error (por ejemplo, *404 No encontrado* o *500 Error interno del servidor*) en lugar del archivo solicitado por el explorador. El explorador lo detecta como un error de comprobación de integridad y no como un error de respuesta.
+ * La respuesta del servidor web es un error (por ejemplo, *404 No encontrado* o *500 Error interno del servidor* ) en lugar del archivo solicitado por el explorador. El explorador lo detecta como un error de comprobación de integridad y no como un error de respuesta.
  * Algo ha cambiado el contenido de los archivos entre la compilación y la entrega de los archivos al explorador. Esto puede ocurrir:
    * Si el usuario o las herramientas de compilación modifican manualmente la salida de compilación.
    * Si algún aspecto del proceso de implementación ha modificado los archivos. Por ejemplo, si usa un mecanismo de implementación basado en Git, tenga en cuenta que Git convierte de forma transparente los finales de línea de estilo Windows en finales de línea de estilo Unix si confirma archivos en Windows y los comprueba en Linux. El cambio de los finales de línea de archivo cambia los algoritmos hash SHA-256. Para evitar este problema, considere la posibilidad de [usar `.gitattributes` para tratar los artefactos de compilación como archivos `binary`](https://git-scm.com/book/en/v2/Customizing-Git-Git-Attributes).
@@ -899,7 +905,7 @@ Los motivos comunes por los que se produce un error son:
 Para diagnosticar cuál de ellas se aplica en su caso:
 
  1. Lea el mensaje de error para darse cuenta de qué archivo está desencadenando el error.
- 1. Abra las herramientas de desarrollo del explorador y mire en la pestaña *Red*. Si es necesario, vuelva a cargar la página para ver la lista de solicitudes y respuestas. Busque el archivo que desencadena el error en esa lista.
+ 1. Abra las herramientas de desarrollo del explorador y mire en la pestaña *Red* . Si es necesario, vuelva a cargar la página para ver la lista de solicitudes y respuestas. Busque el archivo que desencadena el error en esa lista.
  1. Compruebe el código de estado HTTP en la respuesta. Si el servidor devuelve un valor distinto de *200 - Correcto* (u otro código de estado 2XX), tiene un problema de servidor por diagnosticar. Por ejemplo, el código de estado 403 significa que hay un problema de autorización, mientras que el código de estado 500 significa que el servidor está dando error de una manera no especificada. Consulte los registros del servidor para diagnosticar y corregir la aplicación.
  1. Si el código de estado es *200 - Correcto* para el recurso, examine el contenido de la respuesta en las herramientas de desarrollo del explorador y compruebe que el contenido coincida con los datos esperados. Por ejemplo, un problema común es configurar erróneamente el enrutamiento de modo que las solicitudes devuelvan los datos de `index.html` incluso para otros archivos. Asegúrese de que las respuestas a las solicitudes de `.wasm` son archivos binarios de WebAssembly y que las respuestas a las solicitudes de `.dll` son archivos binarios de ensamblado de .NET. Si no es así, tiene un problema de enrutamiento del lado servidor por diagnosticar.
 

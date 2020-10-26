@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/troubleshoot
-ms.openlocfilehash: 2f2a41af544bc040bd20e15b057ad8fc7fb16cfe
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 0c897c8c640f8713fc7d3b6cad0e6c571131d7a5
+ms.sourcegitcommit: ecae2aa432628b9181d1fa11037c231c7dd56c9e
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633973"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92113847"
 ---
 # <a name="troubleshoot-grpc-on-net-core"></a>Solución de problemas de gRPC en .NET Core
 
@@ -86,7 +86,7 @@ var client = new Greet.GreeterClient(channel);
 
 ## <a name="call-insecure-grpc-services-with-net-core-client"></a>Llamada a servicios gRPC no seguros con el cliente de .NET Core
 
-Se requiere una configuración adicional para llamar a servicios gRPC no seguros con el cliente de .NET. El cliente de gRPC debe establecer el modificador `System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport` en `true` y usar `http` en la dirección del servidor:
+Cuando una aplicación usa .NET Core 3.x, se requiere una configuración adicional para llamar a servicios gRPC no seguros con el cliente de .NET Core. El cliente de gRPC debe establecer el modificador `System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport` en `true` y usar `http` en la dirección del servidor:
 
 ```csharp
 // This switch must be set before creating the GrpcChannel/HttpClient.
@@ -98,6 +98,8 @@ var channel = GrpcChannel.ForAddress("http://localhost:5000");
 var client = new Greet.GreeterClient(channel);
 ```
 
+Las aplicaciones de .NET 5 no necesitan configuración adicional, pero para llamar a los servicios de gRPC no seguros deben usar la versión 2.32.0 o posterior de `Grpc.Net.Client`.
+
 ## <a name="unable-to-start-aspnet-core-grpc-app-on-macos"></a>No se puede iniciar la aplicación gRPC de ASP.NET Core en macOS
 
 Kestrel no admite HTTP/2 con TLS en macOS ni en versiones anteriores de Windows, como Windows 7. La plantilla y los ejemplos de gRPC de ASP.NET Core usan TLS de forma predeterminada. Al intentar iniciar el servidor de gRPC, verá el siguiente mensaje de error:
@@ -106,7 +108,7 @@ Kestrel no admite HTTP/2 con TLS en macOS ni en versiones anteriores de Windows,
 
 Para solucionar este problema, configure Kestrel y el cliente de gRPC para que use HTTP/2 *sin* TLS. Esto solo debe realizarse durante el desarrollo. Si no se usa TLS, se enviarán mensajes gRPC sin cifrado.
 
-Kestrel debe configurar un punto de conexión HTTP/2 sin TLS en *Program.cs*:
+Kestrel debe configurar un punto de conexión HTTP/2 sin TLS en *Program.cs* :
 
 ```csharp
 public static IHostBuilder CreateHostBuilder(string[] args) =>

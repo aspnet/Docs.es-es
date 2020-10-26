@@ -18,18 +18,18 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/call-javascript-from-dotnet
-ms.openlocfilehash: d36140067ba6e75f2d00cb86ea488e40d28bd86f
-ms.sourcegitcommit: d7991068bc6b04063f4bd836fc5b9591d614d448
+ms.openlocfilehash: 3bd881b124e00b91ab0aa9d3eb7531f10ef895f2
+ms.sourcegitcommit: b5ebaf42422205d212e3dade93fcefcf7f16db39
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91762170"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92326497"
 ---
 # <a name="call-javascript-functions-from-net-methods-in-aspnet-core-no-locblazor"></a>Llamada a funciones de JavaScript con métodos de .NET en Blazor de ASP.NET Core
 
 Por [Javier Calvarro Nelson](https://github.com/javiercn), [Daniel Roth](https://github.com/danroth27) y [Luke Latham](https://github.com/guardrex)
 
-Una aplicación de Blazor puede invocar funciones de JavaScript desde métodos de .NET y viceversa. Estos escenarios se denominan *interoperabilidad de JavaScript* (o *interoperabilidad de JS*).
+Una aplicación de Blazor puede invocar funciones de JavaScript desde métodos de .NET y viceversa. Estos escenarios se denominan *interoperabilidad de JavaScript* (o *interoperabilidad de JS* ).
 
 En este artículo se describe cómo invocar funciones de JavaScript desde .NET. Para más información sobre cómo llamar a métodos de .NET desde JavaScript, vea <xref:blazor/call-dotnet-from-javascript>.
 
@@ -164,7 +164,10 @@ El marcador de posición `{APP ASSEMBLY}` es el nombre de ensamblado de la aplic
 
 ## <a name="call-a-void-javascript-function"></a>Llamada a una función de JavaScript vacía
 
-Las funciones de JavaScript que devuelven [void(0)/void 0](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/void) o [undefined](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/undefined) se llaman con <xref:Microsoft.JSInterop.JSRuntimeExtensions.InvokeVoidAsync%2A?displayProperty=nameWithType>.
+Use <xref:Microsoft.JSInterop.JSRuntimeExtensions.InvokeVoidAsync%2A?displayProperty=nameWithType> en los siguientes casos:
+
+* Funciones de JavaScript que devuelven [void(0)/void 0](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/void) o [undefined](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/undefined).
+* Si .NET no es necesario para leer el resultado de una llamada de JavaScript.
 
 ## <a name="detect-when-a-no-locblazor-server-app-is-prerendering"></a>Detección de cuándo se está obteniendo una representación previa de la aplicación Blazor Server
  
@@ -257,9 +260,7 @@ Se llama al método `GenericMethod` directamente en el objeto con un tipo. En el
 
 ## <a name="reference-elements-across-components"></a>Referencia a elementos en componentes
 
-La validez de un elemento <xref:Microsoft.AspNetCore.Components.ElementReference> solo está garantizada en el método de <xref:Microsoft.AspNetCore.Components.ComponentBase.OnAfterRender%2A> de un componente (y una referencia de elemento es un `struct`), por lo que una referencia de elemento no se puede pasar entre componentes.
-
-Para que un componente primario haga que una referencia de elemento esté disponible para otros componentes, el componente primario puede:
+La validez de una instancia <xref:Microsoft.AspNetCore.Components.ElementReference> solo está garantizada en el método <xref:Microsoft.AspNetCore.Components.ComponentBase.OnAfterRender%2A> de un componente, cuando una referencia de elemento es un `struct`, por lo que una referencia de elemento no se puede pasar entre componentes. Para que un componente primario haga que una referencia de elemento esté disponible para otros componentes, el componente primario puede:
 
 * Permitir que los componentes secundarios registren devoluciones de llamada.
 * Invoca las devoluciones de llamada registradas durante el evento <xref:Microsoft.AspNetCore.Components.ComponentBase.OnAfterRender%2A> con la referencia de elemento que se ha pasado. Este método permite de forma indirecta que los componentes secundarios interactúen con la referencia del elemento primario.
@@ -665,8 +666,33 @@ Además, en el ejemplo anterior se muestra cómo es posible encapsular la lógic
 
 ::: moniker-end
 
+## <a name="size-limits-on-js-interop-calls"></a>Límites de tamaño en las llamadas de interoperabilidad de JS
+
+En Blazor WebAssembly, la plataforma no impone límites en cuanto al tamaño de las entradas y salidas de las llamadas de interoperabilidad de JS.
+
+En Blazor Server, el resultado de una llamada de interoperabilidad de JS está limitado por el tamaño de carga máximo aplicado por SignalR (<xref:Microsoft.AspNetCore.SignalR.HubOptions.MaximumReceiveMessageSize>), cuyo valor predeterminado es 32 KB. Las aplicaciones que intentan responder a una llamada de interoperabilidad de JS con una carga mayor que <xref:Microsoft.AspNetCore.SignalR.HubOptions.MaximumReceiveMessageSize> producen un error. Se puede configurar un límite mayor mediante la modificación de <xref:Microsoft.AspNetCore.SignalR.HubOptions.MaximumReceiveMessageSize>. En el ejemplo siguiente se establece el tamaño máximo del mensaje de recepción en 64 KB (64*1024*1024):
+
+```csharp
+services.AddServerSideBlazor()
+   .AddHubOptions(options => options.MaximumReceiveMessageSize = 64 * 1024 * 1024);
+```
+
+Aumentar el límite de SignalR implica el uso de más recursos del servidor y lo expone a más riesgos por parte de un usuario malintencionado. Además, la lectura de una gran cantidad de contenido en la memoria, como cadenas o matrices de bytes, también puede dar lugar a que las asignaciones funcionen de forma deficiente con el recolector de elementos no utilizados, lo que puede reducir significativamente el rendimiento. Una opción para leer grandes cargas es considerar la posibilidad de enviar el contenido en fragmentos más pequeños y procesar la carga como una clase <xref:System.IO.Stream>. Se puede usar al leer cargas grandes de JSON o si los datos están disponibles en JavaScript como bytes sin formato. Para obtener un ejemplo en el que se muestra el envío de cargas binarias de gran tamaño en Blazor Server que usa técnicas similares a las del componente `InputFile`, consulte la [aplicación de ejemplo para envíos binarios](https://github.com/aspnet/samples/tree/master/samples/aspnetcore/blazor/BinarySubmit).
+
+Tenga en cuenta la guía siguiente al desarrollar código que transfiera un gran volumen de datos entre JavaScript y Blazor:
+
+* Segmente los datos en partes más pequeñas y envíe los segmentos de datos secuencialmente hasta que el servidor reciba todos los datos.
+* No asigne objetos grandes en código JavaScript y C#.
+* No bloquee el subproceso de interfaz de usuario principal durante períodos largos al enviar o recibir datos.
+* Libere la memoria consumida al completar o cancelar el proceso.
+* Aplique los requisitos adicionales siguientes por motivos de seguridad:
+  * Declare el tamaño máximo del archivo o los datos que se pueden pasar.
+  * Declare la tasa mínima de carga desde el cliente al servidor.
+* Después de que el servidor reciba los datos, los datos se pueden:
+  * Almacenar temporalmente en un búfer de memoria hasta que se recopilen todos los segmentos.
+  * Consumir inmediatamente. Por ejemplo, los datos se pueden almacenar inmediatamente en una base de datos o escribir en el disco a medida que se reciba cada segmento.
+
 ## <a name="additional-resources"></a>Recursos adicionales
 
 * <xref:blazor/call-dotnet-from-javascript>
 * [Ejemplo de InteropComponent.razor (repositorio de GitHub dotnet/AspNetCore, rama de la versión 3.1)](https://github.com/dotnet/AspNetCore/blob/release/3.1/src/Components/test/testassets/BasicTestApp/InteropComponent.razor)
-* [Realización de transferencias de datos grandes en aplicaciones Blazor Server](xref:blazor/advanced-scenarios#perform-large-data-transfers-in-blazor-server-apps)
