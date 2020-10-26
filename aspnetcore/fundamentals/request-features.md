@@ -3,83 +3,154 @@ title: Características de solicitud de ASP.NET Core
 author: ardalis
 description: Obtenga información sobre los detalles de implementación del servidor web relacionados con las solicitudes HTTP y las respuestas que se definen en las interfaces de ASP.NET Core.
 ms.author: riande
-ms.date: 10/14/2016
+ms.custom: mvc
+ms.date: 10/20/2020
 no-loc:
-- ASP.NET Core Identity
-- cookie
-- Cookie
-- Blazor
-- Blazor Server
-- Blazor WebAssembly
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
+- ':::no-loc(ASP.NET Core Identity):::'
+- ':::no-loc(cookie):::'
+- ':::no-loc(Cookie):::'
+- ':::no-loc(Blazor):::'
+- ':::no-loc(Blazor Server):::'
+- ':::no-loc(Blazor WebAssembly):::'
+- ':::no-loc(Identity):::'
+- ":::no-loc(Let's Encrypt):::"
+- ':::no-loc(Razor):::'
+- ':::no-loc(SignalR):::'
 uid: fundamentals/request-features
-ms.openlocfilehash: 3b5c929519407de5dc582c10a86745efddc8a38a
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 879b775ba2998ee803708ebf231b5fcd363b811c
+ms.sourcegitcommit: b5ebaf42422205d212e3dade93fcefcf7f16db39
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634519"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92326438"
 ---
-# <a name="request-features-in-aspnet-core"></a><span data-ttu-id="d85ef-103">Características de solicitud de ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="d85ef-103">Request Features in ASP.NET Core</span></span>
+# <a name="request-features-in-aspnet-core"></a><span data-ttu-id="68853-103">Características de solicitud de ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="68853-103">Request Features in ASP.NET Core</span></span>
 
-<span data-ttu-id="d85ef-104">Por [Steve Smith](https://ardalis.com/)</span><span class="sxs-lookup"><span data-stu-id="d85ef-104">By [Steve Smith](https://ardalis.com/)</span></span>
+<span data-ttu-id="68853-104">Por [Steve Smith](https://ardalis.com/)</span><span class="sxs-lookup"><span data-stu-id="68853-104">By [Steve Smith](https://ardalis.com/)</span></span>
 
-<span data-ttu-id="d85ef-105">Los detalles de implementación del servidor web relacionados con las solicitudes HTTP y las respuestas se definen en las interfaces.</span><span class="sxs-lookup"><span data-stu-id="d85ef-105">Web server implementation details related to HTTP requests and responses are defined in interfaces.</span></span> <span data-ttu-id="d85ef-106">Estas interfaces se usan en implementaciones de servidor web y middleware para crear y modificar la canalización de hospedaje de la aplicación.</span><span class="sxs-lookup"><span data-stu-id="d85ef-106">These interfaces are used by server implementations and middleware to create and modify the application's hosting pipeline.</span></span>
+<span data-ttu-id="68853-105">La API `HttpContext` que las aplicaciones y el middleware usan para procesar solicitudes tiene una capa de abstracción debajo de ella llamada *interfaces de características* .</span><span class="sxs-lookup"><span data-stu-id="68853-105">The `HttpContext` API that applications and middleware use to process requests has an abstraction layer undernieth it called *feature interfaces* .</span></span> <span data-ttu-id="68853-106">Cada interfaz de características proporciona un subconjunto granular de la funcionalidad expuesta por `HttpContext`.</span><span class="sxs-lookup"><span data-stu-id="68853-106">Each feature interface provides a granular subset of the functionality exposed by `HttpContext`.</span></span> <span data-ttu-id="68853-107">El servidor o el middleware pueden agregar, modificar, ajustar, reemplazar o incluso quitar estas interfaces a medida que se procesa la solicitud sin tener que volver a implementar `HttpContext` íntegramente.</span><span class="sxs-lookup"><span data-stu-id="68853-107">These interfaces can be added, modified, wrapped, replaced, or even removed by the server or middleware as the request is processed without having to re-implement the entire `HttpContext`.</span></span> <span data-ttu-id="68853-108">También se pueden usar para simular la funcionalidad durante las pruebas.</span><span class="sxs-lookup"><span data-stu-id="68853-108">They can also be used to mock functionality when testing.</span></span>
 
-## <a name="feature-interfaces"></a><span data-ttu-id="d85ef-107">Interfaces de características</span><span class="sxs-lookup"><span data-stu-id="d85ef-107">Feature interfaces</span></span>
+## <a name="feature-collections"></a><span data-ttu-id="68853-109">Colecciones de características</span><span class="sxs-lookup"><span data-stu-id="68853-109">Feature collections</span></span>
 
-<span data-ttu-id="d85ef-108">ASP.NET Core define una serie de interfaces de características HTTP en `Microsoft.AspNetCore.Http.Features` que los servidores usan para identificar las características que admiten.</span><span class="sxs-lookup"><span data-stu-id="d85ef-108">ASP.NET Core defines a number of HTTP feature interfaces in `Microsoft.AspNetCore.Http.Features` which are used by servers to identify the features they support.</span></span> <span data-ttu-id="d85ef-109">Las siguientes interfaces de características controlan las solicitudes y devuelven respuestas:</span><span class="sxs-lookup"><span data-stu-id="d85ef-109">The following feature interfaces handle requests and return responses:</span></span>
+<span data-ttu-id="68853-110">La propiedad <xref:Microsoft.AspNetCore.Http.HttpContext.Features> de `HttpContext` proporciona acceso a la colección de interfaces de características para la solicitud actual.</span><span class="sxs-lookup"><span data-stu-id="68853-110">The <xref:Microsoft.AspNetCore.Http.HttpContext.Features> property of `HttpContext` provides access to the collection of feature interfaces for the current request.</span></span> <span data-ttu-id="68853-111">Puesto que la colección de características es mutable incluso en el contexto de una solicitud, se puede usar middleware para modificarla y para agregar compatibilidad con más características.</span><span class="sxs-lookup"><span data-stu-id="68853-111">Since the feature collection is mutable even within the context of a request, middleware can be used to modify the collection and add support for additional features.</span></span> <span data-ttu-id="68853-112">Algunas características avanzadas solo están disponibles al acceder a la interfaz asociada a través de la colección de características.</span><span class="sxs-lookup"><span data-stu-id="68853-112">Some advanced features are only available by accessing the associated interface through the feature collection.</span></span>
 
-<span data-ttu-id="d85ef-110">`IHttpRequestFeature` Define la estructura de una solicitud HTTP; esto es, el protocolo, la ruta de acceso, la cadena de consulta, los encabezados y el cuerpo.</span><span class="sxs-lookup"><span data-stu-id="d85ef-110">`IHttpRequestFeature` Defines the structure of an HTTP request, including the protocol, path, query string, headers, and body.</span></span>
+## <a name="feature-interfaces"></a><span data-ttu-id="68853-113">Interfaces de características</span><span class="sxs-lookup"><span data-stu-id="68853-113">Feature interfaces</span></span>
 
-<span data-ttu-id="d85ef-111">`IHttpResponseFeature` Define la estructura de una respuesta HTTP; esto es, el código de estado, los encabezados y el cuerpo de la respuesta.</span><span class="sxs-lookup"><span data-stu-id="d85ef-111">`IHttpResponseFeature` Defines the structure of an HTTP response, including the status code, headers, and body of the response.</span></span>
+<span data-ttu-id="68853-114">ASP.NET Core define una serie de interfaces de características HTTP comunes en <xref:Microsoft.AspNetCore.Http.Features?displayProperty=fullName>, que diferentes servidores y el middleware comparten para identificar las características que admiten.</span><span class="sxs-lookup"><span data-stu-id="68853-114">ASP.NET Core defines a number of common HTTP feature interfaces in <xref:Microsoft.AspNetCore.Http.Features?displayProperty=fullName>, which are shared by various servers and middleware to identify the features that they support.</span></span> <span data-ttu-id="68853-115">Los servidores y el middleware también pueden proporcionar sus propias interfaces con funcionalidad adicional.</span><span class="sxs-lookup"><span data-stu-id="68853-115">Servers and middleware may also provide their own interfaces with additional functionality.</span></span>
 
-<span data-ttu-id="d85ef-112">`IHttpAuthenticationFeature` Define la capacidad para identificar usuarios según un `ClaimsPrincipal` y para especificar un controlador de autenticación.</span><span class="sxs-lookup"><span data-stu-id="d85ef-112">`IHttpAuthenticationFeature` Defines support for identifying users based on a `ClaimsPrincipal` and specifying an authentication handler.</span></span>
+<span data-ttu-id="68853-116">La mayoría de las interfaces de características proporcionan una funcionalidad opcional y ligera, y sus API `HttpContext` asociadas proporcionan valores predeterminados si la característica no existe.</span><span class="sxs-lookup"><span data-stu-id="68853-116">Most feature interfaces provide optional, light-up functionality, and their associated `HttpContext` APIs provide defaults if the feature isn't present.</span></span> <span data-ttu-id="68853-117">Algunas interfaces se indican en el siguiente contenido según sea necesario, ya que proporcionan la funcionalidad de solicitud y respuesta básica y deben implementarse para procesar la solicitud.</span><span class="sxs-lookup"><span data-stu-id="68853-117">A few interfaces are indicated in the following content as required because they provide core request and response functionality and must be implemented in order to process the request.</span></span>
 
-<span data-ttu-id="d85ef-113">`IHttpUpgradeFeature` Define la compatibilidad con [actualizaciones HTTP](https://tools.ietf.org/html/rfc2616.html#section-14.42), que permiten al cliente especificar otros protocolos que le gustaría usar en caso de que el servidor cambie de protocolo.</span><span class="sxs-lookup"><span data-stu-id="d85ef-113">`IHttpUpgradeFeature` Defines support for [HTTP Upgrades](https://tools.ietf.org/html/rfc2616.html#section-14.42), which allow the client to specify which additional protocols it would like to use if the server wishes to switch protocols.</span></span>
+<span data-ttu-id="68853-118">Las siguientes interfaces de características son de <xref:Microsoft.AspNetCore.Http.Features?displayProperty=fullName>:</span><span class="sxs-lookup"><span data-stu-id="68853-118">The following feature interfaces are from <xref:Microsoft.AspNetCore.Http.Features?displayProperty=fullName>:</span></span>
 
-<span data-ttu-id="d85ef-114">`IHttpBufferingFeature` Define métodos para deshabilitar el almacenamiento en búfer de solicitudes o respuestas.</span><span class="sxs-lookup"><span data-stu-id="d85ef-114">`IHttpBufferingFeature` Defines methods for disabling buffering of requests and/or responses.</span></span>
+<span data-ttu-id="68853-119"><xref:Microsoft.AspNetCore.Http.Features.IHttpRequestFeature>: define la estructura de una solicitud HTTP; es decir, el protocolo, la ruta de acceso, la cadena de consulta, los encabezados y el cuerpo.</span><span class="sxs-lookup"><span data-stu-id="68853-119"><xref:Microsoft.AspNetCore.Http.Features.IHttpRequestFeature>: Defines the structure of an HTTP request, including the protocol, path, query string, headers, and body.</span></span> <span data-ttu-id="68853-120">Esta característica es necesaria para procesar las solicitudes.</span><span class="sxs-lookup"><span data-stu-id="68853-120">This feature is required in order to process requests.</span></span>
 
-<span data-ttu-id="d85ef-115">`IHttpConnectionFeature` Define las propiedades de las direcciones y los puertos tanto locales como remotos.</span><span class="sxs-lookup"><span data-stu-id="d85ef-115">`IHttpConnectionFeature` Defines properties for local and remote addresses and ports.</span></span>
+<span data-ttu-id="68853-121"><xref:Microsoft.AspNetCore.Http.Features.IHttpResponseFeature>: define la estructura de una respuesta HTTP; es decir, el código de estado, los encabezados y el cuerpo de la respuesta.</span><span class="sxs-lookup"><span data-stu-id="68853-121"><xref:Microsoft.AspNetCore.Http.Features.IHttpResponseFeature>: Defines the structure of an HTTP response, including the status code, headers, and body of the response.</span></span> <span data-ttu-id="68853-122">Esta característica es necesaria para procesar las solicitudes.</span><span class="sxs-lookup"><span data-stu-id="68853-122">This feature is required in order to process requests.</span></span>
 
-<span data-ttu-id="d85ef-116">`IHttpRequestLifetimeFeature` Define la capacidad para anular conexiones o para detectar si una solicitud ha finalizado antes de tiempo (por ejemplo, debido a una desconexión del cliente).</span><span class="sxs-lookup"><span data-stu-id="d85ef-116">`IHttpRequestLifetimeFeature` Defines support for aborting connections, or detecting if a request has been terminated prematurely, such as by a client disconnect.</span></span>
+::: moniker range=">= aspnetcore-3.0"
 
-<span data-ttu-id="d85ef-117">`IHttpSendFileFeature` Define un método para enviar archivos de forma asincrónica.</span><span class="sxs-lookup"><span data-stu-id="d85ef-117">`IHttpSendFileFeature` Defines a method for sending files asynchronously.</span></span>
+<span data-ttu-id="68853-123"><xref:Microsoft.AspNetCore.Http.Features.IHttpResponseBodyFeature>: define diferentes formas de escribir el cuerpo de la respuesta, mediante una clase `Stream` o `PipeWriter`, o un archivo.</span><span class="sxs-lookup"><span data-stu-id="68853-123"><xref:Microsoft.AspNetCore.Http.Features.IHttpResponseBodyFeature>: Defines different ways of writing out the response body, using either a `Stream`, a `PipeWriter`, or a file.</span></span> <span data-ttu-id="68853-124">Esta característica es necesaria para procesar las solicitudes.</span><span class="sxs-lookup"><span data-stu-id="68853-124">This feature is required in order to process requests.</span></span> <span data-ttu-id="68853-125">Reemplaza `IHttpResponseFeature.Body` y `IHttpSendFileFeature`.</span><span class="sxs-lookup"><span data-stu-id="68853-125">This replaces `IHttpResponseFeature.Body` and `IHttpSendFileFeature`.</span></span>
 
-<span data-ttu-id="d85ef-118">`IHttpWebSocketFeature` Define una API para admitir sockets web.</span><span class="sxs-lookup"><span data-stu-id="d85ef-118">`IHttpWebSocketFeature` Defines an API for supporting web sockets.</span></span>
+::: moniker-end
 
-<span data-ttu-id="d85ef-119">`IHttpRequestIdentifierFeature` Agrega una propiedad que se puede implementar para distinguir solicitudes de forma única.</span><span class="sxs-lookup"><span data-stu-id="d85ef-119">`IHttpRequestIdentifierFeature` Adds a property that can be implemented to uniquely identify requests.</span></span>
+<span data-ttu-id="68853-126"><xref:Microsoft.AspNetCore.Http.Features.Authentication.IHttpAuthenticationFeature>: contiene la clase <xref:System.Security.Claims.ClaimsPrincipal> asociada actualmente con la solicitud.</span><span class="sxs-lookup"><span data-stu-id="68853-126"><xref:Microsoft.AspNetCore.Http.Features.Authentication.IHttpAuthenticationFeature>: Holds the <xref:System.Security.Claims.ClaimsPrincipal> currently associated with the request.</span></span>
 
-<span data-ttu-id="d85ef-120">`ISessionFeature` Define abstracciones `ISessionFactory` e `ISession` para admitir sesiones de usuario.</span><span class="sxs-lookup"><span data-stu-id="d85ef-120">`ISessionFeature` Defines `ISessionFactory` and `ISession` abstractions for supporting user sessions.</span></span>
+<span data-ttu-id="68853-127"><xref:Microsoft.AspNetCore.Http.Features.IFormFeature>: se usa para analizar y almacenar en caché los envíos de formularios HTTP y de varias partes entrantes.</span><span class="sxs-lookup"><span data-stu-id="68853-127"><xref:Microsoft.AspNetCore.Http.Features.IFormFeature>: Used to parse and cache incoming HTTP and multipart form submissions.</span></span>
 
-<span data-ttu-id="d85ef-121">`ITlsConnectionFeature` Define una API para recuperar certificados de cliente.</span><span class="sxs-lookup"><span data-stu-id="d85ef-121">`ITlsConnectionFeature` Defines an API for retrieving client certificates.</span></span>
+::: moniker range=">= aspnetcore-2.0"
 
-<span data-ttu-id="d85ef-122">`ITlsTokenBindingFeature` Define métodos para trabajar con parámetros de enlace de tokens de TLS.</span><span class="sxs-lookup"><span data-stu-id="d85ef-122">`ITlsTokenBindingFeature` Defines methods for working with TLS token binding parameters.</span></span>
+<span data-ttu-id="68853-128"><xref:Microsoft.AspNetCore.Http.Features.IHttpBodyControlFeature>: se utiliza para controlar si se permiten las operaciones de E/S sincrónicas para los cuerpos de solicitud o respuesta.</span><span class="sxs-lookup"><span data-stu-id="68853-128"><xref:Microsoft.AspNetCore.Http.Features.IHttpBodyControlFeature>: Used to control if synchronous IO operations are allowed for the request or response bodies.</span></span>
 
-> [!NOTE]
-> <span data-ttu-id="d85ef-123">`ISessionFeature` no es una característica de servidor, pero se implementa por medio de `SessionMiddleware`. Vea [Introduction to session and application state in ASP.NET Core](app-state.md) (Introducción al estado de sesión y la aplicación de ASP.NET Core).</span><span class="sxs-lookup"><span data-stu-id="d85ef-123">`ISessionFeature` isn't a server feature, but is implemented by the `SessionMiddleware` (see [Managing Application State](app-state.md)).</span></span>
+::: moniker-end
+   
+::: moniker range="< aspnetcore-3.0"
 
-## <a name="feature-collections"></a><span data-ttu-id="d85ef-124">Colecciones de características</span><span class="sxs-lookup"><span data-stu-id="d85ef-124">Feature collections</span></span>
+<span data-ttu-id="68853-129"><xref:Microsoft.AspNetCore.Http.Features.IHttpBufferingFeature>: define métodos para deshabilitar el almacenamiento en búfer de solicitudes o respuestas.</span><span class="sxs-lookup"><span data-stu-id="68853-129"><xref:Microsoft.AspNetCore.Http.Features.IHttpBufferingFeature>: Defines methods for disabling buffering of requests and/or responses.</span></span>
 
-<span data-ttu-id="d85ef-125">La propiedad `Features` de `HttpContext` proporciona una interfaz para obtener y establecer las características HTTP disponibles para la solicitud actual.</span><span class="sxs-lookup"><span data-stu-id="d85ef-125">The `Features` property of `HttpContext` provides an interface for getting and setting the available HTTP features for the current request.</span></span> <span data-ttu-id="d85ef-126">Puesto que la colección de características es mutable incluso en el contexto de una solicitud, se puede usar middleware para modificarla y para agregar compatibilidad con más características.</span><span class="sxs-lookup"><span data-stu-id="d85ef-126">Since the feature collection is mutable even within the context of a request, middleware can be used to modify the collection and add support for additional features.</span></span>
+::: moniker-end
 
-## <a name="middleware-and-request-features"></a><span data-ttu-id="d85ef-127">Middleware y características de solicitud</span><span class="sxs-lookup"><span data-stu-id="d85ef-127">Middleware and request features</span></span>
+<span data-ttu-id="68853-130"><xref:Microsoft.AspNetCore.Http.Features.IHttpConnectionFeature>: define las propiedades del identificador de conexión y las direcciones y los puertos tanto locales como remotos.</span><span class="sxs-lookup"><span data-stu-id="68853-130"><xref:Microsoft.AspNetCore.Http.Features.IHttpConnectionFeature>: Defines properties for the connection id and local and remote addresses and ports.</span></span>
 
-<span data-ttu-id="d85ef-128">Los servidores se encargan de crear la colección de características; el middleware, por su parte, puede agregarse a esta colección y usar las características de dicha colección.</span><span class="sxs-lookup"><span data-stu-id="d85ef-128">While servers are responsible for creating the feature collection, middleware can both add to this collection and consume features from the collection.</span></span> <span data-ttu-id="d85ef-129">Por ejemplo, `StaticFileMiddleware` tiene acceso a la característica `IHttpSendFileFeature`.</span><span class="sxs-lookup"><span data-stu-id="d85ef-129">For example, the `StaticFileMiddleware` accesses the `IHttpSendFileFeature` feature.</span></span> <span data-ttu-id="d85ef-130">Si la característica existe, se usa para enviar el archivo estático solicitado desde la ruta de acceso física correspondiente.</span><span class="sxs-lookup"><span data-stu-id="d85ef-130">If the feature exists, it's used to send the requested static file from its physical path.</span></span> <span data-ttu-id="d85ef-131">Si no, se usará otro método más lento para enviarlo.</span><span class="sxs-lookup"><span data-stu-id="d85ef-131">Otherwise, a slower alternative method is used to send the file.</span></span> <span data-ttu-id="d85ef-132">Si está disponible, `IHttpSendFileFeature` permite al sistema operativo abrir el archivo y realizar una copia directa en modo kernel en la tarjeta de red.</span><span class="sxs-lookup"><span data-stu-id="d85ef-132">When available, the `IHttpSendFileFeature` allows the operating system to open the file and perform a direct kernel mode copy to the network card.</span></span>
+::: moniker range=">= aspnetcore-2.0"
 
-<span data-ttu-id="d85ef-133">Además, se puede agregar middleware a la colección de características establecida por el servidor.</span><span class="sxs-lookup"><span data-stu-id="d85ef-133">Additionally, middleware can add to the feature collection established by the server.</span></span> <span data-ttu-id="d85ef-134">De hecho, las características existentes pueden incluso reemplazarse por el middleware, lo que permite que este aumente la funcionalidad del servidor.</span><span class="sxs-lookup"><span data-stu-id="d85ef-134">Existing features can even be replaced by middleware, allowing the middleware to augment the functionality of the server.</span></span> <span data-ttu-id="d85ef-135">Las características agregadas a la colección están disponibles de inmediato para otros middleware, o bien para la propia aplicación subyacente más adelante en la canalización de solicitudes.</span><span class="sxs-lookup"><span data-stu-id="d85ef-135">Features added to the collection are available immediately to other middleware or the underlying application itself later in the request pipeline.</span></span>
+<span data-ttu-id="68853-131"><xref:Microsoft.AspNetCore.Http.Features.IHttpMaxRequestBodySizeFeature>: controla el tamaño máximo permitido del cuerpo de la solicitud para la solicitud actual.</span><span class="sxs-lookup"><span data-stu-id="68853-131"><xref:Microsoft.AspNetCore.Http.Features.IHttpMaxRequestBodySizeFeature>: Controls the maximum allowed request body size for the current request.</span></span>
 
-<span data-ttu-id="d85ef-136">Al combinar implementaciones de servidor personalizadas y mejoras de middleware específicas, se puede construir el conjunto preciso de características que una aplicación necesita.</span><span class="sxs-lookup"><span data-stu-id="d85ef-136">By combining custom server implementations and specific middleware enhancements, the precise set of features an application requires can be constructed.</span></span> <span data-ttu-id="d85ef-137">Gracias a esto, se pueden agregar las características que faltan sin necesidad de cambiar nada en el servidor y, asimismo, se garantiza que solo quede expuesta la cantidad mínima de características, lo que reduce el área de superficie de ataques y dispara el rendimiento.</span><span class="sxs-lookup"><span data-stu-id="d85ef-137">This allows missing features to be added without requiring a change in server, and ensures only the minimal amount of features are exposed, thus limiting attack surface area and improving performance.</span></span>
+::: moniker-end
 
-## <a name="summary"></a><span data-ttu-id="d85ef-138">Resumen</span><span class="sxs-lookup"><span data-stu-id="d85ef-138">Summary</span></span>
+::: moniker range=">= aspnetcore-5.0"
 
-<span data-ttu-id="d85ef-139">Las interfaces de características definen las características HTTP concretas que una solicitud determinada puede admitir.</span><span class="sxs-lookup"><span data-stu-id="d85ef-139">Feature interfaces define specific HTTP features that a given request may support.</span></span> <span data-ttu-id="d85ef-140">Los servidores definen colecciones de características y el conjunto inicial de características admitidas por esos servidores, pero el middleware puede servir para mejorar estas características.</span><span class="sxs-lookup"><span data-stu-id="d85ef-140">Servers define collections of features, and the initial set of features supported by that server, but middleware can be used to enhance these features.</span></span>
+<span data-ttu-id="68853-132">`IHttpRequestBodyDetectionFeature`: indica si la solicitud puede tener un cuerpo.</span><span class="sxs-lookup"><span data-stu-id="68853-132">`IHttpRequestBodyDetectionFeature`: Indicates if the request can have a body.</span></span>
 
-## <a name="additional-resources"></a><span data-ttu-id="d85ef-141">Recursos adicionales</span><span class="sxs-lookup"><span data-stu-id="d85ef-141">Additional resources</span></span>
+::: moniker-end
 
-* [<span data-ttu-id="d85ef-142">Servidores</span><span class="sxs-lookup"><span data-stu-id="d85ef-142">Servers</span></span>](xref:fundamentals/servers/index)
-* [<span data-ttu-id="d85ef-143">Middleware</span><span class="sxs-lookup"><span data-stu-id="d85ef-143">Middleware</span></span>](xref:fundamentals/middleware/index)
-* [<span data-ttu-id="d85ef-144">Apertura de la interfaz web para .NET (OWIN)</span><span class="sxs-lookup"><span data-stu-id="d85ef-144">Open Web Interface for .NET (OWIN)</span></span>](xref:fundamentals/owin)
+<span data-ttu-id="68853-133"><xref:Microsoft.AspNetCore.Http.Features.IHttpRequestIdentifierFeature>: agrega una propiedad que se puede implementar para distinguir solicitudes de forma única.</span><span class="sxs-lookup"><span data-stu-id="68853-133"><xref:Microsoft.AspNetCore.Http.Features.IHttpRequestIdentifierFeature>: Adds a property that can be implemented to uniquely identify requests.</span></span>
+
+<span data-ttu-id="68853-134"><xref:Microsoft.AspNetCore.Http.Features.IHttpRequestLifetimeFeature>: define la capacidad para anular conexiones o para detectar si una solicitud ha finalizado antes de tiempo (por ejemplo, debido a una desconexión del cliente).</span><span class="sxs-lookup"><span data-stu-id="68853-134"><xref:Microsoft.AspNetCore.Http.Features.IHttpRequestLifetimeFeature>: Defines support for aborting connections or detecting if a request has been terminated prematurely, such as by a client disconnect.</span></span>
+
+::: moniker range=">= aspnetcore-3.0"
+
+<span data-ttu-id="68853-135"><xref:Microsoft.AspNetCore.Http.Features.IHttpRequestTrailersFeature>: proporciona acceso a los encabezados del finalizador de la solicitud, si existen.</span><span class="sxs-lookup"><span data-stu-id="68853-135"><xref:Microsoft.AspNetCore.Http.Features.IHttpRequestTrailersFeature>: Provides access to the request trailer headers, if any.</span></span>
+
+<span data-ttu-id="68853-136"><xref:Microsoft.AspNetCore.Http.Features.IHttpResetFeature>: se usa para enviar mensajes de restablecimiento para los protocolos que los admiten, como HTTP/2 o HTTP/3.</span><span class="sxs-lookup"><span data-stu-id="68853-136"><xref:Microsoft.AspNetCore.Http.Features.IHttpResetFeature>: Used to send reset messages for protocols that support them such as HTTP/2 or HTTP/3.</span></span>
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.2"
+
+<span data-ttu-id="68853-137"><xref:Microsoft.AspNetCore.Http.Features.IHttpResponseTrailersFeature>: permite que la aplicación proporcione encabezados del finalizador de respuesta si se admiten.</span><span class="sxs-lookup"><span data-stu-id="68853-137"><xref:Microsoft.AspNetCore.Http.Features.IHttpResponseTrailersFeature>: Enables the application to provide response trailer headers if supported.</span></span>
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
+<span data-ttu-id="68853-138"><xref:Microsoft.AspNetCore.Http.Features.IHttpSendFileFeature>: define un método para enviar archivos de forma asincrónica.</span><span class="sxs-lookup"><span data-stu-id="68853-138"><xref:Microsoft.AspNetCore.Http.Features.IHttpSendFileFeature>: Defines a method for sending files asynchronously.</span></span>
+
+::: moniker-end
+
+<span data-ttu-id="68853-139"><xref:Microsoft.AspNetCore.Http.Features.IHttpUpgradeFeature>: define la compatibilidad con [actualizaciones HTTP](https://tools.ietf.org/html/rfc2616.html#section-14.42), que permiten al cliente especificar otros protocolos que le gustaría usar en caso de que el servidor cambie de protocolo.</span><span class="sxs-lookup"><span data-stu-id="68853-139"><xref:Microsoft.AspNetCore.Http.Features.IHttpUpgradeFeature>: Defines support for [HTTP Upgrades](https://tools.ietf.org/html/rfc2616.html#section-14.42), which allow the client to specify which additional protocols it would like to use if the server wishes to switch protocols.</span></span>
+
+<span data-ttu-id="68853-140"><xref:Microsoft.AspNetCore.Http.Features.IHttpWebSocketFeature>: define una API para admitir sockets web.</span><span class="sxs-lookup"><span data-stu-id="68853-140"><xref:Microsoft.AspNetCore.Http.Features.IHttpWebSocketFeature>: Defines an API for supporting web sockets.</span></span>
+
+::: moniker range=">= aspnetcore-3.0"
+
+<span data-ttu-id="68853-141"><xref:Microsoft.AspNetCore.Http.Features.IHttpsCompressionFeature>: controla si se debe usar la compresión de respuesta a través de conexiones HTTPS.</span><span class="sxs-lookup"><span data-stu-id="68853-141"><xref:Microsoft.AspNetCore.Http.Features.IHttpsCompressionFeature>: Controls if response compression should be used over HTTPS connections.</span></span>
+
+::: moniker-end
+
+<span data-ttu-id="68853-142"><xref:Microsoft.AspNetCore.Http.Features.IItemsFeature>: almacena la colección de <xref:Microsoft.AspNetCore.Http.Features.IItemsFeature.Items> para cada estado de la aplicación de solicitud.</span><span class="sxs-lookup"><span data-stu-id="68853-142"><xref:Microsoft.AspNetCore.Http.Features.IItemsFeature>: Stores the <xref:Microsoft.AspNetCore.Http.Features.IItemsFeature.Items> collection for per request application state.</span></span>
+
+<span data-ttu-id="68853-143"><xref:Microsoft.AspNetCore.Http.Features.IQueryFeature>: analiza y almacena en caché la cadena de consulta.</span><span class="sxs-lookup"><span data-stu-id="68853-143"><xref:Microsoft.AspNetCore.Http.Features.IQueryFeature>: Parses and caches the query string.</span></span>
+   
+::: moniker range=">= aspnetcore-3.0"
+
+<span data-ttu-id="68853-144"><xref:Microsoft.AspNetCore.Http.Features.IRequestBodyPipeFeature>: representa el cuerpo de la solicitud como una clase <xref:System.IO.Pipelines.PipeReader>.</span><span class="sxs-lookup"><span data-stu-id="68853-144"><xref:Microsoft.AspNetCore.Http.Features.IRequestBodyPipeFeature>: Represents the request body as a <xref:System.IO.Pipelines.PipeReader>.</span></span>
+ 
+::: moniker-end
+
+<span data-ttu-id="68853-145"><xref:Microsoft.AspNetCore.Http.Features.IRequest:::no-loc(Cookie):::sFeature>: analiza y almacena en caché los valores del encabezado `:::no-loc(Cookie):::` de solicitud.</span><span class="sxs-lookup"><span data-stu-id="68853-145"><xref:Microsoft.AspNetCore.Http.Features.IRequest:::no-loc(Cookie):::sFeature>: Parses and caches the request `:::no-loc(Cookie):::` header values.</span></span>
+
+<span data-ttu-id="68853-146"><xref:Microsoft.AspNetCore.Http.Features.IResponse:::no-loc(Cookie):::sFeature>: controla cómo las :::no-loc(cookie):::s de respuesta se aplican al encabezado `Set-:::no-loc(Cookie):::`.</span><span class="sxs-lookup"><span data-stu-id="68853-146"><xref:Microsoft.AspNetCore.Http.Features.IResponse:::no-loc(Cookie):::sFeature>: Controls how response :::no-loc(cookie):::s are applied to the `Set-:::no-loc(Cookie):::` header.</span></span>
+
+::: moniker range=">= aspnetcore-2.2"
+
+<span data-ttu-id="68853-147"><xref:Microsoft.AspNetCore.Http.Features.IServerVariablesFeature>: esta característica proporciona acceso a las variables del servidor de solicitudes, como las proporcionadas por IIS.</span><span class="sxs-lookup"><span data-stu-id="68853-147"><xref:Microsoft.AspNetCore.Http.Features.IServerVariablesFeature>: This feature provides access to request server variables such as those provided by IIS.</span></span>
+
+::: moniker-end
+   
+<span data-ttu-id="68853-148"><xref:Microsoft.AspNetCore.Http.Features.IServiceProvidersFeature>: proporciona acceso a una clase <xref:System.IServiceProvider> mediante servicios de solicitud con ámbito.</span><span class="sxs-lookup"><span data-stu-id="68853-148"><xref:Microsoft.AspNetCore.Http.Features.IServiceProvidersFeature>: Provides access to an <xref:System.IServiceProvider> with scoped request services.</span></span>
+
+<span data-ttu-id="68853-149"><xref:Microsoft.AspNetCore.Http.Features.ISessionFeature>: define abstracciones `ISessionFactory` y <xref:Microsoft.AspNetCore.Http.ISession> para admitir sesiones de usuario.</span><span class="sxs-lookup"><span data-stu-id="68853-149"><xref:Microsoft.AspNetCore.Http.Features.ISessionFeature>: Defines `ISessionFactory` and <xref:Microsoft.AspNetCore.Http.ISession> abstractions for supporting user sessions.</span></span> <span data-ttu-id="68853-150">`ISessionFeature` se implementa mediante <xref:Microsoft.AspNetCore.Session.SessionMiddleware> (vea <xref:fundamentals/app-state>).</span><span class="sxs-lookup"><span data-stu-id="68853-150">`ISessionFeature` is implemented by the <xref:Microsoft.AspNetCore.Session.SessionMiddleware> (see <xref:fundamentals/app-state>).</span></span>
+
+<span data-ttu-id="68853-151"><xref:Microsoft.AspNetCore.Http.Features.ITlsConnectionFeature>: define una API para recuperar certificados de cliente.</span><span class="sxs-lookup"><span data-stu-id="68853-151"><xref:Microsoft.AspNetCore.Http.Features.ITlsConnectionFeature>: Defines an API for retrieving client certificates.</span></span>
+
+<span data-ttu-id="68853-152"><xref:Microsoft.AspNetCore.Http.Features.ITlsTokenBindingFeature>: define métodos para trabajar con parámetros de enlace de tokens de TLS.</span><span class="sxs-lookup"><span data-stu-id="68853-152"><xref:Microsoft.AspNetCore.Http.Features.ITlsTokenBindingFeature>: Defines methods for working with TLS token binding parameters.</span></span>
+   
+::: moniker range=">= aspnetcore-2.2"
+   
+<span data-ttu-id="68853-153"><xref:Microsoft.AspNetCore.Http.Features.ITrackingConsentFeature>: se usa para consultar, conceder y retirar el consentimiento del usuario en relación con el almacenamiento de la información de usuario relacionada con la actividad y la funcionalidad del sitio.</span><span class="sxs-lookup"><span data-stu-id="68853-153"><xref:Microsoft.AspNetCore.Http.Features.ITrackingConsentFeature>: Used to query, grant, and withdraw user consent regarding the storage of user information related to site activity and functionality.</span></span>
+   
+::: moniker-end
+
+## <a name="additional-resources"></a><span data-ttu-id="68853-154">Recursos adicionales</span><span class="sxs-lookup"><span data-stu-id="68853-154">Additional resources</span></span>
+
+* <xref:fundamentals/servers/index>
+* <xref:fundamentals/middleware/index>
