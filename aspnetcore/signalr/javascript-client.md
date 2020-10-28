@@ -4,7 +4,7 @@ author: bradygaster
 description: Información general de ASP.NET Core SignalR cliente JavaScript.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
-ms.custom: mvc
+ms.custom: mvc, devx-track-js
 ms.date: 04/08/2020
 no-loc:
 - ASP.NET Core Identity
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/javascript-client
-ms.openlocfilehash: 6f611e56ec62ad7aea8a93e4761e1f67d0f76574
-ms.sourcegitcommit: fad0cd264c9d07a48a8c6ba1690807e0f8728898
+ms.openlocfilehash: be271272c952487fccc5136307c84fdf49391848
+ms.sourcegitcommit: 2e3a967331b2c69f585dd61e9ad5c09763615b44
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92379461"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92690650"
 ---
 # <a name="aspnet-core-no-locsignalr-javascript-client"></a>Cliente de ASP.NET Core SignalR JavaScript
 
@@ -41,7 +41,7 @@ La SignalR biblioteca de cliente de JavaScript se entrega como un paquete [NPM](
 
 ### <a name="install-with-npm"></a>Instalación con NPM
 
-En Visual Studio, ejecute los siguientes comandos desde la **consola del administrador de paquetes** en la carpeta raíz. Para Visual Studio Code, ejecute los siguientes comandos desde el **terminal integrado**.
+En Visual Studio, ejecute los siguientes comandos desde la **consola del administrador de paquetes** en la carpeta raíz. Para Visual Studio Code, ejecute los siguientes comandos desde el **terminal integrado** .
 
 ```bash
 npm init -y
@@ -283,9 +283,9 @@ Una implementación del mundo real usaría una interrupción exponencial o reint
 * [Referencia de API de JavaScript](/javascript/api/?view=signalr-js-latest&preserve-view=true )
 * [Tutorial de JavaScript](xref:tutorials/signalr)
 * [Tutorial de WebPack y TypeScript](xref:tutorials/signalr-typescript-webpack)
-* [Directorios](xref:signalr/hubs)
+* [Concentradores](xref:signalr/hubs)
 * [Cliente .NET](xref:signalr/dotnet-client)
-* [Publicar en Azure](xref:signalr/publish-to-azure-web-app)
+* [Publicación en Azure](xref:signalr/publish-to-azure-web-app)
 * [Solicitudes entre orígenes (CORS)](xref:security/cors)
 * [Documentación sin servidor del servicio de Azure SignalR](/azure/azure-signalr/signalr-concept-serverless-development-config)
 * [Solución de problemas de conexión](xref:signalr/troubleshoot)
@@ -306,7 +306,7 @@ La SignalR biblioteca de cliente de JavaScript se entrega como un paquete [NPM](
 
 ### <a name="install-with-npm"></a>Instalación con NPM
 
-Si usa Visual Studio, ejecute los siguientes comandos desde la **consola del administrador de paquetes** en la carpeta raíz. Para Visual Studio Code, ejecute los siguientes comandos desde el **terminal integrado**.
+Si usa Visual Studio, ejecute los siguientes comandos desde la **consola del administrador de paquetes** en la carpeta raíz. Para Visual Studio Code, ejecute los siguientes comandos desde el **terminal integrado** .
 
 ```bash
 npm init -y
@@ -428,9 +428,9 @@ Una implementación del mundo real usaría una interrupción exponencial o reint
 * [Referencia de API de JavaScript](/javascript/api/?view=signalr-js-latest)
 * [Tutorial de JavaScript](xref:tutorials/signalr)
 * [Tutorial de WebPack y TypeScript](xref:tutorials/signalr-typescript-webpack)
-* [Directorios](xref:signalr/hubs)
+* [Concentradores](xref:signalr/hubs)
 * [Cliente .NET](xref:signalr/dotnet-client)
-* [Publicar en Azure](xref:signalr/publish-to-azure-web-app)
+* [Publicación en Azure](xref:signalr/publish-to-azure-web-app)
 * [Solicitudes entre orígenes (CORS)](xref:security/cors)
 * [Documentación sin servidor del servicio de Azure SignalR](/azure/azure-signalr/signalr-concept-serverless-development-config)
 

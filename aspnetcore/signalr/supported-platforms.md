@@ -4,7 +4,7 @@ author: bradygaster
 description: Obtenga información sobre las plataformas admitidas en SignalR de ASP.NET Core.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
-ms.custom: mvc
+ms.custom: mvc, devx-track-js
 ms.date: 01/16/2020
 no-loc:
 - ASP.NET Core Identity
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/supported-platforms
-ms.openlocfilehash: a342dd787eceadd22ac26b57a3615a6b0b21f461
-ms.sourcegitcommit: d60bfd52bfb559e805abd654b87a2a0c7eb69cf8
+ms.openlocfilehash: 761edbbe7bab28d2340207a0adea0718b37c7ec1
+ms.sourcegitcommit: 2e3a967331b2c69f585dd61e9ad5c09763615b44
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91754507"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92690331"
 ---
 # <a name="aspnet-core-no-locsignalr-supported-platforms"></a>Plataformas admitidas de SignalR de ASP.NET Core
 
@@ -42,7 +42,7 @@ El [cliente de JavaScript](xref:signalr/javascript-client) se ejecuta en NodeJS 
 | Microsoft Edge                   | Current&dagger; |
 | Mozilla Firefox                  | Current&dagger; |
 
-&dagger;*Actual* hace referencia a la versión más reciente del explorador.
+&dagger;*Actual* se refiere a la versión más reciente del explorador.
 
 ## <a name="net-client"></a>Cliente .NET
 

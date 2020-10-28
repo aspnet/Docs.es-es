@@ -4,7 +4,7 @@ author: anurse
 description: Obtenga información sobre cómo recopilar diagnósticos desde la SignalR aplicación ASP.net Core.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: anurse
-ms.custom: devx-track-csharp, signalr
+ms.custom: devx-track-csharp, signalr, devx-track-js
 ms.date: 06/12/2020
 no-loc:
 - ASP.NET Core Identity
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/diagnostics
-ms.openlocfilehash: 649398a3868117b2e7f3358aa25544c99cc625b3
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 890359c9e9f6c3c60f3105124f52c66b09a8a4fb
+ms.sourcegitcommit: 2e3a967331b2c69f585dd61e9ad5c09763615b44
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88631347"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92690672"
 ---
 # <a name="logging-and-diagnostics-in-aspnet-core-no-locsignalr"></a>Registro y diagnósticos en ASP.NET Core SignalR
 
@@ -41,7 +41,7 @@ Dado que SignalR forma parte de ASP.net Core, utiliza el sistema de registro de 
 SignalR utiliza dos categorías de registrador:
 
 * `Microsoft.AspNetCore.SignalR`: Para los registros relacionados con los protocolos del concentrador, la activación de los concentradores, la invocación de métodos y otras actividades relacionadas con el concentrador.
-* `Microsoft.AspNetCore.Http.Connections`: Para registros relacionados con transportes, como WebSockets, sondeos largos, eventos enviados por el servidor e infraestructura de bajo nivel SignalR .
+* `Microsoft.AspNetCore.Http.Connections`: Para registros relacionados con transportes, como WebSockets, sondeos largos, eventos de Server-Sent e infraestructura de bajo nivel SignalR .
 
 Para habilitar los registros detallados de SignalR , configure los dos prefijos anteriores en el `Debug` nivel del *appsettings.jsen* el archivo agregando los siguientes elementos a la `LogLevel` subsección de `Logging` :
 
@@ -177,7 +177,7 @@ Reemplazar `[interface]` por la interfaz de red en la que desea realizar la capt
 
 Este método solo funciona para aplicaciones basadas en explorador.
 
-La mayoría del explorador Herramientas de desarrollo tener una pestaña "red" que le permita capturar la actividad de red entre el explorador y el servidor. Sin embargo, estos seguimientos no incluyen mensajes de eventos WebSocket y enviados por el servidor. Si usa esos transportes, el mejor enfoque es usar una herramienta como Fiddler o TcpDump (descrita a continuación).
+La mayoría del explorador Herramientas de desarrollo tener una pestaña "red" que le permita capturar la actividad de red entre el explorador y el servidor. Sin embargo, estos seguimientos no incluyen los mensajes de eventos de WebSocket y Server-Sent. Si usa esos transportes, el mejor enfoque es usar una herramienta como Fiddler o TcpDump (descrita a continuación).
 
 ### <a name="microsoft-edge-and-internet-explorer"></a>Microsoft Edge e Internet Explorer
 
