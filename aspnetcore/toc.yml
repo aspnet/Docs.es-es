@@ -431,6 +431,8 @@
                   uid: blazor/security/webassembly/additional-scenarios
                 - name: Grupos y roles de AAD
                   uid: blazor/security/webassembly/aad-groups-roles
+                - name: Graph API
+                  uid: blazor/security/webassembly/graph-api
             - name: Servidor Blazor
               items:
                 - name: Información general
