@@ -4,7 +4,7 @@ author: scottaddie
 description: Obtenga información sobre las ventajas de usar los servicios de JavaScript para crear una aplicación de página única (SPA) respaldada por ASP.NET Core.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: scaddie
-ms.custom: H1Hack27Feb2017
+ms.custom: H1Hack27Feb2017, devx-track-js
 ms.date: 09/06/2019
 no-loc:
 - ASP.NET Core Identity
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: client-side/spa-services
-ms.openlocfilehash: 379a8f52dab36d331bc42c1fee8d64b3971e9e91
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 33ae16c033142aa1c0f4cea53ca746e8a6aaf052
+ms.sourcegitcommit: 2e3a967331b2c69f585dd61e9ad5c09763615b44
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88625666"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92690667"
 ---
 # <a name="use-javascript-services-to-create-single-page-applications-in-aspnet-core"></a>Uso de servicios de JavaScript para crear aplicaciones de página única en ASP.NET Core
 
@@ -84,7 +84,7 @@ Para trabajar con SpaServices, instale lo siguiente:
 
 * [!INCLUDE [](~/includes/net-core-sdk-download-link.md)]
 
-  * En Windows, al usar Visual Studio 2017, el SDK se instala al seleccionar la carga de trabajo **Desarrollo multiplataforma de .NET Core**.
+  * En Windows, al usar Visual Studio 2017, el SDK se instala al seleccionar la carga de trabajo **Desarrollo multiplataforma de .NET Core** .
 
 * Paquete NuGet [Microsoft.AspNetCore.SpaServices](https://www.nuget.org/packages/Microsoft.AspNetCore.SpaServices/)
 
@@ -114,7 +114,7 @@ Estos asistentes de etiquetas abstraen las complejidades de la comunicación dir
 
 ### <a name="asp-prerender-module-tag-helper"></a>Asistente de etiquetas asp-prerender-module
 
-El asistente de etiquetas `asp-prerender-module`, que se usa en el ejemplo de código anterior, ejecuta *ClientApp/dist/main-server.js* en el servidor mediante Node.js. Por motivos de claridad, el archivo *main-server.js* es un artefacto de la tarea de transpilación de TypeScript a JavaScript en el proceso de compilación de [Webpack](https://webpack.github.io/). Webpack define un alias de punto de entrada de `main-server`; y el recorrido del gráfico de dependencias de este alias comienza en el archivo *ClientApp/boot-server.ts*:
+El asistente de etiquetas `asp-prerender-module`, que se usa en el ejemplo de código anterior, ejecuta *ClientApp/dist/main-server.js* en el servidor mediante Node.js. Por motivos de claridad, el archivo *main-server.js* es un artefacto de la tarea de transpilación de TypeScript a JavaScript en el proceso de compilación de [Webpack](https://webpack.github.io/). Webpack define un alias de punto de entrada de `main-server`; y el recorrido del gráfico de dependencias de este alias comienza en el archivo *ClientApp/boot-server.ts* :
 
 [!code-javascript[](../client-side/spa-services/sample/SpaServicesSampleApp/webpack.config.js?range=53)]
 
@@ -132,7 +132,7 @@ El argumento `UserName` recibido se serializa mediante el serializador JSON inte
 
 [!code-typescript[](../client-side/spa-services/sample/SpaServicesSampleApp/ClientApp/boot-server.ts?range=6,10-21,38-52,79-)]
 
-Los nombres de propiedad pasados en los asistentes de etiquetas se representan con la notación **PascalCase**. Compare esto con JavaScript, donde los mismos nombres de propiedad se representan con la notación **camelCase**. La configuración de serialización de JSON predeterminada es responsable de esta diferencia.
+Los nombres de propiedad pasados en los asistentes de etiquetas se representan con la notación **PascalCase** . Compare esto con JavaScript, donde los mismos nombres de propiedad se representan con la notación **camelCase** . La configuración de serialización de JSON predeterminada es responsable de esta diferencia.
 
 Para ampliar el ejemplo de código anterior, los datos se pueden pasar del servidor a la vista mediante la hidratación de la propiedad `globals` proporcionada a la función `resolve`:
 
@@ -144,7 +144,7 @@ La matriz `postList` definida en el objeto `globals` se adjunta al objeto `windo
 
 ## <a name="webpack-dev-middleware"></a>Middleware de desarrollo de Webpack
 
-El [middleware de desarrollo de Webpack](https://webpack.js.org/guides/development/#using-webpack-dev-middleware) incorpora un flujo de trabajo de desarrollo simplificado, mediante el que Webpack compila los recursos a petición. El middleware compila y atiende automáticamente los recursos del lado cliente cuando se recarga una página en el explorador. El enfoque alternativo consiste en invocar manualmente a Webpack mediante el script de compilación de npm del proyecto cuando cambia una dependencia de terceros o el código personalizado. En el ejemplo siguiente se muestra un script de compilación de npm en el archivo *package.json*:
+El [middleware de desarrollo de Webpack](https://webpack.js.org/guides/development/#using-webpack-dev-middleware) incorpora un flujo de trabajo de desarrollo simplificado, mediante el que Webpack compila los recursos a petición. El middleware compila y atiende automáticamente los recursos del lado cliente cuando se recarga una página en el explorador. El enfoque alternativo consiste en invocar manualmente a Webpack mediante el script de compilación de npm del proyecto cuando cambia una dependencia de terceros o el código personalizado. En el ejemplo siguiente se muestra un script de compilación de npm en el archivo *package.json* :
 
 ```json
 "build": "npm run build:vendor && npm run build:custom",
@@ -160,7 +160,7 @@ npm i -D aspnet-webpack
 
 ### <a name="webpack-dev-middleware-configuration"></a>Configuración del middleware de desarrollo de Webpack
 
-El middleware de desarrollo de Webpack se registra en la canalización de solicitudes HTTP mediante el siguiente código en el método `Configure` del archivo *Startup.cs*:
+El middleware de desarrollo de Webpack se registra en la canalización de solicitudes HTTP mediante el siguiente código en el método `Configure` del archivo *Startup.cs* :
 
 [!code-csharp[](../client-side/spa-services/sample/SpaServicesSampleApp/Startup.cs?name=snippet_WebpackMiddlewareRegistration&highlight=4)]
 
@@ -252,10 +252,10 @@ dotnet new angular
 
 Hay dos modos de configuración de ejecución principales:
 
-* **Desarrollo**:
+* **Desarrollo** :
   * Incluye mapas de origen para facilitar la depuración.
   * No optimiza el código del lado cliente para el rendimiento.
-* **Producción**:
+* **Producción** :
   * Excluye los mapas de origen.
   * Optimiza el código del lado cliente mediante la unión y la minificación.
 
@@ -285,17 +285,17 @@ Abra el archivo *.csproj* generado por el comando [dotnet new](/dotnet/core/tool
 
 Las plantillas de SpaServices están preconfiguradas para ejecutar pruebas del lado cliente mediante [Karma](https://karma-runner.github.io/1.0/index.html) y [Jasmine](https://jasmine.github.io/). Jasmine es un conocido marco de pruebas unitarias para JavaScript, mientras que Karma es un ejecutor de pruebas para llevar a cabo estas pruebas. Karma está configurado para funcionar con el [middleware de desarrollo de Webpack](#webpack-dev-middleware) de modo que no es necesario que el desarrollador detenga y ejecute la prueba cada vez que se hagan cambios. La prueba se ejecuta de forma automática, ya sea el código que se ejecuta en el caso de prueba o el caso de prueba en sí.
 
-Si se usa la aplicación Angular como ejemplo, ya se proporcionan dos casos de prueba de Jasmine de `CounterComponent` en el archivo *counter.component.spec.ts*:
+Si se usa la aplicación Angular como ejemplo, ya se proporcionan dos casos de prueba de Jasmine de `CounterComponent` en el archivo *counter.component.spec.ts* :
 
 [!code-typescript[](../client-side/spa-services/sample/SpaServicesSampleApp/ClientApp/app/components/counter/counter.component.spec.ts?range=15-28)]
 
-Abra el símbolo del sistema en el directorio *ClientApp*. Ejecute el siguiente comando:
+Abra el símbolo del sistema en el directorio *ClientApp* . Ejecute el siguiente comando:
 
 ```console
 npm test
 ```
 
-El script inicia el ejecutor de pruebas de Karma, que lee la configuración definida en el archivo *karma.conf.js*. Entre otras opciones, el archivo *karma.conf.js* identifica los archivos de prueba que se van a ejecutar mediante su matriz `files`:
+El script inicia el ejecutor de pruebas de Karma, que lee la configuración definida en el archivo *karma.conf.js* . Entre otras opciones, el archivo *karma.conf.js* identifica los archivos de prueba que se van a ejecutar mediante su matriz `files`:
 
 [!code-javascript[](../client-side/spa-services/sample/SpaServicesSampleApp/ClientApp/test/karma.conf.js?range=4-5,8-11)]
 

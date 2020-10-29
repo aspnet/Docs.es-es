@@ -3,7 +3,7 @@ title: 'Tutorial: Llamada a una API web de ASP.NET Core con JavaScript'
 author: rick-anderson
 description: Obtenga información sobre cómo llamar a una API web de ASP.NET Core con JavaScript.
 ms.author: riande
-ms.custom: mvc
+ms.custom: mvc, devx-track-js
 ms.date: 11/26/2019
 no-loc:
 - ASP.NET Core Identity
@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/web-api-javascript
-ms.openlocfilehash: 3d097d724ac5e2313d24f1f06e47b881f29a4a98
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: b41288bd63267a9aa7035e25ebc8d838eed5d93b
+ms.sourcegitcommit: 2e3a967331b2c69f585dd61e9ad5c09763615b44
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633804"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92690682"
 ---
 # <a name="tutorial-call-an-aspnet-core-web-api-with-javascript"></a>Tutorial: Llamada a una API web de ASP.NET Core con JavaScript
 
@@ -51,36 +51,36 @@ La función `fetch` devuelve un objeto [Promise`Response`, que contiene una resp
 
 La llamada `fetch` más simple acepta un único parámetro que representa la ruta. Un segundo parámetro, conocido como el objeto `init`, es opcional. `init` se utiliza para configurar la solicitud HTTP.
 
-1. Configure la aplicación para [atender archivos estáticos](/dotnet/api/microsoft.aspnetcore.builder.staticfileextensions.usestaticfiles#Microsoft_AspNetCore_Builder_StaticFileExtensions_UseStaticFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_) y [habilitar la asignación de archivos predeterminada](/dotnet/api/microsoft.aspnetcore.builder.defaultfilesextensions.usedefaultfiles#Microsoft_AspNetCore_Builder_DefaultFilesExtensions_UseDefaultFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_). El siguiente código resaltado es necesario en el método `Configure` de *Startup.cs*:
+1. Configure la aplicación para [atender archivos estáticos](/dotnet/api/microsoft.aspnetcore.builder.staticfileextensions.usestaticfiles#Microsoft_AspNetCore_Builder_StaticFileExtensions_UseStaticFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_) y [habilitar la asignación de archivos predeterminada](/dotnet/api/microsoft.aspnetcore.builder.defaultfilesextensions.usedefaultfiles#Microsoft_AspNetCore_Builder_DefaultFilesExtensions_UseDefaultFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_). El siguiente código resaltado es necesario en el método `Configure` de *Startup.cs* :
 
     [!code-csharp[](first-web-api/samples/3.0/TodoApi/StartupJavaScript.cs?highlight=8-9&name=snippet_configure)]
 
 1. Cree una carpeta *wwwroot* en la raíz del proyecto.
 
-1. Cree una carpeta *js* dentro de la carpeta *wwwroot*.
+1. Cree una carpeta *js* dentro de la carpeta *wwwroot* .
 
-1. Agregue un archivo HTML denominado *index.html* a la carpeta *wwwroot*. Reemplace el contenido de *index.html* por el marcado siguiente:
+1. Agregue un archivo HTML denominado *index.html* a la carpeta *wwwroot* . Reemplace el contenido de *index.html* por el marcado siguiente:
 
     [!code-html[](first-web-api/samples/3.0/TodoApi/wwwroot/index.html)]
 
-1. Agregue un archivo de JavaScript denominado *site.js*, a la carpeta *wwwroot/js*. Reemplace el contenido de *site.js* por el código siguiente:
+1. Agregue un archivo de JavaScript denominado *site.js* , a la carpeta *wwwroot/js* . Reemplace el contenido de *site.js* por el código siguiente:
 
     [!code-javascript[](first-web-api/samples/3.0/TodoApi/wwwroot/js/site.js?name=snippet_SiteJs)]
 
 Puede que sea necesario realizar un cambio en la configuración de inicio del proyecto de ASP.NET Core para probar la página HTML localmente:
 
-1. Abra *Properties\launchSettings.json*.
-1. Quite la propiedad `launchUrl` para forzar a la aplicación a abrirse en *index.html*, esto es, el archivo predeterminado del proyecto.
+1. Abra *Properties\launchSettings.json* .
+1. Quite la propiedad `launchUrl` para forzar a la aplicación a abrirse en *index.html* , esto es, el archivo predeterminado del proyecto.
 
 En este ejemplo se llama a todos los métodos CRUD de la API web. A continuación, encontrará algunas explicaciones de las solicitudes de la API web.
 
 ### <a name="get-a-list-of-to-do-items"></a>Obtención de una lista de tareas pendientes
 
-En el código siguiente, se envía una solicitud HTTP GET a la ruta *api/TodoItems*:
+En el código siguiente, se envía una solicitud HTTP GET a la ruta *api/TodoItems* :
 
 [!code-javascript[](first-web-api/samples/3.0/TodoApi/wwwroot/js/site.js?name=snippet_GetItems)]
 
-Cuando la API web devuelve un código de estado correcto, se invoca la función `_displayItems`. Cada tarea pendiente en el parámetro de matriz aceptado por `_displayItems` se agrega a una tabla con los botones **Editar** y **Eliminar**. Si se produce un error en la solicitud de la API web, dicho error se registra en la consola del explorador.
+Cuando la API web devuelve un código de estado correcto, se invoca la función `_displayItems`. Cada tarea pendiente en el parámetro de matriz aceptado por `_displayItems` se agrega a una tabla con los botones **Editar** y **Eliminar** . Si se produce un error en la solicitud de la API web, dicho error se registra en la consola del explorador.
 
 ### <a name="add-a-to-do-item"></a>Incorporación de una tarea pendiente
 
@@ -91,7 +91,7 @@ En el código siguiente:
   * `method`&mdash;especifica el verbo de acción HTTP POST.
   * `body`&mdash;especifica la representación JSON del cuerpo de la solicitud. El JSON se genera pasando el literal de objeto almacenado en `item` a la función [JSON.stringify](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify).
   * `headers`&mdash;especifica los encabezados de solicitud HTTP `Accept` y `Content-Type`. Ambos encabezados se establecen en `application/json` para especificar el tipo de medio que se va a recibir y a enviar, respectivamente.
-* Se envía una solicitud HTTP POST a la ruta *api/TodoItems*.
+* Se envía una solicitud HTTP POST a la ruta *api/TodoItems* .
 
 [!code-javascript[](first-web-api/samples/3.0/TodoApi/wwwroot/js/site.js?name=snippet_AddItem)]
 
@@ -101,7 +101,7 @@ Cuando la API web devuelve un código de estado correcto, se invoca la función 
 
 Actualizar una tarea pendientes es similar a agregar una; sin embargo, hay dos diferencias importantes:
 
-* La ruta tiene como sufijo el identificador único del elemento que se va a actualizar. Por ejemplo, *api/TodoItems/1*.
+* La ruta tiene como sufijo el identificador único del elemento que se va a actualizar. Por ejemplo, *api/TodoItems/1* .
 * El verbo de acción HTTP es PUT, como se indica mediante la opción `method`.
 
 [!code-javascript[](first-web-api/samples/3.0/TodoApi/wwwroot/js/site.js?name=snippet_UpdateItem)]

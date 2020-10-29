@@ -4,7 +4,7 @@ author: pranavkm
 description: Sugerencias para aumentar el rendimiento de las aplicaciones Blazor WebAssembly en ASP.NET Core y evitar problemas de rendimiento comunes.
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
-ms.custom: mvc
+ms.custom: mvc, devx-track-js
 ms.date: 10/09/2020
 no-loc:
 - ASP.NET Core Identity
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/webassembly-performance-best-practices
-ms.openlocfilehash: ea3f197e5bab82f4fb40238fe31cd5ce29ab62ad
-ms.sourcegitcommit: daa9ccf580df531254da9dce8593441ac963c674
+ms.openlocfilehash: 0e827680e7024eabed09b989466476a3a80eb225
+ms.sourcegitcommit: 2e3a967331b2c69f585dd61e9ad5c09763615b44
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91900978"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92690271"
 ---
 # <a name="aspnet-core-no-locblazor-webassembly-performance-best-practices"></a>Procedimientos recomendados de rendimiento de Blazor WebAssembly en ASP.NET Core
 
@@ -31,8 +31,8 @@ Por [Pranav Krishnamoorthy](https://github.com/pranavkm) y [Steve Sanderson](htt
 
 Blazor WebAssembly se ha diseñado y optimizado cuidadosamente para permitir un alto rendimiento en los escenarios de interfaz de usuario de aplicaciones más realistas. Sin embargo, la generación de los mejores resultados depende de que los desarrolladores utilicen los patrones y características correctos. Considere los aspectos siguientes:
 
-* **Rendimiento del entorno de ejecución**: el código de .NET se ejecuta en un intérprete dentro del entorno de ejecución de WebAssembly, por lo que el rendimiento de la CPU es limitado. En escenarios exigentes, la aplicación se beneficia de la [optimización de la velocidad de representación](#optimize-rendering-speed).
-* **Tiempo de inicio**: la aplicación transfiere un entorno de ejecución de .NET al explorador; por ello, es importante usar características que [minimizan el tamaño de descarga de la aplicación](#minimize-app-download-size).
+* **Rendimiento del entorno de ejecución** : el código de .NET se ejecuta en un intérprete dentro del entorno de ejecución de WebAssembly, por lo que el rendimiento de la CPU es limitado. En escenarios exigentes, la aplicación se beneficia de la [optimización de la velocidad de representación](#optimize-rendering-speed).
+* **Tiempo de inicio** : la aplicación transfiere un entorno de ejecución de .NET al explorador; por ello, es importante usar características que [minimizan el tamaño de descarga de la aplicación](#minimize-app-download-size).
 
 ## <a name="optimize-rendering-speed"></a>Optimización de la velocidad de representación
 

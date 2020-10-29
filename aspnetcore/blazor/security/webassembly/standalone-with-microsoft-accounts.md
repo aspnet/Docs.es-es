@@ -5,7 +5,7 @@ description: Obtenga información sobre cómo proteger una aplicación independi
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/08/2020
+ms.date: 10/27/2020
 no-loc:
 - ASP.NET Core Identity
 - cookie
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/standalone-with-microsoft-accounts
-ms.openlocfilehash: ddcd199ceb1097f4ee440fd2a249d7c88a92c0b5
-ms.sourcegitcommit: daa9ccf580df531254da9dce8593441ac963c674
+ms.openlocfilehash: 6defd8c1ab7b99f69efe6e9ef3ba4da4e0e8d8fb
+ms.sourcegitcommit: 2e3a967331b2c69f585dd61e9ad5c09763615b44
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91901017"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92690394"
 ---
 # <a name="secure-an-aspnet-core-no-locblazor-webassembly-standalone-app-with-microsoft-accounts"></a>Protección de una aplicación independiente Blazor WebAssembly de ASP.NET Core con cuentas Microsoft
 
@@ -38,38 +38,38 @@ Registre una aplicación de AAD en el área **Azure Active Directory** > **Regis
 ::: moniker range=">= aspnetcore-5.0"
 
 1. Indique un **Nombre** para la aplicación (por ejemplo, **Cuentas Microsoft de AAD independientes de Blazor** ).
-1. En **Tipos de cuenta compatibles**, seleccione **Cuentas en cualquier directorio organizativo**.
-1. Establezca la lista desplegable **URI de redirección** en **Aplicación de página única** y proporcione el siguiente URI de redirección: `https://localhost:{PORT}/authentication/login-callback`. El puerto predeterminado de una aplicación que se ejecuta en Kestrel es 5001. Si la aplicación se ejecuta en otro puerto de Kestrel, use el puerto de la aplicación. En el caso de IIS Express, el puerto generado aleatoriamente para la aplicación se encuentra en las propiedades de la aplicación, en el panel **Depurar**. Dado que la aplicación no existe en este momento y no conocemos el puerto de IIS Express, vuelva a este paso después de crear la aplicación y actualice el URI de redirección. Más adelante en este tema aparece un comentario para recordar a los usuarios de IIS Express que actualicen el URI de redirección.
-1. Desactive la casilla **Permisos**>**Conceda consentimiento del administrador a los permisos openid y offline_access**.
-1. Seleccione **Registrar**.
+1. En **Tipos de cuenta compatibles** , seleccione **Cuentas en cualquier directorio organizativo** .
+1. Establezca la lista desplegable **URI de redirección** en **Aplicación de página única** y proporcione el siguiente URI de redirección: `https://localhost:{PORT}/authentication/login-callback`. El puerto predeterminado de una aplicación que se ejecuta en Kestrel es 5001. Si la aplicación se ejecuta en otro puerto de Kestrel, use el puerto de la aplicación. En el caso de IIS Express, el puerto generado aleatoriamente para la aplicación se encuentra en las propiedades de la aplicación, en el panel **Depurar** . Dado que la aplicación no existe en este momento y no conocemos el puerto de IIS Express, vuelva a este paso después de crear la aplicación y actualice el URI de redirección. Más adelante en este tema aparece un comentario para recordar a los usuarios de IIS Express que actualicen el URI de redirección.
+1. Desactive la casilla **Permisos**>**Conceda consentimiento del administrador a los permisos openid y offline_access** .
+1. Seleccione **Registrar** .
 
 Registre el identificador de aplicación (cliente); por ejemplo, `41451fa7-82d9-4673-8fa5-69eff5a761fd`.
 
-En **Autenticación** > **Configuraciones de plataforma** > **Aplicación de página única**:
+En **Autenticación** > **Configuraciones de plataforma** > **Aplicación de página única** :
 
 1. Confirme que el **URI de redirección** de `https://localhost:{PORT}/authentication/login-callback` está presente.
-1. En **Concesión implícita**, asegúrese de que las casillas **Tokens de acceso** y **Tokens de id.** **no** están seleccionadas.
+1. En **Concesión implícita** , asegúrese de que las casillas **Tokens de acceso** y **Tokens de id.** **no** están seleccionadas.
 1. Los valores predeterminados restantes de la aplicación son aceptables en esta experiencia.
-1. Seleccione el botón **Guardar**.
+1. Seleccione el botón **Guardar** .
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-5.0"
 
 1. Indique un **Nombre** para la aplicación (por ejemplo, **Cuentas Microsoft de AAD independientes de Blazor** ).
-1. En **Tipos de cuenta compatibles**, seleccione **Cuentas en cualquier directorio organizativo**.
-1. Deje la lista desplegable **URI de redirección** establecida en **Web** y proporcione el siguiente URI de redirección: `https://localhost:{PORT}/authentication/login-callback`. El puerto predeterminado de una aplicación que se ejecuta en Kestrel es 5001. Si la aplicación se ejecuta en otro puerto de Kestrel, use el puerto de la aplicación. En el caso de IIS Express, el puerto generado aleatoriamente para la aplicación se encuentra en las propiedades de la aplicación, en el panel **Depurar**. Dado que la aplicación no existe en este momento y no conocemos el puerto de IIS Express, vuelva a este paso después de crear la aplicación y actualice el URI de redirección. Más adelante en este tema aparece un comentario para recordar a los usuarios de IIS Express que actualicen el URI de redirección.
-1. Desactive la casilla **Permisos**>**Conceda consentimiento del administrador a los permisos openid y offline_access**.
-1. Seleccione **Registrar**.
+1. En **Tipos de cuenta compatibles** , seleccione **Cuentas en cualquier directorio organizativo** .
+1. Deje la lista desplegable **URI de redirección** establecida en **Web** y proporcione el siguiente URI de redirección: `https://localhost:{PORT}/authentication/login-callback`. El puerto predeterminado de una aplicación que se ejecuta en Kestrel es 5001. Si la aplicación se ejecuta en otro puerto de Kestrel, use el puerto de la aplicación. En el caso de IIS Express, el puerto generado aleatoriamente para la aplicación se encuentra en las propiedades de la aplicación, en el panel **Depurar** . Dado que la aplicación no existe en este momento y no conocemos el puerto de IIS Express, vuelva a este paso después de crear la aplicación y actualice el URI de redirección. Más adelante en este tema aparece un comentario para recordar a los usuarios de IIS Express que actualicen el URI de redirección.
+1. Desactive la casilla **Permisos**>**Conceda consentimiento del administrador a los permisos openid y offline_access** .
+1. Seleccione **Registrar** .
 
 Registre el identificador de aplicación (cliente); por ejemplo, `41451fa7-82d9-4673-8fa5-69eff5a761fd`.
 
-En **Autenticación** > **Configuraciones de plataforma** > **Web**:
+En **Autenticación** > **Configuraciones de plataforma** > **Web** :
 
 1. Confirme que el **URI de redirección** de `https://localhost:{PORT}/authentication/login-callback` está presente.
-1. En **Concesión implícita**, active las casillas **Tokens de acceso** y **Tokens de id.**
+1. En **Concesión implícita** , active las casillas **Tokens de acceso** y **Tokens de id.**
 1. Los valores predeterminados restantes de la aplicación son aceptables en esta experiencia.
-1. Seleccione el botón **Guardar**.
+1. Seleccione el botón **Guardar** .
 
 ::: moniker-end
 
@@ -89,7 +89,7 @@ La ubicación de salida especificada con la opción `-o|--output` crea una carpe
 > [!NOTE]
 > En Azure Portal, el valor de configuración de plataforma **URI de redirección** de la aplicación se establece en el puerto 5001 en el caso de las aplicaciones que se ejecutan en el servidor Kestrel con la configuración predeterminada.
 >
-> Si la aplicación se ejecuta en un puerto de IIS Express aleatorio, el puerto de la aplicación se encuentra en las propiedades de la aplicación, en el panel **Depurar**.
+> Si la aplicación se ejecuta en un puerto de IIS Express aleatorio, el puerto de la aplicación se encuentra en las propiedades de la aplicación, en el panel **Depurar** .
 >
 > Si el puerto no se configuró anteriormente con el puerto conocido de la aplicación, vuelva al registro de la aplicación en Azure Portal y actualice el URI de redirección con el puerto correcto.
 
@@ -184,7 +184,7 @@ options.ProviderOptions.AdditionalScopesToConsent.Add("{ADDITIONAL SCOPE URI}");
 
 ::: moniker-end
 
-Para más información, vea las siguientes secciones del artículo *Otros escenarios*:
+Para más información, vea las siguientes secciones del artículo *Otros escenarios* :
 
 * [Solicitar tokens de acceso adicionales](xref:blazor/security/webassembly/additional-scenarios#request-additional-access-tokens)
 * [Adjuntar tokens a solicitudes salientes](xref:blazor/security/webassembly/additional-scenarios#attach-tokens-to-outgoing-requests)

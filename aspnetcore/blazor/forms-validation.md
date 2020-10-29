@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/forms-validation
-ms.openlocfilehash: 88c3ded79db65557d9426fde6f43aace4d9d8ae2
-ms.sourcegitcommit: d1a897ebd89daa05170ac448e4831d327f6b21a8
+ms.openlocfilehash: ad244c29c8e8e904793745119366cd677389b12d
+ms.sourcegitcommit: 2e3a967331b2c69f585dd61e9ad5c09763615b44
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91606672"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92690611"
 ---
 # <a name="aspnet-core-no-locblazor-forms-and-validation"></a>Formularios y validación de Blazor de ASP.NET Core
 
@@ -224,7 +224,7 @@ El siguiente formulario valida la entrada de usuario por medio de la validación
 
 <xref:Microsoft.AspNetCore.Components.Forms.EditForm> crea un elemento <xref:Microsoft.AspNetCore.Components.Forms.EditContext> como un [valor en cascada](xref:blazor/components/cascading-values-and-parameters) que lleva un seguimiento de los metadatos del proceso de edición, incluidos los campos que se han modificado y los mensajes de validación actuales.
 
-**Asigne** un objeto <xref:Microsoft.AspNetCore.Components.Forms.EditContext> **o** <xref:Microsoft.AspNetCore.Components.Forms.EditForm.Model?displayProperty=nameWithType> a un objeto <xref:Microsoft.AspNetCore.Components.Forms.EditForm>. No se admite la asignación de los dos y se generará un error **en tiempo de ejecución**.
+**Asigne** un objeto <xref:Microsoft.AspNetCore.Components.Forms.EditContext> **o** <xref:Microsoft.AspNetCore.Components.Forms.EditForm.Model?displayProperty=nameWithType> a un objeto <xref:Microsoft.AspNetCore.Components.Forms.EditForm>. No se admite la asignación de los dos y se generará un error **en tiempo de ejecución** .
 
 <xref:Microsoft.AspNetCore.Components.Forms.EditForm> proporciona eventos prácticos de envíos de formulario válidos y no válidos:
 
@@ -450,7 +450,7 @@ La validación del servidor se puede realizar con un [componente de validador](#
 * Procese la validación del lado cliente en el formulario con el componente <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator>.
 * Cuando el formulario pasa la validación del lado cliente (se llama a <xref:Microsoft.AspNetCore.Components.Forms.EditForm.OnValidSubmit>), envíe el objeto <xref:Microsoft.AspNetCore.Components.Forms.EditContext.Model?displayProperty=nameWithType> a una API de servidor backend para el procesamiento del formulario.
 * Procese la validación del modelo en el servidor.
-* La API del servidor incluye la validación de anotaciones de datos del marco integrada y la lógica de validación personalizada proporcionada por el desarrollador. Si la validación se supera en el servidor, procese el formulario y devuelva un código de estado correcto (*200 - Correcto*). Si se produce un error en la validación, devuelva un código de estado de error (*400 - Solicitud incorrecta*) y los errores de validación de campos.
+* La API del servidor incluye la validación de anotaciones de datos del marco integrada y la lógica de validación personalizada proporcionada por el desarrollador. Si la validación se supera en el servidor, procese el formulario y devuelva un código de estado correcto ( *200 - Correcto* ). Si se produce un error en la validación, devuelva un código de estado de error ( *400 - Solicitud incorrecta* ) y los errores de validación de campos.
 * Si es correcto, puede deshabilitar el formulario, o bien mostrar los errores.
 
 El ejemplo siguiente se basa en:
@@ -519,7 +519,7 @@ namespace BlazorSample.Server.Controllers
             }
             catch (Exception ex)
             {
-                logger.LogError("Validation Error: {MESSAGE}", ex.Message);
+                logger.LogError("Validation Error: {Message}", ex.Message);
             }
 
             return BadRequest(ModelState);
@@ -706,7 +706,7 @@ En el proyecto de cliente, el formulario *Starfleet Starship Database* se actual
         }
         catch (Exception ex)
         {
-            Logger.LogError("Form processing error: {MESSAGE}", ex.Message);
+            Logger.LogError("Form processing error: {Message}", ex.Message);
             disabled = true;
             messageStyles = "color:red";
             message = "There was an error processing the form.";
@@ -802,7 +802,7 @@ public Color? Color { get; set; } = null;
 public Engine? Engine { get; set; } = null;
 ```
 
-Agregue el elemento `enums` siguiente a la aplicación. Cree un nuevo archivo que contenga `enums` o agregue `enums` al archivo `Starship.cs`. Haga que `enums` sea accesible para el modelo `Starship` y el formulario *Starfleet Starship Database*:
+Agregue el elemento `enums` siguiente a la aplicación. Cree un nuevo archivo que contenga `enums` o agregue `enums` al archivo `Starship.cs`. Haga que `enums` sea accesible para el modelo `Starship` y el formulario *Starfleet Starship Database* :
 
 ```csharp
 public enum Manufacturer { SpaceX, NASA, ULA, Virgin, Unknown }
@@ -1059,10 +1059,10 @@ private class MyFieldClassProvider : FieldCssClassProvider
 
 ### <a name="no-locblazor-data-annotations-validation-package"></a>Paquete de validación de anotaciones de datos de Blazor
 
-[`Microsoft.AspNetCore.Components.DataAnnotations.Validation`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.DataAnnotations.Validation) es un paquete que llena los huecos de experiencia de validación mediante el componente <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator>. Actualmente, el paquete está en fase *experimental*.
+[`Microsoft.AspNetCore.Components.DataAnnotations.Validation`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.DataAnnotations.Validation) es un paquete que llena los huecos de experiencia de validación mediante el componente <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator>. Actualmente, el paquete está en fase *experimental* .
 
 > [!NOTE]
-> En [Nuget.org](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.DataAnnotations.Validation) hay una *versión candidata para lanzamiento* más reciente del paquete [`Microsoft.AspNetCore.Components.DataAnnotations.Validation`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.DataAnnotations.Validation). Por ahora, siga usando el paquete de versión candidata para lanzamiento *experimental*. El ensamblado del paquete podría moverse al marco o al runtime en una versión futura. Vea los [anuncios del repositorio de GitHub](https://github.com/aspnet/Announcements), el [repositorio dotnet/aspnetcore de GitHub](https://github.com/dotnet/aspnetcore), o bien la sección de este tema para obtener más actualizaciones.
+> En [Nuget.org](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.DataAnnotations.Validation) hay una *versión candidata para lanzamiento* más reciente del paquete [`Microsoft.AspNetCore.Components.DataAnnotations.Validation`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.DataAnnotations.Validation). Por ahora, siga usando el paquete de versión candidata para lanzamiento *experimental* . El ensamblado del paquete podría moverse al marco o al runtime en una versión futura. Vea los [anuncios del repositorio de GitHub](https://github.com/aspnet/Announcements), el [repositorio dotnet/aspnetcore de GitHub](https://github.com/dotnet/aspnetcore), o bien la sección de este tema para obtener más actualizaciones.
 
 ### <a name="compareproperty-attribute"></a>Atributo [CompareProperty]
 

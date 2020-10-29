@@ -5,7 +5,7 @@ description: Obtenga información sobre cómo proteger una aplicación Blazor We
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/02/2020
+ms.date: 10/27/2020
 no-loc:
 - ASP.NET Core Identity
 - cookie
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/hosted-with-identity-server
-ms.openlocfilehash: 6ae8c55fcfc85dc725a7dd20a7dbecba063a13e9
-ms.sourcegitcommit: daa9ccf580df531254da9dce8593441ac963c674
+ms.openlocfilehash: a6fd005e19f532089ac1a1914756fb03eabb24c4
+ms.sourcegitcommit: 2e3a967331b2c69f585dd61e9ad5c09763615b44
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91900795"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92690480"
 ---
 # <a name="secure-an-aspnet-core-no-locblazor-webassembly-hosted-app-with-no-locidentity-server"></a>Protección de una aplicación hospedada Blazor WebAssembly de ASP.NET Core con Identity Server
 
@@ -38,11 +38,11 @@ En este artículo se explica cómo crear una [aplicación Blazor WebAssembly hos
 
 Para crear un nuevo proyecto de Blazor WebAssembly con un mecanismo de autenticación:
 
-1. Después de elegir la plantilla de aplicación de **Blazor WebAssembly** en el cuadro de diálogo **Crear una aplicación web ASP.NET Core**, seleccione **Cambiar** en **Autenticación**.
+1. Después de elegir la plantilla de aplicación de **Blazor WebAssembly** en el cuadro de diálogo **Crear una aplicación web ASP.NET Core** , seleccione **Cambiar** en **Autenticación** .
 
 1. Seleccione **Cuentas de usuario individuales** con la opción **Almacenar cuentas de usuario en aplicación** para almacenar usuarios dentro de la aplicación mediante el sistema [Identity](xref:security/authentication/identity) de ASP.NET Core.
 
-1. Active la casilla **ASP.NET Core hosted** (Hospedada en ASP.NET Core) en la sección **Avanzado**.
+1. Active la casilla **ASP.NET Core hosted** (Hospedada en ASP.NET Core) en la sección **Avanzado** .
 
 # <a name="visual-studio-code--net-core-cli"></a>[Visual Studio Code y CLI de .NET Core](#tab/visual-studio-code+netcore-cli)
 
@@ -280,8 +280,8 @@ El componente `LoginDisplay` (`Shared/LoginDisplay.razor`) se representa en el c
 
 Ejecute la aplicación desde el proyecto de servidor. Al usar Visual Studio, puede hacer lo siguiente:
 
-* Establezca la lista desplegable **Proyectos de inicio** de la barra de herramientas en la *aplicación de API de servidor* y seleccione el botón **Ejecutar**.
-* Seleccione el proyecto de servidor en el **Explorador de soluciones** y seleccione el botón **Ejecutar** de la barra de herramientas, o bien inicie la aplicación desde el menú **Depurar**.
+* Establezca la lista desplegable **Proyectos de inicio** de la barra de herramientas en la *aplicación de API de servidor* y seleccione el botón **Ejecutar** .
+* Seleccione el proyecto de servidor en el **Explorador de soluciones** y seleccione el botón **Ejecutar** de la barra de herramientas, o bien inicie la aplicación desde el menú **Depurar** .
 
 ## <a name="name-and-role-claim-with-api-authorization"></a>Notificaciones name y role con autorización de API
 
@@ -418,7 +418,7 @@ public class ProfileService : IProfileService
     {
     }
 
-    public Task GetProfileDataAsync(ProfileDataRequestContext context)
+    public async Task GetProfileDataAsync(ProfileDataRequestContext context)
     {
         var nameClaim = context.Subject.FindAll(JwtClaimTypes.Name);
         context.IssuedClaims.AddRange(nameClaim);
@@ -426,12 +426,12 @@ public class ProfileService : IProfileService
         var roleClaims = context.Subject.FindAll(JwtClaimTypes.Role);
         context.IssuedClaims.AddRange(roleClaims);
 
-        return Task.CompletedTask;
+        await Task.CompletedTask;
     }
 
-    public Task IsActiveAsync(IsActiveContext context)
+    public async Task IsActiveAsync(IsActiveContext context)
     {
-        return Task.CompletedTask;
+        await Task.CompletedTask;
     }
 }
 ```
@@ -475,7 +475,7 @@ En este escenario de hospedaje, **no** use el mismo certificado para la [clave d
 
 * Usar certificados diferentes para estos dos requisitos es una buena práctica de seguridad porque aísla claves privadas para cada propósito.
 * Los certificados TLS para la comunicación con los exploradores se administran de forma independiente sin afectar a la firma de tokens de Identity Server.
-* Cuando [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) proporciona un certificado a una aplicación de App Service para el enlace de dominio personalizado, Identity Server no puede obtener el mismo certificado de Azure Key Vault para la firma de tokens. Aunque es posible configurar Identity Server para que use el mismo certificado TLS desde una ruta de acceso física, la colocación de los certificados de seguridad en el control de código fuente es una **práctica inadecuada y debe evitarse en la mayoría de los casos**.
+* Cuando [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) proporciona un certificado a una aplicación de App Service para el enlace de dominio personalizado, Identity Server no puede obtener el mismo certificado de Azure Key Vault para la firma de tokens. Aunque es posible configurar Identity Server para que use el mismo certificado TLS desde una ruta de acceso física, la colocación de los certificados de seguridad en el control de código fuente es una **práctica inadecuada y debe evitarse en la mayoría de los casos** .
 
 En la siguiente guía, se crea un certificado autofirmado en Azure Key Vault únicamente para la firma de tokens de Identity Server. La configuración de Identity Server usa el certificado del almacén de claves mediante el almacén de certificados `My` > `CurrentUser` de la aplicación. Otros certificados que se usan para el tráfico HTTPS con dominios personalizados se crean y se configuran de forma independiente del certificado de firma de Identity Server.
 
@@ -501,26 +501,26 @@ Para configurar una aplicación, Azure App Service y Azure Key Vault para que ho
    Para más información sobre los certificados de Azure Key Vault, consulte [Azure Key Vault: Certificados](/azure/key-vault/certificates/).
 1. Cree una nueva instancia de Azure Key Vault o use un almacén de claves existente en su suscripción de Azure.
 1. En el área **Certificados** del almacén de claves, importe el certificado del sitio PFX. Registre la huella digital del certificado, que se usará en la configuración de la aplicación más adelante.
-1. En Azure Key Vault, genere un nuevo certificado autofirmado para la firma de tokens de Identity Server. Asigne al certificado un **Nombre de certificado** y un **Firmante**. El **Firmante** se especifica como `CN={COMMON NAME}`, donde el marcador de posición `{COMMON NAME}` es el nombre común del certificado. El nombre común puede ser cualquier cadena alfanumérica. Por ejemplo, `CN=IdentityServerSigning` es un **Firmante** válido de certificado. Use la configuración predeterminada de la **Configuración avanzada de directivas**. Registre la huella digital del certificado, que se usará en la configuración de la aplicación más adelante.
+1. En Azure Key Vault, genere un nuevo certificado autofirmado para la firma de tokens de Identity Server. Asigne al certificado un **Nombre de certificado** y un **Firmante** . El **Firmante** se especifica como `CN={COMMON NAME}`, donde el marcador de posición `{COMMON NAME}` es el nombre común del certificado. El nombre común puede ser cualquier cadena alfanumérica. Por ejemplo, `CN=IdentityServerSigning` es un **Firmante** válido de certificado. Use la configuración predeterminada de la **Configuración avanzada de directivas** . Registre la huella digital del certificado, que se usará en la configuración de la aplicación más adelante.
 1. Vaya a Azure App Service en Azure Portal y cree un nuevo App Service con la siguiente configuración:
    * **Publicar** establecido en `Code`.
    * **Pila en tiempo de ejecución** establecido en el tiempo de ejecución de la aplicación.
-   * Para **SKU y tamaño**, confirme que el nivel de App Service sea `Basic B1` o superior.  App Service requiere un nivel de servicio `Basic B1` o superior para usar dominios personalizados.
+   * Para **SKU y tamaño** , confirme que el nivel de App Service sea `Basic B1` o superior.  App Service requiere un nivel de servicio `Basic B1` o superior para usar dominios personalizados.
 1. Después de que Azure cree App Service, abra la **Configuración** de la aplicación y agregue una nueva configuración de aplicación que especifique las huellas digitales del certificado que se registraron anteriormente. La clave de configuración de la aplicación es `WEBSITE_LOAD_CERTIFICATES`. Separe las huellas digitales de certificado en el valor de configuración de la aplicación con una coma, como se muestra en el ejemplo siguiente:
    * Clave: `WEBSITE_LOAD_CERTIFICATES`
    * Valor: `57443A552A46DB...D55E28D412B943565,29F43A772CB6AF...1D04F0C67F85FB0B1`
 
-   En Azure Portal, guardar la configuración de la aplicación es un proceso de dos pasos: Guarde la configuración de clave-valor de `WEBSITE_LOAD_CERTIFICATES` y, después, seleccione el botón **Guardar**, en la parte superior de la hoja.
+   En Azure Portal, guardar la configuración de la aplicación es un proceso de dos pasos: Guarde la configuración de clave-valor de `WEBSITE_LOAD_CERTIFICATES` y, después, seleccione el botón **Guardar** , en la parte superior de la hoja.
 1. Seleccione la **configuración de TLS/SSL** de la aplicación. Seleccione **Certificados de clave privada (.pfx)** . Use el proceso **Importar certificado de Key Vault** dos veces para importar el certificado del sitio para la comunicación HTTPS y el certificado autofirmado del sitio para la firma de tokens de Identity Server.
-1. Vaya a la hoja **Dominios personalizados**. En el sitio web del registrador de dominios, use la **dirección IP** y el **id. de verificación del dominio personalizado** para configurar el dominio. Una configuración de dominio típica incluye:
+1. Vaya a la hoja **Dominios personalizados** . En el sitio web del registrador de dominios, use la **dirección IP** y el **id. de verificación del dominio personalizado** para configurar el dominio. Una configuración de dominio típica incluye:
    * Un **registro A** con un **host** de `@` y un valor de la dirección IP de Azure Portal.
    * Un **registro TXT** con un **host** de `asuid` y el valor del id. de verificación generado por Azure y proporcionado por Azure Portal.
 
    Asegúrese de guardar correctamente los cambios en el sitio web del registrador de dominios. Algunos sitios web del registrador requieren un proceso de dos pasos para guardar los registros de dominio: Uno o varios registros se guardan individualmente seguidos de la actualización del registro del dominio con un botón independiente.
-1. Vuelva a la hoja **Dominios personalizados** en Azure Portal. Seleccione **Agregar dominio personalizado**. Seleccione la opción **Registro A**. Proporcione el dominio y seleccione **Validar**. Si los registros de dominio son correctos y están propagados por Internet, el portal le permitirá seleccionar el botón **Agregar dominio personalizado**.
+1. Vuelva a la hoja **Dominios personalizados** en Azure Portal. Seleccione **Agregar dominio personalizado** . Seleccione la opción **Registro A** . Proporcione el dominio y seleccione **Validar** . Si los registros de dominio son correctos y están propagados por Internet, el portal le permitirá seleccionar el botón **Agregar dominio personalizado** .
 
    Los cambios en el registro de dominio pueden tardar unos días en propagarse entre los servidores de nombres de dominio (DNS) de Internet después de que el registrador de dominios los procese. Si los registros de dominio no se actualizan en un plazo de tres días laborables, confirme que los registros se han establecido correctamente con el registrador de dominios y póngase en contacto con el servicio de soporte técnico al cliente.
-1. En la hoja **Dominios personalizados**, el **ESTADO SSL** del dominio está marcado como `Not Secure`. Seleccione el vínculo **Agregar enlaces**. Seleccione el certificado HTTPS del sitio en el almacén de claves para el enlace de dominio personalizado.
+1. En la hoja **Dominios personalizados** , el **ESTADO SSL** del dominio está marcado como `Not Secure`. Seleccione el vínculo **Agregar enlaces** . Seleccione el certificado HTTPS del sitio en el almacén de claves para el enlace de dominio personalizado.
 1. En Visual Studio, abra el archivo de configuración de la aplicación del proyecto *Server* (`appsettings.json` o `appsettings.Production.json`). En la configuración de Identity Server, agregue la siguiente sección de `Key`. Especifique el **Firmante** del certificado autofirmado para la clave `Name`. En el ejemplo siguiente, el nombre común del certificado asignado en el almacén de claves es `IdentityServerSigning`, lo que produce un **Firmante** de `CN=IdentityServerSigning`:
 
    ```json
@@ -537,8 +537,8 @@ Para configurar una aplicación, Azure App Service y Azure Key Vault para que ho
    },
    ```
 
-1. En Visual Studio, cree un [perfil de publicación](xref:host-and-deploy/visual-studio-publish-profiles#publish-profiles) de Azure App Service para el proyecto *Server*. En la barra de menús, seleccione: **Compilar** > **Publicar** > **Nuevo** > **Azure** > **Azure App Service** (Windows o Linux). Cuando Visual Studio se conecta a una suscripción de Azure, puede establecer la **Vista** de recursos de Azure por **Tipo de recurso**. Navegue dentro de la lista **Aplicación web** para buscar la instancia de App Service de la aplicación y selecciónela. Seleccione **Finalizar**.
-1. Cuando Visual Studio vuelve a la ventana **Publicar**, se detectan automáticamente el almacén de claves y las dependencias del servicio de base de datos SQL Server.
+1. En Visual Studio, cree un [perfil de publicación](xref:host-and-deploy/visual-studio-publish-profiles#publish-profiles) de Azure App Service para el proyecto *Server* . En la barra de menús, seleccione: **Compilar** > **Publicar** > **Nuevo** > **Azure** > **Azure App Service** (Windows o Linux). Cuando Visual Studio se conecta a una suscripción de Azure, puede establecer la **Vista** de recursos de Azure por **Tipo de recurso** . Navegue dentro de la lista **Aplicación web** para buscar la instancia de App Service de la aplicación y selecciónela. Seleccione **Finalizar** .
+1. Cuando Visual Studio vuelve a la ventana **Publicar** , se detectan automáticamente el almacén de claves y las dependencias del servicio de base de datos SQL Server.
 
    No se requiere ningún cambio de configuración en la configuración predeterminada para el servicio del almacén de claves.
 
