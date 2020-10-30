@@ -5,33 +5,34 @@ description: Obtenga información sobre cómo insertar controladores de requisit
 ms.author: riande
 ms.date: 10/14/2016
 no-loc:
-- ASP.NET Core Identity
-- cookie
-- Cookie
-- Blazor
-- Blazor Server
-- Blazor WebAssembly
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
+- ':::no-loc(appsettings.json):::'
+- ':::no-loc(ASP.NET Core Identity):::'
+- ':::no-loc(cookie):::'
+- ':::no-loc(Cookie):::'
+- ':::no-loc(Blazor):::'
+- ':::no-loc(Blazor Server):::'
+- ':::no-loc(Blazor WebAssembly):::'
+- ':::no-loc(Identity):::'
+- ":::no-loc(Let's Encrypt):::"
+- ':::no-loc(Razor):::'
+- ':::no-loc(SignalR):::'
 uid: security/authorization/dependencyinjection
-ms.openlocfilehash: 4bc7eb38262c8a94a84aacc978737a778bfd71a1
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 6598a9c9cfd1e6597fffcc1aa0c53fa493532458
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88632569"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060266"
 ---
-# <a name="dependency-injection-in-requirement-handlers-in-aspnet-core"></a><span data-ttu-id="389ab-103">Inserción de dependencias en controladores de requisitos en ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="389ab-103">Dependency injection in requirement handlers in ASP.NET Core</span></span>
+# <a name="dependency-injection-in-requirement-handlers-in-aspnet-core"></a><span data-ttu-id="b7cef-103">Inserción de dependencias en controladores de requisitos en ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="b7cef-103">Dependency injection in requirement handlers in ASP.NET Core</span></span>
 
 <a name="security-authorization-di"></a>
 
-<span data-ttu-id="389ab-104">Los [controladores de autorización deben registrarse](xref:security/authorization/policies#handler-registration) en la colección de servicios durante la configuración (mediante la [inserción de dependencias](xref:fundamentals/dependency-injection)).</span><span class="sxs-lookup"><span data-stu-id="389ab-104">[Authorization handlers must be registered](xref:security/authorization/policies#handler-registration) in the service collection during configuration (using [dependency injection](xref:fundamentals/dependency-injection)).</span></span>
+<span data-ttu-id="b7cef-104">Los [controladores de autorización deben registrarse](xref:security/authorization/policies#handler-registration) en la colección de servicios durante la configuración mediante la [inserción de dependencias](xref:fundamentals/dependency-injection).</span><span class="sxs-lookup"><span data-stu-id="b7cef-104">[Authorization handlers must be registered](xref:security/authorization/policies#handler-registration) in the service collection during configuration using [dependency injection](xref:fundamentals/dependency-injection).</span></span>
 
-<span data-ttu-id="389ab-105">Supongamos que tiene un repositorio de reglas que desea evaluar dentro de un controlador de autorización y que ese repositorio se registró en la colección de servicios.</span><span class="sxs-lookup"><span data-stu-id="389ab-105">Suppose you had a repository of rules you wanted to evaluate inside an authorization handler and that repository was registered in the service collection.</span></span> <span data-ttu-id="389ab-106">La autorización se resolverá y se insertará en el constructor.</span><span class="sxs-lookup"><span data-stu-id="389ab-106">Authorization will resolve and inject that into your constructor.</span></span>
+<span data-ttu-id="b7cef-105">Supongamos que tiene un repositorio de reglas que desea evaluar dentro de un controlador de autorización y que ese repositorio se registró en la colección de servicios.</span><span class="sxs-lookup"><span data-stu-id="b7cef-105">Suppose you had a repository of rules you wanted to evaluate inside an authorization handler and that repository was registered in the service collection.</span></span> <span data-ttu-id="b7cef-106">La autorización resuelve e inserta en el constructor.</span><span class="sxs-lookup"><span data-stu-id="b7cef-106">Authorization resolves and injects that into the constructor.</span></span>
 
-<span data-ttu-id="389ab-107">Por ejemplo, si desea utilizar ASP. La infraestructura de registro de la red que se desea insertar `ILoggerFactory` en el controlador.</span><span class="sxs-lookup"><span data-stu-id="389ab-107">For example, if you wanted to use ASP.NET's logging infrastructure you would want to inject `ILoggerFactory` into your handler.</span></span> <span data-ttu-id="389ab-108">Este tipo de controlador podría ser similar al siguiente:</span><span class="sxs-lookup"><span data-stu-id="389ab-108">Such a handler might look like:</span></span>
+<span data-ttu-id="b7cef-107">Por ejemplo, para utilizar ASP. Infraestructura de registro de la red, inserte `ILoggerFactory` en el controlador.</span><span class="sxs-lookup"><span data-stu-id="b7cef-107">For example, to use ASP.NET's logging infrastructure, inject `ILoggerFactory` into the handler.</span></span> <span data-ttu-id="b7cef-108">Este tipo de controlador podría ser similar al código siguiente:</span><span class="sxs-lookup"><span data-stu-id="b7cef-108">Such a handler might look like the following code:</span></span>
 
 ```csharp
 public class LoggingAuthorizationHandler : AuthorizationHandler<MyRequirement>
@@ -52,13 +53,13 @@ public class LoggingAuthorizationHandler : AuthorizationHandler<MyRequirement>
    }
    ```
 
-<span data-ttu-id="389ab-109">Registraría el controlador con `services.AddSingleton()` :</span><span class="sxs-lookup"><span data-stu-id="389ab-109">You would register the handler with `services.AddSingleton()`:</span></span>
+<span data-ttu-id="b7cef-109">El controlador anterior se puede registrar con cualquier [duración del servicio](/dotnet/core/extensions/dependency-injection#service-lifetimes).</span><span class="sxs-lookup"><span data-stu-id="b7cef-109">The preceding handler can be registered with any [service lifetime](/dotnet/core/extensions/dependency-injection#service-lifetimes).</span></span> <span data-ttu-id="b7cef-110">El código siguiente usa `AddSingleton` para registrar el controlador anterior:</span><span class="sxs-lookup"><span data-stu-id="b7cef-110">The following code uses `AddSingleton` to register the preceding handler:</span></span>
 
 ```csharp
 services.AddSingleton<IAuthorizationHandler, LoggingAuthorizationHandler>();
 ```
 
-<span data-ttu-id="389ab-110">Cuando se inicia la aplicación, se creará una instancia del controlador y DI insertará el registrado `ILoggerFactory` en el constructor.</span><span class="sxs-lookup"><span data-stu-id="389ab-110">An instance of the handler will be created when your application starts, and DI will inject the registered `ILoggerFactory` into your constructor.</span></span>
+<span data-ttu-id="b7cef-111">Cuando se inicia la aplicación, se crea una instancia del controlador y DI inserta la registrada `ILoggerFactory` en el constructor.</span><span class="sxs-lookup"><span data-stu-id="b7cef-111">An instance of the handler is created when the app starts, and DI injects the registered `ILoggerFactory` into the constructor.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="389ab-111">Los controladores que usan Entity Framework no deben registrarse como singletons.</span><span class="sxs-lookup"><span data-stu-id="389ab-111">Handlers that use Entity Framework shouldn't be registered as singletons.</span></span>
+> <span data-ttu-id="b7cef-112">Los controladores que usan Entity Framework no deben registrarse como singletons.</span><span class="sxs-lookup"><span data-stu-id="b7cef-112">Handlers that use Entity Framework shouldn't be registered as singletons.</span></span>
