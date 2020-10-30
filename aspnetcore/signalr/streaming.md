@@ -5,7 +5,7 @@ description: Obtenga información acerca de cómo transmitir datos entre el clie
 monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
 ms.custom: mvc, devx-track-js
-ms.date: 11/12/2019
+ms.date: 10/29/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/streaming
-ms.openlocfilehash: 2f21248934395b682adf8060dae4e3d145e52215
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: b07c280f271ccdd525128b973da065001a5cf0ed
+ms.sourcegitcommit: 0d40fc4932531ce13fc4ee9432144584e03c2f1c
 ms.translationtype: MT
 ms.contentlocale: es-ES
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93058212"
+ms.locfileid: "93062446"
 ---
 # <a name="use-streaming-in-aspnet-core-no-locsignalr"></a>Usar streaming en ASP.NET Core SignalR
 
@@ -320,6 +320,22 @@ hubConnection.stream(String.class, "ExampleStreamingHubMethod", "Arg1")
 ```
 
 El `stream` método en `HubConnection` devuelve un objeto observable del tipo de elemento de secuencia. El método del tipo observable `subscribe` es donde `onNext` , `onError` y `onCompleted` se definen los controladores.
+
+### <a name="client-to-server-streaming"></a>Streaming de cliente a servidor
+
+El SignalR cliente de Java puede llamar a métodos de streaming de cliente a servidor en los concentradores pasando un objeto [observable](https://rxjs-dev.firebaseapp.com/api/index/class/Observable) como argumento a `send` , `invoke` o `stream` , dependiendo del método de concentrador invocado.
+
+```java
+ReplaySubject<String> stream = ReplaySubject.create();
+hubConnection.send("UploadStream", stream);
+stream.onNext("FirstItem");
+stream.onNext("SecondItem");
+stream.onComplete();
+```
+
+La llamada a `stream.onNext(item)` con un elemento escribe el elemento en la secuencia y el método de concentrador recibe el elemento en el servidor.
+
+Para finalizar el flujo, llame a `stream.onComplete()` .
 
 ::: moniker-end
 
