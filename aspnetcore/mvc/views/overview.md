@@ -5,6 +5,7 @@ description: Obtenga información sobre la forma en que las vistas controlan la 
 ms.author: riande
 ms.date: 12/05/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/overview
-ms.openlocfilehash: 6afd69414f2dc0158f724c6e6f7b3a3e51c1e92c
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 373b17377740441d3859e3b7d942017a22bc7a68
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88630684"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060630"
 ---
 # <a name="views-in-aspnet-core-mvc"></a>Vistas de ASP.NET Core MVC
 
@@ -35,7 +36,7 @@ En ASP.NET Core MVC, las vistas son archivos *. cshtml* que usan el [lenguaje de
 
 ![Carpeta Views del Explorador de soluciones de Visual Studio abierta con la carpeta Home mostrando los archivos About.cshtml, Contact.cshtml y Index.cshtml](overview/_static/views_solution_explorer.png)
 
-El controlador *Home* está representado por una carpeta *Home* situada dentro de la carpeta *Views*. La carpeta *Home* contiene las vistas correspondientes a las páginas web *About*, *Contact* e *Index* (página principal). Cuando un usuario solicita una de estas tres páginas web, las acciones del controlador *Home* determinan cuál de las tres vistas se usa para crear y devolver una página web al usuario.
+El controlador *Home* está representado por una carpeta *Home* situada dentro de la carpeta *Views* . La carpeta *Home* contiene las vistas correspondientes a las páginas web *About* , *Contact* e *Index* (página principal). Cuando un usuario solicita una de estas tres páginas web, las acciones del controlador *Home* determinan cuál de las tres vistas se usa para crear y devolver una página web al usuario.
 
 Use [diseños](xref:mvc/views/layout) para cohesionar las secciones de la página web y reducir la repetición del código. Los diseños suelen contener encabezado, elementos de menú y navegación y pie de página. El encabezado y el pie de página suelen contener marcado reutilizable para muchos elementos de metadatos y vínculos a recursos de script y estilo. Los diseños ayudan a evitar este marcado reutilizable en las vistas.
 
@@ -54,7 +55,7 @@ Las vistas separan el marcado de la interfaz de usuario de otras partes de la ap
 
 ## <a name="creating-a-view"></a>Creación de una vista
 
-Las vistas que son específicas de un controlador se crean en la carpeta *Views/[nombreDelControlador]*. Las vistas compartidas entre controladores se colocan en la carpeta *Views/Shared*. Para crear una vista, agregue un archivo nuevo y asígnele el mismo nombre que a la acción del controlador asociada con la extensión de archivo *.cshtml*. Para crear una vista que se corresponda con la acción *About* del controlador *Home*, cree un archivo *About.cshtml* en la carpeta *Views/Home*:
+Las vistas que son específicas de un controlador se crean en la carpeta *Views/[nombreDelControlador]* . Las vistas compartidas entre controladores se colocan en la carpeta *Views/Shared* . Para crear una vista, agregue un archivo nuevo y asígnele el mismo nombre que a la acción del controlador asociada con la extensión de archivo *.cshtml* . Para crear una vista que se corresponda con la acción *About* del controlador *Home* , cree un archivo *About.cshtml* en la carpeta *Views/Home* :
 
 [!code-cshtml[](../../common/samples/WebApplication1/Views/Home/About.cshtml)]
 
@@ -96,22 +97,22 @@ El método del asistente `View` tiene varias sobrecargas. También puede especif
 
 ### <a name="view-discovery"></a>Detección de vista
 
-Cuando una acción devuelve una vista, tiene lugar un proceso llamado *detección de vista*. Este proceso determina qué archivo de vista se utiliza en función del nombre de la vista. 
+Cuando una acción devuelve una vista, tiene lugar un proceso llamado *detección de vista* . Este proceso determina qué archivo de vista se utiliza en función del nombre de la vista. 
 
-El comportamiento predeterminado del método `View` (`return View();`) es devolver una vista con el mismo nombre que el método de acción desde el que se llama. Por ejemplo, el nombre de método *About* `ActionResult` del controlador se usa para buscar un archivo de vista denominado *About.cshtml*. En primer lugar, el runtime busca la vista en la carpeta *Views/[nombreDelControlador]*. Si no encuentra una vista que coincida, busca la vista en la carpeta *Shared*.
+El comportamiento predeterminado del método `View` (`return View();`) es devolver una vista con el mismo nombre que el método de acción desde el que se llama. Por ejemplo, el nombre de método *About* `ActionResult` del controlador se usa para buscar un archivo de vista denominado *About.cshtml* . En primer lugar, el runtime busca la vista en la carpeta *Views/[nombreDelControlador]* . Si no encuentra una vista que coincida, busca la vista en la carpeta *Shared* .
 
 Da igual si se devuelve implícitamente `ViewResult` con `return View();` o si se pasa explícitamente el nombre de la vista al método `View` con `return View("<ViewName>");`. En ambos casos, la detección de vista busca un archivo de vista coincidente en este orden:
 
    1. *Views/\[nombreDeControlador]/\[nombreDeVista].cshtml*
    1. *Views/Shared/\[nombreDeVista].cshtml*
 
-En lugar del nombre de una vista, se puede proporcionar la ruta de acceso del archivo de vista. Si se utiliza una ruta de acceso absoluta que comience en la raíz de la aplicación (también puede empezar con "/" o "~/"), debe especificarse la extensión *.cshtml*:
+En lugar del nombre de una vista, se puede proporcionar la ruta de acceso del archivo de vista. Si se utiliza una ruta de acceso absoluta que comience en la raíz de la aplicación (también puede empezar con "/" o "~/"), debe especificarse la extensión *.cshtml* :
 
 ```csharp
 return View("Views/Home/About.cshtml");
 ```
 
-También se puede usar una ruta de acceso relativa para especificar vistas de directorios distintos sin la extensión *.cshtml*. Dentro de `HomeController`, se puede devolver la vista *Index* de las vistas *Manage* con una ruta de acceso relativa:
+También se puede usar una ruta de acceso relativa para especificar vistas de directorios distintos sin la extensión *.cshtml* . Dentro de `HomeController`, se puede devolver la vista *Index* de las vistas *Manage* con una ruta de acceso relativa:
 
 ```csharp
 return View("../Manage/Index");
@@ -144,7 +145,7 @@ Se pueden pasar datos a vistas con varios métodos:
 
 El enfoque más eficaz consiste en especificar un tipo de [modelo](xref:mvc/models/model-binding) en la vista. Este modelo se conoce normalmente como *viewmodel* (modelo de vista) y en él se pasa una instancia de tipo viewmodel a la vista de la acción.
 
-La utilización de un modelo de vista para pasar datos a una vista permite que la vista se beneficie de las ventajas de la comprobación de tipos *seguros*. El término *establecimiento fuerte de tipos* (o *fuertemente tipado*) significa que cada variable y constante tienen un tipo definido explícitamente, por ejemplo, `string`, `int` o `DateTime`. La validez de los tipos usados en una vista se comprueba en tiempo de compilación.
+La utilización de un modelo de vista para pasar datos a una vista permite que la vista se beneficie de las ventajas de la comprobación de tipos *seguros* . El término *establecimiento fuerte de tipos* (o *fuertemente tipado* ) significa que cada variable y constante tienen un tipo definido explícitamente, por ejemplo, `string`, `int` o `DateTime`. La validez de los tipos usados en una vista se comprueba en tiempo de compilación.
 
 [Visual Studio](https://visualstudio.microsoft.com) y [Visual Studio Code](https://code.visualstudio.com/) enumeran los miembros de clase fuertemente tipados mediante una característica denominada [IntelliSense](/visualstudio/ide/using-intellisense). Si quiere ver las propiedades de un modelo de vista, escriba el nombre de variable del modelo de vista seguido por un punto (`.`). Esto ayuda a escribir código más rápidamente y con menos errores.
 
@@ -181,7 +182,7 @@ public IActionResult Contact()
 }
 ```
 
-No hay ninguna restricción sobre los tipos de modelo que se pueden proporcionar a una vista. Se recomienda usar modelos de vista POCO (objeto CRL estándar) con poco o ningún comportamiento (métodos) definido. Por lo general, las clases de modelo de vista se almacenan en la carpeta *Models* o en otra carpeta *ViewModels* en la raíz de la aplicación. El modelo de vista *Address* usado en el ejemplo anterior es un modelo de vista POCO almacenado en un archivo denominado *Address.cs*:
+No hay ninguna restricción sobre los tipos de modelo que se pueden proporcionar a una vista. Se recomienda usar modelos de vista POCO (objeto CRL estándar) con poco o ningún comportamiento (métodos) definido. Por lo general, las clases de modelo de vista se almacenan en la carpeta *Models* o en otra carpeta *ViewModels* en la raíz de la aplicación. El modelo de vista *Address* usado en el ejemplo anterior es un modelo de vista POCO almacenado en un archivo denominado *Address.cs* :
 
 ```csharp
 namespace WebApplication1.ViewModels
@@ -205,7 +206,7 @@ Nada le impide usar las mismas clases tanto para los tipos de modelo de vista co
 
 `ViewBag`*no está disponible en Razor Páginas.*
 
-Además de las vistas fuertemente tipadas, las vistas tienen acceso a una colección de datos *débilmente tipados*, también denominados *imprecisos*. A diferencia de los tipos fuertes, en los *tipos débiles* (o *débilmente tipados*) no se declara explícitamente el tipo de datos que se está utilizando. Puede usar la colección de datos débilmente tipados para pasar pequeñas cantidades de datos de los controladores y las vistas, tanto en dirección de entrada como de salida.
+Además de las vistas fuertemente tipadas, las vistas tienen acceso a una colección de datos *débilmente tipados* , también denominados *imprecisos* . A diferencia de los tipos fuertes, en los *tipos débiles* (o *débilmente tipados* ) no se declara explícitamente el tipo de datos que se está utilizando. Puede usar la colección de datos débilmente tipados para pasar pequeñas cantidades de datos de los controladores y las vistas, tanto en dirección de entrada como de salida.
 
 | Pasar datos entre...                        | Ejemplo                                                                        |
 | ------------------------------------------------- | ------------------------------------------------------------------------------ |
@@ -334,7 +335,7 @@ public IActionResult SomeAction()
 
 Puesto que `ViewData` y `ViewBag` hacen referencia a la misma colección `ViewData` subyacente, se pueden utilizar `ViewData` y `ViewBag`, y combinarlos entre ellos al leer y escribir valores.
 
-Establezca el título con `ViewBag` y la descripción con `ViewData` en la parte superior de una vista *About.cshtml*:
+Establezca el título con `ViewBag` y la descripción con `ViewData` en la parte superior de una vista *About.cshtml* :
 
 ```cshtml
 @{
@@ -344,7 +345,7 @@ Establezca el título con `ViewBag` y la descripción con `ViewData` en la parte
 }
 ```
 
-Lea las propiedades pero invierta el uso de `ViewData` y `ViewBag`. En el archivo *_Layout.cshtml*, obtenga el título con `ViewData` y la descripción con `ViewBag`:
+Lea las propiedades pero invierta el uso de `ViewData` y `ViewBag`. En el archivo *_Layout.cshtml* , obtenga el título con `ViewData` y la descripción con `ViewBag`:
 
 ```cshtml
 <!DOCTYPE html>

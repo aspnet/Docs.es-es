@@ -6,6 +6,7 @@ ms.author: casoper
 ms.custom: devx-track-csharp, mvc
 ms.date: 01/21/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/azure-ad-b2c
-ms.openlocfilehash: edacded5df4d5f4819b3657bc7eff99e6d96d394
-ms.sourcegitcommit: 9a90b956af8d8584d597f1e5c1dbfb0ea9bb8454
+ms.openlocfilehash: f917bec8f2d929e62bf43494159a63458f135c5f
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88712550"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061397"
 ---
 # <a name="cloud-authentication-with-azure-active-directory-b2c-in-aspnet-core"></a>Autenticación en la nube con Azure Active Directory B2C en ASP.NET Core
 
@@ -46,7 +47,7 @@ En este tutorial, aprenderá a:
 Para este tutorial se requiere lo siguiente:
 
 * [Microsoft Azure suscripción](https://azure.microsoft.com/free/dotnet/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
-* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019)
+* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019)
 
 ## <a name="create-the-azure-active-directory-b2c-tenant"></a>Crear el inquilino de Azure Active Directory B2C
 
@@ -58,7 +59,7 @@ En el inquilino de Azure AD B2C recién creado, registre la aplicación con [los
 
 Use los valores siguientes:
 
-| Configuración                       | Valor                     | Notas                                                                                                                                                                                              |
+| Parámetro                       | Valor                     | Notas                                                                                                                                                                                              |
 |-------------------------------|---------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Nombre**                      | *&lt;nombre de la aplicación&gt;*        | Escriba un **nombre** para la aplicación que describa la aplicación a los consumidores.                                                                                                                                 |
 | **Incluir aplicación web o API web** | Sí                       |                                                                                                                                                                                                    |
@@ -86,13 +87,13 @@ En Visual Studio:
     
     ![Botón cambiar autenticación](./azure-ad-b2c/_static/changeauth.png)
 
-4. En el cuadro de diálogo **cambiar autenticación** , seleccione **cuentas de usuario individuales**y, a continuación, seleccione **conectarse a un almacén de usuario existente en la nube** en la lista desplegable. 
+4. En el cuadro de diálogo **cambiar autenticación** , seleccione **cuentas de usuario individuales** y, a continuación, seleccione **conectarse a un almacén de usuario existente en la nube** en la lista desplegable. 
     
     ![Cuadro de diálogo cambiar autenticación](./azure-ad-b2c/_static/changeauthdialog.png)
 
 5. Complete el formulario con los siguientes valores:
     
-    | Configuración                       | Valor                                                 |
+    | Parámetro                       | Valor                                                 |
     |-------------------------------|-------------------------------------------------------|
     | **Nombre de dominio**               | *&lt;el nombre de dominio del inquilino de B2C.&gt;*          |
     | **Identificador de la aplicación**            | *&lt;pegar el identificador de la aplicación del portapapeles&gt;* |
@@ -108,14 +109,14 @@ En Visual Studio:
 Vuelva a la ventana del explorador con las propiedades de la aplicación B2C todavía abiertas. Cambie la **dirección URL de respuesta** temporal especificada anteriormente al valor copiado desde Visual Studio. Seleccione **Guardar** en la parte superior de la ventana.
 
 > [!TIP]
-> Si no ha copiado la dirección URL de respuesta, use la dirección HTTPS de la pestaña depurar en las propiedades del proyecto web y Anexe el valor **CallbackPath** de *appsettings.js*.
+> Si no ha copiado la dirección URL de respuesta, use la dirección HTTPS de la pestaña depurar en las propiedades del proyecto web y Anexe el valor **CallbackPath** de *appsettings.json* .
 
 ## <a name="configure-policies"></a>Configurar directivas
 
-Siga los pasos de la documentación de Azure AD B2C para [crear una directiva de registro o de inicio de sesión](/azure/active-directory-b2c/active-directory-b2c-reference-policies#user-flow-versions)y, a continuación, [cree una directiva de restablecimiento de contraseña](/azure/active-directory-b2c/active-directory-b2c-reference-policies#user-flow-versions). Use los valores de ejemplo proporcionados en la documentación para los ** Identity proveedores**, **los atributos de registro**y las **notificaciones**de la aplicación. El uso del botón **Ejecutar ahora** para probar las directivas tal y como se describe en la documentación es opcional.
+Siga los pasos de la documentación de Azure AD B2C para [crear una directiva de registro o de inicio de sesión](/azure/active-directory-b2c/active-directory-b2c-reference-policies#user-flow-versions)y, a continuación, [cree una directiva de restablecimiento de contraseña](/azure/active-directory-b2c/active-directory-b2c-reference-policies#user-flow-versions). Use los valores de ejemplo proporcionados en la documentación para los **Identity proveedores** , **los atributos de registro** y las **notificaciones** de la aplicación. El uso del botón **Ejecutar ahora** para probar las directivas tal y como se describe en la documentación es opcional.
 
 > [!WARNING]
-> Asegúrese de que los nombres de las directivas sean exactamente como se describen en la documentación, ya que esas directivas se usaron en el cuadro de diálogo **cambiar autenticación** en Visual Studio. Los nombres de las directivas se pueden comprobar en *appsettings.jsen*.
+> Asegúrese de que los nombres de las directivas sean exactamente como se describen en la documentación, ya que esas directivas se usaron en el cuadro de diálogo **cambiar autenticación** en Visual Studio. Los nombres de las directivas se pueden comprobar en *appsettings.json* .
 
 ## <a name="configure-the-underlying-openidconnectoptionsjwtbearerno-loccookie-options"></a>Configuración de las opciones OpenIdConnectOptions/JwtBearer/presubyacentes Cookie
 
@@ -143,7 +144,7 @@ services.Configure<JwtBearerOptions>(
 
 ## <a name="run-the-app"></a>Ejecución la aplicación
 
-En Visual Studio, presione **F5** para compilar y ejecutar la aplicación. Una vez iniciada la aplicación Web, seleccione **Aceptar** para aceptar el uso de cookie s (si se le solicita) y, a continuación, seleccione **iniciar sesión**.
+En Visual Studio, presione **F5** para compilar y ejecutar la aplicación. Una vez iniciada la aplicación Web, seleccione **Aceptar** para aceptar el uso de cookie s (si se le solicita) y, a continuación, seleccione **iniciar sesión** .
 
 ![Inicio de sesión en la aplicación](./azure-ad-b2c/_static/signin.png)
 

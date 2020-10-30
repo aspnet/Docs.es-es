@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/12/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authorization/razor-pages-authorization
-ms.openlocfilehash: b17717e7b3cbaa64d4ff00661f15439728f161d3
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 69e1d639aeb55ae64cc54b1cda402ed6bcbb04ab
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634896"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060188"
 ---
 # <a name="no-locrazor-pages-authorization-conventions-in-aspnet-core"></a>Razor Convenciones de autorización de páginas en ASP.NET Core
 
@@ -74,7 +75,7 @@ Use la <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionEx
 options.Conventions.AuthorizeAreaPage("Identity", "/Manage/Accounts");
 ```
 
-El nombre de página es la ruta de acceso del archivo sin una extensión relativa al directorio raíz de páginas del área especificada. Por ejemplo, el nombre de página de las *áreas de archivo/ Identity /pages/Manage/accounts.cshtml* es */Manage/accounts*.
+El nombre de página es la ruta de acceso del archivo sin una extensión relativa al directorio raíz de páginas del área especificada. Por ejemplo, el nombre de página de las *áreas de archivo/ Identity /pages/Manage/accounts.cshtml* es */Manage/accounts* .
 
 Para especificar una [Directiva de autorización](xref:security/authorization/policies), use una [sobrecarga AuthorizeAreaPage](xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizeAreaPage*):
 
@@ -90,7 +91,7 @@ Use la <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionEx
 options.Conventions.AuthorizeAreaFolder("Identity", "/Manage");
 ```
 
-La ruta de acceso de la carpeta es la ruta de acceso de la carpeta relativa al directorio raíz de páginas del área especificada. Por ejemplo, la ruta de acceso de la carpeta para los archivos en *areas/ Identity /pages/Manage/* es */Manage*.
+La ruta de acceso de la carpeta es la ruta de acceso de la carpeta relativa al directorio raíz de páginas del área especificada. Por ejemplo, la ruta de acceso de la carpeta para los archivos en *areas/ Identity /pages/Manage/* es */Manage* .
 
 Para especificar una [Directiva de autorización](xref:security/authorization/policies), use una [sobrecarga AuthorizeAreaFolder](xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizeAreaFolder*):
 
@@ -186,7 +187,7 @@ Use la <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionEx
 options.Conventions.AuthorizeAreaPage("Identity", "/Manage/Accounts");
 ```
 
-El nombre de página es la ruta de acceso del archivo sin una extensión relativa al directorio raíz de páginas del área especificada. Por ejemplo, el nombre de página de las *áreas de archivo/ Identity /pages/Manage/accounts.cshtml* es */Manage/accounts*.
+El nombre de página es la ruta de acceso del archivo sin una extensión relativa al directorio raíz de páginas del área especificada. Por ejemplo, el nombre de página de las *áreas de archivo/ Identity /pages/Manage/accounts.cshtml* es */Manage/accounts* .
 
 Para especificar una [Directiva de autorización](xref:security/authorization/policies), use una [sobrecarga AuthorizeAreaPage](xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizeAreaPage*):
 
@@ -202,7 +203,7 @@ Use la <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionEx
 options.Conventions.AuthorizeAreaFolder("Identity", "/Manage");
 ```
 
-La ruta de acceso de la carpeta es la ruta de acceso de la carpeta relativa al directorio raíz de páginas del área especificada. Por ejemplo, la ruta de acceso de la carpeta para los archivos en *areas/ Identity /pages/Manage/* es */Manage*.
+La ruta de acceso de la carpeta es la ruta de acceso de la carpeta relativa al directorio raíz de páginas del área especificada. Por ejemplo, la ruta de acceso de la carpeta para los archivos en *areas/ Identity /pages/Manage/* es */Manage* .
 
 Para especificar una [Directiva de autorización](xref:security/authorization/policies), use una [sobrecarga AuthorizeAreaFolder](xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizeAreaFolder*):
 

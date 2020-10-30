@@ -5,6 +5,7 @@ description: Comparta controladores, vistas, Razor páginas, etc. con los elemen
 ms.author: riande
 ms.date: 11/11/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/extensibility/app-parts
-ms.openlocfilehash: 2e86025eaf98c4e2cbbd86a5a353664204c35594
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 33deb5ff794982e0c074186bb2abb88344e8a116
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88630424"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061189"
 ---
 # <a name="share-controllers-views-no-locrazor-pages-and-more-with-application-parts"></a>Comparta controladores, vistas, Razor páginas, etc. con los elementos de la aplicación
 
@@ -160,7 +161,7 @@ En el código siguiente se usa <xref:Microsoft.AspNetCore.Mvc.ApplicationParts> 
 Los proveedores de características de la aplicación examinan los elementos de aplicación y proporcionan características para esos elementos. Existen proveedores de características integrados para las siguientes características de ASP.NET Core:
 
 * [Controladores](/dotnet/api/microsoft.aspnetcore.mvc.controllers.controllerfeatureprovider)
-* [Aplicaciones auxiliares de etiquetas](/dotnet/api/microsoft.aspnetcore.mvc.razor.taghelpers.taghelperfeatureprovider)
+* [Asistentes de etiquetas](/dotnet/api/microsoft.aspnetcore.mvc.razor.taghelpers.taghelperfeatureprovider)
 * [Ver componentes](/dotnet/api/microsoft.aspnetcore.mvc.viewcomponents.viewcomponentfeatureprovider)
 
 Los proveedores de características heredan de <xref:Microsoft.AspNetCore.Mvc.ApplicationParts.IApplicationFeatureProvider`1>, donde `T` es el tipo de la característica. Los proveedores de características se pueden implementar para cualquiera de los tipos de características enumerados anteriormente. El orden de los proveedores de características en `ApplicationPartManager.FeatureProviders` puede afectar al comportamiento en tiempo de ejecución. Los proveedores agregados posteriormente pueden reaccionar ante las acciones realizadas por los proveedores agregados anteriormente.

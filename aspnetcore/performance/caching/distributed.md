@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/caching/distributed
-ms.openlocfilehash: 0d27206412a098f4ea749ec10189bf24d2322de1
-ms.sourcegitcommit: 9a90b956af8d8584d597f1e5c1dbfb0ea9bb8454
+ms.openlocfilehash: 6d87c8de66bf5600189465b96dee903841106b6f
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88712485"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061150"
 ---
 # <a name="distributed-caching-in-aspnet-core"></a>Almacenamiento en caché distribuido en ASP.NET Core
 
@@ -112,7 +113,7 @@ La aplicación de ejemplo implementa <xref:Microsoft.Extensions.Caching.SqlServe
 [!code-csharp[](distributed/samples/3.x/DistCacheSample/Startup.cs?name=snippet_AddDistributedSqlServerCache)]
 
 > [!NOTE]
-> Un <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.ConnectionString*> (y, opcionalmente, <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.SchemaName*> y <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.TableName*> ) se almacena normalmente fuera del control de código fuente (por ejemplo, lo almacena el [Administrador secreto](xref:security/app-secrets) o en *appsettings.jsen* / *appSettings. { ENVIRONMENT}. JSON* files). La cadena de conexión puede contener credenciales que deben mantenerse fuera de los sistemas de control de código fuente.
+> Un <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.ConnectionString*> (y, opcionalmente, <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.SchemaName*> y <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.TableName*> ) se almacena normalmente fuera del control de código fuente (por ejemplo, lo almacena el [Administrador secreto](xref:security/app-secrets) o en *appsettings.json* / *appSettings. { ENVIRONMENT}. JSON* files). La cadena de conexión puede contener credenciales que deben mantenerse fuera de los sistemas de control de código fuente.
 
 ### <a name="distributed-redis-cache"></a>Redis Cache distribuido
 
@@ -155,7 +156,7 @@ Cuando se inicia la aplicación de ejemplo, <xref:Microsoft.Extensions.Caching.D
 
 La aplicación de ejemplo inyecta <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> en el `IndexModel` para su uso en la página de índice.
 
-Cada vez que se carga la página de índice, se comprueba la hora almacenada en caché en `OnGetAsync` . Si la hora almacenada en caché no ha expirado, se muestra la hora. Si han transcurrido 20 segundos desde la última vez que se tuvo acceso a la hora almacenada en caché (la última vez que se cargó esta página), la página muestra la *fecha de expiración de la memoria caché*.
+Cada vez que se carga la página de índice, se comprueba la hora almacenada en caché en `OnGetAsync` . Si la hora almacenada en caché no ha expirado, se muestra la hora. Si han transcurrido 20 segundos desde la última vez que se tuvo acceso a la hora almacenada en caché (la última vez que se cargó esta página), la página muestra la *fecha de expiración de la memoria caché* .
 
 Actualice inmediatamente la hora almacenada en caché a la hora actual; para ello, seleccione el botón **restablecer hora de almacenamiento en caché** . El botón desencadena el `OnPostResetCachedTime` método de control.
 
@@ -279,7 +280,7 @@ La aplicación de ejemplo implementa <xref:Microsoft.Extensions.Caching.SqlServe
 [!code-csharp[](distributed/samples/2.x/DistCacheSample/Startup.cs?name=snippet_AddDistributedSqlServerCache)]
 
 > [!NOTE]
-> Un <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.ConnectionString*> (y, opcionalmente, <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.SchemaName*> y <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.TableName*> ) se almacena normalmente fuera del control de código fuente (por ejemplo, lo almacena el [Administrador secreto](xref:security/app-secrets) o en *appsettings.jsen* / *appSettings. { ENVIRONMENT}. JSON* files). La cadena de conexión puede contener credenciales que deben mantenerse fuera de los sistemas de control de código fuente.
+> Un <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.ConnectionString*> (y, opcionalmente, <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.SchemaName*> y <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.TableName*> ) se almacena normalmente fuera del control de código fuente (por ejemplo, lo almacena el [Administrador secreto](xref:security/app-secrets) o en *appsettings.json* / *appSettings. { ENVIRONMENT}. JSON* files). La cadena de conexión puede contener credenciales que deben mantenerse fuera de los sistemas de control de código fuente.
 
 ### <a name="distributed-redis-cache"></a>Redis Cache distribuido
 
@@ -325,7 +326,7 @@ Cuando se inicia la aplicación de ejemplo, <xref:Microsoft.Extensions.Caching.D
 
 La aplicación de ejemplo inyecta <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> en el `IndexModel` para su uso en la página de índice.
 
-Cada vez que se carga la página de índice, se comprueba la hora almacenada en caché en `OnGetAsync` . Si la hora almacenada en caché no ha expirado, se muestra la hora. Si han transcurrido 20 segundos desde la última vez que se tuvo acceso a la hora almacenada en caché (la última vez que se cargó esta página), la página muestra la *fecha de expiración de la memoria caché*.
+Cada vez que se carga la página de índice, se comprueba la hora almacenada en caché en `OnGetAsync` . Si la hora almacenada en caché no ha expirado, se muestra la hora. Si han transcurrido 20 segundos desde la última vez que se tuvo acceso a la hora almacenada en caché (la última vez que se cargó esta página), la página muestra la *fecha de expiración de la memoria caché* .
 
 Actualice inmediatamente la hora almacenada en caché a la hora actual; para ello, seleccione el botón **restablecer hora de almacenamiento en caché** . El botón desencadena el `OnPostResetCachedTime` método de control.
 
@@ -449,7 +450,7 @@ La aplicación de ejemplo implementa <xref:Microsoft.Extensions.Caching.SqlServe
 [!code-csharp[](distributed/samples/2.x/DistCacheSample/Startup.cs?name=snippet_AddDistributedSqlServerCache)]
 
 > [!NOTE]
-> Un <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.ConnectionString*> (y, opcionalmente, <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.SchemaName*> y <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.TableName*> ) se almacena normalmente fuera del control de código fuente (por ejemplo, lo almacena el [Administrador secreto](xref:security/app-secrets) o en *appsettings.jsen* / *appSettings. { ENVIRONMENT}. JSON* files). La cadena de conexión puede contener credenciales que deben mantenerse fuera de los sistemas de control de código fuente.
+> Un <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.ConnectionString*> (y, opcionalmente, <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.SchemaName*> y <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.TableName*> ) se almacena normalmente fuera del control de código fuente (por ejemplo, lo almacena el [Administrador secreto](xref:security/app-secrets) o en *appsettings.json* / *appSettings. { ENVIRONMENT}. JSON* files). La cadena de conexión puede contener credenciales que deben mantenerse fuera de los sistemas de control de código fuente.
 
 ### <a name="distributed-redis-cache"></a>Redis Cache distribuido
 
@@ -501,7 +502,7 @@ Cuando se inicia la aplicación de ejemplo, <xref:Microsoft.Extensions.Caching.D
 
 La aplicación de ejemplo inyecta <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> en el `IndexModel` para su uso en la página de índice.
 
-Cada vez que se carga la página de índice, se comprueba la hora almacenada en caché en `OnGetAsync` . Si la hora almacenada en caché no ha expirado, se muestra la hora. Si han transcurrido 20 segundos desde la última vez que se tuvo acceso a la hora almacenada en caché (la última vez que se cargó esta página), la página muestra la *fecha de expiración de la memoria caché*.
+Cada vez que se carga la página de índice, se comprueba la hora almacenada en caché en `OnGetAsync` . Si la hora almacenada en caché no ha expirado, se muestra la hora. Si han transcurrido 20 segundos desde la última vez que se tuvo acceso a la hora almacenada en caché (la última vez que se cargó esta página), la página muestra la *fecha de expiración de la memoria caché* .
 
 Actualice inmediatamente la hora almacenada en caché a la hora actual; para ello, seleccione el botón **restablecer hora de almacenamiento en caché** . El botón desencadena el `OnPostResetCachedTime` método de control.
 

@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 4/05/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/memory
-ms.openlocfilehash: 7f1d20687f6dd588e125acf3815815c2bcf0cd04
-ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
+ms.openlocfilehash: 6d2a89ec7c64728bc585ad235293f2277f9a66f7
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90722688"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061488"
 ---
 # <a name="memory-management-and-garbage-collection-gc-in-aspnet-core"></a>Administración de memoria y recolección de elementos no utilizados (GC) en ASP.NET Core
 
@@ -137,8 +138,8 @@ En el gráfico anterior se muestra:
 
 El recolector de elementos no utilizados de .NET tiene dos modos diferentes:
 
-* **GC de estación de trabajo**: optimizado para el escritorio.
-* **GC del servidor**. El GC predeterminado para ASP.NET Core aplicaciones. Optimizado para el servidor.
+* **GC de estación de trabajo** : optimizado para el escritorio.
+* **GC del servidor** . El GC predeterminado para ASP.NET Core aplicaciones. Optimizado para el servidor.
 
 El modo GC se puede establecer explícitamente en el archivo de proyecto o en el *runtimeconfig.jsen* el archivo de la aplicación publicada. El marcado siguiente muestra `ServerGarbageCollection` el valor en el archivo de proyecto:
 
@@ -235,7 +236,7 @@ La misma fuga podría producirse en el código de usuario, mediante una de las s
 
 ### <a name="large-objects-heap"></a>Montón de objetos grandes
 
-Los ciclos gratuitos y de asignación de memoria frecuentes pueden fragmentar la memoria, especialmente cuando se asignan grandes fragmentos de memoria. Los objetos se asignan en bloques de memoria contiguos. Para mitigar la fragmentación, cuando el GC libera memoria, intenta desfragmentarla. Este proceso se denomina **compactación**. La compactación implica mover objetos. Mover objetos grandes impone una reducción del rendimiento. Por esta razón, el GC crea una zona de memoria especial para objetos _grandes_ , denominada [montón de objetos grandes](/dotnet/standard/garbage-collection/large-object-heap) (montón). Los objetos que tienen más de 85.000 bytes (aproximadamente 83 KB) son:
+Los ciclos gratuitos y de asignación de memoria frecuentes pueden fragmentar la memoria, especialmente cuando se asignan grandes fragmentos de memoria. Los objetos se asignan en bloques de memoria contiguos. Para mitigar la fragmentación, cuando el GC libera memoria, intenta desfragmentarla. Este proceso se denomina **compactación** . La compactación implica mover objetos. Mover objetos grandes impone una reducción del rendimiento. Por esta razón, el GC crea una zona de memoria especial para objetos _grandes_ , denominada [montón de objetos grandes](/dotnet/standard/garbage-collection/large-object-heap) (montón). Los objetos que tienen más de 85.000 bytes (aproximadamente 83 KB) son:
 
 * Se coloca en el montón.
 * No compactado.
@@ -271,7 +272,7 @@ En el gráfico siguiente se muestra el perfil de memoria de la llamada al `/api/
 
 ![gráfico anterior](memory/_static/loh1.png)
 
-En el gráfico siguiente se muestra el perfil de memoria de llamar al `/api/loh/84976` extremo, asignando *solo un byte más*:
+En el gráfico siguiente se muestra el perfil de memoria de llamar al `/api/loh/84976` extremo, asignando *solo un byte más* :
 
 ![gráfico anterior](memory/_static/loh2.png)
 
@@ -393,7 +394,7 @@ En el gráfico anterior, las recopilaciones de generación 0 se producen aproxim
 
 El código anterior se puede optimizar agrupando el `byte` búfer mediante [ArrayPool \<T> ](xref:System.Buffers.ArrayPool`1). Una instancia estática se reutiliza en todas las solicitudes.
 
-Lo que es diferente con este enfoque es que la API devuelve un objeto agrupado. Esto significa:
+Lo que es diferente con este enfoque es que la API devuelve un objeto agrupado. Esto significa lo siguiente:
 
 * El objeto está fuera del control tan pronto como se devuelve desde el método.
 * No se puede liberar el objeto.

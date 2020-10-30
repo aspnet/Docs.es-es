@@ -6,6 +6,7 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
 ms.date: 11/21/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/version-differences
-ms.openlocfilehash: 965fbb3d8007cb64aaf51d82d87ed7a3a5298e9b
-ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
+ms.openlocfilehash: c4c0ff83cb789e9aa35085496daa461404615726
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90721793"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061215"
 ---
 # <a name="differences-between-aspnet-no-locsignalr-and-aspnet-core-no-locsignalr"></a>Diferencias entre ASP.NET SignalR y ASP.net Core SignalR
 
@@ -38,7 +39,7 @@ ASP.NET Core SignalR no es compatible con clientes o servidores de ASP.net Signa
 | **Paquetes NuGet de cliente** | [Microsoft. AspNet. SignalR . Nº](https://www.nuget.org/packages/Microsoft.AspNet.SignalR.Client/)<br>[Microsoft. AspNet. SignalR . ASPX](https://www.nuget.org/packages/Microsoft.AspNet.SignalR.JS/) | [Microsoft. AspNetCore. SignalR . Nº](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR.Client/) |
 | **Paquete NPM de cliente de JavaScript** | [signalr](https://www.npmjs.com/package/signalr) | [`@microsoft/signalr`](https://www.npmjs.com/package/@microsoft/signalr) |
 | **Cliente de Java** | [Repositorio de github](https://github.com/SignalR/java-client) (desusado)  | Paquete Maven [com. Microsoft. signalr](https://search.maven.org/artifact/com.microsoft.signalr/signalr) |
-| **Tipo de aplicación de servidor** | ASP.NET (System. Web) o Self-host OWIN | ASP.NET Core |
+| **Tipo de aplicación de servidor** | ASP.NET (System. Web) o OWIN Self-Host | ASP.NET Core |
 | **Plataformas de servidor admitidas** | .NET Framework 4,5 o posterior | .NET Core 3,0 o posterior |
 
 ::: moniker-end
@@ -51,7 +52,7 @@ ASP.NET Core SignalR no es compatible con clientes o servidores de ASP.net Signa
 | **Paquetes NuGet de cliente** | [Microsoft. AspNet. SignalR . Nº](https://www.nuget.org/packages/Microsoft.AspNet.SignalR.Client/)<br>[Microsoft. AspNet. SignalR . ASPX](https://www.nuget.org/packages/Microsoft.AspNet.SignalR.JS/) | [Microsoft. AspNetCore. SignalR . Nº](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR.Client/) |
 | **Paquete NPM de cliente de JavaScript** | [signalr](https://www.npmjs.com/package/signalr) | [`@aspnet/signalr`](https://www.npmjs.com/package/@aspnet/signalr) |
 | **Cliente de Java** | [Repositorio de github](https://github.com/SignalR/java-client) (desusado)  | Paquete Maven [com. Microsoft. signalr](https://search.maven.org/artifact/com.microsoft.signalr/signalr) |
-| **Tipo de aplicación de servidor** | ASP.NET (System. Web) o Self-host OWIN | ASP.NET Core |
+| **Tipo de aplicación de servidor** | ASP.NET (System. Web) o OWIN Self-Host | ASP.NET Core |
 | **Plataformas de servidor admitidas** | .NET Framework 4,5 o posterior | .NET Framework 4.6.1 o versiones posteriores<br>.NET Core 2,1 o posterior |
 
 ::: moniker-end
@@ -202,7 +203,8 @@ La dependencia de jQuery se ha quitado, pero los proyectos todavía pueden usar 
 
 ### <a name="internet-explorer-support"></a>Compatibilidad con Internet Explorer
 
-ASP.NET Core SignalR requiere Microsoft Internet Explorer 11 o posterior (ASP.net SignalR compatible con Microsoft Internet Explorer 8 y versiones posteriores).
+ASP.NET Core SignalR admite Microsoft Internet Explorer 11 o posterior, mientras que ASP.net SignalR es compatible con Microsoft Internet Explorer 8 o posterior.
+Puede encontrar más información sobre la compatibilidad con exploradores en [plataformas admitidas](xref:signalr/supported-platforms#javascript-client).
 
 ### <a name="javascript-client-method-syntax"></a>Sintaxis del método de cliente JavaScript
 

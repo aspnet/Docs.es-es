@@ -7,6 +7,7 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 04/06/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/tag-helpers/builtin-th/partial-tag-helper
-ms.openlocfilehash: 4a9f1958cd26bb57fcf3944aabacd57c470fb17e
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 124f23caa4a757f63a80dfea627304204ba2cdca
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88626953"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061436"
 ---
 # <a name="partial-tag-helper-in-aspnet-core"></a>Asistente de etiquetas parciales en ASP.NET Core
 
@@ -48,7 +49,7 @@ Las opciones del asistente de HTML para representar una vista parcial son estas:
 * [`@Html.Partial`](/dotnet/api/microsoft.aspnetcore.mvc.rendering.htmlhelperpartialextensions.partial)
 * [`@Html.RenderPartial`](/dotnet/api/microsoft.aspnetcore.mvc.rendering.htmlhelperpartialextensions.renderpartial)
 
-En los ejemplos de todo este documento se usa el modelo *Product*:
+En los ejemplos de todo este documento se usa el modelo *Product* :
 
 [!code-csharp[](samples/TagHelpersBuiltIn/Models/Product.cs)]
 
@@ -58,7 +59,7 @@ Ahora pasaremos a ver una relación de los atributos del asistente de etiquetas 
 
 El atributo `name` es necesario. Señala el nombre o la ruta de acceso de la vista parcial que se va a representar. Cuando se indica el nombre de una vista parcial, se inicia el proceso de [detección de vista](xref:mvc/views/overview#view-discovery). Este proceso se omite cuando se proporciona una ruta de acceso explícita. Para conocer todos los valores `name` aceptables, consulte [Detección de vistas parciales](xref:mvc/views/partial#partial-view-discovery).
 
-En el siguiente marcado se usa una ruta de acceso explícita, lo que indica que *_ProductPartial.cshtml* debe cargarse desde la carpeta *Shared*. Mediante el atributo [for](#for), se pasa un modelo a la vista parcial para el enlace.
+En el siguiente marcado se usa una ruta de acceso explícita, lo que indica que *_ProductPartial.cshtml* debe cargarse desde la carpeta *Shared* . Mediante el atributo [for](#for), se pasa un modelo a la vista parcial para el enlace.
 
 [!code-cshtml[](samples/TagHelpersBuiltIn/Pages/Product.cshtml?name=snippet_Name)]
 
@@ -66,7 +67,7 @@ En el siguiente marcado se usa una ruta de acceso explícita, lo que indica que 
 
 El atributo `for` asigna una [ModelExpression](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.modelexpression) para que se evalúe según el modelo actual. `ModelExpression` deduce la sintaxis de `@Model.`. Por ejemplo, se puede usar `for="Product"` en lugar de `for="@Model.Product"`. Este comportamiento predeterminado de deducción queda invalidado si se usa el símbolo `@` para definir una expresión insertada.
 
-El siguiente marcado carga *_ProductPartial.cshtml*:
+El siguiente marcado carga *_ProductPartial.cshtml* :
 
 [!code-cshtml[](samples/TagHelpersBuiltIn/Pages/Product.cshtml?name=snippet_For)]
 
@@ -96,7 +97,7 @@ En este ejemplo, el valor de `ViewData["IsNumberReadOnly"]` determina si el camp
 
 ## <a name="migrate-from-an-html-helper"></a>Migración desde un asistente de HTML
 
-Tenga en cuenta el siguiente ejemplo del asistente de HTML asincrónico. Se itera y se muestra una colección de productos. Según el primer parámetro del método `PartialAsync`, se carga la vista parcial *_ProductPartial.cshtml*. Se pasa una instancia del modelo `Product` a la vista parcial para el enlace.
+Tenga en cuenta el siguiente ejemplo del asistente de HTML asincrónico. Se itera y se muestra una colección de productos. Según el primer parámetro del método `PartialAsync`, se carga la vista parcial *_ProductPartial.cshtml* . Se pasa una instancia del modelo `Product` a la vista parcial para el enlace.
 
 [!code-cshtml[](samples/TagHelpersBuiltIn/Pages/Products.cshtml?name=snippet_HtmlHelper&highlight=3)]
 

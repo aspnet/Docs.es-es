@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 03/12/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/ip-safelist
-ms.openlocfilehash: 621be5351acb251335a42f57e8ea670af1b35a87
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: dfc134b97bb0976bc682a53d536cd27785550c7d
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634454"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059668"
 ---
 # <a name="client-ip-safelist-for-aspnet-core"></a>La dirección IP de cliente de la ASP.NET Core
 
@@ -48,7 +49,7 @@ Se permite el acceso si la matriz contiene la dirección IP. De lo contrario, se
 
 En la aplicación de ejemplo, la dirección IP safelist es:
 
-* Definido por la `AdminSafeList` propiedad en el *appsettings.jsen* el archivo.
+* Definido por la `AdminSafeList` propiedad en el *appsettings.json* archivo.
 * Cadena delimitada por signos de punto y coma que puede contener direcciones del [Protocolo de Internet versión 4 (IPv4)](https://wikipedia.org/wiki/IPv4) y del [Protocolo de Internet versión 6 (IPv6)](https://wikipedia.org/wiki/IPv6) .
 
 [!code-json[](ip-safelist/samples/3.x/ClientIpAspNetCore/appsettings.json?range=1-3&highlight=2)]

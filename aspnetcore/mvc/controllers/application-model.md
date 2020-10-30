@@ -5,6 +5,7 @@ description: Obtenga información sobre cómo leer y manipular el modelo de apli
 ms.author: riande
 ms.date: 12/05/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/application-model
-ms.openlocfilehash: f2e86a8607ddd00dc7f4bec36079660f0cd1eea3
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: a7a654eb43c0dbf375af911d8d5353ac4c04a825
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88630294"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060942"
 ---
 # <a name="work-with-the-application-model-in-aspnet-core"></a>Trabajar con el modelo de aplicación en ASP.NET Core
 

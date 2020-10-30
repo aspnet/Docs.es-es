@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 06/12/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,22 +18,22 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/partial
-ms.openlocfilehash: bb75d8b7d78c82c9c32605ac645b8895fdfb78e3
-ms.sourcegitcommit: 74f4a4ddbe3c2f11e2e09d05d2a979784d89d3f5
+ms.openlocfilehash: 01fb87205f7855f0995cbcd135b6b01f15835e3b
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91393657"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060604"
 ---
 # <a name="partial-views-in-aspnet-core"></a>Vistas parciales en ASP.NET Core
 
 Por [Steve Smith](https://ardalis.com/), [Maher JENDOUBI](https://twitter.com/maherjend), [Rick Anderson](https://twitter.com/RickAndMSFT) y [Scott Sauber](https://twitter.com/scottsauber)
 
-Una vista parcial es un [Razor](xref:mvc/views/razor) archivo de marcado (*. cshtml*) sin una [`@page`](xref:mvc/views/razor#page) Directiva que representa la salida HTML *dentro* de otra salida representada de un archivo de marcado.
+Una vista parcial es un [Razor](xref:mvc/views/razor) archivo de marcado ( *. cshtml* ) sin una [`@page`](xref:mvc/views/razor#page) Directiva que representa la salida HTML *dentro* de otra salida representada de un archivo de marcado.
 
 ::: moniker range=">= aspnetcore-2.1"
 
-El término *vista parcial* se usa al desarrollar una aplicación MVC, donde los archivos de marcado se denominan *vistas*, o una Razor aplicación de páginas, donde los archivos de marcado se denominan *páginas*. Este tema hace referencia de forma genérica a las páginas de vistas y páginas de MVC Razor como *archivos de marcado*.
+El término *vista parcial* se usa al desarrollar una aplicación MVC, donde los archivos de marcado se denominan *vistas* , o una Razor aplicación de páginas, donde los archivos de marcado se denominan *páginas* . Este tema hace referencia de forma genérica a las páginas de vistas y páginas de MVC Razor como *archivos de marcado* .
 
 ::: moniker-end
 
@@ -61,7 +62,7 @@ Una vista parcial es un archivo de marcado *. cshtml* sin una [`@page`](xref:mvc
 
 En ASP.NET Core MVC, la clase <xref:Microsoft.AspNetCore.Mvc.ViewResult> de un controlador es capaz de devolver una vista o una vista parcial. En Razor las páginas, un <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel> puede devolver una vista parcial representada como un <xref:Microsoft.AspNetCore.Mvc.PartialViewResult> objeto. La referencia y representación de vistas parciales se describe en la sección [Referencia a una vista parcial](#reference-a-partial-view).
 
-A diferencia de la representación de páginas o vistas de MVC, una vista parcial no ejecuta *_ViewStart.cshtml*. Para más información sobre *_ViewStart.cshtml*, vea <xref:mvc/views/layout>.
+A diferencia de la representación de páginas o vistas de MVC, una vista parcial no ejecuta *_ViewStart.cshtml* . Para más información sobre *_ViewStart.cshtml* , vea <xref:mvc/views/layout>.
 
 Los nombres de archivo de las vistas parciales suelen comenzar con un guión bajo (`_`). Esta convención de nomenclatura no es obligatoria, pero ayuda a diferenciar visualmente las vistas parciales de las vistas y las páginas.
 
@@ -69,11 +70,11 @@ Los nombres de archivo de las vistas parciales suelen comenzar con un guión baj
 
 ::: moniker range="< aspnetcore-2.0"
 
-Una vista parcial es un archivo de marcado *.cshtml* que se mantiene dentro de la carpeta *Vistas*.
+Una vista parcial es un archivo de marcado *.cshtml* que se mantiene dentro de la carpeta *Vistas* .
 
 La clase <xref:Microsoft.AspNetCore.Mvc.ViewResult> de un controlador es capaz de devolver una vista o una vista parcial. La referencia y representación de vistas parciales se describe en la sección [Referencia a una vista parcial](#reference-a-partial-view).
 
-A diferencia de la representación de vistas de MVC, una vista parcial no ejecuta *_ViewStart.cshtml*. Para más información sobre *_ViewStart.cshtml*, vea <xref:mvc/views/layout>.
+A diferencia de la representación de vistas de MVC, una vista parcial no ejecuta *_ViewStart.cshtml* . Para más información sobre *_ViewStart.cshtml* , vea <xref:mvc/views/layout>.
 
 Los nombres de archivo de las vistas parciales suelen comenzar con un guión bajo (`_`). Esta convención de nomenclatura no es obligatoria, pero ayuda a diferenciar visualmente las vistas parciales de las vistas.
 
@@ -85,7 +86,7 @@ Los nombres de archivo de las vistas parciales suelen comenzar con un guión baj
 
 ### <a name="use-a-partial-view-in-a-no-locrazor-pages-pagemodel"></a>Usar una vista parcial en un Razor PageModel de páginas
 
-En ASP.NET Core 2,0 o 2,1, el siguiente método de controlador representa la vista parcial de * \_ AuthorPartialRP. cshtml* en la respuesta:
+En ASP.NET Core 2,0 o 2,1, el siguiente método de controlador representa la vista parcial de *\_ AuthorPartialRP. cshtml* en la respuesta:
 
 ```csharp
 public IActionResult OnGetPartial() =>
@@ -273,7 +274,7 @@ Cuando se hace referencia a una vista parcial por su nombre sin una extensión d
 Las convenciones siguientes se aplican a la detección de la vista parcial:
 
 * Se admiten diferentes vistas parciales con el mismo nombre de archivo cuando las vistas parciales están en carpetas diferentes.
-* Al hacer referencia a una vista parcial por su nombre sin una extensión de archivo y la vista parcial está presente tanto en la carpeta del autor de la llamada como en la carpeta *compartida*, la vista parcial de la carpeta del autor de la llamada proporciona la vista parcial. Si la vista parcial no está presente en la carpeta del autor de la llamada, se proporciona la vista parcial desde la carpeta *compartida*. Las vistas parciales de la carpeta *compartida* se denominan *vistas parciales compartidas* o *vistas parciales predeterminadas*.
+* Al hacer referencia a una vista parcial por su nombre sin una extensión de archivo y la vista parcial está presente tanto en la carpeta del autor de la llamada como en la carpeta *compartida* , la vista parcial de la carpeta del autor de la llamada proporciona la vista parcial. Si la vista parcial no está presente en la carpeta del autor de la llamada, se proporciona la vista parcial desde la carpeta *compartida* . Las vistas parciales de la carpeta *compartida* se denominan *vistas parciales compartidas* o *vistas parciales predeterminadas* .
 * Las vistas parciales se pueden *encadenar* &mdash; una vista parcial puede llamar a otra vista parcial si las llamadas no forman una referencia circular. Las rutas de acceso relativas siempre guardan relación con el archivo actual, no con la raíz ni el elemento primario del archivo.
 
 > [!NOTE]
@@ -299,15 +300,15 @@ Puede pasar un modelo a una vista parcial. El modelo puede ser un objeto persona
 
 **Razor Páginas**
 
-El siguiente marcado de la aplicación de ejemplo proviene de la página *Pages/ArticlesRP/ReadRP.cshtml*. La página contiene dos vistas parciales. La segunda vista parcial se pasa a un modelo y `ViewData` a la vista parcial. La sobrecarga del constructor de `ViewDataDictionary` se usa para pasar un nuevo diccionario `ViewData` a la vez que conserva el diccionario `ViewData` existente.
+El siguiente marcado de la aplicación de ejemplo proviene de la página *Pages/ArticlesRP/ReadRP.cshtml* . La página contiene dos vistas parciales. La segunda vista parcial se pasa a un modelo y `ViewData` a la vista parcial. La sobrecarga del constructor de `ViewDataDictionary` se usa para pasar un nuevo diccionario `ViewData` a la vez que conserva el diccionario `ViewData` existente.
 
 [!code-cshtml[](partial/sample/PartialViewsSample/Pages/ArticlesRP/ReadRP.cshtml?name=snippet_ReadPartialViewRP&highlight=5,15-20)]
 
-*Pages/Shared/_AuthorPartialRP.cshtml* es la primera vista parcial a la que hace referencia el archivo de marcado *ReadRP.cshtml*:
+*Pages/Shared/_AuthorPartialRP.cshtml* es la primera vista parcial a la que hace referencia el archivo de marcado *ReadRP.cshtml* :
 
 [!code-cshtml[](partial/sample/PartialViewsSample/Pages/Shared/_AuthorPartialRP.cshtml)]
 
-*Pages/ArticlesRP/_ArticleSectionRP.cshtml* es la segunda vista parcial a la que hace referencia el archivo de marcado *ReadRP.cshtml*:
+*Pages/ArticlesRP/_ArticleSectionRP.cshtml* es la segunda vista parcial a la que hace referencia el archivo de marcado *ReadRP.cshtml* :
 
 [!code-cshtml[](partial/sample/PartialViewsSample/Pages/ArticlesRP/_ArticleSectionRP.cshtml)]
 
@@ -315,15 +316,15 @@ El siguiente marcado de la aplicación de ejemplo proviene de la página *Pages/
 
 ::: moniker-end
 
-El marcado siguiente de la aplicación de ejemplo muestra la vista *Views/Articles/Read.cshtml*. La vista contiene dos vistas parciales. La segunda vista parcial se pasa a un modelo y `ViewData` a la vista parcial. La sobrecarga del constructor de `ViewDataDictionary` se usa para pasar un nuevo diccionario `ViewData` a la vez que conserva el diccionario `ViewData` existente.
+El marcado siguiente de la aplicación de ejemplo muestra la vista *Views/Articles/Read.cshtml* . La vista contiene dos vistas parciales. La segunda vista parcial se pasa a un modelo y `ViewData` a la vista parcial. La sobrecarga del constructor de `ViewDataDictionary` se usa para pasar un nuevo diccionario `ViewData` a la vez que conserva el diccionario `ViewData` existente.
 
 [!code-cshtml[](partial/sample/PartialViewsSample/Views/Articles/Read.cshtml?name=snippet_ReadPartialView&highlight=5,15-20)]
 
-*Views/Shared/_AuthorPartial.cshtml* es la primera vista parcial a la que hace referencia el archivo de marcado *Read.cshtml*:
+*Views/Shared/_AuthorPartial.cshtml* es la primera vista parcial a la que hace referencia el archivo de marcado *Read.cshtml* :
 
 [!code-cshtml[](partial/sample/PartialViewsSample/Views/Shared/_AuthorPartial.cshtml)]
 
-*Views/Articles/_ArticleSection.cshtml* es la segunda vista parcial a la que hace referencia el archivo de marcado *Read.cshtml*:
+*Views/Articles/_ArticleSection.cshtml* es la segunda vista parcial a la que hace referencia el archivo de marcado *Read.cshtml* :
 
 [!code-cshtml[](partial/sample/PartialViewsSample/Views/Articles/_ArticleSection.cshtml)]
 

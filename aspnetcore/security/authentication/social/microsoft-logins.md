@@ -7,6 +7,7 @@ ms.custom: mvc
 ms.date: 03/19/2020
 monikerRange: '>= aspnetcore-3.0'
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/microsoft-logins
-ms.openlocfilehash: 36341a0e439be57d7da4f787aa6103b92c624e96
-ms.sourcegitcommit: 62cc131969b2379f7a45c286a751e22d961dfbdb
+ms.openlocfilehash: 3161e4f0f735294d69dd51634b424d1ed573e615
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90847590"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060305"
 ---
 # <a name="microsoft-account-external-login-setup-with-aspnet-core"></a>Configuración de inicio de sesión externo de cuenta de Microsoft con ASP.NET Core
 
@@ -36,25 +37,25 @@ Este ejemplo muestra cómo permitir a los usuarios iniciar sesión con su cuenta
 * Agregue el paquete NuGet [Microsoft. AspNetCore. Authentication. MicrosoftAccount](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.MicrosoftAccount/) al proyecto.
 * Vaya a la página [de registros de aplicaciones de Azure portal](https://go.microsoft.com/fwlink/?linkid=2083908) y cree o inicie sesión en un cuenta de Microsoft:
 
-Si no tiene un cuenta de Microsoft, seleccione **crear uno**. Después de iniciar sesión, se le redirigirá a la página **registros de aplicaciones** :
+Si no tiene un cuenta de Microsoft, seleccione **crear uno** . Después de iniciar sesión, se le redirigirá a la página **registros de aplicaciones** :
 
 * Seleccionar **nuevo registro**
-* Escriba un **nombre**.
-* Seleccione una opción para los **tipos de cuenta compatibles**.  <!-- Accounts for any org work with MS domain accounts. Most folks probably want the last option, personal MS accounts. It took 24 hours after setting this up for the keys to work -->
+* Escriba un **nombre** .
+* Seleccione una opción para los **tipos de cuenta compatibles** .  <!-- Accounts for any org work with MS domain accounts. Most folks probably want the last option, personal MS accounts. It took 24 hours after setting this up for the keys to work -->
   * El `MicrosoftAccount` paquete admite los registros de aplicaciones creados con las opciones "cuentas en cualquier directorio de la organización" o "cuentas de cualquier directorio de la organización y cuentas de Microsoft" de forma predeterminada.
   * Para usar otras opciones, establezca `AuthorizationEndpoint` y `TokenEndpoint` los miembros de `MicrosoftAccountOptions` se usan para inicializar la autenticación de la cuenta Microsoft en las direcciones URL que se muestran en la página **puntos de conexión** del registro de la aplicación después de crearla (disponible al hacer clic en puntos de conexión en la página **información general** ).
-* En **URI de redirección**, escriba la dirección URL de desarrollo con `/signin-microsoft` anexado. Por ejemplo, `https://localhost:5001/signin-microsoft`. El esquema de autenticación de Microsoft configurado más adelante en este ejemplo administrará automáticamente las solicitudes en `/signin-microsoft` la ruta para implementar el flujo de OAuth.
-* Seleccione **Registrar**.
+* En **URI de redirección** , escriba la dirección URL de desarrollo con `/signin-microsoft` anexado. Por ejemplo, `https://localhost:5001/signin-microsoft`. El esquema de autenticación de Microsoft configurado más adelante en este ejemplo administrará automáticamente las solicitudes en `/signin-microsoft` la ruta para implementar el flujo de OAuth.
+* Seleccione **Registrar** .
 
 ### <a name="create-client-secret"></a>Creación de un secreto de cliente
 
-* En el panel izquierdo, seleccione **Certificados y secretos**.
-* En **secretos de cliente**, seleccione **nuevo secreto de cliente** .
+* En el panel izquierdo, seleccione **Certificados y secretos** .
+* En **secretos de cliente** , seleccione **nuevo secreto de cliente** .
 
   * Agregue una descripción para el secreto de cliente.
-  * Seleccione el botón **Agregar**.
+  * Seleccione el botón **Agregar** .
 
-* En **secretos de cliente**, copie el valor del secreto de cliente.
+* En **secretos de cliente** , copie el valor del secreto de cliente.
 
 El segmento URI `/signin-microsoft` se establece como la devolución de llamada predeterminada del proveedor de autenticación de Microsoft. Puede cambiar el URI de devolución de llamada predeterminado mientras configura el middleware de autenticación de Microsoft a través de la propiedad [RemoteAuthenticationOptions. CallbackPath](/dotnet/api/microsoft.aspnetcore.authentication.remoteauthenticationoptions.callbackpath) heredada de la clase [MicrosoftAccountOptions](/dotnet/api/microsoft.aspnetcore.authentication.microsoftaccount.microsoftaccountoptions) .
 
@@ -84,7 +85,7 @@ Para obtener más información sobre las opciones de configuración admitidas po
 
 ## <a name="sign-in-with-microsoft-account"></a>Iniciar sesión con Microsoft cuenta
 
-Ejecute la aplicación y haga clic en **iniciar sesión**. Aparece una opción para iniciar sesión con Microsoft. Al hacer clic en Microsoft, se le redirigirá a Microsoft para la autenticación. Después de iniciar sesión con su cuenta de Microsoft, se le pedirá que permita que la aplicación acceda a su información:
+Ejecute la aplicación y haga clic en **iniciar sesión** . Aparece una opción para iniciar sesión con Microsoft. Al hacer clic en Microsoft, se le redirigirá a Microsoft para la autenticación. Después de iniciar sesión con su cuenta de Microsoft, se le pedirá que permita que la aplicación acceda a su información:
 
 Puntee en **sí** y se le redirigirá de nuevo al sitio web donde puede establecer el correo electrónico.
 

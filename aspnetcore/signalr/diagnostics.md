@@ -7,6 +7,7 @@ ms.author: anurse
 ms.custom: devx-track-csharp, signalr, devx-track-js
 ms.date: 06/12/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/diagnostics
-ms.openlocfilehash: 890359c9e9f6c3c60f3105124f52c66b09a8a4fb
-ms.sourcegitcommit: 2e3a967331b2c69f585dd61e9ad5c09763615b44
+ms.openlocfilehash: 6e5e9d866a1e03e69856cc63dcfe30284048dd6d
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92690672"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061319"
 ---
 # <a name="logging-and-diagnostics-in-aspnet-core-no-locsignalr"></a>Registro y diagnósticos en ASP.NET Core SignalR
 
@@ -43,7 +44,7 @@ SignalR utiliza dos categorías de registrador:
 * `Microsoft.AspNetCore.SignalR`: Para los registros relacionados con los protocolos del concentrador, la activación de los concentradores, la invocación de métodos y otras actividades relacionadas con el concentrador.
 * `Microsoft.AspNetCore.Http.Connections`: Para registros relacionados con transportes, como WebSockets, sondeos largos, eventos de Server-Sent e infraestructura de bajo nivel SignalR .
 
-Para habilitar los registros detallados de SignalR , configure los dos prefijos anteriores en el `Debug` nivel del *appsettings.jsen* el archivo agregando los siguientes elementos a la `LogLevel` subsección de `Logging` :
+Para habilitar los registros detallados de SignalR , configure los dos prefijos anteriores en el `Debug` nivel del *appsettings.json* archivo agregando los siguientes elementos a la `LogLevel` subsección de `Logging` :
 
 [!code-json[](diagnostics/logging-config.json?highlight=7-8)]
 
@@ -225,7 +226,7 @@ Métricas es una representación de medidas de datos a lo largo de intervalos de
 
 SignalR las métricas del servidor se indican en el <xref:Microsoft.AspNetCore.Http.Connections> origen del evento.
 
-| Nombre                    | Descripción                 |
+| NOMBRE                    | Descripción                 |
 |-------------------------|-----------------------------|
 | `connections-started`   | Conexiones totales iniciadas   |
 | `connections-stopped`   | Conexiones totales detenidas   |

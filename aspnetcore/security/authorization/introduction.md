@@ -5,6 +5,7 @@ description: Conozca los aspectos básicos de la autorización y cómo funciona 
 ms.author: riande
 ms.date: 10/14/2016
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authorization/introduction
-ms.openlocfilehash: 7d7570ead1365588fd582d9bea364685da29a576
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 8afee7d8bc6b7ad71154916f4a41a2b417b24f9a
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634441"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060253"
 ---
 # <a name="introduction-to-authorization-in-aspnet-core"></a>Introducción a la autorización en ASP.NET Core
 

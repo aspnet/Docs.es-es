@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 03/18/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/tag-helpers/intro
-ms.openlocfilehash: 345d20494111b808dac9678637de060169730a53
-ms.sourcegitcommit: f09407d128634d200c893bfb1c163e87fa47a161
+ms.openlocfilehash: 781365d99c6d36d8abaec9681128ba712db8cb88
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88865357"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060669"
 ---
 # <a name="tag-helpers-in-aspnet-core"></a>Asistentes de etiquetas en ASP.NET Core
 
@@ -75,13 +76,13 @@ El ámbito de los asistentes de etiquetas se controla mediante una combinación 
 
 ### <a name="addtaghelper-makes-tag-helpers-available"></a>`@addTagHelper` hace que los asistentes de etiquetas estén disponibles
 
-Si crea una aplicación web de ASP.NET Core denominada *AuthoringTagHelpers*, el siguiente archivo *Views/_ViewImports.cshtml* se agregará al proyecto:
+Si crea una aplicación web de ASP.NET Core denominada *AuthoringTagHelpers* , el siguiente archivo *Views/_ViewImports.cshtml* se agregará al proyecto:
 
 [!code-cshtml[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImportsCopy.cshtml?highlight=2&range=2-3)]
 
-La directiva `@addTagHelper` hace que los asistentes de etiquetas estén disponibles en la vista. En este caso, el archivo de vista es *Pages/_ViewImports.cshtml*, que heredan de forma predeterminada todos los archivos contenidos en la carpeta *Pages* y sus subcarpetas, lo que hace que los asistentes de etiquetas estén disponibles. El código anterior usa la sintaxis de comodines ("\*") para especificar que todas los asistentes de etiquetas del ensamblado especificado (*Microsoft.AspNetCore.Mvc.TagHelpers*) estarán disponibles para todos los archivos de vista del directorio o subdirectorio *Views*. El primer parámetro después de `@addTagHelper` especifica los asistentes de etiquetas que se van a cargar (usamos "\*" para todas los asistentes de etiquetas), y el segundo parámetro ("Microsoft.AspNetCore.Mvc.TagHelpers") especifica el ensamblado que contiene los asistentes de etiquetas. *Microsoft.AspNetCore.Mvc.TagHelpers* es el ensamblado para los asistentes de etiquetas integradas de ASP.NET Core.
+La directiva `@addTagHelper` hace que los asistentes de etiquetas estén disponibles en la vista. En este caso, el archivo de vista es *Pages/_ViewImports.cshtml* , que heredan de forma predeterminada todos los archivos contenidos en la carpeta *Pages* y sus subcarpetas, lo que hace que los asistentes de etiquetas estén disponibles. El código anterior usa la sintaxis de comodines ("\*") para especificar que todas los asistentes de etiquetas del ensamblado especificado ( *Microsoft.AspNetCore.Mvc.TagHelpers* ) estarán disponibles para todos los archivos de vista del directorio o subdirectorio *Views* . El primer parámetro después de `@addTagHelper` especifica los asistentes de etiquetas que se van a cargar (usamos "\*" para todas los asistentes de etiquetas), y el segundo parámetro ("Microsoft.AspNetCore.Mvc.TagHelpers") especifica el ensamblado que contiene los asistentes de etiquetas. *Microsoft.AspNetCore.Mvc.TagHelpers* es el ensamblado para los asistentes de etiquetas integradas de ASP.NET Core.
 
-Para exponer todas los asistentes de etiquetas de este proyecto (que crea un ensamblado denominado *AuthoringTagHelpers*), use lo siguiente:
+Para exponer todas los asistentes de etiquetas de este proyecto (que crea un ensamblado denominado *AuthoringTagHelpers* ), use lo siguiente:
 
 [!code-cshtml[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImportsCopy.cshtml?highlight=3)]
 
@@ -93,7 +94,7 @@ Si el proyecto contiene un asistente `EmailTagHelper` con el espacio de nombres 
 @addTagHelper AuthoringTagHelpers.TagHelpers.EmailTagHelper, AuthoringTagHelpers
 ```
 
-Para agregar un asistente de etiquetas a una vista con un FQN, agregue primero el FQN (`AuthoringTagHelpers.TagHelpers.EmailTagHelper`) y, después, el nombre del ensamblado (*AuthoringTagHelpers*). La mayoría de los desarrolladores prefiere usar la sintaxis de comodines "\*". La sintaxis de comodines permite insertar el carácter comodín "\*" como sufijo en un FQN. Por ejemplo, cualquiera de las siguientes directivas incorporará `EmailTagHelper`:
+Para agregar un asistente de etiquetas a una vista con un FQN, agregue primero el FQN (`AuthoringTagHelpers.TagHelpers.EmailTagHelper`) y, después, el nombre del ensamblado ( *AuthoringTagHelpers* ). La mayoría de los desarrolladores prefiere usar la sintaxis de comodines "\*". La sintaxis de comodines permite insertar el carácter comodín "\*" como sufijo en un FQN. Por ejemplo, cualquiera de las siguientes directivas incorporará `EmailTagHelper`:
 
 ```cshtml
 @addTagHelper AuthoringTagHelpers.TagHelpers.E*, AuthoringTagHelpers
@@ -106,11 +107,11 @@ Como se mencionó anteriormente, la adición de la `@addTagHelper` Directiva al 
 
 ### <a name="removetaghelper-removes-tag-helpers"></a>`@removeTagHelper` quita los asistentes de etiquetas
 
-`@removeTagHelper` tiene los mismos parámetros que `@addTagHelper`, y quita un asistente de etiquetas que se ha agregado anteriormente. Por ejemplo, si se aplica `@removeTagHelper` a una vista específica, se quita de la vista el asistente de etiquetas especificada. Si se usa `@removeTagHelper` en un archivo *Views/Folder/_ViewImports.cshtml*, se quita el asistente de etiquetas especificada de todas las vistas de *Folder*.
+`@removeTagHelper` tiene los mismos parámetros que `@addTagHelper`, y quita un asistente de etiquetas que se ha agregado anteriormente. Por ejemplo, si se aplica `@removeTagHelper` a una vista específica, se quita de la vista el asistente de etiquetas especificada. Si se usa `@removeTagHelper` en un archivo *Views/Folder/_ViewImports.cshtml* , se quita el asistente de etiquetas especificada de todas las vistas de *Folder* .
 
 ### <a name="controlling-tag-helper-scope-with-the-_viewimportscshtml-file"></a>Controlar el ámbito del asistente de etiquetas con el archivo *_ViewImports.cshtml*
 
-Si agrega un archivo *_ViewImports.cshtml* a cualquier carpeta de vistas, el motor de vistas aplica las directivas de ese archivo y del archivo *Views/_ViewImports.cshtml*. Si agregara un archivo *Views/Home/_ViewImports.cshtml* vacío para las vistas de *Home*, no se produciría ningún cambio porque el archivo *_ViewImports.cshtml* se suma. Todas las directivas `@addTagHelper` que agregue al archivo *Views/Home/_ViewImports.cshtml* (que no estén en el archivo predeterminado *Views/_ViewImports.cshtml*) expondrán esos asistentes de etiquetas únicamente a las vistas de la carpeta *Home*.
+Si agrega un archivo *_ViewImports.cshtml* a cualquier carpeta de vistas, el motor de vistas aplica las directivas de ese archivo y del archivo *Views/_ViewImports.cshtml* . Si agregara un archivo *Views/Home/_ViewImports.cshtml* vacío para las vistas de *Home* , no se produciría ningún cambio porque el archivo *_ViewImports.cshtml* se suma. Todas las directivas `@addTagHelper` que agregue al archivo *Views/Home/_ViewImports.cshtml* (que no estén en el archivo predeterminado *Views/_ViewImports.cshtml* ) expondrán esos asistentes de etiquetas únicamente a las vistas de la carpeta *Home* .
 
 <a name="opt-out"></a>
 
@@ -128,7 +129,7 @@ Debe aplicar el carácter de exclusión del asistente de etiquetas en la etiquet
 
 ### <a name="using-taghelperprefix-to-make-tag-helper-usage-explicit"></a>Usar `@tagHelperPrefix` para hacer explícito el uso del asistente de etiquetas
 
-La directiva `@tagHelperPrefix` permite especificar una cadena de prefijo de etiqueta para habilitar la compatibilidad con el asistente de etiquetas y hacer explícito su uso. Por ejemplo, podría agregar el marcado siguiente al archivo *Views/_ViewImports.cshtml*:
+La directiva `@tagHelperPrefix` permite especificar una cadena de prefijo de etiqueta para habilitar la compatibilidad con el asistente de etiquetas y hacer explícito su uso. Por ejemplo, podría agregar el marcado siguiente al archivo *Views/_ViewImports.cshtml* :
 
 ```cshtml
 @tagHelperPrefix th:
@@ -244,7 +245,7 @@ Se muestra con un fondo gris. La mayor parte del marcado en la vista de registro
 
 El marcado es mucho más ordenado y más fácil de leer, modificar y mantener que en el método de asistentes de HTML. El código de C# se reduce a la cantidad mínima que el servidor necesita conocer. En el editor de Visual Studio se muestra el marcado de destino de un asistente de etiquetas en una fuente distinta.
 
-Observe el grupo *Email*:
+Observe el grupo *Email* :
 
 [!code-cshtml[](intro/sample/Register.cshtml?range=12-18)]
 
@@ -272,7 +273,7 @@ El editor de Visual Studio le ayuda a escribir **todo** el marcado en el método
 
 ## <a name="customizing-the-tag-helper-element-font"></a>Personalizar la fuente de elemento de asistentes de etiquetas
 
-Puede personalizar la fuente y la coloración desde **herramientas**  >  **Opciones**  >  **entorno**  >  **fuentes y colores**:
+Puede personalizar la fuente y la coloración desde **herramientas**  >  **Opciones**  >  **entorno**  >  **fuentes y colores** :
 
 ![imagen](intro/_static/fontoptions2.png)
 

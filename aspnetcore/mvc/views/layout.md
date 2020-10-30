@@ -5,6 +5,7 @@ description: Obtenga información sobre cómo usar diseños comunes, compartir d
 ms.author: riande
 ms.date: 07/30/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/layout
-ms.openlocfilehash: 308e567e0480f83972ab7a55c7b957af83a164fd
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 502df268e7f5f33acfffccd5ec0bd65267fa12da
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88630697"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060981"
 ---
 # <a name="layout-in-aspnet-core"></a>Diseño en ASP.NET Core
 
@@ -46,7 +47,7 @@ La mayoría de las aplicaciones web tienen un diseño común que ofrece al usuar
 
 Las estructuras HTML comunes, como scripts y hojas de estilo, también se usan con frecuencia en muchas páginas dentro de una aplicación. Todos estos elementos compartidos se pueden definir en un archivo de *diseño* , al que se puede hacer referencia a través de cualquier vista usada dentro de la aplicación. Los diseños reducen el código duplicado en las vistas.
 
-Por convención, el diseño predeterminado para una aplicación ASP.NET Core se denomina *_Layout.cshtml*. Los archivos de diseño para los nuevos proyectos de ASP.NET Core creados con las plantillas son:
+Por convención, el diseño predeterminado para una aplicación ASP.NET Core se denomina *_Layout.cshtml* . Los archivos de diseño para los nuevos proyectos de ASP.NET Core creados con las plantillas son:
 
 * Razor Páginas: *pages/Shared/_Layout. cshtml*
 
@@ -68,7 +69,7 @@ Razor las vistas tienen una `Layout` propiedad. Las vistas individuales especifi
 
 [!code-cshtml[](../../common/samples/WebApplication1/Views/_ViewStart.cshtml?highlight=2)]
 
-El diseño especificado puede usar una ruta de acceso completa (por ejemplo, */Pages/Shared/_Layout.cshtml* o */Views/Shared/_Layout.cshtml*) o un nombre parcial (ejemplo: `_Layout`). Cuando se proporciona un nombre parcial, el Razor motor de vistas busca el archivo de diseño mediante su proceso de detección estándar. Primero se busca la carpeta donde existe el método de controlador (o controlador), seguida de la carpeta *Shared*. Este proceso de detección es idéntico al que se usa para detectar [vistas parciales](xref:mvc/views/partial#partial-view-discovery).
+El diseño especificado puede usar una ruta de acceso completa (por ejemplo, */Pages/Shared/_Layout.cshtml* o */Views/Shared/_Layout.cshtml* ) o un nombre parcial (ejemplo: `_Layout`). Cuando se proporciona un nombre parcial, el Razor motor de vistas busca el archivo de diseño mediante su proceso de detección estándar. Primero se busca la carpeta donde existe el método de controlador (o controlador), seguida de la carpeta *Shared* . Este proceso de detección es idéntico al que se usa para detectar [vistas parciales](xref:mvc/views/partial#partial-view-discovery).
 
 De forma predeterminada, todos los diseños deben llamar a `RenderBody`. Cada vez que se realiza la llamada a `RenderBody`, se representa el contenido de la vista.
 
@@ -96,7 +97,7 @@ Una `@section` definición de ejemplo en la Razor vista páginas:
 
 En el código anterior, *scripts/main.js* se agrega a la sección `scripts` en una página o vista. Es posible que otras páginas o vistas de la misma aplicación no necesiten este script y no definan una sección de script.
 
-El marcado siguiente usa el [asistente de etiquetas parcial](xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper) para representar *_ValidationScriptsPartial.cshtml*:
+El marcado siguiente usa el [asistente de etiquetas parcial](xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper) para representar *_ValidationScriptsPartial.cshtml* :
 
 ```html
 @section Scripts {
@@ -136,7 +137,7 @@ Archivo `_ViewImports.cshtml` de ejemplo:
 
 [!code-cshtml[](../../common/samples/WebApplication1/Views/_ViewImports.cshtml)]
 
-El archivo *_ViewImports.cshtml* para una aplicación ASP.NET Core MVC normalmente se coloca en la carpeta *Pages* (o *Views*). Un archivo *_ViewImports.cshtml* puede colocarse dentro de cualquier carpeta, en cuyo caso solo se aplicará a páginas o vistas dentro de esa carpeta y sus subcarpetas. Los archivos `_ViewImports` se procesan a partir del nivel de raíz y, después, para cada carpeta que llevó a la ubicación de la propia página o vista. La configuración `_ViewImports` especificada en el nivel de raíz se puede reemplazar en el nivel de carpeta.
+El archivo *_ViewImports.cshtml* para una aplicación ASP.NET Core MVC normalmente se coloca en la carpeta *Pages* (o *Views* ). Un archivo *_ViewImports.cshtml* puede colocarse dentro de cualquier carpeta, en cuyo caso solo se aplicará a páginas o vistas dentro de esa carpeta y sus subcarpetas. Los archivos `_ViewImports` se procesan a partir del nivel de raíz y, después, para cada carpeta que llevó a la ubicación de la propia página o vista. La configuración `_ViewImports` especificada en el nivel de raíz se puede reemplazar en el nivel de carpeta.
 
 Por ejemplo, supongamos que:
 
@@ -158,12 +159,12 @@ Si hay varios *_ViewImports.cshtml* en la jerarquía de archivos, el comportamie
 
 ## <a name="running-code-before-each-view"></a>Ejecutar código antes de cada vista
 
-El código que debe ejecutarse antes de cada vista o página se debería colocar en el archivo *_ViewStart.cshtml*. Por convención, el archivo *_ViewStart.cshtml* se encuentra en la carpeta *Pages* (o *Views*). Las instrucciones que aparecen en *_ViewStart.cshtml* se ejecutan antes de cada vista completa (no los diseños ni las vistas parciales). Al igual que [ViewImports.cshtml](xref:mvc/views/layout#viewimports), *_ViewStart.cshtml* tiene una estructura jerárquica. Si se define un archivo *_ViewStart.cshtml* en la carpeta de vista o de página, se ejecutará después del que esté definido en la raíz de la carpeta *Pages* (o *Views*) (si existe).
+El código que debe ejecutarse antes de cada vista o página se debería colocar en el archivo *_ViewStart.cshtml* . Por convención, el archivo *_ViewStart.cshtml* se encuentra en la carpeta *Pages* (o *Views* ). Las instrucciones que aparecen en *_ViewStart.cshtml* se ejecutan antes de cada vista completa (no los diseños ni las vistas parciales). Al igual que [ViewImports.cshtml](xref:mvc/views/layout#viewimports), *_ViewStart.cshtml* tiene una estructura jerárquica. Si se define un archivo *_ViewStart.cshtml* en la carpeta de vista o de página, se ejecutará después del que esté definido en la raíz de la carpeta *Pages* (o *Views* ) (si existe).
 
 Un archivo *_ViewStart.cshtml* de ejemplo:
 
 [!code-cshtml[](../../common/samples/WebApplication1/Views/_ViewStart.cshtml)]
 
-El archivo anterior especifica que todas las vistas usarán el diseño *_Layout.cshtml*.
+El archivo anterior especifica que todas las vistas usarán el diseño *_Layout.cshtml* .
 
-*_ViewStart.cshtml* y *_ViewImports.cshtml* normalmente **no** se colocan en la carpeta */Pages/Shared* (o * /Views/Shared*). Las versiones de nivel de aplicación de estos archivos deben colocarse directamente en la carpeta */Pages* (o */Views*).
+*_ViewStart.cshtml* y *_ViewImports.cshtml* normalmente **no** se colocan en la carpeta */Pages/Shared* (o */Views/Shared* ). Las versiones de nivel de aplicación de estos archivos deben colocarse directamente en la carpeta */Pages* (o */Views* ).

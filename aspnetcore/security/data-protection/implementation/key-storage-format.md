@@ -5,6 +5,7 @@ description: Obtenga información sobre los detalles de implementación del form
 ms.author: riande
 ms.date: 04/08/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/data-protection/implementation/key-storage-format
-ms.openlocfilehash: daf86d3e3357d42ddad74d5e2f06e00e0e24db07
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 4a8503964c98d1828dc9d02640a7621b370e679c
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88631997"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060149"
 ---
 # <a name="key-storage-format-in-aspnet-core"></a>Formato de almacenamiento de claves en ASP.NET Core
 
@@ -34,7 +35,7 @@ Los objetos se almacenan en reposo en representación XML. El directorio predete
 
 ## <a name="the-key-element"></a>El elemento \<key>
 
-Existen claves como objetos de nivel superior en el repositorio de claves. Por las claves de Convención tienen la clave de nombre de archivo **-{GUID}. XML**, donde {GUID} es el identificador de la clave. Cada archivo de este tipo contiene una sola clave. El formato del archivo es el siguiente.
+Existen claves como objetos de nivel superior en el repositorio de claves. Por las claves de Convención tienen la clave de nombre de archivo **-{GUID}. XML** , donde {GUID} es el identificador de la clave. Cada archivo de este tipo contiene una sola clave. El formato del archivo es el siguiente.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -77,7 +78,7 @@ El formato determinado del \<descriptor> elemento depende de la implementación 
 
 ## <a name="the-encryptedsecret-element"></a>El elemento \<encryptedSecret>
 
-Un elemento ** &lt; encryptedSecret &gt; ** que contiene el formato cifrado del material de clave secreta puede estar presente si [está habilitado el cifrado de secretos en reposo](xref:security/data-protection/implementation/key-encryption-at-rest). El atributo `decryptorType` es el nombre calificado con el ensamblado de un tipo que implementa [IXmlDecryptor](/dotnet/api/microsoft.aspnetcore.dataprotection.xmlencryption.ixmldecryptor). Este tipo es responsable de leer el elemento ** &lt; encryptedKey &gt; ** interno y descifrarlo para recuperar el texto sin formato original.
+Un elemento **&lt; encryptedSecret &gt;** que contiene el formato cifrado del material de clave secreta puede estar presente si [está habilitado el cifrado de secretos en reposo](xref:security/data-protection/implementation/key-encryption-at-rest). El atributo `decryptorType` es el nombre calificado con el ensamblado de un tipo que implementa [IXmlDecryptor](/dotnet/api/microsoft.aspnetcore.dataprotection.xmlencryption.ixmldecryptor). Este tipo es responsable de leer el elemento **&lt; encryptedKey &gt;** interno y descifrarlo para recuperar el texto sin formato original.
 
 Al igual que con `<descriptor>` , el formato determinado del `<encryptedSecret>` elemento depende del mecanismo de cifrado en reposo en uso. En el ejemplo anterior, la clave maestra se cifra mediante la DPAPI de Windows según el comentario.
 

@@ -5,6 +5,7 @@ description: Conozca ASP.NET Core MVC, un marco completo para crear aplicaciones
 ms.author: riande
 ms.date: 02/12/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/overview
-ms.openlocfilehash: 29701506d9f6c1ff90081a548d524bc0deb65cda
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: c55421efa1fd559f462549bfaceb794d4a9c35b8
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633622"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059317"
 ---
 # <a name="overview-of-aspnet-core-mvc"></a>Información general de ASP.NET Core MVC
 
@@ -80,7 +81,7 @@ ASP.NET Core MVC incluye lo siguiente:
 * [Capacidad de prueba](#testability)
 * [Razor motor de vista](#razor-view-engine)
 * [Vistas fuertemente tipadas](#strongly-typed-views)
-* [Aplicaciones auxiliares de etiquetas](#tag-helpers)
+* [Asistentes de etiquetas](#tag-helpers)
 * [Ver componentes](#view-components)
 
 ### <a name="routing"></a>Enrutamiento
@@ -268,5 +269,5 @@ Para obtener más información, vea <xref:mvc/compatibility-version>.
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
-* [MyTest. AspNetCore. Mvc: biblioteca de pruebas fluidas para ASP.net Core MVC](https://github.com/ivaylokenov/MyTested.AspNetCore.Mvc): biblioteca de pruebas unitarias fuertemente tipadas, que proporciona una interfaz fluida para probar MVC y aplicaciones de API Web. (*Microsoft no realiza su mantenimiento ni su soporte técnico.* )
+* [MyTest. AspNetCore. Mvc: biblioteca de pruebas fluidas para ASP.net Core MVC](https://github.com/ivaylokenov/MyTested.AspNetCore.Mvc): biblioteca de pruebas unitarias fuertemente tipadas, que proporciona una interfaz fluida para probar MVC y aplicaciones de API Web. ( *Microsoft no realiza su mantenimiento ni su soporte técnico.* )
 * <xref:blazor/components/integrate-components-into-razor-pages-and-mvc-apps>

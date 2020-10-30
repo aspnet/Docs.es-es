@@ -6,6 +6,7 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 11/08/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authorization/views
-ms.openlocfilehash: 775ebdffe2b0753de18bf07d9ff1193235a45b17
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: b3d6e595aa08208f2bf9e95d7070cf9c24802b62
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88629891"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061332"
 ---
 # <a name="view-based-authorization-in-aspnet-core-mvc"></a>Autorización basada en vistas en ASP.NET Core MVC
 
@@ -57,4 +58,4 @@ En algunos casos, el recurso será el modelo de vista. Invoque `AuthorizeAsync` 
 En el código anterior, el modelo se pasa como un recurso que debería tener en cuenta la evaluación de la Directiva.
 
 > [!WARNING]
-> No se base en la alternancia de la visibilidad de los elementos de la interfaz de usuario de la aplicación como la única comprobación de autorización. Ocultar un elemento de la interfaz de usuario puede no impedir completamente el acceso a su acción de controlador asociada. Por ejemplo, considere el botón en el fragmento de código anterior. Un usuario puede invocar el `Edit` método de acción si sabe que la dirección URL relativa del recurso es */Document/Edit/1*. Por esta razón, el `Edit` método de acción debe realizar su propia comprobación de autorización.
+> No se base en la alternancia de la visibilidad de los elementos de la interfaz de usuario de la aplicación como la única comprobación de autorización. Ocultar un elemento de la interfaz de usuario puede no impedir completamente el acceso a su acción de controlador asociada. Por ejemplo, considere el botón en el fragmento de código anterior. Un usuario puede invocar el `Edit` método de acción si sabe que la dirección URL relativa del recurso es */Document/Edit/1* . Por esta razón, el `Edit` método de acción debe realizar su propia comprobación de autorización.

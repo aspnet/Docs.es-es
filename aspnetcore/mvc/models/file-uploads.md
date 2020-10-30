@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/21/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/models/file-uploads
-ms.openlocfilehash: 6ff78b26e8e2363cf6c54ebb2a392f390fb2995c
-ms.sourcegitcommit: cd412a44f26cb416ceb348fc0a1ccc9a6e9ca73e
+ms.openlocfilehash: 14561bace565c104d0a9c926cad3105c4865e72a
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88720284"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061176"
 ---
 # <a name="upload-files-in-aspnet-core"></a>Carga de archivos en ASP.NET Core
 
@@ -35,7 +36,7 @@ ASP.NET Core admite la carga de uno o varios archivos mediante el enlace de mod
 
 [Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
-## <a name="security-considerations"></a>Consideraciones de seguridad
+## <a name="security-considerations"></a>Consideraciones sobre la seguridad
 
 Tenga precaución al proporcionar a los usuarios la capacidad de cargar archivos en un servidor. Es posible que los atacantes intenten lo siguiente:
 
@@ -124,7 +125,7 @@ El streaming de archivos grandes se describe en la sección [Carga de archivos d
 
 Para cargar archivos pequeños, se puede usar un formulario de varias partes o construir una solicitud POST con JavaScript.
 
-En el ejemplo siguiente se muestra el uso de un Razor formulario de páginas para cargar un único archivo (*pages/BufferedSingleFileUploadPhysical. cshtml* en la aplicación de ejemplo):
+En el ejemplo siguiente se muestra el uso de un Razor formulario de páginas para cargar un único archivo ( *pages/BufferedSingleFileUploadPhysical. cshtml* en la aplicación de ejemplo):
 
 ```cshtml
 <form enctype="multipart/form-data" method="post">
@@ -435,7 +436,7 @@ El método `StreamingController.UploadDatabase` completo para streaming a una ba
 
 [!code-csharp[](file-uploads/samples/3.x/SampleApp/Controllers/StreamingController.cs?name=snippet_UploadDatabase)]
 
-`MultipartRequestHelper` (*Utilities/MultipartRequestHelper.cs*):
+`MultipartRequestHelper` ( *Utilities/MultipartRequestHelper.cs* ):
 
 [!code-csharp[](file-uploads/samples/3.x/SampleApp/Utilities/MultipartRequestHelper.cs)]
 
@@ -447,7 +448,7 @@ En la aplicación de ejemplo, las comprobaciones de validación las controla `Fi
 
 ## <a name="validation"></a>Validación
 
-La clase `FileHelpers` de la aplicación de ejemplo muestra varias comprobaciones de cargas de archivos de streaming y <xref:Microsoft.AspNetCore.Http.IFormFile> almacenado en búfer. Para procesar cargas de archivos almacenadas en búfer de <xref:Microsoft.AspNetCore.Http.IFormFile> en la aplicación de ejemplo, consulte el método `ProcessFormFile` en el archivo *Utilities/FileHelpers.cs*. Para procesar archivos de streaming, consulte el método `ProcessStreamedFile` en el mismo archivo.
+La clase `FileHelpers` de la aplicación de ejemplo muestra varias comprobaciones de cargas de archivos de streaming y <xref:Microsoft.AspNetCore.Http.IFormFile> almacenado en búfer. Para procesar cargas de archivos almacenadas en búfer de <xref:Microsoft.AspNetCore.Http.IFormFile> en la aplicación de ejemplo, consulte el método `ProcessFormFile` en el archivo *Utilities/FileHelpers.cs* . Para procesar archivos de streaming, consulte el método `ProcessStreamedFile` en el mismo archivo.
 
 > [!WARNING]
 > Los métodos de procesamiento de validación mostrados en la aplicación de ejemplo no examinan el contenido de los archivos cargados. En la mayoría de los escenarios de producción, se usa una API de analizador de virus/malware en el archivo antes de que el archivo esté disponible para los usuarios u otros sistemas.
@@ -459,7 +460,7 @@ La clase `FileHelpers` de la aplicación de ejemplo muestra varias comprobacione
 >
 > **No implemente nunca de manera indiscriminada el código de seguridad en una aplicación sin abordar estos requisitos.**
 
-### <a name="content-validation"></a>Validación del contenido
+### <a name="content-validation"></a>Validación de contenido
 
 **Use una API de detección de virus/malware de terceros en el contenido cargado.**
 
@@ -533,7 +534,7 @@ Muchas implementaciones deben incluir una comprobación de que el archivo existe
 
 Limite el tamaño de los archivos cargados.
 
-En la aplicación de ejemplo, el tamaño del archivo está limitado a 2 MB (se indica en bytes). El límite se proporciona a través de [Configuración](xref:fundamentals/configuration/index) del archivo *appsettings.json*:
+En la aplicación de ejemplo, el tamaño del archivo está limitado a 2 MB (se indica en bytes). El límite se proporciona a través de la [configuración](xref:fundamentals/configuration/index) del *appsettings.json* archivo:
 
 ```json
 {
@@ -724,7 +725,7 @@ El límite de solicitud predeterminado ( `maxAllowedContentLength` ) es de 30 mi
 
 La `maxAllowedContentLength` configuración solo se aplica a IIS. Para obtener más información, consulte [límites `<requestLimits>` de solicitudes ](/iis/configuration/system.webServer/security/requestFiltering/requestLimits/).
 
-## <a name="troubleshoot"></a>Solucionar problemas
+## <a name="troubleshoot"></a>Solución de problemas
 
 Aquí incluimos algunos problemas comunes que pueden surgir al cargar archivos, así como sus posibles soluciones.
 
@@ -759,7 +760,7 @@ ASP.NET Core admite la carga de uno o varios archivos mediante el enlace de mod
 
 [Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
-## <a name="security-considerations"></a>Consideraciones de seguridad
+## <a name="security-considerations"></a>Consideraciones sobre la seguridad
 
 Tenga precaución al proporcionar a los usuarios la capacidad de cargar archivos en un servidor. Es posible que los atacantes intenten lo siguiente:
 
@@ -848,7 +849,7 @@ El streaming de archivos grandes se describe en la sección [Carga de archivos d
 
 Para cargar archivos pequeños, se puede usar un formulario de varias partes o construir una solicitud POST con JavaScript.
 
-En el ejemplo siguiente se muestra el uso de un Razor formulario de páginas para cargar un único archivo (*pages/BufferedSingleFileUploadPhysical. cshtml* en la aplicación de ejemplo):
+En el ejemplo siguiente se muestra el uso de un Razor formulario de páginas para cargar un único archivo ( *pages/BufferedSingleFileUploadPhysical. cshtml* en la aplicación de ejemplo):
 
 ```cshtml
 <form enctype="multipart/form-data" method="post">
@@ -1159,7 +1160,7 @@ El método `StreamingController.UploadDatabase` completo para streaming a una ba
 
 [!code-csharp[](file-uploads/samples/3.x/SampleApp/Controllers/StreamingController.cs?name=snippet_UploadDatabase)]
 
-`MultipartRequestHelper` (*Utilities/MultipartRequestHelper.cs*):
+`MultipartRequestHelper` ( *Utilities/MultipartRequestHelper.cs* ):
 
 [!code-csharp[](file-uploads/samples/3.x/SampleApp/Utilities/MultipartRequestHelper.cs)]
 
@@ -1171,7 +1172,7 @@ En la aplicación de ejemplo, las comprobaciones de validación las controla `Fi
 
 ## <a name="validation"></a>Validación
 
-La clase `FileHelpers` de la aplicación de ejemplo muestra varias comprobaciones de cargas de archivos de streaming y <xref:Microsoft.AspNetCore.Http.IFormFile> almacenado en búfer. Para procesar cargas de archivos almacenadas en búfer de <xref:Microsoft.AspNetCore.Http.IFormFile> en la aplicación de ejemplo, consulte el método `ProcessFormFile` en el archivo *Utilities/FileHelpers.cs*. Para procesar archivos de streaming, consulte el método `ProcessStreamedFile` en el mismo archivo.
+La clase `FileHelpers` de la aplicación de ejemplo muestra varias comprobaciones de cargas de archivos de streaming y <xref:Microsoft.AspNetCore.Http.IFormFile> almacenado en búfer. Para procesar cargas de archivos almacenadas en búfer de <xref:Microsoft.AspNetCore.Http.IFormFile> en la aplicación de ejemplo, consulte el método `ProcessFormFile` en el archivo *Utilities/FileHelpers.cs* . Para procesar archivos de streaming, consulte el método `ProcessStreamedFile` en el mismo archivo.
 
 > [!WARNING]
 > Los métodos de procesamiento de validación mostrados en la aplicación de ejemplo no examinan el contenido de los archivos cargados. En la mayoría de los escenarios de producción, se usa una API de analizador de virus/malware en el archivo antes de que el archivo esté disponible para los usuarios u otros sistemas.
@@ -1183,7 +1184,7 @@ La clase `FileHelpers` de la aplicación de ejemplo muestra varias comprobacione
 >
 > **No implemente nunca de manera indiscriminada el código de seguridad en una aplicación sin abordar estos requisitos.**
 
-### <a name="content-validation"></a>Validación del contenido
+### <a name="content-validation"></a>Validación de contenido
 
 **Use una API de detección de virus/malware de terceros en el contenido cargado.**
 
@@ -1257,7 +1258,7 @@ Muchas implementaciones deben incluir una comprobación de que el archivo existe
 
 Limite el tamaño de los archivos cargados.
 
-En la aplicación de ejemplo, el tamaño del archivo está limitado a 2 MB (se indica en bytes). El límite se proporciona a través de [Configuración](xref:fundamentals/configuration/index) del archivo *appsettings.json*:
+En la aplicación de ejemplo, el tamaño del archivo está limitado a 2 MB (se indica en bytes). El límite se proporciona a través de la [configuración](xref:fundamentals/configuration/index) del *appsettings.json* archivo:
 
 ```json
 {
@@ -1494,7 +1495,7 @@ ASP.NET Core admite la carga de uno o varios archivos mediante el enlace de mod
 
 [Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
-## <a name="security-considerations"></a>Consideraciones de seguridad
+## <a name="security-considerations"></a>Consideraciones sobre la seguridad
 
 Tenga precaución al proporcionar a los usuarios la capacidad de cargar archivos en un servidor. Es posible que los atacantes intenten lo siguiente:
 
@@ -1583,7 +1584,7 @@ El streaming de archivos grandes se describe en la sección [Carga de archivos d
 
 Para cargar archivos pequeños, se puede usar un formulario de varias partes o construir una solicitud POST con JavaScript.
 
-En el ejemplo siguiente se muestra el uso de un Razor formulario de páginas para cargar un único archivo (*pages/BufferedSingleFileUploadPhysical. cshtml* en la aplicación de ejemplo):
+En el ejemplo siguiente se muestra el uso de un Razor formulario de páginas para cargar un único archivo ( *pages/BufferedSingleFileUploadPhysical. cshtml* en la aplicación de ejemplo):
 
 ```cshtml
 <form enctype="multipart/form-data" method="post">
@@ -1894,7 +1895,7 @@ El método `StreamingController.UploadDatabase` completo para streaming a una ba
 
 [!code-csharp[](file-uploads/samples/2.x/SampleApp/Controllers/StreamingController.cs?name=snippet_UploadDatabase)]
 
-`MultipartRequestHelper` (*Utilities/MultipartRequestHelper.cs*):
+`MultipartRequestHelper` ( *Utilities/MultipartRequestHelper.cs* ):
 
 [!code-csharp[](file-uploads/samples/2.x/SampleApp/Utilities/MultipartRequestHelper.cs)]
 
@@ -1906,7 +1907,7 @@ En la aplicación de ejemplo, las comprobaciones de validación las controla `Fi
 
 ## <a name="validation"></a>Validación
 
-La clase `FileHelpers` de la aplicación de ejemplo muestra varias comprobaciones de cargas de archivos de streaming y <xref:Microsoft.AspNetCore.Http.IFormFile> almacenado en búfer. Para procesar cargas de archivos almacenadas en búfer de <xref:Microsoft.AspNetCore.Http.IFormFile> en la aplicación de ejemplo, consulte el método `ProcessFormFile` en el archivo *Utilities/FileHelpers.cs*. Para procesar archivos de streaming, consulte el método `ProcessStreamedFile` en el mismo archivo.
+La clase `FileHelpers` de la aplicación de ejemplo muestra varias comprobaciones de cargas de archivos de streaming y <xref:Microsoft.AspNetCore.Http.IFormFile> almacenado en búfer. Para procesar cargas de archivos almacenadas en búfer de <xref:Microsoft.AspNetCore.Http.IFormFile> en la aplicación de ejemplo, consulte el método `ProcessFormFile` en el archivo *Utilities/FileHelpers.cs* . Para procesar archivos de streaming, consulte el método `ProcessStreamedFile` en el mismo archivo.
 
 > [!WARNING]
 > Los métodos de procesamiento de validación mostrados en la aplicación de ejemplo no examinan el contenido de los archivos cargados. En la mayoría de los escenarios de producción, se usa una API de analizador de virus/malware en el archivo antes de que el archivo esté disponible para los usuarios u otros sistemas.
@@ -1918,7 +1919,7 @@ La clase `FileHelpers` de la aplicación de ejemplo muestra varias comprobacione
 >
 > **No implemente nunca de manera indiscriminada el código de seguridad en una aplicación sin abordar estos requisitos.**
 
-### <a name="content-validation"></a>Validación del contenido
+### <a name="content-validation"></a>Validación de contenido
 
 **Use una API de detección de virus/malware de terceros en el contenido cargado.**
 
@@ -1992,7 +1993,7 @@ Muchas implementaciones deben incluir una comprobación de que el archivo existe
 
 Limite el tamaño de los archivos cargados.
 
-En la aplicación de ejemplo, el tamaño del archivo está limitado a 2 MB (se indica en bytes). El límite se proporciona a través de [Configuración](xref:fundamentals/configuration/index) del archivo *appsettings.json*:
+En la aplicación de ejemplo, el tamaño del archivo está limitado a 2 MB (se indica en bytes). El límite se proporciona a través de la [configuración](xref:fundamentals/configuration/index) del *appsettings.json* archivo:
 
 ```json
 {

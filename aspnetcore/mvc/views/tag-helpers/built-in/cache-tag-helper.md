@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/10/2018
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/tag-helpers/builtin-th/cache-tag-helper
-ms.openlocfilehash: b1cab7ab8b491529ee4208d92fb30082be795eda
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: a87f91255bd1f280b1567f522423a6f4e88a6dd8
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88635065"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060890"
 ---
 # <a name="cache-tag-helper-in-aspnet-core-mvc"></a>Asistente de etiquetas de caché en ASP.NET Core MVC
 
@@ -48,7 +49,7 @@ La primera solicitud a la página que contiene el asistente de etiquetas muestra
 | --------------- | --------------- | ------- |
 | Boolean         | `true`, `false` | `true`  |
 
-`enabled` determina si se almacena en caché el contenido incluido por el asistente de etiquetas de caché. El valor predeterminado es `true`. Si establece en `false`, el resultado representado **no** se almacena en caché.
+`enabled` determina si se almacena en caché el contenido incluido por el asistente de etiquetas de caché. De manera predeterminada, es `true`. Si establece en `false`, el resultado representado **no** se almacena en caché.
 
 Ejemplo:
 
@@ -150,7 +151,7 @@ En este ejemplo se supervisan los valores de `Make` y `Model`. En el ejemplo se 
 
 Ejemplo:
 
-*Startup.cs*:
+*Startup.cs* :
 
 ```csharp
 routes.MapRoute(
@@ -158,7 +159,7 @@ routes.MapRoute(
     template: "{controller=Home}/{action=Index}/{Make?}/{Model?}");
 ```
 
-*Index. cshtml*:
+*Index. cshtml* :
 
 ```cshtml
 <cache vary-by-route="Make,Model">
@@ -223,7 +224,7 @@ public IActionResult Index(string myParam1, string myParam2, string myParam3)
 }
 ```
 
-*Index. cshtml*:
+*Index. cshtml* :
 
 ```cshtml
 <cache vary-by="@Model">

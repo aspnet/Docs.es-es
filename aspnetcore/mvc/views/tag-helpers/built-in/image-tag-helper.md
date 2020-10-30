@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/06/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/tag-helpers/builtin-th/image-tag-helper
-ms.openlocfilehash: c72dd4f6da796364756d001a6e424eb3a96710a4
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: edc6971ac42756504b5b371ba509d7a657a0c396
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633843"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061124"
 ---
 # <a name="image-tag-helper-in-aspnet-core"></a>Asistente de etiquetas de imagen en ASP.NET Core
 
@@ -57,7 +58,7 @@ En este ejemplo se usa un asistente de etiquetas de imagen:
 <img src="~/images/asplogo.png" asp-append-version="true">
 ```
 
-Si el archivo estático existe en el directorio */wwwroot/images/*, el código HTML generado es similar al siguiente (el valor hash será diferente):
+Si el archivo estático existe en el directorio */wwwroot/images/* , el código HTML generado es similar al siguiente (el valor hash será diferente):
 
 ```html
 <img src="/images/asplogo.png?v=Kl_dqr9NVtnMdsM2MUg4qthUnWZm5T1fCEimBPWDNgM">

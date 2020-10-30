@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/05/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/cookie-sharing
-ms.openlocfilehash: 6ac808d11790ae27e82606b442ff215d95b93e41
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 8f54f2e4894328f8471d5f80c8184839ce47add6
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88631373"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059694"
 ---
 # <a name="share-authentication-no-loccookies-among-aspnet-apps"></a>Uso compartido de la autenticación cookie entre aplicaciones ASP.net
 
@@ -49,7 +50,7 @@ En los ejemplos siguientes:
 
 Al usar ASP.NET Core Identity:
 
-* Las claves de protección de datos y el nombre de la aplicación se deben compartir entre las aplicaciones. Se proporciona una ubicación de almacenamiento de claves común al <xref:Microsoft.AspNetCore.DataProtection.DataProtectionBuilderExtensions.PersistKeysToFileSystem*> método en los ejemplos siguientes. Use <xref:Microsoft.AspNetCore.DataProtection.DataProtectionBuilderExtensions.SetApplicationName*> para configurar un nombre común de aplicación compartida ( `SharedCookieApp` en los ejemplos siguientes). Para más información, consulte <xref:security/data-protection/configuration/overview>.
+* Las claves de protección de datos y el nombre de la aplicación se deben compartir entre las aplicaciones. Se proporciona una ubicación de almacenamiento de claves común al <xref:Microsoft.AspNetCore.DataProtection.DataProtectionBuilderExtensions.PersistKeysToFileSystem*> método en los ejemplos siguientes. Use <xref:Microsoft.AspNetCore.DataProtection.DataProtectionBuilderExtensions.SetApplicationName*> para configurar un nombre común de aplicación compartida ( `SharedCookieApp` en los ejemplos siguientes). Para obtener más información, vea <xref:security/data-protection/configuration/overview>.
 * Use el <xref:Microsoft.Extensions.DependencyInjection.IdentityServiceCollectionExtensions.ConfigureApplicationCookie*> método de extensión para configurar el servicio de protección de datos para cookie s.
 * El tipo de autenticación predeterminado es `Identity.Application` .
 
@@ -106,7 +107,7 @@ options.Cookie.Domain = ".contoso.com";
 
 ## <a name="encrypt-data-protection-keys-at-rest"></a>Cifrado de claves de protección de datos en reposo
 
-En el caso de las implementaciones de producción, configure el `DataProtectionProvider` para cifrar las claves en reposo con DPAPI o un X509Certificate. Para más información, consulte <xref:security/data-protection/implementation/key-encryption-at-rest>. En el ejemplo siguiente, se proporciona una huella digital de certificado para <xref:Microsoft.AspNetCore.DataProtection.DataProtectionBuilderExtensions.ProtectKeysWithCertificate*> :
+En el caso de las implementaciones de producción, configure el `DataProtectionProvider` para cifrar las claves en reposo con DPAPI o un X509Certificate. Para obtener más información, vea <xref:security/data-protection/implementation/key-encryption-at-rest>. En el ejemplo siguiente, se proporciona una huella digital de certificado para <xref:Microsoft.AspNetCore.DataProtection.DataProtectionBuilderExtensions.ProtectKeysWithCertificate*> :
 
 ```csharp
 services.AddDataProtection()
@@ -134,7 +135,7 @@ Busque y modifique la llamada a `UseCookieAuthentication` :
 
 Si no `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` se establece y `http://schemas.microsoft.com/accesscontrolservice/2010/07/claims/identityprovider` , <xref:System.Web.Helpers.AntiForgeryConfig.UniqueClaimTypeIdentifier> se establece en una demanda que distingue a usuarios únicos.
 
-*App_Start/startup.auth.CS*:
+*App_Start/startup.auth.CS* :
 
 ```csharp
 app.UseCookieAuthentication(new CookieAuthenticationOptions
@@ -167,9 +168,9 @@ System.Web.Helpers.AntiForgeryConfig.UniqueClaimTypeIdentifier =
     "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name";
 ```
 
-Al generar una identidad de usuario, el tipo de autenticación ( `Identity.Application` ) debe coincidir con el tipo definido en `AuthenticationType` establecido con `UseCookieAuthentication` en *App_Start/startup.auth.CS*.
+Al generar una identidad de usuario, el tipo de autenticación ( `Identity.Application` ) debe coincidir con el tipo definido en `AuthenticationType` establecido con `UseCookieAuthentication` en *App_Start/startup.auth.CS* .
 
-*Modelos/ Identity Models.cs*:
+*Modelos/ Identity Models.cs* :
 
 ```csharp
 public class ApplicationUser : IdentityUser

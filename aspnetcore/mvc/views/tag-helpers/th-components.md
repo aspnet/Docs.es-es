@@ -6,6 +6,7 @@ monikerRange: '>= aspnetcore-2.0'
 ms.author: scaddie
 ms.date: 06/12/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/tag-helpers/th-components
-ms.openlocfilehash: d3bae9cd5b4a5c7315c795229c7eafbf1e44e22d
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 15bddd8ce18546bef7ee7e6ec2e32e369d0858a3
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88627590"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060565"
 ---
 # <a name="tag-helper-components-in-aspnet-core"></a>Componentes del asistente de etiquetas en ASP.NET Core
 
@@ -30,7 +31,7 @@ Por [Scott Addie](https://twitter.com/Scott_Addie) y [Fiyaz Bin Hasan](https://g
 
 El componente de un asistente de etiquetas es un asistente de etiquetas que permite modificar o agregar con condiciones elementos HTML a partir del código del lado servidor. Esta característica está disponible en ASP.NET Core 2.0 o versiones posteriores.
 
-ASP.NET Core incluye dos componentes de asistente de etiquetas integrados: `head` y `body`. Están ubicados en el <xref:Microsoft.AspNetCore.Mvc.Razor.TagHelpers> espacio de nombres y se pueden usar en MVC y en Razor páginas. Los componentes de asistente de etiquetas no requieren el registro en la aplicación en *_ViewImports.cshtml*.
+ASP.NET Core incluye dos componentes de asistente de etiquetas integrados: `head` y `body`. Están ubicados en el <xref:Microsoft.AspNetCore.Mvc.Razor.TagHelpers> espacio de nombres y se pueden usar en MVC y en Razor páginas. Los componentes de asistente de etiquetas no requieren el registro en la aplicación en *_ViewImports.cshtml* .
 
 [Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/tag-helpers/th-components/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
@@ -123,7 +124,7 @@ Para crear un componente de asistente de etiquetas personalizado:
 
 * Cree una clase pública derivada de <xref:Microsoft.AspNetCore.Mvc.Razor.TagHelpers.TagHelperComponentTagHelper>.
 * Aplique un [`[HtmlTargetElement]`](xref:Microsoft.AspNetCore.Razor.TagHelpers.HtmlTargetElementAttribute) atributo a la clase. Especifique el nombre del elemento HTML de destino.
-* *Opcional*: Aplique un [`[EditorBrowsable(EditorBrowsableState.Never)]`](xref:System.ComponentModel.EditorBrowsableAttribute) atributo a la clase para suprimir la presentación del tipo en IntelliSense.
+* *Opcional* : Aplique un [`[EditorBrowsable(EditorBrowsableState.Never)]`](xref:System.ComponentModel.EditorBrowsableAttribute) atributo a la clase para suprimir la presentación del tipo en IntelliSense.
 
 El código siguiente crea un componente de asistente de etiquetas personalizado que tiene como destino el elemento `<address>` HTML:
 

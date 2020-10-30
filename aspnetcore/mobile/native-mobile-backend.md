@@ -5,6 +5,7 @@ description: Obtenga información sobre cómo crear servicios back-end con ASP.N
 ms.author: riande
 ms.date: 12/05/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mobile/native-mobile-backend
-ms.openlocfilehash: 00e0c93d200e7eec6fd6bdac1f1246fe0909fc54
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 0bbf740cb49b77b476e7e015afee311110bbe5ea
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88630541"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060994"
 ---
 # <a name="create-backend-services-for-native-mobile-apps-with-aspnet-core"></a>Crear servicios back-end para aplicaciones móviles nativas con ASP.NET Core
 
@@ -51,7 +52,7 @@ Al pulsar un elemento en la pantalla de la lista principal se abre un cuadro de 
 
 ![Cuadro de diálogo de edición del elemento](native-mobile-backend/_static/todo-android-edit-item.png)
 
-Este ejemplo está configurado para usar de forma predeterminada servicios back-end hospedados en developer.xamarin.com, lo que permite operaciones de solo lectura. Para probarlo usted mismo con la aplicación de ASP.NET Core que creó en la siguiente sección que se ejecuta en el equipo, debe actualizar la constante `RestUrl` de la aplicación. Vaya hasta el proyecto `ToDoREST` y abra el archivo *Constants.cs*. Reemplace `RestUrl` con una dirección URL que incluya la dirección IP de su equipo (no localhost ni 127.0.0.1, puesto que esta dirección se usa desde el emulador de dispositivo, no desde el equipo). Incluya también el número de puerto (5000). Para comprobar que los servicios funcionan con un dispositivo, asegúrese de que no tiene un firewall activo que bloquea el acceso a este puerto.
+Este ejemplo está configurado para usar de forma predeterminada servicios back-end hospedados en developer.xamarin.com, lo que permite operaciones de solo lectura. Para probarlo usted mismo con la aplicación de ASP.NET Core que creó en la siguiente sección que se ejecuta en el equipo, debe actualizar la constante `RestUrl` de la aplicación. Vaya hasta el proyecto `ToDoREST` y abra el archivo *Constants.cs* . Reemplace `RestUrl` con una dirección URL que incluya la dirección IP de su equipo (no localhost ni 127.0.0.1, puesto que esta dirección se usa desde el emulador de dispositivo, no desde el equipo). Incluya también el número de puerto (5000). Para comprobar que los servicios funcionan con un dispositivo, asegúrese de que no tiene un firewall activo que bloquea el acceso a este puerto.
 
 ```csharp
 // URL of REST service (Xamarin ReadOnly Service)
@@ -63,7 +64,7 @@ public static string RestUrl = "http://192.168.1.207:5000/api/todoitems/{0}";
 
 ## <a name="creating-the-aspnet-core-project"></a>Creación del proyecto de ASP.NET Core
 
-Cree una aplicación web de ASP.NET Core en Visual Studio. Elija la plantilla de API web y Sin autenticación. Denomine el proyecto *ToDoApi*.
+Cree una aplicación web de ASP.NET Core en Visual Studio. Elija la plantilla de API web y Sin autenticación. Denomine el proyecto *ToDoApi* .
 
 ![Cuadro de diálogo Nueva aplicación web ASP.NET con la plantilla de proyecto API web seleccionada](native-mobile-backend/_static/web-api-template.png)
 
@@ -86,18 +87,18 @@ En este ejemplo, la implementación usa solo una colección de elementos privada
 
 [!code-csharp[](native-mobile-backend/sample/ToDoApi/src/ToDoApi/Services/ToDoRepository.cs)]
 
-Configure la implementación en *Startup.cs*:
+Configure la implementación en *Startup.cs* :
 
 [!code-csharp[](native-mobile-backend/sample/ToDoApi/src/ToDoApi/Startup.cs?highlight=6&range=29-35)]
 
-En este punto, está listo para crear el *ToDoItemsController*.
+En este punto, está listo para crear el *ToDoItemsController* .
 
 > [!TIP]
 > Obtenga más información sobre cómo crear API web en [Cree su primera API web con ASP.NET Core MVC y Visual Studio](../tutorials/first-web-api.md).
 
 ## <a name="creating-the-controller"></a>Crear el controlador
 
-Agregue un nuevo controlador para el proyecto: *ToDoItemsController*. Debe heredar de Microsoft.AspNetCore.Mvc.Controller. Agregue un atributo `Route` para indicar que el controlador controlará las solicitudes realizadas a las rutas de acceso que comiencen con `api/todoitems`. El token `[controller]` de la ruta se sustituye por el nombre del controlador (si se omite el sufijo `Controller`) y es especialmente útil para las rutas globales. Obtenga más información sobre el [enrutamiento](../fundamentals/routing.md).
+Agregue un nuevo controlador para el proyecto: *ToDoItemsController* . Debe heredar de Microsoft.AspNetCore.Mvc.Controller. Agregue un atributo `Route` para indicar que el controlador controlará las solicitudes realizadas a las rutas de acceso que comiencen con `api/todoitems`. El token `[controller]` de la ruta se sustituye por el nombre del controlador (si se omite el sufijo `Controller`) y es especialmente útil para las rutas globales. Obtenga más información sobre el [enrutamiento](../fundamentals/routing.md).
 
 El controlador necesita un `IToDoRepository` para funcionar. Solicite una instancia de este tipo a través del constructor del controlador. En tiempo de ejecución, esta instancia se proporcionará con la compatibilidad del marco con la [inserción de dependencias](../fundamentals/dependency-injection.md).
 

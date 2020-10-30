@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/15/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authorization/policies
-ms.openlocfilehash: 140969c80191c9549bc19507b9c4818b88fed0d1
-ms.sourcegitcommit: c026bf76a0e14a5ee68983519a63574c674e9ff7
+ms.openlocfilehash: 286dc3bcc66b86a2a6b7d3cb7b6052bf7b474aff
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91636808"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060214"
 ---
 # <a name="policy-based-authorization-in-aspnet-core"></a>Autorización basada en directivas en ASP.NET Core
 
@@ -132,7 +133,7 @@ Las directivas se aplican a Razor las páginas mediante el `[Authorize]` atribut
 
 [!code-csharp[](policies/samples/PoliciesAuthApp2/Pages/AlcoholPurchase.cshtml.cs?name=snippet_AlcoholPurchaseModelClass&highlight=4)]
 
-Las directivas ***no*** se pueden aplicar en el Razor nivel de controlador de páginas, deben aplicarse a la página.
+Las directivas pueden * **no** _ aplicarse en el Razor nivel de controlador de página, deben aplicarse a la página.
 
 Las directivas se pueden aplicar a Razor las páginas mediante una [Convención de autorización](xref:security/authorization/razor-pages-authorization).
 
@@ -142,7 +143,7 @@ Un requisito de autorización es una colección de parámetros de datos que una 
 
 [!code-csharp[](policies/samples/PoliciesAuthApp1/Services/Requirements/MinimumAgeRequirement.cs?name=snippet_MinimumAgeRequirementClass)]
 
-Si una directiva de autorización contiene varios requisitos de autorización, deben cumplirse todos los requisitos para que la evaluación de la Directiva se realice correctamente. En otras palabras, los distintos requisitos de autorización que se agregan a una sola directiva de autorización se tratan de manera **y** .
+Si una directiva de autorización contiene varios requisitos de autorización, deben cumplirse todos los requisitos para que la evaluación de la Directiva se realice correctamente. En otras palabras, los distintos requisitos de autorización que se agregan a una sola directiva de autorización se tratan de forma _ *y* *.
 
 > [!NOTE]
 > No es necesario que un requisito tenga datos ni propiedades.
@@ -202,7 +203,7 @@ Si un controlador llama a `context.Succeed` o `context.Fail` , todavía se llama
 
 ## <a name="why-would-i-want-multiple-handlers-for-a-requirement"></a>¿Por qué sería conveniente tener varios controladores para un requisito?
 
-En los casos en los que desea que la evaluación esté en una base de **o** , implemente varios controladores para un único requisito. Por ejemplo, Microsoft tiene puertas que solo se abren con tarjetas clave. Si deja la tarjeta de la llave en casa, el recepcionista imprime una etiqueta temporal y abre la puerta. En este escenario, tendría un único requisito, *BuildingEntry*, pero varios controladores, cada uno examinando un único requisito.
+En los casos en los que desea que la evaluación esté en una base de **o** , implemente varios controladores para un único requisito. Por ejemplo, Microsoft tiene puertas que solo se abren con tarjetas clave. Si deja la tarjeta de la llave en casa, el recepcionista imprime una etiqueta temporal y abre la puerta. En este escenario, tendría un único requisito, *BuildingEntry* , pero varios controladores, cada uno examinando un único requisito.
 
 *BuildingEntryRequirement.cs*
 
@@ -436,7 +437,7 @@ Si un controlador llama a `context.Succeed` o `context.Fail` , todavía se llama
 
 ## <a name="why-would-i-want-multiple-handlers-for-a-requirement"></a>¿Por qué sería conveniente tener varios controladores para un requisito?
 
-En los casos en los que desea que la evaluación esté en una base de **o** , implemente varios controladores para un único requisito. Por ejemplo, Microsoft tiene puertas que solo se abren con tarjetas clave. Si deja la tarjeta de la llave en casa, el recepcionista imprime una etiqueta temporal y abre la puerta. En este escenario, tendría un único requisito, *BuildingEntry*, pero varios controladores, cada uno examinando un único requisito.
+En los casos en los que desea que la evaluación esté en una base de **o** , implemente varios controladores para un único requisito. Por ejemplo, Microsoft tiene puertas que solo se abren con tarjetas clave. Si deja la tarjeta de la llave en casa, el recepcionista imprime una etiqueta temporal y abre la puerta. En este escenario, tendría un único requisito, *BuildingEntry* , pero varios controladores, cada uno examinando un único requisito.
 
 *BuildingEntryRequirement.cs*
 

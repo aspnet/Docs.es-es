@@ -7,6 +7,7 @@ ms.author: anurse
 ms.custom: mvc
 ms.date: 11/12/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/api-design
-ms.openlocfilehash: 4a838c3a051476bd3d281e133d08b643656ae3b7
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 87665a7950edbc70b664230d2f078598e9dbc0aa
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88632907"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059655"
 ---
 # <a name="no-locsignalr-api-design-considerations"></a>SignalR Consideraciones sobre el diseño de API
 
@@ -33,7 +34,7 @@ En este artículo se proporcionan instrucciones para crear SignalR API basadas e
 
 ## <a name="use-custom-object-parameters-to-ensure-backwards-compatibility"></a>Usar parámetros de objeto personalizados para garantizar la compatibilidad con versiones anteriores
 
-Agregar parámetros a un SignalR método de concentrador (tanto en el cliente como en el servidor) es un *cambio importante*. Esto significa que los clientes o servidores más antiguos obtendrán errores al intentar invocar el método sin el número adecuado de parámetros. Sin embargo, agregar propiedades a un parámetro de objeto personalizado **no** es un cambio importante. Se puede usar para diseñar API compatibles que sean resistentes a los cambios en el cliente o el servidor.
+Agregar parámetros a un SignalR método de concentrador (tanto en el cliente como en el servidor) es un *cambio importante* . Esto significa que los clientes o servidores más antiguos obtendrán errores al intentar invocar el método sin el número adecuado de parámetros. Sin embargo, agregar propiedades a un parámetro de objeto personalizado **no** es un cambio importante. Se puede usar para diseñar API compatibles que sean resistentes a los cambios en el cliente o el servidor.
 
 Por ejemplo, considere una API del lado servidor como la siguiente:
 

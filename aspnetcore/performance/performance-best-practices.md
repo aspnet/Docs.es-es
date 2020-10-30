@@ -6,6 +6,7 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 04/06/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/performance-best-practices
-ms.openlocfilehash: 01575ec87d2d346da7367523ca5e257d53de4983
-ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
+ms.openlocfilehash: a3fc398569fafefc0b4634e80433a5d4e0e1b4ff
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90722623"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061007"
 ---
 # <a name="aspnet-core-performance-best-practices"></a>Procedimientos recomendados de ASP.NET Core rendimiento
 
@@ -44,13 +45,13 @@ ASP.NET Core aplicaciones deben diseñarse para procesar muchas solicitudes simu
 
 Un problema de rendimiento común en ASP.NET Core aplicaciones es el bloqueo de llamadas que podrían ser asincrónicas. Muchas llamadas de bloqueo sincrónicas conducen a la [colapso de grupos de subprocesos](/archive/blogs/vancem/diagnosing-net-core-threadpool-starvation-with-perfview-why-my-service-is-not-saturating-all-cores-or-seems-to-stall) y a tiempos de respuesta degradados.
 
-**No**:
+**No** :
 
 * Bloquee la ejecución asincrónica mediante una llamada a [Task. Wait](/dotnet/api/system.threading.tasks.task.wait) o [Task. Result](/dotnet/api/system.threading.tasks.task-1.result).
 * Adquirir bloqueos en rutas de acceso de código comunes. ASP.NET Core aplicaciones tienen más rendimiento cuando se diseña para ejecutar código en paralelo.
 * Llame a [Task. Run](/dotnet/api/system.threading.tasks.task.run) y espere inmediatamente. ASP.NET Core ya ejecuta código de aplicación en subprocesos normales del grupo de subprocesos, por lo que llamar a Task. Run solo produce una programación de grupo de subprocesos innecesaria adicional. Aunque el código programado bloquee un subproceso, Task. Run no lo impide.
 
-**Haga**lo siguiente:
+**Haga** lo siguiente:
 
 * Establecer [rutas de acceso de código activas](#understand-hot-code-paths) de forma asincrónica.
 * Llame a las API de acceso a datos, e/s y de ejecución prolongada de forma asincrónica si hay disponible una API asincrónica. **No** use [Task. Run](/dotnet/api/system.threading.tasks.task.run) para convertir una API sincrónica en asincrónica.
@@ -71,7 +72,7 @@ El [recolector de elementos no utilizados de .net Core](/dotnet/standard/garbage
 Recomendaciones:
 
 * **Considere la** posibilidad de almacenar en caché objetos grandes que se usan con frecuencia. Almacenar en caché objetos grandes evita asignaciones costosas.
-* **Realice** búferes de grupo mediante un [ArrayPool \<T> ](/dotnet/api/system.buffers.arraypool-1) para almacenar matrices de gran tamaño.
+* **Realice** búferes de grupo mediante un [ArrayPool \<T>](/dotnet/api/system.buffers.arraypool-1) para almacenar matrices de gran tamaño.
 * **No** asigne muchos objetos grandes de corta duración en rutas de [acceso de código activas](#understand-hot-code-paths).
 
 Los problemas de memoria, como el anterior, se pueden diagnosticar revisando las estadísticas de la recolección de elementos no utilizados (GC) en [PerfView](https://github.com/Microsoft/perfview) y examinando:

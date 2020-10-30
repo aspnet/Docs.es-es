@@ -5,6 +5,7 @@ description: Obtenga información sobre cómo ASP.NET Core admite la inserción 
 ms.author: riande
 ms.date: 10/14/2016
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/dependency-injection
-ms.openlocfilehash: 5ab79740d2068a50e4138e5b86f1622af8ef5ec7
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: a596d05e3d1d73d4faa2f84d97a40e4a2c1234e4
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633609"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059291"
 ---
 # <a name="dependency-injection-into-views-in-aspnet-core"></a>Inserción de dependencias en vistas de ASP.NET Core
 
@@ -33,9 +34,9 @@ ASP.NET Core admite la [inserción de dependencias](xref:fundamentals/dependency
 
 ## <a name="configuration-injection"></a>Inserción de configuración
 
-Los valores *appSettings.JSON* se pueden insertar directamente en una vista.
+*appsettings.json* los valores se pueden insertar directamente en una vista.
 
-Ejemplo de un archivo *appsettings.json*:
+Ejemplo de un *appsettings.json* archivo:
 
 ```json
 {
@@ -66,7 +67,7 @@ Un servicio puede insertarse en una vista mediante la directiva `@inject`. Puede
 
 [!code-cshtml[](../../mvc/views/dependency-injection/sample/src/ViewInjectSample/Views/ToDo/Index.cshtml?highlight=4,5,15,16,17)]
 
-Esta vista muestra una lista de instancias `ToDoItem`, junto con un resumen de estadísticas generales. El resumen se rellena a partir de `StatisticsService` insertado. Este servicio está registrado para la inserción de dependencias en `ConfigureServices` en *Startup.cs*:
+Esta vista muestra una lista de instancias `ToDoItem`, junto con un resumen de estadísticas generales. El resumen se rellena a partir de `StatisticsService` insertado. Este servicio está registrado para la inserción de dependencias en `ConfigureServices` en *Startup.cs* :
 
 [!code-csharp[](../../mvc/views/dependency-injection/sample/src/ViewInjectSample/Startup.cs?highlight=6,7&range=15-22)]
 
@@ -115,6 +116,6 @@ Como puede ver, los campos predeterminados incluyen `Html`, `Component` y `Url` 
 
 Si quiere ampliar los servicios existentes, simplemente puede usar esta técnica al heredar o encapsular la implementación existente con la suya propia.
 
-## <a name="see-also"></a>Vea también
+## <a name="see-also"></a>Consulte también
 
 * Blog de Simon Timms: [Getting Lookup Data Into Your View](https://blog.simontimms.com/2015/06/09/getting-lookup-data-into-you-view/) (Obtener datos de búsqueda en la vista)

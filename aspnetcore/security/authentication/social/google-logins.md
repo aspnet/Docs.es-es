@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc, seodec18
 ms.date: 03/19/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/google-logins
-ms.openlocfilehash: a7a5260a2446ac3f3be00755ef051e56080a7485
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 111ea7c972778dfd5296d0401c16563aeaa36a63
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634298"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060318"
 ---
 # <a name="google-external-login-setup-in-aspnet-core"></a>Configuración de inicio de sesión externo de Google en ASP.NET Core
 
@@ -33,11 +34,11 @@ En este tutorial se muestra cómo permitir que los usuarios inicien sesión con 
 ## <a name="create-a-google-api-console-project-and-client-id"></a>Creación de un proyecto y un identificador de cliente de la consola de API de Google
 
 * Instale [Microsoft. AspNetCore. Authentication. Google](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Google).
-* Vaya a [integración de Google inicio de sesión en la aplicación web](https://developers.google.com/identity/sign-in/web/sign-in) y seleccione **configurar un proyecto**.
-* En el cuadro de diálogo **configurar el cliente de OAuth** , seleccione **servidor Web**.
+* Vaya a [integración de Google Sign-In en la aplicación web](https://developers.google.com/identity/sign-in/web/sign-in) y seleccione **configurar un proyecto** .
+* En el cuadro de diálogo **configurar el cliente de OAuth** , seleccione **servidor Web** .
 * En el cuadro de entrada de texto **URI de redireccionamiento autorizados** , establezca el URI de redirección. Por ejemplo: `https://localhost:44312/signin-google`
-* Guarde el **identificador de cliente** y el **secreto de cliente**.
-* Al implementar el sitio, registre la nueva dirección URL pública en la **consola de Google**.
+* Guarde el **identificador de cliente** y el **secreto de cliente** .
+* Al implementar el sitio, registre la nueva dirección URL pública en la **consola de Google** .
 
 ## <a name="store-the-google-client-id-and-secret"></a>Almacenar el identificador y el secreto de cliente de Google
 
@@ -65,7 +66,7 @@ Agregue el servicio de Google a `Startup.ConfigureServices` :
 
 ## <a name="sign-in-with-google"></a>Inicio de sesión con Google
 
-* Ejecute la aplicación y haga clic en **iniciar sesión**. Aparece una opción para iniciar sesión con Google.
+* Ejecute la aplicación y haga clic en **iniciar sesión** . Aparece una opción para iniciar sesión con Google.
 * Haga clic en el botón **Google** , que redirige a Google para la autenticación.
 * Después de escribir las credenciales de Google, se le redirigirá al sitio Web.
 

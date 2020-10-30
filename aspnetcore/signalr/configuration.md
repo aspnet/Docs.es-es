@@ -7,6 +7,7 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 04/12/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/configuration
-ms.openlocfilehash: 8851246dbaa076af1fdbc4e5e4f1ada0e4e3988a
-ms.sourcegitcommit: b5ebaf42422205d212e3dade93fcefcf7f16db39
+ms.openlocfilehash: 7dac8c84683553a52e07ecc61c8bcf8616e77dc6
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92326590"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061241"
 ---
 # <a name="aspnet-core-no-locsignalr-configuration"></a>Configuración de SignalR en ASP.NET Core
 
@@ -196,7 +197,7 @@ let connection = new signalR.HubConnectionBuilder()
     .build();
 ```
 
-En la tabla siguiente se enumeran los niveles de registro disponibles. El valor que se proporciona para `configureLogging` establecer el nivel de registro **mínimo** que se registrará. Se registrarán los mensajes registrados en este nivel, **o los niveles que se enumeran en la tabla**.
+En la tabla siguiente se enumeran los niveles de registro disponibles. El valor que se proporciona para `configureLogging` establecer el nivel de registro **mínimo** que se registrará. Se registrarán los mensajes registrados en este nivel, **o los niveles que se enumeran en la tabla** .
 
 | String                      | LogLevel               |
 | --------------------------- | ---------------------- |
@@ -342,7 +343,7 @@ Se pueden configurar opciones adicionales en el `WithUrl` `withUrl` método (en 
 | Opción de .NET |  Valor predeterminado | Descripción |
 | ----------- | -------------- | ----------- |
 | `AccessTokenProvider` | `null` | Función que devuelve una cadena que se proporciona como un token de autenticación de portador en solicitudes HTTP. |
-| `SkipNegotiation` | `false` | Establézcalo en `true` para omitir el paso de negociación. **Solo se admite cuando el transporte de WebSockets es el único transporte habilitado**. Esta configuración no se puede habilitar cuando se usa el servicio de Azure SignalR . |
+| `SkipNegotiation` | `false` | Establézcalo en `true` para omitir el paso de negociación. **Solo se admite cuando el transporte de WebSockets es el único transporte habilitado** . Esta configuración no se puede habilitar cuando se usa el servicio de Azure SignalR . |
 | `ClientCertificates` | Vacío | Colección de certificados TLS que se enviarán a las solicitudes de autenticación. |
 | `Cookies` | Vacío | Colección de HTTP cookie s que se va a enviar con cada solicitud HTTP. |
 | `Credentials` | Vacío | Credenciales que se van a enviar con cada solicitud HTTP. |
@@ -361,7 +362,7 @@ Se pueden configurar opciones adicionales en el `WithUrl` `withUrl` método (en 
 | `transport` | `null` | <xref:Microsoft.AspNetCore.Http.Connections.HttpTransportType>Valor que especifica el transporte que se va a utilizar para la conexión. |
 | `headers` | `null` | Diccionario de encabezados enviados con cada solicitud HTTP. El envío de encabezados en el explorador no funciona con WebSockets ni con el <xref:Microsoft.AspNetCore.Http.Connections.HttpTransportType.ServerSentEvents> flujo. |
 | `logMessageContent` | `null` | Establezca en `true` para registrar los bytes/caracteres de los mensajes enviados y recibidos por el cliente. |
-| `skipNegotiation` | `false` | Establézcalo en `true` para omitir el paso de negociación. **Solo se admite cuando el transporte de WebSockets es el único transporte habilitado**. Esta configuración no se puede habilitar cuando se usa el servicio de Azure SignalR . |
+| `skipNegotiation` | `false` | Establézcalo en `true` para omitir el paso de negociación. **Solo se admite cuando el transporte de WebSockets es el único transporte habilitado** . Esta configuración no se puede habilitar cuando se usa el servicio de Azure SignalR . |
 | `withCredentials` | `true` | Especifica si las credenciales se enviarán con la solicitud de CORS. Azure App Service usa cookie para las sesiones permanentes y necesita que esta opción esté habilitada para funcionar correctamente. Para obtener más información sobre CORS con SignalR , vea <xref:signalr/security#cross-origin-resource-sharing> . |
 
 # <a name="java"></a>[Java](#tab/java)
@@ -369,7 +370,7 @@ Se pueden configurar opciones adicionales en el `WithUrl` `withUrl` método (en 
 | Opción de Java | Valor predeterminado | Descripción |
 | ----------- | ------------- | ----------- |
 | `withAccessTokenProvider` | `null` | Función que devuelve una cadena que se proporciona como un token de autenticación de portador en solicitudes HTTP. |
-| `shouldSkipNegotiate` | `false` | Establézcalo en `true` para omitir el paso de negociación. **Solo se admite cuando el transporte de WebSockets es el único transporte habilitado**. Esta configuración no se puede habilitar cuando se usa el servicio de Azure SignalR . |
+| `shouldSkipNegotiate` | `false` | Establézcalo en `true` para omitir el paso de negociación. **Solo se admite cuando el transporte de WebSockets es el único transporte habilitado** . Esta configuración no se puede habilitar cuando se usa el servicio de Azure SignalR . |
 | `withHeader` `withHeaders` | Vacío | Asignación de encabezados HTTP adicionales que se van a enviar con cada solicitud HTTP. |
 
 ---
@@ -588,7 +589,7 @@ let connection = new signalR.HubConnectionBuilder()
     .build();
 ```
 
-En la tabla siguiente se enumeran los niveles de registro disponibles. El valor que se proporciona para `configureLogging` establecer el nivel de registro **mínimo** que se registrará. Se registrarán los mensajes registrados en este nivel, **o los niveles que se enumeran en la tabla**.
+En la tabla siguiente se enumeran los niveles de registro disponibles. El valor que se proporciona para `configureLogging` establecer el nivel de registro **mínimo** que se registrará. Se registrarán los mensajes registrados en este nivel, **o los niveles que se enumeran en la tabla** .
 
 | String                      | LogLevel               |
 | --------------------------- | ---------------------- |
@@ -734,7 +735,7 @@ Se pueden configurar opciones adicionales en el `WithUrl` `withUrl` método (en 
 | Opción de .NET |  Valor predeterminado | Descripción |
 | ----------- | -------------- | ----------- |
 | `AccessTokenProvider` | `null` | Función que devuelve una cadena que se proporciona como un token de autenticación de portador en solicitudes HTTP. |
-| `SkipNegotiation` | `false` | Establézcalo en `true` para omitir el paso de negociación. **Solo se admite cuando el transporte de WebSockets es el único transporte habilitado**. Esta configuración no se puede habilitar cuando se usa el servicio de Azure SignalR . |
+| `SkipNegotiation` | `false` | Establézcalo en `true` para omitir el paso de negociación. **Solo se admite cuando el transporte de WebSockets es el único transporte habilitado** . Esta configuración no se puede habilitar cuando se usa el servicio de Azure SignalR . |
 | `ClientCertificates` | Vacío | Colección de certificados TLS que se enviarán a las solicitudes de autenticación. |
 | `Cookies` | Vacío | Colección de HTTP cookie s que se va a enviar con cada solicitud HTTP. |
 | `Credentials` | Vacío | Credenciales que se van a enviar con cada solicitud HTTP. |
@@ -752,14 +753,14 @@ Se pueden configurar opciones adicionales en el `WithUrl` `withUrl` método (en 
 | `accessTokenFactory` | `null` | Función que devuelve una cadena que se proporciona como un token de autenticación de portador en solicitudes HTTP. |
 | `transport` | `null` | <xref:Microsoft.AspNetCore.Http.Connections.HttpTransportType>Valor que especifica el transporte que se va a utilizar para la conexión. |
 | `logMessageContent` | `null` | Establezca en `true` para registrar los bytes/caracteres de los mensajes enviados y recibidos por el cliente. |
-| `skipNegotiation` | `false` | Establézcalo en `true` para omitir el paso de negociación. **Solo se admite cuando el transporte de WebSockets es el único transporte habilitado**. Esta configuración no se puede habilitar cuando se usa el servicio de Azure SignalR . |
+| `skipNegotiation` | `false` | Establézcalo en `true` para omitir el paso de negociación. **Solo se admite cuando el transporte de WebSockets es el único transporte habilitado** . Esta configuración no se puede habilitar cuando se usa el servicio de Azure SignalR . |
 
 # <a name="java"></a>[Java](#tab/java)
 
 | Opción de Java | Valor predeterminado | Descripción |
 | ----------- | ------------- | ----------- |
 | `withAccessTokenProvider` | `null` | Función que devuelve una cadena que se proporciona como un token de autenticación de portador en solicitudes HTTP. |
-| `shouldSkipNegotiate` | `false` | Establézcalo en `true` para omitir el paso de negociación. **Solo se admite cuando el transporte de WebSockets es el único transporte habilitado**. Esta configuración no se puede habilitar cuando se usa el servicio de Azure SignalR . |
+| `shouldSkipNegotiate` | `false` | Establézcalo en `true` para omitir el paso de negociación. **Solo se admite cuando el transporte de WebSockets es el único transporte habilitado** . Esta configuración no se puede habilitar cuando se usa el servicio de Azure SignalR . |
 | `withHeader` `withHeaders` | Vacío | Asignación de encabezados HTTP adicionales que se van a enviar con cada solicitud HTTP. |
 
 ---
@@ -974,7 +975,7 @@ let connection = new signalR.HubConnectionBuilder()
     .build();
 ```
 
-En la tabla siguiente se enumeran los niveles de registro disponibles. El valor que se proporciona para `configureLogging` establecer el nivel de registro **mínimo** que se registrará. Se registrarán los mensajes registrados en este nivel, **o los niveles que se enumeran en la tabla**.
+En la tabla siguiente se enumeran los niveles de registro disponibles. El valor que se proporciona para `configureLogging` establecer el nivel de registro **mínimo** que se registrará. Se registrarán los mensajes registrados en este nivel, **o los niveles que se enumeran en la tabla** .
 
 | String                      | LogLevel               |
 | --------------------------- | ---------------------- |
@@ -1120,7 +1121,7 @@ Se pueden configurar opciones adicionales en el `WithUrl` `withUrl` método (en 
 | Opción de .NET |  Valor predeterminado | Descripción |
 | ----------- | -------------- | ----------- |
 | `AccessTokenProvider` | `null` | Función que devuelve una cadena que se proporciona como un token de autenticación de portador en solicitudes HTTP. |
-| `SkipNegotiation` | `false` | Establézcalo en `true` para omitir el paso de negociación. **Solo se admite cuando el transporte de WebSockets es el único transporte habilitado**. Esta configuración no se puede habilitar cuando se usa el servicio de Azure SignalR . |
+| `SkipNegotiation` | `false` | Establézcalo en `true` para omitir el paso de negociación. **Solo se admite cuando el transporte de WebSockets es el único transporte habilitado** . Esta configuración no se puede habilitar cuando se usa el servicio de Azure SignalR . |
 | `ClientCertificates` | Vacío | Colección de certificados TLS que se enviarán a las solicitudes de autenticación. |
 | `Cookies` | Vacío | Colección de HTTP cookie s que se va a enviar con cada solicitud HTTP. |
 | `Credentials` | Vacío | Credenciales que se van a enviar con cada solicitud HTTP. |
@@ -1138,14 +1139,14 @@ Se pueden configurar opciones adicionales en el `WithUrl` `withUrl` método (en 
 | `accessTokenFactory` | `null` | Función que devuelve una cadena que se proporciona como un token de autenticación de portador en solicitudes HTTP. |
 | `transport` | `null` | <xref:Microsoft.AspNetCore.Http.Connections.HttpTransportType>Valor que especifica el transporte que se va a utilizar para la conexión. |
 | `logMessageContent` | `null` | Establezca en `true` para registrar los bytes/caracteres de los mensajes enviados y recibidos por el cliente. |
-| `skipNegotiation` | `false` | Establézcalo en `true` para omitir el paso de negociación. **Solo se admite cuando el transporte de WebSockets es el único transporte habilitado**. Esta configuración no se puede habilitar cuando se usa el servicio de Azure SignalR . |
+| `skipNegotiation` | `false` | Establézcalo en `true` para omitir el paso de negociación. **Solo se admite cuando el transporte de WebSockets es el único transporte habilitado** . Esta configuración no se puede habilitar cuando se usa el servicio de Azure SignalR . |
 
 # <a name="java"></a>[Java](#tab/java)
 
 | Opción de Java | Valor predeterminado | Descripción |
 | ----------- | ------------- | ----------- |
 | `withAccessTokenProvider` | `null` | Función que devuelve una cadena que se proporciona como un token de autenticación de portador en solicitudes HTTP. |
-| `shouldSkipNegotiate` | `false` | Establézcalo en `true` para omitir el paso de negociación. **Solo se admite cuando el transporte de WebSockets es el único transporte habilitado**. Esta configuración no se puede habilitar cuando se usa el servicio de Azure SignalR . |
+| `shouldSkipNegotiate` | `false` | Establézcalo en `true` para omitir el paso de negociación. **Solo se admite cuando el transporte de WebSockets es el único transporte habilitado** . Esta configuración no se puede habilitar cuando se usa el servicio de Azure SignalR . |
 | `withHeader` `withHeaders` | Vacío | Asignación de encabezados HTTP adicionales que se van a enviar con cada solicitud HTTP. |
 
 ---
@@ -1470,7 +1471,7 @@ Se pueden configurar opciones adicionales en el `WithUrl` `withUrl` método (en 
 | Opción de .NET |  Valor predeterminado | Descripción |
 | ----------- | -------------- | ----------- |
 | `AccessTokenProvider` | `null` | Función que devuelve una cadena que se proporciona como un token de autenticación de portador en solicitudes HTTP. |
-| `SkipNegotiation` | `false` | Establézcalo en `true` para omitir el paso de negociación. **Solo se admite cuando el transporte de WebSockets es el único transporte habilitado**. Esta configuración no se puede habilitar cuando se usa el servicio de Azure SignalR . |
+| `SkipNegotiation` | `false` | Establézcalo en `true` para omitir el paso de negociación. **Solo se admite cuando el transporte de WebSockets es el único transporte habilitado** . Esta configuración no se puede habilitar cuando se usa el servicio de Azure SignalR . |
 | `ClientCertificates` | Vacío | Colección de certificados TLS que se enviarán a las solicitudes de autenticación. |
 | `Cookies` | Vacío | Colección de HTTP cookie s que se va a enviar con cada solicitud HTTP. |
 | `Credentials` | Vacío | Credenciales que se van a enviar con cada solicitud HTTP. |
@@ -1488,14 +1489,14 @@ Se pueden configurar opciones adicionales en el `WithUrl` `withUrl` método (en 
 | `accessTokenFactory` | `null` | Función que devuelve una cadena que se proporciona como un token de autenticación de portador en solicitudes HTTP. |
 | `transport` | `null` | <xref:Microsoft.AspNetCore.Http.Connections.HttpTransportType>Valor que especifica el transporte que se va a utilizar para la conexión. |
 | `logMessageContent` | `null` | Establezca en `true` para registrar los bytes/caracteres de los mensajes enviados y recibidos por el cliente. |
-| `skipNegotiation` | `false` | Establézcalo en `true` para omitir el paso de negociación. **Solo se admite cuando el transporte de WebSockets es el único transporte habilitado**. Esta configuración no se puede habilitar cuando se usa el servicio de Azure SignalR . |
+| `skipNegotiation` | `false` | Establézcalo en `true` para omitir el paso de negociación. **Solo se admite cuando el transporte de WebSockets es el único transporte habilitado** . Esta configuración no se puede habilitar cuando se usa el servicio de Azure SignalR . |
 
 # <a name="java"></a>[Java](#tab/java)
 
 | Opción de Java | Valor predeterminado | Descripción |
 | ----------- | ------------- | ----------- |
 | `withAccessTokenProvider` | `null` | Función que devuelve una cadena que se proporciona como un token de autenticación de portador en solicitudes HTTP. |
-| `shouldSkipNegotiate` | `false` | Establézcalo en `true` para omitir el paso de negociación. **Solo se admite cuando el transporte de WebSockets es el único transporte habilitado**. Esta configuración no se puede habilitar cuando se usa el servicio de Azure SignalR . |
+| `shouldSkipNegotiate` | `false` | Establézcalo en `true` para omitir el paso de negociación. **Solo se admite cuando el transporte de WebSockets es el único transporte habilitado** . Esta configuración no se puede habilitar cuando se usa el servicio de Azure SignalR . |
 | `withHeader` `withHeaders` | Vacío | Asignación de encabezados HTTP adicionales que se van a enviar con cada solicitud HTTP. |
 
 ---
@@ -1814,7 +1815,7 @@ Se pueden configurar opciones adicionales en el `WithUrl` `withUrl` método (en 
 | Opción de .NET |  Valor predeterminado | Descripción |
 | ----------- | -------------- | ----------- |
 | `AccessTokenProvider` | `null` | Función que devuelve una cadena que se proporciona como un token de autenticación de portador en solicitudes HTTP. |
-| `SkipNegotiation` | `false` | Establézcalo en `true` para omitir el paso de negociación. **Solo se admite cuando el transporte de WebSockets es el único transporte habilitado**. Esta configuración no se puede habilitar cuando se usa el servicio de Azure SignalR . |
+| `SkipNegotiation` | `false` | Establézcalo en `true` para omitir el paso de negociación. **Solo se admite cuando el transporte de WebSockets es el único transporte habilitado** . Esta configuración no se puede habilitar cuando se usa el servicio de Azure SignalR . |
 | `ClientCertificates` | Vacío | Colección de certificados TLS que se enviarán a las solicitudes de autenticación. |
 | `Cookies` | Vacío | Colección de HTTP cookie s que se va a enviar con cada solicitud HTTP. |
 | `Credentials` | Vacío | Credenciales que se van a enviar con cada solicitud HTTP. |
@@ -1832,14 +1833,14 @@ Se pueden configurar opciones adicionales en el `WithUrl` `withUrl` método (en 
 | `accessTokenFactory` | `null` | Función que devuelve una cadena que se proporciona como un token de autenticación de portador en solicitudes HTTP. |
 | `transport` | `null` | <xref:Microsoft.AspNetCore.Http.Connections.HttpTransportType>Valor que especifica el transporte que se va a utilizar para la conexión. |
 | `logMessageContent` | `null` | Establezca en `true` para registrar los bytes/caracteres de los mensajes enviados y recibidos por el cliente. |
-| `skipNegotiation` | `false` | Establézcalo en `true` para omitir el paso de negociación. **Solo se admite cuando el transporte de WebSockets es el único transporte habilitado**. Esta configuración no se puede habilitar cuando se usa el servicio de Azure SignalR . |
+| `skipNegotiation` | `false` | Establézcalo en `true` para omitir el paso de negociación. **Solo se admite cuando el transporte de WebSockets es el único transporte habilitado** . Esta configuración no se puede habilitar cuando se usa el servicio de Azure SignalR . |
 
 # <a name="java"></a>[Java](#tab/java)
 
 | Opción de Java | Valor predeterminado | Descripción |
 | ----------- | ------------- | ----------- |
 | `withAccessTokenProvider` | `null` | Función que devuelve una cadena que se proporciona como un token de autenticación de portador en solicitudes HTTP. |
-| `shouldSkipNegotiate` | `false` | Establézcalo en `true` para omitir el paso de negociación. **Solo se admite cuando el transporte de WebSockets es el único transporte habilitado**. Esta configuración no se puede habilitar cuando se usa el servicio de Azure SignalR . |
+| `shouldSkipNegotiate` | `false` | Establézcalo en `true` para omitir el paso de negociación. **Solo se admite cuando el transporte de WebSockets es el único transporte habilitado** . Esta configuración no se puede habilitar cuando se usa el servicio de Azure SignalR . |
 | `withHeader` `withHeaders` | Vacío | Asignación de encabezados HTTP adicionales que se van a enviar con cada solicitud HTTP. |
 
 ---
