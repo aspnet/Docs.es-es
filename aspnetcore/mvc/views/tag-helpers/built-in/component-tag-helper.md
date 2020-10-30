@@ -6,6 +6,7 @@ description: Aprenda a usar la aplicación auxiliar de etiquetas de componentes 
 ms.custom: mvc
 ms.date: 04/15/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/tag-helpers/builtin-th/component-tag-helper
-ms.openlocfilehash: 1a0422da6bd48049cac73debe7d335da91e311be
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: cddbca7f95e4d2143d4632aaa83133bc6210e251
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633921"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059161"
 ---
 # <a name="component-tag-helper-in-aspnet-core"></a>Aplicación auxiliar de etiquetas de componentes en ASP.NET Core
 
@@ -30,7 +31,7 @@ Por [Daniel Roth](https://github.com/danroth27) y [Luke Latham](https://github.c
 
 Para representar un componente a partir de una página o vista, use el [asistente de etiquetas de componente](xref:Microsoft.AspNetCore.Mvc.TagHelpers.ComponentTagHelper).
 
-## <a name="prerequisites"></a>Prerrequisitos
+## <a name="prerequisites"></a>Requisitos previos
 
 Siga las instrucciones de la sección *preparación de la aplicación para usar componentes en páginas y vistas* del <xref:blazor/components/integrate-components-into-razor-pages-and-mvc-apps#prepare-the-app> artículo.
 
@@ -106,7 +107,7 @@ El tipo de parámetro debe ser serializable de JSON, lo que normalmente signific
 
 En el ejemplo siguiente, se pasa un objeto de clase al componente:
 
-*MyClass.CS*:
+*MyClass.CS* :
 
 ```csharp
 public class MyClass
@@ -122,7 +123,7 @@ public class MyClass
 
 **La clase debe tener un constructor sin parámetros público.**
 
-*Shared/Component. Razor*:
+*Shared/Component. Razor* :
 
 ```razor
 <h2>MyComponent</h2>
@@ -137,7 +138,7 @@ public class MyClass
 }
 ```
 
-*Pages/mi. cshtml*:
+*Pages/mi. cshtml* :
 
 ```cshtml
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers

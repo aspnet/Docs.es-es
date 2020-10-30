@@ -5,6 +5,7 @@ description: Obtenga información sobre la Razor Sintaxis de marcado para insert
 ms.author: riande
 ms.date: 02/12/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,18 +17,18 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/razor
-ms.openlocfilehash: 9c2bbd2d463af8a2ea7db716d01bf1436338ea77
-ms.sourcegitcommit: cd861463faf44956855e3c4b3669483bbc4a7463
+ms.openlocfilehash: c1278b0cd3e58814b1c06dca81efd662c3de0c54
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2020
-ms.locfileid: "89101366"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059200"
 ---
 # <a name="no-locrazor-syntax-reference-for-aspnet-core"></a>Razor referencia de sintaxis para ASP.NET Core
 
 Por [Rick Anderson](https://twitter.com/RickAndMSFT), [Taylor Mullen](https://twitter.com/ntaylormullen)y [dan Vicarel](https://github.com/Rabadash8820)
 
-Razor es una sintaxis de marcado para insertar código basado en servidor en páginas Web. La Razor Sintaxis consta de Razor marcado, C# y HTML. Los archivos que contienen Razor generalmente tienen una extensión de archivo *. cshtml* . Razortambién se encuentra en archivos de [ Razor componentes](xref:blazor/components/index) (*. Razor*).
+Razor es una sintaxis de marcado para insertar código basado en servidor en páginas Web. La Razor Sintaxis consta de Razor marcado, C# y HTML. Los archivos que contienen Razor generalmente tienen una extensión de archivo *. cshtml* . Razortambién se encuentra en archivos de [ Razor componentes](xref:blazor/components/index) ( *. Razor* ).
 
 ## <a name="rendering-html"></a>Representación de HTML
 
@@ -117,7 +118,7 @@ Se pueden usar expresiones explícitas para concatenar texto con un resultado de
 
 Sin la expresión explícita, `<p>Age@joe.Age</p>` se trataría como una dirección de correo electrónico y se mostraría como `<p>Age@joe.Age</p>`. Pero, si se escribe como una expresión explícita, se representa `<p>Age33</p>`.
 
-Se pueden usar expresiones explícitas para representar la salida de métodos genéricos en los archivos *.cshtml*. En el siguiente marcado se muestra cómo corregir el error mostrado anteriormente provocado por el uso de corchetes en un código C# genérico. El código se escribe como una expresión explícita:
+Se pueden usar expresiones explícitas para representar la salida de métodos genéricos en los archivos *.cshtml* . En el siguiente marcado se muestra cómo corregir el error mostrado anteriormente provocado por el uso de corchetes en un código C# genérico. El código se escribe como una expresión explícita:
 
 ```cshtml
 <p>@(GenericMethod<int>())</p>
@@ -657,7 +658,7 @@ Directiva `@namespace`:
 
 En el Razor ejemplo de páginas que se muestra en la tabla siguiente:
 
-* Cada página importa *Pages/_ViewImports.cshtml*.
+* Cada página importa *Pages/_ViewImports.cshtml* .
 * *Pages/_ViewImports.cshtml* contiene `@namespace Hello.World`.
 * Cada página tiene `Hello.World` como raíz de su espacio de nombres.
 
@@ -968,7 +969,7 @@ Al compilar el proyecto en la configuración *Depurar* se crea el directorio *ob
            Index.g.cshtml.cs
 ```
 
-Para ver la clase generada para *pages/index. cshtml*, Abra *obj/Debug/netcoreapp 2.1/ Razor /pages/index.g.cshtml.CS*.
+Para ver la clase generada para *pages/index. cshtml* , Abra *obj/Debug/netcoreapp 2.1/ Razor /pages/index.g.cshtml.CS* .
 
 ::: moniker-end
 
@@ -993,7 +994,7 @@ Establezca un punto de interrupción en la instrucción `return csharpDocument;`
 El Razor motor de vista realiza búsquedas con distinción de mayúsculas y minúsculas para las vistas. Pero la búsqueda real viene determinada por el sistema de archivos subyacente:
 
 * Origen basado en archivos:
-  * En los sistemas operativos con sistemas de archivos que no distinguen entre mayúsculas y minúsculas (por ejemplo, Windows), las búsquedas de proveedor de archivos físicos no distinguirán mayúsculas de minúsculas. Por ejemplo, `return View("Test")` arrojará como resultados */Views/Home/Test.cshtml*, */Views/home/test.cshtml* y cualquier otra variante de mayúsculas y minúsculas.
+  * En los sistemas operativos con sistemas de archivos que no distinguen entre mayúsculas y minúsculas (por ejemplo, Windows), las búsquedas de proveedor de archivos físicos no distinguirán mayúsculas de minúsculas. Por ejemplo, `return View("Test")` arrojará como resultados */Views/Home/Test.cshtml* , */Views/home/test.cshtml* y cualquier otra variante de mayúsculas y minúsculas.
   * En los sistemas de archivos en los que sí se distingue entre mayúsculas y minúsculas (por ejemplo, Linux, OSX y al usar `EmbeddedFileProvider`), las búsquedas distinguirán mayúsculas de minúsculas. Por ejemplo, `return View("Test")` mostrará el resultado */Views/Home/Test.cshtml* única y exclusivamente.
 * Vistas precompiladas: En ASP.NET Core 2.0 y versiones posteriores, las búsquedas de vistas precompiladas no distinguen mayúsculas de minúsculas en todos los sistemas operativos. Este comportamiento es idéntico al comportamiento del proveedor de archivos físicos en Windows. Si dos vistas precompiladas difieren solo por sus mayúsculas o minúsculas, el resultado de la búsqueda será no determinante.
 

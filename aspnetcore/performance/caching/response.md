@@ -6,6 +6,7 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 11/04/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/caching/response
-ms.openlocfilehash: 9516410399ce69f1d69b09781b2530d052a11e7a
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 2864de5b9931ed255569cb087c67c71004c4df92
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88631880"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059018"
 ---
 # <a name="response-caching-in-aspnet-core"></a>Almacenamiento en caché de respuestas en ASP.NET Core
 
@@ -38,7 +39,7 @@ Para el almacenamiento en caché del lado servidor que sigue la especificación 
 
 ## <a name="http-based-response-caching"></a>Almacenamiento en caché de respuesta basada en HTTP
 
-La [especificación HTTP 1,1 Caching](https://tools.ietf.org/html/rfc7234) describe el comportamiento de las memorias caché de Internet. El encabezado HTTP principal usado para el almacenamiento en caché es [Cache-Control](https://tools.ietf.org/html/rfc7234#section-5.2), que se usa para especificar *directivas*de caché. Las directivas controlan el comportamiento de almacenamiento en caché a medida que las solicitudes proceden de los clientes a los servidores y, a medida que las respuestas, vuelven desde los servidores a los clientes. Las solicitudes y respuestas se desplazan a través de servidores proxy y los servidores proxy también deben cumplir con la especificación de almacenamiento en caché HTTP 1,1.
+La [especificación HTTP 1,1 Caching](https://tools.ietf.org/html/rfc7234) describe el comportamiento de las memorias caché de Internet. El encabezado HTTP principal usado para el almacenamiento en caché es [Cache-Control](https://tools.ietf.org/html/rfc7234#section-5.2), que se usa para especificar *directivas* de caché. Las directivas controlan el comportamiento de almacenamiento en caché a medida que las solicitudes proceden de los clientes a los servidores y, a medida que las respuestas, vuelven desde los servidores a los clientes. Las solicitudes y respuestas se desplazan a través de servidores proxy y los servidores proxy también deben cumplir con la especificación de almacenamiento en caché HTTP 1,1.
 
 `Cache-Control`En la tabla siguiente se muestran las directivas comunes.
 
@@ -47,21 +48,21 @@ La [especificación HTTP 1,1 Caching](https://tools.ietf.org/html/rfc7234) descr
 | [public](https://tools.ietf.org/html/rfc7234#section-5.2.2.5)   | Una memoria caché puede almacenar la respuesta. |
 | [private](https://tools.ietf.org/html/rfc7234#section-5.2.2.6)  | La respuesta no debe almacenarse en una memoria caché compartida. Una caché privada puede almacenar y reutilizar la respuesta. |
 | [Max-Age](https://tools.ietf.org/html/rfc7234#section-5.2.1.1)  | El cliente no acepta una respuesta cuya antigüedad sea mayor que el número de segundos especificado. Ejemplos: `max-age=60` (60 segundos), `max-age=2592000` (1 mes) |
-| [no-cache](https://tools.ietf.org/html/rfc7234#section-5.2.1.4) | **En las solicitudes**: una memoria caché no debe usar una respuesta almacenada para satisfacer la solicitud. El servidor de origen regenera la respuesta para el cliente y el middleware actualiza la respuesta almacenada en su caché.<br><br>**En las respuestas**: la respuesta no se debe utilizar para una solicitud subsiguiente sin validación en el servidor de origen. |
-| [sin almacén](https://tools.ietf.org/html/rfc7234#section-5.2.1.5) | **En las solicitudes**: una memoria caché no debe almacenar la solicitud.<br><br>**En las respuestas**: una memoria caché no debe almacenar ninguna parte de la respuesta. |
+| [no-cache](https://tools.ietf.org/html/rfc7234#section-5.2.1.4) | **En las solicitudes** : una memoria caché no debe usar una respuesta almacenada para satisfacer la solicitud. El servidor de origen regenera la respuesta para el cliente y el middleware actualiza la respuesta almacenada en su caché.<br><br>**En las respuestas** : la respuesta no se debe utilizar para una solicitud subsiguiente sin validación en el servidor de origen. |
+| [sin almacén](https://tools.ietf.org/html/rfc7234#section-5.2.1.5) | **En las solicitudes** : una memoria caché no debe almacenar la solicitud.<br><br>**En las respuestas** : una memoria caché no debe almacenar ninguna parte de la respuesta. |
 
 En la tabla siguiente se muestran otros encabezados de caché que desempeñan un rol en el almacenamiento en caché.
 
 | Encabezado                                                     | Función |
 | ---------------------------------------------------------- | -------- |
-| [Age](https://tools.ietf.org/html/rfc7234#section-5.1)     | Una estimación de la cantidad de tiempo en segundos transcurrido desde que se generó la respuesta o se validó correctamente en el servidor de origen. |
+| [Age](https://tools.ietf.org/html/rfc7234#section-5.1): edad     | Una estimación de la cantidad de tiempo en segundos transcurrido desde que se generó la respuesta o se validó correctamente en el servidor de origen. |
 | [Expira](https://tools.ietf.org/html/rfc7234#section-5.3) | Hora a partir de la cual la respuesta se considera obsoleta. |
 | [Omiti](https://tools.ietf.org/html/rfc7234#section-5.4)  | Existe por compatibilidad con versiones anteriores de caché HTTP/1.0 para establecer el `no-cache` comportamiento. Si el `Cache-Control` encabezado está presente, `Pragma` se omite el encabezado. |
 | [Variaciones](https://tools.ietf.org/html/rfc7231#section-7.1.4)  | Especifica que no se debe enviar una respuesta almacenada en caché a menos que todos los `Vary` campos de encabezado coincidan en la solicitud original de la respuesta almacenada en caché y la nueva solicitud. |
 
-## <a name="http-based-caching-respects-request-cache-control-directives"></a>El almacenamiento en caché basado en HTTP respeta las directivas de control de caché de solicitudes
+## <a name="http-based-caching-respects-request-cache-control-directives"></a>El almacenamiento en caché basado en HTTP respeta las directivas de Cache-Control de solicitudes
 
-La [especificación HTTP 1,1 Caching del encabezado Cache-Control](https://tools.ietf.org/html/rfc7234#section-5.2) requiere una memoria caché para respetar un `Cache-Control` encabezado válido enviado por el cliente. Un cliente puede realizar solicitudes con un `no-cache` valor de encabezado y obligar al servidor a generar una nueva respuesta para cada solicitud.
+La [especificación de almacenamiento en caché HTTP 1,1 para el encabezado Cache-Control](https://tools.ietf.org/html/rfc7234#section-5.2) requiere una memoria caché para respetar un `Cache-Control` encabezado válido enviado por el cliente. Un cliente puede realizar solicitudes con un `no-cache` valor de encabezado y obligar al servidor a generar una nueva respuesta para cada solicitud.
 
 `Cache-Control`Tener en cuenta siempre los encabezados de solicitud de cliente tiene sentido si tiene en cuenta el objetivo del almacenamiento en caché de http. En la especificación oficial, el almacenamiento en caché está pensado para reducir la latencia y la sobrecarga de red que supone satisfacer las solicitudes a través de una red de clientes, servidores proxy y servidores. No es necesariamente una manera de controlar la carga en un servidor de origen.
 
@@ -71,27 +72,27 @@ No hay ningún control de desarrollador sobre este comportamiento de almacenamie
 
 ### <a name="in-memory-caching"></a>Almacenamiento en caché en memoria
 
-El almacenamiento en caché en memoria utiliza la memoria del servidor para almacenar los datos en caché. Este tipo de almacenamiento en caché es adecuado para un solo servidor o para varios servidores que usan *sesiones permanentes*. Las sesiones permanentes significan que las solicitudes de un cliente siempre se enrutan al mismo servidor para su procesamiento.
+El almacenamiento en caché en memoria utiliza la memoria del servidor para almacenar los datos en caché. Este tipo de almacenamiento en caché es adecuado para un solo servidor o para varios servidores que usan *sesiones permanentes* . Las sesiones permanentes significan que las solicitudes de un cliente siempre se enrutan al mismo servidor para su procesamiento.
 
-Para más información, consulte <xref:performance/caching/memory>.
+Para obtener más información, vea <xref:performance/caching/memory>.
 
 ### <a name="distributed-cache"></a>Caché distribuida
 
 Use una caché distribuida para almacenar los datos en memoria cuando la aplicación se hospeda en una granja de servidores o en la nube. La memoria caché se comparte entre los servidores que procesan las solicitudes. Un cliente puede enviar una solicitud controlada por cualquier servidor del grupo si están disponibles los datos almacenados en caché del cliente. ASP.NET Core funciona con memorias caché distribuidas SQL Server, [Redis](https://www.nuget.org/packages/Microsoft.Extensions.Caching.StackExchangeRedis)y [NCache](https://www.nuget.org/packages/Alachisoft.NCache.OpenSource.SDK/) .
 
-Para más información, consulte <xref:performance/caching/distributed>.
+Para obtener más información, vea <xref:performance/caching/distributed>.
 
 ### <a name="cache-tag-helper"></a>Asistente de etiquetas de caché
 
 Almacenar en caché el contenido de una vista o una página de MVC Razor con la aplicación auxiliar de etiquetas de caché. La aplicación auxiliar de etiquetas de caché usa el almacenamiento en caché en memoria para almacenar los datos.
 
-Para más información, consulte <xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper>.
+Para obtener más información, vea <xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper>.
 
 ### <a name="distributed-cache-tag-helper"></a>Asistente de etiquetas de caché distribuida
 
 Almacene en caché el contenido de una vista o una Razor Página de MVC en escenarios de granja de servidores web o nube distribuida con la aplicación auxiliar de etiquetas de caché distribuida. La aplicación auxiliar de etiquetas de caché distribuida usa SQL Server, [Redis](https://www.nuget.org/packages/Microsoft.Extensions.Caching.StackExchangeRedis)o [NCache](https://www.nuget.org/packages/Alachisoft.NCache.OpenSource.SDK/) para almacenar los datos.
 
-Para más información, consulte <xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper>.
+Para obtener más información, vea <xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper>.
 
 ## <a name="responsecache-attribute"></a>Atributo ResponseCache
 

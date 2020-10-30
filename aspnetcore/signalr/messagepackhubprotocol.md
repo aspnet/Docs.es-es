@@ -7,6 +7,7 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 09/24/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/messagepackhubprotocol
-ms.openlocfilehash: 15ae8911e2ffba43c7bb885efd153d8b6803bc2a
-ms.sourcegitcommit: 74f4a4ddbe3c2f11e2e09d05d2a979784d89d3f5
+ms.openlocfilehash: e7d19a42e48048d2be4b87d6b0ac1ba6b2596ff1
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91393683"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93058173"
 ---
 # <a name="use-messagepack-hub-protocol-in-no-locsignalr-for-aspnet-core"></a>Usar el protocolo MessagePack Hub en SignalR para ASP.net Core
 
@@ -96,10 +97,10 @@ Después de instalar el paquete NPM, el módulo se puede usar directamente a tra
 
 *node_modules\\@microsoft\signalr-protocol-msgpack\dist\browser\signalr-protocol-msgpack.js* 
 
-En un explorador, `msgpack5` también se debe hacer referencia a la biblioteca. Use una `<script>` etiqueta para crear una referencia. La biblioteca se puede encontrar en *node_modules\msgpack5\dist\msgpack5.js*.
+En un explorador, `msgpack5` también se debe hacer referencia a la biblioteca. Use una `<script>` etiqueta para crear una referencia. La biblioteca se puede encontrar en *node_modules\msgpack5\dist\msgpack5.js* .
 
 > [!NOTE]
-> Al utilizar el `<script>` elemento, el orden es importante. Si se hace referencia a *signalr-protocol-msgpack.js* antes de *msgpack5.js*, se produce un error al intentar conectarse con MessagePack. También se requiere *signalr.js* antes de *signalr-protocol-msgpack.js*.
+> Al utilizar el `<script>` elemento, el orden es importante. Si se hace referencia a *signalr-protocol-msgpack.js* antes de *msgpack5.js* , se produce un error al intentar conectarse con MessagePack. También se requiere *signalr.js* antes de *signalr-protocol-msgpack.js* .
 
 ```html
 <script src="~/lib/signalr/signalr.js"></script>
@@ -189,7 +190,7 @@ Para obtener más información sobre esta limitación, vea el tema sobre el prob
 
 ## <a name="related-resources"></a>Recursos relacionados
 
-* [Introducción](xref:tutorials/signalr)
+* [Primeros pasos](xref:tutorials/signalr)
 * [Cliente .NET](xref:signalr/dotnet-client)
 * [Cliente de JavaScript](xref:signalr/javascript-client)
 
@@ -276,10 +277,10 @@ Después de instalar el paquete NPM, el módulo se puede usar directamente a tra
 
 *node_modules\\@microsoft\signalr-protocol-msgpack\dist\browser\signalr-protocol-msgpack.js* 
 
-En un explorador, `msgpack5` también se debe hacer referencia a la biblioteca. Use una `<script>` etiqueta para crear una referencia. La biblioteca se puede encontrar en *node_modules\msgpack5\dist\msgpack5.js*.
+En un explorador, `msgpack5` también se debe hacer referencia a la biblioteca. Use una `<script>` etiqueta para crear una referencia. La biblioteca se puede encontrar en *node_modules\msgpack5\dist\msgpack5.js* .
 
 > [!NOTE]
-> Al utilizar el `<script>` elemento, el orden es importante. Si se hace referencia a *signalr-protocol-msgpack.js* antes de *msgpack5.js*, se produce un error al intentar conectarse con MessagePack. También se requiere *signalr.js* antes de *signalr-protocol-msgpack.js*.
+> Al utilizar el `<script>` elemento, el orden es importante. Si se hace referencia a *signalr-protocol-msgpack.js* antes de *msgpack5.js* , se produce un error al intentar conectarse con MessagePack. También se requiere *signalr.js* antes de *signalr-protocol-msgpack.js* .
 
 ```html
 <script src="~/lib/signalr/signalr.js"></script>
@@ -369,7 +370,7 @@ Para obtener más información sobre esta limitación, vea el tema sobre el prob
 
 ## <a name="related-resources"></a>Recursos relacionados
 
-* [Introducción](xref:tutorials/signalr)
+* [Primeros pasos](xref:tutorials/signalr)
 * [Cliente .NET](xref:signalr/dotnet-client)
 * [Cliente de JavaScript](xref:signalr/javascript-client)
 
@@ -456,10 +457,10 @@ Después de instalar el paquete NPM, el módulo se puede usar directamente a tra
 
 *node_modules\\@aspnet\signalr-protocol-msgpack\dist\browser\signalr-protocol-msgpack.js*
 
-En un explorador, `msgpack5` también se debe hacer referencia a la biblioteca. Use una `<script>` etiqueta para crear una referencia. La biblioteca se puede encontrar en *node_modules\msgpack5\dist\msgpack5.js*.
+En un explorador, `msgpack5` también se debe hacer referencia a la biblioteca. Use una `<script>` etiqueta para crear una referencia. La biblioteca se puede encontrar en *node_modules\msgpack5\dist\msgpack5.js* .
 
 > [!NOTE]
-> Al utilizar el `<script>` elemento, el orden es importante. Si se hace referencia a *signalr-protocol-msgpack.js* antes de *msgpack5.js*, se produce un error al intentar conectarse con MessagePack. También se requiere *signalr.js* antes de *signalr-protocol-msgpack.js*.
+> Al utilizar el `<script>` elemento, el orden es importante. Si se hace referencia a *signalr-protocol-msgpack.js* antes de *msgpack5.js* , se produce un error al intentar conectarse con MessagePack. También se requiere *signalr.js* antes de *signalr-protocol-msgpack.js* .
 
 ```html
 <script src="~/lib/signalr/signalr.js"></script>
@@ -549,7 +550,7 @@ Para obtener más información sobre esta limitación, vea el tema sobre el prob
 
 ## <a name="related-resources"></a>Recursos relacionados
 
-* [Introducción](xref:tutorials/signalr)
+* [Primeros pasos](xref:tutorials/signalr)
 * [Cliente .NET](xref:signalr/dotnet-client)
 * [Cliente de JavaScript](xref:signalr/javascript-client)
 

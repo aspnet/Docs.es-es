@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/15/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/models/validation
-ms.openlocfilehash: e911512c1dce892c670659f04959be89cea067bb
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 77d49710b9d69f6fbbe92970f1c455de32489444
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88630112"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93056964"
 ---
 # <a name="model-validation-in-aspnet-core-mvc-and-no-locrazor-pages"></a>Validación del modelo en ASP.NET Core MVC y Razor páginas
 
@@ -175,7 +176,7 @@ Si necesita una validación que no proporcionan los atributos integrados, puede 
 
 Para los escenarios que no se controlan mediante los atributos de validación integrados, puede crear atributos de validación personalizados. Cree una clase que herede de <xref:System.ComponentModel.DataAnnotations.ValidationAttribute> y reemplace el método <xref:System.ComponentModel.DataAnnotations.ValidationAttribute.IsValid*>.
 
-El método `IsValid` acepta un objeto denominado *value*, que es la entrada que se va a validar. Una sobrecarga también acepta un objeto `ValidationContext`, que proporciona información adicional, como la instancia del modelo creada por el enlace de modelos.
+El método `IsValid` acepta un objeto denominado *value* , que es la entrada que se va a validar. Una sobrecarga también acepta un objeto `ValidationContext`, que proporciona información adicional, como la instancia del modelo creada por el enlace de modelos.
 
 El siguiente ejemplo valida que la fecha de lanzamiento de una película del género *Classic* no sea posterior a un año especificado. El atributo `[ClassicMovie]`:
 
@@ -209,7 +210,7 @@ Los nodos de nivel superior pueden usar <xref:Microsoft.AspNetCore.Mvc.ModelBind
 
 [!code-csharp[](validation/samples/3.x/ValidationSample/Controllers/UsersController.cs?name=snippet_CheckAgeSignature)]
 
-En la página Comprobar edad (*CheckAge.cshtml*), hay dos formularios. El primer formulario envía un valor `Age` de `99` como una cadena de parámetro de consulta: `https://localhost:5001/Users/CheckAge?Age=99`.
+En la página Comprobar edad ( *CheckAge.cshtml* ), hay dos formularios. El primer formulario envía un valor `Age` de `99` como una cadena de parámetro de consulta: `https://localhost:5001/Users/CheckAge?Age=99`.
 
 Al enviar un parámetro `age` con un formato correcto desde la cadena de consulta, el formulario se valida.
 
@@ -384,8 +385,8 @@ El código siguiente deshabilita la validación de cliente en Razor las páginas
 
 Otras opciones para deshabilitar la validación del lado cliente:
 
-* Convierta en comentario la referencia a `_ValidationScriptsPartial` en todos los archivos *.cshtml*.
-* Quite el contenido del archivo *Pages\Shared\_ValidationScriptsPartial.cshtml*.
+* Convierta en comentario la referencia a `_ValidationScriptsPartial` en todos los archivos *.cshtml* .
+* Quite el contenido del archivo *Pages\Shared\_ValidationScriptsPartial.cshtml* .
 
 El enfoque anterior no impedirá la validación del lado cliente de la ASP.NET Core Identity Razor biblioteca de clases. Para obtener más información, vea <xref:security/authentication/scaffold-identity>.
 
@@ -541,9 +542,9 @@ Si necesita una validación que no proporcionan los atributos integrados, puede 
 
 Para los escenarios que no se controlan mediante los atributos de validación integrados, puede crear atributos de validación personalizados. Cree una clase que herede de <xref:System.ComponentModel.DataAnnotations.ValidationAttribute> y reemplace el método <xref:System.ComponentModel.DataAnnotations.ValidationAttribute.IsValid*>.
 
-El método `IsValid` acepta un objeto denominado *value*, que es la entrada que se va a validar. Una sobrecarga también acepta un objeto `ValidationContext`, que proporciona información adicional, como la instancia del modelo creada por el enlace de modelos.
+El método `IsValid` acepta un objeto denominado *value* , que es la entrada que se va a validar. Una sobrecarga también acepta un objeto `ValidationContext`, que proporciona información adicional, como la instancia del modelo creada por el enlace de modelos.
 
-El siguiente ejemplo valida que la fecha de lanzamiento de una película del género *Classic* no sea posterior a un año especificado. El atributo `[ClassicMovie2]` comprueba primero el género y continúa únicamente si es *Classic*. Para las películas que se identifican como clásicos, comprueba la fecha de lanzamiento a fin de asegurarse de que no sea posterior al límite que se ha pasado al constructor de atributo.
+El siguiente ejemplo valida que la fecha de lanzamiento de una película del género *Classic* no sea posterior a un año especificado. El atributo `[ClassicMovie2]` comprueba primero el género y continúa únicamente si es *Classic* . Para las películas que se identifican como clásicos, comprueba la fecha de lanzamiento a fin de asegurarse de que no sea posterior al límite que se ha pasado al constructor de atributo.
 
 [!code-csharp[](validation/samples/2.x/ValidationSample/Attributes/ClassicMovieAttribute.cs?name=snippet_ClassicMovieAttribute)]
 
@@ -572,7 +573,7 @@ Los nodos de nivel superior pueden usar <xref:Microsoft.AspNetCore.Mvc.ModelBind
 
 [!code-csharp[](validation/samples/2.x/ValidationSample/Controllers/UsersController.cs?name=snippet_CheckAge)]
 
-En la página Comprobar edad (*CheckAge.cshtml*), hay dos formularios. El primer formulario envía un valor `Age` de `99` como una cadena de consulta: `https://localhost:5001/Users/CheckAge?Age=99`.
+En la página Comprobar edad ( *CheckAge.cshtml* ), hay dos formularios. El primer formulario envía un valor `Age` de `99` como una cadena de consulta: `https://localhost:5001/Users/CheckAge?Age=99`.
 
 Al enviar un parámetro `age` con un formato correcto desde la cadena de consulta, el formulario se valida.
 
@@ -757,7 +758,7 @@ Y en Razor las páginas:
 
 [!code-csharp[](validation/samples_snapshot/2.x/Startup3.cs?name=snippet_DisableClientValidation)]
 
-Otra opción para deshabilitar la validación de cliente consiste en marcar como comentario la referencia a `_ValidationScriptsPartial` en el archivo *.cshtml*.
+Otra opción para deshabilitar la validación de cliente consiste en marcar como comentario la referencia a `_ValidationScriptsPartial` en el archivo *.cshtml* .
 
 ## <a name="additional-resources"></a>Recursos adicionales
 

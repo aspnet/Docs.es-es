@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/response-compression
-ms.openlocfilehash: b8947e3c3c4f634fbd838c22ff60799257143480
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 9327c98c22a4d42d31ea8ba1eb8337153040b5b5
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88635000"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93056977"
 ---
 # <a name="response-compression-in-aspnet-core"></a>Compresión de respuesta en ASP.NET Core
 
@@ -73,7 +74,7 @@ Los algoritmos de compresión están sujetos a un equilibrio entre la velocidad 
 
 En la tabla siguiente se describen los encabezados implicados en la solicitud, el envío, el almacenamiento en caché y la recepción de contenido comprimido.
 
-| Encabezado             | Role |
+| Encabezado             | Rol |
 | ------------------ | ---- |
 | `Accept-Encoding`  | Se envía desde el cliente al servidor para indicar los esquemas de codificación de contenido aceptables para el cliente. |
 | `Content-Encoding` | Se envía desde el servidor al cliente para indicar la codificación del contenido en la carga. |
@@ -112,7 +113,7 @@ public class Startup
 
 Notas:
 
-* `app.UseResponseCompression` se debe llamar antes de cualquier middleware que comprime las respuestas. Para más información, consulte <xref:fundamentals/middleware/index#middleware-order>.
+* `app.UseResponseCompression` se debe llamar antes de cualquier middleware que comprime las respuestas. Para obtener más información, vea <xref:fundamentals/middleware/index#middleware-order>.
 * Use una herramienta como [Fiddler](https://www.telerik.com/fiddler), [Firebug](https://getfirebug.com/)o [Postman](https://www.getpostman.com/) para establecer el encabezado de la `Accept-Encoding` solicitud y estudiar los encabezados de respuesta, el tamaño y el cuerpo.
 
 Envíe una solicitud a la aplicación de ejemplo sin el `Accept-Encoding` encabezado y observe que la respuesta se ha descomprimido. Los `Content-Encoding` `Vary` encabezados y no están presentes en la respuesta.
@@ -233,7 +234,7 @@ El middleware especifica un conjunto predeterminado de tipos MIME para la compre
 * `text/plain`
 * `text/xml`
 
-Reemplazar o anexar tipos MIME con las opciones de middleware de compresión de respuesta. Tenga en cuenta que no se admiten los tipos MIME comodín, como `text/*` . La aplicación de ejemplo agrega un tipo MIME para `image/svg+xml` y comprime y sirve la imagen de banner ASP.net Core (*banner. svg*).
+Reemplazar o anexar tipos MIME con las opciones de middleware de compresión de respuesta. Tenga en cuenta que no se admiten los tipos MIME comodín, como `text/*` . La aplicación de ejemplo agrega un tipo MIME para `image/svg+xml` y comprime y sirve la imagen de banner ASP.net Core ( *banner. svg* ).
 
 [!code-csharp[](response-compression/samples/3.x/SampleApp/Startup.cs?name=snippet1&highlight=8-10)]
 
@@ -319,7 +320,7 @@ Los algoritmos de compresión están sujetos a un equilibrio entre la velocidad 
 
 En la tabla siguiente se describen los encabezados implicados en la solicitud, el envío, el almacenamiento en caché y la recepción de contenido comprimido.
 
-| Encabezado             | Role |
+| Encabezado             | Rol |
 | ------------------ | ---- |
 | `Accept-Encoding`  | Se envía desde el cliente al servidor para indicar los esquemas de codificación de contenido aceptables para el cliente. |
 | `Content-Encoding` | Se envía desde el servidor al cliente para indicar la codificación del contenido en la carga. |
@@ -358,7 +359,7 @@ public class Startup
 
 Notas:
 
-* `app.UseResponseCompression` se debe llamar antes de cualquier middleware que comprime las respuestas. Para más información, consulte <xref:fundamentals/middleware/index#middleware-order>.
+* `app.UseResponseCompression` se debe llamar antes de cualquier middleware que comprime las respuestas. Para obtener más información, vea <xref:fundamentals/middleware/index#middleware-order>.
 * Use una herramienta como [Fiddler](https://www.telerik.com/fiddler), [Firebug](https://getfirebug.com/)o [Postman](https://www.getpostman.com/) para establecer el encabezado de la `Accept-Encoding` solicitud y estudiar los encabezados de respuesta, el tamaño y el cuerpo.
 
 Envíe una solicitud a la aplicación de ejemplo sin el `Accept-Encoding` encabezado y observe que la respuesta se ha descomprimido. Los `Content-Encoding` `Vary` encabezados y no están presentes en la respuesta.
@@ -478,7 +479,7 @@ El middleware especifica un conjunto predeterminado de tipos MIME para la compre
 * `text/plain`
 * `text/xml`
 
-Reemplazar o anexar tipos MIME con las opciones de middleware de compresión de respuesta. Tenga en cuenta que no se admiten los tipos MIME comodín, como `text/*` . La aplicación de ejemplo agrega un tipo MIME para `image/svg+xml` y comprime y sirve la imagen de banner ASP.net Core (*banner. svg*).
+Reemplazar o anexar tipos MIME con las opciones de middleware de compresión de respuesta. Tenga en cuenta que no se admiten los tipos MIME comodín, como `text/*` . La aplicación de ejemplo agrega un tipo MIME para `image/svg+xml` y comprime y sirve la imagen de banner ASP.net Core ( *banner. svg* ).
 
 [!code-csharp[](response-compression/samples/2.x/SampleApp/Startup.cs?name=snippet1&highlight=8-10)]
 
@@ -564,7 +565,7 @@ Los algoritmos de compresión están sujetos a un equilibrio entre la velocidad 
 
 En la tabla siguiente se describen los encabezados implicados en la solicitud, el envío, el almacenamiento en caché y la recepción de contenido comprimido.
 
-| Encabezado             | Role |
+| Encabezado             | Rol |
 | ------------------ | ---- |
 | `Accept-Encoding`  | Se envía desde el cliente al servidor para indicar los esquemas de codificación de contenido aceptables para el cliente. |
 | `Content-Encoding` | Se envía desde el servidor al cliente para indicar la codificación del contenido en la carga. |
@@ -603,7 +604,7 @@ public class Startup
 
 Notas:
 
-* `app.UseResponseCompression` se debe llamar antes de cualquier middleware que comprime las respuestas. Para más información, consulte <xref:fundamentals/middleware/index#middleware-order>.
+* `app.UseResponseCompression` se debe llamar antes de cualquier middleware que comprime las respuestas. Para obtener más información, vea <xref:fundamentals/middleware/index#middleware-order>.
 * Use una herramienta como [Fiddler](https://www.telerik.com/fiddler), [Firebug](https://getfirebug.com/)o [Postman](https://www.getpostman.com/) para establecer el encabezado de la `Accept-Encoding` solicitud y estudiar los encabezados de respuesta, el tamaño y el cuerpo.
 
 Envíe una solicitud a la aplicación de ejemplo sin el `Accept-Encoding` encabezado y observe que la respuesta se ha descomprimido. Los `Content-Encoding` `Vary` encabezados y no están presentes en la respuesta.
@@ -683,7 +684,7 @@ El middleware especifica un conjunto predeterminado de tipos MIME para la compre
 * `text/plain`
 * `text/xml`
 
-Reemplazar o anexar tipos MIME con las opciones de middleware de compresión de respuesta. Tenga en cuenta que no se admiten los tipos MIME comodín, como `text/*` . La aplicación de ejemplo agrega un tipo MIME para `image/svg+xml` y comprime y sirve la imagen de banner ASP.net Core (*banner. svg*).
+Reemplazar o anexar tipos MIME con las opciones de middleware de compresión de respuesta. Tenga en cuenta que no se admiten los tipos MIME comodín, como `text/*` . La aplicación de ejemplo agrega un tipo MIME para `image/svg+xml` y comprime y sirve la imagen de banner ASP.net Core ( *banner. svg* ).
 
 [!code-csharp[](response-compression/samples/2.x/SampleApp/Startup.cs?name=snippet1&highlight=8-10)]
 

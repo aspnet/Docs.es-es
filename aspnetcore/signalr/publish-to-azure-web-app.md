@@ -7,6 +7,7 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 11/12/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/publish-to-azure-web-app
-ms.openlocfilehash: b9d32e2f3c37f652be15c5857d14ac48f66695ad
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: e00eea81788c9b335691b7e5ffe6a46534c3c492
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88631932"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93058225"
 ---
 # <a name="publish-an-aspnet-core-no-locsignalr-app-to-azure-app-service"></a>Publicación de una SignalR aplicación ASP.net Core en Azure App Service
 
@@ -38,13 +39,13 @@ Por el [Brady](https://twitter.com/bradygaster)
 
 En este artículo se describe la publicación con las herramientas de Visual Studio. Visual Studio Code los usuarios pueden usar [CLI de Azure](/cli/azure) comandos para publicar aplicaciones en Azure. Para obtener más información, consulte [publicación de una aplicación ASP.net Core en Azure con herramientas de línea de comandos](/azure/app-service/app-service-web-get-started-dotnet).
 
-1. Desde el **Explorador de soluciones**, haga clic con el botón derecho en el proyecto y seleccione **Publicar**.
+1. Desde el **Explorador de soluciones** , haga clic con el botón derecho en el proyecto y seleccione **Publicar** .
 
 1. Confirme que **App Service** y **crear nuevos** están seleccionados en el cuadro de diálogo **seleccionar un destino de publicación** .
 
 1. Seleccione **crear perfil** en la lista desplegable del botón **publicar** .
 
-   Escriba la información que se describe en la tabla siguiente en el cuadro de diálogo **crear App Service** y seleccione **crear**.
+   Escriba la información que se describe en la tabla siguiente en el cuadro de diálogo **crear App Service** y seleccione **crear** .
 
    | Elemento               | Descripción |
    | ------------------ | ----------- |
@@ -53,13 +54,13 @@ En este artículo se describe la publicación con las herramientas de Visual Stu
    | **Grupo de recursos** | Grupo de recursos relacionados a los que pertenece la aplicación. |
    | **Plan de hospedaje**   | Plan de precios de la aplicación Web. |
 
-1. Seleccione el ** SignalR servicio de Azure** en la lista desplegable **dependencias**  >  **Agregar** :
+1. Seleccione el **SignalR servicio de Azure** en la lista desplegable **dependencias**  >  **Agregar** :
 
    ![Área de dependencias que muestra la selección de Azure::: no-LOC (Signalr)::: Service en la lista desplegable agregar](publish-to-azure-web-app/_static/signalr-service-dependency.png)
 
-1. En el cuadro de diálogo ** SignalR servicio de Azure** , seleccione **crear una nueva SignalR instancia de servicio de Azure**.
+1. En el cuadro de diálogo **SignalR servicio de Azure** , seleccione **crear una nueva SignalR instancia de servicio de Azure** .
 
-1. Proporcione un **nombre**, un **grupo de recursos**y una **Ubicación**. Vuelva al cuadro de diálogo ** SignalR servicio de Azure** y seleccione **Agregar**.
+1. Proporcione un **nombre** , un **grupo de recursos** y una **Ubicación** . Vuelva al cuadro de diálogo **SignalR servicio de Azure** y seleccione **Agregar** .
 
 Visual Studio completa las siguientes tareas:
 
@@ -81,13 +82,13 @@ Si se produce un error *de puerta de enlace HTTP 502,2-Bad* al implementar una a
 
 En el caso de las aplicaciones hospedadas sin el servicio de Azure SignalR , habilite:
 
-* [Afinidad ARR] ( https://azure.github.io/AppService/2016/05/16/Disable-Session-affinity- cookie -(Arr- cookie ) -for-Azure-web-apps.html) para enrutar las solicitudes de un usuario a la misma instancia de App Service. La configuración predeterminada es **on**.
-* [Sockets web](xref:fundamentals/websockets) para permitir que el transporte de sockets web funcione. El valor predeterminado es **OFF**.
+* [Afinidad ARR] ( https://azure.github.io/AppService/2016/05/16/Disable-Session-affinity- cookie -(Arr- cookie ) -for-Azure-web-apps.html) para enrutar las solicitudes de un usuario a la misma instancia de App Service. La configuración predeterminada es **on** .
+* [Sockets web](xref:fundamentals/websockets) para permitir que el transporte de sockets web funcione. El valor predeterminado es **OFF** .
 
-1. En el Azure Portal, vaya a la aplicación web en **App Services**.
-1. Abra **configuración**  >  **General**.
-1. Establezca **Sockets web** en **activado**.
-1. Compruebe que la **afinidad ARR** está establecida en **on**.
+1. En el Azure Portal, vaya a la aplicación web en **App Services** .
+1. Abra **configuración**  >  **General** .
+1. Establezca **Sockets web** en **activado** .
+1. Compruebe que la **afinidad ARR** está establecida en **on** .
 
 ## <a name="app-service-plan-limits"></a>Límites del plan de App Service
 
@@ -95,7 +96,7 @@ Los sockets web y otros transportes se limitan en función del plan de App Servi
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
-* [¿Qué es el servicio de Azure SignalR ?](/azure/azure-signalr/signalr-overview)
+* [¿Qué es Azure SignalR Service?](/azure/azure-signalr/signalr-overview)
 * <xref:signalr/introduction>
 * <xref:host-and-deploy/index>
 * <xref:tutorials/publish-to-azure-webapp-using-vs>

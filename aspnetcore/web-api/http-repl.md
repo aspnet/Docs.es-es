@@ -7,6 +7,7 @@ ms.author: scaddie
 ms.custom: mvc, devx-track-azurecli
 ms.date: 05/20/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/http-repl
-ms.openlocfilehash: b12f4b10230f2631392011a6e443156bf9a2d843
-ms.sourcegitcommit: d5ecad1103306fac8d5468128d3e24e529f1472c
+ms.openlocfilehash: efd2208044ad6392131216266afc34187d738b78
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92491449"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93058979"
 ---
 # <a name="test-web-apis-with-the-http-repl"></a>Prueba de las API web HTTP REPL
 
@@ -366,7 +367,7 @@ pref set editor.command.default "C:\Program Files\Microsoft VS Code\Code.exe"
 
 ---
 
-Para iniciar el editor de texto predeterminado con argumentos específicos de la CLI, establezca la clave `editor.command.default.arguments`. Por ejemplo, supongamos que Visual Studio Code es el editor de texto predeterminado y que siempre quiere que HTTP REPL abra Visual Studio Code en una nueva sesión con las extensiones deshabilitadas. Ejecute el comando siguiente:
+Para iniciar el editor de texto predeterminado con argumentos específicos de la CLI, establezca la clave `editor.command.default.arguments`. Por ejemplo, supongamos que Visual Studio Code es el editor de texto predeterminado y que siempre quiere que HTTP REPL abra Visual Studio Code en una nueva sesión con las extensiones deshabilitadas. Ejecute el siguiente comando:
 
 ```console
 pref set editor.command.default.arguments "--disable-extensions --new-window"
@@ -565,7 +566,7 @@ Se trata del parámetro de ruta, si existe, que espera el método de acción del
 
 Para emitir una solicitud HTTP PUT, realice lo siguiente:
 
-1. *Opcional*: Ejecute el `get` comando para ver los datos antes de modificarlos:
+1. *Opcional* : Ejecute el `get` comando para ver los datos antes de modificarlos:
 
     ```console
     https://localhost:5001/fruits~ get
@@ -627,7 +628,7 @@ Para emitir una solicitud HTTP PUT, realice lo siguiente:
     Server: Kestrel
     ```
 
-1. *Opcional*: emita un `get` comando para ver las modificaciones. Por ejemplo, si ha escrito "Cherry" en el editor de texto, un elemento `get` devuelve lo siguiente:
+1. *Opcional* : emita un `get` comando para ver las modificaciones. Por ejemplo, si ha escrito "Cherry" en el editor de texto, un elemento `get` devuelve lo siguiente:
 
     ```console
     https://localhost:5001/fruits~ get
@@ -678,7 +679,7 @@ Se trata del parámetro de ruta, si existe, que espera el método de acción del
 
 Para emitir una solicitud HTTP DELETE, realice lo siguiente:
 
-1. *Opcional*: Ejecute el `get` comando para ver los datos antes de modificarlos:
+1. *Opcional* : Ejecute el `get` comando para ver los datos antes de modificarlos:
 
     ```console
     https://localhost:5001/fruits~ get
@@ -718,7 +719,7 @@ Para emitir una solicitud HTTP DELETE, realice lo siguiente:
     Server: Kestrel
     ```
 
-1. *Opcional*: emita un `get` comando para ver las modificaciones. En este ejemplo, un elemento `get` devuelve lo siguiente:
+1. *Opcional* : emita un `get` comando para ver las modificaciones. En este ejemplo, un elemento `get` devuelve lo siguiente:
 
     ```console
     https://localhost:5001/fruits~ get

@@ -5,6 +5,7 @@ description: Muestra cómo evitar ataques de redireccionamiento abierto contra u
 ms.author: riande
 ms.date: 07/07/2017
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/preventing-open-redirects
-ms.openlocfilehash: 5226e301960a56145b94b6128d0034c40b86bffd
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: e546cd852367921c7c694db3639f7a233f606e75
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633466"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93058394"
 ---
 # <a name="prevent-open-redirect-attacks-in-aspnet-core"></a>Prevención de ataques de redireccionamiento abiertos en ASP.NET Core
 
@@ -39,7 +40,7 @@ Dado que la dirección URL de destino se especifica en la cadena de consulta de 
 
 Un usuario malintencionado puede desarrollar un ataque diseñado para permitir el acceso de los usuarios malintencionados a las credenciales de un usuario o a la información confidencial. Para comenzar el ataque, el usuario malintencionado hace que el usuario haga clic en un vínculo a la página de inicio de sesión del sitio con un `returnUrl` valor QueryString agregado a la dirección URL. Por ejemplo, considere una aplicación en `contoso.com` que incluye una página de inicio de sesión en `http://contoso.com/Account/LogOn?returnUrl=/Home/About` . El ataque sigue estos pasos:
 
-1. El usuario hace clic en un vínculo malintencionado a `http://contoso.com/Account/LogOn?returnUrl=http://contoso1.com/Account/LogOn` (la segunda dirección URL es "Contoso**1**. com", no "contoso.com").
+1. El usuario hace clic en un vínculo malintencionado a `http://contoso.com/Account/LogOn?returnUrl=http://contoso1.com/Account/LogOn` (la segunda dirección URL es "Contoso **1** . com", no "contoso.com").
 2. El usuario inicia sesión correctamente.
 3. El usuario es redirigido (por el sitio) a `http://contoso1.com/Account/LogOn` (un sitio malintencionado que se parece exactamente al sitio real).
 4. El usuario vuelve a iniciar sesión (dando a un sitio malintencionado sus credenciales) y se redirige de nuevo al sitio real.

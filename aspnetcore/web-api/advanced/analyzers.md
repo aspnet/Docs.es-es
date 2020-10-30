@@ -7,6 +7,7 @@ ms.author: prkrishn
 ms.custom: mvc
 ms.date: 09/05/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/advanced/analyzers
-ms.openlocfilehash: 1bc76f3965009dbdd66c58b197f4c12bd44faf18
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: cf0415e7d72e21a48db8bbeb4540f05e0b0a4198
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633037"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93057926"
 ---
 # <a name="use-web-api-analyzers"></a>Uso de analizadores de API web
 
@@ -58,9 +59,9 @@ Instale el paquete de NuGet [Microsoft.AspNetCore.Mvc.Api.Analyzers](https://www
 
 ### <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-En la ventana **Consola del Administrador de paquetes**:
-  * Vaya a **Ver** > **otra** > **consola del administrador de paquetes**de Windows.
-  * Vaya al directorio en el que esté el archivo *ApiConventions.csproj*.
+En la ventana **Consola del Administrador de paquetes** :
+  * Vaya a **Ver** > **otra** > **consola del administrador de paquetes** de Windows.
+  * Vaya al directorio en el que esté el archivo *ApiConventions.csproj* .
   * Ejecute el comando siguiente:
 
     ```powershell
@@ -69,14 +70,14 @@ En la ventana **Consola del Administrador de paquetes**:
 
 ### <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)
 
-* Haga clic con el botón secundario en la carpeta *paquetes* en **Panel de solución** > **agregar paquetes..**..
+* Haga clic con el botón secundario en la carpeta *paquetes* en **Panel de solución** > **agregar paquetes..** ..
 * Establezca la lista desplegable **origen** de la ventana **agregar paquetes** en "Nuget.org".
 * En el cuadro de búsqueda, escriba "Microsoft.AspNetCore.Mvc.Api.Analyzers".
-* Seleccione el paquete "Microsoft.AspNetCore.Mvc.Api.Analyzers" en el panel de resultados y haga clic en **Agregar paquete**.
+* Seleccione el paquete "Microsoft.AspNetCore.Mvc.Api.Analyzers" en el panel de resultados y haga clic en **Agregar paquete** .
 
 ### <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-Ejecute el siguiente comando en el **terminal integrado**:
+Ejecute el siguiente comando en el **terminal integrado** :
 
 ```dotnetcli
 dotnet add ApiConventions.csproj package Microsoft.AspNetCore.Mvc.Api.Analyzers

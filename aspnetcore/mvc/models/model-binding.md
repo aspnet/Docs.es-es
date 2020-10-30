@@ -6,6 +6,7 @@ ms.assetid: 0be164aa-1d72-4192-bd6b-192c9c301164
 ms.author: riande
 ms.date: 12/18/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/models/model-binding
-ms.openlocfilehash: ca2f071ccb84fdb2eb06f533fc4d088ad1b1c785
-ms.sourcegitcommit: 74f4a4ddbe3c2f11e2e09d05d2a979784d89d3f5
+ms.openlocfilehash: a3be22134246c76b0a809ddb97b33ff97ace9a5b
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91393891"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93057510"
 ---
 # <a name="model-binding-in-aspnet-core"></a>Enlace de modelos en ASP.NET Core
 
@@ -80,7 +81,7 @@ Se puede aplicar a una propiedad pública de un controlador o una clase `PageMod
 
 [!code-csharp[](model-binding/samples/3.x/ModelBindingSample/Pages/Instructors/Edit.cshtml.cs?name=snippet_BindProperty&highlight=3-4)]
 
-### <a name="bindpropertiesattribute"></a>Atributo [BindProperties]
+### <a name="bindproperties-attribute"></a>Atributo [BindProperties]
 
 Disponible en ASP.NET 2.1 Core y versiones posteriores.  Se pueden aplicar a un controlador o una clase `PageModel` para indicar al enlace de modelos que seleccione como destino todas las propiedades públicas de la clase:
 
@@ -210,8 +211,8 @@ Los tipos simples a los que el enlazador de modelos puede convertir las cadenas 
 * [DateTimeOffset](xref:System.ComponentModel.DateTimeOffsetConverter)
 * [Decimal](xref:System.ComponentModel.DecimalConverter)
 * [Double](xref:System.ComponentModel.DoubleConverter)
-* [Enum](xref:System.ComponentModel.EnumConverter)
-* [Volumen](xref:System.ComponentModel.GuidConverter)
+* [Enumeración](xref:System.ComponentModel.EnumConverter)
+* [GUID](xref:System.ComponentModel.GuidConverter)
 * [Int16](xref:System.ComponentModel.Int16Converter), [Int32](xref:System.ComponentModel.Int32Converter), [Int64](xref:System.ComponentModel.Int64Converter)
 * [Single](xref:System.ComponentModel.SingleConverter)
 * [TimeSpan](xref:System.ComponentModel.TimeSpanConverter)
@@ -223,7 +224,7 @@ Los tipos simples a los que el enlazador de modelos puede convertir las cadenas 
 
 Un tipo complejo debe tener un constructor público predeterminado y propiedades grabables públicas para enlazar. Cuando se produce el enlace de modelos, se crea una instancia de la clase con el constructor predeterminado público. 
 
-Para cada propiedad del tipo complejo, el enlace de modelos busca entre los orígenes el patrón de nombre *prefijo.nombre_de_propiedad*. Si no se encuentra nada, solo busca *nombre_de_propiedad* sin el prefijo.
+Para cada propiedad del tipo complejo, el enlace de modelos busca entre los orígenes el patrón de nombre *prefijo.nombre_de_propiedad* . Si no se encuentra nada, solo busca *nombre_de_propiedad* sin el prefijo.
 
 Para el enlace a un parámetro, el prefijo es el nombre del parámetro. Para el enlace a una propiedad pública `PageModel`, el prefijo es el nombre de la propiedad pública. Algunos atributos tienen una propiedad `Prefix` que permite invalidar el uso predeterminado del nombre de parámetro o propiedad.
 
@@ -279,11 +280,11 @@ Existen varios atributos integrados para controlar el enlace de modelos de tipos
 * `[BindNever]`
 
 > [!WARNING]
-> Estos atributos afectan al enlace de modelos cuando el origen de los valores son datos de formulario publicados. ***No*** afectan a los formateadores de entrada, que procesan los cuerpos de solicitud JSON y XML publicados. Los formateadores de entrada se explican [más adelante en este artículo](#input-formatters).
+> Estos atributos afectan al enlace de modelos cuando el origen de los valores son datos de formulario publicados. **No afectan** a los formateadores de entrada, que procesan los cuerpos de solicitud JSON y XML publicados. Los formateadores de entrada se explican [más adelante en este artículo](#input-formatters).
 
 ### <a name="bind-attribute"></a>Atributo [Bind]
 
-Se puede aplicar a una clase o un parámetro de método. Especifica qué propiedades de un modelo se deben incluir en el enlace de modelos. `[Bind]`***no*** afecta a los formateadores de entrada.
+Se puede aplicar a una clase o un parámetro de método. Especifica qué propiedades de un modelo se deben incluir en el enlace de modelos. `[Bind]`_*_no_*_ afecta a los formateadores de entrada.
 
 En el ejemplo siguiente, solo se enlazan las propiedades especificadas del modelo `Instructor` cuando se llama a cualquier método de acción o controlador:
 
@@ -299,7 +300,7 @@ En el ejemplo siguiente, solo se enlazan las propiedades especificadas del model
 public IActionResult OnPost([Bind("LastName,FirstMidName,HireDate")] Instructor instructor)
 ```
 
-El atributo `[Bind]` se puede usar para protegerse de la publicación excesiva en escenarios de *creación*. No funciona bien en escenarios de edición porque las propiedades excluidas se establecen en NULL o en un valor predeterminado en lugar de mantenerse sin cambios. Para defenderse de la publicación excesiva, se recomiendan modelos de vista en lugar del atributo `[Bind]`. Para más información, vea [Nota de seguridad sobre la publicación excesiva](xref:data/ef-mvc/crud#security-note-about-overposting).
+El `[Bind]` atributo se puede usar para protegerse frente a la publicación en escenarios _create *. No funciona bien en escenarios de edición porque las propiedades excluidas se establecen en NULL o en un valor predeterminado en lugar de mantenerse sin cambios. Para defenderse de la publicación excesiva, se recomiendan modelos de vista en lugar del atributo `[Bind]`. Para más información, vea [Nota de seguridad sobre la publicación excesiva](xref:data/ef-mvc/crud#security-note-about-overposting).
 
 ### <a name="bindrequired-attribute"></a>Atributo [BindRequired]
 
@@ -317,7 +318,7 @@ Solo se puede aplicar a propiedades del modelo, no a parámetros de método. Imp
 
 ## <a name="collections"></a>Colecciones
 
-Para los destinos que son colecciones de tipos simples, el enlace de modelos busca coincidencias con *nombre_de_parámetro* o *nombre_de_propiedad*. Si no se encuentra ninguna coincidencia, busca uno de los formatos admitidos sin el prefijo. Por ejemplo:
+Para los destinos que son colecciones de tipos simples, el enlace de modelos busca coincidencias con *nombre_de_parámetro* o *nombre_de_propiedad* . Si no se encuentra ninguna coincidencia, busca uno de los formatos admitidos sin el prefijo. Por ejemplo:
 
 * Imagine que el parámetro que se va a enlazar es una matriz llamada `selectedCourses`:
 
@@ -362,7 +363,7 @@ Para los destinos que son colecciones de tipos simples, el enlace de modelos bus
 
 ## <a name="dictionaries"></a>Diccionarios
 
-Para los destinos `Dictionary`, el enlace de modelos busca coincidencias con *nombre_de_parámetro* o *nombre_de_propiedad*. Si no se encuentra ninguna coincidencia, busca uno de los formatos admitidos sin el prefijo. Por ejemplo:
+Para los destinos `Dictionary`, el enlace de modelos busca coincidencias con *nombre_de_parámetro* o *nombre_de_propiedad* . Si no se encuentra ninguna coincidencia, busca uno de los formatos admitidos sin el prefijo. Por ejemplo:
 
 * Imagine que el parámetro de destino es un elemento `Dictionary<int, string>` denominado `selectedCourses`:
 
@@ -608,7 +609,7 @@ Se puede aplicar a una propiedad pública de un controlador o una clase `PageMod
 
 [!code-csharp[](model-binding/samples/2.x/ModelBindingSample/Pages/Instructors/Edit.cshtml.cs?name=snippet_BindProperty&highlight=3-4)]
 
-### <a name="bindpropertiesattribute"></a>Atributo [BindProperties]
+### <a name="bindproperties-attribute"></a>Atributo [BindProperties]
 
 Disponible en ASP.NET 2.1 Core y versiones posteriores.  Se pueden aplicar a un controlador o una clase `PageModel` para indicar al enlace de modelos que seleccione como destino todas las propiedades públicas de la clase:
 
@@ -738,8 +739,8 @@ Los tipos simples a los que el enlazador de modelos puede convertir las cadenas 
 * [DateTimeOffset](xref:System.ComponentModel.DateTimeOffsetConverter)
 * [Decimal](xref:System.ComponentModel.DecimalConverter)
 * [Double](xref:System.ComponentModel.DoubleConverter)
-* [Enum](xref:System.ComponentModel.EnumConverter)
-* [Volumen](xref:System.ComponentModel.GuidConverter)
+* [Enumeración](xref:System.ComponentModel.EnumConverter)
+* [GUID](xref:System.ComponentModel.GuidConverter)
 * [Int16](xref:System.ComponentModel.Int16Converter), [Int32](xref:System.ComponentModel.Int32Converter), [Int64](xref:System.ComponentModel.Int64Converter)
 * [Single](xref:System.ComponentModel.SingleConverter)
 * [TimeSpan](xref:System.ComponentModel.TimeSpanConverter)
@@ -751,7 +752,7 @@ Los tipos simples a los que el enlazador de modelos puede convertir las cadenas 
 
 Un tipo complejo debe tener un constructor público predeterminado y propiedades grabables públicas para enlazar. Cuando se produce el enlace de modelos, se crea una instancia de la clase con el constructor predeterminado público. 
 
-Para cada propiedad del tipo complejo, el enlace de modelos busca entre los orígenes el patrón de nombre *prefijo.nombre_de_propiedad*. Si no se encuentra nada, solo busca *nombre_de_propiedad* sin el prefijo.
+Para cada propiedad del tipo complejo, el enlace de modelos busca entre los orígenes el patrón de nombre *prefijo.nombre_de_propiedad* . Si no se encuentra nada, solo busca *nombre_de_propiedad* sin el prefijo.
 
 Para el enlace a un parámetro, el prefijo es el nombre del parámetro. Para el enlace a una propiedad pública `PageModel`, el prefijo es el nombre de la propiedad pública. Algunos atributos tienen una propiedad `Prefix` que permite invalidar el uso predeterminado del nombre de parámetro o propiedad.
 
@@ -841,11 +842,11 @@ En el ejemplo siguiente, solo se enlazan las propiedades especificadas del model
 public IActionResult OnPost([Bind("LastName,FirstMidName,HireDate")] Instructor instructor)
 ```
 
-El atributo `[Bind]` se puede usar para protegerse de la publicación excesiva en escenarios de *creación*. No funciona bien en escenarios de edición porque las propiedades excluidas se establecen en NULL o en un valor predeterminado en lugar de mantenerse sin cambios. Para defenderse de la publicación excesiva, se recomiendan modelos de vista en lugar del atributo `[Bind]`. Para más información, vea [Nota de seguridad sobre la publicación excesiva](xref:data/ef-mvc/crud#security-note-about-overposting).
+El atributo `[Bind]` se puede usar para protegerse de la publicación excesiva en escenarios de *creación* . No funciona bien en escenarios de edición porque las propiedades excluidas se establecen en NULL o en un valor predeterminado en lugar de mantenerse sin cambios. Para defenderse de la publicación excesiva, se recomiendan modelos de vista en lugar del atributo `[Bind]`. Para más información, vea [Nota de seguridad sobre la publicación excesiva](xref:data/ef-mvc/crud#security-note-about-overposting).
 
 ## <a name="collections"></a>Colecciones
 
-Para los destinos que son colecciones de tipos simples, el enlace de modelos busca coincidencias con *nombre_de_parámetro* o *nombre_de_propiedad*. Si no se encuentra ninguna coincidencia, busca uno de los formatos admitidos sin el prefijo. Por ejemplo:
+Para los destinos que son colecciones de tipos simples, el enlace de modelos busca coincidencias con *nombre_de_parámetro* o *nombre_de_propiedad* . Si no se encuentra ninguna coincidencia, busca uno de los formatos admitidos sin el prefijo. Por ejemplo:
 
 * Imagine que el parámetro que se va a enlazar es una matriz llamada `selectedCourses`:
 
@@ -890,7 +891,7 @@ Para los destinos que son colecciones de tipos simples, el enlace de modelos bus
 
 ## <a name="dictionaries"></a>Diccionarios
 
-Para los destinos `Dictionary`, el enlace de modelos busca coincidencias con *nombre_de_parámetro* o *nombre_de_propiedad*. Si no se encuentra ninguna coincidencia, busca uno de los formatos admitidos sin el prefijo. Por ejemplo:
+Para los destinos `Dictionary`, el enlace de modelos busca coincidencias con *nombre_de_parámetro* o *nombre_de_propiedad* . Si no se encuentra ninguna coincidencia, busca uno de los formatos admitidos sin el prefijo. Por ejemplo:
 
 * Imagine que el parámetro de destino es un elemento `Dictionary<int, string>` denominado `selectedCourses`:
 

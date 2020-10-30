@@ -6,6 +6,7 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 4/20/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/app-secrets
-ms.openlocfilehash: 74c9ae63ffbe39d6ba6e77aee8f6adcc8c8a157a
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 174f831583c2ef6cb7f122a22fe855acc8fe3047
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634909"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93056873"
 ---
 # <a name="safe-storage-of-app-secrets-in-development-in-aspnet-core"></a>Almacenamiento seguro de secretos de aplicación en el desarrollo en ASP.NET Core
 
@@ -38,7 +39,7 @@ En este documento se explican técnicas para almacenar y recuperar datos confide
 
 Las variables de entorno se usan para evitar el almacenamiento de secretos de aplicación en código o en archivos de configuración local. Las variables de entorno invalidan los valores de configuración de todos los orígenes de configuración especificados previamente.
 
-Considere una ASP.NET Core aplicación web en la que está habilitada la seguridad de **cuentas de usuario individuales** . Se incluye una cadena de conexión de base de datos predeterminada en elappsettings.jsdel proyecto * en* el archivo con la clave `DefaultConnection` . La cadena de conexión predeterminada es para LocalDB, que se ejecuta en modo de usuario y no requiere una contraseña. Durante la implementación de la aplicación, el `DefaultConnection` valor de clave se puede invalidar con el valor de una variable de entorno. La variable de entorno puede almacenar la cadena de conexión completa con credenciales confidenciales.
+Considere una ASP.NET Core aplicación web en la que está habilitada la seguridad de **cuentas de usuario individuales** . Se incluye una cadena de conexión de base de datos predeterminada en el archivo del proyecto *appsettings.json* con la clave `DefaultConnection` . La cadena de conexión predeterminada es para LocalDB, que se ejecuta en modo de usuario y no requiere una contraseña. Durante la implementación de la aplicación, el `DefaultConnection` valor de clave se puede invalidar con el valor de una variable de entorno. La variable de entorno puede almacenar la cadena de conexión completa con credenciales confidenciales.
 
 > [!WARNING]
 > Normalmente, las variables de entorno se almacenan en texto sin cifrar. Si el equipo o el proceso se ve comprometido, las entidades de entorno pueden tener acceso a las variables de entorno que no son de confianza. Pueden ser necesarias medidas adicionales para evitar la divulgación de secretos de usuario.
@@ -181,7 +182,7 @@ Los `Movies:ConnectionString` `Movies:ServiceApiKey` secretos y se asignan a las
 
 ## <a name="string-replacement-with-secrets"></a>Reemplazo de cadenas con secretos
 
-Almacenar las contraseñas en texto sin formato no es seguro. Por ejemplo, una cadena de conexión de base de datos almacenada en *appsettings.jsen* puede incluir una contraseña para el usuario especificado:
+Almacenar las contraseñas en texto sin formato no es seguro. Por ejemplo, una cadena de conexión de base de datos almacenada en *appsettings.json* puede incluir una contraseña para el usuario especificado:
 
 [!code-json[](app-secrets/samples/3.x/UserSecrets/appsettings-unsecure.json?highlight=3)]
 
@@ -191,7 +192,7 @@ Un enfoque más seguro consiste en almacenar la contraseña como un secreto. Por
 dotnet user-secrets set "DbPassword" "pass123"
 ```
 
-Quite el `Password` par clave-valor de la cadena de conexión en *appsettings.jsen*. Por ejemplo:
+Quite el `Password` par clave-valor de la cadena de conexión de *appsettings.json* . Por ejemplo:
 
 [!code-json[](app-secrets/samples/3.x/UserSecrets/appsettings.json?highlight=3)]
 
@@ -216,7 +217,7 @@ Movies:ConnectionString = Server=(localdb)\mssqllocaldb;Database=Movie-1;Trusted
 Movies:ServiceApiKey = 12345
 ```
 
-En el ejemplo anterior, un signo de dos puntos en los nombres de clave denota la jerarquía de objetos dentro de *secrets.js*.
+En el ejemplo anterior, un signo de dos puntos en los nombres de clave denota la jerarquía de objetos dentro de *secrets.js* .
 
 ## <a name="remove-a-single-secret"></a>Quitar un único secreto
 
@@ -286,7 +287,7 @@ En este documento se explican técnicas para almacenar y recuperar datos confide
 
 Las variables de entorno se usan para evitar el almacenamiento de secretos de aplicación en código o en archivos de configuración local. Las variables de entorno invalidan los valores de configuración de todos los orígenes de configuración especificados previamente.
 
-Considere una ASP.NET Core aplicación web en la que está habilitada la seguridad de **cuentas de usuario individuales** . Se incluye una cadena de conexión de base de datos predeterminada en elappsettings.jsdel proyecto * en* el archivo con la clave `DefaultConnection` . La cadena de conexión predeterminada es para LocalDB, que se ejecuta en modo de usuario y no requiere una contraseña. Durante la implementación de la aplicación, el `DefaultConnection` valor de clave se puede invalidar con el valor de una variable de entorno. La variable de entorno puede almacenar la cadena de conexión completa con credenciales confidenciales.
+Considere una ASP.NET Core aplicación web en la que está habilitada la seguridad de **cuentas de usuario individuales** . Se incluye una cadena de conexión de base de datos predeterminada en el archivo del proyecto *appsettings.json* con la clave `DefaultConnection` . La cadena de conexión predeterminada es para LocalDB, que se ejecuta en modo de usuario y no requiere una contraseña. Durante la implementación de la aplicación, el `DefaultConnection` valor de clave se puede invalidar con el valor de una variable de entorno. La variable de entorno puede almacenar la cadena de conexión completa con credenciales confidenciales.
 
 > [!WARNING]
 > Normalmente, las variables de entorno se almacenan en texto sin cifrar. Si el equipo o el proceso se ve comprometido, las entidades de entorno pueden tener acceso a las variables de entorno que no son de confianza. Pueden ser necesarias medidas adicionales para evitar la divulgación de secretos de usuario.
@@ -426,7 +427,7 @@ Los `Movies:ConnectionString` `Movies:ServiceApiKey` secretos y se asignan a las
 
 ## <a name="string-replacement-with-secrets"></a>Reemplazo de cadenas con secretos
 
-Almacenar las contraseñas en texto sin formato no es seguro. Por ejemplo, una cadena de conexión de base de datos almacenada en *appsettings.jsen* puede incluir una contraseña para el usuario especificado:
+Almacenar las contraseñas en texto sin formato no es seguro. Por ejemplo, una cadena de conexión de base de datos almacenada en *appsettings.json* puede incluir una contraseña para el usuario especificado:
 
 [!code-json[](app-secrets/samples/2.x/UserSecrets/appsettings-unsecure.json?highlight=3)]
 
@@ -436,7 +437,7 @@ Un enfoque más seguro consiste en almacenar la contraseña como un secreto. Por
 dotnet user-secrets set "DbPassword" "pass123"
 ```
 
-Quite el `Password` par clave-valor de la cadena de conexión en *appsettings.jsen*. Por ejemplo:
+Quite el `Password` par clave-valor de la cadena de conexión de *appsettings.json* . Por ejemplo:
 
 [!code-json[](app-secrets/samples/2.x/UserSecrets/appsettings.json?highlight=3)]
 
@@ -461,7 +462,7 @@ Movies:ConnectionString = Server=(localdb)\mssqllocaldb;Database=Movie-1;Trusted
 Movies:ServiceApiKey = 12345
 ```
 
-En el ejemplo anterior, un signo de dos puntos en los nombres de clave denota la jerarquía de objetos dentro de *secrets.js*.
+En el ejemplo anterior, un signo de dos puntos en los nombres de clave denota la jerarquía de objetos dentro de *secrets.js* .
 
 ## <a name="remove-a-single-secret"></a>Quitar un único secreto
 
