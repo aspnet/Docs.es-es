@@ -7,6 +7,7 @@ ms.custom: mvc
 ms.date: 03/19/2020
 monikerRange: '>= aspnetcore-3.0'
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/twitter-logins
-ms.openlocfilehash: da0c5579b0828aee7f1c78ec7f5731db50151e90
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 47926d12ac5f922f2937df164d38ff6eb63cacf1
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634064"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93053285"
 ---
 # <a name="twitter-external-sign-in-setup-with-aspnet-core"></a>Configuración de inicio de sesión externo de Twitter con ASP.NET Core
 
@@ -37,18 +38,18 @@ Este ejemplo muestra cómo permitir a los usuarios [iniciar sesión con su cuent
 
 * Vaya a [https://apps.twitter.com/](https://apps.twitter.com/) e inicie sesión. Si aún no tiene una cuenta de Twitter, use el vínculo **[Regístrese ahora](https://twitter.com/signup)** para crear una.
 
-* Seleccione **crear una aplicación**. Rellene el **nombre**de la aplicación, la descripción de la **aplicación** y el URI del **sitio web** público (esto puede ser temporal hasta que registre el nombre de dominio):
+* Seleccione **crear una aplicación** . Rellene el **nombre** de la aplicación, la descripción de la **aplicación** y el URI del **sitio web** público (esto puede ser temporal hasta que registre el nombre de dominio):
 
 * Active la casilla situada junto a **Habilitar el inicio de sesión con Twitter** .
 
-* Microsoft. AspNetCore.Identity requiere que los usuarios tengan una dirección de correo electrónico de forma predeterminada. Vaya a la pestaña **permisos** , haga clic en el botón **Editar** y active la casilla situada junto a **solicitar dirección de correo electrónico de los usuarios**.
+* Microsoft. AspNetCore.Identity requiere que los usuarios tengan una dirección de correo electrónico de forma predeterminada. Vaya a la pestaña **permisos** , haga clic en el botón **Editar** y active la casilla situada junto a **solicitar dirección de correo electrónico de los usuarios** .
 
 * Escriba el URI de desarrollo con `/signin-twitter` anexado en el campo **URL de devolución de llamada** (por ejemplo: `https://webapp128.azurewebsites.net/signin-twitter` ). El esquema de autenticación de Twitter configurado más adelante en este ejemplo administrará automáticamente las solicitudes de `/signin-twitter` la ruta para implementar el flujo de OAuth.
 
   > [!NOTE]
   > El segmento URI `/signin-twitter` se establece como la devolución de llamada predeterminada del proveedor de autenticación de Twitter. Puede cambiar el URI de devolución de llamada predeterminado mientras configura el middleware de autenticación de Twitter a través de la propiedad heredada [RemoteAuthenticationOptions. CallbackPath](/dotnet/api/microsoft.aspnetcore.authentication.remoteauthenticationoptions.callbackpath) de la clase [TwitterOptions](/dotnet/api/microsoft.aspnetcore.authentication.twitter.twitteroptions) .
 
-* Rellene el resto del formulario y seleccione **crear**. Se muestran los nuevos detalles de la aplicación:
+* Rellene el resto del formulario y seleccione **crear** . Se muestran los nuevos detalles de la aplicación:
 
 ## <a name="store-the-twitter-consumer-api-key-and-secret"></a>Almacenar la clave y el secreto de la API de consumidor de Twitter
 
@@ -80,7 +81,7 @@ Consulte la referencia de la API de [TwitterOptions](/dotnet/api/microsoft.aspne
 
 ## <a name="sign-in-with-twitter"></a>Inicio de sesión con Twitter
 
-Ejecute la aplicación y seleccione **iniciar sesión**. Aparece una opción para iniciar sesión con Twitter:
+Ejecute la aplicación y seleccione **iniciar sesión** . Aparece una opción para iniciar sesión con Twitter:
 
 Al hacer clic en **Twitter** , se redirige a Twitter para la autenticación:
 

@@ -7,6 +7,7 @@ ms.custom: seoapril2019, mvc, seodec18
 ms.date: 03/19/2020
 monikerRange: '>= aspnetcore-3.0'
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/facebook-logins
-ms.openlocfilehash: ce0e7ad30c137562b74dc9fe5c53235e3599e575
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: be0b655645fd2bd0eab9f9c30a65485f386cead3
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634363"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93053363"
 ---
 # <a name="facebook-external-login-setup-in-aspnet-core"></a>Configuración de inicio de sesión externo de Facebook en ASP.NET Core
 
@@ -48,7 +49,7 @@ En este tutorial con ejemplos de código se muestra cómo habilitar a los usuari
 
   ![Crear un nuevo formulario de ID. de aplicación](index/_static/FBNewAppId.png)
 
-* En la tarjeta nueva aplicación, seleccione **Agregar un producto**.  En la tarjeta de **Inicio de sesión de Facebook** , haga clic en **configurar** . 
+* En la tarjeta nueva aplicación, seleccione **Agregar un producto** .  En la tarjeta de **Inicio de sesión de Facebook** , haga clic en **configurar** . 
 
   ![Página de configuración del producto](index/_static/FBProductSetup.png)
 
@@ -65,9 +66,9 @@ En este tutorial con ejemplos de código se muestra cómo habilitar a los usuari
 > [!NOTE]
 > El URI */signin-Facebook* se establece como la devolución de llamada predeterminada del proveedor de autenticación de Facebook. Puede cambiar el URI de devolución de llamada predeterminado mientras configura el middleware de autenticación de Facebook a través de la propiedad heredada [RemoteAuthenticationOptions. CallbackPath](/dotnet/api/microsoft.aspnetcore.authentication.remoteauthenticationoptions.callbackpath) de la clase [FacebookOptions](/dotnet/api/microsoft.aspnetcore.authentication.facebook.facebookoptions) .
 
-* Haga clic en **Guardar cambios**.
+* Haga clic en **Guardar cambios** .
 
-* Haga clic en **configuración**  >  vínculo**básico** en el panel de navegación izquierdo.
+* Haga clic en **configuración**  >  vínculo **básico** en el panel de navegación izquierdo.
 
   En esta página, tome nota de su `App ID` y su `App Secret` . En la siguiente sección, agregará ambos a la aplicación ASP.NET Core:
 
@@ -103,8 +104,8 @@ services.AddAuthentication().AddFacebook(facebookOptions =>
 
 ## <a name="sign-in-with-facebook"></a>Inicio de sesión con Facebook
 
-* Ejecute la aplicación y seleccione **iniciar sesión**. 
-* En **usar otro servicio para iniciar sesión**, seleccione Facebook.
+* Ejecute la aplicación y seleccione **iniciar sesión** . 
+* En **usar otro servicio para iniciar sesión** , seleccione Facebook.
 * Se le redirigirá a **Facebook** para la autenticación.
 * Escriba sus credenciales de Facebook.
 * Se le redirigirá de nuevo al sitio donde puede establecer el correo electrónico.
@@ -132,7 +133,7 @@ Se recomienda que la `AccessDeniedPath` página contenga la siguiente informaci�
 * Vaya a [Facebook.com](https://www.facebook.com/)
 * Si ha iniciado sesión, debe cerrar la sesión.
 * Ejecute la aplicación y seleccione el inicio de sesión de Facebook.
-* Seleccione **no ahora**. Se le redirigirá a la `AccessDeniedPath` página especificada.
+* Seleccione **no ahora** . Se le redirigirá a la `AccessDeniedPath` página especificada.
 
 <!-- End of React  -->
 [!INCLUDE[Forward request information when behind a proxy or load balancer section](includes/forwarded-headers-middleware.md)]

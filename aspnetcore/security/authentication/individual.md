@@ -5,6 +5,7 @@ description: Descubra artículos basados en ASP.NET Core proyectos creados con c
 ms.author: riande
 ms.date: 12/11/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/individual
-ms.openlocfilehash: 0cbde7cf0be830dab9dd094df6d102d81f9f0949
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 656006396de120b7feae6f2e08b5dad3b5a170b5
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88632621"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93053350"
 ---
 # <a name="articles-based-on-aspnet-core-projects-created-with-individual-user-accounts"></a>Artículos basados en proyectos de ASP.NET Core creados con cuentas de usuario individuales
 
@@ -53,7 +54,7 @@ Consulte [este problema de github para la](https://github.com/dotnet/AspNetCore/
 
 ## <a name="no-authentication"></a>Sin autenticación
 
-La autenticación se especifica en el CLI de .NET Core con la `-au` opción. En Visual Studio, el cuadro de diálogo **cambiar autenticación** está disponible para las nuevas aplicaciones Web. El valor predeterminado para las nuevas aplicaciones web en Visual Studio **no es autenticación**.
+La autenticación se especifica en el CLI de .NET Core con la `-au` opción. En Visual Studio, el cuadro de diálogo **cambiar autenticación** está disponible para las nuevas aplicaciones Web. El valor predeterminado para las nuevas aplicaciones web en Visual Studio **no es autenticación** .
 
 Proyectos creados sin autenticación:
 
@@ -74,7 +75,7 @@ En la tabla siguiente se muestran las opciones de autenticación disponibles par
 
 | Opción | Tipo de autenticación | Vínculo para más información |
  | ----------------- | ------------ | ---------- |
-| None            |  Sin autenticación | | 
+| None            |  Ninguna autenticación | | 
 | Individual      |  Autenticación individual | <xref:security/authentication/identity>
 | IndividualB2C   |  Autenticación individual hospedada en la nube con Azure AD B2C | [Azure AD B2C](/azure/active-directory-b2c/) |
 | SingleOrg       |  Autenticación organizativa para un solo inquilino | [Azure AD](/azure/active-directory/develop/quickstart-v2-aspnet-core-webapp) |
@@ -87,7 +88,7 @@ En la tabla siguiente se muestran las opciones de autenticación disponibles al 
 
 | Opción | Tipo de autenticación | Vínculo para más información |
  | ----------------- | ------------ | ---------- |
-| None            |  Sin autenticación | | 
+| None            |  Ninguna autenticación | | 
 | Cuentas de usuario individuales/almacenar cuentas de usuario en la aplicación |  Autenticación individual | <xref:security/authentication/identity> |
 | Cuentas de usuario individuales/conectarse a un almacén de usuario existente en la nube |  Autenticación individual hospedada en la nube con Azure AD B2C | [Azure AD B2C](/azure/active-directory-b2c/) |
 | Nube profesional o educativa/organización única  |  Autenticación organizativa para un solo inquilino | [Azure AD](/azure/active-directory/develop/quickstart-v2-aspnet-core-webapp) |

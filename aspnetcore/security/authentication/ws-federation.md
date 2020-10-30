@@ -6,6 +6,7 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 01/16/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/ws-federation
-ms.openlocfilehash: 8a593efd799e900483d0337a06e02c3558b63bfb
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: ed78923a2bdd1ed683a72c0a6f34337a38350035
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634090"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93053376"
 ---
 # <a name="authenticate-users-with-ws-federation-in-aspnet-core"></a>Autenticación de usuarios con WS-Federation en ASP.NET Core
 
@@ -53,7 +54,7 @@ De forma predeterminada, el nuevo middleware:
 
 ![Asistente para agregar relación de confianza para usuario autenticado: configurar certificado](ws-federation/_static/AdfsConfigureCert.png)
 
-* Habilite la compatibilidad con el protocolo pasivo de WS-Federation mediante la dirección URL de la aplicación. Compruebe que el puerto sea correcto para la aplicación:
+* Habilite la compatibilidad con WS-Federation protocolo pasivo, mediante la dirección URL de la aplicación. Compruebe que el puerto sea correcto para la aplicación:
 
 ![Asistente para agregar relación de confianza para usuario autenticado: configurar URL](ws-federation/_static/AdfsConfigureUrl.png)
 
@@ -66,7 +67,7 @@ De forma predeterminada, el nuevo middleware:
 
 ![Editar reglas de notificación](ws-federation/_static/EditClaimRules.png)
 
-* En el **Asistente para agregar regla de notificación de transformación**, deje seleccionada la plantilla predeterminada **Enviar atributos LDAP como notificaciones** y haga clic en **siguiente**. Agregue una regla que asigne el atributo LDAP **Sam-Account-Name** a la notificaciones salientes de **ID. de nombre** :
+* En el **Asistente para agregar regla de notificación de transformación** , deje seleccionada la plantilla predeterminada **Enviar atributos LDAP como notificaciones** y haga clic en **siguiente** . Agregue una regla que asigne el atributo LDAP **Sam-Account-Name** a la notificaciones salientes de **ID. de nombre** :
 
 ![Asistente para agregar regla de notificaciones de transformación: configurar regla de notificaciones](ws-federation/_static/AddTransformClaimRule.png)
 
@@ -74,20 +75,20 @@ De forma predeterminada, el nuevo middleware:
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
 
-* Vaya a la hoja registros de aplicaciones del inquilino de AAD. Haga clic en **nuevo registro de aplicaciones**:
+* Vaya a la hoja registros de aplicaciones del inquilino de AAD. Haga clic en **nuevo registro de aplicaciones** :
 
 ![Azure Active Directory: Registros de aplicaciones](ws-federation/_static/AadNewAppRegistration.png)
 
 * Escriba un nombre para el registro de la aplicación. Esto no es importante para la aplicación ASP.NET Core.
-* Escriba la dirección URL en la que escucha la aplicación como la **dirección URL de inicio de sesión**:
+* Escriba la dirección URL en la que escucha la aplicación como la **dirección URL de inicio de sesión** :
 
 ![Azure Active Directory: creación del registro de aplicaciones](ws-federation/_static/AadCreateAppRegistration.png)
 
-* Haga clic en **extremos** y anote la dirección URL del **documento de metadatos de Federación** . Este es el middleware de WS-Federation `MetadataAddress` :
+* Haga clic en **extremos** y anote la dirección URL del **documento de metadatos de Federación** . Este es el WS-Federation middleware `MetadataAddress` :
 
 ![Azure Active Directory: puntos de conexión](ws-federation/_static/AadFederationMetadataDocument.png)
 
-* Navegue al nuevo registro de aplicaciones. Haga clic en **exponer una API**. Haga clic en ID. de aplicación URI **establecer**  >  **Guardar**. Anote el URI del  **identificador**de la aplicación. Este es el middleware de WS-Federation `Wtrealm` :
+* Navegue al nuevo registro de aplicaciones. Haga clic en **exponer una API** . Haga clic en ID. de aplicación URI **establecer**  >  **Guardar** . Anote el URI del  **identificador** de la aplicación. Este es el WS-Federation middleware `Wtrealm` :
 
 ![Azure Active Directory: propiedades de registro de aplicaciones](ws-federation/_static/AadAppIdUri.png)
 
@@ -102,7 +103,7 @@ El middleware de WS-Federation se puede usar sin Identity . Por ejemplo:
 [!code-csharp[](ws-federation/samples/StartupNon21.cs?name=snippet)]
 ::: moniker-end
 
-## <a name="add-ws-federation-as-an-external-login-provider-for-no-locaspnet-core-identity"></a>Agregar WS-Federation como proveedor de inicio de sesión externo para ASP.NET Core Identity
+## <a name="add-ws-federation-as-an-external-login-provider-for-no-locaspnet-core-identity"></a>Agregue WS-Federation como proveedor de inicio de sesión externo para ASP.NET Core Identity
 
 * Agregue una dependencia de [Microsoft. AspNetCore. Authentication. WsFederation](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.WsFederation) al proyecto.
 * Agregue WS-Federation a `Startup.ConfigureServices` :
@@ -117,7 +118,7 @@ El middleware de WS-Federation se puede usar sin Identity . Por ejemplo:
 
 [!INCLUDE [default settings configuration](social/includes/default-settings.md)]
 
-### <a name="log-in-with-ws-federation"></a>Inicio de sesión con WS-Federation
+### <a name="log-in-with-ws-federation"></a>Iniciar sesión con WS-Federation
 
 Vaya a la aplicación y haga clic en el vínculo **iniciar sesión** en el encabezado de navegación. Hay una opción para iniciar sesión con WsFederation: ![ Página de inicio de sesión](ws-federation/_static/WsFederationButton.png)
 
