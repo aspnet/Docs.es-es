@@ -7,6 +7,7 @@ ms.author: riande
 ms.date: 09/22/2018
 ms.custom: mvc, seodec18
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/2fa
-ms.openlocfilehash: e5e606afaf0219f3a0eb7301203b7142a00322be
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 1ee9e656c2e631c9b5588149e0a75e07108baff1
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634116"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93051270"
 ---
 # <a name="two-factor-authentication-with-sms-in-aspnet-core"></a>Autenticación en dos fases con SMS en ASP.NET Core
 
@@ -48,17 +49,17 @@ Cree una cuenta de SMS, por ejemplo, de [Twilio](https://www.twilio.com/) o [ASP
 
 **Twilio**
 
-En la pestaña panel de la cuenta de Twilio, copie el SID de la **cuenta** y el **token de autenticación**.
+En la pestaña panel de la cuenta de Twilio, copie el SID de la **cuenta** y el **token de autenticación** .
 
 **ASPSMS:**
 
-En la configuración de la cuenta, vaya a **Userkey** y cópiela junto con la **contraseña**.
+En la configuración de la cuenta, vaya a **Userkey** y cópiela junto con la **contraseña** .
 
 Más adelante almacenaremos estos valores en con la herramienta de administrador de secretos dentro de las claves `SMSAccountIdentification` y `SMSAccountPassword` .
 
 #### <a name="specifying-senderid--originator"></a>Especificar SenderID/originador
 
-**Twilio:** En la pestaña números, copie el **número de teléfono**de Twilio.
+**Twilio:** En la pestaña números, copie el **número de teléfono** de Twilio.
 
 **ASPSMS:** En el menú desbloquear orígenes, desbloquee uno o más originadores o elija un originador alfanumérico (no admitido por todas las redes).
 
@@ -99,7 +100,7 @@ info: Successfully saved SMSAccountIdentification = 12345 to the secret store.
 
 ### <a name="configure-startup-to-use-smsoptions"></a>Configurar el inicio para usar `SMSoptions`
 
-Agregue `SMSoptions` al contenedor de servicios en el `ConfigureServices` método en *Startup.CS*:
+Agregue `SMSoptions` al contenedor de servicios en el `ConfigureServices` método en *Startup.CS* :
 
 [!code-csharp[](2fa/sample/Web2FA/Startup.cs?name=snippet1&highlight=4)]
 
@@ -117,7 +118,7 @@ Abra el archivo de vista *views/Manage/index. cshtml* Razor y quite los caracter
 
 ![Administrar vista: Pulse el vínculo "agregar".](2fa/_static/login2fa2.png)
 
-* Agregue un número de teléfono que recibirá el código de verificación y pulse **Enviar código de verificación**.
+* Agregue un número de teléfono que recibirá el código de verificación y pulse **Enviar código de verificación** .
 
 ![Página Agregar número de teléfono](2fa/_static/login2fa3.png)
 
@@ -141,13 +142,13 @@ Si no recibe un mensaje de texto, consulte la página de registro de Twilio.
 
 * Inicie sesión.
 
-* La cuenta de usuario ha habilitado la autenticación en dos fases, por lo que debe proporcionar el segundo factor de autenticación. En este tutorial, ha habilitado la comprobación del teléfono. Las plantillas integradas también permiten configurar el correo electrónico como segundo factor. Puede configurar factores de segundo adicionales para la autenticación como códigos QR. Pulse **submit (enviar**).
+* La cuenta de usuario ha habilitado la autenticación en dos fases, por lo que debe proporcionar el segundo factor de autenticación. En este tutorial, ha habilitado la comprobación del teléfono. Las plantillas integradas también permiten configurar el correo electrónico como segundo factor. Puede configurar factores de segundo adicionales para la autenticación como códigos QR. Pulse **submit (enviar** ).
 
 ![Enviar vista de código de verificación](2fa/_static/login2fa7.png)
 
 * Escriba el código que se obtiene en el mensaje SMS.
 
-* Al hacer clic en la casilla **recordar este explorador** , no es necesario usar 2FA para iniciar sesión cuando se usa el mismo dispositivo y explorador. Al habilitar 2FA y hacer clic en **recordar, este explorador** le proporcionará protección de 2FA segura a los usuarios malintencionados que intentan acceder a su cuenta, siempre y cuando no tengan acceso a su dispositivo. Puede hacerlo en cualquier dispositivo privado que use con regularidad. Al establecer la opción  **recordar este explorador**, obtendrá la seguridad agregada de 2FA de los dispositivos que no use con regularidad y que le resulte más cómodo no tener que ir a través de 2FA en sus propios dispositivos.
+* Al hacer clic en la casilla **recordar este explorador** , no es necesario usar 2FA para iniciar sesión cuando se usa el mismo dispositivo y explorador. Al habilitar 2FA y hacer clic en **recordar, este explorador** le proporcionará protección de 2FA segura a los usuarios malintencionados que intentan acceder a su cuenta, siempre y cuando no tengan acceso a su dispositivo. Puede hacerlo en cualquier dispositivo privado que use con regularidad. Al establecer la opción  **recordar este explorador** , obtendrá la seguridad agregada de 2FA de los dispositivos que no use con regularidad y que le resulte más cómodo no tener que ir a través de 2FA en sus propios dispositivos.
 
 ![Comprobar vista](2fa/_static/login2fa8.png)
 

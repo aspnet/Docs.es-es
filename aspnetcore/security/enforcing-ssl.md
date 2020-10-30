@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/06/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/enforcing-ssl
-ms.openlocfilehash: b5260084c2fdd296168e918f06d8b54faf1865d5
-ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
+ms.openlocfilehash: e473da9a7cbd91a601ad4af0c7c02c7f576f348c
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90722662"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93051127"
 ---
 # <a name="enforce-https-in-aspnet-core"></a>Aplicación de HTTPS en ASP.NET Core
 
@@ -113,7 +114,7 @@ Especifique el Puerto HTTPS mediante cualquiera de los métodos siguientes:
 
   * En configuración de host.
   * Estableciendo la `ASPNETCORE_HTTPS_PORT` variable de entorno.
-  * Agregando una entrada de nivel superior en *appsettings.js*:
+  * Agregando una entrada de nivel superior en *appsettings.json* :
 
     [!code-json[](enforcing-ssl/sample-snapshot/3.x/appsettings.json?highlight=2)]
 
@@ -127,7 +128,7 @@ Especifique el Puerto HTTPS mediante cualquiera de los métodos siguientes:
 
   * En configuración de host.
   * Estableciendo la `ASPNETCORE_HTTPS_PORT` variable de entorno.
-  * Agregando una entrada de nivel superior en *appsettings.js*:
+  * Agregando una entrada de nivel superior en *appsettings.json* :
 
     [!code-json[](enforcing-ssl/sample-snapshot/2.x/appsettings.json?highlight=2)]
 
@@ -135,7 +136,7 @@ Especifique el Puerto HTTPS mediante cualquiera de los métodos siguientes:
 
 ::: moniker-end
 
-* En desarrollo, establezca una dirección URL HTTPS en *launchsettings.jsen*. Habilite HTTPS cuando se use IIS Express.
+* En desarrollo, establezca una dirección URL HTTPS en *launchsettings.jsen* . Habilite HTTPS cuando se use IIS Express.
 
 * Configure un punto de conexión de dirección URL HTTPS para una implementación perimetral de acceso público del servidor [Kestrel](xref:fundamentals/servers/kestrel) o [HTTP.sys](xref:fundamentals/servers/httpsys) Server. La aplicación solo usa **un puerto https** . El middleware detecta el puerto a través de <xref:Microsoft.AspNetCore.Hosting.Server.Features.IServerAddressesFeature> .
 
@@ -192,7 +193,7 @@ De forma predeterminada, el middleware envía un [Status307TemporaryRedirect](/d
 
 ::: moniker range=">= aspnetcore-3.0"
 
-Al configurar servicios en *Startup.CS*:
+Al configurar servicios en *Startup.CS* :
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -213,7 +214,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ::: moniker range="<= aspnetcore-2.2"
 
-Al configurar servicios en *Startup.CS*:
+Al configurar servicios en *Startup.CS* :
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -288,7 +289,7 @@ El código siguiente:
 ::: moniker-end
 
 
-* Establece el parámetro preload del `Strict-Transport-Security` encabezado. La precarga no forma parte de la [especificación RFC HSTS](https://tools.ietf.org/html/rfc6797), pero es compatible con los exploradores Web para precargar sitios de HSTS en la instalación nueva. Para obtener más información, vea [https://hstspreload.org/](https://hstspreload.org/).
+* Establece el parámetro preload del `Strict-Transport-Security` encabezado. La precarga no forma parte de la [especificación RFC HSTS](https://tools.ietf.org/html/rfc6797), pero es compatible con los exploradores Web para precargar sitios de HSTS en la instalación nueva. Para más información, vea [https://hstspreload.org/](https://hstspreload.org/).
 * Habilita [includeSubDomain](https://tools.ietf.org/html/rfc6797#section-6.1.2), que aplica la Directiva HSTS para hospedar subdominios.
 * Establece explícitamente el `max-age` parámetro del `Strict-Transport-Security` encabezado en 60 días. Si no se establece, el valor predeterminado es 30 días. Para obtener más información, vea la [Directiva Max-Age](https://tools.ietf.org/html/rfc6797#section-6.1.1).
 * Agrega `example.com` a la lista de hosts que se van a excluir.
@@ -412,7 +413,7 @@ Los comandos anteriores solucionan la mayoría de los problemas de confianza del
 ### <a name="docker---certificate-not-trusted"></a>Docker: certificado no confiable
 
 * Elimine la carpeta *C:\Users \{ User} \AppData\Roaming\ASP.NET\Https*
-* Limpie la solución. Elimine las carpetas *bin* y *obj*.
+* Limpie la solución. Elimine las carpetas *bin* y *obj* .
 * Reinicie la herramienta de desarrollo. Por ejemplo, Visual Studio, Visual Studio Code o Visual Studio para Mac.
 
 ### <a name="windows---certificate-not-trusted"></a>Windows-certificado no confiable

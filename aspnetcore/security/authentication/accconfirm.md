@@ -5,6 +5,7 @@ description: Obtenga información sobre cómo crear una aplicación ASP.NET Core
 ms.author: riande
 ms.date: 03/11/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/accconfirm
-ms.openlocfilehash: d6ea37ceb83ffbaa94187e0c541c79428594e4b4
-ms.sourcegitcommit: 2039e60eb7b482da8298f82dcd5eda27cf747f32
+ms.openlocfilehash: 91148c67d5dc0bf97e2f926f50dcff5dd0708f4b
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88906454"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93052323"
 ---
 # <a name="account-confirmation-and-password-recovery-in-aspnet-core"></a>Confirmación de las cuentas y recuperación de contraseñas en ASP.NET Core
 
@@ -53,10 +54,10 @@ dotnet run
 
 Ejecute la aplicación, seleccione el vínculo **registrar** y registre un usuario. Una vez registrado, se le redirigirá a la `/Identity/Account/RegisterConfirmation` página a que contiene un vínculo para simular la confirmación de correo electrónico:
 
-* Seleccione el vínculo `Click here to confirm your account`.
+* Seleccione el `Click here to confirm your account` vínculo.
 * Seleccione el vínculo de **Inicio de sesión** e inicie sesión con las mismas credenciales.
 * Seleccione el `Hello YourEmail@provider.com!` vínculo, que le redirigirá a la `/Identity/Account/Manage/PersonalData` página.
-* Seleccione la pestaña **datos personales** de la izquierda y, a continuación, seleccione **eliminar**.
+* Seleccione la pestaña **datos personales** de la izquierda y, a continuación, seleccione **eliminar** .
 
 ### <a name="configure-an-email-provider"></a>Configuración de un proveedor de correo electrónico
 
@@ -64,7 +65,7 @@ En este tutorial, se usa [SendGrid](https://sendgrid.com) para enviar correo ele
 
 Es posible que la cuenta de SendGrid necesite [Agregar un remitente](https://sendgrid.com/docs/ui/sending-email/senders/).
 
-Cree una clase para capturar la clave de correo electrónico segura. Para este ejemplo, cree *Services/AuthMessageSenderOptions. CS*:
+Cree una clase para capturar la clave de correo electrónico segura. Para este ejemplo, cree *Services/AuthMessageSenderOptions. CS* :
 
 [!code-csharp[](accconfirm/sample/WebPWrecover30/Services/AuthMessageSenderOptions.cs?name=snippet1)]
 
@@ -155,7 +156,7 @@ Ejecute la aplicación web y pruebe el flujo de recuperación de la contraseña 
 
 ### <a name="test-password-reset"></a>Restablecimiento de la contraseña de prueba
 
-* Si ha iniciado sesión, seleccione **Logout**.
+* Si ha iniciado sesión, seleccione **Logout** .
 * Seleccione el vínculo **iniciar sesión** y seleccione el vínculo **¿olvidó su contraseña?** .
 * Escriba el correo electrónico que usó para registrar la cuenta.
 * Se envía un correo electrónico con un vínculo para restablecer la contraseña. Compruebe su correo electrónico y haga clic en el vínculo para restablecer la contraseña. Una vez que la contraseña se haya restablecido correctamente, puede iniciar sesión con el correo electrónico y la nueva contraseña.
@@ -266,7 +267,7 @@ Ejecute la aplicación, seleccione el vínculo **registrar** y registre un usuar
 
 Tenga en cuenta que el campo de la tabla `EmailConfirmed` es `False` .
 
-Es posible que desee usar este correo electrónico de nuevo en el paso siguiente cuando la aplicación envíe un correo electrónico de confirmación. Haga clic con el botón derecho en la fila y seleccione **eliminar**. Al eliminar el alias de correo electrónico, se facilitan los pasos siguientes.
+Es posible que desee usar este correo electrónico de nuevo en el paso siguiente cuando la aplicación envíe un correo electrónico de confirmación. Haga clic con el botón derecho en la fila y seleccione **eliminar** . Al eliminar el alias de correo electrónico, se facilitan los pasos siguientes.
 
 <a name="prevent-login-at-registration"></a>
 
@@ -286,7 +287,7 @@ Actualización `Startup.ConfigureServices`  para requerir un correo electrónico
 
 En este tutorial, se usa [SendGrid](https://sendgrid.com) para enviar correo electrónico. Necesita una cuenta y una clave de SendGrid para enviar el correo electrónico. Puede usar otros proveedores de correo electrónico. ASP.NET Core 2. x incluye `System.Net.Mail` , que le permite enviar correo electrónico desde su aplicación. Se recomienda usar SendGrid u otro servicio de correo electrónico para enviar correo electrónico. SMTP es difícil de proteger y configurar correctamente.
 
-Cree una clase para capturar la clave de correo electrónico segura. Para este ejemplo, cree *Services/AuthMessageSenderOptions. CS*:
+Cree una clase para capturar la clave de correo electrónico segura. Para este ejemplo, cree *Services/AuthMessageSenderOptions. CS* :
 
 [!code-csharp[](accconfirm/sample/WebPWrecover22/Services/AuthMessageSenderOptions.cs?name=snippet1)]
 
@@ -355,7 +356,7 @@ Agregue el código siguiente al `ConfigureServices` método en el archivo *Start
 
 ## <a name="enable-account-confirmation-and-password-recovery"></a>Habilitar la confirmación de la cuenta y la recuperación de la contraseña
 
-La plantilla tiene el código para la confirmación de la cuenta y la recuperación de la contraseña. Busque el `OnPostAsync` método en *areas/ Identity /pages/Account/Register.cshtml.CS*.
+La plantilla tiene el código para la confirmación de la cuenta y la recuperación de la contraseña. Busque el `OnPostAsync` método en *areas/ Identity /pages/Account/Register.cshtml.CS* .
 
 Evite que los usuarios recién registrados inicien sesión automáticamente al comentar la siguiente línea:
 
@@ -385,7 +386,7 @@ La página Administrar se muestra con la pestaña **perfil** seleccionada. El **
 
 ### <a name="test-password-reset"></a>Restablecimiento de la contraseña de prueba
 
-* Si ha iniciado sesión, seleccione **Logout**.
+* Si ha iniciado sesión, seleccione **Logout** .
 * Seleccione el vínculo **iniciar sesión** y seleccione el vínculo **¿olvidó su contraseña?** .
 * Escriba el correo electrónico que usó para registrar la cuenta.
 * Se envía un correo electrónico con un vínculo para restablecer la contraseña. Compruebe su correo electrónico y haga clic en el vínculo para restablecer la contraseña. Una vez que la contraseña se haya restablecido correctamente, puede iniciar sesión con el correo electrónico y la nueva contraseña.

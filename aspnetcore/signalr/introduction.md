@@ -7,6 +7,7 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 11/27/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/introduction
-ms.openlocfilehash: ab850fa8afbee9d2664868937362388a03374908
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 1810fef903362addcef4a6c9ec53264604f58d2b
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634701"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93051478"
 ---
 # <a name="introduction-to-aspnet-core-no-locsignalr"></a>Introducción a ASP.NET Core SignalR
 
@@ -54,7 +55,7 @@ El origen se hospeda en un [ SignalR repositorio de github](https://github.com/d
 SignalR admite las siguientes técnicas para controlar la comunicación en tiempo real (en orden de reserva correcta):
 
 * [WebSockets](https://tools.ietf.org/html/rfc7118)
-* Eventos enviados por el servidor
+* Eventos de Server-Sent
 * Sondeo largo
 
 SignalR elige automáticamente el mejor método de transporte que se encuentra dentro de las capacidades del servidor y del cliente.

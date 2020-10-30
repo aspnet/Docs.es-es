@@ -5,6 +5,7 @@ description: En este artículo se describe cómo personalizar el modelo de datos
 ms.author: avickers
 ms.date: 07/01/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/customize_identity_model
-ms.openlocfilehash: 71f532aa00c2afeeb0d6b93c01cb6a1fbd0a686c
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 6e520c76a3377e889166ca8d08b75754ef34b6a1
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634311"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93052050"
 ---
 # <a name="no-locidentity-model-customization-in-aspnet-core"></a>Identity Personalización del modelo en ASP.NET Core
 
@@ -366,7 +367,7 @@ services.AddIdentity<ApplicationUser>()
         .AddDefaultUI();
 ```
 
-En ASP.NET Core 2,1 o posterior, Identity se proporciona como una Razor biblioteca de clases. Para más información, consulte <xref:security/authentication/scaffold-identity>. Por consiguiente, el código anterior requiere una llamada a <xref:Microsoft.AspNetCore.Identity.IdentityBuilderUIExtensions.AddDefaultUI*> . Si el Identity scaffolding se utilizó para agregar Identity archivos al proyecto, quite la llamada a `AddDefaultUI` . Para más información, consulte:
+En ASP.NET Core 2,1 o posterior, Identity se proporciona como una Razor biblioteca de clases. Para obtener más información, vea <xref:security/authentication/scaffold-identity>. Por consiguiente, el código anterior requiere una llamada a <xref:Microsoft.AspNetCore.Identity.IdentityBuilderUIExtensions.AddDefaultUI*> . Si el Identity scaffolding se utilizó para agregar Identity archivos al proyecto, quite la llamada a `AddDefaultUI` . Para más información, consulte:
 
 * [Scaffold Identity](xref:security/authentication/scaffold-identity)
 * [Agregar, descargar y eliminar datos de usuario personalizados a Identity](xref:security/authentication/add-user-data)
@@ -475,7 +476,7 @@ Siga estos pasos para cambiar el tipo de PK:
 
     El tipo de datos de la clave principal se deduce mediante el análisis del objeto [DbContext](/dotnet/api/microsoft.entityframeworkcore.dbcontext) .
 
-    En ASP.NET Core 2,1 o posterior, Identity se proporciona como una Razor biblioteca de clases. Para más información, consulte <xref:security/authentication/scaffold-identity>. Por consiguiente, el código anterior requiere una llamada a <xref:Microsoft.AspNetCore.Identity.IdentityBuilderUIExtensions.AddDefaultUI*> . Si el Identity scaffolding se utilizó para agregar Identity archivos al proyecto, quite la llamada a `AddDefaultUI` .
+    En ASP.NET Core 2,1 o posterior, Identity se proporciona como una Razor biblioteca de clases. Para obtener más información, vea <xref:security/authentication/scaffold-identity>. Por consiguiente, el código anterior requiere una llamada a <xref:Microsoft.AspNetCore.Identity.IdentityBuilderUIExtensions.AddDefaultUI*> . Si el Identity scaffolding se utilizó para agregar Identity archivos al proyecto, quite la llamada a `AddDefaultUI` .
 
     ::: moniker-end
 
@@ -519,7 +520,7 @@ Siga estos pasos para cambiar el tipo de PK:
 
     El tipo de datos de la clave principal se deduce mediante el análisis del objeto [DbContext](/dotnet/api/microsoft.entityframeworkcore.dbcontext) .
 
-    En ASP.NET Core 2,1 o posterior, Identity se proporciona como una Razor biblioteca de clases. Para más información, consulte <xref:security/authentication/scaffold-identity>. Por consiguiente, el código anterior requiere una llamada a <xref:Microsoft.AspNetCore.Identity.IdentityBuilderUIExtensions.AddDefaultUI*> . Si el Identity scaffolding se utilizó para agregar Identity archivos al proyecto, quite la llamada a `AddDefaultUI` .
+    En ASP.NET Core 2,1 o posterior, Identity se proporciona como una Razor biblioteca de clases. Para obtener más información, vea <xref:security/authentication/scaffold-identity>. Por consiguiente, el código anterior requiere una llamada a <xref:Microsoft.AspNetCore.Identity.IdentityBuilderUIExtensions.AddDefaultUI*> . Si el Identity scaffolding se utilizó para agregar Identity archivos al proyecto, quite la llamada a `AddDefaultUI` .
 
     ::: moniker-end
 

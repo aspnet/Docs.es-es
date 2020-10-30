@@ -5,6 +5,7 @@ description: Obtenga información sobre cómo admitir escenarios de protección 
 ms.author: riande
 ms.date: 10/14/2016
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/data-protection/configuration/non-di-scenarios
-ms.openlocfilehash: 5b27d21b046333d7a01f2e81f25d7bd34253cf36
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 03257596cafd9ec99f90b44d8fcb878b6747ba39
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88629176"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93052830"
 ---
 # <a name="non-di-aware-scenarios-for-data-protection-in-aspnet-core"></a>Escenarios no compatibles con DI para la protección de datos en ASP.NET Core
 

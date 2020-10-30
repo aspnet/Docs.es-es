@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/data-protection/introduction
-ms.openlocfilehash: 4f578e30a972b0d4ce5db08b2ec844e270c11406
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 5fd5676b286e758f0648d78bf8cb4171e7a98f60
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88630086"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93051699"
 ---
 # <a name="aspnet-core-data-protection"></a>ASP.NET Core protección de datos
 
@@ -84,7 +85,7 @@ La pila de protección de datos consta de cinco paquetes.
 
 * [Microsoft. AspNetCore. PROTECCION. Extensions](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.Extensions/) contiene API adicionales que los desarrolladores pueden encontrar útiles pero que no pertenecen al paquete principal. Por ejemplo, este paquete contiene métodos de generador para crear instancias del sistema de protección de datos para almacenar las claves en una ubicación del sistema de archivos sin la inserción de dependencias (vea <xref:Microsoft.AspNetCore.DataProtection.DataProtectionProvider> ). También contiene métodos de extensión para limitar la duración de las cargas protegidas (vea <xref:Microsoft.AspNetCore.DataProtection.ITimeLimitedDataProtector> ).
 
-* [Microsoft.AspNetCore.DataProtection.SystemWeb](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.SystemWeb/) se puede instalar en una aplicación ASP.net 4. x existente para redirigir sus `<machineKey>` operaciones con el fin de usar la nueva pila de protección de datos ASP.net Core. Para más información, consulte <xref:security/data-protection/compatibility/replacing-machinekey>.
+* [Microsoft.AspNetCore.DataProtection.SystemWeb](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.SystemWeb/) se puede instalar en una aplicación ASP.net 4. x existente para redirigir sus `<machineKey>` operaciones con el fin de usar la nueva pila de protección de datos ASP.net Core. Para obtener más información, vea <xref:security/data-protection/compatibility/replacing-machinekey>.
 
 * [Microsoft. AspNetCore. Cryptography. derivación](https://www.nuget.org/packages/Microsoft.AspNetCore.Cryptography.KeyDerivation/) proporciona una implementación de la rutina de hash de contraseña PBKDF2 y la pueden usar los sistemas que deben administrar las contraseñas de usuario de forma segura. Para obtener más información, vea <xref:security/data-protection/consumer-apis/password-hashing>.
 

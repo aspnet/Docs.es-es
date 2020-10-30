@@ -7,6 +7,7 @@ ms.author: bradyg
 ms.custom: mvc, devx-track-js
 ms.date: 04/08/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/javascript-client
-ms.openlocfilehash: be271272c952487fccc5136307c84fdf49391848
-ms.sourcegitcommit: 2e3a967331b2c69f585dd61e9ad5c09763615b44
+ms.openlocfilehash: b4b1bc6131a6676710adbf2503efe3f304d89a58
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92690650"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93050854"
 ---
 # <a name="aspnet-core-no-locsignalr-javascript-client"></a>Cliente de ASP.NET Core SignalR JavaScript
 
@@ -81,6 +82,9 @@ El código siguiente crea e inicia una conexión. El nombre del centro no distin
 ### <a name="cross-origin-connections"></a>Conexiones entre orígenes
 
 Normalmente, los exploradores cargan conexiones desde el mismo dominio que la página solicitada. Sin embargo, hay ocasiones en las que se requiere una conexión a otro dominio.
+
+> [!IMPORTANT]
+> El código de cliente debe usar una dirección URL absoluta en lugar de una dirección URL relativa. Cambio de `.withUrl("/chathub")` a `.withUrl("https://myappurl/chathub")`.
 
 Para evitar que un sitio malintencionado Lea datos confidenciales de otro sitio, [las conexiones entre orígenes](xref:security/cors) están deshabilitadas de forma predeterminada. Para permitir una solicitud entre orígenes, habilítela en la `Startup` clase:
 

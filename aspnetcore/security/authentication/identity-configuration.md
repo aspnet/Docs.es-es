@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/11/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/identity-configuration
-ms.openlocfilehash: ae4a2eb9d95339651c3810a9f8489d703d73a3fe
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: b11a2d584b7275a9065c9915021ac945823531f8
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88632686"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93051998"
 ---
 # <a name="configure-no-locaspnet-core-identity"></a>Configuración de ASP.NET Core Identity
 
@@ -130,7 +131,7 @@ En el código siguiente `SignIn` se establece la configuración (en los valores 
 
 ### <a name="no-loccookie-settings"></a>Configuración deCookie
 
-Configure la aplicación cookie en `Startup.ConfigureServices` . [ConfigureApplication Cookie ](/dotnet/api/microsoft.extensions.dependencyinjection.identityservicecollectionextensions.configureapplicationcookie#Microsoft_Extensions_DependencyInjection_IdentityServiceCollectionExtensions_ConfigureApplicationCookie_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Action_Microsoft_AspNetCore_Authentication_Cookies_CookieAuthenticationOptions__) se debe llamar **después** de llamar a `AddIdentity` o `AddDefaultIdentity` .
+Configure la aplicación cookie en `Startup.ConfigureServices` . [ConfigureApplication Cookie](/dotnet/api/microsoft.extensions.dependencyinjection.identityservicecollectionextensions.configureapplicationcookie#Microsoft_Extensions_DependencyInjection_IdentityServiceCollectionExtensions_ConfigureApplicationCookie_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Action_Microsoft_AspNetCore_Authentication_Cookies_CookieAuthenticationOptions__) se debe llamar **después** de llamar a `AddIdentity` o `AddDefaultIdentity` .
 
 [!code-csharp[](identity-configuration/sample/Startup.cs?name=snippet_cookie)]
 
@@ -142,7 +143,7 @@ Para obtener más información, vea [ Cookie AuthenticationOptions](/dotnet/api/
 
 | Opción | Descripción |
 | ------ | ----------- |
-| <xref:Microsoft.AspNetCore.Identity.PasswordHasherOptions.CompatibilityMode> | El modo de compatibilidad utilizado al aplicar el algoritmo hash a nuevas contraseñas. Tiene como valor predeterminado <xref:Microsoft.AspNetCore.Identity.PasswordHasherCompatibilityMode.IdentityV3>. El primer byte de una contraseña con hash, denominada *marcador de formato*, especifica la versión del algoritmo hash que se usa para aplicar un algoritmo hash a la contraseña. Al comprobar una contraseña en un hash, el <xref:Microsoft.AspNetCore.Identity.PasswordHasher`1.VerifyHashedPassword*> método selecciona el algoritmo correcto en función del primer byte. Un cliente puede autenticarse independientemente de la versión del algoritmo que se usó para aplicar un algoritmo hash a la contraseña. Establecer el modo de compatibilidad afecta a la operación hash de *nuevas contraseñas*. |
+| <xref:Microsoft.AspNetCore.Identity.PasswordHasherOptions.CompatibilityMode> | El modo de compatibilidad utilizado al aplicar el algoritmo hash a nuevas contraseñas. Tiene como valor predeterminado <xref:Microsoft.AspNetCore.Identity.PasswordHasherCompatibilityMode.IdentityV3>. El primer byte de una contraseña con hash, denominada *marcador de formato* , especifica la versión del algoritmo hash que se usa para aplicar un algoritmo hash a la contraseña. Al comprobar una contraseña en un hash, el <xref:Microsoft.AspNetCore.Identity.PasswordHasher`1.VerifyHashedPassword*> método selecciona el algoritmo correcto en función del primer byte. Un cliente puede autenticarse independientemente de la versión del algoritmo que se usó para aplicar un algoritmo hash a la contraseña. Establecer el modo de compatibilidad afecta a la operación hash de *nuevas contraseñas* . |
 | <xref:Microsoft.AspNetCore.Identity.PasswordHasherOptions.IterationCount> | Número de iteraciones utilizadas al aplicar un algoritmo hash a las contraseñas mediante PBKDF2. Este valor solo se utiliza cuando <xref:Microsoft.AspNetCore.Identity.PasswordHasherOptions.CompatibilityMode> se establece en <xref:Microsoft.AspNetCore.Identity.PasswordHasherCompatibilityMode.IdentityV3> . El valor debe ser un entero positivo y su valor predeterminado es `10000` . |
 
 En el ejemplo siguiente, <xref:Microsoft.AspNetCore.Identity.PasswordHasherOptions.IterationCount> se establece `12000` en en `Startup.ConfigureServices` :

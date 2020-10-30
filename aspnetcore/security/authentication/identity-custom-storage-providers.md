@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/23/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/identity-custom-storage-providers
-ms.openlocfilehash: a8414efeece1afd55d0f30d232ef360d0a21714c
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: c89098bf0b2c4396f9856aca2be9967af5df0cb7
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88630138"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93051907"
 ---
 # <a name="custom-storage-providers-for-no-locaspnet-core-identity"></a>Proveedores de almacenamiento personalizados para ASP.NET Core Identity
 

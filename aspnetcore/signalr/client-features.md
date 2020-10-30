@@ -6,6 +6,7 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 11/12/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/client-features
-ms.openlocfilehash: bb8352b11e78582c4a32b67da7dcb701d020b0d9
-ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
+ms.openlocfilehash: 1d1778f95c53179ca05eaced3d1913f208220df4
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90721715"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93050984"
 ---
 # <a name="aspnet-core-no-locsignalr-clients"></a>SignalRClientes ASP.net Core
 
@@ -53,7 +54,7 @@ En la tabla siguiente se muestran las características y la compatibilidad de lo
 | [Streaming de cliente a servidor](xref:signalr/streaming)          |3.0.0|3.0.0|3.0.0|3.0.0|
 | Reconexión automática ([.net](./dotnet-client.md?tabs=visual-studio&view=aspnetcore-3.0#handle-lost-connection), [JavaScript](./javascript-client.md?view=aspnetcore-3.0#reconnect-clients))          |3.0.0|3.0.0|3.0.0|❌|
 | Transporte de WebSockets |2.1.0|1.0.0|1.0.0|1.0.0|
-| Transporte de eventos enviados por servidor |2.1.0|1.0.0|1.0.0|❌|
+| Transporte de eventos Server-Sent |2.1.0|1.0.0|1.0.0|❌|
 | Transporte de sondeo prolongado |2.1.0|1.0.0|1.0.0|3.0.0|
 | Protocolo de concentrador de JSON |2.1.0|1.0.0|1.0.0|1.0.0|
 | Protocolo de concentrador MessagePack |2.1.0|1.0.0|1.0.0|❌|

@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/caching/middleware
-ms.openlocfilehash: 7fe9629e1c60a6156c69e546736049653a4229b7
-ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
+ms.openlocfilehash: 3c28b6c736f07c0d0483152eeec4300a5a92224c
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90722649"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93052115"
 ---
 # <a name="response-caching-middleware-in-aspnet-core"></a>Middleware de almacenamiento en caché de respuesta en ASP.NET Core
 
@@ -113,7 +114,7 @@ En la tabla siguiente se proporciona información sobre los encabezados HTTP que
 | Encabezado | Detalles |
 | ------ | ------- |
 | `Authorization` | Si el encabezado existe, la respuesta no se almacena en caché. |
-| `Cache-Control` | El middleware solo tiene en cuenta las respuestas de almacenamiento en caché marcadas con la `public` Directiva de caché. Controlar el almacenamiento en caché con los parámetros siguientes:<ul><li>Max-Age</li><li>Max:&#8224; obsoleto</li><li>mín. actualizado</li><li>must-revalidate</li><li>sin caché</li><li>sin almacén</li><li>solo si se almacena en caché</li><li>privado</li><li>público</li><li>s-maxage</li><li>proxy: revalidar&#8225;</li></ul>&#8224;si no se especifica ningún límite en `max-stale` , el middleware no realiza ninguna acción.<br>&#8225;`proxy-revalidate` tiene el mismo efecto que `must-revalidate` .<br><br>Para obtener más información, vea [RFC 7231: directivas de control de caché de solicitudes](https://tools.ietf.org/html/rfc7234#section-5.2.1). |
+| `Cache-Control` | El middleware solo tiene en cuenta las respuestas de almacenamiento en caché marcadas con la `public` Directiva de caché. Controlar el almacenamiento en caché con los parámetros siguientes:<ul><li>Max-Age</li><li>Max:&#8224; obsoleto</li><li>mín. actualizado</li><li>must-revalidate</li><li>sin caché</li><li>sin almacén</li><li>solo si se almacena en caché</li><li>privado</li><li>público</li><li>s-maxage</li><li>proxy: revalidar&#8225;</li></ul>&#8224;si no se especifica ningún límite en `max-stale` , el middleware no realiza ninguna acción.<br>&#8225;`proxy-revalidate` tiene el mismo efecto que `must-revalidate` .<br><br>Para obtener más información, vea [RFC 7231: Request Cache-Control directivas](https://tools.ietf.org/html/rfc7234#section-5.2.1). |
 | `Pragma` | Un `Pragma: no-cache` encabezado en la solicitud produce el mismo efecto que `Cache-Control: no-cache` . Este encabezado es invalidado por las directivas pertinentes en el `Cache-Control` encabezado, si está presente. Se tiene en cuenta para la compatibilidad con versiones anteriores con HTTP/1.0. |
 | `Set-Cookie` | Si el encabezado existe, la respuesta no se almacena en caché. Cualquier middleware de la canalización de procesamiento de solicitudes que establezca una o más cookie s impide que el middleware de almacenamiento en caché de la respuesta almacene en caché la respuesta (por ejemplo, el [ cookie proveedor TempData basado](xref:fundamentals/app-state#tempdata)en).  |
 | `Vary` | El `Vary` encabezado se usa para modificar la respuesta almacenada en caché por otro encabezado. Por ejemplo, almacenar en caché las respuestas mediante la codificación incluyendo el `Vary: Accept-Encoding` encabezado, que almacena en caché las respuestas de las solicitudes con encabezados `Accept-Encoding: gzip` y `Accept-Encoding: text/plain` por separado. Nunca se almacena una respuesta con un valor de encabezado de `*` . |
@@ -124,7 +125,7 @@ En la tabla siguiente se proporciona información sobre los encabezados HTTP que
 | `Content-Length` | Cuando se atiende desde la memoria caché, el `Content-Length` software intermedio establece el encabezado si no se proporcionó en la respuesta original. |
 | `Age` | `Age`Se omite el encabezado enviado en la respuesta original. El middleware calcula un nuevo valor cuando se atiende a una respuesta almacenada en caché. |
 
-## <a name="caching-respects-request-cache-control-directives"></a>El almacenamiento en caché respeta las directivas de control de caché de solicitudes
+## <a name="caching-respects-request-cache-control-directives"></a>La caché respeta las directivas de Cache-Control de solicitudes
 
 El middleware respeta las reglas de la [especificación de almacenamiento en caché HTTP 1,1](https://tools.ietf.org/html/rfc7234#section-5.2). Las reglas requieren una memoria caché para respetar un `Cache-Control` encabezado válido enviado por el cliente. En la especificación, un cliente puede realizar solicitudes con un `no-cache` valor de encabezado y forzar al servidor a generar una nueva respuesta para cada solicitud. Actualmente, no hay ningún control de desarrollador sobre este comportamiento de almacenamiento en caché al usar el middleware porque el middleware se adhiere a la especificación oficial de almacenamiento en caché.
 
@@ -257,7 +258,7 @@ En la tabla siguiente se proporciona información sobre los encabezados HTTP que
 | Encabezado | Detalles |
 | ------ | ------- |
 | `Authorization` | Si el encabezado existe, la respuesta no se almacena en caché. |
-| `Cache-Control` | El middleware solo tiene en cuenta las respuestas de almacenamiento en caché marcadas con la `public` Directiva de caché. Controlar el almacenamiento en caché con los parámetros siguientes:<ul><li>Max-Age</li><li>Max:&#8224; obsoleto</li><li>mín. actualizado</li><li>must-revalidate</li><li>sin caché</li><li>sin almacén</li><li>solo si se almacena en caché</li><li>privado</li><li>público</li><li>s-maxage</li><li>proxy: revalidar&#8225;</li></ul>&#8224;si no se especifica ningún límite en `max-stale` , el middleware no realiza ninguna acción.<br>&#8225;`proxy-revalidate` tiene el mismo efecto que `must-revalidate` .<br><br>Para obtener más información, vea [RFC 7231: directivas de control de caché de solicitudes](https://tools.ietf.org/html/rfc7234#section-5.2.1). |
+| `Cache-Control` | El middleware solo tiene en cuenta las respuestas de almacenamiento en caché marcadas con la `public` Directiva de caché. Controlar el almacenamiento en caché con los parámetros siguientes:<ul><li>Max-Age</li><li>Max:&#8224; obsoleto</li><li>mín. actualizado</li><li>must-revalidate</li><li>sin caché</li><li>sin almacén</li><li>solo si se almacena en caché</li><li>privado</li><li>público</li><li>s-maxage</li><li>proxy: revalidar&#8225;</li></ul>&#8224;si no se especifica ningún límite en `max-stale` , el middleware no realiza ninguna acción.<br>&#8225;`proxy-revalidate` tiene el mismo efecto que `must-revalidate` .<br><br>Para obtener más información, vea [RFC 7231: Request Cache-Control directivas](https://tools.ietf.org/html/rfc7234#section-5.2.1). |
 | `Pragma` | Un `Pragma: no-cache` encabezado en la solicitud produce el mismo efecto que `Cache-Control: no-cache` . Este encabezado es invalidado por las directivas pertinentes en el `Cache-Control` encabezado, si está presente. Se tiene en cuenta para la compatibilidad con versiones anteriores con HTTP/1.0. |
 | `Set-Cookie` | Si el encabezado existe, la respuesta no se almacena en caché. Cualquier middleware de la canalización de procesamiento de solicitudes que establezca una o más cookie s impide que el middleware de almacenamiento en caché de la respuesta almacene en caché la respuesta (por ejemplo, el [ cookie proveedor TempData basado](xref:fundamentals/app-state#tempdata)en).  |
 | `Vary` | El `Vary` encabezado se usa para modificar la respuesta almacenada en caché por otro encabezado. Por ejemplo, almacenar en caché las respuestas mediante la codificación incluyendo el `Vary: Accept-Encoding` encabezado, que almacena en caché las respuestas de las solicitudes con encabezados `Accept-Encoding: gzip` y `Accept-Encoding: text/plain` por separado. Nunca se almacena una respuesta con un valor de encabezado de `*` . |
@@ -268,7 +269,7 @@ En la tabla siguiente se proporciona información sobre los encabezados HTTP que
 | `Content-Length` | Cuando se atiende desde la memoria caché, el `Content-Length` software intermedio establece el encabezado si no se proporcionó en la respuesta original. |
 | `Age` | `Age`Se omite el encabezado enviado en la respuesta original. El middleware calcula un nuevo valor cuando se atiende a una respuesta almacenada en caché. |
 
-## <a name="caching-respects-request-cache-control-directives"></a>El almacenamiento en caché respeta las directivas de control de caché de solicitudes
+## <a name="caching-respects-request-cache-control-directives"></a>La caché respeta las directivas de Cache-Control de solicitudes
 
 El middleware respeta las reglas de la [especificación de almacenamiento en caché HTTP 1,1](https://tools.ietf.org/html/rfc7234#section-5.2). Las reglas requieren una memoria caché para respetar un `Cache-Control` encabezado válido enviado por el cliente. En la especificación, un cliente puede realizar solicitudes con un `no-cache` valor de encabezado y forzar al servidor a generar una nueva respuesta para cada solicitud. Actualmente, no hay ningún control de desarrollador sobre este comportamiento de almacenamiento en caché al usar el middleware porque el middleware se adhiere a la especificación oficial de almacenamiento en caché.
 

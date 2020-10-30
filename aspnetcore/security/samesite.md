@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/03/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - SignalR
 - Electron
 uid: security/samesite
-ms.openlocfilehash: 3ba033b4165b19131d11311e5ae9d64e6afe48ca
-ms.sourcegitcommit: f09407d128634d200c893bfb1c163e87fa47a161
+ms.openlocfilehash: 6f826416e3045df32abf41e94e667120e71ae717
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88865430"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93051621"
 ---
 # <a name="work-with-samesite-no-loccookies-in-aspnet-core"></a>Trabajar con SameSite cookie s en ASP.net Core
 
@@ -51,7 +52,7 @@ Cada componente de ASP.NET Core que emite cookie s necesita decidir si SameSite 
 
 Los ejemplos siguientes se pueden descargar y probar:
 
-| Muestra               | Documento |
+| Ejemplo               | Documento |
 | ----------------- | ------------ |
 | [MVC de .NET Core](https://github.com/blowdart/AspNetSameSiteSamples/tree/master/AspNetCore21MVC)  | <xref:security/samesite/mvc21> |
 | [Páginas de .NET Core Razor](https://github.com/blowdart/AspNetSameSiteSamples/tree/master/AspNetCore21RazorPages)  | <xref:security/samesite/rp21> |
@@ -63,7 +64,7 @@ Los ejemplos siguientes se pueden descargar y probar:
 El ejemplo siguiente se puede descargar y probar:
 
 
-| Muestra               | Documento |
+| Ejemplo               | Documento |
 | ----------------- | ------------ |
 | [Páginas de .NET Core Razor](https://github.com/blowdart/AspNetSameSiteSamples/tree/master/AspNetCore31RazorPages)  | <xref:security/samesite/rp31> |
 
@@ -100,7 +101,7 @@ El valor predeterminado de SameSite para la autenticación de formularios y el e
 
 Todos los componentes de ASP.NET Core que emiten cookie s invalidan los valores predeterminados anteriores con la configuración adecuada para sus escenarios. Los valores predeterminados anteriores invalidados no han cambiado.
 
-| Componente | cookie | Default |
+| Componente | cookie | Valor predeterminado |
 | ------------- | ------------- |
 | <xref:Microsoft.AspNetCore.Http.CookieBuilder> | <xref:Microsoft.AspNetCore.Http.CookieBuilder.SameSite> | `Unspecified` |
 | <xref:Microsoft.AspNetCore.Http.HttpContext.Session>  | [SessionOptions.Cookie](xref:Microsoft.AspNetCore.Builder.SessionOptions.Cookie) |`Lax` |
@@ -157,7 +158,7 @@ Las [revisiones](https://devblogs.microsoft.com/dotnet/net-core-November-2019/) 
 
 ## <a name="supporting-older-browsers"></a>Compatibilidad con exploradores más antiguos
 
-El estándar 2016 SameSite impediba que los valores desconocidos se deben tratar como `SameSite=Strict` valores. Las aplicaciones a las que se accede desde exploradores más antiguos que admiten el estándar 2016 SameSite se pueden interrumpir cuando obtienen una propiedad SameSite con un valor de `None` . Las aplicaciones web deben implementar la detección del explorador si pretenden admitir exploradores más antiguos. ASP.NET Core no implementa la detección del explorador porque los valores de los agentes de usuario son muy volátiles y cambian con frecuencia. Un punto de extensión de <xref:Microsoft.AspNetCore.CookiePolicy> permite conectar una lógica específica del agente de usuario.
+El estándar 2016 SameSite impediba que los valores desconocidos se deben tratar como `SameSite=Strict` valores. Las aplicaciones a las que se accede desde exploradores más antiguos que admiten el estándar 2016 SameSite se pueden interrumpir cuando obtienen una propiedad SameSite con un valor de `None` . Las aplicaciones web deben implementar la detección del explorador si pretenden admitir exploradores más antiguos. ASP.NET Core no implementa la detección del explorador porque User-Agents valores son muy volátiles y cambian con frecuencia. Un punto de extensión de <xref:Microsoft.AspNetCore.CookiePolicy> permite conectar User-Agent lógica específica.
 
 En `Startup.Configure` , agregue código que llame a <xref:Microsoft.AspNetCore.Builder.CookiePolicyAppBuilderExtensions.UseCookiePolicy*> antes <xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication*> de llamar a o a *cualquier* método que escriba cookie s:
 
@@ -201,7 +202,7 @@ Pruebe las aplicaciones web con una versión de cliente que pueda participar en 
 
 ### <a name="test-with-chrome"></a>Prueba con Chrome
 
-Chrome 78 + ofrece resultados engañosos porque tiene una mitigación temporal en contexto. La mitigación temporal de Chrome 78 + permite cookie menos de dos minutos de antigüedad. Chrome 76 o 77 con las marcas de prueba adecuadas habilitadas proporcionan resultados más precisos. Para probar el nuevo comportamiento de SameSite, cambie `chrome://flags/#same-site-by-default-cookies` a **habilitado**. Las versiones anteriores de Chrome (75 e inferiores) se muestran como erróneas con la nueva `None` configuración. Consulte [compatibilidad con exploradores anteriores](#sob) en este documento.
+Chrome 78 + ofrece resultados engañosos porque tiene una mitigación temporal en contexto. La mitigación temporal de Chrome 78 + permite cookie menos de dos minutos de antigüedad. Chrome 76 o 77 con las marcas de prueba adecuadas habilitadas proporcionan resultados más precisos. Para probar el nuevo comportamiento de SameSite, cambie `chrome://flags/#same-site-by-default-cookies` a **habilitado** . Las versiones anteriores de Chrome (75 e inferiores) se muestran como erróneas con la nueva `None` configuración. Consulte [compatibilidad con exploradores anteriores](#sob) en este documento.
 
 Google no hace que las versiones anteriores de Chrome estén disponibles. Siga las instrucciones de [Descargar cromo](https://www.chromium.org/getting-involved/download-chromium) para probar versiones anteriores de Chrome. **No** Descargue Chrome desde los vínculos que se proporcionan al buscar versiones anteriores de Chrome.
 
@@ -238,7 +239,7 @@ Las versiones de Electron incluyen versiones anteriores de cromo. Por ejemplo, l
 
  ::: moniker range=">= aspnetcore-2.1 < aspnetcore-3.0"
 
-| Muestra               | Documento |
+| Ejemplo               | Documento |
 | ----------------- | ------------ |
 | [MVC de .NET Core](https://github.com/blowdart/AspNetSameSiteSamples/tree/master/AspNetCore21MVC)  | <xref:security/samesite/mvc21> |
 | [Páginas de .NET Core Razor](https://github.com/blowdart/AspNetSameSiteSamples/tree/master/AspNetCore21RazorPages)  | <xref:security/samesite/rp21> |
@@ -247,7 +248,7 @@ Las versiones de Electron incluyen versiones anteriores de cromo. Por ejemplo, l
 
  ::: moniker range=">= aspnetcore-3.0"
 
-| Muestra               | Documento |
+| Ejemplo               | Documento |
 | ----------------- | ------------ |
 | [Páginas de .NET Core Razor](https://github.com/blowdart/AspNetSameSiteSamples/tree/master/AspNetCore31RazorPages)  | <xref:security/samesite/rp31> |
 
