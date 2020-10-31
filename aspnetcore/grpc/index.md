@@ -6,6 +6,7 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
 ms.date: 09/20/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/index
-ms.openlocfilehash: 4a2f86d906c7b268b1fb2a63c50a1b8f0dd2b154
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 80f44e3845cc1e3c87d5d657807a318eb65e6c6f
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633193"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059902"
 ---
 # <a name="introduction-to-grpc-on-net-core"></a>Introducción a gRPC en .NET Core
 
@@ -46,7 +47,7 @@ Estas ventajas hacen que gRPC sea ideal para:
 
 ## <a name="c-tooling-support-for-proto-files"></a>Compatibilidad de herramientas de C# con archivos .proto
 
-gRPC usa un enfoque de contrato primero para el desarrollo de API. Los servicios y los mensajes se definen en los archivos *\*.proto*:
+gRPC usa un enfoque de contrato primero para el desarrollo de API. Los servicios y los mensajes se definen en los archivos *\*.proto* :
 
 ```protobuf
 syntax = "proto3";
@@ -105,7 +106,7 @@ public class GreeterService : Greeter.GreeterBase
 }
 ```
 
-`GreeterService` se hereda del tipo `GreeterBase`, que se genera a partir del servicio `Greeter` en el archivo *\*.proto*. El servicio se hace accesible a los clientes de *Startup.cs*:
+`GreeterService` se hereda del tipo `GreeterBase`, que se genera a partir del servicio `Greeter` en el archivo *\*.proto* . El servicio se hace accesible a los clientes de *Startup.cs* :
 
 ```csharp
 app.UseEndpoints(endpoints =>
@@ -118,7 +119,7 @@ Para más información sobre los servicios gRPC en ASP.NET Core, vea <xref:grpc/
 
 ## <a name="call-grpc-services-with-a-net-client"></a>Llamada a servicios gRPC con un cliente .NET
 
-Los clientes gRPC son tipos de cliente concretos que se [generan a partir de archivos *\*.proto*](xref:grpc/basics#generated-c-assets). El cliente gRPC concreto tiene métodos que se convierten en el servicio gRPC en el archivo *\*.proto*.
+Los clientes gRPC son tipos de cliente concretos que se [generan a partir de archivos *\*.proto*](xref:grpc/basics#generated-c-assets). El cliente gRPC concreto tiene métodos que se convierten en el servicio gRPC en el archivo *\*.proto* .
 
 ```csharp
 var channel = GrpcChannel.ForAddress("https://localhost:5001");

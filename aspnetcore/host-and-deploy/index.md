@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/index
-ms.openlocfilehash: f8271d71f34487062484581ba6b3b8445a62439c
-ms.sourcegitcommit: ecae2aa432628b9181d1fa11037c231c7dd56c9e
+ms.openlocfilehash: 19e888859cea35624491a516404c57e30aa9db05
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92113796"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93057224"
 ---
 # <a name="host-and-deploy-aspnet-core"></a>Hospedaje e implementación de ASP.NET Core
 
@@ -37,15 +38,15 @@ En general, para implementar una aplicación de ASP.NET Core en un entorno de ho
 
 ## <a name="publish-to-a-folder"></a>Publicar la aplicación en una carpeta
 
-El comando [dotnet publish](/dotnet/core/tools/dotnet-publish) compila el código de la aplicación y copia los archivos necesarios para ejecutar la aplicación en una carpeta *publish*. Al efectuar una implementación desde Visual Studio, el paso `dotnet publish` se lleva a cabo de forma automática antes de que los archivos se copien en el destino de implementación.
+El comando [dotnet publish](/dotnet/core/tools/dotnet-publish) compila el código de la aplicación y copia los archivos necesarios para ejecutar la aplicación en una carpeta *publish* . Al efectuar una implementación desde Visual Studio, el paso `dotnet publish` se lleva a cabo de forma automática antes de que los archivos se copien en el destino de implementación.
 
 ### <a name="folder-contents"></a>Contenido de la carpeta
 
 La carpeta *publish* contiene uno o varios archivos de ensamblado de aplicaciones, dependencias y, opcionalmente, el entorno de ejecución. NET.
 
-Se puede publicar una aplicación .NET Core como *implementación independiente* o *implementación dependiente del marco*. Si la aplicación es independiente, los archivos de ensamblado que contienen el entorno de ejecución .NET se incluyen en la carpeta *publish*. Si la aplicación es dependiente del marco, los archivos del tiempo de ejecución .NET no se incluyen porque la aplicación tiene una referencia a una versión de .NET que está instalada en el servidor. El modelo de implementación predeterminado es dependiente del marco. Para más información, vea [Implementación de aplicaciones .NET Core](/dotnet/core/deploying/).
+Se puede publicar una aplicación .NET Core como *implementación independiente* o *implementación dependiente del marco* . Si la aplicación es independiente, los archivos de ensamblado que contienen el entorno de ejecución .NET se incluyen en la carpeta *publish* . Si la aplicación es dependiente del marco, los archivos del tiempo de ejecución .NET no se incluyen porque la aplicación tiene una referencia a una versión de .NET que está instalada en el servidor. El modelo de implementación predeterminado es dependiente del marco. Para más información, vea [Implementación de aplicaciones .NET Core](/dotnet/core/deploying/).
 
-Además de los archivos *.exe* y *.dll*, la carpeta *publish* de una aplicación ASP.NET Core suele contener archivos de configuración, recursos estáticos y vistas de MVC. Para obtener más información, vea <xref:host-and-deploy/directory-structure>.
+Además de los archivos *.exe* y *.dll* , la carpeta *publish* de una aplicación ASP.NET Core suele contener archivos de configuración, recursos estáticos y vistas de MVC. Para obtener más información, vea <xref:host-and-deploy/directory-structure>.
 
 ## <a name="set-up-a-process-manager"></a>Configurar un administrador de procesos
 
@@ -70,7 +71,7 @@ Podría ser necesario realizar una configuración adicional para las aplicacione
 
 ## <a name="use-visual-studio-and-msbuild-to-automate-deployments"></a>Uso de Visual Studio y MSBuild para automatizar implementaciones
 
-La implementación a menudo requiere tareas adicionales además de copiar el resultado del comando [dotnet publish](/dotnet/core/tools/dotnet-publish) en un servidor. Por ejemplo, podrían necesitarse o eliminarse archivos adicionales de la carpeta *publish*. Para la implementación web, Visual Studio usa [MSBuild](/visualstudio/msbuild/msbuild), que se puede personalizar de modo que lleve a cabo muchas otras tareas durante la implementación. Para más información, consulte <xref:host-and-deploy/visual-studio-publish-profiles> y el libro [Using MSBuild and Team Foundation Build](http://msbuildbook.com/) (Uso de MSBuild y Team Foundation Build).
+La implementación a menudo requiere tareas adicionales además de copiar el resultado del comando [dotnet publish](/dotnet/core/tools/dotnet-publish) en un servidor. Por ejemplo, podrían necesitarse o eliminarse archivos adicionales de la carpeta *publish* . Para la implementación web, Visual Studio usa [MSBuild](/visualstudio/msbuild/msbuild), que se puede personalizar de modo que lleve a cabo muchas otras tareas durante la implementación. Para más información, consulte <xref:host-and-deploy/visual-studio-publish-profiles> y el libro [Using MSBuild and Team Foundation Build](http://msbuildbook.com/) (Uso de MSBuild y Team Foundation Build).
 
 Mediante la [característica de publicación web](xref:tutorials/publish-to-azure-webapp-using-vs) o la [compatibilidad integrada con Git](xref:host-and-deploy/azure-apps/azure-continuous-deployment), puede implementar las aplicaciones directamente desde Visual Studio en Azure App Service. Azure DevOps Services es compatible con la [implementación continua en Azure App Service](/azure/devops/pipelines/targets/webapp). Para más información, consulte [DevOps con ASP.NET Core y Azure](xref:azure/devops/index).
 
@@ -84,7 +85,7 @@ Consulte <xref:host-and-deploy/visual-studio-publish-profiles> para ver instrucc
 
 ## <a name="internet-information-services-iis"></a>Internet Information Services (IIS)
 
-Para las implementaciones en Internet Information Services (IIS) con la configuración proporcionada por el archivo *web.config*, consulte los artículos en <xref:host-and-deploy/iis/index>.
+Para las implementaciones en Internet Information Services (IIS) con la configuración proporcionada por el archivo *web.config* , consulte los artículos en <xref:host-and-deploy/iis/index>.
 
 ## <a name="host-in-a-web-farm"></a>Hospedaje en una granja de servidores web
 
@@ -115,15 +116,15 @@ En general, para implementar una aplicación de ASP.NET Core en un entorno de ho
 
 ## <a name="publish-to-a-folder"></a>Publicar la aplicación en una carpeta
 
-El comando [dotnet publish](/dotnet/core/tools/dotnet-publish) compila el código de la aplicación y copia los archivos necesarios para ejecutar la aplicación en una carpeta *publish*. Al efectuar una implementación desde Visual Studio, el paso `dotnet publish` se lleva a cabo de forma automática antes de que los archivos se copien en el destino de implementación.
+El comando [dotnet publish](/dotnet/core/tools/dotnet-publish) compila el código de la aplicación y copia los archivos necesarios para ejecutar la aplicación en una carpeta *publish* . Al efectuar una implementación desde Visual Studio, el paso `dotnet publish` se lleva a cabo de forma automática antes de que los archivos se copien en el destino de implementación.
 
 ### <a name="folder-contents"></a>Contenido de la carpeta
 
 La carpeta *publish* contiene uno o varios archivos de ensamblado de aplicaciones, dependencias y, opcionalmente, el entorno de ejecución. NET.
 
-Se puede publicar una aplicación .NET Core como *implementación independiente* o *implementación dependiente del marco*. Si la aplicación es independiente, los archivos de ensamblado que contienen el entorno de ejecución .NET se incluyen en la carpeta *publish*. Si la aplicación es dependiente del marco, los archivos del tiempo de ejecución .NET no se incluyen porque la aplicación tiene una referencia a una versión de .NET que está instalada en el servidor. El modelo de implementación predeterminado es dependiente del marco. Para más información, vea [Implementación de aplicaciones .NET Core](/dotnet/core/deploying/).
+Se puede publicar una aplicación .NET Core como *implementación independiente* o *implementación dependiente del marco* . Si la aplicación es independiente, los archivos de ensamblado que contienen el entorno de ejecución .NET se incluyen en la carpeta *publish* . Si la aplicación es dependiente del marco, los archivos del tiempo de ejecución .NET no se incluyen porque la aplicación tiene una referencia a una versión de .NET que está instalada en el servidor. El modelo de implementación predeterminado es dependiente del marco. Para más información, vea [Implementación de aplicaciones .NET Core](/dotnet/core/deploying/).
 
-Además de los archivos *.exe* y *.dll*, la carpeta *publish* de una aplicación ASP.NET Core suele contener archivos de configuración, recursos estáticos y vistas de MVC. Para obtener más información, vea <xref:host-and-deploy/directory-structure>.
+Además de los archivos *.exe* y *.dll* , la carpeta *publish* de una aplicación ASP.NET Core suele contener archivos de configuración, recursos estáticos y vistas de MVC. Para obtener más información, vea <xref:host-and-deploy/directory-structure>.
 
 ## <a name="set-up-a-process-manager"></a>Configurar un administrador de procesos
 
@@ -148,7 +149,7 @@ Podría ser necesario realizar una configuración adicional para las aplicacione
 
 ## <a name="use-visual-studio-and-msbuild-to-automate-deployments"></a>Uso de Visual Studio y MSBuild para automatizar implementaciones
 
-La implementación a menudo requiere tareas adicionales además de copiar el resultado del comando [dotnet publish](/dotnet/core/tools/dotnet-publish) en un servidor. Por ejemplo, podrían necesitarse o eliminarse archivos adicionales de la carpeta *publish*. Para la implementación web, Visual Studio usa MSBuild, que puede personalizar de modo que lleve a cabo muchas otras tareas durante la implementación. Para más información, consulte <xref:host-and-deploy/visual-studio-publish-profiles> y el libro [Using MSBuild and Team Foundation Build](http://msbuildbook.com/) (Uso de MSBuild y Team Foundation Build).
+La implementación a menudo requiere tareas adicionales además de copiar el resultado del comando [dotnet publish](/dotnet/core/tools/dotnet-publish) en un servidor. Por ejemplo, podrían necesitarse o eliminarse archivos adicionales de la carpeta *publish* . Para la implementación web, Visual Studio usa MSBuild, que puede personalizar de modo que lleve a cabo muchas otras tareas durante la implementación. Para más información, consulte <xref:host-and-deploy/visual-studio-publish-profiles> y el libro [Using MSBuild and Team Foundation Build](http://msbuildbook.com/) (Uso de MSBuild y Team Foundation Build).
 
 Mediante la [característica de publicación web](xref:tutorials/publish-to-azure-webapp-using-vs) o la [compatibilidad integrada con Git](xref:host-and-deploy/azure-apps/azure-continuous-deployment), puede implementar las aplicaciones directamente desde Visual Studio en Azure App Service. Azure DevOps Services es compatible con la [implementación continua en Azure App Service](/azure/devops/pipelines/targets/webapp). Para más información, consulte [DevOps con ASP.NET Core y Azure](xref:azure/devops/index).
 
@@ -162,7 +163,7 @@ Consulte <xref:host-and-deploy/visual-studio-publish-profiles> para ver instrucc
 
 ## <a name="internet-information-services-iis"></a>Internet Information Services (IIS)
 
-Para las implementaciones en Internet Information Services (IIS) con la configuración proporcionada por el archivo *web.config*, consulte los artículos en <xref:host-and-deploy/iis/index>.
+Para las implementaciones en Internet Information Services (IIS) con la configuración proporcionada por el archivo *web.config* , consulte los artículos en <xref:host-and-deploy/iis/index>.
 
 ## <a name="host-in-a-web-farm"></a>Hospedaje en una granja de servidores web
 

@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/19/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/index
-ms.openlocfilehash: be1584e72fc1504ac9f8ca10a6b084c95a579b5b
-ms.sourcegitcommit: 8fcb08312a59c37e3542e7a67dad25faf5bb8e76
+ms.openlocfilehash: d30f40945a3b2799dfc2d9391bba37eee1bfdc18
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90009627"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93056275"
 ---
 # <a name="create-and-use-aspnet-core-no-locrazor-components"></a>Creación y uso de componentes de Razor de ASP.NET Core
 
@@ -31,7 +32,7 @@ Por [Luke Latham](https://github.com/guardrex), [Daniel Roth](https://github.com
 
 [Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
-Las aplicaciones Blazor se crean usando *componentes*. Un componente es un fragmento independiente de la interfaz de usuario, como una página, un cuadro de diálogo o un formulario. Los componentes incluyen el marcado HTML y la lógica de procesamiento necesarios para insertar datos o responder a eventos de la interfaz de usuario. Además, son flexibles y ligeros, y se pueden anidar, reutilizar y compartir entre proyectos.
+Las aplicaciones Blazor se crean usando *componentes* . Un componente es un fragmento independiente de la interfaz de usuario, como una página, un cuadro de diálogo o un formulario. Los componentes incluyen el marcado HTML y la lógica de procesamiento necesarios para insertar datos o responder a eventos de la interfaz de usuario. Además, son flexibles y ligeros, y se pueden anidar, reutilizar y compartir entre proyectos.
 
 ## <a name="component-classes"></a>Clases de componentes
 
@@ -253,7 +254,7 @@ Para obtener información sobre los parámetros de ruta comodín (`{*pageRoute}`
 
 ### <a name="component-parameters"></a>Parámetros del componente
 
-Los componentes pueden tener *parámetros de componente*, que se definen por medio de propiedades públicas en la clase del componente con el atributo [`[Parameter]`](xref:Microsoft.AspNetCore.Components.ParameterAttribute). Use atributos para especificar argumentos para un componente en el marcado.
+Los componentes pueden tener *parámetros de componente* , que se definen por medio de propiedades públicas en la clase del componente con el atributo [`[Parameter]`](xref:Microsoft.AspNetCore.Components.ParameterAttribute). Use atributos para especificar argumentos para un componente en el marcado.
 
 `Components/ChildComponent.razor`:
 
@@ -266,7 +267,7 @@ En el siguiente ejemplo de la aplicación de muestra, `ParentComponent` establec
 [!code-razor[](index/samples_snapshot/ParentComponent.razor?highlight=5-6)]
 
 > [!WARNING]
-> No cree componentes que escriban en sus propios *parámetros de componente*; en su lugar, use un campo privado. Para obtener más información, vea la sección [Parámetros sobrescritos](#overwritten-parameters).
+> No cree componentes que escriban en sus propios *parámetros de componente* ; en su lugar, use un campo privado. Para obtener más información, vea la sección [Parámetros sobrescritos](#overwritten-parameters).
 
 ## <a name="child-content"></a>Contenido secundario
 

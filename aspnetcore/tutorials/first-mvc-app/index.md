@@ -5,6 +5,7 @@ description: Consulte la tabla de contenido de la introducción a MVC de ASP.NET
 ms.author: riande
 ms.date: 10/26/2017
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/index
-ms.openlocfilehash: cd754c6898ac2fd099db9ff4e5212453fb82b52c
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: cf052f0df00096ce2c21aada56f1b78be8d48208
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88635312"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93050763"
 ---
 # <a name="create-a-web-app-with-aspnet-core-mvc"></a>Creación de una aplicación web con MVC de ASP.NET Core
 

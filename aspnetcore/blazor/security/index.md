@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/19/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/index
-ms.openlocfilehash: f198cef0cf990dcc2806d3967130db64af47c1d0
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 6110f51eb5d5ee40d6ce5a5d49ddda3329d1f033
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88627837"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93055547"
 ---
 # <a name="aspnet-core-no-locblazor-authentication-and-authorization"></a>Autenticación y autorización de ASP.NET Core Blazor
 
@@ -246,8 +247,8 @@ Cuando un usuario está autenticado, se aplican las reglas de *autorización* pa
 Por lo general, se concede o deniega el acceso en función de si:
 
 * El usuario está autenticado (ha iniciado sesión).
-* El usuario está en un *rol*.
-* El usuario tiene una *notificación*.
+* El usuario está en un *rol* .
+* El usuario tiene una *notificación* .
 * Una *directiva* se cumple.
 
 Cada uno de estos conceptos tiene su equivalente en una aplicación ASP.NET Core MVC o Razor Pages. Para más información sobre la seguridad de ASP.NET Core, consulte los artículos disponibles en [Seguridad e Identity de ASP.NET Core](xref:security/index).
@@ -293,7 +294,7 @@ Si no se especifican las condiciones de la autorización, <xref:Microsoft.AspNet
 
 ### <a name="role-based-and-policy-based-authorization"></a>Autorización basada en roles y en directivas
 
-El componente <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView> admite la autorización *basada en roles* o *basada en directivas*.
+El componente <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView> admite la autorización *basada en roles* o *basada en directivas* .
 
 Para la autorización basada en roles, utilice el parámetro <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView.Roles>:
 
@@ -321,7 +322,7 @@ Si no se especifica <xref:Microsoft.AspNetCore.Components.Authorization.Authoriz
 
 ### <a name="content-displayed-during-asynchronous-authentication"></a>Contenido que se muestra durante la autenticación asincrónica
 
-Blazor permite que el estado de autenticación se determine *asincrónicamente*. El escenario principal de este enfoque se encuentra en las aplicaciones de Blazor WebAssembly que realizan una solicitud de autenticación a un punto de conexión externo.
+Blazor permite que el estado de autenticación se determine *asincrónicamente* . El escenario principal de este enfoque se encuentra en las aplicaciones de Blazor WebAssembly que realizan una solicitud de autenticación a un punto de conexión externo.
 
 Mientras la autenticación está en curso, <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView> no muestra ningún contenido de forma predeterminada. Para mostrar el contenido mientras se produce autenticación, use la etiqueta `<Authorizing>`:
 

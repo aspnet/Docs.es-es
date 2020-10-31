@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/06/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/server/index
-ms.openlocfilehash: d6d0f6f859dbaef98c6c8a9c53fe9858705cdc0a
-ms.sourcegitcommit: 139c998d37e9f3e3d0e3d72e10dbce8b75957d89
+ms.openlocfilehash: 108fb3a8a24295cad43fd8c83303abd95a7ecd33
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91805510"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93055482"
 ---
 # <a name="secure-aspnet-core-no-locblazor-server-apps"></a>Protección de aplicaciones de ASP.NET Core Blazor Server
 
@@ -39,12 +40,12 @@ Se puede configurar la autenticación de la plantilla de proyecto de Blazor Serv
 
 Siga las instrucciones de Visual Studio en <xref:blazor/tooling> para crear un proyecto de Blazor Server con un mecanismo de autenticación.
 
-Después de elegir la plantilla de aplicación de **Blazor Server** en el cuadro de diálogo **Crear una aplicación web ASP.NET Core**, seleccione **Cambiar** en **Autenticación**.
+Después de elegir la plantilla de aplicación de **Blazor Server** en el cuadro de diálogo **Crear una aplicación web ASP.NET Core** , seleccione **Cambiar** en **Autenticación** .
 
 Se abre un cuadro de diálogo para ofrecer el mismo conjunto de mecanismos de autenticación disponibles para otros proyectos ASP.NET Core:
 
 * **Sin autenticación**
-* **Cuentas de usuario individuales**: las cuentas de usuario se pueden almacenar:
+* **Cuentas de usuario individuales** : las cuentas de usuario se pueden almacenar:
   * Dentro de la aplicación mediante el sistema de [Identity](xref:security/authentication/identity) de ASP.NET Core.
   * Con [Azure AD B2C](xref:security/authentication/azure-ad-b2c)
 * **Cuentas profesionales o educativas**

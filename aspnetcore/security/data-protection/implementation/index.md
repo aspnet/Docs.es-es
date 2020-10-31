@@ -5,6 +5,7 @@ description: Descubra diversos temas sobre la implementación de protección de 
 ms.author: riande
 ms.date: 10/14/2016
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/data-protection/implementation/index
-ms.openlocfilehash: f97b9ec40422a2c6cce45b23f166934acc64e2c9
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 067f41957cfe06ddfb5a8fd3b0d77b0d17a0ed1b
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633700"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93051088"
 ---
 # <a name="aspnet-core-data-protection-implementation"></a>Implementación de protección de datos de ASP.NET Core
 

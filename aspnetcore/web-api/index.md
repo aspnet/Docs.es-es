@@ -7,6 +7,7 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 07/20/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/index
-ms.openlocfilehash: 594d3dcbf55ed0a3476bb580df8e122cedb1dcd3
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 51f76bc33d2da6097d26c1ffe17b1c93046a7b88
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634376"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93052466"
 ---
 # <a name="create-web-apis-with-aspnet-core"></a>Creación de API web con ASP.NET Core
 

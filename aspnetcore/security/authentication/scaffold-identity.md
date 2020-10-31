@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/scaffold-identity
-ms.openlocfilehash: c79dfc64d4311088c3f9ea03aad7570189000e2a
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 813dd7837c265c78c584d66dd51bc23399d12fbe
+ms.sourcegitcommit: 5156eab2118584405eb663e1fcd82f8bd7764504
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93053324"
+ms.lasthandoff: 10/31/2020
+ms.locfileid: "93141500"
 ---
 # <a name="scaffold-no-locidentity-in-aspnet-core-projects"></a>Scaffolding Identity en proyectos de ASP.net Core
 
@@ -372,6 +372,14 @@ En el archivo *pages/Shared/layout. cshtml* , realice los cambios siguientes:
 
 Algunas Identity opciones se configuran en *areas/ Identity / Identity HostingStartup.CS* . Para obtener más información, vea [IHostingStartup](xref:fundamentals/configuration/platform-specific-configuration).
 
+## <a name="standalone-or-hosted-no-locblazor-webassembly-apps"></a>Aplicaciones independientes u hospedadas Blazor WebAssembly
+
+Las aplicaciones del lado cliente Blazor WebAssembly usan sus propios Identity enfoques de la interfaz de usuario y no pueden usar la ASP.NET Core Identity técnica scaffolding. Las aplicaciones de ASP.NET Core del lado servidor de soluciones hospedadas Blazor pueden seguir las Razor instrucciones de páginas o MVC de este artículo y se configuran como cualquier otro tipo de aplicación ASP.net Core que admita Identity .
+
+El Blazor marco no incluye Razor versiones de componentes de Identity las páginas de la interfaz de usuario. IdentityRazorLos componentes de interfaz de usuario se pueden compilar u obtener de orígenes de terceros no compatibles.
+
+Para obtener más información, consulte la [ Blazor seguridad y los Identity artículos](xref:blazor/security/index).
+
 <a name="full"></a>
 
 ## <a name="create-full-no-locidentity-ui-source"></a>Crear Identity origen de IU completo
@@ -550,7 +558,7 @@ Identityestá configurado en *areas/ Identity / Identity HostingStartup.CS* . Pa
 
 ### <a name="enable-authentication"></a>Enable authentication (Habilitar autenticación)
 
-En el `Configure` método de la `Startup` clase, llame a [UseAuthentication](/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication?view=aspnetcore-2.0#Microsoft_AspNetCore_Builder_AuthAppBuilderExtensions_UseAuthentication_Microsoft_AspNetCore_Builder_IApplicationBuilder_) después de `UseStaticFiles` :
+En el `Configure` método de la `Startup` clase, llame a <xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication%2A> después de `UseStaticFiles` :
 
 [!code-csharp[](scaffold-identity/sample/StartupRPnoAuth.cs?name=snippet1&highlight=29)]
 
@@ -607,7 +615,7 @@ Identityestá configurado en *areas/ Identity / Identity HostingStartup.CS* . Pa
 
 [!INCLUDE[](~/includes/scaffold-identity/migrations.md)]
 
-Llame a [UseAuthentication](/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication?view=aspnetcore-2.0#Microsoft_AspNetCore_Builder_AuthAppBuilderExtensions_UseAuthentication_Microsoft_AspNetCore_Builder_IApplicationBuilder_) después de `UseStaticFiles` :
+Llamar <xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication%2A> después de `UseStaticFiles` :
 
 [!code-csharp[](scaffold-identity/sample/StartupMvcNoAuth.cs?name=snippet1&highlight=23)]
 

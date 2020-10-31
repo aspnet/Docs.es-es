@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/15/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/middleware/index
-ms.openlocfilehash: 32a4e54a46f062f3ff45d0b840237be53406dbdb
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 06f55647ba2bb41152e16bb054e098abbe157cb8
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88630892"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059369"
 ---
 # <a name="aspnet-core-middleware"></a>Middleware de ASP.NET Core
 
@@ -38,7 +39,7 @@ El software intermedio es un software que se ensambla en una canalización de un
 
 Los delegados de solicitudes se usan para crear la canalización de solicitudes. Estos también controlan las solicitudes HTTP.
 
-Los delegados de solicitudes se configuran con los métodos de extensión <xref:Microsoft.AspNetCore.Builder.RunExtensions.Run%2A>, <xref:Microsoft.AspNetCore.Builder.MapExtensions.Map%2A> y <xref:Microsoft.AspNetCore.Builder.UseExtensions.Use%2A>. Un delegado de solicitudes se puede especificar en línea como un método anónimo (denominado middleware en línea) o se puede definir en una clase reutilizable. Estas clases reutilizables y métodos anónimos en línea se conocen como *software intermedio* o *componentes de software intermedio*. Cada componente de software intermedio de la canalización de solicitudes es responsable de invocar el siguiente componente de la canalización o de cortocircuitar la canalización, en caso de ser necesario. Cuando un middleware se cortocircuita, se llama *middleware de terminal* porque impide el procesamiento de la solicitud por parte de middleware adicional.
+Los delegados de solicitudes se configuran con los métodos de extensión <xref:Microsoft.AspNetCore.Builder.RunExtensions.Run%2A>, <xref:Microsoft.AspNetCore.Builder.MapExtensions.Map%2A> y <xref:Microsoft.AspNetCore.Builder.UseExtensions.Use%2A>. Un delegado de solicitudes se puede especificar en línea como un método anónimo (denominado middleware en línea) o se puede definir en una clase reutilizable. Estas clases reutilizables y métodos anónimos en línea se conocen como *software intermedio* o *componentes de software intermedio* . Cada componente de software intermedio de la canalización de solicitudes es responsable de invocar el siguiente componente de la canalización o de cortocircuitar la canalización, en caso de ser necesario. Cuando un middleware se cortocircuita, se llama *middleware de terminal* porque impide el procesamiento de la solicitud por parte de middleware adicional.
 
 En <xref:migration/http-modules> se explica la diferencia entre las canalizaciones de solicitudes en ASP.NET Core y ASP.NET 4.x y se proporcionan ejemplos adicionales de middleware.
 
@@ -58,7 +59,7 @@ Encadene varios delegados de solicitudes con <xref:Microsoft.AspNetCore.Builder.
 
 [!code-csharp[](index/snapshot/Chain/Startup.cs?highlight=5-10)]
 
-Cuando un delegado no pasa una solicitud al siguiente delegado, se denomina *cortocircuitar la canalización de solicitudes*. Este proceso es necesario muchas veces, ya que previene la realización de trabajo innecesario. Por ejemplo, el [middleware de archivos estáticos](xref:fundamentals/static-files) puede actuar como *middleware de terminal* procesando una solicitud para un archivo estático y cortocircuitando el resto de la canalización. El middleware agregado a la canalización antes del middleware que finaliza el procesamiento sigue procesando código después de sus instrucciones `next.Invoke`. Sin embargo, consulte la siguiente advertencia sobre intentar escribir en una respuesta que ya se ha enviado.
+Cuando un delegado no pasa una solicitud al siguiente delegado, se denomina *cortocircuitar la canalización de solicitudes* . Este proceso es necesario muchas veces, ya que previene la realización de trabajo innecesario. Por ejemplo, el [middleware de archivos estáticos](xref:fundamentals/static-files) puede actuar como *middleware de terminal* procesando una solicitud para un archivo estático y cortocircuitando el resto de la canalización. El middleware agregado a la canalización antes del middleware que finaliza el procesamiento sigue procesando código después de sus instrucciones `next.Invoke`. Sin embargo, consulte la siguiente advertencia sobre intentar escribir en una respuesta que ya se ha enviado.
 
 > [!WARNING]
 > No llame a `next.Invoke` después de haber enviado la respuesta al cliente. Si se modifica <xref:Microsoft.AspNetCore.Http.HttpResponse> después de haber iniciado la respuesta, se producirá una excepción. Por ejemplo, [se inicia una excepción al establecer encabezados y un código de estado](xref:performance/performance-best-practices#do-not-modify-the-status-code-or-headers-after-the-response-body-has-started). Si escribe en el cuerpo de la respuesta después de llamar a `next`:
@@ -87,7 +88,7 @@ El middleware **Punto de conexión** del diagrama anterior ejecuta la canalizaci
 
 ![Canalización de filtro de ASP.NET Core](index/_static/mvc-endpoint.svg)
 
-El orden en el que se agregan los componentes de software intermedio en el método `Startup.Configure` define el orden en el que se invocarán los componentes de software intermedio en las solicitudes y el orden inverso de la respuesta. Por motivos de seguridad, rendimiento y funcionalidad, el orden es **crítico**.
+El orden en el que se agregan los componentes de software intermedio en el método `Startup.Configure` define el orden en el que se invocarán los componentes de software intermedio en las solicitudes y el orden inverso de la respuesta. Por motivos de seguridad, rendimiento y funcionalidad, el orden es **crítico** .
 
 El método `Startup.Configure` siguiente agrega componentes de middleware relacionados con la seguridad en el orden recomendado:
 
@@ -163,7 +164,7 @@ En el código de ejemplo anterior, cada método de extensión de software interm
 
 <xref:Microsoft.AspNetCore.Builder.ExceptionHandlerExtensions.UseExceptionHandler%2A> es el primer componente de software intermedio que se agrega a la canalización. Por lo tanto, el software intermedio del controlador de excepciones detectará las excepciones que se produzcan en las llamadas posteriores.
 
-El software intermedio de archivos estáticos se llama al principio de la canalización para que pueda controlar solicitudes y realizar cortocircuitos sin pasar por los componentes restantes. Este middleware **no** proporciona comprobaciones de autorización. Los archivos que proporciona el middleware de archivos estáticos, incluidos los de *wwwroot*, están disponibles de forma pública. Para obtener más información sobre cómo proteger este tipo de archivos, vea <xref:fundamentals/static-files>.
+El software intermedio de archivos estáticos se llama al principio de la canalización para que pueda controlar solicitudes y realizar cortocircuitos sin pasar por los componentes restantes. Este middleware **no** proporciona comprobaciones de autorización. Los archivos que proporciona el middleware de archivos estáticos, incluidos los de *wwwroot* , están disponibles de forma pública. Para obtener más información sobre cómo proteger este tipo de archivos, vea <xref:fundamentals/static-files>.
 
 Si el software intermedio de archivos estáticos no controla la solicitud, se pasará al software intermedio de autenticación (<xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication%2A>), que realizará la autenticación. Este software intermedio no cortocircuita las solicitudes sin autenticación. Aunque autentique solicitudes, la autorización (y también el rechazo) se producirán después de que MVC seleccione una página de Razor o un control y una acción de MVC concretos.
 
@@ -248,7 +249,7 @@ En el ejemplo anterior, la respuesta "Hola desde la canalización principal." se
 
 ## <a name="built-in-middleware"></a>Middleware integrado
 
-ASP.NET Core incluye los componentes de software intermedio siguientes. En la columna *Orden* se proporcionan notas sobre la ubicación del middleware en la canalización de procesamiento de solicitudes, así como las condiciones con las que podría finalizar el procesamiento de solicitudes. Cuando un middleware cortocircuita la canalización de procesamiento de solicitudes e impide el procesamiento de una solicitud por parte de middleware descendente adicional, se llama *middleware de terminal*. Para más información sobre cómo cortocircuitar, consulte la sección [Creación de una canalización de middleware con IApplicationBuilder](#create-a-middleware-pipeline-with-iapplicationbuilder).
+ASP.NET Core incluye los componentes de software intermedio siguientes. En la columna *Orden* se proporcionan notas sobre la ubicación del middleware en la canalización de procesamiento de solicitudes, así como las condiciones con las que podría finalizar el procesamiento de solicitudes. Cuando un middleware cortocircuita la canalización de procesamiento de solicitudes e impide el procesamiento de una solicitud por parte de middleware descendente adicional, se llama *middleware de terminal* . Para más información sobre cómo cortocircuitar, consulte la sección [Creación de una canalización de middleware con IApplicationBuilder](#create-a-middleware-pipeline-with-iapplicationbuilder).
 
 | Software intermedio | Descripción | Ordenar |
 | ---------- | ----------- | ----- |
@@ -277,7 +278,7 @@ ASP.NET Core incluye los componentes de software intermedio siguientes. En la co
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
-* Las [opciones de registro y duración](xref:fundamentals/dependency-injection#lifetime-and-registration-options) contienen un ejemplo completo de middleware con servicios de duración *con ámbito*, *transitorios*y *singleton*.
+* Las [opciones de registro y duración](xref:fundamentals/dependency-injection#lifetime-and-registration-options) contienen un ejemplo completo de middleware con servicios de duración *con ámbito* , *transitorios* y *singleton* .
 * <xref:fundamentals/middleware/write>
 * <xref:test/middleware>
 * <xref:migration/http-modules>
@@ -299,7 +300,7 @@ El software intermedio es un software que se ensambla en una canalización de un
 
 Los delegados de solicitudes se usan para crear la canalización de solicitudes. Estos también controlan las solicitudes HTTP.
 
-Los delegados de solicitudes se configuran con los métodos de extensión <xref:Microsoft.AspNetCore.Builder.RunExtensions.Run%2A>, <xref:Microsoft.AspNetCore.Builder.MapExtensions.Map%2A> y <xref:Microsoft.AspNetCore.Builder.UseExtensions.Use%2A>. Un delegado de solicitudes se puede especificar en línea como un método anónimo (denominado middleware en línea) o se puede definir en una clase reutilizable. Estas clases reutilizables y métodos anónimos en línea se conocen como *software intermedio* o *componentes de software intermedio*. Cada componente de software intermedio de la canalización de solicitudes es responsable de invocar el siguiente componente de la canalización o de cortocircuitar la canalización, en caso de ser necesario. Cuando un middleware se cortocircuita, se llama *middleware de terminal* porque impide el procesamiento de la solicitud por parte de middleware adicional.
+Los delegados de solicitudes se configuran con los métodos de extensión <xref:Microsoft.AspNetCore.Builder.RunExtensions.Run%2A>, <xref:Microsoft.AspNetCore.Builder.MapExtensions.Map%2A> y <xref:Microsoft.AspNetCore.Builder.UseExtensions.Use%2A>. Un delegado de solicitudes se puede especificar en línea como un método anónimo (denominado middleware en línea) o se puede definir en una clase reutilizable. Estas clases reutilizables y métodos anónimos en línea se conocen como *software intermedio* o *componentes de software intermedio* . Cada componente de software intermedio de la canalización de solicitudes es responsable de invocar el siguiente componente de la canalización o de cortocircuitar la canalización, en caso de ser necesario. Cuando un middleware se cortocircuita, se llama *middleware de terminal* porque impide el procesamiento de la solicitud por parte de middleware adicional.
 
 En <xref:migration/http-modules> se explica la diferencia entre las canalizaciones de solicitudes en ASP.NET Core y ASP.NET 4.x y se proporcionan ejemplos adicionales de middleware.
 
@@ -321,7 +322,7 @@ Encadene varios delegados de solicitudes con <xref:Microsoft.AspNetCore.Builder.
 
 [!code-csharp[](index/snapshot/Chain/Startup.cs)]
 
-Cuando un delegado no pasa una solicitud al siguiente delegado, se denomina *cortocircuitar la canalización de solicitudes*. Este proceso es necesario muchas veces, ya que previene la realización de trabajo innecesario. Por ejemplo, el [middleware de archivos estáticos](xref:fundamentals/static-files) puede actuar como *middleware de terminal* procesando una solicitud para un archivo estático y cortocircuitando el resto de la canalización. El middleware agregado a la canalización antes del middleware que finaliza el procesamiento sigue procesando código después de sus instrucciones `next.Invoke`. Sin embargo, consulte la siguiente advertencia sobre intentar escribir en una respuesta que ya se ha enviado.
+Cuando un delegado no pasa una solicitud al siguiente delegado, se denomina *cortocircuitar la canalización de solicitudes* . Este proceso es necesario muchas veces, ya que previene la realización de trabajo innecesario. Por ejemplo, el [middleware de archivos estáticos](xref:fundamentals/static-files) puede actuar como *middleware de terminal* procesando una solicitud para un archivo estático y cortocircuitando el resto de la canalización. El middleware agregado a la canalización antes del middleware que finaliza el procesamiento sigue procesando código después de sus instrucciones `next.Invoke`. Sin embargo, consulte la siguiente advertencia sobre intentar escribir en una respuesta que ya se ha enviado.
 
 > [!WARNING]
 > No llame a `next.Invoke` después de haber enviado la respuesta al cliente. Si se modifica <xref:Microsoft.AspNetCore.Http.HttpResponse> después de haber iniciado la respuesta, se producirá una excepción. Por ejemplo, se producirá una excepción al realizar cambios tales como el establecimiento de encabezados o el código. Si escribe en el cuerpo de la respuesta después de llamar a `next`:
@@ -335,7 +336,7 @@ Cuando un delegado no pasa una solicitud al siguiente delegado, se denomina *cor
 
 ## <a name="middleware-order"></a>Orden del middleware
 
-El orden en el que se agregan los componentes de software intermedio en el método `Startup.Configure` define el orden en el que se invocarán los componentes de software intermedio en las solicitudes y el orden inverso de la respuesta. Por motivos de seguridad, rendimiento y funcionalidad, el orden es **crítico**.
+El orden en el que se agregan los componentes de software intermedio en el método `Startup.Configure` define el orden en el que se invocarán los componentes de software intermedio en las solicitudes y el orden inverso de la respuesta. Por motivos de seguridad, rendimiento y funcionalidad, el orden es **crítico** .
 
 El método `Startup.Configure` siguiente agrega componentes de middleware relacionados con la seguridad en el orden recomendado:
 
@@ -389,7 +390,7 @@ En el código de ejemplo anterior, cada método de extensión de software interm
 
 <xref:Microsoft.AspNetCore.Builder.ExceptionHandlerExtensions.UseExceptionHandler%2A> es el primer componente de software intermedio que se agrega a la canalización. Por lo tanto, el software intermedio del controlador de excepciones detectará las excepciones que se produzcan en las llamadas posteriores.
 
-El software intermedio de archivos estáticos se llama al principio de la canalización para que pueda controlar solicitudes y realizar cortocircuitos sin pasar por los componentes restantes. Este middleware **no** proporciona comprobaciones de autorización. Los archivos que proporciona el middleware de archivos estáticos, incluidos los de *wwwroot*, están disponibles de forma pública. Para obtener más información sobre cómo proteger este tipo de archivos, vea <xref:fundamentals/static-files>.
+El software intermedio de archivos estáticos se llama al principio de la canalización para que pueda controlar solicitudes y realizar cortocircuitos sin pasar por los componentes restantes. Este middleware **no** proporciona comprobaciones de autorización. Los archivos que proporciona el middleware de archivos estáticos, incluidos los de *wwwroot* , están disponibles de forma pública. Para obtener más información sobre cómo proteger este tipo de archivos, vea <xref:fundamentals/static-files>.
 
 Si el software intermedio de archivos estáticos no controla la solicitud, se pasará al software intermedio de autenticación (<xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication%2A>), que realizará la autenticación. Este software intermedio no cortocircuita las solicitudes sin autenticación. Aunque autentique solicitudes, la autorización (y también el rechazo) se producirán después de que MVC seleccione una página de Razor o un control y una acción de MVC concretos.
 
@@ -456,7 +457,7 @@ app.Map("/level1", level1App => {
 
 ## <a name="built-in-middleware"></a>Middleware integrado
 
-ASP.NET Core incluye los componentes de software intermedio siguientes. En la columna *Orden* se proporcionan notas sobre la ubicación del middleware en la canalización de procesamiento de solicitudes, así como las condiciones con las que podría finalizar el procesamiento de solicitudes. Cuando un middleware cortocircuita la canalización de procesamiento de solicitudes e impide el procesamiento de una solicitud por parte de middleware descendente adicional, se llama *middleware de terminal*. Para más información sobre cómo cortocircuitar, consulte la sección [Creación de una canalización de middleware con IApplicationBuilder](#create-a-middleware-pipeline-with-iapplicationbuilder).
+ASP.NET Core incluye los componentes de software intermedio siguientes. En la columna *Orden* se proporcionan notas sobre la ubicación del middleware en la canalización de procesamiento de solicitudes, así como las condiciones con las que podría finalizar el procesamiento de solicitudes. Cuando un middleware cortocircuita la canalización de procesamiento de solicitudes e impide el procesamiento de una solicitud por parte de middleware descendente adicional, se llama *middleware de terminal* . Para más información sobre cómo cortocircuitar, consulte la sección [Creación de una canalización de middleware con IApplicationBuilder](#create-a-middleware-pipeline-with-iapplicationbuilder).
 
 | Software intermedio | Descripción | Ordenar |
 | ---------- | ----------- | ----- |
