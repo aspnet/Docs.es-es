@@ -18,13 +18,14 @@ no-loc:
 - Let's Encrypt
 - Razor
 - SignalR
+- IHubContext
 uid: signalr/hubcontext
-ms.openlocfilehash: 91d02ea9e15a2c3910c3b10159bf5b1523c8e271
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 0b1940dc85634051e8a566c6859f51c130b69269
+ms.sourcegitcommit: 1b7f2e1aabf43fa93b920cad36515d7336bfc2df
 ms.translationtype: MT
 ms.contentlocale: es-ES
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93058186"
+ms.locfileid: "93066738"
 ---
 # <a name="send-messages-from-outside-a-hub"></a>Envío de mensajes desde fuera de un concentrador
 
@@ -34,14 +35,14 @@ El SignalR concentrador es la abstracción principal para enviar mensajes a los 
 
 [Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/hubcontext/sample/) [(cómo descargarlo)](xref:index#how-to-download-a-sample)
 
-## <a name="get-an-instance-of-ihubcontext"></a>Obtener una instancia de IHubContext
+## <a name="get-an-instance-of-no-locihubcontext"></a>Obtener una instancia de IHubContext
 
 En ASP.NET Core SignalR , puede tener acceso a una instancia de `IHubContext` a través de la inserción de dependencias. Puede insertar una instancia de `IHubContext` en un controlador, middleware u otro servicio de di. Use la instancia de para enviar mensajes a los clientes.
 
 > [!NOTE]
 > Esto difiere de ASP.NET 4. x, SignalR que usaba host global para proporcionar acceso a `IHubContext` . ASP.NET Core tiene un marco de inserción de dependencias que elimina la necesidad de este singleton global.
 
-### <a name="inject-an-instance-of-ihubcontext-in-a-controller"></a>Inyectar una instancia de IHubContext en un controlador
+### <a name="inject-an-instance-of-no-locihubcontext-in-a-controller"></a>Insertar una instancia de IHubContext en un controlador
 
 Puede insertar una instancia de `IHubContext` en un controlador agregándolo a su constructor:
 
@@ -51,7 +52,7 @@ Ahora, con acceso a una instancia de `IHubContext` , puede llamar a los métodos
 
 [!code-csharp[IHubContext](hubcontext/sample/Controllers/HomeController.cs?range=21-25)]
 
-### <a name="get-an-instance-of-ihubcontext-in-middleware"></a>Obtener una instancia de IHubContext en middleware
+### <a name="get-an-instance-of-no-locihubcontext-in-middleware"></a>Obtener una instancia de IHubContext en middleware
 
 Acceda a `IHubContext` dentro de la canalización de middleware de la manera siguiente:
 
@@ -72,7 +73,7 @@ app.Use(async (context, next) =>
 > [!NOTE]
 > Cuando se llama a los métodos de concentrador desde fuera de la `Hub` clase, no hay ningún llamador asociado a la invocación. Por lo tanto, no hay ningún acceso a las `ConnectionId` `Caller` propiedades, y `Others` .
 
-### <a name="get-an-instance-of-ihubcontext-from-ihost"></a>Obtener una instancia de IHubContext desde IHost
+### <a name="get-an-instance-of-no-locihubcontext-from-ihost"></a>Obtener una instancia de IHubContext desde IHost
 
 El acceso a `IHubContext` desde el host web es útil para la integración con áreas fuera de ASP.net Core, por ejemplo, con marcos de inyección de dependencia de terceros:
 
