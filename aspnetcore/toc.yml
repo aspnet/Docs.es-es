@@ -12,8 +12,10 @@
       href: /dotnet/standard/choosing-core-framework-server?toc=/aspnet/core/toc.json&bc=/aspnet/core/breadcrumb/toc.json
 - name: Primeros pasos
   uid: getting-started
-- name: Notas de la versión
+- name: Novedades
   items:
+    - name: "Novedades de la versión\_5.0"
+      uid: aspnetcore-5.0
     - name: "Novedades de la versión\_3.1"
       uid: aspnetcore-3.1
     - name: Novedades de la versión 3.0
@@ -357,20 +359,14 @@
                   href: blazor/forms-validation.md#built-in-forms-components
                 - name: InputTextArea
                   href: blazor/forms-validation.md#built-in-forms-components
-                - name: Vínculo
-                  href: blazor/fundamentals/additional-scenarios.md#influence-html-head-tag-elements
                 - name: MainLayout
                   href: blazor/layouts.md#mainlayout-component
-                - name: Meta
-                  href: blazor/fundamentals/additional-scenarios.md#influence-html-head-tag-elements
                 - name: NavLink
                   href: blazor/fundamentals/routing.md#navlink-component
                 - name: NavMenu
                   href: blazor/fundamentals/routing.md#navlink-component
                 - name: Router
                   href: blazor/fundamentals/routing.md#route-templates
-                - name: Título
-                  href: blazor/fundamentals/additional-scenarios.md#influence-html-head-tag-elements
                 - name: Virtualize
                   uid: blazor/components/virtualization
             - name: Valores y parámetros en cascada
