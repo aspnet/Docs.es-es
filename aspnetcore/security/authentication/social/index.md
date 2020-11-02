@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/23/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/social/index
-ms.openlocfilehash: da025cb8dced8ac8a6ecf559d4de7795c9797f71
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 1f7c8cd0716f1ada3517add0d37a09e419f38774
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634285"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93053311"
 ---
 # <a name="facebook-google-and-external-provider-authentication-in-aspnet-core"></a>Autenticación con Facebook, Google y proveedores externos en ASP.NET Core
 
@@ -44,11 +45,11 @@ Para ver ejemplos de cómo los inicios de sesión de las redes sociales pueden c
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Cree un nuevo proyecto.
-* Seleccione **Aplicación web de ASP.NET Core** y **Siguiente**.
-* Proporcione un **Nombre del proyecto** y confirme o cambie la **Ubicación**. Seleccione **Crear**.
-* Seleccione la versión más reciente de ASP.NET Core en la lista desplegable (**ASP.NET Core {X.Y}** ) y, luego, **Aplicación web**.
-* En **Autenticación**, seleccione **Cambiar** y establezca la autenticación en **Cuentas de usuario individuales**. Seleccione **Aceptar**.
-* En la ventana **Crear una aplicación web ASP.NET Core**, seleccione **Crear**.
+* Seleccione **Aplicación web de ASP.NET Core** y **Siguiente** .
+* Proporcione un **Nombre del proyecto** y confirme o cambie la **Ubicación** . Seleccione **Crear** .
+* Seleccione la versión más reciente de ASP.NET Core en la lista desplegable ( **ASP.NET Core {X.Y}** ) y, luego, **Aplicación web** .
+* En **Autenticación** , seleccione **Cambiar** y establezca la autenticación en **Cuentas de usuario individuales** . Seleccione **Aceptar** .
+* En la ventana **Crear una aplicación web ASP.NET Core** , seleccione **Crear** .
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code/Visual Studio para Mac](#tab/visual-studio-code+visual-studio-mac)
 
@@ -68,7 +69,7 @@ Para ver ejemplos de cómo los inicios de sesión de las redes sociales pueden c
   dotnet new webapp -o WebApp1 -au Individual
   ```
 
-  * El comando `dotnet new` crea un proyecto de RazorPages en la carpeta *WebApp1*.
+  * El comando `dotnet new` crea un proyecto de RazorPages en la carpeta *WebApp1* .
   * `-au Individual` crea el código para la autenticación individual.
   * `-uld` usa LocalDB, una versión ligera de SQL Server Express para Windows. Omita `-uld` para usar SQLite.
   * El comando `code` abre la carpeta *WebApp1* en una nueva instancia de Visual Studio Code.
@@ -77,15 +78,15 @@ Para ver ejemplos de cómo los inicios de sesión de las redes sociales pueden c
 
 ## <a name="apply-migrations"></a>Aplicación de migraciones
 
-* Ejecute la aplicación y seleccione el vínculo **Registrar**.
-* Escriba el correo electrónico y la contraseña de la cuenta nueva y, luego, seleccione **Registrarse**.
+* Ejecute la aplicación y seleccione el vínculo **Registrar** .
+* Escriba el correo electrónico y la contraseña de la cuenta nueva y, luego, seleccione **Registrarse** .
 * Siga estas instrucciones para aplicar las migraciones.
 
 [!INCLUDE[Forward request information when behind a proxy or load balancer section](includes/forwarded-headers-middleware.md)]
 
 ## <a name="use-secretmanager-to-store-tokens-assigned-by-login-providers"></a>Uso de SecretManager para almacenar los tokens asignados por los proveedores de inicio de sesión
 
-Los proveedores de inicio de sesión de las redes sociales asignan los tokens **Id. de aplicación** y **Secreto de la aplicación** durante el proceso de registro. La nomenclatura puede variar en función del proveedor. Estos tokens representan las credenciales que usa la aplicación para acceder a su API. Los tokens constituyen los "secretos" que se pueden vincular a la configuración de la aplicación con la ayuda de [Secret Manager](xref:security/app-secrets#secret-manager). Secret Manager es una alternativa más segura al almacenamiento de los tokens en un archivo de configuración, como, por ejemplo, *appsettings.json*.
+Los proveedores de inicio de sesión de las redes sociales asignan los tokens **Id. de aplicación** y **Secreto de la aplicación** durante el proceso de registro. La nomenclatura puede variar en función del proveedor. Estos tokens representan las credenciales que usa la aplicación para acceder a su API. Los tokens constituyen los "secretos" que se pueden vincular a la configuración de la aplicación con la ayuda de [Secret Manager](xref:security/app-secrets#secret-manager). El Administrador de secretos es una alternativa más segura al almacenamiento de los tokens en un archivo de configuración, como, por ejemplo, *appsettings.json* .
 
 > [!IMPORTANT]
 > Secret Manager solo está pensado para fines de desarrollo. Puede almacenar y proteger sus secretos de producción y pruebas de Azure con el [proveedor de configuración de Azure Key Vault](xref:security/key-vault-configuration).
@@ -110,11 +111,11 @@ Si el registro se realiza mediante un proveedor de inicio de sesión externo, no
 
 Para crear una contraseña e iniciar sesión con el correo electrónico establecido durante el proceso de inicio de sesión con proveedores externos:
 
-* Seleccione el vínculo **Hola, &lt;alias de correo electrónico&gt;** situado en la esquina superior derecha para ir a la vista **Administración**.
+* Seleccione el vínculo **Hola, &lt;alias de correo electrónico&gt;** situado en la esquina superior derecha para ir a la vista **Administración** .
 
 ![Vista Administración de la aplicación web](index/_static/pass1a.png)
 
-* Seleccione **Crear**.
+* Seleccione **Crear** .
 
 ![Página para establecer la contraseña](index/_static/pass2a.png)
 

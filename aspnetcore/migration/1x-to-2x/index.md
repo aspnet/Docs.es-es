@@ -6,6 +6,7 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 12/05/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: migration/1x-to-2x/index
-ms.openlocfilehash: 6160dfd117235065ba4b990b95bbc1f4abdf1626
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 6d67924d87cdbe72cb08c5305dfe45c5b22b31bc
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634350"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93057120"
 ---
 # <a name="migrate-from-aspnet-core-1x-to-20"></a>Migración de ASP.NET Core 1.x a 2.0
 
@@ -85,7 +86,7 @@ Por ejemplo, esta es la lista de nodos `<PackageReference />` usados en un proye
 
 ## <a name="update-net-core-cli-tools"></a>Actualización de las herramientas de la CLI de .NET Core
 
-En el archivo *.csproj*, actualice el atributo `Version` de cada nodo `<DotNetCliToolReference />` a 2.0.0.
+En el archivo *.csproj* , actualice el atributo `Version` de cada nodo `<DotNetCliToolReference />` a 2.0.0.
 
 Por ejemplo, esta es la lista de herramientas de la CLI usadas en un proyecto típico de ASP.NET Core 2.0 para .NET Core 2.0:
 
@@ -129,13 +130,13 @@ En los proyectos de 1.x, la incorporación de proveedores de configuración a un
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Startup.cs?name=snippet_1xStartup)]
 
-En el ejemplo anterior se carga el miembro `Configuration` con opciones de configuración de *appsettings.json*, así como cualquier archivo *appsettings.\<EnvironmentName\>.json* que coincida con la propiedad `IHostingEnvironment.EnvironmentName`. La ubicación de estos archivos está en la misma ruta de acceso que *Startup.cs*.
+En el ejemplo anterior se carga el miembro `Configuration` con opciones de configuración de *appsettings.json* , así como cualquier archivo *appsettings.\<EnvironmentName\>.json* que coincida con la propiedad `IHostingEnvironment.EnvironmentName`. La ubicación de estos archivos está en la misma ruta de acceso que *Startup.cs* .
 
 En los proyectos de 2.0, el código de configuración reutilizable inherente a los proyectos de 1.x se ejecuta en segundo plano. Por ejemplo, las variables de entorno y la configuración de la aplicación se cargan durante el inicio. El código de *Startup.cs* equivalente se reduce a la inicialización de `IConfiguration` con la instancia insertada:
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetFx2.0App/AspNetCoreDotNetFx2.0App/Startup.cs?name=snippet_2xStartup)]
 
-Para quitar los proveedores predeterminados que `WebHostBuilder.CreateDefaultBuilder` agrega, invoque el método `Clear` en la propiedad `IConfigurationBuilder.Sources` dentro de `ConfigureAppConfiguration`. Para volver a agregar proveedores, use el método `ConfigureAppConfiguration` en *Program.cs*:
+Para quitar los proveedores predeterminados que `WebHostBuilder.CreateDefaultBuilder` agrega, invoque el método `Clear` en la propiedad `IConfigurationBuilder.Sources` dentro de `ConfigureAppConfiguration`. Para volver a agregar proveedores, use el método `ConfigureAppConfiguration` en *Program.cs* :
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetFx2.0App/AspNetCoreDotNetFx2.0App/Program.cs?name=snippet_ProgramMainConfigProviders&highlight=9-14)]
 
@@ -155,15 +156,15 @@ En proyectos de 1.x que usen EF Core 1.x, un comando como `dotnet ef migrations 
 
 En proyectos 2.0 que usen EF Core 2.0, se invoca `Program.BuildWebHost` para obtener los servicios de aplicación. A diferencia de 1.x, se invoca `Startup.Configure` como efecto secundario adicional. Si la aplicación 1.x ha invocado el código de inicialización de la aplicación en el método `Configure`, pueden producirse errores inesperados. Por ejemplo, si todavía no existe la base de datos, el código de propagación se ejecuta antes que el comando EF Core Migrations. Este problema provocará un error en un comando `dotnet ef migrations list` si la base de datos no existe.
 
-Tenga en cuenta el código de propagación 1.x siguiente en el método `Configure` de *Startup.cs*:
+Tenga en cuenta el código de propagación 1.x siguiente en el método `Configure` de *Startup.cs* :
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Startup.cs?name=snippet_ConfigureSeedData&highlight=8)]
 
-En los proyectos 2.0, mueva la llamada `SeedData.Initialize` al método `Main` de *Program.cs*:
+En los proyectos 2.0, mueva la llamada `SeedData.Initialize` al método `Main` de *Program.cs* :
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App/Program2.cs?name=snippet_Main2Code&highlight=10)]
 
-A partir de 2.0 se desaconseja cualquier acción en `BuildWebHost`, excepto la compilación y la configuración del host web. Todo lo relacionado con la ejecución de la aplicación deberá gestionarse fuera de `BuildWebHost` &mdash;, normalmente en el método `Main` de *Program.cs*.
+A partir de 2.0 se desaconseja cualquier acción en `BuildWebHost`, excepto la compilación y la configuración del host web. Todo lo relacionado con la ejecución de la aplicación deberá gestionarse fuera de `BuildWebHost` &mdash;, normalmente en el método `Main` de *Program.cs* .
 
 <a name="view-compilation"></a>
 
@@ -171,9 +172,9 @@ A partir de 2.0 se desaconseja cualquier acción en `BuildWebHost`, excepto la c
 
 Un tiempo de inicio de aplicación más rápido y unos lotes publicados más pequeños son de la máxima importancia para el usuario. Por ello, la [compilación de la vista de Razor](xref:mvc/views/view-compilation) está habilitada de forma predeterminada en ASP.NET Core 2.0.
 
-Ya no es necesario establecer la propiedad `MvcRazorCompileOnPublish` en true. A menos que se esté deshabilitando la compilación de la vista, se puede quitar la propiedad del archivo *.csproj*.
+Ya no es necesario establecer la propiedad `MvcRazorCompileOnPublish` en true. A menos que se esté deshabilitando la compilación de la vista, se puede quitar la propiedad del archivo *.csproj* .
 
-Si el destino es .NET Framework, se debe hacer referencia de forma explícita al paquete NuGet [Microsoft.AspNetCore.Mvc.Razor.ViewCompilation](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Razor.ViewCompilation) en el archivo *.csproj*:
+Si el destino es .NET Framework, se debe hacer referencia de forma explícita al paquete NuGet [Microsoft.AspNetCore.Mvc.Razor.ViewCompilation](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Razor.ViewCompilation) en el archivo *.csproj* :
 
 [!code-xml[](../1x-to-2x/samples/AspNetCoreDotNetFx2.0App/AspNetCoreDotNetFx2.0App/AspNetCoreDotNetFx2.0App.csproj?range=15)]
 
@@ -183,17 +184,17 @@ Si el destino es .NET Framework, se debe hacer referencia de forma explícita al
 
 Es importante configurar sin esfuerzo la instrumentación de rendimiento de la aplicación. Ahora puede basarse en las nuevas características "light-up" de [Application Insights](/azure/application-insights/app-insights-overview) disponibles en las herramientas de Visual Studio 2017.
 
-Los proyectos de ASP.NET Core 1.1 creados en Visual Studio 2017 han agregado Application Insights de forma predeterminada. Si no usa el SDK de Application Insights directamente, fuera de *Program.cs* y *Startup.cs*, siga estos pasos:
+Los proyectos de ASP.NET Core 1.1 creados en Visual Studio 2017 han agregado Application Insights de forma predeterminada. Si no usa el SDK de Application Insights directamente, fuera de *Program.cs* y *Startup.cs* , siga estos pasos:
 
-1. Si el destino es .NET Core, elimine el siguiente nodo `<PackageReference />` del archivo *.csproj*:
+1. Si el destino es .NET Core, elimine el siguiente nodo `<PackageReference />` del archivo *.csproj* :
 
     [!code-xml[](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App.csproj?range=10)]
 
-2. Si el destino es .NET Core, elimine la invocación del método de extensión `UseApplicationInsights` de *Program.cs*:
+2. Si el destino es .NET Core, elimine la invocación del método de extensión `UseApplicationInsights` de *Program.cs* :
 
     [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Program.cs?name=snippet_ProgramCsMain&highlight=8)]
 
-3. Quite la llamada API del lado cliente de Application Insights de *_Layout.cshtml*. Comprende las dos líneas de código siguientes:
+3. Quite la llamada API del lado cliente de Application Insights de *_Layout.cshtml* . Comprende las dos líneas de código siguientes:
 
     [!code-cshtml[](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Views/Shared/_Layout.cshtml?range=1,19&dedent=4)]
 

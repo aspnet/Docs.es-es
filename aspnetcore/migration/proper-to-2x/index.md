@@ -5,6 +5,7 @@ description: Obtenga instrucciones para migrar aplicaciones existentes de ASP.NE
 ms.author: scaddie
 ms.date: 10/18/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: migration/proper-to-2x/index
-ms.openlocfilehash: f1a5af60f8dce83d9622ed9d2c6bcb4b8fc22b73
-ms.sourcegitcommit: 9a90b956af8d8584d597f1e5c1dbfb0ea9bb8454
+ms.openlocfilehash: 059ddc18d0c531efaba8aab916ddbb27b42b5e2c
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88712498"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93053558"
 ---
 # <a name="migrate-from-aspnet-to-aspnet-core"></a>Migración de ASP.NET a ASP.NET Core
 
@@ -61,11 +62,11 @@ El formato de archivo *.csproj* se ha simplificado en ASP.NET Core. Estos son al
 
 ## <a name="globalasax-file-replacement"></a>Reemplazo del archivo Global.asax
 
-ASP.NET Core introdujo un nuevo mecanismo para arrancar una aplicación. El punto de entrada para las aplicaciones ASP.NET es el archivo *Global.asax*. En el archivo *Global.asax* se controlan tareas como la configuración de enrutamiento y los registros de filtro y de área.
+ASP.NET Core introdujo un nuevo mecanismo para arrancar una aplicación. El punto de entrada para las aplicaciones ASP.NET es el archivo *Global.asax* . En el archivo *Global.asax* se controlan tareas como la configuración de enrutamiento y los registros de filtro y de área.
 
 [!code-csharp[](samples/globalasax-sample.cs)]
 
-Este enfoque acopla la aplicación y el servidor en el que está implementada de forma que interfiere con la implementación. En un esfuerzo por desacoplar, se introdujo [OWIN](https://owin.org/) para ofrecer una forma más limpia de usar varios marcos de trabajo de manera conjunta. OWIN proporciona una canalización para agregar solo los módulos necesarios. El entorno de hospedaje toma una función de [inicio](xref:fundamentals/startup) para configurar servicios y la canalización de solicitud de la aplicación. `Startup` registra un conjunto de middleware en la aplicación. Para cada solicitud, la aplicación llama a cada uno de los componentes de middleware con el puntero principal de una lista vinculada a un conjunto de controladores existente. Cada componente de middleware puede agregar uno o varios controladores a la canalización de control de la solicitud. Esto se consigue mediante la devolución de una referencia al controlador que ahora es el primero de la lista. Cada controlador se encarga de recordar e invocar el controlador siguiente en la lista. Con ASP.NET Core, el punto de entrada a una aplicación es `Startup` y ya no se tiene dependencia de *Global.asax*. Cuando utilice OWIN con .NET Framework, use algo parecido a lo siguiente como canalización:
+Este enfoque acopla la aplicación y el servidor en el que está implementada de forma que interfiere con la implementación. En un esfuerzo por desacoplar, se introdujo [OWIN](https://owin.org/) para ofrecer una forma más limpia de usar varios marcos de trabajo de manera conjunta. OWIN proporciona una canalización para agregar solo los módulos necesarios. El entorno de hospedaje toma una función de [inicio](xref:fundamentals/startup) para configurar servicios y la canalización de solicitud de la aplicación. `Startup` registra un conjunto de middleware en la aplicación. Para cada solicitud, la aplicación llama a cada uno de los componentes de middleware con el puntero principal de una lista vinculada a un conjunto de controladores existente. Cada componente de middleware puede agregar uno o varios controladores a la canalización de control de la solicitud. Esto se consigue mediante la devolución de una referencia al controlador que ahora es el primero de la lista. Cada controlador se encarga de recordar e invocar el controlador siguiente en la lista. Con ASP.NET Core, el punto de entrada a una aplicación es `Startup` y ya no se tiene dependencia de *Global.asax* . Cuando utilice OWIN con .NET Framework, use algo parecido a lo siguiente como canalización:
 
 [!code-csharp[](samples/webapi-owin.cs)]
 
@@ -91,7 +92,7 @@ El host y la aplicación se han desacoplado, lo que proporciona la flexibilidad 
 
 ## <a name="store-configurations"></a>Almacenamiento de valores de configuración
 
-ASP.NET admite el almacenamiento de valores de configuración. Estos valores de configuración se usan, por ejemplo, para admitir el entorno donde se implementan las aplicaciones. Antes se solían almacenar todos los pares de clave y valor personalizados en la sección `<appSettings>` del archivo *Web.config*:
+ASP.NET admite el almacenamiento de valores de configuración. Estos valores de configuración se usan, por ejemplo, para admitir el entorno donde se implementan las aplicaciones. Antes se solían almacenar todos los pares de clave y valor personalizados en la sección `<appSettings>` del archivo *Web.config* :
 
 [!code-xml[](samples/webconfig-sample.xml)]
 
@@ -99,11 +100,11 @@ Las aplicaciones leen esta configuración mediante la colección `ConfigurationM
 
 [!code-csharp[](samples/read-webconfig.cs)]
 
-ASP.NET Core puede almacenar datos de configuración para la aplicación en cualquier archivo y cargarlos como parte del arranque de middleware. El archivo predeterminado que se usa en las plantillas de proyecto es *appSettings.JSON*:
+ASP.NET Core puede almacenar datos de configuración para la aplicación en cualquier archivo y cargarlos como parte del arranque de middleware. El archivo predeterminado que se usa en las plantillas de proyecto es *appsettings.json* :
 
 [!code-json[](samples/appsettings-sample.json)]
 
-La carga de este archivo en una instancia de `IConfiguration` dentro de la aplicación se realiza en *Startup.cs*:
+La carga de este archivo en una instancia de `IConfiguration` dentro de la aplicación se realiza en *Startup.cs* :
 
 [!code-csharp[](samples/startup-builder.cs)]
 
@@ -139,7 +140,7 @@ Inserte `IProductRepository` cuando sea necesario:
 
 [!code-csharp[](samples/sample5.cs)]
 
-Dado que la inserción de dependencia forma parte de ASP.NET Core, puede agregar el servicio en el método `ConfigureServices` de *Startup.cs*:
+Dado que la inserción de dependencia forma parte de ASP.NET Core, puede agregar el servicio en el método `ConfigureServices` de *Startup.cs* :
 
 [!code-csharp[](samples/configure-services.cs)]
 
@@ -154,7 +155,7 @@ Una parte importante del desarrollo web es la capacidad de trabajar con activos 
 
 En ASP.NET, los archivos estáticos se almacenan en directorios distintos y se hace referencia a ellos en las vistas.
 
-En ASP.NET Core, los archivos estáticos se almacenan en la "raíz web" ( *&lt;raíz del contenido&gt;/wwwroot*), a menos que se configuren de otra manera. Los archivos se cargan en la canalización de solicitud mediante la invocación del método de extensión `UseStaticFiles` desde `Startup.Configure`:
+En ASP.NET Core, los archivos estáticos se almacenan en la "raíz web" ( *&lt;raíz del contenido&gt;/wwwroot* ), a menos que se configuren de otra manera. Los archivos se cargan en la canalización de solicitud mediante la invocación del método de extensión `UseStaticFiles` desde `Startup.Configure`:
 
 [!code-csharp[](../../fundamentals/static-files/samples/1.x/StaticFilesSample/StartupStaticFiles.cs?highlight=3&name=snippet_ConfigureMethod)]
 
@@ -172,7 +173,7 @@ Por ejemplo, el explorador puede acceder a un recurso de imagen en la carpeta *w
 
 ## <a name="partial-app-migration"></a>Migración parcial de aplicaciones
 
-Un enfoque para la migración parcial de aplicaciones consiste en crear una subaplicación de IIS y solo trasladar determinadas rutas de ASP.NET 4.x a ASP.NET Core, al tiempo que se conserva la estructura de la dirección URL de la aplicación. Por ejemplo, considere la estructura de dirección URL de la aplicación en el archivo *applicationHost.config*:
+Un enfoque para la migración parcial de aplicaciones consiste en crear una subaplicación de IIS y solo trasladar determinadas rutas de ASP.NET 4.x a ASP.NET Core, al tiempo que se conserva la estructura de la dirección URL de la aplicación. Por ejemplo, considere la estructura de dirección URL de la aplicación en el archivo *applicationHost.config* :
 
 ```xml
 <sites>
@@ -197,8 +198,8 @@ Estructura de directorios:
 ```
 .
 ├── MainSite
-│   ├── ...
-│   └── Web.config
+│   ├── ...
+│   └── Web.config
 └── NetCoreApi
     ├── ...
     └── web.config
