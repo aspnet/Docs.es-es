@@ -5,7 +5,7 @@ description: Obtenga información sobre cómo proteger una aplicación hospedada
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: devx-track-csharp, mvc
-ms.date: 10/08/2020
+ms.date: 10/27/2020
 no-loc:
 - ASP.NET Core Identity
 - cookie
@@ -18,18 +18,25 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/hosted-with-azure-active-directory
-ms.openlocfilehash: e6f514793a2efde120f70ac58f4ad4be7516ada7
-ms.sourcegitcommit: daa9ccf580df531254da9dce8593441ac963c674
+ms.openlocfilehash: cb1deb71723660964954c2faae4512b7df9b2ed4
+ms.sourcegitcommit: 2e3a967331b2c69f585dd61e9ad5c09763615b44
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91900859"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92690543"
 ---
 # <a name="secure-an-aspnet-core-no-locblazor-webassembly-hosted-app-with-azure-active-directory"></a>Protección de una aplicación hospedada Blazor WebAssembly de ASP.NET Core con Azure Active Directory
 
 Por [Javier Calvarro Nelson](https://github.com/javiercn) y [Luke Latham](https://github.com/guardrex)
 
 En este artículo se explica cómo crear una [aplicación Blazor WebAssembly hospedada](xref:blazor/hosting-models#blazor-webassembly) que usa [Azure Active Directory (AAD)](https://azure.microsoft.com/services/active-directory/) para la autenticación.
+
+::: moniker range=">= aspnetcore-5.0"
+
+> [!NOTE]
+> En las aplicaciones de Blazor WebAssembly creadas en Visual Studio que se han configurado para admitir cuentas de un directorio organizativo de AAD, Visual Studio no configura la aplicación correctamente durante la generación del proyecto. Esto se va a corregir en una próxima versión de Visual Studio. En este artículo se muestra cómo crear la aplicación con el comando `dotnet new` de la CLI de .NET Core. Si prefiere crear la aplicación con Visual Studio antes de la actualización del IDE con las plantillas más recientes de Blazor de ASP.NET Core 5.0, vea cada sección de este artículo y confirme o actualice la configuración de la aplicación después de que Visual Studio cree la aplicación.
+
+::: moniker-end
 
 ## <a name="register-apps-in-aad-and-create-solution"></a>Registro de aplicaciones en AAD y creación de una solución
 
@@ -41,8 +48,8 @@ Siga las instrucciones que encontrará en [Inicio rápido: Configuración de un 
 
 Siga las instrucciones que encontrará en [Inicio rápido: Registro de una aplicación en la plataforma de identidad de Microsoft](/azure/active-directory/develop/quickstart-register-app) y en temas de Azure AAD posteriores para registrar una aplicación de AAD para la *aplicación de API de servidor*. Tras ello, haga lo siguiente:
 
-1. En **Azure Active Directory** > **Registros de aplicaciones**, seleccione **Nuevo registro**.
-1. Indique un **nombre** para la aplicación (por ejemplo, **Blazor Server AAD**).
+1. En **Azure Active Directory** > **Registros de aplicaciones** , seleccione **Nuevo registro**.
+1. Indique un **nombre** para la aplicación (por ejemplo, **Blazor Server AAD** ).
 1. Elija un **tipo de cuenta compatible**. En esta experiencia puede seleccionar **Solo cuentas de este directorio organizativo** (inquilino único).
 1. La *aplicación de API de servidor* no requiere un **URI de redirección** en este escenario, así que deje la lista desplegable establecida en **Web** y no especifique ningún URI de redirección.
 1. Desactive la casilla **Permisos** > **Conceda consentimiento del administrador a los permisos openid y offline_access**.
@@ -50,13 +57,13 @@ Siga las instrucciones que encontrará en [Inicio rápido: Registro de una aplic
 
 Registre la siguiente información:
 
-* Identificador de aplicación (cliente) de la *aplicación de API de servidor*; por ejemplo, `41451fa7-82d9-4673-8fa5-69eff5a761fd`.
+* Identificador de aplicación (cliente) de la *aplicación de API de servidor* ; por ejemplo, `41451fa7-82d9-4673-8fa5-69eff5a761fd`.
 * Identificador de directorio (inquilino); por ejemplo, `e86c78e2-8bb4-4c41-aefd-918e0565a45e`.
 * Dominio de AAD Principal/Publicador/Inquilino (por ejemplo, `contoso.onmicrosoft.com`): El dominio está disponible como **Dominio del publicador** en la hoja **Personalización de marca** de Azure Portal de la aplicación registrada.
 
-En **Permisos de API**, quite el permiso **Microsoft Graph** > **User.Read**, ya que la aplicación no requiere inicio de sesión ni acceso de perfil de usuario.
+En **Permisos de API** , quite el permiso **Microsoft Graph** > **User.Read** , ya que la aplicación no requiere inicio de sesión ni acceso de perfil de usuario.
 
-En **Exponer una API**:
+En **Exponer una API** :
 
 1. Seleccione **Agregar un ámbito**.
 1. Seleccione **Guardar y continuar**.
@@ -77,8 +84,8 @@ Siga las instrucciones que encontrará en [Inicio rápido: Registro de una aplic
 
 ::: moniker range=">= aspnetcore-5.0"
 
-1. En **Azure Active Directory** > **Registros de aplicaciones**, seleccione **Nuevo registro**.
-1. Indique un **Nombre** para la aplicación (por ejemplo, **Blazor Client AAD**).
+1. En **Azure Active Directory** > **Registros de aplicaciones** , seleccione **Nuevo registro**.
+1. Indique un **Nombre** para la aplicación (por ejemplo, **Blazor Client AAD** ).
 1. Elija un **tipo de cuenta compatible**. En esta experiencia puede seleccionar **Solo cuentas de este directorio organizativo** (inquilino único).
 1. Establezca la lista desplegable **URI de redirección** en **Aplicación de página única** y proporcione el siguiente URI de redirección: `https://localhost:{PORT}/authentication/login-callback`. El puerto predeterminado de una aplicación que se ejecuta en Kestrel es 5001. Si la aplicación se ejecuta en otro puerto de Kestrel, use el puerto de la aplicación. En el caso de IIS Express, el puerto generado aleatoriamente para la aplicación se encuentra en las propiedades de la aplicación *`Server`* , en el panel **Depurar**. Dado que la aplicación no existe en este momento y no conocemos el puerto de IIS Express, vuelva a este paso después de crear la aplicación y actualice el URI de redirección. En la sección [Creación de la aplicación](#create-the-app) aparece un comentario para recordar a los usuarios de IIS Express que actualicen el URI de redirección.
 1. Desactive la casilla **Permisos**>**Conceda consentimiento del administrador a los permisos openid y offline_access**.
@@ -86,10 +93,10 @@ Siga las instrucciones que encontrará en [Inicio rápido: Registro de una aplic
 
 Registre el identificador de la aplicación *`Client`* (cliente); por ejemplo, `4369008b-21fa-427c-abaa-9b53bf58e538`.
 
-En **Autenticación** > **Configuraciones de plataforma** > **Aplicación de página única**:
+En **Autenticación** > **Configuraciones de plataforma** > **Aplicación de página única** :
 
 1. Confirme que el **URI de redirección** de `https://localhost:{PORT}/authentication/login-callback` está presente.
-1. En **Concesión implícita**, asegúrese de que las casillas **Tokens de acceso** y **Tokens de id.** **no** están seleccionadas.
+1. En **Concesión implícita** , asegúrese de que las casillas **Tokens de acceso** y **Tokens de id.** **no** están seleccionadas.
 1. Los valores predeterminados restantes de la aplicación son aceptables en esta experiencia.
 1. Seleccione el botón **Guardar**.
 
@@ -97,8 +104,8 @@ En **Autenticación** > **Configuraciones de plataforma** > **Aplicación de pá
 
 ::: moniker range="< aspnetcore-5.0"
 
-1. En **Azure Active Directory** > **Registros de aplicaciones**, seleccione **Nuevo registro**.
-1. Indique un **Nombre** para la aplicación (por ejemplo, **Blazor Client AAD**).
+1. En **Azure Active Directory** > **Registros de aplicaciones** , seleccione **Nuevo registro**.
+1. Indique un **Nombre** para la aplicación (por ejemplo, **Blazor Client AAD** ).
 1. Elija un **tipo de cuenta compatible**. En esta experiencia puede seleccionar **Solo cuentas de este directorio organizativo** (inquilino único).
 1. Deje la lista desplegable **URI de redirección** establecida en **Web** y proporcione el siguiente URI de redirección: `https://localhost:{PORT}/authentication/login-callback`. El puerto predeterminado de una aplicación que se ejecuta en Kestrel es 5001. Si la aplicación se ejecuta en otro puerto de Kestrel, use el puerto de la aplicación. En el caso de IIS Express, el puerto generado aleatoriamente para la aplicación se encuentra en las propiedades de la aplicación *`Server`* , en el panel **Depurar**. Dado que la aplicación no existe en este momento y no conocemos el puerto de IIS Express, vuelva a este paso después de crear la aplicación y actualice el URI de redirección. En la sección [Creación de la aplicación](#create-the-app) aparece un comentario para recordar a los usuarios de IIS Express que actualicen el URI de redirección.
 1. Desactive la casilla **Permisos**>**Conceda consentimiento del administrador a los permisos openid y offline_access**.
@@ -106,20 +113,20 @@ En **Autenticación** > **Configuraciones de plataforma** > **Aplicación de pá
 
 Registre el identificador de la aplicación *`Client`* (cliente); por ejemplo, `4369008b-21fa-427c-abaa-9b53bf58e538`.
 
-En **Autenticación** > **Configuraciones de plataforma** > **Web**:
+En **Autenticación** > **Configuraciones de plataforma** > **Web** :
 
 1. Confirme que el **URI de redirección** de `https://localhost:{PORT}/authentication/login-callback` está presente.
-1. En **Concesión implícita**, active las casillas **Tokens de acceso** y **Tokens de id.**
+1. En **Concesión implícita** , active las casillas **Tokens de acceso** y **Tokens de id.**
 1. Los valores predeterminados restantes de la aplicación son aceptables en esta experiencia.
 1. Seleccione el botón **Guardar**.
 
 ::: moniker-end
 
-En **Permisos de API**:
+En **Permisos de API** :
 
 1. Confirme que la aplicación tiene el permiso **Microsoft Graph** > **User.Read**.
-1. Seleccione **Agregar un permiso**, seguido de **Mis API**.
-1. Seleccione la *aplicación de API de servidor* en la columna **Nombre** (por ejemplo, **Blazor Server AAD**).
+1. Seleccione **Agregar un permiso** , seguido de **Mis API**.
+1. Seleccione la *aplicación de API de servidor* en la columna **Nombre** (por ejemplo, **Blazor Server AAD** ).
 1. Abra la lista **API**.
 1. Habilite el acceso a la API (por ejemplo, `API.Access`).
 1. Seleccione **Agregar permisos**.
@@ -162,7 +169,7 @@ La ubicación de salida especificada con la opción `-o|--output` crea una carpe
 > [!NOTE]
 > En Azure Portal, el valor de configuración de plataforma de la aplicación *`Client`* **URI de redirección** de la aplicación se establece en el puerto 5001 en el caso de las aplicaciones que se ejecutan en el servidor Kestrel con la configuración predeterminada.
 >
-> Si la aplicación *`Client`* se ejecuta en un puerto de IIS Express aleatorio, el puerto de la aplicación se encuentra en las propiedades de la *aplicación de API de servidor*, en el panel **Depurar**.
+> Si la aplicación *`Client`* se ejecuta en un puerto de IIS Express aleatorio, el puerto de la aplicación se encuentra en las propiedades de la *aplicación de API de servidor* , en el panel **Depurar**.
 >
 > Si el puerto no se configuró anteriormente con el puerto conocido de la aplicación *`Client`* , vuelva al registro de la aplicación *`Client`* en Azure Portal y actualice el URI de redirección con el puerto correcto.
 
@@ -321,7 +328,7 @@ Ejemplo:
 
 ### <a name="weatherforecast-controller"></a>Controlador WeatherForecast
 
-El controlador WeatherForecast (*Controllers/WeatherForecastController.cs*) expone una API protegida con el atributo [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) aplicado al controlador. Es **importante** comprender esto:
+El controlador WeatherForecast ( *Controllers/WeatherForecastController.cs* ) expone una API protegida con el atributo [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) aplicado al controlador. Es **importante** comprender esto:
 
 * El atributo [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) en este controlador de API es lo único que protege a esta API de posibles accesos no autorizados.
 * El atributo [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) que se usa en la aplicación Blazor WebAssembly solo sirve como sugerencia a la aplicación de que el usuario debe contar con autorización para que la aplicación funcione correctamente.
@@ -443,7 +450,7 @@ options.ProviderOptions.AdditionalScopesToConsent.Add("{ADDITIONAL SCOPE URI}");
 
 ::: moniker-end
 
-Para más información, vea las siguientes secciones del artículo *Otros escenarios*:
+Para más información, vea las siguientes secciones del artículo *Otros escenarios* :
 
 * [Solicitar tokens de acceso adicionales](xref:blazor/security/webassembly/additional-scenarios#request-additional-access-tokens)
 * [Adjuntar tokens a solicitudes salientes](xref:blazor/security/webassembly/additional-scenarios#attach-tokens-to-outgoing-requests)

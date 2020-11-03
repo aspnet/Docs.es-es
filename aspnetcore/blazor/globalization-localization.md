@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/globalization-localization
-ms.openlocfilehash: 4345dd8525c2e72aaddc8e45a4fd4d9bfdd63040
-ms.sourcegitcommit: b5ebaf42422205d212e3dade93fcefcf7f16db39
+ms.openlocfilehash: 52810cb5a5961ffe932a7f5ac2a3a03033781cc9
+ms.sourcegitcommit: c06a5bf419541d17595af30e4cf6f2787c21855e
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92326528"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92678486"
 ---
 # <a name="aspnet-core-no-locblazor-globalization-and-localization"></a>Globalización y localización de Blazor de ASP.NET Core
 
@@ -165,9 +165,22 @@ La aplicación controla la localización en la siguiente secuencia de eventos:
 1. El middleware de localización lee la cookie y asigna la referencia cultural.
 1. La sesión Blazor Server comienza con la referencia cultural correcta.
 
+Al trabajar con <xref:Microsoft.AspNetCore.Mvc.Razor.RazorPage>, use la propiedad <xref:Microsoft.AspNetCore.Mvc.Razor.RazorPage.Context>:
+
+```razor
+@{
+    this.Context.Response.Cookies.Append(
+        CookieRequestCultureProvider.DefaultCookieName,
+        CookieRequestCultureProvider.MakeCookieValue(
+            new RequestCulture(
+                CultureInfo.CurrentCulture,
+                CultureInfo.CurrentUICulture)));
+}
+```
+
 #### <a name="provide-ui-to-choose-the-culture"></a>Especificación de una interfaz de usuario para elegir la referencia cultural
 
-Para especificar una interfaz de usuario que permita a los usuarios seleccionar una referencia cultural, se recomienda usar un *método basado en el redireccionamiento* . El proceso es similar a lo que ocurre en una aplicación web cuando un usuario intenta acceder a un recurso seguro. El usuario se redirige a una página de inicio de sesión y, a continuación, se redirige de vuelta al recurso original. 
+Para especificar una interfaz de usuario que permita a los usuarios seleccionar una referencia cultural, se recomienda usar un *método basado en el redireccionamiento*. El proceso es similar a lo que ocurre en una aplicación web cuando un usuario intenta acceder a un recurso seguro. El usuario se redirige a una página de inicio de sesión y, a continuación, se redirige de vuelta al recurso original. 
 
 La aplicación conserva la referencia cultural seleccionada por el usuario a través de un redireccionamiento a un controlador. Este controlador establece la referencia cultural seleccionada del usuario en una cookie y redirige al usuario de nuevo al URI original.
 
