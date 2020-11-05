@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc, seodec18
 ms.date: 09/26/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/configuration/platform-specific-configuration
-ms.openlocfilehash: fadd93cf28603653e20ed6c7dceadcabf0dfb9a5
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: c12487875db69472ee328dfc7a611ee99974c770
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88627525"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061059"
 ---
 # <a name="use-hosting-startup-assemblies-in-aspnet-core"></a>Uso de ensamblados de inicio de hospedaje en ASP.NET Core
 
@@ -105,20 +106,20 @@ Cree un inicio de hospedaje con cualquiera de los siguientes tipos de proyecto:
 
 Una mejora de inicio de hospedaje se puede proporcionar en una biblioteca de clases. La biblioteca contiene un atributo `HostingStartup`.
 
-El [código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) incluye una aplicación de Razor Pages, *HostingStartupApp*, y una biblioteca de clases, *HostingStartupLibrary*. La biblioteca de clases:
+El [código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) incluye una aplicación de Razor Pages, *HostingStartupApp* , y una biblioteca de clases, *HostingStartupLibrary*. La biblioteca de clases:
 
 * Contiene una clase de inicio de hospedaje, `ServiceKeyInjection`, que implementa `IHostingStartup`. `ServiceKeyInjection` agrega un par de cadenas de servicio a la configuración de la aplicación mediante el proveedor de configuración en memoria ([AddInMemoryCollection](xref:Microsoft.Extensions.Configuration.MemoryConfigurationBuilderExtensions.AddInMemoryCollection*)).
 * Incluye un atributo `HostingStartup` que identifica espacio de nombres y la clase del inicio de hospedaje.
 
 El método <xref:Microsoft.AspNetCore.Hosting.IHostingStartup.Configure*> de la clase `ServiceKeyInjection` usa <xref:Microsoft.AspNetCore.Hosting.IWebHostBuilder> para agregar mejoras a una aplicación.
 
-*HostingStartupLibrary/ServiceKeyInjection.cs*:
+*HostingStartupLibrary/ServiceKeyInjection.cs* :
 
 [!code-csharp[](platform-specific-configuration/samples/3.x/HostingStartupLibrary/ServiceKeyInjection.cs?name=snippet1)]
 
 La página de índice de la aplicación lee y procesa los valores de configuración para las dos claves establecidas por el ensamblado de inicio de hospedaje de la biblioteca de clases:
 
-*HostingStartupApp/Pages/Index.cshtml.cs*:
+*HostingStartupApp/Pages/Index.cshtml.cs* :
 
 [!code-csharp[](platform-specific-configuration/samples/3.x/HostingStartupApp/Pages/Index.cshtml.cs?name=snippet1&highlight=5-6,11-12)]
 
@@ -127,13 +128,13 @@ El [código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/as
 * Contiene una clase de inicio de hospedaje, `ServiceKeyInjection`, que implementa `IHostingStartup`. `ServiceKeyInjection` agrega un par de cadenas de servicio a la configuración de la aplicación.
 * Incluye un atributo `HostingStartup`.
 
-*HostingStartupPackage/ServiceKeyInjection.cs*:
+*HostingStartupPackage/ServiceKeyInjection.cs* :
 
 [!code-csharp[](platform-specific-configuration/samples/3.x/HostingStartupPackage/ServiceKeyInjection.cs?name=snippet1)]
 
 La página de índice de la aplicación lee y procesa los valores de configuración para las dos claves establecidas por el ensamblado de inicio de hospedaje del paquete:
 
-*HostingStartupApp/Pages/Index.cshtml.cs*:
+*HostingStartupApp/Pages/Index.cshtml.cs* :
 
 [!code-csharp[](platform-specific-configuration/samples/3.x/HostingStartupApp/Pages/Index.cshtml.cs?name=snippet1&highlight=7-8,13-14)]
 
@@ -169,7 +170,7 @@ Una clase implementa `IHostingStartup`. El método <xref:Microsoft.AspNetCore.Ho
 
 [!code-csharp[](platform-specific-configuration/samples-snapshot/3.x/StartupEnhancement.cs?name=snippet2&highlight=3,5)]
 
-Al crear un proyecto de `IHostingStartup`, el archivo de dependencias ( *.deps.json*) establece la ubicación de `runtime` del ensamblado en la carpeta *bin*:
+Al crear un proyecto de `IHostingStartup`, el archivo de dependencias ( *.deps.json* ) establece la ubicación de `runtime` del ensamblado en la carpeta *bin* :
 
 [!code-json[](platform-specific-configuration/samples-snapshot/3.x/StartupEnhancement1.deps.json?range=2-13&highlight=8)]
 
@@ -221,7 +222,7 @@ public class ConfigurationInjection : IHostingStartup
 
 En el caso de un inicio de hospedaje proporcionado por una biblioteca de clase o una aplicación de consola, especifique el nombre del ensamblado de inicio de hospedaje en la variable de entorno `ASPNETCORE_HOSTINGSTARTUPASSEMBLIES`. La variable de entorno es una lista de ensamblados delimitada por punto y coma.
 
-Solo se examinan los ensamblados de inicio de hospedaje en busca del atributo `HostingStartup`. En la aplicación de ejemplo, *HostingStartupApp*, para descubrir los nuevos inicios de hospedaje descritos anteriormente, la variable de entorno se establece en el siguiente valor:
+Solo se examinan los ensamblados de inicio de hospedaje en busca del atributo `HostingStartup`. En la aplicación de ejemplo, *HostingStartupApp* , para descubrir los nuevos inicios de hospedaje descritos anteriormente, la variable de entorno se establece en el siguiente valor:
 
 ```
 HostingStartupLibrary;HostingStartupPackage;StartupDiagnostics
@@ -247,7 +248,7 @@ Cuando existen varios ensamblados de inicio de hospedaje, sus métodos <xref:Mic
 
 Las opciones de activación del inicio de hospedaje son:
 
-* [Almacén de tiempo de ejecución](#runtime-store): no se requiere una referencia de tiempo de compilación para la activación. La aplicación de ejemplo coloca el ensamblado de inicio de hospedaje y los archivos de dependencias en una carpeta, *implementación*, para facilitar la implementación del inicio del hospedaje en un entorno de varios equipos. La carpeta *implementación* también incluye un script de PowerShell que crea o modifica las variables de entorno en el sistema de implementación para habilitar el inicio de hospedaje.
+* [Almacén de tiempo de ejecución](#runtime-store): no se requiere una referencia de tiempo de compilación para la activación. La aplicación de ejemplo coloca el ensamblado de inicio de hospedaje y los archivos de dependencias en una carpeta, *implementación* , para facilitar la implementación del inicio del hospedaje en un entorno de varios equipos. La carpeta *implementación* también incluye un script de PowerShell que crea o modifica las variables de entorno en el sistema de implementación para habilitar el inicio de hospedaje.
 * Se requiere una referencia al tiempo de compilación para la activación
   * [Paquete NuGet](#nuget-package)
   * [Carpeta bin del proyecto](#project-bin-folder)
@@ -262,7 +263,7 @@ Una vez compilado el inicio de hospedaje, se genera un almacén en tiempo de eje
 dotnet store --manifest {MANIFEST FILE} --runtime {RUNTIME IDENTIFIER} --output {OUTPUT LOCATION} --skip-optimization
 ```
 
-En la aplicación de ejemplo (proyecto *RuntimeStore*), se usa el siguiente comando:
+En la aplicación de ejemplo (proyecto *RuntimeStore* ), se usa el siguiente comando:
 
 ```dotnetcli
 dotnet store --manifest store.manifest.csproj --runtime win7-x64 --output ./deployment/store --skip-optimization
@@ -339,7 +340,7 @@ Coloque el archivo *.deps.json* en la siguiente ubicación:
 * `{SHARED FRAMEWORK VERSION}`: versión mínima del marco compartido.
 * `{ENHANCEMENT ASSEMBLY NAME}`: nombre del ensamblado de la mejora.
 
-En la aplicación de ejemplo (proyecto *RuntimeStore*), el archivo de dependencias adicionales se coloca en la siguiente ubicación:
+En la aplicación de ejemplo (proyecto *RuntimeStore* ), el archivo de dependencias adicionales se coloca en la siguiente ubicación:
 
 ```
 deployment/additionalDeps/shared/Microsoft.AspNetCore.App/3.0.0/StartupDiagnostics.deps.json
@@ -347,7 +348,7 @@ deployment/additionalDeps/shared/Microsoft.AspNetCore.App/3.0.0/StartupDiagnosti
 
 Para que el tiempo de ejecución detecte la ubicación del almacén en tiempo de ejecución, la ubicación del archivo de dependencias adicionales se agrega a la variable de entorno `DOTNET_ADDITIONAL_DEPS`.
 
-En la aplicación de ejemplo (proyecto *RuntimeStore*), la creación del almacén en tiempo de ejecución y la generación del archivo de dependencias adicionales se realizan con un script de [PowerShell](/powershell/scripting/powershell-scripting).
+En la aplicación de ejemplo (proyecto *RuntimeStore* ), la creación del almacén en tiempo de ejecución y la generación del archivo de dependencias adicionales se realizan con un script de [PowerShell](/powershell/scripting/powershell-scripting).
 
 Para obtener ejemplos de cómo establecer variables de entorno en distintos sistemas operativos, vea [Uso de varios entornos](xref:fundamentals/environments).
 
@@ -363,7 +364,7 @@ Para facilitar la implementación de un inicio de hospedaje en un entorno de var
 
 Una mejora de inicio de hospedaje se puede proporcionar en un paquete NuGet. El paquete tiene un atributo `HostingStartup`. Los tipos de inicio de hospedaje proporcionados por el paquete están disponibles en la aplicación mediante cualquiera de los métodos siguientes:
 
-* El archivo de proyecto de la aplicación mejorada hace una referencia al paquete para el inicio de hospedaje en el archivo de proyecto de la aplicación (una referencia de tiempo de compilación). Con la referencia de tiempo de compilación realizada, el ensamblado de inicio de hospedaje y todas sus dependencias se incorporan en el archivo de dependencia de la aplicación ( *.deps.json*). Este enfoque se aplica a un paquete de ensamblado de inicio de hospedaje publicado en [nuget.org](https://www.nuget.org/).
+* El archivo de proyecto de la aplicación mejorada hace una referencia al paquete para el inicio de hospedaje en el archivo de proyecto de la aplicación (una referencia de tiempo de compilación). Con la referencia de tiempo de compilación realizada, el ensamblado de inicio de hospedaje y todas sus dependencias se incorporan en el archivo de dependencia de la aplicación ( *.deps.json* ). Este enfoque se aplica a un paquete de ensamblado de inicio de hospedaje publicado en [nuget.org](https://www.nuget.org/).
 * El archivo de dependencias del inicio de hospedaje está disponible para la aplicación mejorada como se describe en la sección [Almacén en tiempo de ejecución](#runtime-store) (sin una referencia de tiempo de compilación).
 
 Para obtener más información sobre los paquetes NuGet y el almacén en tiempo de ejecución, vea los temas siguientes:
@@ -376,12 +377,12 @@ Para obtener más información sobre los paquetes NuGet y el almacén en tiempo 
 
 Un ensamblado implementado por *bin* puede proporcionar una mejora del inicio de hospedaje en la aplicación mejorada. Los tipos de inicio de hospedaje que proporciona el ensamblado están disponibles en la aplicación mediante uno de los métodos siguientes:
 
-* El archivo de proyecto de la aplicación mejorada hace referencia de ensamblado al inicio de hospedaje (una referencia de tiempo de compilación). Con la referencia de tiempo de compilación realizada, el ensamblado de inicio de hospedaje y todas sus dependencias se incorporan en el archivo de dependencia de la aplicación ( *.deps.json*). Este método se aplica cuando el escenario de implementación llama para realizar una referencia en tiempo de compilación al ensamblado del inicio del hospedaje (archivo *.dll*) y mover el ensamblado a una de las siguientes ubicaciones:
+* El archivo de proyecto de la aplicación mejorada hace referencia de ensamblado al inicio de hospedaje (una referencia de tiempo de compilación). Con la referencia de tiempo de compilación realizada, el ensamblado de inicio de hospedaje y todas sus dependencias se incorporan en el archivo de dependencia de la aplicación ( *.deps.json* ). Este método se aplica cuando el escenario de implementación llama para realizar una referencia en tiempo de compilación al ensamblado del inicio del hospedaje (archivo *.dll* ) y mover el ensamblado a una de las siguientes ubicaciones:
   * Proyecto utilizado.
   * Ubicación a la que puede acceder el proyecto utilizado.
 * El archivo de dependencias del inicio de hospedaje está disponible para la aplicación mejorada como se describe en la sección [Almacén en tiempo de ejecución](#runtime-store) (sin una referencia de tiempo de compilación).
 * Si el destino es .NET Framework, el ensamblado se puede cargar en el contexto de carga predeterminado, lo que en .NET Framework significa que el ensamblado se encuentra en cualquiera de las siguientes ubicaciones:
-  * Ruta de acceso base de la aplicación: carpeta *bin* en la que se encuentra el archivo ejecutable ( *.exe*) de la aplicación.
+  * Ruta de acceso base de la aplicación: carpeta *bin* en la que se encuentra el archivo ejecutable ( *.exe* ) de la aplicación.
   * Caché global de ensamblados (GAC): almacena los ensamblados que comparten varias aplicaciones .NET Framework. Para obtener más información, vea [Cómo: Instalar un ensamblado en la caché global de ensamblados](/dotnet/framework/app-domains/how-to-install-an-assembly-into-the-gac) en la documentación de .NET Framework.
 
 ## <a name="sample-code"></a>Código de ejemplo
@@ -389,9 +390,9 @@ Un ensamblado implementado por *bin* puede proporcionar una mejora del inicio de
 En el [código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) ([cómo descargar](xref:index#how-to-download-a-sample)) se muestran escenarios de implementación de inicio de hospedaje:
 
 * Cada uno de los dos ensamblados de inicio de hospedaje (bibliotecas de clases) establece un par clave-valor de configuración en memoria:
-  * Paquete NuGet (*HostingStartupPackage*)
-  * Biblioteca de clases (*HostingStartupLibrary*)
-* Se activa un inicio de hospedaje desde un ensamblado implementado por el almacén de tiempo de ejecución (*StartupDiagnostics*). Este ensamblado agrega dos middleware a la aplicación (mientras se inicia) que proporcionan información de diagnóstico en:
+  * Paquete NuGet ( *HostingStartupPackage* )
+  * Biblioteca de clases ( *HostingStartupLibrary* )
+* Se activa un inicio de hospedaje desde un ensamblado implementado por el almacén de tiempo de ejecución ( *StartupDiagnostics* ). Este ensamblado agrega dos middleware a la aplicación (mientras se inicia) que proporcionan información de diagnóstico en:
   * Servicios registrados
   * Dirección (esquema, host, ruta de acceso base, ruta de acceso, cadena de consulta)
   * Conexión (dirección IP remota, puerto remoto, dirección IP local, puerto local, certificado de cliente)
@@ -404,7 +405,7 @@ Para ejecutar el ejemplo:
 
 1. Compile el paquete *HostingStartupPackage* con el comando [dotnet pack](/dotnet/core/tools/dotnet-pack).
 1. Agregue el nombre de ensamblado del paquete de *HostingStartupPackage* a la variable de entorno `ASPNETCORE_HOSTINGSTARTUPASSEMBLIES`.
-1. Compile y ejecute la aplicación. Una referencia de paquete está presente en la aplicación mejorada (una referencia de tiempo de compilación). El parámetro `<PropertyGroup>` del archivo del proyecto de la aplicación especifica el resultado del proyecto de paquete ( *../HostingStartupPackage/bin/Debug*) como origen del paquete. Esto permite que la aplicación utilice el paquete sin cargar el paquete a [nuget.org](https://www.nuget.org/). Para obtener más información, vea las notas que encontrará en el archivo del proyecto de HostingStartupApp.
+1. Compile y ejecute la aplicación. Una referencia de paquete está presente en la aplicación mejorada (una referencia de tiempo de compilación). El parámetro `<PropertyGroup>` del archivo del proyecto de la aplicación especifica el resultado del proyecto de paquete ( *../HostingStartupPackage/bin/Debug* ) como origen del paquete. Esto permite que la aplicación utilice el paquete sin cargar el paquete a [nuget.org](https://www.nuget.org/). Para obtener más información, vea las notas que encontrará en el archivo del proyecto de HostingStartupApp.
 
    ```xml
    <PropertyGroup>
@@ -424,8 +425,8 @@ dotnet nuget locals all --clear
 
 1. Compile la biblioteca de clases *HostingStartupLibrary* con el comando [dotnet build](/dotnet/core/tools/dotnet-build).
 1. Agregue el nombre del ensamblado de la biblioteca de clases *HostingStartupLibrary* a la variable de entorno `ASPNETCORE_HOSTINGSTARTUPASSEMBLIES`.
-1. Implemente con *bin*-el ensamblado de la biblioteca de clases en la aplicación copiando el archivo *HostingStartupLibrary.dll* desde el resultado compilado de la biblioteca de aplicaciones en la carpeta *bin/Debug* de la aplicación.
-1. Compile y ejecute la aplicación. Un parámetro `<ItemGroup>` del archivo de proyecto de la aplicación hace referencia al ensamblado de la biblioteca de clases ( *.\bin\Debug\netcoreapp3.0\HostingStartupLibrary.dll*) (una referencia en tiempo de compilación). Para obtener más información, vea las notas que encontrará en el archivo del proyecto de HostingStartupApp.
+1. Implemente con *bin* -el ensamblado de la biblioteca de clases en la aplicación copiando el archivo *HostingStartupLibrary.dll* desde el resultado compilado de la biblioteca de aplicaciones en la carpeta *bin/Debug* de la aplicación.
+1. Compile y ejecute la aplicación. Un parámetro `<ItemGroup>` del archivo de proyecto de la aplicación hace referencia al ensamblado de la biblioteca de clases ( *.\bin\Debug\netcoreapp3.0\HostingStartupLibrary.dll* ) (una referencia en tiempo de compilación). Para obtener más información, vea las notas que encontrará en el archivo del proyecto de HostingStartupApp.
 
    ```xml
    <ItemGroup>
@@ -503,20 +504,20 @@ Cree un inicio de hospedaje con cualquiera de los siguientes tipos de proyecto:
 
 Una mejora de inicio de hospedaje se puede proporcionar en una biblioteca de clases. La biblioteca contiene un atributo `HostingStartup`.
 
-El [código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) incluye una aplicación de Razor Pages, *HostingStartupApp*, y una biblioteca de clases, *HostingStartupLibrary*. La biblioteca de clases:
+El [código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) incluye una aplicación de Razor Pages, *HostingStartupApp* , y una biblioteca de clases, *HostingStartupLibrary*. La biblioteca de clases:
 
 * Contiene una clase de inicio de hospedaje, `ServiceKeyInjection`, que implementa `IHostingStartup`. `ServiceKeyInjection` agrega un par de cadenas de servicio a la configuración de la aplicación mediante el proveedor de configuración en memoria ([AddInMemoryCollection](xref:Microsoft.Extensions.Configuration.MemoryConfigurationBuilderExtensions.AddInMemoryCollection*)).
 * Incluye un atributo `HostingStartup` que identifica espacio de nombres y la clase del inicio de hospedaje.
 
 El método <xref:Microsoft.AspNetCore.Hosting.IHostingStartup.Configure*> de la clase `ServiceKeyInjection` usa <xref:Microsoft.AspNetCore.Hosting.IWebHostBuilder> para agregar mejoras a una aplicación.
 
-*HostingStartupLibrary/ServiceKeyInjection.cs*:
+*HostingStartupLibrary/ServiceKeyInjection.cs* :
 
 [!code-csharp[](platform-specific-configuration/samples/2.x/HostingStartupLibrary/ServiceKeyInjection.cs?name=snippet1)]
 
 La página de índice de la aplicación lee y procesa los valores de configuración para las dos claves establecidas por el ensamblado de inicio de hospedaje de la biblioteca de clases:
 
-*HostingStartupApp/Pages/Index.cshtml.cs*:
+*HostingStartupApp/Pages/Index.cshtml.cs* :
 
 [!code-csharp[](platform-specific-configuration/samples/2.x/HostingStartupApp/Pages/Index.cshtml.cs?name=snippet1&highlight=5-6,11-12)]
 
@@ -525,13 +526,13 @@ El [código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/as
 * Contiene una clase de inicio de hospedaje, `ServiceKeyInjection`, que implementa `IHostingStartup`. `ServiceKeyInjection` agrega un par de cadenas de servicio a la configuración de la aplicación.
 * Incluye un atributo `HostingStartup`.
 
-*HostingStartupPackage/ServiceKeyInjection.cs*:
+*HostingStartupPackage/ServiceKeyInjection.cs* :
 
 [!code-csharp[](platform-specific-configuration/samples/2.x/HostingStartupPackage/ServiceKeyInjection.cs?name=snippet1)]
 
 La página de índice de la aplicación lee y procesa los valores de configuración para las dos claves establecidas por el ensamblado de inicio de hospedaje del paquete:
 
-*HostingStartupApp/Pages/Index.cshtml.cs*:
+*HostingStartupApp/Pages/Index.cshtml.cs* :
 
 [!code-csharp[](platform-specific-configuration/samples/2.x/HostingStartupApp/Pages/Index.cshtml.cs?name=snippet1&highlight=7-8,13-14)]
 
@@ -567,7 +568,7 @@ Una clase implementa `IHostingStartup`. El método <xref:Microsoft.AspNetCore.Ho
 
 [!code-csharp[](platform-specific-configuration/samples-snapshot/2.x/StartupEnhancement.cs?name=snippet2&highlight=3,5)]
 
-Al crear un proyecto de `IHostingStartup`, el archivo de dependencias ( *.deps.json*) establece la ubicación de `runtime` del ensamblado en la carpeta *bin*:
+Al crear un proyecto de `IHostingStartup`, el archivo de dependencias ( *.deps.json* ) establece la ubicación de `runtime` del ensamblado en la carpeta *bin* :
 
 [!code-json[](platform-specific-configuration/samples-snapshot/2.x/StartupEnhancement1.deps.json?range=2-13&highlight=8)]
 
@@ -619,7 +620,7 @@ public class ConfigurationInjection : IHostingStartup
 
 En el caso de un inicio de hospedaje proporcionado por una biblioteca de clase o una aplicación de consola, especifique el nombre del ensamblado de inicio de hospedaje en la variable de entorno `ASPNETCORE_HOSTINGSTARTUPASSEMBLIES`. La variable de entorno es una lista de ensamblados delimitada por punto y coma.
 
-Solo se examinan los ensamblados de inicio de hospedaje en busca del atributo `HostingStartup`. En la aplicación de ejemplo, *HostingStartupApp*, para descubrir los nuevos inicios de hospedaje descritos anteriormente, la variable de entorno se establece en el siguiente valor:
+Solo se examinan los ensamblados de inicio de hospedaje en busca del atributo `HostingStartup`. En la aplicación de ejemplo, *HostingStartupApp* , para descubrir los nuevos inicios de hospedaje descritos anteriormente, la variable de entorno se establece en el siguiente valor:
 
 ```
 HostingStartupLibrary;HostingStartupPackage;StartupDiagnostics
@@ -633,7 +634,7 @@ Cuando existen varios ensamblados de inicio de hospedaje, sus métodos <xref:Mic
 
 Las opciones de activación del inicio de hospedaje son:
 
-* [Almacén de tiempo de ejecución](#runtime-store): no se requiere una referencia de tiempo de compilación para la activación. La aplicación de ejemplo coloca el ensamblado de inicio de hospedaje y los archivos de dependencias en una carpeta, *implementación*, para facilitar la implementación del inicio del hospedaje en un entorno de varios equipos. La carpeta *implementación* también incluye un script de PowerShell que crea o modifica las variables de entorno en el sistema de implementación para habilitar el inicio de hospedaje.
+* [Almacén de tiempo de ejecución](#runtime-store): no se requiere una referencia de tiempo de compilación para la activación. La aplicación de ejemplo coloca el ensamblado de inicio de hospedaje y los archivos de dependencias en una carpeta, *implementación* , para facilitar la implementación del inicio del hospedaje en un entorno de varios equipos. La carpeta *implementación* también incluye un script de PowerShell que crea o modifica las variables de entorno en el sistema de implementación para habilitar el inicio de hospedaje.
 * Se requiere una referencia al tiempo de compilación para la activación
   * [Paquete NuGet](#nuget-package)
   * [Carpeta bin del proyecto](#project-bin-folder)
@@ -648,7 +649,7 @@ Una vez compilado el inicio de hospedaje, se genera un almacén en tiempo de eje
 dotnet store --manifest {MANIFEST FILE} --runtime {RUNTIME IDENTIFIER} --output {OUTPUT LOCATION} --skip-optimization
 ```
 
-En la aplicación de ejemplo (proyecto *RuntimeStore*), se usa el siguiente comando:
+En la aplicación de ejemplo (proyecto *RuntimeStore* ), se usa el siguiente comando:
 
 ```dotnetcli
 dotnet store --manifest store.manifest.csproj --runtime win7-x64 --output ./deployment/store --skip-optimization
@@ -725,7 +726,7 @@ Coloque el archivo *.deps.json* en la siguiente ubicación:
 * `{SHARED FRAMEWORK VERSION}`: versión mínima del marco compartido.
 * `{ENHANCEMENT ASSEMBLY NAME}`: nombre del ensamblado de la mejora.
 
-En la aplicación de ejemplo (proyecto *RuntimeStore*), el archivo de dependencias adicionales se coloca en la siguiente ubicación:
+En la aplicación de ejemplo (proyecto *RuntimeStore* ), el archivo de dependencias adicionales se coloca en la siguiente ubicación:
 
 ```
 deployment/additionalDeps/shared/Microsoft.AspNetCore.App/2.1.0/StartupDiagnostics.deps.json
@@ -733,7 +734,7 @@ deployment/additionalDeps/shared/Microsoft.AspNetCore.App/2.1.0/StartupDiagnosti
 
 Para que el tiempo de ejecución detecte la ubicación del almacén en tiempo de ejecución, la ubicación del archivo de dependencias adicionales se agrega a la variable de entorno `DOTNET_ADDITIONAL_DEPS`.
 
-En la aplicación de ejemplo (proyecto *RuntimeStore*), la creación del almacén en tiempo de ejecución y la generación del archivo de dependencias adicionales se realizan con un script de [PowerShell](/powershell/scripting/powershell-scripting).
+En la aplicación de ejemplo (proyecto *RuntimeStore* ), la creación del almacén en tiempo de ejecución y la generación del archivo de dependencias adicionales se realizan con un script de [PowerShell](/powershell/scripting/powershell-scripting).
 
 Para obtener ejemplos de cómo establecer variables de entorno en distintos sistemas operativos, vea [Uso de varios entornos](xref:fundamentals/environments).
 
@@ -749,7 +750,7 @@ Para facilitar la implementación de un inicio de hospedaje en un entorno de var
 
 Una mejora de inicio de hospedaje se puede proporcionar en un paquete NuGet. El paquete tiene un atributo `HostingStartup`. Los tipos de inicio de hospedaje proporcionados por el paquete están disponibles en la aplicación mediante cualquiera de los métodos siguientes:
 
-* El archivo de proyecto de la aplicación mejorada hace una referencia al paquete para el inicio de hospedaje en el archivo de proyecto de la aplicación (una referencia de tiempo de compilación). Con la referencia de tiempo de compilación realizada, el ensamblado de inicio de hospedaje y todas sus dependencias se incorporan en el archivo de dependencia de la aplicación ( *.deps.json*). Este enfoque se aplica a un paquete de ensamblado de inicio de hospedaje publicado en [nuget.org](https://www.nuget.org/).
+* El archivo de proyecto de la aplicación mejorada hace una referencia al paquete para el inicio de hospedaje en el archivo de proyecto de la aplicación (una referencia de tiempo de compilación). Con la referencia de tiempo de compilación realizada, el ensamblado de inicio de hospedaje y todas sus dependencias se incorporan en el archivo de dependencia de la aplicación ( *.deps.json* ). Este enfoque se aplica a un paquete de ensamblado de inicio de hospedaje publicado en [nuget.org](https://www.nuget.org/).
 * El archivo de dependencias del inicio de hospedaje está disponible para la aplicación mejorada como se describe en la sección [Almacén en tiempo de ejecución](#runtime-store) (sin una referencia de tiempo de compilación).
 
 Para obtener más información sobre los paquetes NuGet y el almacén en tiempo de ejecución, vea los temas siguientes:
@@ -762,12 +763,12 @@ Para obtener más información sobre los paquetes NuGet y el almacén en tiempo 
 
 Un ensamblado implementado por *bin* puede proporcionar una mejora del inicio de hospedaje en la aplicación mejorada. Los tipos de inicio de hospedaje que proporciona el ensamblado están disponibles en la aplicación mediante uno de los métodos siguientes:
 
-* El archivo de proyecto de la aplicación mejorada hace referencia de ensamblado al inicio de hospedaje (una referencia de tiempo de compilación). Con la referencia de tiempo de compilación realizada, el ensamblado de inicio de hospedaje y todas sus dependencias se incorporan en el archivo de dependencia de la aplicación ( *.deps.json*). Este método se aplica cuando el escenario de implementación llama para realizar una referencia en tiempo de compilación al ensamblado del inicio del hospedaje (archivo *.dll*) y mover el ensamblado a una de las siguientes ubicaciones:
+* El archivo de proyecto de la aplicación mejorada hace referencia de ensamblado al inicio de hospedaje (una referencia de tiempo de compilación). Con la referencia de tiempo de compilación realizada, el ensamblado de inicio de hospedaje y todas sus dependencias se incorporan en el archivo de dependencia de la aplicación ( *.deps.json* ). Este método se aplica cuando el escenario de implementación llama para realizar una referencia en tiempo de compilación al ensamblado del inicio del hospedaje (archivo *.dll* ) y mover el ensamblado a una de las siguientes ubicaciones:
   * Proyecto utilizado.
   * Ubicación a la que puede acceder el proyecto utilizado.
 * El archivo de dependencias del inicio de hospedaje está disponible para la aplicación mejorada como se describe en la sección [Almacén en tiempo de ejecución](#runtime-store) (sin una referencia de tiempo de compilación).
 * Si el destino es .NET Framework, el ensamblado se puede cargar en el contexto de carga predeterminado, lo que en .NET Framework significa que el ensamblado se encuentra en cualquiera de las siguientes ubicaciones:
-  * Ruta de acceso base de la aplicación: carpeta *bin* en la que se encuentra el archivo ejecutable ( *.exe*) de la aplicación.
+  * Ruta de acceso base de la aplicación: carpeta *bin* en la que se encuentra el archivo ejecutable ( *.exe* ) de la aplicación.
   * Caché global de ensamblados (GAC): almacena los ensamblados que comparten varias aplicaciones .NET Framework. Para obtener más información, vea [Cómo: Instalar un ensamblado en la caché global de ensamblados](/dotnet/framework/app-domains/how-to-install-an-assembly-into-the-gac) en la documentación de .NET Framework.
 
 ## <a name="sample-code"></a>Código de ejemplo
@@ -775,9 +776,9 @@ Un ensamblado implementado por *bin* puede proporcionar una mejora del inicio de
 En el [código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) ([cómo descargar](xref:index#how-to-download-a-sample)) se muestran escenarios de implementación de inicio de hospedaje:
 
 * Cada uno de los dos ensamblados de inicio de hospedaje (bibliotecas de clases) establece un par clave-valor de configuración en memoria:
-  * Paquete NuGet (*HostingStartupPackage*)
-  * Biblioteca de clases (*HostingStartupLibrary*)
-* Se activa un inicio de hospedaje desde un ensamblado implementado por el almacén de tiempo de ejecución (*StartupDiagnostics*). Este ensamblado agrega dos middleware a la aplicación (mientras se inicia) que proporcionan información de diagnóstico en:
+  * Paquete NuGet ( *HostingStartupPackage* )
+  * Biblioteca de clases ( *HostingStartupLibrary* )
+* Se activa un inicio de hospedaje desde un ensamblado implementado por el almacén de tiempo de ejecución ( *StartupDiagnostics* ). Este ensamblado agrega dos middleware a la aplicación (mientras se inicia) que proporcionan información de diagnóstico en:
   * Servicios registrados
   * Dirección (esquema, host, ruta de acceso base, ruta de acceso, cadena de consulta)
   * Conexión (dirección IP remota, puerto remoto, dirección IP local, puerto local, certificado de cliente)
@@ -790,7 +791,7 @@ Para ejecutar el ejemplo:
 
 1. Compile el paquete *HostingStartupPackage* con el comando [dotnet pack](/dotnet/core/tools/dotnet-pack).
 1. Agregue el nombre de ensamblado del paquete de *HostingStartupPackage* a la variable de entorno `ASPNETCORE_HOSTINGSTARTUPASSEMBLIES`.
-1. Compile y ejecute la aplicación. Una referencia de paquete está presente en la aplicación mejorada (una referencia de tiempo de compilación). El parámetro `<PropertyGroup>` del archivo del proyecto de la aplicación especifica el resultado del proyecto de paquete ( *../HostingStartupPackage/bin/Debug*) como origen del paquete. Esto permite que la aplicación utilice el paquete sin cargar el paquete a [nuget.org](https://www.nuget.org/). Para obtener más información, vea las notas que encontrará en el archivo del proyecto de HostingStartupApp.
+1. Compile y ejecute la aplicación. Una referencia de paquete está presente en la aplicación mejorada (una referencia de tiempo de compilación). El parámetro `<PropertyGroup>` del archivo del proyecto de la aplicación especifica el resultado del proyecto de paquete ( *../HostingStartupPackage/bin/Debug* ) como origen del paquete. Esto permite que la aplicación utilice el paquete sin cargar el paquete a [nuget.org](https://www.nuget.org/). Para obtener más información, vea las notas que encontrará en el archivo del proyecto de HostingStartupApp.
 
    ```xml
    <PropertyGroup>
@@ -810,8 +811,8 @@ dotnet nuget locals all --clear
 
 1. Compile la biblioteca de clases *HostingStartupLibrary* con el comando [dotnet build](/dotnet/core/tools/dotnet-build).
 1. Agregue el nombre del ensamblado de la biblioteca de clases *HostingStartupLibrary* a la variable de entorno `ASPNETCORE_HOSTINGSTARTUPASSEMBLIES`.
-1. Implemente con *bin*-el ensamblado de la biblioteca de clases en la aplicación copiando el archivo *HostingStartupLibrary.dll* desde el resultado compilado de la biblioteca de aplicaciones en la carpeta *bin/Debug* de la aplicación.
-1. Compile y ejecute la aplicación. Un parámetro `<ItemGroup>` del archivo del proyecto de la aplicación hace referencia al ensamblado de la biblioteca de clases ( *.\bin\Debug\netcoreapp2.1\HostingStartupLibrary.dll*) (una referencia de tiempo de compilación). Para obtener más información, vea las notas que encontrará en el archivo del proyecto de HostingStartupApp.
+1. Implemente con *bin* -el ensamblado de la biblioteca de clases en la aplicación copiando el archivo *HostingStartupLibrary.dll* desde el resultado compilado de la biblioteca de aplicaciones en la carpeta *bin/Debug* de la aplicación.
+1. Compile y ejecute la aplicación. Un parámetro `<ItemGroup>` del archivo del proyecto de la aplicación hace referencia al ensamblado de la biblioteca de clases ( *.\bin\Debug\netcoreapp2.1\HostingStartupLibrary.dll* ) (una referencia de tiempo de compilación). Para obtener más información, vea las notas que encontrará en el archivo del proyecto de HostingStartupApp.
 
    ```xml
    <ItemGroup>

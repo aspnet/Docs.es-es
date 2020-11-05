@@ -5,6 +5,7 @@ description: Parte 2 de la serie de tutoriales sobre ASP.NET Core MVC.
 ms.author: riande
 ms.date: 08/05/2017
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/adding-controller
-ms.openlocfilehash: b5ef99d5645e0bbd453d09809a446bf4af38a975
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 11832efa6715f96856665f174d65b094806d2810
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634051"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061293"
 ---
 # <a name="part-2-add-a-controller-to-an-aspnet-core-mvc-app"></a>Parte 2. Adición de un controlador a una aplicación de ASP.NET Core MVC
 
@@ -29,13 +30,13 @@ Por [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 ::: moniker range=">= aspnetcore-3.0"
 
-El patrón de arquitectura de Modelo-Vista-Controlador (MVC) separa una aplicación en tres componentes principales: **M**odelo, **v**ista y **c**ontrolador. El patrón de MVC ayuda a crear aplicaciones que son más fáciles de actualizar y probar que las tradicionales aplicaciones monolíticas. Las aplicaciones basadas en MVC contienen:
+El patrón de arquitectura de Modelo-Vista-Controlador (MVC) separa una aplicación en tres componentes principales: **M** odelo, **v** ista y **c** ontrolador. El patrón de MVC ayuda a crear aplicaciones que son más fáciles de actualizar y probar que las tradicionales aplicaciones monolíticas. Las aplicaciones basadas en MVC contienen:
 
-* **M**odelos: clases que representan los datos de la aplicación. Las clases de modelo usan lógica de validación para aplicar las reglas de negocio para esos datos. Normalmente, los objetos de modelo recuperan y almacenan el estado del modelo en una base de datos. En este tutorial, un modelo `Movie` recupera datos de películas de una base de datos, los proporciona a la vista o los actualiza. Los datos actualizados se escriben en una base de datos.
+* **M** odelos: clases que representan los datos de la aplicación. Las clases de modelo usan lógica de validación para aplicar las reglas de negocio para esos datos. Normalmente, los objetos de modelo recuperan y almacenan el estado del modelo en una base de datos. En este tutorial, un modelo `Movie` recupera datos de películas de una base de datos, los proporciona a la vista o los actualiza. Los datos actualizados se escriben en una base de datos.
 
-* **V**istas: Las vistas son los componentes que muestran la interfaz de usuario (IU) de la aplicación. Por lo general, esta interfaz de usuario muestra los datos del modelo.
+* **V** istas: Las vistas son los componentes que muestran la interfaz de usuario (IU) de la aplicación. Por lo general, esta interfaz de usuario muestra los datos del modelo.
 
-* **C**ontroladores: clases que controlan las solicitudes del explorador. Recuperan los datos del modelo y llaman a plantillas de vistas que devuelven una respuesta. En una aplicación MVC, la vista solo muestra información; el controlador controla la interacción de los usuarios y los datos que introducen, y responde a ellos. Por ejemplo, el controlador controla los datos de enrutamiento y los valores de cadena de consulta y pasa estos valores al modelo. El modelo puede usar estos valores para consultar la base de datos. Por ejemplo, `https://localhost:5001/Home/Privacy` tiene datos de enrutamiento de `Home` (el controlador) y `Privacy` (el método de acción para llamar al controlador de inicio). `https://localhost:5001/Movies/Edit/5` es una solicitud para editar la película con ID=5 mediante el controlador de películas. Los datos de ruta se explican más adelante en el tutorial.
+* **C** ontroladores: clases que controlan las solicitudes del explorador. Recuperan los datos del modelo y llaman a plantillas de vistas que devuelven una respuesta. En una aplicación MVC, la vista solo muestra información; el controlador controla la interacción de los usuarios y los datos que introducen, y responde a ellos. Por ejemplo, el controlador controla los datos de enrutamiento y los valores de cadena de consulta y pasa estos valores al modelo. El modelo puede usar estos valores para consultar la base de datos. Por ejemplo, `https://localhost:5001/Home/Privacy` tiene datos de enrutamiento de `Home` (el controlador) y `Privacy` (el método de acción para llamar al controlador de inicio). `https://localhost:5001/Movies/Edit/5` es una solicitud para editar la película con ID=5 mediante el controlador de películas. Los datos de ruta se explican más adelante en el tutorial.
 
 El patrón de MVC ayuda a crear aplicaciones que separan los diferentes aspectos de la aplicación (lógica de entrada, lógica comercial y lógica de la interfaz de usuario), a la vez que proporciona un acoplamiento vago entre estos elementos. El patrón especifica dónde debe ubicarse cada tipo de lógica en la aplicación. La lógica de la interfaz de usuario pertenece a la vista. La lógica de entrada pertenece al controlador. La lógica de negocios pertenece al modelo. Esta separación ayuda a administrar la complejidad al compilar una aplicación, ya que permite trabajar en uno de los aspectos de la implementación a la vez sin influir en el código de otro. Por ejemplo, puede trabajar en el código de vista sin depender del código de lógica de negocios.
 
@@ -45,10 +46,10 @@ En esta serie de tutoriales se tratarán estos conceptos y se mostrará cómo us
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* En el **Explorador de soluciones**, haga clic con el botón derecho en **Controladores > Agregar > Controlador**
+* En el **Explorador de soluciones** , haga clic con el botón derecho en **Controladores > Agregar > Controlador**
   ![Menú contextual](adding-controller/_static/add_controller.png).
 
-* En el cuadro de diálogo **Agregar Scaffold**, seleccione **Controller Class - Empty** (Clase de controlador: en blanco)
+* En el cuadro de diálogo **Agregar Scaffold** , seleccione **Controller Class - Empty** (Clase de controlador: en blanco)
 
   ![Agregar un controlador de MVC y asignarle un nombre](adding-controller/_static/ac.png)
 
@@ -56,13 +57,13 @@ En esta serie de tutoriales se tratarán estos conceptos y se mostrará cómo us
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-Seleccione el icono **EXPLORADOR**, presione Ctrl y haga clic con el botón derecho en **Controladores > Nuevo archivo** y asigne al nuevo archivo el nombre *HelloWorldController.cs*.
+Seleccione el icono **EXPLORADOR** , presione Ctrl y haga clic con el botón derecho en **Controladores > Nuevo archivo** y asigne al nuevo archivo el nombre *HelloWorldController.cs*.
 
   ![Menú contextual](~/tutorials/first-mvc-app-xplat/adding-controller/_static/new_file.png)
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)
 
-En el **Explorador de soluciones**, haga clic con el botón derecho en **Controladores > Agregar > Nuevo archivo**.
+En el **Explorador de soluciones** , haga clic con el botón derecho en **Controladores > Agregar > Nuevo archivo**.
 ![Menú contextual](~/tutorials/first-mvc-app-mac/adding-controller/_static/add_controller.png)
 
 Seleccione **ASP.NET Core** y **Clase de controlador**.
@@ -97,7 +98,7 @@ El formato de enrutamiento se establece en el método `Configure` del archivo *S
 
 Cuando se navega a la aplicación y no se suministra ningún segmento de dirección URL, de manera predeterminada se usan el controlador "Home" y el método "Index" especificados en la línea de plantilla resaltada arriba.
 
-El primer segmento de dirección URL determina la clase de controlador que se va a ejecutar. Por tanto, `localhost:{PORT}/HelloWorld` se asigna a la clase **HelloWorld**Controller. La segunda parte del segmento de dirección URL determina el método de acción en la clase. De modo que `localhost:{PORT}/HelloWorld/Index` podría provocar que se ejecute el método `Index` de la clase `HelloWorldController`. Tenga en cuenta que solo es necesario navegar a `localhost:{PORT}/HelloWorld` para que se llame al método `Index` de manera predeterminada. Esto es porque `Index` es el método predeterminado al que se llamará en un controlador si no se especifica explícitamente un nombre de método. La tercera parte del segmento de dirección URL (`id`) es para los datos de ruta. Los datos de ruta se explican más adelante en el tutorial.
+El primer segmento de dirección URL determina la clase de controlador que se va a ejecutar. Por tanto, `localhost:{PORT}/HelloWorld` se asigna a la clase **HelloWorld** Controller. La segunda parte del segmento de dirección URL determina el método de acción en la clase. De modo que `localhost:{PORT}/HelloWorld/Index` podría provocar que se ejecute el método `Index` de la clase `HelloWorldController`. Tenga en cuenta que solo es necesario navegar a `localhost:{PORT}/HelloWorld` para que se llame al método `Index` de manera predeterminada. Esto es porque `Index` es el método predeterminado al que se llamará en un controlador si no se especifica explícitamente un nombre de método. La tercera parte del segmento de dirección URL (`id`) es para los datos de ruta. Los datos de ruta se explican más adelante en el tutorial.
 
 Vaya a `https://localhost:{PORT}/HelloWorld/Welcome`. El método `Welcome` se ejecuta y devuelve la cadena `This is the Welcome action method...`. Para esta dirección URL, el controlador es `HelloWorld` y `Welcome` es el método de acción. Todavía no ha usado el elemento `[Parameters]` de la dirección URL.
 
@@ -133,7 +134,7 @@ Esta vez el tercer segmento de dirección URL coincide con el parámetro de ruta
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/Startup.cs?name=snippet_1&highlight=5)]
 
-En estos ejemplos, el controlador ha realizado la parte "VC" de MVC, es decir, el trabajo de **V**ista y de **C**ontrolador. El controlador devuelve HTML directamente. Por lo general, no es aconsejable que los controles devuelvan HTML directamente, porque resulta muy complicado de programar y mantener. En vez de ello, se suele usar un archivo de plantilla de vista de Razor independiente para generar la respuesta HTML. Haremos esto en el siguiente tutorial.
+En estos ejemplos, el controlador ha realizado la parte "VC" de MVC, es decir, el trabajo de **V** ista y de **C** ontrolador. El controlador devuelve HTML directamente. Por lo general, no es aconsejable que los controles devuelvan HTML directamente, porque resulta muy complicado de programar y mantener. En vez de ello, se suele usar un archivo de plantilla de vista de Razor independiente para generar la respuesta HTML. Haremos esto en el siguiente tutorial.
 
 > [!div class="step-by-step"]
 > [Anterior](start-mvc.md)
@@ -143,13 +144,13 @@ En estos ejemplos, el controlador ha realizado la parte "VC" de MVC, es decir, e
 
 ::: moniker range="< aspnetcore-3.0"
 
-El patrón de arquitectura de Modelo-Vista-Controlador (MVC) separa una aplicación en tres componentes principales: **M**odelo, **v**ista y **c**ontrolador. El patrón de MVC ayuda a crear aplicaciones que son más fáciles de actualizar y probar que las tradicionales aplicaciones monolíticas. Las aplicaciones basadas en MVC contienen:
+El patrón de arquitectura de Modelo-Vista-Controlador (MVC) separa una aplicación en tres componentes principales: **M** odelo, **v** ista y **c** ontrolador. El patrón de MVC ayuda a crear aplicaciones que son más fáciles de actualizar y probar que las tradicionales aplicaciones monolíticas. Las aplicaciones basadas en MVC contienen:
 
-* **M**odelos: clases que representan los datos de la aplicación. Las clases de modelo usan lógica de validación para aplicar las reglas de negocio para esos datos. Normalmente, los objetos de modelo recuperan y almacenan el estado del modelo en una base de datos. En este tutorial, un modelo `Movie` recupera datos de películas de una base de datos, los proporciona a la vista o los actualiza. Los datos actualizados se escriben en una base de datos.
+* **M** odelos: clases que representan los datos de la aplicación. Las clases de modelo usan lógica de validación para aplicar las reglas de negocio para esos datos. Normalmente, los objetos de modelo recuperan y almacenan el estado del modelo en una base de datos. En este tutorial, un modelo `Movie` recupera datos de películas de una base de datos, los proporciona a la vista o los actualiza. Los datos actualizados se escriben en una base de datos.
 
-* **V**istas: Las vistas son los componentes que muestran la interfaz de usuario (IU) de la aplicación. Por lo general, esta interfaz de usuario muestra los datos del modelo.
+* **V** istas: Las vistas son los componentes que muestran la interfaz de usuario (IU) de la aplicación. Por lo general, esta interfaz de usuario muestra los datos del modelo.
 
-* **C**ontroladores: clases que controlan las solicitudes del explorador. Recuperan los datos del modelo y llaman a plantillas de vistas que devuelven una respuesta. En una aplicación MVC, la vista solo muestra información; el controlador controla la interacción de los usuarios y los datos que introducen, y responde a ellos. Por ejemplo, el controlador controla los datos de enrutamiento y los valores de cadena de consulta y pasa estos valores al modelo. El modelo puede usar estos valores para consultar la base de datos. Por ejemplo, `https://localhost:5001/Home/About` tiene datos de enrutamiento de `Home` (el controlador) y `About` (el método de acción para llamar al controlador de inicio). `https://localhost:5001/Movies/Edit/5` es una solicitud para editar la película con ID=5 mediante el controlador de películas. Los datos de ruta se explican más adelante en el tutorial.
+* **C** ontroladores: clases que controlan las solicitudes del explorador. Recuperan los datos del modelo y llaman a plantillas de vistas que devuelven una respuesta. En una aplicación MVC, la vista solo muestra información; el controlador controla la interacción de los usuarios y los datos que introducen, y responde a ellos. Por ejemplo, el controlador controla los datos de enrutamiento y los valores de cadena de consulta y pasa estos valores al modelo. El modelo puede usar estos valores para consultar la base de datos. Por ejemplo, `https://localhost:5001/Home/About` tiene datos de enrutamiento de `Home` (el controlador) y `About` (el método de acción para llamar al controlador de inicio). `https://localhost:5001/Movies/Edit/5` es una solicitud para editar la película con ID=5 mediante el controlador de películas. Los datos de ruta se explican más adelante en el tutorial.
 
 El patrón de MVC ayuda a crear aplicaciones que separan los diferentes aspectos de la aplicación (lógica de entrada, lógica comercial y lógica de la interfaz de usuario), a la vez que proporciona un acoplamiento vago entre estos elementos. El patrón especifica dónde debe ubicarse cada tipo de lógica en la aplicación. La lógica de la interfaz de usuario pertenece a la vista. La lógica de entrada pertenece al controlador. La lógica de negocios pertenece al modelo. Esta separación ayuda a administrar la complejidad al compilar una aplicación, ya que permite trabajar en uno de los aspectos de la implementación a la vez sin influir en el código de otro. Por ejemplo, puede trabajar en el código de vista sin depender del código de lógica de negocios.
 
@@ -159,10 +160,10 @@ En esta serie de tutoriales se tratarán estos conceptos y se mostrará cómo us
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* En el **Explorador de soluciones**, haga clic con el botón derecho en **Controladores > Agregar > Controlador**
+* En el **Explorador de soluciones** , haga clic con el botón derecho en **Controladores > Agregar > Controlador**
   ![Menú contextual](adding-controller/_static/add_controller.png).
 
-* En el cuadro de diálogo **Agregar Scaffold**, seleccione **MVC Controller - Empty** (Controlador MVC: en blanco)
+* En el cuadro de diálogo **Agregar Scaffold** , seleccione **MVC Controller - Empty** (Controlador MVC: en blanco)
 
   ![Agregar un controlador de MVC y asignarle un nombre](adding-controller/_static/ac.png)
 
@@ -170,13 +171,13 @@ En esta serie de tutoriales se tratarán estos conceptos y se mostrará cómo us
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-Seleccione el icono **EXPLORADOR**, presione Ctrl y haga clic con el botón derecho en **Controladores > Nuevo archivo** y asigne al nuevo archivo el nombre *HelloWorldController.cs*.
+Seleccione el icono **EXPLORADOR** , presione Ctrl y haga clic con el botón derecho en **Controladores > Nuevo archivo** y asigne al nuevo archivo el nombre *HelloWorldController.cs*.
 
   ![Menú contextual](~/tutorials/first-mvc-app-xplat/adding-controller/_static/new_file.png)
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)
 
-En el **Explorador de soluciones**, haga clic con el botón derecho en **Controladores > Agregar > Nuevo archivo**.
+En el **Explorador de soluciones** , haga clic con el botón derecho en **Controladores > Agregar > Nuevo archivo**.
 ![Menú contextual](~/tutorials/first-mvc-app-mac/adding-controller/_static/add_controller.png)
 
 Seleccione **ASP.NET Core** y **Clase de controlador de MVC**.

@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 06/24/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/call-web-api
-ms.openlocfilehash: aa769554f54d6f480815d65de18e3dba5729d07d
-ms.sourcegitcommit: 4df148cbbfae9ec8d377283ee71394944a284051
+ms.openlocfilehash: 85b3ded6ec25310a573e99cbedf0df005d92bdbe
+ms.sourcegitcommit: d64bf0cbe763beda22a7728c7f10d07fc5e19262
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88876742"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93234418"
 ---
 # <a name="call-a-web-api-from-aspnet-core-no-locblazor"></a>Llamada a una API web desde Blazor de ASP.NET Core
 
@@ -227,29 +228,29 @@ using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
 
-public class WeatherForecastClient
+public class WeatherForecastHttpClient
 {
-    private readonly HttpClient client;
+    private readonly HttpClient http;
 
-    public WeatherForecastClient(HttpClient client)
+    public WeatherForecastHttpClient(HttpClient http)
     {
-        this.client = client;
+        this.http = http;
     }
 
     public async Task<WeatherForecast[]> GetForecastAsync()
     {
         var forecasts = new WeatherForecast[0];
-    
+
         try
         {
-            forecasts = await client.GetFromJsonAsync<WeatherForecast[]>(
+            forecasts = await http.GetFromJsonAsync<WeatherForecast[]>(
                 "WeatherForecast");
         }
         catch
         {
             ...
         }
-    
+
         return forecasts;
     }
 }
@@ -258,7 +259,7 @@ public class WeatherForecastClient
 `Program.Main` (`Program.cs`):
 
 ```csharp
-builder.Services.AddHttpClient<WeatherForecastClient>(client => 
+builder.Services.AddHttpClient<WeatherForecastHttpClient>(client => 
     client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress));
 ```
 
@@ -267,7 +268,7 @@ Los componentes insertan la instancia de <xref:System.Net.Http.HttpClient> con t
 Componente `FetchData` (`Pages/FetchData.razor`):
 
 ```razor
-@inject WeatherForecastClient Client
+@inject WeatherForecastHttpClient Http
 
 ...
 
@@ -276,7 +277,7 @@ Componente `FetchData` (`Pages/FetchData.razor`):
 
     protected override async Task OnInitializedAsync()
     {
-        forecasts = await Client.GetForecastAsync();
+        forecasts = await Http.GetForecastAsync();
     }
 }
 ```

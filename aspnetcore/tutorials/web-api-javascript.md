@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc, devx-track-js
 ms.date: 11/26/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/web-api-javascript
-ms.openlocfilehash: b41288bd63267a9aa7035e25ebc8d838eed5d93b
-ms.sourcegitcommit: 2e3a967331b2c69f585dd61e9ad5c09763615b44
+ms.openlocfilehash: 4a80e3e82a18e0066c7628c8f40401155538e32b
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92690682"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061202"
 ---
 # <a name="tutorial-call-an-aspnet-core-web-api-with-javascript"></a>Tutorial: Llamada a una API web de ASP.NET Core con JavaScript
 
@@ -57,19 +58,19 @@ La llamada `fetch` más simple acepta un único parámetro que representa la rut
 
 1. Cree una carpeta *wwwroot* en la raíz del proyecto.
 
-1. Cree una carpeta *js* dentro de la carpeta *wwwroot* .
+1. Cree una carpeta *js* dentro de la carpeta *wwwroot*.
 
-1. Agregue un archivo HTML denominado *index.html* a la carpeta *wwwroot* . Reemplace el contenido de *index.html* por el marcado siguiente:
+1. Agregue un archivo HTML denominado *index.html* a la carpeta *wwwroot*. Reemplace el contenido de *index.html* por el marcado siguiente:
 
     [!code-html[](first-web-api/samples/3.0/TodoApi/wwwroot/index.html)]
 
-1. Agregue un archivo de JavaScript denominado *site.js* , a la carpeta *wwwroot/js* . Reemplace el contenido de *site.js* por el código siguiente:
+1. Agregue un archivo de JavaScript denominado *site.js* , a la carpeta *wwwroot/js*. Reemplace el contenido de *site.js* por el código siguiente:
 
     [!code-javascript[](first-web-api/samples/3.0/TodoApi/wwwroot/js/site.js?name=snippet_SiteJs)]
 
 Puede que sea necesario realizar un cambio en la configuración de inicio del proyecto de ASP.NET Core para probar la página HTML localmente:
 
-1. Abra *Properties\launchSettings.json* .
+1. Abra *Properties\launchSettings.json*.
 1. Quite la propiedad `launchUrl` para forzar a la aplicación a abrirse en *index.html* , esto es, el archivo predeterminado del proyecto.
 
 En este ejemplo se llama a todos los métodos CRUD de la API web. A continuación, encontrará algunas explicaciones de las solicitudes de la API web.
@@ -80,7 +81,7 @@ En el código siguiente, se envía una solicitud HTTP GET a la ruta *api/TodoIte
 
 [!code-javascript[](first-web-api/samples/3.0/TodoApi/wwwroot/js/site.js?name=snippet_GetItems)]
 
-Cuando la API web devuelve un código de estado correcto, se invoca la función `_displayItems`. Cada tarea pendiente en el parámetro de matriz aceptado por `_displayItems` se agrega a una tabla con los botones **Editar** y **Eliminar** . Si se produce un error en la solicitud de la API web, dicho error se registra en la consola del explorador.
+Cuando la API web devuelve un código de estado correcto, se invoca la función `_displayItems`. Cada tarea pendiente en el parámetro de matriz aceptado por `_displayItems` se agrega a una tabla con los botones **Editar** y **Eliminar**. Si se produce un error en la solicitud de la API web, dicho error se registra en la consola del explorador.
 
 ### <a name="add-a-to-do-item"></a>Incorporación de una tarea pendiente
 
@@ -91,7 +92,7 @@ En el código siguiente:
   * `method`&mdash;especifica el verbo de acción HTTP POST.
   * `body`&mdash;especifica la representación JSON del cuerpo de la solicitud. El JSON se genera pasando el literal de objeto almacenado en `item` a la función [JSON.stringify](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify).
   * `headers`&mdash;especifica los encabezados de solicitud HTTP `Accept` y `Content-Type`. Ambos encabezados se establecen en `application/json` para especificar el tipo de medio que se va a recibir y a enviar, respectivamente.
-* Se envía una solicitud HTTP POST a la ruta *api/TodoItems* .
+* Se envía una solicitud HTTP POST a la ruta *api/TodoItems*.
 
 [!code-javascript[](first-web-api/samples/3.0/TodoApi/wwwroot/js/site.js?name=snippet_AddItem)]
 
@@ -101,7 +102,7 @@ Cuando la API web devuelve un código de estado correcto, se invoca la función 
 
 Actualizar una tarea pendientes es similar a agregar una; sin embargo, hay dos diferencias importantes:
 
-* La ruta tiene como sufijo el identificador único del elemento que se va a actualizar. Por ejemplo, *api/TodoItems/1* .
+* La ruta tiene como sufijo el identificador único del elemento que se va a actualizar. Por ejemplo, *api/TodoItems/1*.
 * El verbo de acción HTTP es PUT, como se indica mediante la opción `method`.
 
 [!code-javascript[](first-web-api/samples/3.0/TodoApi/wwwroot/js/site.js?name=snippet_UpdateItem)]
