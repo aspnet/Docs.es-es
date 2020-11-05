@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/05/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/startup
-ms.openlocfilehash: b10ddf52ea7d22ea98c295da61c09da8c87fc7a7
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 747b13abb0ce3fed2d1dc018c6dbf82db1ae7130
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633752"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93052245"
 ---
 # <a name="app-startup-in-aspnet-core"></a>Inicio de la aplicación en ASP.NET Core
 
@@ -79,7 +80,7 @@ El método <xref:Microsoft.AspNetCore.Hosting.StartupBase.ConfigureServices*> es
 
 El host puede configurar algunos servicios antes de que se llame a los métodos `Startup`. Para obtener más información, vea [El host](xref:fundamentals/index#host).
 
-Para las características que requieren una configuración sustancial, hay métodos de extensión `Add{Service}` en <xref:Microsoft.Extensions.DependencyInjection.IServiceCollection>. Por ejemplo, **Add**DbContext, **Add**DefaultIdentity, **Add**EntityFrameworkStores y **Add**RazorPages:
+Para las características que requieren una configuración sustancial, hay métodos de extensión `Add{Service}` en <xref:Microsoft.Extensions.DependencyInjection.IServiceCollection>. Por ejemplo, **Add** DbContext, **Add** DefaultIdentity, **Add** EntityFrameworkStores y **Add**RazorPages:
 
 [!code-csharp[](startup/3.0_samples/StartupFilterSample/StartupIdentity.cs?name=snippet)]
 
@@ -211,7 +212,7 @@ El método <xref:Microsoft.AspNetCore.Hosting.StartupBase.ConfigureServices*> es
 
 El host puede configurar algunos servicios antes de que se llame a los métodos `Startup`. Para obtener más información, vea [El host](xref:fundamentals/index#host).
 
-Para las características que requieren una configuración sustancial, hay métodos de extensión `Add{Service}` en <xref:Microsoft.Extensions.DependencyInjection.IServiceCollection>. Por ejemplo, **Add**DbContext, **Add**DefaultIdentity, **Add**EntityFrameworkStores y **Add**RazorPages:
+Para las características que requieren una configuración sustancial, hay métodos de extensión `Add{Service}` en <xref:Microsoft.Extensions.DependencyInjection.IServiceCollection>. Por ejemplo, **Add** DbContext, **Add** DefaultIdentity, **Add** EntityFrameworkStores y **Add**RazorPages:
 
 [!code-csharp[](startup/sample_snapshot/Startup3.cs)]
 

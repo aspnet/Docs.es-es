@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 06/23/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/layouts
-ms.openlocfilehash: f41b41194f597505d775c95f1e65960c2f827e3b
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: e61c76b5d53ad7646961632d00b047ecd2d9e477
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88628019"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93055612"
 ---
 # <a name="aspnet-core-no-locblazor-layouts"></a>Diseños de ASP.NET Core Blazor
 
@@ -33,7 +34,7 @@ Algunos elementos de la aplicación, como los menús, los mensajes de copyright 
 
 Técnicamente, un diseño es simplemente otro componente. Un diseño se define en una plantilla de Razor o en código de C# y puede usar el [enlace de datos](xref:blazor/components/data-binding), la [inserción de dependencias](xref:blazor/fundamentals/dependency-injection) y otros escenarios de componente.
 
-Para convertir un *componente* en un *diseño*, el componente debe:
+Para convertir un *componente* en un *diseño* , el componente debe:
 
 * Heredarse de <xref:Microsoft.AspNetCore.Components.LayoutComponentBase>, que define una propiedad <xref:Microsoft.AspNetCore.Components.LayoutComponentBase.Body> para el contenido representado dentro del diseño.
 * Use la sintaxis `@Body` de Razor para especificar la ubicación en el marcado de diseño donde se representa el contenido.

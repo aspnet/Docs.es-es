@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/26/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/debug
-ms.openlocfilehash: b8dd272d673e84b45a39272531385ebfd1d06175
-ms.sourcegitcommit: daa9ccf580df531254da9dce8593441ac963c674
+ms.openlocfilehash: 669ebaf6dcd05561340aefda4a75b6fe1068d207
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91900991"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93056197"
 ---
 # <a name="debug-aspnet-core-no-locblazor-webassembly"></a>Depuración de Blazor WebAssembly en ASP.NET Core
 
@@ -41,10 +42,10 @@ Entre los escenarios disponibles se incluyen los siguientes:
 * Ejecute la aplicación con compatibilidad de depuración en IDE.
 * Examine el código en un solo paso.
 * Reanude la ejecución de código con un método abreviado de teclado en IDE.
-* En la ventana *Variables locales*, observe los valores de las variables locales.
+* En la ventana *Variables locales* , observe los valores de las variables locales.
 * Vea la pila de llamadas, incluidas las cadenas de llamadas entre JavaScript y .NET.
 
-Por ahora, *no puede*:
+Por ahora, *no puede* :
 
 * Interrumpir las operaciones ante excepciones no controladas.
 * Alcanzar puntos de interrupción durante el inicio de la aplicación antes de que se ejecute el proxy de depuración. Esto incluye los puntos de interrupción de `Program.Main` (`Program.cs`) y los de los [métodos `OnInitialized{Async}`](xref:blazor/components/lifecycle#component-initialization-methods) de los componentes que se cargan en la primera página solicitada desde la aplicación.
@@ -91,7 +92,7 @@ Para depurar una aplicación Blazor WebAssembly en Visual Studio:
 1. Presione <kbd>F5</kbd> para ejecutar la aplicación en el depurador.
 
    > [!NOTE]
-   > No admite **Iniciar sin depuración** (<kbd>Ctrl</kbd>+<kbd>F5</kbd>). Cuando la aplicación se ejecuta en la configuración de depuración, la sobrecarga de depuración siempre genera una pequeña reducción del rendimiento.
+   > No admite **Iniciar sin depuración** ( <kbd>Ctrl</kbd>+<kbd>F5</kbd>). Cuando la aplicación se ejecuta en la configuración de depuración, la sobrecarga de depuración siempre genera una pequeña reducción del rendimiento.
 
 1. En la aplicación `*Client*`, establezca un punto de interrupción en la línea `currentCount++;` en `Pages/Counter.razor`.
 1. En el explorador, vaya a la página `Counter` y seleccione el botón **Hacer clic aquí** para alcanzar el punto de interrupción.
@@ -168,13 +169,13 @@ Para obtener información sobre el uso de una ruta de acceso base de la aplicaci
    Si recibe la notificación:
 
    * Confirme que está instalada la [extensión de C# para Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) más reciente. Para inspeccionar las extensiones instaladas, abra **Ver** > **Extensiones** en la barra de menús o seleccione el icono **Extensiones** en la barra lateral **Actividad**.
-   * Confirme que está habilitada la depuración de JavaScript en versión preliminar. Abra la configuración en la barra de menús (**Archivo** > **Preferencias** > **Configuración**). Busque con las palabras clave `debug preview`. En los resultados de la búsqueda, confirme que la casilla **Depurar > JavaScript: Usar vista previa** está activada. Si la opción para habilitar la depuración de vista previa no está presente, actualice a la versión más reciente de VS Code o instale la [extensión del depurador de JavaScript](https://marketplace.visualstudio.com/items?itemName=ms-vscode.js-debug-nightly) (VS Code 1.46 o versiones anteriores).
+   * Confirme que está habilitada la depuración de JavaScript en versión preliminar. Abra la configuración en la barra de menús ( **Archivo** > **Preferencias** > **Configuración** ). Busque con las palabras clave `debug preview`. En los resultados de la búsqueda, confirme que la casilla **Depurar > JavaScript: Usar vista previa** está activada. Si la opción para habilitar la depuración de vista previa no está presente, actualice a la versión más reciente de VS Code o instale la [extensión del depurador de JavaScript](https://marketplace.visualstudio.com/items?itemName=ms-vscode.js-debug-nightly) (VS Code 1.46 o versiones anteriores).
    * Recargue la ventana.
 
 1. Para iniciar la depuración, use el método abreviado de teclado <kbd>F5</kbd> o el elemento de menú.
 
    > [!NOTE]
-   > No admite **Iniciar sin depuración** (<kbd>Ctrl</kbd>+<kbd>F5</kbd>). Cuando la aplicación se ejecuta en la configuración de depuración, la sobrecarga de depuración siempre genera una pequeña reducción del rendimiento.
+   > No admite **Iniciar sin depuración** ( <kbd>Ctrl</kbd>+<kbd>F5</kbd>). Cuando la aplicación se ejecuta en la configuración de depuración, la sobrecarga de depuración siempre genera una pequeña reducción del rendimiento.
 
 1. Cuando se le pida, seleccione la opción **Blazor WebAssembly Debug** (Depuración de Blazor WebAssembly) para iniciar la depuración.
 
@@ -280,7 +281,7 @@ Para depurar una aplicación Blazor WebAssembly en Visual Studio para Mac, haga
 1. Presione <kbd>&#8984;</kbd>+<kbd>&#8617;</kbd> para ejecutar la aplicación en el depurador.
 
    > [!NOTE]
-   > No se admite la opción **Iniciar sin depurar** (<kbd>&#8997;</kbd>+<kbd>&#8984;</kbd>+<kbd>&#8617;</kbd>). Cuando la aplicación se ejecuta en la configuración de depuración, la sobrecarga de depuración siempre genera una pequeña reducción del rendimiento.
+   > No se admite la opción **Iniciar sin depurar** ( <kbd>&#8997;</kbd>+<kbd>&#8984;</kbd>+<kbd>&#8617;</kbd>). Cuando la aplicación se ejecuta en la configuración de depuración, la sobrecarga de depuración siempre genera una pequeña reducción del rendimiento.
 
    > [!IMPORTANT]
    > El explorador seleccionado para la sesión de depuración debe ser Google Chrome o Microsoft Edge.
@@ -342,7 +343,7 @@ Los mapas de origen del explorador permiten al explorador volver a asignar los a
 
 Si se encuentra con errores, las sugerencias siguientes pueden ser útiles:
 
-* En la pestaña **Depurador**, abra las herramientas para desarrolladores en el explorador. En la consola, ejecute `localStorage.clear()` para quitar los puntos de interrupción.
+* En la pestaña **Depurador** , abra las herramientas para desarrolladores en el explorador. En la consola, ejecute `localStorage.clear()` para quitar los puntos de interrupción.
 * Confirme que instaló el certificado de desarrollo HTTPS de ASP.NET Core y que es de confianza. Para obtener más información, vea <xref:security/enforcing-ssl#troubleshoot-certificate-problems>.
 * Visual Studio requiere la opción **Habilitar depuración de JavaScript para ASP.NET (IE, Edge y Chrome)** , en **Herramientas** > **Opciones** > **Depuración** > **General**. Es el valor predeterminado para Visual Studio. Si la depuración no funciona, confirme que la opción está seleccionada.
 * Si su entorno usa un proxy HTTP, asegúrese de que `localhost` esté incluido en la configuración de omisión del proxy. Esto puede hacerse al establecer la variable de entorno `NO_PROXY` en alguna de las siguientes opciones:

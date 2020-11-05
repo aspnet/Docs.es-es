@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/11/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/hosting-models
-ms.openlocfilehash: 0830214029d59d0820ed3c5806267c766314c74f
-ms.sourcegitcommit: 8fcb08312a59c37e3542e7a67dad25faf5bb8e76
+ms.openlocfilehash: 1ec1f699d3beb5dbbc3851d9e3b6b1d3faf64cfd
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90009679"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93055677"
 ---
 # <a name="aspnet-core-no-locblazor-hosting-models"></a>Modelos de hospedaje Blazor en ASP.NET Core
 
@@ -37,9 +38,9 @@ El modelo de hospedaje principal de Blazor se está ejecutando del lado cliente 
 
 ![Blazor WebAssembly: La aplicación Blazor se ejecuta en un subproceso de interfaz de usuario dentro del explorador.](hosting-models/_static/blazor-webassembly.png)
 
-Para crear una aplicación Blazor mediante el modelo de hospedaje del lado cliente, use la plantilla **Aplicación Blazor WebAssembly** ([`dotnet new blazorwasm`](/dotnet/core/tools/dotnet-new)).
+Para crear una aplicación Blazor mediante el modelo de hospedaje del lado cliente, use la plantilla **Aplicación Blazor WebAssembly** ( [`dotnet new blazorwasm`](/dotnet/core/tools/dotnet-new)).
 
-Después de seleccionar la plantilla **Aplicación de Blazor WebAssembly** , tiene la opción de configurar la aplicación para usar un back-end de ASP.NET Core. Para ello, seleccione la casilla **Hospedado en ASP.NET Core** ([`dotnet new blazorwasm --hosted`](/dotnet/core/tools/dotnet-new)). La aplicación ASP.NET Core sirve la aplicación Blazor a los clientes. Una aplicación con un back-end de ASP.NET Core se denomina *aplicación Blazor WebAssembly hospedada*. La aplicación Blazor WebAssembly puede interactuar con el servidor a través de la red mediante llamadas API web o [SignalR](xref:signalr/introduction) (<xref:tutorials/signalr-blazor-webassembly>).
+Después de seleccionar la plantilla **Aplicación de Blazor WebAssembly** , tiene la opción de configurar la aplicación para usar un back-end de ASP.NET Core. Para ello, seleccione la casilla **Hospedado en ASP.NET Core** ( [`dotnet new blazorwasm --hosted`](/dotnet/core/tools/dotnet-new)). La aplicación ASP.NET Core sirve la aplicación Blazor a los clientes. Una aplicación con un back-end de ASP.NET Core se denomina *aplicación Blazor WebAssembly hospedada*. La aplicación Blazor WebAssembly puede interactuar con el servidor a través de la red mediante llamadas API web o [SignalR](xref:signalr/introduction) (<xref:tutorials/signalr-blazor-webassembly>).
 
 El script `blazor.webassembly.js` lo proporciona el marco y controla:
 
@@ -68,7 +69,7 @@ Con el modelo de hospedaje de Blazor Server, la aplicación se ejecuta en el ser
 
 ![El explorador interactúa con la aplicación (hospedada en una aplicación ASP.NET Core) en el servidor a través de una conexión SignalR.](hosting-models/_static/blazor-server.png)
 
-Para crear una aplicación Blazor mediante el modelo de hospedaje de Blazor Server, use la plantilla de **Aplicación Blazor Server** de ASP.NET Core ([`dotnet new blazorserver`](/dotnet/core/tools/dotnet-new)). La aplicación ASP.NET Core hospeda la aplicación Blazor Server y crea el punto de conexión de SignalR donde se conectan los clientes.
+Para crear una aplicación Blazor mediante el modelo de hospedaje de Blazor Server, use la plantilla de **Aplicación Blazor Server** de ASP.NET Core ( [`dotnet new blazorserver`](/dotnet/core/tools/dotnet-new)). La aplicación ASP.NET Core hospeda la aplicación Blazor Server y crea el punto de conexión de SignalR donde se conectan los clientes.
 
 La aplicación ASP.NET Core hace referencia a la clase `Startup` de la aplicación para agregar lo siguiente:
 
@@ -111,7 +112,7 @@ Una aplicación Blazor se compone de elementos reutilizables de la interfaz de u
 * Se convierte en texto HTML (durante la representación previa&dagger;).
 * Se usa para actualizar de forma eficaz el marcado durante la representación normal.
 
-&dagger;*Representación previa*: El componente de Razor solicitado se compila en el servidor en HTML estático y se envía al cliente, donde se representa al usuario. Una vez realizada la conexión entre el cliente y el servidor, los elementos estáticos del componente representados previamente se reemplazan por elementos interactivos. La representación previa hace que la aplicación tenga más capacidad de respuesta respecto al usuario.
+&dagger;*Representación previa* : El componente de Razor solicitado se compila en el servidor en HTML estático y se envía al cliente, donde se representa al usuario. Una vez realizada la conexión entre el cliente y el servidor, los elementos estáticos del componente representados previamente se reemplazan por elementos interactivos. La representación previa hace que la aplicación tenga más capacidad de respuesta respecto al usuario.
 
 Una actualización de la interfaz de usuario en Blazor se desencadena mediante lo siguiente:
 
@@ -130,7 +131,7 @@ Cada pantalla del explorador (pestaña del explorador o iframe) que está conect
 
 Blazor considera el cierre de una pestaña del explorador o la navegación a una dirección URL externa una terminación *correcta*. En el caso de una terminación correcta, el circuito y los recursos asociados se liberan inmediatamente. Un cliente también puede desconectarse de manera no correcta, por ejemplo, debido a una interrupción en la red. Blazor Server almacena los circuitos desconectados durante un intervalo configurable para permitir que el cliente vuelva a conectarse.
 
-Blazor Server permite que el código defina un *controlador de circuito*, que permite ejecutar el código en los cambios realizados en el estado del circuito de un usuario. Para obtener más información, vea <xref:blazor/advanced-scenarios#blazor-server-circuit-handler>.
+Blazor Server permite que el código defina un *controlador de circuito* , que permite ejecutar el código en los cambios realizados en el estado del circuito de un usuario. Para obtener más información, vea <xref:blazor/advanced-scenarios#blazor-server-circuit-handler>.
 
 ### <a name="ui-latency"></a>Latencia de la interfaz de usuario
 

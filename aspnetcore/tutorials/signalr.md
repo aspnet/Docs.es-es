@@ -6,6 +6,7 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 11/21/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/signalr
-ms.openlocfilehash: b69d60e7d0e24f6d3c8032b391c98a6cd1589305
-ms.sourcegitcommit: 9c031530d2e652fe422e786bd43392bc500d622f
+ms.openlocfilehash: 59c296f3388e71254badb02fa3ae4279005c359c
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/18/2020
-ms.locfileid: "90770186"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93056886"
 ---
 # <a name="tutorial-get-started-with-aspnet-core-no-locsignalr"></a>Tutorial: Introducción a ASP.NET Core SignalR
 
@@ -63,11 +64,11 @@ Al final, tendrá una aplicación de chat funcional:
 
 * En el menú, seleccione **Archivo > Nuevo proyecto**.
 
-* En el cuadro de diálogo **Crear un proyecto nuevo**, seleccione **Aplicación web ASP.NET Core** y, a continuación, seleccione **Siguiente**.
+* En el cuadro de diálogo **Crear un proyecto nuevo** , seleccione **Aplicación web ASP.NET Core** y, a continuación, seleccione **Siguiente**.
 
-* En el cuadro de diálogo **Configurar el nuevo proyecto**, asigne al proyecto el nombre *SignalRChat* y, a continuación, seleccione **Crear**.
+* En el cuadro de diálogo **Configurar el nuevo proyecto** , asigne al proyecto el nombre *SignalRChat* y, a continuación, seleccione **Crear**.
 
-* En el cuadro de diálogo **Crear una aplicación web ASP.NET Core**, seleccione **.NET Core** y **ASP.NET Core 3.1**. 
+* En el cuadro de diálogo **Crear una aplicación web ASP.NET Core** , seleccione **.NET Core** y **ASP.NET Core 3.1**. 
 
 * Seleccione **Aplicación web** para crear un proyecto en el que se use Razor Pages y luego seleccione **Crear**.
 
@@ -102,11 +103,11 @@ La biblioteca de servidor de SignalR se incluye en el marco compartido de ASP.NE
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio/)
 
-* En el **Explorador de soluciones**, haga clic con el botón derecho en el proyecto y seleccione **Agregar** > **Biblioteca del lado cliente**.
+* En el **Explorador de soluciones** , haga clic con el botón derecho en el proyecto y seleccione **Agregar** > **Biblioteca del lado cliente**.
 
-* En el cuadro de diálogo **Add Client-Side Library** (Agregar biblioteca del lado cliente), en **Proveedor**, seleccione **unpkg**.
+* En el cuadro de diálogo **Add Client-Side Library** (Agregar biblioteca del lado cliente), en **Proveedor** , seleccione **unpkg**.
 
-* Para **Biblioteca**, indique `@microsoft/signalr@latest`.
+* Para **Biblioteca** , indique `@microsoft/signalr@latest`.
 
 * Seleccione **Choose specific files** (Elegir archivos específicos), expanda la carpeta *dist/browser* y seleccione *signalr.js* y *signalr.min.js*.
 
@@ -145,13 +146,13 @@ La biblioteca de servidor de SignalR se incluye en el marco compartido de ASP.NE
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)
 
-* En el **terminal**, ejecute el siguiente comando para instalar LibMan.
+* En el **terminal** , ejecute el siguiente comando para instalar LibMan.
 
   ```dotnetcli
   dotnet tool install -g Microsoft.Web.LibraryManager.Cli
   ```
 
-* Vaya a la carpeta de proyecto (la que contiene el archivo *SignalRChat.csproj*).
+* Vaya a la carpeta de proyecto (la que contiene el archivo *SignalRChat.csproj* ).
 
 * Ejecute el comando siguiente para obtener la biblioteca cliente de SignalR con LibMan.
 
@@ -180,7 +181,7 @@ Un *concentrador* es una clase que actúa como una canalización general que con
 
 * En la carpeta del proyecto SignalRChat, cree una carpeta *Hubs*.
 
-* En la carpeta *Hubs*, cree un archivo *ChatHub.cs* con el código siguiente:
+* En la carpeta *Hubs* , cree un archivo *ChatHub.cs* con el código siguiente:
 
   [!code-csharp[ChatHub](signalr/sample-snapshot/3.x/ChatHub.cs)]
 
@@ -210,7 +211,7 @@ El servidor de SignalR debe estar configurado para pasar solicitudes de SignalR 
   * Crea una lista con `id="messagesList"` para mostrar los mensajes que se reciben desde el concentrador de SignalR.
   * Incluye las referencias de script a SignalR y el código de aplicación de *chat.js* que se va a crear en el paso siguiente.
 
-* En la carpeta *wwwroot/js*, cree un archivo *chat.js* con el código siguiente:
+* En la carpeta *wwwroot/js* , cree un archivo *chat.js* con el código siguiente:
 
   [!code-javascript[chat](signalr/sample-snapshot/3.x/chat.js)]
 
@@ -294,13 +295,13 @@ Al final, tendrá una aplicación de chat en funcionamiento: ![aplicación de ej
 
 * En el menú, seleccione **Archivo > Nuevo proyecto**. 
 
-* En el cuadro de diálogo **Nuevo proyecto**, seleccione **Instalado > Visual C# > Web > Aplicación web ASP.NET Core**. Asigne el nombre *SignalRChat* al proyecto.   
+* En el cuadro de diálogo **Nuevo proyecto** , seleccione **Instalado > Visual C# > Web > Aplicación web ASP.NET Core**. Asigne el nombre *SignalRChat* al proyecto.   
 
   ![Cuadro de diálogo Nuevo proyecto en Visual Studio](signalr/_static/2.x/signalr-new-project-dialog.png)    
 
 * Seleccione **Aplicación web** para crear un proyecto en el que se use Razor Pages.   
 
-* Seleccione una plataforma de destino de **.NET Core**, seleccione **ASP.NET Core 2.2** y haga clic en **Aceptar**.    
+* Seleccione una plataforma de destino de **.NET Core** , seleccione **ASP.NET Core 2.2** y haga clic en **Aceptar**.    
 
   ![Cuadro de diálogo Nuevo proyecto en Visual Studio](signalr/_static/2.x/signalr-new-project-choose-type.png)   
 
@@ -333,11 +334,11 @@ La biblioteca de servidor de SignalR se incluye en el metapaquete `Microsoft.Asp
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio/)  
 
-* En el **Explorador de soluciones**, haga clic con el botón derecho en el proyecto y seleccione **Agregar** > **Biblioteca del lado cliente**.  
+* En el **Explorador de soluciones** , haga clic con el botón derecho en el proyecto y seleccione **Agregar** > **Biblioteca del lado cliente**.  
 
-* En el cuadro de diálogo **Add Client-Side Library** (Agregar biblioteca del lado cliente), en **Proveedor**, seleccione **unpkg**. 
+* En el cuadro de diálogo **Add Client-Side Library** (Agregar biblioteca del lado cliente), en **Proveedor** , seleccione **unpkg**. 
 
-* En **Biblioteca**, escriba `@microsoft/signalr@3` y seleccione la versión más reciente que no sea una versión preliminar.  
+* En **Biblioteca** , escriba `@microsoft/signalr@3` y seleccione la versión más reciente que no sea una versión preliminar.  
 
   ![Cuadro de diálogo Add Client-Side Library (Agregar biblioteca del lado cliente): selección de la biblioteca](signalr/_static/2.x/libman1.png)   
 
@@ -378,13 +379,13 @@ La biblioteca de servidor de SignalR se incluye en el metapaquete `Microsoft.Asp
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)   
 
-* En el **terminal**, ejecute el siguiente comando para instalar LibMan. 
+* En el **terminal** , ejecute el siguiente comando para instalar LibMan. 
 
   ```dotnetcli  
   dotnet tool install -g Microsoft.Web.LibraryManager.Cli   
   ```   
 
-* Vaya a la carpeta de proyecto (la que contiene el archivo *SignalRChat.csproj*).   
+* Vaya a la carpeta de proyecto (la que contiene el archivo *SignalRChat.csproj* ).   
 
 * Ejecute el comando siguiente para obtener la biblioteca cliente de SignalR con LibMan.    
 
@@ -413,7 +414,7 @@ Un *concentrador* es una clase que actúa como una canalización general que con
 
 * En la carpeta del proyecto SignalRChat, cree una carpeta *Hubs*.  
 
-* En la carpeta *Hubs*, cree un archivo *ChatHub.cs* con el código siguiente: 
+* En la carpeta *Hubs* , cree un archivo *ChatHub.cs* con el código siguiente: 
 
   [!code-csharp[Startup](signalr/sample-snapshot/2.x/ChatHub.cs)]   
 
@@ -443,7 +444,7 @@ El servidor de SignalR debe estar configurado para pasar solicitudes de SignalR 
   * Crea una lista con `id="messagesList"` para mostrar los mensajes que se reciben desde el concentrador de SignalR.   
   * Incluye las referencias de script a SignalR y el código de aplicación de *chat.js* que se va a crear en el paso siguiente.    
 
-* En la carpeta *wwwroot/js*, cree un archivo *chat.js* con el código siguiente:  
+* En la carpeta *wwwroot/js* , cree un archivo *chat.js* con el código siguiente:  
 
   [!code-javascript[Index](signalr/sample-snapshot/2.x/chat.js)]    
 

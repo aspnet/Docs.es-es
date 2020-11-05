@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 01/09/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: client-side/using-browserlink
-ms.openlocfilehash: ab4ca78fa50768ff66536608a7cf03e73aecf73a
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 80f05acab55af973faf08b5db79ea4cbaf896b14
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88628825"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93054494"
 ---
 # <a name="browser-link-in-aspnet-core"></a>Vínculo con exploradores en ASP.NET Core
 
@@ -34,7 +35,7 @@ Vínculo con exploradores es una característica de Visual Studio. Crea un cana
 
 ::: moniker range=">= aspnetcore-3.0"
 
-Agregue el paquete [Microsoft.VisualStudio.Web.BrowserLink](https://www.nuget.org/packages/Microsoft.VisualStudio.Web.BrowserLink/) a su proyecto. En los proyectos de Razor Pages o MVC de ASP.NET Core, habilite también la compilación en tiempo de ejecución de los archivos de Razor ( *.cshtml*), como se explica en <xref:mvc/views/view-compilation>. Los cambios en la sintaxis de Razor solo se aplican cuando está habilitada la compilación en tiempo de ejecución.
+Agregue el paquete [Microsoft.VisualStudio.Web.BrowserLink](https://www.nuget.org/packages/Microsoft.VisualStudio.Web.BrowserLink/) a su proyecto. En los proyectos de Razor Pages o MVC de ASP.NET Core, habilite también la compilación en tiempo de ejecución de los archivos de Razor ( *.cshtml* ), como se explica en <xref:mvc/views/view-compilation>. Los cambios en la sintaxis de Razor solo se aplican cuando está habilitada la compilación en tiempo de ejecución.
 
 ::: moniker-end
 
@@ -46,7 +47,7 @@ Al convertir un proyecto de ASP.NET Core 2.0 en ASP.NET Core 2.1 y pasar al [m
 
 ::: moniker range="= aspnetcore-2.0"
 
-Las plantillas de proyecto **vacío**, **de aplicación web** y **API web** de ASP.NET Core 2.0 usan el [metapaquete Microsoft.AspNetCore.All](xref:fundamentals/metapackage), que contiene una referencia de paquete a [Microsoft.VisualStudio.Web.BrowserLink](https://www.nuget.org/packages/Microsoft.VisualStudio.Web.BrowserLink/). Por lo tanto, el uso del metapaquete `Microsoft.AspNetCore.All` no requiere ninguna acción adicional para que Vínculo con exploradores esté disponible para su uso.
+Las plantillas de proyecto **vacío** , **de aplicación web** y **API web** de ASP.NET Core 2.0 usan el [metapaquete Microsoft.AspNetCore.All](xref:fundamentals/metapackage), que contiene una referencia de paquete a [Microsoft.VisualStudio.Web.BrowserLink](https://www.nuget.org/packages/Microsoft.VisualStudio.Web.BrowserLink/). Por lo tanto, el uso del metapaquete `Microsoft.AspNetCore.All` no requiere ninguna acción adicional para que Vínculo con exploradores esté disponible para su uso.
 
 ::: moniker-end
 
@@ -78,7 +79,7 @@ Para obtener más información, vea <xref:fundamentals/environments>.
 
 ## <a name="how-to-use-browser-link"></a>Uso de Vínculo con exploradores
 
-Si tiene un proyecto de ASP.NET Core abierto, Visual Studio muestra el control de la barra de herramientas de Vínculo con exploradores junto al de **destino de depuración**:
+Si tiene un proyecto de ASP.NET Core abierto, Visual Studio muestra el control de la barra de herramientas de Vínculo con exploradores junto al de **destino de depuración** :
 
 ![Menú desplegable de Vínculo con exploradores](using-browserlink/_static/browserLink-dropdown-menu.png)
 
@@ -91,11 +92,11 @@ Desde el control de la barra de herramientas de Vínculo con exploradores, puede
 
 ## <a name="refresh-the-web-app-in-several-browsers-at-once"></a>Actualización de la aplicación web en varios exploradores a la vez
 
-Para elegir un único explorador web que se inicie al abrir el proyecto, use el menú desplegable del control de la barra de herramientas de **destino de depuración**:
+Para elegir un único explorador web que se inicie al abrir el proyecto, use el menú desplegable del control de la barra de herramientas de **destino de depuración** :
 
 ![Menú desplegable F5](using-browserlink/_static/debug-target-dropdown-menu.png)
 
-Para abrir varios exploradores a la vez, elija **Examinar con…** en el mismo menú desplegable. Mantenga presionada la tecla <kbd>Ctrl</kbd> para seleccionar los exploradores que quiera y, a continuación, haga clic en **Examinar**:
+Para abrir varios exploradores a la vez, elija **Examinar con…** en el mismo menú desplegable. Mantenga presionada la tecla <kbd>Ctrl</kbd> para seleccionar los exploradores que quiera y, a continuación, haga clic en **Examinar** :
 
 ![Apertura de muchos exploradores a la vez](using-browserlink/_static/open-many-browsers-at-once.png)
 
@@ -119,7 +120,7 @@ Abra la ventana **Panel de Vínculo con exploradores** desde el menú desplegabl
 
 ![open-browserslink-dashboard](using-browserlink/_static/open-browserlink-dashboard.png)
 
-Si no hay ningún explorador conectado, puede iniciar una sesión que no sea de depuración seleccionando el vínculo **Ver en el explorador**:
+Si no hay ningún explorador conectado, puede iniciar una sesión que no sea de depuración seleccionando el vínculo **Ver en el explorador** :
 
 ![browserlink-dashboard-no-connections](using-browserlink/_static/browserlink-dashboard-no-connections.png)
 

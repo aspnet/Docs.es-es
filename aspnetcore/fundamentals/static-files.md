@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 6/23/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -15,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/static-files
-ms.openlocfilehash: 36eeb3532ed5ea6f5f75c20cbe14331ed840a788
-ms.sourcegitcommit: 74f4a4ddbe3c2f11e2e09d05d2a979784d89d3f5
+ms.openlocfilehash: 2e25af03a8a6aaff5b343885711c6ebb68340fac
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91393943"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93057861"
 ---
 # <a name="static-files-in-aspnet-core"></a>Archivos estáticos en ASP.NET Core
 
@@ -57,7 +58,7 @@ Las plantillas de aplicación web predeterminadas llaman al método <xref:Owin.S
 
 [!code-csharp[](~/fundamentals/static-files/samples/3.x/StaticFilesSample/Startup.cs?name=snippet_Configure&highlight=15)]
 
-La sobrecarga del método `UseStaticFiles` sin parámetros marca los archivos en la [raíz web](xref:fundamentals/index#web-root) como que se pueden proporcionar. El siguiente marcado hace referencia a *wwwroot/images/MyImage.jpg*:
+La sobrecarga del método `UseStaticFiles` sin parámetros marca los archivos en la [raíz web](xref:fundamentals/index#web-root) como que se pueden proporcionar. El siguiente marcado hace referencia a *wwwroot/images/MyImage.jpg* :
 
 ```html
 <img src="~/images/MyImage.jpg" class="img" alt="My image" />
@@ -83,7 +84,7 @@ Una solicitud puede acceder al archivo `red-rose.jpg` configurando el middleware
 
 En el código anterior, la jerarquía del directorio *MyStaticFiles* se expone públicamente a través del segmento de URI *StaticFiles*. Una solicitud a `https://<hostname>/StaticFiles/images/red-rose.jpg` sirve al archivo *red-rose.jpg*.
 
-El siguiente marcado hace referencia a *MyStaticFiles/images/red-rose.jpg*:
+El siguiente marcado hace referencia a *MyStaticFiles/images/red-rose.jpg* :
 
 ```html
 <img src="~/StaticFiles/images/red-rose.jpg" class="img" alt="A red rose" />
@@ -157,7 +158,7 @@ Con `UseDefaultFiles`, las solicitudes a una carpeta en `wwwroot` buscan:
 
 El primer archivo que se encuentra en la lista se proporciona como si la solicitud fuera el URI completo. La dirección URL del explorador sigue reflejando el URI solicitado.
 
-El código siguiente cambia el nombre de archivo predeterminado a *mydefault.html*:
+El código siguiente cambia el nombre de archivo predeterminado a *mydefault.html* :
 
 [!code-csharp[](~/fundamentals/static-files/samples/3.x/StaticFilesSample/StartupDefault.cs?name=snippet_DefaultFiles)]
 
@@ -207,7 +208,7 @@ Al usar la jerarquía de archivos y el código anterior, las direcciones URL se 
 | `https://<hostname>/StaticFiles/images/MyImage.jpg` | *MyStaticFiles/images/MyImage.jpg* |
 | `https://<hostname>/StaticFiles` | *MyStaticFiles/default.html* |
 
-Si no existe ningún archivo con el nombre predeterminado en el directorio *MyStaticFiles*, `https://<hostname>/StaticFiles` devuelve la lista de directorios con vínculos activos:
+Si no existe ningún archivo con el nombre predeterminado en el directorio *MyStaticFiles* , `https://<hostname>/StaticFiles` devuelve la lista de directorios con vínculos activos:
 
 ![Lista de archivos estáticos](static-files/_static/db2.png)
 
@@ -215,7 +216,7 @@ Si no existe ningún archivo con el nombre predeterminado en el directorio *MySt
 
 ## <a name="fileextensioncontenttypeprovider"></a>FileExtensionContentTypeProvider
 
-La clase <xref:Microsoft.AspNetCore.StaticFiles.FileExtensionContentTypeProvider> contiene una propiedad `Mappings` que actúa como una asignación de extensiones de archivo para tipos de contenido MIME. En el ejemplo siguiente, se asignan varias extensiones de archivo a los tipos MIME conocidos. Se reemplaza la extensión *.rtf* y se quita *.mp4*:
+La clase <xref:Microsoft.AspNetCore.StaticFiles.FileExtensionContentTypeProvider> contiene una propiedad `Mappings` que actúa como una asignación de extensiones de archivo para tipos de contenido MIME. En el ejemplo siguiente, se asignan varias extensiones de archivo a los tipos MIME conocidos. Se reemplaza la extensión *.rtf* y se quita *.mp4* :
 
 [!code-csharp[](~/fundamentals/static-files/samples/3.x/StaticFilesSample/StartupFileExtensionContentTypeProvider.cs?name=snippet_Provider)]
 
@@ -265,7 +266,7 @@ Con el código anterior, una solicitud para un archivo con un tipo de contenido 
 > [!WARNING]
 > Si el controlador de archivos estáticos de IIS está habilitado **y** el módulo de ASP.NET Core no está configurado correctamente, se proporcionan archivos estáticos. Esto sucede, por ejemplo, si el archivo *web.config* no está implementado.
 
-* Coloque los archivos de código (incluidos *.cs* y *.cshtml*) fuera de la [raíz web](xref:fundamentals/index#web-root) del proyecto de la aplicación. Por lo tanto, se crea una separación lógica entre el contenido del lado cliente de la aplicación y el código basado en servidor. Esto impide que se filtre el código del lado servidor.
+* Coloque los archivos de código (incluidos *.cs* y *.cshtml* ) fuera de la [raíz web](xref:fundamentals/index#web-root) del proyecto de la aplicación. Por lo tanto, se crea una separación lógica entre el contenido del lado cliente de la aplicación y el código basado en servidor. Esto impide que se filtre el código del lado servidor.
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
@@ -284,7 +285,7 @@ Los archivos estáticos, como HTML, CSS, imágenes y JavaScript, son activos que
 
 ## <a name="serve-static-files"></a>Proporcionar archivos estáticos
 
-Los archivos estáticos se almacenan en el directorio [raíz web](xref:fundamentals/index#web-root) del proyecto. El directorio predeterminado es *{raíz del contenido}/wwwroot*, pero se puede cambiar con el método <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseWebRoot%2A>. Vea [Raíz del contenido](xref:fundamentals/index#content-root) y [Raíz web](xref:fundamentals/index#web-root) para obtener más información.
+Los archivos estáticos se almacenan en el directorio [raíz web](xref:fundamentals/index#web-root) del proyecto. El directorio predeterminado es *{raíz del contenido}/wwwroot* , pero se puede cambiar con el método <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseWebRoot%2A>. Vea [Raíz del contenido](xref:fundamentals/index#content-root) y [Raíz web](xref:fundamentals/index#web-root) para obtener más información.
 
 El host de web de la aplicación debe tener conocimiento del directorio raíz del contenido.
 
@@ -311,7 +312,7 @@ Invoque al método <xref:Microsoft.AspNetCore.Builder.StaticFileExtensions.UseSt
 
 [!code-csharp[](static-files/samples/1.x/StaticFilesSample/StartupStaticFiles.cs?name=snippet_ConfigureMethod&highlight=3)]
 
-La sobrecarga del método `UseStaticFiles` sin parámetros marca los archivos en la [raíz web](xref:fundamentals/index#web-root) como que se pueden proporcionar. El siguiente marcado hace referencia a *wwwroot/images/banner1.svg*:
+La sobrecarga del método `UseStaticFiles` sin parámetros marca los archivos en la [raíz web](xref:fundamentals/index#web-root) como que se pueden proporcionar. El siguiente marcado hace referencia a *wwwroot/images/banner1.svg* :
 
 [!code-cshtml[](static-files/samples/1.x/StaticFilesSample/Views/Home/Index.cshtml?name=snippet_static_file_wwwroot)]
 
@@ -335,7 +336,7 @@ Una solicitud puede acceder al archivo *banner1.svg* configurando el middleware 
 
 En el código anterior, la jerarquía del directorio *MyStaticFiles* se expone públicamente a través del segmento de URI *StaticFiles*. Una solicitud a *http://\<server_address>/StaticFiles/images/banner1.svg* proporciona el archivo *banner1.svg*.
 
-El siguiente marcado hace referencia a *MyStaticFiles/images/banner1.svg*:
+El siguiente marcado hace referencia a *MyStaticFiles/images/banner1.svg* :
 
 [!code-cshtml[](static-files/samples/1.x/StaticFilesSample/Views/Home/Index.cshtml?name=snippet_static_file_outside)]
 
@@ -354,7 +355,7 @@ Los archivos se han hecho públicamente almacenables en caché durante 10 minuto
 
 ## <a name="static-file-authorization"></a>Autorización de archivos estáticos
 
-El middleware de archivos estáticos no proporciona comprobaciones de autorización. Los archivos que proporciona, incluidos los de *wwwroot*, están accesibles de forma pública. Para proporcionar archivos según su autorización:
+El middleware de archivos estáticos no proporciona comprobaciones de autorización. Los archivos que proporciona, incluidos los de *wwwroot* , están accesibles de forma pública. Para proporcionar archivos según su autorización:
 
 * Almacénelos fuera de *wwwroot* y cualquier directorio al que el middleware de archivos estáticos tenga acceso.
 * Proporciónelos a través de un método de acción al que se aplica la autorización. Devuelva un objeto <xref:Microsoft.AspNetCore.Mvc.FileResult>:
@@ -371,13 +372,13 @@ Agregar servicios requeridos invocando el método <xref:Microsoft.Extensions.Dep
 
 [!code-csharp[](static-files/samples/1.x/StaticFilesSample/StartupBrowse.cs?name=snippet_ConfigureServicesMethod&highlight=3)]
 
-El código anterior permite el examen de directorios de la carpeta *wwwroot/images* usando la dirección URL *http://\<server_address>/MyImages*, con vínculos a cada archivo y carpeta:
+El código anterior permite el examen de directorios de la carpeta *wwwroot/images* usando la dirección URL *http://\<server_address>/MyImages* , con vínculos a cada archivo y carpeta:
 
 ![examen de directorios](static-files/_static/dir-browse.png)
 
 Vea [consideraciones](#considerations) sobre los riesgos de seguridad al habilitar el examen.
 
-Tenga en cuenta las dos llamadas a `UseStaticFiles` en el ejemplo siguiente. La primera llamada permite proporcionar archivos estáticos en la carpeta *wwwroot*. La segunda llamada habilita el examen de directorios de la carpeta *wwwroot/images* usando la dirección URL *http://\<server_address>/MyImages*:
+Tenga en cuenta las dos llamadas a `UseStaticFiles` en el ejemplo siguiente. La primera llamada permite proporcionar archivos estáticos en la carpeta *wwwroot*. La segunda llamada habilita el examen de directorios de la carpeta *wwwroot/images* usando la dirección URL *http://\<server_address>/MyImages* :
 
 [!code-csharp[](static-files/samples/1.x/StaticFilesSample/StartupBrowse.cs?name=snippet_ConfigureMethod&highlight=3,5)]
 
@@ -399,7 +400,7 @@ Con `UseDefaultFiles`, las solicitudes a una carpeta buscan:
 
 El primer archivo que se encuentra en la lista se proporciona como si la solicitud fuera el URI completo. La dirección URL del explorador sigue reflejando el URI solicitado.
 
-El código siguiente cambia el nombre de archivo predeterminado a *mydefault.html*:
+El código siguiente cambia el nombre de archivo predeterminado a *mydefault.html* :
 
 [!code-csharp[](static-files/samples/1.x/StaticFilesSample/StartupDefault.cs?name=snippet_ConfigureMethod)]
 
@@ -445,7 +446,7 @@ Al usar la jerarquía de archivos y el código anterior, las direcciones URL se 
 | *http://\<server_address>/StaticFiles/images/banner1.svg*    |      MyStaticFiles/images/banner1.svg |
 | *http://\<server_address>/StaticFiles*             |     MyStaticFiles/default.html |
 
-Si no existe ningún archivo con el nombre predeterminado en el directorio *MyStaticFiles*, *http://\<server_address>/StaticFiles* devuelve la lista de directorios con vínculos activos:
+Si no existe ningún archivo con el nombre predeterminado en el directorio *MyStaticFiles* , *http://\<server_address>/StaticFiles* devuelve la lista de directorios con vínculos activos:
 
 ![Lista de archivos estáticos](static-files/_static/db2.png)
 
@@ -496,7 +497,7 @@ Con el código anterior, una solicitud para un archivo con un tipo de contenido 
 > [!WARNING]
 > Si el controlador de archivos estáticos de IIS está habilitado **y** el módulo de ASP.NET Core no está configurado correctamente, se proporcionan archivos estáticos. Esto sucede, por ejemplo, si el archivo *web.config* no está implementado.
 
-* Coloque los archivos de código (incluidos *.cs* y *.cshtml*) fuera de la [raíz web](xref:fundamentals/index#web-root) del proyecto de la aplicación. Por lo tanto, se crea una separación lógica entre el contenido del lado cliente de la aplicación y el código basado en servidor. Esto impide que se filtre el código del lado servidor.
+* Coloque los archivos de código (incluidos *.cs* y *.cshtml* ) fuera de la [raíz web](xref:fundamentals/index#web-root) del proyecto de la aplicación. Por lo tanto, se crea una separación lógica entre el contenido del lado cliente de la aplicación y el código basado en servidor. Esto impide que se filtre el código del lado servidor.
 
 ## <a name="additional-resources"></a>Recursos adicionales
 

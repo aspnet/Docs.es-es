@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 7/23/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/new-field
-ms.openlocfilehash: f5efb121b95d84876c9029cf06a96f827137e660
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 951a8ada57ae523f362313426c0279556eb8339b
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88631457"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93050620"
 ---
 # <a name="part-7-add-a-new-field-to-a-no-locrazor-page-in-aspnet-core"></a>Parte 7. Adición de un campo nuevo a una instancia de Razor Pages en ASP.NET Core
 
@@ -94,7 +95,7 @@ Compile la solución.
 
 ### <a name="add-a-migration-for-the-rating-field"></a>Agregar una migración para el campo de clasificación
 
-En el menú **Herramientas**, seleccione **Administrador de paquetes NuGet > Consola del Administrador de paquetes**.
+En el menú **Herramientas** , seleccione **Administrador de paquetes NuGet > Consola del Administrador de paquetes**.
 En PCM, escriba los siguientes comandos:
 
 ```powershell
@@ -219,7 +220,7 @@ Compile la solución.
 
 ### <a name="add-a-migration-for-the-rating-field"></a>Agregar una migración para el campo de clasificación
 
-En el menú **Herramientas**, seleccione **Administrador de paquetes NuGet > Consola del Administrador de paquetes**.
+En el menú **Herramientas** , seleccione **Administrador de paquetes NuGet > Consola del Administrador de paquetes**.
 En PCM, escriba los siguientes comandos:
 
 ```powershell
@@ -258,7 +259,7 @@ Otra opción es eliminar la base de datos y usar las migraciones para volver a c
 
 [!INCLUDE[](~/includes/RP-mvc-shared/sqlite-warn.md)]
 
-Elimine la base de datos y use las migraciones para volver a crear la base de datos. Para eliminar la base de datos, elimine el archivo de base de datos (*MvcMovie.db*). Luego, ejecute el comando `ef database update`:
+Elimine la base de datos y use las migraciones para volver a crear la base de datos. Para eliminar la base de datos, elimine el archivo de base de datos ( *MvcMovie.db* ). Luego, ejecute el comando `ef database update`:
 
 ```dotnetcli
 dotnet ef database update

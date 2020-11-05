@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/13/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/iis/transform-webconfig
-ms.openlocfilehash: a2f26f32d2a282189b391aa9bb8c4637723dc60a
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 259b5bf9bf2a6de987494b5771897355e3ea67db
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634636"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93057319"
 ---
 # <a name="transform-webconfig"></a>Transformación de web.config
 
@@ -47,7 +48,7 @@ Las transformaciones de la configuración de compilación se ejecutan en primer 
 
 Incluya un archivo *web.{CONFIGURATION}.config* para cada [configuración de compilación (Debug|Release)](/dotnet/core/tools/dotnet-publish#options) que requiera una transformación de *web.config*.
 
-En el siguiente ejemplo, una variable de entorno específica de la configuración se establece en *web.Release.config*:
+En el siguiente ejemplo, una variable de entorno específica de la configuración se establece en *web.Release.config* :
 
 ```xml
 <?xml version="1.0"?>
@@ -67,7 +68,7 @@ En el siguiente ejemplo, una variable de entorno específica de la configuració
 </configuration>
 ```
 
-La transformación se aplica cuando la configuración se establece en *Release*:
+La transformación se aplica cuando la configuración se establece en *Release* :
 
 ```dotnetcli
 dotnet publish --configuration Release
@@ -101,7 +102,7 @@ En el siguiente ejemplo, una variable de entorno específica del perfil se estab
 </configuration>
 ```
 
-La transformación se aplica cuando el perfil es *FolderProfile*:
+La transformación se aplica cuando el perfil es *FolderProfile* :
 
 ```dotnetcli
 dotnet publish --configuration Release /p:PublishProfile=FolderProfile
@@ -137,7 +138,7 @@ En el siguiente ejemplo, una variable de entorno específica del entorno se esta
 </configuration>
 ```
 
-La transformación se aplica cuando el entorno es *Production*:
+La transformación se aplica cuando el entorno es *Production* :
 
 ```dotnetcli
 dotnet publish --configuration Release /p:EnvironmentName=Production
@@ -155,7 +156,7 @@ Las transformaciones personalizadas se ejecutan en último lugar, una vez transf
 
 Incluya un archivo *{CUSTOM_NAME}.transform* para cada configuración personalizada que requiera una transformación de *web.config*.
 
-En el siguiente ejemplo, una variable de entorno de transformación personalizada se establece en *custom.transform*:
+En el siguiente ejemplo, una variable de entorno de transformación personalizada se establece en *custom.transform* :
 
 ```xml
 <?xml version="1.0"?>
@@ -185,7 +186,7 @@ La propiedad MSBuild del nombre de perfil es `$(CustomTransformFileName)`.
 
 ## <a name="prevent-webconfig-transformation"></a>Evitar la transformación de web.config
 
-Para evitar las transformaciones del archivo *web.config*, establezca la propiedad MSBuild `$(IsWebConfigTransformDisabled)`:
+Para evitar las transformaciones del archivo *web.config* , establezca la propiedad MSBuild `$(IsWebConfigTransformDisabled)`:
 
 ```dotnetcli
 dotnet publish /p:IsWebConfigTransformDisabled=true

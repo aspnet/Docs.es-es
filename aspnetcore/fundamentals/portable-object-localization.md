@@ -5,6 +5,7 @@ description: En este artículo se presentan los archivos de objeto portátil y s
 ms.author: scaddie
 ms.date: 09/26/2017
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/portable-object-localization
-ms.openlocfilehash: f471c5b7511434cf42717e52ef271663c2e36647
-ms.sourcegitcommit: 6ecdc481d5b9a10d2c6e091217f017b36bdba957
+ms.openlocfilehash: 2e28ebaf1962ebd834c43f1cfbc28929b1937c40
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90456054"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93053727"
 ---
 # <a name="configure-portable-object-localization-in-aspnet-core"></a>Configurar la localización de objetos portátiles en ASP.NET Core
 
@@ -88,11 +89,11 @@ El archivo *.csproj* ahora contiene una línea similar a la siguiente (el númer
 
 ### <a name="registering-the-service"></a>Registrar el servicio
 
-Agregue los servicios necesarios al método `ConfigureServices` de *Startup.cs*:
+Agregue los servicios necesarios al método `ConfigureServices` de *Startup.cs* :
 
 [!code-csharp[](localization/sample/3.x/POLocalization/Startup.cs?name=snippet_ConfigureServices&highlight=4-21)]
 
-Agregue el software intermedio necesario al método `Configure` de *Startup.cs*:
+Agregue el software intermedio necesario al método `Configure` de *Startup.cs* :
 
 [!code-csharp[](localization/sample/3.x/POLocalization/Startup.cs?name=snippet_Configure&highlight=15)]
 
@@ -214,7 +215,7 @@ msgstr "Bonjour le monde!"
 
 Después de establecer `msgctxt`, el texto se traduce cuando se va a `/Home/About?culture=fr-FR`. La traducción no se llevará a cabo al ir a `/Home/Contact?culture=fr-FR`.
 
-Cuando ninguna entrada específica coincide con un contexto de archivo determinado, el mecanismo de reserva de Orchard Core busca un archivo de objeto portátil adecuado sin contexto. Suponiendo que no haya ningún contexto de archivo específico definido para *Views/Home/Contact.cshtml*, al ir a `/Home/Contact?culture=fr-FR` se carga un archivo de objeto portátil como:
+Cuando ninguna entrada específica coincide con un contexto de archivo determinado, el mecanismo de reserva de Orchard Core busca un archivo de objeto portátil adecuado sin contexto. Suponiendo que no haya ningún contexto de archivo específico definido para *Views/Home/Contact.cshtml* , al ir a `/Home/Contact?culture=fr-FR` se carga un archivo de objeto portátil como:
 
 [!code-text[](localization/sample/3.x/POLocalization/fr.po)]
 
@@ -303,11 +304,11 @@ El archivo *.csproj* ahora contiene una línea similar a la siguiente (el númer
 
 ### <a name="registering-the-service"></a>Registrar el servicio
 
-Agregue los servicios necesarios al método `ConfigureServices` de *Startup.cs*:
+Agregue los servicios necesarios al método `ConfigureServices` de *Startup.cs* :
 
 [!code-csharp[](localization/sample/2.x/POLocalization/Startup.cs?name=snippet_ConfigureServices&highlight=4-21)]
 
-Agregue el software intermedio necesario al método `Configure` de *Startup.cs*:
+Agregue el software intermedio necesario al método `Configure` de *Startup.cs* :
 
 [!code-csharp[](localization/sample/2.x/POLocalization/Startup.cs?name=snippet_Configure&highlight=15)]
 
@@ -429,7 +430,7 @@ msgstr "Bonjour le monde!"
 
 Después de establecer `msgctxt`, el texto se traduce cuando se va a `/Home/About?culture=fr-FR`. La traducción no se llevará a cabo al ir a `/Home/Contact?culture=fr-FR`.
 
-Cuando ninguna entrada específica coincide con un contexto de archivo determinado, el mecanismo de reserva de Orchard Core busca un archivo de objeto portátil adecuado sin contexto. Suponiendo que no haya ningún contexto de archivo específico definido para *Views/Home/Contact.cshtml*, al ir a `/Home/Contact?culture=fr-FR` se carga un archivo de objeto portátil como:
+Cuando ninguna entrada específica coincide con un contexto de archivo determinado, el mecanismo de reserva de Orchard Core busca un archivo de objeto portátil adecuado sin contexto. Suponiendo que no haya ningún contexto de archivo específico definido para *Views/Home/Contact.cshtml* , al ir a `/Home/Contact?culture=fr-FR` se carga un archivo de objeto portátil como:
 
 [!code-text[](localization/sample/2.x/POLocalization/fr.po)]
 

@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 06/10/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/progressive-web-app
-ms.openlocfilehash: 4f184a1264614b16ce98ba5474aacd60f175bd8a
-ms.sourcegitcommit: f09407d128634d200c893bfb1c163e87fa47a161
+ms.openlocfilehash: c8ff2fc0f2f4d4e75f535f379ec94ea9de2e3ecb
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88865212"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93055703"
 ---
 # <a name="build-progressive-web-applications-with-aspnet-core-no-locblazor-webassembly"></a>Creación de aplicaciones web progresivas con ASP.NET Core Blazor WebAssembly
 
@@ -46,7 +47,7 @@ La palabra *progresiva* se usa para describir estas aplicaciones porque:
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-Al crear una **aplicación Blazor WebAssembly** en el cuadro de diálogo **Crear un nuevo proyecto**, active la casilla **Aplicación web progresiva**:
+Al crear una **aplicación Blazor WebAssembly** en el cuadro de diálogo **Crear un nuevo proyecto** , active la casilla **Aplicación web progresiva** :
 
 ![La casilla "Aplicación web progresiva" está activada en el cuadro de diálogo Nuevo proyecto de Visual Studio.](progressive-web-app/_static/image1.png)
 
@@ -70,7 +71,7 @@ Opcionalmente, PWA se puede configurar para una aplicación creada a partir de l
 
 ## <a name="installation-and-app-manifest"></a>Instalación y manifiesto de la aplicación
 
-Al visitar una aplicación creada con la plantilla PWA, los usuarios tienen la opción de instalar la aplicación en el menú de inicio o la pantalla principal de su sistema operativo, o bien mediante el acoplamiento. La forma en la que se presenta esta opción depende del explorador del usuario. Al usar exploradores basados en Chromium de escritorio, como Edge o Chrome, aparece un botón **Agregar** en la barra de direcciones URL. Después de que el usuario seleccione el botón **Agregar**, recibirá un cuadro de diálogo de confirmación:
+Al visitar una aplicación creada con la plantilla PWA, los usuarios tienen la opción de instalar la aplicación en el menú de inicio o la pantalla principal de su sistema operativo, o bien mediante el acoplamiento. La forma en la que se presenta esta opción depende del explorador del usuario. Al usar exploradores basados en Chromium de escritorio, como Edge o Chrome, aparece un botón **Agregar** en la barra de direcciones URL. Después de que el usuario seleccione el botón **Agregar** , recibirá un cuadro de diálogo de confirmación:
 
 ![El cuadro de diálogo de confirmación en Google Chrome presenta al usuario un botón Instalar para la aplicación "MyBlazorPwa".](progressive-web-app/_static/image2.png)
 
@@ -96,7 +97,7 @@ Para ver cómo funciona la compatibilidad sin conexión:
 
 1. Publique la aplicación. Para obtener más información, vea <xref:blazor/host-and-deploy/index#publish-the-app>.
 1. Implemente la aplicación en un servidor que admita HTTPS y acceda a la aplicación en un explorador mediante su dirección HTTPS segura.
-1. Abra las herramientas de desarrollo del explorador y, en la pestaña **Aplicación**, compruebe que se ha registrado un *trabajo de servicio* para el host:
+1. Abra las herramientas de desarrollo del explorador y, en la pestaña **Aplicación** , compruebe que se ha registrado un *trabajo de servicio* para el host:
 
    ![En la pestaña "Aplicación" de las herramientas para desarrolladores de Google Chrome se muestra un trabajo de servicio activado y en ejecución.](progressive-web-app/_static/image4.png)
 
@@ -107,7 +108,7 @@ Para ver cómo funciona la compatibilidad sin conexión:
 1. Para comprobar que el explorador no depende del acceso a la red para cargar la aplicación, puede:
 
    * Apagar el servidor web y ver cómo la aplicación continúa funcionando con normalidad, lo que incluye las recargas de páginas. Del mismo modo, la aplicación sigue funcionando con normalidad cuando hay una conexión de red lenta.
-   * Indicar al explorador que simule el modo sin conexión en la pestaña **Red**:
+   * Indicar al explorador que simule el modo sin conexión en la pestaña **Red** :
 
    ![Pestaña "Red" de las herramientas para desarrolladores de Google Chrome con el cambio de "En línea" a "Sin conexión" en la lista desplegable del modo de explorador.](progressive-web-app/_static/image6.png)
 
@@ -154,13 +155,13 @@ Para personalizar este proceso, modifique la lógica del trabajo de servicio. Ni
 
 ### <a name="how-requests-are-resolved"></a>Procedimientos para resolver las solicitudes
 
-Como se ha descrito en la sección [Estrategia de captura desde la caché](#cache-first-fetch-strategy), el trabajo de servicio predeterminado usa una estrategia *desde la caché*, lo que significa que intenta servir contenido almacenado en caché cuando esté disponible. Si no hay contenido en caché para una dirección URL determinada (por ejemplo, cuando se solicitan datos de una API de back-end), el trabajo de servicio recurre a una solicitud de red normal. La solicitud de red se realiza correctamente si se puede acceder al servidor. Esta lógica se implementa dentro de la función `onFetch` en `service-worker.published.js`.
+Como se ha descrito en la sección [Estrategia de captura desde la caché](#cache-first-fetch-strategy), el trabajo de servicio predeterminado usa una estrategia *desde la caché* , lo que significa que intenta servir contenido almacenado en caché cuando esté disponible. Si no hay contenido en caché para una dirección URL determinada (por ejemplo, cuando se solicitan datos de una API de back-end), el trabajo de servicio recurre a una solicitud de red normal. La solicitud de red se realiza correctamente si se puede acceder al servidor. Esta lógica se implementa dentro de la función `onFetch` en `service-worker.published.js`.
 
 Si los componentes de Razor de la aplicación dependen de la solicitud de datos a las API de back-end y quiere proporcionar una experiencia de usuario sencilla para las solicitudes erróneas por falta de disponibilidad de la red, implemente lógica en los componentes de la aplicación. Por ejemplo, use solicitudes `try/catch` en torno a <xref:System.Net.Http.HttpClient>.
 
 ### <a name="support-server-rendered-pages"></a>Compatibilidad de las páginas representadas por el servidor
 
-Tenga en cuenta lo que sucede cuando el usuario navega por primera vez a una dirección URL como `/counter` o cualquier otro vínculo profundo de la aplicación. En estos casos, no le interesa devolver el contenido en caché como `/counter`, sino que necesita que el explorador cargue el contenido en caché como `/index.html` para iniciar la aplicación Blazor WebAssembly. Estas solicitudes iniciales se conocen como solicitudes de *navegación*, en lugar de:
+Tenga en cuenta lo que sucede cuando el usuario navega por primera vez a una dirección URL como `/counter` o cualquier otro vínculo profundo de la aplicación. En estos casos, no le interesa devolver el contenido en caché como `/counter`, sino que necesita que el explorador cargue el contenido en caché como `/index.html` para iniciar la aplicación Blazor WebAssembly. Estas solicitudes iniciales se conocen como solicitudes de *navegación* , en lugar de:
 
 * Solicitudes de `subresource` para imágenes, hojas de estilo u otros archivos.
 * Solicitudes de `fetch/XHR` para datos de API.
@@ -257,7 +258,7 @@ Al probar los cambios, puede que le resulte conveniente hacer clic en el víncul
 
 Normalmente, los desarrolladores web esperan que los usuarios solo ejecuten la última versión implementada de su aplicación web, ya que es lo habitual en el modelo de distribución web tradicional. Pero una PWA sin conexión es más similar a una aplicación móvil nativa, cuya versión ejecutada por los usuarios no siempre es la más reciente.
 
-Como se ha explicado en la sección [Actualizaciones en segundo plano](#background-updates), después de implementar una actualización en la aplicación, **cada usuario existente sigue utilizando una versión anterior durante, al menos, una visita adicional**, porque la actualización se produce en segundo plano y no se activa hasta que el usuario se desplaza fuera de la aplicación. Además, la versión anterior que se usa no es necesariamente la anterior que se ha implementado. La versión anterior puede ser *cualquier* versión histórica, en función de la última vez que el usuario haya completado una actualización.
+Como se ha explicado en la sección [Actualizaciones en segundo plano](#background-updates), después de implementar una actualización en la aplicación, **cada usuario existente sigue utilizando una versión anterior durante, al menos, una visita adicional** , porque la actualización se produce en segundo plano y no se activa hasta que el usuario se desplaza fuera de la aplicación. Además, la versión anterior que se usa no es necesariamente la anterior que se ha implementado. La versión anterior puede ser *cualquier* versión histórica, en función de la última vez que el usuario haya completado una actualización.
 
 Esto puede ser un problema si los elementos de front-end y back-end de la aplicación requieren un acuerdo sobre el esquema para las solicitudes de API. No debe implementar los cambios de esquema de API incompatibles con versiones anteriores hasta que se asegure de que todos los usuarios hayan realizado la actualización. Como alternativa, impida que los usuarios utilicen versiones anteriores incompatibles de la aplicación. Este requisito de escenario es el mismo que para las aplicaciones móviles nativas. Si implementa un cambio importante en las API de servidor, la aplicación cliente se interrumpe para los usuarios que todavía no hayan realizado la actualización.
 

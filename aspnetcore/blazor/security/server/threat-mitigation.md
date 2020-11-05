@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/05/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,18 +19,18 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/server/threat-mitigation
-ms.openlocfilehash: a9bdf68e30d2688d4d7836410a7913794a73fe01
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 5c3a002a8e3df030d53c8625597342a68ca0d4b5
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88626433"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93055417"
 ---
 # <a name="threat-mitigation-guidance-for-aspnet-core-no-locblazor-server"></a>Guía de mitigación de amenazas para ASP.NET Core Blazor Server
 
 Por [Javier Calvarro Nelson](https://github.com/javiercn)
 
-Las aplicaciones Blazor Server adoptan un modelo de procesamiento de datos *con estado*, donde el servidor y el cliente mantienen una relación de larga duración. El estado persistente se mantiene mediante un [circuito](xref:blazor/state-management), el cual puede abarcar conexiones que también son potencialmente de larga duración.
+Las aplicaciones Blazor Server adoptan un modelo de procesamiento de datos *con estado* , donde el servidor y el cliente mantienen una relación de larga duración. El estado persistente se mantiene mediante un [circuito](xref:blazor/state-management), el cual puede abarcar conexiones que también son potencialmente de larga duración.
 
 Cuando un usuario visita un sitio web de Blazor Server, el servidor crea un circuito en su memoria. Este circuito indica al explorador qué contenido se va a representar y responde a los eventos, como cuando el usuario selecciona un botón en la UI. Para realizar estas acciones, el circuito invoca funciones de JavaScript en el explorador del usuario y métodos de .NET en el servidor. Esta interacción bidireccional basada en JavaScript se conoce como [interoperabilidad de JavaScript (interoperabilidad de JS)](xref:blazor/call-javascript-from-dotnet).
 

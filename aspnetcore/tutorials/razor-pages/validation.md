@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 7/23/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/validation
-ms.openlocfilehash: 86c523c69d3ee85f56bf1a51719a0bd93cbe97fc
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 991a0f29c0edc5a220dfde69bd22dc4ed758394d
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633557"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060734"
 ---
 # <a name="part-8-add-validation-to-an-aspnet-core-no-locrazor-page"></a>Parte 8. Adición de validación a una instancia de Razor Pages de ASP.NET Core
 
@@ -32,7 +33,7 @@ En esta sección se agrega lógica de validación al modelo `Movie`. Las reglas 
 
 ## <a name="validation"></a>Validación
 
-Un principio clave de desarrollo de software se denomina [DRY](https://wikipedia.org/wiki/Don%27t_repeat_yourself), por "**D**on't **R**epeat **Y**ourself" (Una vez y solo una). Razor Pages fomenta un tipo de desarrollo en el que la funcionalidad se especifica una vez y se refleja en toda la aplicación. DRY puede ayudar a:
+Un principio clave de desarrollo de software se denomina [DRY](https://wikipedia.org/wiki/Don%27t_repeat_yourself), por " **D** on't **R** epeat **Y** ourself" (Una vez y solo una). Razor Pages fomenta un tipo de desarrollo en el que la funcionalidad se especifica una vez y se refleja en toda la aplicación. DRY puede ayudar a:
 
 * Reducir la cantidad de código en una aplicación.
 * Hacer que el código sea menos propenso a errores y resulte más fácil de probar y mantener.
@@ -82,7 +83,7 @@ Una ventaja importante es que **no** se han necesitado cambios de código en las
 
 Los datos del formulario no se publicarán en el servidor hasta que dejen de producirse errores de validación de cliente. Compruebe que los datos del formulario no se publican mediante uno o varios de los métodos siguientes:
 
-* Coloque un punto de interrupción en el método `OnPostAsync`. Envíe el formulario (seleccione **Crear** o **Guardar**). El punto de interrupción nunca se alcanza.
+* Coloque un punto de interrupción en el método `OnPostAsync`. Envíe el formulario (seleccione **Crear** o **Guardar** ). El punto de interrupción nunca se alcanza.
 * Use la [herramienta Fiddler](https://www.telerik.com/fiddler).
 * Use las herramientas de desarrollo del explorador para supervisar el tráfico de red.
 
@@ -186,7 +187,7 @@ CREATE TABLE [dbo].[Movie] (
 
 Los cambios en el esquema anterior no hacen que EF genere una excepción. Sin embargo, cree una migración para que el esquema sea coherente con el modelo.
 
-En el menú **Herramientas**, seleccione **Administrador de paquetes NuGet > Consola del Administrador de paquetes**.
+En el menú **Herramientas** , seleccione **Administrador de paquetes NuGet > Consola del Administrador de paquetes**.
 En PCM, escriba los siguientes comandos:
 
 ```powershell

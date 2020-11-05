@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/05/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: aspnetcore-2.0
-ms.openlocfilehash: 9d8c33ef10825baa212466fe683d4c1dc582f7eb
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: f9fad5a63c76a3b21341a12fd40baafcdf2c9dac
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88632465"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059733"
 ---
 # <a name="whats-new-in-aspnet-core-20"></a>Novedades de ASP.NET Core 2.0
 
@@ -63,7 +64,7 @@ Para información sobre el estado de la documentación planeada, vea este [probl
 
 ## <a name="logging-update"></a>Actualización del registro
 
-En ASP.NET Core 2.0, el registro se incorpora de forma predeterminada en el sistema de inserción de dependencias (DI). Debe agregar proveedores y configurar el filtrado en el archivo *Program.cs*, y no en el archivo *Startup.cs*. El `ILoggerFactory` predeterminado admite el filtrado de una forma que le permite usar un enfoque flexible para el filtrado de varios proveedores y el filtrado de proveedor específico.
+En ASP.NET Core 2.0, el registro se incorpora de forma predeterminada en el sistema de inserción de dependencias (DI). Debe agregar proveedores y configurar el filtrado en el archivo *Program.cs* , y no en el archivo *Startup.cs*. El `ILoggerFactory` predeterminado admite el filtrado de una forma que le permite usar un enfoque flexible para el filtrado de varios proveedores y el filtrado de proveedor específico.
 
 Para más información, vea [Introduction to Logging](xref:fundamentals/logging/index) (Introducción al registro).
 

@@ -7,6 +7,7 @@ ms.author: scaddie
 ms.custom: H1Hack27Feb2017, devx-track-js
 ms.date: 09/06/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: client-side/spa-services
-ms.openlocfilehash: 33ae16c033142aa1c0f4cea53ca746e8a6aaf052
-ms.sourcegitcommit: 2e3a967331b2c69f585dd61e9ad5c09763615b44
+ms.openlocfilehash: 1b9f5b4b4e066cdd3dd5fbfa666c7a087949979f
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92690667"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93054650"
 ---
 # <a name="use-javascript-services-to-create-single-page-applications-in-aspnet-core"></a>Uso de servicios de JavaScript para crear aplicaciones de página única en ASP.NET Core
 
@@ -84,7 +85,7 @@ Para trabajar con SpaServices, instale lo siguiente:
 
 * [!INCLUDE [](~/includes/net-core-sdk-download-link.md)]
 
-  * En Windows, al usar Visual Studio 2017, el SDK se instala al seleccionar la carga de trabajo **Desarrollo multiplataforma de .NET Core** .
+  * En Windows, al usar Visual Studio 2017, el SDK se instala al seleccionar la carga de trabajo **Desarrollo multiplataforma de .NET Core**.
 
 * Paquete NuGet [Microsoft.AspNetCore.SpaServices](https://www.nuget.org/packages/Microsoft.AspNetCore.SpaServices/)
 
@@ -132,7 +133,7 @@ El argumento `UserName` recibido se serializa mediante el serializador JSON inte
 
 [!code-typescript[](../client-side/spa-services/sample/SpaServicesSampleApp/ClientApp/boot-server.ts?range=6,10-21,38-52,79-)]
 
-Los nombres de propiedad pasados en los asistentes de etiquetas se representan con la notación **PascalCase** . Compare esto con JavaScript, donde los mismos nombres de propiedad se representan con la notación **camelCase** . La configuración de serialización de JSON predeterminada es responsable de esta diferencia.
+Los nombres de propiedad pasados en los asistentes de etiquetas se representan con la notación **PascalCase**. Compare esto con JavaScript, donde los mismos nombres de propiedad se representan con la notación **camelCase**. La configuración de serialización de JSON predeterminada es responsable de esta diferencia.
 
 Para ampliar el ejemplo de código anterior, los datos se pueden pasar del servidor a la vista mediante la hidratación de la propiedad `globals` proporcionada a la función `resolve`:
 
@@ -289,13 +290,13 @@ Si se usa la aplicación Angular como ejemplo, ya se proporcionan dos casos de p
 
 [!code-typescript[](../client-side/spa-services/sample/SpaServicesSampleApp/ClientApp/app/components/counter/counter.component.spec.ts?range=15-28)]
 
-Abra el símbolo del sistema en el directorio *ClientApp* . Ejecute el siguiente comando:
+Abra el símbolo del sistema en el directorio *ClientApp*. Ejecute el siguiente comando:
 
 ```console
 npm test
 ```
 
-El script inicia el ejecutor de pruebas de Karma, que lee la configuración definida en el archivo *karma.conf.js* . Entre otras opciones, el archivo *karma.conf.js* identifica los archivos de prueba que se van a ejecutar mediante su matriz `files`:
+El script inicia el ejecutor de pruebas de Karma, que lee la configuración definida en el archivo *karma.conf.js*. Entre otras opciones, el archivo *karma.conf.js* identifica los archivos de prueba que se van a ejecutar mediante su matriz `files`:
 
 [!code-javascript[](../client-side/spa-services/sample/SpaServicesSampleApp/ClientApp/test/karma.conf.js?range=4-5,8-11)]
 

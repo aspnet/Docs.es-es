@@ -5,6 +5,7 @@ description: Parte 2 de la serie de tutoriales sobre Razor Pages y Entity Frame
 ms.author: riande
 ms.date: 07/22/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-rp/crud
-ms.openlocfilehash: 083214c01dbec6c6f44d6b82f5b514a029e57cbe
-ms.sourcegitcommit: d1a897ebd89daa05170ac448e4831d327f6b21a8
+ms.openlocfilehash: c5b9be64ea30cce7a3178bfbb244ef893e9639d2
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91606731"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93053870"
 ---
 # <a name="part-2-no-locrazor-pages-with-ef-core-in-aspnet-core---crud"></a>Parte 2. Razor Pages con EF Core en ASP.NET Core: CRUD
 
@@ -136,7 +137,7 @@ El uso de `StudentVM` requiere que la página Create use `StudentVM` en lugar de
 
 ## <a name="update-the-edit-page"></a>Actualizar la página Edit
 
-En *Pages/Students/Edit.cshtml.cs*, sustituya los métodos `OnGetAsync` y `OnPostAsync` con el código siguiente.
+En *Pages/Students/Edit.cshtml.cs* , sustituya los métodos `OnGetAsync` y `OnPostAsync` con el código siguiente.
 
 [!code-csharp[Main](intro/samples/cu30/Pages/Students/Edit.cshtml.cs?name=snippet_OnGetPost)]
 
@@ -183,7 +184,7 @@ El método `OnPostAsync` recupera la entidad seleccionada y después llama al m�
 * Se detecta la excepción de base de datos.
 * Se llama al método `OnGetAsync` de las páginas Delete con `saveChangesError=true`.
 
-Agregue un mensaje de error a *Pages/Students/Delete.cshtml*:
+Agregue un mensaje de error a *Pages/Students/Delete.cshtml* :
 
 [!code-cshtml[Main](intro/samples/cu30/Pages/Students/Delete.cshtml?highlight=10)]
 
@@ -299,7 +300,7 @@ El uso de `StudentVM` requiere que se actualice [Create.cshtml](https://github.c
 
 ## <a name="update-the-edit-page"></a>Actualizar la página Edit
 
-En *Pages/Students/Edit.cshtml.cs*, sustituya los métodos `OnGetAsync` y `OnPostAsync` con el código siguiente.
+En *Pages/Students/Edit.cshtml.cs* , sustituya los métodos `OnGetAsync` y `OnPostAsync` con el código siguiente.
 
 [!code-csharp[Main](intro/samples/cu30/Pages/Students/Edit.cshtml.cs?name=snippet_OnGetPost)]
 
@@ -346,7 +347,7 @@ El método `OnPostAsync` recupera la entidad seleccionada y después llama al m�
 * Se detecta la excepción de base de datos.
 * Se llama al método `OnGetAsync` de las páginas Delete con `saveChangesError=true`.
 
-Agregue un mensaje de error a la página de Razor Delete (*Pages/Students/Delete.cshtml*):
+Agregue un mensaje de error a la página de Razor Delete ( *Pages/Students/Delete.cshtml* ):
 
 [!code-cshtml[Main](intro/samples/cu30/Pages/Students/Delete.cshtml?highlight=10)]
 
@@ -404,7 +405,7 @@ Sin embargo, si quiere aplicar `Include` a otras entidades, `FindAsync` ya no re
 
 ## <a name="customize-the-details-page"></a>Personalizar la página de detalles
 
-Vaya a la página `Pages/Students`. Los vínculos **Edit**, **Details** y **Delete** son generados por la [Asistente de etiquetas delimitadoras](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) del archivo *Pages/Students/Index.cshtml*.
+Vaya a la página `Pages/Students`. Los vínculos **Edit** , **Details** y **Delete** son generados por la [Asistente de etiquetas delimitadoras](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) del archivo *Pages/Students/Index.cshtml*.
 
 [!code-cshtml[](intro/samples/cu21/Pages/Students/Index1.cshtml?name=snippet)]
 

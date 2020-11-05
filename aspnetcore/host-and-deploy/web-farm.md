@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/13/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,23 +19,23 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/web-farm
-ms.openlocfilehash: 13f1ad5dcd4a230ec05b08c402f4ee9e455c3c29
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: ee78e80a4eda3089943765700aa6bb62c6c1e07d
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634142"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93057523"
 ---
 # <a name="host-aspnet-core-in-a-web-farm"></a>Hospedaje de ASP.NET Core en una granja de servidores web
 
 Por [Chris Ross](https://github.com/Tratcher)
 
-Una *granja de servidores web* es un grupo de dos o más servidores web (o *nodos*) que hospedan varias instancias de una aplicación. Cuando llegan solicitudes de usuarios a una granja de servidores web, un *equilibrador de carga* las distribuye a los nodos de la granja de servidores web. Las granjas de servidores web mejoran lo siguiente:
+Una *granja de servidores web* es un grupo de dos o más servidores web (o *nodos* ) que hospedan varias instancias de una aplicación. Cuando llegan solicitudes de usuarios a una granja de servidores web, un *equilibrador de carga* las distribuye a los nodos de la granja de servidores web. Las granjas de servidores web mejoran lo siguiente:
 
-* **Confiabilidad y disponibilidad**: cuando se produce un error en uno o más nodos, el equilibrador de carga puede enrutar las solicitudes a otros nodos en funcionamiento para continuar procesando las solicitudes.
-* **Capacidad y rendimiento**: varios nodos pueden procesar más solicitudes que un solo servidor. El equilibrador de carga equilibra la carga de trabajo mediante la distribución de las solicitudes a los distintos nodos.
-* **Escalabilidad**: cuando se requiere más o menos capacidad, es posible aumentar o disminuir la cantidad de nodos activos para coincidir con la carga de trabajo. Las tecnologías de plataforma de granjas de servidores web, como [Azure App Service](https://azure.microsoft.com/services/app-service/), pueden agregar o quitar nodos de manera automática si lo solicita el administrador del sistema o sin intervención humana.
-* **Mantenimiento**: los nodos de una granja de servidores web se pueden basar en un conjunto de servicios compartidos, lo que facilita la administración del sistema. Por ejemplo, los nodos de una granja de servidores web pueden basarse en un servidor de base de datos única y una ubicación de red común para los recursos estáticos, como imágenes y archivos descargables.
+* **Confiabilidad y disponibilidad** : cuando se produce un error en uno o más nodos, el equilibrador de carga puede enrutar las solicitudes a otros nodos en funcionamiento para continuar procesando las solicitudes.
+* **Capacidad y rendimiento** : varios nodos pueden procesar más solicitudes que un solo servidor. El equilibrador de carga equilibra la carga de trabajo mediante la distribución de las solicitudes a los distintos nodos.
+* **Escalabilidad** : cuando se requiere más o menos capacidad, es posible aumentar o disminuir la cantidad de nodos activos para coincidir con la carga de trabajo. Las tecnologías de plataforma de granjas de servidores web, como [Azure App Service](https://azure.microsoft.com/services/app-service/), pueden agregar o quitar nodos de manera automática si lo solicita el administrador del sistema o sin intervención humana.
+* **Mantenimiento** : los nodos de una granja de servidores web se pueden basar en un conjunto de servicios compartidos, lo que facilita la administración del sistema. Por ejemplo, los nodos de una granja de servidores web pueden basarse en un servidor de base de datos única y una ubicación de red común para los recursos estáticos, como imágenes y archivos descargables.
 
 En este tema se describe la configuración y las dependencias de las aplicaciones de ASP.NET Core hospedadas en una granja de servidores web que se basan en los recursos compartidos.
 
@@ -85,7 +86,7 @@ Cuando la protección de datos o el almacenamiento en caché no están configura
 
 Piense en un usuario que inicia sesión en la aplicación a través de la autenticación de cookies. El usuario inicia sesión en la aplicación en un nodo de la granja de servidores web. Si la solicitud siguiente llega al mismo nodo en el que iniciaron sesión, la aplicación puede descifrar la cookie de autenticación y permite el acceso al recurso de la aplicación. Si la solicitud siguiente llega a otro nodo, la aplicación no puede descifrar la cookie de autenticación desde el nodo donde el usuario inició sesión y se produce un error en la autorización del recurso solicitado.
 
-Cuando cualquiera de los síntomas siguientes se producen de manera **intermitente**, se suele hacer un seguimiento del problema hasta la configuración inadecuada de la protección de datos o del almacenamiento en caché para un entorno de granja de servidores web:
+Cuando cualquiera de los síntomas siguientes se producen de manera **intermitente** , se suele hacer un seguimiento del problema hasta la configuración inadecuada de la protección de datos o del almacenamiento en caché para un entorno de granja de servidores web:
 
 * La autenticación se interrumpe: La cookie de autenticación está configurada de manera incorrecta o no se puede descifrar. Los inicios de sesión de OAuth (Facebook, Microsoft, Twitter) o de OpenIdConnect presentan el error "Correlation failed" (Error de correlación).
 * La autorización se interrumpe: Identity se pierde.

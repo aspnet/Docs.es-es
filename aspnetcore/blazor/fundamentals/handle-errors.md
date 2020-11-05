@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/23/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/handle-errors
-ms.openlocfilehash: dfe6f1ac79732d158e31fb5250645d4ff98d1c0b
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: c789928252417ef1cf95c60deb7edef24d58126e
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88628344"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93056002"
 ---
 # <a name="handle-errors-in-aspnet-core-no-locblazor-apps"></a>Control de errores en aplicaciones Blazor de ASP.NET Core
 

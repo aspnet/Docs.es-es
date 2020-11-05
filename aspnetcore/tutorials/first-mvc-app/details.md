@@ -5,6 +5,7 @@ description: Parte 10 de la serie de tutoriales sobre ASP.NET Core MVC.
 ms.author: riande
 ms.date: 12/13/2018
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/details
-ms.openlocfilehash: 4683f106b3372a2f14f289b39c8a0b8b6c8b5aa1
-ms.sourcegitcommit: c9b03d8a6a4dcc59e4aacb30a691f349235a74c8
+ms.openlocfilehash: 9ceb6c3c8a6622d6e203641c2ce97a483d3d4325
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89379372"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93050750"
 ---
 # <a name="part-10-examine-the-details-and-delete-methods-of-an-aspnet-core-app"></a>Parte 10. Examen de los métodos Details y Delete de una aplicación de ASP.NET Core
 

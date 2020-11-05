@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/09/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/directory-structure
-ms.openlocfilehash: b557f1d1650b3deadcda679f300b1bc45a6202e7
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 918bc11e06b8f2bea5506d3b61f462e15998efa0
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88627382"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059863"
 ---
 # <a name="aspnet-core-directory-structure"></a>Estructura de directorios de ASP.NET Core
 
@@ -44,9 +45,9 @@ El directorio *publish* contiene recursos de la aplicación producidos por el co
 
 &dagger;Indica un directorio
 
-El directorio *publish* representa la *ruta de acceso raíz del contenido*, también conocida como la *ruta de acceso base de aplicación*, de la implementación. Sea cual sea el nombre que se asigna al directorio *publish* de la aplicación implementada en el servidor, su ubicación funciona como la ruta física del servidor a la aplicación hospedada.
+El directorio *publish* representa la *ruta de acceso raíz del contenido* , también conocida como la *ruta de acceso base de aplicación* , de la implementación. Sea cual sea el nombre que se asigna al directorio *publish* de la aplicación implementada en el servidor, su ubicación funciona como la ruta física del servidor a la aplicación hospedada.
 
-El directorio *wwwroot*, si existe, solo contiene recursos estáticos.
+El directorio *wwwroot* , si existe, solo contiene recursos estáticos.
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
@@ -74,9 +75,9 @@ El directorio *publish* contiene recursos de la aplicación producidos por el co
 
 &dagger;Indica un directorio
 
-El directorio *publish* representa la *ruta de acceso raíz del contenido*, también conocida como la *ruta de acceso base de aplicación*, de la implementación. Sea cual sea el nombre que se asigna al directorio *publish* de la aplicación implementada en el servidor, su ubicación funciona como la ruta física del servidor a la aplicación hospedada.
+El directorio *publish* representa la *ruta de acceso raíz del contenido* , también conocida como la *ruta de acceso base de aplicación* , de la implementación. Sea cual sea el nombre que se asigna al directorio *publish* de la aplicación implementada en el servidor, su ubicación funciona como la ruta física del servidor a la aplicación hospedada.
 
-El directorio *wwwroot*, si existe, solo contiene recursos estáticos.
+El directorio *wwwroot* , si existe, solo contiene recursos estáticos.
 
 Crear una carpeta *Logs* es útil para el [registro de depuración mejorado del módulo de ASP.NET Core](xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs). El módulo no crea automáticamente las carpetas de la ruta de acceso proporcionada al valor `<handlerSetting>`, que deben existir previamente en la implementación para permitir que el módulo escriba el registro de depuración.
 
@@ -95,7 +96,7 @@ Se puede crear un directorio *Logs* para la implementación mediante uno de los 
    </Target>
    ```
 
-   El elemento `<MakeDir>` crea una carpeta *Logs* vacía en la salida publicada. El elemento usa la propiedad `PublishDir` para determinar la ubicación de destino para la creación de la carpeta. Varios métodos de implementación, como Web Deploy, omiten las carpetas vacías durante la implementación. El elemento `<WriteLinesToFile>` genera un archivo en la carpeta *Logs*, que garantiza la implementación de la carpeta en el servidor. Puede producirse un error en la creación de carpetas si el proceso de trabajo no tiene acceso de escritura a la carpeta de destino.
+   El elemento `<MakeDir>` crea una carpeta *Logs* vacía en la salida publicada. El elemento usa la propiedad `PublishDir` para determinar la ubicación de destino para la creación de la carpeta. Varios métodos de implementación, como Web Deploy, omiten las carpetas vacías durante la implementación. El elemento `<WriteLinesToFile>` genera un archivo en la carpeta *Logs* , que garantiza la implementación de la carpeta en el servidor. Puede producirse un error en la creación de carpetas si el proceso de trabajo no tiene acceso de escritura a la carpeta de destino.
 
 * Cree físicamente el directorio *Logs* en el servidor de la implementación.
 

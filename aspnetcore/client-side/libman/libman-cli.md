@@ -6,6 +6,7 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 11/12/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: client-side/libman/libman-cli
-ms.openlocfilehash: 8b883269a82a1a6e55bf04bd40bfcbab28ae1fb3
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: dad9136439b61ad98523061d181fe44d3bf1273d
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88625705"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93054754"
 ---
 # <a name="use-the-libman-cli-with-aspnet-core"></a>Uso de la CLI de LibMan con ASP.NET Core
 
@@ -178,7 +179,7 @@ Las siguientes opciones están disponibles para el comando `libman install`:
 
 * `-d|--destination <PATH>`
 
-  Ubicación en la que se va a instalar la biblioteca. Si no se especifica, se usa la ubicación predeterminada. Si no se especifica ninguna propiedad `defaultDestination` en *libman.json*, esta opción es obligatoria.
+  Ubicación en la que se va a instalar la biblioteca. Si no se especifica, se usa la ubicación predeterminada. Si no se especifica ninguna propiedad `defaultDestination` en *libman.json* , esta opción es obligatoria.
 
 * `--files <FILE>`
 
@@ -190,13 +191,13 @@ Las siguientes opciones están disponibles para el comando `libman install`:
   
   [!INCLUDE [LibMan provider names](../../includes/libman-cli/provider-names.md)]
 
-  Si no se especifica, se usa la propiedad `defaultProvider` de *libman.json*. Si no se especifica ninguna propiedad `defaultProvider` en *libman.json*, esta opción es obligatoria.
+  Si no se especifica, se usa la propiedad `defaultProvider` de *libman.json*. Si no se especifica ninguna propiedad `defaultProvider` en *libman.json* , esta opción es obligatoria.
 
 [!INCLUDE [standard-cli-options](../../includes/libman-cli/standard-cli-options.md)]
 
 ### <a name="examples"></a>Ejemplos
 
-Fíjese en el siguiente archivo *libman.json*:
+Fíjese en el siguiente archivo *libman.json* :
 
 ```json
 {
@@ -293,7 +294,7 @@ Las siguientes opciones están disponibles para el comando `libman restore`:
 
 ### <a name="examples"></a>Ejemplos
 
-Para restaurar los archivos de biblioteca definidos en *libman.json*:
+Para restaurar los archivos de biblioteca definidos en *libman.json* :
 
 ```console
 libman restore
@@ -359,7 +360,7 @@ Las siguientes opciones están disponibles para el comando `libman uninstall`:
 
 ### <a name="examples"></a>Ejemplos
 
-Fíjese en el siguiente archivo *libman.json*:
+Fíjese en el siguiente archivo *libman.json* :
 
 [!code-json[](samples/LibManSample/libman.json)]
 

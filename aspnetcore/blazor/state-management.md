@@ -5,8 +5,9 @@ description: Aprenda a conservar el estado en las aplicaciones Blazor Server.
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/22/2020
+ms.date: 10/29/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -19,12 +20,12 @@ no-loc:
 - SignalR
 uid: blazor/state-management
 zone_pivot_groups: blazor-hosting-models
-ms.openlocfilehash: a74f056447839c4cf057948f26a9ece9b5799656
-ms.sourcegitcommit: d1a897ebd89daa05170ac448e4831d327f6b21a8
+ms.openlocfilehash: 1769ddbb95c9ffe373e916c885e411adc3d4c65b
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91606713"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93055001"
 ---
 # <a name="aspnet-core-no-locblazor-state-management"></a>Administración de estado de Blazor en ASP.NET Core
 
@@ -236,15 +237,6 @@ Por ejemplo, el almacenamiento del explorador protegido de ASP.NET Core usa la [
 > [!NOTE]
 > El almacenamiento del explorador protegido se basa en la protección de datos de ASP.NET Core y solo se admite para aplicaciones de Blazor Server.
 
-### <a name="configuration"></a>Configuración
-
-1. Agregue una referencia de paquete a [`Microsoft.AspNetCore.Components.Web.Extensions`](https://www.nuget.org/packages/Microsoft.AspNetCore.Http.Extensions).
-1. En `Startup.ConfigureServices`, llame a `AddProtectedBrowserStorage` para agregar los servicios `localStorage` y `sessionStorage` a la colección de servicios:
-
-   ```csharp
-   services.AddProtectedBrowserStorage();
-   ```
-
 ### <a name="save-and-load-data-within-a-component"></a>Guardar y cargar datos dentro de un componente
 
 En cualquier componente que requiera cargar o guardar datos en el almacenamiento del explorador, use la directiva [`@inject`](xref:mvc/views/razor#inject) para insertar una instancia de uno de los elementos siguientes:
@@ -255,7 +247,7 @@ En cualquier componente que requiera cargar o guardar datos en el almacenamiento
 La elección depende de la ubicación del almacenamiento del explorador que desee usar. En el ejemplo siguiente, se usa `sessionStorage`:
 
 ```razor
-@using Microsoft.AspNetCore.Components.Web.Extensions
+@using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage
 @inject ProtectedSessionStorage ProtectedSessionStore
 ```
 
@@ -336,7 +328,7 @@ Para deshabilitar la representación previa, abra el archivo `Pages/_Host.cshtml
 La representación previa puede resultar útil para otras páginas que no utilizan `localStorage` o `sessionStorage`. Para mantener la representación previa, postergue la operación de carga hasta que el explorador esté conectado al circuito. El siguiente es un ejemplo para almacenar un valor de contador:
 
 ```razor
-@using Microsoft.AspNetCore.Components.Web.Extensions
+@using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage
 @inject ProtectedLocalStorage ProtectedLocalStore
 
 @if (isConnected)
@@ -384,7 +376,7 @@ Si muchos componentes se basan en el almacenamiento basado en explorador, al vol
 En el siguiente ejemplo de un componente `CounterStateProvider`, se conservan los datos del contador en `sessionStorage`:
 
 ```razor
-@using Microsoft.AspNetCore.Components.Web.Extensions
+@using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage
 @inject ProtectedSessionStorage ProtectedSessionStore
 
 @if (isLoaded)
@@ -456,7 +448,7 @@ No es necesario que el componente anterior interactúe con `ProtectedBrowserStor
 
 Para tratar la representación previa tal y como se ha descrito anteriormente, `CounterStateProvider` se puede modificar para que todos los componentes que consumen los datos del contador funcionen automáticamente con la representación previa. Para obtener más información, vea la sección [Controlar la representación previa](#handle-prerendering).
 
-En general, se recomienda el patrón *componente primario del proveedor de estado*:
+En general, se recomienda el patrón *componente primario del proveedor de estado* :
 
 * Para consumir el estado en muchos componentes.
 * Si solo hay un objeto de estado de nivel superior para conservar.
@@ -699,7 +691,7 @@ No es necesario que el componente anterior interactúe con `ProtectedBrowserStor
 
 Para tratar la representación previa tal y como se ha descrito anteriormente, `CounterStateProvider` se puede modificar para que todos los componentes que consumen los datos del contador funcionen automáticamente con la representación previa. Para obtener más información, vea la sección [Controlar la representación previa](#handle-prerendering).
 
-En general, se recomienda el patrón *componente primario del proveedor de estado*:
+En general, se recomienda el patrón *componente primario del proveedor de estado* :
 
 * Para consumir el estado en muchos componentes.
 * Si solo hay un objeto de estado de nivel superior para conservar.

@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/27/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/class-libraries
-ms.openlocfilehash: afd1bfffae11520a5d9abccc1d2ee4cf3a46a4bf
-ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
+ms.openlocfilehash: f8e36cbe905b5ec2e674123c0f2ab6db99683c7c
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90722467"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93056418"
 ---
 # <a name="aspnet-core-no-locrazor-components-class-libraries"></a>Bibliotecas de clases de componentes de Razor de ASP.NET Core
 
@@ -120,9 +121,11 @@ Welcome to your new app.
 
 De manera opcional, incluya la directiva `@using ComponentLibrary` en el archivo de nivel superior `_Import.razor` a fin de que los componentes de la biblioteca estén disponibles para un proyecto completo. Agregue la directiva a un archivo `_Import.razor` en cualquier nivel para aplicar el espacio de nombres a un solo componente o a un conjunto de componentes dentro de una carpeta.
 
+<!-- HOLD for reactivation at 5.x
+
 ::: moniker range=">= aspnetcore-5.0"
 
-Para proporcionar la clase CSS `my-component` de `Component1` al componente, establezca un vínculo con la hoja de estilo de la biblioteca mediante el componente [`Link` del marco de trabajo](xref:blazor/fundamentals/additional-scenarios#influence-html-head-tag-elements) en `Component1.razor`:
+To provide `Component1`'s `my-component` CSS class to the component, link to the library's stylesheet using the framework's [`Link` component](xref:blazor/fundamentals/additional-scenarios#influence-html-head-tag-elements) in `Component1.razor`:
 
 ```razor
 <div class="my-component">
@@ -134,7 +137,7 @@ Para proporcionar la clase CSS `my-component` de `Component1` al componente, est
 </div>
 ```
 
-Para proporcionar la hoja de estilo en la aplicación, como alternativa, puede establecer un vínculo con la hoja de estilo de la biblioteca en el archivo `wwwroot/index.html` (Blazor WebAssembly) o el archivo `Pages/_Host.cshtml` (Blazor Server) de la aplicación:
+To provide the stylesheet across the app, you can alternatively link to the library's stylesheet in the app's `wwwroot/index.html` file (Blazor WebAssembly) or `Pages/_Host.cshtml` file (Blazor Server):
 
 ```html
 <head>
@@ -143,14 +146,16 @@ Para proporcionar la hoja de estilo en la aplicación, como alternativa, puede e
 </head>
 ```
 
-Cuando se usa el componente `Link` en un componente secundario, el recurso vinculado también está disponible para cualquier otro componente secundario del componente primario, siempre que se represente el elemento secundario con el componente `Link`. La distinción entre el uso del componente `Link` en un componente secundario y la colocación de una etiqueta HTML `<link>` en `wwwroot/index.html` o `Pages/_Host.cshtml` es que la etiqueta HTML representada de un componente del marco de trabajo:
+When the `Link` component is used in a child component, the linked asset is also available to any other child component of the parent component as long as the child with the `Link` component is rendered. The distinction between using the `Link` component in a child component and placing a `<link>` HTML tag in `wwwroot/index.html` or `Pages/_Host.cshtml` is that a framework component's rendered HTML tag:
 
-* Se puede modificar según el estado de la aplicación. No se puede modificar una etiqueta HTML `<link>` codificada de forma rígida según el estado de la aplicación.
-* Se quita del elemento HTML `<head>` cuando ya no se representa el componente primario.
+* Can be modified by application state. A hard-coded `<link>` HTML tag can't be modified by application state.
+* Is removed from the HTML `<head>` when the parent component is no longer rendered.
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-5.0"
+
+-->
 
 Para proporcionar la clase CSS `my-component` de `Component1`, establezca un vínculo con la hoja de estilo de la biblioteca en el archivo `wwwroot/index.html` (Blazor WebAssembly) o el archivo `Pages/_Host.cshtml` (Blazor Server) de la aplicación:
 
@@ -161,7 +166,11 @@ Para proporcionar la clase CSS `my-component` de `Component1`, establezca un ví
 </head>
 ```
 
+<!-- HOLD for reactivation at 5.x
+
 ::: moniker-end
+
+-->
 
 ## <a name="create-a-no-locrazor-components-class-library-with-static-assets"></a>Creación de una biblioteca de clases de componentes de Razor con recursos estáticos
 

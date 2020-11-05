@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: razor-pages/razor-pages-conventions
-ms.openlocfilehash: fc639178fc29438e16ad0989e61bd8dd32cf7590
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 2947bf0b697ca01f17d260b9f31aa3cc79d457b6
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88625497"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059876"
 ---
 # <a name="no-locrazor-pages-route-and-app-conventions-in-aspnet-core"></a>Convenciones de aplicación y de ruta de Razor Pages en ASP.NET Core
 
@@ -127,7 +128,7 @@ En la aplicación de ejemplo se usa la clase `AddHeaderAttribute` para agregar u
 
 [!code-csharp[](razor-pages-conventions/samples/3.x/SampleApp/Conventions/GlobalHeaderPageApplicationModelConvention.cs?name=snippet1)]
 
-*Startup.cs*:
+*Startup.cs* :
 
 [!code-csharp[](razor-pages-conventions/samples/3.x/SampleApp/Startup.cs?name=snippet2)]
 
@@ -141,7 +142,7 @@ Use <xref:Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions.Conventions> par
 
 [!code-csharp[](razor-pages-conventions/samples/3.x/SampleApp/Conventions/GlobalPageHandlerModelConvention.cs?name=snippet1)]
 
-*Startup.cs*:
+*Startup.cs* :
 
 [!code-csharp[](razor-pages-conventions/samples/3.x/SampleApp/Startup.cs?name=snippet10)]
 
@@ -153,7 +154,7 @@ El proveedor de modelos de ruta predeterminado que se deriva de <xref:Microsoft.
 
 Use <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageConventionCollection.AddFolderRouteModelConvention*> para crear y agregar un elemento <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.IPageRouteModelConvention> que invoca una acción en <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageRouteModel> para todas las páginas de la carpeta especificada.
 
-En la aplicación de ejemplo se usa <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageConventionCollection.AddFolderRouteModelConvention*> para agregar una plantilla de ruta `{otherPagesTemplate?}` a las páginas de la carpeta *OtherPages*:
+En la aplicación de ejemplo se usa <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageConventionCollection.AddFolderRouteModelConvention*> para agregar una plantilla de ruta `{otherPagesTemplate?}` a las páginas de la carpeta *OtherPages* :
 
 [!code-csharp[](razor-pages-conventions/samples/3.x/SampleApp/Startup.cs?name=snippet3)]
 
@@ -185,7 +186,7 @@ Solicite la página About del ejemplo en `localhost:5000/About/GlobalRouteValue/
 
 Las rutas de página generadas por ASP.NET Core se pueden personalizar mediante el uso de un transformador de parámetros. Un transformador de parámetro implementa `IOutboundParameterTransformer` y transforma el valor de parámetros. Por ejemplo, un transformador de parámetros `SlugifyParameterTransformer` personalizado cambia el valor de ruta `SubscriptionManagement` a `subscription-management`.
 
-La convención de modelo de ruta de página `PageRouteTransformerConvention` aplica un transformador de parámetros a los segmentos de nombre de archivo y carpeta de las rutas de página generadas automáticamente en una aplicación. Por ejemplo, para el archivo de Razor Pages en */Pages/SubscriptionManagement/ViewAll.cshtml*, su ruta cambiaría de `/SubscriptionManagement/ViewAll` a `/subscription-management/view-all`.
+La convención de modelo de ruta de página `PageRouteTransformerConvention` aplica un transformador de parámetros a los segmentos de nombre de archivo y carpeta de las rutas de página generadas automáticamente en una aplicación. Por ejemplo, para el archivo de Razor Pages en */Pages/SubscriptionManagement/ViewAll.cshtml* , su ruta cambiaría de `/SubscriptionManagement/ViewAll` a `/subscription-management/view-all`.
 
 `PageRouteTransformerConvention` solo transforma los segmentos de una ruta de página generados automáticamente que proceden de la carpeta y del archivo llamados Razor Pages. No transforma segmentos de ruta agregados con la directiva `@page`. Esta convención tampoco transforma las rutas agregadas por <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AddPageRoute*>.
 
@@ -211,7 +212,7 @@ public void ConfigureServices(IServiceCollection services)
 
 Use <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AddPageRoute*> para configurar una ruta a una página en la ruta de acceso de página especificada. Los vínculos generados que apuntan a esa página usan la ruta especificada. `AddPageRoute` usa `AddPageRouteModelConvention` para establecer la ruta.
 
-En la aplicación de ejemplo se crea una ruta a `/TheContactPage` para *Contact.cshtml*:
+En la aplicación de ejemplo se crea una ruta a `/TheContactPage` para *Contact.cshtml* :
 
 [!code-csharp[](razor-pages-conventions/samples/3.x/SampleApp/Startup.cs?name=snippet5)]
 
@@ -287,7 +288,7 @@ En la aplicación de ejemplo se proporciona un ejemplo del uso de una [fábrica 
 
 [!code-csharp[](razor-pages-conventions/samples/3.x/SampleApp/Startup.cs?name=snippet9)]
 
-*AddHeaderWithFactory.cs*:
+*AddHeaderWithFactory.cs* :
 
 [!code-csharp[](razor-pages-conventions/samples/3.x/SampleApp/Factories/AddHeaderWithFactory.cs?name=snippet1)]
 
@@ -409,7 +410,7 @@ En la aplicación de ejemplo se usa la clase `AddHeaderAttribute` para agregar u
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Conventions/GlobalHeaderPageApplicationModelConvention.cs?name=snippet1)]
 
-*Startup.cs*:
+*Startup.cs* :
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Startup.cs?name=snippet2)]
 
@@ -423,7 +424,7 @@ Use <xref:Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions.Conventions> par
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Conventions/GlobalPageHandlerModelConvention.cs?name=snippet1)]
 
-*Startup.cs*:
+*Startup.cs* :
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Startup.cs?name=snippet10)]
 
@@ -435,7 +436,7 @@ El proveedor de modelos de ruta predeterminado que se deriva de <xref:Microsoft.
 
 Use <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageConventionCollection.AddFolderRouteModelConvention*> para crear y agregar un elemento <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.IPageRouteModelConvention> que invoca una acción en <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageRouteModel> para todas las páginas de la carpeta especificada.
 
-En la aplicación de ejemplo se usa <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageConventionCollection.AddFolderRouteModelConvention*> para agregar una plantilla de ruta `{otherPagesTemplate?}` a las páginas de la carpeta *OtherPages*:
+En la aplicación de ejemplo se usa <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageConventionCollection.AddFolderRouteModelConvention*> para agregar una plantilla de ruta `{otherPagesTemplate?}` a las páginas de la carpeta *OtherPages* :
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Startup.cs?name=snippet3)]
 
@@ -467,7 +468,7 @@ Solicite la página About del ejemplo en `localhost:5000/About/GlobalRouteValue/
 
 Las rutas de página generadas por ASP.NET Core se pueden personalizar mediante el uso de un transformador de parámetros. Un transformador de parámetro implementa `IOutboundParameterTransformer` y transforma el valor de parámetros. Por ejemplo, un transformador de parámetros `SlugifyParameterTransformer` personalizado cambia el valor de ruta `SubscriptionManagement` a `subscription-management`.
 
-La convención de modelo de ruta de página `PageRouteTransformerConvention` aplica un transformador de parámetros a los segmentos de nombre de archivo y carpeta de las rutas de página generadas automáticamente en una aplicación. Por ejemplo, para el archivo de Razor Pages en */Pages/SubscriptionManagement/ViewAll.cshtml*, su ruta cambiaría de `/SubscriptionManagement/ViewAll` a `/subscription-management/view-all`.
+La convención de modelo de ruta de página `PageRouteTransformerConvention` aplica un transformador de parámetros a los segmentos de nombre de archivo y carpeta de las rutas de página generadas automáticamente en una aplicación. Por ejemplo, para el archivo de Razor Pages en */Pages/SubscriptionManagement/ViewAll.cshtml* , su ruta cambiaría de `/SubscriptionManagement/ViewAll` a `/subscription-management/view-all`.
 
 `PageRouteTransformerConvention` solo transforma los segmentos de una ruta de página generados automáticamente que proceden de la carpeta y del archivo llamados Razor Pages. No transforma segmentos de ruta agregados con la directiva `@page`. Esta convención tampoco transforma las rutas agregadas por <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AddPageRoute*>.
 
@@ -501,7 +502,7 @@ public class SlugifyParameterTransformer : IOutboundParameterTransformer
 
 Use <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AddPageRoute*> para configurar una ruta a una página en la ruta de acceso de página especificada. Los vínculos generados que apuntan a esa página usan la ruta especificada. `AddPageRoute` usa `AddPageRouteModelConvention` para establecer la ruta.
 
-En la aplicación de ejemplo se crea una ruta a `/TheContactPage` para *Contact.cshtml*:
+En la aplicación de ejemplo se crea una ruta a `/TheContactPage` para *Contact.cshtml* :
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Startup.cs?name=snippet5)]
 
@@ -577,7 +578,7 @@ En la aplicación de ejemplo se proporciona un ejemplo del uso de una [fábrica 
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Startup.cs?name=snippet9)]
 
-*AddHeaderWithFactory.cs*:
+*AddHeaderWithFactory.cs* :
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Factories/AddHeaderWithFactory.cs?name=snippet1)]
 
@@ -699,7 +700,7 @@ En la aplicación de ejemplo se usa la clase `AddHeaderAttribute` para agregar u
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Conventions/GlobalHeaderPageApplicationModelConvention.cs?name=snippet1)]
 
-*Startup.cs*:
+*Startup.cs* :
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Startup.cs?name=snippet2)]
 
@@ -713,7 +714,7 @@ Use <xref:Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions.Conventions> par
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Conventions/GlobalPageHandlerModelConvention.cs?name=snippet1)]
 
-*Startup.cs*:
+*Startup.cs* :
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Startup.cs?name=snippet10)]
 
@@ -725,7 +726,7 @@ El proveedor de modelos de ruta predeterminado que se deriva de <xref:Microsoft.
 
 Use <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageConventionCollection.AddFolderRouteModelConvention*> para crear y agregar un elemento <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.IPageRouteModelConvention> que invoca una acción en <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageRouteModel> para todas las páginas de la carpeta especificada.
 
-En la aplicación de ejemplo se usa <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageConventionCollection.AddFolderRouteModelConvention*> para agregar una plantilla de ruta `{otherPagesTemplate?}` a las páginas de la carpeta *OtherPages*:
+En la aplicación de ejemplo se usa <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageConventionCollection.AddFolderRouteModelConvention*> para agregar una plantilla de ruta `{otherPagesTemplate?}` a las páginas de la carpeta *OtherPages* :
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Startup.cs?name=snippet3)]
 
@@ -757,7 +758,7 @@ Solicite la página About del ejemplo en `localhost:5000/About/GlobalRouteValue/
 
 Use <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AddPageRoute*> para configurar una ruta a una página en la ruta de acceso de página especificada. Los vínculos generados que apuntan a esa página usan la ruta especificada. `AddPageRoute` usa `AddPageRouteModelConvention` para establecer la ruta.
 
-En la aplicación de ejemplo se crea una ruta a `/TheContactPage` para *Contact.cshtml*:
+En la aplicación de ejemplo se crea una ruta a `/TheContactPage` para *Contact.cshtml* :
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Startup.cs?name=snippet5)]
 
@@ -833,7 +834,7 @@ En la aplicación de ejemplo se proporciona un ejemplo del uso de una [fábrica 
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Startup.cs?name=snippet9)]
 
-*AddHeaderWithFactory.cs*:
+*AddHeaderWithFactory.cs* :
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Factories/AddHeaderWithFactory.cs?name=snippet1)]
 

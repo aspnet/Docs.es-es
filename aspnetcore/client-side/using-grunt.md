@@ -5,6 +5,7 @@ description: Uso de Grunt en ASP.NET Core
 ms.author: riande
 ms.date: 12/05/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: client-side/using-grunt
-ms.openlocfilehash: e8e4459f7fe496135d6cfd7f4ff52511a5e1c064
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 374c23f440dcf301b3a1e1e9e6684dd050f218c6
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88628032"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93054559"
 ---
 # <a name="use-grunt-in-aspnet-core"></a>Uso de Grunt en ASP.NET Core
 
@@ -31,17 +32,17 @@ En este ejemplo se usa un proyecto de ASP.NET Core vacío como punto inicial par
 
 El ejemplo finalizado limpia el directorio de implementación de destino, combina los archivos JavaScript, comprueba la calidad del código, condensa el contenido del archivo JavaScript y se implementa en la raíz de la aplicación web. Usaremos los siguientes paquetes:
 
-* **grunt**: El paquete del ejecutor de tareas de Grunt.
+* **grunt** : El paquete del ejecutor de tareas de Grunt.
 
-* **grunt-contrib-clean**: Un complemento que quita archivos o directorios.
+* **grunt-contrib-clean** : Un complemento que quita archivos o directorios.
 
-* **grunt-contrib-jshint**: Un complemento que revisa la calidad del código de JavaScript.
+* **grunt-contrib-jshint** : Un complemento que revisa la calidad del código de JavaScript.
 
-* **grunt-contrib-concat**: Un complemento que une archivos en un único archivo.
+* **grunt-contrib-concat** : Un complemento que une archivos en un único archivo.
 
-* **grunt-contrib-uglify**: Un complemento que minifica JavaScript para reducir el tamaño.
+* **grunt-contrib-uglify** : Un complemento que minifica JavaScript para reducir el tamaño.
 
-* **grunt-contrib-watch**: Un complemento que inspecciona la actividad de archivo.
+* **grunt-contrib-watch** : Un complemento que inspecciona la actividad de archivo.
 
 ## <a name="preparing-the-application"></a>Preparar la aplicación
 
@@ -49,7 +50,7 @@ Para empezar, configure una nueva aplicación web vacía y agregue los archivos 
 
 1. En Visual Studio, cree un nuevo `ASP.NET Web Application`.
 
-2. En el cuadro de diálogo **Nuevo proyecto ASP.NET**, seleccione la plantilla **Vacía** de ASP.NET Core y haga clic en el botón Aceptar.
+2. En el cuadro de diálogo **Nuevo proyecto ASP.NET** , seleccione la plantilla **Vacía** de ASP.NET Core y haga clic en el botón Aceptar.
 
 3. En el Explorador de soluciones, revise la estructura del proyecto. La carpeta `\src` incluye nodos `wwwroot` y `Dependencies` vacíos.
 
@@ -57,7 +58,7 @@ Para empezar, configure una nueva aplicación web vacía y agregue los archivos 
 
 4. Agregue una nueva carpeta denominada `TypeScript`al directorio del proyecto.
 
-5. Antes de agregar archivos, asegúrese de que Visual Studio tiene activada la opción 'compilar al guardar' para los archivos TypeScript. Navegue a **Herramientas** > **Opciones** > **Editor de texto** > **Typescript** > **Proyecto**:
+5. Antes de agregar archivos, asegúrese de que Visual Studio tiene activada la opción 'compilar al guardar' para los archivos TypeScript. Navegue a **Herramientas** > **Opciones** > **Editor de texto** > **Typescript** > **Proyecto** :
 
     ![compilación automática de la configuración de opciones de los archivos TypeScript](using-grunt/_static/typescript-options.png)
 
@@ -98,16 +99,16 @@ Para empezar, configure una nueva aplicación web vacía y agregue los archivos 
 
 A continuación, configure NPM para descargar grunt y grunt-tasks.
 
-1. En el Explorador de soluciones, haga clic con el botón derecho en el proyecto y, en el menú contextual, seleccione **Agregar > Nuevo elemento**. Seleccione el elemento **archivo de configuración de NPM**, deje el nombre predeterminado *package.json* y haga clic en el botón **Agregar**.
+1. En el Explorador de soluciones, haga clic con el botón derecho en el proyecto y, en el menú contextual, seleccione **Agregar > Nuevo elemento**. Seleccione el elemento **archivo de configuración de NPM** , deje el nombre predeterminado *package.json* y haga clic en el botón **Agregar**.
 
-2. En el archivo *package.json*, dentro de las llaves del objeto `devDependencies` y escriba "grunt". Seleccione `grunt` en la lista de IntelliSense y presione la tecla Entrar. Visual Studio citará el nombre del paquete de grunt y agregará un signo de dos puntos. A la derecha de los dos puntos, seleccione la versión estable más reciente del paquete en la parte superior de la lista de IntelliSense (presione `Ctrl-Space` si IntelliSense no aparece).
+2. En el archivo *package.json* , dentro de las llaves del objeto `devDependencies` y escriba "grunt". Seleccione `grunt` en la lista de IntelliSense y presione la tecla Entrar. Visual Studio citará el nombre del paquete de grunt y agregará un signo de dos puntos. A la derecha de los dos puntos, seleccione la versión estable más reciente del paquete en la parte superior de la lista de IntelliSense (presione `Ctrl-Space` si IntelliSense no aparece).
 
     ![IntelliSense de grunt](using-grunt/_static/devdependencies-grunt.png)
 
     > [!NOTE]
     > NPM usa el [versionamiento semántico](https://semver.org/) para organizar las dependencias. El versionamiento semántico, también conocido como SemVer, identifica paquetes con el esquema de numeración \<major>.\<minor>.\<patch>. IntelliSense simplifica el versionamiento semántico mostrando únicamente algunas opciones comunes. El elemento superior de la lista de IntelliSense (0.4.5 en el ejemplo anterior) se considera la versión estable más reciente del paquete. El símbolo de intercalación (^) coincide con la versión principal más reciente y la tilde de la ñ (~) coincide con la versión secundaria más reciente. Vea la [referencia del analizador de versiones SemVer de NPM](https://www.npmjs.com/package/semver) como guía para el expresividad completa que SemVer proporciona.
 
-3. Agregue más dependencias para cargar paquetes grunt-contrib-\* para *clean*, *jshint*, *concat*, *uglify* y *watch*, tal como se muestra en el siguiente ejemplo. No es necesario que las versiones coincidan con el ejemplo.
+3. Agregue más dependencias para cargar paquetes grunt-contrib-\* para *clean* , *jshint* , *concat* , *uglify* y *watch* , tal como se muestra en el siguiente ejemplo. No es necesario que las versiones coincidan con el ejemplo.
 
     ```json
     "devDependencies": {
@@ -135,7 +136,7 @@ Se descargarán los paquetes de cada elemento `devDependencies`, junto con los a
 
 Grunt está configurado con un manifiesto denominado *Gruntfile.js* que define, carga y registra las tareas que se pueden ejecutar manualmente o configurar para que se ejecuten automáticamente en función de los eventos de Visual Studio.
 
-1. Haga clic con el botón derecho en el proyecto y seleccione **Agregar** > **Nuevo elemento**. Seleccione la plantilla de elemento **Archivo JavaScript**, cambie el nombre a *Gruntfile.js* y haga clic en el botón **Agregar**.
+1. Haga clic con el botón derecho en el proyecto y seleccione **Agregar** > **Nuevo elemento**. Seleccione la plantilla de elemento **Archivo JavaScript** , cambie el nombre a *Gruntfile.js* y haga clic en el botón **Agregar**.
 
 1. Agregue el código siguiente a *Gruntfile.js*. La función `initConfig` establece las opciones para cada paquete y el resto del módulo carga y registra las tareas.
 
@@ -284,7 +285,7 @@ Haga clic con el botón derecho en la tarea de inspección del explorador del ej
 
 ## <a name="binding-to-visual-studio-events"></a>Enlace a eventos de Visual Studio
 
-A menos que desee iniciar manualmente las tareas cada vez que trabaje en Visual Studio, enlace tareas a los eventos **Antes de la compilación**, **Después de la compilación**, **Limpiar** y **Apertura de proyecto**.
+A menos que desee iniciar manualmente las tareas cada vez que trabaje en Visual Studio, enlace tareas a los eventos **Antes de la compilación** , **Después de la compilación** , **Limpiar** y **Apertura de proyecto**.
 
 Enlace `watch` para que se ejecute cada vez que se abra Visual Studio. En el explorador del ejecutor de tareas, haga clic con el botón derecho en la tarea de inspección y seleccione **Enlaces** > **Apertura de proyecto** en el menú contextual.
 

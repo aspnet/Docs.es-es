@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/05/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: aspnetcore-3.0
-ms.openlocfilehash: a1cbd8f434214ce488fc3febe63d8aaf54db71a3
-ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
+ms.openlocfilehash: 235daac5c08248ca2052de6b44e66a8162ce23ad
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90722792"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93051244"
 ---
 # <a name="whats-new-in-aspnet-core-30"></a>Novedades de ASP.NET Core 3.0
 
@@ -218,7 +219,7 @@ public class ChatHub : Hub
 
 La creación de la directiva `DomainRestricted` puede implicar:
 
-* En *Startup.cs*, agregar la nueva directiva.
+* En *Startup.cs* , agregar la nueva directiva.
 * Proporcionar el requisito de `DomainRestrictedRequirement` personalizado como parámetro.
 * Registrar `DomainRestricted` con el middleware de autorización.
 

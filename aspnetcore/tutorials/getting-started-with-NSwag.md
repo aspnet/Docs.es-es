@@ -6,6 +6,7 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 12/05/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/get-started-with-nswag
-ms.openlocfilehash: 6dc1fe85298cae307f554cfc06c4129fabbe8ab4
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 78d58d4d544c33862cf502ce63e83560e8009c65
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633596"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060578"
 ---
 # <a name="get-started-with-nswag-and-aspnet-core"></a>Introducción a NSwag y ASP.NET Core
 
@@ -60,7 +61,7 @@ Use uno de los siguientes métodos para instalar el paquete NuGet de NSwag:
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* En la ventana **Consola del Administrador de paquetes**:
+* En la ventana **Consola del Administrador de paquetes** :
   * Vaya a **Vista** > **Otras ventanas** > **Consola del Administrador de paquetes**.
   * Vaya al directorio en el que está *TodoApi.csproj*.
   * Ejecute el siguiente comando:
@@ -69,7 +70,7 @@ Use uno de los siguientes métodos para instalar el paquete NuGet de NSwag:
     Install-Package NSwag.AspNetCore
     ```
 
-* En el cuadro de diálogo **Administrar paquetes NuGet**:
+* En el cuadro de diálogo **Administrar paquetes NuGet** :
   * Haga clic con el botón derecho en el proyecto en el **Explorador de soluciones** > **Administrar paquetes NuGet**.
   * Establezca el **origen del paquete** en "nuget.org".
   * Escriba "NSwag.AspNetCore" en el cuadro de búsqueda.
@@ -209,7 +210,7 @@ Para habilitar los comentarios XML, realice los siguientes pasos:
 ::: moniker range=">= aspnetcore-2.0"
 
 * Haga clic con el botón derecho en el **Explorador de soluciones** y seleccione **Editar <nombre_de_proyecto>.csproj**.
-* Agregue manualmente las líneas resaltadas al archivo *.csproj*:
+* Agregue manualmente las líneas resaltadas al archivo *.csproj* :
 
 [!code-xml[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.NSwag/TodoApi.csproj?name=snippet_DocumentationFileElement&highlight=1-2,4)]
 
@@ -217,7 +218,7 @@ Para habilitar los comentarios XML, realice los siguientes pasos:
 
 ::: moniker range="<= aspnetcore-1.1"
 
-* En el **Explorador de soluciones**, haga clic con el botón derecho en el proyecto y seleccione **Propiedades**.
+* En el **Explorador de soluciones** , haga clic con el botón derecho en el proyecto y seleccione **Propiedades**.
 * Active la casilla **Archivo de documentación XML** en la sección **Salida** de la pestaña **Compilar**.
 
 ::: moniker-end
@@ -226,8 +227,8 @@ Para habilitar los comentarios XML, realice los siguientes pasos:
 
 ::: moniker range=">= aspnetcore-2.0"
 
-* Desde el *Panel de solución*, presione **Control** y haga clic en el nombre del proyecto. Vaya a **Herramientas** > **Editar archivo**.
-* Agregue manualmente las líneas resaltadas al archivo *.csproj*:
+* Desde el *Panel de solución* , presione **Control** y haga clic en el nombre del proyecto. Vaya a **Herramientas** > **Editar archivo**.
+* Agregue manualmente las líneas resaltadas al archivo *.csproj* :
 
 [!code-xml[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.NSwag/TodoApi.csproj?name=snippet_DocumentationFileElement&highlight=1-2,4)]
 
@@ -242,7 +243,7 @@ Para habilitar los comentarios XML, realice los siguientes pasos:
 
 # <a name="net-core-cli"></a>[CLI de .NET Core](#tab/netcore-cli)
 
-Agregue manualmente las líneas resaltadas al archivo *.csproj*:
+Agregue manualmente las líneas resaltadas al archivo *.csproj* :
 
 ::: moniker range=">= aspnetcore-2.0"
 

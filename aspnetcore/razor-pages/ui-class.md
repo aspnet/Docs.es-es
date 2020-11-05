@@ -6,6 +6,7 @@ ms.author: riande
 ms.date: 01/25/2020
 ms.custom: mvc, seodec18
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: razor-pages/ui-class
-ms.openlocfilehash: 95399246df954549cb76139a66d6998fd05a051a
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: e87e74533fe6900d8e0a73708ad24b765a968493
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634831"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93056808"
 ---
 # <a name="create-reusable-ui-using-the-no-locrazor-class-library-project-in-aspnet-core"></a>Creación de una interfaz de usuario reutilizable con el proyecto de biblioteca de clases de Razor en ASP.NET Core
 
@@ -30,7 +31,7 @@ Por [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 ::: moniker range=">= aspnetcore-3.0"
 
-Las vistas, páginas, controladores y modelos de página de Razor, los [componentes de Razor](xref:blazor/components/class-libraries), los [componentes de vista](xref:mvc/views/view-components) y los modelos de datos se pueden integrar en una biblioteca de clases de Razor (RCL). Las RCL se pueden empaquetar y reutilizar. Las aplicaciones pueden incluir la RCL y reemplazar las vistas y páginas que contienen. Si existe una vista,una vista parcial o una página de Razor tanto en la aplicación web como en la RCL, tiene prioridad el marcado de Razor (archivo *.cshtml*) de la aplicación web.
+Las vistas, páginas, controladores y modelos de página de Razor, los [componentes de Razor](xref:blazor/components/class-libraries), los [componentes de vista](xref:mvc/views/view-components) y los modelos de datos se pueden integrar en una biblioteca de clases de Razor (RCL). Las RCL se pueden empaquetar y reutilizar. Las aplicaciones pueden incluir la RCL y reemplazar las vistas y páginas que contienen. Si existe una vista,una vista parcial o una página de Razor tanto en la aplicación web como en la RCL, tiene prioridad el marcado de Razor (archivo *.cshtml* ) de la aplicación web.
 
 [Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/ui-class/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
@@ -72,7 +73,7 @@ Los siguientes elementos pueden hacer referencia a la RCL:
 
 ## <a name="override-views-partial-views-and-pages"></a>Reemplazar vistas, vistas parciales y páginas
 
-Si existe una vista,una vista parcial o una página de Razor tanto en la aplicación web como en la RCL, tiene prioridad el marcado de Razor (archivo *.cshtml*) de la aplicación web. Por ejemplo, si agrega *WebApp1/Areas/MyFeature/Pages/Page1.cshtml* a WebApp1, Page1 en WebApp1 prevalecerá sobre Page1 en la biblioteca de clases de Razor.
+Si existe una vista,una vista parcial o una página de Razor tanto en la aplicación web como en la RCL, tiene prioridad el marcado de Razor (archivo *.cshtml* ) de la aplicación web. Por ejemplo, si agrega *WebApp1/Areas/MyFeature/Pages/Page1.cshtml* a WebApp1, Page1 en WebApp1 prevalecerá sobre Page1 en la biblioteca de clases de Razor.
 
 En la descarga de ejemplo, cambie el nombre *WebApp1/Areas/MyFeature2* por *WebApp1/Areas/MyFeature* para comprobar la prioridad.
 
@@ -85,7 +86,7 @@ Para hacer referencia al contenido de la RCL como si formara parte de la carpeta
 * *RazorUIClassLib/Pages*
 * *RazorUIClassLib/Pages/Shared*
 
-Imagine que *RazorUIClassLib/Pages/Shared* contiene dos archivos parciales: *_Header.cshtml* y *_Footer.cshtml*. En ese caso, se podrían agregar etiquetas `<partial>` al archivo *_Layout.cshtml*:
+Imagine que *RazorUIClassLib/Pages/Shared* contiene dos archivos parciales: *_Header.cshtml* y *_Footer.cshtml*. En ese caso, se podrían agregar etiquetas `<partial>` al archivo *_Layout.cshtml* :
 
 ```cshtml
 <body>
@@ -121,7 +122,7 @@ En el ejemplo siguiente, la hoja de estilos *lib.css* de la carpeta *wwwroot* no
 
 Para incluir archivos TypeScript en una RCL:
 
-1. Coloque los archivos TypeScript ( *.ts*) fuera de la carpeta *wwwroot*. Por ejemplo, coloque los archivos en una carpeta de *cliente*.
+1. Coloque los archivos TypeScript ( *.ts* ) fuera de la carpeta *wwwroot*. Por ejemplo, coloque los archivos en una carpeta de *cliente*.
 
 1. Configure la salida de la compilación de TypeScript para la carpeta *wwwroot*. Establezca la propiedad `TypescriptOutDir` dentro de un `PropertyGroup` en el archivo del proyecto:
 
@@ -155,7 +156,7 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 }
 ```
 
-Al ejecutar la aplicación de consumo desde la salida de la compilación (`dotnet run`), los activos web estáticos están habilitados de forma predeterminada en el entorno de desarrollo. Para admitir recursos en otros entornos al ejecutar la aplicación desde la salida de la compilación, llame a `UseStaticWebAssets` en el generador de hosts en *Program.cs*:
+Al ejecutar la aplicación de consumo desde la salida de la compilación (`dotnet run`), los activos web estáticos están habilitados de forma predeterminada en el entorno de desarrollo. Para admitir recursos en otros entornos al ejecutar la aplicación desde la salida de la compilación, llame a `UseStaticWebAssets` en el generador de hosts en *Program.cs* :
 
 ```csharp
 using Microsoft.AspNetCore.Hosting;
@@ -197,7 +198,7 @@ Cuando se publica la aplicación, los recursos complementarios de todos los proy
 
 ::: moniker range="< aspnetcore-3.0"
 
-Las vistas, páginas, controladores y modelos de página de Razor, los [componentes de Razor](xref:blazor/components/class-libraries), los [componentes de vista](xref:mvc/views/view-components) y los modelos de datos se pueden integrar en una biblioteca de clases de Razor (RCL). Las RCL se pueden empaquetar y reutilizar. Las aplicaciones pueden incluir la RCL y reemplazar las vistas y páginas que contienen. Si existe una vista,una vista parcial o una página de Razor tanto en la aplicación web como en la RCL, tiene prioridad el marcado de Razor (archivo *.cshtml*) de la aplicación web.
+Las vistas, páginas, controladores y modelos de página de Razor, los [componentes de Razor](xref:blazor/components/class-libraries), los [componentes de vista](xref:mvc/views/view-components) y los modelos de datos se pueden integrar en una biblioteca de clases de Razor (RCL). Las RCL se pueden empaquetar y reutilizar. Las aplicaciones pueden incluir la RCL y reemplazar las vistas y páginas que contienen. Si existe una vista,una vista parcial o una página de Razor tanto en la aplicación web como en la RCL, tiene prioridad el marcado de Razor (archivo *.cshtml* ) de la aplicación web.
 
 [Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/ui-class/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
@@ -252,7 +253,7 @@ Abra el archivo *.sln* en Visual Studio. Ejecutar la aplicación.
 
 # <a name="net-core-cli"></a>[CLI de .NET Core](#tab/netcore-cli)
 
-Desde un símbolo del sistema en el directorio *cli*, cree la RCL y la aplicación web.
+Desde un símbolo del sistema en el directorio *cli* , cree la RCL y la aplicación web.
 
 ```dotnetcli
 dotnet build
@@ -319,7 +320,7 @@ El archivo *_ViewStart.cshtml* es necesario para poder usar el diseño del proye
   dotnet new viewimports -o RazorUIClassLib/Areas/MyFeature/Pages
   ```
 
-  Para obtener más información sobre *_ViewImports.cshtml*, consulte la sección [Importar directivas compartidas](xref:mvc/views/layout#importing-shared-directives).
+  Para obtener más información sobre *_ViewImports.cshtml* , consulte la sección [Importar directivas compartidas](xref:mvc/views/layout#importing-shared-directives).
 
 * Compile la biblioteca de clases para confirmar que no hay ningún error de compilador:
 
@@ -335,17 +336,17 @@ La salida de la compilación contiene *RazorUIClassLib. dll* y *RazorUIClassLib.
 
 Cree la aplicación web de páginas de Razor:
 
-* En el **Explorador de soluciones**, haga clic con el botón derecho en la solución > **Agregar** > **Nuevo proyecto**.
+* En el **Explorador de soluciones** , haga clic con el botón derecho en la solución > **Agregar** > **Nuevo proyecto**.
 * Seleccione **Aplicación web de ASP.NET Core**.
 * Denomine la aplicación **WebApp1**.
 * Confirme que **ASP.NET Core 2.1** o una versión posterior está seleccionado.
 * Seleccione **Aplicación web** > **Aceptar**.
 
-* En el **Explorador de soluciones**, haga clic con el botón derecho en **WebApp1** y seleccione **Establecer como proyecto de inicio**.
-* En el **Explorador de soluciones**, haga clic con el botón derecho en **WebApp1** y seleccione **Dependencias de compilación** > **Dependencias del proyecto**.
+* En el **Explorador de soluciones** , haga clic con el botón derecho en **WebApp1** y seleccione **Establecer como proyecto de inicio**.
+* En el **Explorador de soluciones** , haga clic con el botón derecho en **WebApp1** y seleccione **Dependencias de compilación** > **Dependencias del proyecto**.
 * Marque **RazorUIClassLib** como dependencia de **WebApp1**.
-* En el **Explorador de soluciones**, haga clic con el botón derecho en **WebApp1** y seleccione **Agregar** > **Referencia**.
-* En el cuadro de diálogo **Administrador de referencias**, marque la casilla **RazorUIClassLib** > **Aceptar**.
+* En el **Explorador de soluciones** , haga clic con el botón derecho en **WebApp1** y seleccione **Agregar** > **Referencia**.
+* En el cuadro de diálogo **Administrador de referencias** , marque la casilla **RazorUIClassLib** > **Aceptar**.
 
 Ejecutar la aplicación.
 
@@ -376,7 +377,7 @@ Vaya a `/MyFeature/Page1` para comprobar que la biblioteca de clases de la inter
 
 ## <a name="override-views-partial-views-and-pages"></a>Reemplazar vistas, vistas parciales y páginas
 
-Si existe una vista,una vista parcial o una página de Razor tanto en la aplicación web como en la RCL, tiene prioridad el marcado de Razor (archivo *.cshtml*) de la aplicación web. Por ejemplo, si agrega *WebApp1/Areas/MyFeature/Pages/Page1.cshtml* a WebApp1, Page1 en WebApp1 prevalecerá sobre Page1 en la biblioteca de clases de Razor.
+Si existe una vista,una vista parcial o una página de Razor tanto en la aplicación web como en la RCL, tiene prioridad el marcado de Razor (archivo *.cshtml* ) de la aplicación web. Por ejemplo, si agrega *WebApp1/Areas/MyFeature/Pages/Page1.cshtml* a WebApp1, Page1 en WebApp1 prevalecerá sobre Page1 en la biblioteca de clases de Razor.
 
 En la descarga de ejemplo, cambie el nombre *WebApp1/Areas/MyFeature2* por *WebApp1/Areas/MyFeature* para comprobar la prioridad.
 
@@ -389,7 +390,7 @@ Para hacer referencia al contenido de la RCL como si formara parte de la carpeta
 * *RazorUIClassLib/Pages*
 * *RazorUIClassLib/Pages/Shared*
 
-Imagine que *RazorUIClassLib/Pages/Shared* contiene dos archivos parciales: *_Header.cshtml* y *_Footer.cshtml*. En ese caso, se podrían agregar etiquetas `<partial>` al archivo *_Layout.cshtml*:
+Imagine que *RazorUIClassLib/Pages/Shared* contiene dos archivos parciales: *_Header.cshtml* y *_Footer.cshtml*. En ese caso, se podrían agregar etiquetas `<partial>` al archivo *_Layout.cshtml* :
 
 ```cshtml
 <body>

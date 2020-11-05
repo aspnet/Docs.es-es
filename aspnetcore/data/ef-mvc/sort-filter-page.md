@@ -6,6 +6,7 @@ ms.author: riande
 ms.date: 03/27/2019
 ms.topic: tutorial
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/sort-filter-page
-ms.openlocfilehash: 16a0b264f8395670b02d091afd44e71d0dad4d0b
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 8e425d413471912c763c4892a90e9d12039efec4
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88629358"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93053987"
 ---
 # <a name="tutorial-add-sorting-filtering-and-paging---aspnet-mvc-with-ef-core"></a>Tutorial: Adición de ordenación, filtrado y paginación: ASP.NET MVC con EF Core
 
@@ -52,7 +53,7 @@ Para agregar ordenación a la página de índice de Student, deberá cambiar el 
 
 ### <a name="add-sorting-functionality-to-the-index-method"></a>Agregar la funcionalidad de ordenación al método Index
 
-En *StudentsController.cs*, reemplace el método `Index` por el código siguiente:
+En *StudentsController.cs* , reemplace el método `Index` por el código siguiente:
 
 [!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_SortOnly)]
 
@@ -95,7 +96,7 @@ Para agregar filtrado a la página de índice de Students, agregue un cuadro de 
 
 ### <a name="add-filtering-functionality-to-the-index-method"></a>Agregar la funcionalidad de filtrado al método Index
 
-En *StudentsController.cs*, reemplace el método `Index` por el código siguiente (los cambios se resaltan).
+En *StudentsController.cs* , reemplace el método `Index` por el código siguiente (los cambios se resaltan).
 
 [!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_SortFilter&highlight=1,5,9-13)]
 
@@ -108,13 +109,13 @@ Ha agregado un parámetro `searchString` al método `Index`. El valor de la cade
 
 ### <a name="add-a-search-box-to-the-student-index-view"></a>Agregar un cuadro de búsqueda a la vista de índice de Student
 
-En *Views/Student/Index.cshtml*, agregue el código resaltado justo antes de la etiqueta de apertura de tabla para crear un título, un cuadro de texto y un botón de **búsqueda**.
+En *Views/Student/Index.cshtml* , agregue el código resaltado justo antes de la etiqueta de apertura de tabla para crear un título, un cuadro de texto y un botón de **búsqueda**.
 
 [!code-cshtml[](intro/samples/cu/Views/Students/Index3.cshtml?range=9-23&highlight=5-13)]
 
 Este código usa el [asistente de etiquetas](xref:mvc/views/tag-helpers/intro) `<form>` para agregar el cuadro de texto de búsqueda y el botón. De forma predeterminada, el asistente de etiquetas `<form>` envía datos de formulario con POST, lo que significa que los parámetros se pasan en el cuerpo del mensaje HTTP y no en la dirección URL como cadenas de consulta. Al especificar HTTP GET, los datos de formulario se pasan en la dirección URL como cadenas de consulta, lo que permite que los usuarios marquen la dirección URL. Las directrices de W3C recomiendan que use GET cuando la acción no produzca ninguna actualización.
 
-Ejecute la aplicación, seleccione la ficha **Students**, escriba una cadena de búsqueda y haga clic en Search para comprobar que el filtrado funciona correctamente.
+Ejecute la aplicación, seleccione la ficha **Students** , escriba una cadena de búsqueda y haga clic en Search para comprobar que el filtrado funciona correctamente.
 
 ![Página de índice de Students con filtrado](sort-filter-page/_static/filtering.png)
 
@@ -144,7 +145,7 @@ Para crear el objeto `PaginatedList<T>`, se usa un método `CreateAsync` en vez 
 
 ## <a name="add-paging-to-index-method"></a>Agrega paginación al método Index
 
-En *StudentsController.cs*, reemplace el método `Index` por el código siguiente.
+En *StudentsController.cs* , reemplace el método `Index` por el código siguiente.
 
 [!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_SortFilterPage&highlight=1-5,7,11-18,45-46)]
 
@@ -187,7 +188,7 @@ El método `PaginatedList.CreateAsync` toma un número de página. Los dos signo
 
 ## <a name="add-paging-links"></a>Agrega vínculos de paginación
 
-En *Views/Students/Index.cshtml*, reemplace el código existente por el código siguiente. Los cambios aparecen resaltados.
+En *Views/Students/Index.cshtml* , reemplace el código existente por el código siguiente. Los cambios aparecen resaltados.
 
 [!code-cshtml[](intro/samples/cu/Views/Students/Index.cshtml?highlight=1,27,30,33,61-79)]
 
@@ -235,7 +236,7 @@ En la nueva carpeta, agregue un archivo de clase *EnrollmentDateGroup.cs* y reem
 
 ### <a name="modify-the-home-controller"></a>Modificación del controlador Home
 
-En *HomeController.cs*, agregue lo siguiente mediante instrucciones en la parte superior del archivo:
+En *HomeController.cs* , agregue lo siguiente mediante instrucciones en la parte superior del archivo:
 
 [!code-csharp[](intro/samples/cu/Controllers/HomeController.cs?name=snippet_Usings1)]
 

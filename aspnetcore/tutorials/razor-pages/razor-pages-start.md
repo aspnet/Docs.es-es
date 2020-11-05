@@ -5,6 +5,7 @@ description: En esta serie de tutoriales se muestra cómo usar Razor Pages en AS
 ms.author: riande
 ms.date: 11/12/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/razor-pages-start
-ms.openlocfilehash: db05b8243b91a936a6ed72b0445e0770d44df014
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: ab890b956b1242f183054b7ab4575a59072b4f50
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634584"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060240"
 ---
 # <a name="tutorial-get-started-with-no-locrazor-pages-in-aspnet-core"></a>Tutorial: Introducción a Razor Pages en ASP.NET Core
 
@@ -99,7 +100,7 @@ Al final de este tutorial, tendrá una aplicación web de Razor Pages que compil
 
 * Cuando el icono de llama de OmniSharp de la barra de estado se pone en verde, aparece un cuadro de diálogo en el que se le indicará que **faltan los recursos necesarios para compilar y depurar en RazorPagesMovie. Add them?** (Faltan los activos necesarios para compilar y depurar en "RazorPagesMovie". ¿Desea agregarlos?). Seleccione **Sí**.
 
-  Un directorio *.vscode*, que contiene archivos *launch.json* y *tasks.json*, se agrega al directorio raíz del proyecto.
+  Un directorio *.vscode* , que contiene archivos *launch.json* y *tasks.json* , se agrega al directorio raíz del proyecto.
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)
 
@@ -114,7 +115,7 @@ Al final de este tutorial, tendrá una aplicación web de Razor Pages que compil
 * En el cuadro de diálogo **Configure your new Web Application** (Configurar la nueva aplicación web):
 
   * Asegúrese de que la **autenticación** esté establecida en **Sin autenticación**.
-  * Si se presenta una opción para seleccionar una **plataforma de destino**, seleccione la versión 3.x más reciente.
+  * Si se presenta una opción para seleccionar una **plataforma de destino** , seleccione la versión 3.x más reciente.
 
   Seleccione **Siguiente**.
 
@@ -247,7 +248,7 @@ Al final de este tutorial, tendrá una aplicación web de Razor Pages que compil
 
 * Cuando el icono de llama de OmniSharp de la barra de estado se pone en verde, aparece un cuadro de diálogo en el que se le indicará que **faltan los recursos necesarios para compilar y depurar en RazorPagesMovie. Add them?** (Faltan los activos necesarios para compilar y depurar en "RazorPagesMovie". ¿Desea agregarlos?). Seleccione **Sí**.
 
-  Un directorio *.vscode*, que contiene archivos *launch.json* y *tasks.json*, se agrega al directorio raíz del proyecto.
+  Un directorio *.vscode* , que contiene archivos *launch.json* y *tasks.json* , se agrega al directorio raíz del proyecto.
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)
 
@@ -260,7 +261,7 @@ Al final de este tutorial, tendrá una aplicación web de Razor Pages que compil
 * En el cuadro de diálogo **Configure your new Web Application** (Configurar la nueva aplicación web):
 
   * Asegúrese de que la **autenticación** esté establecida en **Sin autenticación**.
-  * Si se presenta una opción para seleccionar una **plataforma de destino**, seleccione la versión 2.x más reciente.
+  * Si se presenta una opción para seleccionar una **plataforma de destino** , seleccione la versión 2.x más reciente.
 
   Seleccione **Siguiente**.
 

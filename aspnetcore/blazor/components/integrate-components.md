@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/25/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/integrate-components-into-razor-pages-and-mvc-apps
-ms.openlocfilehash: e2045d7d169e81c85f4c7dbd97357455ecd70ea3
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: e56a08be082cef4ba3a0a58fdfa9d3800d244f75
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88628487"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93056262"
 ---
 # <a name="integrate-aspnet-core-no-locrazor-components-into-no-locrazor-pages-and-mvc-apps"></a>Integración de componentes de Razor de ASP.NET Core en aplicaciones de Razor Pages y MVC
 
@@ -50,7 +51,7 @@ Una aplicación Razor Pages o MVC existente puede integrar componentes Razor en 
      <base href="~/" />
      ```
 
-     El valor `href` (la *ruta de acceso base de la aplicación*) del ejemplo anterior da por hecho que la aplicación reside en la ruta de acceso URL raíz (`/`). Si la aplicación es una subaplicación, siga las instrucciones de la sección *Ruta de acceso base de la aplicación* del artículo <xref:blazor/host-and-deploy/index#app-base-path>.
+     El valor `href` (la *ruta de acceso base de la aplicación* ) del ejemplo anterior da por hecho que la aplicación reside en la ruta de acceso URL raíz (`/`). Si la aplicación es una subaplicación, siga las instrucciones de la sección *Ruta de acceso base de la aplicación* del artículo <xref:blazor/host-and-deploy/index#app-base-path>.
 
      El archivo `_Layout.cshtml` se encuentra en la carpeta *Pages/Shared* de una aplicación Razor Pages o en la carpeta *Views/Shared* de una aplicación MVC.
 

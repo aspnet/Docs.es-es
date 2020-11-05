@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/03/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/publish-to-iis
-ms.openlocfilehash: 40c47da472257862414ba33be582eb19d3f0b29c
-ms.sourcegitcommit: d60bfd52bfb559e805abd654b87a2a0c7eb69cf8
+ms.openlocfilehash: b3c714ea8e741430df1f70b2df258f1e8f1c7ad5
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91754559"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060513"
 ---
 # <a name="publish-an-aspnet-core-app-to-iis"></a>Publicación de una aplicación ASP.NET Core en IIS
 
@@ -75,7 +76,7 @@ Descargue al instalador mediante el vínculo siguiente:
 
 1. Confirme que la identidad del modelo de proceso tiene los permisos adecuados.
 
-   Si cambia la identidad predeterminada del grupo de aplicaciones (**Modelo de proceso** >  **Identity** ) de `ApplicationPoolIdentity` a otra identidad, compruebe que la nueva tenga los permisos necesarios para acceder a la carpeta de la aplicación, la base de datos y otros recursos necesarios. Por ejemplo, el grupo de aplicaciones requiere acceso de lectura y escritura a las carpetas donde la aplicación lee y escribe archivos.
+   Si cambia la identidad predeterminada del grupo de aplicaciones ( **Modelo de proceso** >  **Identity** ) de `ApplicationPoolIdentity` a otra identidad, compruebe que la nueva tenga los permisos necesarios para acceder a la carpeta de la aplicación, la base de datos y otros recursos necesarios. Por ejemplo, el grupo de aplicaciones requiere acceso de lectura y escritura a las carpetas donde la aplicación lee y escribe archivos.
 
 ## <a name="create-an-aspnet-core-no-locrazor-pages-app"></a>Creación de una aplicación Razor Pages de ASP.NET Core
 
@@ -83,15 +84,15 @@ Siga el tutorial <xref:getting-started> para crear una aplicación Razor Pages.
 
 ## <a name="publish-and-deploy-the-app"></a>Publicar e implementar la aplicación
 
-*Publicar una aplicación* significa generar una aplicación compilada que se puede hospedar en un servidor. *Implementar una aplicación* significa trasladar la aplicación publicada a un sistema de hospedaje. El paso de publicación lo controla el [SDK de .NET Core](/dotnet/core/sdk), mientras que el paso de implementación se puede controlar mediante distintos enfoques. En este tutorial se adopta el enfoque de implementación de *carpetas*, donde:
+*Publicar una aplicación* significa generar una aplicación compilada que se puede hospedar en un servidor. *Implementar una aplicación* significa trasladar la aplicación publicada a un sistema de hospedaje. El paso de publicación lo controla el [SDK de .NET Core](/dotnet/core/sdk), mientras que el paso de implementación se puede controlar mediante distintos enfoques. En este tutorial se adopta el enfoque de implementación de *carpetas* , donde:
  
 * La aplicación se publica en una carpeta.
 * El contenido de la carpeta se mueve a la carpeta del sitio de IIS (la **ruta de acceso física** al sitio en el Administrador de IIS).
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-1. Desde el **Explorador de soluciones**, haga clic con el botón derecho en el proyecto y seleccione **Publicar**.
-1. En el cuadro de diálogo **Elegir un destino de publicación**, seleccione la opción de publicación **Carpeta**.
+1. Desde el **Explorador de soluciones** , haga clic con el botón derecho en el proyecto y seleccione **Publicar**.
+1. En el cuadro de diálogo **Elegir un destino de publicación** , seleccione la opción de publicación **Carpeta**.
 1. Establezca la ruta de acceso **Recurso compartido de archivos o carpeta**.
    * Si ha creado una carpeta para el sitio de IIS que está disponible en el equipo de desarrollo como un recurso compartido de red, proporcione la ruta de acceso al recurso compartido. El usuario actual debe tener acceso de escritura para publicar en el recurso compartido.
    * Si no puede realizar la implementación directamente en la carpeta del sitio de IIS en el servidor IIS, publique en una carpeta de un medio extraíble y mueva físicamente la aplicación publicada a la carpeta del sitio de IIS en el servidor, que es la **ruta de acceso física** del sitio en el Administrador de IIS. Mueva el contenido de la carpeta `bin/Release/{TARGET FRAMEWORK}/publish` a la carpeta del sitio de IIS en el servidor, que es la **ruta de acceso física** del sitio en el Administrador de IIS.

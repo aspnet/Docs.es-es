@@ -6,6 +6,7 @@ ms.author: riande
 ms.date: 09/28/2019
 ms.topic: tutorial
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/read-related-data
-ms.openlocfilehash: f2b4fd9fb1e328882583536b704d516955343417
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 610a9e9b0007fb468ea9cdae6fadd2e756de4290
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88629462"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93054065"
 ---
 # <a name="tutorial-read-related-data---aspnet-mvc-with-ef-core"></a>Tutorial: Lectura de datos relacionados: ASP.NET MVC con EF Core
 
@@ -122,7 +123,7 @@ En esta página se leen y muestran los datos relacionados de las maneras siguien
 
 En la página Instructors se muestran datos de tres tablas diferentes. Por tanto, creará un modelo de vista que incluye tres propiedades, cada una con los datos de una de las tablas.
 
-En la carpeta *SchoolViewModels*, cree *InstructorIndexData.cs* y reemplace el código existente con el código siguiente:
+En la carpeta *SchoolViewModels* , cree *InstructorIndexData.cs* y reemplace el código existente con el código siguiente:
 
 [!code-csharp[](intro/samples/cu/Models/SchoolViewModels/InstructorIndexData.cs)]
 
@@ -180,7 +181,7 @@ A continuación, si se ha seleccionado un curso, se recupera de la lista de curs
 
 ### <a name="modify-the-instructor-index-view"></a>Modificar la vista de índice de instructores
 
-En *Views/Instructors/Index.cshtml*, reemplace el código de plantilla con el código siguiente. Los cambios aparecen resaltados.
+En *Views/Instructors/Index.cshtml* , reemplace el código de plantilla con el código siguiente. Los cambios aparecen resaltados.
 
 [!code-cshtml[](intro/samples/cu/Views/Instructors/Index1.cshtml?range=1-64&highlight=1,3-7,15-19,24,26-31,41-54,56)]
 
@@ -222,7 +223,7 @@ Ejecute la aplicación y haga clic en la pestaña **Instructors**. En la página
 
 ![Página de índice de instructores sin ninguna selección](read-related-data/_static/instructors-index-no-selection.png)
 
-En el archivo *Views/Instructors/Index.cshtml*, después del elemento de tabla de cierre (situado al final del archivo), agregue el código siguiente. Este código muestra una lista de cursos relacionados con un instructor cuando se selecciona un instructor.
+En el archivo *Views/Instructors/Index.cshtml* , después del elemento de tabla de cierre (situado al final del archivo), agregue el código siguiente. Este código muestra una lista de cursos relacionados con un instructor cuando se selecciona un instructor.
 
 [!code-cshtml[](intro/samples/cu/Views/Instructors/Index1.cshtml?range=66-101)]
 
@@ -244,7 +245,7 @@ Vuelva a actualizar la página y seleccione un instructor. Después, seleccione 
 
 ## <a name="about-explicit-loading"></a>Acerca de la carga explícita
 
-Cuando se recuperó la lista de instructores en *InstructorsController.cs*, se especificó la carga diligente de la propiedad de navegación `CourseAssignments`.
+Cuando se recuperó la lista de instructores en *InstructorsController.cs* , se especificó la carga diligente de la propiedad de navegación `CourseAssignments`.
 
 Suponga que esperaba que los usuarios rara vez quisieran ver las inscripciones en un instructor y curso seleccionados. En ese caso, es posible que quiera cargar los datos de inscripción solo si se solicitan. Para ver un ejemplo de cómo realizar la carga explícita, reemplace el método `Index` con el código siguiente, que quita la carga diligente de Enrollments y carga explícitamente esa propiedad. Los cambios de código aparecen resaltados.
 

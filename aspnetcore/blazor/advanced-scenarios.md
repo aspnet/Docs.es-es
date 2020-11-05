@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/18/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/advanced-scenarios
-ms.openlocfilehash: 295e5dd025afc486be08ecadbf661bf765c2745f
-ms.sourcegitcommit: ecae2aa432628b9181d1fa11037c231c7dd56c9e
+ms.openlocfilehash: 95714b3c0d21d3b348a9a8a984e2a42e7708499e
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92113613"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93056561"
 ---
 # <a name="aspnet-core-no-locblazor-advanced-scenarios"></a>Escenarios avanzados de ASP.NET Core Blazor
 
@@ -31,7 +32,7 @@ Por [Luke Latham](https://github.com/guardrex) y [Daniel Roth](https://github.co
 
 ## <a name="no-locblazor-server-circuit-handler"></a>Controlador de circuito de Blazor Server
 
-Blazor Server permite que el código defina un *controlador de circuito*, que permite ejecutar el código en los cambios realizados en el estado del circuito de un usuario. Un controlador de circuito se implementa derivando de `CircuitHandler` y registrando la clase en el contenedor de servicios de la aplicación. El ejemplo siguiente de un controlador de circuito realiza un seguimiento de las conexiones abiertas de SignalR:
+Blazor Server permite que el código defina un *controlador de circuito* , que permite ejecutar el código en los cambios realizados en el estado del circuito de un usuario. Un controlador de circuito se implementa derivando de `CircuitHandler` y registrando la clase en el contenedor de servicios de la aplicación. El ejemplo siguiente de un controlador de circuito realiza un seguimiento de las conexiones abiertas de SignalR:
 
 ```csharp
 using System.Collections.Generic;

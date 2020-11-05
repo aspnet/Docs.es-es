@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 06/04/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/globalization-localization
-ms.openlocfilehash: 52810cb5a5961ffe932a7f5ac2a3a03033781cc9
-ms.sourcegitcommit: c06a5bf419541d17595af30e4cf6f2787c21855e
+ms.openlocfilehash: f8f261f25d854a9bf36ad3299f4af392d5c4fafd
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92678486"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93055885"
 ---
 # <a name="aspnet-core-no-locblazor-globalization-and-localization"></a>Globalización y localización de Blazor de ASP.NET Core
 

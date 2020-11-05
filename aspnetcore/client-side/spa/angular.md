@@ -7,6 +7,7 @@ ms.author: stevesa
 ms.custom: mvc
 ms.date: 02/06/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: spa/angular
-ms.openlocfilehash: c4afddca1d0c2428371c90013f5dbd5c1afb5108
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 2fff0d60b71bbbab9347dbe74cad023264247388
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88628786"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93054572"
 ---
 # <a name="use-the-angular-project-template-with-aspnet-core"></a>Uso de la plantilla de proyecto de Angular con ASP.NET Core
 
@@ -79,7 +80,7 @@ Existen pequeñas diferencias entre la aplicación de Angular creada con esta pl
 
 ## <a name="run-ng-commands"></a>Ejecución de comandos ng
 
-En un símbolo del sistema, cambie al subdirectorio *ClientApp*:
+En un símbolo del sistema, cambie al subdirectorio *ClientApp* :
 
 ```console
 cd ClientApp
@@ -122,7 +123,7 @@ Sin embargo, esta configuración predeterminada tiene un inconveniente. Cada vez
     > [!IMPORTANT]
     > Use `npm start` para iniciar el servidor de desarrollo de la CLI de Angular, no `ng serve`, de modo que la configuración de *package.json* se respete. Para pasar parámetros adicionales al servidor de la CLI de Angular, agréguelos a la línea de `scripts` correspondiente de su archivo *package.json*.
 
-2. Modifique la aplicación ASP.NET Core para usar la instancia externa de la CLI de Angular en lugar de iniciar una de las suyas. En la clase *Startup*, reemplace la invocación de `spa.UseAngularCliServer` por lo siguiente:
+2. Modifique la aplicación ASP.NET Core para usar la instancia externa de la CLI de Angular en lugar de iniciar una de las suyas. En la clase *Startup* , reemplace la invocación de `spa.UseAngularCliServer` por lo siguiente:
 
     ```csharp
     spa.UseProxyToSpaDevelopmentServer("http://localhost:4200");

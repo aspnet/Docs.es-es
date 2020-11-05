@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: devx-track-csharp, mvc
 ms.date: 07/10/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/publish-to-azure-webapp-using-vs
-ms.openlocfilehash: ebfe89d68725d597d6975015bbf84414ff818829
-ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
+ms.openlocfilehash: 817169503a80a771354e32123d65ba2bf388aa2d
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90722915"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060227"
 ---
 # <a name="publish-an-aspnet-core-app-to-azure-with-visual-studio"></a>Publicar una aplicación de ASP.NET Core en Azure con Visual Studio
 
@@ -48,14 +49,14 @@ En la página de inicio de Visual Studio, seleccione **Archivo > Nuevo > Proyect
 
 ![menú Archivo](publish-to-azure-webapp-using-vs/_static/file_new_project.png)
 
-Complete el cuadro de diálogo **Nuevo proyecto**:
+Complete el cuadro de diálogo **Nuevo proyecto** :
 
 * Seleccione **Aplicación web de ASP.NET Core**.
 * Seleccione **Siguiente**.
 
 ![Cuadro de diálogo Nuevo proyecto](publish-to-azure-webapp-using-vs/_static/new_prj.png)
 
-En el cuadro de diálogo **Nueva aplicación web de ASP.NET Core**, haga lo siguiente:
+En el cuadro de diálogo **Nueva aplicación web de ASP.NET Core** , haga lo siguiente:
 
 * Seleccione **Aplicación web**.
 * En Autenticación, seleccione **Cambiar**.
@@ -97,27 +98,27 @@ Desde el Explorador de soluciones, haga clic con el botón derecho en el proyect
 
 ![Menú contextual abierto con el vínculo Publicar resaltado](publish-to-azure-webapp-using-vs/_static/pub.png)
 
-En el cuadro de diálogo **Publicar**:
+En el cuadro de diálogo **Publicar** :
 
 * Seleccione **Azure**.
 * Seleccione **Siguiente**.
 
 ![Cuadro de diálogo Publicar](publish-to-azure-webapp-using-vs/_static/maas1.png)
 
-En el cuadro de diálogo **Publicar**:
+En el cuadro de diálogo **Publicar** :
 
 * Seleccione **Azure App Service (Linux)** .
 * Seleccione **Siguiente**.
 
 ![Cuadro de diálogo Publicar: selección de un servicio de Azure](publish-to-azure-webapp-using-vs/_static/maas2.png)
 
-En el cuadro de diálogo **Publicar**, seleccione **Create a new Azure App Service** (Crear una instancia de Azure App Service):
+En el cuadro de diálogo **Publicar** , seleccione **Create a new Azure App Service** (Crear una instancia de Azure App Service):
 
 ![Cuadro de diálogo Publicar: selección de una instancia de servicio de Azure](publish-to-azure-webapp-using-vs/_static/maas3.png)
 
-Aparece el cuadro de diálogo **Crear servicio de aplicaciones**:
+Aparece el cuadro de diálogo **Crear servicio de aplicaciones** :
 
-* Se rellenan los campos de entrada **Nombre de la aplicación**, **Grupo de recursos** y **Plan de App Service**. Puede mantener estos nombres o cambiarlos.
+* Se rellenan los campos de entrada **Nombre de la aplicación** , **Grupo de recursos** y **Plan de App Service**. Puede mantener estos nombres o cambiarlos.
 * Seleccione **Crear**.
 
 ![Cuadro de diálogo Crear servicio de aplicaciones](publish-to-azure-webapp-using-vs/_static/newrg1.png)
@@ -133,7 +134,7 @@ A continuación, verá la página de **resumen del perfil de publicación**. Vis
 
 ![Página de resumen del perfil de publicación: configuración de la dependencia de SQL Server](publish-to-azure-webapp-using-vs/_static/sql.png)
 
-Aparece el cuadro de diálogo **Configurar dependencia**:
+Aparece el cuadro de diálogo **Configurar dependencia** :
 
 * Seleccione **Azure SQL Database**.
 * Seleccione **Siguiente**.
@@ -144,9 +145,9 @@ En el cuadro de diálogo **Configure Azure SQL database** (Configurar base de da
 
 ![Cuadro de diálogo de configuración de una base de datos de Azure SQL](publish-to-azure-webapp-using-vs/_static/sql2.png)
 
-Aparece el cuadro de diálogo **Crear una base de datos de Azure SQL**:
+Aparece el cuadro de diálogo **Crear una base de datos de Azure SQL** :
 
-* Se rellenan los campos de entrada de datos **Nombre de la base de datos**, **Grupo de recursos**, **Servidor de base de datos** y **Plan de App Service**. Puede mantener estos nombres o cambiarlos.
+* Se rellenan los campos de entrada de datos **Nombre de la base de datos** , **Grupo de recursos** , **Servidor de base de datos** y **Plan de App Service**. Puede mantener estos nombres o cambiarlos.
 * Especifique los valores de **Database administrator username** (Nombre de usuario del administrador de la base de datos) y **Database administrator password** (Contraseña del administrador de la base de datos) del **servidor de bases de datos** seleccionado (tenga en cuenta que la cuenta que use debe tener los permisos necesarios para crear la base de datos de Azure SQL).
 * Seleccione **Crear**.
 
@@ -166,11 +167,11 @@ En el paso siguiente del cuadro de diálogo **Configure Azure SQL Database** (Co
 
 ![Cuadro de diálogo de configuración de una base de datos de Azure SQL, detalles de la cadena de conexión](publish-to-azure-webapp-using-vs/_static/sql_connection.png)
 
-En la página de **resumen del perfil de publicación**, seleccione **Configuración**:
+En la página de **resumen del perfil de publicación** , seleccione **Configuración** :
 
 ![Página de resumen del perfil de publicación: edición de la configuración](publish-to-azure-webapp-using-vs/_static/pp_configured.png)
 
-En la página **Configuración** del cuadro de diálogo **Publicar**, haga lo siguiente:
+En la página **Configuración** del cuadro de diálogo **Publicar** , haga lo siguiente:
 
 * Expanda **Bases de datos** y active **Usar esta cadena de conexión en tiempo de ejecución**.
 * Expanda **Migraciones de Entity Framework** y active **Aplicar esta migración al publicar**.
@@ -205,7 +206,7 @@ Cuando haya terminado de probar la aplicación, vaya a [Azure Portal](https://po
 
 ![Azure Portal: Grupos de recursos en el menú lateral](publish-to-azure-webapp-using-vs/_static/portalrg.png)
 
-* En la página **Grupos de recursos**, seleccione **Eliminar**.
+* En la página **Grupos de recursos** , seleccione **Eliminar**.
 
 ![Azure Portal: página Grupos de recursos](publish-to-azure-webapp-using-vs/_static/rgd.png)
 

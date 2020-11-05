@@ -5,6 +5,7 @@ description: Parte 5 de la serie de tutoriales sobre Razor Pages.
 ms.author: riande
 ms.date: 12/20/2018
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/da1
-ms.openlocfilehash: 04479e5c3a0b1e9badbb4e58043cf059beefb4ab
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 7d25dae67c928fa659654ce4ab34cfdad08b5300
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88632803"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060071"
 ---
 # <a name="part-5-update-the-generated-pages-in-an-aspnet-core-app"></a>Parte 5. Actualización de las páginas generadas en una aplicación de ASP.NET Core
 
@@ -47,7 +48,7 @@ Vaya a Pages/Movies y mantenga el mouse sobre un vínculo de **edición** para v
 
 ![Ventana del explorador con el mouse sobre el vínculo Edit (Editar) donde se muestra una dirección URL de vínculo http://localhost:1234/Movies/Edit/5](~/tutorials/razor-pages/da1/edit7.png)
 
-Los vínculos **Edit**, **Details** y **Delete** son generados por el [asistente de etiquetas de delimitador](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) del archivo *Pages/Movies/Index.cshtml*.
+Los vínculos **Edit** , **Details** y **Delete** son generados por el [asistente de etiquetas de delimitador](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) del archivo *Pages/Movies/Index.cshtml*.
 
 [!code-cshtml[](~/tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Index.cshtml?highlight=16-18&range=32-)]
 
@@ -86,14 +87,14 @@ Una solicitud a la página con la plantilla de ruta "{id:int}" que **no** incluy
 Para probar el comportamiento de `@page "{id:int?}"`:
 
 * Establezca la directiva de página de *Pages/Movies/Details.cshtml* en `@page "{id:int?}"`.
-* Establezca un punto de interrupción en `public async Task<IActionResult> OnGetAsync(int? id)` (en *Pages/Movies/Details.cshtml.cs*).
+* Establezca un punto de interrupción en `public async Task<IActionResult> OnGetAsync(int? id)` (en *Pages/Movies/Details.cshtml.cs* ).
 * Navegue a `https://localhost:5001/Movies/Details/`.
 
 Con la directiva `@page "{id:int}"`, el punto de interrupción nunca se alcanza. El motor de enrutamiento devuelve HTTP 404. Con `@page "{id:int?}"`, el método `OnGetAsync` devuelve `NotFound` (HTTP 404).
 
 ### <a name="review-concurrency-exception-handling"></a>Revisión del control de excepciones de simultaneidad
 
-Revise el método `OnPostAsync` en el archivo *Pages/Movies/Edit.cshtml.cs*:
+Revise el método `OnPostAsync` en el archivo *Pages/Movies/Edit.cshtml.cs* :
 
 [!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Pages/Movies/Edit.cshtml.cs?name=snippet)]
 
@@ -110,7 +111,7 @@ Es posible que el código de producción quiera detectar conflictos de simultane
 
 ### <a name="posting-and-binding-review"></a>Revisión de publicaciones y enlaces
 
-Examine el archivo *Pages/Movies/Edit.cshtml.cs*:
+Examine el archivo *Pages/Movies/Edit.cshtml.cs* :
 
 [!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/SnapShots/Edit.cshtml.cs?name=snippet2)]
 
@@ -162,7 +163,7 @@ Vaya a Pages/Movies y mantenga el mouse sobre un vínculo de **edición** para v
 
 ![Ventana del explorador con el mouse sobre el vínculo Edit (Editar) donde se muestra una dirección URL de vínculo http://localhost:1234/Movies/Edit/5](~/tutorials/razor-pages/da1/edit7.png)
 
-Los vínculos **Edit**, **Details** y **Delete** son generados por el [asistente de etiquetas de delimitador](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) del archivo *Pages/Movies/Index.cshtml*.
+Los vínculos **Edit** , **Details** y **Delete** son generados por el [asistente de etiquetas de delimitador](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) del archivo *Pages/Movies/Index.cshtml*.
 
 [!code-cshtml[](~/tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Index.cshtml?highlight=16-18&range=32-)]
 
@@ -199,14 +200,14 @@ Una solicitud a la página con la plantilla de ruta "{id:int}" que **no** incluy
 Para probar el comportamiento de `@page "{id:int?}"`:
 
 * Establezca la directiva de página de *Pages/Movies/Details.cshtml* en `@page "{id:int?}"`.
-* Establezca un punto de interrupción en `public async Task<IActionResult> OnGetAsync(int? id)` (en *Pages/Movies/Details.cshtml.cs*).
+* Establezca un punto de interrupción en `public async Task<IActionResult> OnGetAsync(int? id)` (en *Pages/Movies/Details.cshtml.cs* ).
 * Navegue a `https://localhost:5001/Movies/Details/`.
 
 Con la directiva `@page "{id:int}"`, el punto de interrupción nunca se alcanza. El motor de enrutamiento devuelve HTTP 404. Con `@page "{id:int?}"`, el método `OnGetAsync` devuelve `NotFound` (HTTP 404).
 
 ### <a name="review-concurrency-exception-handling"></a>Revisión del control de excepciones de simultaneidad
 
-Revise el método `OnPostAsync` en el archivo *Pages/Movies/Edit.cshtml.cs*:
+Revise el método `OnPostAsync` en el archivo *Pages/Movies/Edit.cshtml.cs* :
 
 [!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Pages/Movies/Edit.cshtml.cs?name=snippet)]
 
@@ -223,7 +224,7 @@ Es posible que el código de producción quiera detectar conflictos de simultane
 
 ### <a name="posting-and-binding-review"></a>Revisión de publicaciones y enlaces
 
-Examine el archivo *Pages/Movies/Edit.cshtml.cs*:
+Examine el archivo *Pages/Movies/Edit.cshtml.cs* :
 
 [!code-csharp[](~/tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Edit21.cshtml.cs?name=snippet2)]
 

@@ -7,6 +7,7 @@ ms.custom: mvc
 ms.date: 02/04/2019
 ms.topic: tutorial
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/crud
-ms.openlocfilehash: c17461f8d1d43335230a967a4b62943c055c06b9
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 043fe513f370cf63637733b66ca195e7887faab0
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88629215"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93054299"
 ---
 # <a name="tutorial-implement-crud-functionality---aspnet-mvc-with-ef-core"></a>Tutorial: Implementación de la funcionalidad CRUD: ASP.NET MVC con EF Core
 
@@ -47,9 +48,9 @@ En este tutorial ha:
 
 ## <a name="customize-the-details-page"></a>Personalizar la página de detalles
 
-En el código con scaffolding de la página Students Index se excluyó la propiedad `Enrollments` porque contiene una colección. En la página **Details**, se mostrará el contenido de la colección en una tabla HTML.
+En el código con scaffolding de la página Students Index se excluyó la propiedad `Enrollments` porque contiene una colección. En la página **Details** , se mostrará el contenido de la colección en una tabla HTML.
 
-En *Controllers/StudentsController.cs*, el método de acción para la vista Details usa el método `SingleOrDefaultAsync` para recuperar una única entidad `Student`. Agregue código para llamar a los métodos `Include`, `ThenInclude` y `AsNoTracking`, como se muestra en el siguiente código resaltado.
+En *Controllers/StudentsController.cs* , el método de acción para la vista Details usa el método `SingleOrDefaultAsync` para recuperar una única entidad `Student`. Agregue código para llamar a los métodos `Include`, `ThenInclude` y `AsNoTracking`, como se muestra en el siguiente código resaltado.
 
 [!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_Details&highlight=8-12)]
 
@@ -121,7 +122,7 @@ Ejecute la aplicación, haga clic en la pestaña **Students** y después en el v
 
 ## <a name="update-the-create-page"></a>Actualizar la página Create
 
-En *StudentsController.cs*, modifique el método HttpPost `Create` agregando un bloque try-catch y quitando ID del atributo `Bind`.
+En *StudentsController.cs* , modifique el método HttpPost `Create` agregando un bloque try-catch y quitando ID del atributo `Bind`.
 
 [!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_Create&highlight=4,6-7,14-21)]
 
@@ -178,7 +179,7 @@ Cambie la fecha por un valor válido y haga clic en **Crear** para ver el alumno
 
 ## <a name="update-the-edit-page"></a>Actualizar la página Edit
 
-En *StudentController.cs*, el método HttpGet `Edit` (el que no tiene el atributo `HttpPost`) usa el método `SingleOrDefaultAsync` para recuperar la entidad Student seleccionada, como se vio en el método `Details`. No es necesario cambiar este método.
+En *StudentController.cs* , el método HttpGet `Edit` (el que no tiene el atributo `HttpPost`) usa el método `SingleOrDefaultAsync` para recuperar la entidad Student seleccionada, como se vio en el método `Details`. No es necesario cambiar este método.
 
 ### <a name="recommended-httppost-edit-code-read-and-update"></a>Código recomendado para HttpPost Edit: lectura y actualización
 
@@ -238,7 +239,7 @@ Cambie algunos de los datos y haga clic en **Guardar**. Se abrirá la página **
 
 ## <a name="update-the-delete-page"></a>Actualizar la página Delete
 
-En *StudentController.cs*, el código de plantilla para el método HttpGet `Delete` usa el método `SingleOrDefaultAsync` para recuperar la entidad Student seleccionada, como se vio en los métodos Details y Edit. Pero para implementar un mensaje de error personalizado cuando se produce un error en la llamada a `SaveChanges`, agregará funcionalidad a este método y su vista correspondiente.
+En *StudentController.cs* , el código de plantilla para el método HttpGet `Delete` usa el método `SingleOrDefaultAsync` para recuperar la entidad Student seleccionada, como se vio en los métodos Details y Edit. Pero para implementar un mensaje de error personalizado cuando se produce un error en la llamada a `SaveChanges`, agregará funcionalidad a este método y su vista correspondiente.
 
 Como se vio para las operaciones de actualización y creación, las operaciones de eliminación requieren dos métodos de acción. El método que se llama en respuesta a una solicitud GET muestra una vista que proporciona al usuario la oportunidad de aprobar o cancelar la operación de eliminación. Si el usuario la aprueba, se crea una solicitud POST. Cuando esto ocurre, se llama al método HttpPost `Delete` y, después, ese método es el que realiza la operación de eliminación.
 
@@ -268,11 +269,11 @@ Si la entidad tiene datos relacionados que también se deban eliminar, asegúres
 
 ### <a name="update-the-delete-view"></a>Actualizar la vista Delete
 
-En *Views/Student/Delete.cshtml*, agregue un mensaje de error entre los títulos h2 y h3, como se muestra en el ejemplo siguiente:
+En *Views/Student/Delete.cshtml* , agregue un mensaje de error entre los títulos h2 y h3, como se muestra en el ejemplo siguiente:
 
 [!code-cshtml[](intro/samples/cu/Views/Students/Delete.cshtml?range=7-9&highlight=2)]
 
-Ejecute la aplicación, haga clic en la pestaña **Students** y después en un hipervínculo **Delete**:
+Ejecute la aplicación, haga clic en la pestaña **Students** y después en un hipervínculo **Delete** :
 
 ![Página de confirmación de la eliminación](crud/_static/student-delete.png)
 
@@ -282,7 +283,7 @@ Haga clic en **Eliminar**. Se mostrará la página de índice sin el estudiante 
 
 Para liberar los recursos que contiene una conexión de base de datos, la instancia de contexto debe eliminarse tan pronto como sea posible cuando haya terminado con ella. La [inserción de dependencias](../../fundamentals/dependency-injection.md) integrada de ASP.NET Core se encarga de esa tarea.
 
-En *Startup.cs*, se llama al [método de extensión AddDbContext](https://github.com/aspnet/EntityFrameworkCore/blob/03bcb5122e3f577a84498545fcf130ba79a3d987/src/Microsoft.EntityFrameworkCore/EntityFrameworkServiceCollectionExtensions.cs) para aprovisionar la clase `DbContext` en el contenedor de inserción de dependencias de ASP.NET Core. Ese método establece la duración del servicio en `Scoped` de forma predeterminada. `Scoped` significa que la duración del objeto de contexto coincide con la duración de la solicitud web, y el método `Dispose` se llamará automáticamente al final de la solicitud web.
+En *Startup.cs* , se llama al [método de extensión AddDbContext](https://github.com/aspnet/EntityFrameworkCore/blob/03bcb5122e3f577a84498545fcf130ba79a3d987/src/Microsoft.EntityFrameworkCore/EntityFrameworkServiceCollectionExtensions.cs) para aprovisionar la clase `DbContext` en el contenedor de inserción de dependencias de ASP.NET Core. Ese método establece la duración del servicio en `Scoped` de forma predeterminada. `Scoped` significa que la duración del objeto de contexto coincide con la duración de la solicitud web, y el método `Dispose` se llamará automáticamente al final de la solicitud web.
 
 ## <a name="handle-transactions"></a>Controlar transacciones
 

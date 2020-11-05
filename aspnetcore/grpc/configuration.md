@@ -7,6 +7,7 @@ ms.author: jamesnk
 ms.custom: mvc
 ms.date: 05/26/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/configuration
-ms.openlocfilehash: 8a4f518e30432a79151ec34a7092123c390f4d5d
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: e0b782a254cafc440638ca77a3b9ac885dc3575e
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88631152"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059967"
 ---
 # <a name="grpc-for-net-configuration"></a>Configuración gRPC para .NET
 

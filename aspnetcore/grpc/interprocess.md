@@ -6,6 +6,7 @@ monikerRange: '>= aspnetcore-5.0'
 ms.author: jamesnk
 ms.date: 09/16/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/interprocess
-ms.openlocfilehash: 34876f31cbc51ba66a91ae32ea6a5213dc34a369
-ms.sourcegitcommit: 9c031530d2e652fe422e786bd43392bc500d622f
+ms.openlocfilehash: d806a340d8540fce8af6ccc6ff68325e4b733922
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/18/2020
-ms.locfileid: "90770160"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059889"
 ---
 # <a name="inter-process-communication-with-grpc"></a>Comunicación entre procesos con gRPC
 
@@ -32,7 +33,7 @@ Las llamadas gRPC entre un cliente y un servicio se envían normalmente a travé
 
 ## <a name="server-configuration"></a>Configuración del servidor
 
-[Kestrel](xref:fundamentals/servers/kestrel) admite transportes personalizados. Kestrel se configura en *Program.cs*:
+[Kestrel](xref:fundamentals/servers/kestrel) admite transportes personalizados. Kestrel se configura en *Program.cs* :
 
 ```csharp
 public static readonly string SocketPath = Path.Combine(Path.GetTempPath(), "socket.tmp");

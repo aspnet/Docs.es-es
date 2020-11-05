@@ -6,6 +6,7 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 2/18/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: razor-pages/filter
-ms.openlocfilehash: 436d640130b378e2c770322186020c6e252872ef
-ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
+ms.openlocfilehash: a6d25c1b88e09560c1aad9aefd9148f7fe293909
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90722519"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93056834"
 ---
 # <a name="filter-methods-for-no-locrazor-pages-in-aspnet-core"></a>Métodos de filtrado de Razor Pages de ASP.NET Core
 
@@ -72,7 +73,7 @@ El siguiente código habilita `SampleAsyncPageFilter` en la clase `Startup`:
 
 [!code-csharp[Main](filter/3.1sample/PageFilter/Startup.cs?name=snippet2)]
 
-El código siguiente llama a <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageConventionCollection.AddFolderApplicationModelConvention*> para aplicar `SampleAsyncPageFilter` solo a las páginas en */Movies*:
+El código siguiente llama a <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageConventionCollection.AddFolderApplicationModelConvention*> para aplicar `SampleAsyncPageFilter` solo a las páginas en */Movies* :
 
 [!code-csharp[Main](filter/3.1sample/PageFilter/Startup2.cs?name=snippet2)]
 
@@ -102,7 +103,7 @@ El siguiente código se aplica al atributo `AddHeader`:
 
 [!code-csharp[Main](filter/3.1sample/PageFilter/Pages/Movies/Test.cshtml.cs)]
 
-Para examinar los encabezados, use una herramienta como, por ejemplo, las herramientas de desarrollo del explorador. En **Encabezados de respuesta**, se muestra `author: Rick`.
+Para examinar los encabezados, use una herramienta como, por ejemplo, las herramientas de desarrollo del explorador. En **Encabezados de respuesta** , se muestra `author: Rick`.
 
 Vea [Invalidación del orden predeterminado](xref:mvc/controllers/filters#overriding-the-default-order) para obtener instrucciones sobre cómo invalidar el orden.
 
@@ -168,7 +169,7 @@ El siguiente código muestra la clase `Startup` completa:
 
 [!code-csharp[Main](filter/sample/PageFilter/Startup.cs?name=snippet1)]
 
-El siguiente código llama a `AddFolderApplicationModelConvention` para aplicar `SampleAsyncPageFilter` solo a las páginas en */subFolder*:
+El siguiente código llama a `AddFolderApplicationModelConvention` para aplicar `SampleAsyncPageFilter` solo a las páginas en */subFolder* :
 
 [!code-csharp[Main](filter/sample/PageFilter/Startup2.cs?name=snippet2)]
 

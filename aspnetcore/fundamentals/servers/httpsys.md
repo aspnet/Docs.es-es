@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/servers/httpsys
-ms.openlocfilehash: 8ed9ec3447205107194ffa5c329c0e5ae0fc5553
-ms.sourcegitcommit: e519d95d17443abafba8f712ac168347b15c8b57
+ms.openlocfilehash: ca8aa126a44ea417017f0be0372e818a95ad8413
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91653976"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93053753"
 ---
 # <a name="httpsys-web-server-implementation-in-aspnet-core"></a>Implementación del servidor web HTTP.sys en ASP.NET Core
 
@@ -150,8 +151,8 @@ En Visual Studio, el perfil de inicio predeterminado es para IIS Express. Para e
 
 1. Si la aplicación es una [implementación dependiente del marco](/dotnet/core/deploying/#framework-dependent-deployments-fdd), instale .NET Core, .NET Framework o ambos (si se trata de una aplicación de .NET Core que tiene como destino .NET Framework).
 
-   * **.NET Core**: si la aplicación requiere .NET Core, obtenga y ejecute el instalador de **.NET Core Runtime** en la página de descargas de [.NET Core](https://dotnet.microsoft.com/download). No instale el SDK completo en el servidor.
-   * **.NET Framework**: si la aplicación requiere .NET Framework, consulte la [guía de instalación de .NET Framework](/dotnet/framework/install/). Instale la versión necesaria de .NET Framework. El instalador de la versión más reciente de .NET Framework está disponible en la página de [descargas de .NET Core](https://dotnet.microsoft.com/download).
+   * **.NET Core** : si la aplicación requiere .NET Core, obtenga y ejecute el instalador de **.NET Core Runtime** en la página de descargas de [.NET Core](https://dotnet.microsoft.com/download). No instale el SDK completo en el servidor.
+   * **.NET Framework** : si la aplicación requiere .NET Framework, consulte la [guía de instalación de .NET Framework](/dotnet/framework/install/). Instale la versión necesaria de .NET Framework. El instalador de la versión más reciente de .NET Framework está disponible en la página de [descargas de .NET Core](https://dotnet.microsoft.com/download).
 
    Si la aplicación se basa en la [implementación autocontenida](/dotnet/core/deploying/#self-contained-deployments-scd), incluirá el entorno de ejecución en la implementación. No se requiere la instalación de ningún marco en el servidor.
 
@@ -220,7 +221,7 @@ En Visual Studio, el perfil de inicio predeterminado es para IIS Express. Para e
    A modo de referencia, almacene el GUID en la aplicación como etiqueta de paquete:
 
    * En Visual Studio:
-     * Abra las propiedades del proyecto de la aplicación. Para ello, haga clic con el botón derecho en la aplicación, en el **Explorador de soluciones**, y seleccione **Propiedades**.
+     * Abra las propiedades del proyecto de la aplicación. Para ello, haga clic con el botón derecho en la aplicación, en el **Explorador de soluciones** , y seleccione **Propiedades**.
      * Seleccione la pestaña **Paquete**.
      * Escriba el GUID que creó en el campo **Etiquetas**.
    * Si no usa Visual Studio:
@@ -253,7 +254,7 @@ En Visual Studio, el perfil de inicio predeterminado es para IIS Express. Para e
    netsh http delete sslcert ipport=<IP>:<PORT>
    ```
 
-   Documentación de referencia de *netsh.exe*:
+   Documentación de referencia de *netsh.exe* :
 
    * [Comandos Netsh para protocolo de transferencia de hipertexto (HTTP)](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc725882(v=ws.10))
    * [Cadenas de UrlPrefix](/windows/win32/http/urlprefix-strings)
@@ -418,8 +419,8 @@ En Visual Studio, el perfil de inicio predeterminado es para IIS Express. Para e
 
 1. Si la aplicación es una [implementación dependiente del marco](/dotnet/core/deploying/#framework-dependent-deployments-fdd), instale .NET Core, .NET Framework o ambos (si se trata de una aplicación de .NET Core que tiene como destino .NET Framework).
 
-   * **.NET Core**: si la aplicación requiere .NET Core, obtenga y ejecute el instalador de **.NET Core Runtime** en la página de descargas de [.NET Core](https://dotnet.microsoft.com/download). No instale el SDK completo en el servidor.
-   * **.NET Framework**: si la aplicación requiere .NET Framework, consulte la [guía de instalación de .NET Framework](/dotnet/framework/install/). Instale la versión necesaria de .NET Framework. El instalador de la versión más reciente de .NET Framework está disponible en la página de [descargas de .NET Core](https://dotnet.microsoft.com/download).
+   * **.NET Core** : si la aplicación requiere .NET Core, obtenga y ejecute el instalador de **.NET Core Runtime** en la página de descargas de [.NET Core](https://dotnet.microsoft.com/download). No instale el SDK completo en el servidor.
+   * **.NET Framework** : si la aplicación requiere .NET Framework, consulte la [guía de instalación de .NET Framework](/dotnet/framework/install/). Instale la versión necesaria de .NET Framework. El instalador de la versión más reciente de .NET Framework está disponible en la página de [descargas de .NET Core](https://dotnet.microsoft.com/download).
 
    Si la aplicación se basa en la [implementación autocontenida](/dotnet/core/deploying/#self-contained-deployments-scd), incluirá el entorno de ejecución en la implementación. No se requiere la instalación de ningún marco en el servidor.
 
@@ -488,7 +489,7 @@ En Visual Studio, el perfil de inicio predeterminado es para IIS Express. Para e
    A modo de referencia, almacene el GUID en la aplicación como etiqueta de paquete:
 
    * En Visual Studio:
-     * Abra las propiedades del proyecto de la aplicación. Para ello, haga clic con el botón derecho en la aplicación, en el **Explorador de soluciones**, y seleccione **Propiedades**.
+     * Abra las propiedades del proyecto de la aplicación. Para ello, haga clic con el botón derecho en la aplicación, en el **Explorador de soluciones** , y seleccione **Propiedades**.
      * Seleccione la pestaña **Paquete**.
      * Escriba el GUID que creó en el campo **Etiquetas**.
    * Si no usa Visual Studio:
@@ -521,7 +522,7 @@ En Visual Studio, el perfil de inicio predeterminado es para IIS Express. Para e
    netsh http delete sslcert ipport=<IP>:<PORT>
    ```
 
-   Documentación de referencia de *netsh.exe*:
+   Documentación de referencia de *netsh.exe* :
 
    * [Comandos Netsh para protocolo de transferencia de hipertexto (HTTP)](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc725882(v=ws.10))
    * [Cadenas de UrlPrefix](/windows/win32/http/urlprefix-strings)
@@ -671,8 +672,8 @@ En Visual Studio, el perfil de inicio predeterminado es para IIS Express. Para e
 
 1. Si la aplicación es una [implementación dependiente del marco](/dotnet/core/deploying/#framework-dependent-deployments-fdd), instale .NET Core, .NET Framework o ambos (si se trata de una aplicación de .NET Core que tiene como destino .NET Framework).
 
-   * **.NET Core**: si la aplicación requiere .NET Core, obtenga y ejecute el instalador de **.NET Core Runtime** en la página de descargas de [.NET Core](https://dotnet.microsoft.com/download). No instale el SDK completo en el servidor.
-   * **.NET Framework**: si la aplicación requiere .NET Framework, consulte la [guía de instalación de .NET Framework](/dotnet/framework/install/). Instale la versión necesaria de .NET Framework. El instalador de la versión más reciente de .NET Framework está disponible en la página de [descargas de .NET Core](https://dotnet.microsoft.com/download).
+   * **.NET Core** : si la aplicación requiere .NET Core, obtenga y ejecute el instalador de **.NET Core Runtime** en la página de descargas de [.NET Core](https://dotnet.microsoft.com/download). No instale el SDK completo en el servidor.
+   * **.NET Framework** : si la aplicación requiere .NET Framework, consulte la [guía de instalación de .NET Framework](/dotnet/framework/install/). Instale la versión necesaria de .NET Framework. El instalador de la versión más reciente de .NET Framework está disponible en la página de [descargas de .NET Core](https://dotnet.microsoft.com/download).
 
    Si la aplicación se basa en la [implementación autocontenida](/dotnet/core/deploying/#self-contained-deployments-scd), incluirá el entorno de ejecución en la implementación. No se requiere la instalación de ningún marco en el servidor.
 
@@ -741,7 +742,7 @@ En Visual Studio, el perfil de inicio predeterminado es para IIS Express. Para e
    A modo de referencia, almacene el GUID en la aplicación como etiqueta de paquete:
 
    * En Visual Studio:
-     * Abra las propiedades del proyecto de la aplicación. Para ello, haga clic con el botón derecho en la aplicación, en el **Explorador de soluciones**, y seleccione **Propiedades**.
+     * Abra las propiedades del proyecto de la aplicación. Para ello, haga clic con el botón derecho en la aplicación, en el **Explorador de soluciones** , y seleccione **Propiedades**.
      * Seleccione la pestaña **Paquete**.
      * Escriba el GUID que creó en el campo **Etiquetas**.
    * Si no usa Visual Studio:
@@ -774,7 +775,7 @@ En Visual Studio, el perfil de inicio predeterminado es para IIS Express. Para e
    netsh http delete sslcert ipport=<IP>:<PORT>
    ```
 
-   Documentación de referencia de *netsh.exe*:
+   Documentación de referencia de *netsh.exe* :
 
    * [Comandos Netsh para protocolo de transferencia de hipertexto (HTTP)](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc725882(v=ws.10))
    * [Cadenas de UrlPrefix](/windows/win32/http/urlprefix-strings)
@@ -924,8 +925,8 @@ En Visual Studio, el perfil de inicio predeterminado es para IIS Express. Para e
 
 1. Si la aplicación es una [implementación dependiente del marco](/dotnet/core/deploying/#framework-dependent-deployments-fdd), instale .NET Core, .NET Framework o ambos (si se trata de una aplicación de .NET Core que tiene como destino .NET Framework).
 
-   * **.NET Core**: si la aplicación requiere .NET Core, obtenga y ejecute el instalador de **.NET Core Runtime** en la página de descargas de [.NET Core](https://dotnet.microsoft.com/download). No instale el SDK completo en el servidor.
-   * **.NET Framework**: si la aplicación requiere .NET Framework, consulte la [guía de instalación de .NET Framework](/dotnet/framework/install/). Instale la versión necesaria de .NET Framework. El instalador de la versión más reciente de .NET Framework está disponible en la página de [descargas de .NET Core](https://dotnet.microsoft.com/download).
+   * **.NET Core** : si la aplicación requiere .NET Core, obtenga y ejecute el instalador de **.NET Core Runtime** en la página de descargas de [.NET Core](https://dotnet.microsoft.com/download). No instale el SDK completo en el servidor.
+   * **.NET Framework** : si la aplicación requiere .NET Framework, consulte la [guía de instalación de .NET Framework](/dotnet/framework/install/). Instale la versión necesaria de .NET Framework. El instalador de la versión más reciente de .NET Framework está disponible en la página de [descargas de .NET Core](https://dotnet.microsoft.com/download).
 
    Si la aplicación se basa en la [implementación autocontenida](/dotnet/core/deploying/#self-contained-deployments-scd), incluirá el entorno de ejecución en la implementación. No se requiere la instalación de ningún marco en el servidor.
 
@@ -994,7 +995,7 @@ En Visual Studio, el perfil de inicio predeterminado es para IIS Express. Para e
    A modo de referencia, almacene el GUID en la aplicación como etiqueta de paquete:
 
    * En Visual Studio:
-     * Abra las propiedades del proyecto de la aplicación. Para ello, haga clic con el botón derecho en la aplicación, en el **Explorador de soluciones**, y seleccione **Propiedades**.
+     * Abra las propiedades del proyecto de la aplicación. Para ello, haga clic con el botón derecho en la aplicación, en el **Explorador de soluciones** , y seleccione **Propiedades**.
      * Seleccione la pestaña **Paquete**.
      * Escriba el GUID que creó en el campo **Etiquetas**.
    * Si no usa Visual Studio:
@@ -1027,7 +1028,7 @@ En Visual Studio, el perfil de inicio predeterminado es para IIS Express. Para e
    netsh http delete sslcert ipport=<IP>:<PORT>
    ```
 
-   Documentación de referencia de *netsh.exe*:
+   Documentación de referencia de *netsh.exe* :
 
    * [Comandos Netsh para protocolo de transferencia de hipertexto (HTTP)](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc725882(v=ws.10))
    * [Cadenas de UrlPrefix](/windows/win32/http/urlprefix-strings)

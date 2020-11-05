@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/12/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/docker/building-net-docker-images
-ms.openlocfilehash: 6f94323873937d1428d6cfa1b0ef15e44611fd47
-ms.sourcegitcommit: b3ec60f7682e43211c2b40c60eab3d4e45a48ab1
+ms.openlocfilehash: 81daa1d4a996519f44e513b4f61c27cdf2b6ef5e
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92153644"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059811"
 ---
 # <a name="docker-images-for-aspnet-core"></a>Imágenes de Docker para ASP.NET Core
 
@@ -85,7 +86,7 @@ El Dockerfile de ejemplo usa la [característica de compilación en varias fases
 
 ## <a name="run-the-app-locally"></a>Probar la aplicación localmente
 
-* Vaya a la carpeta de proyecto en *dotnet-docker/samples/aspnetapp/aspnetapp* .
+* Vaya a la carpeta de proyecto en *dotnet-docker/samples/aspnetapp/aspnetapp*.
 
 * Ejecute el siguiente comando para compilar y ejecutar localmente la aplicación:
 
@@ -101,7 +102,7 @@ El Dockerfile de ejemplo usa la [característica de compilación en varias fases
 
 * En el cliente de Docker, [cambie a contenedores de Linux](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers).
 
-* Vaya a la carpeta de Dockerfile en *dotnet-docker/samples/aspnetapp* .
+* Vaya a la carpeta de Dockerfile en *dotnet-docker/samples/aspnetapp*.
 
 * Ejecute los siguientes comandos para compilar y ejecutar el ejemplo en Docker:
 
@@ -157,7 +158,7 @@ Vaya a la carpeta de archivos de Docker en `dotnet-docker/samples/aspnetapp`.
 
 En algunos escenarios, puede que quiera implementar una aplicación en un contenedor mediante la copia de los archivos de aplicación que son necesarios en tiempo de ejecución. En esta sección se muestra cómo realizar una implementación manual.
 
-* Vaya a la carpeta de proyecto en *dotnet-docker/samples/aspnetapp/aspnetapp* .
+* Vaya a la carpeta de proyecto en *dotnet-docker/samples/aspnetapp/aspnetapp*.
 
 * Ejecute el comando [dotnet publish](/dotnet/core/tools/dotnet-publish):
 
@@ -167,7 +168,7 @@ En algunos escenarios, puede que quiera implementar una aplicación en un conten
 
   Los argumentos del comando:
   * Compile la aplicación en modo de versión (el valor predeterminado es modo de depuración).
-  * Cree los archivos en la carpeta *publicada* .
+  * Cree los archivos en la carpeta *publicada*.
 
 * Ejecute la aplicación.
 

@@ -5,6 +5,7 @@ description: Información general sobre Microsoft.NET.Sdk.Web.
 ms.author: riande
 ms.date: 01/25/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: razor-pages/web-sdk
-ms.openlocfilehash: fdc2991060050c813efb6dc895cf73ff876bae29
-ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
+ms.openlocfilehash: 8cc0a51d3d917300f3add31f5884b4784dd573dd
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90722506"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059759"
 ---
 # <a name="aspnet-core-web-sdk"></a>SDK web de ASP.NET Core
 

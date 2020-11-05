@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/20/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,18 +18,18 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/request-features
-ms.openlocfilehash: 879b775ba2998ee803708ebf231b5fcd363b811c
-ms.sourcegitcommit: b5ebaf42422205d212e3dade93fcefcf7f16db39
+ms.openlocfilehash: d906474b0fd291cc4a68390f390b2bf538e21eff
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92326438"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93053714"
 ---
 # <a name="request-features-in-aspnet-core"></a>Características de solicitud de ASP.NET Core
 
 Por [Steve Smith](https://ardalis.com/)
 
-La API `HttpContext` que las aplicaciones y el middleware usan para procesar solicitudes tiene una capa de abstracción debajo de ella llamada *interfaces de características* . Cada interfaz de características proporciona un subconjunto granular de la funcionalidad expuesta por `HttpContext`. El servidor o el middleware pueden agregar, modificar, ajustar, reemplazar o incluso quitar estas interfaces a medida que se procesa la solicitud sin tener que volver a implementar `HttpContext` íntegramente. También se pueden usar para simular la funcionalidad durante las pruebas.
+La API `HttpContext` que las aplicaciones y el middleware usan para procesar solicitudes tiene una capa de abstracción debajo de ella llamada *interfaces de características*. Cada interfaz de características proporciona un subconjunto granular de la funcionalidad expuesta por `HttpContext`. El servidor o el middleware pueden agregar, modificar, ajustar, reemplazar o incluso quitar estas interfaces a medida que se procesa la solicitud sin tener que volver a implementar `HttpContext` íntegramente. También se pueden usar para simular la funcionalidad durante las pruebas.
 
 ## <a name="feature-collections"></a>Colecciones de características
 

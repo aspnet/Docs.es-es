@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 03/06/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/app-state
-ms.openlocfilehash: 95035ec372ab6adb5bafb40f2b939c549ac6f839
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: c11b748f9d79235b14c9541019da6e1fb3428af6
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633817"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93051413"
 ---
 # <a name="session-and-state-management-in-aspnet-core"></a>Administración del estado y la sesión en ASP.NET Core
 
@@ -141,7 +142,7 @@ Para reemplazar los valores predeterminados de la sesión de cookies, use <xref:
 
 La aplicación usa la propiedad <xref:Microsoft.AspNetCore.Builder.SessionOptions.IdleTimeout> para determinar el tiempo que una sesión puede estar inactiva antes de que se abandone su contenido en la caché del servidor. Esta propiedad es independiente de la expiración de la cookie. Cada solicitud que se pasa a través del [middleware de sesión](xref:Microsoft.AspNetCore.Session.SessionMiddleware) restablece el tiempo de espera.
 
-El estado de sesión es *no realiza bloqueo*. Si dos solicitudes intentan modificar el contenido de una sesión simultáneamente, la última solicitud reemplaza a la primera. `Session` se implementa como una *sesión coherente*, lo que significa que todo el contenido se almacena junto. Cuando dos solicitudes buscan modificar diferentes valores de sesión, la última solicitud podría reemplazar los cambios de sesión realizados por la primera.
+El estado de sesión es *no realiza bloqueo*. Si dos solicitudes intentan modificar el contenido de una sesión simultáneamente, la última solicitud reemplaza a la primera. `Session` se implementa como una *sesión coherente* , lo que significa que todo el contenido se almacena junto. Cuando dos solicitudes buscan modificar diferentes valores de sesión, la última solicitud podría reemplazar los cambios de sesión realizados por la primera.
 
 ### <a name="set-and-get-session-values"></a>Establecer y obtener valores de Session
 
@@ -401,7 +402,7 @@ Para reemplazar los valores predeterminados de la sesión de cookies, use `Sessi
 
 La aplicación usa la propiedad <xref:Microsoft.AspNetCore.Builder.SessionOptions.IdleTimeout> para determinar el tiempo que una sesión puede estar inactiva antes de que se abandone su contenido en la caché del servidor. Esta propiedad es independiente de la expiración de la cookie. Cada solicitud que se pasa a través del [middleware de sesión](xref:Microsoft.AspNetCore.Session.SessionMiddleware) restablece el tiempo de espera.
 
-El estado de sesión es *no realiza bloqueo*. Si dos solicitudes intentan modificar el contenido de una sesión simultáneamente, la última solicitud reemplaza a la primera. `Session` se implementa como una *sesión coherente*, lo que significa que todo el contenido se almacena junto. Cuando dos solicitudes buscan modificar diferentes valores de sesión, la última solicitud podría reemplazar los cambios de sesión realizados por la primera.
+El estado de sesión es *no realiza bloqueo*. Si dos solicitudes intentan modificar el contenido de una sesión simultáneamente, la última solicitud reemplaza a la primera. `Session` se implementa como una *sesión coherente* , lo que significa que todo el contenido se almacena junto. Cuando dos solicitudes buscan modificar diferentes valores de sesión, la última solicitud podría reemplazar los cambios de sesión realizados por la primera.
 
 ### <a name="set-and-get-session-values"></a>Establecer y obtener valores de Session
 

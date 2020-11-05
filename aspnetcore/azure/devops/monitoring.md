@@ -6,6 +6,7 @@ ms.author: casoper
 ms.custom: devx-track-csharp, mvc, seodec18
 ms.date: 07/10/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: azure/devops/monitor
-ms.openlocfilehash: d5d5189563760cb8a61c188436caa3838e75a31e
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 74e789828bf5d54e3457f235657f8ed7086df80d
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88626914"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93056756"
 ---
 # <a name="monitor-and-debug"></a>Supervisión y depuración
 
@@ -48,11 +49,11 @@ Las aplicaciones web de App Service se pueden supervisar fácilmente en tiempo r
 
     ![Captura de pantalla en la que se muestra el panel Información general](./media/monitoring/overview.png)
 
-    * **Http 5xx**: recuento de errores del lado servidor, normalmente excepciones en el código de ASP.NET Core.
-    * **Entrada de datos**: entrada de datos en la aplicación web.
-    * **Salida de datos**: salida de datos de la aplicación web a los clientes.
-    * **Solicitud**: recuento de solicitudes HTTP.
-    * **Tiempo promedio de respuesta**: tiempo promedio de respuesta de la aplicación web a las solicitudes HTTP.
+    * **Http 5xx** : recuento de errores del lado servidor, normalmente excepciones en el código de ASP.NET Core.
+    * **Entrada de datos** : entrada de datos en la aplicación web.
+    * **Salida de datos** : salida de datos de la aplicación web a los clientes.
+    * **Solicitud** : recuento de solicitudes HTTP.
+    * **Tiempo promedio de respuesta** : tiempo promedio de respuesta de la aplicación web a las solicitudes HTTP.
 
     En esta página también se encuentran varias herramientas de autoservicio para la solución de problemas y la optimización.
 
@@ -71,7 +72,7 @@ Las aplicaciones web de App Service se pueden supervisar fácilmente en tiempo r
 [Application Insights](/azure/application-insights/app-insights-overview) es un servicio de Azure para analizar el rendimiento y la estabilidad de las aplicaciones web y cómo las utilizan los usuarios. Los datos de Application Insights son más amplios y profundos que los de Azure Monitor. Los datos pueden proporcionar a desarrolladores y administradores información clave para mejorar las aplicaciones. Application Insights se puede agregar a un recurso de Azure App Service sin cambios del código.
 
 1. Abra [Azure Portal](https://portal.azure.com) y, después, vaya a la instancia de App Service *mywebapp\<unique_number\>* .
-1. En la pestaña **Información general**, haga clic en el icono **Application Insights**.
+1. En la pestaña **Información general** , haga clic en el icono **Application Insights**.
 
     ![Icono de Application Insights](./media/monitoring/app-insights.png)
 
@@ -79,7 +80,7 @@ Las aplicaciones web de App Service se pueden supervisar fácilmente en tiempo r
 
     ![Configuración de Application Insights](./media/monitoring/new-app-insights.png)
 
-1. En **Entorno de ejecución/Marco**, seleccione **ASP.NET Core**. Acepte la configuración predeterminada.
+1. En **Entorno de ejecución/Marco** , seleccione **ASP.NET Core**. Acepte la configuración predeterminada.
 1. Seleccione **Aceptar**. Si se le solicita confirmación, seleccione **Continuar**.
 1. Una vez que se haya creado el recurso, haga clic en el nombre del recurso de Application Insights para ir directamente a la página Application Insights.
 

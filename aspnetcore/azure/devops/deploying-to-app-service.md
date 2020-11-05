@@ -6,6 +6,7 @@ ms.author: casoper
 ms.custom: devx-track-csharp, mvc, seodec18, devx-track-azurecli
 ms.date: 10/24/2018
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: azure/devops/deploy-to-app-service
-ms.openlocfilehash: e6d8b4bcbbbe909fde971a8c706287654fcc98ba
-ms.sourcegitcommit: 62cc131969b2379f7a45c286a751e22d961dfbdb
+ms.openlocfilehash: 52c4905ecb3a76f1dd10629f834b2b541b698774
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90847629"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93052362"
 ---
 # <a name="deploy-an-app-to-app-service"></a>Implementación de una aplicación en App Service
 
@@ -162,9 +163,9 @@ La aplicación ya se ha implementado desde el shell de comandos. Vamos a usar la
 4. En el Explorador de soluciones, haga clic con el botón derecho en el proyecto y, a continuación, en **Publicar**.
 
     ![Captura de pantalla que muestra el clic con el botón derecho, Publicar](./media/deploying-to-app-service/publish.png)
-5. Visual Studio puede crear un nuevo recurso de App Service, pero esta actualización se publicará en la implementación existente. En el cuadro de diálogo **Elegir un destino de publicación**, seleccione **App Service** en la lista de la izquierda y, a continuación, seleccione **Seleccionar existentes**. Haga clic en **Publicar**.
-6. En el cuadro de diálogo **App Service**, confirme que la cuenta profesional o de Microsoft utilizada para crear la suscripción de Azure se muestre en la esquina superior derecha. Si no es así, haga clic en el menú desplegable y agréguelo.
-7. Conforme que se selecciona la **suscripción** de Azure correcta. Para **Vista**, seleccione **Grupo de recursos**. Expanda el grupo de recursos **AzureTutorial** y, a continuación, seleccione la aplicación web existente. Haga clic en **Aceptar**.
+5. Visual Studio puede crear un nuevo recurso de App Service, pero esta actualización se publicará en la implementación existente. En el cuadro de diálogo **Elegir un destino de publicación** , seleccione **App Service** en la lista de la izquierda y, a continuación, seleccione **Seleccionar existentes**. Haga clic en **Publicar**.
+6. En el cuadro de diálogo **App Service** , confirme que la cuenta profesional o de Microsoft utilizada para crear la suscripción de Azure se muestre en la esquina superior derecha. Si no es así, haga clic en el menú desplegable y agréguelo.
+7. Conforme que se selecciona la **suscripción** de Azure correcta. Para **Vista** , seleccione **Grupo de recursos**. Expanda el grupo de recursos **AzureTutorial** y, a continuación, seleccione la aplicación web existente. Haga clic en **Aceptar**.
 
     ![Captura de pantalla que muestra el cuadro de diálogo Publicar App Service](./media/deploying-to-app-service/publish-dialog.png)
 

@@ -7,6 +7,7 @@ ms.author: jeliknes
 ms.custom: mvc
 ms.date: 08/14/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/blazor-server-ef-core
-ms.openlocfilehash: ac84b9d2fac4fe3df48d356eea3ea48fd23bfda4
-ms.sourcegitcommit: ecae2aa432628b9181d1fa11037c231c7dd56c9e
+ms.openlocfilehash: bfc8f334b9229fed54e6b9841e4fb255ed18249a
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92113639"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93056626"
 ---
 # <a name="aspnet-core-no-locblazor-server-with-entity-framework-core-efcore"></a>Blazor Server de ASP.NET Core con Entity Framework Core (EF Core)
 
@@ -31,7 +32,7 @@ Por: [Jeremy Likness](https://github.com/JeremyLikness)
 
 :::moniker range=">= aspnetcore-5.0"
 
-El servidor Blazor Server es un marco para aplicaciones con estado. La aplicación mantiene una conexión continua con el servidor, y el estado del usuario se mantiene en la memoria del servidor en un *circuito* . Un ejemplo de estado del usuario son los datos contenidos en las instancias de servicio de la [inserción de dependencias (DI)](xref:fundamentals/dependency-injection) que se encuentran en el ámbito del circuito. El modelo de aplicación único que proporciona Blazor Server requiere un enfoque especial para usar Entity Framework Core.
+El servidor Blazor Server es un marco para aplicaciones con estado. La aplicación mantiene una conexión continua con el servidor, y el estado del usuario se mantiene en la memoria del servidor en un *circuito*. Un ejemplo de estado del usuario son los datos contenidos en las instancias de servicio de la [inserción de dependencias (DI)](xref:fundamentals/dependency-injection) que se encuentran en el ámbito del circuito. El modelo de aplicación único que proporciona Blazor Server requiere un enfoque especial para usar Entity Framework Core.
 
 > [!NOTE]
 > En este artículo se describe EF Core en aplicaciones Blazor Server. Las aplicaciones Blazor WebAssembly se ejecutan en un espacio aislado de WebAssembly que evita la mayoría de conexiones de base de datos directas. La ejecución de EF Core en Blazor WebAssembly supera el ámbito de este artículo.
@@ -162,7 +163,7 @@ Se recomienda habilitar <xref:Microsoft.EntityFrameworkCore.DbContextOptionsBuil
 
 :::moniker range="< aspnetcore-5.0"
 
-El servidor Blazor Server es un marco para aplicaciones con estado. La aplicación mantiene una conexión continua con el servidor, y el estado del usuario se mantiene en la memoria del servidor en un *circuito* . Un ejemplo de estado del usuario son los datos contenidos en las instancias de servicio de la [inserción de dependencias (DI)](xref:fundamentals/dependency-injection) que se encuentran en el ámbito del circuito. El modelo de aplicación único que proporciona Blazor Server requiere un enfoque especial para usar Entity Framework Core.
+El servidor Blazor Server es un marco para aplicaciones con estado. La aplicación mantiene una conexión continua con el servidor, y el estado del usuario se mantiene en la memoria del servidor en un *circuito*. Un ejemplo de estado del usuario son los datos contenidos en las instancias de servicio de la [inserción de dependencias (DI)](xref:fundamentals/dependency-injection) que se encuentran en el ámbito del circuito. El modelo de aplicación único que proporciona Blazor Server requiere un enfoque especial para usar Entity Framework Core.
 
 > [!NOTE]
 > En este artículo se describe EF Core en aplicaciones Blazor Server. Las aplicaciones Blazor WebAssembly se ejecutan en un espacio aislado de WebAssembly que evita la mayoría de conexiones de base de datos directas. La ejecución de EF Core en Blazor WebAssembly supera el ámbito de este artículo.

@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/26/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/server
-ms.openlocfilehash: afbaad2f27359a4a1cac5c5fe1da16d3e80d038f
-ms.sourcegitcommit: 7258e94cf60c16e5b6883138e5e68516751ead0f
+ms.openlocfilehash: 74473eb5c0efcd8798d260b765c848d7e621e534
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2020
-ms.locfileid: "89102658"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93055768"
 ---
 # <a name="host-and-deploy-no-locblazor-server"></a>Hospedaje e implementación de Blazor Server
 
@@ -79,7 +80,7 @@ Se recomienda usar [Azure SignalR Service](xref:signalr/scale#azure-signalr-serv
 
 Para configurar una aplicación (y, opcionalmente, aprovisionarla) Azure SignalR Service, realice estos pasos:
 
-1. Habilite el servicio para que admita las *sesiones permanentes*, en las que se [devuelve a los clientes al mismo servidor durante la representación previa](xref:blazor/hosting-models#connection-to-the-server). Establezca la opción `ServerStickyMode` o el valor de configuración en `Required`. Normalmente, una aplicación crea la configuración mediante **uno** de los enfoques siguientes:
+1. Habilite el servicio para que admita las *sesiones permanentes* , en las que se [devuelve a los clientes al mismo servidor durante la representación previa](xref:blazor/hosting-models#connection-to-the-server). Establezca la opción `ServerStickyMode` o el valor de configuración en `Required`. Normalmente, una aplicación crea la configuración mediante **uno** de los enfoques siguientes:
 
    * `Startup.ConfigureServices`:
   
@@ -99,7 +100,7 @@ Para configurar una aplicación (y, opcionalmente, aprovisionarla) Azure SignalR
        "Azure:SignalR:ServerStickyMode": "Required"
        ```
 
-     * El valor **Configuración** > **Configuración de la aplicación** de la instancia de App Service en Azure Portal (**Nombre**: `Azure:SignalR:ServerStickyMode`, **Valor**: `Required`).
+     * El valor **Configuración** > **Configuración de la aplicación** de la instancia de App Service en Azure Portal ( **Nombre** : `Azure:SignalR:ServerStickyMode`, **Valor** : `Required`).
 
 1. Cree un perfil de publicación de aplicaciones de Azure en Visual Studio para la aplicación Blazor Server.
 1. Agregue la dependencia de **Azure SignalR Service** al perfil. Si la suscripción de Azure no tiene una instancia de Azure SignalR Service para asignarla a la aplicación, seleccione **Crear una instancia de Azure SignalR Service** para aprovisionar una nueva instancia de servicio.

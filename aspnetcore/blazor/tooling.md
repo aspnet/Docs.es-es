@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/28/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -19,12 +20,12 @@ no-loc:
 - SignalR
 uid: blazor/tooling
 zone_pivot_groups: operating-systems
-ms.openlocfilehash: d1626fe753782d524bf75c398c11235c3110633a
-ms.sourcegitcommit: d7991068bc6b04063f4bd836fc5b9591d614d448
+ms.openlocfilehash: 500342ac979efdee824ac0d4b5757ca9804f3b30
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91762157"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93054819"
 ---
 # <a name="tooling-for-aspnet-core-no-locblazor"></a>Herramientas para ASP.NET Core Blazor
 
@@ -108,7 +109,7 @@ Para más información, consulte las instrucciones proporcionadas por el fabrica
 
 1. Confirme que la **Autenticación** esté establecida en **Sin autenticación**. Seleccione **Siguiente**.
 
-1. En el campo **Nombre del proyecto**, asigne un nombre a la aplicación `WebApplication1`. Seleccione **Crear**.
+1. En el campo **Nombre del proyecto** , asigne un nombre a la aplicación `WebApplication1`. Seleccione **Crear**.
 
 1. Seleccione **Ejecutar** > **Iniciar sin depurar** para ejecutar la aplicación *sin el depurador*. Ejecute la aplicación con **Ejecutar** > **Iniciar depuración** o usando el botón Ejecutar (&#9654;) para ejecutar la aplicación *con el depurador*.
 

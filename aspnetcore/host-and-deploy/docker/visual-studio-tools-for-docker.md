@@ -6,6 +6,7 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 09/12/2018
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/docker/visual-studio-tools-for-docker
-ms.openlocfilehash: 68ecc4961401211f1304ac4a26fff1b31e4ad7eb
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 2cfd200c44290a0931cdeb2f68e99b90c11aa612
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88627343"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059824"
 ---
 # <a name="visual-studio-container-tools-with-aspnet-core"></a>Herramientas de contenedor de Visual Studio con ASP.NET Core
 
@@ -54,7 +55,7 @@ Al agregar compatibilidad con Docker a un proyecto, elija un contenedor de Linux
 
 ### <a name="new-app"></a>Nueva aplicación
 
-Al crear una nueva aplicación con las plantillas de proyecto **Aplicación web ASP.NET Core**, active la casilla **Enable Docker Support** (Habilitar compatibilidad con Docker):
+Al crear una nueva aplicación con las plantillas de proyecto **Aplicación web ASP.NET Core** , active la casilla **Enable Docker Support** (Habilitar compatibilidad con Docker):
 
 ![Casilla Habilitar compatibilidad con Docker](visual-studio-tools-for-docker/_static/enable-docker-support-check-box.png)
 
@@ -65,13 +66,13 @@ Si la plataforma de destino es .NET Core, la lista desplegable de **SO** permite
 En los proyectos de ASP.NET Core para .NET Core, hay dos opciones para agregar compatibilidad con Docker mediante las herramientas. Abra el proyecto en Visual Studio y elija una de las siguientes opciones:
 
 * Seleccione **Compatibilidad con Docker** en el menú **Proyecto**.
-* Haga clic con el botón derecho en el proyecto, en el **Explorador de soluciones**, y seleccione **Agregar** > **Compatibilidad con Docker**.
+* Haga clic con el botón derecho en el proyecto, en el **Explorador de soluciones** , y seleccione **Agregar** > **Compatibilidad con Docker**.
 
 Las herramientas de contenedor de Visual Studio no admiten la adición de Docker a un proyecto de ASP.NET Core existente para .NET Framework.
 
 ## <a name="dockerfile-overview"></a>Información general sobre Dockerfile
 
-Se agrega un *Dockerfile*, la receta para crear una imagen de Docker final, a la raíz del proyecto. Vea [Dockerfile reference (Referencia de Dockerfile)](https://docs.docker.com/engine/reference/builder/) para obtener una descripción de los comandos que contiene. Este *Dockerfile* en concreto usa una [compilación de varias fases](https://docs.docker.com/engine/userguide/eng-image/multistage-build/), con cuatro fases de compilación distintas y cada una con un nombre asignado:
+Se agrega un *Dockerfile* , la receta para crear una imagen de Docker final, a la raíz del proyecto. Vea [Dockerfile reference (Referencia de Dockerfile)](https://docs.docker.com/engine/reference/builder/) para obtener una descripción de los comandos que contiene. Este *Dockerfile* en concreto usa una [compilación de varias fases](https://docs.docker.com/engine/userguide/eng-image/multistage-build/), con cuatro fases de compilación distintas y cada una con un nombre asignado:
 
 ::: moniker range=">= aspnetcore-2.1"
 
@@ -105,10 +106,10 @@ Visual Studio 2017, versiones 15.8 o posteriores, permite agregar una solución 
 
 Las herramientas de contenedor de Visual Studio agregan un proyecto *docker-compose* a la solución con los archivos siguientes:
 
-* *docker-compose.dcproj*: archivo que representa el proyecto. Incluye un elemento `<DockerTargetOS>` en el que se especifica el sistema operativo que se utilizará.
-* *.dockerignore*: contiene una lista de los patrones de archivos y directorios que se excluirán al generar un contexto de compilación.
-* *docker-compose.yml*: archivo base de [Docker Compose](https://docs.docker.com/compose/overview/) que se utiliza para definir la colección de imágenes compilada y ejecutada con `docker-compose build` y `docker-compose run`, respectivamente.
-* *docker-compose.override.yml*: archivo opcional que Docker Compose lee y que contiene las invalidaciones de configuración de los servicios. Visual Studio ejecuta `docker-compose -f "docker-compose.yml" -f "docker-compose.override.yml"` para combinar estos archivos.
+* *docker-compose.dcproj* : archivo que representa el proyecto. Incluye un elemento `<DockerTargetOS>` en el que se especifica el sistema operativo que se utilizará.
+* *.dockerignore* : contiene una lista de los patrones de archivos y directorios que se excluirán al generar un contexto de compilación.
+* *docker-compose.yml* : archivo base de [Docker Compose](https://docs.docker.com/compose/overview/) que se utiliza para definir la colección de imágenes compilada y ejecutada con `docker-compose build` y `docker-compose run`, respectivamente.
+* *docker-compose.override.yml* : archivo opcional que Docker Compose lee y que contiene las invalidaciones de configuración de los servicios. Visual Studio ejecuta `docker-compose -f "docker-compose.yml" -f "docker-compose.override.yml"` para combinar estos archivos.
 
 El archivo *docker-compose.yml* hace referencia al nombre de la imagen que se crea al ejecutar el proyecto:
 
@@ -118,7 +119,7 @@ En el ejemplo anterior, `image: hellodockertools` genera la imagen `hellodockert
 
 Si tiene previsto colocar la imagen en el Registro, utilice el nombre de usuario de [Docker Hub](https://hub.docker.com/) como prefijo, antes del nombre de imagen, por ejemplo, `dockerhubusername/hellodockertools`. También puede cambiar el nombre de la imagen para incluir la dirección URL del Registro privado (por ejemplo, `privateregistry.domain.com/hellodockertools`) según la configuración.
 
-Si quiere un comportamiento diferente basado en la configuración de compilación (por ejemplo, Debug o Release), agregue archivos *docker-compose* específicos de la configuración. Los nombres de los archivos deben basarse en la configuración de compilación (por ejemplo, *docker-compose.vs.debug.yml* y *docker-compose.vs.release.yml*) y deben colocarse en la misma ubicación que el archivo *docker-compose-override.yml*. 
+Si quiere un comportamiento diferente basado en la configuración de compilación (por ejemplo, Debug o Release), agregue archivos *docker-compose* específicos de la configuración. Los nombres de los archivos deben basarse en la configuración de compilación (por ejemplo, *docker-compose.vs.debug.yml* y *docker-compose.vs.release.yml* ) y deben colocarse en la misma ubicación que el archivo *docker-compose-override.yml*. 
 
 Con los archivos de invalidación específicos de la configuración, puede especificar distintos valores de configuración (por ejemplo, variables de entorno o puntos de entrada) para las configuraciones de compilación de depuración y lanzamiento.
 
@@ -136,7 +137,7 @@ Service Fabric no admite la ejecución de contenedores de Linux en el clúster d
 Las herramientas de contenedor de Visual Studio permiten realizar las siguientes tareas:
 
 * Agrega un proyecto *&lt;nombre_de_proyecto&gt;Aplicación* **Aplicación de Service Fabric** a la solución.
-* Agregar un *Dockerfile* y un archivo *.dockerignore* al proyecto de ASP.NET Core. Si el proyecto de ASP.NET Core ya contiene un *Dockerfile*, se le cambiará el nombre a *Dockerfile.original*. A continuación, se creará un nuevo *Dockerfile* similar al siguiente:
+* Agregar un *Dockerfile* y un archivo *.dockerignore* al proyecto de ASP.NET Core. Si el proyecto de ASP.NET Core ya contiene un *Dockerfile* , se le cambiará el nombre a *Dockerfile.original*. A continuación, se creará un nuevo *Dockerfile* similar al siguiente:
 
     [!code-dockerfile[](visual-studio-tools-for-docker/samples/2.1/HelloDockerTools/Dockerfile)]
 

@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: test/troubleshoot-azure-iis
-ms.openlocfilehash: bc968489a35405c1be0a4ac2e52e6dff4c3af050
-ms.sourcegitcommit: 8fcb08312a59c37e3542e7a67dad25faf5bb8e76
+ms.openlocfilehash: d51a4a43f585b0a0b7e3aab2c5de1b2d215de494
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90009744"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059603"
 ---
 # <a name="troubleshoot-aspnet-core-on-azure-app-service-and-iis"></a>Solución de problemas de ASP.NET Core en Azure App Service e IIS
 
@@ -75,7 +76,7 @@ Lleve a cabo los siguiente pasos:
    * Si IIS hospeda la aplicación, confirme que la aplicación se implementa en la **ruta de acceso física** de IIS que se muestra en la **configuración básica** del **administrador de IIS**.
 1. Confirme que todos los archivos y las carpetas de la aplicación se han implementado; para ello, compare la implementación en el sistema de hospedaje con el contenido de la carpeta *publish* del proyecto.
 
-Para obtener más información sobre el diseño de una aplicación ASP.NET Core publicada, consulte <xref:host-and-deploy/directory-structure>. Para obtener más información sobre el archivo *web.config*, vea <xref:host-and-deploy/aspnet-core-module#configuration-with-webconfig>.
+Para obtener más información sobre el diseño de una aplicación ASP.NET Core publicada, consulte <xref:host-and-deploy/directory-structure>. Para obtener más información sobre el archivo *web.config* , vea <xref:host-and-deploy/aspnet-core-module#configuration-with-webconfig>.
 
 ### <a name="500-internal-server-error"></a>500 Error interno del servidor
 
@@ -89,7 +90,7 @@ El proceso de trabajo no funciona. La aplicación no se inicia.
 
 Error desconocido al cargar los componentes del [módulo ASP.NET Core](xref:host-and-deploy/aspnet-core-module). Realice una de las siguientes acciones:
 
-* Póngase en contacto con el [equipo de soporte técnico de Microsoft](https://support.microsoft.com/oas/default.aspx?prid=15832) (seleccione **Herramientas de desarrollo** y, después, **ASP.NET Core**).
+* Póngase en contacto con el [equipo de soporte técnico de Microsoft](https://support.microsoft.com/oas/default.aspx?prid=15832) (seleccione **Herramientas de desarrollo** y, después, **ASP.NET Core** ).
 * Formule una pregunta en Stack Overflow.
 * Registre un problema en nuestro [repositorio de GitHub](https://github.com/dotnet/AspNetCore).
 
@@ -161,7 +162,7 @@ Para corregir este error, ejecute las aplicaciones en grupos de aplicaciones de 
 
 ### <a name="50036-ancm-out-of-process-handler-load-failure"></a>500.36 Error de carga del controlador fuera de proceso
 
-El controlador de solicitudes de fuera de proceso, *aspnetcorev2_outofprocess.dll*, no está junto al archivo *aspnetcorev2.dll*. Esto indica una instalación dañada del [módulo ASP.NET Core](xref:host-and-deploy/aspnet-core-module).
+El controlador de solicitudes de fuera de proceso, *aspnetcorev2_outofprocess.dll* , no está junto al archivo *aspnetcorev2.dll*. Esto indica una instalación dañada del [módulo ASP.NET Core](xref:host-and-deploy/aspnet-core-module).
 
 Para corregir este error, repare la instalación del [conjunto de hospedaje de .NET Core](xref:host-and-deploy/iis/index#install-the-net-core-hosting-bundle) (para IIS) o Visual Studio (para IIS Express).
 
@@ -186,7 +187,7 @@ El proceso de trabajo no funciona. La aplicación no se inicia.
 
 El [módulo ASP.NET Core](xref:host-and-deploy/aspnet-core-module) intenta iniciar el proceso de trabajo, pero no lo consigue. La causa del error de inicio del proceso se suele determinar a partir de las entradas del registro de eventos de la aplicación y del registro de stdout del módulo ASP.NET Core.
 
-Una condición de error habitual es que la aplicación esté mal configurada porque tiene como destino una versión del marco compartido de ASP.NET Core que no está presente. Compruebe qué versiones del marco compartido de ASP.NET Core están instaladas en el equipo de destino. El *marco de trabajo compartido* es el conjunto de ensamblados (archivos *.dll*) que se instalan en la máquina, y se hace referencia a ellos mediante un metapaquete como `Microsoft.AspNetCore.App`. La referencia del metapaquete puede especificar una versión mínima necesaria. Para más información, consulte este artículo sobre el [marco de trabajo compartido](https://natemcmaster.com/blog/2018/08/29/netcore-primitives-2/).
+Una condición de error habitual es que la aplicación esté mal configurada porque tiene como destino una versión del marco compartido de ASP.NET Core que no está presente. Compruebe qué versiones del marco compartido de ASP.NET Core están instaladas en el equipo de destino. El *marco de trabajo compartido* es el conjunto de ensamblados (archivos *.dll* ) que se instalan en la máquina, y se hace referencia a ellos mediante un metapaquete como `Microsoft.AspNetCore.App`. La referencia del metapaquete puede especificar una versión mínima necesaria. Para más información, consulte este artículo sobre el [marco de trabajo compartido](https://natemcmaster.com/blog/2018/08/29/netcore-primitives-2/).
 
 La página de error *502.5 Error de proceso* se devuelve cuando el proceso de trabajo no se puede iniciar debido a un error de configuración de la aplicación o del hospedaje:
 
@@ -198,15 +199,15 @@ Source: IIS AspNetCore Module V2
 Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 ```
 
-Error al iniciar la aplicación porque el ensamblado de la aplicación ( *.dll*) no se ha podido cargar.
+Error al iniciar la aplicación porque el ensamblado de la aplicación ( *.dll* ) no se ha podido cargar.
 
 Este error se produce cuando hay un error de coincidencia del valor de bits entre la aplicación publicada y el proceso w3wp/iisexpress.
 
 Confirme que la opción de 32 bits del grupo de aplicaciones sea correcta:
 
 1. Seleccione el grupo de aplicaciones en **Grupos de aplicaciones** del Administrador de IIS.
-1. Seleccione **Configuración avanzada** en **Modificar grupo de aplicaciones**, en el panel **Acciones**.
-1. Establezca **Habilitar aplicaciones de 32 bits**:
+1. Seleccione **Configuración avanzada** en **Modificar grupo de aplicaciones** , en el panel **Acciones**.
+1. Establezca **Habilitar aplicaciones de 32 bits** :
    * Si implementa una aplicación de 32 bits (x86), establezca el valor en `True`.
    * Si implementa una aplicación de 64 bits (x64), establezca el valor en `False`.
 
@@ -231,7 +232,7 @@ Para acceder al registro de eventos de la aplicación, use la hoja **Diagnose an
 1. En Azure Portal, abra la aplicación en **App Services**.
 1. Seleccione **Diagnosticar y solucionar problemas**.
 1. Seleccione el título **Herramientas de diagnóstico**.
-1. En **Herramientas de soporte técnico**, seleccione el botón **Eventos de la aplicación**.
+1. En **Herramientas de soporte técnico** , seleccione el botón **Eventos de la aplicación**.
 1. Examine el error más reciente que hayan proporcionado las entradas *IIS AspNetCoreModule* o *IIS AspNetCoreModule V2* en la columna **Origen**.
 
 Una alternativa al uso de la hoja **Diagnose and solve problems** (Diagnosticar y resolver problemas) es examinar el archivo de registro de eventos de la aplicación directamente mediante [Kudu](https://github.com/projectkudu/kudu/wiki):
@@ -310,7 +311,7 @@ La salida de consola de la aplicación, que muestra los posibles errores, se can
 El registro stdout del módulo ASP.NET Core con frecuencia registra mensajes de error útiles que no se encuentran en el registro de eventos de la aplicación. Para habilitar y ver los registros de stdout:
 
 1. En Azure Portal, vaya a la aplicación web.
-1. En la hoja **App Service**, escriba **kudu** en el cuadro de búsqueda.
+1. En la hoja **App Service** , escriba **kudu** en el cuadro de búsqueda.
 1. Seleccione **Herramientas avanzadas** > **Ir**.
 1. Seleccione **Consola de depuración > CMD**.
 1. Vaya a *site/wwwroot*.
@@ -333,7 +334,7 @@ El registro de depuración del módulo de ASP.NET Core ofrece un registro adicio
      1. Abra las carpetas para la ruta de acceso **site** > **wwwroot**. Seleccione el icono de lápiz para editar el archivo *web.config*. Agregue la sección `<handlerSettings>` como se muestra en [Registros de diagnóstico mejorados](xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs). Seleccione el botón **Guardar**.
 1. Abra **Herramientas avanzadas** en el área **Herramientas de desarrollo**. Seleccione el botón **Ir&rarr;** . Se abre la consola de Kudu en una nueva pestaña o ventana del explorador.
 1. Mediante la barra de navegación de la parte superior de la página, abra la **consola de depuración** y seleccione **CMD**.
-1. Abra las carpetas para la ruta de acceso **site** > **wwwroot**. Si no ha proporcionado una ruta de acceso para el archivo *aspnetcore debug.log*, el archivo aparece en la lista. Si ha proporcionado una ruta de acceso, vaya a la ubicación del archivo de registro.
+1. Abra las carpetas para la ruta de acceso **site** > **wwwroot**. Si no ha proporcionado una ruta de acceso para el archivo *aspnetcore debug.log* , el archivo aparece en la lista. Si ha proporcionado una ruta de acceso, vaya a la ubicación del archivo de registro.
 1. Abra el archivo de registro con el botón de lápiz situado junto al nombre del archivo.
 
 Deshabilite el registro de depuración una vez haya solucionado los problemas:
@@ -363,7 +364,7 @@ Las hojas de supervisión proporcionan una alternativa a la experiencia de soluc
 
 Confirme que están instaladas las extensiones de ASP.NET Core. Si no lo están, instálelas manualmente:
 
-1. En la sección de la hoja **HERRAMIENTAS DE DESARROLLO**, seleccione la hoja **Extensiones**.
+1. En la sección de la hoja **HERRAMIENTAS DE DESARROLLO** , seleccione la hoja **Extensiones**.
 1. Aparecerán en la lista las **extensiones de ASP.NET Core**.
 1. Si las extensiones no están instaladas, seleccione el botón **Add** (Agregar).
 1. Elija las **extensiones de ASP.NET Core** de la lista.
@@ -385,7 +386,7 @@ Continúe para activar el registro de diagnóstico:
 1. En Azure Portal, seleccione la hoja **Registros de diagnóstico**.
 1. Seleccione el conmutador **Activado** en **Registro de la aplicación (sistema de archivos)** y **Mensajes de error detallados**. Seleccione el botón **Guardar** en la parte superior de la hoja.
 1. Para incluir el seguimiento de solicitudes con error, también conocido como almacenamiento en búfer de eventos de solicitudes con error (FREB), seleccione el conmutador **Activado** en **Seguimiento de solicitudes con error**.
-1. Seleccione la hoja **Secuencia de registro**, que aparece inmediatamente bajo la hoja **Registros de diagnóstico** en el portal.
+1. Seleccione la hoja **Secuencia de registro** , que aparece inmediatamente bajo la hoja **Registros de diagnóstico** en el portal.
 1. Realice una solicitud a la aplicación.
 1. Dentro de los datos de la secuencia de registro, se indica la causa del error.
 
@@ -412,7 +413,7 @@ Para más información, consulte [Habilitación del registro de diagnóstico par
 Acceda al registro de eventos de la aplicación:
 
 1. Abra el menú Inicio, busque *Visor de eventos* y seleccione la aplicación **Visor de eventos**.
-1. En **Visor de eventos**, abra el nodo **Registros de Windows**.
+1. En **Visor de eventos** , abra el nodo **Registros de Windows**.
 1. Seleccione **Aplicación** para abrir el registro de eventos de la aplicación.
 1. Busque los errores asociados a la aplicación objeto del error. Los errores tienen un valor de *Módulo AspNetCore de IIS* o *Módulo AspNetCore de IIS Express* en la columna *Origen*.
 
@@ -495,7 +496,7 @@ La [variable de entorno `ASPNETCORE_ENVIRONMENT` se puede agregar a web.config](
 </aspNetCore>
 ```
 
-Solo se recomienda establecer la variable de entorno para `ASPNETCORE_ENVIRONMENT` cuando se use en servidores de ensayo o pruebas que no estén expuestos a Internet. Quite la variable de entorno del archivo *web.config* cuando termine de solucionar los problemas. Para información sobre la configuración de variables de entorno en *web.config*, consulte el [elemento secundario environmentVariables de aspNetCore](xref:host-and-deploy/aspnet-core-module#setting-environment-variables).
+Solo se recomienda establecer la variable de entorno para `ASPNETCORE_ENVIRONMENT` cuando se use en servidores de ensayo o pruebas que no estén expuestos a Internet. Quite la variable de entorno del archivo *web.config* cuando termine de solucionar los problemas. Para información sobre la configuración de variables de entorno en *web.config* , consulte el [elemento secundario environmentVariables de aspNetCore](xref:host-and-deploy/aspnet-core-module#setting-environment-variables).
 
 ### <a name="obtain-data-from-an-app"></a>Obtención de datos de una aplicación
 
@@ -511,13 +512,13 @@ Obtenga y analice un volcado de memoria en [Informe de errores de Windows (WER)]
 
 1. Cree una carpeta para almacenar los archivos de volcado de memoria en `c:\dumps`. El grupo de aplicaciones debe tener acceso de escritura a la carpeta.
 1. Ejecute el [script EnableDumps de PowerShell](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/test/troubleshoot-azure-iis/scripts/EnableDumps.ps1):
-   * Si la aplicación usa el [modelo de hospedaje en proceso](xref:host-and-deploy/iis/index#in-process-hosting-model), ejecute el script *w3wp.exe*:
+   * Si la aplicación usa el [modelo de hospedaje en proceso](xref:host-and-deploy/iis/index#in-process-hosting-model), ejecute el script *w3wp.exe* :
 
      ```console
      .\EnableDumps w3wp.exe c:\dumps
      ```
 
-   * Si la aplicación usa el [modelo de hospedaje fuera de proceso](xref:host-and-deploy/iis/index#out-of-process-hosting-model), ejecute el script *dotnet.exe*:
+   * Si la aplicación usa el [modelo de hospedaje fuera de proceso](xref:host-and-deploy/iis/index#out-of-process-hosting-model), ejecute el script *dotnet.exe* :
 
      ```console
      .\EnableDumps dotnet.exe c:\dumps
@@ -525,13 +526,13 @@ Obtenga y analice un volcado de memoria en [Informe de errores de Windows (WER)]
 
 1. Ejecute la aplicación en las condiciones que hacen que se produzca el bloqueo.
 1. Una vez que se haya producido el bloqueo, ejecute el [script DisableDumps de PowerShell](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/test/troubleshoot-azure-iis/scripts/DisableDumps.ps1):
-   * Si la aplicación usa el [modelo de hospedaje en proceso](xref:host-and-deploy/iis/index#in-process-hosting-model), ejecute el script *w3wp.exe*:
+   * Si la aplicación usa el [modelo de hospedaje en proceso](xref:host-and-deploy/iis/index#in-process-hosting-model), ejecute el script *w3wp.exe* :
 
      ```console
      .\DisableDumps w3wp.exe
      ```
 
-   * Si la aplicación usa el [modelo de hospedaje fuera de proceso](xref:host-and-deploy/iis/index#out-of-process-hosting-model), ejecute el script *dotnet.exe*:
+   * Si la aplicación usa el [modelo de hospedaje fuera de proceso](xref:host-and-deploy/iis/index#out-of-process-hosting-model), ejecute el script *dotnet.exe* :
 
      ```console
      .\DisableDumps dotnet.exe
@@ -640,7 +641,7 @@ Lleve a cabo los siguiente pasos:
    * Si IIS hospeda la aplicación, confirme que la aplicación se implementa en la **ruta de acceso física** de IIS que se muestra en la **configuración básica** del **administrador de IIS**.
 1. Confirme que todos los archivos y las carpetas de la aplicación se han implementado; para ello, compare la implementación en el sistema de hospedaje con el contenido de la carpeta *publish* del proyecto.
 
-Para obtener más información sobre el diseño de una aplicación ASP.NET Core publicada, consulte <xref:host-and-deploy/directory-structure>. Para obtener más información sobre el archivo *web.config*, vea <xref:host-and-deploy/aspnet-core-module#configuration-with-webconfig>.
+Para obtener más información sobre el diseño de una aplicación ASP.NET Core publicada, consulte <xref:host-and-deploy/directory-structure>. Para obtener más información sobre el archivo *web.config* , vea <xref:host-and-deploy/aspnet-core-module#configuration-with-webconfig>.
 
 ### <a name="500-internal-server-error"></a>500 Error interno del servidor
 
@@ -652,7 +653,7 @@ Este error se produce dentro del código de la aplicación durante el inicio o m
 
 El proceso de trabajo no funciona. La aplicación no se inicia.
 
-El [módulo ASP.NET Core](xref:host-and-deploy/aspnet-core-module) no logra encontrar el CLR de .NET Core ni el controlador de solicitudes en proceso (*aspnetcorev2_inprocess.dll*). Compruebe lo siguiente:
+El [módulo ASP.NET Core](xref:host-and-deploy/aspnet-core-module) no logra encontrar el CLR de .NET Core ni el controlador de solicitudes en proceso ( *aspnetcorev2_inprocess.dll* ). Compruebe lo siguiente:
 
 * Que la aplicación tiene como destino el paquete de NuGet [Microsoft.AspNetCore.Server.IIS](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.IIS) o el [metapaquete Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app).
 * Que la versión del marco compartido de ASP.NET Core que la aplicación tiene como destino esté instalada en el equipo de destino.
@@ -669,7 +670,7 @@ El proceso de trabajo no funciona. La aplicación no se inicia.
 
 El [módulo ASP.NET Core](xref:host-and-deploy/aspnet-core-module) intenta iniciar el proceso de trabajo, pero no lo consigue. La causa del error de inicio del proceso se suele determinar a partir de las entradas del registro de eventos de la aplicación y del registro de stdout del módulo ASP.NET Core.
 
-Una condición de error habitual es que la aplicación esté mal configurada porque tiene como destino una versión del marco compartido de ASP.NET Core que no está presente. Compruebe qué versiones del marco compartido de ASP.NET Core están instaladas en el equipo de destino. El *marco de trabajo compartido* es el conjunto de ensamblados (archivos *.dll*) que se instalan en la máquina, y se hace referencia a ellos mediante un metapaquete como `Microsoft.AspNetCore.App`. La referencia del metapaquete puede especificar una versión mínima necesaria. Para más información, consulte este artículo sobre el [marco de trabajo compartido](https://natemcmaster.com/blog/2018/08/29/netcore-primitives-2/).
+Una condición de error habitual es que la aplicación esté mal configurada porque tiene como destino una versión del marco compartido de ASP.NET Core que no está presente. Compruebe qué versiones del marco compartido de ASP.NET Core están instaladas en el equipo de destino. El *marco de trabajo compartido* es el conjunto de ensamblados (archivos *.dll* ) que se instalan en la máquina, y se hace referencia a ellos mediante un metapaquete como `Microsoft.AspNetCore.App`. La referencia del metapaquete puede especificar una versión mínima necesaria. Para más información, consulte este artículo sobre el [marco de trabajo compartido](https://natemcmaster.com/blog/2018/08/29/netcore-primitives-2/).
 
 La página de error *502.5 Error de proceso* se devuelve cuando el proceso de trabajo no se puede iniciar debido a un error de configuración de la aplicación o del hospedaje:
 
@@ -681,15 +682,15 @@ Source: IIS AspNetCore Module V2
 Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 ```
 
-Error al iniciar la aplicación porque el ensamblado de la aplicación ( *.dll*) no se ha podido cargar.
+Error al iniciar la aplicación porque el ensamblado de la aplicación ( *.dll* ) no se ha podido cargar.
 
 Este error se produce cuando hay un error de coincidencia del valor de bits entre la aplicación publicada y el proceso w3wp/iisexpress.
 
 Confirme que la opción de 32 bits del grupo de aplicaciones sea correcta:
 
 1. Seleccione el grupo de aplicaciones en **Grupos de aplicaciones** del Administrador de IIS.
-1. Seleccione **Configuración avanzada** en **Modificar grupo de aplicaciones**, en el panel **Acciones**.
-1. Establezca **Habilitar aplicaciones de 32 bits**:
+1. Seleccione **Configuración avanzada** en **Modificar grupo de aplicaciones** , en el panel **Acciones**.
+1. Establezca **Habilitar aplicaciones de 32 bits** :
    * Si implementa una aplicación de 32 bits (x86), establezca el valor en `True`.
    * Si implementa una aplicación de 64 bits (x64), establezca el valor en `False`.
 
@@ -714,7 +715,7 @@ Para acceder al registro de eventos de la aplicación, use la hoja **Diagnose an
 1. En Azure Portal, abra la aplicación en **App Services**.
 1. Seleccione **Diagnosticar y solucionar problemas**.
 1. Seleccione el título **Herramientas de diagnóstico**.
-1. En **Herramientas de soporte técnico**, seleccione el botón **Eventos de la aplicación**.
+1. En **Herramientas de soporte técnico** , seleccione el botón **Eventos de la aplicación**.
 1. Examine el error más reciente que hayan proporcionado las entradas *IIS AspNetCoreModule* o *IIS AspNetCoreModule V2* en la columna **Origen**.
 
 Una alternativa al uso de la hoja **Diagnose and solve problems** (Diagnosticar y resolver problemas) es examinar el archivo de registro de eventos de la aplicación directamente mediante [Kudu](https://github.com/projectkudu/kudu/wiki):
@@ -788,7 +789,7 @@ La salida de consola de la aplicación, que muestra los posibles errores, se can
 El registro stdout del módulo ASP.NET Core con frecuencia registra mensajes de error útiles que no se encuentran en el registro de eventos de la aplicación. Para habilitar y ver los registros de stdout:
 
 1. Vaya a la hoja **Diagnose and solve problems** (Diagnosticar y resolver problemas) de Azure Portal.
-1. En **Seleccione una categoría de problema**, seleccione el botón abajo **Aplicación web**.
+1. En **Seleccione una categoría de problema** , seleccione el botón abajo **Aplicación web**.
 1. En **Suggested Solutions** (Soluciones sugeridas) > **Enable Stdout Log Redirection** (Habilitar el redireccionamiento de registros de stdout), seleccione el botón para **abrir la consola de Kudu y editar web.config**.
 1. En la **consola de diagnóstico** de Kudu, abra las carpetas para la ruta de acceso **site** > **wwwroot**. Desplácese hacia abajo para mostrar el archivo *web.config* en la parte inferior de la lista.
 1. Haga clic en el icono de lápiz junto al archivo *web.config*.
@@ -826,7 +827,7 @@ El registro de depuración del módulo de ASP.NET Core ofrece un registro adicio
      1. Abra las carpetas para la ruta de acceso **site** > **wwwroot**. Seleccione el icono de lápiz para editar el archivo *web.config*. Agregue la sección `<handlerSettings>` como se muestra en [Registros de diagnóstico mejorados](xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs). Seleccione el botón **Guardar**.
 1. Abra **Herramientas avanzadas** en el área **Herramientas de desarrollo**. Seleccione el botón **Ir&rarr;** . Se abre la consola de Kudu en una nueva pestaña o ventana del explorador.
 1. Mediante la barra de navegación de la parte superior de la página, abra la **consola de depuración** y seleccione **CMD**.
-1. Abra las carpetas para la ruta de acceso **site** > **wwwroot**. Si no ha proporcionado una ruta de acceso para el archivo *aspnetcore debug.log*, el archivo aparece en la lista. Si ha proporcionado una ruta de acceso, vaya a la ubicación del archivo de registro.
+1. Abra las carpetas para la ruta de acceso **site** > **wwwroot**. Si no ha proporcionado una ruta de acceso para el archivo *aspnetcore debug.log* , el archivo aparece en la lista. Si ha proporcionado una ruta de acceso, vaya a la ubicación del archivo de registro.
 1. Abra el archivo de registro con el botón de lápiz situado junto al nombre del archivo.
 
 Deshabilite el registro de depuración una vez haya solucionado los problemas:
@@ -856,7 +857,7 @@ Las hojas de supervisión proporcionan una alternativa a la experiencia de soluc
 
 Confirme que están instaladas las extensiones de ASP.NET Core. Si no lo están, instálelas manualmente:
 
-1. En la sección de la hoja **HERRAMIENTAS DE DESARROLLO**, seleccione la hoja **Extensiones**.
+1. En la sección de la hoja **HERRAMIENTAS DE DESARROLLO** , seleccione la hoja **Extensiones**.
 1. Aparecerán en la lista las **extensiones de ASP.NET Core**.
 1. Si las extensiones no están instaladas, seleccione el botón **Add** (Agregar).
 1. Elija las **extensiones de ASP.NET Core** de la lista.
@@ -878,7 +879,7 @@ Continúe para activar el registro de diagnóstico:
 1. En Azure Portal, seleccione la hoja **Registros de diagnóstico**.
 1. Seleccione el conmutador **Activado** en **Registro de la aplicación (sistema de archivos)** y **Mensajes de error detallados**. Seleccione el botón **Guardar** en la parte superior de la hoja.
 1. Para incluir el seguimiento de solicitudes con error, también conocido como almacenamiento en búfer de eventos de solicitudes con error (FREB), seleccione el conmutador **Activado** en **Seguimiento de solicitudes con error**.
-1. Seleccione la hoja **Secuencia de registro**, que aparece inmediatamente bajo la hoja **Registros de diagnóstico** en el portal.
+1. Seleccione la hoja **Secuencia de registro** , que aparece inmediatamente bajo la hoja **Registros de diagnóstico** en el portal.
 1. Realice una solicitud a la aplicación.
 1. Dentro de los datos de la secuencia de registro, se indica la causa del error.
 
@@ -905,7 +906,7 @@ Para más información, consulte [Habilitación del registro de diagnóstico par
 Acceda al registro de eventos de la aplicación:
 
 1. Abra el menú Inicio, busque *Visor de eventos* y seleccione la aplicación **Visor de eventos**.
-1. En **Visor de eventos**, abra el nodo **Registros de Windows**.
+1. En **Visor de eventos** , abra el nodo **Registros de Windows**.
 1. Seleccione **Aplicación** para abrir el registro de eventos de la aplicación.
 1. Busque los errores asociados a la aplicación objeto del error. Los errores tienen un valor de *Módulo AspNetCore de IIS* o *Módulo AspNetCore de IIS Express* en la columna *Origen*.
 
@@ -988,7 +989,7 @@ La [variable de entorno `ASPNETCORE_ENVIRONMENT` se puede agregar a web.config](
 </aspNetCore>
 ```
 
-Solo se recomienda establecer la variable de entorno para `ASPNETCORE_ENVIRONMENT` cuando se use en servidores de ensayo o pruebas que no estén expuestos a Internet. Quite la variable de entorno del archivo *web.config* cuando termine de solucionar los problemas. Para información sobre la configuración de variables de entorno en *web.config*, consulte el [elemento secundario environmentVariables de aspNetCore](xref:host-and-deploy/aspnet-core-module#setting-environment-variables).
+Solo se recomienda establecer la variable de entorno para `ASPNETCORE_ENVIRONMENT` cuando se use en servidores de ensayo o pruebas que no estén expuestos a Internet. Quite la variable de entorno del archivo *web.config* cuando termine de solucionar los problemas. Para información sobre la configuración de variables de entorno en *web.config* , consulte el [elemento secundario environmentVariables de aspNetCore](xref:host-and-deploy/aspnet-core-module#setting-environment-variables).
 
 ### <a name="obtain-data-from-an-app"></a>Obtención de datos de una aplicación
 
@@ -1004,13 +1005,13 @@ Obtenga y analice un volcado de memoria en [Informe de errores de Windows (WER)]
 
 1. Cree una carpeta para almacenar los archivos de volcado de memoria en `c:\dumps`. El grupo de aplicaciones debe tener acceso de escritura a la carpeta.
 1. Ejecute el [script EnableDumps de PowerShell](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/test/troubleshoot-azure-iis/scripts/EnableDumps.ps1):
-   * Si la aplicación usa el [modelo de hospedaje en proceso](xref:host-and-deploy/iis/index#in-process-hosting-model), ejecute el script *w3wp.exe*:
+   * Si la aplicación usa el [modelo de hospedaje en proceso](xref:host-and-deploy/iis/index#in-process-hosting-model), ejecute el script *w3wp.exe* :
 
      ```console
      .\EnableDumps w3wp.exe c:\dumps
      ```
 
-   * Si la aplicación usa el [modelo de hospedaje fuera de proceso](xref:host-and-deploy/iis/index#out-of-process-hosting-model), ejecute el script *dotnet.exe*:
+   * Si la aplicación usa el [modelo de hospedaje fuera de proceso](xref:host-and-deploy/iis/index#out-of-process-hosting-model), ejecute el script *dotnet.exe* :
 
      ```console
      .\EnableDumps dotnet.exe c:\dumps
@@ -1018,13 +1019,13 @@ Obtenga y analice un volcado de memoria en [Informe de errores de Windows (WER)]
 
 1. Ejecute la aplicación en las condiciones que hacen que se produzca el bloqueo.
 1. Una vez que se haya producido el bloqueo, ejecute el [script DisableDumps de PowerShell](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/test/troubleshoot-azure-iis/scripts/DisableDumps.ps1):
-   * Si la aplicación usa el [modelo de hospedaje en proceso](xref:host-and-deploy/iis/index#in-process-hosting-model), ejecute el script *w3wp.exe*:
+   * Si la aplicación usa el [modelo de hospedaje en proceso](xref:host-and-deploy/iis/index#in-process-hosting-model), ejecute el script *w3wp.exe* :
 
      ```console
      .\DisableDumps w3wp.exe
      ```
 
-   * Si la aplicación usa el [modelo de hospedaje fuera de proceso](xref:host-and-deploy/iis/index#out-of-process-hosting-model), ejecute el script *dotnet.exe*:
+   * Si la aplicación usa el [modelo de hospedaje fuera de proceso](xref:host-and-deploy/iis/index#out-of-process-hosting-model), ejecute el script *dotnet.exe* :
 
      ```console
      .\DisableDumps dotnet.exe
@@ -1133,7 +1134,7 @@ Lleve a cabo los siguiente pasos:
    * Si IIS hospeda la aplicación, confirme que la aplicación se implementa en la **ruta de acceso física** de IIS que se muestra en la **configuración básica** del **administrador de IIS**.
 1. Confirme que todos los archivos y las carpetas de la aplicación se han implementado; para ello, compare la implementación en el sistema de hospedaje con el contenido de la carpeta *publish* del proyecto.
 
-Para obtener más información sobre el diseño de una aplicación ASP.NET Core publicada, consulte <xref:host-and-deploy/directory-structure>. Para obtener más información sobre el archivo *web.config*, vea <xref:host-and-deploy/aspnet-core-module#configuration-with-webconfig>.
+Para obtener más información sobre el diseño de una aplicación ASP.NET Core publicada, consulte <xref:host-and-deploy/directory-structure>. Para obtener más información sobre el archivo *web.config* , vea <xref:host-and-deploy/aspnet-core-module#configuration-with-webconfig>.
 
 ### <a name="500-internal-server-error"></a>500 Error interno del servidor
 
@@ -1147,7 +1148,7 @@ El proceso de trabajo no funciona. La aplicación no se inicia.
 
 El [módulo ASP.NET Core](xref:host-and-deploy/aspnet-core-module) intenta iniciar el proceso de trabajo, pero no lo consigue. La causa del error de inicio del proceso se suele determinar a partir de las entradas del registro de eventos de la aplicación y del registro de stdout del módulo ASP.NET Core.
 
-Una condición de error habitual es que la aplicación esté mal configurada porque tiene como destino una versión del marco compartido de ASP.NET Core que no está presente. Compruebe qué versiones del marco compartido de ASP.NET Core están instaladas en el equipo de destino. El *marco de trabajo compartido* es el conjunto de ensamblados (archivos *.dll*) que se instalan en la máquina, y se hace referencia a ellos mediante un metapaquete como `Microsoft.AspNetCore.App`. La referencia del metapaquete puede especificar una versión mínima necesaria. Para más información, consulte este artículo sobre el [marco de trabajo compartido](https://natemcmaster.com/blog/2018/08/29/netcore-primitives-2/).
+Una condición de error habitual es que la aplicación esté mal configurada porque tiene como destino una versión del marco compartido de ASP.NET Core que no está presente. Compruebe qué versiones del marco compartido de ASP.NET Core están instaladas en el equipo de destino. El *marco de trabajo compartido* es el conjunto de ensamblados (archivos *.dll* ) que se instalan en la máquina, y se hace referencia a ellos mediante un metapaquete como `Microsoft.AspNetCore.App`. La referencia del metapaquete puede especificar una versión mínima necesaria. Para más información, consulte este artículo sobre el [marco de trabajo compartido](https://natemcmaster.com/blog/2018/08/29/netcore-primitives-2/).
 
 La página de error *502.5 Error de proceso* se devuelve cuando el proceso de trabajo no se puede iniciar debido a un error de configuración de la aplicación o del hospedaje:
 
@@ -1159,15 +1160,15 @@ Source: IIS AspNetCore Module V2
 Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 ```
 
-Error al iniciar la aplicación porque el ensamblado de la aplicación ( *.dll*) no se ha podido cargar.
+Error al iniciar la aplicación porque el ensamblado de la aplicación ( *.dll* ) no se ha podido cargar.
 
 Este error se produce cuando hay un error de coincidencia del valor de bits entre la aplicación publicada y el proceso w3wp/iisexpress.
 
 Confirme que la opción de 32 bits del grupo de aplicaciones sea correcta:
 
 1. Seleccione el grupo de aplicaciones en **Grupos de aplicaciones** del Administrador de IIS.
-1. Seleccione **Configuración avanzada** en **Modificar grupo de aplicaciones**, en el panel **Acciones**.
-1. Establezca **Habilitar aplicaciones de 32 bits**:
+1. Seleccione **Configuración avanzada** en **Modificar grupo de aplicaciones** , en el panel **Acciones**.
+1. Establezca **Habilitar aplicaciones de 32 bits** :
    * Si implementa una aplicación de 32 bits (x86), establezca el valor en `True`.
    * Si implementa una aplicación de 64 bits (x64), establezca el valor en `False`.
 
@@ -1192,7 +1193,7 @@ Para acceder al registro de eventos de la aplicación, use la hoja **Diagnose an
 1. En Azure Portal, abra la aplicación en **App Services**.
 1. Seleccione **Diagnosticar y solucionar problemas**.
 1. Seleccione el título **Herramientas de diagnóstico**.
-1. En **Herramientas de soporte técnico**, seleccione el botón **Eventos de la aplicación**.
+1. En **Herramientas de soporte técnico** , seleccione el botón **Eventos de la aplicación**.
 1. Examine el error más reciente que hayan proporcionado las entradas *IIS AspNetCoreModule* o *IIS AspNetCoreModule V2* en la columna **Origen**.
 
 Una alternativa al uso de la hoja **Diagnose and solve problems** (Diagnosticar y resolver problemas) es examinar el archivo de registro de eventos de la aplicación directamente mediante [Kudu](https://github.com/projectkudu/kudu/wiki):
@@ -1266,7 +1267,7 @@ La salida de consola de la aplicación, que muestra los posibles errores, se can
 El registro stdout del módulo ASP.NET Core con frecuencia registra mensajes de error útiles que no se encuentran en el registro de eventos de la aplicación. Para habilitar y ver los registros de stdout:
 
 1. Vaya a la hoja **Diagnose and solve problems** (Diagnosticar y resolver problemas) de Azure Portal.
-1. En **Seleccione una categoría de problema**, seleccione el botón abajo **Aplicación web**.
+1. En **Seleccione una categoría de problema** , seleccione el botón abajo **Aplicación web**.
 1. En **Suggested Solutions** (Soluciones sugeridas) > **Enable Stdout Log Redirection** (Habilitar el redireccionamiento de registros de stdout), seleccione el botón para **abrir la consola de Kudu y editar web.config**.
 1. En la **consola de diagnóstico** de Kudu, abra las carpetas para la ruta de acceso **site** > **wwwroot**. Desplácese hacia abajo para mostrar el archivo *web.config* en la parte inferior de la lista.
 1. Haga clic en el icono de lápiz junto al archivo *web.config*.
@@ -1305,7 +1306,7 @@ Las hojas de supervisión proporcionan una alternativa a la experiencia de soluc
 
 Confirme que están instaladas las extensiones de ASP.NET Core. Si no lo están, instálelas manualmente:
 
-1. En la sección de la hoja **HERRAMIENTAS DE DESARROLLO**, seleccione la hoja **Extensiones**.
+1. En la sección de la hoja **HERRAMIENTAS DE DESARROLLO** , seleccione la hoja **Extensiones**.
 1. Aparecerán en la lista las **extensiones de ASP.NET Core**.
 1. Si las extensiones no están instaladas, seleccione el botón **Add** (Agregar).
 1. Elija las **extensiones de ASP.NET Core** de la lista.
@@ -1327,7 +1328,7 @@ Continúe para activar el registro de diagnóstico:
 1. En Azure Portal, seleccione la hoja **Registros de diagnóstico**.
 1. Seleccione el conmutador **Activado** en **Registro de la aplicación (sistema de archivos)** y **Mensajes de error detallados**. Seleccione el botón **Guardar** en la parte superior de la hoja.
 1. Para incluir el seguimiento de solicitudes con error, también conocido como almacenamiento en búfer de eventos de solicitudes con error (FREB), seleccione el conmutador **Activado** en **Seguimiento de solicitudes con error**.
-1. Seleccione la hoja **Secuencia de registro**, que aparece inmediatamente bajo la hoja **Registros de diagnóstico** en el portal.
+1. Seleccione la hoja **Secuencia de registro** , que aparece inmediatamente bajo la hoja **Registros de diagnóstico** en el portal.
 1. Realice una solicitud a la aplicación.
 1. Dentro de los datos de la secuencia de registro, se indica la causa del error.
 
@@ -1354,7 +1355,7 @@ Para más información, consulte [Habilitación del registro de diagnóstico par
 Acceda al registro de eventos de la aplicación:
 
 1. Abra el menú Inicio, busque *Visor de eventos* y seleccione la aplicación **Visor de eventos**.
-1. En **Visor de eventos**, abra el nodo **Registros de Windows**.
+1. En **Visor de eventos** , abra el nodo **Registros de Windows**.
 1. Seleccione **Aplicación** para abrir el registro de eventos de la aplicación.
 1. Busque los errores asociados a la aplicación objeto del error. Los errores tienen un valor de *Módulo AspNetCore de IIS* o *Módulo AspNetCore de IIS Express* en la columna *Origen*.
 
@@ -1419,7 +1420,7 @@ La [variable de entorno `ASPNETCORE_ENVIRONMENT` se puede agregar a web.config](
 </aspNetCore>
 ```
 
-Solo se recomienda establecer la variable de entorno para `ASPNETCORE_ENVIRONMENT` cuando se use en servidores de ensayo o pruebas que no estén expuestos a Internet. Quite la variable de entorno del archivo *web.config* cuando termine de solucionar los problemas. Para información sobre la configuración de variables de entorno en *web.config*, consulte el [elemento secundario environmentVariables de aspNetCore](xref:host-and-deploy/aspnet-core-module#setting-environment-variables).
+Solo se recomienda establecer la variable de entorno para `ASPNETCORE_ENVIRONMENT` cuando se use en servidores de ensayo o pruebas que no estén expuestos a Internet. Quite la variable de entorno del archivo *web.config* cuando termine de solucionar los problemas. Para información sobre la configuración de variables de entorno en *web.config* , consulte el [elemento secundario environmentVariables de aspNetCore](xref:host-and-deploy/aspnet-core-module#setting-environment-variables).
 
 ### <a name="obtain-data-from-an-app"></a>Obtención de datos de una aplicación
 
@@ -1435,13 +1436,13 @@ Obtenga y analice un volcado de memoria en [Informe de errores de Windows (WER)]
 
 1. Cree una carpeta para almacenar los archivos de volcado de memoria en `c:\dumps`. El grupo de aplicaciones debe tener acceso de escritura a la carpeta.
 1. Ejecute el [script EnableDumps de PowerShell](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/test/troubleshoot-azure-iis/scripts/EnableDumps.ps1):
-   * Si la aplicación usa el [modelo de hospedaje en proceso](xref:host-and-deploy/iis/index#in-process-hosting-model), ejecute el script *w3wp.exe*:
+   * Si la aplicación usa el [modelo de hospedaje en proceso](xref:host-and-deploy/iis/index#in-process-hosting-model), ejecute el script *w3wp.exe* :
 
      ```console
      .\EnableDumps w3wp.exe c:\dumps
      ```
 
-   * Si la aplicación usa el [modelo de hospedaje fuera de proceso](xref:host-and-deploy/iis/index#out-of-process-hosting-model), ejecute el script *dotnet.exe*:
+   * Si la aplicación usa el [modelo de hospedaje fuera de proceso](xref:host-and-deploy/iis/index#out-of-process-hosting-model), ejecute el script *dotnet.exe* :
 
      ```console
      .\EnableDumps dotnet.exe c:\dumps
@@ -1449,13 +1450,13 @@ Obtenga y analice un volcado de memoria en [Informe de errores de Windows (WER)]
 
 1. Ejecute la aplicación en las condiciones que hacen que se produzca el bloqueo.
 1. Una vez que se haya producido el bloqueo, ejecute el [script DisableDumps de PowerShell](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/test/troubleshoot-azure-iis/scripts/DisableDumps.ps1):
-   * Si la aplicación usa el [modelo de hospedaje en proceso](xref:host-and-deploy/iis/index#in-process-hosting-model), ejecute el script *w3wp.exe*:
+   * Si la aplicación usa el [modelo de hospedaje en proceso](xref:host-and-deploy/iis/index#in-process-hosting-model), ejecute el script *w3wp.exe* :
 
      ```console
      .\DisableDumps w3wp.exe
      ```
 
-   * Si la aplicación usa el [modelo de hospedaje fuera de proceso](xref:host-and-deploy/iis/index#out-of-process-hosting-model), ejecute el script *dotnet.exe*:
+   * Si la aplicación usa el [modelo de hospedaje fuera de proceso](xref:host-and-deploy/iis/index#out-of-process-hosting-model), ejecute el script *dotnet.exe* :
 
      ```console
      .\DisableDumps dotnet.exe

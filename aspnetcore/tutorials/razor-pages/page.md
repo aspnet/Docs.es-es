@@ -5,6 +5,7 @@ description: Parte 3 de la serie de tutoriales sobre Razor Pages.
 ms.author: riande
 ms.date: 08/17/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/page
-ms.openlocfilehash: 03febbd71df19cd3524d26e229a8bd8798a874b5
-ms.sourcegitcommit: f09407d128634d200c893bfb1c163e87fa47a161
+ms.openlocfilehash: 7d0085e1d444de30ca124ef544668122ab350c93
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88865125"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060058"
 ---
 # <a name="part-3-scaffolded-no-locrazor-pages-in-aspnet-core"></a>Parte 3. Razor Pages con scaffolding en ASP.NET Core
 
@@ -35,7 +36,7 @@ En este tutorial se examinan las instancias de Razor Pages creadas con la técni
 
 ## <a name="the-create-delete-details-and-edit-pages"></a>Páginas de creación, eliminación, detalles y edición
 
-Examine el modelo de página *Pages/Movies/Index.cshtml.cs*:
+Examine el modelo de página *Pages/Movies/Index.cshtml.cs* :
 
 [!code-csharp[](razor-pages-start/snapshot_sample3/RazorPagesMovie30/Pages/Movies/Index.cshtml.cs)]
 
@@ -43,11 +44,11 @@ Las instancias de Razor Pages derivan de `PageModel`. Por convención, la clase 
 
 Cuando se efectúa una solicitud de la página, el método `OnGetAsync` devuelve una lista de películas a la instancia de Razor Pages. Se llama a `OnGetAsync` o `OnGet` para inicializar el estado de la página. En este caso, `OnGetAsync` obtiene una lista de películas y las muestra.
 
-Cuando `OnGet` devuelve `void` o `OnGetAsync` devuelve `Task`, no se utiliza ninguna instrucción de devolución. Cuando el tipo de valor devuelto es `IActionResult` o `Task<IActionResult>`, se debe proporcionar una instrucción return. Por ejemplo, el método `OnPostAsync` *Pages/Movies/Create.cshtml.cs*:
+Cuando `OnGet` devuelve `void` o `OnGetAsync` devuelve `Task`, no se utiliza ninguna instrucción de devolución. Cuando el tipo de valor devuelto es `IActionResult` o `Task<IActionResult>`, se debe proporcionar una instrucción return. Por ejemplo, el método `OnPostAsync` *Pages/Movies/Create.cshtml.cs* :
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Pages/Movies/Create.cshtml.cs?name=snippet)]
 
-<a name="index"></a> Examine la instancia de Razor Pages *Pages/Movies/Index.cshtml*:
+<a name="index"></a> Examine la instancia de Razor Pages *Pages/Movies/Index.cshtml* :
 
 [!code-cshtml[](razor-pages-start/snapshot_sample3/RazorPagesMovie30/Pages/Movies/Index.cshtml)]
 
@@ -88,7 +89,7 @@ Busque la línea `@RenderBody()`. `RenderBody` es un marcador de posición donde
 
 ### <a name="viewdata-and-layout"></a>Propiedades ViewData y Layout
 
-Tenga en cuenta el siguiente marcado del archivo *Pages/Movies/Index.cshtml*:
+Tenga en cuenta el siguiente marcado del archivo *Pages/Movies/Index.cshtml* :
 
 [!code-cshtml[](razor-pages-start/snapshot_sample3/RazorPagesMovie30/Pages/Movies/Index.cshtml?range=1-6&highlight=4-999)]
 
@@ -126,12 +127,12 @@ El elemento delimitador anterior es un [asistente de etiquetas](xref:mvc/views/t
 
 Guarde los cambios y pruebe la aplicación haciendo clic en el vínculo **RpMovie**. Si tiene cualquier problema, consulte el archivo [_Layout.cshtml](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Pages/Shared/_Layout.cshtml) en GitHub.
 
-Pruebe los otros vínculos (**Inicio**, **RpMovie**, **Crear**, **Editar** y **Eliminar**). Cada página establece el título, que puede ver en la pestaña del explorador. Al marcar una página, se usa el título para el marcador.
+Pruebe los otros vínculos ( **Inicio** , **RpMovie** , **Crear** , **Editar** y **Eliminar** ). Cada página establece el título, que puede ver en la pestaña del explorador. Al marcar una página, se usa el título para el marcador.
 
 > [!NOTE]
 > Es posible que no pueda escribir comas decimales en el campo `Price`. Para que la [validación de jQuery](https://jqueryvalidation.org/) sea compatible con configuraciones regionales distintas del inglés que usan una coma (",") en lugar de un punto decimal y formatos de fecha distintos del de Estados Unidos, debe seguir unos pasos para globalizar la aplicación. Consulte este [problema 4076 de GitHub](https://github.com/dotnet/AspNetCore.Docs/issues/4076#issuecomment-326590420) para instrucciones sobre cómo agregar la coma decimal.
 
-La propiedad `Layout` se establece en el archivo *Pages/_ViewStart.cshtml*:
+La propiedad `Layout` se establece en el archivo *Pages/_ViewStart.cshtml* :
 
 [!code-cshtml[](razor-pages-start/sample/RazorPagesMovie30/Pages/_ViewStart.cshtml)]
 
@@ -139,7 +140,7 @@ El marcado anterior establece el archivo de diseño de todos los archivos de Raz
 
 ### <a name="the-create-page-model"></a>Modelo de página Crear
 
-Examine el modelo de página *Pages/Movies/Create.cshtml.cs*:
+Examine el modelo de página *Pages/Movies/Create.cshtml.cs* :
 
 [!code-csharp[](razor-pages-start/snapshot_sample3/RazorPagesMovie30/Pages/Movies/Create.cshtml.cs?name=snippetALL)]
 
@@ -157,7 +158,7 @@ Si no hay ningún error de modelo, los datos se guardan y el explorador se redir
 
 ### <a name="the-create-no-locrazor-page"></a>La página de creación de instancias de Razor Pages
 
-Examine el archivo de instancia de Razor Pages *Pages/Movies/Create.cshtml*:
+Examine el archivo de instancia de Razor Pages *Pages/Movies/Create.cshtml* :
 
 [!code-cshtml[](razor-pages-start/snapshot_sample3/RazorPagesMovie30/Pages/Movies/Create.cshtml)]
 
@@ -227,7 +228,7 @@ En este tutorial se examinan las instancias de Razor Pages creadas con la técni
 
 ## <a name="the-create-delete-details-and-edit-pages"></a>Páginas de creación, eliminación, detalles y edición
 
-Examine el modelo de página *Pages/Movies/Index.cshtml.cs*:
+Examine el modelo de página *Pages/Movies/Index.cshtml.cs* :
 
 [!code-csharp[](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Index.cshtml.cs)]
 
@@ -235,11 +236,11 @@ Las instancias de Razor Pages derivan de `PageModel`. Por convención, la clase 
 
 Cuando se efectúa una solicitud de la página, el método `OnGetAsync` devuelve una lista de películas a la instancia de Razor Pages. `OnGetAsync` o `OnGet` se invocan en una instancia de Razor Pages para inicializar el estado de esa instancia. En este caso, `OnGetAsync` obtiene una lista de películas y las muestra.
 
-Cuando `OnGet` devuelve `void` o `OnGetAsync` devuelve `Task`, no se utiliza ningún método de devolución. Cuando el tipo de valor devuelto es `IActionResult` o `Task<IActionResult>`, se debe proporcionar una instrucción return. Por ejemplo, el método `OnPostAsync` *Pages/Movies/Create.cshtml.cs*:
+Cuando `OnGet` devuelve `void` o `OnGetAsync` devuelve `Task`, no se utiliza ningún método de devolución. Cuando el tipo de valor devuelto es `IActionResult` o `Task<IActionResult>`, se debe proporcionar una instrucción return. Por ejemplo, el método `OnPostAsync` *Pages/Movies/Create.cshtml.cs* :
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie22/Pages/Movies/Create.cshtml.cs?name=snippet)]
 
-<a name="index"></a> Examine la instancia de Razor Pages *Pages/Movies/Index.cshtml*:
+<a name="index"></a> Examine la instancia de Razor Pages *Pages/Movies/Index.cshtml* :
 
 [!code-cshtml[](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Index.cshtml)]
 
@@ -273,7 +274,7 @@ Las plantillas de [diseño](xref:mvc/views/layout) permiten especificar el dise�
 
 ### <a name="viewdata-and-layout"></a>Propiedades ViewData y Layout
 
-Tenga en cuenta el siguiente código del archivo *Pages/Movies/Index.cshtml*:
+Tenga en cuenta el siguiente código del archivo *Pages/Movies/Index.cshtml* :
 
 [!code-cshtml[](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Index.cshtml?range=1-6&highlight=4-999)]
 
@@ -311,12 +312,12 @@ El elemento delimitador anterior es un [asistente de etiquetas](xref:mvc/views/t
 
 Guarde los cambios y pruebe la aplicación haciendo clic en el vínculo **RpMovie**. Si tiene cualquier problema, consulte el archivo [_Layout.cshtml](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Pages/Shared/_Layout.cshtml) en GitHub.
 
-Pruebe los otros vínculos (**Inicio**, **RpMovie**, **Crear**, **Editar** y **Eliminar**). Cada página establece el título, que puede ver en la pestaña del explorador. Al marcar una página, se usa el título para el marcador.
+Pruebe los otros vínculos ( **Inicio** , **RpMovie** , **Crear** , **Editar** y **Eliminar** ). Cada página establece el título, que puede ver en la pestaña del explorador. Al marcar una página, se usa el título para el marcador.
 
 > [!NOTE]
 > Es posible que no pueda escribir comas decimales en el campo `Price`. Para que la [validación de jQuery](https://jqueryvalidation.org/) sea compatible con configuraciones regionales distintas del inglés que usan una coma (",") en lugar de un punto decimal y formatos de fecha distintos del de Estados Unidos, debe seguir unos pasos para globalizar la aplicación. Consulte el [problema 4076 de GitHub](https://github.com/dotnet/AspNetCore.Docs/issues/4076#issuecomment-326590420) para obtener instrucciones sobre cómo agregar la coma decimal.
 
-La propiedad `Layout` se establece en el archivo *Pages/_ViewStart.cshtml*:
+La propiedad `Layout` se establece en el archivo *Pages/_ViewStart.cshtml* :
 
 [!code-cshtml[](razor-pages-start/sample/RazorPagesMovie22/Pages/_ViewStart.cshtml)]
 
@@ -324,7 +325,7 @@ El marcado anterior establece el archivo de diseño de todos los archivos de Raz
 
 ### <a name="the-create-page-model"></a>Modelo de página Crear
 
-Examine el modelo de página *Pages/Movies/Create.cshtml.cs*:
+Examine el modelo de página *Pages/Movies/Create.cshtml.cs* :
 
 [!code-csharp[](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Create.cshtml.cs?name=snippetALL)]
 
@@ -342,7 +343,7 @@ Si no hay ningún error de modelo, los datos se guardan y el explorador se redir
 
 ### <a name="the-create-no-locrazor-page"></a>La página de creación de instancias de Razor Pages
 
-Examine el archivo de instancia de Razor Pages *Pages/Movies/Create.cshtml*:
+Examine el archivo de instancia de Razor Pages *Pages/Movies/Create.cshtml* :
 
 [!code-cshtml[](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Create.cshtml)]
 

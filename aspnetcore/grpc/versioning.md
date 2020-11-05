@@ -6,6 +6,7 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
 ms.date: 01/09/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/versioning
-ms.openlocfilehash: 0d8c5d953c9d703788a1686bbc800248c46efa48
-ms.sourcegitcommit: 47c9a59ff8a359baa6bca2637d3af87ddca1245b
+ms.openlocfilehash: 38204b16d041f21221862c566b90a6a9571d26a1
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88945407"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93058706"
 ---
 # <a name="versioning-grpc-services"></a>Control de versiones de servicios gRPC
 
@@ -49,27 +50,27 @@ Los siguientes cambios son secundarios a nivel del protocolo gRPC y a nivel bina
 
 * **Adición de un nuevo servicio**
 * **Adición de un nuevo método en un servicio**
-* **Adición de un campo en un mensaje de solicitud**: los campos agregados en un mensaje de solicitud se deserializan con el [valor predeterminado](https://developers.google.com/protocol-buffers/docs/proto3#default) en el servidor cuando no se fija un valor. Para ser un cambio secundario, el servicio debe funcionar correctamente en los casos en los que los clientes más antiguos no establezcan el nuevo campo.
-* **Adición de un campo en un mensaje de respuesta**: los campos agregados en un mensaje de respuesta se deserializan en la colección [campos desconocidos](https://developers.google.com/protocol-buffers/docs/proto3#unknowns) del mensaje del cliente.
-* **Adición de un valor en una enumeración**: las enumeraciones se serializan como un valor numérico. Los nuevos valores de enumeración se deserializan en el cliente en el valor de enumeración sin un nombre de enumeración. Para que sea un cambio secundario, los clientes más antiguos deben ejecutarse correctamente al recibir el nuevo valor de enumeración.
+* **Adición de un campo en un mensaje de solicitud** : los campos agregados en un mensaje de solicitud se deserializan con el [valor predeterminado](https://developers.google.com/protocol-buffers/docs/proto3#default) en el servidor cuando no se fija un valor. Para ser un cambio secundario, el servicio debe funcionar correctamente en los casos en los que los clientes más antiguos no establezcan el nuevo campo.
+* **Adición de un campo en un mensaje de respuesta** : los campos agregados en un mensaje de respuesta se deserializan en la colección [campos desconocidos](https://developers.google.com/protocol-buffers/docs/proto3#unknowns) del mensaje del cliente.
+* **Adición de un valor en una enumeración** : las enumeraciones se serializan como un valor numérico. Los nuevos valores de enumeración se deserializan en el cliente en el valor de enumeración sin un nombre de enumeración. Para que sea un cambio secundario, los clientes más antiguos deben ejecutarse correctamente al recibir el nuevo valor de enumeración.
 
 ### <a name="binary-breaking-changes"></a>Cambios binarios importantes
 
 Los siguientes cambios son secundarios en el nivel del protocolo gRPC, pero es necesario actualizar el cliente si pasa a usar el contrato *.proto* o el ensamblado .NET de cliente más reciente. La compatibilidad binaria es importante si tiene previsto publicar una biblioteca de gRPC en NuGet.
 
-* **Eliminación de un campo**: los valores de un campo eliminado se deserializan en [campos desconocidos](https://developers.google.com/protocol-buffers/docs/proto3#unknowns) de un mensaje. No se trata de un cambio importante del protocolo gRPC, pero el cliente debe actualizarse si pasa a usar el contrato más reciente. Es importante que un número de campo eliminado no se vuelva a usar accidentalmente en el futuro. Para asegurarse de que esto no suceda, especifique en el mensaje los nombres y números de los campos eliminados con la palabra clave [reservada](https://developers.google.com/protocol-buffers/docs/proto3#reserved) de Protobuf.
-* **Cambio de nombre de un mensaje**: los nombres de los mensajes no se envían normalmente en la red, por lo que no se trata de un cambio importante del protocolo gRPC. El cliente deberá actualizarse si pasa a usar el contrato más reciente. Una situación en la que los nombres de mensaje **sí** se envían en la red es en el caso de los campos [Any](https://developers.google.com/protocol-buffers/docs/proto3#any), cuando el nombre del mensaje se usa para identificar el tipo de mensaje.
-* **Cambio de csharp_namespace**: al modificar `csharp_namespace`, cambiará el espacio de nombres de los tipos .NET generados. No se trata de un cambio importante del protocolo gRPC, pero el cliente debe actualizarse si pasa a usar el contrato más reciente.
+* **Eliminación de un campo** : los valores de un campo eliminado se deserializan en [campos desconocidos](https://developers.google.com/protocol-buffers/docs/proto3#unknowns) de un mensaje. No se trata de un cambio importante del protocolo gRPC, pero el cliente debe actualizarse si pasa a usar el contrato más reciente. Es importante que un número de campo eliminado no se vuelva a usar accidentalmente en el futuro. Para asegurarse de que esto no suceda, especifique en el mensaje los nombres y números de los campos eliminados con la palabra clave [reservada](https://developers.google.com/protocol-buffers/docs/proto3#reserved) de Protobuf.
+* **Cambio de nombre de un mensaje** : los nombres de los mensajes no se envían normalmente en la red, por lo que no se trata de un cambio importante del protocolo gRPC. El cliente deberá actualizarse si pasa a usar el contrato más reciente. Una situación en la que los nombres de mensaje **sí** se envían en la red es en el caso de los campos [Any](https://developers.google.com/protocol-buffers/docs/proto3#any), cuando el nombre del mensaje se usa para identificar el tipo de mensaje.
+* **Cambio de csharp_namespace** : al modificar `csharp_namespace`, cambiará el espacio de nombres de los tipos .NET generados. No se trata de un cambio importante del protocolo gRPC, pero el cliente debe actualizarse si pasa a usar el contrato más reciente.
 
 ### <a name="protocol-breaking-changes"></a>Cambios importantes de protocolo
 
 Los elementos siguientes son cambios binarios y de protocolo importantes:
 
-* **Cambio de nombre de un campo**: en el contenido de Protobuf, los nombres de campos solo se usan en el código generado. El número de campo se usa para identificar los campos de la red. La modificación del nombre de un campo no es un cambio importante en el protocolo para Protobuf. Sin embargo, si un servidor usa contenido JSON, modificar el nombre de un campo sí se considera un cambio importante.
-* **Cambio de un tipo de datos de campo**: si cambia el tipo de datos de un campo por un [tipo incompatible](https://developers.google.com/protocol-buffers/docs/proto3#updating), se producirán errores al deserializar el mensaje. Aunque el nuevo tipo de datos sea compatible, es probable que el cliente deba actualizarse para admitir el nuevo tipo si pasa a usar el contrato más reciente.
-* **Cambio de un número de campo**: con las cargas de Protobuf, el número de campo se usa para identificar los campos de la red.
-* **Cambio de nombre de un paquete, un servicio o un método**: gRPC se usa el nombre del paquete, del servicio y del método para generar la dirección URL. El cliente recibe el estado *SIN IMPLEMENTAR* del servidor.
-* **Eliminación de un servicio o método**: el cliente recibe el estado *SIN IMPLEMENTAR* del servidor al llamar al método eliminado.
+* **Cambio de nombre de un campo** : en el contenido de Protobuf, los nombres de campos solo se usan en el código generado. El número de campo se usa para identificar los campos de la red. La modificación del nombre de un campo no es un cambio importante en el protocolo para Protobuf. Sin embargo, si un servidor usa contenido JSON, modificar el nombre de un campo sí se considera un cambio importante.
+* **Cambio de un tipo de datos de campo** : si cambia el tipo de datos de un campo por un [tipo incompatible](https://developers.google.com/protocol-buffers/docs/proto3#updating), se producirán errores al deserializar el mensaje. Aunque el nuevo tipo de datos sea compatible, es probable que el cliente deba actualizarse para admitir el nuevo tipo si pasa a usar el contrato más reciente.
+* **Cambio de un número de campo** : con las cargas de Protobuf, el número de campo se usa para identificar los campos de la red.
+* **Cambio de nombre de un paquete, un servicio o un método** : gRPC se usa el nombre del paquete, del servicio y del método para generar la dirección URL. El cliente recibe el estado *SIN IMPLEMENTAR* del servidor.
+* **Eliminación de un servicio o método** : el cliente recibe el estado *SIN IMPLEMENTAR* del servidor al llamar al método eliminado.
 
 ### <a name="behavior-breaking-changes"></a>Cambios importantes de comportamiento
 
@@ -93,7 +94,7 @@ El nombre del paquete se combina con el nombre del servicio para identificar una
 * `greet.v1.Greeter`
 * `greet.v2.Greeter`
 
-Las implementaciones del servicio con versiones se registran en *Startup.cs*:
+Las implementaciones del servicio con versiones se registran en *Startup.cs* :
 
 ```csharp
 app.UseEndpoints(endpoints =>
@@ -106,7 +107,7 @@ app.UseEndpoints(endpoints =>
 });
 ```
 
-Incluir un número de versión en el nombre del paquete le permite publicar una versión *v2* de su servicio con cambios importantes, a la vez que continúa admitiendo clientes más antiguos que llaman a la versión *v1*. Una vez que los clientes se hayan actualizado para usar el servicio *v2*, podrá eliminar la versión anterior. A la hora de planificar la publicación de varias versiones de un servicio:
+Incluir un número de versión en el nombre del paquete le permite publicar una versión  *v2* de su servicio con cambios importantes, a la vez que continúa admitiendo clientes más antiguos que llaman a la versión  *v1*. Una vez que los clientes se hayan actualizado para usar el servicio  *v2* , podrá eliminar la versión anterior. A la hora de planificar la publicación de varias versiones de un servicio:
 
 * Evite introducir cambios importantes, si es posible.
 * No actualice el número de versión a menos que realice cambios importantes.

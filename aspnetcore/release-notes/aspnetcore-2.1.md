@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/05/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: aspnetcore-2.1
-ms.openlocfilehash: d10fd89a3eac34e855ba92673033edc541aa6393
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 62fc9d866adcf05ff024501db68cce8bb8b11a98
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88632413"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059720"
 ---
 # <a name="whats-new-in-aspnet-core-21"></a>Novedades de ASP.NET Core 2.1
 
@@ -92,7 +93,7 @@ ASP.NET Core proporciona API y plantillas para cumplir algunos de los requisitos
 
 Se ha incorporado un nuevo paquete que optimiza las tareas de creación y ejecución de pruebas. El paquete [Microsoft.AspNetCore.Mvc.Testing](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Testing/) se encarga de estas tareas:
 
-* Copia el archivo de dependencia ( *\*.deps*) de la aplicación que se está probando en la carpeta *bin* del proyecto de prueba.
+* Copia el archivo de dependencia ( *\*.deps* ) de la aplicación que se está probando en la carpeta *bin* del proyecto de prueba.
 * Establece la raíz de contenido en la raíz de proyecto de la aplicación que se está probando, lo que permite encontrar archivos estáticos y páginas o vistas cuando se ejecutan las pruebas.
 * Proporciona la clase [WebApplicationFactory](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1) para optimizar el arranque de la aplicación que se está probando con [TestServer](/dotnet/api/microsoft.aspnetcore.testhost.testserver).
 

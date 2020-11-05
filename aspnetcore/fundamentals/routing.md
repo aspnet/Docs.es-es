@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 4/1/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/routing
-ms.openlocfilehash: e3dd7168e6974f63fa963d3732bc5df41814c70e
-ms.sourcegitcommit: d5ecad1103306fac8d5468128d3e24e529f1472c
+ms.openlocfilehash: 5b07a2839daf190d99b2787db70998373d34cd44
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92491630"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060006"
 ---
 # <a name="routing-in-aspnet-core"></a>Enrutamiento en ASP.NET Core
 
@@ -80,7 +81,7 @@ En el ejemplo anterior se incluye un único punto de conexión de *ruta a códig
 
 <a name="endpoint"></a>
 
-El método `MapGet` se usa para definir un **punto de conexión** . Un punto de conexión es algo que se puede:
+El método `MapGet` se usa para definir un **punto de conexión**. Un punto de conexión es algo que se puede:
 
 * Seleccionar, si se hacen coincidir la dirección URL y el método HTTP.
 * Ejecutar, mediante la ejecución del delegado.
@@ -96,7 +97,7 @@ En el ejemplo siguiente se muestra el enrutamiento con una plantilla de ruta má
 
 [!code-csharp[](routing/samples/3.x/RoutingSample/RouteTemplateStartup.cs?name=snippet)]
 
-La cadena `/hello/{name:alpha}` es una **plantilla de ruta** . Se usa para configurar cómo se hace coincidir el punto de conexión. En este caso, la plantilla coincide con:
+La cadena `/hello/{name:alpha}` es una **plantilla de ruta**. Se usa para configurar cómo se hace coincidir el punto de conexión. En este caso, la plantilla coincide con:
 
 * Una dirección URL como `/hello/Ryan`.
 * Cualquier ruta de dirección URL que comience por `/hello/`, seguido de una secuencia de caracteres alfabéticos.  `:alpha` aplica una restricción de ruta que solo coincide con caracteres alfabéticos. Las [restricciones de ruta](#route-constraint-reference) se explican más adelante en este documento.
@@ -137,7 +138,7 @@ En el ejemplo anterior, hay dos puntos de conexión, pero solo el de comprobaci�
 
 ## <a name="routing-concepts"></a>Conceptos de enrutamiento
 
-El sistema de enrutamiento se basa en la canalización de middleware mediante la adición del eficaz concepto de **punto de conexión** . Los puntos de conexión representan unidades de la funcionalidad de la aplicación que son diferentes entre sí en cuanto al enrutamiento, la autorización y cualquier número de sistemas de ASP.NET Core.
+El sistema de enrutamiento se basa en la canalización de middleware mediante la adición del eficaz concepto de **punto de conexión**. Los puntos de conexión representan unidades de la funcionalidad de la aplicación que son diferentes entre sí en cuanto al enrutamiento, la autorización y cualquier número de sistemas de ASP.NET Core.
 
 <a name="endpoint"></a>
 
@@ -209,7 +210,7 @@ En el ejemplo anterior se muestran dos conceptos importantes:
 
 En el código anterior se muestra un ejemplo de middleware personalizado que admite directivas por punto de conexión. El middleware escribe un *registro de auditoría* de acceso a datos confidenciales en la consola. El middleware se puede configurar para *auditar* un punto de conexión con los metadatos de `AuditPolicyAttribute`. En este ejemplo se muestra un patrón *opcional* en el que solo se auditan los puntos de conexión marcados como confidenciales. Esta lógica se puede definir en orden inverso, para auditar todo lo que no esté marcado como seguro, por ejemplo. El sistema de metadatos de punto de conexión es flexible. Esta lógica se puede diseñar de la manera que mejor se adapte al caso de uso.
 
-El código del ejemplo anterior está diseñado para mostrar los conceptos básicos de los puntos de conexión. **No está pensado para su uso en producción** . Una versión más completa de un middleware de *registro de auditoría* :
+El código del ejemplo anterior está diseñado para mostrar los conceptos básicos de los puntos de conexión. **No está pensado para su uso en producción**. Una versión más completa de un middleware de *registro de auditoría* :
 
 * Realizaría el registro en un archivo o una base de datos.
 * Incluiría detalles como el usuario, la dirección IP, el nombre del punto de conexión confidencial, etc.
@@ -229,7 +230,7 @@ En el ejemplo de código siguiente se compara el uso de middleware con el del en
 
 [!code-csharp[](routing/samples/3.x/RoutingSample/TerminalMiddlewareStartup.cs?name=snippet)]
 
-El estilo de middleware que se muestra con `Approach 1:` es **middleware de terminal** . Se denomina middleware de terminal porque realiza una operación de búsqueda de coincidencias:
+El estilo de middleware que se muestra con `Approach 1:` es **middleware de terminal**. Se denomina middleware de terminal porque realiza una operación de búsqueda de coincidencias:
 
 * La operación de búsqueda de coincidencias en el ejemplo anterior es `Path == "/"` para el middleware y `Path == "/Movie"` para el enrutamiento.
 * Cuando una coincidencia es correcta, ejecuta alguna funcionalidad y devuelve un valor, en lugar de invocar el middleware `next`.
@@ -372,7 +373,7 @@ Generación de direcciones URL:
 
 El enrutamiento de punto de conexión incluye la API <xref:Microsoft.AspNetCore.Routing.LinkGenerator>. `LinkGenerator` es un servicio singleton disponible desde la [DI](xref:fundamentals/dependency-injection). La API `LinkGenerator` se puede usar fuera del contexto de una solicitud en ejecución. [Mvc.IUrlHelper](xref:Microsoft.AspNetCore.Mvc.IUrlHelper) y los escenarios que dependen de <xref:Microsoft.AspNetCore.Mvc.IUrlHelper>, como los [asistentes de etiquetas](xref:mvc/views/tag-helpers/intro), los de HTML y los [resultados de acción](xref:mvc/controllers/actions), usan de forma interna la API `LinkGenerator` para proporcionar funciones de generación de vínculos.
 
-El generador de vínculos está respaldado por el concepto de una **dirección** y **esquemas de direcciones** . Un esquema de direcciones es una manera de determinar los puntos de conexión que se deben tener en cuenta para la generación de vínculos. Por ejemplo, los escenarios de nombre y valores de ruta de controladores y Razor Pages con los que muchos usuarios están familiarizados se implementan como un esquema de direcciones.
+El generador de vínculos está respaldado por el concepto de una **dirección** y **esquemas de direcciones**. Un esquema de direcciones es una manera de determinar los puntos de conexión que se deben tener en cuenta para la generación de vínculos. Por ejemplo, los escenarios de nombre y valores de ruta de controladores y Razor Pages con los que muchos usuarios están familiarizados se implementan como un esquema de direcciones.
 
 El generador de vínculos puede vincular a controladores y Razor Pages a través de los métodos de extensión siguientes:
 
@@ -421,7 +422,7 @@ El texto literal diferente de los parámetros de ruta (por ejemplo, `{id}`) y el
 Asterisco `*` o asterisco doble `**`:
 
 * Se puede usar como prefijo de un parámetro de ruta para enlazar con el resto del URI.
-* Se denominan parámetros **comodín** . Por ejemplo, `blog/{**slug}`:
+* Se denominan parámetros **comodín**. Por ejemplo, `blog/{**slug}`:
   * Coincide con cualquier URI que empiece por `/blog` y después tenga cualquier valor.
   * El valor que aparece detrás de `/blog` se asigna al valor de ruta [slug](https://developer.mozilla.org/docs/Glossary/Slug).
 
@@ -696,7 +697,7 @@ El papel del esquema de direcciones consiste en establecer la asociación entre 
 
 ### <a name="ambient-values-and-explicit-values"></a>Valores de ambiente y valores explícitos
 
-A partir de la solicitud actual, el enrutamiento accede a los valores de ruta del objeto `HttpContext.Request.RouteValues` de la solicitud actual. Los valores asociados a la solicitud actual se conocen como **valores de ambiente** . Para mayor claridad, en la documentación se hace referencia a los valores de ruta que se pasan a los métodos como **valores explícitos** .
+A partir de la solicitud actual, el enrutamiento accede a los valores de ruta del objeto `HttpContext.Request.RouteValues` de la solicitud actual. Los valores asociados a la solicitud actual se conocen como **valores de ambiente**. Para mayor claridad, en la documentación se hace referencia a los valores de ruta que se pasan a los métodos como **valores explícitos**.
 
 En el ejemplo siguiente se muestran valores de ambiente y valores explícitos. Proporciona valores de ambiente de la solicitud actual y valores explícitos, `{ id = 17, }`:
 
@@ -756,7 +757,7 @@ Una vez que se encuentra el conjunto de puntos de conexión candidatos, el algor
 * Procesa los puntos de conexión de forma iterativa.
 * Devuelve el primer resultado correcto.
 
-El primer paso de este proceso se denomina **invalidación del valor de ruta** .  La invalidación del valor de ruta es el proceso por el que el enrutamiento decide qué valores de ruta de los valores de ambiente se deben usar y cuáles se deben omitir. Cada valor de ambiente se tiene en cuenta y se combina con los valores explícitos, o bien se pasa por alto.
+El primer paso de este proceso se denomina **invalidación del valor de ruta**.  La invalidación del valor de ruta es el proceso por el que el enrutamiento decide qué valores de ruta de los valores de ambiente se deben usar y cuáles se deben omitir. Cada valor de ambiente se tiene en cuenta y se combina con los valores explícitos, o bien se pasa por alto.
 
 La mejor manera de pensar en el rol de los valores de ambiente es que intentan ahorrar trabajo a los desarrolladores de aplicaciones, en algunos casos comunes. Tradicionalmente, los escenarios en los que los valores de ambiente son útiles están relacionados con MVC:
 
@@ -782,7 +783,7 @@ Este proceso sea complica todavía más por la existencia de rutas de atributo y
 * Existe una jerarquía de valores de ruta.
 * No aparecen en la plantilla.
 
-En estos casos, la generación de direcciones URL define el concepto de **valores necesarios** . Los puntos de conexión creados por controladores y Razor Pages tienen valores necesarios especificados que permiten que la invalidación del valor de ruta funcione.
+En estos casos, la generación de direcciones URL define el concepto de **valores necesarios**. Los puntos de conexión creados por controladores y Razor Pages tienen valores necesarios especificados que permiten que la invalidación del valor de ruta funcione.
 
 El algoritmo de invalidación del valor de ruta en detalle:
 
@@ -1071,7 +1072,7 @@ La clase <xref:Microsoft.AspNetCore.Builder.RouterMiddleware> conecta el enrutam
 
 ### <a name="url-matching"></a>Coincidencia de dirección URL
 
-La coincidencia de dirección URL es el proceso por el cual el enrutamiento envía una solicitud entrante a un *punto de conexión* . Este proceso se basa en datos de la ruta de dirección URL, pero se puede ampliar para tener en cuenta cualquier dato de la solicitud. La capacidad de enviar solicitudes a controladores independientes es clave para escalar el tamaño y la complejidad de una aplicación.
+La coincidencia de dirección URL es el proceso por el cual el enrutamiento envía una solicitud entrante a un *punto de conexión*. Este proceso se basa en datos de la ruta de dirección URL, pero se puede ampliar para tener en cuenta cualquier dato de la solicitud. La capacidad de enviar solicitudes a controladores independientes es clave para escalar el tamaño y la complejidad de una aplicación.
 
 El sistema de enrutamiento en el enrutamiento de punto de conexión es responsable de todas las decisiones relativas al envío. Como el middleware aplica las directivas en función del punto de conexión seleccionado, es importante que cualquier decisión que pueda afectar a la distribución o la aplicación de directivas de seguridad se realice dentro del sistema de enrutamiento.
 
@@ -1091,7 +1092,7 @@ La generación de dirección URL es el proceso por el cual el enrutamiento puede
 
 El enrutamiento de punto de conexión incluye la API del generador de vínculos (<xref:Microsoft.AspNetCore.Routing.LinkGenerator>). <xref:Microsoft.AspNetCore.Routing.LinkGenerator> es un servicio singleton que se puede recuperar a partir de la [DI](xref:fundamentals/dependency-injection). La API se puede usar fuera del contexto de una solicitud en ejecución. <xref:Microsoft.AspNetCore.Mvc.IUrlHelper> de MVC y los escenarios que dependen de <xref:Microsoft.AspNetCore.Mvc.IUrlHelper>, como los [asistentes de etiquetas](xref:mvc/views/tag-helpers/intro), los de HTML y [los resultados de acción](xref:mvc/controllers/actions), usan el generador de vínculos para proporcionar funciones de generación de vínculos.
 
-El generador de vínculos está respaldado por el concepto de una *dirección* y *esquemas de direcciones* . Un esquema de direcciones es una manera de determinar los puntos de conexión que se deben tener en cuenta para la generación de vínculos. Por ejemplo, los escenarios de nombre y valores de ruta de Razor Pages y MVC con los que muchos usuarios están familiarizados se implementan como un esquema de direcciones.
+El generador de vínculos está respaldado por el concepto de una *dirección* y *esquemas de direcciones*. Un esquema de direcciones es una manera de determinar los puntos de conexión que se deben tener en cuenta para la generación de vínculos. Por ejemplo, los escenarios de nombre y valores de ruta de Razor Pages y MVC con los que muchos usuarios están familiarizados se implementan como un esquema de direcciones.
 
 El generador de vínculos puede vincular a acciones y páginas de Razor Pages y MVC a través de los métodos de extensión siguientes:
 
@@ -1390,7 +1391,7 @@ Los patrones de dirección URL que intentan capturar un nombre de archivo con un
 * `/files/myFile.txt`
 * `/files/myFile`
 
-Se puede usar un asterisco (`*`) o un asterisco doble (`**`) como prefijo de un parámetro de ruta para enlazar con el resto del URI. Se denominan parámetros *comodín* . Por ejemplo, `blog/{**slug}` coincide con cualquier URI que empiece por `/blog` y que vaya seguido de cualquier valor, que se asigna al valor de ruta `slug`. Los parámetros comodín también pueden coincidir con una cadena vacía.
+Se puede usar un asterisco (`*`) o un asterisco doble (`**`) como prefijo de un parámetro de ruta para enlazar con el resto del URI. Se denominan parámetros *comodín*. Por ejemplo, `blog/{**slug}` coincide con cualquier URI que empiece por `/blog` y que vaya seguido de cualquier valor, que se asigna al valor de ruta `slug`. Los parámetros comodín también pueden coincidir con una cadena vacía.
 
 El parámetro catch-all inserta los caracteres de escape correspondientes cuando se usa la ruta para generar una dirección URL, incluidos caracteres de separación de ruta de acceso (`/`). Por ejemplo, la ruta `foo/{*path}` con valores de ruta `{ path = "my/path" }` genera `foo/my%2Fpath`. Tenga en cuenta la barra diagonal de escape. Para los caracteres separadores de ruta de acceso de ida y vuelta, use el prefijo de parámetro de ruta `**`. La ruta `foo/{**path}` con `{ path = "my/path" }` genera `foo/my/path`.
 
@@ -1433,7 +1434,7 @@ Las siguientes palabras clave son nombres reservados y no se pueden usar como no
 Las restricciones de ruta se ejecutan cuando se ha producido una coincidencia con la dirección URL entrante y la ruta de dirección URL se convierte en tokens en valores de ruta. En general, las restricciones de ruta inspeccionan el valor de ruta asociado a través de la plantilla de ruta y deciden si el valor es aceptable o no. Algunas restricciones de ruta usan datos ajenos al valor de ruta para decidir si la solicitud se puede enrutar. Por ejemplo, <xref:Microsoft.AspNetCore.Routing.Constraints.HttpMethodRouteConstraint> puede aceptar o rechazar una solicitud basada en su verbo HTTP. Las restricciones se usan en las solicitudes de enrutamiento y la generación de vínculos.
 
 > [!WARNING]
-> No use las restricciones para las **validación de entrada** . Si las restricciones se usan para la **validación de entrada** , los resultados de entrada no válidos producirán un error *404 - No encontrado* en lugar de un error *400 - Solicitud incorrecta* con un mensaje de error adecuado. Las restricciones de ruta se usan para **eliminar la ambigüedad** entre rutas similares, no para validar las entradas de una ruta determinada.
+> No use las restricciones para las **validación de entrada**. Si las restricciones se usan para la **validación de entrada** , los resultados de entrada no válidos producirán un error *404 - No encontrado* en lugar de un error *400 - Solicitud incorrecta* con un mensaje de error adecuado. Las restricciones de ruta se usan para **eliminar la ambigüedad** entre rutas similares, no para validar las entradas de una ruta determinada.
 
 En la tabla siguiente se muestran algunas restricciones de ruta de ejemplo y su comportamiento esperado.
 
@@ -1566,7 +1567,7 @@ En el ejemplo siguiente se muestra cómo se genera un vínculo a una ruta, dado 
 
 El valor <xref:Microsoft.AspNetCore.Routing.VirtualPathData.VirtualPath> generado al final del ejemplo anterior es `/package/create/123`. El diccionario proporciona los valores de ruta `operation` e `id` de la plantilla "Ruta de paquete de seguimiento", `package/{operation}/{id}`. Para obtener más información, vea el código de ejemplo de la sección [Uso de software intermedio de enrutamiento](#use-routing-middleware) o la [aplicación de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/routing/samples).
 
-El segundo parámetro del constructor <xref:Microsoft.AspNetCore.Routing.VirtualPathContext> es una colección de *valores de ambiente* . Los valores de ambiente son adecuados porque limitan el número de valores que el desarrollador debe especificar dentro de un contexto de solicitud. Los valores de ruta actuales de la solicitud actual se consideran valores de ambiente para la generación de vínculos. En la acción `About` de `HomeController` de una aplicación ASP.NET Core MVC, no es necesario especificar el valor de ruta de controlador para vincular a la acción `Index` (se usará el valor de ambiente `Home`).
+El segundo parámetro del constructor <xref:Microsoft.AspNetCore.Routing.VirtualPathContext> es una colección de *valores de ambiente*. Los valores de ambiente son adecuados porque limitan el número de valores que el desarrollador debe especificar dentro de un contexto de solicitud. Los valores de ruta actuales de la solicitud actual se consideran valores de ambiente para la generación de vínculos. En la acción `About` de `HomeController` de una aplicación ASP.NET Core MVC, no es necesario especificar el valor de ruta de controlador para vincular a la acción `Index` (se usará el valor de ambiente `Home`).
 
 Los valores de ambiente que no coincidan con un parámetro se omiten. También se omiten los valores de ambiente cuando un valor proporcionado de forma explícita invalida el valor de ambiente. La coincidencia se produce de izquierda a derecha en la dirección URL.
 
@@ -1629,7 +1630,7 @@ La compatibilidad de la generación de direcciones URL permite desarrollar la ap
 
 El enrutamiento usa implementaciones de ruta de <xref:Microsoft.AspNetCore.Routing.IRouter> para:
 
-* Asignar las solicitudes entrantes a *controladores de ruta* .
+* Asignar las solicitudes entrantes a *controladores de ruta*.
 * Generar las direcciones URL que se usan en las respuestas.
 
 De forma predeterminada, una aplicación tiene una sola colección de rutas. Cuando llega una solicitud, las rutas de la colección se procesan en el orden en el que se encuentran en la colección. El marco de trabajo intenta hacer coincidir una dirección URL de solicitud entrante con una ruta de la colección mediante una llamada al método <xref:Microsoft.AspNetCore.Routing.IRouter.RouteAsync*> en cada ruta de la colección. Una respuesta puede usar el enrutamiento para generar direcciones URL (por ejemplo, para el redireccionamiento o los vínculos) en función de la información de ruta. De este modo, se evita codificar de forma rígida las direcciones URL, lo que facilita el mantenimiento.
@@ -1647,7 +1648,7 @@ La clase <xref:Microsoft.AspNetCore.Builder.RouterMiddleware> conecta el enrutam
 
 ### <a name="url-matching"></a>Coincidencia de dirección URL
 
-La coincidencia de dirección URL es el proceso por el cual el enrutamiento envía una solicitud entrante a un *controlador* . Este proceso se basa en datos de la ruta de dirección URL, pero se puede ampliar para tener en cuenta cualquier dato de la solicitud. La capacidad de enviar solicitudes a controladores independientes es clave para escalar el tamaño y la complejidad de una aplicación.
+La coincidencia de dirección URL es el proceso por el cual el enrutamiento envía una solicitud entrante a un *controlador*. Este proceso se basa en datos de la ruta de dirección URL, pero se puede ampliar para tener en cuenta cualquier dato de la solicitud. La capacidad de enviar solicitudes a controladores independientes es clave para escalar el tamaño y la complejidad de una aplicación.
 
 Las solicitudes entrantes especifican la clase <xref:Microsoft.AspNetCore.Builder.RouterMiddleware>, que llama al método <xref:Microsoft.AspNetCore.Routing.IRouter.RouteAsync*> en cada ruta de la secuencia. La instancia de <xref:Microsoft.AspNetCore.Routing.IRouter> decide si *controla* la solicitud mediante el establecimiento de [RouteContext.Handler](xref:Microsoft.AspNetCore.Routing.RouteContext.Handler*) en un <xref:Microsoft.AspNetCore.Http.RequestDelegate> que no sea NULL. Si una ruta establece un controlador para la solicitud, el procesamiento de rutas se detiene y se invoca el controlador para procesar la solicitud. Si no se encuentra ningún controlador de ruta para procesar la solicitud, el middleware entrega la solicitud al siguiente middleware en la canalización de solicitudes.
 
@@ -1852,7 +1853,7 @@ Los patrones de dirección URL que intentan capturar un nombre de archivo con un
 * `/files/myFile.txt`
 * `/files/myFile`
 
-Se puede usar el asterisco (`*`) como prefijo de un parámetro de ruta para enlazar con el resto del URI. Es lo que se denomina un parámetro *comodín* . Por ejemplo, `blog/{*slug}` coincide con cualquier URI que empiece por `/blog` y que vaya seguido de cualquier valor, que se asigna al valor de ruta `slug`. Los parámetros comodín también pueden coincidir con una cadena vacía.
+Se puede usar el asterisco (`*`) como prefijo de un parámetro de ruta para enlazar con el resto del URI. Es lo que se denomina un parámetro *comodín*. Por ejemplo, `blog/{*slug}` coincide con cualquier URI que empiece por `/blog` y que vaya seguido de cualquier valor, que se asigna al valor de ruta `slug`. Los parámetros comodín también pueden coincidir con una cadena vacía.
 
 El parámetro catch-all inserta los caracteres de escape correspondientes cuando se usa la ruta para generar una dirección URL, incluidos caracteres de separación de ruta de acceso (`/`). Por ejemplo, la ruta `foo/{*path}` con valores de ruta `{ path = "my/path" }` genera `foo/my%2Fpath`. Tenga en cuenta la barra diagonal de escape.
 
@@ -1883,7 +1884,7 @@ El uso de una plantilla suele ser el método de enrutamiento más sencillo. Las 
 Las restricciones de ruta se ejecutan cuando se ha producido una coincidencia con la dirección URL entrante y la ruta de dirección URL se convierte en tokens en valores de ruta. En general, las restricciones de ruta inspeccionan el valor de ruta asociado a través de la plantilla de ruta y deciden si el valor es aceptable o no. Algunas restricciones de ruta usan datos ajenos al valor de ruta para decidir si la solicitud se puede enrutar. Por ejemplo, <xref:Microsoft.AspNetCore.Routing.Constraints.HttpMethodRouteConstraint> puede aceptar o rechazar una solicitud basada en su verbo HTTP. Las restricciones se usan en las solicitudes de enrutamiento y la generación de vínculos.
 
 > [!WARNING]
-> No use las restricciones para las **validación de entrada** . Si las restricciones se usan para la **validación de entrada** , los resultados de entrada no válidos producirán un error *404 - No encontrado* en lugar de un error *400 - Solicitud incorrecta* con un mensaje de error adecuado. Las restricciones de ruta se usan para **eliminar la ambigüedad** entre rutas similares, no para validar las entradas de una ruta determinada.
+> No use las restricciones para las **validación de entrada**. Si las restricciones se usan para la **validación de entrada** , los resultados de entrada no válidos producirán un error *404 - No encontrado* en lugar de un error *400 - Solicitud incorrecta* con un mensaje de error adecuado. Las restricciones de ruta se usan para **eliminar la ambigüedad** entre rutas similares, no para validar las entradas de una ruta determinada.
 
 En la tabla siguiente se muestran algunas restricciones de ruta de ejemplo y su comportamiento esperado.
 
@@ -1972,7 +1973,7 @@ En el ejemplo siguiente se muestra cómo se genera un vínculo a una ruta, dado 
 
 El valor <xref:Microsoft.AspNetCore.Routing.VirtualPathData.VirtualPath> generado al final del ejemplo anterior es `/package/create/123`. El diccionario proporciona los valores de ruta `operation` e `id` de la plantilla "Ruta de paquete de seguimiento", `package/{operation}/{id}`. Para obtener más información, vea el código de ejemplo de la sección [Uso de software intermedio de enrutamiento](#use-routing-middleware) o la [aplicación de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/routing/samples).
 
-El segundo parámetro del constructor <xref:Microsoft.AspNetCore.Routing.VirtualPathContext> es una colección de *valores de ambiente* . Los valores de ambiente son adecuados porque limitan el número de valores que el desarrollador debe especificar dentro de un contexto de solicitud. Los valores de ruta actuales de la solicitud actual se consideran valores de ambiente para la generación de vínculos. En la acción `About` de `HomeController` de una aplicación ASP.NET Core MVC, no es necesario especificar el valor de ruta de controlador para vincular a la acción `Index` (se usará el valor de ambiente `Home`).
+El segundo parámetro del constructor <xref:Microsoft.AspNetCore.Routing.VirtualPathContext> es una colección de *valores de ambiente*. Los valores de ambiente son adecuados porque limitan el número de valores que el desarrollador debe especificar dentro de un contexto de solicitud. Los valores de ruta actuales de la solicitud actual se consideran valores de ambiente para la generación de vínculos. En la acción `About` de `HomeController` de una aplicación ASP.NET Core MVC, no es necesario especificar el valor de ruta de controlador para vincular a la acción `Index` (se usará el valor de ambiente `Home`).
 
 Los valores de ambiente que no coincidan con un parámetro se omiten. También se omiten los valores de ambiente cuando un valor proporcionado de forma explícita invalida el valor de ambiente. La coincidencia se produce de izquierda a derecha en la dirección URL.
 

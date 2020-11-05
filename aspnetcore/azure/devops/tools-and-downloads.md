@@ -6,6 +6,7 @@ ms.author: casoper
 ms.custom: devx-track-csharp, mvc, seodec18
 ms.date: 10/24/2018
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: azure/devops/tools-and-downloads
-ms.openlocfilehash: 3242031f07f3fa344422db4591ea1a244b6723dd
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 8c7f10a6b6f8504efaba6054533aba034982820c
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88625250"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93056574"
 ---
 # <a name="tools-and-downloads"></a>Herramientas y descargas
 
@@ -39,7 +40,7 @@ Se requieren las suscripciones siguientes:
 Se requieren las herramientas siguientes:
 
 * [Git](https://git-scm.com/downloads): se recomienda una comprensión fundamental de Git para esta guía. Revise la [Documentación de Git](https://git-scm.com/doc), concretamente [Git remoto](https://git-scm.com/docs/git-remote) y [Git Push](https://git-scm.com/docs/git-push).
-* [SDK de .NET Core](https://dotnet.microsoft.com/download/): se necesita la versión 2.1.300 o una posterior para compilar y ejecutar la aplicación de ejemplo. Si Visual Studio se instala con la carga de trabajo de **desarrollo multiplataforma de .NET Core**, el SDK de .NET Core ya está instalado.
+* [SDK de .NET Core](https://dotnet.microsoft.com/download/): se necesita la versión 2.1.300 o una posterior para compilar y ejecutar la aplicación de ejemplo. Si Visual Studio se instala con la carga de trabajo de **desarrollo multiplataforma de .NET Core** , el SDK de .NET Core ya está instalado.
 
     Compruebe la instalación del SDK de .NET Core. Abra un shell de comandos y ejecute el comando siguiente:
 
