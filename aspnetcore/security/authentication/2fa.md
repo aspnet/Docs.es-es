@@ -7,17 +7,17 @@ ms.author: riande
 ms.date: 09/22/2018
 ms.custom: mvc, seodec18
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: security/authentication/2fa
 ms.openlocfilehash: 1ee9e656c2e631c9b5588149e0a75e07108baff1
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -106,7 +106,7 @@ info: Successfully saved SMSAccountIdentification = 12345 to the secret store.
 
 ### <a name="enable-two-factor-authentication"></a><span data-ttu-id="c9859-145">Habilitación de la autenticación en dos fases</span><span class="sxs-lookup"><span data-stu-id="c9859-145">Enable two-factor authentication</span></span>
 
-<span data-ttu-id="c9859-146">Abra el archivo de vista *views/Manage/index. cshtml* :::no-loc(Razor)::: y quite los caracteres de comentario (por lo que no hay marcado como comentario).</span><span class="sxs-lookup"><span data-stu-id="c9859-146">Open the *Views/Manage/Index.cshtml* :::no-loc(Razor)::: view file and remove the comment characters (so no markup is commented out).</span></span>
+<span data-ttu-id="c9859-146">Abra el archivo de vista *views/Manage/index. cshtml* Razor y quite los caracteres de comentario (por lo que no hay marcado como comentario).</span><span class="sxs-lookup"><span data-stu-id="c9859-146">Open the *Views/Manage/Index.cshtml* Razor view file and remove the comment characters (so no markup is commented out).</span></span>
 
 ## <a name="log-in-with-two-factor-authentication"></a><span data-ttu-id="c9859-147">Inicio de sesión con la autenticación en dos fases</span><span class="sxs-lookup"><span data-stu-id="c9859-147">Log in with two-factor authentication</span></span>
 

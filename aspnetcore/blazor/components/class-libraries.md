@@ -1,23 +1,23 @@
 ---
-title: 'Bibliotecas de clases de componentes de :::no-loc(Razor)::: de ASP.NET Core'
+title: 'Bibliotecas de clases de componentes de Razor de ASP.NET Core'
 author: guardrex
-description: 'Descubra cómo se pueden incluir componentes en aplicaciones de :::no-loc(Blazor)::: desde una biblioteca de componentes externa.'
+description: 'Descubra cómo se pueden incluir componentes en aplicaciones de Blazor desde una biblioteca de componentes externa.'
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 07/27/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: blazor/components/class-libraries
 ms.openlocfilehash: f8e36cbe905b5ec2e674123c0f2ab6db99683c7c
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -26,11 +26,11 @@ ms.contentlocale: es-ES
 ms.lasthandoff: 10/30/2020
 ms.locfileid: "93056418"
 ---
-# <a name="aspnet-core-no-locrazor-components-class-libraries"></a><span data-ttu-id="e9968-103">Bibliotecas de clases de componentes de :::no-loc(Razor)::: de ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="e9968-103">ASP.NET Core :::no-loc(Razor)::: components class libraries</span></span>
+# <a name="aspnet-core-no-locrazor-components-class-libraries"></a><span data-ttu-id="e9968-103">Bibliotecas de clases de componentes de Razor de ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="e9968-103">ASP.NET Core Razor components class libraries</span></span>
 
 <span data-ttu-id="e9968-104">Por [Simon Timms](https://github.com/stimms)</span><span class="sxs-lookup"><span data-stu-id="e9968-104">By [Simon Timms](https://github.com/stimms)</span></span>
 
-<span data-ttu-id="e9968-105">Los componentes se pueden compartir entre proyectos en una [biblioteca de clases de :::no-loc(Razor)::: (RCL)](xref:razor-pages/ui-class).</span><span class="sxs-lookup"><span data-stu-id="e9968-105">Components can be shared in a [:::no-loc(Razor)::: class library (RCL)](xref:razor-pages/ui-class) across projects.</span></span> <span data-ttu-id="e9968-106">Se puede incluir una *biblioteca de clases de componentes de :::no-loc(Razor):::* desde:</span><span class="sxs-lookup"><span data-stu-id="e9968-106">A *:::no-loc(Razor)::: components class library* can be included from:</span></span>
+<span data-ttu-id="e9968-105">Los componentes se pueden compartir entre proyectos en una [biblioteca de clases de Razor (RCL)](xref:razor-pages/ui-class).</span><span class="sxs-lookup"><span data-stu-id="e9968-105">Components can be shared in a [Razor class library (RCL)](xref:razor-pages/ui-class) across projects.</span></span> <span data-ttu-id="e9968-106">Se puede incluir una *biblioteca de clases de componentes de Razor* desde:</span><span class="sxs-lookup"><span data-stu-id="e9968-106">A *Razor components class library* can be included from:</span></span>
 
 * <span data-ttu-id="e9968-107">Otro proyecto de la solución.</span><span class="sxs-lookup"><span data-stu-id="e9968-107">Another project in the solution.</span></span>
 * <span data-ttu-id="e9968-108">Un paquete NuGet.</span><span class="sxs-lookup"><span data-stu-id="e9968-108">A NuGet package.</span></span>
@@ -43,8 +43,8 @@ ms.locfileid: "93056418"
 # <a name="visual-studio"></a>[<span data-ttu-id="e9968-112">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="e9968-112">Visual Studio</span></span>](#tab/visual-studio)
 
 1. <span data-ttu-id="e9968-113">Cree un nuevo proyecto.</span><span class="sxs-lookup"><span data-stu-id="e9968-113">Create a new project.</span></span>
-1. <span data-ttu-id="e9968-114">Seleccione **Biblioteca de clases de :::no-loc(Razor):::** .</span><span class="sxs-lookup"><span data-stu-id="e9968-114">Select **:::no-loc(Razor)::: Class Library**.</span></span> <span data-ttu-id="e9968-115">Seleccione **Siguiente**.</span><span class="sxs-lookup"><span data-stu-id="e9968-115">Select **Next**.</span></span>
-1. <span data-ttu-id="e9968-116">En el cuadro de diálogo **Crear una biblioteca de clases de :::no-loc(Razor):::** , seleccione **Crear**.</span><span class="sxs-lookup"><span data-stu-id="e9968-116">In the **Create a new :::no-loc(Razor)::: class library** dialog, select **Create**.</span></span>
+1. <span data-ttu-id="e9968-114">Seleccione **Biblioteca de clases de Razor** .</span><span class="sxs-lookup"><span data-stu-id="e9968-114">Select **Razor Class Library**.</span></span> <span data-ttu-id="e9968-115">Seleccione **Siguiente**.</span><span class="sxs-lookup"><span data-stu-id="e9968-115">Select **Next**.</span></span>
+1. <span data-ttu-id="e9968-116">En el cuadro de diálogo **Crear una biblioteca de clases de Razor** , seleccione **Crear**.</span><span class="sxs-lookup"><span data-stu-id="e9968-116">In the **Create a new Razor class library** dialog, select **Create**.</span></span>
 1. <span data-ttu-id="e9968-117">Proporcione un nombre para el proyecto en el campo **Nombre del proyecto** o acepte el predeterminado.</span><span class="sxs-lookup"><span data-stu-id="e9968-117">Provide a project name in the **Project name** field or accept the default project name.</span></span> <span data-ttu-id="e9968-118">En los ejemplos de este tema se usa el nombre de proyecto `ComponentLibrary`.</span><span class="sxs-lookup"><span data-stu-id="e9968-118">The examples in this topic use the project name `ComponentLibrary`.</span></span> <span data-ttu-id="e9968-119">Seleccione **Crear**.</span><span class="sxs-lookup"><span data-stu-id="e9968-119">Select **Create**.</span></span>
 1. <span data-ttu-id="e9968-120">Agregue la RCL a una solución:</span><span class="sxs-lookup"><span data-stu-id="e9968-120">Add the RCL to a solution:</span></span>
    1. <span data-ttu-id="e9968-121">Haga clic con el botón derecho en la solución.</span><span class="sxs-lookup"><span data-stu-id="e9968-121">Right-click the solution.</span></span> <span data-ttu-id="e9968-122">Seleccione **Agregar** > **Proyecto existente**.</span><span class="sxs-lookup"><span data-stu-id="e9968-122">Select **Add** > **Existing Project**.</span></span>
@@ -55,7 +55,7 @@ ms.locfileid: "93056418"
    1. <span data-ttu-id="e9968-128">Seleccione el proyecto de la RCL.</span><span class="sxs-lookup"><span data-stu-id="e9968-128">Select the RCL project.</span></span> <span data-ttu-id="e9968-129">Seleccione **Aceptar**.</span><span class="sxs-lookup"><span data-stu-id="e9968-129">Select **OK**.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="e9968-130">Si la casilla **Páginas y vistas de soporte técnico** está activada al generar la RCL desde la plantilla, agregue también un archivo `_Imports.razor` a la raíz del proyecto generado con el siguiente contenido para habilitar la creación de componentes de :::no-loc(Razor)::::</span><span class="sxs-lookup"><span data-stu-id="e9968-130">If the **Support pages and views** check box is selected when generating the RCL from the template, then also add an `_Imports.razor` file to root of the generated project with the following contents to enable :::no-loc(Razor)::: component authoring:</span></span>
+> <span data-ttu-id="e9968-130">Si la casilla **Páginas y vistas de soporte técnico** está activada al generar la RCL desde la plantilla, agregue también un archivo `_Imports.razor` a la raíz del proyecto generado con el siguiente contenido para habilitar la creación de componentes de Razor:</span><span class="sxs-lookup"><span data-stu-id="e9968-130">If the **Support pages and views** check box is selected when generating the RCL from the template, then also add an `_Imports.razor` file to root of the generated project with the following contents to enable Razor component authoring:</span></span>
 >
 > ```razor
 > @using Microsoft.AspNetCore.Components.Web
@@ -65,14 +65,14 @@ ms.locfileid: "93056418"
 
 # <a name="net-core-cli"></a>[<span data-ttu-id="e9968-132">CLI de .NET Core</span><span class="sxs-lookup"><span data-stu-id="e9968-132">.NET Core CLI</span></span>](#tab/netcore-cli)
 
-1. <span data-ttu-id="e9968-133">Use la plantilla **Biblioteca de clases de :::no-loc(Razor):::** (`razorclasslib`) con el comando [`dotnet new`](/dotnet/core/tools/dotnet-new) en un shell de comandos.</span><span class="sxs-lookup"><span data-stu-id="e9968-133">Use the **:::no-loc(Razor)::: Class Library** template (`razorclasslib`) with the [`dotnet new`](/dotnet/core/tools/dotnet-new) command in a command shell.</span></span> <span data-ttu-id="e9968-134">En el ejemplo siguiente, se crea una RCL llamada `ComponentLibrary`.</span><span class="sxs-lookup"><span data-stu-id="e9968-134">In the following example, an RCL is created named `ComponentLibrary`.</span></span> <span data-ttu-id="e9968-135">La carpeta que contiene `ComponentLibrary` se crea automáticamente cuando se ejecuta el comando:</span><span class="sxs-lookup"><span data-stu-id="e9968-135">The folder that holds `ComponentLibrary` is created automatically when the command is executed:</span></span>
+1. <span data-ttu-id="e9968-133">Use la plantilla **Biblioteca de clases de Razor** (`razorclasslib`) con el comando [`dotnet new`](/dotnet/core/tools/dotnet-new) en un shell de comandos.</span><span class="sxs-lookup"><span data-stu-id="e9968-133">Use the **Razor Class Library** template (`razorclasslib`) with the [`dotnet new`](/dotnet/core/tools/dotnet-new) command in a command shell.</span></span> <span data-ttu-id="e9968-134">En el ejemplo siguiente, se crea una RCL llamada `ComponentLibrary`.</span><span class="sxs-lookup"><span data-stu-id="e9968-134">In the following example, an RCL is created named `ComponentLibrary`.</span></span> <span data-ttu-id="e9968-135">La carpeta que contiene `ComponentLibrary` se crea automáticamente cuando se ejecuta el comando:</span><span class="sxs-lookup"><span data-stu-id="e9968-135">The folder that holds `ComponentLibrary` is created automatically when the command is executed:</span></span>
 
    ```dotnetcli
    dotnet new razorclasslib -o ComponentLibrary
    ```
 
    > [!NOTE]
-   > <span data-ttu-id="e9968-136">Si se usa el modificador `-s|--support-pages-and-views` al generar la RCL desde la plantilla, agregue también un archivo `_Imports.razor` a la raíz del proyecto generado con el siguiente contenido para habilitar la creación de componentes de :::no-loc(Razor)::::</span><span class="sxs-lookup"><span data-stu-id="e9968-136">If the `-s|--support-pages-and-views` switch is used when generating the RCL from the template, then also add an `_Imports.razor` file to root of the generated project with the following contents to enable :::no-loc(Razor)::: component authoring:</span></span>
+   > <span data-ttu-id="e9968-136">Si se usa el modificador `-s|--support-pages-and-views` al generar la RCL desde la plantilla, agregue también un archivo `_Imports.razor` a la raíz del proyecto generado con el siguiente contenido para habilitar la creación de componentes de Razor:</span><span class="sxs-lookup"><span data-stu-id="e9968-136">If the `-s|--support-pages-and-views` switch is used when generating the RCL from the template, then also add an `_Imports.razor` file to root of the generated project with the following contents to enable Razor component authoring:</span></span>
    >
    > ```razor
    > @using Microsoft.AspNetCore.Components.Web
@@ -93,7 +93,7 @@ ms.locfileid: "93056418"
 <span data-ttu-id="e9968-142">Para consumir los componentes definidos en una biblioteca de otro proyecto, siga cualquiera de los métodos siguientes:</span><span class="sxs-lookup"><span data-stu-id="e9968-142">In order to consume components defined in a library in another project, use either of the following approaches:</span></span>
 
 * <span data-ttu-id="e9968-143">Use el nombre de tipo completo con el espacio de nombres.</span><span class="sxs-lookup"><span data-stu-id="e9968-143">Use the full type name with the namespace.</span></span>
-* <span data-ttu-id="e9968-144">Use la directiva [`@using`](xref:mvc/views/razor#using) de :::no-loc(Razor):::.</span><span class="sxs-lookup"><span data-stu-id="e9968-144">Use :::no-loc(Razor):::'s [`@using`](xref:mvc/views/razor#using) directive.</span></span> <span data-ttu-id="e9968-145">Los componentes individuales se pueden agregar por nombre.</span><span class="sxs-lookup"><span data-stu-id="e9968-145">Individual components can be added by name.</span></span>
+* <span data-ttu-id="e9968-144">Use la directiva [`@using`](xref:mvc/views/razor#using) de Razor.</span><span class="sxs-lookup"><span data-stu-id="e9968-144">Use Razor's [`@using`](xref:mvc/views/razor#using) directive.</span></span> <span data-ttu-id="e9968-145">Los componentes individuales se pueden agregar por nombre.</span><span class="sxs-lookup"><span data-stu-id="e9968-145">Individual components can be added by name.</span></span>
 
 <span data-ttu-id="e9968-146">En los ejemplos siguientes, `ComponentLibrary` es una biblioteca de componentes que contiene el componente `Component1` (`Component1.razor`).</span><span class="sxs-lookup"><span data-stu-id="e9968-146">In the following examples, `ComponentLibrary` is a component library containing the `Component1` component (`Component1.razor`).</span></span> <span data-ttu-id="e9968-147">El componente `Component1` es un componente de ejemplo que la plantilla de proyecto de RCL agrega automáticamente cuando se crea la biblioteca.</span><span class="sxs-lookup"><span data-stu-id="e9968-147">The `Component1` component is an example component automatically added by the RCL project template when the library is created.</span></span>
 
@@ -132,12 +132,12 @@ To provide `Component1`'s `my-component` CSS class to the component, link to the
     <Link href="_content/ComponentLibrary/styles.css" rel="stylesheet" />
 
     <p>
-        This :::no-loc(Blazor)::: component is defined in the <strong>ComponentLibrary</strong> package.
+        This Blazor component is defined in the <strong>ComponentLibrary</strong> package.
     </p>
 </div>
 ```
 
-To provide the stylesheet across the app, you can alternatively link to the library's stylesheet in the app's `wwwroot/index.html` file (:::no-loc(Blazor WebAssembly):::) or `Pages/_Host.cshtml` file (:::no-loc(Blazor Server):::):
+To provide the stylesheet across the app, you can alternatively link to the library's stylesheet in the app's `wwwroot/index.html` file (Blazor WebAssembly) or `Pages/_Host.cshtml` file (Blazor Server):
 
 ```html
 <head>
@@ -157,7 +157,7 @@ When the `Link` component is used in a child component, the linked asset is also
 
 -->
 
-<span data-ttu-id="e9968-152">Para proporcionar la clase CSS `my-component` de `Component1`, establezca un vínculo con la hoja de estilo de la biblioteca en el archivo `wwwroot/index.html` (:::no-loc(Blazor WebAssembly):::) o el archivo `Pages/_Host.cshtml` (:::no-loc(Blazor Server):::) de la aplicación:</span><span class="sxs-lookup"><span data-stu-id="e9968-152">To provide `Component1`'s `my-component` CSS class, link to the library's stylesheet in the app's `wwwroot/index.html` file (:::no-loc(Blazor WebAssembly):::) or `Pages/_Host.cshtml` file (:::no-loc(Blazor Server):::):</span></span>
+<span data-ttu-id="e9968-152">Para proporcionar la clase CSS `my-component` de `Component1`, establezca un vínculo con la hoja de estilo de la biblioteca en el archivo `wwwroot/index.html` (Blazor WebAssembly) o el archivo `Pages/_Host.cshtml` (Blazor Server) de la aplicación:</span><span class="sxs-lookup"><span data-stu-id="e9968-152">To provide `Component1`'s `my-component` CSS class, link to the library's stylesheet in the app's `wwwroot/index.html` file (Blazor WebAssembly) or `Pages/_Host.cshtml` file (Blazor Server):</span></span>
 
 ```html
 <head>
@@ -172,21 +172,21 @@ When the `Link` component is used in a child component, the linked asset is also
 
 -->
 
-## <a name="create-a-no-locrazor-components-class-library-with-static-assets"></a><span data-ttu-id="e9968-153">Creación de una biblioteca de clases de componentes de :::no-loc(Razor)::: con recursos estáticos</span><span class="sxs-lookup"><span data-stu-id="e9968-153">Create a :::no-loc(Razor)::: components class library with static assets</span></span>
+## <a name="create-a-no-locrazor-components-class-library-with-static-assets"></a><span data-ttu-id="e9968-153">Creación de una biblioteca de clases de componentes de Razor con recursos estáticos</span><span class="sxs-lookup"><span data-stu-id="e9968-153">Create a Razor components class library with static assets</span></span>
 
 <span data-ttu-id="e9968-154">Una RCL puede incluir recursos estáticos.</span><span class="sxs-lookup"><span data-stu-id="e9968-154">An RCL can include static assets.</span></span> <span data-ttu-id="e9968-155">Los recursos estáticos están disponibles para cualquier aplicación que use la biblioteca.</span><span class="sxs-lookup"><span data-stu-id="e9968-155">The static assets are available to any app that consumes the library.</span></span> <span data-ttu-id="e9968-156">Para obtener más información, vea <xref:razor-pages/ui-class#create-an-rcl-with-static-assets>.</span><span class="sxs-lookup"><span data-stu-id="e9968-156">For more information, see <xref:razor-pages/ui-class#create-an-rcl-with-static-assets>.</span></span>
 
-## <a name="supply-components-and-static-assets-to-multiple-hosted-no-locblazor-apps"></a><span data-ttu-id="e9968-157">Proporcionar componentes y recursos estáticos a varias aplicaciones de :::no-loc(Blazor)::: hospedadas</span><span class="sxs-lookup"><span data-stu-id="e9968-157">Supply components and static assets to multiple hosted :::no-loc(Blazor)::: apps</span></span>
+## <a name="supply-components-and-static-assets-to-multiple-hosted-no-locblazor-apps"></a><span data-ttu-id="e9968-157">Proporcionar componentes y recursos estáticos a varias aplicaciones de Blazor hospedadas</span><span class="sxs-lookup"><span data-stu-id="e9968-157">Supply components and static assets to multiple hosted Blazor apps</span></span>
 
 <span data-ttu-id="e9968-158">Para obtener más información, vea <xref:blazor/host-and-deploy/webassembly#static-assets-and-class-libraries>.</span><span class="sxs-lookup"><span data-stu-id="e9968-158">For more information, see <xref:blazor/host-and-deploy/webassembly#static-assets-and-class-libraries>.</span></span>
 
 ::: moniker range=">= aspnetcore-5.0"
 
-## <a name="browser-compatibility-analyzer-for-no-locblazor-webassembly"></a><span data-ttu-id="e9968-159">Analizador de compatibilidad con el explorador de :::no-loc(Blazor WebAssembly):::</span><span class="sxs-lookup"><span data-stu-id="e9968-159">Browser compatibility analyzer for :::no-loc(Blazor WebAssembly):::</span></span>
+## <a name="browser-compatibility-analyzer-for-no-locblazor-webassembly"></a><span data-ttu-id="e9968-159">Analizador de compatibilidad con el explorador de Blazor WebAssembly</span><span class="sxs-lookup"><span data-stu-id="e9968-159">Browser compatibility analyzer for Blazor WebAssembly</span></span>
 
-<span data-ttu-id="e9968-160">Las aplicaciones :::no-loc(Blazor WebAssembly)::: tienen como destino el área expuesta de la API de .NET completa, pero no todas las API de .NET son compatibles con WebAssembly, debido a las restricciones de espacio aislado del explorador.</span><span class="sxs-lookup"><span data-stu-id="e9968-160">:::no-loc(Blazor WebAssembly)::: apps target the full .NET API surface area, but not all .NET APIs are supported on WebAssembly due to browser sandbox constraints.</span></span> <span data-ttu-id="e9968-161">Las API no compatibles inician la excepción <xref:System.PlatformNotSupportedException> cuando se ejecutan en WebAssembly.</span><span class="sxs-lookup"><span data-stu-id="e9968-161">Unsupported APIs throw <xref:System.PlatformNotSupportedException> when running on WebAssembly.</span></span> <span data-ttu-id="e9968-162">Un analizador de compatibilidad de plataforma advierte al desarrollador cuando la aplicación usa API que no son compatibles con las plataformas de destino de la aplicación.</span><span class="sxs-lookup"><span data-stu-id="e9968-162">A platform compatibility analyzer warns the developer when the app uses APIs that aren't supported by the app's target platforms.</span></span> <span data-ttu-id="e9968-163">En el caso de las aplicaciones :::no-loc(Blazor WebAssembly):::, esto significa comprobar que las API se admiten en los exploradores.</span><span class="sxs-lookup"><span data-stu-id="e9968-163">For :::no-loc(Blazor WebAssembly)::: apps, this means checking that APIs are supported in browsers.</span></span> <span data-ttu-id="e9968-164">La anotación de API de .NET Framework para el analizador de compatibilidad es un proceso constante, por lo que no todas las API de .NET Framework están anotadas actualmente.</span><span class="sxs-lookup"><span data-stu-id="e9968-164">Annotating .NET framework APIs for the compatibility analyzer is an on-going process, so not all .NET framework API is currently annotated.</span></span>
+<span data-ttu-id="e9968-160">Las aplicaciones Blazor WebAssembly tienen como destino el área expuesta de la API de .NET completa, pero no todas las API de .NET son compatibles con WebAssembly, debido a las restricciones de espacio aislado del explorador.</span><span class="sxs-lookup"><span data-stu-id="e9968-160">Blazor WebAssembly apps target the full .NET API surface area, but not all .NET APIs are supported on WebAssembly due to browser sandbox constraints.</span></span> <span data-ttu-id="e9968-161">Las API no compatibles inician la excepción <xref:System.PlatformNotSupportedException> cuando se ejecutan en WebAssembly.</span><span class="sxs-lookup"><span data-stu-id="e9968-161">Unsupported APIs throw <xref:System.PlatformNotSupportedException> when running on WebAssembly.</span></span> <span data-ttu-id="e9968-162">Un analizador de compatibilidad de plataforma advierte al desarrollador cuando la aplicación usa API que no son compatibles con las plataformas de destino de la aplicación.</span><span class="sxs-lookup"><span data-stu-id="e9968-162">A platform compatibility analyzer warns the developer when the app uses APIs that aren't supported by the app's target platforms.</span></span> <span data-ttu-id="e9968-163">En el caso de las aplicaciones Blazor WebAssembly, esto significa comprobar que las API se admiten en los exploradores.</span><span class="sxs-lookup"><span data-stu-id="e9968-163">For Blazor WebAssembly apps, this means checking that APIs are supported in browsers.</span></span> <span data-ttu-id="e9968-164">La anotación de API de .NET Framework para el analizador de compatibilidad es un proceso constante, por lo que no todas las API de .NET Framework están anotadas actualmente.</span><span class="sxs-lookup"><span data-stu-id="e9968-164">Annotating .NET framework APIs for the compatibility analyzer is an on-going process, so not all .NET framework API is currently annotated.</span></span>
 
-<span data-ttu-id="e9968-165">Los proyectos de biblioteca de clases de :::no-loc(Blazor WebAssembly)::: y :::no-loc(Razor)::: habilitan *automáticamente* las comprobaciones de compatibilidad del explorador agregando `browser` como plataforma compatible con el elemento `SupportedPlatform` de MSBuild.</span><span class="sxs-lookup"><span data-stu-id="e9968-165">:::no-loc(Blazor WebAssembly)::: and :::no-loc(Razor)::: class library projects *automatically* enable browser compatibilty checks by adding `browser` as a supported platform with the `SupportedPlatform` MSBuild item.</span></span> <span data-ttu-id="e9968-166">Los desarrolladores de bibliotecas pueden agregar manualmente el elemento `SupportedPlatform` al archivo de proyecto de una biblioteca para habilitar la característica:</span><span class="sxs-lookup"><span data-stu-id="e9968-166">Library developers can manually add the `SupportedPlatform` item to a library's project file to enable the feature:</span></span>
+<span data-ttu-id="e9968-165">Los proyectos de biblioteca de clases de Blazor WebAssembly y Razor habilitan *automáticamente* las comprobaciones de compatibilidad del explorador agregando `browser` como plataforma compatible con el elemento `SupportedPlatform` de MSBuild.</span><span class="sxs-lookup"><span data-stu-id="e9968-165">Blazor WebAssembly and Razor class library projects *automatically* enable browser compatibilty checks by adding `browser` as a supported platform with the `SupportedPlatform` MSBuild item.</span></span> <span data-ttu-id="e9968-166">Los desarrolladores de bibliotecas pueden agregar manualmente el elemento `SupportedPlatform` al archivo de proyecto de una biblioteca para habilitar la característica:</span><span class="sxs-lookup"><span data-stu-id="e9968-166">Library developers can manually add the `SupportedPlatform` item to a library's project file to enable the feature:</span></span>
 
 ```xml
 <ItemGroup>
@@ -206,9 +206,9 @@ private static string GetLoggingDirectory()
 
 <span data-ttu-id="e9968-168">Para más información, vea [Anotación de API como no compatibles en plataformas específicas (repositorio de GitHub dotnet/designs)](https://github.com/dotnet/designs/blob/main/accepted/2020/platform-exclusion/platform-exclusion.md#build-configuration-for-platforms).</span><span class="sxs-lookup"><span data-stu-id="e9968-168">For more information, see [Annotating APIs as unsupported on specific platforms (dotnet/designs GitHub repository](https://github.com/dotnet/designs/blob/main/accepted/2020/platform-exclusion/platform-exclusion.md#build-configuration-for-platforms).</span></span>
 
-## <a name="no-locblazor-javascript-isolation-and-object-references"></a><span data-ttu-id="e9968-169">Aislamiento de JavaScript y referencias a objetos en :::no-loc(Blazor):::</span><span class="sxs-lookup"><span data-stu-id="e9968-169">:::no-loc(Blazor)::: JavaScript isolation and object references</span></span>
+## <a name="no-locblazor-javascript-isolation-and-object-references"></a><span data-ttu-id="e9968-169">Aislamiento de JavaScript y referencias a objetos en Blazor</span><span class="sxs-lookup"><span data-stu-id="e9968-169">Blazor JavaScript isolation and object references</span></span>
 
-<span data-ttu-id="e9968-170">:::no-loc(Blazor)::: permite el aislamiento de JavaScript en [módulos de JavaScript](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Modules) estándar.</span><span class="sxs-lookup"><span data-stu-id="e9968-170">:::no-loc(Blazor)::: enables JavaScript isolation in standard [JavaScript modules](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Modules).</span></span> <span data-ttu-id="e9968-171">El aislamiento de JavaScript reporta las siguientes ventajas:</span><span class="sxs-lookup"><span data-stu-id="e9968-171">JavaScript isolation provides the following benefits:</span></span>
+<span data-ttu-id="e9968-170">Blazor permite el aislamiento de JavaScript en [módulos de JavaScript](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Modules) estándar.</span><span class="sxs-lookup"><span data-stu-id="e9968-170">Blazor enables JavaScript isolation in standard [JavaScript modules](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Modules).</span></span> <span data-ttu-id="e9968-171">El aislamiento de JavaScript reporta las siguientes ventajas:</span><span class="sxs-lookup"><span data-stu-id="e9968-171">JavaScript isolation provides the following benefits:</span></span>
 
 * <span data-ttu-id="e9968-172">El código JavaScript importado no contamina el espacio de nombres global.</span><span class="sxs-lookup"><span data-stu-id="e9968-172">Imported JavaScript no longer pollutes the global namespace.</span></span>
 * <span data-ttu-id="e9968-173">No es necesario que los consumidores de la biblioteca y los componentes importen manualmente el código JavaScript relacionado.</span><span class="sxs-lookup"><span data-stu-id="e9968-173">Consumers of the library and components aren't required to manually import the related JavaScript.</span></span>

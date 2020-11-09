@@ -6,17 +6,17 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/14/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: security/authorization/iauthorizationpolicyprovider
 ms.openlocfilehash: 0f6f628cee0623c21a2a93aa11470005f8c78c58
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -104,7 +104,7 @@ public IActionResult RequiresMinimumAge10()
 
 * <span data-ttu-id="8c180-143">Analizando la edad del nombre de la Directiva.</span><span class="sxs-lookup"><span data-stu-id="8c180-143">Parsing the age from the policy name.</span></span>
 * <span data-ttu-id="8c180-144">Usar `AuthorizationPolicyBuilder` para crear un nuevo `AuthorizationPolicy`</span><span class="sxs-lookup"><span data-stu-id="8c180-144">Using `AuthorizationPolicyBuilder` to create a new `AuthorizationPolicy`</span></span>
-* <span data-ttu-id="8c180-145">En este y en los ejemplos siguientes se asumirá que el usuario se autentica a través de un :::no-loc(cookie)::: .</span><span class="sxs-lookup"><span data-stu-id="8c180-145">In this and following examples it will be assumed that the user is authenticated via a :::no-loc(cookie):::.</span></span> <span data-ttu-id="8c180-146">`AuthorizationPolicyBuilder`Se debe construir con al menos un nombre de esquema de autorización o siempre se realiza correctamente.</span><span class="sxs-lookup"><span data-stu-id="8c180-146">The `AuthorizationPolicyBuilder` should either be constructed with at least one authorization scheme name or always succeed.</span></span> <span data-ttu-id="8c180-147">De lo contrario, no hay información sobre cómo proporcionar un desafío al usuario y se producirá una excepción.</span><span class="sxs-lookup"><span data-stu-id="8c180-147">Otherwise there is no information on how to provide a challenge to the user and an exception will be thrown.</span></span>
+* <span data-ttu-id="8c180-145">En este y en los ejemplos siguientes se asumirá que el usuario se autentica a través de un cookie .</span><span class="sxs-lookup"><span data-stu-id="8c180-145">In this and following examples it will be assumed that the user is authenticated via a cookie.</span></span> <span data-ttu-id="8c180-146">`AuthorizationPolicyBuilder`Se debe construir con al menos un nombre de esquema de autorización o siempre se realiza correctamente.</span><span class="sxs-lookup"><span data-stu-id="8c180-146">The `AuthorizationPolicyBuilder` should either be constructed with at least one authorization scheme name or always succeed.</span></span> <span data-ttu-id="8c180-147">De lo contrario, no hay información sobre cómo proporcionar un desafío al usuario y se producirá una excepción.</span><span class="sxs-lookup"><span data-stu-id="8c180-147">Otherwise there is no information on how to provide a challenge to the user and an exception will be thrown.</span></span>
 * <span data-ttu-id="8c180-148">Agregar requisitos a la Directiva en función de la edad con `AuthorizationPolicyBuilder.AddRequirements` .</span><span class="sxs-lookup"><span data-stu-id="8c180-148">Adding requirements to the policy based on the age with `AuthorizationPolicyBuilder.AddRequirements`.</span></span> <span data-ttu-id="8c180-149">En otros escenarios, puede usar `RequireClaim` , `RequireRole` o `RequireUserName` en su lugar.</span><span class="sxs-lookup"><span data-stu-id="8c180-149">In other scenarios, you might use `RequireClaim`, `RequireRole`, or `RequireUserName` instead.</span></span>
 
 ```csharp
@@ -121,7 +121,7 @@ internal class MinimumAgePolicyProvider : IAuthorizationPolicyProvider
         if (policyName.StartsWith(POLICY_PREFIX, StringComparison.OrdinalIgnoreCase) &&
             int.TryParse(policyName.Substring(POLICY_PREFIX.Length), out var age))
         {
-            var policy = new AuthorizationPolicyBuilder(:::no-loc(Cookie):::AuthenticationDefaults.AuthenticationScheme);
+            var policy = new AuthorizationPolicyBuilder(CookieAuthenticationDefaults.AuthenticationScheme);
             policy.AddRequirements(new MinimumAgeRequirement(age));
             return Task.FromResult(policy.Build());
         }
@@ -168,7 +168,7 @@ return BackupPolicyProvider.GetPolicyAsync(policyName);
 
 ```csharp
 public Task<AuthorizationPolicy> GetDefaultPolicyAsync() => 
-    Task.FromResult(new AuthorizationPolicyBuilder(:::no-loc(Cookie):::AuthenticationDefaults.AuthenticationScheme).RequireAuthenticatedUser().Build());
+    Task.FromResult(new AuthorizationPolicyBuilder(CookieAuthenticationDefaults.AuthenticationScheme).RequireAuthenticatedUser().Build());
 ```
 
 <span data-ttu-id="8c180-162">Como con todos los aspectos de un personalizado `IAuthorizationPolicyProvider` , puede personalizarlo según sea necesario.</span><span class="sxs-lookup"><span data-stu-id="8c180-162">As with all aspects of a custom `IAuthorizationPolicyProvider`, you can customize this, as needed.</span></span> <span data-ttu-id="8c180-163">En algunos casos, puede ser deseable recuperar la directiva predeterminada de una reserva `IAuthorizationPolicyProvider` .</span><span class="sxs-lookup"><span data-stu-id="8c180-163">In some cases, it may be desirable to retrieve the default policy from a fallback `IAuthorizationPolicyProvider`.</span></span>

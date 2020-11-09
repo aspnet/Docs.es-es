@@ -1,22 +1,22 @@
 ---
-title: 'Interfaz de usuario reutilizable de :::no-loc(Razor)::: en bibliotecas de clases con ASP.NET Core'
+title: 'Interfaz de usuario reutilizable de Razor en bibliotecas de clases con ASP.NET Core'
 author: Rick-Anderson
-description: 'Aquí se explica cómo crear una interfaz de usuario de :::no-loc(Razor)::: reutilizable mediante vistas parciales en una biblioteca de clases de ASP.NET Core.'
+description: 'Aquí se explica cómo crear una interfaz de usuario de Razor reutilizable mediante vistas parciales en una biblioteca de clases de ASP.NET Core.'
 ms.author: riande
 ms.date: 01/25/2020
 ms.custom: mvc, seodec18
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: razor-pages/ui-class
 ms.openlocfilehash: e87e74533fe6900d8e0a73708ad24b765a968493
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -25,42 +25,42 @@ ms.contentlocale: es-ES
 ms.lasthandoff: 10/30/2020
 ms.locfileid: "93056808"
 ---
-# <a name="create-reusable-ui-using-the-no-locrazor-class-library-project-in-aspnet-core"></a><span data-ttu-id="01428-103">Creación de una interfaz de usuario reutilizable con el proyecto de biblioteca de clases de :::no-loc(Razor)::: en ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="01428-103">Create reusable UI using the :::no-loc(Razor)::: class library project in ASP.NET Core</span></span>
+# <a name="create-reusable-ui-using-the-no-locrazor-class-library-project-in-aspnet-core"></a><span data-ttu-id="01428-103">Creación de una interfaz de usuario reutilizable con el proyecto de biblioteca de clases de Razor en ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="01428-103">Create reusable UI using the Razor class library project in ASP.NET Core</span></span>
 
 <span data-ttu-id="01428-104">Por [Rick Anderson](https://twitter.com/RickAndMSFT)</span><span class="sxs-lookup"><span data-stu-id="01428-104">By [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
 
 ::: moniker range=">= aspnetcore-3.0"
 
-<span data-ttu-id="01428-105">Las vistas, páginas, controladores y modelos de página de :::no-loc(Razor):::, los [componentes de :::no-loc(Razor):::](xref:blazor/components/class-libraries), los [componentes de vista](xref:mvc/views/view-components) y los modelos de datos se pueden integrar en una biblioteca de clases de :::no-loc(Razor)::: (RCL).</span><span class="sxs-lookup"><span data-stu-id="01428-105">:::no-loc(Razor)::: views, pages, controllers, page models, [:::no-loc(Razor)::: components](xref:blazor/components/class-libraries), [View components](xref:mvc/views/view-components), and data models can be built into a :::no-loc(Razor)::: class library (RCL).</span></span> <span data-ttu-id="01428-106">Las RCL se pueden empaquetar y reutilizar.</span><span class="sxs-lookup"><span data-stu-id="01428-106">The RCL can be packaged and reused.</span></span> <span data-ttu-id="01428-107">Las aplicaciones pueden incluir la RCL y reemplazar las vistas y páginas que contienen.</span><span class="sxs-lookup"><span data-stu-id="01428-107">Applications can include the RCL and override the views and pages it contains.</span></span> <span data-ttu-id="01428-108">Si existe una vista,una vista parcial o una página de :::no-loc(Razor)::: tanto en la aplicación web como en la RCL, tiene prioridad el marcado de :::no-loc(Razor)::: (archivo *.cshtml* ) de la aplicación web.</span><span class="sxs-lookup"><span data-stu-id="01428-108">When a view, partial view, or :::no-loc(Razor)::: Page is found in both the web app and the RCL, the :::no-loc(Razor)::: markup ( *.cshtml* file) in the web app takes precedence.</span></span>
+<span data-ttu-id="01428-105">Las vistas, páginas, controladores y modelos de página de Razor, los [componentes de Razor](xref:blazor/components/class-libraries), los [componentes de vista](xref:mvc/views/view-components) y los modelos de datos se pueden integrar en una biblioteca de clases de Razor (RCL).</span><span class="sxs-lookup"><span data-stu-id="01428-105">Razor views, pages, controllers, page models, [Razor components](xref:blazor/components/class-libraries), [View components](xref:mvc/views/view-components), and data models can be built into a Razor class library (RCL).</span></span> <span data-ttu-id="01428-106">Las RCL se pueden empaquetar y reutilizar.</span><span class="sxs-lookup"><span data-stu-id="01428-106">The RCL can be packaged and reused.</span></span> <span data-ttu-id="01428-107">Las aplicaciones pueden incluir la RCL y reemplazar las vistas y páginas que contienen.</span><span class="sxs-lookup"><span data-stu-id="01428-107">Applications can include the RCL and override the views and pages it contains.</span></span> <span data-ttu-id="01428-108">Si existe una vista,una vista parcial o una página de Razor tanto en la aplicación web como en la RCL, tiene prioridad el marcado de Razor (archivo *.cshtml* ) de la aplicación web.</span><span class="sxs-lookup"><span data-stu-id="01428-108">When a view, partial view, or Razor Page is found in both the web app and the RCL, the Razor markup ( *.cshtml* file) in the web app takes precedence.</span></span>
 
 <span data-ttu-id="01428-109">[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/ui-class/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))</span><span class="sxs-lookup"><span data-stu-id="01428-109">[View or download sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/ui-class/samples) ([how to download](xref:index#how-to-download-a-sample))</span></span>
 
-## <a name="create-a-class-library-containing-no-locrazor-ui"></a><span data-ttu-id="01428-110">Creación de una biblioteca de clases que contenga interfaz de usuario de :::no-loc(Razor):::</span><span class="sxs-lookup"><span data-stu-id="01428-110">Create a class library containing :::no-loc(Razor)::: UI</span></span>
+## <a name="create-a-class-library-containing-no-locrazor-ui"></a><span data-ttu-id="01428-110">Creación de una biblioteca de clases que contenga interfaz de usuario de Razor</span><span class="sxs-lookup"><span data-stu-id="01428-110">Create a class library containing Razor UI</span></span>
 
 # <a name="visual-studio"></a>[<span data-ttu-id="01428-111">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="01428-111">Visual Studio</span></span>](#tab/visual-studio)
 
 * <span data-ttu-id="01428-112">En Visual Studio, seleccione **Crear un proyecto nuevo**.</span><span class="sxs-lookup"><span data-stu-id="01428-112">From Visual Studio select **Create new a new project**.</span></span>
-* <span data-ttu-id="01428-113">Seleccione **Biblioteca de clases de :::no-loc(Razor):::** > **Siguiente**.</span><span class="sxs-lookup"><span data-stu-id="01428-113">Select **:::no-loc(Razor)::: Class Library** > **Next**.</span></span>
-* <span data-ttu-id="01428-114">Asigne un nombre a la biblioteca (por ejemplo, ":::no-loc(Razor):::ClassLib") > **Crear**.</span><span class="sxs-lookup"><span data-stu-id="01428-114">Name the library (for example, ":::no-loc(Razor):::ClassLib"), > **Create**.</span></span> <span data-ttu-id="01428-115">Para evitar un conflicto de nombres de archivo con la biblioteca de vistas generada, asegúrese de que el nombre de la biblioteca no acaba en `.Views`.</span><span class="sxs-lookup"><span data-stu-id="01428-115">To avoid a file name collision with the generated view library, ensure the library name doesn't end in `.Views`.</span></span>
-* <span data-ttu-id="01428-116">Seleccione **Admitir páginas y vistas** si necesita admitir vistas.</span><span class="sxs-lookup"><span data-stu-id="01428-116">Select **Support pages and views** if you need to support views.</span></span> <span data-ttu-id="01428-117">Solo se admite :::no-loc(Razor)::: Pages de forma predeterminada.</span><span class="sxs-lookup"><span data-stu-id="01428-117">By default, only :::no-loc(Razor)::: Pages are supported.</span></span> <span data-ttu-id="01428-118">Seleccione **Crear**.</span><span class="sxs-lookup"><span data-stu-id="01428-118">Select **Create**.</span></span>
+* <span data-ttu-id="01428-113">Seleccione **Biblioteca de clases de Razor** > **Siguiente**.</span><span class="sxs-lookup"><span data-stu-id="01428-113">Select **Razor Class Library** > **Next**.</span></span>
+* <span data-ttu-id="01428-114">Asigne un nombre a la biblioteca (por ejemplo, "RazorClassLib") > **Crear**.</span><span class="sxs-lookup"><span data-stu-id="01428-114">Name the library (for example, "RazorClassLib"), > **Create**.</span></span> <span data-ttu-id="01428-115">Para evitar un conflicto de nombres de archivo con la biblioteca de vistas generada, asegúrese de que el nombre de la biblioteca no acaba en `.Views`.</span><span class="sxs-lookup"><span data-stu-id="01428-115">To avoid a file name collision with the generated view library, ensure the library name doesn't end in `.Views`.</span></span>
+* <span data-ttu-id="01428-116">Seleccione **Admitir páginas y vistas** si necesita admitir vistas.</span><span class="sxs-lookup"><span data-stu-id="01428-116">Select **Support pages and views** if you need to support views.</span></span> <span data-ttu-id="01428-117">Solo se admite Razor Pages de forma predeterminada.</span><span class="sxs-lookup"><span data-stu-id="01428-117">By default, only Razor Pages are supported.</span></span> <span data-ttu-id="01428-118">Seleccione **Crear**.</span><span class="sxs-lookup"><span data-stu-id="01428-118">Select **Create**.</span></span>
 
-<span data-ttu-id="01428-119">De forma predeterminada, la plantilla de la biblioteca de clases de :::no-loc(Razor)::: (RCL) usa el desarrollo de componentes de :::no-loc(Razor):::.</span><span class="sxs-lookup"><span data-stu-id="01428-119">The :::no-loc(Razor)::: class library (RCL) template defaults to :::no-loc(Razor)::: component development by default.</span></span> <span data-ttu-id="01428-120">La opción **Admitir páginas y vistas** proporciona compatibilidad con páginas y vistas.</span><span class="sxs-lookup"><span data-stu-id="01428-120">The **Support pages and views** option supports pages and views.</span></span>
+<span data-ttu-id="01428-119">De forma predeterminada, la plantilla de la biblioteca de clases de Razor (RCL) usa el desarrollo de componentes de Razor.</span><span class="sxs-lookup"><span data-stu-id="01428-119">The Razor class library (RCL) template defaults to Razor component development by default.</span></span> <span data-ttu-id="01428-120">La opción **Admitir páginas y vistas** proporciona compatibilidad con páginas y vistas.</span><span class="sxs-lookup"><span data-stu-id="01428-120">The **Support pages and views** option supports pages and views.</span></span>
 
 # <a name="net-core-cli"></a>[<span data-ttu-id="01428-121">CLI de .NET Core</span><span class="sxs-lookup"><span data-stu-id="01428-121">.NET Core CLI</span></span>](#tab/netcore-cli)
 
 <span data-ttu-id="01428-122">Ejecute `dotnet new razorclasslib` desde la línea de comandos.</span><span class="sxs-lookup"><span data-stu-id="01428-122">From the command line, run `dotnet new razorclasslib`.</span></span> <span data-ttu-id="01428-123">Por ejemplo:</span><span class="sxs-lookup"><span data-stu-id="01428-123">For example:</span></span>
 
 ```dotnetcli
-dotnet new razorclasslib -o :::no-loc(Razor):::UIClassLib
+dotnet new razorclasslib -o RazorUIClassLib
 ```
 
-<span data-ttu-id="01428-124">De forma predeterminada, la plantilla de la biblioteca de clases de :::no-loc(Razor)::: (RCL) usa el desarrollo de componentes de :::no-loc(Razor):::.</span><span class="sxs-lookup"><span data-stu-id="01428-124">The :::no-loc(Razor)::: class library (RCL) template defaults to :::no-loc(Razor)::: component development by default.</span></span> <span data-ttu-id="01428-125">Pase la opción `--support-pages-and-views` (`dotnet new razorclasslib --support-pages-and-views`) para proporcionar compatibilidad con páginas y vistas.</span><span class="sxs-lookup"><span data-stu-id="01428-125">Pass the `--support-pages-and-views` option (`dotnet new razorclasslib --support-pages-and-views`) to provide support for pages and views.</span></span>
+<span data-ttu-id="01428-124">De forma predeterminada, la plantilla de la biblioteca de clases de Razor (RCL) usa el desarrollo de componentes de Razor.</span><span class="sxs-lookup"><span data-stu-id="01428-124">The Razor class library (RCL) template defaults to Razor component development by default.</span></span> <span data-ttu-id="01428-125">Pase la opción `--support-pages-and-views` (`dotnet new razorclasslib --support-pages-and-views`) para proporcionar compatibilidad con páginas y vistas.</span><span class="sxs-lookup"><span data-stu-id="01428-125">Pass the `--support-pages-and-views` option (`dotnet new razorclasslib --support-pages-and-views`) to provide support for pages and views.</span></span>
 
 <span data-ttu-id="01428-126">Para más información, vea [dotnet new](/dotnet/core/tools/dotnet-new).</span><span class="sxs-lookup"><span data-stu-id="01428-126">For more information, see [dotnet new](/dotnet/core/tools/dotnet-new).</span></span> <span data-ttu-id="01428-127">Para evitar un conflicto de nombres de archivo con la biblioteca de vistas generada, asegúrese de que el nombre de la biblioteca no acaba en `.Views`.</span><span class="sxs-lookup"><span data-stu-id="01428-127">To avoid a file name collision with the generated view library, ensure the library name doesn't end in `.Views`.</span></span>
 
 ---
 
-<span data-ttu-id="01428-128">Agregue archivos de :::no-loc(Razor)::: a la RCL.</span><span class="sxs-lookup"><span data-stu-id="01428-128">Add :::no-loc(Razor)::: files to the RCL.</span></span>
+<span data-ttu-id="01428-128">Agregue archivos de Razor a la RCL.</span><span class="sxs-lookup"><span data-stu-id="01428-128">Add Razor files to the RCL.</span></span>
 
 <span data-ttu-id="01428-129">Las plantillas de ASP.NET Core dan por sentado que el contenido de la RCL se encuentra en la carpeta *Áreas*.</span><span class="sxs-lookup"><span data-stu-id="01428-129">The ASP.NET Core templates assume the RCL content is in the *Areas* folder.</span></span> <span data-ttu-id="01428-130">Consulte la sección [Diseño de páginas de RCL](#rcl-pages-layout) para crear una RCL que exponga contenido en `~/Pages` y no en `~/Areas/Pages`.</span><span class="sxs-lookup"><span data-stu-id="01428-130">See [RCL Pages layout](#rcl-pages-layout) to create an RCL that exposes content in `~/Pages` rather than `~/Areas/Pages`.</span></span>
 
@@ -73,20 +73,20 @@ dotnet new razorclasslib -o :::no-loc(Razor):::UIClassLib
 
 ## <a name="override-views-partial-views-and-pages"></a><span data-ttu-id="01428-137">Reemplazar vistas, vistas parciales y páginas</span><span class="sxs-lookup"><span data-stu-id="01428-137">Override views, partial views, and pages</span></span>
 
-<span data-ttu-id="01428-138">Si existe una vista,una vista parcial o una página de :::no-loc(Razor)::: tanto en la aplicación web como en la RCL, tiene prioridad el marcado de :::no-loc(Razor)::: (archivo *.cshtml* ) de la aplicación web.</span><span class="sxs-lookup"><span data-stu-id="01428-138">When a view, partial view, or :::no-loc(Razor)::: Page is found in both the web app and the RCL, the :::no-loc(Razor)::: markup ( *.cshtml* file) in the web app takes precedence.</span></span> <span data-ttu-id="01428-139">Por ejemplo, si agrega *WebApp1/Areas/MyFeature/Pages/Page1.cshtml* a WebApp1, Page1 en WebApp1 prevalecerá sobre Page1 en la biblioteca de clases de Razor.</span><span class="sxs-lookup"><span data-stu-id="01428-139">For example, add *WebApp1/Areas/MyFeature/Pages/Page1.cshtml* to WebApp1, and Page1 in the WebApp1 will take precedence over Page1 in the RCL.</span></span>
+<span data-ttu-id="01428-138">Si existe una vista,una vista parcial o una página de Razor tanto en la aplicación web como en la RCL, tiene prioridad el marcado de Razor (archivo *.cshtml* ) de la aplicación web.</span><span class="sxs-lookup"><span data-stu-id="01428-138">When a view, partial view, or Razor Page is found in both the web app and the RCL, the Razor markup ( *.cshtml* file) in the web app takes precedence.</span></span> <span data-ttu-id="01428-139">Por ejemplo, si agrega *WebApp1/Areas/MyFeature/Pages/Page1.cshtml* a WebApp1, Page1 en WebApp1 prevalecerá sobre Page1 en la biblioteca de clases de Razor.</span><span class="sxs-lookup"><span data-stu-id="01428-139">For example, add *WebApp1/Areas/MyFeature/Pages/Page1.cshtml* to WebApp1, and Page1 in the WebApp1 will take precedence over Page1 in the RCL.</span></span>
 
 <span data-ttu-id="01428-140">En la descarga de ejemplo, cambie el nombre *WebApp1/Areas/MyFeature2* por *WebApp1/Areas/MyFeature* para comprobar la prioridad.</span><span class="sxs-lookup"><span data-stu-id="01428-140">In the sample download, rename *WebApp1/Areas/MyFeature2* to *WebApp1/Areas/MyFeature* to test precedence.</span></span>
 
-<span data-ttu-id="01428-141">Copie la vista parcial *:::no-loc(Razor):::UIClassLib/Areas/MyFeature/Pages/Shared/_Message.cshtml* en *WebApp1/Areas/MyFeature/Pages/Shared/_Message.cshtml*.</span><span class="sxs-lookup"><span data-stu-id="01428-141">Copy the *:::no-loc(Razor):::UIClassLib/Areas/MyFeature/Pages/Shared/_Message.cshtml* partial view to *WebApp1/Areas/MyFeature/Pages/Shared/_Message.cshtml*.</span></span> <span data-ttu-id="01428-142">Actualice el marcado para señalar la nueva ubicación.</span><span class="sxs-lookup"><span data-stu-id="01428-142">Update the markup to indicate the new location.</span></span> <span data-ttu-id="01428-143">Compile y ejecute la aplicación para comprobar si se está usando la versión de la vista parcial de la aplicación.</span><span class="sxs-lookup"><span data-stu-id="01428-143">Build and run the app to verify the app's version of the partial is being used.</span></span>
+<span data-ttu-id="01428-141">Copie la vista parcial *RazorUIClassLib/Areas/MyFeature/Pages/Shared/_Message.cshtml* en *WebApp1/Areas/MyFeature/Pages/Shared/_Message.cshtml*.</span><span class="sxs-lookup"><span data-stu-id="01428-141">Copy the *RazorUIClassLib/Areas/MyFeature/Pages/Shared/_Message.cshtml* partial view to *WebApp1/Areas/MyFeature/Pages/Shared/_Message.cshtml*.</span></span> <span data-ttu-id="01428-142">Actualice el marcado para señalar la nueva ubicación.</span><span class="sxs-lookup"><span data-stu-id="01428-142">Update the markup to indicate the new location.</span></span> <span data-ttu-id="01428-143">Compile y ejecute la aplicación para comprobar si se está usando la versión de la vista parcial de la aplicación.</span><span class="sxs-lookup"><span data-stu-id="01428-143">Build and run the app to verify the app's version of the partial is being used.</span></span>
 
 ### <a name="rcl-pages-layout"></a><span data-ttu-id="01428-144">Diseño de páginas de RCL</span><span class="sxs-lookup"><span data-stu-id="01428-144">RCL Pages layout</span></span>
 
 <span data-ttu-id="01428-145">Para hacer referencia al contenido de la RCL como si formara parte de la carpeta *Pages* de la aplicación web, cree el proyecto RCL con la siguiente estructura de archivos:</span><span class="sxs-lookup"><span data-stu-id="01428-145">To reference RCL content as though it is part of the web app's *Pages* folder, create the RCL project with the following file structure:</span></span>
 
-* <span data-ttu-id="01428-146">*:::no-loc(Razor):::UIClassLib/Pages*</span><span class="sxs-lookup"><span data-stu-id="01428-146">*:::no-loc(Razor):::UIClassLib/Pages*</span></span>
-* <span data-ttu-id="01428-147">*:::no-loc(Razor):::UIClassLib/Pages/Shared*</span><span class="sxs-lookup"><span data-stu-id="01428-147">*:::no-loc(Razor):::UIClassLib/Pages/Shared*</span></span>
+* <span data-ttu-id="01428-146">*RazorUIClassLib/Pages*</span><span class="sxs-lookup"><span data-stu-id="01428-146">*RazorUIClassLib/Pages*</span></span>
+* <span data-ttu-id="01428-147">*RazorUIClassLib/Pages/Shared*</span><span class="sxs-lookup"><span data-stu-id="01428-147">*RazorUIClassLib/Pages/Shared*</span></span>
 
-<span data-ttu-id="01428-148">Imagine que *:::no-loc(Razor):::UIClassLib/Pages/Shared* contiene dos archivos parciales: *_Header.cshtml* y *_Footer.cshtml*.</span><span class="sxs-lookup"><span data-stu-id="01428-148">Suppose *:::no-loc(Razor):::UIClassLib/Pages/Shared* contains two partial files: *_Header.cshtml* and *_Footer.cshtml*.</span></span> <span data-ttu-id="01428-149">En ese caso, se podrían agregar etiquetas `<partial>` al archivo *_Layout.cshtml* :</span><span class="sxs-lookup"><span data-stu-id="01428-149">The `<partial>` tags could be added to *_Layout.cshtml* file:</span></span>
+<span data-ttu-id="01428-148">Imagine que *RazorUIClassLib/Pages/Shared* contiene dos archivos parciales: *_Header.cshtml* y *_Footer.cshtml*.</span><span class="sxs-lookup"><span data-stu-id="01428-148">Suppose *RazorUIClassLib/Pages/Shared* contains two partial files: *_Header.cshtml* and *_Footer.cshtml*.</span></span> <span data-ttu-id="01428-149">En ese caso, se podrían agregar etiquetas `<partial>` al archivo *_Layout.cshtml* :</span><span class="sxs-lookup"><span data-stu-id="01428-149">The `<partial>` tags could be added to *_Layout.cshtml* file:</span></span>
 
 ```cshtml
 <body>
@@ -141,7 +141,7 @@ dotnet new razorclasslib -o :::no-loc(Razor):::UIClassLib
 
 ### <a name="consume-content-from-a-referenced-rcl"></a><span data-ttu-id="01428-167">Consumo de contenido de una RCL a la que se hace referencia</span><span class="sxs-lookup"><span data-stu-id="01428-167">Consume content from a referenced RCL</span></span>
 
-<span data-ttu-id="01428-168">Los archivos incluidos en la carpeta *wwwroot* de la RCL se exponen a la RCL o a la aplicación de consumo en el prefijo `_content/{LIBRARY NAME}/`.</span><span class="sxs-lookup"><span data-stu-id="01428-168">The files included in the *wwwroot* folder of the RCL are exposed to either the RCL or the consuming app under the prefix `_content/{LIBRARY NAME}/`.</span></span> <span data-ttu-id="01428-169">Por ejemplo, una biblioteca denominada *:::no-loc(Razor):::.Class.Lib* produce una ruta de acceso al contenido estático en `_content/:::no-loc(Razor):::.Class.Lib/`.</span><span class="sxs-lookup"><span data-stu-id="01428-169">For example, a library named *:::no-loc(Razor):::.Class.Lib* results in a path to static content at `_content/:::no-loc(Razor):::.Class.Lib/`.</span></span> <span data-ttu-id="01428-170">Al generar un paquete NuGet, si el nombre del ensamblado no es igual que el del identificador del paquete, use el identificador de paquete para `{LIBRARY NAME}`.</span><span class="sxs-lookup"><span data-stu-id="01428-170">When producing a NuGet package and the assembly name isn't the same as the package ID, use the package ID for `{LIBRARY NAME}`.</span></span>
+<span data-ttu-id="01428-168">Los archivos incluidos en la carpeta *wwwroot* de la RCL se exponen a la RCL o a la aplicación de consumo en el prefijo `_content/{LIBRARY NAME}/`.</span><span class="sxs-lookup"><span data-stu-id="01428-168">The files included in the *wwwroot* folder of the RCL are exposed to either the RCL or the consuming app under the prefix `_content/{LIBRARY NAME}/`.</span></span> <span data-ttu-id="01428-169">Por ejemplo, una biblioteca denominada *Razor.Class.Lib* produce una ruta de acceso al contenido estático en `_content/Razor.Class.Lib/`.</span><span class="sxs-lookup"><span data-stu-id="01428-169">For example, a library named *Razor.Class.Lib* results in a path to static content at `_content/Razor.Class.Lib/`.</span></span> <span data-ttu-id="01428-170">Al generar un paquete NuGet, si el nombre del ensamblado no es igual que el del identificador del paquete, use el identificador de paquete para `{LIBRARY NAME}`.</span><span class="sxs-lookup"><span data-stu-id="01428-170">When producing a NuGet package and the assembly name isn't the same as the package ID, use the package ID for `{LIBRARY NAME}`.</span></span>
 
 <span data-ttu-id="01428-171">La aplicación de consumo hace referencia a los recursos estáticos proporcionados por la biblioteca con `<script>`, `<style>`, `<img>` y otras etiquetas HTML.</span><span class="sxs-lookup"><span data-stu-id="01428-171">The consuming app references static assets provided by the library with `<script>`, `<style>`, `<img>`, and other HTML tags.</span></span> <span data-ttu-id="01428-172">La aplicación de consumo debe tener habilitada la [compatibilidad con archivos estáticos](xref:fundamentals/static-files) en `Startup.Configure`:</span><span class="sxs-lookup"><span data-stu-id="01428-172">The consuming app must have [static file support](xref:fundamentals/static-files) enabled in `Startup.Configure`:</span></span>
 
@@ -198,37 +198,37 @@ public class Program
 
 ::: moniker range="< aspnetcore-3.0"
 
-<span data-ttu-id="01428-186">Las vistas, páginas, controladores y modelos de página de :::no-loc(Razor):::, los [componentes de :::no-loc(Razor):::](xref:blazor/components/class-libraries), los [componentes de vista](xref:mvc/views/view-components) y los modelos de datos se pueden integrar en una biblioteca de clases de :::no-loc(Razor)::: (RCL).</span><span class="sxs-lookup"><span data-stu-id="01428-186">:::no-loc(Razor)::: views, pages, controllers, page models, [:::no-loc(Razor)::: components](xref:blazor/components/class-libraries), [View components](xref:mvc/views/view-components), and data models can be built into a :::no-loc(Razor)::: class library (RCL).</span></span> <span data-ttu-id="01428-187">Las RCL se pueden empaquetar y reutilizar.</span><span class="sxs-lookup"><span data-stu-id="01428-187">The RCL can be packaged and reused.</span></span> <span data-ttu-id="01428-188">Las aplicaciones pueden incluir la RCL y reemplazar las vistas y páginas que contienen.</span><span class="sxs-lookup"><span data-stu-id="01428-188">Applications can include the RCL and override the views and pages it contains.</span></span> <span data-ttu-id="01428-189">Si existe una vista,una vista parcial o una página de :::no-loc(Razor)::: tanto en la aplicación web como en la RCL, tiene prioridad el marcado de :::no-loc(Razor)::: (archivo *.cshtml* ) de la aplicación web.</span><span class="sxs-lookup"><span data-stu-id="01428-189">When a view, partial view, or :::no-loc(Razor)::: Page is found in both the web app and the RCL, the :::no-loc(Razor)::: markup ( *.cshtml* file) in the web app takes precedence.</span></span>
+<span data-ttu-id="01428-186">Las vistas, páginas, controladores y modelos de página de Razor, los [componentes de Razor](xref:blazor/components/class-libraries), los [componentes de vista](xref:mvc/views/view-components) y los modelos de datos se pueden integrar en una biblioteca de clases de Razor (RCL).</span><span class="sxs-lookup"><span data-stu-id="01428-186">Razor views, pages, controllers, page models, [Razor components](xref:blazor/components/class-libraries), [View components](xref:mvc/views/view-components), and data models can be built into a Razor class library (RCL).</span></span> <span data-ttu-id="01428-187">Las RCL se pueden empaquetar y reutilizar.</span><span class="sxs-lookup"><span data-stu-id="01428-187">The RCL can be packaged and reused.</span></span> <span data-ttu-id="01428-188">Las aplicaciones pueden incluir la RCL y reemplazar las vistas y páginas que contienen.</span><span class="sxs-lookup"><span data-stu-id="01428-188">Applications can include the RCL and override the views and pages it contains.</span></span> <span data-ttu-id="01428-189">Si existe una vista,una vista parcial o una página de Razor tanto en la aplicación web como en la RCL, tiene prioridad el marcado de Razor (archivo *.cshtml* ) de la aplicación web.</span><span class="sxs-lookup"><span data-stu-id="01428-189">When a view, partial view, or Razor Page is found in both the web app and the RCL, the Razor markup ( *.cshtml* file) in the web app takes precedence.</span></span>
 
 <span data-ttu-id="01428-190">[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/ui-class/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))</span><span class="sxs-lookup"><span data-stu-id="01428-190">[View or download sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/ui-class/samples) ([how to download](xref:index#how-to-download-a-sample))</span></span>
 
-## <a name="create-a-class-library-containing-no-locrazor-ui"></a><span data-ttu-id="01428-191">Creación de una biblioteca de clases que contenga interfaz de usuario de :::no-loc(Razor):::</span><span class="sxs-lookup"><span data-stu-id="01428-191">Create a class library containing :::no-loc(Razor)::: UI</span></span>
+## <a name="create-a-class-library-containing-no-locrazor-ui"></a><span data-ttu-id="01428-191">Creación de una biblioteca de clases que contenga interfaz de usuario de Razor</span><span class="sxs-lookup"><span data-stu-id="01428-191">Create a class library containing Razor UI</span></span>
 
 # <a name="visual-studio"></a>[<span data-ttu-id="01428-192">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="01428-192">Visual Studio</span></span>](#tab/visual-studio)
 
 * <span data-ttu-id="01428-193">En el menú **Archivo** de Visual Studio, seleccione **Nuevo** > **Proyecto**.</span><span class="sxs-lookup"><span data-stu-id="01428-193">From the Visual Studio **File** menu, select **New** > **Project**.</span></span>
 * <span data-ttu-id="01428-194">Seleccione **Aplicación web de ASP.NET Core**.</span><span class="sxs-lookup"><span data-stu-id="01428-194">Select **ASP.NET Core Web Application**.</span></span>
-* <span data-ttu-id="01428-195">Asigne un nombre a la biblioteca (por ejemplo, ":::no-loc(Razor):::ClassLib") > **Aceptar**.</span><span class="sxs-lookup"><span data-stu-id="01428-195">Name the library (for example, ":::no-loc(Razor):::ClassLib") > **OK**.</span></span> <span data-ttu-id="01428-196">Para evitar un conflicto de nombres de archivo con la biblioteca de vistas generada, asegúrese de que el nombre de la biblioteca no acaba en `.Views`.</span><span class="sxs-lookup"><span data-stu-id="01428-196">To avoid a file name collision with the generated view library, ensure the library name doesn't end in `.Views`.</span></span>
+* <span data-ttu-id="01428-195">Asigne un nombre a la biblioteca (por ejemplo, "RazorClassLib") > **Aceptar**.</span><span class="sxs-lookup"><span data-stu-id="01428-195">Name the library (for example, "RazorClassLib") > **OK**.</span></span> <span data-ttu-id="01428-196">Para evitar un conflicto de nombres de archivo con la biblioteca de vistas generada, asegúrese de que el nombre de la biblioteca no acaba en `.Views`.</span><span class="sxs-lookup"><span data-stu-id="01428-196">To avoid a file name collision with the generated view library, ensure the library name doesn't end in `.Views`.</span></span>
 * <span data-ttu-id="01428-197">Confirme que **ASP.NET Core 2.1** o una versión posterior está seleccionado.</span><span class="sxs-lookup"><span data-stu-id="01428-197">Verify **ASP.NET Core 2.1** or later is selected.</span></span>
-* <span data-ttu-id="01428-198">Seleccione **Biblioteca de clases de :::no-loc(Razor):::** > **Aceptar**.</span><span class="sxs-lookup"><span data-stu-id="01428-198">Select **:::no-loc(Razor)::: Class Library** > **OK**.</span></span>
+* <span data-ttu-id="01428-198">Seleccione **Biblioteca de clases de Razor** > **Aceptar**.</span><span class="sxs-lookup"><span data-stu-id="01428-198">Select **Razor Class Library** > **OK**.</span></span>
 
 <span data-ttu-id="01428-199">Una RCL tiene el siguiente archivo de proyecto:</span><span class="sxs-lookup"><span data-stu-id="01428-199">An RCL has the following project file:</span></span>
 
-[!code-xml[](ui-class/samples/cli/:::no-loc(Razor):::UIClassLib/:::no-loc(Razor):::UIClassLib.csproj)]
+[!code-xml[](ui-class/samples/cli/RazorUIClassLib/RazorUIClassLib.csproj)]
 
 # <a name="net-core-cli"></a>[<span data-ttu-id="01428-200">CLI de .NET Core</span><span class="sxs-lookup"><span data-stu-id="01428-200">.NET Core CLI</span></span>](#tab/netcore-cli)
 
 <span data-ttu-id="01428-201">Ejecute `dotnet new razorclasslib` desde la línea de comandos.</span><span class="sxs-lookup"><span data-stu-id="01428-201">From the command line, run `dotnet new razorclasslib`.</span></span> <span data-ttu-id="01428-202">Por ejemplo:</span><span class="sxs-lookup"><span data-stu-id="01428-202">For example:</span></span>
 
 ```dotnetcli
-dotnet new razorclasslib -o :::no-loc(Razor):::UIClassLib
+dotnet new razorclasslib -o RazorUIClassLib
 ```
 
 <span data-ttu-id="01428-203">Para más información, vea [dotnet new](/dotnet/core/tools/dotnet-new).</span><span class="sxs-lookup"><span data-stu-id="01428-203">For more information, see [dotnet new](/dotnet/core/tools/dotnet-new).</span></span> <span data-ttu-id="01428-204">Para evitar un conflicto de nombres de archivo con la biblioteca de vistas generada, asegúrese de que el nombre de la biblioteca no acaba en `.Views`.</span><span class="sxs-lookup"><span data-stu-id="01428-204">To avoid a file name collision with the generated view library, ensure the library name doesn't end in `.Views`.</span></span>
 
 ---
 
-<span data-ttu-id="01428-205">Agregue archivos de :::no-loc(Razor)::: a la RCL.</span><span class="sxs-lookup"><span data-stu-id="01428-205">Add :::no-loc(Razor)::: files to the RCL.</span></span>
+<span data-ttu-id="01428-205">Agregue archivos de Razor a la RCL.</span><span class="sxs-lookup"><span data-stu-id="01428-205">Add Razor files to the RCL.</span></span>
 
 <span data-ttu-id="01428-206">Las plantillas de ASP.NET Core dan por sentado que el contenido de la RCL se encuentra en la carpeta *Áreas*.</span><span class="sxs-lookup"><span data-stu-id="01428-206">The ASP.NET Core templates assume the RCL content is in the *Areas* folder.</span></span> <span data-ttu-id="01428-207">Consulte la sección [Diseño de páginas de RCL](#rcl-pages-layout) para crear una RCL que exponga contenido en `~/Pages` y no en `~/Areas/Pages`.</span><span class="sxs-lookup"><span data-stu-id="01428-207">See [RCL Pages layout](#rcl-pages-layout) to create an RCL that exposes content in `~/Pages` rather than `~/Areas/Pages`.</span></span>
 
@@ -239,7 +239,7 @@ dotnet new razorclasslib -o :::no-loc(Razor):::UIClassLib
 * <span data-ttu-id="01428-210">Paquete NuGet.</span><span class="sxs-lookup"><span data-stu-id="01428-210">NuGet package.</span></span> <span data-ttu-id="01428-211">Vea [Creación de paquetes NuGet](/nuget/create-packages/creating-a-package), [dotnet add package](/dotnet/core/tools/dotnet-add-package) y [Creación y publicación de un paquete NuGet](/nuget/quickstart/create-and-publish-a-package-using-visual-studio).</span><span class="sxs-lookup"><span data-stu-id="01428-211">See [Creating NuGet packages](/nuget/create-packages/creating-a-package) and [dotnet add package](/dotnet/core/tools/dotnet-add-package) and [Create and publish a NuGet package](/nuget/quickstart/create-and-publish-a-package-using-visual-studio).</span></span>
 * <span data-ttu-id="01428-212">*{NombreDeProyecto}.csproj*.</span><span class="sxs-lookup"><span data-stu-id="01428-212">*{ProjectName}.csproj*.</span></span> <span data-ttu-id="01428-213">Vea [dotnet-add reference](/dotnet/core/tools/dotnet-add-reference).</span><span class="sxs-lookup"><span data-stu-id="01428-213">See [dotnet-add reference](/dotnet/core/tools/dotnet-add-reference).</span></span>
 
-## <a name="walkthrough-create-an-rcl-project-and-use-from-a-no-locrazor-pages-project"></a><span data-ttu-id="01428-214">Tutorial: Creación y uso de un proyecto de RCL desde un proyecto de :::no-loc(Razor)::: Pages</span><span class="sxs-lookup"><span data-stu-id="01428-214">Walkthrough: Create an RCL project and use from a :::no-loc(Razor)::: Pages project</span></span>
+## <a name="walkthrough-create-an-rcl-project-and-use-from-a-no-locrazor-pages-project"></a><span data-ttu-id="01428-214">Tutorial: Creación y uso de un proyecto de RCL desde un proyecto de Razor Pages</span><span class="sxs-lookup"><span data-stu-id="01428-214">Walkthrough: Create an RCL project and use from a Razor Pages project</span></span>
 
 <span data-ttu-id="01428-215">En lugar de crearlo, puede descargar el [proyecto completo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/ui-class/samples) y comprobarlo.</span><span class="sxs-lookup"><span data-stu-id="01428-215">You can download the [complete project](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/ui-class/samples) and test it rather than creating it.</span></span> <span data-ttu-id="01428-216">La descarga de ejemplo contiene más código y vínculos que hacen que el proyecto sea fácil de comprobar.</span><span class="sxs-lookup"><span data-stu-id="01428-216">The sample download contains additional code and links that make the project easy to test.</span></span> <span data-ttu-id="01428-217">Puede dejar sus comentarios en [este problema de GitHub](https://github.com/dotnet/AspNetCore.Docs/issues/6098) sobre las descargas de ejemplo en comparación con las instrucciones paso a paso.</span><span class="sxs-lookup"><span data-stu-id="01428-217">You can leave feedback in [this GitHub issue](https://github.com/dotnet/AspNetCore.Docs/issues/6098) with your comments on download samples versus step-by-step instructions.</span></span>
 
@@ -271,7 +271,7 @@ dotnet run
 
 ## <a name="create-an-rcl"></a><span data-ttu-id="01428-227">Creación de una RCL</span><span class="sxs-lookup"><span data-stu-id="01428-227">Create an RCL</span></span>
 
-<span data-ttu-id="01428-228">En esta sección, se creará una RCL</span><span class="sxs-lookup"><span data-stu-id="01428-228">In this section, an RCL is created.</span></span> <span data-ttu-id="01428-229">y se agregarán a ella archivos de :::no-loc(Razor):::.</span><span class="sxs-lookup"><span data-stu-id="01428-229">:::no-loc(Razor)::: files are added to the RCL.</span></span>
+<span data-ttu-id="01428-228">En esta sección, se creará una RCL</span><span class="sxs-lookup"><span data-stu-id="01428-228">In this section, an RCL is created.</span></span> <span data-ttu-id="01428-229">y se agregarán a ella archivos de Razor.</span><span class="sxs-lookup"><span data-stu-id="01428-229">Razor files are added to the RCL.</span></span>
 
 # <a name="visual-studio"></a>[<span data-ttu-id="01428-230">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="01428-230">Visual Studio</span></span>](#tab/visual-studio)
 
@@ -279,45 +279,45 @@ dotnet run
 
 * <span data-ttu-id="01428-232">En el menú **Archivo** de Visual Studio, seleccione **Nuevo** > **Proyecto**.</span><span class="sxs-lookup"><span data-stu-id="01428-232">From the Visual Studio **File** menu, select **New** > **Project**.</span></span>
 * <span data-ttu-id="01428-233">Seleccione **Aplicación web de ASP.NET Core**.</span><span class="sxs-lookup"><span data-stu-id="01428-233">Select **ASP.NET Core Web Application**.</span></span>
-* <span data-ttu-id="01428-234">Asigne a la aplicación el nombre **:::no-loc(Razor):::UIClassLib** > **Aceptar**.</span><span class="sxs-lookup"><span data-stu-id="01428-234">Name the app **:::no-loc(Razor):::UIClassLib** > **OK**.</span></span>
+* <span data-ttu-id="01428-234">Asigne a la aplicación el nombre **RazorUIClassLib** > **Aceptar**.</span><span class="sxs-lookup"><span data-stu-id="01428-234">Name the app **RazorUIClassLib** > **OK**.</span></span>
 * <span data-ttu-id="01428-235">Confirme que **ASP.NET Core 2.1** o una versión posterior está seleccionado.</span><span class="sxs-lookup"><span data-stu-id="01428-235">Verify **ASP.NET Core 2.1** or later is selected.</span></span>
-* <span data-ttu-id="01428-236">Seleccione **Biblioteca de clases de :::no-loc(Razor):::** > **Aceptar**.</span><span class="sxs-lookup"><span data-stu-id="01428-236">Select **:::no-loc(Razor)::: Class Library** > **OK**.</span></span>
-* <span data-ttu-id="01428-237">Agregue un archivo de vista parcial de :::no-loc(Razor)::: denominado *:::no-loc(Razor):::UIClassLib/Areas/MyFeature/Pages/Shared/_Message.cshtml*.</span><span class="sxs-lookup"><span data-stu-id="01428-237">Add a :::no-loc(Razor)::: partial view file named *:::no-loc(Razor):::UIClassLib/Areas/MyFeature/Pages/Shared/_Message.cshtml*.</span></span>
+* <span data-ttu-id="01428-236">Seleccione **Biblioteca de clases de Razor** > **Aceptar**.</span><span class="sxs-lookup"><span data-stu-id="01428-236">Select **Razor Class Library** > **OK**.</span></span>
+* <span data-ttu-id="01428-237">Agregue un archivo de vista parcial de Razor denominado *RazorUIClassLib/Areas/MyFeature/Pages/Shared/_Message.cshtml*.</span><span class="sxs-lookup"><span data-stu-id="01428-237">Add a Razor partial view file named *RazorUIClassLib/Areas/MyFeature/Pages/Shared/_Message.cshtml*.</span></span>
 
 # <a name="net-core-cli"></a>[<span data-ttu-id="01428-238">CLI de .NET Core</span><span class="sxs-lookup"><span data-stu-id="01428-238">.NET Core CLI</span></span>](#tab/netcore-cli)
 
 <span data-ttu-id="01428-239">Ejecute lo siguiente desde la línea de comandos:</span><span class="sxs-lookup"><span data-stu-id="01428-239">From the command line, run the following:</span></span>
 
 ```dotnetcli
-dotnet new razorclasslib -o :::no-loc(Razor):::UIClassLib
-dotnet new page -n _Message -np -o :::no-loc(Razor):::UIClassLib/Areas/MyFeature/Pages/Shared
-dotnet new viewstart -o :::no-loc(Razor):::UIClassLib/Areas/MyFeature/Pages
+dotnet new razorclasslib -o RazorUIClassLib
+dotnet new page -n _Message -np -o RazorUIClassLib/Areas/MyFeature/Pages/Shared
+dotnet new viewstart -o RazorUIClassLib/Areas/MyFeature/Pages
 ```
 
 <span data-ttu-id="01428-240">Los comandos anteriores:</span><span class="sxs-lookup"><span data-stu-id="01428-240">The preceding commands:</span></span>
 
-* <span data-ttu-id="01428-241">Crean la biblioteca de clases de Razor `:::no-loc(Razor):::UIClassLib`.</span><span class="sxs-lookup"><span data-stu-id="01428-241">Creates the `:::no-loc(Razor):::UIClassLib` RCL.</span></span>
-* <span data-ttu-id="01428-242">Crean una página _Message de :::no-loc(Razor)::: y la agrega a la RCL.</span><span class="sxs-lookup"><span data-stu-id="01428-242">Creates a :::no-loc(Razor)::: _Message page, and adds it to the RCL.</span></span> <span data-ttu-id="01428-243">El parámetro `-np` crea la página sin un `PageModel`.</span><span class="sxs-lookup"><span data-stu-id="01428-243">The `-np` parameter creates the page without a `PageModel`.</span></span>
+* <span data-ttu-id="01428-241">Crean la biblioteca de clases de Razor `RazorUIClassLib`.</span><span class="sxs-lookup"><span data-stu-id="01428-241">Creates the `RazorUIClassLib` RCL.</span></span>
+* <span data-ttu-id="01428-242">Crean una página _Message de Razor y la agrega a la RCL.</span><span class="sxs-lookup"><span data-stu-id="01428-242">Creates a Razor _Message page, and adds it to the RCL.</span></span> <span data-ttu-id="01428-243">El parámetro `-np` crea la página sin un `PageModel`.</span><span class="sxs-lookup"><span data-stu-id="01428-243">The `-np` parameter creates the page without a `PageModel`.</span></span>
 * <span data-ttu-id="01428-244">Crean un archivo [_ViewStart.cshtml](xref:mvc/views/layout#running-code-before-each-view) y lo agregan a la RCL.</span><span class="sxs-lookup"><span data-stu-id="01428-244">Creates a [_ViewStart.cshtml](xref:mvc/views/layout#running-code-before-each-view) file and adds it to the RCL.</span></span>
 
-<span data-ttu-id="01428-245">El archivo *_ViewStart.cshtml* es necesario para poder usar el diseño del proyecto de :::no-loc(Razor)::: Pages (que agregaremos en la siguiente sección).</span><span class="sxs-lookup"><span data-stu-id="01428-245">The *_ViewStart.cshtml* file is required to use the layout of the :::no-loc(Razor)::: Pages project (which is added in the next section).</span></span>
+<span data-ttu-id="01428-245">El archivo *_ViewStart.cshtml* es necesario para poder usar el diseño del proyecto de Razor Pages (que agregaremos en la siguiente sección).</span><span class="sxs-lookup"><span data-stu-id="01428-245">The *_ViewStart.cshtml* file is required to use the layout of the Razor Pages project (which is added in the next section).</span></span>
 
 ---
 
-### <a name="add-no-locrazor-files-and-folders-to-the-project"></a><span data-ttu-id="01428-246">Adición de archivos y carpetas de :::no-loc(Razor)::: al proyecto</span><span class="sxs-lookup"><span data-stu-id="01428-246">Add :::no-loc(Razor)::: files and folders to the project</span></span>
+### <a name="add-no-locrazor-files-and-folders-to-the-project"></a><span data-ttu-id="01428-246">Adición de archivos y carpetas de Razor al proyecto</span><span class="sxs-lookup"><span data-stu-id="01428-246">Add Razor files and folders to the project</span></span>
 
-* <span data-ttu-id="01428-247">Reemplace el marcado de *:::no-loc(Razor):::UIClassLib/Areas/MyFeature/Pages/Shared/_Message.cshtml* por el siguiente código:</span><span class="sxs-lookup"><span data-stu-id="01428-247">Replace the markup in *:::no-loc(Razor):::UIClassLib/Areas/MyFeature/Pages/Shared/_Message.cshtml* with the following code:</span></span>
+* <span data-ttu-id="01428-247">Reemplace el marcado de *RazorUIClassLib/Areas/MyFeature/Pages/Shared/_Message.cshtml* por el siguiente código:</span><span class="sxs-lookup"><span data-stu-id="01428-247">Replace the markup in *RazorUIClassLib/Areas/MyFeature/Pages/Shared/_Message.cshtml* with the following code:</span></span>
 
-  [!code-cshtml[](ui-class/samples/cli/:::no-loc(Razor):::UIClassLib/Areas/MyFeature/Pages/Shared/_Message.cshtml)]
+  [!code-cshtml[](ui-class/samples/cli/RazorUIClassLib/Areas/MyFeature/Pages/Shared/_Message.cshtml)]
 
-* <span data-ttu-id="01428-248">Reemplace el marcado de *:::no-loc(Razor):::UIClassLib/Areas/MyFeature/Pages/Page1.cshtml* por el siguiente código:</span><span class="sxs-lookup"><span data-stu-id="01428-248">Replace the markup in *:::no-loc(Razor):::UIClassLib/Areas/MyFeature/Pages/Page1.cshtml* with the following code:</span></span>
+* <span data-ttu-id="01428-248">Reemplace el marcado de *RazorUIClassLib/Areas/MyFeature/Pages/Page1.cshtml* por el siguiente código:</span><span class="sxs-lookup"><span data-stu-id="01428-248">Replace the markup in *RazorUIClassLib/Areas/MyFeature/Pages/Page1.cshtml* with the following code:</span></span>
 
-  [!code-cshtml[](ui-class/samples/cli/:::no-loc(Razor):::UIClassLib/Areas/MyFeature/Pages/Page1.cshtml)]
+  [!code-cshtml[](ui-class/samples/cli/RazorUIClassLib/Areas/MyFeature/Pages/Page1.cshtml)]
 
   <span data-ttu-id="01428-249">Se necesita `@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers` para usar la vista parcial (`<partial name="_Message" />`).</span><span class="sxs-lookup"><span data-stu-id="01428-249">`@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers` is required to use the partial view (`<partial name="_Message" />`).</span></span> <span data-ttu-id="01428-250">En lugar de incluir la directiva `@addTagHelper`, puede agregar un archivo *_ViewImports.cshtml*.</span><span class="sxs-lookup"><span data-stu-id="01428-250">Rather than including the `@addTagHelper` directive, you can add a *_ViewImports.cshtml* file.</span></span> <span data-ttu-id="01428-251">Por ejemplo:</span><span class="sxs-lookup"><span data-stu-id="01428-251">For example:</span></span>
 
   ```dotnetcli
-  dotnet new viewimports -o :::no-loc(Razor):::UIClassLib/Areas/MyFeature/Pages
+  dotnet new viewimports -o RazorUIClassLib/Areas/MyFeature/Pages
   ```
 
   <span data-ttu-id="01428-252">Para obtener más información sobre *_ViewImports.cshtml* , consulte la sección [Importar directivas compartidas](xref:mvc/views/layout#importing-shared-directives).</span><span class="sxs-lookup"><span data-stu-id="01428-252">For more information on *_ViewImports.cshtml* , see [Importing Shared Directives](xref:mvc/views/layout#importing-shared-directives)</span></span>
@@ -325,16 +325,16 @@ dotnet new viewstart -o :::no-loc(Razor):::UIClassLib/Areas/MyFeature/Pages
 * <span data-ttu-id="01428-253">Compile la biblioteca de clases para confirmar que no hay ningún error de compilador:</span><span class="sxs-lookup"><span data-stu-id="01428-253">Build the class library to verify there are no compiler errors:</span></span>
 
   ```dotnetcli
-  dotnet build :::no-loc(Razor):::UIClassLib
+  dotnet build RazorUIClassLib
   ```
 
-<span data-ttu-id="01428-254">La salida de la compilación contiene *:::no-loc(Razor):::UIClassLib. dll* y *:::no-loc(Razor):::UIClassLib. views.dll*.</span><span class="sxs-lookup"><span data-stu-id="01428-254">The build output contains *:::no-loc(Razor):::UIClassLib.dll* and *:::no-loc(Razor):::UIClassLib.Views.dll*.</span></span> <span data-ttu-id="01428-255">*:::no-loc(Razor):::UIClassLib.Views.dll* incluye el contenido de :::no-loc(Razor)::: compilado.</span><span class="sxs-lookup"><span data-stu-id="01428-255">*:::no-loc(Razor):::UIClassLib.Views.dll* contains the compiled :::no-loc(Razor)::: content.</span></span>
+<span data-ttu-id="01428-254">La salida de la compilación contiene *RazorUIClassLib. dll* y *RazorUIClassLib. views.dll*.</span><span class="sxs-lookup"><span data-stu-id="01428-254">The build output contains *RazorUIClassLib.dll* and *RazorUIClassLib.Views.dll*.</span></span> <span data-ttu-id="01428-255">*RazorUIClassLib.Views.dll* incluye el contenido de Razor compilado.</span><span class="sxs-lookup"><span data-stu-id="01428-255">*RazorUIClassLib.Views.dll* contains the compiled Razor content.</span></span>
 
-### <a name="use-the-no-locrazor-ui-library-from-a-no-locrazor-pages-project"></a><span data-ttu-id="01428-256">Uso de la biblioteca de interfaz de usuario de :::no-loc(Razor)::: desde un proyecto de :::no-loc(Razor)::: Pages</span><span class="sxs-lookup"><span data-stu-id="01428-256">Use the :::no-loc(Razor)::: UI library from a :::no-loc(Razor)::: Pages project</span></span>
+### <a name="use-the-no-locrazor-ui-library-from-a-no-locrazor-pages-project"></a><span data-ttu-id="01428-256">Uso de la biblioteca de interfaz de usuario de Razor desde un proyecto de Razor Pages</span><span class="sxs-lookup"><span data-stu-id="01428-256">Use the Razor UI library from a Razor Pages project</span></span>
 
 # <a name="visual-studio"></a>[<span data-ttu-id="01428-257">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="01428-257">Visual Studio</span></span>](#tab/visual-studio)
 
-<span data-ttu-id="01428-258">Cree la aplicación web de páginas de :::no-loc(Razor)::::</span><span class="sxs-lookup"><span data-stu-id="01428-258">Create the :::no-loc(Razor)::: Pages web app:</span></span>
+<span data-ttu-id="01428-258">Cree la aplicación web de páginas de Razor:</span><span class="sxs-lookup"><span data-stu-id="01428-258">Create the Razor Pages web app:</span></span>
 
 * <span data-ttu-id="01428-259">En el **Explorador de soluciones** , haga clic con el botón derecho en la solución > **Agregar** > **Nuevo proyecto**.</span><span class="sxs-lookup"><span data-stu-id="01428-259">From **Solution Explorer** , right-click the solution > **Add** >  **New Project**.</span></span>
 * <span data-ttu-id="01428-260">Seleccione **Aplicación web de ASP.NET Core**.</span><span class="sxs-lookup"><span data-stu-id="01428-260">Select **ASP.NET Core Web Application**.</span></span>
@@ -344,22 +344,22 @@ dotnet new viewstart -o :::no-loc(Razor):::UIClassLib/Areas/MyFeature/Pages
 
 * <span data-ttu-id="01428-264">En el **Explorador de soluciones** , haga clic con el botón derecho en **WebApp1** y seleccione **Establecer como proyecto de inicio**.</span><span class="sxs-lookup"><span data-stu-id="01428-264">From **Solution Explorer** , right-click on **WebApp1** and select **Set as StartUp Project**.</span></span>
 * <span data-ttu-id="01428-265">En el **Explorador de soluciones** , haga clic con el botón derecho en **WebApp1** y seleccione **Dependencias de compilación** > **Dependencias del proyecto**.</span><span class="sxs-lookup"><span data-stu-id="01428-265">From **Solution Explorer** , right-click on **WebApp1** and select **Build Dependencies** > **Project Dependencies**.</span></span>
-* <span data-ttu-id="01428-266">Marque **:::no-loc(Razor):::UIClassLib** como dependencia de **WebApp1**.</span><span class="sxs-lookup"><span data-stu-id="01428-266">Check **:::no-loc(Razor):::UIClassLib** as a dependency of **WebApp1**.</span></span>
+* <span data-ttu-id="01428-266">Marque **RazorUIClassLib** como dependencia de **WebApp1**.</span><span class="sxs-lookup"><span data-stu-id="01428-266">Check **RazorUIClassLib** as a dependency of **WebApp1**.</span></span>
 * <span data-ttu-id="01428-267">En el **Explorador de soluciones** , haga clic con el botón derecho en **WebApp1** y seleccione **Agregar** > **Referencia**.</span><span class="sxs-lookup"><span data-stu-id="01428-267">From **Solution Explorer** , right-click on **WebApp1** and select **Add** > **Reference**.</span></span>
-* <span data-ttu-id="01428-268">En el cuadro de diálogo **Administrador de referencias** , marque la casilla **:::no-loc(Razor):::UIClassLib** > **Aceptar**.</span><span class="sxs-lookup"><span data-stu-id="01428-268">In the **Reference Manager** dialog, check **:::no-loc(Razor):::UIClassLib** > **OK**.</span></span>
+* <span data-ttu-id="01428-268">En el cuadro de diálogo **Administrador de referencias** , marque la casilla **RazorUIClassLib** > **Aceptar**.</span><span class="sxs-lookup"><span data-stu-id="01428-268">In the **Reference Manager** dialog, check **RazorUIClassLib** > **OK**.</span></span>
 
 <span data-ttu-id="01428-269">Ejecutar la aplicación.</span><span class="sxs-lookup"><span data-stu-id="01428-269">Run the app.</span></span>
 
 # <a name="net-core-cli"></a>[<span data-ttu-id="01428-270">CLI de .NET Core</span><span class="sxs-lookup"><span data-stu-id="01428-270">.NET Core CLI</span></span>](#tab/netcore-cli)
 
-<span data-ttu-id="01428-271">Cree una aplicación web de :::no-loc(Razor)::: Pages y un archivo de solución que contenga dicha aplicación y la biblioteca de clases de :::no-loc(Razor)::::</span><span class="sxs-lookup"><span data-stu-id="01428-271">Create a :::no-loc(Razor)::: Pages web app and a solution file containing the :::no-loc(Razor)::: Pages app and the RCL:</span></span>
+<span data-ttu-id="01428-271">Cree una aplicación web de Razor Pages y un archivo de solución que contenga dicha aplicación y la biblioteca de clases de Razor:</span><span class="sxs-lookup"><span data-stu-id="01428-271">Create a Razor Pages web app and a solution file containing the Razor Pages app and the RCL:</span></span>
 
 ```dotnetcli
 dotnet new webapp -o WebApp1
 dotnet new sln
 dotnet sln add WebApp1
-dotnet sln add :::no-loc(Razor):::UIClassLib
-dotnet add WebApp1 reference :::no-loc(Razor):::UIClassLib
+dotnet sln add RazorUIClassLib
+dotnet add WebApp1 reference RazorUIClassLib
 ```
 
 <span data-ttu-id="01428-272">Compile y ejecute la aplicación web:</span><span class="sxs-lookup"><span data-stu-id="01428-272">Build and run the web app:</span></span>
@@ -373,24 +373,24 @@ dotnet run
 
 ### <a name="test-webapp1"></a><span data-ttu-id="01428-273">Probar WebApp1</span><span class="sxs-lookup"><span data-stu-id="01428-273">Test WebApp1</span></span>
 
-<span data-ttu-id="01428-274">Vaya a `/MyFeature/Page1` para comprobar que la biblioteca de clases de la interfaz de usuario de :::no-loc(Razor)::: está en uso.</span><span class="sxs-lookup"><span data-stu-id="01428-274">Browse to `/MyFeature/Page1` to verify that the :::no-loc(Razor)::: UI class library is in use.</span></span>
+<span data-ttu-id="01428-274">Vaya a `/MyFeature/Page1` para comprobar que la biblioteca de clases de la interfaz de usuario de Razor está en uso.</span><span class="sxs-lookup"><span data-stu-id="01428-274">Browse to `/MyFeature/Page1` to verify that the Razor UI class library is in use.</span></span>
 
 ## <a name="override-views-partial-views-and-pages"></a><span data-ttu-id="01428-275">Reemplazar vistas, vistas parciales y páginas</span><span class="sxs-lookup"><span data-stu-id="01428-275">Override views, partial views, and pages</span></span>
 
-<span data-ttu-id="01428-276">Si existe una vista,una vista parcial o una página de :::no-loc(Razor)::: tanto en la aplicación web como en la RCL, tiene prioridad el marcado de :::no-loc(Razor)::: (archivo *.cshtml* ) de la aplicación web.</span><span class="sxs-lookup"><span data-stu-id="01428-276">When a view, partial view, or :::no-loc(Razor)::: Page is found in both the web app and the RCL, the :::no-loc(Razor)::: markup ( *.cshtml* file) in the web app takes precedence.</span></span> <span data-ttu-id="01428-277">Por ejemplo, si agrega *WebApp1/Areas/MyFeature/Pages/Page1.cshtml* a WebApp1, Page1 en WebApp1 prevalecerá sobre Page1 en la biblioteca de clases de Razor.</span><span class="sxs-lookup"><span data-stu-id="01428-277">For example, add *WebApp1/Areas/MyFeature/Pages/Page1.cshtml* to WebApp1, and Page1 in the WebApp1 will take precedence over Page1 in the RCL.</span></span>
+<span data-ttu-id="01428-276">Si existe una vista,una vista parcial o una página de Razor tanto en la aplicación web como en la RCL, tiene prioridad el marcado de Razor (archivo *.cshtml* ) de la aplicación web.</span><span class="sxs-lookup"><span data-stu-id="01428-276">When a view, partial view, or Razor Page is found in both the web app and the RCL, the Razor markup ( *.cshtml* file) in the web app takes precedence.</span></span> <span data-ttu-id="01428-277">Por ejemplo, si agrega *WebApp1/Areas/MyFeature/Pages/Page1.cshtml* a WebApp1, Page1 en WebApp1 prevalecerá sobre Page1 en la biblioteca de clases de Razor.</span><span class="sxs-lookup"><span data-stu-id="01428-277">For example, add *WebApp1/Areas/MyFeature/Pages/Page1.cshtml* to WebApp1, and Page1 in the WebApp1 will take precedence over Page1 in the RCL.</span></span>
 
 <span data-ttu-id="01428-278">En la descarga de ejemplo, cambie el nombre *WebApp1/Areas/MyFeature2* por *WebApp1/Areas/MyFeature* para comprobar la prioridad.</span><span class="sxs-lookup"><span data-stu-id="01428-278">In the sample download, rename *WebApp1/Areas/MyFeature2* to *WebApp1/Areas/MyFeature* to test precedence.</span></span>
 
-<span data-ttu-id="01428-279">Copie la vista parcial *:::no-loc(Razor):::UIClassLib/Areas/MyFeature/Pages/Shared/_Message.cshtml* en *WebApp1/Areas/MyFeature/Pages/Shared/_Message.cshtml*.</span><span class="sxs-lookup"><span data-stu-id="01428-279">Copy the *:::no-loc(Razor):::UIClassLib/Areas/MyFeature/Pages/Shared/_Message.cshtml* partial view to *WebApp1/Areas/MyFeature/Pages/Shared/_Message.cshtml*.</span></span> <span data-ttu-id="01428-280">Actualice el marcado para señalar la nueva ubicación.</span><span class="sxs-lookup"><span data-stu-id="01428-280">Update the markup to indicate the new location.</span></span> <span data-ttu-id="01428-281">Compile y ejecute la aplicación para comprobar si se está usando la versión de la vista parcial de la aplicación.</span><span class="sxs-lookup"><span data-stu-id="01428-281">Build and run the app to verify the app's version of the partial is being used.</span></span>
+<span data-ttu-id="01428-279">Copie la vista parcial *RazorUIClassLib/Areas/MyFeature/Pages/Shared/_Message.cshtml* en *WebApp1/Areas/MyFeature/Pages/Shared/_Message.cshtml*.</span><span class="sxs-lookup"><span data-stu-id="01428-279">Copy the *RazorUIClassLib/Areas/MyFeature/Pages/Shared/_Message.cshtml* partial view to *WebApp1/Areas/MyFeature/Pages/Shared/_Message.cshtml*.</span></span> <span data-ttu-id="01428-280">Actualice el marcado para señalar la nueva ubicación.</span><span class="sxs-lookup"><span data-stu-id="01428-280">Update the markup to indicate the new location.</span></span> <span data-ttu-id="01428-281">Compile y ejecute la aplicación para comprobar si se está usando la versión de la vista parcial de la aplicación.</span><span class="sxs-lookup"><span data-stu-id="01428-281">Build and run the app to verify the app's version of the partial is being used.</span></span>
 
 ### <a name="rcl-pages-layout"></a><span data-ttu-id="01428-282">Diseño de páginas de RCL</span><span class="sxs-lookup"><span data-stu-id="01428-282">RCL Pages layout</span></span>
 
 <span data-ttu-id="01428-283">Para hacer referencia al contenido de la RCL como si formara parte de la carpeta *Pages* de la aplicación web, cree el proyecto RCL con la siguiente estructura de archivos:</span><span class="sxs-lookup"><span data-stu-id="01428-283">To reference RCL content as though it is part of the web app's *Pages* folder, create the RCL project with the following file structure:</span></span>
 
-* <span data-ttu-id="01428-284">*:::no-loc(Razor):::UIClassLib/Pages*</span><span class="sxs-lookup"><span data-stu-id="01428-284">*:::no-loc(Razor):::UIClassLib/Pages*</span></span>
-* <span data-ttu-id="01428-285">*:::no-loc(Razor):::UIClassLib/Pages/Shared*</span><span class="sxs-lookup"><span data-stu-id="01428-285">*:::no-loc(Razor):::UIClassLib/Pages/Shared*</span></span>
+* <span data-ttu-id="01428-284">*RazorUIClassLib/Pages*</span><span class="sxs-lookup"><span data-stu-id="01428-284">*RazorUIClassLib/Pages*</span></span>
+* <span data-ttu-id="01428-285">*RazorUIClassLib/Pages/Shared*</span><span class="sxs-lookup"><span data-stu-id="01428-285">*RazorUIClassLib/Pages/Shared*</span></span>
 
-<span data-ttu-id="01428-286">Imagine que *:::no-loc(Razor):::UIClassLib/Pages/Shared* contiene dos archivos parciales: *_Header.cshtml* y *_Footer.cshtml*.</span><span class="sxs-lookup"><span data-stu-id="01428-286">Suppose *:::no-loc(Razor):::UIClassLib/Pages/Shared* contains two partial files: *_Header.cshtml* and *_Footer.cshtml*.</span></span> <span data-ttu-id="01428-287">En ese caso, se podrían agregar etiquetas `<partial>` al archivo *_Layout.cshtml* :</span><span class="sxs-lookup"><span data-stu-id="01428-287">The `<partial>` tags could be added to *_Layout.cshtml* file:</span></span>
+<span data-ttu-id="01428-286">Imagine que *RazorUIClassLib/Pages/Shared* contiene dos archivos parciales: *_Header.cshtml* y *_Footer.cshtml*.</span><span class="sxs-lookup"><span data-stu-id="01428-286">Suppose *RazorUIClassLib/Pages/Shared* contains two partial files: *_Header.cshtml* and *_Footer.cshtml*.</span></span> <span data-ttu-id="01428-287">En ese caso, se podrían agregar etiquetas `<partial>` al archivo *_Layout.cshtml* :</span><span class="sxs-lookup"><span data-stu-id="01428-287">The `<partial>` tags could be added to *_Layout.cshtml* file:</span></span>
 
 ```cshtml
 <body>

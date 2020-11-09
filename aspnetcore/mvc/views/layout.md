@@ -5,17 +5,17 @@ description: Obtenga información sobre cómo usar diseños comunes, compartir d
 ms.author: riande
 ms.date: 07/30/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: mvc/views/layout
 ms.openlocfilehash: 502df268e7f5f33acfffccd5ec0bd65267fa12da
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -34,9 +34,9 @@ ms.locfileid: "93060981"
 * <span data-ttu-id="08beb-108">Compartir directivas.</span><span class="sxs-lookup"><span data-stu-id="08beb-108">Share directives.</span></span>
 * <span data-ttu-id="08beb-109">Ejecutar código común antes de representar páginas o vistas.</span><span class="sxs-lookup"><span data-stu-id="08beb-109">Run common code before rendering pages or views.</span></span>
 
-<span data-ttu-id="08beb-110">En este documento se describen los diseños de los dos enfoques diferentes para ASP.NET Core MVC: :::no-loc(Razor)::: páginas y controladores con vistas.</span><span class="sxs-lookup"><span data-stu-id="08beb-110">This document discusses layouts for the two different approaches to ASP.NET Core MVC: :::no-loc(Razor)::: Pages and controllers with views.</span></span> <span data-ttu-id="08beb-111">Para este tema, las diferencias son mínimas:</span><span class="sxs-lookup"><span data-stu-id="08beb-111">For this topic, the differences are minimal:</span></span>
+<span data-ttu-id="08beb-110">En este documento se describen los diseños de los dos enfoques diferentes para ASP.NET Core MVC: Razor páginas y controladores con vistas.</span><span class="sxs-lookup"><span data-stu-id="08beb-110">This document discusses layouts for the two different approaches to ASP.NET Core MVC: Razor Pages and controllers with views.</span></span> <span data-ttu-id="08beb-111">Para este tema, las diferencias son mínimas:</span><span class="sxs-lookup"><span data-stu-id="08beb-111">For this topic, the differences are minimal:</span></span>
 
-* <span data-ttu-id="08beb-112">:::no-loc(Razor)::: Las páginas se encuentran en la carpeta *pages* .</span><span class="sxs-lookup"><span data-stu-id="08beb-112">:::no-loc(Razor)::: Pages are in the *Pages* folder.</span></span>
+* <span data-ttu-id="08beb-112">Razor Las páginas se encuentran en la carpeta *pages* .</span><span class="sxs-lookup"><span data-stu-id="08beb-112">Razor Pages are in the *Pages* folder.</span></span>
 * <span data-ttu-id="08beb-113">Los controladores con vistas usan una carpeta *Vistas* para las vistas.</span><span class="sxs-lookup"><span data-stu-id="08beb-113">Controllers with views uses a *Views* folder for views.</span></span>
 
 ## <a name="what-is-a-layout"></a><span data-ttu-id="08beb-114">Qué es un diseño</span><span class="sxs-lookup"><span data-stu-id="08beb-114">What is a Layout</span></span>
@@ -49,7 +49,7 @@ ms.locfileid: "93060981"
 
 <span data-ttu-id="08beb-121">Por convención, el diseño predeterminado para una aplicación ASP.NET Core se denomina *_Layout.cshtml* .</span><span class="sxs-lookup"><span data-stu-id="08beb-121">By convention, the default layout for an ASP.NET Core app is named *_Layout.cshtml* .</span></span> <span data-ttu-id="08beb-122">Los archivos de diseño para los nuevos proyectos de ASP.NET Core creados con las plantillas son:</span><span class="sxs-lookup"><span data-stu-id="08beb-122">The layout files for new ASP.NET Core projects created with the templates are:</span></span>
 
-* <span data-ttu-id="08beb-123">:::no-loc(Razor)::: Páginas: *pages/Shared/_Layout. cshtml*</span><span class="sxs-lookup"><span data-stu-id="08beb-123">:::no-loc(Razor)::: Pages: *Pages/Shared/_Layout.cshtml*</span></span>
+* <span data-ttu-id="08beb-123">Razor Páginas: *pages/Shared/_Layout. cshtml*</span><span class="sxs-lookup"><span data-stu-id="08beb-123">Razor Pages: *Pages/Shared/_Layout.cshtml*</span></span>
 
   ![Carpeta Pages del Explorador de soluciones](layout/_static/rp-web-project-views.png)
 
@@ -65,11 +65,11 @@ ms.locfileid: "93060981"
 
 ## <a name="specifying-a-layout"></a><span data-ttu-id="08beb-131">Especificar un diseño</span><span class="sxs-lookup"><span data-stu-id="08beb-131">Specifying a Layout</span></span>
 
-<span data-ttu-id="08beb-132">:::no-loc(Razor)::: las vistas tienen una `Layout` propiedad.</span><span class="sxs-lookup"><span data-stu-id="08beb-132">:::no-loc(Razor)::: views have a `Layout` property.</span></span> <span data-ttu-id="08beb-133">Las vistas individuales especifican un diseño al configurar esta propiedad:</span><span class="sxs-lookup"><span data-stu-id="08beb-133">Individual views specify a layout by setting this property:</span></span>
+<span data-ttu-id="08beb-132">Razor las vistas tienen una `Layout` propiedad.</span><span class="sxs-lookup"><span data-stu-id="08beb-132">Razor views have a `Layout` property.</span></span> <span data-ttu-id="08beb-133">Las vistas individuales especifican un diseño al configurar esta propiedad:</span><span class="sxs-lookup"><span data-stu-id="08beb-133">Individual views specify a layout by setting this property:</span></span>
 
 [!code-cshtml[](../../common/samples/WebApplication1/Views/_ViewStart.cshtml?highlight=2)]
 
-<span data-ttu-id="08beb-134">El diseño especificado puede usar una ruta de acceso completa (por ejemplo, */Pages/Shared/_Layout.cshtml* o */Views/Shared/_Layout.cshtml* ) o un nombre parcial (ejemplo: `_Layout`).</span><span class="sxs-lookup"><span data-stu-id="08beb-134">The layout specified can use a full path (for example, */Pages/Shared/_Layout.cshtml* or */Views/Shared/_Layout.cshtml* ) or a partial name (example: `_Layout`).</span></span> <span data-ttu-id="08beb-135">Cuando se proporciona un nombre parcial, el :::no-loc(Razor)::: motor de vistas busca el archivo de diseño mediante su proceso de detección estándar.</span><span class="sxs-lookup"><span data-stu-id="08beb-135">When a partial name is provided, the :::no-loc(Razor)::: view engine searches for the layout file using its standard discovery process.</span></span> <span data-ttu-id="08beb-136">Primero se busca la carpeta donde existe el método de controlador (o controlador), seguida de la carpeta *Shared* .</span><span class="sxs-lookup"><span data-stu-id="08beb-136">The folder where the handler method (or controller) exists is searched first, followed by the *Shared* folder.</span></span> <span data-ttu-id="08beb-137">Este proceso de detección es idéntico al que se usa para detectar [vistas parciales](xref:mvc/views/partial#partial-view-discovery).</span><span class="sxs-lookup"><span data-stu-id="08beb-137">This discovery process is identical to the process used to discover [partial views](xref:mvc/views/partial#partial-view-discovery).</span></span>
+<span data-ttu-id="08beb-134">El diseño especificado puede usar una ruta de acceso completa (por ejemplo, */Pages/Shared/_Layout.cshtml* o */Views/Shared/_Layout.cshtml* ) o un nombre parcial (ejemplo: `_Layout`).</span><span class="sxs-lookup"><span data-stu-id="08beb-134">The layout specified can use a full path (for example, */Pages/Shared/_Layout.cshtml* or */Views/Shared/_Layout.cshtml* ) or a partial name (example: `_Layout`).</span></span> <span data-ttu-id="08beb-135">Cuando se proporciona un nombre parcial, el Razor motor de vistas busca el archivo de diseño mediante su proceso de detección estándar.</span><span class="sxs-lookup"><span data-stu-id="08beb-135">When a partial name is provided, the Razor view engine searches for the layout file using its standard discovery process.</span></span> <span data-ttu-id="08beb-136">Primero se busca la carpeta donde existe el método de controlador (o controlador), seguida de la carpeta *Shared* .</span><span class="sxs-lookup"><span data-stu-id="08beb-136">The folder where the handler method (or controller) exists is searched first, followed by the *Shared* folder.</span></span> <span data-ttu-id="08beb-137">Este proceso de detección es idéntico al que se usa para detectar [vistas parciales](xref:mvc/views/partial#partial-view-discovery).</span><span class="sxs-lookup"><span data-stu-id="08beb-137">This discovery process is identical to the process used to discover [partial views](xref:mvc/views/partial#partial-view-discovery).</span></span>
 
 <span data-ttu-id="08beb-138">De forma predeterminada, todos los diseños deben llamar a `RenderBody`.</span><span class="sxs-lookup"><span data-stu-id="08beb-138">By default, every layout must call `RenderBody`.</span></span> <span data-ttu-id="08beb-139">Cada vez que se realiza la llamada a `RenderBody`, se representa el contenido de la vista.</span><span class="sxs-lookup"><span data-stu-id="08beb-139">Wherever the call to `RenderBody` is placed, the contents of the view will be rendered.</span></span>
 
@@ -85,9 +85,9 @@ ms.locfileid: "93060981"
 @RenderSection("Scripts", required: false)
 ```
 
-<span data-ttu-id="08beb-144">Si no se encuentra una sección obligatoria, se produce una excepción.</span><span class="sxs-lookup"><span data-stu-id="08beb-144">If a required section isn't found, an exception is thrown.</span></span> <span data-ttu-id="08beb-145">Las vistas individuales especifican el contenido que se va a representar dentro de una sección mediante la `@section` :::no-loc(Razor)::: Sintaxis.</span><span class="sxs-lookup"><span data-stu-id="08beb-145">Individual views specify the content to be rendered within a section using the `@section` :::no-loc(Razor)::: syntax.</span></span> <span data-ttu-id="08beb-146">Si una página o una vista define una sección, se debe representar (o se producirá un error).</span><span class="sxs-lookup"><span data-stu-id="08beb-146">If a page or view defines a section, it must be rendered (or an error will occur).</span></span>
+<span data-ttu-id="08beb-144">Si no se encuentra una sección obligatoria, se produce una excepción.</span><span class="sxs-lookup"><span data-stu-id="08beb-144">If a required section isn't found, an exception is thrown.</span></span> <span data-ttu-id="08beb-145">Las vistas individuales especifican el contenido que se va a representar dentro de una sección mediante la `@section` Razor Sintaxis.</span><span class="sxs-lookup"><span data-stu-id="08beb-145">Individual views specify the content to be rendered within a section using the `@section` Razor syntax.</span></span> <span data-ttu-id="08beb-146">Si una página o una vista define una sección, se debe representar (o se producirá un error).</span><span class="sxs-lookup"><span data-stu-id="08beb-146">If a page or view defines a section, it must be rendered (or an error will occur).</span></span>
 
-<span data-ttu-id="08beb-147">Una `@section` definición de ejemplo en la :::no-loc(Razor)::: vista páginas:</span><span class="sxs-lookup"><span data-stu-id="08beb-147">An example `@section` definition in :::no-loc(Razor)::: Pages view:</span></span>
+<span data-ttu-id="08beb-147">Una `@section` definición de ejemplo en la Razor vista páginas:</span><span class="sxs-lookup"><span data-stu-id="08beb-147">An example `@section` definition in Razor Pages view:</span></span>
 
 ```html
 @section Scripts {
@@ -105,23 +105,23 @@ ms.locfileid: "93060981"
 }
 ```
 
-<span data-ttu-id="08beb-151">El marcado anterior se generó mediante [scaffolding :::no-loc(Identity)::: ](xref:security/authentication/scaffold-identity).</span><span class="sxs-lookup"><span data-stu-id="08beb-151">The preceding markup was generated by [scaffolding :::no-loc(Identity):::](xref:security/authentication/scaffold-identity).</span></span>
+<span data-ttu-id="08beb-151">El marcado anterior se generó mediante [scaffolding Identity ](xref:security/authentication/scaffold-identity).</span><span class="sxs-lookup"><span data-stu-id="08beb-151">The preceding markup was generated by [scaffolding Identity](xref:security/authentication/scaffold-identity).</span></span>
 
 <span data-ttu-id="08beb-152">Las secciones definidas en una vista o una vista solo están disponibles en su página de diseño inmediato.</span><span class="sxs-lookup"><span data-stu-id="08beb-152">Sections defined in a page or view are available only in its immediate layout page.</span></span> <span data-ttu-id="08beb-153">No se puede hacer referencia a ellas desde líneas de código parcialmente ejecutadas, componentes de vista u otros elementos del sistema de vistas.</span><span class="sxs-lookup"><span data-stu-id="08beb-153">They cannot be referenced from partials, view components, or other parts of the view system.</span></span>
 
 ### <a name="ignoring-sections"></a><span data-ttu-id="08beb-154">Omitir secciones</span><span class="sxs-lookup"><span data-stu-id="08beb-154">Ignoring sections</span></span>
 
-<span data-ttu-id="08beb-155">De forma predeterminada, el cuerpo y todas las secciones de una página de contenido deben representarse mediante la página de diseño.</span><span class="sxs-lookup"><span data-stu-id="08beb-155">By default, the body and all sections in a content page must all be rendered by the layout page.</span></span> <span data-ttu-id="08beb-156">El :::no-loc(Razor)::: motor de vistas exige esto mediante el seguimiento de si se han representado el cuerpo y cada sección.</span><span class="sxs-lookup"><span data-stu-id="08beb-156">The :::no-loc(Razor)::: view engine enforces this by tracking whether the body and each section have been rendered.</span></span>
+<span data-ttu-id="08beb-155">De forma predeterminada, el cuerpo y todas las secciones de una página de contenido deben representarse mediante la página de diseño.</span><span class="sxs-lookup"><span data-stu-id="08beb-155">By default, the body and all sections in a content page must all be rendered by the layout page.</span></span> <span data-ttu-id="08beb-156">El Razor motor de vistas exige esto mediante el seguimiento de si se han representado el cuerpo y cada sección.</span><span class="sxs-lookup"><span data-stu-id="08beb-156">The Razor view engine enforces this by tracking whether the body and each section have been rendered.</span></span>
 
 <span data-ttu-id="08beb-157">Para indicar al motor de vistas que pase por alto el cuerpo o las secciones, llame a los métodos `IgnoreBody` y `IgnoreSection`.</span><span class="sxs-lookup"><span data-stu-id="08beb-157">To instruct the view engine to ignore the body or sections, call the `IgnoreBody` and `IgnoreSection` methods.</span></span>
 
-<span data-ttu-id="08beb-158">El cuerpo y todas las secciones de una :::no-loc(Razor)::: Página deben representarse o pasarse por alto.</span><span class="sxs-lookup"><span data-stu-id="08beb-158">The body and every section in a :::no-loc(Razor)::: page must be either rendered or ignored.</span></span>
+<span data-ttu-id="08beb-158">El cuerpo y todas las secciones de una Razor Página deben representarse o pasarse por alto.</span><span class="sxs-lookup"><span data-stu-id="08beb-158">The body and every section in a Razor page must be either rendered or ignored.</span></span>
 
 <a name="viewimports"></a>
 
 ## <a name="importing-shared-directives"></a><span data-ttu-id="08beb-159">Importar directivas compartidas</span><span class="sxs-lookup"><span data-stu-id="08beb-159">Importing Shared Directives</span></span>
 
-<span data-ttu-id="08beb-160">Las vistas y las páginas pueden utilizar :::no-loc(Razor)::: directivas para importar espacios de nombres y usar la [inserción de dependencias](dependency-injection.md).</span><span class="sxs-lookup"><span data-stu-id="08beb-160">Views and pages can use :::no-loc(Razor)::: directives to import namespaces and use [dependency injection](dependency-injection.md).</span></span> <span data-ttu-id="08beb-161">Se pueden especificar varias directivas compartidas por muchas vistas en un archivo *_ViewImports.cshtml* común.</span><span class="sxs-lookup"><span data-stu-id="08beb-161">Directives shared by many views may be specified in a common *_ViewImports.cshtml* file.</span></span> <span data-ttu-id="08beb-162">El archivo `_ViewImports` es compatible con estas directivas:</span><span class="sxs-lookup"><span data-stu-id="08beb-162">The `_ViewImports` file supports the following directives:</span></span>
+<span data-ttu-id="08beb-160">Las vistas y las páginas pueden utilizar Razor directivas para importar espacios de nombres y usar la [inserción de dependencias](dependency-injection.md).</span><span class="sxs-lookup"><span data-stu-id="08beb-160">Views and pages can use Razor directives to import namespaces and use [dependency injection](dependency-injection.md).</span></span> <span data-ttu-id="08beb-161">Se pueden especificar varias directivas compartidas por muchas vistas en un archivo *_ViewImports.cshtml* común.</span><span class="sxs-lookup"><span data-stu-id="08beb-161">Directives shared by many views may be specified in a common *_ViewImports.cshtml* file.</span></span> <span data-ttu-id="08beb-162">El archivo `_ViewImports` es compatible con estas directivas:</span><span class="sxs-lookup"><span data-stu-id="08beb-162">The `_ViewImports` file supports the following directives:</span></span>
 
 * `@addTagHelper`
 * `@removeTagHelper`
@@ -131,7 +131,7 @@ ms.locfileid: "93060981"
 * `@inherits`
 * `@inject`
 
-<span data-ttu-id="08beb-163">El archivo no es compatible con otras :::no-loc(Razor)::: características, como las funciones y las definiciones de la sección.</span><span class="sxs-lookup"><span data-stu-id="08beb-163">The file doesn't support other :::no-loc(Razor)::: features, such as functions and section definitions.</span></span>
+<span data-ttu-id="08beb-163">El archivo no es compatible con otras Razor características, como las funciones y las definiciones de la sección.</span><span class="sxs-lookup"><span data-stu-id="08beb-163">The file doesn't support other Razor features, such as functions and section definitions.</span></span>
 
 <span data-ttu-id="08beb-164">Archivo `_ViewImports.cshtml` de ejemplo:</span><span class="sxs-lookup"><span data-stu-id="08beb-164">A sample `_ViewImports.cshtml` file:</span></span>
 

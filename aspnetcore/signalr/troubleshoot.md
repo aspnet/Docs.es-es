@@ -1,23 +1,23 @@
 ---
-title: 'Solución de problemas de conexión de ASP.NET Core :::no-loc(SignalR):::'
+title: 'Solución de problemas de conexión de ASP.NET Core SignalR'
 author: bradygaster
-description: 'Solución de problemas de conexión de ASP.NET Core :::no-loc(SignalR)::: .'
+description: 'Solución de problemas de conexión de ASP.NET Core SignalR .'
 monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
 ms.custom: mvc
 ms.date: 04/08/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: signalr/troubleshoot
 ms.openlocfilehash: f1d9761267d7c6af76c0be6abb238742f40fb016
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -28,7 +28,7 @@ ms.locfileid: "93059616"
 ---
 # <a name="troubleshoot-connection-errors"></a><span data-ttu-id="78266-103">Solución de problemas de conexión</span><span class="sxs-lookup"><span data-stu-id="78266-103">Troubleshoot connection errors</span></span>
 
-<span data-ttu-id="78266-104">En esta sección se proporciona ayuda con los errores que se pueden producir al intentar establecer una conexión con un :::no-loc(SignalR)::: concentrador de ASP.net Core.</span><span class="sxs-lookup"><span data-stu-id="78266-104">This section provides help with errors that can occur when trying to establish a connection to a ASP.NET Core :::no-loc(SignalR)::: hub.</span></span>
+<span data-ttu-id="78266-104">En esta sección se proporciona ayuda con los errores que se pueden producir al intentar establecer una conexión con un SignalR concentrador de ASP.net Core.</span><span class="sxs-lookup"><span data-stu-id="78266-104">This section provides help with errors that can occur when trying to establish a connection to a ASP.NET Core SignalR hub.</span></span>
 
 ### <a name="response-code-404"></a><span data-ttu-id="78266-105">Código de respuesta 404</span><span class="sxs-lookup"><span data-stu-id="78266-105">Response code 404</span></span>
 
@@ -99,9 +99,9 @@ Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remot
 
 <span data-ttu-id="78266-134">Esto suele deberse a que hay un token de acceso que está por encima de 4k.</span><span class="sxs-lookup"><span data-stu-id="78266-134">This is often caused by having an access token that is over 4k.</span></span>
 
-* <span data-ttu-id="78266-135">Si usa el servicio de Azure :::no-loc(SignalR)::: , reduzca el tamaño del token mediante la personalización de las notificaciones que se envían a través del servicio con:</span><span class="sxs-lookup"><span data-stu-id="78266-135">If using the Azure :::no-loc(SignalR)::: Service, reduce the token size by customizing the claims being sent through the Service with:</span></span>
+* <span data-ttu-id="78266-135">Si usa el servicio de Azure SignalR , reduzca el tamaño del token mediante la personalización de las notificaciones que se envían a través del servicio con:</span><span class="sxs-lookup"><span data-stu-id="78266-135">If using the Azure SignalR Service, reduce the token size by customizing the claims being sent through the Service with:</span></span>
 ```csharp
-.AddAzure:::no-loc(SignalR):::(options =>
+.AddAzureSignalR(options =>
 {
     options.ClaimsProvider = context => context.User.Claims;
 });
@@ -109,4 +109,4 @@ Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remot
 
 ### <a name="transient-network-failures"></a><span data-ttu-id="78266-136">Errores de red transitorios</span><span class="sxs-lookup"><span data-stu-id="78266-136">Transient network failures</span></span>
 
-<span data-ttu-id="78266-137">Los errores de red transitorios pueden cerrar la :::no-loc(SignalR)::: conexión.</span><span class="sxs-lookup"><span data-stu-id="78266-137">Transient network failures may close the :::no-loc(SignalR)::: connection.</span></span> <span data-ttu-id="78266-138">El servidor puede interpretar la conexión cerrada como desconexión de cliente correcta.</span><span class="sxs-lookup"><span data-stu-id="78266-138">The server may interpret the closed connection as a graceful client disconnect.</span></span> <span data-ttu-id="78266-139">Para obtener más información sobre por qué un cliente se desconecta en esos casos [, recopile los registros del cliente y del servidor](xref:signalr/diagnostics).</span><span class="sxs-lookup"><span data-stu-id="78266-139">To get more info on why a client disconnected in those cases [gather logs from the client and server](xref:signalr/diagnostics).</span></span>
+<span data-ttu-id="78266-137">Los errores de red transitorios pueden cerrar la SignalR conexión.</span><span class="sxs-lookup"><span data-stu-id="78266-137">Transient network failures may close the SignalR connection.</span></span> <span data-ttu-id="78266-138">El servidor puede interpretar la conexión cerrada como desconexión de cliente correcta.</span><span class="sxs-lookup"><span data-stu-id="78266-138">The server may interpret the closed connection as a graceful client disconnect.</span></span> <span data-ttu-id="78266-139">Para obtener más información sobre por qué un cliente se desconecta en esos casos [, recopile los registros del cliente y del servidor](xref:signalr/diagnostics).</span><span class="sxs-lookup"><span data-stu-id="78266-139">To get more info on why a client disconnected in those cases [gather logs from the client and server](xref:signalr/diagnostics).</span></span>

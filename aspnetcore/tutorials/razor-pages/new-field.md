@@ -1,22 +1,22 @@
 ---
-title: 'Parte 7. Adición de un campo nuevo a una instancia de :::no-loc(Razor)::: Pages en ASP.NET Core'
+title: 'Parte 7. Adición de un campo nuevo a una instancia de Razor Pages en ASP.NET Core'
 author: rick-anderson
-description: 'Parte 7 de la serie de tutoriales sobre :::no-loc(Razor)::: Pages.'
+description: 'Parte 7 de la serie de tutoriales sobre Razor Pages.'
 ms.author: riande
 ms.custom: mvc
 ms.date: 7/23/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: tutorials/razor-pages/new-field
 ms.openlocfilehash: 951a8ada57ae523f362313426c0279556eb8339b
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -25,7 +25,7 @@ ms.contentlocale: es-ES
 ms.lasthandoff: 10/30/2020
 ms.locfileid: "93050620"
 ---
-# <a name="part-7-add-a-new-field-to-a-no-locrazor-page-in-aspnet-core"></a><span data-ttu-id="3d1f6-103">Parte 7. Adición de un campo nuevo a una instancia de :::no-loc(Razor)::: Pages en ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="3d1f6-103">Part 7, add a new field to a :::no-loc(Razor)::: Page in ASP.NET Core</span></span>
+# <a name="part-7-add-a-new-field-to-a-no-locrazor-page-in-aspnet-core"></a><span data-ttu-id="3d1f6-103">Parte 7. Adición de un campo nuevo a una instancia de Razor Pages en ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="3d1f6-103">Part 7, add a new field to a Razor Page in ASP.NET Core</span></span>
 
 <span data-ttu-id="3d1f6-104">Por [Rick Anderson](https://twitter.com/RickAndMSFT)</span><span class="sxs-lookup"><span data-stu-id="3d1f6-104">By [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
 
@@ -49,7 +49,7 @@ ms.locfileid: "93050620"
 
 <span data-ttu-id="3d1f6-113">Abra el archivo *Models/Movie.cs* y agregue una propiedad `Rating`:</span><span class="sxs-lookup"><span data-stu-id="3d1f6-113">Open the *Models/Movie.cs* file and add a `Rating` property:</span></span>
 
-[!code-csharp[](razor-pages-start/sample/:::no-loc(Razor):::PagesMovie30/Models/MovieDateRating.cs?highlight=13&name=snippet)]
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Models/MovieDateRating.cs?highlight=13&name=snippet)]
 
 <span data-ttu-id="3d1f6-114">Compile la aplicación.</span><span class="sxs-lookup"><span data-stu-id="3d1f6-114">Build the app.</span></span>
 
@@ -57,12 +57,12 @@ ms.locfileid: "93050620"
 
 <a name="addrat"></a>
 
-[!code-cshtml[](razor-pages-start/sample/:::no-loc(Razor):::PagesMovie30/SnapShots/IndexRating.cshtml?highlight=40-42,62-64)]
+[!code-cshtml[](razor-pages-start/sample/RazorPagesMovie30/SnapShots/IndexRating.cshtml?highlight=40-42,62-64)]
 
 <span data-ttu-id="3d1f6-116">Actualice las páginas siguientes:</span><span class="sxs-lookup"><span data-stu-id="3d1f6-116">Update the following pages:</span></span>
 
 * <span data-ttu-id="3d1f6-117">Agregue el campo `Rating` a las páginas Delete y Details.</span><span class="sxs-lookup"><span data-stu-id="3d1f6-117">Add the `Rating` field to the Delete and Details pages.</span></span>
-* <span data-ttu-id="3d1f6-118">Actualice [Create.cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/:::no-loc(Razor):::PagesMovie30/Pages/Movies/Create.cshtml) con un campo `Rating`.</span><span class="sxs-lookup"><span data-stu-id="3d1f6-118">Update [Create.cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/:::no-loc(Razor):::PagesMovie30/Pages/Movies/Create.cshtml) with a `Rating` field.</span></span>
+* <span data-ttu-id="3d1f6-118">Actualice [Create.cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Pages/Movies/Create.cshtml) con un campo `Rating`.</span><span class="sxs-lookup"><span data-stu-id="3d1f6-118">Update [Create.cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Pages/Movies/Create.cshtml) with a `Rating` field.</span></span>
 * <span data-ttu-id="3d1f6-119">Agregue el campo `Rating` a la página de edición.</span><span class="sxs-lookup"><span data-stu-id="3d1f6-119">Add the `Rating` field to the Edit Page.</span></span>
 
 <span data-ttu-id="3d1f6-120">La aplicación no funciona hasta que la base de datos se actualiza para incluir el nuevo campo.</span><span class="sxs-lookup"><span data-stu-id="3d1f6-120">The app won't work until the DB is updated to include the new field.</span></span> <span data-ttu-id="3d1f6-121">Al ejecutar la aplicación sin actualizar la base de datos, se produce una excepción `SqlException`:</span><span class="sxs-lookup"><span data-stu-id="3d1f6-121">Running the app without updating the database throws a `SqlException`:</span></span>
@@ -83,9 +83,9 @@ ms.locfileid: "93050620"
 
 <span data-ttu-id="3d1f6-135">Actualice la clase `SeedData` para que proporcione un valor para la nueva columna.</span><span class="sxs-lookup"><span data-stu-id="3d1f6-135">Update the `SeedData` class so that it provides a value for the new column.</span></span> <span data-ttu-id="3d1f6-136">A continuación se muestra un cambio de ejemplo, aunque es conveniente realizar este cambio para cada bloque `new Movie`.</span><span class="sxs-lookup"><span data-stu-id="3d1f6-136">A sample change is shown below, but you'll want to make this change for each `new Movie` block.</span></span>
 
-[!code-csharp[](razor-pages-start/sample/:::no-loc(Razor):::PagesMovie30/Models/SeedDataRating.cs?name=snippet1&highlight=8)]
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Models/SeedDataRating.cs?name=snippet1&highlight=8)]
 
-<span data-ttu-id="3d1f6-137">Vea el [archivo completado SeedData.cs](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/:::no-loc(Razor):::PagesMovie30/Models/SeedDataRating.cs).</span><span class="sxs-lookup"><span data-stu-id="3d1f6-137">See the [completed SeedData.cs file](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/:::no-loc(Razor):::PagesMovie30/Models/SeedDataRating.cs).</span></span>
+<span data-ttu-id="3d1f6-137">Vea el [archivo completado SeedData.cs](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Models/SeedDataRating.cs).</span><span class="sxs-lookup"><span data-stu-id="3d1f6-137">See the [completed SeedData.cs file](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Models/SeedDataRating.cs).</span></span>
 
 <span data-ttu-id="3d1f6-138">Compile la solución.</span><span class="sxs-lookup"><span data-stu-id="3d1f6-138">Build the solution.</span></span>
 
@@ -177,18 +177,18 @@ dotnet ef database update
 
 <span data-ttu-id="3d1f6-175">Abra el archivo *Models/Movie.cs* y agregue una propiedad `Rating`:</span><span class="sxs-lookup"><span data-stu-id="3d1f6-175">Open the *Models/Movie.cs* file and add a `Rating` property:</span></span>
 
-[!code-csharp[](razor-pages-start/sample/:::no-loc(Razor):::PagesMovie22/Models/MovieDateRating.cs?highlight=13&name=snippet)]
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie22/Models/MovieDateRating.cs?highlight=13&name=snippet)]
 
 <span data-ttu-id="3d1f6-176">Compile la aplicación.</span><span class="sxs-lookup"><span data-stu-id="3d1f6-176">Build the app.</span></span>
 
 <span data-ttu-id="3d1f6-177">Edite *Pages/Movies/Index.cshtml* y agregue un campo `Rating`:</span><span class="sxs-lookup"><span data-stu-id="3d1f6-177">Edit *Pages/Movies/Index.cshtml* , and add a `Rating` field:</span></span>
 
-[!code-cshtml[](razor-pages-start/sample/:::no-loc(Razor):::PagesMovie22/Pages/Movies/IndexRating.cshtml?highlight=40-42,61-63)]
+[!code-cshtml[](razor-pages-start/sample/RazorPagesMovie22/Pages/Movies/IndexRating.cshtml?highlight=40-42,61-63)]
 
 <span data-ttu-id="3d1f6-178">Actualice las páginas siguientes:</span><span class="sxs-lookup"><span data-stu-id="3d1f6-178">Update the following pages:</span></span>
 
 * <span data-ttu-id="3d1f6-179">Agregue el campo `Rating` a las páginas Delete y Details.</span><span class="sxs-lookup"><span data-stu-id="3d1f6-179">Add the `Rating` field to the Delete and Details pages.</span></span>
-* <span data-ttu-id="3d1f6-180">Actualice [Create.cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/:::no-loc(Razor):::PagesMovie22/Pages/Movies/Create.cshtml) con un campo `Rating`.</span><span class="sxs-lookup"><span data-stu-id="3d1f6-180">Update [Create.cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/:::no-loc(Razor):::PagesMovie22/Pages/Movies/Create.cshtml) with a `Rating` field.</span></span>
+* <span data-ttu-id="3d1f6-180">Actualice [Create.cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Pages/Movies/Create.cshtml) con un campo `Rating`.</span><span class="sxs-lookup"><span data-stu-id="3d1f6-180">Update [Create.cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Pages/Movies/Create.cshtml) with a `Rating` field.</span></span>
 * <span data-ttu-id="3d1f6-181">Agregue el campo `Rating` a la página de edición.</span><span class="sxs-lookup"><span data-stu-id="3d1f6-181">Add the `Rating` field to the Edit Page.</span></span>
 
 <span data-ttu-id="3d1f6-182">La aplicación no funciona hasta que la base de datos se actualiza para incluir el nuevo campo.</span><span class="sxs-lookup"><span data-stu-id="3d1f6-182">The app won't work until the DB is updated to include the new field.</span></span> <span data-ttu-id="3d1f6-183">Si se ejecuta ahora, la aplicación produce una `SqlException`:</span><span class="sxs-lookup"><span data-stu-id="3d1f6-183">If run now, the app throws a `SqlException`:</span></span>
@@ -209,9 +209,9 @@ dotnet ef database update
 
 <span data-ttu-id="3d1f6-197">Actualice la clase `SeedData` para que proporcione un valor para la nueva columna.</span><span class="sxs-lookup"><span data-stu-id="3d1f6-197">Update the `SeedData` class so that it provides a value for the new column.</span></span> <span data-ttu-id="3d1f6-198">A continuación se muestra un cambio de ejemplo, aunque es conveniente realizar este cambio para cada bloque `new Movie`.</span><span class="sxs-lookup"><span data-stu-id="3d1f6-198">A sample change is shown below, but you'll want to make this change for each `new Movie` block.</span></span>
 
-[!code-csharp[](razor-pages-start/sample/:::no-loc(Razor):::PagesMovie22/Models/SeedDataRating.cs?name=snippet1&highlight=8)]
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie22/Models/SeedDataRating.cs?name=snippet1&highlight=8)]
 
-<span data-ttu-id="3d1f6-199">Vea el [archivo completado SeedData.cs](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/:::no-loc(Razor):::PagesMovie22/Models/SeedDataRating.cs).</span><span class="sxs-lookup"><span data-stu-id="3d1f6-199">See the [completed SeedData.cs file](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/:::no-loc(Razor):::PagesMovie22/Models/SeedDataRating.cs).</span></span>
+<span data-ttu-id="3d1f6-199">Vea el [archivo completado SeedData.cs](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Models/SeedDataRating.cs).</span><span class="sxs-lookup"><span data-stu-id="3d1f6-199">See the [completed SeedData.cs file](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Models/SeedDataRating.cs).</span></span>
 
 <span data-ttu-id="3d1f6-200">Compile la solución.</span><span class="sxs-lookup"><span data-stu-id="3d1f6-200">Build the solution.</span></span>
 

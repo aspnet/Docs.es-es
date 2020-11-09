@@ -6,17 +6,17 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/10/2018
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: mvc/views/tag-helpers/builtin-th/cache-tag-helper
 ms.openlocfilehash: a87f91255bd1f280b1567f522423a6f4e88a6dd8
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -33,7 +33,7 @@ ms.locfileid: "93060890"
 
 <span data-ttu-id="aeb99-106">Para obtener información general sobre asistentes de etiquetas, vea <xref:mvc/views/tag-helpers/intro>.</span><span class="sxs-lookup"><span data-stu-id="aeb99-106">For an overview of Tag Helpers, see <xref:mvc/views/tag-helpers/intro>.</span></span>
 
-<span data-ttu-id="aeb99-107">El siguiente :::no-loc(Razor)::: marcado almacena en caché la fecha actual:</span><span class="sxs-lookup"><span data-stu-id="aeb99-107">The following :::no-loc(Razor)::: markup caches the current date:</span></span>
+<span data-ttu-id="aeb99-107">El siguiente Razor marcado almacena en caché la fecha actual:</span><span class="sxs-lookup"><span data-stu-id="aeb99-107">The following Razor markup caches the current date:</span></span>
 
 ```cshtml
 <cache>@DateTime.Now</cache>
@@ -91,7 +91,7 @@ ms.locfileid: "93060890"
 </cache>
 ```
 
-<span data-ttu-id="aeb99-133">El :::no-loc(Razor)::: motor de vista establece el `expires-after` valor predeterminado en veinte minutos.</span><span class="sxs-lookup"><span data-stu-id="aeb99-133">The :::no-loc(Razor)::: View Engine sets the default `expires-after` value to twenty minutes.</span></span>
+<span data-ttu-id="aeb99-133">El Razor motor de vista establece el `expires-after` valor predeterminado en veinte minutos.</span><span class="sxs-lookup"><span data-stu-id="aeb99-133">The Razor View Engine sets the default `expires-after` value to twenty minutes.</span></span>
 
 ### <a name="expires-sliding"></a><span data-ttu-id="aeb99-134">expires-sliding</span><span class="sxs-lookup"><span data-stu-id="aeb99-134">expires-sliding</span></span>
 
@@ -167,18 +167,18 @@ routes.MapRoute(
 </cache>
 ```
 
-### <a name="vary-by-no-loccookie"></a><span data-ttu-id="aeb99-164">variar por:::no-loc(cookie):::</span><span class="sxs-lookup"><span data-stu-id="aeb99-164">vary-by-:::no-loc(cookie):::</span></span>
+### <a name="vary-by-no-loccookie"></a><span data-ttu-id="aeb99-164">variar porcookie</span><span class="sxs-lookup"><span data-stu-id="aeb99-164">vary-by-cookie</span></span>
 
 | <span data-ttu-id="aeb99-165">Tipo de atributo</span><span class="sxs-lookup"><span data-stu-id="aeb99-165">Attribute Type</span></span> | <span data-ttu-id="aeb99-166">Ejemplos</span><span class="sxs-lookup"><span data-stu-id="aeb99-166">Examples</span></span>                                                                         |
 | -------------- | -------------------------------------------------------------------------------- |
-| <span data-ttu-id="aeb99-167">String</span><span class="sxs-lookup"><span data-stu-id="aeb99-167">String</span></span>         | <span data-ttu-id="aeb99-168">`.AspNetCore.:::no-loc(Identity):::.Application`, `.AspNetCore.:::no-loc(Identity):::.Application,HairColor`</span><span class="sxs-lookup"><span data-stu-id="aeb99-168">`.AspNetCore.:::no-loc(Identity):::.Application`, `.AspNetCore.:::no-loc(Identity):::.Application,HairColor`</span></span> |
+| <span data-ttu-id="aeb99-167">String</span><span class="sxs-lookup"><span data-stu-id="aeb99-167">String</span></span>         | <span data-ttu-id="aeb99-168">`.AspNetCore.Identity.Application`, `.AspNetCore.Identity.Application,HairColor`</span><span class="sxs-lookup"><span data-stu-id="aeb99-168">`.AspNetCore.Identity.Application`, `.AspNetCore.Identity.Application,HairColor`</span></span> |
 
-<span data-ttu-id="aeb99-169">`vary-by-:::no-loc(cookie):::` acepta una lista delimitada por comas de :::no-loc(cookie)::: nombres que desencadenan una actualización de la memoria caché cuando :::no-loc(cookie)::: cambian los valores.</span><span class="sxs-lookup"><span data-stu-id="aeb99-169">`vary-by-:::no-loc(cookie):::` accepts a comma-delimited list of :::no-loc(cookie)::: names that trigger a cache refresh when the :::no-loc(cookie)::: values change.</span></span>
+<span data-ttu-id="aeb99-169">`vary-by-cookie` acepta una lista delimitada por comas de cookie nombres que desencadenan una actualización de la memoria caché cuando cookie cambian los valores.</span><span class="sxs-lookup"><span data-stu-id="aeb99-169">`vary-by-cookie` accepts a comma-delimited list of cookie names that trigger a cache refresh when the cookie values change.</span></span>
 
-<span data-ttu-id="aeb99-170">En el siguiente ejemplo se supervisa el :::no-loc(cookie)::: asociado a :::no-loc(ASP.NET Core Identity)::: .</span><span class="sxs-lookup"><span data-stu-id="aeb99-170">The following example monitors the :::no-loc(cookie)::: associated with :::no-loc(ASP.NET Core Identity):::.</span></span> <span data-ttu-id="aeb99-171">Cuando se autentica un usuario, un cambio en :::no-loc(Identity)::: :::no-loc(cookie)::: desencadena una actualización de la memoria caché:</span><span class="sxs-lookup"><span data-stu-id="aeb99-171">When a user is authenticated, a change in the :::no-loc(Identity)::: :::no-loc(cookie)::: triggers a cache refresh:</span></span>
+<span data-ttu-id="aeb99-170">En el siguiente ejemplo se supervisa el cookie asociado a ASP.NET Core Identity .</span><span class="sxs-lookup"><span data-stu-id="aeb99-170">The following example monitors the cookie associated with ASP.NET Core Identity.</span></span> <span data-ttu-id="aeb99-171">Cuando se autentica un usuario, un cambio en Identity cookie desencadena una actualización de la memoria caché:</span><span class="sxs-lookup"><span data-stu-id="aeb99-171">When a user is authenticated, a change in the Identity cookie triggers a cache refresh:</span></span>
 
 ```cshtml
-<cache vary-by-:::no-loc(cookie):::=".AspNetCore.:::no-loc(Identity):::.Application">
+<cache vary-by-cookie=".AspNetCore.Identity.Application">
     Current Time Inside Cache Tag Helper: @DateTime.Now
 </cache>
 ```
@@ -189,7 +189,7 @@ routes.MapRoute(
 | --------------- | --------------- | ------- |
 | <span data-ttu-id="aeb99-176">Boolean</span><span class="sxs-lookup"><span data-stu-id="aeb99-176">Boolean</span></span>         | <span data-ttu-id="aeb99-177">`true`, `false`</span><span class="sxs-lookup"><span data-stu-id="aeb99-177">`true`, `false`</span></span> | `true`  |
 
-<span data-ttu-id="aeb99-178">`vary-by-user` especifica la memoria caché se restablece o no cuando cambia el usuario que ha iniciado la sesión (o la entidad de seguridad del contexto).</span><span class="sxs-lookup"><span data-stu-id="aeb99-178">`vary-by-user` specifies whether or not the cache resets when the signed-in user (or Context Principal) changes.</span></span> <span data-ttu-id="aeb99-179">El usuario actual también se conoce como la entidad de seguridad del contexto de la solicitud y se puede ver en una :::no-loc(Razor)::: vista haciendo referencia a `@User.:::no-loc(Identity):::.Name` .</span><span class="sxs-lookup"><span data-stu-id="aeb99-179">The current user is also known as the Request Context Principal and can be viewed in a :::no-loc(Razor)::: view by referencing `@User.:::no-loc(Identity):::.Name`.</span></span>
+<span data-ttu-id="aeb99-178">`vary-by-user` especifica la memoria caché se restablece o no cuando cambia el usuario que ha iniciado la sesión (o la entidad de seguridad del contexto).</span><span class="sxs-lookup"><span data-stu-id="aeb99-178">`vary-by-user` specifies whether or not the cache resets when the signed-in user (or Context Principal) changes.</span></span> <span data-ttu-id="aeb99-179">El usuario actual también se conoce como la entidad de seguridad del contexto de la solicitud y se puede ver en una Razor vista haciendo referencia a `@User.Identity.Name` .</span><span class="sxs-lookup"><span data-stu-id="aeb99-179">The current user is also known as the Request Context Principal and can be viewed in a Razor view by referencing `@User.Identity.Name`.</span></span>
 
 <span data-ttu-id="aeb99-180">En este ejemplo se supervisa el usuario actual que ha iniciado sesión para desencadenar una actualización de caché:</span><span class="sxs-lookup"><span data-stu-id="aeb99-180">The following example monitors the current logged in user to trigger a cache refresh:</span></span>
 
@@ -199,7 +199,7 @@ routes.MapRoute(
 </cache>
 ```
 
-<span data-ttu-id="aeb99-181">Con este atributo, se mantiene el contenido en caché a través de un ciclo de inicio y cierre de sesión.</span><span class="sxs-lookup"><span data-stu-id="aeb99-181">Using this attribute maintains the contents in cache through a sign-in and sign-out cycle.</span></span> <span data-ttu-id="aeb99-182">Cuando el valor se establece en `true`, un ciclo de autenticación invalida la memoria caché para el usuario autenticado.</span><span class="sxs-lookup"><span data-stu-id="aeb99-182">When the value is set to `true`, an authentication cycle invalidates the cache for the authenticated user.</span></span> <span data-ttu-id="aeb99-183">La memoria caché se invalida porque se genera un nuevo :::no-loc(cookie)::: valor único cuando se autentica un usuario.</span><span class="sxs-lookup"><span data-stu-id="aeb99-183">The cache is invalidated because a new unique :::no-loc(cookie)::: value is generated when a user is authenticated.</span></span> <span data-ttu-id="aeb99-184">La memoria caché se mantiene para el estado anónimo cuando no :::no-loc(cookie)::: existe o :::no-loc(cookie)::: ha expirado.</span><span class="sxs-lookup"><span data-stu-id="aeb99-184">Cache is maintained for the anonymous state when no :::no-loc(cookie)::: is present or the :::no-loc(cookie)::: has expired.</span></span> <span data-ttu-id="aeb99-185">Si **no** se autentica el usuario, se mantiene la memoria caché.</span><span class="sxs-lookup"><span data-stu-id="aeb99-185">If the user is **not** authenticated, the cache is maintained.</span></span>
+<span data-ttu-id="aeb99-181">Con este atributo, se mantiene el contenido en caché a través de un ciclo de inicio y cierre de sesión.</span><span class="sxs-lookup"><span data-stu-id="aeb99-181">Using this attribute maintains the contents in cache through a sign-in and sign-out cycle.</span></span> <span data-ttu-id="aeb99-182">Cuando el valor se establece en `true`, un ciclo de autenticación invalida la memoria caché para el usuario autenticado.</span><span class="sxs-lookup"><span data-stu-id="aeb99-182">When the value is set to `true`, an authentication cycle invalidates the cache for the authenticated user.</span></span> <span data-ttu-id="aeb99-183">La memoria caché se invalida porque se genera un nuevo cookie valor único cuando se autentica un usuario.</span><span class="sxs-lookup"><span data-stu-id="aeb99-183">The cache is invalidated because a new unique cookie value is generated when a user is authenticated.</span></span> <span data-ttu-id="aeb99-184">La memoria caché se mantiene para el estado anónimo cuando no cookie existe o cookie ha expirado.</span><span class="sxs-lookup"><span data-stu-id="aeb99-184">Cache is maintained for the anonymous state when no cookie is present or the cookie has expired.</span></span> <span data-ttu-id="aeb99-185">Si **no** se autentica el usuario, se mantiene la memoria caché.</span><span class="sxs-lookup"><span data-stu-id="aeb99-185">If the user is **not** authenticated, the cache is maintained.</span></span>
 
 ### <a name="vary-by"></a><span data-ttu-id="aeb99-186">vary-by</span><span class="sxs-lookup"><span data-stu-id="aeb99-186">vary-by</span></span>
 

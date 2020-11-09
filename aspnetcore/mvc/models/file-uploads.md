@@ -7,17 +7,17 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/21/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: mvc/models/file-uploads
 ms.openlocfilehash: 14561bace565c104d0a9c926cad3105c4865e72a
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -48,7 +48,7 @@ ms.locfileid: "93061176"
 
 * <span data-ttu-id="8a080-114">Cargue los archivos a un área de carga de archivos dedicada, preferiblemente una unidad que no sea de sistema.</span><span class="sxs-lookup"><span data-stu-id="8a080-114">Upload files to a dedicated file upload area, preferably to a non-system drive.</span></span> <span data-ttu-id="8a080-115">Una ubicación dedicada facilita la imposición de restricciones de seguridad en los archivos cargados.</span><span class="sxs-lookup"><span data-stu-id="8a080-115">A dedicated location makes it easier to impose security restrictions on uploaded files.</span></span> <span data-ttu-id="8a080-116">Deshabilite la ejecución de los permisos en la ubicación de carga de archivos.&dagger;</span><span class="sxs-lookup"><span data-stu-id="8a080-116">Disable execute permissions on the file upload location.&dagger;</span></span>
 * <span data-ttu-id="8a080-117">Los archivos cargados **no** se deben persistir en el mismo árbol de directorio que la aplicación.&dagger;</span><span class="sxs-lookup"><span data-stu-id="8a080-117">Do **not** persist uploaded files in the same directory tree as the app.&dagger;</span></span>
-* <span data-ttu-id="8a080-118">Use un nombre de archivo seguro determinado por la aplicación.</span><span class="sxs-lookup"><span data-stu-id="8a080-118">Use a safe file name determined by the app.</span></span> <span data-ttu-id="8a080-119">No use un nombre de archivo proporcionado por el usuario o el nombre de archivo que no es de confianza del archivo cargado. &dagger; HTML codifica el nombre de archivo que no es de confianza al mostrarlo.</span><span class="sxs-lookup"><span data-stu-id="8a080-119">Don't use a file name provided by the user or the untrusted file name of the uploaded file.&dagger; HTML encode the untrusted file name when displaying it.</span></span> <span data-ttu-id="8a080-120">Por ejemplo, registrando el nombre de archivo o mostrándose en la interfaz de usuario (la :::no-loc(Razor)::: salida codifica automáticamente html).</span><span class="sxs-lookup"><span data-stu-id="8a080-120">For example, logging the file name or displaying in UI (:::no-loc(Razor)::: automatically HTML encodes output).</span></span>
+* <span data-ttu-id="8a080-118">Use un nombre de archivo seguro determinado por la aplicación.</span><span class="sxs-lookup"><span data-stu-id="8a080-118">Use a safe file name determined by the app.</span></span> <span data-ttu-id="8a080-119">No use un nombre de archivo proporcionado por el usuario o el nombre de archivo que no es de confianza del archivo cargado. &dagger; HTML codifica el nombre de archivo que no es de confianza al mostrarlo.</span><span class="sxs-lookup"><span data-stu-id="8a080-119">Don't use a file name provided by the user or the untrusted file name of the uploaded file.&dagger; HTML encode the untrusted file name when displaying it.</span></span> <span data-ttu-id="8a080-120">Por ejemplo, registrando el nombre de archivo o mostrándose en la interfaz de usuario (la Razor salida codifica automáticamente html).</span><span class="sxs-lookup"><span data-stu-id="8a080-120">For example, logging the file name or displaying in UI (Razor automatically HTML encodes output).</span></span>
 * <span data-ttu-id="8a080-121">Permita solo las extensiones de archivo aprobadas para la especificación de diseño de la aplicación.&dagger;</span><span class="sxs-lookup"><span data-stu-id="8a080-121">Allow only approved file extensions for the app's design specification.&dagger;</span></span> <!-- * Check the file format signature to prevent a user from uploading a masqueraded file.&dagger; For example, don't permit a user to upload an *.exe* file with a *.txt* extension. Add this back when we get instructions how to do this.  -->
 * <span data-ttu-id="8a080-122">Compruebe que las comprobaciones del lado cliente se realizan en el servidor. &dagger; Las comprobaciones del lado cliente son fáciles de eludir.</span><span class="sxs-lookup"><span data-stu-id="8a080-122">Verify that client-side checks are performed on the server.&dagger; Client-side checks are easy to circumvent.</span></span>
 * <span data-ttu-id="8a080-123">Compruebe el tamaño de un archivo cargado.</span><span class="sxs-lookup"><span data-stu-id="8a080-123">Check the size of an uploaded file.</span></span> <span data-ttu-id="8a080-124">Establezca un límite de tamaño máximo para evitar cargas grandes.&dagger;</span><span class="sxs-lookup"><span data-stu-id="8a080-124">Set a maximum size limit to prevent large uploads.&dagger;</span></span>
@@ -125,7 +125,7 @@ ms.locfileid: "93061176"
 
 <span data-ttu-id="8a080-171">Para cargar archivos pequeños, se puede usar un formulario de varias partes o construir una solicitud POST con JavaScript.</span><span class="sxs-lookup"><span data-stu-id="8a080-171">To upload small files, use a multipart form or construct a POST request using JavaScript.</span></span>
 
-<span data-ttu-id="8a080-172">En el ejemplo siguiente se muestra el uso de un :::no-loc(Razor)::: formulario de páginas para cargar un único archivo ( *pages/BufferedSingleFileUploadPhysical. cshtml* en la aplicación de ejemplo):</span><span class="sxs-lookup"><span data-stu-id="8a080-172">The following example demonstrates the use of a :::no-loc(Razor)::: Pages form to upload a single file ( *Pages/BufferedSingleFileUploadPhysical.cshtml* in the sample app):</span></span>
+<span data-ttu-id="8a080-172">En el ejemplo siguiente se muestra el uso de un Razor formulario de páginas para cargar un único archivo ( *pages/BufferedSingleFileUploadPhysical. cshtml* en la aplicación de ejemplo):</span><span class="sxs-lookup"><span data-stu-id="8a080-172">The following example demonstrates the use of a Razor Pages form to upload a single file ( *Pages/BufferedSingleFileUploadPhysical.cshtml* in the sample app):</span></span>
 
 ```cshtml
 <form enctype="multipart/form-data" method="post">
@@ -352,7 +352,7 @@ public class BufferedSingleFileUploadDb
 > [!NOTE]
 > <span data-ttu-id="8a080-223"><xref:Microsoft.AspNetCore.Http.IFormFile> se puede usar directamente como un parámetro de método de acción o como una propiedad de modelo enlazado.</span><span class="sxs-lookup"><span data-stu-id="8a080-223"><xref:Microsoft.AspNetCore.Http.IFormFile> can be used directly as an action method parameter or as a bound model property.</span></span> <span data-ttu-id="8a080-224">En el ejemplo anterior se utiliza una propiedad de modelo enlazado.</span><span class="sxs-lookup"><span data-stu-id="8a080-224">The prior example uses a bound model property.</span></span>
 
-<span data-ttu-id="8a080-225">`FileUpload`Se utiliza en el :::no-loc(Razor)::: formulario de páginas:</span><span class="sxs-lookup"><span data-stu-id="8a080-225">The `FileUpload` is used in the :::no-loc(Razor)::: Pages form:</span></span>
+<span data-ttu-id="8a080-225">`FileUpload`Se utiliza en el Razor formulario de páginas:</span><span class="sxs-lookup"><span data-stu-id="8a080-225">The `FileUpload` is used in the Razor Pages form:</span></span>
 
 ```cshtml
 <form enctype="multipart/form-data" method="post">
@@ -418,17 +418,17 @@ public async Task<IActionResult> OnPostUploadAsync()
 
 <span data-ttu-id="8a080-239">En el ejemplo siguiente se muestra cómo usar JavaScript para transmitir un archivo a una acción de controlador.</span><span class="sxs-lookup"><span data-stu-id="8a080-239">The following example demonstrates how to use JavaScript to stream a file to a controller action.</span></span> <span data-ttu-id="8a080-240">El token de antifalsificación del archivo se genera por medio de un atributo de filtro personalizado y se pasa a los encabezados HTTP del cliente, en lugar de en el cuerpo de la solicitud.</span><span class="sxs-lookup"><span data-stu-id="8a080-240">The file's antiforgery token is generated using a custom filter attribute and passed to the client HTTP headers instead of in the request body.</span></span> <span data-ttu-id="8a080-241">Dado que el método de acción procesa los datos cargados directamente, el enlace de modelos del formulario se deshabilita por otro filtro personalizado.</span><span class="sxs-lookup"><span data-stu-id="8a080-241">Because the action method processes the uploaded data directly, form model binding is disabled by another custom filter.</span></span> <span data-ttu-id="8a080-242">Dentro de la acción, el contenido del formulario se lee usando un `MultipartReader` (que lee cada `MultipartSection` individual), de forma que el archivo se procesa o el contenido se almacena, según corresponda.</span><span class="sxs-lookup"><span data-stu-id="8a080-242">Within the action, the form's contents are read using a `MultipartReader`, which reads each individual `MultipartSection`, processing the file or storing the contents as appropriate.</span></span> <span data-ttu-id="8a080-243">Una vez leídas las secciones de varias partes, la acción realiza su propio enlace de modelos.</span><span class="sxs-lookup"><span data-stu-id="8a080-243">After the multipart sections are read, the action performs its own model binding.</span></span>
 
-<span data-ttu-id="8a080-244">La respuesta de página inicial carga el formulario y guarda un token antifalsificación en un :::no-loc(cookie)::: (mediante el `GenerateAntiforgeryToken:::no-loc(Cookie):::Attribute` atributo).</span><span class="sxs-lookup"><span data-stu-id="8a080-244">The initial page response loads the form and saves an antiforgery token in a :::no-loc(cookie)::: (via the `GenerateAntiforgeryToken:::no-loc(Cookie):::Attribute` attribute).</span></span> <span data-ttu-id="8a080-245">El atributo usa la compatibilidad con la [antifalsificación](xref:security/anti-request-forgery) integrada de ASP.net Core para establecer un :::no-loc(cookie)::: con un token de solicitud:</span><span class="sxs-lookup"><span data-stu-id="8a080-245">The attribute uses ASP.NET Core's built-in [antiforgery support](xref:security/anti-request-forgery) to set a :::no-loc(cookie)::: with a request token:</span></span>
+<span data-ttu-id="8a080-244">La respuesta de página inicial carga el formulario y guarda un token antifalsificación en un cookie (mediante el `GenerateAntiforgeryTokenCookieAttribute` atributo).</span><span class="sxs-lookup"><span data-stu-id="8a080-244">The initial page response loads the form and saves an antiforgery token in a cookie (via the `GenerateAntiforgeryTokenCookieAttribute` attribute).</span></span> <span data-ttu-id="8a080-245">El atributo usa la compatibilidad con la [antifalsificación](xref:security/anti-request-forgery) integrada de ASP.net Core para establecer un cookie con un token de solicitud:</span><span class="sxs-lookup"><span data-stu-id="8a080-245">The attribute uses ASP.NET Core's built-in [antiforgery support](xref:security/anti-request-forgery) to set a cookie with a request token:</span></span>
 
-[!code-csharp[](file-uploads/samples/3.x/SampleApp/Filters/Antiforgery.cs?name=snippet_GenerateAntiforgeryToken:::no-loc(Cookie):::Attribute)]
+[!code-csharp[](file-uploads/samples/3.x/SampleApp/Filters/Antiforgery.cs?name=snippet_GenerateAntiforgeryTokenCookieAttribute)]
 
 <span data-ttu-id="8a080-246">El `DisableFormValueModelBindingAttribute` se usa para deshabilitar el enlace de modelos:</span><span class="sxs-lookup"><span data-stu-id="8a080-246">The `DisableFormValueModelBindingAttribute` is used to disable model binding:</span></span>
 
 [!code-csharp[](file-uploads/samples/3.x/SampleApp/Filters/ModelBinding.cs?name=snippet_DisableFormValueModelBindingAttribute)]
 
-<span data-ttu-id="8a080-247">En la aplicación de ejemplo, `GenerateAntiforgeryToken:::no-loc(Cookie):::Attribute` y `DisableFormValueModelBindingAttribute` se aplican como filtros a los modelos de aplicación de página de `/StreamedSingleFileUploadDb` y `/StreamedSingleFileUploadPhysical` en `Startup.ConfigureServices` mediante [ :::no-loc(Razor)::: las convenciones de páginas](xref:razor-pages/razor-pages-conventions):</span><span class="sxs-lookup"><span data-stu-id="8a080-247">In the sample app, `GenerateAntiforgeryToken:::no-loc(Cookie):::Attribute` and `DisableFormValueModelBindingAttribute` are applied as filters to the page application models of `/StreamedSingleFileUploadDb` and `/StreamedSingleFileUploadPhysical` in `Startup.ConfigureServices` using [:::no-loc(Razor)::: Pages conventions](xref:razor-pages/razor-pages-conventions):</span></span>
+<span data-ttu-id="8a080-247">En la aplicación de ejemplo, `GenerateAntiforgeryTokenCookieAttribute` y `DisableFormValueModelBindingAttribute` se aplican como filtros a los modelos de aplicación de página de `/StreamedSingleFileUploadDb` y `/StreamedSingleFileUploadPhysical` en `Startup.ConfigureServices` mediante [ Razor las convenciones de páginas](xref:razor-pages/razor-pages-conventions):</span><span class="sxs-lookup"><span data-stu-id="8a080-247">In the sample app, `GenerateAntiforgeryTokenCookieAttribute` and `DisableFormValueModelBindingAttribute` are applied as filters to the page application models of `/StreamedSingleFileUploadDb` and `/StreamedSingleFileUploadPhysical` in `Startup.ConfigureServices` using [Razor Pages conventions](xref:razor-pages/razor-pages-conventions):</span></span>
 
-[!code-csharp[](file-uploads/samples/3.x/SampleApp/Startup.cs?name=snippet_Add:::no-loc(Razor):::Pages&highlight=7-10,16-19)]
+[!code-csharp[](file-uploads/samples/3.x/SampleApp/Startup.cs?name=snippet_AddRazorPages&highlight=7-10,16-19)]
 
 <span data-ttu-id="8a080-248">Dado que el enlace de modelos no lee el formulario, los parámetros enlazados desde el formulario no se enlazan (la consulta, la ruta y el encabezado siguen funcionando).</span><span class="sxs-lookup"><span data-stu-id="8a080-248">Since model binding doesn't read the form, parameters that are bound from the form don't bind (query, route, and header continue to work).</span></span> <span data-ttu-id="8a080-249">El método de acción funciona directamente con la propiedad `Request`.</span><span class="sxs-lookup"><span data-stu-id="8a080-249">The action method works directly with the `Request` property.</span></span> <span data-ttu-id="8a080-250">Se usa un elemento `MultipartReader` para leer cada sección.</span><span class="sxs-lookup"><span data-stu-id="8a080-250">A `MultipartReader` is used to read each section.</span></span> <span data-ttu-id="8a080-251">Los datos de clave-valor se almacenan en un `KeyValueAccumulator`.</span><span class="sxs-lookup"><span data-stu-id="8a080-251">Key/value data is stored in a `KeyValueAccumulator`.</span></span> <span data-ttu-id="8a080-252">Una vez leídas las secciones de varias partes, el contenido del `KeyValueAccumulator` se usa para enlazar los datos del formulario a un tipo de modelo.</span><span class="sxs-lookup"><span data-stu-id="8a080-252">After the multipart sections are read, the contents of the `KeyValueAccumulator` are used to bind the form data to a model type.</span></span>
 
@@ -514,7 +514,7 @@ using (var reader = new BinaryReader(uploadedFileData))
 
 <span data-ttu-id="8a080-285">Nunca use un nombre de archivo proporcionado por el cliente para guardar un archivo en el almacenamiento físico.</span><span class="sxs-lookup"><span data-stu-id="8a080-285">Never use a client-supplied file name for saving a file to physical storage.</span></span> <span data-ttu-id="8a080-286">Cree un nombre de archivo seguro para el archivo con [Path.GetRandomFileName](xref:System.IO.Path.GetRandomFileName*) o [Path.GetTempFileName](xref:System.IO.Path.GetTempFileName*) para crear una ruta de acceso completa (incluido el nombre de archivo) para el almacenamiento temporal.</span><span class="sxs-lookup"><span data-stu-id="8a080-286">Create a safe file name for the file using [Path.GetRandomFileName](xref:System.IO.Path.GetRandomFileName*) or [Path.GetTempFileName](xref:System.IO.Path.GetTempFileName*) to create a full path (including the file name) for temporary storage.</span></span>
 
-<span data-ttu-id="8a080-287">:::no-loc(Razor)::: HTML codifica automáticamente los valores de propiedad para la presentación.</span><span class="sxs-lookup"><span data-stu-id="8a080-287">:::no-loc(Razor)::: automatically HTML encodes property values for display.</span></span> <span data-ttu-id="8a080-288">El código siguiente es seguro de usar:</span><span class="sxs-lookup"><span data-stu-id="8a080-288">The following code is safe to use:</span></span>
+<span data-ttu-id="8a080-287">Razor HTML codifica automáticamente los valores de propiedad para la presentación.</span><span class="sxs-lookup"><span data-stu-id="8a080-287">Razor automatically HTML encodes property values for display.</span></span> <span data-ttu-id="8a080-288">El código siguiente es seguro de usar:</span><span class="sxs-lookup"><span data-stu-id="8a080-288">The following code is safe to use:</span></span>
 
 ```cshtml
 @foreach (var file in Model.DatabaseFiles) {
@@ -526,7 +526,7 @@ using (var reader = new BinaryReader(uploadedFileData))
 }
 ```
 
-<span data-ttu-id="8a080-289">Fuera de :::no-loc(Razor)::: , <xref:System.Net.WebUtility.HtmlEncode*> el contenido del nombre de archivo siempre procedente de la solicitud de un usuario.</span><span class="sxs-lookup"><span data-stu-id="8a080-289">Outside of :::no-loc(Razor):::, always <xref:System.Net.WebUtility.HtmlEncode*> file name content from a user's request.</span></span>
+<span data-ttu-id="8a080-289">Fuera de Razor , <xref:System.Net.WebUtility.HtmlEncode*> el contenido del nombre de archivo siempre procedente de la solicitud de un usuario.</span><span class="sxs-lookup"><span data-stu-id="8a080-289">Outside of Razor, always <xref:System.Net.WebUtility.HtmlEncode*> file name content from a user's request.</span></span>
 
 <span data-ttu-id="8a080-290">Muchas implementaciones deben incluir una comprobación de que el archivo existe; de lo contrario, el archivo se sobrescribe por un archivo con el mismo nombre.</span><span class="sxs-lookup"><span data-stu-id="8a080-290">Many implementations must include a check that the file exists; otherwise, the file is overwritten by a file of the same name.</span></span> <span data-ttu-id="8a080-291">Proporcione lógica adicional para satisfacer las especificaciones de la aplicación.</span><span class="sxs-lookup"><span data-stu-id="8a080-291">Supply additional logic to meet your app's specifications.</span></span>
 
@@ -534,7 +534,7 @@ using (var reader = new BinaryReader(uploadedFileData))
 
 <span data-ttu-id="8a080-293">Limite el tamaño de los archivos cargados.</span><span class="sxs-lookup"><span data-stu-id="8a080-293">Limit the size of uploaded files.</span></span>
 
-<span data-ttu-id="8a080-294">En la aplicación de ejemplo, el tamaño del archivo está limitado a 2 MB (se indica en bytes).</span><span class="sxs-lookup"><span data-stu-id="8a080-294">In the sample app, the size of the file is limited to 2 MB (indicated in bytes).</span></span> <span data-ttu-id="8a080-295">El límite se proporciona a través de la [configuración](xref:fundamentals/configuration/index) del *:::no-loc(appsettings.json):::* archivo:</span><span class="sxs-lookup"><span data-stu-id="8a080-295">The limit is supplied via [Configuration](xref:fundamentals/configuration/index) from the *:::no-loc(appsettings.json):::* file:</span></span>
+<span data-ttu-id="8a080-294">En la aplicación de ejemplo, el tamaño del archivo está limitado a 2 MB (se indica en bytes).</span><span class="sxs-lookup"><span data-stu-id="8a080-294">In the sample app, the size of the file is limited to 2 MB (indicated in bytes).</span></span> <span data-ttu-id="8a080-295">El límite se proporciona a través de la [configuración](xref:fundamentals/configuration/index) del *appsettings.json* archivo:</span><span class="sxs-lookup"><span data-stu-id="8a080-295">The limit is supplied via [Configuration](xref:fundamentals/configuration/index) from the *appsettings.json* file:</span></span>
 
 ```json
 {
@@ -569,7 +569,7 @@ if (formFile.Length > _fileSizeLimit)
 
 ### <a name="match-name-attribute-value-to-parameter-name-of-post-method"></a><span data-ttu-id="8a080-298">Coincidencia del valor de atributo de nombre con el nombre del parámetro del método POST</span><span class="sxs-lookup"><span data-stu-id="8a080-298">Match name attribute value to parameter name of POST method</span></span>
 
-<span data-ttu-id="8a080-299">En los que no son :::no-loc(Razor)::: formularios y que envían datos de formulario `FormData` directamente, el nombre especificado en el elemento del formulario o `FormData` deben coincidir con el nombre del parámetro en la acción del controlador.</span><span class="sxs-lookup"><span data-stu-id="8a080-299">In non-:::no-loc(Razor)::: forms that POST form data or use JavaScript's `FormData` directly, the name specified in the form's element or `FormData` must match the name of the parameter in the controller's action.</span></span>
+<span data-ttu-id="8a080-299">En los que no son Razor formularios y que envían datos de formulario `FormData` directamente, el nombre especificado en el elemento del formulario o `FormData` deben coincidir con el nombre del parámetro en la acción del controlador.</span><span class="sxs-lookup"><span data-stu-id="8a080-299">In non-Razor forms that POST form data or use JavaScript's `FormData` directly, the name specified in the form's element or `FormData` must match the name of the parameter in the controller's action.</span></span>
 
 <span data-ttu-id="8a080-300">En el ejemplo siguiente:</span><span class="sxs-lookup"><span data-stu-id="8a080-300">In the following example:</span></span>
 
@@ -591,7 +591,7 @@ if (formFile.Length > _fileSizeLimit)
 
 <span data-ttu-id="8a080-303">Use un nombre coincidente para el parámetro del método de C# (`battlePlans`):</span><span class="sxs-lookup"><span data-stu-id="8a080-303">Use a matching name for the parameter of the C# method (`battlePlans`):</span></span>
 
-* <span data-ttu-id="8a080-304">Para un :::no-loc(Razor)::: método de controlador de página de páginas denominado `Upload` :</span><span class="sxs-lookup"><span data-stu-id="8a080-304">For a :::no-loc(Razor)::: Pages page handler method named `Upload`:</span></span>
+* <span data-ttu-id="8a080-304">Para un Razor método de controlador de página de páginas denominado `Upload` :</span><span class="sxs-lookup"><span data-stu-id="8a080-304">For a Razor Pages page handler method named `Upload`:</span></span>
 
   ```csharp
   public async Task<IActionResult> OnPostUploadAsync(List<IFormFile> battlePlans)
@@ -622,10 +622,10 @@ public void ConfigureServices(IServiceCollection services)
 
 <span data-ttu-id="8a080-312"><xref:Microsoft.AspNetCore.Mvc.RequestFormLimitsAttribute> se utiliza para establecer el <xref:Microsoft.AspNetCore.Http.Features.FormOptions.MultipartBodyLengthLimit> para una sola página o acción.</span><span class="sxs-lookup"><span data-stu-id="8a080-312"><xref:Microsoft.AspNetCore.Mvc.RequestFormLimitsAttribute> is used to set the <xref:Microsoft.AspNetCore.Http.Features.FormOptions.MultipartBodyLengthLimit> for a single page or action.</span></span>
 
-<span data-ttu-id="8a080-313">En una :::no-loc(Razor)::: aplicación de páginas, aplique el filtro con una [Convención](xref:razor-pages/razor-pages-conventions) en `Startup.ConfigureServices` :</span><span class="sxs-lookup"><span data-stu-id="8a080-313">In a :::no-loc(Razor)::: Pages app, apply the filter with a [convention](xref:razor-pages/razor-pages-conventions) in `Startup.ConfigureServices`:</span></span>
+<span data-ttu-id="8a080-313">En una Razor aplicación de páginas, aplique el filtro con una [Convención](xref:razor-pages/razor-pages-conventions) en `Startup.ConfigureServices` :</span><span class="sxs-lookup"><span data-stu-id="8a080-313">In a Razor Pages app, apply the filter with a [convention](xref:razor-pages/razor-pages-conventions) in `Startup.ConfigureServices`:</span></span>
 
 ```csharp
-services.Add:::no-loc(Razor):::Pages(options =>
+services.AddRazorPages(options =>
 {
     options.Conventions
         .AddPageApplicationModelConvention("/FileUploadPage",
@@ -638,7 +638,7 @@ services.Add:::no-loc(Razor):::Pages(options =>
 });
 ```
 
-<span data-ttu-id="8a080-314">En una :::no-loc(Razor)::: aplicación de páginas o en una aplicación MVC, aplique el filtro al método de acción o modelo de página:</span><span class="sxs-lookup"><span data-stu-id="8a080-314">In a :::no-loc(Razor)::: Pages app or an MVC app, apply the filter to the page model or action method:</span></span>
+<span data-ttu-id="8a080-314">En una Razor aplicación de páginas o en una aplicación MVC, aplique el filtro al método de acción o modelo de página:</span><span class="sxs-lookup"><span data-stu-id="8a080-314">In a Razor Pages app or an MVC app, apply the filter to the page model or action method:</span></span>
 
 ```csharp
 // Set the limit to 256 MB
@@ -669,10 +669,10 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 
 <span data-ttu-id="8a080-318"><xref:Microsoft.AspNetCore.Mvc.RequestSizeLimitAttribute> se usa para establecer el valor de [MaxRequestBodySize](xref:fundamentals/servers/kestrel#maximum-request-body-size) de una sola página o acción.</span><span class="sxs-lookup"><span data-stu-id="8a080-318"><xref:Microsoft.AspNetCore.Mvc.RequestSizeLimitAttribute> is used to set the [MaxRequestBodySize](xref:fundamentals/servers/kestrel#maximum-request-body-size) for a single page or action.</span></span>
 
-<span data-ttu-id="8a080-319">En una :::no-loc(Razor)::: aplicación de páginas, aplique el filtro con una [Convención](xref:razor-pages/razor-pages-conventions) en `Startup.ConfigureServices` :</span><span class="sxs-lookup"><span data-stu-id="8a080-319">In a :::no-loc(Razor)::: Pages app, apply the filter with a [convention](xref:razor-pages/razor-pages-conventions) in `Startup.ConfigureServices`:</span></span>
+<span data-ttu-id="8a080-319">En una Razor aplicación de páginas, aplique el filtro con una [Convención](xref:razor-pages/razor-pages-conventions) en `Startup.ConfigureServices` :</span><span class="sxs-lookup"><span data-stu-id="8a080-319">In a Razor Pages app, apply the filter with a [convention](xref:razor-pages/razor-pages-conventions) in `Startup.ConfigureServices`:</span></span>
 
 ```csharp
-services.Add:::no-loc(Razor):::Pages(options =>
+services.AddRazorPages(options =>
 {
     options.Conventions
         .AddPageApplicationModelConvention("/FileUploadPage",
@@ -685,7 +685,7 @@ services.Add:::no-loc(Razor):::Pages(options =>
 });
 ```
 
-<span data-ttu-id="8a080-320">En una :::no-loc(Razor)::: aplicación pages o MVC, aplique el filtro a la clase de controlador de páginas o al método de acción:</span><span class="sxs-lookup"><span data-stu-id="8a080-320">In a :::no-loc(Razor)::: pages app or an MVC app, apply the filter to the page handler class or action method:</span></span>
+<span data-ttu-id="8a080-320">En una Razor aplicación pages o MVC, aplique el filtro a la clase de controlador de páginas o al método de acción:</span><span class="sxs-lookup"><span data-stu-id="8a080-320">In a Razor pages app or an MVC app, apply the filter to the page handler class or action method:</span></span>
 
 ```csharp
 // Handle requests up to 50 MB
@@ -696,7 +696,7 @@ public class BufferedSingleFileUploadPhysicalModel : PageModel
 }
 ```
 
-<span data-ttu-id="8a080-321">`RequestSizeLimitAttribute`También se puede aplicar mediante la [`@attribute`](xref:mvc/views/razor#attribute) :::no-loc(Razor)::: Directiva:</span><span class="sxs-lookup"><span data-stu-id="8a080-321">The `RequestSizeLimitAttribute` can also be applied using the [`@attribute`](xref:mvc/views/razor#attribute) :::no-loc(Razor)::: directive:</span></span>
+<span data-ttu-id="8a080-321">`RequestSizeLimitAttribute`También se puede aplicar mediante la [`@attribute`](xref:mvc/views/razor#attribute) Razor Directiva:</span><span class="sxs-lookup"><span data-stu-id="8a080-321">The `RequestSizeLimitAttribute` can also be applied using the [`@attribute`](xref:mvc/views/razor#attribute) Razor directive:</span></span>
 
 ```cshtml
 @attribute [RequestSizeLimitAttribute(52428800)]
@@ -772,7 +772,7 @@ The request filtering module is configured to deny a request that exceeds the re
 
 * <span data-ttu-id="8a080-358">Cargue los archivos a un área de carga de archivos dedicada, preferiblemente una unidad que no sea de sistema.</span><span class="sxs-lookup"><span data-stu-id="8a080-358">Upload files to a dedicated file upload area, preferably to a non-system drive.</span></span> <span data-ttu-id="8a080-359">Una ubicación dedicada facilita la imposición de restricciones de seguridad en los archivos cargados.</span><span class="sxs-lookup"><span data-stu-id="8a080-359">A dedicated location makes it easier to impose security restrictions on uploaded files.</span></span> <span data-ttu-id="8a080-360">Deshabilite la ejecución de los permisos en la ubicación de carga de archivos.&dagger;</span><span class="sxs-lookup"><span data-stu-id="8a080-360">Disable execute permissions on the file upload location.&dagger;</span></span>
 * <span data-ttu-id="8a080-361">Los archivos cargados **no** se deben persistir en el mismo árbol de directorio que la aplicación.&dagger;</span><span class="sxs-lookup"><span data-stu-id="8a080-361">Do **not** persist uploaded files in the same directory tree as the app.&dagger;</span></span>
-* <span data-ttu-id="8a080-362">Use un nombre de archivo seguro determinado por la aplicación.</span><span class="sxs-lookup"><span data-stu-id="8a080-362">Use a safe file name determined by the app.</span></span> <span data-ttu-id="8a080-363">No use un nombre de archivo proporcionado por el usuario o el nombre de archivo que no es de confianza del archivo cargado. &dagger; HTML codifica el nombre de archivo que no es de confianza al mostrarlo.</span><span class="sxs-lookup"><span data-stu-id="8a080-363">Don't use a file name provided by the user or the untrusted file name of the uploaded file.&dagger; HTML encode the untrusted file name when displaying it.</span></span> <span data-ttu-id="8a080-364">Por ejemplo, registrando el nombre de archivo o mostrándose en la interfaz de usuario (la :::no-loc(Razor)::: salida codifica automáticamente html).</span><span class="sxs-lookup"><span data-stu-id="8a080-364">For example, logging the file name or displaying in UI (:::no-loc(Razor)::: automatically HTML encodes output).</span></span>
+* <span data-ttu-id="8a080-362">Use un nombre de archivo seguro determinado por la aplicación.</span><span class="sxs-lookup"><span data-stu-id="8a080-362">Use a safe file name determined by the app.</span></span> <span data-ttu-id="8a080-363">No use un nombre de archivo proporcionado por el usuario o el nombre de archivo que no es de confianza del archivo cargado. &dagger; HTML codifica el nombre de archivo que no es de confianza al mostrarlo.</span><span class="sxs-lookup"><span data-stu-id="8a080-363">Don't use a file name provided by the user or the untrusted file name of the uploaded file.&dagger; HTML encode the untrusted file name when displaying it.</span></span> <span data-ttu-id="8a080-364">Por ejemplo, registrando el nombre de archivo o mostrándose en la interfaz de usuario (la Razor salida codifica automáticamente html).</span><span class="sxs-lookup"><span data-stu-id="8a080-364">For example, logging the file name or displaying in UI (Razor automatically HTML encodes output).</span></span>
 * <span data-ttu-id="8a080-365">Permita solo las extensiones de archivo aprobadas para la especificación de diseño de la aplicación.&dagger;</span><span class="sxs-lookup"><span data-stu-id="8a080-365">Allow only approved file extensions for the app's design specification.&dagger;</span></span> <!-- * Check the file format signature to prevent a user from uploading a masqueraded file.&dagger; For example, don't permit a user to upload an *.exe* file with a *.txt* extension. Add this back when we get instructions how to do this.  -->
 * <span data-ttu-id="8a080-366">Compruebe que las comprobaciones del lado cliente se realizan en el servidor. &dagger; Las comprobaciones del lado cliente son fáciles de eludir.</span><span class="sxs-lookup"><span data-stu-id="8a080-366">Verify that client-side checks are performed on the server.&dagger; Client-side checks are easy to circumvent.</span></span>
 * <span data-ttu-id="8a080-367">Compruebe el tamaño de un archivo cargado.</span><span class="sxs-lookup"><span data-stu-id="8a080-367">Check the size of an uploaded file.</span></span> <span data-ttu-id="8a080-368">Establezca un límite de tamaño máximo para evitar cargas grandes.&dagger;</span><span class="sxs-lookup"><span data-stu-id="8a080-368">Set a maximum size limit to prevent large uploads.&dagger;</span></span>
@@ -849,7 +849,7 @@ The request filtering module is configured to deny a request that exceeds the re
 
 <span data-ttu-id="8a080-415">Para cargar archivos pequeños, se puede usar un formulario de varias partes o construir una solicitud POST con JavaScript.</span><span class="sxs-lookup"><span data-stu-id="8a080-415">To upload small files, use a multipart form or construct a POST request using JavaScript.</span></span>
 
-<span data-ttu-id="8a080-416">En el ejemplo siguiente se muestra el uso de un :::no-loc(Razor)::: formulario de páginas para cargar un único archivo ( *pages/BufferedSingleFileUploadPhysical. cshtml* en la aplicación de ejemplo):</span><span class="sxs-lookup"><span data-stu-id="8a080-416">The following example demonstrates the use of a :::no-loc(Razor)::: Pages form to upload a single file ( *Pages/BufferedSingleFileUploadPhysical.cshtml* in the sample app):</span></span>
+<span data-ttu-id="8a080-416">En el ejemplo siguiente se muestra el uso de un Razor formulario de páginas para cargar un único archivo ( *pages/BufferedSingleFileUploadPhysical. cshtml* en la aplicación de ejemplo):</span><span class="sxs-lookup"><span data-stu-id="8a080-416">The following example demonstrates the use of a Razor Pages form to upload a single file ( *Pages/BufferedSingleFileUploadPhysical.cshtml* in the sample app):</span></span>
 
 ```cshtml
 <form enctype="multipart/form-data" method="post">
@@ -1076,7 +1076,7 @@ public class BufferedSingleFileUploadDb
 > [!NOTE]
 > <span data-ttu-id="8a080-467"><xref:Microsoft.AspNetCore.Http.IFormFile> se puede usar directamente como un parámetro de método de acción o como una propiedad de modelo enlazado.</span><span class="sxs-lookup"><span data-stu-id="8a080-467"><xref:Microsoft.AspNetCore.Http.IFormFile> can be used directly as an action method parameter or as a bound model property.</span></span> <span data-ttu-id="8a080-468">En el ejemplo anterior se utiliza una propiedad de modelo enlazado.</span><span class="sxs-lookup"><span data-stu-id="8a080-468">The prior example uses a bound model property.</span></span>
 
-<span data-ttu-id="8a080-469">`FileUpload`Se utiliza en el :::no-loc(Razor)::: formulario de páginas:</span><span class="sxs-lookup"><span data-stu-id="8a080-469">The `FileUpload` is used in the :::no-loc(Razor)::: Pages form:</span></span>
+<span data-ttu-id="8a080-469">`FileUpload`Se utiliza en el Razor formulario de páginas:</span><span class="sxs-lookup"><span data-stu-id="8a080-469">The `FileUpload` is used in the Razor Pages form:</span></span>
 
 ```cshtml
 <form enctype="multipart/form-data" method="post">
@@ -1142,17 +1142,17 @@ public async Task<IActionResult> OnPostUploadAsync()
 
 <span data-ttu-id="8a080-483">En el ejemplo siguiente se muestra cómo usar JavaScript para transmitir un archivo a una acción de controlador.</span><span class="sxs-lookup"><span data-stu-id="8a080-483">The following example demonstrates how to use JavaScript to stream a file to a controller action.</span></span> <span data-ttu-id="8a080-484">El token de antifalsificación del archivo se genera por medio de un atributo de filtro personalizado y se pasa a los encabezados HTTP del cliente, en lugar de en el cuerpo de la solicitud.</span><span class="sxs-lookup"><span data-stu-id="8a080-484">The file's antiforgery token is generated using a custom filter attribute and passed to the client HTTP headers instead of in the request body.</span></span> <span data-ttu-id="8a080-485">Dado que el método de acción procesa los datos cargados directamente, el enlace de modelos del formulario se deshabilita por otro filtro personalizado.</span><span class="sxs-lookup"><span data-stu-id="8a080-485">Because the action method processes the uploaded data directly, form model binding is disabled by another custom filter.</span></span> <span data-ttu-id="8a080-486">Dentro de la acción, el contenido del formulario se lee usando un `MultipartReader` (que lee cada `MultipartSection` individual), de forma que el archivo se procesa o el contenido se almacena, según corresponda.</span><span class="sxs-lookup"><span data-stu-id="8a080-486">Within the action, the form's contents are read using a `MultipartReader`, which reads each individual `MultipartSection`, processing the file or storing the contents as appropriate.</span></span> <span data-ttu-id="8a080-487">Una vez leídas las secciones de varias partes, la acción realiza su propio enlace de modelos.</span><span class="sxs-lookup"><span data-stu-id="8a080-487">After the multipart sections are read, the action performs its own model binding.</span></span>
 
-<span data-ttu-id="8a080-488">La respuesta de página inicial carga el formulario y guarda un token antifalsificación en un :::no-loc(cookie)::: (mediante el `GenerateAntiforgeryToken:::no-loc(Cookie):::Attribute` atributo).</span><span class="sxs-lookup"><span data-stu-id="8a080-488">The initial page response loads the form and saves an antiforgery token in a :::no-loc(cookie)::: (via the `GenerateAntiforgeryToken:::no-loc(Cookie):::Attribute` attribute).</span></span> <span data-ttu-id="8a080-489">El atributo usa la compatibilidad con la [antifalsificación](xref:security/anti-request-forgery) integrada de ASP.net Core para establecer un :::no-loc(cookie)::: con un token de solicitud:</span><span class="sxs-lookup"><span data-stu-id="8a080-489">The attribute uses ASP.NET Core's built-in [antiforgery support](xref:security/anti-request-forgery) to set a :::no-loc(cookie)::: with a request token:</span></span>
+<span data-ttu-id="8a080-488">La respuesta de página inicial carga el formulario y guarda un token antifalsificación en un cookie (mediante el `GenerateAntiforgeryTokenCookieAttribute` atributo).</span><span class="sxs-lookup"><span data-stu-id="8a080-488">The initial page response loads the form and saves an antiforgery token in a cookie (via the `GenerateAntiforgeryTokenCookieAttribute` attribute).</span></span> <span data-ttu-id="8a080-489">El atributo usa la compatibilidad con la [antifalsificación](xref:security/anti-request-forgery) integrada de ASP.net Core para establecer un cookie con un token de solicitud:</span><span class="sxs-lookup"><span data-stu-id="8a080-489">The attribute uses ASP.NET Core's built-in [antiforgery support](xref:security/anti-request-forgery) to set a cookie with a request token:</span></span>
 
-[!code-csharp[](file-uploads/samples/3.x/SampleApp/Filters/Antiforgery.cs?name=snippet_GenerateAntiforgeryToken:::no-loc(Cookie):::Attribute)]
+[!code-csharp[](file-uploads/samples/3.x/SampleApp/Filters/Antiforgery.cs?name=snippet_GenerateAntiforgeryTokenCookieAttribute)]
 
 <span data-ttu-id="8a080-490">El `DisableFormValueModelBindingAttribute` se usa para deshabilitar el enlace de modelos:</span><span class="sxs-lookup"><span data-stu-id="8a080-490">The `DisableFormValueModelBindingAttribute` is used to disable model binding:</span></span>
 
 [!code-csharp[](file-uploads/samples/3.x/SampleApp/Filters/ModelBinding.cs?name=snippet_DisableFormValueModelBindingAttribute)]
 
-<span data-ttu-id="8a080-491">En la aplicación de ejemplo, `GenerateAntiforgeryToken:::no-loc(Cookie):::Attribute` y `DisableFormValueModelBindingAttribute` se aplican como filtros a los modelos de aplicación de página de `/StreamedSingleFileUploadDb` y `/StreamedSingleFileUploadPhysical` en `Startup.ConfigureServices` mediante [ :::no-loc(Razor)::: las convenciones de páginas](xref:razor-pages/razor-pages-conventions):</span><span class="sxs-lookup"><span data-stu-id="8a080-491">In the sample app, `GenerateAntiforgeryToken:::no-loc(Cookie):::Attribute` and `DisableFormValueModelBindingAttribute` are applied as filters to the page application models of `/StreamedSingleFileUploadDb` and `/StreamedSingleFileUploadPhysical` in `Startup.ConfigureServices` using [:::no-loc(Razor)::: Pages conventions](xref:razor-pages/razor-pages-conventions):</span></span>
+<span data-ttu-id="8a080-491">En la aplicación de ejemplo, `GenerateAntiforgeryTokenCookieAttribute` y `DisableFormValueModelBindingAttribute` se aplican como filtros a los modelos de aplicación de página de `/StreamedSingleFileUploadDb` y `/StreamedSingleFileUploadPhysical` en `Startup.ConfigureServices` mediante [ Razor las convenciones de páginas](xref:razor-pages/razor-pages-conventions):</span><span class="sxs-lookup"><span data-stu-id="8a080-491">In the sample app, `GenerateAntiforgeryTokenCookieAttribute` and `DisableFormValueModelBindingAttribute` are applied as filters to the page application models of `/StreamedSingleFileUploadDb` and `/StreamedSingleFileUploadPhysical` in `Startup.ConfigureServices` using [Razor Pages conventions](xref:razor-pages/razor-pages-conventions):</span></span>
 
-[!code-csharp[](file-uploads/samples/3.x/SampleApp/Startup.cs?name=snippet_Add:::no-loc(Razor):::Pages&highlight=7-10,16-19)]
+[!code-csharp[](file-uploads/samples/3.x/SampleApp/Startup.cs?name=snippet_AddRazorPages&highlight=7-10,16-19)]
 
 <span data-ttu-id="8a080-492">Dado que el enlace de modelos no lee el formulario, los parámetros enlazados desde el formulario no se enlazan (la consulta, la ruta y el encabezado siguen funcionando).</span><span class="sxs-lookup"><span data-stu-id="8a080-492">Since model binding doesn't read the form, parameters that are bound from the form don't bind (query, route, and header continue to work).</span></span> <span data-ttu-id="8a080-493">El método de acción funciona directamente con la propiedad `Request`.</span><span class="sxs-lookup"><span data-stu-id="8a080-493">The action method works directly with the `Request` property.</span></span> <span data-ttu-id="8a080-494">Se usa un elemento `MultipartReader` para leer cada sección.</span><span class="sxs-lookup"><span data-stu-id="8a080-494">A `MultipartReader` is used to read each section.</span></span> <span data-ttu-id="8a080-495">Los datos de clave-valor se almacenan en un `KeyValueAccumulator`.</span><span class="sxs-lookup"><span data-stu-id="8a080-495">Key/value data is stored in a `KeyValueAccumulator`.</span></span> <span data-ttu-id="8a080-496">Una vez leídas las secciones de varias partes, el contenido del `KeyValueAccumulator` se usa para enlazar los datos del formulario a un tipo de modelo.</span><span class="sxs-lookup"><span data-stu-id="8a080-496">After the multipart sections are read, the contents of the `KeyValueAccumulator` are used to bind the form data to a model type.</span></span>
 
@@ -1238,7 +1238,7 @@ using (var reader = new BinaryReader(uploadedFileData))
 
 <span data-ttu-id="8a080-529">Nunca use un nombre de archivo proporcionado por el cliente para guardar un archivo en el almacenamiento físico.</span><span class="sxs-lookup"><span data-stu-id="8a080-529">Never use a client-supplied file name for saving a file to physical storage.</span></span> <span data-ttu-id="8a080-530">Cree un nombre de archivo seguro para el archivo con [Path.GetRandomFileName](xref:System.IO.Path.GetRandomFileName*) o [Path.GetTempFileName](xref:System.IO.Path.GetTempFileName*) para crear una ruta de acceso completa (incluido el nombre de archivo) para el almacenamiento temporal.</span><span class="sxs-lookup"><span data-stu-id="8a080-530">Create a safe file name for the file using [Path.GetRandomFileName](xref:System.IO.Path.GetRandomFileName*) or [Path.GetTempFileName](xref:System.IO.Path.GetTempFileName*) to create a full path (including the file name) for temporary storage.</span></span>
 
-<span data-ttu-id="8a080-531">:::no-loc(Razor)::: HTML codifica automáticamente los valores de propiedad para la presentación.</span><span class="sxs-lookup"><span data-stu-id="8a080-531">:::no-loc(Razor)::: automatically HTML encodes property values for display.</span></span> <span data-ttu-id="8a080-532">El código siguiente es seguro de usar:</span><span class="sxs-lookup"><span data-stu-id="8a080-532">The following code is safe to use:</span></span>
+<span data-ttu-id="8a080-531">Razor HTML codifica automáticamente los valores de propiedad para la presentación.</span><span class="sxs-lookup"><span data-stu-id="8a080-531">Razor automatically HTML encodes property values for display.</span></span> <span data-ttu-id="8a080-532">El código siguiente es seguro de usar:</span><span class="sxs-lookup"><span data-stu-id="8a080-532">The following code is safe to use:</span></span>
 
 ```cshtml
 @foreach (var file in Model.DatabaseFiles) {
@@ -1250,7 +1250,7 @@ using (var reader = new BinaryReader(uploadedFileData))
 }
 ```
 
-<span data-ttu-id="8a080-533">Fuera de :::no-loc(Razor)::: , <xref:System.Net.WebUtility.HtmlEncode*> el contenido del nombre de archivo siempre procedente de la solicitud de un usuario.</span><span class="sxs-lookup"><span data-stu-id="8a080-533">Outside of :::no-loc(Razor):::, always <xref:System.Net.WebUtility.HtmlEncode*> file name content from a user's request.</span></span>
+<span data-ttu-id="8a080-533">Fuera de Razor , <xref:System.Net.WebUtility.HtmlEncode*> el contenido del nombre de archivo siempre procedente de la solicitud de un usuario.</span><span class="sxs-lookup"><span data-stu-id="8a080-533">Outside of Razor, always <xref:System.Net.WebUtility.HtmlEncode*> file name content from a user's request.</span></span>
 
 <span data-ttu-id="8a080-534">Muchas implementaciones deben incluir una comprobación de que el archivo existe; de lo contrario, el archivo se sobrescribe por un archivo con el mismo nombre.</span><span class="sxs-lookup"><span data-stu-id="8a080-534">Many implementations must include a check that the file exists; otherwise, the file is overwritten by a file of the same name.</span></span> <span data-ttu-id="8a080-535">Proporcione lógica adicional para satisfacer las especificaciones de la aplicación.</span><span class="sxs-lookup"><span data-stu-id="8a080-535">Supply additional logic to meet your app's specifications.</span></span>
 
@@ -1258,7 +1258,7 @@ using (var reader = new BinaryReader(uploadedFileData))
 
 <span data-ttu-id="8a080-537">Limite el tamaño de los archivos cargados.</span><span class="sxs-lookup"><span data-stu-id="8a080-537">Limit the size of uploaded files.</span></span>
 
-<span data-ttu-id="8a080-538">En la aplicación de ejemplo, el tamaño del archivo está limitado a 2 MB (se indica en bytes).</span><span class="sxs-lookup"><span data-stu-id="8a080-538">In the sample app, the size of the file is limited to 2 MB (indicated in bytes).</span></span> <span data-ttu-id="8a080-539">El límite se proporciona a través de la [configuración](xref:fundamentals/configuration/index) del *:::no-loc(appsettings.json):::* archivo:</span><span class="sxs-lookup"><span data-stu-id="8a080-539">The limit is supplied via [Configuration](xref:fundamentals/configuration/index) from the *:::no-loc(appsettings.json):::* file:</span></span>
+<span data-ttu-id="8a080-538">En la aplicación de ejemplo, el tamaño del archivo está limitado a 2 MB (se indica en bytes).</span><span class="sxs-lookup"><span data-stu-id="8a080-538">In the sample app, the size of the file is limited to 2 MB (indicated in bytes).</span></span> <span data-ttu-id="8a080-539">El límite se proporciona a través de la [configuración](xref:fundamentals/configuration/index) del *appsettings.json* archivo:</span><span class="sxs-lookup"><span data-stu-id="8a080-539">The limit is supplied via [Configuration](xref:fundamentals/configuration/index) from the *appsettings.json* file:</span></span>
 
 ```json
 {
@@ -1293,7 +1293,7 @@ if (formFile.Length > _fileSizeLimit)
 
 ### <a name="match-name-attribute-value-to-parameter-name-of-post-method"></a><span data-ttu-id="8a080-542">Coincidencia del valor de atributo de nombre con el nombre del parámetro del método POST</span><span class="sxs-lookup"><span data-stu-id="8a080-542">Match name attribute value to parameter name of POST method</span></span>
 
-<span data-ttu-id="8a080-543">En los que no son :::no-loc(Razor)::: formularios y que envían datos de formulario `FormData` directamente, el nombre especificado en el elemento del formulario o `FormData` deben coincidir con el nombre del parámetro en la acción del controlador.</span><span class="sxs-lookup"><span data-stu-id="8a080-543">In non-:::no-loc(Razor)::: forms that POST form data or use JavaScript's `FormData` directly, the name specified in the form's element or `FormData` must match the name of the parameter in the controller's action.</span></span>
+<span data-ttu-id="8a080-543">En los que no son Razor formularios y que envían datos de formulario `FormData` directamente, el nombre especificado en el elemento del formulario o `FormData` deben coincidir con el nombre del parámetro en la acción del controlador.</span><span class="sxs-lookup"><span data-stu-id="8a080-543">In non-Razor forms that POST form data or use JavaScript's `FormData` directly, the name specified in the form's element or `FormData` must match the name of the parameter in the controller's action.</span></span>
 
 <span data-ttu-id="8a080-544">En el ejemplo siguiente:</span><span class="sxs-lookup"><span data-stu-id="8a080-544">In the following example:</span></span>
 
@@ -1315,7 +1315,7 @@ if (formFile.Length > _fileSizeLimit)
 
 <span data-ttu-id="8a080-547">Use un nombre coincidente para el parámetro del método de C# (`battlePlans`):</span><span class="sxs-lookup"><span data-stu-id="8a080-547">Use a matching name for the parameter of the C# method (`battlePlans`):</span></span>
 
-* <span data-ttu-id="8a080-548">Para un :::no-loc(Razor)::: método de controlador de página de páginas denominado `Upload` :</span><span class="sxs-lookup"><span data-stu-id="8a080-548">For a :::no-loc(Razor)::: Pages page handler method named `Upload`:</span></span>
+* <span data-ttu-id="8a080-548">Para un Razor método de controlador de página de páginas denominado `Upload` :</span><span class="sxs-lookup"><span data-stu-id="8a080-548">For a Razor Pages page handler method named `Upload`:</span></span>
 
   ```csharp
   public async Task<IActionResult> OnPostUploadAsync(List<IFormFile> battlePlans)
@@ -1346,10 +1346,10 @@ public void ConfigureServices(IServiceCollection services)
 
 <span data-ttu-id="8a080-556"><xref:Microsoft.AspNetCore.Mvc.RequestFormLimitsAttribute> se utiliza para establecer el <xref:Microsoft.AspNetCore.Http.Features.FormOptions.MultipartBodyLengthLimit> para una sola página o acción.</span><span class="sxs-lookup"><span data-stu-id="8a080-556"><xref:Microsoft.AspNetCore.Mvc.RequestFormLimitsAttribute> is used to set the <xref:Microsoft.AspNetCore.Http.Features.FormOptions.MultipartBodyLengthLimit> for a single page or action.</span></span>
 
-<span data-ttu-id="8a080-557">En una :::no-loc(Razor)::: aplicación de páginas, aplique el filtro con una [Convención](xref:razor-pages/razor-pages-conventions) en `Startup.ConfigureServices` :</span><span class="sxs-lookup"><span data-stu-id="8a080-557">In a :::no-loc(Razor)::: Pages app, apply the filter with a [convention](xref:razor-pages/razor-pages-conventions) in `Startup.ConfigureServices`:</span></span>
+<span data-ttu-id="8a080-557">En una Razor aplicación de páginas, aplique el filtro con una [Convención](xref:razor-pages/razor-pages-conventions) en `Startup.ConfigureServices` :</span><span class="sxs-lookup"><span data-stu-id="8a080-557">In a Razor Pages app, apply the filter with a [convention](xref:razor-pages/razor-pages-conventions) in `Startup.ConfigureServices`:</span></span>
 
 ```csharp
-services.Add:::no-loc(Razor):::Pages(options =>
+services.AddRazorPages(options =>
 {
     options.Conventions
         .AddPageApplicationModelConvention("/FileUploadPage",
@@ -1362,7 +1362,7 @@ services.Add:::no-loc(Razor):::Pages(options =>
 });
 ```
 
-<span data-ttu-id="8a080-558">En una :::no-loc(Razor)::: aplicación de páginas o en una aplicación MVC, aplique el filtro al método de acción o modelo de página:</span><span class="sxs-lookup"><span data-stu-id="8a080-558">In a :::no-loc(Razor)::: Pages app or an MVC app, apply the filter to the page model or action method:</span></span>
+<span data-ttu-id="8a080-558">En una Razor aplicación de páginas o en una aplicación MVC, aplique el filtro al método de acción o modelo de página:</span><span class="sxs-lookup"><span data-stu-id="8a080-558">In a Razor Pages app or an MVC app, apply the filter to the page model or action method:</span></span>
 
 ```csharp
 // Set the limit to 256 MB
@@ -1393,10 +1393,10 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 
 <span data-ttu-id="8a080-562"><xref:Microsoft.AspNetCore.Mvc.RequestSizeLimitAttribute> se usa para establecer el valor de [MaxRequestBodySize](xref:fundamentals/servers/kestrel#maximum-request-body-size) de una sola página o acción.</span><span class="sxs-lookup"><span data-stu-id="8a080-562"><xref:Microsoft.AspNetCore.Mvc.RequestSizeLimitAttribute> is used to set the [MaxRequestBodySize](xref:fundamentals/servers/kestrel#maximum-request-body-size) for a single page or action.</span></span>
 
-<span data-ttu-id="8a080-563">En una :::no-loc(Razor)::: aplicación de páginas, aplique el filtro con una [Convención](xref:razor-pages/razor-pages-conventions) en `Startup.ConfigureServices` :</span><span class="sxs-lookup"><span data-stu-id="8a080-563">In a :::no-loc(Razor)::: Pages app, apply the filter with a [convention](xref:razor-pages/razor-pages-conventions) in `Startup.ConfigureServices`:</span></span>
+<span data-ttu-id="8a080-563">En una Razor aplicación de páginas, aplique el filtro con una [Convención](xref:razor-pages/razor-pages-conventions) en `Startup.ConfigureServices` :</span><span class="sxs-lookup"><span data-stu-id="8a080-563">In a Razor Pages app, apply the filter with a [convention](xref:razor-pages/razor-pages-conventions) in `Startup.ConfigureServices`:</span></span>
 
 ```csharp
-services.Add:::no-loc(Razor):::Pages(options =>
+services.AddRazorPages(options =>
 {
     options.Conventions
         .AddPageApplicationModelConvention("/FileUploadPage",
@@ -1409,7 +1409,7 @@ services.Add:::no-loc(Razor):::Pages(options =>
 });
 ```
 
-<span data-ttu-id="8a080-564">En una :::no-loc(Razor)::: aplicación pages o MVC, aplique el filtro a la clase de controlador de páginas o al método de acción:</span><span class="sxs-lookup"><span data-stu-id="8a080-564">In a :::no-loc(Razor)::: pages app or an MVC app, apply the filter to the page handler class or action method:</span></span>
+<span data-ttu-id="8a080-564">En una Razor aplicación pages o MVC, aplique el filtro a la clase de controlador de páginas o al método de acción:</span><span class="sxs-lookup"><span data-stu-id="8a080-564">In a Razor pages app or an MVC app, apply the filter to the page handler class or action method:</span></span>
 
 ```csharp
 // Handle requests up to 50 MB
@@ -1420,7 +1420,7 @@ public class BufferedSingleFileUploadPhysicalModel : PageModel
 }
 ```
 
-<span data-ttu-id="8a080-565">`RequestSizeLimitAttribute`También se puede aplicar mediante la [`@attribute`](xref:mvc/views/razor#attribute) :::no-loc(Razor)::: Directiva:</span><span class="sxs-lookup"><span data-stu-id="8a080-565">The `RequestSizeLimitAttribute` can also be applied using the [`@attribute`](xref:mvc/views/razor#attribute) :::no-loc(Razor)::: directive:</span></span>
+<span data-ttu-id="8a080-565">`RequestSizeLimitAttribute`También se puede aplicar mediante la [`@attribute`](xref:mvc/views/razor#attribute) Razor Directiva:</span><span class="sxs-lookup"><span data-stu-id="8a080-565">The `RequestSizeLimitAttribute` can also be applied using the [`@attribute`](xref:mvc/views/razor#attribute) Razor directive:</span></span>
 
 ```cshtml
 @attribute [RequestSizeLimitAttribute(52428800)]
@@ -1507,7 +1507,7 @@ The request filtering module is configured to deny a request that exceeds the re
 
 * <span data-ttu-id="8a080-605">Cargue los archivos a un área de carga de archivos dedicada, preferiblemente una unidad que no sea de sistema.</span><span class="sxs-lookup"><span data-stu-id="8a080-605">Upload files to a dedicated file upload area, preferably to a non-system drive.</span></span> <span data-ttu-id="8a080-606">Una ubicación dedicada facilita la imposición de restricciones de seguridad en los archivos cargados.</span><span class="sxs-lookup"><span data-stu-id="8a080-606">A dedicated location makes it easier to impose security restrictions on uploaded files.</span></span> <span data-ttu-id="8a080-607">Deshabilite la ejecución de los permisos en la ubicación de carga de archivos.&dagger;</span><span class="sxs-lookup"><span data-stu-id="8a080-607">Disable execute permissions on the file upload location.&dagger;</span></span>
 * <span data-ttu-id="8a080-608">Los archivos cargados **no** se deben persistir en el mismo árbol de directorio que la aplicación.&dagger;</span><span class="sxs-lookup"><span data-stu-id="8a080-608">Do **not** persist uploaded files in the same directory tree as the app.&dagger;</span></span>
-* <span data-ttu-id="8a080-609">Use un nombre de archivo seguro determinado por la aplicación.</span><span class="sxs-lookup"><span data-stu-id="8a080-609">Use a safe file name determined by the app.</span></span> <span data-ttu-id="8a080-610">No use un nombre de archivo proporcionado por el usuario o el nombre de archivo que no es de confianza del archivo cargado. &dagger; HTML codifica el nombre de archivo que no es de confianza al mostrarlo.</span><span class="sxs-lookup"><span data-stu-id="8a080-610">Don't use a file name provided by the user or the untrusted file name of the uploaded file.&dagger; HTML encode the untrusted file name when displaying it.</span></span> <span data-ttu-id="8a080-611">Por ejemplo, registrando el nombre de archivo o mostrándose en la interfaz de usuario (la :::no-loc(Razor)::: salida codifica automáticamente html).</span><span class="sxs-lookup"><span data-stu-id="8a080-611">For example, logging the file name or displaying in UI (:::no-loc(Razor)::: automatically HTML encodes output).</span></span>
+* <span data-ttu-id="8a080-609">Use un nombre de archivo seguro determinado por la aplicación.</span><span class="sxs-lookup"><span data-stu-id="8a080-609">Use a safe file name determined by the app.</span></span> <span data-ttu-id="8a080-610">No use un nombre de archivo proporcionado por el usuario o el nombre de archivo que no es de confianza del archivo cargado. &dagger; HTML codifica el nombre de archivo que no es de confianza al mostrarlo.</span><span class="sxs-lookup"><span data-stu-id="8a080-610">Don't use a file name provided by the user or the untrusted file name of the uploaded file.&dagger; HTML encode the untrusted file name when displaying it.</span></span> <span data-ttu-id="8a080-611">Por ejemplo, registrando el nombre de archivo o mostrándose en la interfaz de usuario (la Razor salida codifica automáticamente html).</span><span class="sxs-lookup"><span data-stu-id="8a080-611">For example, logging the file name or displaying in UI (Razor automatically HTML encodes output).</span></span>
 * <span data-ttu-id="8a080-612">Permita solo las extensiones de archivo aprobadas para la especificación de diseño de la aplicación.&dagger;</span><span class="sxs-lookup"><span data-stu-id="8a080-612">Allow only approved file extensions for the app's design specification.&dagger;</span></span> <!-- * Check the file format signature to prevent a user from uploading a masqueraded file.&dagger; For example, don't permit a user to upload an *.exe* file with a *.txt* extension. Add this back when we get instructions how to do this.  -->
 * <span data-ttu-id="8a080-613">Compruebe que las comprobaciones del lado cliente se realizan en el servidor. &dagger; Las comprobaciones del lado cliente son fáciles de eludir.</span><span class="sxs-lookup"><span data-stu-id="8a080-613">Verify that client-side checks are performed on the server.&dagger; Client-side checks are easy to circumvent.</span></span>
 * <span data-ttu-id="8a080-614">Compruebe el tamaño de un archivo cargado.</span><span class="sxs-lookup"><span data-stu-id="8a080-614">Check the size of an uploaded file.</span></span> <span data-ttu-id="8a080-615">Establezca un límite de tamaño máximo para evitar cargas grandes.&dagger;</span><span class="sxs-lookup"><span data-stu-id="8a080-615">Set a maximum size limit to prevent large uploads.&dagger;</span></span>
@@ -1584,7 +1584,7 @@ The request filtering module is configured to deny a request that exceeds the re
 
 <span data-ttu-id="8a080-663">Para cargar archivos pequeños, se puede usar un formulario de varias partes o construir una solicitud POST con JavaScript.</span><span class="sxs-lookup"><span data-stu-id="8a080-663">To upload small files, use a multipart form or construct a POST request using JavaScript.</span></span>
 
-<span data-ttu-id="8a080-664">En el ejemplo siguiente se muestra el uso de un :::no-loc(Razor)::: formulario de páginas para cargar un único archivo ( *pages/BufferedSingleFileUploadPhysical. cshtml* en la aplicación de ejemplo):</span><span class="sxs-lookup"><span data-stu-id="8a080-664">The following example demonstrates the use of a :::no-loc(Razor)::: Pages form to upload a single file ( *Pages/BufferedSingleFileUploadPhysical.cshtml* in the sample app):</span></span>
+<span data-ttu-id="8a080-664">En el ejemplo siguiente se muestra el uso de un Razor formulario de páginas para cargar un único archivo ( *pages/BufferedSingleFileUploadPhysical. cshtml* en la aplicación de ejemplo):</span><span class="sxs-lookup"><span data-stu-id="8a080-664">The following example demonstrates the use of a Razor Pages form to upload a single file ( *Pages/BufferedSingleFileUploadPhysical.cshtml* in the sample app):</span></span>
 
 ```cshtml
 <form enctype="multipart/form-data" method="post">
@@ -1811,7 +1811,7 @@ public class BufferedSingleFileUploadDb
 > [!NOTE]
 > <span data-ttu-id="8a080-715"><xref:Microsoft.AspNetCore.Http.IFormFile> se puede usar directamente como un parámetro de método de acción o como una propiedad de modelo enlazado.</span><span class="sxs-lookup"><span data-stu-id="8a080-715"><xref:Microsoft.AspNetCore.Http.IFormFile> can be used directly as an action method parameter or as a bound model property.</span></span> <span data-ttu-id="8a080-716">En el ejemplo anterior se utiliza una propiedad de modelo enlazado.</span><span class="sxs-lookup"><span data-stu-id="8a080-716">The prior example uses a bound model property.</span></span>
 
-<span data-ttu-id="8a080-717">`FileUpload`Se utiliza en el :::no-loc(Razor)::: formulario de páginas:</span><span class="sxs-lookup"><span data-stu-id="8a080-717">The `FileUpload` is used in the :::no-loc(Razor)::: Pages form:</span></span>
+<span data-ttu-id="8a080-717">`FileUpload`Se utiliza en el Razor formulario de páginas:</span><span class="sxs-lookup"><span data-stu-id="8a080-717">The `FileUpload` is used in the Razor Pages form:</span></span>
 
 ```cshtml
 <form enctype="multipart/form-data" method="post">
@@ -1877,15 +1877,15 @@ public async Task<IActionResult> OnPostUploadAsync()
 
 <span data-ttu-id="8a080-731">En el ejemplo siguiente se muestra cómo usar JavaScript para transmitir un archivo a una acción de controlador.</span><span class="sxs-lookup"><span data-stu-id="8a080-731">The following example demonstrates how to use JavaScript to stream a file to a controller action.</span></span> <span data-ttu-id="8a080-732">El token de antifalsificación del archivo se genera por medio de un atributo de filtro personalizado y se pasa a los encabezados HTTP del cliente, en lugar de en el cuerpo de la solicitud.</span><span class="sxs-lookup"><span data-stu-id="8a080-732">The file's antiforgery token is generated using a custom filter attribute and passed to the client HTTP headers instead of in the request body.</span></span> <span data-ttu-id="8a080-733">Dado que el método de acción procesa los datos cargados directamente, el enlace de modelos del formulario se deshabilita por otro filtro personalizado.</span><span class="sxs-lookup"><span data-stu-id="8a080-733">Because the action method processes the uploaded data directly, form model binding is disabled by another custom filter.</span></span> <span data-ttu-id="8a080-734">Dentro de la acción, el contenido del formulario se lee usando un `MultipartReader` (que lee cada `MultipartSection` individual), de forma que el archivo se procesa o el contenido se almacena, según corresponda.</span><span class="sxs-lookup"><span data-stu-id="8a080-734">Within the action, the form's contents are read using a `MultipartReader`, which reads each individual `MultipartSection`, processing the file or storing the contents as appropriate.</span></span> <span data-ttu-id="8a080-735">Una vez leídas las secciones de varias partes, la acción realiza su propio enlace de modelos.</span><span class="sxs-lookup"><span data-stu-id="8a080-735">After the multipart sections are read, the action performs its own model binding.</span></span>
 
-<span data-ttu-id="8a080-736">La respuesta de página inicial carga el formulario y guarda un token antifalsificación en un :::no-loc(cookie)::: (mediante el `GenerateAntiforgeryToken:::no-loc(Cookie):::Attribute` atributo).</span><span class="sxs-lookup"><span data-stu-id="8a080-736">The initial page response loads the form and saves an antiforgery token in a :::no-loc(cookie)::: (via the `GenerateAntiforgeryToken:::no-loc(Cookie):::Attribute` attribute).</span></span> <span data-ttu-id="8a080-737">El atributo usa la compatibilidad con la [antifalsificación](xref:security/anti-request-forgery) integrada de ASP.net Core para establecer un :::no-loc(cookie)::: con un token de solicitud:</span><span class="sxs-lookup"><span data-stu-id="8a080-737">The attribute uses ASP.NET Core's built-in [antiforgery support](xref:security/anti-request-forgery) to set a :::no-loc(cookie)::: with a request token:</span></span>
+<span data-ttu-id="8a080-736">La respuesta de página inicial carga el formulario y guarda un token antifalsificación en un cookie (mediante el `GenerateAntiforgeryTokenCookieAttribute` atributo).</span><span class="sxs-lookup"><span data-stu-id="8a080-736">The initial page response loads the form and saves an antiforgery token in a cookie (via the `GenerateAntiforgeryTokenCookieAttribute` attribute).</span></span> <span data-ttu-id="8a080-737">El atributo usa la compatibilidad con la [antifalsificación](xref:security/anti-request-forgery) integrada de ASP.net Core para establecer un cookie con un token de solicitud:</span><span class="sxs-lookup"><span data-stu-id="8a080-737">The attribute uses ASP.NET Core's built-in [antiforgery support](xref:security/anti-request-forgery) to set a cookie with a request token:</span></span>
 
-[!code-csharp[](file-uploads/samples/2.x/SampleApp/Filters/Antiforgery.cs?name=snippet_GenerateAntiforgeryToken:::no-loc(Cookie):::Attribute)]
+[!code-csharp[](file-uploads/samples/2.x/SampleApp/Filters/Antiforgery.cs?name=snippet_GenerateAntiforgeryTokenCookieAttribute)]
 
 <span data-ttu-id="8a080-738">El `DisableFormValueModelBindingAttribute` se usa para deshabilitar el enlace de modelos:</span><span class="sxs-lookup"><span data-stu-id="8a080-738">The `DisableFormValueModelBindingAttribute` is used to disable model binding:</span></span>
 
 [!code-csharp[](file-uploads/samples/2.x/SampleApp/Filters/ModelBinding.cs?name=snippet_DisableFormValueModelBindingAttribute)]
 
-<span data-ttu-id="8a080-739">En la aplicación de ejemplo, `GenerateAntiforgeryToken:::no-loc(Cookie):::Attribute` y `DisableFormValueModelBindingAttribute` se aplican como filtros a los modelos de aplicación de página de `/StreamedSingleFileUploadDb` y `/StreamedSingleFileUploadPhysical` en `Startup.ConfigureServices` mediante [ :::no-loc(Razor)::: las convenciones de páginas](xref:razor-pages/razor-pages-conventions):</span><span class="sxs-lookup"><span data-stu-id="8a080-739">In the sample app, `GenerateAntiforgeryToken:::no-loc(Cookie):::Attribute` and `DisableFormValueModelBindingAttribute` are applied as filters to the page application models of `/StreamedSingleFileUploadDb` and `/StreamedSingleFileUploadPhysical` in `Startup.ConfigureServices` using [:::no-loc(Razor)::: Pages conventions](xref:razor-pages/razor-pages-conventions):</span></span>
+<span data-ttu-id="8a080-739">En la aplicación de ejemplo, `GenerateAntiforgeryTokenCookieAttribute` y `DisableFormValueModelBindingAttribute` se aplican como filtros a los modelos de aplicación de página de `/StreamedSingleFileUploadDb` y `/StreamedSingleFileUploadPhysical` en `Startup.ConfigureServices` mediante [ Razor las convenciones de páginas](xref:razor-pages/razor-pages-conventions):</span><span class="sxs-lookup"><span data-stu-id="8a080-739">In the sample app, `GenerateAntiforgeryTokenCookieAttribute` and `DisableFormValueModelBindingAttribute` are applied as filters to the page application models of `/StreamedSingleFileUploadDb` and `/StreamedSingleFileUploadPhysical` in `Startup.ConfigureServices` using [Razor Pages conventions](xref:razor-pages/razor-pages-conventions):</span></span>
 
 [!code-csharp[](file-uploads/samples/2.x/SampleApp/Startup.cs?name=snippet_AddMvc&highlight=8-11,17-20)]
 
@@ -1973,7 +1973,7 @@ using (var reader = new BinaryReader(uploadedFileData))
 
 <span data-ttu-id="8a080-777">Nunca use un nombre de archivo proporcionado por el cliente para guardar un archivo en el almacenamiento físico.</span><span class="sxs-lookup"><span data-stu-id="8a080-777">Never use a client-supplied file name for saving a file to physical storage.</span></span> <span data-ttu-id="8a080-778">Cree un nombre de archivo seguro para el archivo con [Path.GetRandomFileName](xref:System.IO.Path.GetRandomFileName*) o [Path.GetTempFileName](xref:System.IO.Path.GetTempFileName*) para crear una ruta de acceso completa (incluido el nombre de archivo) para el almacenamiento temporal.</span><span class="sxs-lookup"><span data-stu-id="8a080-778">Create a safe file name for the file using [Path.GetRandomFileName](xref:System.IO.Path.GetRandomFileName*) or [Path.GetTempFileName](xref:System.IO.Path.GetTempFileName*) to create a full path (including the file name) for temporary storage.</span></span>
 
-<span data-ttu-id="8a080-779">:::no-loc(Razor)::: HTML codifica automáticamente los valores de propiedad para la presentación.</span><span class="sxs-lookup"><span data-stu-id="8a080-779">:::no-loc(Razor)::: automatically HTML encodes property values for display.</span></span> <span data-ttu-id="8a080-780">El código siguiente es seguro de usar:</span><span class="sxs-lookup"><span data-stu-id="8a080-780">The following code is safe to use:</span></span>
+<span data-ttu-id="8a080-779">Razor HTML codifica automáticamente los valores de propiedad para la presentación.</span><span class="sxs-lookup"><span data-stu-id="8a080-779">Razor automatically HTML encodes property values for display.</span></span> <span data-ttu-id="8a080-780">El código siguiente es seguro de usar:</span><span class="sxs-lookup"><span data-stu-id="8a080-780">The following code is safe to use:</span></span>
 
 ```cshtml
 @foreach (var file in Model.DatabaseFiles) {
@@ -1985,7 +1985,7 @@ using (var reader = new BinaryReader(uploadedFileData))
 }
 ```
 
-<span data-ttu-id="8a080-781">Fuera de :::no-loc(Razor)::: , <xref:System.Net.WebUtility.HtmlEncode*> el contenido del nombre de archivo siempre procedente de la solicitud de un usuario.</span><span class="sxs-lookup"><span data-stu-id="8a080-781">Outside of :::no-loc(Razor):::, always <xref:System.Net.WebUtility.HtmlEncode*> file name content from a user's request.</span></span>
+<span data-ttu-id="8a080-781">Fuera de Razor , <xref:System.Net.WebUtility.HtmlEncode*> el contenido del nombre de archivo siempre procedente de la solicitud de un usuario.</span><span class="sxs-lookup"><span data-stu-id="8a080-781">Outside of Razor, always <xref:System.Net.WebUtility.HtmlEncode*> file name content from a user's request.</span></span>
 
 <span data-ttu-id="8a080-782">Muchas implementaciones deben incluir una comprobación de que el archivo existe; de lo contrario, el archivo se sobrescribe por un archivo con el mismo nombre.</span><span class="sxs-lookup"><span data-stu-id="8a080-782">Many implementations must include a check that the file exists; otherwise, the file is overwritten by a file of the same name.</span></span> <span data-ttu-id="8a080-783">Proporcione lógica adicional para satisfacer las especificaciones de la aplicación.</span><span class="sxs-lookup"><span data-stu-id="8a080-783">Supply additional logic to meet your app's specifications.</span></span>
 
@@ -1993,7 +1993,7 @@ using (var reader = new BinaryReader(uploadedFileData))
 
 <span data-ttu-id="8a080-785">Limite el tamaño de los archivos cargados.</span><span class="sxs-lookup"><span data-stu-id="8a080-785">Limit the size of uploaded files.</span></span>
 
-<span data-ttu-id="8a080-786">En la aplicación de ejemplo, el tamaño del archivo está limitado a 2 MB (se indica en bytes).</span><span class="sxs-lookup"><span data-stu-id="8a080-786">In the sample app, the size of the file is limited to 2 MB (indicated in bytes).</span></span> <span data-ttu-id="8a080-787">El límite se proporciona a través de la [configuración](xref:fundamentals/configuration/index) del *:::no-loc(appsettings.json):::* archivo:</span><span class="sxs-lookup"><span data-stu-id="8a080-787">The limit is supplied via [Configuration](xref:fundamentals/configuration/index) from the *:::no-loc(appsettings.json):::* file:</span></span>
+<span data-ttu-id="8a080-786">En la aplicación de ejemplo, el tamaño del archivo está limitado a 2 MB (se indica en bytes).</span><span class="sxs-lookup"><span data-stu-id="8a080-786">In the sample app, the size of the file is limited to 2 MB (indicated in bytes).</span></span> <span data-ttu-id="8a080-787">El límite se proporciona a través de la [configuración](xref:fundamentals/configuration/index) del *appsettings.json* archivo:</span><span class="sxs-lookup"><span data-stu-id="8a080-787">The limit is supplied via [Configuration](xref:fundamentals/configuration/index) from the *appsettings.json* file:</span></span>
 
 ```json
 {
@@ -2028,7 +2028,7 @@ if (formFile.Length > _fileSizeLimit)
 
 ### <a name="match-name-attribute-value-to-parameter-name-of-post-method"></a><span data-ttu-id="8a080-790">Coincidencia del valor de atributo de nombre con el nombre del parámetro del método POST</span><span class="sxs-lookup"><span data-stu-id="8a080-790">Match name attribute value to parameter name of POST method</span></span>
 
-<span data-ttu-id="8a080-791">En los que no son :::no-loc(Razor)::: formularios y que envían datos de formulario `FormData` directamente, el nombre especificado en el elemento del formulario o `FormData` deben coincidir con el nombre del parámetro en la acción del controlador.</span><span class="sxs-lookup"><span data-stu-id="8a080-791">In non-:::no-loc(Razor)::: forms that POST form data or use JavaScript's `FormData` directly, the name specified in the form's element or `FormData` must match the name of the parameter in the controller's action.</span></span>
+<span data-ttu-id="8a080-791">En los que no son Razor formularios y que envían datos de formulario `FormData` directamente, el nombre especificado en el elemento del formulario o `FormData` deben coincidir con el nombre del parámetro en la acción del controlador.</span><span class="sxs-lookup"><span data-stu-id="8a080-791">In non-Razor forms that POST form data or use JavaScript's `FormData` directly, the name specified in the form's element or `FormData` must match the name of the parameter in the controller's action.</span></span>
 
 <span data-ttu-id="8a080-792">En el ejemplo siguiente:</span><span class="sxs-lookup"><span data-stu-id="8a080-792">In the following example:</span></span>
 
@@ -2050,7 +2050,7 @@ if (formFile.Length > _fileSizeLimit)
 
 <span data-ttu-id="8a080-795">Use un nombre coincidente para el parámetro del método de C# (`battlePlans`):</span><span class="sxs-lookup"><span data-stu-id="8a080-795">Use a matching name for the parameter of the C# method (`battlePlans`):</span></span>
 
-* <span data-ttu-id="8a080-796">Para un :::no-loc(Razor)::: método de controlador de página de páginas denominado `Upload` :</span><span class="sxs-lookup"><span data-stu-id="8a080-796">For a :::no-loc(Razor)::: Pages page handler method named `Upload`:</span></span>
+* <span data-ttu-id="8a080-796">Para un Razor método de controlador de página de páginas denominado `Upload` :</span><span class="sxs-lookup"><span data-stu-id="8a080-796">For a Razor Pages page handler method named `Upload`:</span></span>
 
   ```csharp
   public async Task<IActionResult> OnPostUploadAsync(List<IFormFile> battlePlans)
@@ -2081,11 +2081,11 @@ public void ConfigureServices(IServiceCollection services)
 
 <span data-ttu-id="8a080-804"><xref:Microsoft.AspNetCore.Mvc.RequestFormLimitsAttribute> se utiliza para establecer el <xref:Microsoft.AspNetCore.Http.Features.FormOptions.MultipartBodyLengthLimit> para una sola página o acción.</span><span class="sxs-lookup"><span data-stu-id="8a080-804"><xref:Microsoft.AspNetCore.Mvc.RequestFormLimitsAttribute> is used to set the <xref:Microsoft.AspNetCore.Http.Features.FormOptions.MultipartBodyLengthLimit> for a single page or action.</span></span>
 
-<span data-ttu-id="8a080-805">En una :::no-loc(Razor)::: aplicación de páginas, aplique el filtro con una [Convención](xref:razor-pages/razor-pages-conventions) en `Startup.ConfigureServices` :</span><span class="sxs-lookup"><span data-stu-id="8a080-805">In a :::no-loc(Razor)::: Pages app, apply the filter with a [convention](xref:razor-pages/razor-pages-conventions) in `Startup.ConfigureServices`:</span></span>
+<span data-ttu-id="8a080-805">En una Razor aplicación de páginas, aplique el filtro con una [Convención](xref:razor-pages/razor-pages-conventions) en `Startup.ConfigureServices` :</span><span class="sxs-lookup"><span data-stu-id="8a080-805">In a Razor Pages app, apply the filter with a [convention](xref:razor-pages/razor-pages-conventions) in `Startup.ConfigureServices`:</span></span>
 
 ```csharp
 services.AddMvc()
-    .Add:::no-loc(Razor):::PagesOptions(options =>
+    .AddRazorPagesOptions(options =>
     {
         options.Conventions
             .AddPageApplicationModelConvention("/FileUploadPage",
@@ -2099,7 +2099,7 @@ services.AddMvc()
     .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 ```
 
-<span data-ttu-id="8a080-806">En una :::no-loc(Razor)::: aplicación de páginas o en una aplicación MVC, aplique el filtro al método de acción o modelo de página:</span><span class="sxs-lookup"><span data-stu-id="8a080-806">In a :::no-loc(Razor)::: Pages app or an MVC app, apply the filter to the page model or action method:</span></span>
+<span data-ttu-id="8a080-806">En una Razor aplicación de páginas o en una aplicación MVC, aplique el filtro al método de acción o modelo de página:</span><span class="sxs-lookup"><span data-stu-id="8a080-806">In a Razor Pages app or an MVC app, apply the filter to the page model or action method:</span></span>
 
 ```csharp
 // Set the limit to 256 MB
@@ -2127,11 +2127,11 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
 
 <span data-ttu-id="8a080-810"><xref:Microsoft.AspNetCore.Mvc.RequestSizeLimitAttribute> se usa para establecer el valor de [MaxRequestBodySize](xref:fundamentals/servers/kestrel#maximum-request-body-size) de una sola página o acción.</span><span class="sxs-lookup"><span data-stu-id="8a080-810"><xref:Microsoft.AspNetCore.Mvc.RequestSizeLimitAttribute> is used to set the [MaxRequestBodySize](xref:fundamentals/servers/kestrel#maximum-request-body-size) for a single page or action.</span></span>
 
-<span data-ttu-id="8a080-811">En una :::no-loc(Razor)::: aplicación de páginas, aplique el filtro con una [Convención](xref:razor-pages/razor-pages-conventions) en `Startup.ConfigureServices` :</span><span class="sxs-lookup"><span data-stu-id="8a080-811">In a :::no-loc(Razor)::: Pages app, apply the filter with a [convention](xref:razor-pages/razor-pages-conventions) in `Startup.ConfigureServices`:</span></span>
+<span data-ttu-id="8a080-811">En una Razor aplicación de páginas, aplique el filtro con una [Convención](xref:razor-pages/razor-pages-conventions) en `Startup.ConfigureServices` :</span><span class="sxs-lookup"><span data-stu-id="8a080-811">In a Razor Pages app, apply the filter with a [convention](xref:razor-pages/razor-pages-conventions) in `Startup.ConfigureServices`:</span></span>
 
 ```csharp
 services.AddMvc()
-    .Add:::no-loc(Razor):::PagesOptions(options =>
+    .AddRazorPagesOptions(options =>
     {
         options.Conventions
             .AddPageApplicationModelConvention("/FileUploadPage",
@@ -2145,7 +2145,7 @@ services.AddMvc()
     .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 ```
 
-<span data-ttu-id="8a080-812">En una :::no-loc(Razor)::: aplicación pages o MVC, aplique el filtro a la clase de controlador de páginas o al método de acción:</span><span class="sxs-lookup"><span data-stu-id="8a080-812">In a :::no-loc(Razor)::: pages app or an MVC app, apply the filter to the page handler class or action method:</span></span>
+<span data-ttu-id="8a080-812">En una Razor aplicación pages o MVC, aplique el filtro a la clase de controlador de páginas o al método de acción:</span><span class="sxs-lookup"><span data-stu-id="8a080-812">In a Razor pages app or an MVC app, apply the filter to the page handler class or action method:</span></span>
 
 ```csharp
 // Handle requests up to 50 MB

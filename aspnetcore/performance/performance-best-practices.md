@@ -6,17 +6,17 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 04/06/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: performance/performance-best-practices
 ms.openlocfilehash: a3fc398569fafefc0b4634e80433a5d4e0e1b4ff
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -55,7 +55,7 @@ ms.locfileid: "93061007"
 
 * <span data-ttu-id="d499d-126">Establecer [rutas de acceso de código activas](#understand-hot-code-paths) de forma asincrónica.</span><span class="sxs-lookup"><span data-stu-id="d499d-126">Make [hot code paths](#understand-hot-code-paths) asynchronous.</span></span>
 * <span data-ttu-id="d499d-127">Llame a las API de acceso a datos, e/s y de ejecución prolongada de forma asincrónica si hay disponible una API asincrónica.</span><span class="sxs-lookup"><span data-stu-id="d499d-127">Call data access, I/O, and long-running operations APIs asynchronously if an asynchronous API is available.</span></span> <span data-ttu-id="d499d-128">**No** use [Task. Run](/dotnet/api/system.threading.tasks.task.run) para convertir una API sincrónica en asincrónica.</span><span class="sxs-lookup"><span data-stu-id="d499d-128">Do **not** use [Task.Run](/dotnet/api/system.threading.tasks.task.run) to make a synchronous API asynchronous.</span></span>
-* <span data-ttu-id="d499d-129">Hacer que las acciones de controlador/ :::no-loc(Razor)::: Página sean asincrónicas.</span><span class="sxs-lookup"><span data-stu-id="d499d-129">Make controller/:::no-loc(Razor)::: Page actions asynchronous.</span></span> <span data-ttu-id="d499d-130">Toda la pila de llamadas es asincrónica para beneficiarse de los patrones [Async/Await](/dotnet/csharp/programming-guide/concepts/async/) .</span><span class="sxs-lookup"><span data-stu-id="d499d-130">The entire call stack is asynchronous in order to benefit from [async/await](/dotnet/csharp/programming-guide/concepts/async/) patterns.</span></span>
+* <span data-ttu-id="d499d-129">Hacer que las acciones de controlador/ Razor Página sean asincrónicas.</span><span class="sxs-lookup"><span data-stu-id="d499d-129">Make controller/Razor Page actions asynchronous.</span></span> <span data-ttu-id="d499d-130">Toda la pila de llamadas es asincrónica para beneficiarse de los patrones [Async/Await](/dotnet/csharp/programming-guide/concepts/async/) .</span><span class="sxs-lookup"><span data-stu-id="d499d-130">The entire call stack is asynchronous in order to benefit from [async/await](/dotnet/csharp/programming-guide/concepts/async/) patterns.</span></span>
 
 <span data-ttu-id="d499d-131">Se puede usar un generador de perfiles, como [PerfView](https://github.com/Microsoft/perfview), para buscar subprocesos que se agregan con frecuencia al [grupo de subprocesos](/windows/desktop/procthread/thread-pools).</span><span class="sxs-lookup"><span data-stu-id="d499d-131">A profiler, such as [PerfView](https://github.com/Microsoft/perfview), can be used to find threads frequently added to the [Thread Pool](/windows/desktop/procthread/thread-pools).</span></span> <span data-ttu-id="d499d-132">El `Microsoft-Windows-DotNETRuntime/ThreadPoolWorkerThread/Start` evento indica que un subproceso se ha agregado al grupo de subprocesos.</span><span class="sxs-lookup"><span data-stu-id="d499d-132">The `Microsoft-Windows-DotNETRuntime/ThreadPoolWorkerThread/Start` event indicates a thread added to the thread pool.</span></span> <!--  For more information, see [async guidance docs](TBD-Link_To_Davifowl_Doc)  -->
 
@@ -136,7 +136,7 @@ ms.locfileid: "93061007"
 
 * <span data-ttu-id="d499d-208">**No** espere a que se completen las tareas de ejecución prolongada como parte del procesamiento de solicitudes HTTP normales.</span><span class="sxs-lookup"><span data-stu-id="d499d-208">**Do not** wait for long-running tasks to complete as part of ordinary HTTP request processing.</span></span>
 * <span data-ttu-id="d499d-209">**Considere la** posibilidad de controlar las solicitudes de ejecución prolongada con [servicios en segundo plano](xref:fundamentals/host/hosted-services) o fuera de proceso con una [función de Azure](/azure/azure-functions/).</span><span class="sxs-lookup"><span data-stu-id="d499d-209">**Do** consider handling long-running requests with [background services](xref:fundamentals/host/hosted-services) or out of process with an [Azure Function](/azure/azure-functions/).</span></span> <span data-ttu-id="d499d-210">Completar el trabajo fuera de proceso es especialmente útil para las tareas de uso intensivo de la CPU.</span><span class="sxs-lookup"><span data-stu-id="d499d-210">Completing work out-of-process is especially beneficial for CPU-intensive tasks.</span></span>
-* <span data-ttu-id="d499d-211">**Utilice opciones** de comunicación en tiempo real, como [:::no-loc(SignalR):::](xref:signalr/introduction) , para comunicarse con los clientes de forma asincrónica.</span><span class="sxs-lookup"><span data-stu-id="d499d-211">**Do** use real-time communication options, such as [:::no-loc(SignalR):::](xref:signalr/introduction), to communicate with clients asynchronously.</span></span>
+* <span data-ttu-id="d499d-211">**Utilice opciones** de comunicación en tiempo real, como [SignalR](xref:signalr/introduction) , para comunicarse con los clientes de forma asincrónica.</span><span class="sxs-lookup"><span data-stu-id="d499d-211">**Do** use real-time communication options, such as [SignalR](xref:signalr/introduction), to communicate with clients asynchronously.</span></span>
 
 ## <a name="minify-client-assets"></a><span data-ttu-id="d499d-212">Activos de cliente de minimizar</span><span class="sxs-lookup"><span data-stu-id="d499d-212">Minify client assets</span></span>
 

@@ -6,17 +6,17 @@ description: Descubra los atributos del asistente de etiquetas de vínculo de AS
 ms.custom: mvc
 ms.date: 09/24/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: mvc/views/tag-helpers/builtin-th/link-tag-helper
 ms.openlocfilehash: 7998cec94ebb56cbe6dbc321f7cb499260d6fe74
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -35,7 +35,7 @@ ms.locfileid: "93059122"
 
 <span data-ttu-id="2e98b-107">El asistente de etiquetas de vínculo permite especificar una red CDN para el archivo CSS y una reserva cuando dicha red no está disponible.</span><span class="sxs-lookup"><span data-stu-id="2e98b-107">The Link Tag Helper allows you to specify a CDN for the CSS file and a fallback when the CDN is not available.</span></span> <span data-ttu-id="2e98b-108">El asistente de etiquetas de vínculo proporciona la ventaja de rendimiento de una red CDN con la solidez del hospedaje local.</span><span class="sxs-lookup"><span data-stu-id="2e98b-108">The Link Tag Helper provides the performance advantage of a CDN with the robustness of local hosting.</span></span>
 
-<span data-ttu-id="2e98b-109">En el :::no-loc(Razor)::: marcado siguiente se muestra el `head` elemento de un archivo de diseño creado con la plantilla de aplicación web de ASP.net Core:</span><span class="sxs-lookup"><span data-stu-id="2e98b-109">The following :::no-loc(Razor)::: markup shows the `head` element of a layout file created with the ASP.NET Core web app template:</span></span>
+<span data-ttu-id="2e98b-109">En el Razor marcado siguiente se muestra el `head` elemento de un archivo de diseño creado con la plantilla de aplicación web de ASP.net Core:</span><span class="sxs-lookup"><span data-stu-id="2e98b-109">The following Razor markup shows the `head` element of a layout file created with the ASP.NET Core web app template:</span></span>
 
 [!code-cshtml[](link-tag-helper/sample/_Layout.cshtml?name=snippet)]
 

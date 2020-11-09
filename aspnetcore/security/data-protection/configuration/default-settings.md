@@ -5,17 +5,17 @@ description: Más información sobre la duración y la administración de claves
 ms.author: riande
 ms.date: 10/14/2016
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: security/data-protection/configuration/default-settings
 ms.openlocfilehash: 1303c5c2c993f1d20383457666aebfa2a583e938
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -35,7 +35,7 @@ ms.locfileid: "93053012"
 1. <span data-ttu-id="3c4f3-107">Si la aplicación se hospeda en [aplicaciones de Azure](https://azure.microsoft.com/services/app-service/), las claves se conservan en la carpeta *%Home%\ASP.NET\DataProtection-Keys*</span><span class="sxs-lookup"><span data-stu-id="3c4f3-107">If the app is hosted in [Azure Apps](https://azure.microsoft.com/services/app-service/), keys are persisted to the *%HOME%\ASP.NET\DataProtection-Keys* folder.</span></span> <span data-ttu-id="3c4f3-108">Esta carpeta está respaldada por el almacenamiento de red y se sincroniza en todas las máquinas que hospedan la aplicación.</span><span class="sxs-lookup"><span data-stu-id="3c4f3-108">This folder is backed by network storage and is synchronized across all machines hosting the app.</span></span>
    * <span data-ttu-id="3c4f3-109">Las claves no están protegidas en reposo.</span><span class="sxs-lookup"><span data-stu-id="3c4f3-109">Keys aren't protected at rest.</span></span>
    * <span data-ttu-id="3c4f3-110">La carpeta de *claves de protección* de la información proporciona el anillo de claves a todas las instancias de una aplicación en una sola ranura de implementación.</span><span class="sxs-lookup"><span data-stu-id="3c4f3-110">The *DataProtection-Keys* folder supplies the key ring to all instances of an app in a single deployment slot.</span></span>
-   * <span data-ttu-id="3c4f3-111">Las ranuras de implementación independientes, por ejemplo, almacenamiento provisional y producción, no comparten ningún anillo de clave.</span><span class="sxs-lookup"><span data-stu-id="3c4f3-111">Separate deployment slots, such as Staging and Production, don't share a key ring.</span></span> <span data-ttu-id="3c4f3-112">Al intercambiar entre las ranuras de implementación, por ejemplo, el intercambio de ensayo a producción o el uso de pruebas A/B, cualquier aplicación que use la protección de datos no podrá descifrar los datos almacenados mediante el anillo de claves dentro de la ranura anterior.</span><span class="sxs-lookup"><span data-stu-id="3c4f3-112">When you swap between deployment slots, for example swapping Staging to Production or using A/B testing, any app using Data Protection won't be able to decrypt stored data using the key ring inside the previous slot.</span></span> <span data-ttu-id="3c4f3-113">Esto conduce a los usuarios que se registran en una aplicación que usa la autenticación de ASP.NET Core estándar :::no-loc(cookie)::: , ya que usa la protección de datos para proteger sus :::no-loc(cookie)::: s.</span><span class="sxs-lookup"><span data-stu-id="3c4f3-113">This leads to users being logged out of an app that uses the standard ASP.NET Core :::no-loc(cookie)::: authentication, as it uses Data Protection to protect its :::no-loc(cookie):::s.</span></span> <span data-ttu-id="3c4f3-114">Si desea usar anillos de claves independientes de la ranura, use un proveedor de anillo de claves externo, como Azure Blob Storage, Azure Key Vault, un almacén de SQL o caché en Redis.</span><span class="sxs-lookup"><span data-stu-id="3c4f3-114">If you desire slot-independent key rings, use an external key ring provider, such as Azure Blob Storage, Azure Key Vault, a SQL store, or Redis cache.</span></span>
+   * <span data-ttu-id="3c4f3-111">Las ranuras de implementación independientes, por ejemplo, almacenamiento provisional y producción, no comparten ningún anillo de clave.</span><span class="sxs-lookup"><span data-stu-id="3c4f3-111">Separate deployment slots, such as Staging and Production, don't share a key ring.</span></span> <span data-ttu-id="3c4f3-112">Al intercambiar entre las ranuras de implementación, por ejemplo, el intercambio de ensayo a producción o el uso de pruebas A/B, cualquier aplicación que use la protección de datos no podrá descifrar los datos almacenados mediante el anillo de claves dentro de la ranura anterior.</span><span class="sxs-lookup"><span data-stu-id="3c4f3-112">When you swap between deployment slots, for example swapping Staging to Production or using A/B testing, any app using Data Protection won't be able to decrypt stored data using the key ring inside the previous slot.</span></span> <span data-ttu-id="3c4f3-113">Esto conduce a los usuarios que se registran en una aplicación que usa la autenticación de ASP.NET Core estándar cookie , ya que usa la protección de datos para proteger sus cookie s.</span><span class="sxs-lookup"><span data-stu-id="3c4f3-113">This leads to users being logged out of an app that uses the standard ASP.NET Core cookie authentication, as it uses Data Protection to protect its cookies.</span></span> <span data-ttu-id="3c4f3-114">Si desea usar anillos de claves independientes de la ranura, use un proveedor de anillo de claves externo, como Azure Blob Storage, Azure Key Vault, un almacén de SQL o caché en Redis.</span><span class="sxs-lookup"><span data-stu-id="3c4f3-114">If you desire slot-independent key rings, use an external key ring provider, such as Azure Blob Storage, Azure Key Vault, a SQL store, or Redis cache.</span></span>
 
 1. <span data-ttu-id="3c4f3-115">Si el perfil de usuario está disponible, las claves se conservan en la carpeta *%LOCALAPPDATA%\ASP.NET\DataProtection-Keys*</span><span class="sxs-lookup"><span data-stu-id="3c4f3-115">If the user profile is available, keys are persisted to the *%LOCALAPPDATA%\ASP.NET\DataProtection-Keys* folder.</span></span> <span data-ttu-id="3c4f3-116">Si el sistema operativo es Windows, las claves se cifran en reposo mediante DPAPI.</span><span class="sxs-lookup"><span data-stu-id="3c4f3-116">If the operating system is Windows, the keys are encrypted at rest using DPAPI.</span></span>
 

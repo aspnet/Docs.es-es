@@ -5,17 +5,17 @@ description: Obtenga información sobre cómo ASP.NET Core MVC usa el middleware
 ms.author: riande
 ms.date: 3/25/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: mvc/controllers/routing
 ms.openlocfilehash: 9f64dd8f0ca026cec4b7ee4b5ea02523139eed4f
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -307,7 +307,7 @@ endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}"
 
 ## <a name="reserved-routing-names"></a><span data-ttu-id="2b656-281">Nombres de enrutamientos reservados</span><span class="sxs-lookup"><span data-stu-id="2b656-281">Reserved routing names</span></span>
 
-<span data-ttu-id="2b656-282">Las siguientes palabras clave son nombres de parámetro de ruta reservados al usar controladores o :::no-loc(Razor)::: páginas:</span><span class="sxs-lookup"><span data-stu-id="2b656-282">The following keywords are reserved route parameter names when using Controllers or :::no-loc(Razor)::: Pages:</span></span>
+<span data-ttu-id="2b656-282">Las siguientes palabras clave son nombres de parámetro de ruta reservados al usar controladores o Razor páginas:</span><span class="sxs-lookup"><span data-stu-id="2b656-282">The following keywords are reserved route parameter names when using Controllers or Razor Pages:</span></span>
 
 * `action`
 * `area`
@@ -319,7 +319,7 @@ endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}"
 
 [!code-csharp[](routing/samples/3.x/main/Controllers/MyDemo2Controller.cs?name=snippet)]
 
-<span data-ttu-id="2b656-285">La generación de direcciones URL utiliza los nombres de parámetros especiales para determinar si una operación de generación de direcciones URL hace referencia a una :::no-loc(Razor)::: página o a un controlador.</span><span class="sxs-lookup"><span data-stu-id="2b656-285">The special parameter names are used by the URL generation to determine if a URL generation operation refers to a :::no-loc(Razor)::: Page or to a Controller.</span></span>
+<span data-ttu-id="2b656-285">La generación de direcciones URL utiliza los nombres de parámetros especiales para determinar si una operación de generación de direcciones URL hace referencia a una Razor página o a un controlador.</span><span class="sxs-lookup"><span data-stu-id="2b656-285">The special parameter names are used by the URL generation to determine if a URL generation operation refers to a Razor Page or to a Controller.</span></span>
 
 <a name="verb"></a>
 
@@ -477,7 +477,7 @@ AmbiguousMatchException: The request matched multiple endpoints. Matches:
 * <span data-ttu-id="2b656-387">El código anterior es un ejemplo o un diseño de enrutamiento deficiente.</span><span class="sxs-lookup"><span data-stu-id="2b656-387">The preceding code is an example or poor routing design.</span></span> <span data-ttu-id="2b656-388">Se usó para ilustrar la `Order` propiedad.</span><span class="sxs-lookup"><span data-stu-id="2b656-388">It was used to illustrate the `Order` property.</span></span>
 * <span data-ttu-id="2b656-389">La `Order` propiedad solo resuelve la ambigüedad, no se puede encontrar una coincidencia con esa plantilla.</span><span class="sxs-lookup"><span data-stu-id="2b656-389">The `Order` property only resolves the ambiguity, that template cannot be matched.</span></span> <span data-ttu-id="2b656-390">Sería mejor quitar la `[Route("Home")]` plantilla.</span><span class="sxs-lookup"><span data-stu-id="2b656-390">It would be better to remove the `[Route("Home")]` template.</span></span>
 
-<span data-ttu-id="2b656-391">Vea [ :::no-loc(Razor)::: páginas ruta y convenciones de aplicación: orden de ruta](xref:razor-pages/razor-pages-conventions#route-order) para obtener información sobre el orden de las rutas con :::no-loc(Razor)::: las páginas.</span><span class="sxs-lookup"><span data-stu-id="2b656-391">See [:::no-loc(Razor)::: Pages route and app conventions: Route order](xref:razor-pages/razor-pages-conventions#route-order) for information on route order with :::no-loc(Razor)::: Pages.</span></span>
+<span data-ttu-id="2b656-391">Vea [ Razor páginas ruta y convenciones de aplicación: orden de ruta](xref:razor-pages/razor-pages-conventions#route-order) para obtener información sobre el orden de las rutas con Razor las páginas.</span><span class="sxs-lookup"><span data-stu-id="2b656-391">See [Razor Pages route and app conventions: Route order](xref:razor-pages/razor-pages-conventions#route-order) for information on route order with Razor Pages.</span></span>
 
 <span data-ttu-id="2b656-392">En algunos casos, se devuelve un error HTTP 500 con rutas ambiguas.</span><span class="sxs-lookup"><span data-stu-id="2b656-392">In some cases, an HTTP 500 error is returned with ambiguous routes.</span></span> <span data-ttu-id="2b656-393">Utilice el [registro](xref:fundamentals/logging/index) para ver qué extremos produjeron el `AmbiguousMatchException` .</span><span class="sxs-lookup"><span data-stu-id="2b656-393">Use [logging](xref:fundamentals/logging/index) to see which endpoints caused the `AmbiguousMatchException`.</span></span>
 
@@ -756,13 +756,13 @@ result: /UrlGeneration/Destination
 
 [!code-csharp[](routing/samples/3.x/main/Controllers/UrlGeneration2Controller.cs?name=snippet_1)]
 
-<span data-ttu-id="2b656-544">El :::no-loc(Razor)::: archivo siguiente genera un vínculo HTML a `Destination_Route` :</span><span class="sxs-lookup"><span data-stu-id="2b656-544">The following :::no-loc(Razor)::: file generates an HTML link to the `Destination_Route`:</span></span>
+<span data-ttu-id="2b656-544">El Razor archivo siguiente genera un vínculo HTML a `Destination_Route` :</span><span class="sxs-lookup"><span data-stu-id="2b656-544">The following Razor file generates an HTML link to the `Destination_Route`:</span></span>
 
 [!code-cshtml[](routing/samples/3.x/main/Views/Shared/MyLink.cshtml)]
 
 <a name="routing-gen-urls-html-ref-label"></a>
 
-### <a name="generate-urls-in-html-and-no-locrazor"></a><span data-ttu-id="2b656-545">Generar direcciones URL en HTML y :::no-loc(Razor):::</span><span class="sxs-lookup"><span data-stu-id="2b656-545">Generate URLs in HTML and :::no-loc(Razor):::</span></span>
+### <a name="generate-urls-in-html-and-no-locrazor"></a><span data-ttu-id="2b656-545">Generar direcciones URL en HTML y Razor</span><span class="sxs-lookup"><span data-stu-id="2b656-545">Generate URLs in HTML and Razor</span></span>
 
 <span data-ttu-id="2b656-546"><xref:Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper> proporciona los <xref:Microsoft.AspNetCore.Mvc.ViewFeatures.HtmlHelper> métodos [HTML. BeginForm](xref:Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper.BeginForm*) y [HTML. ActionLink](xref:Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper.ActionLink*) para generar `<form>` `<a>` los elementos y, respectivamente.</span><span class="sxs-lookup"><span data-stu-id="2b656-546"><xref:Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper> provides the <xref:Microsoft.AspNetCore.Mvc.ViewFeatures.HtmlHelper> methods [Html.BeginForm](xref:Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper.BeginForm*) and [Html.ActionLink](xref:Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper.ActionLink*) to generate `<form>` and `<a>` elements respectively.</span></span> <span data-ttu-id="2b656-547">Estos métodos usan el método [URL. Action](xref:Microsoft.AspNetCore.Mvc.IUrlHelper.Action*) para generar una dirección URL y aceptan argumentos similares.</span><span class="sxs-lookup"><span data-stu-id="2b656-547">These methods use the [Url.Action](xref:Microsoft.AspNetCore.Mvc.IUrlHelper.Action*) method to generate a URL and they accept similar arguments.</span></span> <span data-ttu-id="2b656-548">Los métodos `Url.RouteUrl` complementarios de `HtmlHelper` son `Html.BeginRouteForm` y `Html.RouteLink`, cuya funcionalidad es similar.</span><span class="sxs-lookup"><span data-stu-id="2b656-548">The `Url.RouteUrl` companions for `HtmlHelper` are `Html.BeginRouteForm` and `Html.RouteLink` which have similar functionality.</span></span>
 
@@ -1224,7 +1224,7 @@ public class HomeController : Controller
 > [!TIP]
 > <span data-ttu-id="2b656-747">Evite depender de `Order`.</span><span class="sxs-lookup"><span data-stu-id="2b656-747">Avoid depending on `Order`.</span></span> <span data-ttu-id="2b656-748">Si su espacio de direcciones URL requiere unos valores de orden explícitos para un enrutamiento correcto, es probable que también sea confuso para los clientes.</span><span class="sxs-lookup"><span data-stu-id="2b656-748">If your URL-space requires explicit order values to route correctly, then it's likely confusing to clients as well.</span></span> <span data-ttu-id="2b656-749">Por lo general, el enrutamiento mediante atributos seleccionará la ruta correcta con la coincidencia de dirección URL.</span><span class="sxs-lookup"><span data-stu-id="2b656-749">In general attribute routing will select the correct route with URL matching.</span></span> <span data-ttu-id="2b656-750">Si el orden predeterminado que se usa para la generación de direcciones URL no funciona, normalmente es más sencillo utilizar el nombre de ruta como una invalidación que aplicar la propiedad `Order`.</span><span class="sxs-lookup"><span data-stu-id="2b656-750">If the default order used for URL generation isn't working, using route name as an override is usually simpler than applying the `Order` property.</span></span>
 
-<span data-ttu-id="2b656-751">El enrutamiento de :::no-loc(Razor)::: Pages y el del controlador MVC comparten una implementación.</span><span class="sxs-lookup"><span data-stu-id="2b656-751">:::no-loc(Razor)::: Pages routing and MVC controller routing share an implementation.</span></span> <span data-ttu-id="2b656-752">La información sobre el orden de la ruta en los temas de las :::no-loc(Razor)::: páginas está disponible en [ :::no-loc(Razor)::: las páginas ruta y convenciones de aplicación: orden de ruta](xref:razor-pages/razor-pages-conventions#route-order).</span><span class="sxs-lookup"><span data-stu-id="2b656-752">Information on route order in the :::no-loc(Razor)::: Pages topics is available at [:::no-loc(Razor)::: Pages route and app conventions: Route order](xref:razor-pages/razor-pages-conventions#route-order).</span></span>
+<span data-ttu-id="2b656-751">El enrutamiento de Razor Pages y el del controlador MVC comparten una implementación.</span><span class="sxs-lookup"><span data-stu-id="2b656-751">Razor Pages routing and MVC controller routing share an implementation.</span></span> <span data-ttu-id="2b656-752">La información sobre el orden de la ruta en los temas de las Razor páginas está disponible en [ Razor las páginas ruta y convenciones de aplicación: orden de ruta](xref:razor-pages/razor-pages-conventions#route-order).</span><span class="sxs-lookup"><span data-stu-id="2b656-752">Information on route order in the Razor Pages topics is available at [Razor Pages route and app conventions: Route order](xref:razor-pages/razor-pages-conventions#route-order).</span></span>
 
 <a name="routing-token-replacement-templates-ref-label"></a>
 

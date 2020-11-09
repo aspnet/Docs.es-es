@@ -1,23 +1,23 @@
 ---
-title: 'Cliente de ASP.NET Core :::no-loc(SignalR)::: JavaScript'
+title: 'Cliente de ASP.NET Core SignalR JavaScript'
 author: bradygaster
-description: 'Información general de ASP.NET Core :::no-loc(SignalR)::: cliente JavaScript.'
+description: 'Información general de ASP.NET Core SignalR cliente JavaScript.'
 monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
 ms.custom: mvc, devx-track-js
 ms.date: 04/08/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: signalr/javascript-client
 ms.openlocfilehash: b4b1bc6131a6676710adbf2503efe3f304d89a58
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -26,19 +26,19 @@ ms.contentlocale: es-ES
 ms.lasthandoff: 10/30/2020
 ms.locfileid: "93050854"
 ---
-# <a name="aspnet-core-no-locsignalr-javascript-client"></a><span data-ttu-id="b84ed-103">Cliente de ASP.NET Core :::no-loc(SignalR)::: JavaScript</span><span class="sxs-lookup"><span data-stu-id="b84ed-103">ASP.NET Core :::no-loc(SignalR)::: JavaScript client</span></span>
+# <a name="aspnet-core-no-locsignalr-javascript-client"></a><span data-ttu-id="b84ed-103">Cliente de ASP.NET Core SignalR JavaScript</span><span class="sxs-lookup"><span data-stu-id="b84ed-103">ASP.NET Core SignalR JavaScript client</span></span>
 
 ::: moniker range=">= aspnetcore-3.0"
 
 <span data-ttu-id="b84ed-104">Por [Rachel Appel](https://twitter.com/rachelappel)</span><span class="sxs-lookup"><span data-stu-id="b84ed-104">By [Rachel Appel](https://twitter.com/rachelappel)</span></span>
 
-<span data-ttu-id="b84ed-105">La biblioteca de cliente de ASP.NET Core :::no-loc(SignalR)::: JavaScript permite a los desarrolladores llamar a código de concentrador de servidor.</span><span class="sxs-lookup"><span data-stu-id="b84ed-105">The ASP.NET Core :::no-loc(SignalR)::: JavaScript client library enables developers to call server-side hub code.</span></span>
+<span data-ttu-id="b84ed-105">La biblioteca de cliente de ASP.NET Core SignalR JavaScript permite a los desarrolladores llamar a código de concentrador de servidor.</span><span class="sxs-lookup"><span data-stu-id="b84ed-105">The ASP.NET Core SignalR JavaScript client library enables developers to call server-side hub code.</span></span>
 
 <span data-ttu-id="b84ed-106">[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/javascript-client/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))</span><span class="sxs-lookup"><span data-stu-id="b84ed-106">[View or download sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/javascript-client/samples) ([how to download](xref:index#how-to-download-a-sample))</span></span>
 
-## <a name="install-the-no-locsignalr-client-package"></a><span data-ttu-id="b84ed-107">Instalar el :::no-loc(SignalR)::: paquete de cliente</span><span class="sxs-lookup"><span data-stu-id="b84ed-107">Install the :::no-loc(SignalR)::: client package</span></span>
+## <a name="install-the-no-locsignalr-client-package"></a><span data-ttu-id="b84ed-107">Instalar el SignalR paquete de cliente</span><span class="sxs-lookup"><span data-stu-id="b84ed-107">Install the SignalR client package</span></span>
 
-<span data-ttu-id="b84ed-108">La :::no-loc(SignalR)::: biblioteca de cliente de JavaScript se entrega como un paquete [NPM](https://www.npmjs.com/) .</span><span class="sxs-lookup"><span data-stu-id="b84ed-108">The :::no-loc(SignalR)::: JavaScript client library is delivered as an [npm](https://www.npmjs.com/) package.</span></span> <span data-ttu-id="b84ed-109">En las secciones siguientes se describen diferentes formas de instalar la biblioteca de cliente de.</span><span class="sxs-lookup"><span data-stu-id="b84ed-109">The following sections outline different ways to install the client library.</span></span>
+<span data-ttu-id="b84ed-108">La SignalR biblioteca de cliente de JavaScript se entrega como un paquete [NPM](https://www.npmjs.com/) .</span><span class="sxs-lookup"><span data-stu-id="b84ed-108">The SignalR JavaScript client library is delivered as an [npm](https://www.npmjs.com/) package.</span></span> <span data-ttu-id="b84ed-109">En las secciones siguientes se describen diferentes formas de instalar la biblioteca de cliente de.</span><span class="sxs-lookup"><span data-stu-id="b84ed-109">The following sections outline different ways to install the client library.</span></span>
 
 ### <a name="install-with-npm"></a><span data-ttu-id="b84ed-110">Instalación con NPM</span><span class="sxs-lookup"><span data-stu-id="b84ed-110">Install with npm</span></span>
 
@@ -51,7 +51,7 @@ npm install @microsoft/signalr
 
 <span data-ttu-id="b84ed-113">NPM instala el contenido del paquete en la *carpeta \\ @microsoft\signalr\dist\browser node_modules* .</span><span class="sxs-lookup"><span data-stu-id="b84ed-113">npm installs the package contents in the *node_modules\\@microsoft\signalr\dist\browser* folder.</span></span> <span data-ttu-id="b84ed-114">Cree una nueva carpeta denominada *signalr* en la carpeta *wwwroot \\ lib* .</span><span class="sxs-lookup"><span data-stu-id="b84ed-114">Create a new folder named *signalr* under the *wwwroot\\lib* folder.</span></span> <span data-ttu-id="b84ed-115">Copie el archivo de *signalr.js* en la carpeta *wwwroot\lib\signalr* .</span><span class="sxs-lookup"><span data-stu-id="b84ed-115">Copy the *signalr.js* file to the *wwwroot\lib\signalr* folder.</span></span>
 
-<span data-ttu-id="b84ed-116">Haga referencia al :::no-loc(SignalR)::: cliente de JavaScript en el `<script>` elemento.</span><span class="sxs-lookup"><span data-stu-id="b84ed-116">Reference the :::no-loc(SignalR)::: JavaScript client in the `<script>` element.</span></span> <span data-ttu-id="b84ed-117">Por ejemplo:</span><span class="sxs-lookup"><span data-stu-id="b84ed-117">For example:</span></span>
+<span data-ttu-id="b84ed-116">Haga referencia al SignalR cliente de JavaScript en el `<script>` elemento.</span><span class="sxs-lookup"><span data-stu-id="b84ed-116">Reference the SignalR JavaScript client in the `<script>` element.</span></span> <span data-ttu-id="b84ed-117">Por ejemplo:</span><span class="sxs-lookup"><span data-stu-id="b84ed-117">For example:</span></span>
 
 ```html
 <script src="~/lib/signalr/signalr.js"></script>
@@ -61,7 +61,7 @@ npm install @microsoft/signalr
 
 <span data-ttu-id="b84ed-119">Para usar la biblioteca de cliente sin el requisito previo de NPM, haga referencia a una copia hospedada en CDN de la biblioteca de cliente.</span><span class="sxs-lookup"><span data-stu-id="b84ed-119">To use the client library without the npm prerequisite, reference a CDN-hosted copy of the client library.</span></span> <span data-ttu-id="b84ed-120">Por ejemplo:</span><span class="sxs-lookup"><span data-stu-id="b84ed-120">For example:</span></span>
 
-[!code-html[](javascript-client/samples/3.x/:::no-loc(SignalR):::Chat/Pages/Index.cshtml?name=snippet_CDN)]
+[!code-html[](javascript-client/samples/3.x/SignalRChat/Pages/Index.cshtml?name=snippet_CDN)]
 
 <span data-ttu-id="b84ed-121">La biblioteca de cliente está disponible en las siguientes redes CDN:</span><span class="sxs-lookup"><span data-stu-id="b84ed-121">The client library is available on the following CDNs:</span></span>
 
@@ -71,13 +71,13 @@ npm install @microsoft/signalr
 
 ### <a name="install-with-libman"></a><span data-ttu-id="b84ed-125">Instalación con LibMan</span><span class="sxs-lookup"><span data-stu-id="b84ed-125">Install with LibMan</span></span>
 
-<span data-ttu-id="b84ed-126">[LibMan](xref:client-side/libman/index) se puede usar para instalar archivos de biblioteca de cliente específicos desde la biblioteca de cliente hospedada en CDN.</span><span class="sxs-lookup"><span data-stu-id="b84ed-126">[LibMan](xref:client-side/libman/index) can be used to install specific client library files from the CDN-hosted client library.</span></span> <span data-ttu-id="b84ed-127">Por ejemplo, agregue solo el archivo JavaScript reducida al proyecto.</span><span class="sxs-lookup"><span data-stu-id="b84ed-127">For example, only add the minified JavaScript file to the project.</span></span> <span data-ttu-id="b84ed-128">Para obtener más información sobre este enfoque, consulte [Agregar la :::no-loc(SignalR)::: biblioteca de cliente](xref:tutorials/signalr#add-the-signalr-client-library).</span><span class="sxs-lookup"><span data-stu-id="b84ed-128">For details on that approach, see [Add the :::no-loc(SignalR)::: client library](xref:tutorials/signalr#add-the-signalr-client-library).</span></span>
+<span data-ttu-id="b84ed-126">[LibMan](xref:client-side/libman/index) se puede usar para instalar archivos de biblioteca de cliente específicos desde la biblioteca de cliente hospedada en CDN.</span><span class="sxs-lookup"><span data-stu-id="b84ed-126">[LibMan](xref:client-side/libman/index) can be used to install specific client library files from the CDN-hosted client library.</span></span> <span data-ttu-id="b84ed-127">Por ejemplo, agregue solo el archivo JavaScript reducida al proyecto.</span><span class="sxs-lookup"><span data-stu-id="b84ed-127">For example, only add the minified JavaScript file to the project.</span></span> <span data-ttu-id="b84ed-128">Para obtener más información sobre este enfoque, consulte [Agregar la SignalR biblioteca de cliente](xref:tutorials/signalr#add-the-signalr-client-library).</span><span class="sxs-lookup"><span data-stu-id="b84ed-128">For details on that approach, see [Add the SignalR client library](xref:tutorials/signalr#add-the-signalr-client-library).</span></span>
 
 ## <a name="connect-to-a-hub"></a><span data-ttu-id="b84ed-129">Conexión a un concentrador</span><span class="sxs-lookup"><span data-stu-id="b84ed-129">Connect to a hub</span></span>
 
 <span data-ttu-id="b84ed-130">El código siguiente crea e inicia una conexión.</span><span class="sxs-lookup"><span data-stu-id="b84ed-130">The following code creates and starts a connection.</span></span> <span data-ttu-id="b84ed-131">El nombre del centro no distingue mayúsculas de minúsculas:</span><span class="sxs-lookup"><span data-stu-id="b84ed-131">The hub's name is case insensitive:</span></span>
 
-[!code-javascript[](javascript-client/samples/3.x/:::no-loc(SignalR):::Chat/wwwroot/chat.js?range=3-6,29-43)]
+[!code-javascript[](javascript-client/samples/3.x/SignalRChat/wwwroot/chat.js?range=3-6,29-43)]
 
 ### <a name="cross-origin-connections"></a><span data-ttu-id="b84ed-132">Conexiones entre orígenes</span><span class="sxs-lookup"><span data-stu-id="b84ed-132">Cross-origin connections</span></span>
 
@@ -88,7 +88,7 @@ npm install @microsoft/signalr
 
 <span data-ttu-id="b84ed-137">Para evitar que un sitio malintencionado Lea datos confidenciales de otro sitio, [las conexiones entre orígenes](xref:security/cors) están deshabilitadas de forma predeterminada.</span><span class="sxs-lookup"><span data-stu-id="b84ed-137">To prevent a malicious site from reading sensitive data from another site, [cross-origin connections](xref:security/cors) are disabled by default.</span></span> <span data-ttu-id="b84ed-138">Para permitir una solicitud entre orígenes, habilítela en la `Startup` clase:</span><span class="sxs-lookup"><span data-stu-id="b84ed-138">To allow a cross-origin request, enable it in the `Startup` class:</span></span>
 
-[!code-csharp[](javascript-client/samples/3.x/:::no-loc(SignalR):::Chat/Startup.cs?highlight=16-23,40)]
+[!code-csharp[](javascript-client/samples/3.x/SignalRChat/Startup.cs?highlight=16-23,40)]
 
 ## <a name="call-hub-methods-from-the-client"></a><span data-ttu-id="b84ed-139">Llamar a métodos de Hub desde el cliente</span><span class="sxs-lookup"><span data-stu-id="b84ed-139">Call hub methods from the client</span></span>
 
@@ -99,10 +99,10 @@ npm install @microsoft/signalr
 
 <span data-ttu-id="b84ed-144">En el ejemplo siguiente, el nombre del método en el concentrador es `SendMessage` .</span><span class="sxs-lookup"><span data-stu-id="b84ed-144">In the following example, the method name on the hub is `SendMessage`.</span></span> <span data-ttu-id="b84ed-145">Los argumentos segundo y tercero pasados a `invoke` la asignación a los argumentos y del método del concentrador `user` `message` :</span><span class="sxs-lookup"><span data-stu-id="b84ed-145">The second and third arguments passed to `invoke` map to the hub method's `user` and `message` arguments:</span></span>
 
-[!code-javascript[](javascript-client/samples/3.x/:::no-loc(SignalR):::Chat/wwwroot/chat.js?name=snippet_Invoke&highlight=2)]
+[!code-javascript[](javascript-client/samples/3.x/SignalRChat/wwwroot/chat.js?name=snippet_Invoke&highlight=2)]
 
 > [!NOTE]
-> <span data-ttu-id="b84ed-146">La llamada a métodos de concentrador desde un cliente solo se admite cuando se usa el :::no-loc(SignalR)::: servicio de Azure en el modo *predeterminado* .</span><span class="sxs-lookup"><span data-stu-id="b84ed-146">Calling hub methods from a client is only supported when using the Azure :::no-loc(SignalR)::: Service in *Default* mode.</span></span> <span data-ttu-id="b84ed-147">Para obtener más información, consulte preguntas más frecuentes [(repositorio de github de Azure signalr)](https://github.com/Azure/azure-signalr/blob/dev/docs/faq.md#what-is-the-meaning-of-service-mode-defaultserverlessclassic-how-can-i-choose).</span><span class="sxs-lookup"><span data-stu-id="b84ed-147">For more information, see [Frequently Asked Questions (azure-signalr GitHub repository)](https://github.com/Azure/azure-signalr/blob/dev/docs/faq.md#what-is-the-meaning-of-service-mode-defaultserverlessclassic-how-can-i-choose).</span></span>
+> <span data-ttu-id="b84ed-146">La llamada a métodos de concentrador desde un cliente solo se admite cuando se usa el SignalR servicio de Azure en el modo *predeterminado* .</span><span class="sxs-lookup"><span data-stu-id="b84ed-146">Calling hub methods from a client is only supported when using the Azure SignalR Service in *Default* mode.</span></span> <span data-ttu-id="b84ed-147">Para obtener más información, consulte preguntas más frecuentes [(repositorio de github de Azure signalr)](https://github.com/Azure/azure-signalr/blob/dev/docs/faq.md#what-is-the-meaning-of-service-mode-defaultserverlessclassic-how-can-i-choose).</span><span class="sxs-lookup"><span data-stu-id="b84ed-147">For more information, see [Frequently Asked Questions (azure-signalr GitHub repository)](https://github.com/Azure/azure-signalr/blob/dev/docs/faq.md#what-is-the-meaning-of-service-mode-defaultserverlessclassic-how-can-i-choose).</span></span>
 
 <span data-ttu-id="b84ed-148">El `invoke` método devuelve un [compromiso](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)de JavaScript.</span><span class="sxs-lookup"><span data-stu-id="b84ed-148">The `invoke` method returns a JavaScript [Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise).</span></span> <span data-ttu-id="b84ed-149">`Promise`Se resuelve con el valor devuelto (si existe) cuando el método en el servidor devuelve.</span><span class="sxs-lookup"><span data-stu-id="b84ed-149">The `Promise` is resolved with the return value (if any) when the method on the server returns.</span></span> <span data-ttu-id="b84ed-150">Si el método en el servidor produce un error, `Promise` se rechaza con el mensaje de error.</span><span class="sxs-lookup"><span data-stu-id="b84ed-150">If the method on the server throws an error, the `Promise` is rejected with the error message.</span></span> <span data-ttu-id="b84ed-151">Use `async` y `await` o los `Promise` `then` métodos y de `catch` para controlar estos casos.</span><span class="sxs-lookup"><span data-stu-id="b84ed-151">Use `async` and `await` or the `Promise`'s `then` and `catch` methods to handle these cases.</span></span>
 
@@ -120,13 +120,13 @@ npm install @microsoft/signalr
 
 <span data-ttu-id="b84ed-164">En el ejemplo siguiente, el nombre del método es `ReceiveMessage` .</span><span class="sxs-lookup"><span data-stu-id="b84ed-164">In the following example, the method name is `ReceiveMessage`.</span></span> <span data-ttu-id="b84ed-165">Los nombres de argumento son `user` y `message` :</span><span class="sxs-lookup"><span data-stu-id="b84ed-165">The argument names are `user` and `message`:</span></span>
 
-[!code-javascript[](javascript-client/samples/3.x/:::no-loc(SignalR):::Chat/wwwroot/chat.js?name=snippet_ReceiveMessage)]
+[!code-javascript[](javascript-client/samples/3.x/SignalRChat/wwwroot/chat.js?name=snippet_ReceiveMessage)]
 
-<span data-ttu-id="b84ed-166">El código anterior en `connection.on` se ejecuta cuando el código del lado servidor lo llama mediante el <xref:Microsoft.AspNetCore.:::no-loc(SignalR):::.ClientProxyExtensions.SendAsync%2A> método:</span><span class="sxs-lookup"><span data-stu-id="b84ed-166">The preceding code in `connection.on` runs when server-side code calls it using the <xref:Microsoft.AspNetCore.:::no-loc(SignalR):::.ClientProxyExtensions.SendAsync%2A> method:</span></span>
+<span data-ttu-id="b84ed-166">El código anterior en `connection.on` se ejecuta cuando el código del lado servidor lo llama mediante el <xref:Microsoft.AspNetCore.SignalR.ClientProxyExtensions.SendAsync%2A> método:</span><span class="sxs-lookup"><span data-stu-id="b84ed-166">The preceding code in `connection.on` runs when server-side code calls it using the <xref:Microsoft.AspNetCore.SignalR.ClientProxyExtensions.SendAsync%2A> method:</span></span>
 
-[!code-csharp[Call client-side](javascript-client/samples/3.x/:::no-loc(SignalR):::Chat/Hubs/ChatHub.cs?name=snippet_SendMessage)]
+[!code-csharp[Call client-side](javascript-client/samples/3.x/SignalRChat/Hubs/ChatHub.cs?name=snippet_SendMessage)]
 
-<span data-ttu-id="b84ed-167">:::no-loc(SignalR)::: determina el método de cliente al que se debe llamar haciendo coincidir el nombre del método y los argumentos definidos en `SendAsync` y `connection.on` .</span><span class="sxs-lookup"><span data-stu-id="b84ed-167">:::no-loc(SignalR)::: determines which client method to call by matching the method name and arguments defined in `SendAsync` and `connection.on`.</span></span>
+<span data-ttu-id="b84ed-167">SignalR determina el método de cliente al que se debe llamar haciendo coincidir el nombre del método y los argumentos definidos en `SendAsync` y `connection.on` .</span><span class="sxs-lookup"><span data-stu-id="b84ed-167">SignalR determines which client method to call by matching the method name and arguments defined in `SendAsync` and `connection.on`.</span></span>
 
 > [!NOTE]
 > <span data-ttu-id="b84ed-168">Como procedimiento recomendado, llame al método [Start](/javascript/api/%40aspnet/signalr/hubconnection#start) en el `HubConnection` después de `on` .</span><span class="sxs-lookup"><span data-stu-id="b84ed-168">As a best practice, call the [start](/javascript/api/%40aspnet/signalr/hubconnection#start) method on the `HubConnection` after `on`.</span></span> <span data-ttu-id="b84ed-169">Esto garantiza que los controladores se registren antes de que se reciban los mensajes.</span><span class="sxs-lookup"><span data-stu-id="b84ed-169">Doing so ensures your handlers are registered before any messages are received.</span></span>
@@ -135,7 +135,7 @@ npm install @microsoft/signalr
 
 <span data-ttu-id="b84ed-171">Use `try` y `catch` con `async` y, `await` o `Promise` el `catch` método de para controlar los errores del lado cliente.</span><span class="sxs-lookup"><span data-stu-id="b84ed-171">Use `try` and `catch` with `async` and `await` or the `Promise`'s `catch` method to handle client-side errors.</span></span> <span data-ttu-id="b84ed-172">Use `console.error` para generar errores en la consola del explorador:</span><span class="sxs-lookup"><span data-stu-id="b84ed-172">Use `console.error` to output errors to the browser's console:</span></span>
 
-[!code-javascript[](javascript-client/samples/3.x/:::no-loc(SignalR):::Chat/wwwroot/chat.js?name=snippet_Invoke&highlight=1,3-5)]
+[!code-javascript[](javascript-client/samples/3.x/SignalRChat/wwwroot/chat.js?name=snippet_Invoke&highlight=1,3-5)]
 
 <span data-ttu-id="b84ed-173">Configure el seguimiento del registro del lado cliente pasando un registrador y un tipo de evento al registro cuando se establezca la conexión.</span><span class="sxs-lookup"><span data-stu-id="b84ed-173">Set up client-side log tracing by passing a logger and type of event to log when the connection is made.</span></span> <span data-ttu-id="b84ed-174">Los mensajes se registran con el nivel de registro especificado y superior.</span><span class="sxs-lookup"><span data-stu-id="b84ed-174">Messages are logged with the specified log level and higher.</span></span> <span data-ttu-id="b84ed-175">Los niveles de registro disponibles son los siguientes:</span><span class="sxs-lookup"><span data-stu-id="b84ed-175">Available log levels are as follows:</span></span>
 
@@ -146,13 +146,13 @@ npm install @microsoft/signalr
 
 <span data-ttu-id="b84ed-184">Use el método [configureLogging](/javascript/api/%40aspnet/signalr/hubconnectionbuilder#configurelogging) en [HubConnectionBuilder](/javascript/api/%40aspnet/signalr/hubconnectionbuilder) para configurar el nivel de registro.</span><span class="sxs-lookup"><span data-stu-id="b84ed-184">Use the [configureLogging](/javascript/api/%40aspnet/signalr/hubconnectionbuilder#configurelogging) method on [HubConnectionBuilder](/javascript/api/%40aspnet/signalr/hubconnectionbuilder) to configure the log level.</span></span> <span data-ttu-id="b84ed-185">Los mensajes se registran en la consola del explorador:</span><span class="sxs-lookup"><span data-stu-id="b84ed-185">Messages are logged to the browser console:</span></span>
 
-[!code-javascript[](javascript-client/samples/3.x/:::no-loc(SignalR):::Chat/wwwroot/chat.js?name=snippet_Connection&highlight=3)]
+[!code-javascript[](javascript-client/samples/3.x/SignalRChat/wwwroot/chat.js?name=snippet_Connection&highlight=3)]
 
 ## <a name="reconnect-clients"></a><span data-ttu-id="b84ed-186">Volver a conectar clientes</span><span class="sxs-lookup"><span data-stu-id="b84ed-186">Reconnect clients</span></span>
 
 ### <a name="automatically-reconnect"></a><span data-ttu-id="b84ed-187">Volver a conectar automáticamente</span><span class="sxs-lookup"><span data-stu-id="b84ed-187">Automatically reconnect</span></span>
 
-<span data-ttu-id="b84ed-188">El cliente de JavaScript para :::no-loc(SignalR)::: puede configurarse para que se vuelva a conectar automáticamente mediante el `withAutomaticReconnect` método en [HubConnectionBuilder](/javascript/api/%40aspnet/signalr/hubconnectionbuilder).</span><span class="sxs-lookup"><span data-stu-id="b84ed-188">The JavaScript client for :::no-loc(SignalR)::: can be configured to automatically reconnect using the `withAutomaticReconnect` method on [HubConnectionBuilder](/javascript/api/%40aspnet/signalr/hubconnectionbuilder).</span></span> <span data-ttu-id="b84ed-189">No se volverá a conectar automáticamente de forma predeterminada.</span><span class="sxs-lookup"><span data-stu-id="b84ed-189">It won't automatically reconnect by default.</span></span>
+<span data-ttu-id="b84ed-188">El cliente de JavaScript para SignalR puede configurarse para que se vuelva a conectar automáticamente mediante el `withAutomaticReconnect` método en [HubConnectionBuilder](/javascript/api/%40aspnet/signalr/hubconnectionbuilder).</span><span class="sxs-lookup"><span data-stu-id="b84ed-188">The JavaScript client for SignalR can be configured to automatically reconnect using the `withAutomaticReconnect` method on [HubConnectionBuilder](/javascript/api/%40aspnet/signalr/hubconnectionbuilder).</span></span> <span data-ttu-id="b84ed-189">No se volverá a conectar automáticamente de forma predeterminada.</span><span class="sxs-lookup"><span data-stu-id="b84ed-189">It won't automatically reconnect by default.</span></span>
 
 ```javascript
 const connection = new signalR.HubConnectionBuilder()
@@ -203,7 +203,7 @@ async function start() {
     try {
         await connection.start();
         console.assert(connection.state === signalR.HubConnectionState.Connected);
-        console.log(":::no-loc(SignalR)::: Connected.");
+        console.log("SignalR Connected.");
     } catch (err) {
         console.assert(connection.state === signalR.HubConnectionState.Disconnected);
         console.log(err);
@@ -278,7 +278,7 @@ const connection = new signalR.HubConnectionBuilder()
 1. <span data-ttu-id="b84ed-215">Una función (en este caso, la `start` función) se crea para iniciar la conexión.</span><span class="sxs-lookup"><span data-stu-id="b84ed-215">A function (in this case, the `start` function) is created to start the connection.</span></span>
 1. <span data-ttu-id="b84ed-216">Llame a la `start` función en el controlador de eventos de la conexión `onclose` .</span><span class="sxs-lookup"><span data-stu-id="b84ed-216">Call the `start` function in the connection's `onclose` event handler.</span></span>
 
-[!code-javascript[](javascript-client/samples/3.x/:::no-loc(SignalR):::Chat/wwwroot/chat.js?range=30-40)]
+[!code-javascript[](javascript-client/samples/3.x/SignalRChat/wwwroot/chat.js?range=30-40)]
 
 <span data-ttu-id="b84ed-217">Una implementación del mundo real usaría una interrupción exponencial o reintentará un número especificado de veces antes de abandonarlo.</span><span class="sxs-lookup"><span data-stu-id="b84ed-217">A real-world implementation would use an exponential back-off or retry a specified number of times before giving up.</span></span>
 
@@ -291,7 +291,7 @@ const connection = new signalR.HubConnectionBuilder()
 * [<span data-ttu-id="b84ed-223">Cliente .NET</span><span class="sxs-lookup"><span data-stu-id="b84ed-223">.NET client</span></span>](xref:signalr/dotnet-client)
 * [<span data-ttu-id="b84ed-224">Publicación en Azure</span><span class="sxs-lookup"><span data-stu-id="b84ed-224">Publish to Azure</span></span>](xref:signalr/publish-to-azure-web-app)
 * [<span data-ttu-id="b84ed-225">Solicitudes entre orígenes (CORS)</span><span class="sxs-lookup"><span data-stu-id="b84ed-225">Cross-Origin Requests (CORS)</span></span>](xref:security/cors)
-* [<span data-ttu-id="b84ed-226">Documentación sin servidor del servicio de Azure :::no-loc(SignalR):::</span><span class="sxs-lookup"><span data-stu-id="b84ed-226">Azure :::no-loc(SignalR)::: Service serverless documentation</span></span>](/azure/azure-signalr/signalr-concept-serverless-development-config)
+* [<span data-ttu-id="b84ed-226">Documentación sin servidor del servicio de Azure SignalR</span><span class="sxs-lookup"><span data-stu-id="b84ed-226">Azure SignalR Service serverless documentation</span></span>](/azure/azure-signalr/signalr-concept-serverless-development-config)
 * [<span data-ttu-id="b84ed-227">Solución de problemas de conexión</span><span class="sxs-lookup"><span data-stu-id="b84ed-227">Troubleshoot connection errors</span></span>](xref:signalr/troubleshoot)
 
 ::: moniker-end
@@ -300,13 +300,13 @@ const connection = new signalR.HubConnectionBuilder()
 
 <span data-ttu-id="b84ed-228">Por [Rachel Appel](https://twitter.com/rachelappel)</span><span class="sxs-lookup"><span data-stu-id="b84ed-228">By [Rachel Appel](https://twitter.com/rachelappel)</span></span>
 
-<span data-ttu-id="b84ed-229">La biblioteca de cliente de ASP.NET Core :::no-loc(SignalR)::: JavaScript permite a los desarrolladores llamar a código de concentrador de servidor.</span><span class="sxs-lookup"><span data-stu-id="b84ed-229">The ASP.NET Core :::no-loc(SignalR)::: JavaScript client library enables developers to call server-side hub code.</span></span>
+<span data-ttu-id="b84ed-229">La biblioteca de cliente de ASP.NET Core SignalR JavaScript permite a los desarrolladores llamar a código de concentrador de servidor.</span><span class="sxs-lookup"><span data-stu-id="b84ed-229">The ASP.NET Core SignalR JavaScript client library enables developers to call server-side hub code.</span></span>
 
 <span data-ttu-id="b84ed-230">[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/javascript-client/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))</span><span class="sxs-lookup"><span data-stu-id="b84ed-230">[View or download sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/javascript-client/samples) ([how to download](xref:index#how-to-download-a-sample))</span></span>
 
-## <a name="install-the-no-locsignalr-client-package"></a><span data-ttu-id="b84ed-231">Instalar el :::no-loc(SignalR)::: paquete de cliente</span><span class="sxs-lookup"><span data-stu-id="b84ed-231">Install the :::no-loc(SignalR)::: client package</span></span>
+## <a name="install-the-no-locsignalr-client-package"></a><span data-ttu-id="b84ed-231">Instalar el SignalR paquete de cliente</span><span class="sxs-lookup"><span data-stu-id="b84ed-231">Install the SignalR client package</span></span>
 
-<span data-ttu-id="b84ed-232">La :::no-loc(SignalR)::: biblioteca de cliente de JavaScript se entrega como un paquete [NPM](https://www.npmjs.com/) .</span><span class="sxs-lookup"><span data-stu-id="b84ed-232">The :::no-loc(SignalR)::: JavaScript client library is delivered as an [npm](https://www.npmjs.com/) package.</span></span> <span data-ttu-id="b84ed-233">En las secciones siguientes se describen diferentes formas de instalar la biblioteca de cliente de.</span><span class="sxs-lookup"><span data-stu-id="b84ed-233">The following sections outline different ways to install the client library.</span></span>
+<span data-ttu-id="b84ed-232">La SignalR biblioteca de cliente de JavaScript se entrega como un paquete [NPM](https://www.npmjs.com/) .</span><span class="sxs-lookup"><span data-stu-id="b84ed-232">The SignalR JavaScript client library is delivered as an [npm](https://www.npmjs.com/) package.</span></span> <span data-ttu-id="b84ed-233">En las secciones siguientes se describen diferentes formas de instalar la biblioteca de cliente de.</span><span class="sxs-lookup"><span data-stu-id="b84ed-233">The following sections outline different ways to install the client library.</span></span>
 
 ### <a name="install-with-npm"></a><span data-ttu-id="b84ed-234">Instalación con NPM</span><span class="sxs-lookup"><span data-stu-id="b84ed-234">Install with npm</span></span>
 
@@ -319,7 +319,7 @@ npm install @aspnet/signalr
 
 <span data-ttu-id="b84ed-237">NPM instala el contenido del paquete en la *carpeta \\ @aspnet\signalr\dist\browser node_modules* .</span><span class="sxs-lookup"><span data-stu-id="b84ed-237">npm installs the package contents in the *node_modules\\@aspnet\signalr\dist\browser* folder.</span></span> <span data-ttu-id="b84ed-238">Cree una nueva carpeta denominada *signalr* en la carpeta *wwwroot \\ lib* .</span><span class="sxs-lookup"><span data-stu-id="b84ed-238">Create a new folder named *signalr* under the *wwwroot\\lib* folder.</span></span> <span data-ttu-id="b84ed-239">Copie el archivo de *signalr.js* en la carpeta *wwwroot\lib\signalr* .</span><span class="sxs-lookup"><span data-stu-id="b84ed-239">Copy the *signalr.js* file to the *wwwroot\lib\signalr* folder.</span></span>
 
-<span data-ttu-id="b84ed-240">Haga referencia al :::no-loc(SignalR)::: cliente de JavaScript en el `<script>` elemento.</span><span class="sxs-lookup"><span data-stu-id="b84ed-240">Reference the :::no-loc(SignalR)::: JavaScript client in the `<script>` element.</span></span> <span data-ttu-id="b84ed-241">Por ejemplo:</span><span class="sxs-lookup"><span data-stu-id="b84ed-241">For example:</span></span>
+<span data-ttu-id="b84ed-240">Haga referencia al SignalR cliente de JavaScript en el `<script>` elemento.</span><span class="sxs-lookup"><span data-stu-id="b84ed-240">Reference the SignalR JavaScript client in the `<script>` element.</span></span> <span data-ttu-id="b84ed-241">Por ejemplo:</span><span class="sxs-lookup"><span data-stu-id="b84ed-241">For example:</span></span>
 
 ```html
 <script src="~/lib/signalr/signalr.js"></script>
@@ -341,13 +341,13 @@ npm install @aspnet/signalr
 
 ### <a name="install-with-libman"></a><span data-ttu-id="b84ed-249">Instalación con LibMan</span><span class="sxs-lookup"><span data-stu-id="b84ed-249">Install with LibMan</span></span>
 
-<span data-ttu-id="b84ed-250">[LibMan](xref:client-side/libman/index) se puede usar para instalar archivos de biblioteca de cliente específicos desde la biblioteca de cliente hospedada en CDN.</span><span class="sxs-lookup"><span data-stu-id="b84ed-250">[LibMan](xref:client-side/libman/index) can be used to install specific client library files from the CDN-hosted client library.</span></span> <span data-ttu-id="b84ed-251">Por ejemplo, agregue solo el archivo JavaScript reducida al proyecto.</span><span class="sxs-lookup"><span data-stu-id="b84ed-251">For example, only add the minified JavaScript file to the project.</span></span> <span data-ttu-id="b84ed-252">Para obtener más información sobre este enfoque, consulte [Agregar la :::no-loc(SignalR)::: biblioteca de cliente](xref:tutorials/signalr#add-the-signalr-client-library).</span><span class="sxs-lookup"><span data-stu-id="b84ed-252">For details on that approach, see [Add the :::no-loc(SignalR)::: client library](xref:tutorials/signalr#add-the-signalr-client-library).</span></span>
+<span data-ttu-id="b84ed-250">[LibMan](xref:client-side/libman/index) se puede usar para instalar archivos de biblioteca de cliente específicos desde la biblioteca de cliente hospedada en CDN.</span><span class="sxs-lookup"><span data-stu-id="b84ed-250">[LibMan](xref:client-side/libman/index) can be used to install specific client library files from the CDN-hosted client library.</span></span> <span data-ttu-id="b84ed-251">Por ejemplo, agregue solo el archivo JavaScript reducida al proyecto.</span><span class="sxs-lookup"><span data-stu-id="b84ed-251">For example, only add the minified JavaScript file to the project.</span></span> <span data-ttu-id="b84ed-252">Para obtener más información sobre este enfoque, consulte [Agregar la SignalR biblioteca de cliente](xref:tutorials/signalr#add-the-signalr-client-library).</span><span class="sxs-lookup"><span data-stu-id="b84ed-252">For details on that approach, see [Add the SignalR client library](xref:tutorials/signalr#add-the-signalr-client-library).</span></span>
 
 ## <a name="connect-to-a-hub"></a><span data-ttu-id="b84ed-253">Conexión a un concentrador</span><span class="sxs-lookup"><span data-stu-id="b84ed-253">Connect to a hub</span></span>
 
 <span data-ttu-id="b84ed-254">El código siguiente crea e inicia una conexión.</span><span class="sxs-lookup"><span data-stu-id="b84ed-254">The following code creates and starts a connection.</span></span> <span data-ttu-id="b84ed-255">El nombre del centro no distingue mayúsculas de minúsculas.</span><span class="sxs-lookup"><span data-stu-id="b84ed-255">The hub's name is case insensitive.</span></span>
 
-[!code-javascript[Call hub methods](javascript-client/samples/2.x/:::no-loc(SignalR):::Chat/wwwroot/js/chat.js?range=9-13,28-51)]
+[!code-javascript[Call hub methods](javascript-client/samples/2.x/SignalRChat/wwwroot/js/chat.js?range=9-13,28-51)]
 
 ### <a name="cross-origin-connections"></a><span data-ttu-id="b84ed-256">Conexiones entre orígenes</span><span class="sxs-lookup"><span data-stu-id="b84ed-256">Cross-origin connections</span></span>
 
@@ -355,7 +355,7 @@ npm install @aspnet/signalr
 
 <span data-ttu-id="b84ed-259">Para evitar que un sitio malintencionado Lea datos confidenciales de otro sitio, [las conexiones entre orígenes](xref:security/cors) están deshabilitadas de forma predeterminada.</span><span class="sxs-lookup"><span data-stu-id="b84ed-259">To prevent a malicious site from reading sensitive data from another site, [cross-origin connections](xref:security/cors) are disabled by default.</span></span> <span data-ttu-id="b84ed-260">Para permitir una solicitud entre orígenes, habilítela en la `Startup` clase.</span><span class="sxs-lookup"><span data-stu-id="b84ed-260">To allow a cross-origin request, enable it in the `Startup` class.</span></span>
 
-[!code-csharp[Cross-origin connections](javascript-client/samples/2.x/:::no-loc(SignalR):::Chat/Startup.cs?highlight=29-35,56)]
+[!code-csharp[Cross-origin connections](javascript-client/samples/2.x/SignalRChat/Startup.cs?highlight=29-35,56)]
 
 ## <a name="call-hub-methods-from-client"></a><span data-ttu-id="b84ed-261">Llamar a métodos de Hub desde el cliente</span><span class="sxs-lookup"><span data-stu-id="b84ed-261">Call hub methods from client</span></span>
 
@@ -364,10 +364,10 @@ npm install @aspnet/signalr
 * <span data-ttu-id="b84ed-264">Nombre del método de concentrador.</span><span class="sxs-lookup"><span data-stu-id="b84ed-264">The name of the hub method.</span></span> <span data-ttu-id="b84ed-265">En el ejemplo siguiente, el nombre del método en el concentrador es `SendMessage` .</span><span class="sxs-lookup"><span data-stu-id="b84ed-265">In the following example, the method name on the hub is `SendMessage`.</span></span>
 * <span data-ttu-id="b84ed-266">Cualquier argumento definido en el método de concentrador.</span><span class="sxs-lookup"><span data-stu-id="b84ed-266">Any arguments defined in the hub method.</span></span> <span data-ttu-id="b84ed-267">En el ejemplo siguiente, el nombre del argumento es `message` .</span><span class="sxs-lookup"><span data-stu-id="b84ed-267">In the following example, the argument name is `message`.</span></span> <span data-ttu-id="b84ed-268">El código de ejemplo utiliza la sintaxis de la función de flecha que se admite en las versiones actuales de todos los exploradores principales, excepto Internet Explorer.</span><span class="sxs-lookup"><span data-stu-id="b84ed-268">The example code uses arrow function syntax that is supported in current versions of all major browsers except Internet Explorer.</span></span>
 
-  [!code-javascript[Call hub methods](javascript-client/samples/2.x/:::no-loc(SignalR):::Chat/wwwroot/js/chat.js?range=24)]
+  [!code-javascript[Call hub methods](javascript-client/samples/2.x/SignalRChat/wwwroot/js/chat.js?range=24)]
 
 > [!NOTE]
-> <span data-ttu-id="b84ed-269">La llamada a métodos de concentrador desde un cliente solo se admite cuando se usa el :::no-loc(SignalR)::: servicio de Azure en el modo *predeterminado* .</span><span class="sxs-lookup"><span data-stu-id="b84ed-269">Calling hub methods from a client is only supported when using the Azure :::no-loc(SignalR)::: Service in *Default* mode.</span></span> <span data-ttu-id="b84ed-270">Para obtener más información, consulte preguntas más frecuentes [(repositorio de github de Azure signalr)](https://github.com/Azure/azure-signalr/blob/dev/docs/faq.md#what-is-the-meaning-of-service-mode-defaultserverlessclassic-how-can-i-choose).</span><span class="sxs-lookup"><span data-stu-id="b84ed-270">For more information, see [Frequently Asked Questions (azure-signalr GitHub repository)](https://github.com/Azure/azure-signalr/blob/dev/docs/faq.md#what-is-the-meaning-of-service-mode-defaultserverlessclassic-how-can-i-choose).</span></span>
+> <span data-ttu-id="b84ed-269">La llamada a métodos de concentrador desde un cliente solo se admite cuando se usa el SignalR servicio de Azure en el modo *predeterminado* .</span><span class="sxs-lookup"><span data-stu-id="b84ed-269">Calling hub methods from a client is only supported when using the Azure SignalR Service in *Default* mode.</span></span> <span data-ttu-id="b84ed-270">Para obtener más información, consulte preguntas más frecuentes [(repositorio de github de Azure signalr)](https://github.com/Azure/azure-signalr/blob/dev/docs/faq.md#what-is-the-meaning-of-service-mode-defaultserverlessclassic-how-can-i-choose).</span><span class="sxs-lookup"><span data-stu-id="b84ed-270">For more information, see [Frequently Asked Questions (azure-signalr GitHub repository)](https://github.com/Azure/azure-signalr/blob/dev/docs/faq.md#what-is-the-meaning-of-service-mode-defaultserverlessclassic-how-can-i-choose).</span></span>
 
 <span data-ttu-id="b84ed-271">El `invoke` método devuelve un [compromiso](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)de JavaScript.</span><span class="sxs-lookup"><span data-stu-id="b84ed-271">The `invoke` method returns a JavaScript [Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise).</span></span> <span data-ttu-id="b84ed-272">`Promise`Se resuelve con el valor devuelto (si existe) cuando el método en el servidor devuelve.</span><span class="sxs-lookup"><span data-stu-id="b84ed-272">The `Promise` is resolved with the return value (if any) when the method on the server returns.</span></span> <span data-ttu-id="b84ed-273">Si el método en el servidor produce un error, `Promise` se rechaza con el mensaje de error.</span><span class="sxs-lookup"><span data-stu-id="b84ed-273">If the method on the server throws an error, the `Promise` is rejected with the error message.</span></span> <span data-ttu-id="b84ed-274">Use los `then` `catch` métodos y en el `Promise` propio para controlar estos casos (o la `await` sintaxis).</span><span class="sxs-lookup"><span data-stu-id="b84ed-274">Use the `then` and `catch` methods on the `Promise` itself to handle these cases (or `await` syntax).</span></span>
 
@@ -383,13 +383,13 @@ npm install @aspnet/signalr
 * <span data-ttu-id="b84ed-283">Nombre del método de cliente JavaScript.</span><span class="sxs-lookup"><span data-stu-id="b84ed-283">The name of the JavaScript client method.</span></span> <span data-ttu-id="b84ed-284">En el ejemplo siguiente, el nombre del método es `ReceiveMessage` .</span><span class="sxs-lookup"><span data-stu-id="b84ed-284">In the following example, the method name is `ReceiveMessage`.</span></span>
 * <span data-ttu-id="b84ed-285">Argumentos que el concentrador pasa al método.</span><span class="sxs-lookup"><span data-stu-id="b84ed-285">Arguments the hub passes to the method.</span></span> <span data-ttu-id="b84ed-286">En el ejemplo siguiente, el valor del argumento es `message` .</span><span class="sxs-lookup"><span data-stu-id="b84ed-286">In the following example, the argument value is `message`.</span></span>
 
-[!code-javascript[Receive calls from hub](javascript-client/samples/2.x/:::no-loc(SignalR):::Chat/wwwroot/js/chat.js?range=14-19)]
+[!code-javascript[Receive calls from hub](javascript-client/samples/2.x/SignalRChat/wwwroot/js/chat.js?range=14-19)]
 
-<span data-ttu-id="b84ed-287">El código anterior en `connection.on` se ejecuta cuando el código del lado servidor lo llama mediante el <xref:Microsoft.AspNetCore.:::no-loc(SignalR):::.ClientProxyExtensions.SendAsync%2A> método.</span><span class="sxs-lookup"><span data-stu-id="b84ed-287">The preceding code in `connection.on` runs when server-side code calls it using the <xref:Microsoft.AspNetCore.:::no-loc(SignalR):::.ClientProxyExtensions.SendAsync%2A> method.</span></span>
+<span data-ttu-id="b84ed-287">El código anterior en `connection.on` se ejecuta cuando el código del lado servidor lo llama mediante el <xref:Microsoft.AspNetCore.SignalR.ClientProxyExtensions.SendAsync%2A> método.</span><span class="sxs-lookup"><span data-stu-id="b84ed-287">The preceding code in `connection.on` runs when server-side code calls it using the <xref:Microsoft.AspNetCore.SignalR.ClientProxyExtensions.SendAsync%2A> method.</span></span>
 
-[!code-csharp[Call client-side](javascript-client/samples/2.x/:::no-loc(SignalR):::Chat/hubs/chathub.cs?range=8-11)]
+[!code-csharp[Call client-side](javascript-client/samples/2.x/SignalRChat/hubs/chathub.cs?range=8-11)]
 
-<span data-ttu-id="b84ed-288">:::no-loc(SignalR)::: determina el método de cliente al que se debe llamar haciendo coincidir el nombre del método y los argumentos definidos en `SendAsync` y `connection.on` .</span><span class="sxs-lookup"><span data-stu-id="b84ed-288">:::no-loc(SignalR)::: determines which client method to call by matching the method name and arguments defined in `SendAsync` and `connection.on`.</span></span>
+<span data-ttu-id="b84ed-288">SignalR determina el método de cliente al que se debe llamar haciendo coincidir el nombre del método y los argumentos definidos en `SendAsync` y `connection.on` .</span><span class="sxs-lookup"><span data-stu-id="b84ed-288">SignalR determines which client method to call by matching the method name and arguments defined in `SendAsync` and `connection.on`.</span></span>
 
 > [!NOTE]
 > <span data-ttu-id="b84ed-289">Como procedimiento recomendado, llame al método [Start](/javascript/api/%40aspnet/signalr/hubconnection#start) en el `HubConnection` después de `on` .</span><span class="sxs-lookup"><span data-stu-id="b84ed-289">As a best practice, call the [start](/javascript/api/%40aspnet/signalr/hubconnection#start) method on the `HubConnection` after `on`.</span></span> <span data-ttu-id="b84ed-290">Esto garantiza que los controladores se registren antes de que se reciban los mensajes.</span><span class="sxs-lookup"><span data-stu-id="b84ed-290">Doing so ensures your handlers are registered before any messages are received.</span></span>
@@ -398,7 +398,7 @@ npm install @aspnet/signalr
 
 <span data-ttu-id="b84ed-292">Encadenar un `catch` método al final del `start` método para controlar los errores del lado cliente.</span><span class="sxs-lookup"><span data-stu-id="b84ed-292">Chain a `catch` method to the end of the `start` method to handle client-side errors.</span></span> <span data-ttu-id="b84ed-293">Use `console.error` para generar errores en la consola del explorador.</span><span class="sxs-lookup"><span data-stu-id="b84ed-293">Use `console.error` to output errors to the browser's console.</span></span>
 
-[!code-javascript[Error handling](javascript-client/samples/2.x/:::no-loc(SignalR):::Chat/wwwroot/js/chat.js?range=50)]
+[!code-javascript[Error handling](javascript-client/samples/2.x/SignalRChat/wwwroot/js/chat.js?range=50)]
 
 <span data-ttu-id="b84ed-294">Configure el seguimiento del registro del lado cliente pasando un registrador y un tipo de evento al registro cuando se establezca la conexión.</span><span class="sxs-lookup"><span data-stu-id="b84ed-294">Set up client-side log tracing by passing a logger and type of event to log when the connection is made.</span></span> <span data-ttu-id="b84ed-295">Los mensajes se registran con el nivel de registro especificado y superior.</span><span class="sxs-lookup"><span data-stu-id="b84ed-295">Messages are logged with the specified log level and higher.</span></span> <span data-ttu-id="b84ed-296">Los niveles de registro disponibles son los siguientes:</span><span class="sxs-lookup"><span data-stu-id="b84ed-296">Available log levels are as follows:</span></span>
 
@@ -409,21 +409,21 @@ npm install @aspnet/signalr
 
 <span data-ttu-id="b84ed-305">Use el método [configureLogging](/javascript/api/%40aspnet/signalr/hubconnectionbuilder#configurelogging) en [HubConnectionBuilder](/javascript/api/%40aspnet/signalr/hubconnectionbuilder) para configurar el nivel de registro.</span><span class="sxs-lookup"><span data-stu-id="b84ed-305">Use the [configureLogging](/javascript/api/%40aspnet/signalr/hubconnectionbuilder#configurelogging) method on [HubConnectionBuilder](/javascript/api/%40aspnet/signalr/hubconnectionbuilder) to configure the log level.</span></span> <span data-ttu-id="b84ed-306">Los mensajes se registran en la consola del explorador.</span><span class="sxs-lookup"><span data-stu-id="b84ed-306">Messages are logged to the browser console.</span></span>
 
-[!code-javascript[Logging levels](javascript-client/samples/2.x/:::no-loc(SignalR):::Chat/wwwroot/js/chat.js?range=9-12)]
+[!code-javascript[Logging levels](javascript-client/samples/2.x/SignalRChat/wwwroot/js/chat.js?range=9-12)]
 
 ## <a name="reconnect-clients"></a><span data-ttu-id="b84ed-307">Volver a conectar clientes</span><span class="sxs-lookup"><span data-stu-id="b84ed-307">Reconnect clients</span></span>
 
 ### <a name="manually-reconnect"></a><span data-ttu-id="b84ed-308">Volver a conectar manualmente</span><span class="sxs-lookup"><span data-stu-id="b84ed-308">Manually reconnect</span></span>
 
 > [!WARNING]
-> <span data-ttu-id="b84ed-309">Antes de 3,0, el cliente de JavaScript para :::no-loc(SignalR)::: no se vuelve a conectar automáticamente.</span><span class="sxs-lookup"><span data-stu-id="b84ed-309">Prior to 3.0, the JavaScript client for :::no-loc(SignalR)::: doesn't automatically reconnect.</span></span> <span data-ttu-id="b84ed-310">Debe escribir código que volverá a conectar el cliente manualmente.</span><span class="sxs-lookup"><span data-stu-id="b84ed-310">You must write code that will reconnect your client manually.</span></span>
+> <span data-ttu-id="b84ed-309">Antes de 3,0, el cliente de JavaScript para SignalR no se vuelve a conectar automáticamente.</span><span class="sxs-lookup"><span data-stu-id="b84ed-309">Prior to 3.0, the JavaScript client for SignalR doesn't automatically reconnect.</span></span> <span data-ttu-id="b84ed-310">Debe escribir código que volverá a conectar el cliente manualmente.</span><span class="sxs-lookup"><span data-stu-id="b84ed-310">You must write code that will reconnect your client manually.</span></span>
 
 <span data-ttu-id="b84ed-311">En el código siguiente se muestra un enfoque típico de reconexión manual:</span><span class="sxs-lookup"><span data-stu-id="b84ed-311">The following code demonstrates a typical manual reconnection approach:</span></span>
 
 1. <span data-ttu-id="b84ed-312">Una función (en este caso, la `start` función) se crea para iniciar la conexión.</span><span class="sxs-lookup"><span data-stu-id="b84ed-312">A function (in this case, the `start` function) is created to start the connection.</span></span>
 1. <span data-ttu-id="b84ed-313">Llame a la `start` función en el controlador de eventos de la conexión `onclose` .</span><span class="sxs-lookup"><span data-stu-id="b84ed-313">Call the `start` function in the connection's `onclose` event handler.</span></span>
 
-[!code-javascript[Reconnect the JavaScript client](javascript-client/samples/2.x/:::no-loc(SignalR):::Chat/wwwroot/js/chat.js?range=28-40)]
+[!code-javascript[Reconnect the JavaScript client](javascript-client/samples/2.x/SignalRChat/wwwroot/js/chat.js?range=28-40)]
 
 <span data-ttu-id="b84ed-314">Una implementación del mundo real usaría una interrupción exponencial o reintentará un número especificado de veces antes de abandonarlo.</span><span class="sxs-lookup"><span data-stu-id="b84ed-314">A real-world implementation would use an exponential back-off or retry a specified number of times before giving up.</span></span>
 
@@ -436,6 +436,6 @@ npm install @aspnet/signalr
 * [<span data-ttu-id="b84ed-320">Cliente .NET</span><span class="sxs-lookup"><span data-stu-id="b84ed-320">.NET client</span></span>](xref:signalr/dotnet-client)
 * [<span data-ttu-id="b84ed-321">Publicación en Azure</span><span class="sxs-lookup"><span data-stu-id="b84ed-321">Publish to Azure</span></span>](xref:signalr/publish-to-azure-web-app)
 * [<span data-ttu-id="b84ed-322">Solicitudes entre orígenes (CORS)</span><span class="sxs-lookup"><span data-stu-id="b84ed-322">Cross-Origin Requests (CORS)</span></span>](xref:security/cors)
-* [<span data-ttu-id="b84ed-323">Documentación sin servidor del servicio de Azure :::no-loc(SignalR):::</span><span class="sxs-lookup"><span data-stu-id="b84ed-323">Azure :::no-loc(SignalR)::: Service serverless documentation</span></span>](/azure/azure-signalr/signalr-concept-serverless-development-config)
+* [<span data-ttu-id="b84ed-323">Documentación sin servidor del servicio de Azure SignalR</span><span class="sxs-lookup"><span data-stu-id="b84ed-323">Azure SignalR Service serverless documentation</span></span>](/azure/azure-signalr/signalr-concept-serverless-development-config)
 
 ::: moniker-end

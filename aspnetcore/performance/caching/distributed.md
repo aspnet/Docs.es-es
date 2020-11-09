@@ -7,17 +7,17 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: performance/caching/distributed
 ms.openlocfilehash: 6d87c8de66bf5600189465b96dee903841106b6f
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -113,7 +113,7 @@ Table and index were created successfully.
 [!code-csharp[](distributed/samples/3.x/DistCacheSample/Startup.cs?name=snippet_AddDistributedSqlServerCache)]
 
 > [!NOTE]
-> <span data-ttu-id="ccaea-155">Un <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.ConnectionString*> (y, opcionalmente, <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.SchemaName*> y <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.TableName*> ) se almacena normalmente fuera del control de código fuente (por ejemplo, lo almacena el [Administrador secreto](xref:security/app-secrets) o en *:::no-loc(appsettings.json):::* / *appSettings. { ENVIRONMENT}. JSON* files).</span><span class="sxs-lookup"><span data-stu-id="ccaea-155">A <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.ConnectionString*> (and optionally, <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.SchemaName*> and <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.TableName*>) are typically stored outside of source control (for example, stored by the [Secret Manager](xref:security/app-secrets) or in *:::no-loc(appsettings.json):::*/*appsettings.{ENVIRONMENT}.json* files).</span></span> <span data-ttu-id="ccaea-156">La cadena de conexión puede contener credenciales que deben mantenerse fuera de los sistemas de control de código fuente.</span><span class="sxs-lookup"><span data-stu-id="ccaea-156">The connection string may contain credentials that should be kept out of source control systems.</span></span>
+> <span data-ttu-id="ccaea-155">Un <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.ConnectionString*> (y, opcionalmente, <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.SchemaName*> y <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.TableName*> ) se almacena normalmente fuera del control de código fuente (por ejemplo, lo almacena el [Administrador secreto](xref:security/app-secrets) o en *appsettings.json* / *appSettings. { ENVIRONMENT}. JSON* files).</span><span class="sxs-lookup"><span data-stu-id="ccaea-155">A <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.ConnectionString*> (and optionally, <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.SchemaName*> and <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.TableName*>) are typically stored outside of source control (for example, stored by the [Secret Manager](xref:security/app-secrets) or in *appsettings.json*/*appsettings.{ENVIRONMENT}.json* files).</span></span> <span data-ttu-id="ccaea-156">La cadena de conexión puede contener credenciales que deben mantenerse fuera de los sistemas de control de código fuente.</span><span class="sxs-lookup"><span data-stu-id="ccaea-156">The connection string may contain credentials that should be kept out of source control systems.</span></span>
 
 ### <a name="distributed-redis-cache"></a><span data-ttu-id="ccaea-157">Redis Cache distribuido</span><span class="sxs-lookup"><span data-stu-id="ccaea-157">Distributed Redis Cache</span></span>
 
@@ -280,7 +280,7 @@ Table and index were created successfully.
 [!code-csharp[](distributed/samples/2.x/DistCacheSample/Startup.cs?name=snippet_AddDistributedSqlServerCache)]
 
 > [!NOTE]
-> <span data-ttu-id="ccaea-252">Un <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.ConnectionString*> (y, opcionalmente, <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.SchemaName*> y <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.TableName*> ) se almacena normalmente fuera del control de código fuente (por ejemplo, lo almacena el [Administrador secreto](xref:security/app-secrets) o en *:::no-loc(appsettings.json):::* / *appSettings. { ENVIRONMENT}. JSON* files).</span><span class="sxs-lookup"><span data-stu-id="ccaea-252">A <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.ConnectionString*> (and optionally, <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.SchemaName*> and <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.TableName*>) are typically stored outside of source control (for example, stored by the [Secret Manager](xref:security/app-secrets) or in *:::no-loc(appsettings.json):::*/*appsettings.{ENVIRONMENT}.json* files).</span></span> <span data-ttu-id="ccaea-253">La cadena de conexión puede contener credenciales que deben mantenerse fuera de los sistemas de control de código fuente.</span><span class="sxs-lookup"><span data-stu-id="ccaea-253">The connection string may contain credentials that should be kept out of source control systems.</span></span>
+> <span data-ttu-id="ccaea-252">Un <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.ConnectionString*> (y, opcionalmente, <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.SchemaName*> y <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.TableName*> ) se almacena normalmente fuera del control de código fuente (por ejemplo, lo almacena el [Administrador secreto](xref:security/app-secrets) o en *appsettings.json* / *appSettings. { ENVIRONMENT}. JSON* files).</span><span class="sxs-lookup"><span data-stu-id="ccaea-252">A <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.ConnectionString*> (and optionally, <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.SchemaName*> and <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.TableName*>) are typically stored outside of source control (for example, stored by the [Secret Manager](xref:security/app-secrets) or in *appsettings.json*/*appsettings.{ENVIRONMENT}.json* files).</span></span> <span data-ttu-id="ccaea-253">La cadena de conexión puede contener credenciales que deben mantenerse fuera de los sistemas de control de código fuente.</span><span class="sxs-lookup"><span data-stu-id="ccaea-253">The connection string may contain credentials that should be kept out of source control systems.</span></span>
 
 ### <a name="distributed-redis-cache"></a><span data-ttu-id="ccaea-254">Redis Cache distribuido</span><span class="sxs-lookup"><span data-stu-id="ccaea-254">Distributed Redis Cache</span></span>
 
@@ -450,7 +450,7 @@ Table and index were created successfully.
 [!code-csharp[](distributed/samples/2.x/DistCacheSample/Startup.cs?name=snippet_AddDistributedSqlServerCache)]
 
 > [!NOTE]
-> <span data-ttu-id="ccaea-350">Un <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.ConnectionString*> (y, opcionalmente, <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.SchemaName*> y <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.TableName*> ) se almacena normalmente fuera del control de código fuente (por ejemplo, lo almacena el [Administrador secreto](xref:security/app-secrets) o en *:::no-loc(appsettings.json):::* / *appSettings. { ENVIRONMENT}. JSON* files).</span><span class="sxs-lookup"><span data-stu-id="ccaea-350">A <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.ConnectionString*> (and optionally, <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.SchemaName*> and <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.TableName*>) are typically stored outside of source control (for example, stored by the [Secret Manager](xref:security/app-secrets) or in *:::no-loc(appsettings.json):::*/*appsettings.{ENVIRONMENT}.json* files).</span></span> <span data-ttu-id="ccaea-351">La cadena de conexión puede contener credenciales que deben mantenerse fuera de los sistemas de control de código fuente.</span><span class="sxs-lookup"><span data-stu-id="ccaea-351">The connection string may contain credentials that should be kept out of source control systems.</span></span>
+> <span data-ttu-id="ccaea-350">Un <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.ConnectionString*> (y, opcionalmente, <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.SchemaName*> y <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.TableName*> ) se almacena normalmente fuera del control de código fuente (por ejemplo, lo almacena el [Administrador secreto](xref:security/app-secrets) o en *appsettings.json* / *appSettings. { ENVIRONMENT}. JSON* files).</span><span class="sxs-lookup"><span data-stu-id="ccaea-350">A <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.ConnectionString*> (and optionally, <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.SchemaName*> and <xref:Microsoft.Extensions.Caching.SqlServer.SqlServerCacheOptions.TableName*>) are typically stored outside of source control (for example, stored by the [Secret Manager](xref:security/app-secrets) or in *appsettings.json*/*appsettings.{ENVIRONMENT}.json* files).</span></span> <span data-ttu-id="ccaea-351">La cadena de conexión puede contener credenciales que deben mantenerse fuera de los sistemas de control de código fuente.</span><span class="sxs-lookup"><span data-stu-id="ccaea-351">The connection string may contain credentials that should be kept out of source control systems.</span></span>
 
 ### <a name="distributed-redis-cache"></a><span data-ttu-id="ccaea-352">Redis Cache distribuido</span><span class="sxs-lookup"><span data-stu-id="ccaea-352">Distributed Redis Cache</span></span>
 

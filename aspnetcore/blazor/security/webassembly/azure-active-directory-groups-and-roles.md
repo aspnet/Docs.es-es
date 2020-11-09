@@ -1,23 +1,23 @@
 ---
-title: ':::no-loc(Blazor WebAssembly)::: en ASP.NET Core con grupos y roles de Azure Active Directory'
+title: 'Blazor WebAssembly en ASP.NET Core con grupos y roles de Azure Active Directory'
 author: guardrex
-description: 'Obtenga información sobre cómo configurar :::no-loc(Blazor WebAssembly)::: para usar grupos y roles de Azure Active Directory.'
+description: 'Obtenga información sobre cómo configurar Blazor WebAssembly para usar grupos y roles de Azure Active Directory.'
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: devx-track-csharp, mvc
 ms.date: 10/27/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: blazor/security/webassembly/aad-groups-roles
 ms.openlocfilehash: 680b44a705b66be0aab824487119cdb118b44d0f
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -30,7 +30,7 @@ ms.locfileid: "93055313"
 
 <span data-ttu-id="ab7a9-104">Por [Luke Latham](https://github.com/guardrex) y [Javier Calvarro Nelson](https://github.com/javiercn)</span><span class="sxs-lookup"><span data-stu-id="ab7a9-104">By [Luke Latham](https://github.com/guardrex) and [Javier Calvarro Nelson](https://github.com/javiercn)</span></span>
 
-<span data-ttu-id="ab7a9-105">Azure Active Directory (AAD) proporciona diversos enfoques de autorización que se pueden combinar con :::no-loc(ASP.NET Core Identity)::::</span><span class="sxs-lookup"><span data-stu-id="ab7a9-105">Azure Active Directory (AAD) provides several authorization approaches that can be combined with :::no-loc(ASP.NET Core Identity)::::</span></span>
+<span data-ttu-id="ab7a9-105">Azure Active Directory (AAD) proporciona diversos enfoques de autorización que se pueden combinar con ASP.NET Core Identity:</span><span class="sxs-lookup"><span data-stu-id="ab7a9-105">Azure Active Directory (AAD) provides several authorization approaches that can be combined with ASP.NET Core Identity:</span></span>
 
 * <span data-ttu-id="ab7a9-106">Grupos definidos por el usuario</span><span class="sxs-lookup"><span data-stu-id="ab7a9-106">User-defined groups</span></span>
   * <span data-ttu-id="ab7a9-107">Seguridad</span><span class="sxs-lookup"><span data-stu-id="ab7a9-107">Security</span></span>
@@ -40,7 +40,7 @@ ms.locfileid: "93055313"
   * <span data-ttu-id="ab7a9-111">Roles de administrador de AAD</span><span class="sxs-lookup"><span data-stu-id="ab7a9-111">AAD Administrator Roles</span></span>
   * <span data-ttu-id="ab7a9-112">Roles definidos por el usuario</span><span class="sxs-lookup"><span data-stu-id="ab7a9-112">User-defined roles</span></span>
 
-<span data-ttu-id="ab7a9-113">Las instrucciones de este artículo atañen a los escenarios de implementación de AAD de :::no-loc(Blazor WebAssembly)::: descritos en los siguientes temas:</span><span class="sxs-lookup"><span data-stu-id="ab7a9-113">The guidance in this article applies to the :::no-loc(Blazor WebAssembly)::: AAD deployment scenarios described in the following topics:</span></span>
+<span data-ttu-id="ab7a9-113">Las instrucciones de este artículo atañen a los escenarios de implementación de AAD de Blazor WebAssembly descritos en los siguientes temas:</span><span class="sxs-lookup"><span data-stu-id="ab7a9-113">The guidance in this article applies to the Blazor WebAssembly AAD deployment scenarios described in the following topics:</span></span>
 
 * [<span data-ttu-id="ab7a9-114">Independiente con cuentas Microsoft</span><span class="sxs-lookup"><span data-stu-id="ab7a9-114">Standalone with Microsoft Accounts</span></span>](xref:blazor/security/webassembly/standalone-with-microsoft-accounts)
 * [<span data-ttu-id="ab7a9-115">Independiente con AAD</span><span class="sxs-lookup"><span data-stu-id="ab7a9-115">Standalone with AAD</span></span>](xref:blazor/security/webassembly/standalone-with-azure-active-directory)
@@ -50,7 +50,7 @@ ms.locfileid: "93055313"
 
 <span data-ttu-id="ab7a9-118">Para los usuarios de aplicaciones con más de cinco pertenencias a grupos de seguridad y roles de administrador de AAD, se requiere una llamada [Microsoft Graph API](/graph/use-the-api).</span><span class="sxs-lookup"><span data-stu-id="ab7a9-118">A [Microsoft Graph API](/graph/use-the-api) call is required for any app user with more than five AAD Administrator role and security group memberships.</span></span>
 
-<span data-ttu-id="ab7a9-119">Para permitir llamadas de Graph API, proporcione a la aplicación independiente o *`Client`* de una solución de :::no-loc(Blazor)::: hospedada cualquiera de los siguientes [permisos de Graph API (ámbitos)](/graph/permissions-reference) en Azure Portal:</span><span class="sxs-lookup"><span data-stu-id="ab7a9-119">To permit Graph API calls, give the standalone or *`Client`* app of a hosted :::no-loc(Blazor)::: solution any of the following [Graph API permissions (scopes)](/graph/permissions-reference) in the Azure portal:</span></span>
+<span data-ttu-id="ab7a9-119">Para permitir llamadas de Graph API, proporcione a la aplicación independiente o *`Client`* de una solución de Blazor hospedada cualquiera de los siguientes [permisos de Graph API (ámbitos)](/graph/permissions-reference) en Azure Portal:</span><span class="sxs-lookup"><span data-stu-id="ab7a9-119">To permit Graph API calls, give the standalone or *`Client`* app of a hosted Blazor solution any of the following [Graph API permissions (scopes)](/graph/permissions-reference) in the Azure portal:</span></span>
 
 * `Directory.Read.All`
 * `Directory.ReadWrite.All`
@@ -98,11 +98,11 @@ public class CustomUserAccount : RemoteUserAccount
 
 ### <a name="use-the-graph-sdk"></a><span data-ttu-id="ab7a9-139">Uso del SDK de Graph</span><span class="sxs-lookup"><span data-stu-id="ab7a9-139">Use the Graph SDK</span></span>
 
-<span data-ttu-id="ab7a9-140">Agregue una referencia de paquete a la aplicación independiente o la aplicación *`Client`* de una solución de :::no-loc(Blazor)::: hospedada para [`Microsoft.Graph`](https://www.nuget.org/packages/Microsoft.Graph).</span><span class="sxs-lookup"><span data-stu-id="ab7a9-140">Add a package reference to the standalone app or *`Client`* app of a hosted :::no-loc(Blazor)::: solution for [`Microsoft.Graph`](https://www.nuget.org/packages/Microsoft.Graph).</span></span>
+<span data-ttu-id="ab7a9-140">Agregue una referencia de paquete a la aplicación independiente o la aplicación *`Client`* de una solución de Blazor hospedada para [`Microsoft.Graph`](https://www.nuget.org/packages/Microsoft.Graph).</span><span class="sxs-lookup"><span data-stu-id="ab7a9-140">Add a package reference to the standalone app or *`Client`* app of a hosted Blazor solution for [`Microsoft.Graph`](https://www.nuget.org/packages/Microsoft.Graph).</span></span>
 
 <span data-ttu-id="ab7a9-141">Agregue la configuración y las clases de utilidad del SDK de Graph de la sección *SDK de Graph* del artículo <xref:blazor/security/webassembly/graph-api#graph-sdk>.</span><span class="sxs-lookup"><span data-stu-id="ab7a9-141">Add the Graph SDK utility classes and configuration in the *Graph SDK* section of the <xref:blazor/security/webassembly/graph-api#graph-sdk> article.</span></span>
 
-<span data-ttu-id="ab7a9-142">Agregue la siguiente fábrica de cuentas de usuario personalizada a la aplicación independiente o *`Client`* de una solución de :::no-loc(Blazor)::: hospedada (`CustomAccountFactory.cs`).</span><span class="sxs-lookup"><span data-stu-id="ab7a9-142">Add the following custom user account factory to the standalone appo or *`Client`* app of a hosted :::no-loc(Blazor)::: solution (`CustomAccountFactory.cs`).</span></span> <span data-ttu-id="ab7a9-143">La fábrica de usuarios personalizada se usa para procesar notificaciones de roles y grupos.</span><span class="sxs-lookup"><span data-stu-id="ab7a9-143">The custom user factory is used to process roles and groups claims.</span></span> <span data-ttu-id="ab7a9-144">La matriz de notificaciones de `roles` se trata en la sección [Roles definidos por el usuario](#user-defined-roles).</span><span class="sxs-lookup"><span data-stu-id="ab7a9-144">The `roles` claim array is covered in the [User-defined roles](#user-defined-roles) section.</span></span> <span data-ttu-id="ab7a9-145">Si la notificación `hasgroups` está presente, se usa el SDK de Graph para realizar una solicitud autorizada a Graph API a fin de obtener los roles y grupos del usuario:</span><span class="sxs-lookup"><span data-stu-id="ab7a9-145">If the `hasgroups` claim is present, the Graph SDK is used to make an authorized request to Graph API to obtain the user's roles and groups:</span></span>
+<span data-ttu-id="ab7a9-142">Agregue la siguiente fábrica de cuentas de usuario personalizada a la aplicación independiente o *`Client`* de una solución de Blazor hospedada (`CustomAccountFactory.cs`).</span><span class="sxs-lookup"><span data-stu-id="ab7a9-142">Add the following custom user account factory to the standalone appo or *`Client`* app of a hosted Blazor solution (`CustomAccountFactory.cs`).</span></span> <span data-ttu-id="ab7a9-143">La fábrica de usuarios personalizada se usa para procesar notificaciones de roles y grupos.</span><span class="sxs-lookup"><span data-stu-id="ab7a9-143">The custom user factory is used to process roles and groups claims.</span></span> <span data-ttu-id="ab7a9-144">La matriz de notificaciones de `roles` se trata en la sección [Roles definidos por el usuario](#user-defined-roles).</span><span class="sxs-lookup"><span data-stu-id="ab7a9-144">The `roles` claim array is covered in the [User-defined roles](#user-defined-roles) section.</span></span> <span data-ttu-id="ab7a9-145">Si la notificación `hasgroups` está presente, se usa el SDK de Graph para realizar una solicitud autorizada a Graph API a fin de obtener los roles y grupos del usuario:</span><span class="sxs-lookup"><span data-stu-id="ab7a9-145">If the `hasgroups` claim is present, the Graph SDK is used to make an authorized request to Graph API to obtain the user's roles and groups:</span></span>
 
 ```csharp
 using System;
@@ -137,16 +137,16 @@ public class CustomAccountFactory
     {
         var initialUser = await base.CreateUserAsync(account, options);
 
-        if (initialUser.:::no-loc(Identity):::.IsAuthenticated)
+        if (initialUser.Identity.IsAuthenticated)
         {
-            var user:::no-loc(Identity)::: = (Claims:::no-loc(Identity):::)initialUser.:::no-loc(Identity):::;
+            var userIdentity = (ClaimsIdentity)initialUser.Identity;
 
             foreach (var role in account.Roles)
             {
-                user:::no-loc(Identity):::.AddClaim(new Claim("role", role));
+                userIdentity.AddClaim(new Claim("role", role));
             }
 
-            if (user:::no-loc(Identity):::.HasClaim(c => c.Type == "hasgroups"))
+            if (userIdentity.HasClaim(c => c.Type == "hasgroups"))
             {
                 IUserMemberOfCollectionWithReferencesPage groupsAndAzureRoles = 
                     null;
@@ -155,7 +155,7 @@ public class CustomAccountFactory
                 {
                     var graphClient = ActivatorUtilities
                         .CreateInstance<GraphServiceClient>(serviceProvider);
-                    var oid = user:::no-loc(Identity):::.Claims.FirstOrDefault(x => x.Type == "oid")?
+                    var oid = userIdentity.Claims.FirstOrDefault(x => x.Type == "oid")?
                         .Value;
 
                     if (!string.IsNullOrEmpty(oid))
@@ -173,20 +173,20 @@ public class CustomAccountFactory
                 {
                     foreach (var entry in groupsAndAzureRoles)
                     {
-                        user:::no-loc(Identity):::.AddClaim(new Claim("group", entry.Id));
+                        userIdentity.AddClaim(new Claim("group", entry.Id));
                     }
                 }
 
-                var claim = user:::no-loc(Identity):::.Claims.FirstOrDefault(
+                var claim = userIdentity.Claims.FirstOrDefault(
                     c => c.Type == "hasgroups");
 
-                user:::no-loc(Identity):::.RemoveClaim(claim);
+                userIdentity.RemoveClaim(claim);
             }
             else
             {
                 foreach (var group in account.Groups)
                 {
-                    user:::no-loc(Identity):::.AddClaim(new Claim("group", group));
+                    userIdentity.AddClaim(new Claim("group", group));
                 }
             }
         }
@@ -227,7 +227,7 @@ builder.Services.AddMsalAuthentication<RemoteAuthenticationState,
 
 ::: moniker-end
 
-<span data-ttu-id="ab7a9-152">En la aplicación independiente o la aplicación *`Client`* de una solución de :::no-loc(Blazor)::: hospedada, cree una clase <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler> personalizada.</span><span class="sxs-lookup"><span data-stu-id="ab7a9-152">In the standalone app or the *`Client`* app of a hosted :::no-loc(Blazor)::: solution, create a custom <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler> class.</span></span> <span data-ttu-id="ab7a9-153">Use el ámbito correcto para las llamadas de Graph API que obtienen información de roles y grupos.</span><span class="sxs-lookup"><span data-stu-id="ab7a9-153">Use the correct scope for Graph API calls that obtain role and group information.</span></span>
+<span data-ttu-id="ab7a9-152">En la aplicación independiente o la aplicación *`Client`* de una solución de Blazor hospedada, cree una clase <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler> personalizada.</span><span class="sxs-lookup"><span data-stu-id="ab7a9-152">In the standalone app or the *`Client`* app of a hosted Blazor solution, create a custom <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler> class.</span></span> <span data-ttu-id="ab7a9-153">Use el ámbito correcto para las llamadas de Graph API que obtienen información de roles y grupos.</span><span class="sxs-lookup"><span data-stu-id="ab7a9-153">Use the correct scope for Graph API calls that obtain role and group information.</span></span>
 
 <span data-ttu-id="ab7a9-154">`GraphAPIAuthorizationMessageHandler.cs`:</span><span class="sxs-lookup"><span data-stu-id="ab7a9-154">`GraphAPIAuthorizationMessageHandler.cs`:</span></span>
 
@@ -285,7 +285,7 @@ public class Value
 }
 ```
 
-<span data-ttu-id="ab7a9-160">Cree una fábrica de usuario personalizada para procesar notificaciones de roles y grupos.</span><span class="sxs-lookup"><span data-stu-id="ab7a9-160">Create a custom user factory to process roles and groups claims.</span></span> <span data-ttu-id="ab7a9-161">En la implementación de ejemplo siguiente también se controla la matriz de notificaciones `roles`, que se describe en la sección [Roles definidos por el usuario](#user-defined-roles).</span><span class="sxs-lookup"><span data-stu-id="ab7a9-161">The following example implementation also handles the `roles` claim array, which is covered in the [User-defined roles](#user-defined-roles) section.</span></span> <span data-ttu-id="ab7a9-162">Si la notificación `hasgroups` está presente, el elemento <xref:System.Net.Http.HttpClient> con nombre se usa para hacer una solicitud autorizada a Graph API para obtener los roles y grupos del usuario.</span><span class="sxs-lookup"><span data-stu-id="ab7a9-162">If the `hasgroups` claim is present, the named <xref:System.Net.Http.HttpClient> is used to make an authorized request to Graph API to obtain the user's roles and groups.</span></span> <span data-ttu-id="ab7a9-163">Esta implementación usa el punto de conexión de la plataforma de :::no-loc(Identity)::: de Microsoft v1.0 `https://graph.microsoft.com/v1.0/me/memberOf` ([documentación de API](/graph/api/user-list-memberof)).</span><span class="sxs-lookup"><span data-stu-id="ab7a9-163">This implementation uses the Microsoft :::no-loc(Identity)::: Platform v1.0 endpoint `https://graph.microsoft.com/v1.0/me/memberOf` ([API documentation](/graph/api/user-list-memberof)).</span></span>
+<span data-ttu-id="ab7a9-160">Cree una fábrica de usuario personalizada para procesar notificaciones de roles y grupos.</span><span class="sxs-lookup"><span data-stu-id="ab7a9-160">Create a custom user factory to process roles and groups claims.</span></span> <span data-ttu-id="ab7a9-161">En la implementación de ejemplo siguiente también se controla la matriz de notificaciones `roles`, que se describe en la sección [Roles definidos por el usuario](#user-defined-roles).</span><span class="sxs-lookup"><span data-stu-id="ab7a9-161">The following example implementation also handles the `roles` claim array, which is covered in the [User-defined roles](#user-defined-roles) section.</span></span> <span data-ttu-id="ab7a9-162">Si la notificación `hasgroups` está presente, el elemento <xref:System.Net.Http.HttpClient> con nombre se usa para hacer una solicitud autorizada a Graph API para obtener los roles y grupos del usuario.</span><span class="sxs-lookup"><span data-stu-id="ab7a9-162">If the `hasgroups` claim is present, the named <xref:System.Net.Http.HttpClient> is used to make an authorized request to Graph API to obtain the user's roles and groups.</span></span> <span data-ttu-id="ab7a9-163">Esta implementación usa el punto de conexión de la plataforma de Identity de Microsoft v1.0 `https://graph.microsoft.com/v1.0/me/memberOf` ([documentación de API](/graph/api/user-list-memberof)).</span><span class="sxs-lookup"><span data-stu-id="ab7a9-163">This implementation uses the Microsoft Identity Platform v1.0 endpoint `https://graph.microsoft.com/v1.0/me/memberOf` ([API documentation](/graph/api/user-list-memberof)).</span></span>
 
 <span data-ttu-id="ab7a9-164">`CustomAccountFactory.cs`:</span><span class="sxs-lookup"><span data-stu-id="ab7a9-164">`CustomAccountFactory.cs`:</span></span>
 
@@ -320,16 +320,16 @@ public class CustomUserFactory
     {
         var initialUser = await base.CreateUserAsync(account, options);
 
-        if (initialUser.:::no-loc(Identity):::.IsAuthenticated)
+        if (initialUser.Identity.IsAuthenticated)
         {
-            var user:::no-loc(Identity)::: = (Claims:::no-loc(Identity):::)initialUser.:::no-loc(Identity):::;
+            var userIdentity = (ClaimsIdentity)initialUser.Identity;
 
             foreach (var role in account.Roles)
             {
-                user:::no-loc(Identity):::.AddClaim(new Claim("role", role));
+                userIdentity.AddClaim(new Claim("role", role));
             }
 
-            if (user:::no-loc(Identity):::.HasClaim(c => c.Type == "hasgroups"))
+            if (userIdentity.HasClaim(c => c.Type == "hasgroups"))
             {
                 try
                 {
@@ -344,13 +344,13 @@ public class CustomUserFactory
 
                         foreach (var obj in userObjects?.Values)
                         {
-                            user:::no-loc(Identity):::.AddClaim(new Claim("group", obj.Id));
+                            userIdentity.AddClaim(new Claim("group", obj.Id));
                         }
 
-                        var claim = user:::no-loc(Identity):::.Claims.FirstOrDefault(
+                        var claim = userIdentity.Claims.FirstOrDefault(
                             c => c.Type == "hasgroups");
 
-                        user:::no-loc(Identity):::.RemoveClaim(claim);
+                        userIdentity.RemoveClaim(claim);
                     }
                     else
                     {
@@ -368,7 +368,7 @@ public class CustomUserFactory
             {
                 foreach (var group in account.Groups)
                 {
-                    user:::no-loc(Identity):::.AddClaim(new Claim("group", group));
+                    userIdentity.AddClaim(new Claim("group", group));
                 }
             }
         }
@@ -389,7 +389,7 @@ public class CustomUserFactory
 >
 > <span data-ttu-id="ab7a9-170">La cobertura general de este enfoque se encuentra en el artículo <xref:blazor/security/webassembly/additional-scenarios#custom-authorizationmessagehandler-class>.</span><span class="sxs-lookup"><span data-stu-id="ab7a9-170">General coverage for this approach is found in the <xref:blazor/security/webassembly/additional-scenarios#custom-authorizationmessagehandler-class> article.</span></span>
 
-<span data-ttu-id="ab7a9-171">Registre la fábrica en el archivo `Program.Main` (`Program.cs`) de la aplicación independiente o la aplicación *`Client`* de una solución de :::no-loc(Blazor)::: hospedada.</span><span class="sxs-lookup"><span data-stu-id="ab7a9-171">Register the factory in `Program.Main` (`Program.cs`) of the standalone app or *`Client`* app of a hosted :::no-loc(Blazor)::: solution.</span></span> <span data-ttu-id="ab7a9-172">Dé el consentimiento al ámbito `Directory.Read.All` como un ámbito adicional para la aplicación:</span><span class="sxs-lookup"><span data-stu-id="ab7a9-172">Consent to the `Directory.Read.All` scope as an additional scope for the app:</span></span>
+<span data-ttu-id="ab7a9-171">Registre la fábrica en el archivo `Program.Main` (`Program.cs`) de la aplicación independiente o la aplicación *`Client`* de una solución de Blazor hospedada.</span><span class="sxs-lookup"><span data-stu-id="ab7a9-171">Register the factory in `Program.Main` (`Program.cs`) of the standalone app or *`Client`* app of a hosted Blazor solution.</span></span> <span data-ttu-id="ab7a9-172">Dé el consentimiento al ámbito `Directory.Read.All` como un ámbito adicional para la aplicación:</span><span class="sxs-lookup"><span data-stu-id="ab7a9-172">Consent to the `Directory.Read.All` scope as an additional scope for the app:</span></span>
 
 ```csharp
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
@@ -520,7 +520,7 @@ builder.Services.AddAuthorizationCore(options =>
 
 ### <a name="app-settings"></a><span data-ttu-id="ab7a9-202">Configuración de la aplicación</span><span class="sxs-lookup"><span data-stu-id="ab7a9-202">App settings</span></span>
 
-<span data-ttu-id="ab7a9-203">En el archivo de configuración de la aplicación (`:::no-loc(appsettings.json):::` o `appsettings.Production.json`), cree una entrada `ClientSecret` con el secreto de cliente de la aplicación *Server* desde Azure Portal:</span><span class="sxs-lookup"><span data-stu-id="ab7a9-203">In the app settings file (`:::no-loc(appsettings.json):::` or `appsettings.Production.json`), create a `ClientSecret` entry with the *Server* app's client secret from the Azure portal:</span></span>
+<span data-ttu-id="ab7a9-203">En el archivo de configuración de la aplicación (`appsettings.json` o `appsettings.Production.json`), cree una entrada `ClientSecret` con el secreto de cliente de la aplicación *Server* desde Azure Portal:</span><span class="sxs-lookup"><span data-stu-id="ab7a9-203">In the app settings file (`appsettings.json` or `appsettings.Production.json`), create a `ClientSecret` entry with the *Server* app's client secret from the Azure portal:</span></span>
 
 ```json
 "AzureAd": {
@@ -547,7 +547,7 @@ builder.Services.AddAuthorizationCore(options =>
 ::: moniker range=">= aspnetcore-5.0"
 
 > [!NOTE]
-> <span data-ttu-id="ab7a9-205">Si no se comprueba el dominio del publicador de inquilinos, el ámbito de API de servidor para el acceso de usuarios o clientes usa un URI basado en `https://`.</span><span class="sxs-lookup"><span data-stu-id="ab7a9-205">If the tenant publisher domain isn't verified, the server API scope for user/client access uses an `https://`-based URI.</span></span> <span data-ttu-id="ab7a9-206">En este escenario, la aplicación de API de servidor requiere configuración `Audience` en el archivo `:::no-loc(appsettings.json):::`.</span><span class="sxs-lookup"><span data-stu-id="ab7a9-206">In this scenario, the server API app requires `Audience` configuration in the `:::no-loc(appsettings.json):::` file.</span></span> <span data-ttu-id="ab7a9-207">En la siguiente configuración, el final del valor `Audience` **no** incluye el ámbito predeterminado `/{DEFAULT SCOPE}`, donde el marcador de posición `{DEFAULT SCOPE}` es el ámbito predeterminado:</span><span class="sxs-lookup"><span data-stu-id="ab7a9-207">In the following configuration, the end of the `Audience` value does **not** include the default scope `/{DEFAULT SCOPE}`, where the placeholder `{DEFAULT SCOPE}` is the default scope:</span></span>
+> <span data-ttu-id="ab7a9-205">Si no se comprueba el dominio del publicador de inquilinos, el ámbito de API de servidor para el acceso de usuarios o clientes usa un URI basado en `https://`.</span><span class="sxs-lookup"><span data-stu-id="ab7a9-205">If the tenant publisher domain isn't verified, the server API scope for user/client access uses an `https://`-based URI.</span></span> <span data-ttu-id="ab7a9-206">En este escenario, la aplicación de API de servidor requiere configuración `Audience` en el archivo `appsettings.json`.</span><span class="sxs-lookup"><span data-stu-id="ab7a9-206">In this scenario, the server API app requires `Audience` configuration in the `appsettings.json` file.</span></span> <span data-ttu-id="ab7a9-207">En la siguiente configuración, el final del valor `Audience` **no** incluye el ámbito predeterminado `/{DEFAULT SCOPE}`, donde el marcador de posición `{DEFAULT SCOPE}` es el ámbito predeterminado:</span><span class="sxs-lookup"><span data-stu-id="ab7a9-207">In the following configuration, the end of the `Audience` value does **not** include the default scope `/{DEFAULT SCOPE}`, where the placeholder `{DEFAULT SCOPE}` is the default scope:</span></span>
 >
 > ```json
 > {
@@ -623,7 +623,7 @@ public class BillingDataController : ControllerBase
 <span data-ttu-id="ab7a9-221">Agregue referencias de paquete a la aplicación *Server* para los paquetes siguientes:</span><span class="sxs-lookup"><span data-stu-id="ab7a9-221">Add package references to the *Server* app for the following packages:</span></span>
 
 * [<span data-ttu-id="ab7a9-222">Microsoft.Graph</span><span class="sxs-lookup"><span data-stu-id="ab7a9-222">Microsoft.Graph</span></span>](https://www.nuget.org/packages/Microsoft.Graph)
-* <span data-ttu-id="ab7a9-223">[Microsoft.:::no-loc(Identity):::.Client](https://www.nuget.org/packages/Microsoft.:::no-loc(Identity):::.Client)</span><span class="sxs-lookup"><span data-stu-id="ab7a9-223">[Microsoft.:::no-loc(Identity):::.Client](https://www.nuget.org/packages/Microsoft.:::no-loc(Identity):::.Client)</span></span>
+* <span data-ttu-id="ab7a9-223">[Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)</span><span class="sxs-lookup"><span data-stu-id="ab7a9-223">[Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)</span></span>
 
 ### <a name="services"></a><span data-ttu-id="ab7a9-224">Servicios</span><span class="sxs-lookup"><span data-stu-id="ab7a9-224">Services</span></span>
 
@@ -631,13 +631,13 @@ public class BillingDataController : ControllerBase
 
 ```csharp
 using System;
-using System.:::no-loc(Identity):::Model.Tokens.Jwt;
+using System.IdentityModel.Tokens.Jwt;
 using System.Net.Http.Headers;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.Graph;
-using Microsoft.:::no-loc(Identity):::.Client;
-using Microsoft.:::no-loc(Identity):::Model.Logging;
+using Microsoft.Identity.Client;
+using Microsoft.IdentityModel.Logging;
 ```
 
 <span data-ttu-id="ab7a9-227">Al configurar <xref:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerEvents>:</span><span class="sxs-lookup"><span data-stu-id="ab7a9-227">When configuring <xref:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerEvents>:</span></span>
@@ -646,7 +646,7 @@ using Microsoft.:::no-loc(Identity):::Model.Logging;
 * <span data-ttu-id="ab7a9-230">En <xref:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerEvents.OnTokenValidated?displayProperty=nameWithType>, realice una llamada Graph API para obtener los grupos y los roles del usuario.</span><span class="sxs-lookup"><span data-stu-id="ab7a9-230">In <xref:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerEvents.OnTokenValidated?displayProperty=nameWithType>, make a Graph API call to obtain the user's groups and roles.</span></span>
 
 > [!WARNING]
-> <span data-ttu-id="ab7a9-231"><xref:Microsoft.:::no-loc(Identity):::Model.Logging.:::no-loc(Identity):::ModelEventSource.ShowPII?displayProperty=nameWithType> proporciona información de identificación personal (PII) en los mensajes de registro.</span><span class="sxs-lookup"><span data-stu-id="ab7a9-231"><xref:Microsoft.:::no-loc(Identity):::Model.Logging.:::no-loc(Identity):::ModelEventSource.ShowPII?displayProperty=nameWithType> provides Personally Identifiable Information (PII) in logging messages.</span></span> <span data-ttu-id="ab7a9-232">Active PII únicamente para la depuración con cuentas de usuario de prueba.</span><span class="sxs-lookup"><span data-stu-id="ab7a9-232">Only activate PII for debugging with test user accounts.</span></span>
+> <span data-ttu-id="ab7a9-231"><xref:Microsoft.IdentityModel.Logging.IdentityModelEventSource.ShowPII?displayProperty=nameWithType> proporciona información de identificación personal (PII) en los mensajes de registro.</span><span class="sxs-lookup"><span data-stu-id="ab7a9-231"><xref:Microsoft.IdentityModel.Logging.IdentityModelEventSource.ShowPII?displayProperty=nameWithType> provides Personally Identifiable Information (PII) in logging messages.</span></span> <span data-ttu-id="ab7a9-232">Active PII únicamente para la depuración con cuentas de usuario de prueba.</span><span class="sxs-lookup"><span data-stu-id="ab7a9-232">Only activate PII for debugging with test user accounts.</span></span>
 
 <span data-ttu-id="ab7a9-233">En `Startup.ConfigureServices`:</span><span class="sxs-lookup"><span data-stu-id="ab7a9-233">In `Startup.ConfigureServices`:</span></span>
 
@@ -654,7 +654,7 @@ using Microsoft.:::no-loc(Identity):::Model.Logging;
 JwtSecurityTokenHandler.DefaultMapInboundClaims = false;
 
 #if DEBUG
-:::no-loc(Identity):::ModelEventSource.ShowPII = true;
+IdentityModelEventSource.ShowPII = true;
 #endif
 
 var scopes = new string[] { "https://graph.microsoft.com/.default" };
@@ -665,7 +665,7 @@ var app = ConfidentialClientApplicationBuilder.Create(Configuration["AzureAd:Cli
    .Build();
 
 services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    .AddMicrosoft:::no-loc(Identity):::WebApi(options =>
+    .AddMicrosoftIdentityWebApi(options =>
 {
     Configuration.Bind("AzureAd", options);
 
@@ -680,7 +680,7 @@ services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
             if (!string.IsNullOrEmpty(oid))
             {
-                var user:::no-loc(Identity)::: = (Claims:::no-loc(Identity):::)context.Principal.:::no-loc(Identity):::;
+                var userIdentity = (ClaimsIdentity)context.Principal.Identity;
 
                 AuthenticationResult authResult = null;
 
@@ -723,7 +723,7 @@ services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 {
                     foreach (var entry in groupsAndAzureRoles)
                     {
-                        user:::no-loc(Identity):::.AddClaim(new Claim("group", entry.Id));
+                        userIdentity.AddClaim(new Claim("group", entry.Id));
                     }
                 }
             }
@@ -754,20 +754,20 @@ options =>
 <span data-ttu-id="ab7a9-240">Agregue referencias de paquete a la aplicación *Server* para los paquetes siguientes:</span><span class="sxs-lookup"><span data-stu-id="ab7a9-240">Add package references to the *Server* app for the following packages:</span></span>
 
 * [<span data-ttu-id="ab7a9-241">Microsoft.Graph</span><span class="sxs-lookup"><span data-stu-id="ab7a9-241">Microsoft.Graph</span></span>](https://www.nuget.org/packages/Microsoft.Graph)
-* <span data-ttu-id="ab7a9-242">[Microsoft.:::no-loc(Identity):::Model.Clients.ActiveDirectory](https://www.nuget.org/packages?q=Microsoft.:::no-loc(Identity):::Model.Clients.ActiveDirectory)</span><span class="sxs-lookup"><span data-stu-id="ab7a9-242">[Microsoft.:::no-loc(Identity):::Model.Clients.ActiveDirectory](https://www.nuget.org/packages?q=Microsoft.:::no-loc(Identity):::Model.Clients.ActiveDirectory)</span></span>
+* <span data-ttu-id="ab7a9-242">[Microsoft.IdentityModel.Clients.ActiveDirectory](https://www.nuget.org/packages?q=Microsoft.IdentityModel.Clients.ActiveDirectory)</span><span class="sxs-lookup"><span data-stu-id="ab7a9-242">[Microsoft.IdentityModel.Clients.ActiveDirectory](https://www.nuget.org/packages?q=Microsoft.IdentityModel.Clients.ActiveDirectory)</span></span>
 
 ### <a name="service-configuration"></a><span data-ttu-id="ab7a9-243">Configuración del servicio</span><span class="sxs-lookup"><span data-stu-id="ab7a9-243">Service configuration</span></span>
 
 <span data-ttu-id="ab7a9-244">En el método `Startup.ConfigureServices` de la aplicación *Server* , agregue lógica para realizar la llamada Graph API y establezca notificaciones `group` de usuario para los roles y grupos de seguridad del usuario.</span><span class="sxs-lookup"><span data-stu-id="ab7a9-244">In the *Server* app's `Startup.ConfigureServices` method add logic to make the Graph API call and establish user `group` claims for the user's security groups and roles.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="ab7a9-245">En el código de ejemplo de esta sección se usa el Biblioteca de autenticación de Active Directory (ADAL), que se basa en Microsoft :::no-loc(Identity)::: Platform v1.0.</span><span class="sxs-lookup"><span data-stu-id="ab7a9-245">The example code in this section uses the Active Directory Authentication Library (ADAL), which is based on Microsoft :::no-loc(Identity)::: Platform v1.0.</span></span>
+> <span data-ttu-id="ab7a9-245">En el código de ejemplo de esta sección se usa el Biblioteca de autenticación de Active Directory (ADAL), que se basa en Microsoft Identity Platform v1.0.</span><span class="sxs-lookup"><span data-stu-id="ab7a9-245">The example code in this section uses the Active Directory Authentication Library (ADAL), which is based on Microsoft Identity Platform v1.0.</span></span>
 
 <span data-ttu-id="ab7a9-246">Se requieren espacios de nombres adicionales para el código de la clase `Startup` de la aplicación *Server*.</span><span class="sxs-lookup"><span data-stu-id="ab7a9-246">Additional namespaces are required for the code in the `Startup` class of the *Server* app.</span></span> <span data-ttu-id="ab7a9-247">El siguiente conjunto de instrucciones `using` incluye los espacios de nombres necesarios para el código que se muestra a continuación en esta sección:</span><span class="sxs-lookup"><span data-stu-id="ab7a9-247">The following set of `using` statements includes the required namespaces for the code that follows in this section:</span></span>
 
 ```csharp
 using System;
-using System.:::no-loc(Identity):::Model.Tokens.Jwt;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Security.Claims;
@@ -782,8 +782,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Graph;
-using Microsoft.:::no-loc(Identity):::Model.Clients.ActiveDirectory;
-using Microsoft.:::no-loc(Identity):::Model.Logging;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using Microsoft.IdentityModel.Logging;
 ```
 
 <span data-ttu-id="ab7a9-248">Al configurar <xref:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerEvents>:</span><span class="sxs-lookup"><span data-stu-id="ab7a9-248">When configuring <xref:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerEvents>:</span></span>
@@ -792,13 +792,13 @@ using Microsoft.:::no-loc(Identity):::Model.Logging;
 * <span data-ttu-id="ab7a9-251">En <xref:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerEvents.OnTokenValidated?displayProperty=nameWithType>, realice una llamada Graph API para obtener los grupos y los roles del usuario.</span><span class="sxs-lookup"><span data-stu-id="ab7a9-251">In <xref:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerEvents.OnTokenValidated?displayProperty=nameWithType>, make a Graph API call to obtain the user's groups and roles.</span></span>
 
 > [!WARNING]
-> <span data-ttu-id="ab7a9-252"><xref:Microsoft.:::no-loc(Identity):::Model.Logging.:::no-loc(Identity):::ModelEventSource.ShowPII?displayProperty=nameWithType> proporciona información de identificación personal (PII) en los mensajes de registro.</span><span class="sxs-lookup"><span data-stu-id="ab7a9-252"><xref:Microsoft.:::no-loc(Identity):::Model.Logging.:::no-loc(Identity):::ModelEventSource.ShowPII?displayProperty=nameWithType> provides Personally Identifiable Information (PII) in logging messages.</span></span> <span data-ttu-id="ab7a9-253">Active PII únicamente para la depuración con cuentas de usuario de prueba.</span><span class="sxs-lookup"><span data-stu-id="ab7a9-253">Only activate PII for debugging with test user accounts.</span></span>
+> <span data-ttu-id="ab7a9-252"><xref:Microsoft.IdentityModel.Logging.IdentityModelEventSource.ShowPII?displayProperty=nameWithType> proporciona información de identificación personal (PII) en los mensajes de registro.</span><span class="sxs-lookup"><span data-stu-id="ab7a9-252"><xref:Microsoft.IdentityModel.Logging.IdentityModelEventSource.ShowPII?displayProperty=nameWithType> provides Personally Identifiable Information (PII) in logging messages.</span></span> <span data-ttu-id="ab7a9-253">Active PII únicamente para la depuración con cuentas de usuario de prueba.</span><span class="sxs-lookup"><span data-stu-id="ab7a9-253">Only activate PII for debugging with test user accounts.</span></span>
 
 <span data-ttu-id="ab7a9-254">En `Startup.ConfigureServices`:</span><span class="sxs-lookup"><span data-stu-id="ab7a9-254">In `Startup.ConfigureServices`:</span></span>
 
 ```csharp
 #if DEBUG
-:::no-loc(Identity):::ModelEventSource.ShowPII = true;
+IdentityModelEventSource.ShowPII = true;
 #endif
 
 services.AddAuthentication(AzureADDefaults.BearerAuthenticationScheme)
@@ -855,7 +855,7 @@ services.Configure<JwtBearerOptions>(AzureADDefaults.JwtBearerAuthenticationSche
                         await Task.CompletedTask;
                     }));
 
-                var user:::no-loc(Identity)::: = (Claims:::no-loc(Identity):::)context.Principal.:::no-loc(Identity):::;
+                var userIdentity = (ClaimsIdentity)context.Principal.Identity;
 
                 IUserMemberOfCollectionWithReferencesPage groupsAndAzureRoles = 
                     null;
@@ -874,7 +874,7 @@ services.Configure<JwtBearerOptions>(AzureADDefaults.JwtBearerAuthenticationSche
                 {
                     foreach (var entry in groupsAndAzureRoles)
                     {
-                        user:::no-loc(Identity):::.AddClaim(new Claim("group", entry.Id));
+                        userIdentity.AddClaim(new Claim("group", entry.Id));
                     }
                 }
             }
@@ -887,8 +887,8 @@ services.Configure<JwtBearerOptions>(AzureADDefaults.JwtBearerAuthenticationSche
 
 <span data-ttu-id="ab7a9-255">En el ejemplo anterior:</span><span class="sxs-lookup"><span data-stu-id="ab7a9-255">In the preceding example:</span></span>
 
-* <span data-ttu-id="ab7a9-256">Primero se intenta la adquisición silenciosa del token (<xref:Microsoft.:::no-loc(Identity):::Model.Clients.ActiveDirectory.AuthenticationContext.AcquireTokenSilentAsync%2A>) porque el token de acceso puede haberse almacenado ya en la caché de tokens de ADAL.</span><span class="sxs-lookup"><span data-stu-id="ab7a9-256">Silent token acquisition (<xref:Microsoft.:::no-loc(Identity):::Model.Clients.ActiveDirectory.AuthenticationContext.AcquireTokenSilentAsync%2A>) is attempted first because the access token may have already been stored in the ADAL token cache.</span></span> <span data-ttu-id="ab7a9-257">Es más rápido obtener el token de la caché que solicitar uno nuevo.</span><span class="sxs-lookup"><span data-stu-id="ab7a9-257">It's faster to obtain the token from cache than to request a new token.</span></span>
-* <span data-ttu-id="ab7a9-258">Si el token de acceso no se adquiere de la caché (se produce <xref:Microsoft.:::no-loc(Identity):::Model.Clients.ActiveDirectory.AdalError.FailedToAcquireTokenSilently?displayProperty=nameWithType> o <xref:Microsoft.:::no-loc(Identity):::Model.Clients.ActiveDirectory.AdalError.UserInteractionRequired?displayProperty=nameWithType>), se realiza una aserción de usuario (<xref:Microsoft.:::no-loc(Identity):::Model.Clients.ActiveDirectory.UserAssertion>) con la credencial de cliente (<xref:Microsoft.:::no-loc(Identity):::Model.Clients.ActiveDirectory.ClientCredential>) para obtener el token en nombre del usuario (<xref:Microsoft.:::no-loc(Identity):::Model.Clients.ActiveDirectory.AuthenticationContext.AcquireTokenAsync%2A>).</span><span class="sxs-lookup"><span data-stu-id="ab7a9-258">If the access token isn't acquired from cache (<xref:Microsoft.:::no-loc(Identity):::Model.Clients.ActiveDirectory.AdalError.FailedToAcquireTokenSilently?displayProperty=nameWithType> or <xref:Microsoft.:::no-loc(Identity):::Model.Clients.ActiveDirectory.AdalError.UserInteractionRequired?displayProperty=nameWithType> is thrown), a user assertion (<xref:Microsoft.:::no-loc(Identity):::Model.Clients.ActiveDirectory.UserAssertion>) is made with the client credential (<xref:Microsoft.:::no-loc(Identity):::Model.Clients.ActiveDirectory.ClientCredential>) to obtain the token on behalf of the user (<xref:Microsoft.:::no-loc(Identity):::Model.Clients.ActiveDirectory.AuthenticationContext.AcquireTokenAsync%2A>).</span></span> <span data-ttu-id="ab7a9-259">Luego, `Microsoft.Graph.GraphServiceClient` puede proceder a usar el token para realizar la llamada Graph API.</span><span class="sxs-lookup"><span data-stu-id="ab7a9-259">Next, the `Microsoft.Graph.GraphServiceClient` can proceed to use the token to make the Graph API call.</span></span> <span data-ttu-id="ab7a9-260">El token se coloca en la caché de tokens de ADAL.</span><span class="sxs-lookup"><span data-stu-id="ab7a9-260">The token is placed into the ADAL token cache.</span></span> <span data-ttu-id="ab7a9-261">En las llamadas Graph API futuras correspondientes al mismo usuario, el token se adquiere de la caché de forma silenciosa con <xref:Microsoft.:::no-loc(Identity):::Model.Clients.ActiveDirectory.AuthenticationContext.AcquireTokenSilentAsync%2A>.</span><span class="sxs-lookup"><span data-stu-id="ab7a9-261">For future Graph API calls for the same user, the token is acquired from cache silently with <xref:Microsoft.:::no-loc(Identity):::Model.Clients.ActiveDirectory.AuthenticationContext.AcquireTokenSilentAsync%2A>.</span></span>
+* <span data-ttu-id="ab7a9-256">Primero se intenta la adquisición silenciosa del token (<xref:Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext.AcquireTokenSilentAsync%2A>) porque el token de acceso puede haberse almacenado ya en la caché de tokens de ADAL.</span><span class="sxs-lookup"><span data-stu-id="ab7a9-256">Silent token acquisition (<xref:Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext.AcquireTokenSilentAsync%2A>) is attempted first because the access token may have already been stored in the ADAL token cache.</span></span> <span data-ttu-id="ab7a9-257">Es más rápido obtener el token de la caché que solicitar uno nuevo.</span><span class="sxs-lookup"><span data-stu-id="ab7a9-257">It's faster to obtain the token from cache than to request a new token.</span></span>
+* <span data-ttu-id="ab7a9-258">Si el token de acceso no se adquiere de la caché (se produce <xref:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.FailedToAcquireTokenSilently?displayProperty=nameWithType> o <xref:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.UserInteractionRequired?displayProperty=nameWithType>), se realiza una aserción de usuario (<xref:Microsoft.IdentityModel.Clients.ActiveDirectory.UserAssertion>) con la credencial de cliente (<xref:Microsoft.IdentityModel.Clients.ActiveDirectory.ClientCredential>) para obtener el token en nombre del usuario (<xref:Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext.AcquireTokenAsync%2A>).</span><span class="sxs-lookup"><span data-stu-id="ab7a9-258">If the access token isn't acquired from cache (<xref:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.FailedToAcquireTokenSilently?displayProperty=nameWithType> or <xref:Microsoft.IdentityModel.Clients.ActiveDirectory.AdalError.UserInteractionRequired?displayProperty=nameWithType> is thrown), a user assertion (<xref:Microsoft.IdentityModel.Clients.ActiveDirectory.UserAssertion>) is made with the client credential (<xref:Microsoft.IdentityModel.Clients.ActiveDirectory.ClientCredential>) to obtain the token on behalf of the user (<xref:Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext.AcquireTokenAsync%2A>).</span></span> <span data-ttu-id="ab7a9-259">Luego, `Microsoft.Graph.GraphServiceClient` puede proceder a usar el token para realizar la llamada Graph API.</span><span class="sxs-lookup"><span data-stu-id="ab7a9-259">Next, the `Microsoft.Graph.GraphServiceClient` can proceed to use the token to make the Graph API call.</span></span> <span data-ttu-id="ab7a9-260">El token se coloca en la caché de tokens de ADAL.</span><span class="sxs-lookup"><span data-stu-id="ab7a9-260">The token is placed into the ADAL token cache.</span></span> <span data-ttu-id="ab7a9-261">En las llamadas Graph API futuras correspondientes al mismo usuario, el token se adquiere de la caché de forma silenciosa con <xref:Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext.AcquireTokenSilentAsync%2A>.</span><span class="sxs-lookup"><span data-stu-id="ab7a9-261">For future Graph API calls for the same user, the token is acquired from cache silently with <xref:Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext.AcquireTokenSilentAsync%2A>.</span></span>
 
 ::: moniker-end
 
@@ -926,12 +926,12 @@ foreach (var entry in groupsAndAzureRoles)
 {
     if (entry.ODataType == "#microsoft.graph.group")
     {
-        user:::no-loc(Identity):::.AddClaim(new Claim("group", entry.Id));
+        userIdentity.AddClaim(new Claim("group", entry.Id));
     }
     else
     {
         // entry.ODataType == "#microsoft.graph.directoryRole"
-        user:::no-loc(Identity):::.AddClaim(new Claim("role", entry.Id));
+        userIdentity.AddClaim(new Claim("role", entry.Id));
     }
 }
 ```
@@ -954,9 +954,9 @@ foreach (var entry in groupsAndAzureRoles)
 
 <span data-ttu-id="ab7a9-278">La notificación `roles` única enviada por AAD presenta los roles definidos por el usuario como valores `value` de `appRoles` en una matriz JSON.</span><span class="sxs-lookup"><span data-stu-id="ab7a9-278">The single `roles` claim sent by AAD presents the user-defined roles as the `appRoles`'s `value`s in a JSON array.</span></span> <span data-ttu-id="ab7a9-279">La aplicación debe convertir esta matriz JSON de roles en notificaciones `role` individuales.</span><span class="sxs-lookup"><span data-stu-id="ab7a9-279">The app must convert the JSON array of roles into individual `role` claims.</span></span>
 
-<span data-ttu-id="ab7a9-280">El elemento `CustomUserFactory` que se muestra en la sección [Grupos definidos por el usuario y roles de administrador de ADD](#user-defined-groups-and-administrator-roles) está configurado para actuar a partir de una notificación `roles` con un valor de matriz JSON.</span><span class="sxs-lookup"><span data-stu-id="ab7a9-280">The `CustomUserFactory` shown in the [User-defined groups and AAD Administrator Roles](#user-defined-groups-and-administrator-roles) section is set up to act on a `roles` claim with a JSON array value.</span></span> <span data-ttu-id="ab7a9-281">Agregue y registre el elemento `CustomUserFactory` en la aplicación independiente o la aplicación *`Client`* de una solución de :::no-loc(Blazor)::: hospedada, como se muestra en la sección [Grupos definidos por el usuario y roles de administrador de AAD](#user-defined-groups-and-administrator-roles).</span><span class="sxs-lookup"><span data-stu-id="ab7a9-281">Add and register the `CustomUserFactory` in the standalone app or *`Client`* app of a hosted :::no-loc(Blazor)::: solution as shown in the [User-defined groups and AAD Administrator Roles](#user-defined-groups-and-administrator-roles) section.</span></span> <span data-ttu-id="ab7a9-282">No es necesario incluir código para quitar la notificación `roles` original, ya que el marco la quitará automáticamente.</span><span class="sxs-lookup"><span data-stu-id="ab7a9-282">There's no need to provide code to remove the original `roles` claim because it's automatically removed by the framework.</span></span>
+<span data-ttu-id="ab7a9-280">El elemento `CustomUserFactory` que se muestra en la sección [Grupos definidos por el usuario y roles de administrador de ADD](#user-defined-groups-and-administrator-roles) está configurado para actuar a partir de una notificación `roles` con un valor de matriz JSON.</span><span class="sxs-lookup"><span data-stu-id="ab7a9-280">The `CustomUserFactory` shown in the [User-defined groups and AAD Administrator Roles](#user-defined-groups-and-administrator-roles) section is set up to act on a `roles` claim with a JSON array value.</span></span> <span data-ttu-id="ab7a9-281">Agregue y registre el elemento `CustomUserFactory` en la aplicación independiente o la aplicación *`Client`* de una solución de Blazor hospedada, como se muestra en la sección [Grupos definidos por el usuario y roles de administrador de AAD](#user-defined-groups-and-administrator-roles).</span><span class="sxs-lookup"><span data-stu-id="ab7a9-281">Add and register the `CustomUserFactory` in the standalone app or *`Client`* app of a hosted Blazor solution as shown in the [User-defined groups and AAD Administrator Roles](#user-defined-groups-and-administrator-roles) section.</span></span> <span data-ttu-id="ab7a9-282">No es necesario incluir código para quitar la notificación `roles` original, ya que el marco la quitará automáticamente.</span><span class="sxs-lookup"><span data-stu-id="ab7a9-282">There's no need to provide code to remove the original `roles` claim because it's automatically removed by the framework.</span></span>
 
-<span data-ttu-id="ab7a9-283">En el archivo `Program.Main` de la aplicación independiente o la aplicación *`Client`* de una solución de :::no-loc(Blazor)::: hospedada, especifique la notificación denominada "`role`" como la notificación de rol:</span><span class="sxs-lookup"><span data-stu-id="ab7a9-283">In `Program.Main` of the standalone app or *`Client`* app of a hosted :::no-loc(Blazor)::: solution, specify the claim named "`role`" as the role claim:</span></span>
+<span data-ttu-id="ab7a9-283">En el archivo `Program.Main` de la aplicación independiente o la aplicación *`Client`* de una solución de Blazor hospedada, especifique la notificación denominada "`role`" como la notificación de rol:</span><span class="sxs-lookup"><span data-stu-id="ab7a9-283">In `Program.Main` of the standalone app or *`Client`* app of a hosted Blazor solution, specify the claim named "`role`" as the role claim:</span></span>
 
 ```csharp
 builder.Services.AddMsalAuthentication(options =>
@@ -1008,7 +1008,7 @@ builder.Services.AddMsalAuthentication(options =>
 <span data-ttu-id="ab7a9-330">Lectores de directorios</span><span class="sxs-lookup"><span data-stu-id="ab7a9-330">Directory readers</span></span> | <span data-ttu-id="ab7a9-331">e1fc84a6-7762-4b9b-8e29-518b4adbc23b</span><span class="sxs-lookup"><span data-stu-id="ab7a9-331">e1fc84a6-7762-4b9b-8e29-518b4adbc23b</span></span>
 <span data-ttu-id="ab7a9-332">Administrador de Dynamics 365</span><span class="sxs-lookup"><span data-stu-id="ab7a9-332">Dynamics 365 administrator</span></span> | <span data-ttu-id="ab7a9-333">f20a9cfa-9fdf-49a8-a977-1afe446a1d6e</span><span class="sxs-lookup"><span data-stu-id="ab7a9-333">f20a9cfa-9fdf-49a8-a977-1afe446a1d6e</span></span>
 <span data-ttu-id="ab7a9-334">Administrador de Exchange</span><span class="sxs-lookup"><span data-stu-id="ab7a9-334">Exchange administrator</span></span> | <span data-ttu-id="ab7a9-335">b2ec2cc0-d5c9-4864-ad9b-38dd9dba2652</span><span class="sxs-lookup"><span data-stu-id="ab7a9-335">b2ec2cc0-d5c9-4864-ad9b-38dd9dba2652</span></span>
-<span data-ttu-id="ab7a9-336">Administrador de proveedor de :::no-loc(Identity)::: externo</span><span class="sxs-lookup"><span data-stu-id="ab7a9-336">External :::no-loc(Identity)::: Provider administrator</span></span> | <span data-ttu-id="ab7a9-337">febfaeb4-e478-407a-b4b3-f4d9716618a2</span><span class="sxs-lookup"><span data-stu-id="ab7a9-337">febfaeb4-e478-407a-b4b3-f4d9716618a2</span></span>
+<span data-ttu-id="ab7a9-336">Administrador de proveedor de Identity externo</span><span class="sxs-lookup"><span data-stu-id="ab7a9-336">External Identity Provider administrator</span></span> | <span data-ttu-id="ab7a9-337">febfaeb4-e478-407a-b4b3-f4d9716618a2</span><span class="sxs-lookup"><span data-stu-id="ab7a9-337">febfaeb4-e478-407a-b4b3-f4d9716618a2</span></span>
 <span data-ttu-id="ab7a9-338">Administrador global</span><span class="sxs-lookup"><span data-stu-id="ab7a9-338">Global administrator</span></span> | <span data-ttu-id="ab7a9-339">a45ba61b-44db-462c-924b-3b2719152588</span><span class="sxs-lookup"><span data-stu-id="ab7a9-339">a45ba61b-44db-462c-924b-3b2719152588</span></span>
 <span data-ttu-id="ab7a9-340">Lector global</span><span class="sxs-lookup"><span data-stu-id="ab7a9-340">Global reader</span></span> | <span data-ttu-id="ab7a9-341">f6903b21-6aba-4124-b44c-76671796b9d5</span><span class="sxs-lookup"><span data-stu-id="ab7a9-341">f6903b21-6aba-4124-b44c-76671796b9d5</span></span>
 <span data-ttu-id="ab7a9-342">Administrador de grupos</span><span class="sxs-lookup"><span data-stu-id="ab7a9-342">Groups administrator</span></span> | <span data-ttu-id="ab7a9-343">158b3e5a-d89d-460b-92b5-3b34985f0197</span><span class="sxs-lookup"><span data-stu-id="ab7a9-343">158b3e5a-d89d-460b-92b5-3b34985f0197</span></span>

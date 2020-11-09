@@ -1,22 +1,22 @@
 ---
 title: Validación de modelos en ASP.NET Core MVC
 author: rick-anderson
-description: 'Obtenga información sobre la validación de modelos en ASP.NET Core MVC y :::no-loc(Razor)::: páginas.'
+description: 'Obtenga información sobre la validación de modelos en ASP.NET Core MVC y Razor páginas.'
 ms.author: riande
 ms.custom: mvc
 ms.date: 12/15/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: mvc/models/validation
 ms.openlocfilehash: 77d49710b9d69f6fbbe92970f1c455de32489444
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -25,13 +25,13 @@ ms.contentlocale: es-ES
 ms.lasthandoff: 10/30/2020
 ms.locfileid: "93056964"
 ---
-# <a name="model-validation-in-aspnet-core-mvc-and-no-locrazor-pages"></a><span data-ttu-id="7a894-103">Validación del modelo en ASP.NET Core MVC y :::no-loc(Razor)::: páginas</span><span class="sxs-lookup"><span data-stu-id="7a894-103">Model validation in ASP.NET Core MVC and :::no-loc(Razor)::: Pages</span></span>
+# <a name="model-validation-in-aspnet-core-mvc-and-no-locrazor-pages"></a><span data-ttu-id="7a894-103">Validación del modelo en ASP.NET Core MVC y Razor páginas</span><span class="sxs-lookup"><span data-stu-id="7a894-103">Model validation in ASP.NET Core MVC and Razor Pages</span></span>
 
 ::: moniker range=">= aspnetcore-3.0"
 
 <span data-ttu-id="7a894-104">De [Kirk Larkin](https://github.com/serpent5)</span><span class="sxs-lookup"><span data-stu-id="7a894-104">By [Kirk Larkin](https://github.com/serpent5)</span></span>
 
-<span data-ttu-id="7a894-105">En este artículo se explica cómo validar los datos proporcionados por el usuario en una aplicación ASP.NET Core MVC o :::no-loc(Razor)::: pages.</span><span class="sxs-lookup"><span data-stu-id="7a894-105">This article explains how to validate user input in an ASP.NET Core MVC or :::no-loc(Razor)::: Pages app.</span></span>
+<span data-ttu-id="7a894-105">En este artículo se explica cómo validar los datos proporcionados por el usuario en una aplicación ASP.NET Core MVC o Razor pages.</span><span class="sxs-lookup"><span data-stu-id="7a894-105">This article explains how to validate user input in an ASP.NET Core MVC or Razor Pages app.</span></span>
 
 <span data-ttu-id="7a894-106">[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/validation/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample)).</span><span class="sxs-lookup"><span data-stu-id="7a894-106">[View or download sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/validation/samples) ([how to download](xref:index#how-to-download-a-sample)).</span></span>
 
@@ -39,7 +39,7 @@ ms.locfileid: "93056964"
 
 <span data-ttu-id="7a894-108">El estado del modelo representa los errores que proceden de dos subsistemas: el enlace de modelos y la validación de modelos.</span><span class="sxs-lookup"><span data-stu-id="7a894-108">Model state represents errors that come from two subsystems: model binding and model validation.</span></span> <span data-ttu-id="7a894-109">Los errores que se originan del [enlace de modelos](model-binding.md) suelen ser errores de conversión de datos.</span><span class="sxs-lookup"><span data-stu-id="7a894-109">Errors that originate from [model binding](model-binding.md) are generally data conversion errors.</span></span> <span data-ttu-id="7a894-110">Por ejemplo, se escribe una "x" en un campo numérico entero.</span><span class="sxs-lookup"><span data-stu-id="7a894-110">For example, an "x" is entered in an integer field.</span></span> <span data-ttu-id="7a894-111">La validación del modelo se produce después del enlace de modelos y notifica los errores en los que los datos no cumplen las reglas de negocio.</span><span class="sxs-lookup"><span data-stu-id="7a894-111">Model validation occurs after model binding and reports errors where data doesn't conform to business rules.</span></span> <span data-ttu-id="7a894-112">Por ejemplo, se especifica un 0 en un campo que espera una clasificación entre 1 y 5.</span><span class="sxs-lookup"><span data-stu-id="7a894-112">For example, a 0 is entered in a field that expects a rating between 1 and 5.</span></span>
 
-<span data-ttu-id="7a894-113">Tanto el enlace de modelos como la validación de modelos se producen antes de la ejecución de una acción de controlador o un :::no-loc(Razor)::: método de controlador de páginas.</span><span class="sxs-lookup"><span data-stu-id="7a894-113">Both model binding and model validation occur before the execution of a controller action or a :::no-loc(Razor)::: Pages handler method.</span></span> <span data-ttu-id="7a894-114">En el caso de las aplicaciones web, la aplicación es responsable de inspeccionar `ModelState.IsValid` y reaccionar de manera apropiada.</span><span class="sxs-lookup"><span data-stu-id="7a894-114">For web apps, it's the app's responsibility to inspect `ModelState.IsValid` and react appropriately.</span></span> <span data-ttu-id="7a894-115">Normalmente, las aplicaciones web vuelven a mostrar la página con un mensaje de error:</span><span class="sxs-lookup"><span data-stu-id="7a894-115">Web apps typically redisplay the page with an error message:</span></span>
+<span data-ttu-id="7a894-113">Tanto el enlace de modelos como la validación de modelos se producen antes de la ejecución de una acción de controlador o un Razor método de controlador de páginas.</span><span class="sxs-lookup"><span data-stu-id="7a894-113">Both model binding and model validation occur before the execution of a controller action or a Razor Pages handler method.</span></span> <span data-ttu-id="7a894-114">En el caso de las aplicaciones web, la aplicación es responsable de inspeccionar `ModelState.IsValid` y reaccionar de manera apropiada.</span><span class="sxs-lookup"><span data-stu-id="7a894-114">For web apps, it's the app's responsibility to inspect `ModelState.IsValid` and react appropriately.</span></span> <span data-ttu-id="7a894-115">Normalmente, las aplicaciones web vuelven a mostrar la página con un mensaje de error:</span><span class="sxs-lookup"><span data-stu-id="7a894-115">Web apps typically redisplay the page with an error message:</span></span>
 
 [!code-csharp[](validation/samples/3.x/ValidationSample/Pages/Movies/Create.cshtml.cs?name=snippet_OnPostAsync&highlight=3-6)]
 
@@ -379,7 +379,7 @@ $.get({
 
 ## <a name="disable-client-side-validation"></a><span data-ttu-id="7a894-310">Deshabilitación de la validación del lado cliente</span><span class="sxs-lookup"><span data-stu-id="7a894-310">Disable client-side validation</span></span>
 
-<span data-ttu-id="7a894-311">El código siguiente deshabilita la validación de cliente en :::no-loc(Razor)::: las páginas:</span><span class="sxs-lookup"><span data-stu-id="7a894-311">The following code disables client validation in :::no-loc(Razor)::: Pages:</span></span>
+<span data-ttu-id="7a894-311">El código siguiente deshabilita la validación de cliente en Razor las páginas:</span><span class="sxs-lookup"><span data-stu-id="7a894-311">The following code disables client validation in Razor Pages:</span></span>
 
 [!code-csharp[](validation/samples/3.x/ValidationSample/Startup.cs?name=snippet_DisableClientValidation&highlight=2-5)]
 
@@ -388,7 +388,7 @@ $.get({
 * <span data-ttu-id="7a894-313">Convierta en comentario la referencia a `_ValidationScriptsPartial` en todos los archivos *.cshtml* .</span><span class="sxs-lookup"><span data-stu-id="7a894-313">Comment out the reference to `_ValidationScriptsPartial` in all the *.cshtml* files.</span></span>
 * <span data-ttu-id="7a894-314">Quite el contenido del archivo *Pages\Shared\_ValidationScriptsPartial.cshtml* .</span><span class="sxs-lookup"><span data-stu-id="7a894-314">Remove the contents of the *Pages\Shared\_ValidationScriptsPartial.cshtml* file.</span></span>
 
-<span data-ttu-id="7a894-315">El enfoque anterior no impedirá la validación del lado cliente de la :::no-loc(ASP.NET Core Identity)::: :::no-loc(Razor)::: biblioteca de clases.</span><span class="sxs-lookup"><span data-stu-id="7a894-315">The preceding approach won't prevent client side validation of :::no-loc(ASP.NET Core Identity)::: :::no-loc(Razor)::: Class Library.</span></span> <span data-ttu-id="7a894-316">Para obtener más información, vea <xref:security/authentication/scaffold-identity>.</span><span class="sxs-lookup"><span data-stu-id="7a894-316">For more information, see <xref:security/authentication/scaffold-identity>.</span></span>
+<span data-ttu-id="7a894-315">El enfoque anterior no impedirá la validación del lado cliente de la ASP.NET Core Identity Razor biblioteca de clases.</span><span class="sxs-lookup"><span data-stu-id="7a894-315">The preceding approach won't prevent client side validation of ASP.NET Core Identity Razor Class Library.</span></span> <span data-ttu-id="7a894-316">Para obtener más información, vea <xref:security/authentication/scaffold-identity>.</span><span class="sxs-lookup"><span data-stu-id="7a894-316">For more information, see <xref:security/authentication/scaffold-identity>.</span></span>
 
 ## <a name="additional-resources"></a><span data-ttu-id="7a894-317">Recursos adicionales</span><span class="sxs-lookup"><span data-stu-id="7a894-317">Additional resources</span></span>
 
@@ -399,7 +399,7 @@ $.get({
 
 ::: moniker range="< aspnetcore-3.0"
 
-<span data-ttu-id="7a894-320">En este artículo se explica cómo validar los datos proporcionados por el usuario en una aplicación ASP.NET Core MVC o :::no-loc(Razor)::: pages.</span><span class="sxs-lookup"><span data-stu-id="7a894-320">This article explains how to validate user input in an ASP.NET Core MVC or :::no-loc(Razor)::: Pages app.</span></span>
+<span data-ttu-id="7a894-320">En este artículo se explica cómo validar los datos proporcionados por el usuario en una aplicación ASP.NET Core MVC o Razor pages.</span><span class="sxs-lookup"><span data-stu-id="7a894-320">This article explains how to validate user input in an ASP.NET Core MVC or Razor Pages app.</span></span>
 
 <span data-ttu-id="7a894-321">[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/validation/sample) ([cómo descargarlo](xref:index#how-to-download-a-sample)).</span><span class="sxs-lookup"><span data-stu-id="7a894-321">[View or download sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/validation/sample) ([how to download](xref:index#how-to-download-a-sample)).</span></span>
 
@@ -407,7 +407,7 @@ $.get({
 
 <span data-ttu-id="7a894-323">El estado del modelo representa los errores que proceden de dos subsistemas: el enlace de modelos y la validación de modelos.</span><span class="sxs-lookup"><span data-stu-id="7a894-323">Model state represents errors that come from two subsystems: model binding and model validation.</span></span> <span data-ttu-id="7a894-324">Los errores que se originan en el [enlace de modelos](model-binding.md) suelen ser errores de conversión de datos (por ejemplo, se especifica una "x" en un campo que espera un entero).</span><span class="sxs-lookup"><span data-stu-id="7a894-324">Errors that originate from [model binding](model-binding.md) are generally data conversion errors (for example, an "x" is entered in a field that expects an integer).</span></span> <span data-ttu-id="7a894-325">La validación de modelos se produce después de enlace de modelos y notifica errores cuando los datos no se ajustan a las reglas de negocios (por ejemplo, se especifica un 0 en un campo que espera una clasificación entre 1 y 5).</span><span class="sxs-lookup"><span data-stu-id="7a894-325">Model validation occurs after model binding and reports errors where the data doesn't conform to business rules (for example, a 0 is entered in a field that expects a rating between 1 and 5).</span></span>
 
-<span data-ttu-id="7a894-326">Tanto el enlace de modelos como la validación se producen antes de la ejecución de una acción de controlador o un :::no-loc(Razor)::: método de controlador de páginas.</span><span class="sxs-lookup"><span data-stu-id="7a894-326">Both model binding and validation occur before the execution of a controller action or a :::no-loc(Razor)::: Pages handler method.</span></span> <span data-ttu-id="7a894-327">En el caso de las aplicaciones web, la aplicación es responsable de inspeccionar `ModelState.IsValid` y reaccionar de manera apropiada.</span><span class="sxs-lookup"><span data-stu-id="7a894-327">For web apps, it's the app's responsibility to inspect `ModelState.IsValid` and react appropriately.</span></span> <span data-ttu-id="7a894-328">Normalmente, las aplicaciones web vuelven a mostrar la página con un mensaje de error:</span><span class="sxs-lookup"><span data-stu-id="7a894-328">Web apps typically redisplay the page with an error message:</span></span>
+<span data-ttu-id="7a894-326">Tanto el enlace de modelos como la validación se producen antes de la ejecución de una acción de controlador o un Razor método de controlador de páginas.</span><span class="sxs-lookup"><span data-stu-id="7a894-326">Both model binding and validation occur before the execution of a controller action or a Razor Pages handler method.</span></span> <span data-ttu-id="7a894-327">En el caso de las aplicaciones web, la aplicación es responsable de inspeccionar `ModelState.IsValid` y reaccionar de manera apropiada.</span><span class="sxs-lookup"><span data-stu-id="7a894-327">For web apps, it's the app's responsibility to inspect `ModelState.IsValid` and react appropriately.</span></span> <span data-ttu-id="7a894-328">Normalmente, las aplicaciones web vuelven a mostrar la página con un mensaje de error:</span><span class="sxs-lookup"><span data-stu-id="7a894-328">Web apps typically redisplay the page with an error message:</span></span>
 
 [!code-csharp[](validation/samples_snapshot/2.x/Create.cshtml.cs?name=snippet&highlight=3-6)]
 
@@ -430,7 +430,7 @@ $.get({
 <span data-ttu-id="7a894-342">Entre los atributos de validación integrados se incluyen:</span><span class="sxs-lookup"><span data-stu-id="7a894-342">Built-in validation attributes include:</span></span>
 
 * <span data-ttu-id="7a894-343">`[CreditCard]`: Valida que la propiedad tiene un formato de tarjeta de crédito.</span><span class="sxs-lookup"><span data-stu-id="7a894-343">`[CreditCard]`: Validates that the property has a credit card format.</span></span>
-* <span data-ttu-id="7a894-344">`[Compare]`: Valida que dos propiedades de un modelo coincidan.</span><span class="sxs-lookup"><span data-stu-id="7a894-344">`[Compare]`: Validates that two properties in a model match.</span></span> <span data-ttu-id="7a894-345">Por ejemplo, el archivo *Register.cshtml.cs* usa `[Compare]` para validar que ambas contraseñas escritas coincidan.</span><span class="sxs-lookup"><span data-stu-id="7a894-345">For example, the *Register.cshtml.cs* file uses `[Compare]` to validate the two entered passwords match.</span></span> <span data-ttu-id="7a894-346">[Scaffolding :::no-loc(Identity)::: ](xref:security/authentication/scaffold-identity) para ver el código de registro.</span><span class="sxs-lookup"><span data-stu-id="7a894-346">[Scaffold :::no-loc(Identity):::](xref:security/authentication/scaffold-identity) to see the Register code.</span></span>
+* <span data-ttu-id="7a894-344">`[Compare]`: Valida que dos propiedades de un modelo coincidan.</span><span class="sxs-lookup"><span data-stu-id="7a894-344">`[Compare]`: Validates that two properties in a model match.</span></span> <span data-ttu-id="7a894-345">Por ejemplo, el archivo *Register.cshtml.cs* usa `[Compare]` para validar que ambas contraseñas escritas coincidan.</span><span class="sxs-lookup"><span data-stu-id="7a894-345">For example, the *Register.cshtml.cs* file uses `[Compare]` to validate the two entered passwords match.</span></span> <span data-ttu-id="7a894-346">[Scaffolding Identity ](xref:security/authentication/scaffold-identity) para ver el código de registro.</span><span class="sxs-lookup"><span data-stu-id="7a894-346">[Scaffold Identity](xref:security/authentication/scaffold-identity) to see the Register code.</span></span>
 * <span data-ttu-id="7a894-347">`[EmailAddress]`: Valida que la propiedad tiene un formato de correo electrónico.</span><span class="sxs-lookup"><span data-stu-id="7a894-347">`[EmailAddress]`: Validates that the property has an email format.</span></span>
 * <span data-ttu-id="7a894-348">`[Phone]`: Valida que la propiedad tiene un formato de número de teléfono.</span><span class="sxs-lookup"><span data-stu-id="7a894-348">`[Phone]`: Validates that the property has a telephone number format.</span></span>
 * <span data-ttu-id="7a894-349">`[Range]`: Valida que el valor de la propiedad se encuentra dentro de un intervalo especificado.</span><span class="sxs-lookup"><span data-stu-id="7a894-349">`[Range]`: Validates that the property value falls within a specified range.</span></span>
@@ -754,7 +754,7 @@ $.get({
 
 [!code-csharp[](validation/samples_snapshot/2.x/Startup2.cs?name=snippet_DisableClientValidation)]
 
-<span data-ttu-id="7a894-531">Y en :::no-loc(Razor)::: las páginas:</span><span class="sxs-lookup"><span data-stu-id="7a894-531">And in :::no-loc(Razor)::: Pages:</span></span>
+<span data-ttu-id="7a894-531">Y en Razor las páginas:</span><span class="sxs-lookup"><span data-stu-id="7a894-531">And in Razor Pages:</span></span>
 
 [!code-csharp[](validation/samples_snapshot/2.x/Startup3.cs?name=snippet_DisableClientValidation)]
 

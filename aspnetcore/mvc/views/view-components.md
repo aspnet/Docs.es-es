@@ -6,17 +6,17 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/18/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: mvc/views/view-components
 ms.openlocfilehash: e0ff97b53d12fbf6c6a89e94704de1aee9d7f9e6
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -33,7 +33,7 @@ ms.locfileid: "93060591"
 
 ## <a name="view-components"></a><span data-ttu-id="3d6da-106">Componentes de vista</span><span class="sxs-lookup"><span data-stu-id="3d6da-106">View components</span></span>
 
-<span data-ttu-id="3d6da-107">Los componentes de vista son similares a las vistas parciales, pero mucho más eficaces.</span><span class="sxs-lookup"><span data-stu-id="3d6da-107">View components are similar to partial views, but they're much more powerful.</span></span> <span data-ttu-id="3d6da-108">Los componentes de vista no usan el enlace de modelos y solo dependen de los datos proporcionados cuando se les llama.</span><span class="sxs-lookup"><span data-stu-id="3d6da-108">View components don't use model binding, and only depend on the data provided when calling into it.</span></span> <span data-ttu-id="3d6da-109">Este artículo se ha escrito mediante controladores y vistas, pero los componentes de la vista también funcionan con :::no-loc(Razor)::: páginas.</span><span class="sxs-lookup"><span data-stu-id="3d6da-109">This article was written using controllers and views, but view components also work with :::no-loc(Razor)::: Pages.</span></span>
+<span data-ttu-id="3d6da-107">Los componentes de vista son similares a las vistas parciales, pero mucho más eficaces.</span><span class="sxs-lookup"><span data-stu-id="3d6da-107">View components are similar to partial views, but they're much more powerful.</span></span> <span data-ttu-id="3d6da-108">Los componentes de vista no usan el enlace de modelos y solo dependen de los datos proporcionados cuando se les llama.</span><span class="sxs-lookup"><span data-stu-id="3d6da-108">View components don't use model binding, and only depend on the data provided when calling into it.</span></span> <span data-ttu-id="3d6da-109">Este artículo se ha escrito mediante controladores y vistas, pero los componentes de la vista también funcionan con Razor páginas.</span><span class="sxs-lookup"><span data-stu-id="3d6da-109">This article was written using controllers and views, but view components also work with Razor Pages.</span></span>
 
 <span data-ttu-id="3d6da-110">Un componente de vista:</span><span class="sxs-lookup"><span data-stu-id="3d6da-110">A view component:</span></span>
 
@@ -54,7 +54,7 @@ ms.locfileid: "93060591"
 
 <span data-ttu-id="3d6da-123">Un componente de vista consta de dos partes: la clase (normalmente derivada de [ViewComponent](/dotnet/api/microsoft.aspnetcore.mvc.viewcomponent)) y el resultado que devuelve (por lo general, una vista).</span><span class="sxs-lookup"><span data-stu-id="3d6da-123">A view component consists of two parts: the class (typically derived from [ViewComponent](/dotnet/api/microsoft.aspnetcore.mvc.viewcomponent)) and the result it returns (typically a view).</span></span> <span data-ttu-id="3d6da-124">Al igual que los controladores, un componente de vista puede ser un POCO, pero la mayoría de los desarrolladores prefieren aprovechar las ventajas que ofrecen los métodos y las propiedades disponibles al derivar de `ViewComponent`.</span><span class="sxs-lookup"><span data-stu-id="3d6da-124">Like controllers, a view component can be a POCO, but most developers will want to take advantage of the methods and properties available by deriving from `ViewComponent`.</span></span>
 
-<span data-ttu-id="3d6da-125">Al considerar si los componentes de la vista cumplen las especificaciones de una aplicación, considere la posibilidad de usar :::no-loc(Razor)::: componentes en su lugar.</span><span class="sxs-lookup"><span data-stu-id="3d6da-125">When considering if view components meet an app's specifications, consider using :::no-loc(Razor)::: Components instead.</span></span> <span data-ttu-id="3d6da-126">:::no-loc(Razor)::: Los componentes también combinan marcado con código C# para generar unidades de interfaz de usuario reutilizables.</span><span class="sxs-lookup"><span data-stu-id="3d6da-126">:::no-loc(Razor)::: Components also combine markup with C# code to produce reusable UI units.</span></span> <span data-ttu-id="3d6da-127">:::no-loc(Razor)::: Los componentes están diseñados para la productividad de los desarrolladores a la hora de proporcionar lógica y composición de la interfaz de usuario del lado cliente.</span><span class="sxs-lookup"><span data-stu-id="3d6da-127">:::no-loc(Razor)::: Components are designed for developer productivity when providing client-side UI logic and composition.</span></span> <span data-ttu-id="3d6da-128">Para obtener más información, vea <xref:blazor/components/index>.</span><span class="sxs-lookup"><span data-stu-id="3d6da-128">For more information, see <xref:blazor/components/index>.</span></span>
+<span data-ttu-id="3d6da-125">Al considerar si los componentes de la vista cumplen las especificaciones de una aplicación, considere la posibilidad de usar Razor componentes en su lugar.</span><span class="sxs-lookup"><span data-stu-id="3d6da-125">When considering if view components meet an app's specifications, consider using Razor Components instead.</span></span> <span data-ttu-id="3d6da-126">Razor Los componentes también combinan marcado con código C# para generar unidades de interfaz de usuario reutilizables.</span><span class="sxs-lookup"><span data-stu-id="3d6da-126">Razor Components also combine markup with C# code to produce reusable UI units.</span></span> <span data-ttu-id="3d6da-127">Razor Los componentes están diseñados para la productividad de los desarrolladores a la hora de proporcionar lógica y composición de la interfaz de usuario del lado cliente.</span><span class="sxs-lookup"><span data-stu-id="3d6da-127">Razor Components are designed for developer productivity when providing client-side UI logic and composition.</span></span> <span data-ttu-id="3d6da-128">Para obtener más información, vea <xref:blazor/components/index>.</span><span class="sxs-lookup"><span data-stu-id="3d6da-128">For more information, see <xref:blazor/components/index>.</span></span>
 
 ## <a name="creating-a-view-component"></a><span data-ttu-id="3d6da-129">Crear un componente de vista</span><span class="sxs-lookup"><span data-stu-id="3d6da-129">Creating a view component</span></span>
 
@@ -94,7 +94,7 @@ ms.locfileid: "93060591"
 * <span data-ttu-id="3d6da-160">/Views/Shared/Components/{Nombre de componente de vista}/{Nombre de vista}</span><span class="sxs-lookup"><span data-stu-id="3d6da-160">/Views/Shared/Components/{View Component Name}/{View Name}</span></span>
 * <span data-ttu-id="3d6da-161">/Pages/Shared/Components/{Nombre de componente de vista}/{Nombre de vista}</span><span class="sxs-lookup"><span data-stu-id="3d6da-161">/Pages/Shared/Components/{View Component Name}/{View Name}</span></span>
 
-<span data-ttu-id="3d6da-162">La ruta de acceso de búsqueda se aplica a los proyectos mediante controladores + vistas y :::no-loc(Razor)::: páginas.</span><span class="sxs-lookup"><span data-stu-id="3d6da-162">The search path applies to projects using controllers + views and :::no-loc(Razor)::: Pages.</span></span>
+<span data-ttu-id="3d6da-162">La ruta de acceso de búsqueda se aplica a los proyectos mediante controladores + vistas y Razor páginas.</span><span class="sxs-lookup"><span data-stu-id="3d6da-162">The search path applies to projects using controllers + views and Razor Pages.</span></span>
 
 <span data-ttu-id="3d6da-163">El nombre de vista predeterminado para un componente de vista es *Default* , lo que significa que el archivo de vista normalmente se denominará *Default.cshtml* .</span><span class="sxs-lookup"><span data-stu-id="3d6da-163">The default view name for a view component is *Default* , which means your view file will typically be named *Default.cshtml* .</span></span> <span data-ttu-id="3d6da-164">Puede especificar un nombre de vista diferente al crear el resultado del componente de vista o al llamar al método `View`.</span><span class="sxs-lookup"><span data-stu-id="3d6da-164">You can specify a different view name when creating the view component result or when calling the `View` method.</span></span>
 
@@ -102,7 +102,7 @@ ms.locfileid: "93060591"
 
 ### <a name="customize-the-view-search-path"></a><span data-ttu-id="3d6da-167">Personalización de la ruta de acceso de la búsqueda de la vista</span><span class="sxs-lookup"><span data-stu-id="3d6da-167">Customize the view search path</span></span>
 
-<span data-ttu-id="3d6da-168">Para personalizar la ruta de búsqueda de la vista, modifique la :::no-loc(Razor)::: <xref:Microsoft.AspNetCore.Mvc.:::no-loc(Razor):::.:::no-loc(Razor):::ViewEngineOptions.ViewLocationFormats> colección de.</span><span class="sxs-lookup"><span data-stu-id="3d6da-168">To customize the view search path, modify :::no-loc(Razor):::'s <xref:Microsoft.AspNetCore.Mvc.:::no-loc(Razor):::.:::no-loc(Razor):::ViewEngineOptions.ViewLocationFormats> collection.</span></span> <span data-ttu-id="3d6da-169">Por ejemplo, para buscar vistas dentro de la ruta de acceso "/Components/{Nombre del componente de la vista}/{Nombre de la vista}", agregue un elemento nuevo a la colección:</span><span class="sxs-lookup"><span data-stu-id="3d6da-169">For example, to search for views within the path "/Components/{View Component Name}/{View Name}", add a new item to the collection:</span></span>
+<span data-ttu-id="3d6da-168">Para personalizar la ruta de búsqueda de la vista, modifique la Razor <xref:Microsoft.AspNetCore.Mvc.Razor.RazorViewEngineOptions.ViewLocationFormats> colección de.</span><span class="sxs-lookup"><span data-stu-id="3d6da-168">To customize the view search path, modify Razor's <xref:Microsoft.AspNetCore.Mvc.Razor.RazorViewEngineOptions.ViewLocationFormats> collection.</span></span> <span data-ttu-id="3d6da-169">Por ejemplo, para buscar vistas dentro de la ruta de acceso "/Components/{Nombre del componente de la vista}/{Nombre de la vista}", agregue un elemento nuevo a la colección:</span><span class="sxs-lookup"><span data-stu-id="3d6da-169">For example, to search for views within the path "/Components/{View Component Name}/{View Name}", add a new item to the collection:</span></span>
 
 [!code-csharp[](view-components/samples_snapshot/2.x/Startup.cs?name=snippet_ViewLocationFormats&highlight=4)]
 
@@ -193,18 +193,18 @@ ms.locfileid: "93060591"
 * <span data-ttu-id="3d6da-208">`InvokeAsync` expone un método al que se puede llamar desde una vista y puede tomar un número arbitrario de argumentos.</span><span class="sxs-lookup"><span data-stu-id="3d6da-208">`InvokeAsync` exposes a method which can be called from a view, and it can take an arbitrary number of arguments.</span></span>
 * <span data-ttu-id="3d6da-209">El método `InvokeAsync` devuelve el conjunto de elementos `ToDo` que cumplen los parámetros `isDone` y `maxPriority`.</span><span class="sxs-lookup"><span data-stu-id="3d6da-209">The `InvokeAsync` method returns the set of `ToDo` items that satisfy the `isDone` and `maxPriority` parameters.</span></span>
 
-### <a name="create-the-view-component-no-locrazor-view"></a><span data-ttu-id="3d6da-210">Crear la vista de componentes de vista :::no-loc(Razor):::</span><span class="sxs-lookup"><span data-stu-id="3d6da-210">Create the view component :::no-loc(Razor)::: view</span></span>
+### <a name="create-the-view-component-no-locrazor-view"></a><span data-ttu-id="3d6da-210">Crear la vista de componentes de vista Razor</span><span class="sxs-lookup"><span data-stu-id="3d6da-210">Create the view component Razor view</span></span>
 
 * <span data-ttu-id="3d6da-211">Cree la carpeta *Views/Shared/Components* .</span><span class="sxs-lookup"><span data-stu-id="3d6da-211">Create the *Views/Shared/Components* folder.</span></span> <span data-ttu-id="3d6da-212">Esta carpeta **debe** denominarse *Components* .</span><span class="sxs-lookup"><span data-stu-id="3d6da-212">This folder **must** be named *Components* .</span></span>
 
 * <span data-ttu-id="3d6da-213">Cree la carpeta *Views/Shared/Components/PriorityList* .</span><span class="sxs-lookup"><span data-stu-id="3d6da-213">Create the *Views/Shared/Components/PriorityList* folder.</span></span> <span data-ttu-id="3d6da-214">El nombre de esta carpeta debe coincidir con el nombre de la clase de componente de vista o con el nombre de la clase sin el sufijo (si se ha seguido la convención y se ha usado el sufijo *ViewComponent* en el nombre de clase).</span><span class="sxs-lookup"><span data-stu-id="3d6da-214">This folder name must match the name of the view component class, or the name of the class minus the suffix (if we followed convention and used the *ViewComponent* suffix in the class name).</span></span> <span data-ttu-id="3d6da-215">Si ha usado el atributo `ViewComponent`, el nombre de clase debe coincidir con la designación del atributo.</span><span class="sxs-lookup"><span data-stu-id="3d6da-215">If you used the `ViewComponent` attribute, the class name would need to match the attribute designation.</span></span>
 
-* <span data-ttu-id="3d6da-216">Cree una vista *views/Shared/Components/PriorityList/default. cshtml* :::no-loc(Razor)::: :</span><span class="sxs-lookup"><span data-stu-id="3d6da-216">Create a *Views/Shared/Components/PriorityList/Default.cshtml* :::no-loc(Razor)::: view:</span></span>
+* <span data-ttu-id="3d6da-216">Cree una vista *views/Shared/Components/PriorityList/default. cshtml* Razor :</span><span class="sxs-lookup"><span data-stu-id="3d6da-216">Create a *Views/Shared/Components/PriorityList/Default.cshtml* Razor view:</span></span>
 
 
   [!code-cshtml[](view-components/sample/ViewCompFinal/Views/Shared/Components/PriorityList/Default1.cshtml)]
 
-   <span data-ttu-id="3d6da-217">La :::no-loc(Razor)::: vista toma una lista de `TodoItem` y las muestra.</span><span class="sxs-lookup"><span data-stu-id="3d6da-217">The :::no-loc(Razor)::: view takes a list of `TodoItem` and displays them.</span></span> <span data-ttu-id="3d6da-218">Si el método `InvokeAsync` del componente de vista no pasa el nombre de la vista (como en nuestro ejemplo), se usa *Default* para el nombre de vista, según la convención.</span><span class="sxs-lookup"><span data-stu-id="3d6da-218">If the view component `InvokeAsync` method doesn't pass the name of the view (as in our sample), *Default* is used for the view name by convention.</span></span> <span data-ttu-id="3d6da-219">Más adelante en el tutorial veremos cómo pasar el nombre de la vista.</span><span class="sxs-lookup"><span data-stu-id="3d6da-219">Later in the tutorial, I'll show you how to pass the name of the view.</span></span> <span data-ttu-id="3d6da-220">Para reemplazar el estilo predeterminado de un controlador concreto, agregue una vista a la carpeta de vistas específicas del controlador (por ejemplo, *Views/ToDo/Components/PriorityList/Default.cshtml)* .</span><span class="sxs-lookup"><span data-stu-id="3d6da-220">To override the default styling for a specific controller, add a view to the controller-specific view folder (for example *Views/ToDo/Components/PriorityList/Default.cshtml)* .</span></span>
+   <span data-ttu-id="3d6da-217">La Razor vista toma una lista de `TodoItem` y las muestra.</span><span class="sxs-lookup"><span data-stu-id="3d6da-217">The Razor view takes a list of `TodoItem` and displays them.</span></span> <span data-ttu-id="3d6da-218">Si el método `InvokeAsync` del componente de vista no pasa el nombre de la vista (como en nuestro ejemplo), se usa *Default* para el nombre de vista, según la convención.</span><span class="sxs-lookup"><span data-stu-id="3d6da-218">If the view component `InvokeAsync` method doesn't pass the name of the view (as in our sample), *Default* is used for the view name by convention.</span></span> <span data-ttu-id="3d6da-219">Más adelante en el tutorial veremos cómo pasar el nombre de la vista.</span><span class="sxs-lookup"><span data-stu-id="3d6da-219">Later in the tutorial, I'll show you how to pass the name of the view.</span></span> <span data-ttu-id="3d6da-220">Para reemplazar el estilo predeterminado de un controlador concreto, agregue una vista a la carpeta de vistas específicas del controlador (por ejemplo, *Views/ToDo/Components/PriorityList/Default.cshtml)* .</span><span class="sxs-lookup"><span data-stu-id="3d6da-220">To override the default styling for a specific controller, add a view to the controller-specific view folder (for example *Views/ToDo/Components/PriorityList/Default.cshtml)* .</span></span>
 
     <span data-ttu-id="3d6da-221">Si el componente de vista es específico del controlador, puede agregarlo a la carpeta específica del controlador ( *views/todo/Components/PriorityList/default. cshtml* ).</span><span class="sxs-lookup"><span data-stu-id="3d6da-221">If the view component is controller-specific, you can add it to the controller-specific folder ( *Views/ToDo/Components/PriorityList/Default.cshtml* ).</span></span>
 
@@ -272,7 +272,7 @@ ms.locfileid: "93060591"
 
 [!code-csharp[](../../mvc/views/view-components/sample/ViewCompFinal/ViewComponents/PriorityList.cs?highlight=10&range=5-35)]
 
-<span data-ttu-id="3d6da-253">Agregue una `using` instrucción al :::no-loc(Razor)::: archivo de vista y use el `nameof` operador:</span><span class="sxs-lookup"><span data-stu-id="3d6da-253">Add a `using` statement to your :::no-loc(Razor)::: view file, and use the `nameof` operator:</span></span>
+<span data-ttu-id="3d6da-253">Agregue una `using` instrucción al Razor archivo de vista y use el `nameof` operador:</span><span class="sxs-lookup"><span data-stu-id="3d6da-253">Add a `using` statement to your Razor view file, and use the `nameof` operator:</span></span>
 
 [!code-cshtml[](view-components/sample/ViewCompFinal/Views/ToDo/IndexNameof.cshtml?range=1-6,35-)]
 
@@ -291,7 +291,7 @@ public class PriorityList : ViewComponent
 }
 ```
 
-<span data-ttu-id="3d6da-257">En el archivo del componente de vista :::no-loc(Razor)::: se enumeran las cadenas que se pasan al `Invoke` método ( *views/Home/Components/PriorityList/default. cshtml* ):</span><span class="sxs-lookup"><span data-stu-id="3d6da-257">The view component's :::no-loc(Razor)::: file lists the strings passed to the `Invoke` method ( *Views/Home/Components/PriorityList/Default.cshtml* ):</span></span>
+<span data-ttu-id="3d6da-257">En el archivo del componente de vista Razor se enumeran las cadenas que se pasan al `Invoke` método ( *views/Home/Components/PriorityList/default. cshtml* ):</span><span class="sxs-lookup"><span data-stu-id="3d6da-257">The view component's Razor file lists the strings passed to the `Invoke` method ( *Views/Home/Components/PriorityList/Default.cshtml* ):</span></span>
 
 ```cshtml
 @model List<string>
@@ -307,7 +307,7 @@ public class PriorityList : ViewComponent
 
 ::: moniker range=">= aspnetcore-1.1"
 
-<span data-ttu-id="3d6da-258">El componente de vista se invoca en un :::no-loc(Razor)::: archivo (por ejemplo, *views/home/index. cshtml* ) mediante uno de los enfoques siguientes:</span><span class="sxs-lookup"><span data-stu-id="3d6da-258">The view component is invoked in a :::no-loc(Razor)::: file (for example, *Views/Home/Index.cshtml* ) using one of the following approaches:</span></span>
+<span data-ttu-id="3d6da-258">El componente de vista se invoca en un Razor archivo (por ejemplo, *views/home/index. cshtml* ) mediante uno de los enfoques siguientes:</span><span class="sxs-lookup"><span data-stu-id="3d6da-258">The view component is invoked in a Razor file (for example, *Views/Home/Index.cshtml* ) using one of the following approaches:</span></span>
 
 * <xref:Microsoft.AspNetCore.Mvc.IViewComponentHelper>
 * [<span data-ttu-id="3d6da-259">Asistente de etiquetas</span><span class="sxs-lookup"><span data-stu-id="3d6da-259">Tag Helper</span></span>](xref:mvc/views/tag-helpers/intro)
@@ -318,7 +318,7 @@ public class PriorityList : ViewComponent
 
 ::: moniker range="< aspnetcore-1.1"
 
-<span data-ttu-id="3d6da-261">El componente de vista se invoca en un :::no-loc(Razor)::: archivo (por ejemplo, *views/home/index. cshtml* ) con <xref:Microsoft.AspNetCore.Mvc.IViewComponentHelper> .</span><span class="sxs-lookup"><span data-stu-id="3d6da-261">The view component is invoked in a :::no-loc(Razor)::: file (for example, *Views/Home/Index.cshtml* ) with <xref:Microsoft.AspNetCore.Mvc.IViewComponentHelper>.</span></span>
+<span data-ttu-id="3d6da-261">El componente de vista se invoca en un Razor archivo (por ejemplo, *views/home/index. cshtml* ) con <xref:Microsoft.AspNetCore.Mvc.IViewComponentHelper> .</span><span class="sxs-lookup"><span data-stu-id="3d6da-261">The view component is invoked in a Razor file (for example, *Views/Home/Index.cshtml* ) with <xref:Microsoft.AspNetCore.Mvc.IViewComponentHelper>.</span></span>
 
 <span data-ttu-id="3d6da-262">Llame a `Component.InvokeAsync`:</span><span class="sxs-lookup"><span data-stu-id="3d6da-262">Call `Component.InvokeAsync`:</span></span>
 
@@ -336,7 +336,7 @@ public class PriorityList : ViewComponent
 @addTagHelper *, MyWebApp
 ```
 
-<span data-ttu-id="3d6da-264">Use la aplicación auxiliar de etiquetas de componente de vista en el :::no-loc(Razor)::: archivo de marcado:</span><span class="sxs-lookup"><span data-stu-id="3d6da-264">Use the view component Tag Helper in the :::no-loc(Razor)::: markup file:</span></span>
+<span data-ttu-id="3d6da-264">Use la aplicación auxiliar de etiquetas de componente de vista en el Razor archivo de marcado:</span><span class="sxs-lookup"><span data-stu-id="3d6da-264">Use the view component Tag Helper in the Razor markup file:</span></span>
 
 ```cshtml
 <vc:priority-list max-priority="999" is-done="false">
@@ -345,7 +345,7 @@ public class PriorityList : ViewComponent
 
 ::: moniker-end
 
-<span data-ttu-id="3d6da-265">La firma del método de `PriorityList.Invoke` es sincrónica, pero :::no-loc(Razor)::: busca y llama al método con `Component.InvokeAsync` en el archivo de marcado.</span><span class="sxs-lookup"><span data-stu-id="3d6da-265">The method signature of `PriorityList.Invoke` is synchronous, but :::no-loc(Razor)::: finds and calls the method with `Component.InvokeAsync` in the markup file.</span></span>
+<span data-ttu-id="3d6da-265">La firma del método de `PriorityList.Invoke` es sincrónica, pero Razor busca y llama al método con `Component.InvokeAsync` en el archivo de marcado.</span><span class="sxs-lookup"><span data-stu-id="3d6da-265">The method signature of `PriorityList.Invoke` is synchronous, but Razor finds and calls the method with `Component.InvokeAsync` in the markup file.</span></span>
 
 ## <a name="all-view-component-parameters-are-required"></a><span data-ttu-id="3d6da-266">Todos los parámetros de componente de vista son obligatorios</span><span class="sxs-lookup"><span data-stu-id="3d6da-266">All view component parameters are required</span></span>
 

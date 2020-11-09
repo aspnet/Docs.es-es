@@ -6,17 +6,17 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 09/02/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: client-side/bundling-and-minification
 ms.openlocfilehash: 7dd11ceb7a7c01ce1042f50595013b7fe7f1cd5c
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -75,7 +75,7 @@ ms.locfileid: "93054845"
 
 ## <a name="choose-a-bundling-and-minification-strategy"></a><span data-ttu-id="a0a1b-151">Elección de una estrategia de unión y minimización</span><span class="sxs-lookup"><span data-stu-id="a0a1b-151">Choose a bundling and minification strategy</span></span>
 
-<span data-ttu-id="a0a1b-152">Las plantillas de proyecto de MVC y :::no-loc(Razor)::: Pages proporcionan una solución para la unión y la minificación que consta de un archivo de configuración JSON.</span><span class="sxs-lookup"><span data-stu-id="a0a1b-152">The MVC and :::no-loc(Razor)::: Pages project templates provide a solution for bundling and minification consisting of a JSON configuration file.</span></span> <span data-ttu-id="a0a1b-153">Las herramientas de terceros, como el ejecutor de tareas [Grunt](xref:client-side/using-grunt), realizan las mismas tareas con un poco más de complejidad.</span><span class="sxs-lookup"><span data-stu-id="a0a1b-153">Third-party tools, such as the [Grunt](xref:client-side/using-grunt) task runner, accomplish the same tasks with a bit more complexity.</span></span> <span data-ttu-id="a0a1b-154">Una herramienta de terceros es una buena opción cuando el flujo de trabajo de desarrollo requiere un procesamiento más allá de la unión y la minimización, como la detección de errores y la optimización de imágenes.</span><span class="sxs-lookup"><span data-stu-id="a0a1b-154">A third-party tool is a great fit when your development workflow requires processing beyond bundling and minification&mdash;such as linting and image optimization.</span></span> <span data-ttu-id="a0a1b-155">Mediante el uso de la unión y la minimización en tiempo de diseño, los archivos minimizados se crean con anterioridad a la implementación de la aplicación.</span><span class="sxs-lookup"><span data-stu-id="a0a1b-155">By using design-time bundling and minification, the minified files are created prior to the app's deployment.</span></span> <span data-ttu-id="a0a1b-156">La unión y la minimización antes de la implementación proporcionan la ventaja de reducir la carga del servidor.</span><span class="sxs-lookup"><span data-stu-id="a0a1b-156">Bundling and minifying before deployment provides the advantage of reduced server load.</span></span> <span data-ttu-id="a0a1b-157">Sin embargo, es importante reconocer que la unión y la minimización en tiempo de diseño aumentan la complejidad de la compilación y solo funcionan con archivos estáticos.</span><span class="sxs-lookup"><span data-stu-id="a0a1b-157">However, it's important to recognize that design-time bundling and minification increases build complexity and only works with static files.</span></span>
+<span data-ttu-id="a0a1b-152">Las plantillas de proyecto de MVC y Razor Pages proporcionan una solución para la unión y la minificación que consta de un archivo de configuración JSON.</span><span class="sxs-lookup"><span data-stu-id="a0a1b-152">The MVC and Razor Pages project templates provide a solution for bundling and minification consisting of a JSON configuration file.</span></span> <span data-ttu-id="a0a1b-153">Las herramientas de terceros, como el ejecutor de tareas [Grunt](xref:client-side/using-grunt), realizan las mismas tareas con un poco más de complejidad.</span><span class="sxs-lookup"><span data-stu-id="a0a1b-153">Third-party tools, such as the [Grunt](xref:client-side/using-grunt) task runner, accomplish the same tasks with a bit more complexity.</span></span> <span data-ttu-id="a0a1b-154">Una herramienta de terceros es una buena opción cuando el flujo de trabajo de desarrollo requiere un procesamiento más allá de la unión y la minimización, como la detección de errores y la optimización de imágenes.</span><span class="sxs-lookup"><span data-stu-id="a0a1b-154">A third-party tool is a great fit when your development workflow requires processing beyond bundling and minification&mdash;such as linting and image optimization.</span></span> <span data-ttu-id="a0a1b-155">Mediante el uso de la unión y la minimización en tiempo de diseño, los archivos minimizados se crean con anterioridad a la implementación de la aplicación.</span><span class="sxs-lookup"><span data-stu-id="a0a1b-155">By using design-time bundling and minification, the minified files are created prior to the app's deployment.</span></span> <span data-ttu-id="a0a1b-156">La unión y la minimización antes de la implementación proporcionan la ventaja de reducir la carga del servidor.</span><span class="sxs-lookup"><span data-stu-id="a0a1b-156">Bundling and minifying before deployment provides the advantage of reduced server load.</span></span> <span data-ttu-id="a0a1b-157">Sin embargo, es importante reconocer que la unión y la minimización en tiempo de diseño aumentan la complejidad de la compilación y solo funcionan con archivos estáticos.</span><span class="sxs-lookup"><span data-stu-id="a0a1b-157">However, it's important to recognize that design-time bundling and minification increases build complexity and only works with static files.</span></span>
 
 ## <a name="configure-bundling-and-minification"></a><span data-ttu-id="a0a1b-158">Configuración de la unión y la minimización</span><span class="sxs-lookup"><span data-stu-id="a0a1b-158">Configure bundling and minification</span></span>
 
@@ -84,13 +84,13 @@ ms.locfileid: "93054845"
 
 ::: moniker range="<= aspnetcore-2.0"
 
-<span data-ttu-id="a0a1b-160">En ASP.NET Core 2.0 o versiones anteriores, las plantillas de proyecto de MVC y :::no-loc(Razor)::: Pages proporcionan un archivo de configuración *bundleconfig.json* que define las opciones de cada conjunto:</span><span class="sxs-lookup"><span data-stu-id="a0a1b-160">In ASP.NET Core 2.0 or earlier, the MVC and :::no-loc(Razor)::: Pages project templates provide a *bundleconfig.json* configuration file that defines the options for each bundle:</span></span>
+<span data-ttu-id="a0a1b-160">En ASP.NET Core 2.0 o versiones anteriores, las plantillas de proyecto de MVC y Razor Pages proporcionan un archivo de configuración *bundleconfig.json* que define las opciones de cada conjunto:</span><span class="sxs-lookup"><span data-stu-id="a0a1b-160">In ASP.NET Core 2.0 or earlier, the MVC and Razor Pages project templates provide a *bundleconfig.json* configuration file that defines the options for each bundle:</span></span>
 
 ::: moniker-end
 
 ::: moniker range=">= aspnetcore-2.1"
 
-<span data-ttu-id="a0a1b-161">En ASP.NET Core 2.1 o versiones posteriores, agregue un archivo JSON, denominado *bundleconfig.json* , a la raíz del proyecto de MVC o :::no-loc(Razor)::: Pages.</span><span class="sxs-lookup"><span data-stu-id="a0a1b-161">In ASP.NET Core 2.1 or later, add a new JSON file, named *bundleconfig.json* , to the MVC or :::no-loc(Razor)::: Pages project root.</span></span> <span data-ttu-id="a0a1b-162">Incluya el código JSON siguiente en ese archivo como punto inicial:</span><span class="sxs-lookup"><span data-stu-id="a0a1b-162">Include the following JSON in that file as a starting point:</span></span>
+<span data-ttu-id="a0a1b-161">En ASP.NET Core 2.1 o versiones posteriores, agregue un archivo JSON, denominado *bundleconfig.json* , a la raíz del proyecto de MVC o Razor Pages.</span><span class="sxs-lookup"><span data-stu-id="a0a1b-161">In ASP.NET Core 2.1 or later, add a new JSON file, named *bundleconfig.json* , to the MVC or Razor Pages project root.</span></span> <span data-ttu-id="a0a1b-162">Incluya el código JSON siguiente en ese archivo como punto inicial:</span><span class="sxs-lookup"><span data-stu-id="a0a1b-162">Include the following JSON in that file as a starting point:</span></span>
 
 ::: moniker-end
 

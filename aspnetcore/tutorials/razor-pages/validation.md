@@ -1,22 +1,22 @@
 ---
-title: 'Parte 8. Adición de validación a una instancia de :::no-loc(Razor)::: Pages de ASP.NET Core'
+title: 'Parte 8. Adición de validación a una instancia de Razor Pages de ASP.NET Core'
 author: rick-anderson
-description: 'Parte 8 de la serie de tutoriales sobre :::no-loc(Razor)::: Pages.'
+description: 'Parte 8 de la serie de tutoriales sobre Razor Pages.'
 ms.author: riande
 ms.custom: mvc
 ms.date: 7/23/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: tutorials/razor-pages/validation
 ms.openlocfilehash: 991a0f29c0edc5a220dfde69bd22dc4ed758394d
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -25,7 +25,7 @@ ms.contentlocale: es-ES
 ms.lasthandoff: 10/30/2020
 ms.locfileid: "93060734"
 ---
-# <a name="part-8-add-validation-to-an-aspnet-core-no-locrazor-page"></a><span data-ttu-id="17cd8-103">Parte 8. Adición de validación a una instancia de :::no-loc(Razor)::: Pages de ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="17cd8-103">Part 8, add validation to an ASP.NET Core :::no-loc(Razor)::: Page</span></span>
+# <a name="part-8-add-validation-to-an-aspnet-core-no-locrazor-page"></a><span data-ttu-id="17cd8-103">Parte 8. Adición de validación a una instancia de Razor Pages de ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="17cd8-103">Part 8, add validation to an ASP.NET Core Razor Page</span></span>
 
 <span data-ttu-id="17cd8-104">Por [Rick Anderson](https://twitter.com/RickAndMSFT)</span><span class="sxs-lookup"><span data-stu-id="17cd8-104">By [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
 
@@ -33,12 +33,12 @@ ms.locfileid: "93060734"
 
 ## <a name="validation"></a><span data-ttu-id="17cd8-107">Validación</span><span class="sxs-lookup"><span data-stu-id="17cd8-107">Validation</span></span>
 
-<span data-ttu-id="17cd8-108">Un principio clave de desarrollo de software se denomina [DRY](https://wikipedia.org/wiki/Don%27t_repeat_yourself), por " **D** on't **R** epeat **Y** ourself" (Una vez y solo una).</span><span class="sxs-lookup"><span data-stu-id="17cd8-108">A key tenet of software development is called [DRY](https://wikipedia.org/wiki/Don%27t_repeat_yourself) (" **D** on't **R** epeat **Y** ourself").</span></span> <span data-ttu-id="17cd8-109">:::no-loc(Razor)::: Pages fomenta un tipo de desarrollo en el que la funcionalidad se especifica una vez y se refleja en toda la aplicación.</span><span class="sxs-lookup"><span data-stu-id="17cd8-109">:::no-loc(Razor)::: Pages encourages development where functionality is specified once, and it's reflected throughout the app.</span></span> <span data-ttu-id="17cd8-110">DRY puede ayudar a:</span><span class="sxs-lookup"><span data-stu-id="17cd8-110">DRY can help:</span></span>
+<span data-ttu-id="17cd8-108">Un principio clave de desarrollo de software se denomina [DRY](https://wikipedia.org/wiki/Don%27t_repeat_yourself), por " **D** on't **R** epeat **Y** ourself" (Una vez y solo una).</span><span class="sxs-lookup"><span data-stu-id="17cd8-108">A key tenet of software development is called [DRY](https://wikipedia.org/wiki/Don%27t_repeat_yourself) (" **D** on't **R** epeat **Y** ourself").</span></span> <span data-ttu-id="17cd8-109">Razor Pages fomenta un tipo de desarrollo en el que la funcionalidad se especifica una vez y se refleja en toda la aplicación.</span><span class="sxs-lookup"><span data-stu-id="17cd8-109">Razor Pages encourages development where functionality is specified once, and it's reflected throughout the app.</span></span> <span data-ttu-id="17cd8-110">DRY puede ayudar a:</span><span class="sxs-lookup"><span data-stu-id="17cd8-110">DRY can help:</span></span>
 
 * <span data-ttu-id="17cd8-111">Reducir la cantidad de código en una aplicación.</span><span class="sxs-lookup"><span data-stu-id="17cd8-111">Reduce the amount of code in an app.</span></span>
 * <span data-ttu-id="17cd8-112">Hacer que el código sea menos propenso a errores y resulte más fácil de probar y mantener.</span><span class="sxs-lookup"><span data-stu-id="17cd8-112">Make the code less error prone, and easier to test and maintain.</span></span>
 
-<span data-ttu-id="17cd8-113">La compatibilidad de validación proporcionada por :::no-loc(Razor)::: Pages y Entity Framework es un buen ejemplo del principio DRY.</span><span class="sxs-lookup"><span data-stu-id="17cd8-113">The validation support provided by :::no-loc(Razor)::: Pages and Entity Framework is a good example of the DRY principle.</span></span> <span data-ttu-id="17cd8-114">Las reglas de validación se especifican mediante declaración en un solo lugar (en la clase del modelo) y se aplican en toda la aplicación.</span><span class="sxs-lookup"><span data-stu-id="17cd8-114">Validation rules are declaratively specified in one place (in the model class), and the rules are enforced everywhere in the app.</span></span>
+<span data-ttu-id="17cd8-113">La compatibilidad de validación proporcionada por Razor Pages y Entity Framework es un buen ejemplo del principio DRY.</span><span class="sxs-lookup"><span data-stu-id="17cd8-113">The validation support provided by Razor Pages and Entity Framework is a good example of the DRY principle.</span></span> <span data-ttu-id="17cd8-114">Las reglas de validación se especifican mediante declaración en un solo lugar (en la clase del modelo) y se aplican en toda la aplicación.</span><span class="sxs-lookup"><span data-stu-id="17cd8-114">Validation rules are declaratively specified in one place (in the model class), and the rules are enforced everywhere in the app.</span></span>
 
 ## <a name="add-validation-rules-to-the-movie-model"></a><span data-ttu-id="17cd8-115">Adición de reglas de validación al modelo de película</span><span class="sxs-lookup"><span data-stu-id="17cd8-115">Add validation rules to the movie model</span></span>
 
@@ -46,7 +46,7 @@ ms.locfileid: "93060734"
 
 <span data-ttu-id="17cd8-118">Actualice la clase `Movie` para aprovechar los atributos de validación integrados `Required`, `StringLength`, `RegularExpression` y `Range`.</span><span class="sxs-lookup"><span data-stu-id="17cd8-118">Update the `Movie` class to take advantage of the built-in `Required`, `StringLength`, `RegularExpression`, and `Range` validation attributes.</span></span>
 
-[!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/:::no-loc(Razor):::PagesMovie30/Models/MovieDateRatingDA.cs?name=snippet1)]
+[!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Models/MovieDateRatingDA.cs?name=snippet1)]
 
 <span data-ttu-id="17cd8-119">Los atributos de validación especifican el comportamiento que quiere aplicar en las propiedades del modelo al que se aplican:</span><span class="sxs-lookup"><span data-stu-id="17cd8-119">The validation attributes specify behavior that you want to enforce on the model properties they're applied to:</span></span>
 
@@ -67,7 +67,7 @@ ms.locfileid: "93060734"
 
 <span data-ttu-id="17cd8-133">El que ASP.NET Core aplique automáticamente las reglas de validación ayuda a que su aplicación sea más sólida.</span><span class="sxs-lookup"><span data-stu-id="17cd8-133">Having validation rules automatically enforced by ASP.NET Core helps make your app more robust.</span></span> <span data-ttu-id="17cd8-134">También nos permite asegurarnos de que todo se valida y que no nos dejamos ningún dato incorrecto en la base de datos accidentalmente.</span><span class="sxs-lookup"><span data-stu-id="17cd8-134">It also ensures that you can't forget to validate something and inadvertently let bad data into the database.</span></span>
 
-### <a name="validation-error-ui-in-no-locrazor-pages"></a><span data-ttu-id="17cd8-135">Interfaz de usuario de error de validación de :::no-loc(Razor)::: Pages</span><span class="sxs-lookup"><span data-stu-id="17cd8-135">Validation Error UI in :::no-loc(Razor)::: Pages</span></span>
+### <a name="validation-error-ui-in-no-locrazor-pages"></a><span data-ttu-id="17cd8-135">Interfaz de usuario de error de validación de Razor Pages</span><span class="sxs-lookup"><span data-stu-id="17cd8-135">Validation Error UI in Razor Pages</span></span>
 
 <span data-ttu-id="17cd8-136">Ejecute la aplicación y vaya a Pages/Movies.</span><span class="sxs-lookup"><span data-stu-id="17cd8-136">Run the app and navigate to Pages/Movies.</span></span>
 
@@ -79,7 +79,7 @@ ms.locfileid: "93060734"
 
 <span data-ttu-id="17cd8-141">Observe cómo el formulario presenta automáticamente un mensaje de error de validación en cada campo que contiene un valor no válido.</span><span class="sxs-lookup"><span data-stu-id="17cd8-141">Notice how the form has automatically rendered a validation error message in each field containing an invalid value.</span></span> <span data-ttu-id="17cd8-142">Los errores se aplican al cliente (con JavaScript y jQuery) y al servidor (cuando un usuario tiene JavaScript deshabilitado).</span><span class="sxs-lookup"><span data-stu-id="17cd8-142">The errors are enforced both client-side (using JavaScript and jQuery) and server-side (when a user has JavaScript disabled).</span></span>
 
-<span data-ttu-id="17cd8-143">Una ventaja importante es que **no** se han necesitado cambios de código en las páginas de creación o edición.</span><span class="sxs-lookup"><span data-stu-id="17cd8-143">A significant benefit is that **no** code changes were necessary in the Create  or Edit pages.</span></span> <span data-ttu-id="17cd8-144">Una vez que DataAnnotations se ha aplicado al modelo, la interfaz de usuario de validación se ha habilitado.</span><span class="sxs-lookup"><span data-stu-id="17cd8-144">Once DataAnnotations were applied to the model, the validation UI was enabled.</span></span> <span data-ttu-id="17cd8-145">Las instancias de :::no-loc(Razor)::: Pages creadas en este tutorial han obtenido automáticamente las reglas de validación (por medio de atributos de validación en las propiedades de la clase del modelo `Movie`).</span><span class="sxs-lookup"><span data-stu-id="17cd8-145">The :::no-loc(Razor)::: Pages created in this tutorial automatically picked up the validation rules (using validation attributes on the properties of the `Movie` model class).</span></span> <span data-ttu-id="17cd8-146">Al probar la validación en la página de edición, se aplica la misma validación.</span><span class="sxs-lookup"><span data-stu-id="17cd8-146">Test validation using the Edit page, the same validation is applied.</span></span>
+<span data-ttu-id="17cd8-143">Una ventaja importante es que **no** se han necesitado cambios de código en las páginas de creación o edición.</span><span class="sxs-lookup"><span data-stu-id="17cd8-143">A significant benefit is that **no** code changes were necessary in the Create  or Edit pages.</span></span> <span data-ttu-id="17cd8-144">Una vez que DataAnnotations se ha aplicado al modelo, la interfaz de usuario de validación se ha habilitado.</span><span class="sxs-lookup"><span data-stu-id="17cd8-144">Once DataAnnotations were applied to the model, the validation UI was enabled.</span></span> <span data-ttu-id="17cd8-145">Las instancias de Razor Pages creadas en este tutorial han obtenido automáticamente las reglas de validación (por medio de atributos de validación en las propiedades de la clase del modelo `Movie`).</span><span class="sxs-lookup"><span data-stu-id="17cd8-145">The Razor Pages created in this tutorial automatically picked up the validation rules (using validation attributes on the properties of the `Movie` model class).</span></span> <span data-ttu-id="17cd8-146">Al probar la validación en la página de edición, se aplica la misma validación.</span><span class="sxs-lookup"><span data-stu-id="17cd8-146">Test validation using the Edit page, the same validation is applied.</span></span>
 
 <span data-ttu-id="17cd8-147">Los datos del formulario no se publicarán en el servidor hasta que dejen de producirse errores de validación de cliente.</span><span class="sxs-lookup"><span data-stu-id="17cd8-147">The form data isn't posted to the server until there are no client-side validation errors.</span></span> <span data-ttu-id="17cd8-148">Compruebe que los datos del formulario no se publican mediante uno o varios de los métodos siguientes:</span><span class="sxs-lookup"><span data-stu-id="17cd8-148">Verify form data isn't posted by one or more of the following approaches:</span></span>
 
@@ -109,11 +109,11 @@ ms.locfileid: "93060734"
 
 <span data-ttu-id="17cd8-164">El código siguiente muestra una parte de la página *Create.cshtml* a la que se aplicó scaffolding anteriormente en el tutorial.</span><span class="sxs-lookup"><span data-stu-id="17cd8-164">The following code shows a portion of the *Create.cshtml* page scaffolded earlier in the tutorial.</span></span> <span data-ttu-id="17cd8-165">Las páginas de creación y edición la usan para mostrar el formulario inicial y para volver a mostrar el formulario en caso de error.</span><span class="sxs-lookup"><span data-stu-id="17cd8-165">It's used by the Create and Edit pages to display the initial form and to redisplay the form in the event of an error.</span></span>
 
-[!code-cshtml[](razor-pages-start/sample/:::no-loc(Razor):::PagesMovie/Pages/Movies/Create.cshtml?range=14-20)]
+[!code-cshtml[](razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Create.cshtml?range=14-20)]
 
 <span data-ttu-id="17cd8-166">El [asistente de etiquetas de entrada](xref:mvc/views/working-with-forms) usa los atributos [DataAnnotations](/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) y genera los atributos HTML necesarios para la validación de jQuery en el cliente.</span><span class="sxs-lookup"><span data-stu-id="17cd8-166">The [Input Tag Helper](xref:mvc/views/working-with-forms) uses the [DataAnnotations](/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) attributes and produces HTML attributes needed for jQuery Validation on the client-side.</span></span> <span data-ttu-id="17cd8-167">El [asistente de etiquetas de validación](xref:mvc/views/working-with-forms#the-validation-tag-helpers) muestra errores de validación.</span><span class="sxs-lookup"><span data-stu-id="17cd8-167">The [Validation Tag Helper](xref:mvc/views/working-with-forms#the-validation-tag-helpers) displays validation errors.</span></span> <span data-ttu-id="17cd8-168">Para más información, vea [Validación](xref:mvc/models/validation).</span><span class="sxs-lookup"><span data-stu-id="17cd8-168">See [Validation](xref:mvc/models/validation) for more information.</span></span>
 
-<span data-ttu-id="17cd8-169">Las páginas de creación y edición no tienen ninguna regla de validación.</span><span class="sxs-lookup"><span data-stu-id="17cd8-169">The Create and Edit pages have no validation rules in them.</span></span> <span data-ttu-id="17cd8-170">Las reglas de validación y las cadenas de error solo se especifican en la clase `Movie`.</span><span class="sxs-lookup"><span data-stu-id="17cd8-170">The validation rules and the error strings are specified only in the `Movie` class.</span></span> <span data-ttu-id="17cd8-171">Estas reglas de validación se aplican automáticamente a las instancias de :::no-loc(Razor)::: Pages que editan el modelo `Movie`.</span><span class="sxs-lookup"><span data-stu-id="17cd8-171">These validation rules are automatically applied to :::no-loc(Razor)::: Pages that edit the `Movie` model.</span></span>
+<span data-ttu-id="17cd8-169">Las páginas de creación y edición no tienen ninguna regla de validación.</span><span class="sxs-lookup"><span data-stu-id="17cd8-169">The Create and Edit pages have no validation rules in them.</span></span> <span data-ttu-id="17cd8-170">Las reglas de validación y las cadenas de error solo se especifican en la clase `Movie`.</span><span class="sxs-lookup"><span data-stu-id="17cd8-170">The validation rules and the error strings are specified only in the `Movie` class.</span></span> <span data-ttu-id="17cd8-171">Estas reglas de validación se aplican automáticamente a las instancias de Razor Pages que editan el modelo `Movie`.</span><span class="sxs-lookup"><span data-stu-id="17cd8-171">These validation rules are automatically applied to Razor Pages that edit the `Movie` model.</span></span>
 
 <span data-ttu-id="17cd8-172">Cuando es necesario modificar la lógica de validación, se hace únicamente en el modelo.</span><span class="sxs-lookup"><span data-stu-id="17cd8-172">When validation logic needs to change, it's done only in the model.</span></span> <span data-ttu-id="17cd8-173">La validación se aplica de forma coherente en toda la aplicación (la lógica de validación se define en un solo lugar).</span><span class="sxs-lookup"><span data-stu-id="17cd8-173">Validation is applied consistently throughout the application (validation logic is defined in one place).</span></span> <span data-ttu-id="17cd8-174">La validación en un solo lugar ayuda a mantener limpio el código y facilita su mantenimiento y actualización.</span><span class="sxs-lookup"><span data-stu-id="17cd8-174">Validation in one place helps keep the code clean, and makes it easier to maintain and update.</span></span>
 
@@ -121,7 +121,7 @@ ms.locfileid: "93060734"
 
 <span data-ttu-id="17cd8-176">Examine la clase `Movie`.</span><span class="sxs-lookup"><span data-stu-id="17cd8-176">Examine the `Movie` class.</span></span> <span data-ttu-id="17cd8-177">El espacio de nombres `System.ComponentModel.DataAnnotations` proporciona atributos de formato además del conjunto integrado de atributos de validación.</span><span class="sxs-lookup"><span data-stu-id="17cd8-177">The `System.ComponentModel.DataAnnotations` namespace provides formatting attributes in addition to the built-in set of validation attributes.</span></span> <span data-ttu-id="17cd8-178">El atributo `DataType` se aplica a las propiedades `ReleaseDate` y `Price`.</span><span class="sxs-lookup"><span data-stu-id="17cd8-178">The `DataType` attribute is applied to the `ReleaseDate` and `Price` properties.</span></span>
 
-[!code-csharp[](razor-pages-start/sample/:::no-loc(Razor):::PagesMovie/Models/MovieDateRatingDA.cs?highlight=2,6&name=snippet2)]
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie/Models/MovieDateRatingDA.cs?highlight=2,6&name=snippet2)]
 
 <span data-ttu-id="17cd8-179">Los atributos `DataType` solo proporcionan sugerencias para que el motor de vista aplique formato a los datos (y ofrece atributos como `<a>` para las direcciones URL y `<a href="mailto:EmailAddress.com">` para el correo electrónico).</span><span class="sxs-lookup"><span data-stu-id="17cd8-179">The `DataType` attributes only provide hints for the view engine to format the data (and supplies attributes such as `<a>` for URL's and `<a href="mailto:EmailAddress.com">` for email).</span></span> <span data-ttu-id="17cd8-180">Use el atributo `RegularExpression` para validar el formato de los datos.</span><span class="sxs-lookup"><span data-stu-id="17cd8-180">Use the `RegularExpression` attribute to validate the format of the data.</span></span> <span data-ttu-id="17cd8-181">El atributo `DataType` se usa para especificar un tipo de datos más específico que el tipo intrínseco de base de datos.</span><span class="sxs-lookup"><span data-stu-id="17cd8-181">The `DataType` attribute is used to specify a data type that's more specific than the database intrinsic type.</span></span> <span data-ttu-id="17cd8-182">Los atributos `DataType` no son atributos de validación.</span><span class="sxs-lookup"><span data-stu-id="17cd8-182">`DataType` attributes are not validation attributes.</span></span> <span data-ttu-id="17cd8-183">En la aplicación de ejemplo solo se muestra la fecha, sin hora.</span><span class="sxs-lookup"><span data-stu-id="17cd8-183">In the sample application, only the date is displayed, without time.</span></span>
 
@@ -156,15 +156,15 @@ public DateTime ReleaseDate { get; set; }
 
 <span data-ttu-id="17cd8-207">El código siguiente muestra la combinación de atributos en una línea:</span><span class="sxs-lookup"><span data-stu-id="17cd8-207">The following code shows combining attributes on one line:</span></span>
 
-[!code-csharp[](razor-pages-start/sample/:::no-loc(Razor):::PagesMovie30/Models/MovieDateRatingDAmult.cs?name=snippet1)]
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Models/MovieDateRatingDAmult.cs?name=snippet1)]
 
-<span data-ttu-id="17cd8-208">En [Introducción a :::no-loc(Razor)::: Pages y EF Core](xref:data/ef-rp/intro) se muestran operaciones avanzadas de EF Core con :::no-loc(Razor)::: Pages.</span><span class="sxs-lookup"><span data-stu-id="17cd8-208">[Get started with :::no-loc(Razor)::: Pages and EF Core](xref:data/ef-rp/intro) shows advanced EF Core operations with :::no-loc(Razor)::: Pages.</span></span>
+<span data-ttu-id="17cd8-208">En [Introducción a Razor Pages y EF Core](xref:data/ef-rp/intro) se muestran operaciones avanzadas de EF Core con Razor Pages.</span><span class="sxs-lookup"><span data-stu-id="17cd8-208">[Get started with Razor Pages and EF Core](xref:data/ef-rp/intro) shows advanced EF Core operations with Razor Pages.</span></span>
 
 ### <a name="apply-migrations"></a><span data-ttu-id="17cd8-209">Aplicación de migraciones</span><span class="sxs-lookup"><span data-stu-id="17cd8-209">Apply migrations</span></span>
 
 <span data-ttu-id="17cd8-210">Las anotaciones DataAnnotations aplicadas a la clase cambian el esquema.</span><span class="sxs-lookup"><span data-stu-id="17cd8-210">The DataAnnotations applied to the class changes the schema.</span></span> <span data-ttu-id="17cd8-211">Por ejemplo, las DataAnnotations aplicadas al campo `Title`:</span><span class="sxs-lookup"><span data-stu-id="17cd8-211">For example, the DataAnnotations applied to the `Title` field:</span></span>
 
-[!code-csharp[](razor-pages-start/sample/:::no-loc(Razor):::PagesMovie30/Models/MovieDateRatingDA.cs?name=snippet11)]
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Models/MovieDateRatingDA.cs?name=snippet11)]
 
 * <span data-ttu-id="17cd8-212">Limita los caracteres a 60.</span><span class="sxs-lookup"><span data-stu-id="17cd8-212">Limits the characters to 60.</span></span>
 * <span data-ttu-id="17cd8-213">No permite un valor `null`.</span><span class="sxs-lookup"><span data-stu-id="17cd8-213">Doesn't allow a `null` value.</span></span>
@@ -197,7 +197,7 @@ Update-Database
 
 <span data-ttu-id="17cd8-220">`Update-Database` ejecuta los métodos `Up` de la clase `New_DataAnnotations`.</span><span class="sxs-lookup"><span data-stu-id="17cd8-220">`Update-Database` runs the `Up` methods of the `New_DataAnnotations` class.</span></span> <span data-ttu-id="17cd8-221">Examine el método `Up`:</span><span class="sxs-lookup"><span data-stu-id="17cd8-221">Examine the `Up` method:</span></span>
 
-[!code-csharp[](razor-pages-start/sample/:::no-loc(Razor):::PagesMovie30/Migrations/20190724163003_New_DataAnnotations.cs?name=snippet)]
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Migrations/20190724163003_New_DataAnnotations.cs?name=snippet)]
 
 <span data-ttu-id="17cd8-222">La tabla `Movie` actualizada tiene el esquema siguiente:</span><span class="sxs-lookup"><span data-stu-id="17cd8-222">The updated `Movie` table has the following schema:</span></span>
 
@@ -223,7 +223,7 @@ CREATE TABLE [dbo].[Movie] (
 
 <span data-ttu-id="17cd8-226">Para obtener información sobre la implementación en Azure, consulte [Tutorial: Compilación de una aplicación ASP.NET Core en Azure con SQL Database](/azure/app-service/app-service-web-tutorial-dotnetcore-sqldb).</span><span class="sxs-lookup"><span data-stu-id="17cd8-226">For information on deploying to Azure, see [Tutorial: Build an ASP.NET Core app in Azure with SQL Database](/azure/app-service/app-service-web-tutorial-dotnetcore-sqldb).</span></span>
 
-<span data-ttu-id="17cd8-227">Gracias por finalizar esta introducción sobre :::no-loc(Razor)::: Pages.</span><span class="sxs-lookup"><span data-stu-id="17cd8-227">Thanks for completing this introduction to :::no-loc(Razor)::: Pages.</span></span> <span data-ttu-id="17cd8-228">[Primeros pasos con :::no-loc(Razor)::: Pages y EF Core](xref:data/ef-rp/intro) es una excelente continuación para este tutorial.</span><span class="sxs-lookup"><span data-stu-id="17cd8-228">[Get started with :::no-loc(Razor)::: Pages and EF Core](xref:data/ef-rp/intro) is an excellent follow up to this tutorial.</span></span>
+<span data-ttu-id="17cd8-227">Gracias por finalizar esta introducción sobre Razor Pages.</span><span class="sxs-lookup"><span data-stu-id="17cd8-227">Thanks for completing this introduction to Razor Pages.</span></span> <span data-ttu-id="17cd8-228">[Primeros pasos con Razor Pages y EF Core](xref:data/ef-rp/intro) es una excelente continuación para este tutorial.</span><span class="sxs-lookup"><span data-stu-id="17cd8-228">[Get started with Razor Pages and EF Core](xref:data/ef-rp/intro) is an excellent follow up to this tutorial.</span></span>
 
 ## <a name="additional-resources"></a><span data-ttu-id="17cd8-229">Recursos adicionales</span><span class="sxs-lookup"><span data-stu-id="17cd8-229">Additional resources</span></span>
 

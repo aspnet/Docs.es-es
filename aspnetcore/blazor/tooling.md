@@ -1,23 +1,23 @@
 ---
-title: 'Herramientas para ASP.NET Core :::no-loc(Blazor):::'
+title: 'Herramientas para ASP.NET Core Blazor'
 author: guardrex
-description: Obtenga información sobre las herramientas disponibles para compilar aplicaciones de :::no-loc(Blazor):::.
+description: Obtenga información sobre las herramientas disponibles para compilar aplicaciones de Blazor.
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 09/28/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: blazor/tooling
 zone_pivot_groups: operating-systems
 ms.openlocfilehash: 500342ac979efdee824ac0d4b5757ca9804f3b30
@@ -27,7 +27,7 @@ ms.contentlocale: es-ES
 ms.lasthandoff: 10/30/2020
 ms.locfileid: "93054819"
 ---
-# <a name="tooling-for-aspnet-core-no-locblazor"></a><span data-ttu-id="adf38-103">Herramientas para ASP.NET Core :::no-loc(Blazor):::</span><span class="sxs-lookup"><span data-stu-id="adf38-103">Tooling for ASP.NET Core :::no-loc(Blazor):::</span></span>
+# <a name="tooling-for-aspnet-core-no-locblazor"></a><span data-ttu-id="adf38-103">Herramientas para ASP.NET Core Blazor</span><span class="sxs-lookup"><span data-stu-id="adf38-103">Tooling for ASP.NET Core Blazor</span></span>
 
 <span data-ttu-id="adf38-104">Por [Daniel Roth](https://github.com/danroth27) y [Luke Latham](https://github.com/guardrex)</span><span class="sxs-lookup"><span data-stu-id="adf38-104">By [Daniel Roth](https://github.com/danroth27) and [Luke Latham](https://github.com/guardrex)</span></span>
 
@@ -37,13 +37,13 @@ ms.locfileid: "93054819"
 
 1. <span data-ttu-id="adf38-106">Cree un nuevo proyecto.</span><span class="sxs-lookup"><span data-stu-id="adf38-106">Create a new project.</span></span>
 
-1. <span data-ttu-id="adf38-107">Seleccione **Aplicación :::no-loc(Blazor):::** .</span><span class="sxs-lookup"><span data-stu-id="adf38-107">Select **:::no-loc(Blazor)::: App**.</span></span> <span data-ttu-id="adf38-108">Seleccione **Siguiente**.</span><span class="sxs-lookup"><span data-stu-id="adf38-108">Select **Next**.</span></span>
+1. <span data-ttu-id="adf38-107">Seleccione **Aplicación Blazor** .</span><span class="sxs-lookup"><span data-stu-id="adf38-107">Select **Blazor App**.</span></span> <span data-ttu-id="adf38-108">Seleccione **Siguiente**.</span><span class="sxs-lookup"><span data-stu-id="adf38-108">Select **Next**.</span></span>
 
 1. <span data-ttu-id="adf38-109">Proporcione un nombre para el proyecto en el campo **Nombre del proyecto** o acepte el predeterminado.</span><span class="sxs-lookup"><span data-stu-id="adf38-109">Provide a project name in the **Project name** field or accept the default project name.</span></span> <span data-ttu-id="adf38-110">Confirme que la entrada de **Ubicación** es correcta o proporcione una ubicación para el proyecto.</span><span class="sxs-lookup"><span data-stu-id="adf38-110">Confirm the **Location** entry is correct or provide a location for the project.</span></span> <span data-ttu-id="adf38-111">Seleccione **Crear**.</span><span class="sxs-lookup"><span data-stu-id="adf38-111">Select **Create**.</span></span>
 
-1. <span data-ttu-id="adf38-112">Para disfrutar de una experiencia de :::no-loc(Blazor WebAssembly):::, elija la plantilla **Aplicación :::no-loc(Blazor WebAssembly):::** .</span><span class="sxs-lookup"><span data-stu-id="adf38-112">For a :::no-loc(Blazor WebAssembly)::: experience, choose the **:::no-loc(Blazor WebAssembly)::: App** template.</span></span> <span data-ttu-id="adf38-113">Para disfrutar de una experiencia de :::no-loc(Blazor Server):::, elija la plantilla **Aplicación :::no-loc(Blazor Server):::** .</span><span class="sxs-lookup"><span data-stu-id="adf38-113">For a :::no-loc(Blazor Server)::: experience, choose the **:::no-loc(Blazor Server)::: App** template.</span></span> <span data-ttu-id="adf38-114">Seleccione **Crear**.</span><span class="sxs-lookup"><span data-stu-id="adf38-114">Select **Create**.</span></span>
+1. <span data-ttu-id="adf38-112">Para disfrutar de una experiencia de Blazor WebAssembly, elija la plantilla **Aplicación Blazor WebAssembly** .</span><span class="sxs-lookup"><span data-stu-id="adf38-112">For a Blazor WebAssembly experience, choose the **Blazor WebAssembly App** template.</span></span> <span data-ttu-id="adf38-113">Para disfrutar de una experiencia de Blazor Server, elija la plantilla **Aplicación Blazor Server** .</span><span class="sxs-lookup"><span data-stu-id="adf38-113">For a Blazor Server experience, choose the **Blazor Server App** template.</span></span> <span data-ttu-id="adf38-114">Seleccione **Crear**.</span><span class="sxs-lookup"><span data-stu-id="adf38-114">Select **Create**.</span></span>
 
-   <span data-ttu-id="adf38-115">Para obtener más información sobre los dos modelos de hospedaje de :::no-loc(Blazor)::: ( *:::no-loc(Blazor WebAssembly):::* y *:::no-loc(Blazor Server):::* ), vea <xref:blazor/hosting-models>.</span><span class="sxs-lookup"><span data-stu-id="adf38-115">For information on the two :::no-loc(Blazor)::: hosting models, *:::no-loc(Blazor WebAssembly):::* and *:::no-loc(Blazor Server):::* , see <xref:blazor/hosting-models>.</span></span>
+   <span data-ttu-id="adf38-115">Para obtener más información sobre los dos modelos de hospedaje de Blazor ( *Blazor WebAssembly* y *Blazor Server* ), vea <xref:blazor/hosting-models>.</span><span class="sxs-lookup"><span data-stu-id="adf38-115">For information on the two Blazor hosting models, *Blazor WebAssembly* and *Blazor Server* , see <xref:blazor/hosting-models>.</span></span>
 
 1. <span data-ttu-id="adf38-116">Presione <kbd>Ctrl</kbd>+<kbd>F5</kbd> para ejecutar la aplicación.</span><span class="sxs-lookup"><span data-stu-id="adf38-116">Press <kbd>Ctrl</kbd>+<kbd>F5</kbd> to run the app.</span></span>
 
@@ -63,19 +63,19 @@ ms.locfileid: "93054819"
 
 1. <span data-ttu-id="adf38-121">Instale la [extensión de C# para Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) más reciente.</span><span class="sxs-lookup"><span data-stu-id="adf38-121">Install the latest [C# for Visual Studio Code extension](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp).</span></span>
 
-1. <span data-ttu-id="adf38-122">Para disfrutar de una experiencia de :::no-loc(Blazor WebAssembly):::, ejecute el siguiente comando en un shell de comandos:</span><span class="sxs-lookup"><span data-stu-id="adf38-122">For a :::no-loc(Blazor WebAssembly)::: experience, execute the following command in a command shell:</span></span>
+1. <span data-ttu-id="adf38-122">Para disfrutar de una experiencia de Blazor WebAssembly, ejecute el siguiente comando en un shell de comandos:</span><span class="sxs-lookup"><span data-stu-id="adf38-122">For a Blazor WebAssembly experience, execute the following command in a command shell:</span></span>
 
    ```dotnetcli
    dotnet new blazorwasm -o WebApplication1
    ```
 
-   <span data-ttu-id="adf38-123">Para disfrutar de una experiencia de :::no-loc(Blazor Server):::, ejecute el siguiente comando en un shell de comandos:</span><span class="sxs-lookup"><span data-stu-id="adf38-123">For a :::no-loc(Blazor Server)::: experience, execute the following command in a command shell:</span></span>
+   <span data-ttu-id="adf38-123">Para disfrutar de una experiencia de Blazor Server, ejecute el siguiente comando en un shell de comandos:</span><span class="sxs-lookup"><span data-stu-id="adf38-123">For a Blazor Server experience, execute the following command in a command shell:</span></span>
 
    ```dotnetcli
    dotnet new blazorserver -o WebApplication1
    ```
 
-   <span data-ttu-id="adf38-124">Para obtener más información sobre los dos modelos de hospedaje de :::no-loc(Blazor)::: ( *:::no-loc(Blazor WebAssembly):::* y *:::no-loc(Blazor Server):::* ), vea <xref:blazor/hosting-models>.</span><span class="sxs-lookup"><span data-stu-id="adf38-124">For information on the two :::no-loc(Blazor)::: hosting models, *:::no-loc(Blazor WebAssembly):::* and *:::no-loc(Blazor Server):::* , see <xref:blazor/hosting-models>.</span></span>
+   <span data-ttu-id="adf38-124">Para obtener más información sobre los dos modelos de hospedaje de Blazor ( *Blazor WebAssembly* y *Blazor Server* ), vea <xref:blazor/hosting-models>.</span><span class="sxs-lookup"><span data-stu-id="adf38-124">For information on the two Blazor hosting models, *Blazor WebAssembly* and *Blazor Server* , see <xref:blazor/hosting-models>.</span></span>
 
 1. <span data-ttu-id="adf38-125">Abra la carpeta `WebApplication1` en Visual Studio Code.</span><span class="sxs-lookup"><span data-stu-id="adf38-125">Open the `WebApplication1` folder in Visual Studio Code.</span></span>
 
@@ -103,9 +103,9 @@ ms.locfileid: "93054819"
 
 1. <span data-ttu-id="adf38-138">En la barra lateral, seleccione **Web y consola** > **Aplicación**.</span><span class="sxs-lookup"><span data-stu-id="adf38-138">In the sidebar, select **Web and Console** > **App**.</span></span>
 
-   <span data-ttu-id="adf38-139">Para disfrutar de una experiencia de :::no-loc(Blazor WebAssembly):::, elija la plantilla **Aplicación :::no-loc(Blazor WebAssembly):::** .</span><span class="sxs-lookup"><span data-stu-id="adf38-139">For a :::no-loc(Blazor WebAssembly)::: experience, choose the **:::no-loc(Blazor WebAssembly)::: App** template.</span></span> <span data-ttu-id="adf38-140">Para disfrutar de una experiencia de :::no-loc(Blazor Server):::, elija la plantilla **Aplicación :::no-loc(Blazor Server):::** .</span><span class="sxs-lookup"><span data-stu-id="adf38-140">For a :::no-loc(Blazor Server)::: experience, choose the **:::no-loc(Blazor Server)::: App** template.</span></span> <span data-ttu-id="adf38-141">Seleccione **Siguiente**.</span><span class="sxs-lookup"><span data-stu-id="adf38-141">Select **Next**.</span></span>
+   <span data-ttu-id="adf38-139">Para disfrutar de una experiencia de Blazor WebAssembly, elija la plantilla **Aplicación Blazor WebAssembly** .</span><span class="sxs-lookup"><span data-stu-id="adf38-139">For a Blazor WebAssembly experience, choose the **Blazor WebAssembly App** template.</span></span> <span data-ttu-id="adf38-140">Para disfrutar de una experiencia de Blazor Server, elija la plantilla **Aplicación Blazor Server** .</span><span class="sxs-lookup"><span data-stu-id="adf38-140">For a Blazor Server experience, choose the **Blazor Server App** template.</span></span> <span data-ttu-id="adf38-141">Seleccione **Siguiente**.</span><span class="sxs-lookup"><span data-stu-id="adf38-141">Select **Next**.</span></span>
 
-   <span data-ttu-id="adf38-142">Para obtener más información sobre los dos modelos de hospedaje de :::no-loc(Blazor)::: ( *:::no-loc(Blazor WebAssembly):::* y *:::no-loc(Blazor Server):::* ), vea <xref:blazor/hosting-models>.</span><span class="sxs-lookup"><span data-stu-id="adf38-142">For information on the two :::no-loc(Blazor)::: hosting models, *:::no-loc(Blazor WebAssembly):::* and *:::no-loc(Blazor Server):::* , see <xref:blazor/hosting-models>.</span></span>
+   <span data-ttu-id="adf38-142">Para obtener más información sobre los dos modelos de hospedaje de Blazor ( *Blazor WebAssembly* y *Blazor Server* ), vea <xref:blazor/hosting-models>.</span><span class="sxs-lookup"><span data-stu-id="adf38-142">For information on the two Blazor hosting models, *Blazor WebAssembly* and *Blazor Server* , see <xref:blazor/hosting-models>.</span></span>
 
 1. <span data-ttu-id="adf38-143">Confirme que la **Autenticación** esté establecida en **Sin autenticación**.</span><span class="sxs-lookup"><span data-stu-id="adf38-143">Confirm that **Authentication** is set to **No Authentication**.</span></span> <span data-ttu-id="adf38-144">Seleccione **Siguiente**.</span><span class="sxs-lookup"><span data-stu-id="adf38-144">Select **Next**.</span></span>
 

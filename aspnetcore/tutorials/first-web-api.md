@@ -6,18 +6,18 @@ ms.author: riande
 ms.custom: mvc, devx-track-js
 ms.date: 08/13/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
-- ':::no-loc(Models):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
+- 'Models'
 uid: tutorials/first-web-api
 ms.openlocfilehash: fc41dd13e7d027d9630cd596162f9b5fd2ef9e2b
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -229,25 +229,25 @@ ms.locfileid: "93058498"
 
 # <a name="visual-studio"></a>[<span data-ttu-id="2467d-205">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="2467d-205">Visual Studio</span></span>](#tab/visual-studio)
 
-* <span data-ttu-id="2467d-206">En el **Explorador de soluciones** , haga clic con el botón derecho en el proyecto.</span><span class="sxs-lookup"><span data-stu-id="2467d-206">In **Solution Explorer** , right-click the project.</span></span> <span data-ttu-id="2467d-207">Seleccione **Agregar** > **Nueva carpeta**.</span><span class="sxs-lookup"><span data-stu-id="2467d-207">Select **Add** > **New Folder**.</span></span> <span data-ttu-id="2467d-208">Asigne a la carpeta el nombre *:::no-loc(Models):::* .</span><span class="sxs-lookup"><span data-stu-id="2467d-208">Name the folder *:::no-loc(Models):::*.</span></span>
+* <span data-ttu-id="2467d-206">En el **Explorador de soluciones** , haga clic con el botón derecho en el proyecto.</span><span class="sxs-lookup"><span data-stu-id="2467d-206">In **Solution Explorer** , right-click the project.</span></span> <span data-ttu-id="2467d-207">Seleccione **Agregar** > **Nueva carpeta**.</span><span class="sxs-lookup"><span data-stu-id="2467d-207">Select **Add** > **New Folder**.</span></span> <span data-ttu-id="2467d-208">Asigne a la carpeta el nombre *Models* .</span><span class="sxs-lookup"><span data-stu-id="2467d-208">Name the folder *Models*.</span></span>
 
-* <span data-ttu-id="2467d-209">Haga clic con el botón derecho en la carpeta *:::no-loc(Models):::* y seleccione **Agregar** > **Clase**.</span><span class="sxs-lookup"><span data-stu-id="2467d-209">Right-click the *:::no-loc(Models):::* folder and select **Add** > **Class**.</span></span> <span data-ttu-id="2467d-210">Asigne a la clase el nombre *TodoItem* y seleccione **Agregar**.</span><span class="sxs-lookup"><span data-stu-id="2467d-210">Name the class *TodoItem* and select **Add**.</span></span>
+* <span data-ttu-id="2467d-209">Haga clic con el botón derecho en la carpeta *Models* y seleccione **Agregar** > **Clase**.</span><span class="sxs-lookup"><span data-stu-id="2467d-209">Right-click the *Models* folder and select **Add** > **Class**.</span></span> <span data-ttu-id="2467d-210">Asigne a la clase el nombre *TodoItem* y seleccione **Agregar**.</span><span class="sxs-lookup"><span data-stu-id="2467d-210">Name the class *TodoItem* and select **Add**.</span></span>
 
 * <span data-ttu-id="2467d-211">Reemplace el código de plantilla por lo siguiente:</span><span class="sxs-lookup"><span data-stu-id="2467d-211">Replace the template code with the following:</span></span>
 
 # <a name="visual-studio-code"></a>[<span data-ttu-id="2467d-212">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="2467d-212">Visual Studio Code</span></span>](#tab/visual-studio-code)
 
-* <span data-ttu-id="2467d-213">Agregue una carpeta denominada *:::no-loc(Models):::* .</span><span class="sxs-lookup"><span data-stu-id="2467d-213">Add a folder named *:::no-loc(Models):::*.</span></span>
+* <span data-ttu-id="2467d-213">Agregue una carpeta denominada *Models* .</span><span class="sxs-lookup"><span data-stu-id="2467d-213">Add a folder named *Models*.</span></span>
 
-* <span data-ttu-id="2467d-214">Agregue una clase `TodoItem` a la carpeta *:::no-loc(Models):::* con el código siguiente:</span><span class="sxs-lookup"><span data-stu-id="2467d-214">Add a `TodoItem` class to the *:::no-loc(Models):::* folder with the following code:</span></span>
+* <span data-ttu-id="2467d-214">Agregue una clase `TodoItem` a la carpeta *Models* con el código siguiente:</span><span class="sxs-lookup"><span data-stu-id="2467d-214">Add a `TodoItem` class to the *Models* folder with the following code:</span></span>
 
 # <a name="visual-studio-for-mac"></a>[<span data-ttu-id="2467d-215">Visual Studio para Mac</span><span class="sxs-lookup"><span data-stu-id="2467d-215">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
 
-* <span data-ttu-id="2467d-216">Haga clic con el botón derecho en el proyecto.</span><span class="sxs-lookup"><span data-stu-id="2467d-216">Right-click the project.</span></span> <span data-ttu-id="2467d-217">Seleccione **Agregar** > **Nueva carpeta**.</span><span class="sxs-lookup"><span data-stu-id="2467d-217">Select **Add** > **New Folder**.</span></span> <span data-ttu-id="2467d-218">Asigne a la carpeta el nombre *:::no-loc(Models):::* .</span><span class="sxs-lookup"><span data-stu-id="2467d-218">Name the folder *:::no-loc(Models):::*.</span></span>
+* <span data-ttu-id="2467d-216">Haga clic con el botón derecho en el proyecto.</span><span class="sxs-lookup"><span data-stu-id="2467d-216">Right-click the project.</span></span> <span data-ttu-id="2467d-217">Seleccione **Agregar** > **Nueva carpeta**.</span><span class="sxs-lookup"><span data-stu-id="2467d-217">Select **Add** > **New Folder**.</span></span> <span data-ttu-id="2467d-218">Asigne a la carpeta el nombre *Models* .</span><span class="sxs-lookup"><span data-stu-id="2467d-218">Name the folder *Models*.</span></span>
 
   ![nueva carpeta](first-web-api-mac/_static/folder.png)
 
-* <span data-ttu-id="2467d-220">Haga clic con el botón derecho en la carpeta *:::no-loc(Models):::* y seleccione **Agregar** > **Nuevo archivo** > **General** > **Clase vacía**.</span><span class="sxs-lookup"><span data-stu-id="2467d-220">Right-click the *:::no-loc(Models):::* folder, and select **Add** > **New File** > **General** > **Empty Class**.</span></span>
+* <span data-ttu-id="2467d-220">Haga clic con el botón derecho en la carpeta *Models* y seleccione **Agregar** > **Nuevo archivo** > **General** > **Clase vacía**.</span><span class="sxs-lookup"><span data-stu-id="2467d-220">Right-click the *Models* folder, and select **Add** > **New File** > **General** > **Empty Class**.</span></span>
 
 * <span data-ttu-id="2467d-221">Asigne a la clase el nombre *TodoItem* y haga clic en **Nuevo**.</span><span class="sxs-lookup"><span data-stu-id="2467d-221">Name the class *TodoItem* , and then click **New**.</span></span>
 
@@ -255,11 +255,11 @@ ms.locfileid: "93058498"
 
 ---
 
-  [!code-csharp[](first-web-api/samples/5.x/TodoApi/:::no-loc(Models):::/TodoItem.cs?name=snippet)]
+  [!code-csharp[](first-web-api/samples/5.x/TodoApi/Models/TodoItem.cs?name=snippet)]
 
 <span data-ttu-id="2467d-223">La propiedad `Id` funciona como clave única en una base de datos relacional.</span><span class="sxs-lookup"><span data-stu-id="2467d-223">The `Id` property functions as the unique key in a relational database.</span></span>
 
-<span data-ttu-id="2467d-224">Las clases de modelo pueden ir en cualquier lugar del proyecto, pero, por convención, se usa la carpeta *:::no-loc(Models):::* .</span><span class="sxs-lookup"><span data-stu-id="2467d-224">Model classes can go anywhere in the project, but the *:::no-loc(Models):::* folder is used by convention.</span></span>
+<span data-ttu-id="2467d-224">Las clases de modelo pueden ir en cualquier lugar del proyecto, pero, por convención, se usa la carpeta *Models* .</span><span class="sxs-lookup"><span data-stu-id="2467d-224">Model classes can go anywhere in the project, but the *Models* folder is used by convention.</span></span>
 
 ## <a name="add-a-database-context"></a><span data-ttu-id="2467d-225">Incorporación de un contexto de base de datos</span><span class="sxs-lookup"><span data-stu-id="2467d-225">Add a database context</span></span>
 
@@ -283,17 +283,17 @@ ms.locfileid: "93058498"
 
 ## <a name="add-the-todocontext-database-context"></a><span data-ttu-id="2467d-238">Adición del contexto de la base de datos TodoContext</span><span class="sxs-lookup"><span data-stu-id="2467d-238">Add the TodoContext database context</span></span>
 
-* <span data-ttu-id="2467d-239">Haga clic con el botón derecho en la carpeta *:::no-loc(Models):::* y seleccione **Agregar** > **Clase**.</span><span class="sxs-lookup"><span data-stu-id="2467d-239">Right-click the *:::no-loc(Models):::* folder and select **Add** > **Class**.</span></span> <span data-ttu-id="2467d-240">Asigne a la clase el nombre *TodoContext* y haga clic en **Agregar**.</span><span class="sxs-lookup"><span data-stu-id="2467d-240">Name the class *TodoContext* and click **Add**.</span></span>
+* <span data-ttu-id="2467d-239">Haga clic con el botón derecho en la carpeta *Models* y seleccione **Agregar** > **Clase**.</span><span class="sxs-lookup"><span data-stu-id="2467d-239">Right-click the *Models* folder and select **Add** > **Class**.</span></span> <span data-ttu-id="2467d-240">Asigne a la clase el nombre *TodoContext* y haga clic en **Agregar**.</span><span class="sxs-lookup"><span data-stu-id="2467d-240">Name the class *TodoContext* and click **Add**.</span></span>
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[<span data-ttu-id="2467d-241">Visual Studio Code/Visual Studio para Mac</span><span class="sxs-lookup"><span data-stu-id="2467d-241">Visual Studio Code / Visual Studio for Mac</span></span>](#tab/visual-studio-code+visual-studio-mac)
 
-* <span data-ttu-id="2467d-242">Agregue una clase `TodoContext` a la carpeta *:::no-loc(Models):::* .</span><span class="sxs-lookup"><span data-stu-id="2467d-242">Add a `TodoContext` class to the *:::no-loc(Models):::* folder.</span></span>
+* <span data-ttu-id="2467d-242">Agregue una clase `TodoContext` a la carpeta *Models* .</span><span class="sxs-lookup"><span data-stu-id="2467d-242">Add a `TodoContext` class to the *Models* folder.</span></span>
 
 ---
 
 * <span data-ttu-id="2467d-243">Escriba el siguiente código:</span><span class="sxs-lookup"><span data-stu-id="2467d-243">Enter the following code:</span></span>
 
-  [!code-csharp[](first-web-api/samples/5.x/TodoApi/:::no-loc(Models):::/TodoContext.cs)]
+  [!code-csharp[](first-web-api/samples/5.x/TodoApi/Models/TodoContext.cs)]
 
 ## <a name="register-the-database-context"></a><span data-ttu-id="2467d-244">Registro del contexto de base de datos</span><span class="sxs-lookup"><span data-stu-id="2467d-244">Register the database context</span></span>
 
@@ -319,8 +319,8 @@ ms.locfileid: "93058498"
 * <span data-ttu-id="2467d-257">Seleccione **Controlador de API con acciones mediante Entity Framework** y, después, seleccione **Agregar**.</span><span class="sxs-lookup"><span data-stu-id="2467d-257">Select **API Controller with actions, using Entity Framework** , and then select **Add**.</span></span>
 * <span data-ttu-id="2467d-258">En el cuadro de diálogo **Add API Controller with actions, using Entity Framework** (Agregar controlador de API con acciones mediante Entity Framework):</span><span class="sxs-lookup"><span data-stu-id="2467d-258">In the **Add API Controller with actions, using Entity Framework** dialog:</span></span>
 
-  * <span data-ttu-id="2467d-259">Seleccione **TodoItem (TodoApi.:::no-loc(Models):::)** en la **Clase de modelo**.</span><span class="sxs-lookup"><span data-stu-id="2467d-259">Select **TodoItem (TodoApi.:::no-loc(Models):::)** in the **Model class**.</span></span>
-  * <span data-ttu-id="2467d-260">Seleccione **TodoContext (TodoApi.:::no-loc(Models):::)** en la **Clase de contexto de datos**.</span><span class="sxs-lookup"><span data-stu-id="2467d-260">Select **TodoContext (TodoApi.:::no-loc(Models):::)** in the **Data context class**.</span></span>
+  * <span data-ttu-id="2467d-259">Seleccione **TodoItem (TodoApi.Models)** en la **Clase de modelo**.</span><span class="sxs-lookup"><span data-stu-id="2467d-259">Select **TodoItem (TodoApi.Models)** in the **Model class**.</span></span>
+  * <span data-ttu-id="2467d-260">Seleccione **TodoContext (TodoApi.Models)** en la **Clase de contexto de datos**.</span><span class="sxs-lookup"><span data-stu-id="2467d-260">Select **TodoContext (TodoApi.Models)** in the **Data context class**.</span></span>
   * <span data-ttu-id="2467d-261">Seleccione **Agregar**.</span><span class="sxs-lookup"><span data-stu-id="2467d-261">Select **Add**.</span></span>
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[<span data-ttu-id="2467d-262">Visual Studio Code/Visual Studio para Mac</span><span class="sxs-lookup"><span data-stu-id="2467d-262">Visual Studio Code / Visual Studio for Mac</span></span>](#tab/visual-studio-code+visual-studio-mac)
@@ -536,7 +536,7 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 <span data-ttu-id="2467d-392">Para mostrar el enfoque del DTO, actualice la clase `TodoItem` a fin de que incluya un campo secreto:</span><span class="sxs-lookup"><span data-stu-id="2467d-392">To demonstrate the DTO approach, update the `TodoItem` class to include a secret field:</span></span>
 
-[!code-csharp[](first-web-api/samples/5.x/TodoApiDTO/:::no-loc(Models):::/TodoItem.cs?name=snippet&highlight=6)]
+[!code-csharp[](first-web-api/samples/5.x/TodoApiDTO/Models/TodoItem.cs?name=snippet&highlight=6)]
 
 <span data-ttu-id="2467d-393">El campo secreto debe ocultarse en esta aplicación, pero una aplicación administrativa podría decidir exponerlo.</span><span class="sxs-lookup"><span data-stu-id="2467d-393">The secret field needs to be hidden from this app, but an administrative app could choose to expose it.</span></span>
 
@@ -544,7 +544,7 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 <span data-ttu-id="2467d-395">Cree un modelo de DTO:</span><span class="sxs-lookup"><span data-stu-id="2467d-395">Create a DTO model:</span></span>
 
-[!code-csharp[](first-web-api/samples/5.x/TodoApiDTO/:::no-loc(Models):::/TodoItemDTO.cs?name=snippet)]
+[!code-csharp[](first-web-api/samples/5.x/TodoApiDTO/Models/TodoItemDTO.cs?name=snippet)]
 
 <span data-ttu-id="2467d-396">Actualice el valor de `TodoItemsController` para usar `TodoItemDTO`:</span><span class="sxs-lookup"><span data-stu-id="2467d-396">Update the `TodoItemsController` to use `TodoItemDTO`:</span></span>
 
@@ -725,25 +725,25 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 # <a name="visual-studio"></a>[<span data-ttu-id="2467d-486">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="2467d-486">Visual Studio</span></span>](#tab/visual-studio)
 
-* <span data-ttu-id="2467d-487">En el **Explorador de soluciones** , haga clic con el botón derecho en el proyecto.</span><span class="sxs-lookup"><span data-stu-id="2467d-487">In **Solution Explorer** , right-click the project.</span></span> <span data-ttu-id="2467d-488">Seleccione **Agregar** > **Nueva carpeta**.</span><span class="sxs-lookup"><span data-stu-id="2467d-488">Select **Add** > **New Folder**.</span></span> <span data-ttu-id="2467d-489">Asigne a la carpeta el nombre *:::no-loc(Models):::* .</span><span class="sxs-lookup"><span data-stu-id="2467d-489">Name the folder *:::no-loc(Models):::*.</span></span>
+* <span data-ttu-id="2467d-487">En el **Explorador de soluciones** , haga clic con el botón derecho en el proyecto.</span><span class="sxs-lookup"><span data-stu-id="2467d-487">In **Solution Explorer** , right-click the project.</span></span> <span data-ttu-id="2467d-488">Seleccione **Agregar** > **Nueva carpeta**.</span><span class="sxs-lookup"><span data-stu-id="2467d-488">Select **Add** > **New Folder**.</span></span> <span data-ttu-id="2467d-489">Asigne a la carpeta el nombre *Models* .</span><span class="sxs-lookup"><span data-stu-id="2467d-489">Name the folder *Models*.</span></span>
 
-* <span data-ttu-id="2467d-490">Haga clic con el botón derecho en la carpeta *:::no-loc(Models):::* y seleccione **Agregar** > **Clase**.</span><span class="sxs-lookup"><span data-stu-id="2467d-490">Right-click the *:::no-loc(Models):::* folder and select **Add** > **Class**.</span></span> <span data-ttu-id="2467d-491">Asigne a la clase el nombre *TodoItem* y seleccione **Agregar**.</span><span class="sxs-lookup"><span data-stu-id="2467d-491">Name the class *TodoItem* and select **Add**.</span></span>
+* <span data-ttu-id="2467d-490">Haga clic con el botón derecho en la carpeta *Models* y seleccione **Agregar** > **Clase**.</span><span class="sxs-lookup"><span data-stu-id="2467d-490">Right-click the *Models* folder and select **Add** > **Class**.</span></span> <span data-ttu-id="2467d-491">Asigne a la clase el nombre *TodoItem* y seleccione **Agregar**.</span><span class="sxs-lookup"><span data-stu-id="2467d-491">Name the class *TodoItem* and select **Add**.</span></span>
 
 * <span data-ttu-id="2467d-492">Reemplace el código de plantilla por el código siguiente:</span><span class="sxs-lookup"><span data-stu-id="2467d-492">Replace the template code with the following code:</span></span>
 
 # <a name="visual-studio-code"></a>[<span data-ttu-id="2467d-493">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="2467d-493">Visual Studio Code</span></span>](#tab/visual-studio-code)
 
-* <span data-ttu-id="2467d-494">Agregue una carpeta denominada *:::no-loc(Models):::* .</span><span class="sxs-lookup"><span data-stu-id="2467d-494">Add a folder named *:::no-loc(Models):::*.</span></span>
+* <span data-ttu-id="2467d-494">Agregue una carpeta denominada *Models* .</span><span class="sxs-lookup"><span data-stu-id="2467d-494">Add a folder named *Models*.</span></span>
 
-* <span data-ttu-id="2467d-495">Agregue una clase `TodoItem` a la carpeta *:::no-loc(Models):::* con el código siguiente:</span><span class="sxs-lookup"><span data-stu-id="2467d-495">Add a `TodoItem` class to the *:::no-loc(Models):::* folder with the following code:</span></span>
+* <span data-ttu-id="2467d-495">Agregue una clase `TodoItem` a la carpeta *Models* con el código siguiente:</span><span class="sxs-lookup"><span data-stu-id="2467d-495">Add a `TodoItem` class to the *Models* folder with the following code:</span></span>
 
 # <a name="visual-studio-for-mac"></a>[<span data-ttu-id="2467d-496">Visual Studio para Mac</span><span class="sxs-lookup"><span data-stu-id="2467d-496">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
 
-* <span data-ttu-id="2467d-497">Haga clic con el botón derecho en el proyecto.</span><span class="sxs-lookup"><span data-stu-id="2467d-497">Right-click the project.</span></span> <span data-ttu-id="2467d-498">Seleccione **Agregar** > **Nueva carpeta**.</span><span class="sxs-lookup"><span data-stu-id="2467d-498">Select **Add** > **New Folder**.</span></span> <span data-ttu-id="2467d-499">Asigne a la carpeta el nombre *:::no-loc(Models):::* .</span><span class="sxs-lookup"><span data-stu-id="2467d-499">Name the folder *:::no-loc(Models):::*.</span></span>
+* <span data-ttu-id="2467d-497">Haga clic con el botón derecho en el proyecto.</span><span class="sxs-lookup"><span data-stu-id="2467d-497">Right-click the project.</span></span> <span data-ttu-id="2467d-498">Seleccione **Agregar** > **Nueva carpeta**.</span><span class="sxs-lookup"><span data-stu-id="2467d-498">Select **Add** > **New Folder**.</span></span> <span data-ttu-id="2467d-499">Asigne a la carpeta el nombre *Models* .</span><span class="sxs-lookup"><span data-stu-id="2467d-499">Name the folder *Models*.</span></span>
 
   ![nueva carpeta](first-web-api-mac/_static/folder.png)
 
-* <span data-ttu-id="2467d-501">Haga clic con el botón derecho en la carpeta *:::no-loc(Models):::* y seleccione **Agregar** > **Nuevo archivo** > **General** > **Clase vacía**.</span><span class="sxs-lookup"><span data-stu-id="2467d-501">Right-click the *:::no-loc(Models):::* folder, and select **Add** > **New File** > **General** > **Empty Class**.</span></span>
+* <span data-ttu-id="2467d-501">Haga clic con el botón derecho en la carpeta *Models* y seleccione **Agregar** > **Nuevo archivo** > **General** > **Clase vacía**.</span><span class="sxs-lookup"><span data-stu-id="2467d-501">Right-click the *Models* folder, and select **Add** > **New File** > **General** > **Empty Class**.</span></span>
 
 * <span data-ttu-id="2467d-502">Asigne a la clase el nombre *TodoItem* y haga clic en **Nuevo**.</span><span class="sxs-lookup"><span data-stu-id="2467d-502">Name the class *TodoItem* , and then click **New**.</span></span>
 
@@ -751,11 +751,11 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 ---
 
-  [!code-csharp[](first-web-api/samples/3.0/TodoApi/:::no-loc(Models):::/TodoItem.cs?name=snippet)]
+  [!code-csharp[](first-web-api/samples/3.0/TodoApi/Models/TodoItem.cs?name=snippet)]
 
 <span data-ttu-id="2467d-504">La propiedad `Id` funciona como clave única en una base de datos relacional.</span><span class="sxs-lookup"><span data-stu-id="2467d-504">The `Id` property functions as the unique key in a relational database.</span></span>
 
-<span data-ttu-id="2467d-505">Las clases de modelo pueden ir en cualquier lugar del proyecto, pero, por convención, se usa la carpeta *:::no-loc(Models):::* .</span><span class="sxs-lookup"><span data-stu-id="2467d-505">Model classes can go anywhere in the project, but the *:::no-loc(Models):::* folder is used by convention.</span></span>
+<span data-ttu-id="2467d-505">Las clases de modelo pueden ir en cualquier lugar del proyecto, pero, por convención, se usa la carpeta *Models* .</span><span class="sxs-lookup"><span data-stu-id="2467d-505">Model classes can go anywhere in the project, but the *Models* folder is used by convention.</span></span>
 
 ## <a name="add-a-database-context"></a><span data-ttu-id="2467d-506">Incorporación de un contexto de base de datos</span><span class="sxs-lookup"><span data-stu-id="2467d-506">Add a database context</span></span>
 
@@ -775,17 +775,17 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 ## <a name="add-the-todocontext-database-context"></a><span data-ttu-id="2467d-517">Adición del contexto de la base de datos TodoContext</span><span class="sxs-lookup"><span data-stu-id="2467d-517">Add the TodoContext database context</span></span>
 
-* <span data-ttu-id="2467d-518">Haga clic con el botón derecho en la carpeta *:::no-loc(Models):::* y seleccione **Agregar** > **Clase**.</span><span class="sxs-lookup"><span data-stu-id="2467d-518">Right-click the *:::no-loc(Models):::* folder and select **Add** > **Class**.</span></span> <span data-ttu-id="2467d-519">Asigne a la clase el nombre *TodoContext* y haga clic en **Agregar**.</span><span class="sxs-lookup"><span data-stu-id="2467d-519">Name the class *TodoContext* and click **Add**.</span></span>
+* <span data-ttu-id="2467d-518">Haga clic con el botón derecho en la carpeta *Models* y seleccione **Agregar** > **Clase**.</span><span class="sxs-lookup"><span data-stu-id="2467d-518">Right-click the *Models* folder and select **Add** > **Class**.</span></span> <span data-ttu-id="2467d-519">Asigne a la clase el nombre *TodoContext* y haga clic en **Agregar**.</span><span class="sxs-lookup"><span data-stu-id="2467d-519">Name the class *TodoContext* and click **Add**.</span></span>
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[<span data-ttu-id="2467d-520">Visual Studio Code/Visual Studio para Mac</span><span class="sxs-lookup"><span data-stu-id="2467d-520">Visual Studio Code / Visual Studio for Mac</span></span>](#tab/visual-studio-code+visual-studio-mac)
 
-* <span data-ttu-id="2467d-521">Agregue una clase `TodoContext` a la carpeta *:::no-loc(Models):::* .</span><span class="sxs-lookup"><span data-stu-id="2467d-521">Add a `TodoContext` class to the *:::no-loc(Models):::* folder.</span></span>
+* <span data-ttu-id="2467d-521">Agregue una clase `TodoContext` a la carpeta *Models* .</span><span class="sxs-lookup"><span data-stu-id="2467d-521">Add a `TodoContext` class to the *Models* folder.</span></span>
 
 ---
 
 * <span data-ttu-id="2467d-522">Escriba el siguiente código:</span><span class="sxs-lookup"><span data-stu-id="2467d-522">Enter the following code:</span></span>
 
-  [!code-csharp[](first-web-api/samples/3.0/TodoApi/:::no-loc(Models):::/TodoContext.cs)]
+  [!code-csharp[](first-web-api/samples/3.0/TodoApi/Models/TodoContext.cs)]
 
 ## <a name="register-the-database-context"></a><span data-ttu-id="2467d-523">Registro del contexto de base de datos</span><span class="sxs-lookup"><span data-stu-id="2467d-523">Register the database context</span></span>
 
@@ -810,8 +810,8 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 * <span data-ttu-id="2467d-535">Seleccione **Controlador de API con acciones mediante Entity Framework** y, después, seleccione **Agregar**.</span><span class="sxs-lookup"><span data-stu-id="2467d-535">Select **API Controller with actions, using Entity Framework** , and then select **Add**.</span></span>
 * <span data-ttu-id="2467d-536">En el cuadro de diálogo **Add API Controller with actions, using Entity Framework** (Agregar controlador de API con acciones mediante Entity Framework):</span><span class="sxs-lookup"><span data-stu-id="2467d-536">In the **Add API Controller with actions, using Entity Framework** dialog:</span></span>
 
-  * <span data-ttu-id="2467d-537">Seleccione **TodoItem (TodoApi.:::no-loc(Models):::)** en la **Clase de modelo**.</span><span class="sxs-lookup"><span data-stu-id="2467d-537">Select **TodoItem (TodoApi.:::no-loc(Models):::)** in the **Model class**.</span></span>
-  * <span data-ttu-id="2467d-538">Seleccione **TodoContext (TodoApi.:::no-loc(Models):::)** en la **Clase de contexto de datos**.</span><span class="sxs-lookup"><span data-stu-id="2467d-538">Select **TodoContext (TodoApi.:::no-loc(Models):::)** in the **Data context class**.</span></span>
+  * <span data-ttu-id="2467d-537">Seleccione **TodoItem (TodoApi.Models)** en la **Clase de modelo**.</span><span class="sxs-lookup"><span data-stu-id="2467d-537">Select **TodoItem (TodoApi.Models)** in the **Model class**.</span></span>
+  * <span data-ttu-id="2467d-538">Seleccione **TodoContext (TodoApi.Models)** en la **Clase de contexto de datos**.</span><span class="sxs-lookup"><span data-stu-id="2467d-538">Select **TodoContext (TodoApi.Models)** in the **Data context class**.</span></span>
   * <span data-ttu-id="2467d-539">Seleccione **Agregar**.</span><span class="sxs-lookup"><span data-stu-id="2467d-539">Select **Add**.</span></span>
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[<span data-ttu-id="2467d-540">Visual Studio Code/Visual Studio para Mac</span><span class="sxs-lookup"><span data-stu-id="2467d-540">Visual Studio Code / Visual Studio for Mac</span></span>](#tab/visual-studio-code+visual-studio-mac)
@@ -1024,7 +1024,7 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 <span data-ttu-id="2467d-667">Para mostrar el enfoque del DTO, actualice la clase `TodoItem` a fin de que incluya un campo secreto:</span><span class="sxs-lookup"><span data-stu-id="2467d-667">To demonstrate the DTO approach, update the `TodoItem` class to include a secret field:</span></span>
 
-[!code-csharp[](first-web-api/samples/3.0/TodoApiDTO/:::no-loc(Models):::/TodoItem.cs?name=snippet&highlight=6)]
+[!code-csharp[](first-web-api/samples/3.0/TodoApiDTO/Models/TodoItem.cs?name=snippet&highlight=6)]
 
 <span data-ttu-id="2467d-668">El campo secreto debe ocultarse en esta aplicación, pero una aplicación administrativa podría decidir exponerlo.</span><span class="sxs-lookup"><span data-stu-id="2467d-668">The secret field needs to be hidden from this app, but an administrative app could choose to expose it.</span></span>
 
@@ -1032,7 +1032,7 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 <span data-ttu-id="2467d-670">Cree un modelo de DTO:</span><span class="sxs-lookup"><span data-stu-id="2467d-670">Create a DTO model:</span></span>
 
-[!code-csharp[](first-web-api/samples/3.0/TodoApiDTO/:::no-loc(Models):::/TodoItemDTO.cs?name=snippet)]
+[!code-csharp[](first-web-api/samples/3.0/TodoApiDTO/Models/TodoItemDTO.cs?name=snippet)]
 
 <span data-ttu-id="2467d-671">Actualice el valor de `TodoItemsController` para usar `TodoItemDTO`:</span><span class="sxs-lookup"><span data-stu-id="2467d-671">Update the `TodoItemsController` to use `TodoItemDTO`:</span></span>
 
@@ -1168,25 +1168,25 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 # <a name="visual-studio"></a>[<span data-ttu-id="2467d-765">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="2467d-765">Visual Studio</span></span>](#tab/visual-studio)
 
-* <span data-ttu-id="2467d-766">En el **Explorador de soluciones** , haga clic con el botón derecho en el proyecto.</span><span class="sxs-lookup"><span data-stu-id="2467d-766">In **Solution Explorer** , right-click the project.</span></span> <span data-ttu-id="2467d-767">Seleccione **Agregar** > **Nueva carpeta**.</span><span class="sxs-lookup"><span data-stu-id="2467d-767">Select **Add** > **New Folder**.</span></span> <span data-ttu-id="2467d-768">Asigne a la carpeta el nombre *:::no-loc(Models):::* .</span><span class="sxs-lookup"><span data-stu-id="2467d-768">Name the folder *:::no-loc(Models):::*.</span></span>
+* <span data-ttu-id="2467d-766">En el **Explorador de soluciones** , haga clic con el botón derecho en el proyecto.</span><span class="sxs-lookup"><span data-stu-id="2467d-766">In **Solution Explorer** , right-click the project.</span></span> <span data-ttu-id="2467d-767">Seleccione **Agregar** > **Nueva carpeta**.</span><span class="sxs-lookup"><span data-stu-id="2467d-767">Select **Add** > **New Folder**.</span></span> <span data-ttu-id="2467d-768">Asigne a la carpeta el nombre *Models* .</span><span class="sxs-lookup"><span data-stu-id="2467d-768">Name the folder *Models*.</span></span>
 
-* <span data-ttu-id="2467d-769">Haga clic con el botón derecho en la carpeta *:::no-loc(Models):::* y seleccione **Agregar** > **Clase**.</span><span class="sxs-lookup"><span data-stu-id="2467d-769">Right-click the *:::no-loc(Models):::* folder and select **Add** > **Class**.</span></span> <span data-ttu-id="2467d-770">Asigne a la clase el nombre *TodoItem* y seleccione **Agregar**.</span><span class="sxs-lookup"><span data-stu-id="2467d-770">Name the class *TodoItem* and select **Add**.</span></span>
+* <span data-ttu-id="2467d-769">Haga clic con el botón derecho en la carpeta *Models* y seleccione **Agregar** > **Clase**.</span><span class="sxs-lookup"><span data-stu-id="2467d-769">Right-click the *Models* folder and select **Add** > **Class**.</span></span> <span data-ttu-id="2467d-770">Asigne a la clase el nombre *TodoItem* y seleccione **Agregar**.</span><span class="sxs-lookup"><span data-stu-id="2467d-770">Name the class *TodoItem* and select **Add**.</span></span>
 
 * <span data-ttu-id="2467d-771">Reemplace el código de plantilla por el código siguiente:</span><span class="sxs-lookup"><span data-stu-id="2467d-771">Replace the template code with the following code:</span></span>
 
 # <a name="visual-studio-code"></a>[<span data-ttu-id="2467d-772">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="2467d-772">Visual Studio Code</span></span>](#tab/visual-studio-code)
 
-* <span data-ttu-id="2467d-773">Agregue una carpeta denominada *:::no-loc(Models):::* .</span><span class="sxs-lookup"><span data-stu-id="2467d-773">Add a folder named *:::no-loc(Models):::*.</span></span>
+* <span data-ttu-id="2467d-773">Agregue una carpeta denominada *Models* .</span><span class="sxs-lookup"><span data-stu-id="2467d-773">Add a folder named *Models*.</span></span>
 
-* <span data-ttu-id="2467d-774">Agregue una clase `TodoItem` a la carpeta *:::no-loc(Models):::* con el código siguiente:</span><span class="sxs-lookup"><span data-stu-id="2467d-774">Add a `TodoItem` class to the *:::no-loc(Models):::* folder with the following code:</span></span>
+* <span data-ttu-id="2467d-774">Agregue una clase `TodoItem` a la carpeta *Models* con el código siguiente:</span><span class="sxs-lookup"><span data-stu-id="2467d-774">Add a `TodoItem` class to the *Models* folder with the following code:</span></span>
 
 # <a name="visual-studio-for-mac"></a>[<span data-ttu-id="2467d-775">Visual Studio para Mac</span><span class="sxs-lookup"><span data-stu-id="2467d-775">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
 
-* <span data-ttu-id="2467d-776">Haga clic con el botón derecho en el proyecto.</span><span class="sxs-lookup"><span data-stu-id="2467d-776">Right-click the project.</span></span> <span data-ttu-id="2467d-777">Seleccione **Agregar** > **Nueva carpeta**.</span><span class="sxs-lookup"><span data-stu-id="2467d-777">Select **Add** > **New Folder**.</span></span> <span data-ttu-id="2467d-778">Asigne a la carpeta el nombre *:::no-loc(Models):::* .</span><span class="sxs-lookup"><span data-stu-id="2467d-778">Name the folder *:::no-loc(Models):::*.</span></span>
+* <span data-ttu-id="2467d-776">Haga clic con el botón derecho en el proyecto.</span><span class="sxs-lookup"><span data-stu-id="2467d-776">Right-click the project.</span></span> <span data-ttu-id="2467d-777">Seleccione **Agregar** > **Nueva carpeta**.</span><span class="sxs-lookup"><span data-stu-id="2467d-777">Select **Add** > **New Folder**.</span></span> <span data-ttu-id="2467d-778">Asigne a la carpeta el nombre *Models* .</span><span class="sxs-lookup"><span data-stu-id="2467d-778">Name the folder *Models*.</span></span>
 
   ![nueva carpeta](first-web-api-mac/_static/folder.png)
 
-* <span data-ttu-id="2467d-780">Haga clic con el botón derecho en la carpeta *:::no-loc(Models):::* y seleccione **Agregar** > **Nuevo archivo** > **General** > **Clase vacía**.</span><span class="sxs-lookup"><span data-stu-id="2467d-780">Right-click the *:::no-loc(Models):::* folder, and select **Add** > **New File** > **General** > **Empty Class**.</span></span>
+* <span data-ttu-id="2467d-780">Haga clic con el botón derecho en la carpeta *Models* y seleccione **Agregar** > **Nuevo archivo** > **General** > **Clase vacía**.</span><span class="sxs-lookup"><span data-stu-id="2467d-780">Right-click the *Models* folder, and select **Add** > **New File** > **General** > **Empty Class**.</span></span>
 
 * <span data-ttu-id="2467d-781">Asigne a la clase el nombre *TodoItem* y haga clic en **Nuevo**.</span><span class="sxs-lookup"><span data-stu-id="2467d-781">Name the class *TodoItem* , and then click **New**.</span></span>
 
@@ -1194,11 +1194,11 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 ---
 
-  [!code-csharp[](first-web-api/samples/2.2/TodoApi/:::no-loc(Models):::/TodoItem.cs)]
+  [!code-csharp[](first-web-api/samples/2.2/TodoApi/Models/TodoItem.cs)]
 
 <span data-ttu-id="2467d-783">La propiedad `Id` funciona como clave única en una base de datos relacional.</span><span class="sxs-lookup"><span data-stu-id="2467d-783">The `Id` property functions as the unique key in a relational database.</span></span>
 
-<span data-ttu-id="2467d-784">Las clases de modelo pueden ir en cualquier lugar del proyecto, pero, por convención, se usa la carpeta *:::no-loc(Models):::* .</span><span class="sxs-lookup"><span data-stu-id="2467d-784">Model classes can go anywhere in the project, but the *:::no-loc(Models):::* folder is used by convention.</span></span>
+<span data-ttu-id="2467d-784">Las clases de modelo pueden ir en cualquier lugar del proyecto, pero, por convención, se usa la carpeta *Models* .</span><span class="sxs-lookup"><span data-stu-id="2467d-784">Model classes can go anywhere in the project, but the *Models* folder is used by convention.</span></span>
 
 ## <a name="add-a-database-context-21"></a><span data-ttu-id="2467d-785">Incorporación de un contexto de base de datos (2.1)</span><span class="sxs-lookup"><span data-stu-id="2467d-785">Add a database context 2.1</span></span>
 
@@ -1206,17 +1206,17 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 # <a name="visual-studio"></a>[<span data-ttu-id="2467d-788">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="2467d-788">Visual Studio</span></span>](#tab/visual-studio)
 
-* <span data-ttu-id="2467d-789">Haga clic con el botón derecho en la carpeta *:::no-loc(Models):::* y seleccione **Agregar** > **Clase**.</span><span class="sxs-lookup"><span data-stu-id="2467d-789">Right-click the *:::no-loc(Models):::* folder and select **Add** > **Class**.</span></span> <span data-ttu-id="2467d-790">Asigne a la clase el nombre *TodoContext* y haga clic en **Agregar**.</span><span class="sxs-lookup"><span data-stu-id="2467d-790">Name the class *TodoContext* and click **Add**.</span></span>
+* <span data-ttu-id="2467d-789">Haga clic con el botón derecho en la carpeta *Models* y seleccione **Agregar** > **Clase**.</span><span class="sxs-lookup"><span data-stu-id="2467d-789">Right-click the *Models* folder and select **Add** > **Class**.</span></span> <span data-ttu-id="2467d-790">Asigne a la clase el nombre *TodoContext* y haga clic en **Agregar**.</span><span class="sxs-lookup"><span data-stu-id="2467d-790">Name the class *TodoContext* and click **Add**.</span></span>
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[<span data-ttu-id="2467d-791">Visual Studio Code/Visual Studio para Mac</span><span class="sxs-lookup"><span data-stu-id="2467d-791">Visual Studio Code / Visual Studio for Mac</span></span>](#tab/visual-studio-code+visual-studio-mac)
 
-* <span data-ttu-id="2467d-792">Agregue una clase `TodoContext` a la carpeta *:::no-loc(Models):::* .</span><span class="sxs-lookup"><span data-stu-id="2467d-792">Add a `TodoContext` class to the *:::no-loc(Models):::* folder.</span></span>
+* <span data-ttu-id="2467d-792">Agregue una clase `TodoContext` a la carpeta *Models* .</span><span class="sxs-lookup"><span data-stu-id="2467d-792">Add a `TodoContext` class to the *Models* folder.</span></span>
 
 ---
 
 * <span data-ttu-id="2467d-793">Reemplace el código de plantilla por el código siguiente:</span><span class="sxs-lookup"><span data-stu-id="2467d-793">Replace the template code with the following code:</span></span>
 
-  [!code-csharp[](first-web-api/samples/2.2/TodoApi/:::no-loc(Models):::/TodoContext.cs)]
+  [!code-csharp[](first-web-api/samples/2.2/TodoApi/Models/TodoContext.cs)]
 
 ## <a name="register-the-database-context-21"></a><span data-ttu-id="2467d-794">Registro del contexto de base de datos (2.1)</span><span class="sxs-lookup"><span data-stu-id="2467d-794">Register the database context 2.1</span></span>
 
@@ -1495,7 +1495,7 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 ## <a name="add-authentication-support-to-a-web-api-21"></a><span data-ttu-id="2467d-957">Incorporación de compatibilidad de autenticación a una API web (2.1)</span><span class="sxs-lookup"><span data-stu-id="2467d-957">Add authentication support to a web API 2.1</span></span>
 
-[!INCLUDE[](~/includes/:::no-loc(Identity):::Server4.md)]
+[!INCLUDE[](~/includes/IdentityServer4.md)]
 
 ## <a name="additional-resources-21"></a><span data-ttu-id="2467d-958">Recursos adicionales (2.1)</span><span class="sxs-lookup"><span data-stu-id="2467d-958">Additional resources 2.1</span></span>
 

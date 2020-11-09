@@ -1,22 +1,22 @@
 ---
-title: 'Parte 6. :::no-loc(Razor)::: Pages con EF Core en ASP.NET Core: Lectura de datos relacionados'
+title: 'Parte 6. Razor Pages con EF Core en ASP.NET Core: Lectura de datos relacionados'
 author: rick-anderson
-description: 'Parte 6 de la serie de tutoriales sobre :::no-loc(Razor)::: Pages y Entity Framework.'
+description: 'Parte 6 de la serie de tutoriales sobre Razor Pages y Entity Framework.'
 ms.author: riande
 ms.custom: mvc
 ms.date: 09/28/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: data/ef-rp/read-related-data
 ms.openlocfilehash: e52e4aefc18b84f85bea28a9724894eed50ca54a
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -25,7 +25,7 @@ ms.contentlocale: es-ES
 ms.lasthandoff: 10/30/2020
 ms.locfileid: "93061072"
 ---
-# <a name="part-6-no-locrazor-pages-with-ef-core-in-aspnet-core---read-related-data"></a><span data-ttu-id="e49a3-103">Parte 6. :::no-loc(Razor)::: Pages con EF Core en ASP.NET Core: Lectura de datos relacionados</span><span class="sxs-lookup"><span data-stu-id="e49a3-103">Part 6, :::no-loc(Razor)::: Pages with EF Core in ASP.NET Core - Read Related Data</span></span>
+# <a name="part-6-no-locrazor-pages-with-ef-core-in-aspnet-core---read-related-data"></a><span data-ttu-id="e49a3-103">Parte 6. Razor Pages con EF Core en ASP.NET Core: Lectura de datos relacionados</span><span class="sxs-lookup"><span data-stu-id="e49a3-103">Part 6, Razor Pages with EF Core in ASP.NET Core - Read Related Data</span></span>
 
 <span data-ttu-id="e49a3-104">Por [Tom Dykstra](https://github.com/tdykstra), [Jon P Smith](https://twitter.com/thereformedprog) y [Rick Anderson](https://twitter.com/RickAndMSFT)</span><span class="sxs-lookup"><span data-stu-id="e49a3-104">By [Tom Dykstra](https://github.com/tdykstra), [Jon P Smith](https://twitter.com/thereformedprog), and [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
 
@@ -598,7 +598,7 @@ ms.locfileid: "93061072"
 
 [!code-csharp[](intro/samples/cu/Pages/Instructors/Index2.cshtml.cs?name=snippet_courseID)]
 
-<span data-ttu-id="e49a3-442">Agregue el siguiente marcado al final de la página de :::no-loc(Razor)::: *Pages/Instructors/Index.cshtml* :</span><span class="sxs-lookup"><span data-stu-id="e49a3-442">Add the following markup to the end of the *Pages/Instructors/Index.cshtml* :::no-loc(Razor)::: Page:</span></span>
+<span data-ttu-id="e49a3-442">Agregue el siguiente marcado al final de la página de Razor *Pages/Instructors/Index.cshtml* :</span><span class="sxs-lookup"><span data-stu-id="e49a3-442">Add the following markup to the end of the *Pages/Instructors/Index.cshtml* Razor Page:</span></span>
 
 [!code-cshtml[](intro/samples/cu/Pages/Instructors/IndexRRD.cshtml?range=60-102&highlight=7-999)]
 

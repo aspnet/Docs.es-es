@@ -1,23 +1,23 @@
 ---
-title: 'Configuración del enlazador de ASP.NET Core :::no-loc(Blazor):::'
+title: 'Configuración del enlazador de ASP.NET Core Blazor'
 author: guardrex
-description: Aprenda a controlar al enlazador de lenguaje intermedio (IL) al crear una aplicación :::no-loc(Blazor):::.
+description: Aprenda a controlar al enlazador de lenguaje intermedio (IL) al crear una aplicación Blazor.
 monikerRange: '>= aspnetcore-3.1 < aspnetcore-5.0'
 ms.author: riande
 ms.custom: mvc
 ms.date: 05/19/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: blazor/host-and-deploy/configure-linker
 ms.openlocfilehash: 0c99056053356133e901d6cf468fec8034dfb845
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -26,28 +26,28 @@ ms.contentlocale: es-ES
 ms.lasthandoff: 10/30/2020
 ms.locfileid: "93055833"
 ---
-# <a name="configure-the-linker-for-aspnet-core-no-locblazor"></a><span data-ttu-id="d6cdc-103">Configuración del enlazador de ASP.NET Core :::no-loc(Blazor):::</span><span class="sxs-lookup"><span data-stu-id="d6cdc-103">Configure the Linker for ASP.NET Core :::no-loc(Blazor):::</span></span>
+# <a name="configure-the-linker-for-aspnet-core-no-locblazor"></a><span data-ttu-id="d6cdc-103">Configuración del enlazador de ASP.NET Core Blazor</span><span class="sxs-lookup"><span data-stu-id="d6cdc-103">Configure the Linker for ASP.NET Core Blazor</span></span>
 
 <span data-ttu-id="d6cdc-104">Por [Luke Latham](https://github.com/guardrex)</span><span class="sxs-lookup"><span data-stu-id="d6cdc-104">By [Luke Latham](https://github.com/guardrex)</span></span>
 
-<span data-ttu-id="d6cdc-105">:::no-loc(Blazor WebAssembly)::: realiza la vinculación de [lenguaje intermedio (IL)](/dotnet/standard/managed-code#intermediate-language--execution) durante una compilación para reducir el IL innecesario de los ensamblados de salida de la aplicación.</span><span class="sxs-lookup"><span data-stu-id="d6cdc-105">:::no-loc(Blazor WebAssembly)::: performs [Intermediate Language (IL)](/dotnet/standard/managed-code#intermediate-language--execution) linking during a build to trim unnecessary IL from the app's output assemblies.</span></span> <span data-ttu-id="d6cdc-106">El enlazador está deshabilitado durante la compilación en la configuración Debug.</span><span class="sxs-lookup"><span data-stu-id="d6cdc-106">The linker is disabled when building in Debug configuration.</span></span> <span data-ttu-id="d6cdc-107">Las aplicaciones deben compilarse en la configuración Release para habilitar el enlazador.</span><span class="sxs-lookup"><span data-stu-id="d6cdc-107">Apps must build in Release configuration to enable the linker.</span></span> <span data-ttu-id="d6cdc-108">Se recomienda compilar en Release cuando se implementen las aplicaciones :::no-loc(Blazor WebAssembly):::.</span><span class="sxs-lookup"><span data-stu-id="d6cdc-108">We recommend building in Release when deploying your :::no-loc(Blazor WebAssembly)::: apps.</span></span> 
+<span data-ttu-id="d6cdc-105">Blazor WebAssembly realiza la vinculación de [lenguaje intermedio (IL)](/dotnet/standard/managed-code#intermediate-language--execution) durante una compilación para reducir el IL innecesario de los ensamblados de salida de la aplicación.</span><span class="sxs-lookup"><span data-stu-id="d6cdc-105">Blazor WebAssembly performs [Intermediate Language (IL)](/dotnet/standard/managed-code#intermediate-language--execution) linking during a build to trim unnecessary IL from the app's output assemblies.</span></span> <span data-ttu-id="d6cdc-106">El enlazador está deshabilitado durante la compilación en la configuración Debug.</span><span class="sxs-lookup"><span data-stu-id="d6cdc-106">The linker is disabled when building in Debug configuration.</span></span> <span data-ttu-id="d6cdc-107">Las aplicaciones deben compilarse en la configuración Release para habilitar el enlazador.</span><span class="sxs-lookup"><span data-stu-id="d6cdc-107">Apps must build in Release configuration to enable the linker.</span></span> <span data-ttu-id="d6cdc-108">Se recomienda compilar en Release cuando se implementen las aplicaciones Blazor WebAssembly.</span><span class="sxs-lookup"><span data-stu-id="d6cdc-108">We recommend building in Release when deploying your Blazor WebAssembly apps.</span></span> 
 
 <span data-ttu-id="d6cdc-109">La vinculación de una aplicación optimiza el tamaño, pero puede tener efectos perjudiciales.</span><span class="sxs-lookup"><span data-stu-id="d6cdc-109">Linking an app optimizes for size but may have detrimental effects.</span></span> <span data-ttu-id="d6cdc-110">Las aplicaciones que usan la reflexión o características dinámicas relacionadas pueden verse interrumpidas cuando se reduzcan porque el enlazador no conoce este comportamiento dinámico y no puede determinar, en general, qué tipos son necesarios para la reflexión en el entorno de ejecución.</span><span class="sxs-lookup"><span data-stu-id="d6cdc-110">Apps that use reflection or related dynamic features may break when trimmed because the linker doesn't know about this dynamic behavior and can't determine in general which types are required for reflection at runtime.</span></span> <span data-ttu-id="d6cdc-111">Para reducir estas aplicaciones, se debe informar al vinculador de los tipos necesarios para la reflexión en el código y en los paquetes o marcos de trabajo de los que depende la aplicación.</span><span class="sxs-lookup"><span data-stu-id="d6cdc-111">To trim such apps, the linker must be informed about any types required by reflection in the code and in packages or frameworks that the app depends on.</span></span>
 
 <span data-ttu-id="d6cdc-112">Para asegurarse de que la aplicación reducida funciona correctamente una vez implementada, es importante probar las compilaciones de Release de la aplicación con frecuencia durante el desarrollo.</span><span class="sxs-lookup"><span data-stu-id="d6cdc-112">To ensure the trimmed app works correctly once deployed, it's important to test Release builds of the app frequently while developing.</span></span>
 
-<span data-ttu-id="d6cdc-113">La vinculación de las aplicaciones de :::no-loc(Blazor)::: se puede configurar con estas características de MSBuild:</span><span class="sxs-lookup"><span data-stu-id="d6cdc-113">Linking for :::no-loc(Blazor)::: apps can be configured using these MSBuild features:</span></span>
+<span data-ttu-id="d6cdc-113">La vinculación de las aplicaciones de Blazor se puede configurar con estas características de MSBuild:</span><span class="sxs-lookup"><span data-stu-id="d6cdc-113">Linking for Blazor apps can be configured using these MSBuild features:</span></span>
 
 * <span data-ttu-id="d6cdc-114">Configuración de la vinculación global con una [propiedad de MSBuild](#control-linking-with-an-msbuild-property).</span><span class="sxs-lookup"><span data-stu-id="d6cdc-114">Configure linking globally with a [MSBuild property](#control-linking-with-an-msbuild-property).</span></span>
 * <span data-ttu-id="d6cdc-115">Control de la vinculación por cada ensamblado con un [archivo de configuración](#control-linking-with-a-configuration-file).</span><span class="sxs-lookup"><span data-stu-id="d6cdc-115">Control linking on a per-assembly basis with a [configuration file](#control-linking-with-a-configuration-file).</span></span>
 
 ## <a name="control-linking-with-an-msbuild-property"></a><span data-ttu-id="d6cdc-116">Control de la vinculación con una propiedad de MSBuild</span><span class="sxs-lookup"><span data-stu-id="d6cdc-116">Control linking with an MSBuild property</span></span>
 
-<span data-ttu-id="d6cdc-117">La vinculación se habilita cuando una aplicación se compila en la configuración `Release`.</span><span class="sxs-lookup"><span data-stu-id="d6cdc-117">Linking is enabled when an app is built in `Release` configuration.</span></span> <span data-ttu-id="d6cdc-118">Para cambiar esto, configure la propiedad `:::no-loc(Blazor):::WebAssemblyEnableLinking` de MSBuild en el archivo del proyecto:</span><span class="sxs-lookup"><span data-stu-id="d6cdc-118">To change this, configure the `:::no-loc(Blazor):::WebAssemblyEnableLinking` MSBuild property in the project file:</span></span>
+<span data-ttu-id="d6cdc-117">La vinculación se habilita cuando una aplicación se compila en la configuración `Release`.</span><span class="sxs-lookup"><span data-stu-id="d6cdc-117">Linking is enabled when an app is built in `Release` configuration.</span></span> <span data-ttu-id="d6cdc-118">Para cambiar esto, configure la propiedad `BlazorWebAssemblyEnableLinking` de MSBuild en el archivo del proyecto:</span><span class="sxs-lookup"><span data-stu-id="d6cdc-118">To change this, configure the `BlazorWebAssemblyEnableLinking` MSBuild property in the project file:</span></span>
 
 ```xml
 <PropertyGroup>
-  <:::no-loc(Blazor):::WebAssemblyEnableLinking>false</:::no-loc(Blazor):::WebAssemblyEnableLinking>
+  <BlazorWebAssemblyEnableLinking>false</BlazorWebAssemblyEnableLinking>
 </PropertyGroup>
 ```
 
@@ -57,7 +57,7 @@ ms.locfileid: "93055833"
 
 ```xml
 <ItemGroup>
-  <:::no-loc(Blazor):::LinkerDescriptor Include="LinkerConfig.xml" />
+  <BlazorLinkerDescriptor Include="LinkerConfig.xml" />
 </ItemGroup>
 ```
 
@@ -66,7 +66,7 @@ ms.locfileid: "93055833"
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-  This file specifies which parts of the BCL or :::no-loc(Blazor)::: packages must not be
+  This file specifies which parts of the BCL or Blazor packages must not be
   stripped by the IL Linker even if they aren't referenced by user code.
 -->
 <linker>
@@ -89,7 +89,7 @@ ms.locfileid: "93055833"
     In this example, the app's entry point assembly is listed. The assembly
     isn't stripped by the IL Linker.
   -->
-  <assembly fullname="MyCool:::no-loc(Blazor):::App" />
+  <assembly fullname="MyCoolBlazorApp" />
 </linker>
 ```
 
@@ -111,13 +111,13 @@ ms.locfileid: "93055833"
 
 ### <a name="configure-the-linker-for-internationalization"></a><span data-ttu-id="d6cdc-127">Configuración del enlazador para la internacionalización</span><span class="sxs-lookup"><span data-stu-id="d6cdc-127">Configure the linker for internationalization</span></span>
 
-<span data-ttu-id="d6cdc-128">De forma predeterminada, la configuración del enlazador de :::no-loc(Blazor)::: para aplicaciones :::no-loc(Blazor WebAssembly)::: quita información de internacionalización, excepto para las configuraciones regionales solicitadas de forma explícita.</span><span class="sxs-lookup"><span data-stu-id="d6cdc-128">By default, :::no-loc(Blazor):::'s linker configuration for :::no-loc(Blazor WebAssembly)::: apps strips out internationalization information except for locales explicitly requested.</span></span> <span data-ttu-id="d6cdc-129">Al quitar estos ensamblados se minimiza el tamaño de la aplicación.</span><span class="sxs-lookup"><span data-stu-id="d6cdc-129">Removing these assemblies minimizes the app's size.</span></span>
+<span data-ttu-id="d6cdc-128">De forma predeterminada, la configuración del enlazador de Blazor para aplicaciones Blazor WebAssembly quita información de internacionalización, excepto para las configuraciones regionales solicitadas de forma explícita.</span><span class="sxs-lookup"><span data-stu-id="d6cdc-128">By default, Blazor's linker configuration for Blazor WebAssembly apps strips out internationalization information except for locales explicitly requested.</span></span> <span data-ttu-id="d6cdc-129">Al quitar estos ensamblados se minimiza el tamaño de la aplicación.</span><span class="sxs-lookup"><span data-stu-id="d6cdc-129">Removing these assemblies minimizes the app's size.</span></span>
 
-<span data-ttu-id="d6cdc-130">Para controlar qué ensamblados de I18N se conservan, establezca la propiedad `<:::no-loc(Blazor):::WebAssemblyI18NAssemblies>` de MSBuild en el archivo de proyecto:</span><span class="sxs-lookup"><span data-stu-id="d6cdc-130">To control which I18N assemblies are retained, set the `<:::no-loc(Blazor):::WebAssemblyI18NAssemblies>` MSBuild property in the project file:</span></span>
+<span data-ttu-id="d6cdc-130">Para controlar qué ensamblados de I18N se conservan, establezca la propiedad `<BlazorWebAssemblyI18NAssemblies>` de MSBuild en el archivo de proyecto:</span><span class="sxs-lookup"><span data-stu-id="d6cdc-130">To control which I18N assemblies are retained, set the `<BlazorWebAssemblyI18NAssemblies>` MSBuild property in the project file:</span></span>
 
 ```xml
 <PropertyGroup>
-  <:::no-loc(Blazor):::WebAssemblyI18NAssemblies>{all|none|REGION1,REGION2,...}</:::no-loc(Blazor):::WebAssemblyI18NAssemblies>
+  <BlazorWebAssemblyI18NAssemblies>{all|none|REGION1,REGION2,...}</BlazorWebAssemblyI18NAssemblies>
 </PropertyGroup>
 ```
 

@@ -6,17 +6,17 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/23/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: security/authentication/social/index
 ms.openlocfilehash: 1f7c8cd0716f1ada3517add0d37a09e419f38774
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -69,7 +69,7 @@ ms.locfileid: "93053311"
   dotnet new webapp -o WebApp1 -au Individual
   ```
 
-  * <span data-ttu-id="81dcf-128">El comando `dotnet new` crea un proyecto de :::no-loc(Razor):::Pages en la carpeta *WebApp1* .</span><span class="sxs-lookup"><span data-stu-id="81dcf-128">The `dotnet new` command creates a new :::no-loc(Razor)::: Pages project in the *WebApp1* folder.</span></span>
+  * <span data-ttu-id="81dcf-128">El comando `dotnet new` crea un proyecto de RazorPages en la carpeta *WebApp1* .</span><span class="sxs-lookup"><span data-stu-id="81dcf-128">The `dotnet new` command creates a new Razor Pages project in the *WebApp1* folder.</span></span>
   * <span data-ttu-id="81dcf-129">`-au Individual` crea el código para la autenticación individual.</span><span class="sxs-lookup"><span data-stu-id="81dcf-129">`-au Individual` creates the code for Individual authentication.</span></span>
   * <span data-ttu-id="81dcf-130">`-uld` usa LocalDB, una versión ligera de SQL Server Express para Windows.</span><span class="sxs-lookup"><span data-stu-id="81dcf-130">`-uld` uses LocalDB, a lightweight version of SQL Server Express for Windows.</span></span> <span data-ttu-id="81dcf-131">Omita `-uld` para usar SQLite.</span><span class="sxs-lookup"><span data-stu-id="81dcf-131">Omit `-uld` to use SQLite.</span></span>
   * <span data-ttu-id="81dcf-132">El comando `code` abre la carpeta *WebApp1* en una nueva instancia de Visual Studio Code.</span><span class="sxs-lookup"><span data-stu-id="81dcf-132">The `code` command opens the *WebApp1* folder in a new instance of Visual Studio Code.</span></span>
@@ -86,7 +86,7 @@ ms.locfileid: "93053311"
 
 ## <a name="use-secretmanager-to-store-tokens-assigned-by-login-providers"></a><span data-ttu-id="81dcf-137">Uso de SecretManager para almacenar los tokens asignados por los proveedores de inicio de sesión</span><span class="sxs-lookup"><span data-stu-id="81dcf-137">Use SecretManager to store tokens assigned by login providers</span></span>
 
-<span data-ttu-id="81dcf-138">Los proveedores de inicio de sesión de las redes sociales asignan los tokens **Id. de aplicación** y **Secreto de la aplicación** durante el proceso de registro.</span><span class="sxs-lookup"><span data-stu-id="81dcf-138">Social login providers assign **Application Id** and **Application Secret** tokens during the registration process.</span></span> <span data-ttu-id="81dcf-139">La nomenclatura puede variar en función del proveedor.</span><span class="sxs-lookup"><span data-stu-id="81dcf-139">The exact token names vary by provider.</span></span> <span data-ttu-id="81dcf-140">Estos tokens representan las credenciales que usa la aplicación para acceder a su API.</span><span class="sxs-lookup"><span data-stu-id="81dcf-140">These tokens represent the credentials your app uses to access their API.</span></span> <span data-ttu-id="81dcf-141">Los tokens constituyen los "secretos" que se pueden vincular a la configuración de la aplicación con la ayuda de [Secret Manager](xref:security/app-secrets#secret-manager).</span><span class="sxs-lookup"><span data-stu-id="81dcf-141">The tokens constitute the "secrets" that can be linked to your app configuration with the help of [Secret Manager](xref:security/app-secrets#secret-manager).</span></span> <span data-ttu-id="81dcf-142">El Administrador de secretos es una alternativa más segura al almacenamiento de los tokens en un archivo de configuración, como, por ejemplo, *:::no-loc(appsettings.json):::* .</span><span class="sxs-lookup"><span data-stu-id="81dcf-142">Secret Manager is a more secure alternative to storing the tokens in a configuration file, such as *:::no-loc(appsettings.json):::* .</span></span>
+<span data-ttu-id="81dcf-138">Los proveedores de inicio de sesión de las redes sociales asignan los tokens **Id. de aplicación** y **Secreto de la aplicación** durante el proceso de registro.</span><span class="sxs-lookup"><span data-stu-id="81dcf-138">Social login providers assign **Application Id** and **Application Secret** tokens during the registration process.</span></span> <span data-ttu-id="81dcf-139">La nomenclatura puede variar en función del proveedor.</span><span class="sxs-lookup"><span data-stu-id="81dcf-139">The exact token names vary by provider.</span></span> <span data-ttu-id="81dcf-140">Estos tokens representan las credenciales que usa la aplicación para acceder a su API.</span><span class="sxs-lookup"><span data-stu-id="81dcf-140">These tokens represent the credentials your app uses to access their API.</span></span> <span data-ttu-id="81dcf-141">Los tokens constituyen los "secretos" que se pueden vincular a la configuración de la aplicación con la ayuda de [Secret Manager](xref:security/app-secrets#secret-manager).</span><span class="sxs-lookup"><span data-stu-id="81dcf-141">The tokens constitute the "secrets" that can be linked to your app configuration with the help of [Secret Manager](xref:security/app-secrets#secret-manager).</span></span> <span data-ttu-id="81dcf-142">El Administrador de secretos es una alternativa más segura al almacenamiento de los tokens en un archivo de configuración, como, por ejemplo, *appsettings.json* .</span><span class="sxs-lookup"><span data-stu-id="81dcf-142">Secret Manager is a more secure alternative to storing the tokens in a configuration file, such as *appsettings.json* .</span></span>
 
 > [!IMPORTANT]
 > <span data-ttu-id="81dcf-143">Secret Manager solo está pensado para fines de desarrollo.</span><span class="sxs-lookup"><span data-stu-id="81dcf-143">Secret Manager is for development purposes only.</span></span> <span data-ttu-id="81dcf-144">Puede almacenar y proteger sus secretos de producción y pruebas de Azure con el [proveedor de configuración de Azure Key Vault](xref:security/key-vault-configuration).</span><span class="sxs-lookup"><span data-stu-id="81dcf-144">You can store and protect Azure test and production secrets with the [Azure Key Vault configuration provider](xref:security/key-vault-configuration).</span></span>

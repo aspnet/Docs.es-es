@@ -6,17 +6,17 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 08/20/2018
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: client-side/libman/libman-vs
 ms.openlocfilehash: 1c97f5d7fbf64c5043e6d2277091b9a477833bf1
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -72,7 +72,7 @@ ms.locfileid: "93054715"
     * <span data-ttu-id="f31a7-139">Se usa *lib* si *wwwroot* no existe.</span><span class="sxs-lookup"><span data-stu-id="f31a7-139">*lib* is used if *wwwroot* doesn't exist.</span></span>
   * <span data-ttu-id="f31a7-140">Si se ha iniciado desde una carpeta de proyecto, se usa el nombre de carpeta correspondiente.</span><span class="sxs-lookup"><span data-stu-id="f31a7-140">If launched from a project folder, the corresponding folder name is used.</span></span>
 
-  <span data-ttu-id="f31a7-141">La sugerencia de carpeta tiene como sufijo el nombre de la biblioteca.</span><span class="sxs-lookup"><span data-stu-id="f31a7-141">The folder suggestion is suffixed with the library name.</span></span> <span data-ttu-id="f31a7-142">En la tabla siguiente se muestran sugerencias de carpeta al instalar jQuery en un proyecto de :::no-loc(Razor)::: Pages.</span><span class="sxs-lookup"><span data-stu-id="f31a7-142">The following table illustrates folder suggestions when installing jQuery in a :::no-loc(Razor)::: Pages project.</span></span>
+  <span data-ttu-id="f31a7-141">La sugerencia de carpeta tiene como sufijo el nombre de la biblioteca.</span><span class="sxs-lookup"><span data-stu-id="f31a7-141">The folder suggestion is suffixed with the library name.</span></span> <span data-ttu-id="f31a7-142">En la tabla siguiente se muestran sugerencias de carpeta al instalar jQuery en un proyecto de Razor Pages.</span><span class="sxs-lookup"><span data-stu-id="f31a7-142">The following table illustrates folder suggestions when installing jQuery in a Razor Pages project.</span></span>
   
   |<span data-ttu-id="f31a7-143">Ubicación de inicio</span><span class="sxs-lookup"><span data-stu-id="f31a7-143">Launch location</span></span>                           |<span data-ttu-id="f31a7-144">Carpeta sugerida</span><span class="sxs-lookup"><span data-stu-id="f31a7-144">Suggested folder</span></span>      |
   |------------------------------------------|----------------------|

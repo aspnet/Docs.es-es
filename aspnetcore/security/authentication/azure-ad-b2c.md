@@ -6,17 +6,17 @@ ms.author: casoper
 ms.custom: devx-track-csharp, mvc
 ms.date: 01/21/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: security/authentication/azure-ad-b2c
 ms.openlocfilehash: f917bec8f2d929e62bf43494159a63458f135c5f
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -109,16 +109,16 @@ ms.locfileid: "93061397"
 <span data-ttu-id="cb1a2-180">Vuelva a la ventana del explorador con las propiedades de la aplicación B2C todavía abiertas.</span><span class="sxs-lookup"><span data-stu-id="cb1a2-180">Return to the browser window with the B2C app properties still open.</span></span> <span data-ttu-id="cb1a2-181">Cambie la **dirección URL de respuesta** temporal especificada anteriormente al valor copiado desde Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="cb1a2-181">Change the temporary **Reply URL** specified earlier to the value copied from Visual Studio.</span></span> <span data-ttu-id="cb1a2-182">Seleccione **Guardar** en la parte superior de la ventana.</span><span class="sxs-lookup"><span data-stu-id="cb1a2-182">Select **Save** at the top of the window.</span></span>
 
 > [!TIP]
-> <span data-ttu-id="cb1a2-183">Si no ha copiado la dirección URL de respuesta, use la dirección HTTPS de la pestaña depurar en las propiedades del proyecto web y Anexe el valor **CallbackPath** de *:::no-loc(appsettings.json):::* .</span><span class="sxs-lookup"><span data-stu-id="cb1a2-183">If you didn't copy the Reply URL, use the HTTPS address from the Debug tab in the web project properties, and append the **CallbackPath** value from *:::no-loc(appsettings.json):::* .</span></span>
+> <span data-ttu-id="cb1a2-183">Si no ha copiado la dirección URL de respuesta, use la dirección HTTPS de la pestaña depurar en las propiedades del proyecto web y Anexe el valor **CallbackPath** de *appsettings.json* .</span><span class="sxs-lookup"><span data-stu-id="cb1a2-183">If you didn't copy the Reply URL, use the HTTPS address from the Debug tab in the web project properties, and append the **CallbackPath** value from *appsettings.json* .</span></span>
 
 ## <a name="configure-policies"></a><span data-ttu-id="cb1a2-184">Configurar directivas</span><span class="sxs-lookup"><span data-stu-id="cb1a2-184">Configure policies</span></span>
 
-<span data-ttu-id="cb1a2-185">Siga los pasos de la documentación de Azure AD B2C para [crear una directiva de registro o de inicio de sesión](/azure/active-directory-b2c/active-directory-b2c-reference-policies#user-flow-versions)y, a continuación, [cree una directiva de restablecimiento de contraseña](/azure/active-directory-b2c/active-directory-b2c-reference-policies#user-flow-versions).</span><span class="sxs-lookup"><span data-stu-id="cb1a2-185">Use the steps in the Azure AD B2C documentation to [create a sign-up or sign-in policy](/azure/active-directory-b2c/active-directory-b2c-reference-policies#user-flow-versions), and then [create a password reset policy](/azure/active-directory-b2c/active-directory-b2c-reference-policies#user-flow-versions).</span></span> <span data-ttu-id="cb1a2-186">Use los valores de ejemplo proporcionados en la documentación para los **:::no-loc(Identity)::: proveedores** , **los atributos de registro** y las **notificaciones** de la aplicación.</span><span class="sxs-lookup"><span data-stu-id="cb1a2-186">Use the example values provided in the documentation for **:::no-loc(Identity)::: providers** , **Sign-up attributes** , and **Application claims** .</span></span> <span data-ttu-id="cb1a2-187">El uso del botón **Ejecutar ahora** para probar las directivas tal y como se describe en la documentación es opcional.</span><span class="sxs-lookup"><span data-stu-id="cb1a2-187">Using the **Run now** button to test the policies as described in the documentation is optional.</span></span>
+<span data-ttu-id="cb1a2-185">Siga los pasos de la documentación de Azure AD B2C para [crear una directiva de registro o de inicio de sesión](/azure/active-directory-b2c/active-directory-b2c-reference-policies#user-flow-versions)y, a continuación, [cree una directiva de restablecimiento de contraseña](/azure/active-directory-b2c/active-directory-b2c-reference-policies#user-flow-versions).</span><span class="sxs-lookup"><span data-stu-id="cb1a2-185">Use the steps in the Azure AD B2C documentation to [create a sign-up or sign-in policy](/azure/active-directory-b2c/active-directory-b2c-reference-policies#user-flow-versions), and then [create a password reset policy](/azure/active-directory-b2c/active-directory-b2c-reference-policies#user-flow-versions).</span></span> <span data-ttu-id="cb1a2-186">Use los valores de ejemplo proporcionados en la documentación para los **Identity proveedores** , **los atributos de registro** y las **notificaciones** de la aplicación.</span><span class="sxs-lookup"><span data-stu-id="cb1a2-186">Use the example values provided in the documentation for **Identity providers** , **Sign-up attributes** , and **Application claims** .</span></span> <span data-ttu-id="cb1a2-187">El uso del botón **Ejecutar ahora** para probar las directivas tal y como se describe en la documentación es opcional.</span><span class="sxs-lookup"><span data-stu-id="cb1a2-187">Using the **Run now** button to test the policies as described in the documentation is optional.</span></span>
 
 > [!WARNING]
-> <span data-ttu-id="cb1a2-188">Asegúrese de que los nombres de las directivas sean exactamente como se describen en la documentación, ya que esas directivas se usaron en el cuadro de diálogo **cambiar autenticación** en Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="cb1a2-188">Ensure the policy names are exactly as described in the documentation, as those policies were used in the **Change Authentication** dialog in Visual Studio.</span></span> <span data-ttu-id="cb1a2-189">Los nombres de las directivas se pueden comprobar en *:::no-loc(appsettings.json):::* .</span><span class="sxs-lookup"><span data-stu-id="cb1a2-189">The policy names can be verified in *:::no-loc(appsettings.json):::* .</span></span>
+> <span data-ttu-id="cb1a2-188">Asegúrese de que los nombres de las directivas sean exactamente como se describen en la documentación, ya que esas directivas se usaron en el cuadro de diálogo **cambiar autenticación** en Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="cb1a2-188">Ensure the policy names are exactly as described in the documentation, as those policies were used in the **Change Authentication** dialog in Visual Studio.</span></span> <span data-ttu-id="cb1a2-189">Los nombres de las directivas se pueden comprobar en *appsettings.json* .</span><span class="sxs-lookup"><span data-stu-id="cb1a2-189">The policy names can be verified in *appsettings.json* .</span></span>
 
-## <a name="configure-the-underlying-openidconnectoptionsjwtbearerno-loccookie-options"></a><span data-ttu-id="cb1a2-190">Configuración de las opciones OpenIdConnectOptions/JwtBearer/presubyacentes :::no-loc(Cookie):::</span><span class="sxs-lookup"><span data-stu-id="cb1a2-190">Configure the underlying OpenIdConnectOptions/JwtBearer/:::no-loc(Cookie)::: options</span></span>
+## <a name="configure-the-underlying-openidconnectoptionsjwtbearerno-loccookie-options"></a><span data-ttu-id="cb1a2-190">Configuración de las opciones OpenIdConnectOptions/JwtBearer/presubyacentes Cookie</span><span class="sxs-lookup"><span data-stu-id="cb1a2-190">Configure the underlying OpenIdConnectOptions/JwtBearer/Cookie options</span></span>
 
 <span data-ttu-id="cb1a2-191">Para configurar las opciones subyacentes directamente, use la constante de esquema adecuada en `Startup.ConfigureServices` :</span><span class="sxs-lookup"><span data-stu-id="cb1a2-191">To configure the underlying options directly, use the appropriate scheme constant in `Startup.ConfigureServices`:</span></span>
 
@@ -129,8 +129,8 @@ services.Configure<OpenIdConnectOptions>(
         // Omitted for brevity
     });
 
-services.Configure<:::no-loc(Cookie):::AuthenticationOptions>(
-    AzureAD[B2C]Defaults.:::no-loc(Cookie):::Scheme, options => 
+services.Configure<CookieAuthenticationOptions>(
+    AzureAD[B2C]Defaults.CookieScheme, options => 
     {
         // Omitted for brevity
     });
@@ -144,7 +144,7 @@ services.Configure<JwtBearerOptions>(
 
 ## <a name="run-the-app"></a><span data-ttu-id="cb1a2-192">Ejecución la aplicación</span><span class="sxs-lookup"><span data-stu-id="cb1a2-192">Run the app</span></span>
 
-<span data-ttu-id="cb1a2-193">En Visual Studio, presione **F5** para compilar y ejecutar la aplicación.</span><span class="sxs-lookup"><span data-stu-id="cb1a2-193">In Visual Studio, press **F5** to build and run the app.</span></span> <span data-ttu-id="cb1a2-194">Una vez iniciada la aplicación Web, seleccione **Aceptar** para aceptar el uso de :::no-loc(cookie)::: s (si se le solicita) y, a continuación, seleccione **iniciar sesión** .</span><span class="sxs-lookup"><span data-stu-id="cb1a2-194">After the web app launches, select **Accept** to accept the use of :::no-loc(cookie):::s (if prompted), and then select **Sign in** .</span></span>
+<span data-ttu-id="cb1a2-193">En Visual Studio, presione **F5** para compilar y ejecutar la aplicación.</span><span class="sxs-lookup"><span data-stu-id="cb1a2-193">In Visual Studio, press **F5** to build and run the app.</span></span> <span data-ttu-id="cb1a2-194">Una vez iniciada la aplicación Web, seleccione **Aceptar** para aceptar el uso de cookie s (si se le solicita) y, a continuación, seleccione **iniciar sesión** .</span><span class="sxs-lookup"><span data-stu-id="cb1a2-194">After the web app launches, select **Accept** to accept the use of cookies (if prompted), and then select **Sign in** .</span></span>
 
 ![Inicio de sesión en la aplicación](./azure-ad-b2c/_static/signin.png)
 

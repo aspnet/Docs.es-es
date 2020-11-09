@@ -7,17 +7,17 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: host-and-deploy/azure-iis-errors-reference
 ms.openlocfilehash: b009cc61a94e618a48d96ecbd770ef6371308f6a
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -177,7 +177,7 @@ ms.locfileid: "93059850"
 
   <span data-ttu-id="15e71-216">Para obtener más información, consulte [Instalar el conjunto de hospedaje de .NET Core](xref:host-and-deploy/iis/index#install-the-net-core-hosting-bundle).</span><span class="sxs-lookup"><span data-stu-id="15e71-216">For more information, see [Install the .NET Core Hosting Bundle](xref:host-and-deploy/iis/index#install-the-net-core-hosting-bundle).</span></span>
 
-* <span data-ttu-id="15e71-217">Asegúrese de que **Grupo de aplicaciones** > **Modelo de proceso** > **:::no-loc(Identity):::** esté establecido en **ApplicationPool:::no-loc(Identity):::** o de que la identidad personalizada tenga los permisos correctos para acceder a la carpeta de implementación de la aplicación.</span><span class="sxs-lookup"><span data-stu-id="15e71-217">Make sure that the **Application Pool** > **Process Model** > **:::no-loc(Identity):::** is set to **ApplicationPool:::no-loc(Identity):::** or the custom identity has the correct permissions to access the app's deployment folder.</span></span>
+* <span data-ttu-id="15e71-217">Asegúrese de que **Grupo de aplicaciones** > **Modelo de proceso** > **Identity** esté establecido en **ApplicationPoolIdentity** o de que la identidad personalizada tenga los permisos correctos para acceder a la carpeta de implementación de la aplicación.</span><span class="sxs-lookup"><span data-stu-id="15e71-217">Make sure that the **Application Pool** > **Process Model** > **Identity** is set to **ApplicationPoolIdentity** or the custom identity has the correct permissions to access the app's deployment folder.</span></span>
 
 * <span data-ttu-id="15e71-218">Si ha desinstalado el paquete de hospedaje de ASP.NET Core y ha instalado una versión anterior de dicho paquete, el archivo *applicationHost.config* no incluirá ninguna sección para el módulo ASP.NET Core.</span><span class="sxs-lookup"><span data-stu-id="15e71-218">If you uninstalled the ASP.NET Core Hosting Bundle and installed an earlier version of the hosting bundle, the *applicationHost.config* file doesn't include a section for the ASP.NET Core Module.</span></span> <span data-ttu-id="15e71-219">Abra *applicationHost.config* en *%windir%/System32/inetsrv/config* y busque el grupo de secciones `<configuration><configSections><sectionGroup name="system.webServer">`.</span><span class="sxs-lookup"><span data-stu-id="15e71-219">Open *applicationHost.config* at *%windir%/System32/inetsrv/config* and find the `<configuration><configSections><sectionGroup name="system.webServer">` section group.</span></span> <span data-ttu-id="15e71-220">Si falta la sección del módulo ASP.NET Core en el grupo de secciones, añada el elemento de sección:</span><span class="sxs-lookup"><span data-stu-id="15e71-220">If the section for the ASP.NET Core Module is missing from the section group, add the section element:</span></span>
 
@@ -455,7 +455,7 @@ ms.locfileid: "93059850"
 
   <span data-ttu-id="15e71-430">Para obtener más información, consulte [Instalar el conjunto de hospedaje de .NET Core](xref:host-and-deploy/iis/index#install-the-net-core-hosting-bundle).</span><span class="sxs-lookup"><span data-stu-id="15e71-430">For more information, see [Install the .NET Core Hosting Bundle](xref:host-and-deploy/iis/index#install-the-net-core-hosting-bundle).</span></span>
 
-* <span data-ttu-id="15e71-431">Asegúrese de que **Grupo de aplicaciones** > **Modelo de proceso** > **:::no-loc(Identity):::** esté establecido en **ApplicationPool:::no-loc(Identity):::** o de que la identidad personalizada tenga los permisos correctos para acceder a la carpeta de implementación de la aplicación.</span><span class="sxs-lookup"><span data-stu-id="15e71-431">Make sure that the **Application Pool** > **Process Model** > **:::no-loc(Identity):::** is set to **ApplicationPool:::no-loc(Identity):::** or the custom identity has the correct permissions to access the app's deployment folder.</span></span>
+* <span data-ttu-id="15e71-431">Asegúrese de que **Grupo de aplicaciones** > **Modelo de proceso** > **Identity** esté establecido en **ApplicationPoolIdentity** o de que la identidad personalizada tenga los permisos correctos para acceder a la carpeta de implementación de la aplicación.</span><span class="sxs-lookup"><span data-stu-id="15e71-431">Make sure that the **Application Pool** > **Process Model** > **Identity** is set to **ApplicationPoolIdentity** or the custom identity has the correct permissions to access the app's deployment folder.</span></span>
 
 * <span data-ttu-id="15e71-432">Si ha desinstalado el paquete de hospedaje de ASP.NET Core y ha instalado una versión anterior de dicho paquete, el archivo *applicationHost.config* no incluirá ninguna sección para el módulo ASP.NET Core.</span><span class="sxs-lookup"><span data-stu-id="15e71-432">If you uninstalled the ASP.NET Core Hosting Bundle and installed an earlier version of the hosting bundle, the *applicationHost.config* file doesn't include a section for the ASP.NET Core Module.</span></span> <span data-ttu-id="15e71-433">Abra *applicationHost.config* en *%windir%/System32/inetsrv/config* y busque el grupo de secciones `<configuration><configSections><sectionGroup name="system.webServer">`.</span><span class="sxs-lookup"><span data-stu-id="15e71-433">Open *applicationHost.config* at *%windir%/System32/inetsrv/config* and find the `<configuration><configSections><sectionGroup name="system.webServer">` section group.</span></span> <span data-ttu-id="15e71-434">Si falta la sección del módulo ASP.NET Core en el grupo de secciones, añada el elemento de sección:</span><span class="sxs-lookup"><span data-stu-id="15e71-434">If the section for the ASP.NET Core Module is missing from the section group, add the section element:</span></span>
 

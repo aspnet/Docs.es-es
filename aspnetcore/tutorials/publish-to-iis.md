@@ -7,17 +7,17 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/03/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: tutorials/publish-to-iis
 ms.openlocfilehash: b3c714ea8e741430df1f70b2df258f1e8f1c7ad5
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -76,11 +76,11 @@ ms.locfileid: "93060513"
 
 1. <span data-ttu-id="4bf3b-144">Confirme que la identidad del modelo de proceso tiene los permisos adecuados.</span><span class="sxs-lookup"><span data-stu-id="4bf3b-144">Confirm the process model identity has the proper permissions.</span></span>
 
-   <span data-ttu-id="4bf3b-145">Si cambia la identidad predeterminada del grupo de aplicaciones ( **Modelo de proceso** >  **:::no-loc(Identity):::** ) de `ApplicationPool:::no-loc(Identity):::` a otra identidad, compruebe que la nueva tenga los permisos necesarios para acceder a la carpeta de la aplicación, la base de datos y otros recursos necesarios.</span><span class="sxs-lookup"><span data-stu-id="4bf3b-145">If the default identity of the app pool ( **Process Model** > **:::no-loc(Identity):::** ) is changed from `ApplicationPool:::no-loc(Identity):::` to another identity, verify that the new identity has the required permissions to access the app's folder, database, and other required resources.</span></span> <span data-ttu-id="4bf3b-146">Por ejemplo, el grupo de aplicaciones requiere acceso de lectura y escritura a las carpetas donde la aplicación lee y escribe archivos.</span><span class="sxs-lookup"><span data-stu-id="4bf3b-146">For example, the app pool requires read and write access to folders where the app reads and writes files.</span></span>
+   <span data-ttu-id="4bf3b-145">Si cambia la identidad predeterminada del grupo de aplicaciones ( **Modelo de proceso** >  **Identity** ) de `ApplicationPoolIdentity` a otra identidad, compruebe que la nueva tenga los permisos necesarios para acceder a la carpeta de la aplicación, la base de datos y otros recursos necesarios.</span><span class="sxs-lookup"><span data-stu-id="4bf3b-145">If the default identity of the app pool ( **Process Model** > **Identity** ) is changed from `ApplicationPoolIdentity` to another identity, verify that the new identity has the required permissions to access the app's folder, database, and other required resources.</span></span> <span data-ttu-id="4bf3b-146">Por ejemplo, el grupo de aplicaciones requiere acceso de lectura y escritura a las carpetas donde la aplicación lee y escribe archivos.</span><span class="sxs-lookup"><span data-stu-id="4bf3b-146">For example, the app pool requires read and write access to folders where the app reads and writes files.</span></span>
 
-## <a name="create-an-aspnet-core-no-locrazor-pages-app"></a><span data-ttu-id="4bf3b-147">Creación de una aplicación :::no-loc(Razor)::: Pages de ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="4bf3b-147">Create an ASP.NET Core :::no-loc(Razor)::: Pages app</span></span>
+## <a name="create-an-aspnet-core-no-locrazor-pages-app"></a><span data-ttu-id="4bf3b-147">Creación de una aplicación Razor Pages de ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="4bf3b-147">Create an ASP.NET Core Razor Pages app</span></span>
 
-<span data-ttu-id="4bf3b-148">Siga el tutorial <xref:getting-started> para crear una aplicación :::no-loc(Razor)::: Pages.</span><span class="sxs-lookup"><span data-stu-id="4bf3b-148">Follow the <xref:getting-started> tutorial to create a :::no-loc(Razor)::: Pages app.</span></span>
+<span data-ttu-id="4bf3b-148">Siga el tutorial <xref:getting-started> para crear una aplicación Razor Pages.</span><span class="sxs-lookup"><span data-stu-id="4bf3b-148">Follow the <xref:getting-started> tutorial to create a Razor Pages app.</span></span>
 
 ## <a name="publish-and-deploy-the-app"></a><span data-ttu-id="4bf3b-149">Publicar e implementar la aplicación</span><span class="sxs-lookup"><span data-stu-id="4bf3b-149">Publish and deploy the app</span></span>
 
