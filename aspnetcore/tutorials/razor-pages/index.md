@@ -1,9 +1,9 @@
 ---
 title: 'Tutorial: Creación de una aplicación web de Razor Pages con ASP.NET Core'
 author: rick-anderson
-description: Cree una aplicación web de Razor Pages en Windows con Visual Studio, ASP.NET Core y EF Core.
+description: En esta serie de tutoriales se explican los conceptos básicos relativos a la creación de una aplicación web de Razor Pages.
 ms.author: riande
-ms.date: 08/09/2019
+ms.date: 09/14/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -17,18 +17,18 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/index
-ms.openlocfilehash: 0feb60c7e0189bf12d584c3916e0254b3be729c0
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: cad4cf12e475c2f7db3e62a6ae78d53777710b6f
+ms.sourcegitcommit: 342588e10ae0054a6d6dc0fd11dae481006be099
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93058069"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94360572"
 ---
 # <a name="tutorial-create-a-no-locrazor-pages-web-app-with-aspnet-core"></a>Tutorial: Creación de una aplicación web de Razor Pages con ASP.NET Core
 
 En esta serie de tutoriales se explican los conceptos básicos relativos a la creación de una aplicación web de Razor Pages. 
 
-[!INCLUDE[](~/includes/advancedRP.md)]
+Para obtener una introducción más avanzada dirigida a desarrolladores familiarizados con los controladores y las vistas, vea <xref:razor-pages/index>.
 
 Esta serie incluye los siguientes tutoriales:
 
