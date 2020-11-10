@@ -7,56 +7,57 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/03/2019
 no-loc:
-- ASP.NET Core Identity
-- cookie
-- Cookie
-- Blazor
-- Blazor Server
-- Blazor WebAssembly
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
+- ':::no-loc(appsettings.json):::'
+- ':::no-loc(ASP.NET Core Identity):::'
+- ':::no-loc(cookie):::'
+- ':::no-loc(Cookie):::'
+- ':::no-loc(Blazor):::'
+- ':::no-loc(Blazor Server):::'
+- ':::no-loc(Blazor WebAssembly):::'
+- ':::no-loc(Identity):::'
+- ":::no-loc(Let's Encrypt):::"
+- ':::no-loc(Razor):::'
+- ':::no-loc(SignalR):::'
 uid: fundamentals/localization-extensibility
-ms.openlocfilehash: 2e1041ed4cce3c3919d75ff47e2bc24fc446e9c3
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: a6ef5a547e6ccba6771cdf892a9636f83d6796b1
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88627616"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93053740"
 ---
-# <a name="localization-extensibility"></a><span data-ttu-id="98420-103">Extensibilidad de la localización</span><span class="sxs-lookup"><span data-stu-id="98420-103">Localization Extensibility</span></span>
+# <a name="localization-extensibility"></a><span data-ttu-id="eaa3c-103">Extensibilidad de la localización</span><span class="sxs-lookup"><span data-stu-id="eaa3c-103">Localization Extensibility</span></span>
 
-<span data-ttu-id="98420-104">Por [Hisham Bin Ateya](https://github.com/hishamco)</span><span class="sxs-lookup"><span data-stu-id="98420-104">By [Hisham Bin Ateya](https://github.com/hishamco)</span></span>
+<span data-ttu-id="eaa3c-104">Por [Hisham Bin Ateya](https://github.com/hishamco)</span><span class="sxs-lookup"><span data-stu-id="eaa3c-104">By [Hisham Bin Ateya](https://github.com/hishamco)</span></span>
 
-<span data-ttu-id="98420-105">Este artículo:</span><span class="sxs-lookup"><span data-stu-id="98420-105">This article:</span></span>
+<span data-ttu-id="eaa3c-105">Este artículo:</span><span class="sxs-lookup"><span data-stu-id="eaa3c-105">This article:</span></span>
 
-* <span data-ttu-id="98420-106">Enumera los puntos de extensibilidad en las API de localización.</span><span class="sxs-lookup"><span data-stu-id="98420-106">Lists the extensibility points on the localization APIs.</span></span>
-* <span data-ttu-id="98420-107">Proporciona instrucciones sobre cómo extender la localización en aplicaciones ASP.NET Core.</span><span class="sxs-lookup"><span data-stu-id="98420-107">Provides instructions on how to extend ASP.NET Core app localization.</span></span>
+* <span data-ttu-id="eaa3c-106">Enumera los puntos de extensibilidad en las API de localización.</span><span class="sxs-lookup"><span data-stu-id="eaa3c-106">Lists the extensibility points on the localization APIs.</span></span>
+* <span data-ttu-id="eaa3c-107">Proporciona instrucciones sobre cómo extender la localización en aplicaciones ASP.NET Core.</span><span class="sxs-lookup"><span data-stu-id="eaa3c-107">Provides instructions on how to extend ASP.NET Core app localization.</span></span>
 
-## <a name="extensible-points-in-localization-apis"></a><span data-ttu-id="98420-108">Puntos extensibles en las API de localización</span><span class="sxs-lookup"><span data-stu-id="98420-108">Extensible Points in Localization APIs</span></span>
+## <a name="extensible-points-in-localization-apis"></a><span data-ttu-id="eaa3c-108">Puntos extensibles en las API de localización</span><span class="sxs-lookup"><span data-stu-id="eaa3c-108">Extensible Points in Localization APIs</span></span>
 
-<span data-ttu-id="98420-109">Las API de localización de ASP.NET Core están diseñadas para ser extensibles.</span><span class="sxs-lookup"><span data-stu-id="98420-109">ASP.NET Core localization APIs are built to be extensible.</span></span> <span data-ttu-id="98420-110">La extensibilidad permite a los desarrolladores personalizar la localización según sus necesidades.</span><span class="sxs-lookup"><span data-stu-id="98420-110">Extensibility allows developers to customize the localization according to their needs.</span></span> <span data-ttu-id="98420-111">Por ejemplo, [OrchardCore](https://github.com/orchardCMS/OrchardCore/) tiene un elemento `POStringLocalizer`.</span><span class="sxs-lookup"><span data-stu-id="98420-111">For instance, [OrchardCore](https://github.com/orchardCMS/OrchardCore/) has a `POStringLocalizer`.</span></span> <span data-ttu-id="98420-112">`POStringLocalizer` describe en detalle el uso de [Localización de un objeto portátil](xref:fundamentals/portable-object-localization) para usar archivos `PO` con el fin de almacenar los recursos de localización.</span><span class="sxs-lookup"><span data-stu-id="98420-112">`POStringLocalizer` describes in detail using [Portable Object localization](xref:fundamentals/portable-object-localization) to use `PO` files to store localization resources.</span></span>
+<span data-ttu-id="eaa3c-109">Las API de localización de ASP.NET Core están diseñadas para ser extensibles.</span><span class="sxs-lookup"><span data-stu-id="eaa3c-109">ASP.NET Core localization APIs are built to be extensible.</span></span> <span data-ttu-id="eaa3c-110">La extensibilidad permite a los desarrolladores personalizar la localización según sus necesidades.</span><span class="sxs-lookup"><span data-stu-id="eaa3c-110">Extensibility allows developers to customize the localization according to their needs.</span></span> <span data-ttu-id="eaa3c-111">Por ejemplo, [OrchardCore](https://github.com/orchardCMS/OrchardCore/) tiene un elemento `POStringLocalizer`.</span><span class="sxs-lookup"><span data-stu-id="eaa3c-111">For instance, [OrchardCore](https://github.com/orchardCMS/OrchardCore/) has a `POStringLocalizer`.</span></span> <span data-ttu-id="eaa3c-112">`POStringLocalizer` describe en detalle el uso de [Localización de un objeto portátil](xref:fundamentals/portable-object-localization) para usar archivos `PO` con el fin de almacenar los recursos de localización.</span><span class="sxs-lookup"><span data-stu-id="eaa3c-112">`POStringLocalizer` describes in detail using [Portable Object localization](xref:fundamentals/portable-object-localization) to use `PO` files to store localization resources.</span></span>
 
-<span data-ttu-id="98420-113">En este artículo se enumeran los dos puntos de extensibilidad principales que proporcionan las API de localización:</span><span class="sxs-lookup"><span data-stu-id="98420-113">This article lists the two main extensibility points that localization APIs provide:</span></span> 
+<span data-ttu-id="eaa3c-113">En este artículo se enumeran los dos puntos de extensibilidad principales que proporcionan las API de localización:</span><span class="sxs-lookup"><span data-stu-id="eaa3c-113">This article lists the two main extensibility points that localization APIs provide:</span></span> 
 
 * <xref:Microsoft.AspNetCore.Localization.RequestCultureProvider>
 * <xref:Microsoft.Extensions.Localization.IStringLocalizer>
 
-## <a name="localization-culture-providers"></a><span data-ttu-id="98420-114">Proveedores de referencias culturales de localización</span><span class="sxs-lookup"><span data-stu-id="98420-114">Localization Culture Providers</span></span>
+## <a name="localization-culture-providers"></a><span data-ttu-id="eaa3c-114">Proveedores de referencias culturales de localización</span><span class="sxs-lookup"><span data-stu-id="eaa3c-114">Localization Culture Providers</span></span>
 
-<span data-ttu-id="98420-115">Las API de localización de ASP.NET Core tienen cuatro proveedores por defecto que pueden determinar la referencia cultural actual de una solicitud en ejecución:</span><span class="sxs-lookup"><span data-stu-id="98420-115">ASP.NET Core localization APIs have four default providers that can determine the current culture of an executing request:</span></span>
+<span data-ttu-id="eaa3c-115">Las API de localización de ASP.NET Core tienen cuatro proveedores por defecto que pueden determinar la referencia cultural actual de una solicitud en ejecución:</span><span class="sxs-lookup"><span data-stu-id="eaa3c-115">ASP.NET Core localization APIs have four default providers that can determine the current culture of an executing request:</span></span>
 
 * <xref:Microsoft.AspNetCore.Localization.QueryStringRequestCultureProvider>
-* <xref:Microsoft.AspNetCore.Localization.CookieRequestCultureProvider>
+* <xref:Microsoft.AspNetCore.Localization.:::no-loc(Cookie):::RequestCultureProvider>
 * <xref:Microsoft.AspNetCore.Localization.AcceptLanguageHeaderRequestCultureProvider>
 * <xref:Microsoft.AspNetCore.Localization.CustomRequestCultureProvider>
 
-<span data-ttu-id="98420-116">Los proveedores anteriores se describen de forma detallada en la documentación del [middleware de localización](xref:fundamentals/localization).</span><span class="sxs-lookup"><span data-stu-id="98420-116">The preceding providers are described in detail in the [Localization Middleware](xref:fundamentals/localization) documentation.</span></span> <span data-ttu-id="98420-117">Si los proveedores predeterminados no satisfacen sus necesidades, cree un proveedor personalizado mediante uno de los métodos siguientes:</span><span class="sxs-lookup"><span data-stu-id="98420-117">If the default providers don't meet your needs, build a custom provider using one of the following approaches:</span></span>
+<span data-ttu-id="eaa3c-116">Los proveedores anteriores se describen de forma detallada en la documentación del [middleware de localización](xref:fundamentals/localization).</span><span class="sxs-lookup"><span data-stu-id="eaa3c-116">The preceding providers are described in detail in the [Localization Middleware](xref:fundamentals/localization) documentation.</span></span> <span data-ttu-id="eaa3c-117">Si los proveedores predeterminados no satisfacen sus necesidades, cree un proveedor personalizado mediante uno de los métodos siguientes:</span><span class="sxs-lookup"><span data-stu-id="eaa3c-117">If the default providers don't meet your needs, build a custom provider using one of the following approaches:</span></span>
 
-### <a name="use-customrequestcultureprovider"></a><span data-ttu-id="98420-118">Uso de CustomRequestCultureProvider</span><span class="sxs-lookup"><span data-stu-id="98420-118">Use CustomRequestCultureProvider</span></span>
+### <a name="use-customrequestcultureprovider"></a><span data-ttu-id="eaa3c-118">Uso de CustomRequestCultureProvider</span><span class="sxs-lookup"><span data-stu-id="eaa3c-118">Use CustomRequestCultureProvider</span></span>
 
-<span data-ttu-id="98420-119"><xref:Microsoft.AspNetCore.Localization.CustomRequestCultureProvider> proporciona un elemento <xref:Microsoft.AspNetCore.Localization.RequestCultureProvider> personalizado que utiliza un delegado simple para determinar la referencia cultural de localización actual:</span><span class="sxs-lookup"><span data-stu-id="98420-119"><xref:Microsoft.AspNetCore.Localization.CustomRequestCultureProvider> provides a custom <xref:Microsoft.AspNetCore.Localization.RequestCultureProvider> that uses a simple delegate to determine the current localization culture:</span></span>
+<span data-ttu-id="eaa3c-119"><xref:Microsoft.AspNetCore.Localization.CustomRequestCultureProvider> proporciona un elemento <xref:Microsoft.AspNetCore.Localization.RequestCultureProvider> personalizado que utiliza un delegado simple para determinar la referencia cultural de localización actual:</span><span class="sxs-lookup"><span data-stu-id="eaa3c-119"><xref:Microsoft.AspNetCore.Localization.CustomRequestCultureProvider> provides a custom <xref:Microsoft.AspNetCore.Localization.RequestCultureProvider> that uses a simple delegate to determine the current localization culture:</span></span>
 
 ::: moniker range="< aspnetcore-3.0"
 ```csharp
@@ -100,11 +101,11 @@ options.AddInitialRequestCultureProvider(new CustomRequestCultureProvider(async 
 
 ::: moniker-end
 
-### <a name="use-a-new-implemetation-of-requestcultureprovider"></a><span data-ttu-id="98420-120">Uso de una nueva implementación de RequestCultureProvider</span><span class="sxs-lookup"><span data-stu-id="98420-120">Use a new implemetation of RequestCultureProvider</span></span>
+### <a name="use-a-new-implemetation-of-requestcultureprovider"></a><span data-ttu-id="eaa3c-120">Uso de una nueva implementación de RequestCultureProvider</span><span class="sxs-lookup"><span data-stu-id="eaa3c-120">Use a new implemetation of RequestCultureProvider</span></span>
 
-<span data-ttu-id="98420-121">Se puede crear una nueva implementación de <xref:Microsoft.AspNetCore.Localization.RequestCultureProvider> que determine la información de referencia cultural de la solicitud de un origen personalizado.</span><span class="sxs-lookup"><span data-stu-id="98420-121">A new implementation of <xref:Microsoft.AspNetCore.Localization.RequestCultureProvider> can be created that determines the request culture information from a custom source.</span></span> <span data-ttu-id="98420-122">Por ejemplo, el origen personalizado puede ser una base de datos o un archivo de configuración.</span><span class="sxs-lookup"><span data-stu-id="98420-122">For example, the custom source can be a configuration file or database.</span></span>
+<span data-ttu-id="eaa3c-121">Se puede crear una nueva implementación de <xref:Microsoft.AspNetCore.Localization.RequestCultureProvider> que determine la información de referencia cultural de la solicitud de un origen personalizado.</span><span class="sxs-lookup"><span data-stu-id="eaa3c-121">A new implementation of <xref:Microsoft.AspNetCore.Localization.RequestCultureProvider> can be created that determines the request culture information from a custom source.</span></span> <span data-ttu-id="eaa3c-122">Por ejemplo, el origen personalizado puede ser una base de datos o un archivo de configuración.</span><span class="sxs-lookup"><span data-stu-id="eaa3c-122">For example, the custom source can be a configuration file or database.</span></span>
 
-<span data-ttu-id="98420-123">En el ejemplo siguiente se muestra el elemento `AppSettingsRequestCultureProvider`, que extiende el elemento <xref:Microsoft.AspNetCore.Localization.RequestCultureProvider> para determinar la información de referencia cultural de la solicitud de *appsettings.json*:</span><span class="sxs-lookup"><span data-stu-id="98420-123">The following example shows `AppSettingsRequestCultureProvider`, which extends the <xref:Microsoft.AspNetCore.Localization.RequestCultureProvider> to determine the request culture information from *appsettings.json*:</span></span>
+<span data-ttu-id="eaa3c-123">En el ejemplo siguiente se muestra el elemento `AppSettingsRequestCultureProvider`, que extiende el elemento <xref:Microsoft.AspNetCore.Localization.RequestCultureProvider> para determinar la información de referencia cultural de la solicitud de *:::no-loc(appsettings.json):::* :</span><span class="sxs-lookup"><span data-stu-id="eaa3c-123">The following example shows `AppSettingsRequestCultureProvider`, which extends the <xref:Microsoft.AspNetCore.Localization.RequestCultureProvider> to determine the request culture information from *:::no-loc(appsettings.json):::* :</span></span>
 
 ```csharp
 public class AppSettingsRequestCultureProvider : RequestCultureProvider
@@ -146,14 +147,14 @@ public class AppSettingsRequestCultureProvider : RequestCultureProvider
 }
 ```
 
-## <a name="localization-resources"></a><span data-ttu-id="98420-124">Recursos de localización</span><span class="sxs-lookup"><span data-stu-id="98420-124">Localization resources</span></span>
+## <a name="localization-resources"></a><span data-ttu-id="eaa3c-124">Recursos de localización</span><span class="sxs-lookup"><span data-stu-id="eaa3c-124">Localization resources</span></span>
 
-<span data-ttu-id="98420-125">La localización de ASP.NET Core proporciona <xref:Microsoft.Extensions.Localization.ResourceManagerStringLocalizer>.</span><span class="sxs-lookup"><span data-stu-id="98420-125">ASP.NET Core localization provides <xref:Microsoft.Extensions.Localization.ResourceManagerStringLocalizer>.</span></span> <span data-ttu-id="98420-126"><xref:Microsoft.Extensions.Localization.ResourceManagerStringLocalizer> es una implementación de <xref:Microsoft.Extensions.Localization.IStringLocalizer> que usa `resx` para almacenar los recursos de localización.</span><span class="sxs-lookup"><span data-stu-id="98420-126"><xref:Microsoft.Extensions.Localization.ResourceManagerStringLocalizer> is an implementation of <xref:Microsoft.Extensions.Localization.IStringLocalizer> that is uses `resx` to store localization resources.</span></span>
+<span data-ttu-id="eaa3c-125">La localización de ASP.NET Core proporciona <xref:Microsoft.Extensions.Localization.ResourceManagerStringLocalizer>.</span><span class="sxs-lookup"><span data-stu-id="eaa3c-125">ASP.NET Core localization provides <xref:Microsoft.Extensions.Localization.ResourceManagerStringLocalizer>.</span></span> <span data-ttu-id="eaa3c-126"><xref:Microsoft.Extensions.Localization.ResourceManagerStringLocalizer> es una implementación de <xref:Microsoft.Extensions.Localization.IStringLocalizer> que usa `resx` para almacenar los recursos de localización.</span><span class="sxs-lookup"><span data-stu-id="eaa3c-126"><xref:Microsoft.Extensions.Localization.ResourceManagerStringLocalizer> is an implementation of <xref:Microsoft.Extensions.Localization.IStringLocalizer> that is uses `resx` to store localization resources.</span></span>
 
-<span data-ttu-id="98420-127">No es necesario limitarse a los archivos `resx`.</span><span class="sxs-lookup"><span data-stu-id="98420-127">You aren't limited to using `resx` files.</span></span> <span data-ttu-id="98420-128">Al implementar `IStringLocalized`, se puede usar cualquier origen de datos.</span><span class="sxs-lookup"><span data-stu-id="98420-128">By implementing `IStringLocalized`, any data source can be used.</span></span>
+<span data-ttu-id="eaa3c-127">No es necesario limitarse a los archivos `resx`.</span><span class="sxs-lookup"><span data-stu-id="eaa3c-127">You aren't limited to using `resx` files.</span></span> <span data-ttu-id="eaa3c-128">Al implementar `IStringLocalized`, se puede usar cualquier origen de datos.</span><span class="sxs-lookup"><span data-stu-id="eaa3c-128">By implementing `IStringLocalized`, any data source can be used.</span></span>
 
-<span data-ttu-id="98420-129">En los proyectos de ejemplo siguientes, se implementa <xref:Microsoft.Extensions.Localization.IStringLocalizer>:</span><span class="sxs-lookup"><span data-stu-id="98420-129">The following example projects implement <xref:Microsoft.Extensions.Localization.IStringLocalizer>:</span></span> 
+<span data-ttu-id="eaa3c-129">En los proyectos de ejemplo siguientes, se implementa <xref:Microsoft.Extensions.Localization.IStringLocalizer>:</span><span class="sxs-lookup"><span data-stu-id="eaa3c-129">The following example projects implement <xref:Microsoft.Extensions.Localization.IStringLocalizer>:</span></span> 
 
-* [<span data-ttu-id="98420-130">EFStringLocalizer</span><span class="sxs-lookup"><span data-stu-id="98420-130">EFStringLocalizer</span></span>](https://github.com/aspnet/Entropy/tree/master/samples/Localization.EntityFramework)
-* [<span data-ttu-id="98420-131">JsonStringLocalizer</span><span class="sxs-lookup"><span data-stu-id="98420-131">JsonStringLocalizer</span></span>](https://github.com/hishamco/My.Extensions.Localization.Json)
-* [<span data-ttu-id="98420-132">SqlLocalizer</span><span class="sxs-lookup"><span data-stu-id="98420-132">SqlLocalizer</span></span>](https://github.com/damienbod/AspNetCoreLocalization)
+* [<span data-ttu-id="eaa3c-130">EFStringLocalizer</span><span class="sxs-lookup"><span data-stu-id="eaa3c-130">EFStringLocalizer</span></span>](https://github.com/aspnet/Entropy/tree/master/samples/Localization.EntityFramework)
+* [<span data-ttu-id="eaa3c-131">JsonStringLocalizer</span><span class="sxs-lookup"><span data-stu-id="eaa3c-131">JsonStringLocalizer</span></span>](https://github.com/hishamco/My.Extensions.Localization.Json)
+* [<span data-ttu-id="eaa3c-132">SqlLocalizer</span><span class="sxs-lookup"><span data-stu-id="eaa3c-132">SqlLocalizer</span></span>](https://github.com/damienbod/AspNetCoreLocalization)
