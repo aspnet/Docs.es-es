@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/routing
-ms.openlocfilehash: 9f64dd8f0ca026cec4b7ee4b5ea02523139eed4f
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 59ad373cefaa12370aa7c02a367125c7a94f59a6
+ms.sourcegitcommit: 91e14f1e2a25c98a57c2217fe91b172e0ff2958c
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93057159"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94422605"
 ---
 # <a name="routing-to-controller-actions-in-aspnet-core"></a>Enrutar a acciones de controlador de ASP.NET Core
 
@@ -120,7 +120,7 @@ El enrutamiento convencional se usa con controladores y vistas. La ruta `default
 
 [!code-csharp[](routing/samples/3.x/main/StartupDefaultMVC.cs?name=snippet2)]
 
-es un ejemplo de un *enrutamiento convencional* . Se denomina *enrutamiento convencional* porque establece una *Convención* para las rutas de dirección URL:
+es un ejemplo de un *enrutamiento convencional*. Se denomina *enrutamiento convencional* porque establece una *Convención* para las rutas de dirección URL:
 
 * El primer segmento de la ruta de acceso, `{controller=Home}` , se asigna al nombre del controlador.
 * El segundo segmento, `{action=Index}` , se asigna al nombre de la [acción](#action) .
@@ -178,7 +178,7 @@ Se pueden agregar varias [rutas convencionales](#cr) en agregando `UseEndpoints`
 
 <a name="dcr"></a>
 
-La `blog` ruta en el código anterior es una **ruta convencional dedicada** . Se denomina una ruta convencional dedicada porque:
+La `blog` ruta en el código anterior es una **ruta convencional dedicada**. Se denomina una ruta convencional dedicada porque:
 
 * Utiliza el [enrutamiento convencional](#cr).
 * Está dedicado a una [acción](#action)específica.
@@ -197,7 +197,7 @@ Ejemplo anterior:
 
 > [!WARNING]
 > En ASP.NET Core 3,0 y versiones posteriores, el enrutamiento no:
-> * Defina un concepto denominado *Route* . `UseRouting` agrega coincidencia de rutas a la canalización de middleware. El `UseRouting` middleware examina el conjunto de puntos de conexión definidos en la aplicación y selecciona la mejor coincidencia de punto de conexión en función de la solicitud.
+> * Defina un concepto denominado *Route*. `UseRouting` agrega coincidencia de rutas a la canalización de middleware. El `UseRouting` middleware examina el conjunto de puntos de conexión definidos en la aplicación y selecciona la mejor coincidencia de punto de conexión en función de la solicitud.
 > * Proporcione garantías sobre el orden de ejecución de la extensibilidad, como <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> o <xref:Microsoft.AspNetCore.Mvc.ActionConstraints.IActionConstraint> .
 >
 >Consulte [enrutamiento](xref:fundamentals/routing) para obtener material de referencia sobre el enrutamiento.
@@ -668,7 +668,7 @@ En el ejemplo siguiente, la `IUrlHelper` interfaz se usa a través de la `Contro
 
 Si la aplicación usa la ruta convencional predeterminada, el valor de la `url` variable es la cadena de ruta de acceso de dirección URL `/UrlGeneration/Destination` . La ruta de acceso de dirección URL se crea mediante el enrutamiento mediante la combinación de:
 
-* Los valores de ruta de la solicitud actual, que se denominan **valores de ambiente** .
+* Los valores de ruta de la solicitud actual, que se denominan **valores de ambiente**.
 * Los valores que se pasan a `Url.Action` y sustituyen esos valores en la plantilla de ruta:
 
 ``` text
@@ -857,7 +857,7 @@ Los métodos públicos de un controlador, excepto aquellos con el atributo no [A
 
 ## <a name="sample-code"></a>Código de ejemplo
 
- * El método [MyDisplayRouteInfo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/routing/samples/3.x/main/Extensions/ControllerContextExtensions.cs) se incluye en la [descarga de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/routing/samples/3.x) y se usa para mostrar la información de enrutamiento.
+* [!INCLUDE[](~/includes/MyDisplayRouteInfo.md)]
 * [Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/routing/samples/3.x) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
 [!INCLUDE[](~/includes/dbg-route.md)]
@@ -1186,7 +1186,7 @@ public class ProductsApiController : Controller
 
 En este ejemplo, la ruta de dirección URL `/products` puede coincidir con `ProductsApi.ListProducts` y la ruta de dirección URL `/products/5` puede coincidir con `ProductsApi.GetProduct(int)`. Ambas acciones solo coinciden con el método HTTP `GET` porque están marcadas con `HttpGetAttribute`.
 
-Las plantillas de ruta aplicadas a una acción que comienzan por `/` o `~/` no se combinan con las plantillas de ruta que se aplican al controlador. En este ejemplo coinciden un conjunto de rutas de dirección URL similares a la *ruta predeterminada* .
+Las plantillas de ruta aplicadas a una acción que comienzan por `/` o `~/` no se combinan con las plantillas de ruta que se aplican al controlador. En este ejemplo coinciden un conjunto de rutas de dirección URL similares a la *ruta predeterminada*.
 
 ```csharp
 [Route("Home")]
@@ -1437,7 +1437,7 @@ result: /UrlGeneration/Destination
 
 El valor de cada uno de los parámetros de ruta incluidos en la plantilla de ruta se sustituye por nombres que coincidan con los valores y los valores de ambiente. Si un parámetro de ruta no tiene un valor, puede utilizar un valor predeterminado en caso de tenerlo, o se puede omitir si es opcional (como en el caso de `id` en este ejemplo). La generación de direcciones URL producirá un error si cualquiera de los parámetros de ruta necesarios no tiene un valor correspondiente. Si se produce un error en la generación de direcciones URL para una ruta, se prueba con la ruta siguiente hasta que se hayan probado todas las rutas o se encuentra una coincidencia.
 
-En el ejemplo anterior de `Url.Action` se supone que el enrutamiento es convencional, pero la generación de direcciones URL funciona del mismo modo con el enrutamiento mediante atributos, si bien los conceptos son diferentes. En el enrutamiento convencional, los valores de ruta se usan para expandir una plantilla; los valores de ruta de `controller` y `action` suelen aparecer en esa plantilla. Esto es válido porque las direcciones URL que coinciden con el enrutamiento se adhieren a una *convención* . En el enrutamiento mediante atributos, no está permitido que los valores de ruta de `controller` y `action` aparezcan en la plantilla. En vez de eso, se utilizan para buscar la plantilla que se va a usar.
+En el ejemplo anterior de `Url.Action` se supone que el enrutamiento es convencional, pero la generación de direcciones URL funciona del mismo modo con el enrutamiento mediante atributos, si bien los conceptos son diferentes. En el enrutamiento convencional, los valores de ruta se usan para expandir una plantilla; los valores de ruta de `controller` y `action` suelen aparecer en esa plantilla. Esto es válido porque las direcciones URL que coinciden con el enrutamiento se adhieren a una *convención*. En el enrutamiento mediante atributos, no está permitido que los valores de ruta de `controller` y `action` aparezcan en la plantilla. En vez de eso, se utilizan para buscar la plantilla que se va a usar.
 
 Este ejemplo utiliza la enrutamiento mediante atributos:
 
@@ -1452,14 +1452,14 @@ MVC genera una tabla de búsqueda de todas las acciones enrutadas mediante atrib
 `Url.Action` (`IUrlHelper` . `Action`) y todas las sobrecargas relacionadas se basan en la idea de especificar el destino del vínculo mediante un nombre de controlador y un nombre de acción.
 
 > [!NOTE]
-> Cuando se usa `Url.Action`, se especifican los valores actuales de la ruta para `controller` y `action`. Los valores de `controller` y `action` forman parte tanto de los *valores de ambiente* **y como de los** *valores* . El método `Url.Action` siempre utiliza los valores actuales de `action` y `controller` y genera una ruta de dirección URL que dirige a la acción actual.
+> Cuando se usa `Url.Action`, se especifican los valores actuales de la ruta para `controller` y `action`. Los valores de `controller` y `action` forman parte tanto de los *valores de ambiente* **y como de los** *valores*. El método `Url.Action` siempre utiliza los valores actuales de `action` y `controller` y genera una ruta de dirección URL que dirige a la acción actual.
 
 Intentos de enrutamiento para utilizar los valores en los valores de ambiente para rellenar la información que no se proporcionó al generar una dirección URL. Al utilizar una ruta como `{a}/{b}/{c}/{d}` y los valores de ambiente `{ a = Alice, b = Bob, c = Carol, d = David }`, el enrutamiento tiene suficiente información para generar una dirección URL sin ningún valor adicional, puesto que todos los parámetros de ruta tienen un valor. Si se agregó el valor `{ d = Donovan }`, el valor `{ d = David }` se ignorará y la ruta de dirección URL generada será `Alice/Bob/Carol/Donovan`.
 
 > [!WARNING]
 > Las rutas de dirección URL son jerárquicas. En el ejemplo anterior, si se agrega el valor `{ c = Cheryl }`, ambos valores `{ c = Carol, d = David }` se ignorarán. En este caso ya no tenemos un valor para `d` y se producirá un error en la generación de direcciones URL. Debe especificar el valor deseado de `c` y `d`.  Es probable que este problema se produzca con la ruta predeterminada (`{controller}/{action}/{id?}`), pero raramente encontrará este comportamiento en la práctica, dado que `Url.Action` especificará siempre de manera explícita un valor `controller` y `action`.
 
-Las sobrecargas más largas de `Url.Action` también toman un objeto de *valores de ruta* adicional para proporcionar valores para parámetros de ruta distintos de `controller` y `action`. Normalmente verá esto utilizado con `id`, como `Url.Action("Buy", "Products", new { id = 17 })`. Por convención, el objeto de *valores de ruta* normalmente es un objeto de tipo anónimo, pero también puede ser `IDictionary<>` o un *objeto .NET estándar* . Los valores de ruta adicionales que no coinciden con los parámetros de ruta se colocan en la cadena de consulta.
+Las sobrecargas más largas de `Url.Action` también toman un objeto de *valores de ruta* adicional para proporcionar valores para parámetros de ruta distintos de `controller` y `action`. Normalmente verá esto utilizado con `id`, como `Url.Action("Buy", "Products", new { id = 17 })`. Por convención, el objeto de *valores de ruta* normalmente es un objeto de tipo anónimo, pero también puede ser `IDictionary<>` o un *objeto .NET estándar*. Los valores de ruta adicionales que no coinciden con los parámetros de ruta se colocan en la cadena de consulta.
 
 [!code-csharp[](routing/samples/2.x/main/Controllers/TestController.cs)]
 
@@ -1510,7 +1510,7 @@ Los patrones de diseño Factory Method de resultados de acción siguen un patró
 
 ### <a name="special-case-for-dedicated-conventional-routes"></a>Caso especial para rutas convencionales dedicadas
 
-El enrutamiento convencional puede usar un tipo especial de definición de ruta denominada *ruta convencional dedicada* . En el ejemplo siguiente, la ruta llamada `blog` es una ruta convencional dedicada.
+El enrutamiento convencional puede usar un tipo especial de definición de ruta denominada *ruta convencional dedicada*. En el ejemplo siguiente, la ruta llamada `blog` es una ruta convencional dedicada.
 
 ```csharp
 app.UseMvc(routes =>
