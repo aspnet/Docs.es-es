@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/09/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/linux-nginx
-ms.openlocfilehash: 63227f068926c4158ac8162fdc1ac11399fd65cb
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 916bb1f761ce99b2296c84e1653e55fffa04f83c
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633791"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93057692"
 ---
 # <a name="host-aspnet-core-on-linux-with-nginx"></a>Hospedar ASP.NET Core en Linux con Nginx
 
@@ -64,7 +65,7 @@ Si la aplicación se ejecuta localmente y no está configurada para realizar con
 * Configure la aplicación para controlar las conexiones locales seguras. Para obtener más información, vea la sección [Configuración de HTTPS](#https-configuration).
 * Quite `https://localhost:5001` (si existe) de la propiedad `applicationUrl` en el archivo *Properties/launchSettings.json*.
 
-Ejecute [dotnet publish](/dotnet/core/tools/dotnet-publish) desde el entorno de desarrollo para empaquetar una aplicación en un directorio (por ejemplo, *bin/Release/&lt;target_framework_moniker&gt;/publish*) que se pueda ejecutar en el servidor:
+Ejecute [dotnet publish](/dotnet/core/tools/dotnet-publish) desde el entorno de desarrollo para empaquetar una aplicación en un directorio (por ejemplo, *bin/Release/&lt;target_framework_moniker&gt;/publish* ) que se pueda ejecutar en el servidor:
 
 ```dotnetcli
 dotnet publish --configuration Release
@@ -72,7 +73,7 @@ dotnet publish --configuration Release
 
 La aplicación también se puede publicar como una [implementación independiente](/dotnet/core/deploying/#self-contained-deployments-scd) si prefiere no mantener .NET Core Runtime en el servidor.
 
-Copie la aplicación de ASP.NET Core en el servidor usando una herramienta que se integre en el flujo de trabajo de la organización (como SCP o SFTP). Es habitual encontrar las aplicaciones web en el directorio *var* (por ejemplo, *var/www/helloapp*).
+Copie la aplicación de ASP.NET Core en el servidor usando una herramienta que se integre en el flujo de trabajo de la organización (como SCP o SFTP). Es habitual encontrar las aplicaciones web en el directorio *var* (por ejemplo, *var/www/helloapp* ).
 
 > [!NOTE]
 > En un escenario de implementación de producción, un flujo de trabajo de integración continua lleva a cabo la tarea de publicar la aplicación y copiar los recursos en el servidor.
@@ -161,7 +162,7 @@ server {
 }
 ```
 
-Si la aplicación es una aplicación Blazor Server que se basa en WebSockets de SignalR, vea <xref:blazor/host-and-deploy/server#linux-with-nginx> para obtener información sobre cómo establecer el encabezado `Connection`.
+Si la aplicación es una aplicación SignalR o Blazor Server, vea <xref:signalr/scale#linux-with-nginx> y <xref:blazor/host-and-deploy/server#linux-with-nginx> respectivamente para obtener más información.
 
 Cuando no hay ninguna coincidencia de `server_name`, Nginx usa el servidor predeterminado. Si no se define ningún servidor predeterminado, el primer servidor del archivo de configuración es el servidor predeterminado. Como procedimiento recomendado, agregue un servidor predeterminado específico que devuelva un código de estado 444 en el archivo de configuración. Un ejemplo de configuración del servidor predeterminado es:
 
@@ -225,14 +226,14 @@ WantedBy=multi-user.target
 
 En el ejemplo anterior, el usuario que administra el servicio se especifica mediante la opción `User`. El usuario (`www-data`) debe existir y tener la propiedad correcta de los archivos de la aplicación.
 
-Use `TimeoutStopSec` para configurar el período de tiempo que hay que esperar para que la aplicación se apague después de que reciba la señal de interrupción inicial. Si la aplicación no se apaga en este período, se emite SIGKILL para terminar la aplicación. Proporcione el valor como segundos sin unidad (por ejemplo, `150`), un intervalo de tiempo (por ejemplo, `2min 30s`) o `infinity` para deshabilitar el tiempo de expiración. El valor predeterminado de `TimeoutStopSec` es el valor de `DefaultTimeoutStopSec` del archivo de configuración del administrador (*systemd-system.conf*, *system.conf.d*, *systemd-user.conf* o *user.conf.d*). El tiempo de expiración predeterminado para la mayoría de las distribuciones es de 90 segundos.
+Use `TimeoutStopSec` para configurar el período de tiempo que hay que esperar para que la aplicación se apague después de que reciba la señal de interrupción inicial. Si la aplicación no se apaga en este período, se emite SIGKILL para terminar la aplicación. Proporcione el valor como segundos sin unidad (por ejemplo, `150`), un intervalo de tiempo (por ejemplo, `2min 30s`) o `infinity` para deshabilitar el tiempo de expiración. El valor predeterminado de `TimeoutStopSec` es el valor de `DefaultTimeoutStopSec` del archivo de configuración del administrador ( *systemd-system.conf* , *system.conf.d* , *systemd-user.conf* o *user.conf.d* ). El tiempo de expiración predeterminado para la mayoría de las distribuciones es de 90 segundos.
 
 ```
 # The default value is 90 seconds for most distributions.
 TimeoutStopSec=90
 ```
 
-Linux tiene un sistema de archivos que distingue mayúsculas de minúsculas. Al establecer ASPNETCORE_ENVIRONMENT en "Production", se busca el archivo de configuración *appsettings.Production.json*, en lugar de *appsettings.production.json*.
+Linux tiene un sistema de archivos que distingue mayúsculas de minúsculas. Al establecer ASPNETCORE_ENVIRONMENT en "Production", se busca el archivo de configuración *appsettings.Production.json* , en lugar de *appsettings.production.json*.
 
 Algunos valores (por ejemplo, cadenas de conexión de SQL) deben ser de escape para que los proveedores de configuración lean las variables de entorno. Use el siguiente comando para generar un valor de escape correctamente para su uso en el archivo de configuración:
 
@@ -356,7 +357,7 @@ sudo ufw enable
 
 #### <a name="change-the-nginx-response-name"></a>Cambiar el nombre de la respuesta de Nginx
 
-Edite *src/http/ngx_http_header_filter_module.c*:
+Edite *src/http/ngx_http_header_filter_module.c* :
 
 ```
 static char ngx_http_server_string[] = "Server: Web Server" CRLF;
@@ -375,7 +376,7 @@ El comando [dotnet run](/dotnet/core/tools/dotnet-run) usa el archivo *Propertie
 
 Configure la aplicación para que use un certificado en el desarrollo para el comando `dotnet run` o el entorno de desarrollo (F5 o CTRL+F5 en Visual Studio Code) mediante uno de los siguientes enfoques:
 
-* [Reemplace el certificado predeterminado de configuración](xref:fundamentals/servers/kestrel#configuration) (*recomendado*)
+* [Reemplace el certificado predeterminado de configuración](xref:fundamentals/servers/kestrel#configuration) ( *recomendado* )
 * [KestrelServerOptions.ConfigureHttpsDefaults](xref:fundamentals/servers/kestrel#configurehttpsdefaultsactionhttpsconnectionadapteroptions)
 
 **Configure el proxy inverso para conexiones de cliente seguras (HTTPS)**
@@ -391,7 +392,7 @@ Configure la aplicación para que use un certificado en el desarrollo para el co
   * No agregue el encabezado HSTS.
   * Elija un valor de `max-age` corto.
 
-Agregue el archivo de configuración */etc/nginx/proxy.conf*:
+Agregue el archivo de configuración */etc/nginx/proxy.conf* :
 
 [!code-nginx[](linux-nginx/proxy.conf)]
 
@@ -404,11 +405,11 @@ Edite el archivo de configuración */etc/nginx/nginx.conf*. El ejemplo contiene 
 
 #### <a name="secure-nginx-from-clickjacking"></a>Proteger Nginx frente al secuestro de clic
 
-El [secuestro de clic](https://blog.qualys.com/securitylabs/2015/10/20/clickjacking-a-common-implementation-mistake-that-can-put-your-websites-in-danger), también conocido como *redireccionamiento de interfaz de usuario*, es un ataque malintencionado donde al visitante de un sitio web se le engaña para que haga clic en un vínculo o botón de una página distinta de la que actualmente está visitando. Use `X-FRAME-OPTIONS` para proteger el sitio.
+El [secuestro de clic](https://blog.qualys.com/securitylabs/2015/10/20/clickjacking-a-common-implementation-mistake-that-can-put-your-websites-in-danger), también conocido como *redireccionamiento de interfaz de usuario* , es un ataque malintencionado donde al visitante de un sitio web se le engaña para que haga clic en un vínculo o botón de una página distinta de la que actualmente está visitando. Use `X-FRAME-OPTIONS` para proteger el sitio.
 
 Para mitigar los ataques de secuestro de clic:
 
-1. Edite el archivo *nginx.conf*:
+1. Edite el archivo *nginx.conf* :
 
    ```bash
    sudo nano /etc/nginx/nginx.conf
@@ -422,7 +423,7 @@ Para mitigar los ataques de secuestro de clic:
 
 Este encabezado evita que la mayoría de los exploradores examinen el MIME de una respuesta fuera del tipo de contenido declarado, ya que el encabezado indica al explorador que no reemplace el tipo de contenido de respuesta. Con la opción `nosniff`, si el servidor indica que el contenido es "text/html", el explorador lo representa como "text/html".
 
-Edite el archivo *nginx.conf*:
+Edite el archivo *nginx.conf* :
 
 ```bash
 sudo nano /etc/nginx/nginx.conf

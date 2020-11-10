@@ -7,6 +7,7 @@ ms.author: scaddie
 ms.custom: mvc, seodec18
 ms.date: 08/17/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mongo-app
-ms.openlocfilehash: 61f72c4d281e7957b520e1660440e536ebd4c78a
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 350df417886fe1ea5fef89dc221c217d596768b3
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88631776"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060747"
 ---
 # <a name="create-a-web-api-with-aspnet-core-and-mongodb"></a>Creación de una API Web con ASP.NET Core y MongoDB
 
@@ -164,7 +165,7 @@ La base de datos está lista. Puede empezar a crear la API web de ASP.NET Core.
 1. Seleccione el tipo de proyecto **Aplicación web de ASP.NET Core** y, luego, **Siguiente**.
 1. Denomine el proyecto *BooksApi* y seleccione **Crear**.
 1. Seleccione **.NET Core** como plataforma de destino y **ASP.NET Core 3.0**. Seleccione la plantilla de proyecto **API** y, luego, **Crear**.
-1. Visite la [galería de NuGet: MongoDB.Driver](https://www.nuget.org/packages/MongoDB.Driver/) para determinar la última versión estable del controlador .NET para MongoDB. En la ventana **Consola del Administrador de paquetes**, desplácese hasta la raíz del proyecto. Ejecute el siguiente comando para instalar el controlador .NET para MongoDB:
+1. Visite la [galería de NuGet: MongoDB.Driver](https://www.nuget.org/packages/MongoDB.Driver/) para determinar la última versión estable del controlador .NET para MongoDB. En la ventana **Consola del Administrador de paquetes** , desplácese hasta la raíz del proyecto. Ejecute el siguiente comando para instalar el controlador .NET para MongoDB:
 
    ```powershell
    Install-Package MongoDB.Driver -Version {VERSION}
@@ -194,7 +195,7 @@ La base de datos está lista. Puede empezar a crear la API web de ASP.NET Core.
 1. Seleccione la plantilla de proyecto de C# **ASP.NET Core** > **API** y, luego, **Siguiente**.
 1. Seleccione **.NET Core 3.1** en la lista desplegable **Plataforma de destino** y, luego, **Siguiente**.
 1. Escriba *BooksApi* en **Nombre del proyecto** y seleccione **Crear**.
-1. En el panel **Explorador de soluciones**, haga clic con el botón derecho en el nodo **Dependencias** del proyecto y seleccione **Agregar paquetes**.
+1. En el panel **Explorador de soluciones** , haga clic con el botón derecho en el nodo **Dependencias** del proyecto y seleccione **Agregar paquetes**.
 1. Escriba *MongoDB.Driver* en el cuadro de búsqueda, seleccione el paquete *MongoDB.Driver* y, luego, **Agregar paquete**.
 1. Seleccione el botón **Aceptar** del cuadro de diálogo **Aceptación de la licencia**.
 
@@ -239,7 +240,7 @@ La base de datos está lista. Puede empezar a crear la API web de ASP.NET Core.
 
 ## <a name="add-a-configuration-model"></a>Adición de un modelo configuración
 
-1. Agregue los siguientes valores de configuración de base de datos a *appsettings.json*:
+1. Agregue los siguientes valores de configuración de base de datos a *appsettings.json* :
 
    [!code-json[](first-mongo-app/samples/3.x/SampleApp/appsettings.json?highlight=2-6)]
 
@@ -247,7 +248,7 @@ La base de datos está lista. Puede empezar a crear la API web de ASP.NET Core.
 
    [!code-csharp[](first-mongo-app/samples/3.x/SampleApp/Models/BookstoreDatabaseSettings.cs)]
 
-   La clase anterior `BookstoreDatabaseSettings` se utiliza para almacenar los valores de propiedad `BookstoreDatabaseSettings` del archivo *appsettings.json*. Los nombres de las propiedades de JSON y C# son iguales para facilitar el proceso de asignación.
+   La clase anterior `BookstoreDatabaseSettings` se utiliza para almacenar los valores de propiedad `BookstoreDatabaseSettings` del archivo *appsettings.json* . Los nombres de las propiedades de JSON y C# son iguales para facilitar el proceso de asignación.
 
 1. Agregue el código resaltado siguiente a `Startup.ConfigureServices`:
 
@@ -255,7 +256,7 @@ La base de datos está lista. Puede empezar a crear la API web de ASP.NET Core.
 
    En el código anterior:
 
-   * La instancia de configuración a la que la sección `BookstoreDatabaseSettings` del archivo *appsettings.json* enlaza está registrada en el contenedor de inserción de dependencias (DI). Por ejemplo, una propiedad `ConnectionString` del objeto `BookstoreDatabaseSettings` se rellena con la propiedad `BookstoreDatabaseSettings:ConnectionString` en *appsettings.json*.
+   * La instancia de configuración a la que la sección `BookstoreDatabaseSettings` del archivo *appsettings.json* enlaza está registrada en el contenedor de inserción de dependencias (DI). Por ejemplo, una propiedad `ConnectionString` del objeto `BookstoreDatabaseSettings` se rellena con la propiedad `BookstoreDatabaseSettings:ConnectionString` en *appsettings.json* .
    * La interfaz `IBookstoreDatabaseSettings` se registra en la inserción de dependencias con una [duración de servicio](xref:fundamentals/dependency-injection#service-lifetimes) de tipo singleton. Cuando se inserta, la instancia de la interfaz se resuelve en un objeto `BookstoreDatabaseSettings`.
 
 1. Agregue el código siguiente en la parte superior del archivo *Startup.cs* para resolver las referencias a `BookstoreDatabaseSettings` y `IBookstoreDatabaseSettings`:
@@ -365,7 +366,7 @@ Para satisfacer los requisitos anteriores, realice los cambios siguientes:
 
    Con el cambio anterior, los nombres de propiedad de la respuesta JSON serializada de la API web coinciden con sus nombres de propiedad correspondientes en el tipo de objeto CLR. Por ejemplo, la propiedad `Author` de la clase `Book` se serializa como `Author`.
 
-1. En *Models/Book.cs*, anote la propiedad `BookName` con el atributo [`[JsonProperty]`](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_JsonPropertyAttribute.htm) siguiente:
+1. En *Models/Book.cs* , anote la propiedad `BookName` con el atributo [`[JsonProperty]`](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_JsonPropertyAttribute.htm) siguiente:
 
    [!code-csharp[](first-mongo-app/samples/3.x/SampleApp/Models/Book.cs?name=snippet_BookNameProperty&highlight=2)]
 
@@ -514,7 +515,7 @@ La base de datos está lista. Puede empezar a crear la API web de ASP.NET Core.
 1. Seleccione el tipo de proyecto **Aplicación web de ASP.NET Core** y, luego, **Siguiente**.
 1. Denomine el proyecto *BooksApi* y seleccione **Crear**.
 1. Seleccione el marco de destino **.NET Core** y **ASP.NET Core 2.2**. Seleccione la plantilla de proyecto **API** y, luego, **Crear**.
-1. Visite la [galería de NuGet: MongoDB.Driver](https://www.nuget.org/packages/MongoDB.Driver/) para determinar la última versión estable del controlador .NET para MongoDB. En la ventana **Consola del Administrador de paquetes**, desplácese hasta la raíz del proyecto. Ejecute el siguiente comando para instalar el controlador .NET para MongoDB:
+1. Visite la [galería de NuGet: MongoDB.Driver](https://www.nuget.org/packages/MongoDB.Driver/) para determinar la última versión estable del controlador .NET para MongoDB. En la ventana **Consola del Administrador de paquetes** , desplácese hasta la raíz del proyecto. Ejecute el siguiente comando para instalar el controlador .NET para MongoDB:
 
    ```powershell
    Install-Package MongoDB.Driver -Version {VERSION}
@@ -544,7 +545,7 @@ La base de datos está lista. Puede empezar a crear la API web de ASP.NET Core.
 1. Seleccione la plantilla de proyecto de C# **API web ASP.NET Core** y, luego, **Siguiente**.
 1. Seleccione **.NET Core 2.2** en la lista desplegable **Plataforma de destino** y, luego, **Siguiente**.
 1. Escriba *BooksApi* en **Nombre del proyecto** y seleccione **Crear**.
-1. En el panel **Explorador de soluciones**, haga clic con el botón derecho en el nodo **Dependencias** del proyecto y seleccione **Agregar paquetes**.
+1. En el panel **Explorador de soluciones** , haga clic con el botón derecho en el nodo **Dependencias** del proyecto y seleccione **Agregar paquetes**.
 1. Escriba *MongoDB.Driver* en el cuadro de búsqueda, seleccione el paquete *MongoDB.Driver* y, luego, **Agregar paquete**.
 1. Seleccione el botón **Aceptar** del cuadro de diálogo **Aceptación de la licencia**.
 
@@ -589,7 +590,7 @@ La base de datos está lista. Puede empezar a crear la API web de ASP.NET Core.
 
 ## <a name="add-a-configuration-model"></a>Adición de un modelo configuración
 
-1. Agregue los siguientes valores de configuración de base de datos a *appsettings.json*:
+1. Agregue los siguientes valores de configuración de base de datos a *appsettings.json* :
 
    [!code-json[](first-mongo-app/samples/2.x/SampleApp/appsettings.json?highlight=2-6)]
 
@@ -597,7 +598,7 @@ La base de datos está lista. Puede empezar a crear la API web de ASP.NET Core.
 
    [!code-csharp[](first-mongo-app/samples/2.x/SampleApp/Models/BookstoreDatabaseSettings.cs)]
 
-   La clase anterior `BookstoreDatabaseSettings` se utiliza para almacenar los valores de propiedad `BookstoreDatabaseSettings` del archivo *appsettings.json*. Los nombres de las propiedades de JSON y C# son iguales para facilitar el proceso de asignación.
+   La clase anterior `BookstoreDatabaseSettings` se utiliza para almacenar los valores de propiedad `BookstoreDatabaseSettings` del archivo *appsettings.json* . Los nombres de las propiedades de JSON y C# son iguales para facilitar el proceso de asignación.
 
 1. Agregue el código resaltado siguiente a `Startup.ConfigureServices`:
 
@@ -605,7 +606,7 @@ La base de datos está lista. Puede empezar a crear la API web de ASP.NET Core.
 
    En el código anterior:
 
-   * La instancia de configuración a la que la sección `BookstoreDatabaseSettings` del archivo *appsettings.json* enlaza está registrada en el contenedor de inserción de dependencias (DI). Por ejemplo, una propiedad `ConnectionString` del objeto `BookstoreDatabaseSettings` se rellena con la propiedad `BookstoreDatabaseSettings:ConnectionString` en *appsettings.json*.
+   * La instancia de configuración a la que la sección `BookstoreDatabaseSettings` del archivo *appsettings.json* enlaza está registrada en el contenedor de inserción de dependencias (DI). Por ejemplo, una propiedad `ConnectionString` del objeto `BookstoreDatabaseSettings` se rellena con la propiedad `BookstoreDatabaseSettings:ConnectionString` en *appsettings.json* .
    * La interfaz `IBookstoreDatabaseSettings` se registra en la inserción de dependencias con una [duración de servicio](xref:fundamentals/dependency-injection#service-lifetimes) de tipo singleton. Cuando se inserta, la instancia de la interfaz se resuelve en un objeto `BookstoreDatabaseSettings`.
 
 1. Agregue el código siguiente en la parte superior del archivo *Startup.cs* para resolver las referencias a `BookstoreDatabaseSettings` y `IBookstoreDatabaseSettings`:
@@ -713,7 +714,7 @@ Para satisfacer los requisitos anteriores, realice los cambios siguientes:
 
    Con el cambio anterior, los nombres de propiedad de la respuesta JSON serializada de la API web coinciden con sus nombres de propiedad correspondientes en el tipo de objeto CLR. Por ejemplo, la propiedad `Author` de la clase `Book` se serializa como `Author`.
 
-1. En *Models/Book.cs*, anote la propiedad `BookName` con el atributo [`[JsonProperty]`](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_JsonPropertyAttribute.htm) siguiente:
+1. En *Models/Book.cs* , anote la propiedad `BookName` con el atributo [`[JsonProperty]`](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_JsonPropertyAttribute.htm) siguiente:
 
    [!code-csharp[](first-mongo-app/samples/2.x/SampleApp/Models/Book.cs?name=snippet_BookNameProperty&highlight=2)]
 

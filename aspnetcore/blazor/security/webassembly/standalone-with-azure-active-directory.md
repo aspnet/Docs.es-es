@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: devx-track-csharp, mvc
 ms.date: 10/27/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,33 +19,25 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/standalone-with-azure-active-directory
-ms.openlocfilehash: 46e5a422864dd8f6aef72afddb3b406bc99f9163
-ms.sourcegitcommit: 2e3a967331b2c69f585dd61e9ad5c09763615b44
+ms.openlocfilehash: 4e8c22c56b7023301499fd273a9194b8c7b58f3d
+ms.sourcegitcommit: 45aa1c24c3fdeb939121e856282b00bdcf00ea55
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92690431"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93343720"
 ---
 # <a name="secure-an-aspnet-core-no-locblazor-webassembly-standalone-app-with-azure-active-directory"></a>Protección de una aplicación independiente Blazor WebAssembly de ASP.NET Core con Azure Active Directory
 
 Por [Javier Calvarro Nelson](https://github.com/javiercn) y [Luke Latham](https://github.com/guardrex)
 
-En este artículo se habla de cómo proteger una aplicación independiente de Blazor WebAssembly de ASP.NET Core con Azure Active Directory (AAD).
+En este artículo se explica cómo crear una [aplicación Blazor WebAssembly independiente](xref:blazor/hosting-models#blazor-webassembly) que usa [Azure Active Directory (AAD)](https://azure.microsoft.com/services/active-directory/) para la autenticación.
 
 ::: moniker range=">= aspnetcore-5.0"
 
 > [!NOTE]
 > En las aplicaciones de Blazor WebAssembly creadas en Visual Studio que se han configurado para admitir cuentas de un directorio organizativo de AAD, Visual Studio no configura la aplicación correctamente durante la generación del proyecto. Esto se va a corregir en una próxima versión de Visual Studio. En este artículo se muestra cómo crear la aplicación con el comando `dotnet new` de la CLI de .NET Core. Si prefiere crear la aplicación con Visual Studio antes de la actualización del IDE con las plantillas más recientes de Blazor de ASP.NET Core 5.0, vea cada sección de este artículo y confirme o actualice la configuración de la aplicación después de que Visual Studio cree la aplicación.
 
-::: moniker-end
-
-Para crear una [aplicación Blazor WebAssembly independiente](xref:blazor/hosting-models#blazor-webassembly) que usa [Azure Active Directory (AAD)](https://azure.microsoft.com/services/active-directory/) para la autenticación:
-
-[Creación de un inquilino de AAD y una aplicación web](/azure/active-directory/develop/v2-overview):
-
 Registre una aplicación de AAD en el área **Azure Active Directory** > **Registros de aplicaciones** de Azure Portal:
-
-::: moniker range=">= aspnetcore-5.0"
 
 1. Indique un **Nombre** para la aplicación (por ejemplo, **Blazor Standalone AAD** ).
 1. Elija un **tipo de cuenta compatible**. En esta experiencia puede seleccionar **Solo cuentas de este directorio organizativo**.
@@ -67,6 +60,8 @@ En **Autenticación** > **Configuraciones de plataforma** > **Aplicación de pá
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-5.0"
+
+Registre una aplicación de AAD en el área **Azure Active Directory** > **Registros de aplicaciones** de Azure Portal:
 
 1. Indique un **Nombre** para la aplicación (por ejemplo, **Blazor Standalone AAD** ).
 1. Elija un **tipo de cuenta compatible**. En esta experiencia puede seleccionar **Solo cuentas de este directorio organizativo**.

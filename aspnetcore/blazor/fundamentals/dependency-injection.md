@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/19/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/dependency-injection
-ms.openlocfilehash: 3dc15f5efcc8f48a809bf9132588fb38732a7b35
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 32228cc98b4650d5871369511808e519a4f65be4
+ms.sourcegitcommit: 45aa1c24c3fdeb939121e856282b00bdcf00ea55
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88628292"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93343681"
 ---
 # <a name="aspnet-core-no-locblazor-dependency-injection"></a>Inserción de dependencias de Blazor de ASP.NET Core
 
@@ -42,7 +43,7 @@ Los servicios predeterminados se agregan de forma automática a la colección de
 
 | web de Office | Período de duración | Descripción |
 | ------- | -------- | ----------- |
-| <xref:System.Net.Http.HttpClient> | Con ámbito | Proporciona métodos para enviar solicitudes HTTP y recibir respuestas HTTP de un recurso identificado por un URI.<br><br>La instancia de <xref:System.Net.Http.HttpClient> en una aplicación Blazor WebAssembly usa el explorador para administrar el tráfico HTTP en segundo plano.<br><br>Las aplicaciones Blazor Server no incluyen un objeto <xref:System.Net.Http.HttpClient> configurado como servicio de forma predeterminada. Proporcione un objeto <xref:System.Net.Http.HttpClient> a una aplicación Blazor Server.<br><br>Para obtener más información, vea <xref:blazor/call-web-api>. |
+| <xref:System.Net.Http.HttpClient> | Con ámbito | Proporciona métodos para enviar solicitudes HTTP y recibir respuestas HTTP de un recurso identificado por un URI.<br><br>La instancia de <xref:System.Net.Http.HttpClient> en una aplicación Blazor WebAssembly usa el explorador para administrar el tráfico HTTP en segundo plano.<br><br>Las aplicaciones Blazor Server no incluyen un objeto <xref:System.Net.Http.HttpClient> configurado como servicio de forma predeterminada. Proporcione un objeto <xref:System.Net.Http.HttpClient> a una aplicación Blazor Server.<br><br>Para obtener más información, vea <xref:blazor/call-web-api>.<br><br>Un <xref:System.Net.Http.HttpClient> se registra como un servicio con ámbito, no como singleton. Para más información, consulte la sección [Duración del servicio](#service-lifetime). |
 | <xref:Microsoft.JSInterop.IJSRuntime> | Singleton (Blazor WebAssembly)<br>Con ámbito (Blazor Server) | Representa una instancia de un entorno de ejecución de JavaScript en la que se envían las llamadas de JavaScript. Para obtener más información, vea <xref:blazor/call-javascript-from-dotnet>. |
 | <xref:Microsoft.AspNetCore.Components.NavigationManager> | Singleton (Blazor WebAssembly)<br>Con ámbito (Blazor Server) | Contiene asistentes para trabajar con URI y el estado de navegación. Para obtener más información, vea [Asistentes de URI y estado de navegación](xref:blazor/fundamentals/routing#uri-and-navigation-state-helpers). |
 
@@ -68,7 +69,7 @@ public class Program
         var builder = WebAssemblyHostBuilder.CreateDefault(args);
         builder.Services.AddSingleton<IMyDependency, MyDependency>();
         builder.RootComponents.Add<App>("app");
-        
+
         builder.Services.AddScoped(sp => 
             new HttpClient
             {
@@ -90,7 +91,7 @@ public class Program
         var builder = WebAssemblyHostBuilder.CreateDefault(args);
         builder.Services.AddSingleton<WeatherService>();
         builder.RootComponents.Add<App>("app");
-        
+
         builder.Services.AddScoped(sp => 
             new HttpClient
             {
@@ -117,7 +118,7 @@ public class Program
         var builder = WebAssemblyHostBuilder.CreateDefault(args);
         builder.Services.AddSingleton<WeatherService>();
         builder.RootComponents.Add<App>("app");
-        
+
         builder.Services.AddScoped(sp => 
             new HttpClient
             {
@@ -165,7 +166,7 @@ Los servicios se pueden configurar con las duraciones que se muestran en la tabl
 
 | Período de duración | Descripción |
 | -------- | ----------- |
-| <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Scoped%2A> | Las aplicaciones Blazor WebAssembly no tienen actualmente un concepto de ámbitos de inserción de dependencias. Los servicios registrados con `Scoped` se comportan como servicios `Singleton`. Pero el modelo de hospedaje de Blazor Server admite la duración `Scoped`. En las aplicaciones Blazor Server, el ámbito del registro de un servicio con ámbito es la *conexión*. Por este motivo, se prefiere el uso de servicios con ámbito para los servicios que deben tener el ámbito del usuario actual, aunque la intención actual sea ejecutar el lado cliente en el explorador. |
+| <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Scoped%2A> | Las aplicaciones Blazor WebAssembly no tienen actualmente un concepto de ámbitos de inserción de dependencias. Los servicios registrados con `Scoped` se comportan como servicios `Singleton`. Pero el modelo de hospedaje de Blazor Server admite la duración `Scoped`. En las aplicaciones Blazor Server, el ámbito del registro de un servicio con ámbito es la *conexión*. Por este motivo, se prefiere el uso de servicios con ámbito para los servicios que deben tener el ámbito del usuario actual, aunque la intención actual sea ejecutar el lado cliente en el explorador de una aplicación Blazor WebAssembly. |
 | <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Singleton%2A> | La inserción de dependencias crea una *sola instancia* del servicio. Todos los componentes que requieren un servicio `Singleton` reciben una instancia del mismo servicio. |
 | <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Transient%2A> | Cada vez que un componente obtiene una instancia de un servicio `Transient` del contenedor de servicios, recibe una *nueva instancia* del servicio. |
 
@@ -216,7 +217,7 @@ Es posible que los servicios complejos requieran servicios adicionales. En el ej
 ```csharp
 public class DataAccess : IDataAccess
 {
-    public DataAccess(HttpClient client)
+    public DataAccess(HttpClient http)
     {
         ...
     }

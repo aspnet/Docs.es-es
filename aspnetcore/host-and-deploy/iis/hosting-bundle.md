@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/iis/hosting-bundle
-ms.openlocfilehash: 888f517d86cb9456ea8b933d3de842a0a21423b5
-ms.sourcegitcommit: d60bfd52bfb559e805abd654b87a2a0c7eb69cf8
+ms.openlocfilehash: a580c70d3141177be2508a0513f612eee56dbbf9
+ms.sourcegitcommit: 45aa1c24c3fdeb939121e856282b00bdcf00ea55
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91755206"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93343642"
 ---
 # <a name="the-net-core-hosting-bundle"></a>Conjunto de hospedaje de .NET Core
 
@@ -36,13 +37,20 @@ El conjunto de hospedaje de .NET Core es un instalador para el entorno de ejecu
 >
 > Si el conjunto de hospedaje se instala después de hacer lo propio con la versión de 64 bits (x64) de .NET Core, es posible que los SDK no estén disponibles ([No se ha detectado ningún SDK de .NET Core](xref:test/troubleshoot#no-net-core-sdks-were-detected)). Para resolver el problema, consulte <xref:test/troubleshoot#missing-sdk-after-installing-the-net-core-hosting-bundle>.
 
-### <a name="direct-download-current-version"></a>Descarga directa (versión actual)
+## <a name="direct-download-current-version"></a>Descarga directa (versión actual)
 
 Descargue al instalador mediante el vínculo siguiente:
 
 [Instalador del conjunto de hospedaje de .NET Core actual (descarga directa)](https://dotnet.microsoft.com/permalink/dotnetcore-current-windows-runtime-bundle-installer)
 
-### <a name="earlier-versions-of-the-installer"></a>Versiones anteriores del instalador
+## <a name="visual-c-redistributable-requirement"></a>Requisito de Visual C++ Redistributable
+
+En versiones anteriores de Windows, por ejemplo, Windows Server 2012 R2, instale Visual Studio C++ 2015, 2017, 2019 Redistributable. De lo contrario, un mensaje de error confuso en el registro de eventos de Windows informa de que `The data is the error.`
+
+[VS C++ Redistributable actual para x64](https://aka.ms/vs/16/release/vc_redist.x64.exe)
+[VS C++ Redistributable actual para x86](https://aka.ms/vs/16/release/vc_redist.x86.exe)
+
+## <a name="earlier-versions-of-the-installer"></a>Versiones anteriores del instalador
 
 Para obtener una versión anterior del instalador:
 
@@ -54,32 +62,29 @@ Para obtener una versión anterior del instalador:
 > [!WARNING]
 > Algunos instaladores contienen versiones que han alcanzado el final del ciclo de vida (EOL) y ya no son compatibles con Microsoft. Para obtener más información, consulte la [política de soporte técnico](https://dotnet.microsoft.com/platform/support/policy/dotnet-core).
 
-### <a name="install-the-hosting-bundle"></a>Instalación del conjunto de hospedaje
+## <a name="options"></a>Opciones
 
-1. Ejecute el instalador en el servidor. Los parámetros siguientes están disponibles cuando se ejecuta el instalador desde un shell de comandos de administrador:
+1. Los parámetros siguientes están disponibles cuando se ejecuta el instalador desde un shell de comandos de administrador:
 
    * `OPT_NO_ANCM=1`: omite la instalación del módulo de ASP.NET Core.
    * `OPT_NO_RUNTIME=1`: omite la instalación del entorno de ejecución de .NET Core. Se usa si el servidor solo hospeda [implementaciones autocontenidas (SCD)](/dotnet/core/deploying/#self-contained-deployments-scd).
    * `OPT_NO_SHAREDFX=1`: omite la instalación del marco compartido de ASP.NET (entorno de ejecución de ASP.NET). Se usa si el servidor solo hospeda [implementaciones autocontenidas (SCD)](/dotnet/core/deploying/#self-contained-deployments-scd).
    * `OPT_NO_X86=1`: omite la instalación de entornos de ejecución x86. Utilice este parámetro cuando sepa que no va a hospedar aplicaciones de 32 bits. Si hay alguna posibilidad de que vaya a hospedar aplicaciones de 32 bits y 64 bits en el futuro, no use este parámetro e instale ambos entornos de ejecución.
    * `OPT_NO_SHARED_CONFIG_CHECK=1`: deshabilita la comprobación para usar una configuración compartida de IIS cuando la configuración compartida (`applicationHost.config`) está en la misma máquina que la instalación de IIS. *Solo disponible para ASP.NET Core 2.2 o instaladores del conjunto de hospedaje posteriores.* Para obtener más información, vea <xref:host-and-deploy/aspnet-core-module#aspnet-core-module-with-an-iis-shared-configuration>.
-1. Reinicie el sistema o ejecute los comandos siguientes en un shell de comandos:
 
-   ```console
-   net stop was /y
-   net start w3svc
-   ```
-   Al reiniciar IIS, se recoge un cambio en la variable PATH del sistema, que es una variable de entorno, realizado por el programa de instalación.
+> [!NOTE]
+> Para obtener información sobre la configuración compartida de IIS, vea [ASP.NET Core Module with IIS Shared Configuration](xref:host-and-deploy/aspnet-core-module#aspnet-core-module-with-an-iis-shared-configuration) (Módulo de ASP.NET Core con configuración compartida de IIS).
 
-ASP.NET Core no adopta el comportamiento de puesta al día para las versiones de revisión de los paquetes de marco compartidos. Después de actualizar el marco compartido mediante la instalación de un nuevo lote de hospedaje, reinicie el sistema o ejecute los comandos siguientes en un shell de comandos:
+## <a name="restart-iis"></a>Reiniciar IIS
+
+Una vez instalado el conjunto de hospedaje, es posible que se requiera un reinicio manual de IIS. Por ejemplo, puede que las herramientas de la CLI de `dotnet` (comando) no existan en la ruta de acceso para ejecutar procesos de trabajo de IIS.
+
+Para detener e iniciar IIS manualmente, ejecute los siguientes comandos en un shell de comandos con privilegios elevados:
 
 ```console
 net stop was /y
 net start w3svc
 ```
-
-> [!NOTE]
-> Para obtener información sobre la configuración compartida de IIS, vea [ASP.NET Core Module with IIS Shared Configuration](xref:host-and-deploy/aspnet-core-module#aspnet-core-module-with-an-iis-shared-configuration) (Módulo de ASP.NET Core con configuración compartida de IIS).
 
 ## <a name="module-version-and-hosting-bundle-installer-logs"></a>Versión del módulo y registros del instalador de la agrupación de hospedaje
 

@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 5/12/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: test/middleware
-ms.openlocfilehash: 1a5259f65261fb95fcfaa59df3f04da14d3f1ae3
-ms.sourcegitcommit: 7258e94cf60c16e5b6883138e5e68516751ead0f
+ms.openlocfilehash: 2dd5fa127af4432c612bb654d50eb4147aea6868
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2020
-ms.locfileid: "89102870"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93051439"
 ---
 # <a name="test-aspnet-core-middleware"></a>Prueba del middleware de ASP.NET Core
 
@@ -67,7 +68,7 @@ Envíe una solicitud mediante <xref:System.Net.Http.HttpClient>:
 
 Declare el resultado. En primer lugar, realice una aserción opuesta al resultado que espera. Una ejecución inicial con una aserción de falso positivo confirma que se produce un error en la prueba cuando el middleware funciona correctamente. Ejecute la prueba y confirme que se produce un error en ella.
 
-En el ejemplo siguiente, el middleware debe devolver un código de estado 404 (*No encontrado*) cuando se solicita el punto de conexión raíz. Realice la primera serie de pruebas con `Assert.NotEqual( ... );`, lo que debería generar un error:
+En el ejemplo siguiente, el middleware debe devolver un código de estado 404 ( *No encontrado* ) cuando se solicita el punto de conexión raíz. Realice la primera serie de pruebas con `Assert.NotEqual( ... );`, lo que debería generar un error:
 
 [!code-csharp[](middleware/samples_snapshot/3.x/false-failure-check.cs?highlight=22)]
 
@@ -128,21 +129,21 @@ public async Task TestMiddleware_ExpectedResponse()
 
 <xref:Microsoft.AspNetCore.TestHost.TestServer.SendAsync%2A> permite la configuración directa de un objeto <xref:Microsoft.AspNetCore.Http.HttpContext> en lugar de usar las abstracciones de <xref:System.Net.Http.HttpClient>. Use <xref:Microsoft.AspNetCore.TestHost.TestServer.SendAsync%2A> para manipular estructuras que solo están disponibles en el servidor, como [HttpContext.Items](xref:Microsoft.AspNetCore.Http.HttpContext.Items) o [HttpContext.Features](xref:Microsoft.AspNetCore.Http.HttpContext.Features).
 
-Como en el ejemplo anterior, en el que se intentaba obtener una respuesta *404 - No encontrado*, compruebe lo contrario a cada instrucción `Assert` de la prueba anterior. La comprobación confirma que se produce un error en la prueba cuando el middleware funciona con normalidad. Una vez que haya confirmado que la prueba de falso positivo funciona, establezca las instrucciones `Assert` finales para las condiciones y los valores esperados de la prueba. Vuelva a ejecutarla para confirmar que se realiza correctamente.
+Como en el ejemplo anterior, en el que se intentaba obtener una respuesta *404 - No encontrado* , compruebe lo contrario a cada instrucción `Assert` de la prueba anterior. La comprobación confirma que se produce un error en la prueba cuando el middleware funciona con normalidad. Una vez que haya confirmado que la prueba de falso positivo funciona, establezca las instrucciones `Assert` finales para las condiciones y los valores esperados de la prueba. Vuelva a ejecutarla para confirmar que se realiza correctamente.
 
 ## <a name="testserver-limitations"></a>Limitaciones de TestServer
 
 TestServer:
 
 * se creó para replicar los comportamientos del servidor a fin de probar el middleware.
-* ***No*** intenta replicar todos los comportamientos de <xref:System.Net.Http.HttpClient>.
-* Trata de proporcionar al cliente acceso a tanto control sobre el servidor como sea posible y con tanta visibilidad como sea posible sobre lo que sucede en el servidor. Por ejemplo, puede producir excepciones no iniciadas normalmente por `HttpClient` para comunicar directamente el estado del servidor.
+* * **no** _ intenta replicar todos los comportamientos de <xref:System.Net.Http.HttpClient>.
+_Trata de proporcionar al cliente acceso a tanto control sobre el servidor como sea posible y con tanta visibilidad como sea posible sobre lo que sucede en el servidor. Por ejemplo, puede producir excepciones no iniciadas normalmente por `HttpClient` para comunicar directamente el estado del servidor.
 * No establece de forma predeterminada algunos encabezados específicos de transporte, ya que normalmente no son pertinentes para el middleware. Para obtener más información, vea la siguiente sección.
 
 ### <a name="content-length-and-transfer-encoding-headers"></a>Encabezados Content-Length and Transfer-Encoding
 
-TestServer ***no*** establece encabezados de solicitud o respuesta relacionados con el transporte, como [Content-Length](https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Length) o [Transfer-Encoding](https://developer.mozilla.org/docs/Web/HTTP/Headers/Transfer-Encoding). Las aplicaciones deben evitar depender de estos encabezados porque su uso varía según el cliente, el escenario y el protocolo. Si `Content-Length` y `Transfer-Encoding` son necesarios para probar un escenario concreto, se pueden especificar en la prueba al crear <xref:System.Net.Http.HttpRequestMessage> o <xref:Microsoft.AspNetCore.Http.HttpContext>. Para más información, consulte los siguientes problemas de GitHub:
+TestServer * **no** _ establece encabezados de solicitud o respuesta relacionados con el transporte, como [Content-Length](https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Length) o [Transfer-Encoding](https://developer.mozilla.org/docs/Web/HTTP/Headers/Transfer-Encoding). Las aplicaciones deben evitar depender de estos encabezados porque su uso varía según el cliente, el escenario y el protocolo. Si `Content-Length` y `Transfer-Encoding` son necesarios para probar un escenario concreto, se pueden especificar en la prueba al crear <xref:System.Net.Http.HttpRequestMessage> o <xref:Microsoft.AspNetCore.Http.HttpContext>. Para más información, consulte los siguientes problemas de GitHub:
 
-* [dotnet/aspnetcore#21677](https://github.com/dotnet/aspnetcore/issues/21677)
+_ [dotnet/aspnetcore#21677](https://github.com/dotnet/aspnetcore/issues/21677)
 * [dotnet/aspnetcore#18463](https://github.com/dotnet/aspnetcore/issues/18463)
 * [dotnet/aspnetcore#13273](https://github.com/dotnet/aspnetcore/issues/13273)

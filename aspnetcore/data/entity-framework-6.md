@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 7/14/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -15,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/entity-framework-6
-ms.openlocfilehash: 64d420d7076f1da453ee423cc4a3732eeb47b221
-ms.sourcegitcommit: 4df148cbbfae9ec8d377283ee71394944a284051
+ms.openlocfilehash: 086418c161677f585b08ed360555c93d8575e701
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88876703"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059460"
 ---
 # <a name="aspnet-core-and-entity-framework-6"></a>ASP.NET Core y Entity Framework 6
 ::: moniker range=">= aspnetcore-3.0"
@@ -104,9 +105,9 @@ Este ejemplo se puede crear desde cero mediante los pasos siguientes en Visual S
 
 * En el proyecto de Core, agregue una referencia de proyecto al proyecto de biblioteca de clases.    
 
-* En el proyecto de Core, en *Startup.cs*, registre el contexto para DI.    
+* En el proyecto de Core, en *Startup.cs* , registre el contexto para DI.    
 
-* En el proyecto de Core, en *appsettings.json*, agregue la cadena de conexión.    
+* En el proyecto de Core, en *appsettings.json* , agregue la cadena de conexión.  
 
 * En el proyecto de Core, agregue un controlador y vistas para comprobar que puede leer y escribir datos. (Tenga en cuenta que el scaffolding de ASP.NET Core MVC no funcionará con el contexto de EF6 al que se hace referencia desde la biblioteca de clases).
 

@@ -5,8 +5,9 @@ description: Obtenga información sobre cómo proteger una aplicación hospedada
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: devx-track-csharp, mvc
-ms.date: 10/27/2020
+ms.date: 11/02/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/hosted-with-azure-active-directory
-ms.openlocfilehash: cb1deb71723660964954c2faae4512b7df9b2ed4
-ms.sourcegitcommit: 2e3a967331b2c69f585dd61e9ad5c09763615b44
+ms.openlocfilehash: 17f96be762ece8c59577445eb2ae630a8ee3b3dd
+ms.sourcegitcommit: d64bf0cbe763beda22a7728c7f10d07fc5e19262
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92690543"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93234483"
 ---
 # <a name="secure-an-aspnet-core-no-locblazor-webassembly-hosted-app-with-azure-active-directory"></a>Protección de una aplicación hospedada Blazor WebAssembly de ASP.NET Core con Azure Active Directory
 
@@ -140,15 +141,17 @@ Reemplace los marcadores de posición del siguiente comando por la información 
 dotnet new blazorwasm -au SingleOrg --api-client-id "{SERVER API APP CLIENT ID}" --app-id-uri "{SERVER API APP ID URI}" --client-id "{CLIENT APP CLIENT ID}" --default-scope "{DEFAULT SCOPE}" --domain "{TENANT DOMAIN}" -ho -o {APP NAME} --tenant-id "{TENANT ID}"
 ```
 
-| Marcador de posición                  | Nombre de Azure Portal                                     | Ejemplo                                      |
-| ---------------------------- | ----------------------------------------------------- | -------------------------------------------- |
-| `{APP NAME}`                 | &mdash;                                               | `BlazorSample`                               |
-| `{CLIENT APP CLIENT ID}`     | Identificador de aplicación (cliente) para la aplicación *`Client`*        | `4369008b-21fa-427c-abaa-9b53bf58e538`       |
-| `{DEFAULT SCOPE}`            | Nombre de ámbito                                            | `API.Access`                                 |
-| `{SERVER API APP CLIENT ID}` | Identificador de aplicación (cliente) para la *aplicación de API de servidor*      | `41451fa7-82d9-4673-8fa5-69eff5a761fd`       |
-| `{SERVER API APP ID URI}`    | URI de Id. de aplicación                                    | `api://41451fa7-82d9-4673-8fa5-69eff5a761fd` |
-| `{TENANT DOMAIN}`            | Dominio Principal/Publicador/Inquilino                       | `contoso.onmicrosoft.com`                    |
-| `{TENANT ID}`                | Id. de directorio (inquilino)                                 | `e86c78e2-8bb4-4c41-aefd-918e0565a45e`       |
+| Marcador de posición                  | Nombre de Azure Portal                                     | Ejemplo                                        |
+| ---------------------------- | ----------------------------------------------------- | ---------------------------------------------- |
+| `{APP NAME}`                 | &mdash;                                               | `BlazorSample`                                 |
+| `{CLIENT APP CLIENT ID}`     | Identificador de aplicación (cliente) para la aplicación *`Client`*        | `4369008b-21fa-427c-abaa-9b53bf58e538`         |
+| `{DEFAULT SCOPE}`            | Nombre de ámbito                                            | `API.Access`                                   |
+| `{SERVER API APP CLIENT ID}` | Identificador de aplicación (cliente) para la *aplicación de API de servidor*      | `41451fa7-82d9-4673-8fa5-69eff5a761fd`         |
+| `{SERVER API APP ID URI}`    | URI de Id. de aplicación&dagger;                            | `41451fa7-82d9-4673-8fa5-69eff5a761fd`&dagger; |
+| `{TENANT DOMAIN}`            | Dominio Principal/Publicador/Inquilino                       | `contoso.onmicrosoft.com`                      |
+| `{TENANT ID}`                | Id. de directorio (inquilino)                                 | `e86c78e2-8bb4-4c41-aefd-918e0565a45e`         |
+
+&dagger;La plantilla Blazor WebAssembly agrega automáticamente un esquema `api://` al argumento de URI del identificador de aplicación que se pasa en el comando `dotnet new`. Al proporcionar el URI de identificador de aplicación para el marcador de posición `{SERVER API APP ID URI}` y si el esquema es `api://`, quite el esquema (`api://`) del argumento, como se muestra en el valor de ejemplo de la tabla anterior. Si el URI de identificador de aplicación es un valor personalizado o tiene algún otro esquema (por ejemplo, `https://` para un dominio de publicador que no es de confianza similar a `https://contoso.onmicrosoft.com/41451fa7-82d9-4673-8fa5-69eff5a761fd`), debe actualizar manualmente el URI del ámbito predeterminado y quitar el esquema `api://` después de que la plantilla cree la aplicación *`Client`* . Para obtener más información, consulte la nota de la sección [Ámbitos de token de acceso](#access-token-scopes). La plantilla Blazor WebAssembly se puede cambiar en una versión futura de ASP.NET Core para abordar estos escenarios. Para obtener más información, consulte [Esquema doble para el URI de identificador de aplicación con la plantilla WASM Blazor (hospedada, una sola organización) (dotnet/aspnetcore #27417)](https://github.com/dotnet/aspnetcore/issues/27417).
 
 La ubicación de salida especificada con la opción `-o|--output` crea una carpeta de proyecto si no existe y se convierte en parte del nombre de la aplicación.
 
@@ -437,6 +440,29 @@ builder.Services.AddMsalAuthentication(options =>
     options.ProviderOptions.DefaultAccessTokenScopes.Add("{SCOPE URI}");
 });
 ```
+
+> [!NOTE]
+> La plantilla Blazor WebAssembly agrega automáticamente un esquema `api://` al argumento de URI del identificador de aplicación que se pasa en el comando `dotnet new`. Al generar una aplicación a partir de la plantilla de proyecto Blazor, confirme que el valor del ámbito de token de acceso predeterminado usa el valor de URI de identificador de aplicación personalizado correcto que proporcionó en Azure Portal o un valor con **uno** de los siguientes formatos:
+>
+> * Cuando el dominio del publicador del directorio es **de confianza** , el ámbito del token de acceso predeterminado suele ser un valor similar al del ejemplo siguiente, donde `API.Access` es el nombre del ámbito predeterminado:
+>
+>   ```csharp
+>   options.ProviderOptions.DefaultAccessTokenScopes.Add(
+>       "api://41451fa7-82d9-4673-8fa5-69eff5a761fd/API.Access");
+>   ```
+>
+>   Inspeccione el valor de un esquema doble (`api://api://...`). Si hay un esquema doble, quite el primer esquema `api://` del valor.
+>
+> * Cuando el dominio del publicador del directorio **no es de confianza** , el ámbito del token de acceso predeterminado suele ser un valor similar al del ejemplo siguiente, donde `API.Access` es el nombre del ámbito predeterminado:
+>
+>   ```csharp
+>   options.ProviderOptions.DefaultAccessTokenScopes.Add(
+>       "https://contoso.onmicrosoft.com/41451fa7-82d9-4673-8fa5-69eff5a761fd/API.Access");
+>   ```
+>
+>   Inspeccione el valor para ver si hay un esquema `api://` adicional (`api://https://contoso.onmicrosoft.com/...`). Si hay un esquema `api://` adicional, quite el esquema `api://` del valor.
+>
+> La plantilla Blazor WebAssembly se puede cambiar en una versión futura de ASP.NET Core para abordar estos escenarios. Para obtener más información, consulte [Esquema doble para el URI de identificador de aplicación con la plantilla WASM Blazor (hospedada, una sola organización) (dotnet/aspnetcore #27417)](https://github.com/dotnet/aspnetcore/issues/27417).
 
 Especifique ámbitos adicionales con `AdditionalScopesToConsent`:
 

@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/05/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/error-handling
-ms.openlocfilehash: da7f50b27e447b86bd8a06851b767488d51b7050
-ms.sourcegitcommit: a07f83b00db11f32313045b3492e5d1ff83c4437
+ms.openlocfilehash: c8174c7e253a596d02dbc6cec183453b3723bc24
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90592896"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060474"
 ---
 # <a name="handle-errors-in-aspnet-core"></a>Controlar errores en ASP.NET Core
 
@@ -45,11 +46,11 @@ El código resaltado anterior habilita la página de excepciones para el desarro
 
 Las plantillas colocan <xref:Microsoft.AspNetCore.Builder.DeveloperExceptionPageExtensions.UseDeveloperExceptionPage%2A> al principio de la canalización de middleware para que pueda detectar las excepciones que se producen en el middleware que sigue.
 
-El código anterior ***solo*** habilita la página de excepciones para el desarrollador cuando la aplicación se ejecuta en el entorno de desarrollo. La información detallada de la excepción no debe mostrarse públicamente cuando la aplicación se ejecuta en el entorno de producción. Para más información sobre la configuración de entornos, consulte <xref:fundamentals/environments>.
+El código anterior * **solo** habilita la página de excepciones para el desarrollador cuando la aplicación se ejecuta en el entorno de desarrollo. La información detallada de la excepción no debe mostrarse públicamente cuando la aplicación se ejecuta en el entorno de producción. Para más información sobre la configuración de entornos, consulte <xref:fundamentals/environments>.
 
 La página de excepciones para el desarrollador incluye la siguiente información sobre la excepción y la solicitud:
 
-* Seguimiento de la pila
+_ Seguimiento de la pila
 * Parámetros de cadena de consulta (si existen)
 * Cookie (si existen)
 * Encabezados
@@ -65,7 +66,7 @@ En el ejemplo siguiente, <xref:Microsoft.AspNetCore.Builder.ExceptionHandlerExte
 
 [!code-csharp[](error-handling/samples/2.x/ErrorHandlingSample/Startup.cs?name=snippet_DevPageAndHandlerPage&highlight=5-9)]
 
-La plantilla de aplicación de Razor Pages proporciona una página de error ( *.cshtml*) y una clase <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel> (`ErrorModel`) en la carpeta *Pages*. Para una aplicación de MVC, la plantilla de proyecto incluye un método de acción de `Error` y una vista del error para el controlador de inicio.
+La plantilla de aplicación de Razor Pages proporciona una página de error ( *.cshtml* ) y una clase <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel> (`ErrorModel`) en la carpeta *Pages*. Para una aplicación de MVC, la plantilla de proyecto incluye un método de acción de `Error` y una vista del error para el controlador de inicio.
 
 No marque el método de acción del controlador de errores con atributos de método HTTP, como `HttpGet`. Los verbos explícitos impiden que algunas solicitudes lleguen al método de acción. Permita el acceso anónimo al método si los usuarios no autenticados deben recibir la vista del error.
 
@@ -313,7 +314,7 @@ En el ejemplo siguiente, <xref:Microsoft.AspNetCore.Builder.ExceptionHandlerExte
 
 [!code-csharp[](error-handling/samples/2.x/ErrorHandlingSample/Startup.cs?name=snippet_DevPageAndHandlerPage&highlight=5-9)]
 
-La plantilla de aplicación de Razor Pages proporciona una página de error ( *.cshtml*) y una clase <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel> (`ErrorModel`) en la carpeta *Pages*. Para una aplicación de MVC, la plantilla de proyecto incluye un método de acción para el error y una vista del error.
+La plantilla de aplicación de Razor Pages proporciona una página de error ( *.cshtml* ) y una clase <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel> (`ErrorModel`) en la carpeta *Pages*. Para una aplicación de MVC, la plantilla de proyecto incluye un método de acción para el error y una vista del error.
 
 No marque el método de acción del controlador de errores con atributos de método HTTP, como `HttpGet`. Los verbos explícitos impiden que algunas solicitudes lleguen al método. Permita el acceso anónimo al método si los usuarios no autenticados deben recibir la vista del error.
 

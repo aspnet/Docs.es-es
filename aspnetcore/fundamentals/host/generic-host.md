@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 4/17/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/host/generic-host
-ms.openlocfilehash: d3de81ce7248372279b423da865513ee5db73c79
-ms.sourcegitcommit: d7991068bc6b04063f4bd836fc5b9591d614d448
+ms.openlocfilehash: 3e44932c302713132a37534b97fffdd91acce2c7
+ms.sourcegitcommit: d64bf0cbe763beda22a7728c7f10d07fc5e19262
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91762326"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93234561"
 ---
 # <a name="net-generic-host-in-aspnet-core"></a>Host genérico de .NET en ASP.NET Core
 
@@ -125,7 +126,7 @@ El método <xref:Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder*> realiz
   * EventLog (solo si se ejecuta en Windows)
 * Permite la [validación del ámbito](xref:fundamentals/dependency-injection#scope-validation) y la [validación de dependencias](xref:Microsoft.Extensions.DependencyInjection.ServiceProviderOptions.ValidateOnBuild) si el entorno es Desarrollo.
 
-El método `ConfigureWebHostDefaults` realiza las acciones siguientes:
+El método <xref:Microsoft.Extensions.Hosting.GenericHostBuilderExtensions.ConfigureWebHostDefaults*> realiza las acciones siguientes:
 
 * Carga la configuración de host desde las variables de entorno con el prefijo `ASPNETCORE_`.
 * Establece el servidor [Kestrel](xref:fundamentals/servers/kestrel) como servidor web y lo configura por medio de los proveedores de configuración de hospedaje de la aplicación. Para conocer las opciones predeterminadas del servidor Kestrel, consulte <xref:fundamentals/servers/kestrel#kestrel-options>.
@@ -196,7 +197,7 @@ Para más información, consulte [Configuración en ASP.NET Core](xref:fundament
 
 ## <a name="settings-for-all-app-types"></a>Configuración para todos los tipos de aplicaciones
 
-En esta sección se enumeran las configuraciones de host que se aplican a las cargas de trabajo HTTP y no HTTP. De forma predeterminada, las variables de entorno que se usan para configurar estas opciones pueden tener un prefijo `DOTNET_` o `ASPNETCORE_`.
+En esta sección se enumeran las configuraciones de host que se aplican a las cargas de trabajo HTTP y no HTTP. De forma predeterminada, las variables de entorno que se usan para configurar estas opciones pueden tener un prefijo `DOTNET_` o `ASPNETCORE_`. Para más información, consulte [Configuración predeterminada del generador](#default-builder-settings).
 
 <!-- In the following sections, two spaces at end of line are used to force line breaks in the rendered page. -->
 
@@ -204,10 +205,10 @@ En esta sección se enumeran las configuraciones de host que se aplican a las ca
 
 La propiedad [IHostEnvironment.ApplicationName](xref:Microsoft.Extensions.Hosting.IHostEnvironment.ApplicationName*) se establece desde la configuración de host durante la construcción de este.
 
-**Clave**: `applicationName`  
-**Tipo**: `string`  
-**Predeterminado**: nombre del ensamblado que contiene el punto de entrada de la aplicación.  
-**Variable de entorno**: `<PREFIX_>APPLICATIONNAME`
+**Clave** : `applicationName`  
+**Tipo** : `string`  
+**Predeterminado** : nombre del ensamblado que contiene el punto de entrada de la aplicación.  
+**Variable de entorno** : `<PREFIX_>APPLICATIONNAME`
 
 Para establecer este valor, use la variable de entorno. 
 
@@ -215,10 +216,10 @@ Para establecer este valor, use la variable de entorno.
 
 La propiedad [IHostEnvironment.ContentRootPath](xref:Microsoft.Extensions.Hosting.IHostEnvironment.ContentRootPath*) determina la ubicación en la que el host comienza a buscar archivos de contenido. Si no existe la ruta de acceso, el host no se puede iniciar.
 
-**Clave**: `contentRoot`  
-**Tipo**: `string`  
-**Predeterminado**: carpeta donde se encuentra el ensamblado de la aplicación.  
-**Variable de entorno**: `<PREFIX_>CONTENTROOT`
+**Clave** : `contentRoot`  
+**Tipo** : `string`  
+**Predeterminado** : carpeta donde se encuentra el ensamblado de la aplicación.  
+**Variable de entorno** : `<PREFIX_>CONTENTROOT`
 
 Para establecer este valor, use la variable de entorno o llame a `UseContentRoot` en `IHostBuilder`:
 
@@ -237,10 +238,10 @@ Para obtener más información, consulte:
 
 La propiedad [IHostEnvironment.EnvironmentName](xref:Microsoft.Extensions.Hosting.IHostEnvironment.EnvironmentName*) puede establecerse en cualquier valor. Los valores definidos por el marco son `Development`, `Staging` y `Production`. Los valores no distinguen mayúsculas de minúsculas.
 
-**Clave**: `environment`  
-**Tipo**: `string`  
-**Predeterminado**: `Production`  
-**Variable de entorno**: `<PREFIX_>ENVIRONMENT`
+**Clave** : `environment`  
+**Tipo** : `string`  
+**Predeterminado** : `Production`  
+**Variable de entorno** : `<PREFIX_>ENVIRONMENT`
 
 Para establecer este valor, use la variable de entorno o llame a `UseEnvironment` en `IHostBuilder`:
 
@@ -259,10 +260,10 @@ Host.CreateDefaultBuilder(args)
 
 Si el período de tiempo de espera expira antes de que todos los servicios hospedados se hayan detenido, los servicios activos que queden se detendrán cuando se cierre la aplicación. Los servicios se detienen aun cuando no hayan terminado de procesarse. Si los servicios requieren más tiempo para detenerse, aumente el valor de tiempo de espera.
 
-**Clave**: `shutdownTimeoutSeconds`  
-**Tipo**: `int`  
-**Predeterminado**: 5 segundos  
-**Variable de entorno**: `<PREFIX_>SHUTDOWNTIMEOUTSECONDS`
+**Clave** : `shutdownTimeoutSeconds`  
+**Tipo** : `int`  
+**Predeterminado** : 5 segundos  
+**Variable de entorno** : `<PREFIX_>SHUTDOWNTIMEOUTSECONDS`
 
 Para establecer este valor, use la variable de entorno o configure `HostOptions`. El siguiente ejemplo establece el tiempo de espera en 20 segundos:
 
@@ -270,13 +271,13 @@ Para establecer este valor, use la variable de entorno o configure `HostOptions`
 
 ### <a name="disable-app-configuration-reload-on-change"></a>Deshabilitación de la recarga de configuración de aplicaciones al realizar un cambio
 
-[De forma predeterminada](xref:fundamentals/configuration/index#default), *appsettings.json* y *appsettings.{Entorno}.json* se recargan cuando el archivo cambia. Para deshabilitar este comportamiento de recarga en ASP.NET Core 5.0 o versiones posteriores, establezca la clave `hostBuilder:reloadConfigOnChange` en `false`.
+[De forma predeterminada](xref:fundamentals/configuration/index#default), *appsettings.json* y *appsettings.{Environment}.json* se recargan cuando cambia el archivo. Para deshabilitar este comportamiento de recarga en ASP.NET Core 5.0 o versiones posteriores, establezca la clave `hostBuilder:reloadConfigOnChange` en `false`.
 
-**Clave**: `hostBuilder:reloadConfigOnChange`  
-**Tipo**: `bool` (`true` o `1`)  
-**Predeterminado**: `true`  
-**Argumento de la línea de comandos**: `hostBuilder:reloadConfigOnChange`  
-**Variable de entorno**: `<PREFIX_>hostBuilder:reloadConfigOnChange`
+**Clave** : `hostBuilder:reloadConfigOnChange`  
+**Tipo** : `bool` (`true` o `1`)  
+**Predeterminado** : `true`  
+**Argumento de la línea de comandos** : `hostBuilder:reloadConfigOnChange`  
+**Variable de entorno** : `<PREFIX_>hostBuilder:reloadConfigOnChange`
 
 > [!WARNING]
 > El separador de dos puntos (`:`) no funciona con las claves jerárquicas de variables de entorno en todas las plataformas. Para más información, consulte [Variables de entorno](xref:fundamentals/configuration/index#environment-variables).
@@ -301,10 +302,10 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 
 Cuando es `false`, los errores durante el inicio provocan la salida del host. Cuando es `true`, el host captura las excepciones producidas durante el inicio e intenta iniciar el servidor.
 
-**Clave**: `captureStartupErrors`  
-**Tipo**: `bool` (`true` o `1`)  
-**Predeterminado**: `false`, a menos que la aplicación se ejecute con Kestrel detrás de IIS, en cuyo caso el valor predeterminado es `true`.  
-**Variable de entorno**: `<PREFIX_>CAPTURESTARTUPERRORS`
+**Clave** : `captureStartupErrors`  
+**Tipo** : `bool` (`true` o `1`)  
+**Predeterminado** : `false`, a menos que la aplicación se ejecute con Kestrel detrás de IIS, en cuyo caso el valor predeterminado es `true`.  
+**Variable de entorno** : `<PREFIX_>CAPTURESTARTUPERRORS`
 
 Para establecer este valor, utilice la configuración o llame a `CaptureStartupErrors`:
 
@@ -316,10 +317,10 @@ webBuilder.CaptureStartupErrors(true);
 
 Si se habilita, o si el entorno es `Development`, la aplicación captura errores detallados.
 
-**Clave**: `detailedErrors`  
-**Tipo**: `bool` (`true` o `1`)  
-**Predeterminado**: `false`  
-**Variable de entorno**: `<PREFIX_>_DETAILEDERRORS`
+**Clave** : `detailedErrors`  
+**Tipo** : `bool` (`true` o `1`)  
+**Predeterminado** : `false`  
+**Variable de entorno** : `<PREFIX_>_DETAILEDERRORS`
 
 Para establecer este valor, utilice la configuración o llame a `UseSetting`:
 
@@ -331,10 +332,10 @@ webBuilder.UseSetting(WebHostDefaults.DetailedErrorsKey, "true");
 
 Una cadena delimitada por punto y coma de ensamblados de inicio de hospedaje para cargar en el inicio. Aunque el valor de configuración predeterminado es una cadena vacía, los ensamblados de inicio de hospedaje incluyen siempre el ensamblado de la aplicación. Cuando se especifican los ensamblados de inicio de hospedaje, estos se agregan al ensamblado de la aplicación para que se carguen cuando la aplicación genera sus servicios comunes durante el inicio.
 
-**Clave**: `hostingStartupAssemblies`  
-**Tipo**: `string`  
-**Predeterminado**: Cadena vacía  
-**Variable de entorno**: `<PREFIX_>_HOSTINGSTARTUPASSEMBLIES`
+**Clave** : `hostingStartupAssemblies`  
+**Tipo** : `string`  
+**Predeterminado** : Cadena vacía  
+**Variable de entorno** : `<PREFIX_>_HOSTINGSTARTUPASSEMBLIES`
 
 Para establecer este valor, utilice la configuración o llame a `UseSetting`:
 
@@ -346,10 +347,10 @@ webBuilder.UseSetting(WebHostDefaults.HostingStartupAssembliesKey, "assembly1;as
 
 Una cadena delimitada por punto y coma de ensamblados de inicio de hospedaje para excluir en el inicio.
 
-**Clave**: `hostingStartupExcludeAssemblies`  
-**Tipo**: `string`  
-**Predeterminado**: Cadena vacía  
-**Variable de entorno**: `<PREFIX_>_HOSTINGSTARTUPEXCLUDEASSEMBLIES`
+**Clave** : `hostingStartupExcludeAssemblies`  
+**Tipo** : `string`  
+**Predeterminado** : Cadena vacía  
+**Variable de entorno** : `<PREFIX_>_HOSTINGSTARTUPEXCLUDEASSEMBLIES`
 
 Para establecer este valor, utilice la configuración o llame a `UseSetting`:
 
@@ -361,10 +362,10 @@ webBuilder.UseSetting(WebHostDefaults.HostingStartupExcludeAssembliesKey, "assem
 
 Puerto de redireccionamiento HTTPS. Se usa en [Exigir HTTPS](xref:security/enforcing-ssl).
 
-**Clave**: `https_port`  
-**Tipo**: `string`  
-**Predeterminado**: no se ha establecido ningún valor predeterminado.  
-**Variable de entorno**: `<PREFIX_>HTTPS_PORT`
+**Clave** : `https_port`  
+**Tipo** : `string`  
+**Predeterminado** : no se ha establecido ningún valor predeterminado.  
+**Variable de entorno** : `<PREFIX_>HTTPS_PORT`
 
 Para establecer este valor, utilice la configuración o llame a `UseSetting`:
 
@@ -376,10 +377,10 @@ webBuilder.UseSetting("https_port", "8080");
 
 Indica si el host debe escuchar en las direcciones URL configuradas con `IWebHostBuilder` en lugar de las que están configuradas con la implementación de `IServer`.
 
-**Clave**: `preferHostingUrls`  
-**Tipo**: `bool` (`true` o `1`)  
-**Predeterminado**: `true`  
-**Variable de entorno**: `<PREFIX_>_PREFERHOSTINGURLS`
+**Clave** : `preferHostingUrls`  
+**Tipo** : `bool` (`true` o `1`)  
+**Predeterminado** : `true`  
+**Variable de entorno** : `<PREFIX_>_PREFERHOSTINGURLS`
 
 Para establecer este valor, use la variable de entorno o llame a `PreferHostingUrls`:
 
@@ -391,10 +392,10 @@ webBuilder.PreferHostingUrls(false);
 
 Impide la carga automática de los ensamblados de inicio de hospedaje, incluidos los configurados por el ensamblado de la aplicación. Para obtener más información, vea <xref:fundamentals/configuration/platform-specific-configuration>.
 
-**Clave**: `preventHostingStartup`  
-**Tipo**: `bool` (`true` o `1`)  
-**Predeterminado**: `false`  
-**Variable de entorno**: `<PREFIX_>_PREVENTHOSTINGSTARTUP`
+**Clave** : `preventHostingStartup`  
+**Tipo** : `bool` (`true` o `1`)  
+**Predeterminado** : `false`  
+**Variable de entorno** : `<PREFIX_>_PREVENTHOSTINGSTARTUP`
 
 Para establecer este valor, use la variable de entorno o llame a `UseSetting`:
 
@@ -406,10 +407,10 @@ webBuilder.UseSetting(WebHostDefaults.PreventHostingStartupKey, "true");
 
 Ensamblado en el que se va a buscar la clase `Startup`.
 
-**Clave**: `startupAssembly`  
-**Tipo**: `string`  
-**Predeterminado**: el ensamblado de la aplicación  
-**Variable de entorno**: `<PREFIX_>STARTUPASSEMBLY`
+**Clave** : `startupAssembly`  
+**Tipo** : `string`  
+**Predeterminado** : el ensamblado de la aplicación  
+**Variable de entorno** : `<PREFIX_>STARTUPASSEMBLY`
 
 Para establecer este valor, use la variable de entorno o llame a `UseStartup`. `UseStartup` puede tomar un nombre del ensamblado (`string`) o un tipo (`TStartup`). Si se llama a varios métodos `UseStartup`, la última llamada tiene prioridad.
 
@@ -425,10 +426,10 @@ webBuilder.UseStartup<Startup>();
 
 Lista delimitada por punto y coma de las direcciones IP o las direcciones de host con los puertos y protocolos en los que el servidor debe escuchar las solicitudes. Por ejemplo: `http://localhost:123`. Use "\*" para indicar que el servidor debe escuchar las solicitudes en cualquier dirección IP o nombre de host con el puerto y el protocolo especificados (por ejemplo, `http://*:5000`). El protocolo (`http://` o `https://`) debe incluirse con cada dirección URL. Los formatos admitidos varían de un servidor a otro.
 
-**Clave**: `urls`  
-**Tipo**: `string`  
-**Predeterminado**: `http://localhost:5000` y `https://localhost:5001`  
-**Variable de entorno**: `<PREFIX_>URLS`
+**Clave** : `urls`  
+**Tipo** : `string`  
+**Predeterminado** : `http://localhost:5000` y `https://localhost:5001`  
+**Variable de entorno** : `<PREFIX_>URLS`
 
 Para establecer este valor, use la variable de entorno o llame a `UseUrls`:
 
@@ -442,10 +443,10 @@ Kestrel tiene su propia API de configuración de punto de conexión. Para obtene
 
 La propiedad [IWebHostEnvironment.WebRootPath](xref:Microsoft.AspNetCore.Hosting.IWebHostEnvironment.WebRootPath) determina la ruta de acceso relativa a los recursos estáticos de la aplicación. Si la ruta de acceso no existe, se utiliza un proveedor de archivos no-op.  
 
-**Clave**: `webroot`  
-**Tipo**: `string`  
-**Predeterminado**: De manera predeterminada, es `wwwroot`. Debe existir la ruta de acceso a *{raíz del contenido}/wwwroot*.  
-**Variable de entorno**: `<PREFIX_>WEBROOT`
+**Clave** : `webroot`  
+**Tipo** : `string`  
+**Predeterminado** : De manera predeterminada, es `wwwroot`. Debe existir la ruta de acceso a *{raíz del contenido}/wwwroot*.  
+**Variable de entorno** : `<PREFIX_>WEBROOT`
 
 Para establecer este valor, use la variable de entorno o llame a `UseWebRoot` en `IWebHostBuilder`:
 
@@ -707,10 +708,10 @@ En esta sección se enumeran las configuraciones de host que se aplican a las ca
 
 La propiedad [IHostEnvironment.ApplicationName](xref:Microsoft.Extensions.Hosting.IHostEnvironment.ApplicationName*) se establece desde la configuración de host durante la construcción de este.
 
-**Clave**: `applicationName`  
-**Tipo**: `string`  
-**Predeterminado**: nombre del ensamblado que contiene el punto de entrada de la aplicación.  
-**Variable de entorno**: `<PREFIX_>APPLICATIONNAME`
+**Clave** : `applicationName`  
+**Tipo** : `string`  
+**Predeterminado** : nombre del ensamblado que contiene el punto de entrada de la aplicación.  
+**Variable de entorno** : `<PREFIX_>APPLICATIONNAME`
 
 Para establecer este valor, use la variable de entorno. 
 
@@ -718,10 +719,10 @@ Para establecer este valor, use la variable de entorno.
 
 La propiedad [IHostEnvironment.ContentRootPath](xref:Microsoft.Extensions.Hosting.IHostEnvironment.ContentRootPath*) determina la ubicación en la que el host comienza a buscar archivos de contenido. Si no existe la ruta de acceso, el host no se puede iniciar.
 
-**Clave**: `contentRoot`  
-**Tipo**: `string`  
-**Predeterminado**: carpeta donde se encuentra el ensamblado de la aplicación.  
-**Variable de entorno**: `<PREFIX_>CONTENTROOT`
+**Clave** : `contentRoot`  
+**Tipo** : `string`  
+**Predeterminado** : carpeta donde se encuentra el ensamblado de la aplicación.  
+**Variable de entorno** : `<PREFIX_>CONTENTROOT`
 
 Para establecer este valor, use la variable de entorno o llame a `UseContentRoot` en `IHostBuilder`:
 
@@ -740,10 +741,10 @@ Para obtener más información, consulte:
 
 La propiedad [IHostEnvironment.EnvironmentName](xref:Microsoft.Extensions.Hosting.IHostEnvironment.EnvironmentName*) puede establecerse en cualquier valor. Los valores definidos por el marco son `Development`, `Staging` y `Production`. Los valores no distinguen mayúsculas de minúsculas.
 
-**Clave**: `environment`  
-**Tipo**: `string`  
-**Predeterminado**: `Production`  
-**Variable de entorno**: `<PREFIX_>ENVIRONMENT`
+**Clave** : `environment`  
+**Tipo** : `string`  
+**Predeterminado** : `Production`  
+**Variable de entorno** : `<PREFIX_>ENVIRONMENT`
 
 Para establecer este valor, use la variable de entorno o llame a `UseEnvironment` en `IHostBuilder`:
 
@@ -762,10 +763,10 @@ Host.CreateDefaultBuilder(args)
 
 Si el período de tiempo de espera expira antes de que todos los servicios hospedados se hayan detenido, los servicios activos que queden se detendrán cuando se cierre la aplicación. Los servicios se detienen aun cuando no hayan terminado de procesarse. Si los servicios requieren más tiempo para detenerse, aumente el valor de tiempo de espera.
 
-**Clave**: `shutdownTimeoutSeconds`  
-**Tipo**: `int`  
-**Predeterminado**: 5 segundos  
-**Variable de entorno**: `<PREFIX_>SHUTDOWNTIMEOUTSECONDS`
+**Clave** : `shutdownTimeoutSeconds`  
+**Tipo** : `int`  
+**Predeterminado** : 5 segundos  
+**Variable de entorno** : `<PREFIX_>SHUTDOWNTIMEOUTSECONDS`
 
 Para establecer este valor, use la variable de entorno o configure `HostOptions`. El siguiente ejemplo establece el tiempo de espera en 20 segundos:
 
@@ -791,10 +792,10 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 
 Cuando es `false`, los errores durante el inicio provocan la salida del host. Cuando es `true`, el host captura las excepciones producidas durante el inicio e intenta iniciar el servidor.
 
-**Clave**: `captureStartupErrors`  
-**Tipo**: `bool` (`true` o `1`)  
-**Predeterminado**: `false`, a menos que la aplicación se ejecute con Kestrel detrás de IIS, en cuyo caso el valor predeterminado es `true`.  
-**Variable de entorno**: `<PREFIX_>CAPTURESTARTUPERRORS`
+**Clave** : `captureStartupErrors`  
+**Tipo** : `bool` (`true` o `1`)  
+**Predeterminado** : `false`, a menos que la aplicación se ejecute con Kestrel detrás de IIS, en cuyo caso el valor predeterminado es `true`.  
+**Variable de entorno** : `<PREFIX_>CAPTURESTARTUPERRORS`
 
 Para establecer este valor, utilice la configuración o llame a `CaptureStartupErrors`:
 
@@ -806,10 +807,10 @@ webBuilder.CaptureStartupErrors(true);
 
 Si se habilita, o si el entorno es `Development`, la aplicación captura errores detallados.
 
-**Clave**: `detailedErrors`  
-**Tipo**: `bool` (`true` o `1`)  
-**Predeterminado**: `false`  
-**Variable de entorno**: `<PREFIX_>_DETAILEDERRORS`
+**Clave** : `detailedErrors`  
+**Tipo** : `bool` (`true` o `1`)  
+**Predeterminado** : `false`  
+**Variable de entorno** : `<PREFIX_>_DETAILEDERRORS`
 
 Para establecer este valor, utilice la configuración o llame a `UseSetting`:
 
@@ -821,10 +822,10 @@ webBuilder.UseSetting(WebHostDefaults.DetailedErrorsKey, "true");
 
 Una cadena delimitada por punto y coma de ensamblados de inicio de hospedaje para cargar en el inicio. Aunque el valor de configuración predeterminado es una cadena vacía, los ensamblados de inicio de hospedaje incluyen siempre el ensamblado de la aplicación. Cuando se especifican los ensamblados de inicio de hospedaje, estos se agregan al ensamblado de la aplicación para que se carguen cuando la aplicación genera sus servicios comunes durante el inicio.
 
-**Clave**: `hostingStartupAssemblies`  
-**Tipo**: `string`  
-**Predeterminado**: Cadena vacía  
-**Variable de entorno**: `<PREFIX_>_HOSTINGSTARTUPASSEMBLIES`
+**Clave** : `hostingStartupAssemblies`  
+**Tipo** : `string`  
+**Predeterminado** : Cadena vacía  
+**Variable de entorno** : `<PREFIX_>_HOSTINGSTARTUPASSEMBLIES`
 
 Para establecer este valor, utilice la configuración o llame a `UseSetting`:
 
@@ -836,10 +837,10 @@ webBuilder.UseSetting(WebHostDefaults.HostingStartupAssembliesKey, "assembly1;as
 
 Una cadena delimitada por punto y coma de ensamblados de inicio de hospedaje para excluir en el inicio.
 
-**Clave**: `hostingStartupExcludeAssemblies`  
-**Tipo**: `string`  
-**Predeterminado**: Cadena vacía  
-**Variable de entorno**: `<PREFIX_>_HOSTINGSTARTUPEXCLUDEASSEMBLIES`
+**Clave** : `hostingStartupExcludeAssemblies`  
+**Tipo** : `string`  
+**Predeterminado** : Cadena vacía  
+**Variable de entorno** : `<PREFIX_>_HOSTINGSTARTUPEXCLUDEASSEMBLIES`
 
 Para establecer este valor, utilice la configuración o llame a `UseSetting`:
 
@@ -851,10 +852,10 @@ webBuilder.UseSetting(WebHostDefaults.HostingStartupExcludeAssembliesKey, "assem
 
 Puerto de redireccionamiento HTTPS. Se usa en [Exigir HTTPS](xref:security/enforcing-ssl).
 
-**Clave**: `https_port`  
-**Tipo**: `string`  
-**Predeterminado**: no se ha establecido ningún valor predeterminado.  
-**Variable de entorno**: `<PREFIX_>HTTPS_PORT`
+**Clave** : `https_port`  
+**Tipo** : `string`  
+**Predeterminado** : no se ha establecido ningún valor predeterminado.  
+**Variable de entorno** : `<PREFIX_>HTTPS_PORT`
 
 Para establecer este valor, utilice la configuración o llame a `UseSetting`:
 
@@ -866,10 +867,10 @@ webBuilder.UseSetting("https_port", "8080");
 
 Indica si el host debe escuchar en las direcciones URL configuradas con `IWebHostBuilder` en lugar de las que están configuradas con la implementación de `IServer`.
 
-**Clave**: `preferHostingUrls`  
-**Tipo**: `bool` (`true` o `1`)  
-**Predeterminado**: `true`  
-**Variable de entorno**: `<PREFIX_>_PREFERHOSTINGURLS`
+**Clave** : `preferHostingUrls`  
+**Tipo** : `bool` (`true` o `1`)  
+**Predeterminado** : `true`  
+**Variable de entorno** : `<PREFIX_>_PREFERHOSTINGURLS`
 
 Para establecer este valor, use la variable de entorno o llame a `PreferHostingUrls`:
 
@@ -881,10 +882,10 @@ webBuilder.PreferHostingUrls(false);
 
 Impide la carga automática de los ensamblados de inicio de hospedaje, incluidos los configurados por el ensamblado de la aplicación. Para obtener más información, vea <xref:fundamentals/configuration/platform-specific-configuration>.
 
-**Clave**: `preventHostingStartup`  
-**Tipo**: `bool` (`true` o `1`)  
-**Predeterminado**: `false`  
-**Variable de entorno**: `<PREFIX_>_PREVENTHOSTINGSTARTUP`
+**Clave** : `preventHostingStartup`  
+**Tipo** : `bool` (`true` o `1`)  
+**Predeterminado** : `false`  
+**Variable de entorno** : `<PREFIX_>_PREVENTHOSTINGSTARTUP`
 
 Para establecer este valor, use la variable de entorno o llame a `UseSetting`:
 
@@ -896,10 +897,10 @@ webBuilder.UseSetting(WebHostDefaults.PreventHostingStartupKey, "true");
 
 Ensamblado en el que se va a buscar la clase `Startup`.
 
-**Clave**: `startupAssembly`  
-**Tipo**: `string`  
-**Predeterminado**: el ensamblado de la aplicación  
-**Variable de entorno**: `<PREFIX_>STARTUPASSEMBLY`
+**Clave** : `startupAssembly`  
+**Tipo** : `string`  
+**Predeterminado** : el ensamblado de la aplicación  
+**Variable de entorno** : `<PREFIX_>STARTUPASSEMBLY`
 
 Para establecer este valor, use la variable de entorno o llame a `UseStartup`. `UseStartup` puede tomar un nombre del ensamblado (`string`) o un tipo (`TStartup`). Si se llama a varios métodos `UseStartup`, la última llamada tiene prioridad.
 
@@ -915,10 +916,10 @@ webBuilder.UseStartup<Startup>();
 
 Lista delimitada por punto y coma de las direcciones IP o las direcciones de host con los puertos y protocolos en los que el servidor debe escuchar las solicitudes. Por ejemplo: `http://localhost:123`. Use "\*" para indicar que el servidor debe escuchar las solicitudes en cualquier dirección IP o nombre de host con el puerto y el protocolo especificados (por ejemplo, `http://*:5000`). El protocolo (`http://` o `https://`) debe incluirse con cada dirección URL. Los formatos admitidos varían de un servidor a otro.
 
-**Clave**: `urls`  
-**Tipo**: `string`  
-**Predeterminado**: `http://localhost:5000` y `https://localhost:5001`  
-**Variable de entorno**: `<PREFIX_>URLS`
+**Clave** : `urls`  
+**Tipo** : `string`  
+**Predeterminado** : `http://localhost:5000` y `https://localhost:5001`  
+**Variable de entorno** : `<PREFIX_>URLS`
 
 Para establecer este valor, use la variable de entorno o llame a `UseUrls`:
 
@@ -932,10 +933,10 @@ Kestrel tiene su propia API de configuración de punto de conexión. Para obtene
 
 La propiedad [IWebHostEnvironment.WebRootPath](xref:Microsoft.AspNetCore.Hosting.IWebHostEnvironment.WebRootPath) determina la ruta de acceso relativa a los recursos estáticos de la aplicación. Si la ruta de acceso no existe, se utiliza un proveedor de archivos no-op.  
 
-**Clave**: `webroot`  
-**Tipo**: `string`  
-**Predeterminado**: De manera predeterminada, es `wwwroot`. Debe existir la ruta de acceso a *{raíz del contenido}/wwwroot*.  
-**Variable de entorno**: `<PREFIX_>WEBROOT`
+**Clave** : `webroot`  
+**Tipo** : `string`  
+**Predeterminado** : De manera predeterminada, es `wwwroot`. Debe existir la ruta de acceso a *{raíz del contenido}/wwwroot*.  
+**Variable de entorno** : `<PREFIX_>WEBROOT`
 
 Para establecer este valor, use la variable de entorno o llame a `UseWebRoot` en `IWebHostBuilder`:
 
@@ -1097,21 +1098,21 @@ La configuración del host se crea:
 
 La propiedad [IHostingEnvironment.ApplicationName](xref:Microsoft.Extensions.Hosting.IHostingEnvironment.ApplicationName*) se establece desde la configuración del host durante la construcción de este. Para establecer el valor explícitamente, use [HostDefaults.ApplicationKey](xref:Microsoft.Extensions.Hosting.HostDefaults.ApplicationKey):
 
-**Clave**: `applicationName`  
-**Tipo**: `string`  
-**Predeterminado**: nombre del ensamblado que contiene el punto de entrada de la aplicación.  
-**Establecer mediante**: `HostBuilderContext.HostingEnvironment.ApplicationName`  
-**Variable de entorno**: `<PREFIX_>APPLICATIONNAME` (`<PREFIX_>` es [opcional y definido por el usuario](#configurehostconfiguration))
+**Clave** : `applicationName`  
+**Tipo** : `string`  
+**Predeterminado** : nombre del ensamblado que contiene el punto de entrada de la aplicación.  
+**Establecer mediante** : `HostBuilderContext.HostingEnvironment.ApplicationName`  
+**Variable de entorno** : `<PREFIX_>APPLICATIONNAME` (`<PREFIX_>` es [opcional y definido por el usuario](#configurehostconfiguration))
 
 ### <a name="content-root"></a>Raíz del contenido
 
 Esta configuración determina la ubicación en la que el host comienza a buscar archivos de contenido.
 
-**Clave**: `contentRoot`  
-**Tipo**: `string`  
-**Predeterminado**: la carpeta donde se encuentra el ensamblado de la aplicación.  
-**Establecer mediante**: `UseContentRoot`  
-**Variable de entorno**: `<PREFIX_>CONTENTROOT` (`<PREFIX_>` es [opcional y definido por el usuario](#configurehostconfiguration))
+**Clave** : `contentRoot`  
+**Tipo** : `string`  
+**Predeterminado** : la carpeta donde se encuentra el ensamblado de la aplicación.  
+**Establecer mediante** : `UseContentRoot`  
+**Variable de entorno** : `<PREFIX_>CONTENTROOT` (`<PREFIX_>` es [opcional y definido por el usuario](#configurehostconfiguration))
 
 Si no existe la ruta de acceso, el host no se puede iniciar.
 
@@ -1123,11 +1124,11 @@ Para más información, consulte [Aspectos básicos: Raíz del contenido](xref:f
 
 Establece el [entorno](xref:fundamentals/environments) de la aplicación.
 
-**Clave**: `environment`  
-**Tipo**: `string`  
-**Predeterminado**: `Production`  
-**Establecer mediante**: `UseEnvironment`  
-**Variable de entorno**: `<PREFIX_>ENVIRONMENT` (`<PREFIX_>` es [opcional y definido por el usuario](#configurehostconfiguration))
+**Clave** : `environment`  
+**Tipo** : `string`  
+**Predeterminado** : `Production`  
+**Establecer mediante** : `UseEnvironment`  
+**Variable de entorno** : `<PREFIX_>ENVIRONMENT` (`<PREFIX_>` es [opcional y definido por el usuario](#configurehostconfiguration))
 
 El entorno se puede establecer en cualquier valor. Los valores definidos por el marco son `Development`, `Staging` y `Production`. Los valores no distinguen mayúsculas de minúsculas.
 
@@ -1141,12 +1142,12 @@ Se puede llamar varias veces a <xref:Microsoft.Extensions.Hosting.HostBuilder.Co
 
 De forma predeterminada no se incluye ningún proveedor. Debe especificar de forma explícita los proveedores de configuración que requiere la aplicación en <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureHostConfiguration*>, así como:
 
-* La configuración de archivo (por ejemplo, de un archivo *hostsettings.json*).
+* La configuración de archivo (por ejemplo, de un archivo *hostsettings.json* ).
 * La configuración de la variable de entorno.
 * La configuración del argumento de la línea de comandos.
 * Otros proveedores de configuración necesarios.
 
-La configuración de archivo del host se habilita especificando la ruta base de la aplicación con `SetBasePath` seguido de una llamada a uno de los [proveedores de configuración de archivo](xref:fundamentals/configuration/index#file-configuration-provider). La aplicación de ejemplo usa un archivo JSON, *hostsettings.json*, y llama a <xref:Microsoft.Extensions.Configuration.JsonConfigurationExtensions.AddJsonFile*> para consumir los valores de configuración del host del archivo.
+La configuración de archivo del host se habilita especificando la ruta base de la aplicación con `SetBasePath` seguido de una llamada a uno de los [proveedores de configuración de archivo](xref:fundamentals/configuration/index#file-configuration-provider). La aplicación de ejemplo usa un archivo JSON, *hostsettings.json* , y llama a <xref:Microsoft.Extensions.Configuration.JsonConfigurationExtensions.AddJsonFile*> para consumir los valores de configuración del host del archivo.
 
 Para agregar una [configuración de la variable de entorno](xref:fundamentals/configuration/index#environment-variables-configuration-provider) del host, llame a <xref:Microsoft.Extensions.Configuration.EnvironmentVariablesExtensions.AddEnvironmentVariables*> en el generador del host. `AddEnvironmentVariables` acepta un prefijo opcional definido por el usuario. La aplicación de ejemplo usa el prefijo `PREFIX_`. El prefijo se quita cuando se leen las variables de entorno. Al configurar el host de la aplicación de ejemplo, el valor de la variable de entorno de `PREFIX_ENVIRONMENT` se convierte en el valor de configuración de host de la clave `environment`.
 
@@ -1154,7 +1155,7 @@ Durante el desarrollo, al usar [Visual Studio](https://visualstudio.microsoft.co
 
 La [configuración de la línea de comandos](xref:fundamentals/configuration/index#command-line-configuration-provider) se agrega llamando a <xref:Microsoft.Extensions.Configuration.CommandLineConfigurationExtensions.AddCommandLine*>. La configuración de la línea de comandos se agrega en último lugar para permitir que los argumentos de la línea de comandos invaliden la configuración proporcionada por los proveedores de configuración anteriores.
 
-*hostsettings.json*:
+*hostsettings.json* :
 
 [!code-json[](generic-host/samples/2.x/GenericHostSample/hostsettings.json)]
 
@@ -1174,15 +1175,15 @@ Configuración de aplicación de ejemplo con <xref:Microsoft.Extensions.Hosting.
 
 [!code-csharp[](generic-host/samples-snapshot/2.x/GenericHostSample/Program.cs?name=snippet_ConfigureAppConfiguration)]
 
-*appsettings.json*:
+*appsettings.json* :
 
 [!code-json[](generic-host/samples/2.x/GenericHostSample/appsettings.json)]
 
-*appsettings.Development.json*:
+*appsettings.Development.json* :
 
 [!code-json[](generic-host/samples/2.x/GenericHostSample/appsettings.Development.json)]
 
-*appsettings.Production.json*:
+*appsettings.Production.json* :
 
 [!code-json[](generic-host/samples/2.x/GenericHostSample/appsettings.Production.json)]
 
@@ -1482,7 +1483,7 @@ Para obtener más información, vea <xref:fundamentals/environments>.
 
 Inserción de constructor del servicio <xref:Microsoft.Extensions.Hosting.IApplicationLifetime> en cualquier clase. En la [aplicación de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/generic-host/samples/) se usa la inserción de constructor en una clase `LifetimeEventsHostedService` (una implementación de <xref:Microsoft.Extensions.Hosting.IHostedService>) para registrar los eventos.
 
-*LifetimeEventsHostedService.cs*:
+*LifetimeEventsHostedService.cs* :
 
 [!code-csharp[](generic-host/samples/2.x/GenericHostSample/LifetimeEventsHostedService.cs?name=snippet1)]
 

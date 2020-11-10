@@ -6,6 +6,7 @@ ms.author: riande
 ms.custom: mvc, seodec18
 ms.date: 9/26/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-rp/intro
-ms.openlocfilehash: 35a5758500ae2bc691c8d08eccb22340f9998c39
-ms.sourcegitcommit: 6c82d78662332cd40d614019b9ed17c46e25be28
+ms.openlocfilehash: 74f65b916c2d5b7de61ec29f4259a51584ee5989
+ms.sourcegitcommit: 33f631a4427b9a422755601ac9119953db0b4a3e
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91424298"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93365423"
 ---
 # <a name="no-locrazor-pages-with-entity-framework-core-in-aspnet-core---tutorial-1-of-8"></a>Razor Pages con Entity Framework Core en ASP.NET Core: Tutorial 1 de 8
 
@@ -118,9 +119,10 @@ To run the app after downloading the completed project:
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* En el menú **Archivo** de Visual Studio, seleccione **Nuevo** > **Proyecto**.
-* Seleccione **Aplicación web de ASP.NET Core**.
+* Inicie Visual Studio y seleccione **Crear un proyecto**.
+* Seleccione **Aplicación web de ASP.NET Core** > **SIGUIENTE**.
 * Asigne el nombre *ContosoUniversity* al proyecto. Es importante usar este nombre exacto incluido el uso de mayúsculas, para que los espacios de nombres coincidan cuando se copie y pegue el código.
+* Seleccione **Crear**.
 * Seleccione **.NET Core** y **ASP.NET Core 5.0** en las listas desplegables y, luego, **Aplicación web**.
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
@@ -137,15 +139,15 @@ To run the app after downloading the completed project:
 
 ## <a name="set-up-the-site-style"></a>Configurar el estilo del sitio
 
-Copie el código siguiente y péguelo en el archivo *Pages/Shared/_Layout.cshtml*: [!code-cshtml[Main](intro/samples/cu50/Pages/Shared/_Layout.cshtml?highlight=6,14,21-35,49)].
+Copie el código siguiente y péguelo en el archivo *Pages/Shared/_Layout.cshtml* : [!code-cshtml[Main](intro/samples/cu50/Pages/Shared/_Layout.cshtml?highlight=6,14,21-35,49)].
 
 El archivo de diseño establece el encabezado, el pie de página y el menú del sitio. En el código anterior se realizan los cambios siguientes:
 
 * Todas las repeticiones de "ContosoUniversity" por "Contoso University". Hay tres repeticiones.
 * Se eliminan las entradas del menú de **Inicio** y **Privacidad**.
-* Se han agregado entradas para **Acerca de**, **Estudiantes**, **Cursos**, **Instructores** y **Departamentos**.
+* Se han agregado entradas para **Acerca de** , **Estudiantes** , **Cursos** , **Instructores** y **Departamentos**.
 
-En *Pages/Index.cshtml*, reemplace el contenido del archivo por el código siguiente:
+En *Pages/Index.cshtml* , reemplace el contenido del archivo por el código siguiente:
 
 [!code-cshtml[Main](intro/samples/cu50/Pages/Index.cshtml)]
 
@@ -221,13 +223,13 @@ En esta sección, se usa la herramienta de scaffolding de ASP.NET Core para gene
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Cree una carpeta *Pages/Students*.
-* En el **Explorador de soluciones**, haga clic con el botón derecho en la carpeta *Pages/Students* y seleccione **Agregar** > **Nuevo elemento con scaffold**.
-* En el cuadro de diálogo **Agregar nuevo elemento scaffold**:
+* En el **Explorador de soluciones** , haga clic con el botón derecho en la carpeta *Pages/Students* y seleccione **Agregar** > **Nuevo elemento con scaffold**.
+* En el cuadro de diálogo **Agregar nuevo elemento scaffold** :
   * En la pestaña de la izquierda, seleccione **Instalado > Común > Páginas Razor** .
   * Seleccione **Páginas de Razor que usan Entity Framework (CRUD)** > **Agregar**.
 * En el cuadro de diálogo para **agregar instancias de Razor Pages que usan Entity Framework (CRUD)** :
-  * En la lista desplegable **Clase de modelo**, seleccione **Student (ContosoUniversity.Models)** .
-  * En la fila **Clase de contexto de datos**, seleccione el signo **+** (más).
+  * En la lista desplegable **Clase de modelo** , seleccione **Student (ContosoUniversity.Models)** .
+  * En la fila **Clase de contexto de datos** , seleccione el signo **+** (más).
     * Cambie el nombre del contexto de datos para que acabe en `SchoolContext` en lugar de `ContosoUniversityContext`. Nombre del contexto actualizado: `ContosoUniversity.Data.SchoolContext`.
    * Seleccione **Agregar**.
 
@@ -281,7 +283,7 @@ Si el paso anterior falla, compile el proyecto y vuelva a intentar el paso de sc
 
 El proceso de scaffolding:
 
-* Crea Razor Pages en la carpeta *Pages/Students*:
+* Crea Razor Pages en la carpeta *Pages/Students* :
   * *Create.cshtml* y *Create.cshtml.cs*
   * *Delete.cshtml* y *Delete.cshtml.cs*
   * *Details.cshtml* y *Details.cshtml.cs*
@@ -289,11 +291,11 @@ El proceso de scaffolding:
   * *Index.cshtml* e *Index.cshtml.cs*
 * Crea *Data/SchoolContext.cs*.
 * Agrega el contexto a la inserción de dependencias en *Startup.cs*.
-* Agrega una cadena de conexión de base de datos a *appsettings.json*.
+* Agrega una cadena de conexión de la base de datos a *appsettings.json* .
 
 ## <a name="database-connection-string"></a>Cadena de conexión de base de datos
 
-La herramienta de scaffolding genera una cadena de conexión en el archivo *appsettings.json*.
+La herramienta de scaffolding genera una cadena de conexión en el archivo *appsettings.json* .
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -305,7 +307,7 @@ LocalDB es una versión ligera del motor de base de datos de SQL Server Express 
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-Acorte la cadena de conexión de SQLite a *CU.dB*:
+Acorte la cadena de conexión de SQLite a *CU.dB* :
 
 [!code-json[Main](intro/samples/cu50/appsettingsSQLite.json?highlight=11)]
 
@@ -360,11 +362,11 @@ Para obtener información sobre el uso de una base de datos de producción, vea 
 
 ---
 
-El nombre de la cadena de conexión se pasa al contexto mediante una llamada a un método en un objeto [DbContextOptions](/dotnet/api/microsoft.entityframeworkcore.dbcontextoptions). Para el desarrollo local, el [sistema de configuración de ASP.NET Core](xref:fundamentals/configuration/index) lee la cadena de conexión desde el archivo *appsettings.json*.
+El nombre de la cadena de conexión se pasa al contexto mediante una llamada a un método en un objeto [DbContextOptions](/dotnet/api/microsoft.entityframeworkcore.dbcontextoptions). Para el desarrollo local, el [sistema de configuración de ASP.NET Core](xref:fundamentals/configuration/index) lee la cadena de conexión desde el archivo *appsettings.json* .
 
 ### <a name="add-the-database-exception-filter"></a>Incorporación del filtro de excepción de base de datos
 
-Agregue `AddDatabaseDeveloperPageExceptionFilter` a `ConfigureServices`, tal como se muestra en el código siguiente:
+Agregue <xref:Microsoft.Extensions.DependencyInjection.DatabaseDeveloperPageExceptionFilterServiceExtensions.AddDatabaseDeveloperPageExceptionFilter%2A> a `ConfigureServices`, tal como se muestra en el código siguiente:
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -372,10 +374,10 @@ Agregue `AddDatabaseDeveloperPageExceptionFilter` a `ConfigureServices`, tal com
 
 Agregue el paquete NuGet [Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore](https://www.nuget.org/packages/Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore).
 
-En la PMC, escriba el comando siguiente para agregar el paquete NuGet:
+En la PMC, escriba lo siguiente para agregar el paquete NuGet:
 
 ```powershell
-Install-Package Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore -Version 5.0.0-rc.1.20451.17
+Install-Package Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore -Version 5.0.0-rc.2.20475.17
 ```
 
 # <a name="visual-studio-code"></a>Tener [Visual Studio Code](#tab/visual-studio-code)
@@ -385,6 +387,8 @@ Install-Package Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore -Version 5.
 ---
 
 El paquete NuGet de `Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore` proporciona middleware de ASP.NET Core para páginas de error de Entity Framework Core. Este middleware ayuda a detectar y diagnosticar errores con migraciones de Entity Framework Core.
+
+`AddDatabaseDeveloperPageExceptionFilter` proporciona información de error útil en el [entorno de desarrollo](xref:fundamentals/environments).
 
 ## <a name="create-the-database"></a>Creación de la base de datos
 
@@ -419,7 +423,7 @@ Cree *Data/DbInitializer.cs* con el código siguiente:
 
   El código comprueba si hay alumnos en la base de datos. Si no hay ningún alumno, agrega datos de prueba a la base de datos. Crea los datos de prueba en matrices en lugar de colecciones `List<T>` para optimizar el rendimiento.
 
-En *Program.cs*, reemplace la llamada a `EnsureCreated` con una llamada a `DbInitializer.Initialize`:
+En *Program.cs* , reemplace la llamada a `EnsureCreated` con una llamada a `DbInitializer.Initialize`:
 
   ```csharp
   // context.Database.EnsureCreated();
@@ -577,7 +581,7 @@ Para ejecutar la aplicación después de descargar el proyecto completado:
 Para ejecutar la aplicación después de descargar el proyecto completado:
 
 * Elimine *ContosoUniversity.csproj* y cambie el nombre de *ContosoUniversitySQLite.csproj* por *ContosoUniversity.csproj*.
-* En *Program.cs*, convierta `#define Startup` en comentario para que se use `StartupSQLite`.
+* En *Program.cs* , convierta `#define Startup` en comentario para que se use `StartupSQLite`.
 * Elimine *appSettings.json* y cambie el nombre de *appSettingsSQLite.json* por *appSettings.json*.
 * Elimine la carpeta *Migrations* y cambie el nombre de *MigrationsSQL* por *Migrations*.
 * Realice una búsqueda global `#if SQLiteVersion` y quite `#if SQLiteVersion` y la instrucción `#endif` asociada.
@@ -624,17 +628,17 @@ Para ejecutar la aplicación después de descargar el proyecto completado:
 
 ## <a name="set-up-the-site-style"></a>Configurar el estilo del sitio
 
-Configure el encabezado, el pie de página y el menú del sitio mediante la actualización de *Pages/Shared/_Layout.cshtml*:
+Configure el encabezado, el pie de página y el menú del sitio mediante la actualización de *Pages/Shared/_Layout.cshtml* :
 
 * Cambie todas las repeticiones de "ContosoUniversity" por "Contoso University". Hay tres repeticiones.
 
-* Elimine las entradas de menú **Home** y **Privacy**, y agregue entradas para **About**, **Students**, **Courses**, **Instructors** y **Departments**.
+* Elimine las entradas de menú **Home** y **Privacy** , y agregue entradas para **About** , **Students** , **Courses** , **Instructors** y **Departments**.
 
 Los cambios aparecen resaltados.
 
 [!code-cshtml[Main](intro/samples/cu30/Pages/Shared/_Layout.cshtml?highlight=6,14,21-35,49)]
 
-En *Pages/Index.cshtml*, reemplace el contenido del archivo con el código siguiente para reemplazar el texto sobre ASP.NET Core con texto sobre esta aplicación:
+En *Pages/Index.cshtml* , reemplace el contenido del archivo con el código siguiente para reemplazar el texto sobre ASP.NET Core con texto sobre esta aplicación:
 
 [!code-cshtml[Main](intro/samples/cu30/Pages/Index.cshtml)]
 
@@ -707,11 +711,11 @@ En esta sección, se usa la herramienta de scaffolding de ASP.NET Core para gene
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Cree una carpeta *Students* en la carpeta *Pages*.
-* En el **Explorador de soluciones**, haga clic con el botón derecho en la carpeta *Pages/Students* y seleccione **Agregar** > **Nuevo elemento con scaffold**.
-* En el cuadro de diálogo **Agregar scaffold**, seleccione **Páginas de Razor que usan Entity Framework (CRUD)** > **AGREGAR**.
+* En el **Explorador de soluciones** , haga clic con el botón derecho en la carpeta *Pages/Students* y seleccione **Agregar** > **Nuevo elemento con scaffold**.
+* En el cuadro de diálogo **Agregar scaffold** , seleccione **Páginas de Razor que usan Entity Framework (CRUD)** > **AGREGAR**.
 * En el cuadro de diálogo para **agregar instancias de Razor Pages que usan Entity Framework (CRUD)** :
-  * En la lista desplegable **Clase de modelo**, seleccione **Student (ContosoUniversity.Models)** .
-  * En la fila **Clase de contexto de datos**, seleccione el signo **+** (más).
+  * En la lista desplegable **Clase de modelo** , seleccione **Student (ContosoUniversity.Models)** .
+  * En la fila **Clase de contexto de datos** , seleccione el signo **+** (más).
   * Cambie el nombre del contexto de datos *ContosoUniversity.Models.ContosoUniversityContext* por *ContosoUniversity.Data.SchoolContext*.
   * Seleccione **Agregar**.
 
@@ -768,7 +772,7 @@ Si tiene un problema con el paso anterior, compile el proyecto y vuelva a intent
 
 El proceso de scaffolding:
 
-* Crea Razor Pages en la carpeta *Pages/Students*:
+* Crea Razor Pages en la carpeta *Pages/Students* :
   * *Create.cshtml* y *Create.cshtml.cs*
   * *Delete.cshtml* y *Delete.cshtml.cs*
   * *Details.cshtml* y *Details.cshtml.cs*
@@ -776,7 +780,7 @@ El proceso de scaffolding:
   * *Index.cshtml* e *Index.cshtml.cs*
 * Crea *Data/SchoolContext.cs*.
 * Agrega el contexto a la inserción de dependencias en *Startup.cs*.
-* Agrega una cadena de conexión de base de datos a *appsettings.json*.
+* Agrega una cadena de conexión de la base de datos a *appsettings.json* .
 
 ## <a name="database-connection-string"></a>Cadena de conexión de base de datos
 
@@ -790,7 +794,7 @@ LocalDB es una versión ligera del motor de base de datos de SQL Server Express 
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-Cambie la cadena de conexión para que apunte a un archivo de base de datos de SQLite denominado *CU.db*:
+Cambie la cadena de conexión para que apunte a un archivo de base de datos de SQLite denominado *CU.db* :
 
 [!code-json[Main](intro/samples/cu30/appsettingsSQLite.json?highlight=11)]
 
@@ -835,7 +839,7 @@ La herramienta de scaffolding ha registrado de forma automática la clase de con
 
 ---
 
-El nombre de la cadena de conexión se pasa al contexto mediante una llamada a un método en un objeto [DbContextOptions](/dotnet/api/microsoft.entityframeworkcore.dbcontextoptions). Para el desarrollo local, el [sistema de configuración de ASP.NET Core](xref:fundamentals/configuration/index) lee la cadena de conexión desde el archivo *appsettings.json*.
+El nombre de la cadena de conexión se pasa al contexto mediante una llamada a un método en un objeto [DbContextOptions](/dotnet/api/microsoft.entityframeworkcore.dbcontextoptions). Para el desarrollo local, el [sistema de configuración de ASP.NET Core](xref:fundamentals/configuration/index) lee la cadena de conexión desde el archivo *appsettings.json* .
 
 ## <a name="create-the-database"></a>Creación de la base de datos
 
@@ -870,7 +874,7 @@ Cree *Data/DbInitializer.cs* con el código siguiente:
 
   El código comprueba si hay alumnos en la base de datos. Si no hay ningún alumno, agrega datos de prueba a la base de datos. Crea los datos de prueba en matrices en lugar de colecciones `List<T>` para optimizar el rendimiento.
 
-* En *Program.cs*, reemplace la llamada a `EnsureCreated` con una llamada a `DbInitializer.Initialize`:
+* En *Program.cs* , reemplace la llamada a `EnsureCreated` con una llamada a `DbInitializer.Initialize`:
 
   ```csharp
   // context.Database.EnsureCreated();
@@ -1015,13 +1019,13 @@ Con algunos cambios se configura el menú del sitio, el diseño y la página pri
 
 * Cambie todas las repeticiones de "ContosoUniversity" por "Contoso University". Hay tres repeticiones.
 
-* Agregue entradas de menú para **Students**, **Courses**, **Instructors** y **Departments**, y elimine la entrada de menú **Contact**.
+* Agregue entradas de menú para **Students** , **Courses** , **Instructors** y **Departments** , y elimine la entrada de menú **Contact**.
 
-Los cambios aparecen resaltados. (*No* se muestra todo el marcado).
+Los cambios aparecen resaltados. ( *No* se muestra todo el marcado).
 
 [!code-cshtml[](intro/samples/cu21/Pages/Shared/_Layout.cshtml?highlight=6,29,35-38,50&name=snippet)]
 
-En *Pages/Index.cshtml*, reemplace el contenido del archivo con el código siguiente para reemplazar el texto sobre ASP.NET y MVC con texto sobre esta aplicación:
+En *Pages/Index.cshtml* , reemplace el contenido del archivo con el código siguiente para reemplazar el texto sobre ASP.NET y MVC con texto sobre esta aplicación:
 
 [!code-cshtml[](intro/samples/cu21/Pages/Index.cshtml)]
 
@@ -1039,7 +1043,7 @@ En las secciones siguientes, se crea una clase para cada una de estas entidades.
 
 ![Diagrama de la entidad Student](intro/_static/student-entity.png)
 
-Cree una carpeta *Models*. En la carpeta *Models*, cree un archivo de clase denominado *Student.cs* con el código siguiente:
+Cree una carpeta *Models*. En la carpeta *Models* , cree un archivo de clase denominado *Student.cs* con el código siguiente:
 
 [!code-csharp[](intro/samples/cu21/Models/Student.cs?name=snippet_Intro)]
 
@@ -1053,7 +1057,7 @@ Si una propiedad de navegación puede contener varias entidades, la propiedad de
 
 ![Diagrama de la entidad Enrollment](intro/_static/enrollment-entity.png)
 
-En la carpeta *Models*, cree *Enrollment.cs* con el código siguiente:
+En la carpeta *Models* , cree *Enrollment.cs* con el código siguiente:
 
 [!code-csharp[](intro/samples/cu21/Models/Enrollment.cs?name=snippet_Intro)]
 
@@ -1071,7 +1075,7 @@ EF Core interpreta una propiedad como una clave externa si se denomina `<navigat
 
 ![Diagrama de la entidad Course](intro/_static/course-entity.png)
 
-En la carpeta *Models*, cree *Course.cs* con el código siguiente:
+En la carpeta *Models* , cree *Course.cs* con el código siguiente:
 
 [!code-csharp[](intro/samples/cu21/Models/Course.cs?name=snippet_Intro)]
 
@@ -1088,14 +1092,14 @@ En esta sección, se aplica scaffolding al modelo de alumnos. Es decir, la herra
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* En el **Explorador de soluciones**, haga clic con el botón derecho en la carpeta *Pages/Students* > **Agregar** > **Nuevo elemento con scaffold**.
-* En el cuadro de diálogo **Agregar scaffold**, seleccione **Páginas de Razor que usan Entity Framework (CRUD)** > **AGREGAR**.
+* En el **Explorador de soluciones** , haga clic con el botón derecho en la carpeta *Pages/Students* > **Agregar** > **Nuevo elemento con scaffold**.
+* En el cuadro de diálogo **Agregar scaffold** , seleccione **Páginas de Razor que usan Entity Framework (CRUD)** > **AGREGAR**.
 
 Complete el cuadro de diálogo para **agregar instancias de Razor Pages que usan Entity Framework (CRUD)** :
 
-* En la lista desplegable **Clase de modelo**, seleccione **Student (ContosoUniversity.Models)** .
-* En la fila **Clase de contexto de datos**, haga clic en el signo **+** (más) y cambie el nombre generado por **ContosoUniversity.Models.SchoolContext**.
-* En la lista desplegable **Clase de contexto de datos**, seleccione **ContosoUniversity.Models.SchoolContext**
+* En la lista desplegable **Clase de modelo** , seleccione **Student (ContosoUniversity.Models)** .
+* En la fila **Clase de contexto de datos** , haga clic en el signo **+** (más) y cambie el nombre generado por **ContosoUniversity.Models.SchoolContext**.
+* En la lista desplegable **Clase de contexto de datos** , seleccione **ContosoUniversity.Models.SchoolContext**
 * Seleccione **Agregar**.
 
 ![Cuadro de diálogo CRUD](intro/_static/s1.png)
@@ -1123,8 +1127,8 @@ El proceso de scaffolding ha creado y cambiado los archivos siguientes:
 
 ### <a name="file-updates"></a>Actualizaciones de archivos
 
-* *Startup.cs*: en la sección siguiente se detallan los cambios realizados en este archivo.
-* *appsettings.json*: se agrega la cadena de conexión que se usa para conectarse a una base de datos local.
+* *Startup.cs* : en la sección siguiente se detallan los cambios realizados en este archivo.
+* *appsettings.json* : se agrega la cadena de conexión que se usa para conectarse a una base de datos local.
 
 ## <a name="examine-the-context-registered-with-dependency-injection"></a>Examinar el contexto registrado con la inserción de dependencias
 
@@ -1136,11 +1140,11 @@ Examine el método `ConfigureServices` de *Startup.cs*. El proveedor de scaffold
 
 [!code-csharp[](intro/samples/cu21/Startup.cs?name=snippet_SchoolContext&highlight=13-14)]
 
-El nombre de la cadena de conexión se pasa al contexto mediante una llamada a un método en un objeto [DbContextOptions](/dotnet/api/microsoft.entityframeworkcore.dbcontextoptions). Para el desarrollo local, el [sistema de configuración de ASP.NET Core](xref:fundamentals/configuration/index) lee la cadena de conexión desde el archivo *appsettings.json*.
+El nombre de la cadena de conexión se pasa al contexto mediante una llamada a un método en un objeto [DbContextOptions](/dotnet/api/microsoft.entityframeworkcore.dbcontextoptions). Para el desarrollo local, el [sistema de configuración de ASP.NET Core](xref:fundamentals/configuration/index) lee la cadena de conexión desde el archivo *appsettings.json* .
 
 ## <a name="update-main"></a>Actualización de main
 
-En *Program.cs*, modifique el método `Main` para que haga lo siguiente:
+En *Program.cs* , modifique el método `Main` para que haga lo siguiente:
 
 * Obtener una instancia del contexto de base de datos desde el contenedor de inserción de dependencias.
 * Llame a [EnsureCreated](/dotnet/api/microsoft.entityframeworkcore.infrastructure.databasefacade.ensurecreated#Microsoft_EntityFrameworkCore_Infrastructure_DatabaseFacade_EnsureCreated).
@@ -1191,7 +1195,7 @@ La cadena de conexión especifica [SQL Server LocalDB](/sql/database-engine/conf
 
 EF Core crea una base de datos vacía. En esta sección, se escribe un método `Initialize` para rellenarlo con datos de prueba.
 
-En la carpeta *Data*, cree un archivo de clase denominado *DbInitializer.cs* y agregue el código siguiente:
+En la carpeta *Data* , cree un archivo de clase denominado *DbInitializer.cs* y agregue el código siguiente:
 
 [!code-csharp[](intro/samples/cu21/Data/DbInitializer.cs?name=snippet_Intro)]
 
@@ -1201,7 +1205,7 @@ El código comprueba si hay estudiantes en la base de datos. Si no hay alumnos e
 
 El método `EnsureCreated` crea automáticamente la base de datos para el contexto de base de datos. Si la base de datos existe, `EnsureCreated` vuelve sin modificarla.
 
-En *Program.cs*, modifique el método `Main` para que llame a `Initialize`:
+En *Program.cs* , modifique el método `Main` para que llame a `Initialize`:
 
 [!code-csharp[](intro/samples/cu21/Program.cs?name=snippet2&highlight=14-15)]
 

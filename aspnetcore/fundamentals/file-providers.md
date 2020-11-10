@@ -7,6 +7,7 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/06/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/file-providers
-ms.openlocfilehash: 30c28e7bd4cd9c926b157f5a7b9e6688bd5b9b9a
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: 16e5ead9898125c804da4d60322510474201d897
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88634610"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059447"
 ---
 # <a name="file-providers-in-aspnet-core"></a>Proveedores de archivo en ASP.NET Core
 
@@ -114,7 +115,7 @@ Use [patrones globales](#glob-patterns) para especificar uno o varios archivos p
 
 La aplicación de ejemplo *FileProviderSample* crea `ManifestEmbeddedFileProvider` y pasa el ensamblado que se está ejecutando actualmente a su constructor.
 
-*Startup.cs*:
+*Startup.cs* :
 
 ```csharp
 var manifestEmbeddedProvider = 
@@ -137,7 +138,7 @@ Las sobrecargas adicionales le permiten:
 
 <xref:Microsoft.Extensions.FileProviders.CompositeFileProvider> combina instancias de `IFileProvider`, y expone una única interfaz para trabajar con archivos de varios proveedores. Al crear `CompositeFileProvider`, se pasan una o varias instancias de `IFileProvider` a su constructor.
 
-En la aplicación de ejemplo *FileProviderSample*, `PhysicalFileProvider` y `ManifestEmbeddedFileProvider` proporcionan archivos a un `CompositeFileProvider` registrado en el contenedor de servicios de la aplicación. El código siguiente se encuentra en el método `Startup.ConfigureServices` del proyecto:
+En la aplicación de ejemplo *FileProviderSample* , `PhysicalFileProvider` y `ManifestEmbeddedFileProvider` proporcionan archivos a un `CompositeFileProvider` registrado en el contenedor de servicios de la aplicación. El código siguiente se encuentra en el método `Startup.ConfigureServices` del proyecto:
 
 [!code-csharp[](file-providers/samples/3.x/FileProviderSample/Startup.cs?name=snippet1)]
 
@@ -153,7 +154,7 @@ El token de cambio resultante expone:
 * <xref:Microsoft.Extensions.Primitives.IChangeToken.HasChanged>: una propiedad que se puede inspeccionar para determinar si se ha producido un cambio.
 * <xref:Microsoft.Extensions.Primitives.IChangeToken.RegisterChangeCallback*>: se llama cuando se detectan cambios en la cadena de ruta de acceso especificada. Cada token de cambio solo llama a su devolución de llamada asociada en respuesta a un único cambio. Para habilitar la supervisión constante, puede usar <xref:System.Threading.Tasks.TaskCompletionSource`1> (como se muestra a continuación) o volver a crear instancias de `IChangeToken` en respuesta a los cambios.
 
-La aplicación de ejemplo *WatchConsole* escribe un mensaje cada vez que se modifica un archivo *.txt* en el directorio *TextFiles*:
+La aplicación de ejemplo *WatchConsole* escribe un mensaje cada vez que se modifica un archivo *.txt* en el directorio *TextFiles* :
 
 [!code-csharp[](file-providers/samples/3.x/WatchConsole/Program.cs?name=snippet1)]
 
@@ -175,7 +176,7 @@ En la tabla siguiente se proporcionan ejemplos comunes de patrones globales.
 |---------|---------|
 |`directory/file.txt`|Coincide con un archivo concreto en un directorio específico.|
 |`directory/*.txt`|Coincide con todos los archivos que tengan la extensión *.txt* en un directorio específico.|
-|`directory/*/appsettings.json`|Coincide con todos los archivos *appsettings.json* que están en directorios exactamente un nivel por debajo de la carpeta *directorio*.|
+|`directory/*/appsettings.json`|Coincide con todos los archivos *appsettings.json* que estén en directorios exactamente un nivel por debajo de la carpeta *directory*.|
 |`directory/**/*.txt`|Coincide con todos los archivos con una extensión *.txt* y que se encuentran en cualquier lugar de la carpeta *directorio*.|
 
 ::: moniker-end
@@ -261,7 +262,7 @@ Use [patrones globales](#glob-patterns) para especificar uno o varios archivos p
 
 La aplicación de ejemplo crea `ManifestEmbeddedFileProvider` y pasa el ensamblado que se está ejecutando actualmente a su constructor.
 
-*Startup.cs*:
+*Startup.cs* :
 
 ```csharp
 var manifestEmbeddedProvider = 

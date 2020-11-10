@@ -3,8 +3,9 @@ title: Creación de un servidor y un cliente gRPC en ASP.NET Core
 author: juntaoluo
 description: En este tutorial se le mostrará cómo crear un servicio gRPC y un cliente gRPC en ASP.NET Core. Aprenda a crear un proyecto de servicio gRPC, edite un archivo proto y agregue una llamada de streaming dúplex.
 ms.author: johluo
-ms.date: 04/08/2020
+ms.date: 10/23/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/grpc/grpc-start
-ms.openlocfilehash: fbfd37b8f796990ff035f7fffeb906e23a8739d4
-ms.sourcegitcommit: c06a5bf419541d17595af30e4cf6f2787c21855e
+ms.openlocfilehash: 9388a2f814008ebb50171f85b8baccf6dadfac27
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92678589"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93057029"
 ---
 # <a name="tutorial-create-a-grpc-client-and-server-in-aspnet-core"></a>Tutorial: Crear un servidor y un cliente gRPC en ASP.NET Core
 
@@ -63,7 +64,7 @@ En este tutorial ha:
 * Inicie Visual Studio y seleccione **Crear un proyecto**. Alternativamente, en el menú **Archivo** de Visual Studio, seleccione **Nuevo** > **Proyecto**.
 * En el cuadro de diálogo **Crear un proyecto** , seleccione **Servicio gRPC** y elija **Siguiente** :
 
-  ![Cuadro de diálogo Crear un proyecto](~/tutorials/grpc/grpc-start/static/cnp.png)
+  ![Creación de un cuadro de diálogo de nuevo proyecto en Visual Studio](~/tutorials/grpc/grpc-start/static/cnp.png)
 
 * Llame al proyecto **GrpcGreeter**. Es importante asignarle el nombre *GrpcGreeter* para que los espacios de nombres coincidan al copiar y pegar el código.
 * Seleccione **Crear**.
@@ -74,7 +75,7 @@ En este tutorial ha:
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * Abra el [terminal integrado](https://code.visualstudio.com/docs/editor/integrated-terminal).
-* Cambie los directorios (`cd`) a una carpeta que contenga el proyecto.
+* Cambie los directorios (`cd`) a una carpeta para el proyecto.
 * Ejecute los comandos siguientes:
 
   ```dotnetcli
@@ -93,9 +94,9 @@ En este tutorial ha:
 * Inicie Visual Studio para Mac y seleccione **Crear un proyecto**. Alternativamente, en el menú **Archivo** de Visual Studio, seleccione **Nuevo** > **Proyecto**.
 * En el cuadro de diálogo **Crear un proyecto** , seleccione **Web y consola** > **Aplicación** > **Servicio gRPC** y luego **Siguiente** :
 
-  ![Cuadro de diálogo Crear un proyecto](~/tutorials/grpc/grpc-start/static/cnp-mac.png)
+  ![Creación de un cuadro de diálogo de nuevo proyecto en macOS](~/tutorials/grpc/grpc-start/static/cnp-mac.png)
 
-* Seleccione **.NET Core 3.1** como marco de trabajo de destino y haga clic en **Siguiente**.
+* Seleccione **.NET Core 3.1** como marco de destino y, a continuación, seleccione **Siguiente**.
 * Llame al proyecto **GrpcGreeter**. Es importante asignarle el nombre *GrpcGreeter* para que los espacios de nombres coincidan al copiar y pegar el código.
 * Seleccione **Crear**.
 ---
@@ -141,7 +142,7 @@ Archivos de proyecto de *GrpcGreeter* :
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * Abra el [terminal integrado](https://code.visualstudio.com/docs/editor/integrated-terminal).
-* Cambie los directorios (`cd`) a una carpeta que contenga el proyecto.
+* Cambie los directorios (`cd`) a una carpeta para el proyecto.
 * Ejecute los comandos siguientes:
 
   ```dotnetcli
@@ -202,7 +203,7 @@ dotnet add GrpcGreeterClient.csproj package Grpc.Tools
 * Haga clic con el botón derecho en el proyecto **GrpcGreeterClient** en el **Panel de solución** y seleccione **Administrar paquetes NuGet**.
 * Escriba **Grpc.Net.Client** en el cuadro de búsqueda.
 * Seleccione el paquete **Grpc.Net.Client** en el panel de resultados y seleccione **Agregar paquete**.
-* Haga clic en el botón **Aceptar** del cuadro de diálogo de **aceptación de la licencia**.
+* Seleccione el botón **Aceptar** del cuadro de diálogo de **aceptación de la licencia**.
 * Repita el proceso para `Google.Protobuf` y `Grpc.Tools`.
 
 ---

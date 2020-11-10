@@ -6,6 +6,7 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
 ms.date: 08/28/2020
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/httpapi
-ms.openlocfilehash: fa4e7489920338344b78874690e64d4080b5a719
-ms.sourcegitcommit: 139c998d37e9f3e3d0e3d72e10dbce8b75957d89
+ms.openlocfilehash: 45e2a1a5e6a9f00294147db769454b78c5b866e5
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91805588"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93059941"
 ---
 # <a name="create-json-web-apis-from-grpc"></a>Creación de API web JSON desde gRPC
 
@@ -38,7 +39,7 @@ Por [James Newton-King](https://twitter.com/jamesnk)
 
 gRPC es una forma moderna de comunicarse entre aplicaciones. gRPC usa HTTP/2, streaming, Protobuf y contratos de mensaje para crear servicios en tiempo real de alto rendimiento.
 
-Una limitación de gRPC es que no se puede usar en todas las plataformas. Los exploradores no son totalmente compatibles con HTTP/2, por lo que REST y JSON son la manera principal de obtener datos en aplicaciones de explorador. Incluso con las ventajas que aporta gRPC, REST y JSON ocupan un lugar importante en las aplicaciones modernas. La compilación de API web JSON ***y*** gRPC agrega una sobrecarga no deseada al desarrollo de aplicaciones.
+Una limitación de gRPC es que no se puede usar en todas las plataformas. Los exploradores no son totalmente compatibles con HTTP/2, por lo que REST y JSON son la manera principal de obtener datos en aplicaciones de explorador. Incluso con las ventajas que aporta gRPC, REST y JSON ocupan un lugar importante en las aplicaciones modernas. La compilación de API web JSON * **y** _ gRPC agrega una sobrecarga no deseada al desarrollo de aplicaciones.
 
 En este documento se explica cómo crear API web JSON con servicios gRPC.
 
@@ -46,7 +47,7 @@ En este documento se explica cómo crear API web JSON con servicios gRPC.
 
 La API HTTP de gRPC es una extensión experimental para ASP.NET Core que crea API JSON de RESTful para servicios gRPC. Una vez configurada, la API HTTP de gRPC permite que las aplicaciones llamen a servicios gRPC con conceptos conocidos de HTTP:
 
-* Verbos HTTP
+_ Verbos HTTP
 * Enlace de parámetros de dirección URL
 * Solicitudes y respuestas JSON
 

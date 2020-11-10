@@ -6,6 +6,7 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
 ms.date: 09/03/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/aspnetcore
-ms.openlocfilehash: 11237c93832e095abb03d761773d213dfa336052
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: b120aa4ab6922445f2c53f3b1cb3bd5c159d8a84
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88633895"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93057835"
 ---
 # <a name="grpc-services-with-aspnet-core"></a>Servicios gRPC con ASP.NET Core
 
@@ -66,7 +67,7 @@ gRPC requiere el paquete [Grpc.AspNetCore](https://www.nuget.org/packages/Grpc.A
 
 ### <a name="configure-grpc"></a>Configuración de gRPC
 
-En *Startup.cs*:
+En *Startup.cs* :
 
 * gRPC se habilita con el método `AddGrpc`.
 * Cada servicio gRPC se agrega a la canalización de enrutamiento a través del método `MapGrpcService`.
@@ -93,11 +94,11 @@ Kestrel [admite HTTP/2](xref:fundamentals/servers/kestrel#http2-support) en la m
 
 Los puntos de conexión de Kestrel usados para gRPC deben protegerse con TLS. En la fase de desarrollo, se crea automáticamente un punto de conexión protegido con TLS en `https://localhost:5001` cuando el certificado de desarrollo de ASP.NET Core está presente. No se requiere ninguna configuración. Un prefijo `https` comprueba que el punto de conexión de Kestrel está usando TLS.
 
-En un entorno de producción, se debe configurar TLS explícitamente. En el siguiente ejemplo de *appsettings.json*, se proporciona un punto de conexión HTTP/2 protegido con TLS:
+En un entorno de producción, se debe configurar TLS explícitamente. En el siguiente ejemplo de *appsettings.json* , se proporciona un punto de conexión HTTP/2 protegido con TLS:
 
 [!code-json[](~/grpc/aspnetcore/sample/appsettings.json?highlight=4)]
 
-Como alternativa, se pueden configurar puntos de conexión de Kestrel en *Program.cs*:
+Como alternativa, se pueden configurar puntos de conexión de Kestrel en *Program.cs* :
 
 [!code-csharp[](~/grpc/aspnetcore/sample/Program.cs?highlight=7&name=snippet)]
 

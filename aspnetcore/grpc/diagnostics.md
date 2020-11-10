@@ -6,6 +6,7 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
 ms.date: 09/23/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -17,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/diagnostics
-ms.openlocfilehash: 7d2da20d04b93ebcd16fb58a4b74b5b67d37bd72
-ms.sourcegitcommit: 24106b7ffffc9fff410a679863e28aeb2bbe5b7e
+ms.openlocfilehash: 1f25ae76e5a480e5e6f247e4ac78d06dd4e778e9
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90722928"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93060448"
 ---
 # <a name="logging-and-diagnostics-in-grpc-on-net"></a>Registro y diagnóstico en gRPC en .NET
 
@@ -30,9 +31,9 @@ Por [James Newton-King](https://twitter.com/jamesnk)
 
 En este artículo se proporcionan instrucciones para recopilar diagnósticos de una aplicación gRPC para ayudar a solucionar problemas. Temas cubiertos:
 
-* **Registro**: registros estructurados escritos en el [registro de .NET Core](xref:fundamentals/logging/index). Los marcos de trabajo de la aplicación usan <xref:Microsoft.Extensions.Logging.ILogger> para escribir registros, y los usuarios, para su propio registro en una aplicación.
-* **Seguimiento**: eventos relacionados con una operación escrita mediante `DiaganosticSource` y `Activity`. Los seguimientos del origen de diagnóstico se suelen usar para recopilar telemetría de la aplicación mediante bibliotecas como [Application Insights](/azure/azure-monitor/app/asp-net-core) y [OpenTelemetry](https://github.com/open-telemetry/opentelemetry-dotnet).
-* **Métricas**: representación de medidas de datos a lo largo de intervalos de tiempo, por ejemplo, solicitudes por segundo. Las métricas se emiten mediante `EventCounter` y se pueden observar con la herramienta de línea de comandos [dotnet-counters](/dotnet/core/diagnostics/dotnet-counters) o con [Application Insights](/azure/azure-monitor/app/eventcounters).
+* **Registro** : registros estructurados escritos en el [registro de .NET Core](xref:fundamentals/logging/index). Los marcos de trabajo de la aplicación usan <xref:Microsoft.Extensions.Logging.ILogger> para escribir registros, y los usuarios, para su propio registro en una aplicación.
+* **Seguimiento** : eventos relacionados con una operación escrita mediante `DiaganosticSource` y `Activity`. Los seguimientos del origen de diagnóstico se suelen usar para recopilar telemetría de la aplicación mediante bibliotecas como [Application Insights](/azure/azure-monitor/app/asp-net-core) y [OpenTelemetry](https://github.com/open-telemetry/opentelemetry-dotnet).
+* **Métricas** : representación de medidas de datos a lo largo de intervalos de tiempo, por ejemplo, solicitudes por segundo. Las métricas se emiten mediante `EventCounter` y se pueden observar con la herramienta de línea de comandos [dotnet-counters](/dotnet/core/diagnostics/dotnet-counters) o con [Application Insights](/azure/azure-monitor/app/eventcounters).
 
 ## <a name="logging"></a>Registro
 
@@ -113,8 +114,8 @@ Si la aplicación no usa inserción de dependencias, puede crear una instancia d
 
 El cliente gRPC agrega un [ámbito de registro](../fundamentals/logging/index.md#log-scopes) a los registros realizados durante una llamada a gRPC. El ámbito tiene metadatos relacionados con la llamada a gRPC:
 
-* **GrpcMethodType**: tipo de método de gRPC. Los valores posibles son los nombres de la enumeración `Grpc.Core.MethodType`, por ejemplo, unario
-* **GrpcUri**: URI relativo del método gRPC, por ejemplo, /greet.Greeter/SayHellos.
+* **GrpcMethodType** : tipo de método de gRPC. Los valores posibles son los nombres de la enumeración `Grpc.Core.MethodType`, por ejemplo, unario
+* **GrpcUri** : URI relativo del método gRPC, por ejemplo, /greet.Greeter/SayHellos.
 
 #### <a name="sample-logging-output"></a>Salida de registro de ejemplo
 

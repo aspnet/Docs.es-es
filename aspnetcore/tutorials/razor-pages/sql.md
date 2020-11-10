@@ -5,6 +5,7 @@ description: Parte 4 de la serie de tutoriales sobre Razor Pages.
 ms.author: riande
 ms.date: 7/22/2019
 no-loc:
+- appsettings.json
 - ASP.NET Core Identity
 - cookie
 - Cookie
@@ -16,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/sql
-ms.openlocfilehash: d2e18782411b1801c74fa33ba1b31bad9662f3b2
-ms.sourcegitcommit: 65add17f74a29a647d812b04517e46cbc78258f9
+ms.openlocfilehash: d592cf7d8a96a7e4ec2e53418843a186488951be
+ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88627122"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93058160"
 ---
 # <a name="part-4-with-a-database-and-aspnet-core"></a>Parte 4. Trabajo con una base de datos y ASP.NET Core
 
@@ -31,7 +32,7 @@ Por [Rick Anderson](https://twitter.com/RickAndMSFT) y [Joe Audette](https://twi
 
 [!INCLUDE[](~/includes/rp/download.md)]
 
-El objeto `RazorPagesMovieContext` controla la tarea de conexión a la base de datos y asignación de objetos `Movie` a los registros de la base de datos. El contexto de base de datos se registra con el contenedor de [inserción de dependencias](xref:fundamentals/dependency-injection) en el método `ConfigureServices` de *Startup.cs*:
+El objeto `RazorPagesMovieContext` controla la tarea de conexión a la base de datos y asignación de objetos `Movie` a los registros de la base de datos. El contexto de base de datos se registra con el contenedor de [inserción de dependencias](xref:fundamentals/dependency-injection) en el método `ConfigureServices` de *Startup.cs* :
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -43,7 +44,7 @@ El objeto `RazorPagesMovieContext` controla la tarea de conexión a la base de d
 
 ---
 
-El sistema [Configuración](xref:fundamentals/configuration/index) de ASP.NET Core lee el elemento `ConnectionString`. Para el desarrollo local, obtiene la cadena de conexión del archivo *appsettings.json*.
+El sistema [Configuración](xref:fundamentals/configuration/index) de ASP.NET Core lee el elemento `ConnectionString`. Para el desarrollo local, obtiene la cadena de conexión del archivo *appsettings.json* .
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -66,11 +67,11 @@ Cuando la aplicación se implementa en un servidor de prueba o producción, se p
 LocalDB es una versión ligera del motor de base de datos de SQL Server Express dirigida al desarrollo de programas. LocalDB se inicia a petición y se ejecuta en modo de usuario, sin necesidad de una configuración compleja. De forma predeterminada, la base de datos LocalDB crea archivos `*.mdf` en el directorio `C:\Users\<user>\`.
 
 <a name="ssox"></a>
-* En el menú **Ver**, abra **Explorador de objetos de SQL Server** (SSOX).
+* En el menú **Ver** , abra **Explorador de objetos de SQL Server** (SSOX).
 
   ![Menú Ver](sql/_static/ssox.png)
 
-* Haga clic con el botón derecho en la tabla `Movie` y seleccione **Diseñador de vistas**:
+* Haga clic con el botón derecho en la tabla `Movie` y seleccione **Diseñador de vistas** :
 
   ![Menús contextuales abiertos en la tabla Movie](sql/_static/design.png)
 
@@ -78,7 +79,7 @@ LocalDB es una versión ligera del motor de base de datos de SQL Server Express 
 
 Observe el icono de llave junto a `ID`. De forma predeterminada, EF crea una propiedad denominada `ID` para la clave principal.
 
-* Haga clic con el botón derecho en la tabla `Movie` y seleccione **Ver datos**:
+* Haga clic con el botón derecho en la tabla `Movie` y seleccione **Ver datos** :
 
   ![Tabla Movie abierta mostrando datos de la tabla](sql/_static/vd22.png)
 
@@ -108,7 +109,7 @@ if (context.Movie.Any())
 
 ### <a name="add-the-seed-initializer"></a>Agregar el inicializador
 
-En *Program.cs*, modifique el método `Main` para que haga lo siguiente:
+En *Program.cs* , modifique el método `Main` para que haga lo siguiente:
 
 * Obtener una instancia del contexto de base de datos desde el contenedor de inserción de dependencias.
 * Llamar al método de inicialización, pasándolo al contexto.
@@ -130,7 +131,7 @@ La siguiente excepción se produce cuando no se ha ejecutado `Update-Database`:
 * Elimine todos los registros de la base de datos. Puede hacerlo con los vínculos de eliminación en el explorador o desde [SSOX](xref:tutorials/razor-pages/new-field#ssox).
 * Obligue a la aplicación a inicializarse (llame a los métodos de la clase `Startup`) para que se ejecute el método de inicialización. Para forzar la inicialización, se debe detener y reiniciar IIS Express. Puede hacerlo con cualquiera de los siguientes enfoques:
 
-  * Haga clic con el botón derecho en el icono Bandeja del sistema de IIS Express del área de notificación y pulse en **Salir** o en **Detener sitio**:
+  * Haga clic con el botón derecho en el icono Bandeja del sistema de IIS Express del área de notificación y pulse en **Salir** o en **Detener sitio** :
 
     ![Icono Bandeja del sistema de IIS Express](../first-mvc-app/working-with-sql/_static/iisExIcon.png)
 
@@ -161,7 +162,7 @@ En el tutorial siguiente se mejorará la presentación de los datos.
 
 [!INCLUDE[](~/includes/rp/download.md)]
 
-El objeto `RazorPagesMovieContext` controla la tarea de conexión a la base de datos y asignación de objetos `Movie` a los registros de la base de datos. El contexto de base de datos se registra con el contenedor de [inserción de dependencias](xref:fundamentals/dependency-injection) en el método `ConfigureServices` de *Startup.cs*:
+El objeto `RazorPagesMovieContext` controla la tarea de conexión a la base de datos y asignación de objetos `Movie` a los registros de la base de datos. El contexto de base de datos se registra con el contenedor de [inserción de dependencias](xref:fundamentals/dependency-injection) en el método `ConfigureServices` de *Startup.cs* :
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -178,7 +179,7 @@ Para más información sobre los modelos empleados en `ConfigureServices`, vea:
 * [Compatibilidad con el Reglamento general de protección de datos (RGPD) en ASP.NET Core](xref:security/gdpr) para `CookiePolicyOptions`.
 * [SetCompatibilityVersion](xref:mvc/compatibility-version)
 
-El sistema [Configuración](xref:fundamentals/configuration/index) de ASP.NET Core lee el elemento `ConnectionString`. Para el desarrollo local, obtiene la cadena de conexión del archivo *appsettings.json*.
+El sistema [Configuración](xref:fundamentals/configuration/index) de ASP.NET Core lee el elemento `ConnectionString`. Para el desarrollo local, obtiene la cadena de conexión del archivo *appsettings.json* .
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -205,11 +206,11 @@ Cuando la aplicación se implementa en un servidor de prueba o producción, se p
 LocalDB es una versión ligera del motor de base de datos de SQL Server Express dirigida al desarrollo de programas. LocalDB se inicia a petición y se ejecuta en modo de usuario, sin necesidad de una configuración compleja. De forma predeterminada, la base de datos LocalDB crea archivos `*.mdf` en el directorio `C:/Users/<user/>`.
 
 <a name="ssox"></a>
-* En el menú **Ver**, abra **Explorador de objetos de SQL Server** (SSOX).
+* En el menú **Ver** , abra **Explorador de objetos de SQL Server** (SSOX).
 
   ![Menú Ver](sql/_static/ssox.png)
 
-* Haga clic con el botón derecho en la tabla `Movie` y seleccione **Diseñador de vistas**:
+* Haga clic con el botón derecho en la tabla `Movie` y seleccione **Diseñador de vistas** :
 
   ![Menú contextual abierto en la tabla Movie](sql/_static/design.png)
 
@@ -217,7 +218,7 @@ LocalDB es una versión ligera del motor de base de datos de SQL Server Express 
 
 Observe el icono de llave junto a `ID`. De forma predeterminada, EF crea una propiedad denominada `ID` para la clave principal.
 
-* Haga clic con el botón derecho en la tabla `Movie` y seleccione **Ver datos**:
+* Haga clic con el botón derecho en la tabla `Movie` y seleccione **Ver datos** :
 
   ![Tabla Movie abierta mostrando datos de la tabla](sql/_static/vd22.png)
 
@@ -252,7 +253,7 @@ if (context.Movie.Any())
 
 ### <a name="add-the-seed-initializer"></a>Agregar el inicializador
 
-En *Program.cs*, modifique el método `Main` para que haga lo siguiente:
+En *Program.cs* , modifique el método `Main` para que haga lo siguiente:
 
 * Obtener una instancia del contexto de base de datos desde el contenedor de inserción de dependencias.
 * Llamar al método de inicialización, pasándolo al contexto.
@@ -274,7 +275,7 @@ Error de inicio de sesión del usuario <nombre de usuario>.
 * Elimine todos los registros de la base de datos. Puede hacerlo con los vínculos de eliminación en el explorador o desde [SSOX](xref:tutorials/razor-pages/new-field#ssox).
 * Obligue a la aplicación a inicializarse (llame a los métodos de la clase `Startup`) para que se ejecute el método de inicialización. Para forzar la inicialización, se debe detener y reiniciar IIS Express. Puede hacerlo con cualquiera de los siguientes enfoques:
 
-  * Haga clic con el botón derecho en el icono Bandeja del sistema de IIS Express del área de notificación y pulse en **Salir** o en **Detener sitio**:
+  * Haga clic con el botón derecho en el icono Bandeja del sistema de IIS Express del área de notificación y pulse en **Salir** o en **Detener sitio** :
 
     ![Icono Bandeja del sistema de IIS Express](../first-mvc-app/working-with-sql/_static/iisExIcon.png)
 
