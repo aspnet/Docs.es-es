@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: migration/http-modules
-ms.openlocfilehash: 9664f49bd709d2c9e46130773211c339e391d1f6
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 4abba1d4304bf537bd96623527c851d9d15774a4
+ms.sourcegitcommit: 1be547564381873fe9e84812df8d2088514c622a
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93060708"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94508167"
 ---
 # <a name="migrate-http-handlers-and-modules-to-aspnet-core-middleware"></a>Migración de controladores y módulos HTTP a middleware de ASP.NET Core
 
@@ -58,7 +58,7 @@ Antes de continuar con ASP.NET Core middleware, vamos a resumir primero cómo fu
 
 1. <https://docs.microsoft.com/previous-versions/ms227673(v=vs.140)>, Que es una serie de eventos desencadenados por ASP.net: [BeginRequest](/dotnet/api/system.web.httpapplication.beginrequest), [AuthenticateRequest](/dotnet/api/system.web.httpapplication.authenticaterequest), etc. Cada módulo puede crear un controlador para uno o más eventos.
 
-2. Para el mismo evento, el orden en el que están configurados en *Web.config* .
+2. Para el mismo evento, el orden en el que están configurados en *Web.config*.
 
 Además de los módulos, puede agregar controladores para los eventos de ciclo de vida al archivo *global.asax.CS* . Estos controladores se ejecutan después de los controladores de los módulos configurados.
 
@@ -141,7 +141,7 @@ Convierta esto [agregando el nuevo middleware](xref:fundamentals/middleware/inde
 
 [!code-csharp[](../migration/http-modules/sample/Asp.Net.Core/Startup.cs?name=snippet_Configure&highlight=16)]
 
-El punto exacto de la canalización en el que se inserta el middleware nuevo depende del evento que se administró como módulo ( `BeginRequest` , `EndRequest` , etc.) y su orden en la lista de módulos de *Web.config* .
+El punto exacto de la canalización en el que se inserta el middleware nuevo depende del evento que se administró como módulo ( `BeginRequest` , `EndRequest` , etc.) y su orden en la lista de módulos de *Web.config*.
 
 Como se indicó anteriormente, no hay ningún ciclo de vida de la aplicación en ASP.NET Core y el orden en el que el middleware procesa las respuestas difiere del orden utilizado por los módulos. Esto podría hacer que su decisión de ordenación sea más desafiante.
 
@@ -181,7 +181,7 @@ Middleware que se agrega a la canalización antes de que se invoque la rama en t
 
 ## <a name="loading-middleware-options-using-the-options-pattern"></a>Cargar opciones de middleware mediante el patrón de opciones
 
-Algunos módulos y controladores tienen opciones de configuración que se almacenan en *Web.config* . Sin embargo, en ASP.NET Core se usa un nuevo modelo de configuración en lugar de *Web.config* .
+Algunos módulos y controladores tienen opciones de configuración que se almacenan en *Web.config*. Sin embargo, en ASP.NET Core se usa un nuevo modelo de configuración en lugar de *Web.config*.
 
 El nuevo [sistema de configuración](xref:fundamentals/configuration/index) le proporciona estas opciones para solucionar este problemas:
 
@@ -324,7 +324,7 @@ Proporciona un identificador único para cada solicitud. Es muy útil incluir en
 [!code-csharp[](http-modules/sample/Asp.Net.Core/Middleware/HttpContextDemoMiddleware.cs?name=snippet_Form)]
 
 > [!WARNING]
-> Lea los valores del formulario solo si el subtipo de contenido es *x-www-form-urlencoded* o *form-data* .
+> Lea los valores del formulario solo si el subtipo de contenido es *x-www-form-urlencoded* o *form-data*.
 
 **HttpContext. request. InputStream** se convierte en:
 
@@ -357,7 +357,7 @@ Proporciona un identificador único para cada solicitud. Es muy útil incluir en
 
 **HttpContext. Response. TransmitFile**
 
-El servicio de un archivo se describe en [características de middleware y de solicitud](xref:fundamentals/request-features#middleware-and-request-features).
+El servicio de un archivo se describe en <xref:fundamentals/request-features> .
 
 **HttpContext. Response. Headers**
 
