@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/data-protection/implementation/key-storage-providers
-ms.openlocfilehash: 36e8bc494125d0770347ddf32390365d83a91d27
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 6a70183ce4b1a129ef213300473b233a5ef822f9
+ms.sourcegitcommit: fbd5427293d9ecccc388bd5fd305c2eb8ada7281
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93051751"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94463891"
 ---
 # <a name="key-storage-providers-in-aspnet-core"></a>Proveedores de almacenamiento de claves en ASP.NET Core
 
@@ -47,7 +47,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="azure-storage"></a>Azure Storage
 
-El paquete [Microsoft. AspNetCore. AzureStorage](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.AzureStorage/) permite almacenar las claves de protección de datos en Azure BLOB Storage. Las claves se pueden compartir entre varias instancias de una aplicación Web. Las aplicaciones pueden compartir la cookie protección s o CSRF entre varios servidores.
+El paquete [Azure. Extensions. AspNetCore. bioprotection. blobs](https://www.nuget.org/packages/Azure.Extensions.AspNetCore.DataProtection.Blobs) permite almacenar las claves de protección de datos en Azure BLOB Storage. Las claves se pueden compartir entre varias instancias de una aplicación Web. Las aplicaciones pueden compartir la cookie protección s o CSRF entre varios servidores.
 
 Para configurar el proveedor de Azure Blob Storage, llame a una de las sobrecargas de [PersistKeysToAzureBlobStorage](/dotnet/api/microsoft.aspnetcore.dataprotection.azuredataprotectionbuilderextensions.persistkeystoazureblobstorage) .
 
@@ -59,15 +59,12 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-Si la aplicación web se ejecuta como un servicio de Azure, los tokens de autenticación se pueden crear automáticamente con [Microsoft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication/).
+Si la aplicación web se ejecuta como un servicio de Azure, se puede usar la cadena de conexión para autenticarse en Azure Storage mediante [Azure. Storage. blobs](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.blobcontainerclient).
 
 ```csharp
-var tokenProvider = new AzureServiceTokenProvider();
-var token = await tokenProvider.GetAccessTokenAsync("https://storage.azure.com/");
-var credentials = new StorageCredentials(new TokenCredential(token));
-var storageAccount = new CloudStorageAccount(credentials, "mystorageaccount", "core.windows.net", useHttps: true);
-var client = storageAccount.CreateCloudBlobClient();
-var container = client.GetContainerReference("my-key-container");
+string connectionString = "<connection_string>";
+string containerName = "my-key-container";
+BlobContainerClient container = new BlobContainerClient(connectionString, containerName);
 
 // optional - provision the container automatically
 await container.CreateIfNotExistsAsync();
@@ -76,7 +73,11 @@ services.AddDataProtection()
     .PersistKeysToAzureBlobStorage(container, "keys.xml");
 ```
 
-Vea [más detalles sobre la configuración de la autenticación de servicio a servicio.](/azure/key-vault/service-to-service-authentication)
+> [!NOTE]
+> La cadena de conexión a la cuenta de almacenamiento se puede encontrar en Azure portal en la sección "claves de acceso" o mediante la ejecución del siguiente comando de la CLI: 
+> ```bash
+> az storage account show-connection-string --name <account_name> --resource-group <resource_group>
+> ```
 
 ## <a name="redis"></a>Redis
 
@@ -122,7 +123,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ::: moniker-end
 
-Para obtener más información, consulte los temas siguientes:
+Para obtener más información, vea los temas siguientes:
 
 * [StackExchange. Redis ConnectionMultiplexer](https://github.com/StackExchange/StackExchange.Redis/blob/master/docs/Basics.md)
 * [Azure Redis Cache](/azure/redis-cache/cache-dotnet-how-to-use-azure-redis-cache#connect-to-the-cache)
