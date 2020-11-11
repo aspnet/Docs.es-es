@@ -9,10 +9,6 @@
   * `{header}={value}`
   * `{header}:{value}`
 
-* `--response`
-
-  Especifica un archivo en el que se debe escribir toda la respuesta HTTP (incluidos los encabezados y el cuerpo). Por ejemplo, `--response "C:\response.txt"`. Si el archivo no existe, se creará.
-
 * `--response:body`
 
   Especifica un archivo en el que se debe escribir el cuerpo de respuesta HTTP. Por ejemplo, `--response:body "C:\response.json"`. Si el archivo no existe, se creará.

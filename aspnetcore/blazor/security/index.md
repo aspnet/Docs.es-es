@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/index
-ms.openlocfilehash: 6110f51eb5d5ee40d6ce5a5d49ddda3329d1f033
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: a333c189e81a9f44e94deb6b37097f1a8b19a0f9
+ms.sourcegitcommit: fe5a287fa6b9477b130aa39728f82cdad57611ee
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93055547"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94430931"
 ---
 # <a name="aspnet-core-no-locblazor-authentication-and-authorization"></a>Autenticación y autorización de ASP.NET Core Blazor
 
@@ -39,7 +39,7 @@ Los escenarios de seguridad difieren entre las aplicaciones de Blazor Server y B
 
 Las aplicaciones de Blazor WebAssembly se ejecutan en el cliente. La autorización *solo* se utiliza para determinar qué opciones de la interfaz de usuario se van a mostrar. Dado que el usuario puede modificar u omitir las comprobaciones en el cliente, las aplicaciones de Blazor WebAssembly no pueden aplicar reglas de acceso de autorización.
 
-Las [convenciones de autorización de Razor Pages](xref:security/authorization/razor-pages-authorization) no se aplican a los componentes de Razor enrutables. Si [se inserta un componente no enrutable de Razor en una página](xref:blazor/components/integrate-components-into-razor-pages-and-mvc-apps#render-components-from-a-page-or-view), las convenciones de autorización de esta afectan indirectamente al componente de Razor y al resto del contenido de la página.
+Las [convenciones de autorización de Razor Pages](xref:security/authorization/razor-pages-authorization) no se aplican a los componentes de Razor enrutables. Si [se inserta un componente no enrutable de Razor en una página](xref:blazor/components/prerendering-and-integration), las convenciones de autorización de esta afectan indirectamente al componente de Razor y al resto del contenido de la página.
 
 > [!NOTE]
 > <xref:Microsoft.AspNetCore.Identity.SignInManager%601> y <xref:Microsoft.AspNetCore.Identity.UserManager%601> no se admiten en los componentes de Razor.
@@ -247,8 +247,8 @@ Cuando un usuario está autenticado, se aplican las reglas de *autorización* pa
 Por lo general, se concede o deniega el acceso en función de si:
 
 * El usuario está autenticado (ha iniciado sesión).
-* El usuario está en un *rol* .
-* El usuario tiene una *notificación* .
+* El usuario está en un *rol*.
+* El usuario tiene una *notificación*.
 * Una *directiva* se cumple.
 
 Cada uno de estos conceptos tiene su equivalente en una aplicación ASP.NET Core MVC o Razor Pages. Para más información sobre la seguridad de ASP.NET Core, consulte los artículos disponibles en [Seguridad e Identity de ASP.NET Core](xref:security/index).
@@ -294,7 +294,7 @@ Si no se especifican las condiciones de la autorización, <xref:Microsoft.AspNet
 
 ### <a name="role-based-and-policy-based-authorization"></a>Autorización basada en roles y en directivas
 
-El componente <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView> admite la autorización *basada en roles* o *basada en directivas* .
+El componente <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView> admite la autorización *basada en roles* o *basada en directivas*.
 
 Para la autorización basada en roles, utilice el parámetro <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView.Roles>:
 
@@ -322,7 +322,7 @@ Si no se especifica <xref:Microsoft.AspNetCore.Components.Authorization.Authoriz
 
 ### <a name="content-displayed-during-asynchronous-authentication"></a>Contenido que se muestra durante la autenticación asincrónica
 
-Blazor permite que el estado de autenticación se determine *asincrónicamente* . El escenario principal de este enfoque se encuentra en las aplicaciones de Blazor WebAssembly que realizan una solicitud de autenticación a un punto de conexión externo.
+Blazor permite que el estado de autenticación se determine *asincrónicamente*. El escenario principal de este enfoque se encuentra en las aplicaciones de Blazor WebAssembly que realizan una solicitud de autenticación a un punto de conexión externo.
 
 Mientras la autenticación está en curso, <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView> no muestra ningún contenido de forma predeterminada. Para mostrar el contenido mientras se produce autenticación, use la etiqueta `<Authorizing>`:
 
