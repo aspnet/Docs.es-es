@@ -1,10 +1,10 @@
 ---
-title: Telemetría HTTP REPL
+title: Telemetría de HttpRepl
 author: scottaddie
-description: Obtenga información sobre la telemetría recopilada por el REPL de HTTP.
+description: Obtenga información sobre la telemetría recopilada por el HttpRepl.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: scaddie
-ms.date: 11/10/2020
+ms.date: 11/11/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -18,30 +18,32 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/http-repl/telemetry
-ms.openlocfilehash: 8590959e43c2dda69090acb358e740b271426a44
-ms.sourcegitcommit: fb72e9c1ae5b279817f1fb4b46a52170449b6f30
+ms.openlocfilehash: 5ff22753f566c494e51dae67c8c4f6371211be78
+ms.sourcegitcommit: 202144092067ea81be1dbb229329518d781dbdfb
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94502009"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94550613"
 ---
-# <a name="http-repl-telemetry"></a>Telemetría HTTP REPL
+# <a name="httprepl-telemetry"></a>Telemetría de HttpRepl
 
-El [bucle http Read-eval-Print (REPL)](xref:web-api/http-repl) incluye una característica de telemetría que recopila datos de uso. Es importante que el equipo de REPL de HTTP entienda cómo se usa la herramienta para que se pueda mejorar.
+[HttpRepl](xref:web-api/http-repl) incluye una característica de telemetría que recopila datos de uso. Es importante que el equipo de HttpRepl comprenda cómo se usa la herramienta para que se pueda mejorar.
 
 ## <a name="how-to-opt-out"></a>Cómo desactivar la característica
 
-La característica de telemetría de REPL de HTTP está habilitada de forma predeterminada. Para desactivar la característica de telemetría, establezca la variable de entorno `DOTNET_HTTPREPL_TELEMETRY_OPTOUT` en `1` o `true`.
+La característica de telemetría HttpRepl está habilitada de forma predeterminada. Para desactivar la característica de telemetría, establezca la variable de entorno `DOTNET_HTTPREPL_TELEMETRY_OPTOUT` en `1` o `true`.
 
 ## <a name="disclosure"></a>Divulgación
 
-HttpRepl muestra texto similar al siguiente cuando se ejecuta por primera vez la herramienta. El texto puede variar ligeramente en función de la versión de la herramienta que se esté ejecutando. Esta experiencia de "primera vista" es la forma en que Microsoft le notifica sobre la recopilación de datos.
+El HttpRepl muestra texto similar al siguiente cuando se ejecuta por primera vez la herramienta. El texto puede variar ligeramente en función de la versión de la herramienta que se esté ejecutando. Esta experiencia de "primera vista" es la forma en que Microsoft le notifica sobre la recopilación de datos.
 
 ```console
 Telemetry
 ---------
-The .NET Core tools collect usage data in order to help us improve your experience. It is collected by Microsoft and shared with the community. You can opt-out of telemetry by setting the DOTNET_HTTPREPL_TELEMETRY_OPTOUT environment variable to '1' or 'true' using your favorite shell.
+The .NET tools collect usage data in order to help us improve your experience. It is collected by Microsoft and shared with the community. You can opt-out of telemetry by setting the DOTNET_HTTPREPL_TELEMETRY_OPTOUT environment variable to '1' or 'true' using your favorite shell.
 ```
+
+Para suprimir el texto de la experiencia "primera ejecución", establezca la `DOTNET_HTTPREPL_SKIP_FIRST_TIME_EXPERIENCE` variable de entorno en `1` o `true` .
 
 ## <a name="data-points"></a>Puntos de datos
 
@@ -68,7 +70,7 @@ La característica de telemetría recopila los datos siguientes.
 | >= 5,0        | Si la herramienta se ejecuta en un contenedor. |
 | >= 5,0        | Dirección de Access Control de medios (MAC) con hash: identificador único y hash criptográficamente (SHA256) de un equipo. |
 | >= 5,0        | Versión de kernel. |
-| >= 5,0        | Versión de REPL de HTTP. |
+| >= 5,0        | Versión de HttpRepl. |
 | >= 5,0        | Si la herramienta se inició con `help` los `run` argumentos, o `connect` . No se recopilan los valores de argumento reales. |
 | >= 5,0        | Comando invocado (por ejemplo, `get` ) y si se ha realizado correctamente. |
 | >= 5,0        | Para el `connect` comando, si `root` `base` `openapi` se proporcionaron los argumentos, o. No se recopilan los valores de argumento reales. |
