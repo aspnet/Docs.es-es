@@ -3,7 +3,7 @@ title: Parte 5. Trabajo con una base de datos en una aplicación de ASP.NET Cor
 author: rick-anderson
 description: Parte 5. Adición de un modelo a una aplicación de ASP.NET Core MVC
 ms.author: riande
-ms.date: 8/16/2019
+ms.date: 11/10/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/working-with-sql
-ms.openlocfilehash: f893aa1041a42c12514b825fb3c8e96a6104358d
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: c082457258346637499b8ea8000dd8792931112f
+ms.sourcegitcommit: 91e14f1e2a25c98a57c2217fe91b172e0ff2958c
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93051582"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94422657"
 ---
 # <a name="part-5-work-with-a-database-in-an-aspnet-core-mvc-app"></a>Parte 5. Trabajo con una base de datos en una aplicación de ASP.NET Core MVC
 

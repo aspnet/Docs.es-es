@@ -5,7 +5,7 @@ description: Aprenda a crear y usar componentes de Razor, lo que incluye cómo e
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/19/2020
+ms.date: 11/09/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/index
-ms.openlocfilehash: d30f40945a3b2799dfc2d9391bba37eee1bfdc18
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 0f02bc3a92b9f62eb0e3efea0cd780ad6d09bef5
+ms.sourcegitcommit: fe5a287fa6b9477b130aa39728f82cdad57611ee
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93056275"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94431009"
 ---
 # <a name="create-and-use-aspnet-core-no-locrazor-components"></a>Creación y uso de componentes de Razor de ASP.NET Core
 
@@ -32,7 +32,7 @@ Por [Luke Latham](https://github.com/guardrex), [Daniel Roth](https://github.com
 
 [Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
-Las aplicaciones Blazor se crean usando *componentes* . Un componente es un fragmento independiente de la interfaz de usuario, como una página, un cuadro de diálogo o un formulario. Los componentes incluyen el marcado HTML y la lógica de procesamiento necesarios para insertar datos o responder a eventos de la interfaz de usuario. Además, son flexibles y ligeros, y se pueden anidar, reutilizar y compartir entre proyectos.
+Las aplicaciones Blazor se crean usando *componentes*. Un componente es un fragmento independiente de la interfaz de usuario, como una página, un cuadro de diálogo o un formulario. Los componentes incluyen el marcado HTML y la lógica de procesamiento necesarios para insertar datos o responder a eventos de la interfaz de usuario. Además, son flexibles y ligeros, y se pueden anidar, reutilizar y compartir entre proyectos.
 
 ## <a name="component-classes"></a>Clases de componentes
 
@@ -628,12 +628,26 @@ Asegúrese de que los valores usados en [`@key`][5] no entran en conflicto. Si s
 
 ## <a name="overwritten-parameters"></a>Parámetros sobrescritos
 
-Se proporcionan nuevos valores de los parámetros, que normalmente sobrescriben los existentes, cuando se vuelve a representar el componente primario.
+El marco Blazor impone con carácter general una asignación de parámetro de componentes primarios a secundarios segura:
 
-Considere el componente `Expander` siguiente que:
+* Los parámetros no se sobrescriben de forma inesperada.
+* Los efectos secundarios se minimizan. Por ejemplo,se evitan representaciones adicionales, ya que pueden crear bucles de representación infinitos.
+
+Un componente secundario recibe nuevos valores de parámetro que posiblemente sobrescriban los valores existentes cuando el componente primario vuelva a representarse. Sobrescribir valores de parámetro en un componente secundario de forma accidental suele producirse al desarrollar el componente con uno o varios parámetros enlazados a datos y cuando el desarrollador escribe directamente en un parámetro del elemento secundario:
+
+* El componente secundario se representa con uno o varios valores de parámetro del componente primario.
+* El elemento secundario escribe directamente en el valor de un parámetro.
+* El componente primario vuelve a representar el valor del parámetro del elemento secundario y lo sobrescribe.
+
+La posibilidad de sobrescribir valores de parámetro se extiende también a los establecedores de propiedades del componente secundario.
+
+**Nuestra orientación general es no crear componentes que se escriban directamente en sus propios parámetros.**
+
+Considere el componente `Expander` erróneo siguiente que:
 
 * Representa el contenido secundario.
-* Alterna la visualización del contenido secundario con un parámetro de componente.
+* Alterna la visualización del contenido secundario con un parámetro de componente (`Expanded`).
+* El componente escribe directamente en el parámetro `Expanded`, que muestra el problema con los parámetros sobrescritos y debe evitarse.
 
 ```razor
 <div @onclick="@Toggle" class="card bg-light mb-3" style="width:30rem">
@@ -685,7 +699,7 @@ El siguiente componente `Expander` revisado:
 
 * Acepta el valor del parámetro de componente `Expanded` del componente principal.
 * Asigna el valor del parámetro de componente a un *campo privado* (`expanded`) en el [evento OnInitialized](xref:blazor/components/lifecycle#component-initialization-methods).
-* Usa el campo privado para mantener su estado de alternancia interno.
+* Usa el campo privado para mantener su estado de alternancia interno, que muestra cómo evitar escribir directamente en un parámetro.
 
 ```razor
 <div @onclick="@Toggle" class="card bg-light mb-3" style="width:30rem">
@@ -719,6 +733,8 @@ El siguiente componente `Expander` revisado:
     }
 }
 ```
+
+Para obtener información adicional, consulte [Error de enlace bidireccional de Blazor (dotnet/aspnetcore #24599)](https://github.com/dotnet/aspnetcore/issues/24599). 
 
 ## <a name="apply-an-attribute"></a>Aplicación de un atributo
 

@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/templated-components
-ms.openlocfilehash: ee38040a1edc8db43b8d5bf0202fd519b153ea04
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: f818a0b7f1ba6d4dd6affeeba785c5e288568dd8
+ms.sourcegitcommit: 1be547564381873fe9e84812df8d2088514c622a
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93056249"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94507959"
 ---
 # <a name="aspnet-core-no-locblazor-templated-components"></a>Componentes con plantilla de Blazor en ASP.NET Core
 
@@ -43,7 +43,7 @@ Un componente con plantilla se define especificando uno o más parámetros de co
 
 Componente `TableTemplate` (`TableTemplate.razor`):
 
-[!code-razor[](../common/samples/3.x/BlazorWebAssemblySample/Components/TableTemplate.razor)]
+[!code-razor[](../common/samples/5.x/BlazorWebAssemblySample/Components/TableTemplate.razor)]
 
 Al usar un componente con plantilla, los parámetros de plantilla se pueden especificar utilizando los elementos secundarios que coinciden con los nombres de los parámetros (`TableHeader` y `RowTemplate` en el ejemplo siguiente):
 
@@ -122,7 +122,7 @@ También puede especificar el atributo `Context` en el elemento de componente. E
 
 Los componentes con plantilla suelen tener tipos genéricos. Por ejemplo, se puede usar un componente `ListViewTemplate` genérico (`ListViewTemplate.razor`) para representar valores `IEnumerable<T>`. Para definir un componente genérico, utilice la directiva [`@typeparam`](xref:mvc/views/razor#typeparam) para especificar parámetros de tipo:
 
-[!code-razor[](../common/samples/3.x/BlazorWebAssemblySample/Components/ListViewTemplate.razor)]
+[!code-razor[](../common/samples/5.x/BlazorWebAssemblySample/Components/ListViewTemplate.razor)]
 
 Al usar componentes de tipo genérico, el parámetro de tipo se infiere si es posible:
 

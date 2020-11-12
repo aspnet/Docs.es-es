@@ -1,13 +1,14 @@
 Ejecute los siguientes comandos CLI de .NET Core:
 
 ```dotnetcli
-dotnet tool install --global dotnet-ef
-dotnet tool install --global dotnet-aspnet-codegenerator
-dotnet add package Microsoft.EntityFrameworkCore.SQLite
-dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
-dotnet add package Microsoft.EntityFrameworkCore.Design
-dotnet add package Microsoft.EntityFrameworkCore.SqlServer
-dotnet add package Microsoft.Extensions.Logging.Debug
+dotnet tool install --global dotnet-ef --version 3.1.9
+dotnet tool install --global dotnet-aspnet-codegenerator --version 3.1.4
+dotnet add package Microsoft.EntityFrameworkCore.Sqlite --version 3.1.9
+dotnet add package Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore --version 3.1.9
+dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design --version 3.1.4
+dotnet add package Microsoft.EntityFrameworkCore.Design --version 3.1.9
+dotnet add package Microsoft.EntityFrameworkCore.SqlServer --version 3.1.9
+dotnet add package Microsoft.Extensions.Logging.Debug --version 3.1.9
 ```
 
 Los comandos anteriores agregan:

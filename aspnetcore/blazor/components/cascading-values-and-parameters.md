@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/cascading-values-and-parameters
-ms.openlocfilehash: dec71f881dc815a26d62da6df92118926b1dcf06
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 56d70cea50a3a913b4483f6ea488438269aa58fe
+ms.sourcegitcommit: 1be547564381873fe9e84812df8d2088514c622a
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93056431"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94507985"
 ---
 # <a name="aspnet-core-no-locblazor-cascading-values-and-parameters"></a>Valores y parámetros en cascada de Blazor en ASP.NET Core
 
@@ -156,7 +156,7 @@ Los parámetros en cascada también permiten que los componentes colaboren a lo 
 
 La aplicación de muestra tiene una interfaz `ITab` que las pestañas implementan:
 
-[!code-csharp[](../common/samples/3.x/BlazorWebAssemblySample/UIInterfaces/ITab.cs)]
+[!code-csharp[](../common/samples/5.x/BlazorWebAssemblySample/UIInterfaces/ITab.cs)]
 
 El componente `CascadingValuesParametersTabSet` usa el componente `TabSet`, que contiene varios componentes `Tab`:
 
@@ -194,10 +194,10 @@ Los componentes `Tab` secundarios no se pasan explícitamente como parámetros a
 
 Componente `TabSet`:
 
-[!code-razor[](../common/samples/3.x/BlazorWebAssemblySample/Components/TabSet.razor)]
+[!code-razor[](../common/samples/5.x/BlazorWebAssemblySample/Components/TabSet.razor)]
 
 Los componentes `Tab` descendientes capturan el elemento `TabSet` contenedor como un parámetro en cascada, por lo que los componentes `Tab` se agregan a sí mismo a `TabSet` y coordinan en qué pestaña está activo.
 
 Componente `Tab`:
 
-[!code-razor[](../common/samples/3.x/BlazorWebAssemblySample/Components/Tab.razor)]
+[!code-razor[](../common/samples/5.x/BlazorWebAssemblySample/Components/Tab.razor)]

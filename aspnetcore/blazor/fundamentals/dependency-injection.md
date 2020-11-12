@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/dependency-injection
-ms.openlocfilehash: 32228cc98b4650d5871369511808e519a4f65be4
-ms.sourcegitcommit: 45aa1c24c3fdeb939121e856282b00bdcf00ea55
+ms.openlocfilehash: 0cec9a1ea6f6df52103ab190c85518ddc42a573f
+ms.sourcegitcommit: 1be547564381873fe9e84812df8d2088514c622a
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93343681"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94507934"
 ---
 # <a name="aspnet-core-no-locblazor-dependency-injection"></a>Inserción de dependencias de Blazor de ASP.NET Core
 
@@ -67,14 +67,10 @@ public class Program
     public static async Task Main(string[] args)
     {
         var builder = WebAssemblyHostBuilder.CreateDefault(args);
-        builder.Services.AddSingleton<IMyDependency, MyDependency>();
-        builder.RootComponents.Add<App>("app");
 
-        builder.Services.AddScoped(sp => 
-            new HttpClient
-            {
-                BaseAddress = new Uri(builder.HostEnvironment.BaseAddress)
-            });
+        builder.Services.AddSingleton<IMyDependency, MyDependency>();
+
+        ...
 
         await builder.Build().RunAsync();
     }
@@ -89,14 +85,10 @@ public class Program
     public static async Task Main(string[] args)
     {
         var builder = WebAssemblyHostBuilder.CreateDefault(args);
-        builder.Services.AddSingleton<WeatherService>();
-        builder.RootComponents.Add<App>("app");
 
-        builder.Services.AddScoped(sp => 
-            new HttpClient
-            {
-                BaseAddress = new Uri(builder.HostEnvironment.BaseAddress)
-            });
+        builder.Services.AddSingleton<WeatherService>();
+
+        ...
 
         var host = builder.Build();
 
@@ -116,14 +108,10 @@ public class Program
     public static async Task Main(string[] args)
     {
         var builder = WebAssemblyHostBuilder.CreateDefault(args);
-        builder.Services.AddSingleton<WeatherService>();
-        builder.RootComponents.Add<App>("app");
 
-        builder.Services.AddScoped(sp => 
-            new HttpClient
-            {
-                BaseAddress = new Uri(builder.HostEnvironment.BaseAddress)
-            });
+        builder.Services.AddSingleton<WeatherService>();
+
+        ...
 
         var host = builder.Build();
 
@@ -307,7 +295,17 @@ En los siguientes ejemplos se muestra cómo detectar servicios transitorios desc
 
 En el ejemplo siguiente se detecta `TransientDisposable` (`Program.cs`):
 
+::: moniker range=">= aspnetcore-5.0"
+
+[!code-csharp[](dependency-injection/samples_snapshot/5.x/transient-disposables/wasm-program.cs?highlight=6,9,17,22-25)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
 [!code-csharp[](dependency-injection/samples_snapshot/3.x/transient-disposables/wasm-program.cs?highlight=6,9,17,22-25)]
+
+::: moniker-end
 
 ### Blazor Server
 

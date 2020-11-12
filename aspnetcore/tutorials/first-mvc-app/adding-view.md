@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/adding-view
-ms.openlocfilehash: 078329d1e5dfe41a7713b1e53894a9b09886752d
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 56f39643ccd69c6508148374033208eb3b2f25ab
+ms.sourcegitcommit: 91e14f1e2a25c98a57c2217fe91b172e0ff2958c
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93052674"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94422722"
 ---
 # <a name="part-3-add-a-view-to-an-aspnet-core-mvc-app"></a>Parte 3. Adición de una vista a una aplicación de ASP.NET Core MVC
 
@@ -99,8 +99,20 @@ Las plantillas de [diseño](xref:mvc/views/layout) permiten especificar el dise�
 ## <a name="change-the-title-footer-and-menu-link-in-the-layout-file"></a>Cambio de los vínculos del título, el pie de página y el menú en el archivo de diseño
 
 Reemplace el contenido del archivo *Views/Shared/_Layout.cshtml* por el marcado siguiente. Se resaltan los cambios:
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.0 < aspnetcore-5.0"
 
 [!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/Views/Shared/_Layout.cshtml?highlight=6,14,40)]
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-5.0"
+
+[!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie5/Views/Shared/_Layout.cshtml?highlight=6,14,40)]
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.0"
 
 En el marcado anterior se realizan los cambios siguientes:
 
