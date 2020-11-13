@@ -1,11 +1,11 @@
 ---
-title: Prueba de las API web HTTP REPL
+title: Prueba de las API web con HttpRepl
 author: scottaddie
-description: Obtenga información sobre cómo usar la herramienta global HTTP REPL de .NET Core para examinar y probar una API web de ASP.NET Core.
+description: Obtenga información sobre cómo usar la herramienta global HttpRepl de .NET Core para examinar y probar una API web de ASP.NET Core.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: scaddie
 ms.custom: mvc, devx-track-azurecli
-ms.date: 11/10/2020
+ms.date: 11/11/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/http-repl
-ms.openlocfilehash: 81174b551c5b6d81e6ac80975f7f77ee6664059d
-ms.sourcegitcommit: fb72e9c1ae5b279817f1fb4b46a52170449b6f30
+ms.openlocfilehash: df2d4e63a18471b4c5f4f1c9434921303bb1da8a
+ms.sourcegitcommit: 202144092067ea81be1dbb229329518d781dbdfb
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94501998"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94550626"
 ---
-# <a name="test-web-apis-with-the-http-repl"></a>Prueba de las API web HTTP REPL
+# <a name="test-web-apis-with-the-httprepl"></a>Prueba de las API web con HttpRepl
 
 Por [Scott Addie](https://twitter.com/Scott_Addie)
 
@@ -54,7 +54,7 @@ Para continuar, [vea o descargue la API web de muestra de ASP.NET Core ](https:/
 
 ## <a name="installation"></a>Instalación
 
-Ejecute el siguiente comando para instalar HTTP REPL:
+Ejecute el siguiente comando para instalar HttpRepl:
 
 ```dotnetcli
 dotnet tool install -g Microsoft.dotnet-httprepl
@@ -64,13 +64,13 @@ Se instala una [herramienta global de .NET Core](/dotnet/core/tools/global-tool
 
 ## <a name="usage"></a>Uso
 
-Tras la correcta instalación de la herramienta, ejecute el siguiente comando para iniciar HTTP REPL:
+Tras la correcta instalación de la herramienta, ejecute el siguiente comando para iniciar HttpRepl:
 
 ```console
 httprepl
 ```
 
-Para ver los comandos de HTTP REPL disponibles, ejecute uno de los siguientes comandos:
+Para ver los comandos de HttpRepl disponibles, ejecute uno de los siguientes comandos:
 
 ```console
 httprepl -h
@@ -135,7 +135,7 @@ Use `help <COMMAND>` for more detail on an individual command. e.g. `help get`.
 For detailed tool info, see https://aka.ms/http-repl-doc.
 ```
 
-HTTP REPL ofrece la finalización del comando. Al presionar la tecla <kbd>Tabulador</kbd>, se procesa una iteración en la lista de comandos que completa los caracteres o el punto de conexión de la API que ha escrito. En las secciones siguientes se describen los comandos disponibles de la CLI.
+HttpRepl ofrece la finalización del comando. Al presionar la tecla <kbd>Tabulador</kbd>, se procesa una iteración en la lista de comandos que completa los caracteres o el punto de conexión de la API que ha escrito. En las secciones siguientes se describen los comandos disponibles de la CLI.
 
 ## <a name="connect-to-the-web-api"></a>Conexión a la API web
 
@@ -151,7 +151,7 @@ httprepl <ROOT URI>
 httprepl https://localhost:5001
 ```
 
-También puede ejecutar el comando siguiente en cualquier momento mientras se ejecuta HTTP REPL:
+También puede ejecutar el comando siguiente en cualquier momento mientras se ejecuta HttpRepl:
 
 ```console
 connect <ROOT URI>
@@ -252,9 +252,9 @@ La ruta de acceso que sigue al comando `cd` no distingue mayúsculas de minúscu
 https://localhost:5001/people>
 ```
 
-## <a name="customize-the-http-repl"></a>Personalización de HTTP REPL
+## <a name="customize-the-httprepl"></a>Personalización de HttpRepl
 
-Los [colores](#set-color-preferences) predeterminados de HTTP REPL se pueden personalizar. Además, se puede definir un [editor de texto predeterminado](#set-the-default-text-editor). Las preferencias de HTTP REPL se conservan tanto en la sesión actual como en futuras sesiones. Una vez modificadas, se almacenan en el archivo siguiente:
+Los [colores](#set-color-preferences) predeterminados de HttpRepl se pueden personalizar. Además, se puede definir un [editor de texto predeterminado](#set-the-default-text-editor). Las preferencias de HttpRepl se conservan tanto en la sesión actual como en futuras sesiones. Una vez modificadas, se almacenan en el archivo siguiente:
 
 # <a name="linux"></a>[Linux](#tab/linux)
 
@@ -295,7 +295,7 @@ colors.status=BoldYellow
 
 ### <a name="set-color-preferences"></a>Establecimiento de las preferencias de color
 
-Actualmente solo se permite colorear la respuesta para JSON. Para personalizar el color predeterminado de la herramienta HTTP REPL, busque la clave correspondiente al color que se va a cambiar. Para obtener instrucciones sobre cómo buscar las claves, consulte la sección [Visualización de la configuración](#view-the-settings). Por ejemplo, cambie el valor de clave `colors.json` de `Green` a `White`, tal como se indica a continuación:
+Actualmente solo se permite colorear la respuesta para JSON. Para personalizar el color predeterminado de la herramienta HttpRepl, busque la clave correspondiente al color que se va a cambiar. Para obtener instrucciones sobre cómo buscar las claves, consulte la sección [Visualización de la configuración](#view-the-settings). Por ejemplo, cambie el valor de clave `colors.json` de `Green` a `White`, tal como se indica a continuación:
 
 ```console
 https://localhost:5001/people> pref set colors.json White
@@ -358,7 +358,7 @@ Las respuestas posteriores respetan el valor de cuatro espacios:
 
 ### <a name="set-the-default-text-editor"></a>Establecimiento del editor de texto predeterminado
 
-De manera predeterminada, HTTP REPL no tiene ningún editor de texto configurado para su uso. Para probar los métodos de la API web que requieren un cuerpo de la solicitud HTTP, se debe establecer un editor de texto predeterminado. La herramienta HTTP REPL inicia el editor de texto configurado con el único fin de redactar el cuerpo de la solicitud. Ejecute el comando siguiente para establecer el editor de texto preferido como predeterminado:
+De manera predeterminada, HttpRepl no tiene ningún editor de texto configurado para su uso. Para probar los métodos de la API web que requieren un cuerpo de la solicitud HTTP, se debe establecer un editor de texto predeterminado. La herramienta HttpRepl inicia el editor de texto configurado con el único fin de redactar el cuerpo de la solicitud. Ejecute el comando siguiente para establecer el editor de texto preferido como predeterminado:
 
 ```console
 pref set editor.command.default "<EXECUTABLE>"
@@ -386,7 +386,7 @@ pref set editor.command.default "C:\Program Files\Microsoft VS Code\Code.exe"
 
 ---
 
-Para iniciar el editor de texto predeterminado con argumentos específicos de la CLI, establezca la clave `editor.command.default.arguments`. Por ejemplo, supongamos que Visual Studio Code es el editor de texto predeterminado y que siempre quiere que HTTP REPL abra Visual Studio Code en una nueva sesión con las extensiones deshabilitadas. Ejecute el siguiente comando:
+Para iniciar el editor de texto predeterminado con argumentos específicos de la CLI, establezca la clave `editor.command.default.arguments`. Por ejemplo, supongamos que Visual Studio Code es el editor de texto predeterminado y que siempre quiere que HttpRepl abra Visual Studio Code en una nueva sesión con las extensiones deshabilitadas. Ejecute el siguiente comando:
 
 ```console
 pref set editor.command.default.arguments "--disable-extensions --new-window"
@@ -397,7 +397,7 @@ pref set editor.command.default.arguments "--disable-extensions --new-window"
 
 ### <a name="set-the-openapi-description-search-paths"></a>Establecimiento de las rutas de acceso de búsqueda de la descripción de OpenAPI
 
-De forma predeterminada, HTTP REPL tiene un conjunto de rutas de acceso relativas que usa para buscar la descripción de OpenAPI al ejecutar el comando `connect` sin la opción `--openapi`. Estas rutas de acceso relativas se combinan con las rutas de acceso raíz y base especificadas en el comando `connect`. Las rutas de acceso relativas predeterminadas son:
+De forma predeterminada, HttpRepl tiene un conjunto de rutas de acceso relativas que usa para buscar la descripción de OpenAPI al ejecutar el comando `connect` sin la opción `--openapi`. Estas rutas de acceso relativas se combinan con las rutas de acceso raíz y base especificadas en el comando `connect`. Las rutas de acceso relativas predeterminadas son:
 
 - *swagger.json*
 - *swagger/v1/swagger.json*
@@ -864,7 +864,7 @@ Para establecer un encabezado de solicitud HTTP, use uno de los métodos siguien
 
 ## <a name="test-secured-endpoints"></a>Prueba de los puntos de conexión seguros
 
-HTTP REPL admite las pruebas de puntos de conexión protegidos de las siguientes formas:
+HttpRepl admite las pruebas de puntos de conexión protegidos de las siguientes formas:
 
 * A través de las credenciales predeterminadas del usuario que ha iniciado sesión.
 * A través del uso de encabezados de solicitud HTTP.
@@ -907,7 +907,7 @@ Por ejemplo, puede enviar un token de portador a un punto de conexión con el co
 set header Authorization "bearer <TOKEN VALUE>"
 ```
 
-Para acceder un punto de conexión hospedado por Azure o para usar la [API REST de Azure](/rest/api/azure/), necesitará un token de portador. Use los pasos siguientes para obtener un token de portador para la suscripción de Azure a través de la [CLI de Azure](/cli/azure/). HTTP REPL establece el token de portador en un encabezado de solicitud HTTP. Se recupera una lista de Azure App Service Web Apps.
+Para acceder un punto de conexión hospedado por Azure o para usar la [API REST de Azure](/rest/api/azure/), necesitará un token de portador. Use los pasos siguientes para obtener un token de portador para la suscripción de Azure a través de la [CLI de Azure](/cli/azure/). HttpRepl establece el token de portador en un encabezado de solicitud HTTP. Se recupera una lista de Azure App Service Web Apps.
 
 1. Inicie de sesión en Azure:
 
@@ -933,7 +933,7 @@ Para acceder un punto de conexión hospedado por Azure o para usar la [API REST 
     az account get-access-token --query accessToken
     ```
 
-1. Conéctese a la API REST de Azure con HTTP REPL:
+1. Conéctese a la API REST de Azure con HttpRepl:
 
     ```console
     httprepl https://management.azure.com
@@ -1041,7 +1041,7 @@ Request echoing is off
 
 ## <a name="run-a-script"></a>Ejecutar un script
 
-Si ejecuta con frecuencia el mismo conjunto de comandos de HTTP REPL, considere la posibilidad de almacenarlos en un archivo de texto. Los comandos del archivo toman el mismo formulario que los ejecutados manualmente en la línea de comandos. Los comandos se pueden ejecutar en un modo por lotes mediante el comando `run`. Por ejemplo:
+Si ejecuta con frecuencia el mismo conjunto de comandos de HttpRepl, considere la posibilidad de almacenarlos en un archivo de texto. Los comandos del archivo toman el mismo formulario que los ejecutados manualmente en la línea de comandos. Los comandos se pueden ejecutar en un modo por lotes mediante el comando `run`. Por ejemplo:
 
 1. Cree un archivo de texto que contenga un conjunto de comandos delimitados por línea nueva. Para ilustrarlo, considere la posibilidad de usar un archivo *people-script.txt* que contenga los comandos siguientes:
 
@@ -1096,7 +1096,7 @@ Si ejecuta con frecuencia el mismo conjunto de comandos de HTTP REPL, considere 
 
 ## <a name="clear-the-output"></a>Borrado de la salida
 
-Para quitar todas las salidas escritas en el shell de comandos mediante la herramienta REPL HTTP, ejecute el comando `clear` o `cls`. Para ilustrarlo, imagine que el shell de comandos contiene la salida siguiente:
+Para quitar todas las salidas escritas en el shell de comandos mediante la herramienta HttpRepl, ejecute el comando `clear` o `cls`. Para ilustrarlo, imagine que el shell de comandos contiene la salida siguiente:
 
 ```console
 httprepl https://localhost:5001
@@ -1126,4 +1126,4 @@ https://localhost:5001/>
 ## <a name="additional-resources"></a>Recursos adicionales
 
 * [Solicitudes de API REST](https://github.com/microsoft/api-guidelines/blob/vNext/Guidelines.md#74-supported-methods)
-* [Repositorio GitHub de HTTP REPL](https://github.com/dotnet/HttpRepl)
+* [Repositorio GitHub de HttpRepl](https://github.com/dotnet/HttpRepl)
