@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/http-repl
-ms.openlocfilehash: df2d4e63a18471b4c5f4f1c9434921303bb1da8a
-ms.sourcegitcommit: 202144092067ea81be1dbb229329518d781dbdfb
+ms.openlocfilehash: 8dd763d270a00c9a71913d68d6a039b2d98c3864
+ms.sourcegitcommit: 1ea3f23bec63e96ffc3a927992f30a5fc0de3ff9
 ms.translationtype: HT
 ms.contentlocale: es-ES
 ms.lasthandoff: 11/12/2020
-ms.locfileid: "94550626"
+ms.locfileid: "94570216"
 ---
 # <a name="test-web-apis-with-the-httprepl"></a>Prueba de las API web con HttpRepl
 
@@ -204,7 +204,7 @@ The field 'paths' in 'document' object is REQUIRED [#/paths]
 Para enumerar los diferentes puntos de conexión (controladores) en la ruta de acceso actual de la dirección de la API web, ejecute el comando `ls` o `dir`:
 
 ```console
-https://localhot:5001/> ls
+https://localhost:5001/> ls
 ```
 
 Se muestra el siguiente formato de salida:
