@@ -7,17 +7,17 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/07/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: fundamentals/host/web-host
 ms.openlocfilehash: 09383cb9067d7fdc2d7b69213b741e7ae823e9ea
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -72,12 +72,12 @@ public class Program
   * <span data-ttu-id="1b4d8-127">Variables de entorno con el prefijo `ASPNETCORE_` (por ejemplo, `ASPNETCORE_ENVIRONMENT`).</span><span class="sxs-lookup"><span data-stu-id="1b4d8-127">Environment variables prefixed with `ASPNETCORE_` (for example, `ASPNETCORE_ENVIRONMENT`).</span></span>
   * <span data-ttu-id="1b4d8-128">Argumentos de la línea de comandos.</span><span class="sxs-lookup"><span data-stu-id="1b4d8-128">Command-line arguments.</span></span>
 * <span data-ttu-id="1b4d8-129">Carga la configuración de la aplicación en el siguiente orden:</span><span class="sxs-lookup"><span data-stu-id="1b4d8-129">Loads app configuration in the following order from:</span></span>
-  * <span data-ttu-id="1b4d8-130">*:::no-loc(appsettings.json):::*.</span><span class="sxs-lookup"><span data-stu-id="1b4d8-130">*:::no-loc(appsettings.json):::*.</span></span>
+  * <span data-ttu-id="1b4d8-130">*appsettings.json*.</span><span class="sxs-lookup"><span data-stu-id="1b4d8-130">*appsettings.json*.</span></span>
   * <span data-ttu-id="1b4d8-131">*appsettings.{Environment}.json*.</span><span class="sxs-lookup"><span data-stu-id="1b4d8-131">*appsettings.{Environment}.json*.</span></span>
   * <span data-ttu-id="1b4d8-132">[Administrador de secretos](xref:security/app-secrets) cuando la aplicación se ejecuta en el entorno `Development` por medio del ensamblado de entrada.</span><span class="sxs-lookup"><span data-stu-id="1b4d8-132">[Secret Manager](xref:security/app-secrets) when the app runs in the `Development` environment using the entry assembly.</span></span>
   * <span data-ttu-id="1b4d8-133">Variables de entorno.</span><span class="sxs-lookup"><span data-stu-id="1b4d8-133">Environment variables.</span></span>
   * <span data-ttu-id="1b4d8-134">Argumentos de la línea de comandos.</span><span class="sxs-lookup"><span data-stu-id="1b4d8-134">Command-line arguments.</span></span>
-* <span data-ttu-id="1b4d8-135">Configura el [registro](xref:fundamentals/logging/index) para la salida de consola y de depuración.</span><span class="sxs-lookup"><span data-stu-id="1b4d8-135">Configures [logging](xref:fundamentals/logging/index) for console and debug output.</span></span> <span data-ttu-id="1b4d8-136">El registro incluye reglas de [filtrado del registro](xref:fundamentals/logging/index#log-filtering) especificadas en una sección de configuración de registro de un archivo *:::no-loc(appsettings.json):::* o *appsettings.{Environment}.json*.</span><span class="sxs-lookup"><span data-stu-id="1b4d8-136">Logging includes [log filtering](xref:fundamentals/logging/index#log-filtering) rules specified in a Logging configuration section of an *:::no-loc(appsettings.json):::* or *appsettings.{Environment}.json* file.</span></span>
+* <span data-ttu-id="1b4d8-135">Configura el [registro](xref:fundamentals/logging/index) para la salida de consola y de depuración.</span><span class="sxs-lookup"><span data-stu-id="1b4d8-135">Configures [logging](xref:fundamentals/logging/index) for console and debug output.</span></span> <span data-ttu-id="1b4d8-136">El registro incluye reglas de [filtrado del registro](xref:fundamentals/logging/index#log-filtering) especificadas en una sección de configuración de registro de un archivo *appsettings.json* o *appsettings.{Environment}.json*.</span><span class="sxs-lookup"><span data-stu-id="1b4d8-136">Logging includes [log filtering](xref:fundamentals/logging/index#log-filtering) rules specified in a Logging configuration section of an *appsettings.json* or *appsettings.{Environment}.json* file.</span></span>
 * <span data-ttu-id="1b4d8-137">Cuando se ejecuta detrás de IIS con el [módulo ASP.NET Core](xref:host-and-deploy/aspnet-core-module), `CreateDefaultBuilder` habilita la [integración de IIS](xref:host-and-deploy/iis/index), que configura la dirección base y el puerto de la aplicación.</span><span class="sxs-lookup"><span data-stu-id="1b4d8-137">When running behind IIS with the [ASP.NET Core Module](xref:host-and-deploy/aspnet-core-module), `CreateDefaultBuilder` enables [IIS Integration](xref:host-and-deploy/iis/index), which configures the app's base address and port.</span></span> <span data-ttu-id="1b4d8-138">La integración de IIS también configura la aplicación para que [capture errores de inicio](#capture-startup-errors).</span><span class="sxs-lookup"><span data-stu-id="1b4d8-138">IIS Integration also configures the app to [capture startup errors](#capture-startup-errors).</span></span> <span data-ttu-id="1b4d8-139">Para consultar las opciones predeterminadas de IIS, vea <xref:host-and-deploy/iis/index#iis-options>.</span><span class="sxs-lookup"><span data-stu-id="1b4d8-139">For the IIS default options, see <xref:host-and-deploy/iis/index#iis-options>.</span></span>
 * <span data-ttu-id="1b4d8-140">Establece [ServiceProviderOptions.ValidateScopes](/dotnet/api/microsoft.extensions.dependencyinjection.serviceprovideroptions.validatescopes) en `true` si el entorno de la aplicación es desarrollo.</span><span class="sxs-lookup"><span data-stu-id="1b4d8-140">Sets [ServiceProviderOptions.ValidateScopes](/dotnet/api/microsoft.extensions.dependencyinjection.serviceprovideroptions.validatescopes) to `true` if the app's environment is Development.</span></span> <span data-ttu-id="1b4d8-141">Para más información, vea [Validación del ámbito](#scope-validation).</span><span class="sxs-lookup"><span data-stu-id="1b4d8-141">For more information, see [Scope validation](#scope-validation).</span></span>
 

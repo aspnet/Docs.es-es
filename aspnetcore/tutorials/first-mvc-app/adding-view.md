@@ -5,17 +5,17 @@ description: Parte 3 de la serie de tutoriales sobre ASP.NET Core MVC.
 ms.author: riande
 ms.date: 8/04/2019
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: tutorials/first-mvc-app/adding-view
 ms.openlocfilehash: 56f39643ccd69c6508148374033208eb3b2f25ab
 ms.sourcegitcommit: 91e14f1e2a25c98a57c2217fe91b172e0ff2958c
@@ -30,9 +30,9 @@ ms.locfileid: "94422722"
 
 ::: moniker range=">= aspnetcore-3.0"
 
-<span data-ttu-id="98517-105">En esta sección, se modificará la clase `HelloWorldController` para usar los archivos de vista de [:::no-loc(Razor):::](xref:mvc/views/razor) con el objetivo de encapsular correctamente el proceso de generar respuestas HTML a un cliente.</span><span class="sxs-lookup"><span data-stu-id="98517-105">In this section you modify the `HelloWorldController` class to use [:::no-loc(Razor):::](xref:mvc/views/razor) view files to cleanly encapsulate the process of generating HTML responses to a client.</span></span>
+<span data-ttu-id="98517-105">En esta sección, se modificará la clase `HelloWorldController` para usar los archivos de vista de [Razor](xref:mvc/views/razor) con el objetivo de encapsular correctamente el proceso de generar respuestas HTML a un cliente.</span><span class="sxs-lookup"><span data-stu-id="98517-105">In this section you modify the `HelloWorldController` class to use [Razor](xref:mvc/views/razor) view files to cleanly encapsulate the process of generating HTML responses to a client.</span></span>
 
-<span data-ttu-id="98517-106">Para crear un archivo de plantilla de vista se usa :::no-loc(Razor):::.</span><span class="sxs-lookup"><span data-stu-id="98517-106">You create a view template file using :::no-loc(Razor):::.</span></span> <span data-ttu-id="98517-107">Las plantillas de vista basadas en :::no-loc(Razor)::: tienen una extensión de archivo *.cshtml*.</span><span class="sxs-lookup"><span data-stu-id="98517-107">:::no-loc(Razor):::-based view templates have a *.cshtml* file extension.</span></span> <span data-ttu-id="98517-108">Ofrecen una forma elegante de crear un resultado HTML con C#.</span><span class="sxs-lookup"><span data-stu-id="98517-108">They provide an elegant way to create HTML output with C#.</span></span>
+<span data-ttu-id="98517-106">Para crear un archivo de plantilla de vista se usa Razor.</span><span class="sxs-lookup"><span data-stu-id="98517-106">You create a view template file using Razor.</span></span> <span data-ttu-id="98517-107">Las plantillas de vista basadas en Razor tienen una extensión de archivo *.cshtml*.</span><span class="sxs-lookup"><span data-stu-id="98517-107">Razor-based view templates have a *.cshtml* file extension.</span></span> <span data-ttu-id="98517-108">Ofrecen una forma elegante de crear un resultado HTML con C#.</span><span class="sxs-lookup"><span data-stu-id="98517-108">They provide an elegant way to create HTML output with C#.</span></span>
 
 <span data-ttu-id="98517-109">Actualmente, el método `Index` devuelve una cadena con un mensaje que está codificado de forma rígida en la clase de controlador.</span><span class="sxs-lookup"><span data-stu-id="98517-109">Currently the `Index` method returns a string with a message that's hard-coded in the controller class.</span></span> <span data-ttu-id="98517-110">En la clase `HelloWorldController`, reemplace el método `Index` por el siguiente código:</span><span class="sxs-lookup"><span data-stu-id="98517-110">In the `HelloWorldController` class, replace the `Index` method with the following code:</span></span>
 
@@ -52,7 +52,7 @@ ms.locfileid: "94422722"
 
   * <span data-ttu-id="98517-119">En el cuadro de búsqueda situado en la esquina superior derecha, escriba *Vista*.</span><span class="sxs-lookup"><span data-stu-id="98517-119">In the search box in the upper-right, enter *view*</span></span>
 
-  * <span data-ttu-id="98517-120">Seleccione **Vista de :::no-loc(Razor):::** .</span><span class="sxs-lookup"><span data-stu-id="98517-120">Select **:::no-loc(Razor)::: View**</span></span>
+  * <span data-ttu-id="98517-120">Seleccione **Vista de Razor** .</span><span class="sxs-lookup"><span data-stu-id="98517-120">Select **Razor View**</span></span>
 
   * <span data-ttu-id="98517-121">Conserve el valor del cuadro **Nombre** , *Index.cshtml*.</span><span class="sxs-lookup"><span data-stu-id="98517-121">Keep the **Name** box value, *Index.cshtml*.</span></span>
 
@@ -82,7 +82,7 @@ ms.locfileid: "94422722"
 
 ---
 
-<span data-ttu-id="98517-137">Reemplace el contenido del archivo de vista de :::no-loc(Razor)::: *Views/HelloWorld/Index.cshtml* por el siguiente:</span><span class="sxs-lookup"><span data-stu-id="98517-137">Replace the contents of the *Views/HelloWorld/Index.cshtml* :::no-loc(Razor)::: view file with the following:</span></span>
+<span data-ttu-id="98517-137">Reemplace el contenido del archivo de vista de Razor *Views/HelloWorld/Index.cshtml* por el siguiente:</span><span class="sxs-lookup"><span data-stu-id="98517-137">Replace the contents of the *Views/HelloWorld/Index.cshtml* Razor view file with the following:</span></span>
 
 [!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/HelloWorld/Index1.cshtml?highlight=7)]
 
@@ -200,9 +200,9 @@ ms.locfileid: "94422722"
 
 ::: moniker range="< aspnetcore-3.0"
 
-<span data-ttu-id="98517-219">En esta sección, se modificará la clase `HelloWorldController` para usar los archivos de vista de [:::no-loc(Razor):::](xref:mvc/views/razor) con el objetivo de encapsular correctamente el proceso de generar respuestas HTML a un cliente.</span><span class="sxs-lookup"><span data-stu-id="98517-219">In this section you modify the `HelloWorldController` class to use [:::no-loc(Razor):::](xref:mvc/views/razor) view files to cleanly encapsulate the process of generating HTML responses to a client.</span></span>
+<span data-ttu-id="98517-219">En esta sección, se modificará la clase `HelloWorldController` para usar los archivos de vista de [Razor](xref:mvc/views/razor) con el objetivo de encapsular correctamente el proceso de generar respuestas HTML a un cliente.</span><span class="sxs-lookup"><span data-stu-id="98517-219">In this section you modify the `HelloWorldController` class to use [Razor](xref:mvc/views/razor) view files to cleanly encapsulate the process of generating HTML responses to a client.</span></span>
 
-<span data-ttu-id="98517-220">Para crear un archivo de plantilla de vista se usa :::no-loc(Razor):::.</span><span class="sxs-lookup"><span data-stu-id="98517-220">You create a view template file using :::no-loc(Razor):::.</span></span> <span data-ttu-id="98517-221">Las plantillas de vista basadas en :::no-loc(Razor)::: tienen una extensión de archivo *.cshtml*.</span><span class="sxs-lookup"><span data-stu-id="98517-221">:::no-loc(Razor):::-based view templates have a *.cshtml* file extension.</span></span> <span data-ttu-id="98517-222">Ofrecen una forma elegante de crear un resultado HTML con C#.</span><span class="sxs-lookup"><span data-stu-id="98517-222">They provide an elegant way to create HTML output with C#.</span></span>
+<span data-ttu-id="98517-220">Para crear un archivo de plantilla de vista se usa Razor.</span><span class="sxs-lookup"><span data-stu-id="98517-220">You create a view template file using Razor.</span></span> <span data-ttu-id="98517-221">Las plantillas de vista basadas en Razor tienen una extensión de archivo *.cshtml*.</span><span class="sxs-lookup"><span data-stu-id="98517-221">Razor-based view templates have a *.cshtml* file extension.</span></span> <span data-ttu-id="98517-222">Ofrecen una forma elegante de crear un resultado HTML con C#.</span><span class="sxs-lookup"><span data-stu-id="98517-222">They provide an elegant way to create HTML output with C#.</span></span>
 
 <span data-ttu-id="98517-223">Actualmente, el método `Index` devuelve una cadena con un mensaje que está codificado de forma rígida en la clase de controlador.</span><span class="sxs-lookup"><span data-stu-id="98517-223">Currently the `Index` method returns a string with a message that's hard-coded in the controller class.</span></span> <span data-ttu-id="98517-224">En la clase `HelloWorldController`, reemplace el método `Index` por el siguiente código:</span><span class="sxs-lookup"><span data-stu-id="98517-224">In the `HelloWorldController` class, replace the `Index` method with the following code:</span></span>
 
@@ -222,7 +222,7 @@ ms.locfileid: "94422722"
 
   * <span data-ttu-id="98517-233">En el cuadro de búsqueda situado en la esquina superior derecha, escriba *Vista*.</span><span class="sxs-lookup"><span data-stu-id="98517-233">In the search box in the upper-right, enter *view*</span></span>
 
-  * <span data-ttu-id="98517-234">Seleccione **Vista de :::no-loc(Razor):::** .</span><span class="sxs-lookup"><span data-stu-id="98517-234">Select **:::no-loc(Razor)::: View**</span></span>
+  * <span data-ttu-id="98517-234">Seleccione **Vista de Razor** .</span><span class="sxs-lookup"><span data-stu-id="98517-234">Select **Razor View**</span></span>
 
   * <span data-ttu-id="98517-235">Conserve el valor del cuadro **Nombre** , *Index.cshtml*.</span><span class="sxs-lookup"><span data-stu-id="98517-235">Keep the **Name** box value, *Index.cshtml*.</span></span>
 
@@ -252,7 +252,7 @@ ms.locfileid: "94422722"
 
 ---
 
-<span data-ttu-id="98517-251">Reemplace el contenido del archivo de vista de :::no-loc(Razor)::: *Views/HelloWorld/Index.cshtml* por el siguiente:</span><span class="sxs-lookup"><span data-stu-id="98517-251">Replace the contents of the *Views/HelloWorld/Index.cshtml* :::no-loc(Razor)::: view file with the following:</span></span>
+<span data-ttu-id="98517-251">Reemplace el contenido del archivo de vista de Razor *Views/HelloWorld/Index.cshtml* por el siguiente:</span><span class="sxs-lookup"><span data-stu-id="98517-251">Replace the contents of the *Views/HelloWorld/Index.cshtml* Razor view file with the following:</span></span>
 
 [!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/HelloWorld/Index1.cshtml?highlight=7)]
 

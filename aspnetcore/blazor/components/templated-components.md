@@ -1,5 +1,5 @@
 ---
-title: 'Componentes con plantilla de :::no-loc(Blazor)::: en ASP.NET Core'
+title: 'Componentes con plantilla de Blazor en ASP.NET Core'
 author: guardrex
 description: Descubra cómo los componentes con plantilla pueden aceptar una o varias plantillas de interfaz de usuario como parámetros, que se pueden usar como parte de la lógica de representación del componente.
 monikerRange: '>= aspnetcore-3.1'
@@ -7,17 +7,17 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 03/18/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: blazor/components/templated-components
 ms.openlocfilehash: f818a0b7f1ba6d4dd6affeeba785c5e288568dd8
 ms.sourcegitcommit: 1be547564381873fe9e84812df8d2088514c622a
@@ -26,7 +26,7 @@ ms.contentlocale: es-ES
 ms.lasthandoff: 11/11/2020
 ms.locfileid: "94507959"
 ---
-# <a name="aspnet-core-no-locblazor-templated-components"></a><span data-ttu-id="307d9-103">Componentes con plantilla de :::no-loc(Blazor)::: en ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="307d9-103">ASP.NET Core :::no-loc(Blazor)::: templated components</span></span>
+# <a name="aspnet-core-no-locblazor-templated-components"></a><span data-ttu-id="307d9-103">Componentes con plantilla de Blazor en ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="307d9-103">ASP.NET Core Blazor templated components</span></span>
 
 <span data-ttu-id="307d9-104">Por [Luke Latham](https://github.com/guardrex) y [Daniel Roth](https://github.com/danroth27)</span><span class="sxs-lookup"><span data-stu-id="307d9-104">By [Luke Latham](https://github.com/guardrex) and [Daniel Roth](https://github.com/danroth27)</span></span>
 
@@ -43,7 +43,7 @@ ms.locfileid: "94507959"
 
 <span data-ttu-id="307d9-115">Componente `TableTemplate` (`TableTemplate.razor`):</span><span class="sxs-lookup"><span data-stu-id="307d9-115">`TableTemplate` component (`TableTemplate.razor`):</span></span>
 
-[!code-razor[](../common/samples/5.x/:::no-loc(Blazor):::WebAssemblySample/Components/TableTemplate.razor)]
+[!code-razor[](../common/samples/5.x/BlazorWebAssemblySample/Components/TableTemplate.razor)]
 
 <span data-ttu-id="307d9-116">Al usar un componente con plantilla, los parámetros de plantilla se pueden especificar utilizando los elementos secundarios que coinciden con los nombres de los parámetros (`TableHeader` y `RowTemplate` en el ejemplo siguiente):</span><span class="sxs-lookup"><span data-stu-id="307d9-116">When using a templated component, the template parameters can be specified using child elements that match the names of the parameters (`TableHeader` and `RowTemplate` in the following example):</span></span>
 
@@ -122,7 +122,7 @@ ms.locfileid: "94507959"
 
 <span data-ttu-id="307d9-127">Los componentes con plantilla suelen tener tipos genéricos.</span><span class="sxs-lookup"><span data-stu-id="307d9-127">Templated components are often generically typed.</span></span> <span data-ttu-id="307d9-128">Por ejemplo, se puede usar un componente `ListViewTemplate` genérico (`ListViewTemplate.razor`) para representar valores `IEnumerable<T>`.</span><span class="sxs-lookup"><span data-stu-id="307d9-128">For example, a generic `ListViewTemplate` component (`ListViewTemplate.razor`) can be used to render `IEnumerable<T>` values.</span></span> <span data-ttu-id="307d9-129">Para definir un componente genérico, utilice la directiva [`@typeparam`](xref:mvc/views/razor#typeparam) para especificar parámetros de tipo:</span><span class="sxs-lookup"><span data-stu-id="307d9-129">To define a generic component, use the [`@typeparam`](xref:mvc/views/razor#typeparam) directive to specify type parameters:</span></span>
 
-[!code-razor[](../common/samples/5.x/:::no-loc(Blazor):::WebAssemblySample/Components/ListViewTemplate.razor)]
+[!code-razor[](../common/samples/5.x/BlazorWebAssemblySample/Components/ListViewTemplate.razor)]
 
 <span data-ttu-id="307d9-130">Al usar componentes de tipo genérico, el parámetro de tipo se infiere si es posible:</span><span class="sxs-lookup"><span data-stu-id="307d9-130">When using generic-typed components, the type parameter is inferred if possible:</span></span>
 

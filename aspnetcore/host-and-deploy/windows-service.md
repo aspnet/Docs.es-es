@@ -7,17 +7,17 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: host-and-deploy/windows-service
 ms.openlocfilehash: 31a738e7aa8779171dfa09a5678d7240b8f62343
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -59,7 +59,7 @@ ms.locfileid: "93057237"
 * <span data-ttu-id="01674-122">Habilita el registro en el registro de eventos:</span><span class="sxs-lookup"><span data-stu-id="01674-122">Enables logging to the event log:</span></span>
   * <span data-ttu-id="01674-123">El nombre de la aplicación se usa como nombre de origen predeterminado.</span><span class="sxs-lookup"><span data-stu-id="01674-123">The application name is used as the default source name.</span></span>
   * <span data-ttu-id="01674-124">El nivel de registro predeterminado es *Advertencia* o superior para una aplicación basada en una plantilla de ASP.NET Core que llama a `CreateDefaultBuilder` con el fin de compilar el host.</span><span class="sxs-lookup"><span data-stu-id="01674-124">The default log level is *Warning* or higher for an app based on an ASP.NET Core template that calls `CreateDefaultBuilder` to build the host.</span></span>
-  * <span data-ttu-id="01674-125">Invalide el nivel de registro predeterminado con la clave `Logging:EventLog:LogLevel:Default` en *:::no-loc(appsettings.json):::* /*appsettings.{Environment}.json* u otro proveedor de configuración.</span><span class="sxs-lookup"><span data-stu-id="01674-125">Override the default log level with the `Logging:EventLog:LogLevel:Default` key in *:::no-loc(appsettings.json):::*/*appsettings.{Environment}.json* or other configuration provider.</span></span>
+  * <span data-ttu-id="01674-125">Invalide el nivel de registro predeterminado con la clave `Logging:EventLog:LogLevel:Default` en *appsettings.json* /*appsettings.{Environment}.json* u otro proveedor de configuración.</span><span class="sxs-lookup"><span data-stu-id="01674-125">Override the default log level with the `Logging:EventLog:LogLevel:Default` key in *appsettings.json*/*appsettings.{Environment}.json* or other configuration provider.</span></span>
   * <span data-ttu-id="01674-126">Los administradores son los únicos que pueden crear nuevos orígenes de eventos.</span><span class="sxs-lookup"><span data-stu-id="01674-126">Only administrators can create new event sources.</span></span> <span data-ttu-id="01674-127">Cuando no se puede crear un origen de eventos con el nombre de la aplicación, se registra una advertencia para el origen *Aplicación* y los registros de eventos se deshabilitan.</span><span class="sxs-lookup"><span data-stu-id="01674-127">When an event source can't be created using the application name, a warning is logged to the *Application* source and event logs are disabled.</span></span>
 
 <span data-ttu-id="01674-128">En `CreateHostBuilder` de *Program.cs* :</span><span class="sxs-lookup"><span data-stu-id="01674-128">In `CreateHostBuilder` of *Program.cs* :</span></span>
@@ -73,7 +73,7 @@ Host.CreateDefaultBuilder(args)
 <span data-ttu-id="01674-129">Las aplicaciones de ejemplo siguientes acompañan a este tema:</span><span class="sxs-lookup"><span data-stu-id="01674-129">The following sample apps accompany this topic:</span></span>
 
 * <span data-ttu-id="01674-130">Ejemplo de Background Worker Service: un ejemplo de una aplicación que no es para la Web basado en la [plantilla Worker Service](#worker-service-template) que usa [servicios hospedados](xref:fundamentals/host/hosted-services) para las tareas en segundo plano.</span><span class="sxs-lookup"><span data-stu-id="01674-130">Background Worker Service Sample: A non-web app sample based on the [Worker Service template](#worker-service-template) that uses [hosted services](xref:fundamentals/host/hosted-services) for background tasks.</span></span>
-* <span data-ttu-id="01674-131">Ejemplo de App Service web: un ejemplo de aplicación web de :::no-loc(Razor)::: Pages que se ejecuta como un servicio de Windows con [servicios hospedados](xref:fundamentals/host/hosted-services) para las tareas en segundo plano.</span><span class="sxs-lookup"><span data-stu-id="01674-131">Web App Service Sample: A :::no-loc(Razor)::: Pages web app sample that runs as a Windows Service with [hosted services](xref:fundamentals/host/hosted-services) for background tasks.</span></span>
+* <span data-ttu-id="01674-131">Ejemplo de App Service web: un ejemplo de aplicación web de Razor Pages que se ejecuta como un servicio de Windows con [servicios hospedados](xref:fundamentals/host/hosted-services) para las tareas en segundo plano.</span><span class="sxs-lookup"><span data-stu-id="01674-131">Web App Service Sample: A Razor Pages web app sample that runs as a Windows Service with [hosted services](xref:fundamentals/host/hosted-services) for background tasks.</span></span>
 
 <span data-ttu-id="01674-132">Para obtener instrucciones sobre MVC, vea los artículos en <xref:mvc/overview> y <xref:migration/22-to-30>.</span><span class="sxs-lookup"><span data-stu-id="01674-132">For MVC guidance, see the articles under <xref:mvc/overview> and <xref:migration/22-to-30>.</span></span>
 
@@ -83,7 +83,7 @@ Host.CreateDefaultBuilder(args)
 
 ### <a name="sdk"></a><span data-ttu-id="01674-135">SDK</span><span class="sxs-lookup"><span data-stu-id="01674-135">SDK</span></span>
 
-<span data-ttu-id="01674-136">En el caso de un servicio basado en una aplicación web que use los marcos :::no-loc(Razor)::: Pages o MVC, especifique el SDK web en el archivo de proyecto:</span><span class="sxs-lookup"><span data-stu-id="01674-136">For a web app-based service that uses the :::no-loc(Razor)::: Pages or MVC frameworks, specify the Web SDK in the project file:</span></span>
+<span data-ttu-id="01674-136">En el caso de un servicio basado en una aplicación web que use los marcos Razor Pages o MVC, especifique el SDK web en el archivo de proyecto:</span><span class="sxs-lookup"><span data-stu-id="01674-136">For a web app-based service that uses the Razor Pages or MVC frameworks, specify the Web SDK in the project file:</span></span>
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk.Web">
@@ -254,7 +254,7 @@ Remove-Service -Name {SERVICE NAME}
 
 <span data-ttu-id="01674-213">Cuando la aplicación se ejecuta como un servicio, <xref:Microsoft.Extensions.Hosting.WindowsServiceLifetimeHostBuilderExtensions.UseWindowsService*> establece la ruta de acceso <xref:Microsoft.Extensions.Hosting.IHostEnvironment.ContentRootPath> en [AppContext.BaseDirectory](xref:System.AppContext.BaseDirectory).</span><span class="sxs-lookup"><span data-stu-id="01674-213">When the app runs as a service, <xref:Microsoft.Extensions.Hosting.WindowsServiceLifetimeHostBuilderExtensions.UseWindowsService*> sets the <xref:Microsoft.Extensions.Hosting.IHostEnvironment.ContentRootPath> to [AppContext.BaseDirectory](xref:System.AppContext.BaseDirectory).</span></span>
 
-<span data-ttu-id="01674-214">Los archivos de configuración predeterminados de la aplicación, *:::no-loc(appsettings.json):::* y *appsettings.{Environment}.json* , se cargan desde la raíz del contenido de la aplicación mediante una llamada a [CreateDefaultBuilder durante la construcción del host](xref:fundamentals/host/generic-host#set-up-a-host).</span><span class="sxs-lookup"><span data-stu-id="01674-214">The app's default settings files, *:::no-loc(appsettings.json):::* and *appsettings.{Environment}.json* , are loaded from the app's content root by calling [CreateDefaultBuilder during host construction](xref:fundamentals/host/generic-host#set-up-a-host).</span></span>
+<span data-ttu-id="01674-214">Los archivos de configuración predeterminados de la aplicación, *appsettings.json* y *appsettings.{Environment}.json* , se cargan desde la raíz del contenido de la aplicación mediante una llamada a [CreateDefaultBuilder durante la construcción del host](xref:fundamentals/host/generic-host#set-up-a-host).</span><span class="sxs-lookup"><span data-stu-id="01674-214">The app's default settings files, *appsettings.json* and *appsettings.{Environment}.json* , are loaded from the app's content root by calling [CreateDefaultBuilder during host construction](xref:fundamentals/host/generic-host#set-up-a-host).</span></span>
 
 <span data-ttu-id="01674-215">En el caso de otros archivos de configuración cargados por el código para desarrolladores en <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*>, no es necesario llamar a <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*>.</span><span class="sxs-lookup"><span data-stu-id="01674-215">For other settings files loaded by developer code in <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*>, there's no need to call <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*>.</span></span> <span data-ttu-id="01674-216">En el ejemplo siguiente, el archivo *custom_settings.json* ya se encuentra en la raíz del contenido de la aplicación y se carga sin establecer explícitamente una ruta de acceso base:</span><span class="sxs-lookup"><span data-stu-id="01674-216">In the following example, the *custom_settings.json* file exists in the app's content root and is loaded without explicitly setting a base path:</span></span>
 
@@ -385,7 +385,7 @@ Remove-Service -Name {SERVICE NAME}
 
 ### <a name="sdk"></a><span data-ttu-id="01674-299">SDK</span><span class="sxs-lookup"><span data-stu-id="01674-299">SDK</span></span>
 
-<span data-ttu-id="01674-300">En el caso de un servicio basado en una aplicación web que use los marcos :::no-loc(Razor)::: Pages o MVC, especifique el SDK web en el archivo de proyecto:</span><span class="sxs-lookup"><span data-stu-id="01674-300">For a web app-based service that uses the :::no-loc(Razor)::: Pages or MVC frameworks, specify the Web SDK in the project file:</span></span>
+<span data-ttu-id="01674-300">En el caso de un servicio basado en una aplicación web que use los marcos Razor Pages o MVC, especifique el SDK web en el archivo de proyecto:</span><span class="sxs-lookup"><span data-stu-id="01674-300">For a web app-based service that uses the Razor Pages or MVC frameworks, specify the Web SDK in the project file:</span></span>
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk.Web">
@@ -719,7 +719,7 @@ CreateWebHostBuilder(args)
 
 ### <a name="sdk"></a><span data-ttu-id="01674-471">SDK</span><span class="sxs-lookup"><span data-stu-id="01674-471">SDK</span></span>
 
-<span data-ttu-id="01674-472">En el caso de un servicio basado en una aplicación web que use los marcos :::no-loc(Razor)::: Pages o MVC, especifique el SDK web en el archivo de proyecto:</span><span class="sxs-lookup"><span data-stu-id="01674-472">For a web app-based service that uses the :::no-loc(Razor)::: Pages or MVC frameworks, specify the Web SDK in the project file:</span></span>
+<span data-ttu-id="01674-472">En el caso de un servicio basado en una aplicación web que use los marcos Razor Pages o MVC, especifique el SDK web en el archivo de proyecto:</span><span class="sxs-lookup"><span data-stu-id="01674-472">For a web app-based service that uses the Razor Pages or MVC frameworks, specify the Web SDK in the project file:</span></span>
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk.Web">

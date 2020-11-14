@@ -7,17 +7,17 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/06/2020
 no-loc:
-- ':::no-loc(appsettings.json):::'
-- ':::no-loc(ASP.NET Core Identity):::'
-- ':::no-loc(cookie):::'
-- ':::no-loc(Cookie):::'
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- 'appsettings.json'
+- 'ASP.NET Core Identity'
+- 'cookie'
+- 'Cookie'
+- 'Blazor'
+- 'Blazor Server'
+- 'Blazor WebAssembly'
+- 'Identity'
+- "Let's Encrypt"
+- 'Razor'
+- 'SignalR'
 uid: fundamentals/file-providers
 ms.openlocfilehash: 16e5ead9898125c804da4d60322510474201d897
 ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
@@ -36,7 +36,7 @@ ms.locfileid: "93059447"
 
 * <span data-ttu-id="7fe7a-108"><xref:Microsoft.AspNetCore.Hosting.IWebHostEnvironment> expone la [raíz del contenido](xref:fundamentals/index#content-root) y la [raíz web](xref:fundamentals/index#web-root) de la aplicación como tipos `IFileProvider`.</span><span class="sxs-lookup"><span data-stu-id="7fe7a-108"><xref:Microsoft.AspNetCore.Hosting.IWebHostEnvironment> exposes the app's [content root](xref:fundamentals/index#content-root) and [web root](xref:fundamentals/index#web-root) as `IFileProvider` types.</span></span>
 * <span data-ttu-id="7fe7a-109">El [middleware de archivos estáticos](xref:fundamentals/static-files) usa proveedores de archivos para buscar archivos estáticos.</span><span class="sxs-lookup"><span data-stu-id="7fe7a-109">[Static File Middleware](xref:fundamentals/static-files) uses File Providers to locate static files.</span></span>
-* <span data-ttu-id="7fe7a-110">[:::no-loc(Razor):::](xref:mvc/views/razor) usa proveedores de archivos para localizar páginas y vistas.</span><span class="sxs-lookup"><span data-stu-id="7fe7a-110">[:::no-loc(Razor):::](xref:mvc/views/razor) uses File Providers to locate pages and views.</span></span>
+* <span data-ttu-id="7fe7a-110">[Razor](xref:mvc/views/razor) usa proveedores de archivos para localizar páginas y vistas.</span><span class="sxs-lookup"><span data-stu-id="7fe7a-110">[Razor](xref:mvc/views/razor) uses File Providers to locate pages and views.</span></span>
 * <span data-ttu-id="7fe7a-111">Las herramientas de .NET Core usan proveedores de archivos y patrones globales para especificar los archivos que deben publicarse.</span><span class="sxs-lookup"><span data-stu-id="7fe7a-111">.NET Core tooling uses File Providers and glob patterns to specify which files should be published.</span></span>
 
 <span data-ttu-id="7fe7a-112">[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/file-providers/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))</span><span class="sxs-lookup"><span data-stu-id="7fe7a-112">[View or download sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/file-providers/samples) ([how to download](xref:index#how-to-download-a-sample))</span></span>
@@ -176,7 +176,7 @@ var manifestEmbeddedProvider =
 |---------|---------|
 |`directory/file.txt`|<span data-ttu-id="7fe7a-201">Coincide con un archivo concreto en un directorio específico.</span><span class="sxs-lookup"><span data-stu-id="7fe7a-201">Matches a specific file in a specific directory.</span></span>|
 |`directory/*.txt`|<span data-ttu-id="7fe7a-202">Coincide con todos los archivos que tengan la extensión *.txt* en un directorio específico.</span><span class="sxs-lookup"><span data-stu-id="7fe7a-202">Matches all files with *.txt* extension in a specific directory.</span></span>|
-|`directory/*/:::no-loc(appsettings.json):::`|<span data-ttu-id="7fe7a-203">Coincide con todos los archivos *:::no-loc(appsettings.json):::* que estén en directorios exactamente un nivel por debajo de la carpeta *directory*.</span><span class="sxs-lookup"><span data-stu-id="7fe7a-203">Matches all *:::no-loc(appsettings.json):::* files in directories exactly one level below the *directory* folder.</span></span>|
+|`directory/*/appsettings.json`|<span data-ttu-id="7fe7a-203">Coincide con todos los archivos *appsettings.json* que estén en directorios exactamente un nivel por debajo de la carpeta *directory*.</span><span class="sxs-lookup"><span data-stu-id="7fe7a-203">Matches all *appsettings.json* files in directories exactly one level below the *directory* folder.</span></span>|
 |`directory/**/*.txt`|<span data-ttu-id="7fe7a-204">Coincide con todos los archivos con una extensión *.txt* y que se encuentran en cualquier lugar de la carpeta *directorio*.</span><span class="sxs-lookup"><span data-stu-id="7fe7a-204">Matches all files with a *.txt* extension found anywhere under the *directory* folder.</span></span>|
 
 ::: moniker-end
@@ -187,7 +187,7 @@ var manifestEmbeddedProvider =
 
 * <span data-ttu-id="7fe7a-207"><xref:Microsoft.Extensions.Hosting.IHostingEnvironment> expone la [raíz del contenido](xref:fundamentals/index#content-root) y la [raíz web](xref:fundamentals/index#web-root) de la aplicación como tipos `IFileProvider`.</span><span class="sxs-lookup"><span data-stu-id="7fe7a-207"><xref:Microsoft.Extensions.Hosting.IHostingEnvironment> exposes the app's [content root](xref:fundamentals/index#content-root) and [web root](xref:fundamentals/index#web-root) as `IFileProvider` types.</span></span>
 * <span data-ttu-id="7fe7a-208">El [middleware de archivos estáticos](xref:fundamentals/static-files) usa proveedores de archivos para buscar archivos estáticos.</span><span class="sxs-lookup"><span data-stu-id="7fe7a-208">[Static File Middleware](xref:fundamentals/static-files) uses File Providers to locate static files.</span></span>
-* <span data-ttu-id="7fe7a-209">[:::no-loc(Razor):::](xref:mvc/views/razor) usa proveedores de archivos para localizar páginas y vistas.</span><span class="sxs-lookup"><span data-stu-id="7fe7a-209">[:::no-loc(Razor):::](xref:mvc/views/razor) uses File Providers to locate pages and views.</span></span>
+* <span data-ttu-id="7fe7a-209">[Razor](xref:mvc/views/razor) usa proveedores de archivos para localizar páginas y vistas.</span><span class="sxs-lookup"><span data-stu-id="7fe7a-209">[Razor](xref:mvc/views/razor) uses File Providers to locate pages and views.</span></span>
 * <span data-ttu-id="7fe7a-210">Las herramientas de .NET Core usan proveedores de archivos y patrones globales para especificar los archivos que deben publicarse.</span><span class="sxs-lookup"><span data-stu-id="7fe7a-210">.NET Core tooling uses File Providers and glob patterns to specify which files should be published.</span></span>
 
 <span data-ttu-id="7fe7a-211">[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/file-providers/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))</span><span class="sxs-lookup"><span data-stu-id="7fe7a-211">[View or download sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/file-providers/samples) ([how to download](xref:index#how-to-download-a-sample))</span></span>
@@ -320,8 +320,8 @@ var manifestEmbeddedProvider =
 **`directory/*.txt`**  
 <span data-ttu-id="7fe7a-293">Coincide con todos los archivos que tengan la extensión *.txt* en un directorio específico.</span><span class="sxs-lookup"><span data-stu-id="7fe7a-293">Matches all files with *.txt* extension in a specific directory.</span></span>
 
-**`directory/*/:::no-loc(appsettings.json):::`**  
-<span data-ttu-id="7fe7a-294">Coincide con todos los archivos `:::no-loc(appsettings.json):::` que estén en directorios exactamente un nivel por debajo de la carpeta *directorio*.</span><span class="sxs-lookup"><span data-stu-id="7fe7a-294">Matches all `:::no-loc(appsettings.json):::` files in directories exactly one level below the *directory* folder.</span></span>
+**`directory/*/appsettings.json`**  
+<span data-ttu-id="7fe7a-294">Coincide con todos los archivos `appsettings.json` que estén en directorios exactamente un nivel por debajo de la carpeta *directorio*.</span><span class="sxs-lookup"><span data-stu-id="7fe7a-294">Matches all `appsettings.json` files in directories exactly one level below the *directory* folder.</span></span>
 
 **`directory/**/*.txt`**  
 <span data-ttu-id="7fe7a-295">Coincide con todos los archivos que tengan la extensión *.txt* y se encuentren en cualquier lugar de la carpeta *directorio*.</span><span class="sxs-lookup"><span data-stu-id="7fe7a-295">Matches all files with *.txt* extension found anywhere under the *directory* folder.</span></span>
