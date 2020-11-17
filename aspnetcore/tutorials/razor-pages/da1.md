@@ -1,60 +1,69 @@
 ---
-title: Parte 5. Actualización de las páginas generadas en una aplicación de ASP.NET Core
+title: Parte 5, actualización de las páginas generadas
 author: rick-anderson
-description: 'Parte 5 de la serie de tutoriales sobre Razor Pages.'
+description: Parte 5 de la serie de tutoriales sobre Razor Pages.
 ms.author: riande
-ms.date: 12/20/2018
+ms.date: 09/20/2020
 no-loc:
-- 'appsettings.json'
-- 'ASP.NET Core Identity'
-- 'cookie'
-- 'Cookie'
-- 'Blazor'
-- 'Blazor Server'
-- 'Blazor WebAssembly'
-- 'Identity'
-- "Let's Encrypt"
-- 'Razor'
-- 'SignalR'
+- Index
+- Create
+- Delete
+- appsettings.json
+- ASP.NET Core Identity
+- cookie
+- Cookie
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: tutorials/razor-pages/da1
-ms.openlocfilehash: 7d25dae67c928fa659654ce4ab34cfdad08b5300
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 7146c1955a578502a63578de4f1abce932cb8b32
+ms.sourcegitcommit: 342588e10ae0054a6d6dc0fd11dae481006be099
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93060071"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94360613"
 ---
-# <a name="part-5-update-the-generated-pages-in-an-aspnet-core-app"></a><span data-ttu-id="526ec-103">Parte 5. Actualización de las páginas generadas en una aplicación de ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="526ec-103">Part 5, update the generated pages in an ASP.NET Core app</span></span>
+# <a name="part-5-update-the-generated-pages-in-an-aspnet-core-app"></a><span data-ttu-id="040b9-103">Parte 5. Actualización de las páginas generadas en una aplicación de ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="040b9-103">Part 5, update the generated pages in an ASP.NET Core app</span></span>
 
-<span data-ttu-id="526ec-104">Por [Rick Anderson](https://twitter.com/RickAndMSFT)</span><span class="sxs-lookup"><span data-stu-id="526ec-104">By [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
+<span data-ttu-id="040b9-104">Por [Rick Anderson](https://twitter.com/RickAndMSFT)</span><span class="sxs-lookup"><span data-stu-id="040b9-104">By [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
 
 ::: moniker range=">= aspnetcore-3.0"
 
-<span data-ttu-id="526ec-105">La aplicación de películas con scaffolding pinta bien, pero la presentación no es ideal.</span><span class="sxs-lookup"><span data-stu-id="526ec-105">The scaffolded movie app has a good start, but the presentation isn't ideal.</span></span> <span data-ttu-id="526ec-106">**FechaDeLanzamiento** debe ser **Fecha de lanzamiento** (tres palabras).</span><span class="sxs-lookup"><span data-stu-id="526ec-106">**ReleaseDate** should be **Release Date** (two words).</span></span>
+<span data-ttu-id="040b9-105">La aplicación de películas con scaffolding pinta bien, pero la presentación no es ideal.</span><span class="sxs-lookup"><span data-stu-id="040b9-105">The scaffolded movie app has a good start, but the presentation isn't ideal.</span></span> <span data-ttu-id="040b9-106">**ReleaseDate** debe tener dos palabras: **Release Date** (Fecha lanzamiento).</span><span class="sxs-lookup"><span data-stu-id="040b9-106">**ReleaseDate** should be two words, **Release Date**.</span></span>
 
-![Aplicación Movie abierta en Chrome](sql/_static/m55.png)
+![Aplicación Movie abierta en Chrome](sql/_static/5/m55.png)
 
-## <a name="update-the-generated-code"></a><span data-ttu-id="526ec-108">Actualización del código generado</span><span class="sxs-lookup"><span data-stu-id="526ec-108">Update the generated code</span></span>
+## <a name="update-the-generated-code"></a><span data-ttu-id="040b9-108">Actualización del código generado</span><span class="sxs-lookup"><span data-stu-id="040b9-108">Update the generated code</span></span>
 
-<span data-ttu-id="526ec-109">Abra el archivo *Models/Movie.cs* y agregue las líneas resaltadas mostradas en el código siguiente:</span><span class="sxs-lookup"><span data-stu-id="526ec-109">Open the *Models/Movie.cs* file and add the highlighted lines shown in the following code:</span></span>
+<span data-ttu-id="040b9-109">Abra el archivo *Models/Movie.cs* y agregue las líneas resaltadas mostradas en el código siguiente:</span><span class="sxs-lookup"><span data-stu-id="040b9-109">Open the *Models/Movie.cs* file and add the highlighted lines shown in the following code:</span></span>
 
 [!code-csharp[Main](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Models/MovieDateFixed.cs?name=snippet_1&highlight=3,12,17)]
 
-<span data-ttu-id="526ec-110">La anotación de datos `[Column(TypeName = "decimal(18, 2)")]` permite que Entity Framework Core asigne correctamente `Price` a la moneda en la base de datos.</span><span class="sxs-lookup"><span data-stu-id="526ec-110">The `[Column(TypeName = "decimal(18, 2)")]` data annotation enables Entity Framework Core to correctly map `Price` to currency in the database.</span></span> <span data-ttu-id="526ec-111">Para más información, vea [Tipos de datos](/ef/core/modeling/relational/data-types).</span><span class="sxs-lookup"><span data-stu-id="526ec-111">For more information, see [Data Types](/ef/core/modeling/relational/data-types).</span></span>
+<span data-ttu-id="040b9-110">En el código anterior:</span><span class="sxs-lookup"><span data-stu-id="040b9-110">In the previous code:</span></span>
 
-<span data-ttu-id="526ec-112">En el próximo tutorial, hablaremos de [DataAnnotations](/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6).</span><span class="sxs-lookup"><span data-stu-id="526ec-112">[DataAnnotations](/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) is covered in the next tutorial.</span></span> <span data-ttu-id="526ec-113">El atributo [Display](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.metadata.displaymetadata) especifica qué se muestra como nombre de un campo (en este caso, "Release Date" en lugar de "ReleaseDate").</span><span class="sxs-lookup"><span data-stu-id="526ec-113">The [Display](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.metadata.displaymetadata) attribute specifies what to display for the name of a field (in this case "Release Date" instead of "ReleaseDate").</span></span> <span data-ttu-id="526ec-114">El atributo [DataType](/dotnet/api/microsoft.aspnetcore.mvc.dataannotations.internal.datatypeattributeadapter) especifica el tipo de los datos (Date), así que la información de hora almacenada en el campo no se muestra.</span><span class="sxs-lookup"><span data-stu-id="526ec-114">The [DataType](/dotnet/api/microsoft.aspnetcore.mvc.dataannotations.internal.datatypeattributeadapter) attribute specifies the type of the data (Date), so the time information stored in the field isn't displayed.</span></span>
+* <span data-ttu-id="040b9-111">La anotación de datos `[Column(TypeName = "decimal(18, 2)")]` permite que Entity Framework Core asigne correctamente `Price` a la moneda en la base de datos.</span><span class="sxs-lookup"><span data-stu-id="040b9-111">The `[Column(TypeName = "decimal(18, 2)")]` data annotation enables Entity Framework Core to correctly map `Price` to currency in the database.</span></span> <span data-ttu-id="040b9-112">Para más información, vea [Tipos de datos](/ef/core/modeling/relational/data-types).</span><span class="sxs-lookup"><span data-stu-id="040b9-112">For more information, see [Data Types](/ef/core/modeling/relational/data-types).</span></span>
+* <span data-ttu-id="040b9-113">El atributo [[Display]](xref:Microsoft.AspNetCore.Mvc.ModelBinding.Metadata.DisplayMetadata) especifica el nombre para mostrar de un campo.</span><span class="sxs-lookup"><span data-stu-id="040b9-113">The [[Display]](xref:Microsoft.AspNetCore.Mvc.ModelBinding.Metadata.DisplayMetadata) attribute specifies the display name of a field.</span></span> <span data-ttu-id="040b9-114">En el código anterior, "Release Date" en lugar de "ReleaseDate".</span><span class="sxs-lookup"><span data-stu-id="040b9-114">In the preceding code, "Release Date" instead of "ReleaseDate".</span></span>
+* <span data-ttu-id="040b9-115">El atributo [[DataType]](xref:System.ComponentModel.DataAnnotations.DataTypeAttribute) especifica el tipo de datos (`Date`).</span><span class="sxs-lookup"><span data-stu-id="040b9-115">The [[DataType]](xref:System.ComponentModel.DataAnnotations.DataTypeAttribute) attribute specifies the type of the data (`Date`).</span></span> <span data-ttu-id="040b9-116">No se muestra la información de hora almacenada en el campo.</span><span class="sxs-lookup"><span data-stu-id="040b9-116">The time information stored in the field isn't displayed.</span></span>
 
-<span data-ttu-id="526ec-115">Vaya a Pages/Movies y mantenga el mouse sobre un vínculo de **edición** para ver la dirección URL de destino.</span><span class="sxs-lookup"><span data-stu-id="526ec-115">Browse to Pages/Movies and  hover over an **Edit** link to see the target URL.</span></span>
+<span data-ttu-id="040b9-117">En el próximo tutorial, hablaremos de [DataAnnotations](/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6).</span><span class="sxs-lookup"><span data-stu-id="040b9-117">[DataAnnotations](/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) is covered in the next tutorial.</span></span>
 
-![Ventana del explorador con el mouse sobre el vínculo Edit (Editar) donde se muestra una dirección URL de vínculo http://localhost:1234/Movies/Edit/5](~/tutorials/razor-pages/da1/edit7.png)
+<span data-ttu-id="040b9-118">Vaya a *Pages/Movies* y mantenga el mouse sobre un vínculo de **edición** para ver la dirección URL de destino.</span><span class="sxs-lookup"><span data-stu-id="040b9-118">Browse to *Pages/Movies* and hover over an **Edit** link to see the target URL.</span></span>
 
-<span data-ttu-id="526ec-117">Los vínculos **Edit** , **Details** y **Delete** son generados por el [asistente de etiquetas de delimitador](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) del archivo *Pages/Movies/Index.cshtml*.</span><span class="sxs-lookup"><span data-stu-id="526ec-117">The **Edit** , **Details** , and **Delete** links are generated by the [Anchor Tag Helper](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) in the *Pages/Movies/Index.cshtml* file.</span></span>
+![Ventana del explorador con el mouse sobre el vínculo Edit (Editar) donde se muestra una dirección URL de vínculo https://localhost:1234/Movies/Edit/5](~/tutorials/razor-pages/da1/edit7.png)
+
+<span data-ttu-id="040b9-120">Los vínculos **Edit** (Editar), **Details** (Detalles) y **Delete** (Eliminar) son generados por el [asistente de etiquetas de delimitador](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) del archivo *Pages/Movies/Index.cshtml*.</span><span class="sxs-lookup"><span data-stu-id="040b9-120">The **Edit**, **Details**, and **Delete** links are generated by the [Anchor Tag Helper](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) in the *Pages/Movies/Index.cshtml* file.</span></span>
 
 [!code-cshtml[](~/tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Index.cshtml?highlight=16-18&range=32-)]
 
-<span data-ttu-id="526ec-118">Las [aplicaciones auxiliares de etiquetas](xref:mvc/views/tag-helpers/intro) permiten que el código de servidor participe en la creación y la representación de elementos HTML en archivos de Razor.</span><span class="sxs-lookup"><span data-stu-id="526ec-118">[Tag Helpers](xref:mvc/views/tag-helpers/intro) enable server-side code to participate in creating and rendering HTML elements in Razor files.</span></span> <span data-ttu-id="526ec-119">En el código anterior, `AnchorTagHelper` genera de forma dinámica el valor del atributo `href` HTML desde la página de Razor (la ruta es relativa), el elemento `asp-page` y el identificador de ruta (`asp-route-id`).</span><span class="sxs-lookup"><span data-stu-id="526ec-119">In the preceding code, the `AnchorTagHelper` dynamically generates the HTML `href` attribute value from the Razor Page (the route is relative), the `asp-page`,  and the route id (`asp-route-id`).</span></span> <span data-ttu-id="526ec-120">Vea [Generación de direcciones URL para las páginas](xref:razor-pages/index#url-generation-for-pages) para obtener más información.</span><span class="sxs-lookup"><span data-stu-id="526ec-120">See [URL generation for Pages](xref:razor-pages/index#url-generation-for-pages) for more information.</span></span>
+<span data-ttu-id="040b9-121">Las [aplicaciones auxiliares de etiquetas](xref:mvc/views/tag-helpers/intro) permiten que el código de servidor participe en la creación y la representación de elementos HTML en archivos de Razor.</span><span class="sxs-lookup"><span data-stu-id="040b9-121">[Tag Helpers](xref:mvc/views/tag-helpers/intro) enable server-side code to participate in creating and rendering HTML elements in Razor files.</span></span>
 
-<span data-ttu-id="526ec-121">Use **Ver código fuente** en su explorador preferido para examinar el marcado generado.</span><span class="sxs-lookup"><span data-stu-id="526ec-121">Use **View Source** from your favorite browser to examine the generated markup.</span></span> <span data-ttu-id="526ec-122">A continuación se muestra una parte del HTML generado:</span><span class="sxs-lookup"><span data-stu-id="526ec-122">A portion of the generated HTML is shown below:</span></span>
+<span data-ttu-id="040b9-122">En el código anterior, el [asistente de etiquetas de delimitador](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) genera de forma dinámica el valor del atributo `href` HTML desde la página de Razor Pages (la ruta es relativa), el elemento `asp-page` y el identificador de ruta (`asp-route-id`).</span><span class="sxs-lookup"><span data-stu-id="040b9-122">In the preceding code, the [Anchor Tag Helper](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) dynamically generates the HTML `href` attribute value from the Razor Page (the route is relative), the `asp-page`, and the route identifier (`asp-route-id`).</span></span> <span data-ttu-id="040b9-123">Vea [Generación de direcciones URL para las páginas](xref:razor-pages/index#url-generation-for-pages) para obtener más información.</span><span class="sxs-lookup"><span data-stu-id="040b9-123">For more information, see [URL generation for Pages](xref:razor-pages/index#url-generation-for-pages).</span></span>
+
+<span data-ttu-id="040b9-124">Use **Ver código fuente** en un explorador para examinar el marcado generado.</span><span class="sxs-lookup"><span data-stu-id="040b9-124">Use **View Source** from a browser to examine the generated markup.</span></span> <span data-ttu-id="040b9-125">A continuación se muestra una parte del HTML generado:</span><span class="sxs-lookup"><span data-stu-id="040b9-125">A portion of the generated HTML is shown below:</span></span>
 
 ```html
 <td>
@@ -64,11 +73,13 @@ ms.locfileid: "93060071"
 </td>
 ```
 
-<span data-ttu-id="526ec-123">Los vínculos generados de forma dinámica pasan el identificador de la película con una cadena de consulta (por ejemplo, el `?id=1` de `https://localhost:5001/Movies/Details?id=1`).</span><span class="sxs-lookup"><span data-stu-id="526ec-123">The dynamically-generated links pass the movie ID with a query string (for example, the `?id=1` in  `https://localhost:5001/Movies/Details?id=1`).</span></span>
+   <span data-ttu-id="040b9-126">Los vínculos generados de forma dinámica pasan el identificador de la película con una cadena de consulta.</span><span class="sxs-lookup"><span data-stu-id="040b9-126">The dynamically generated links pass the movie ID with a query string.</span></span> <span data-ttu-id="040b9-127">Por ejemplo, `?id=1` en `https://localhost:5001/Movies/Details?id=1`.</span><span class="sxs-lookup"><span data-stu-id="040b9-127">For example, the `?id=1` in `https://localhost:5001/Movies/Details?id=1`.</span></span>
 
-### <a name="add-route-template"></a><span data-ttu-id="526ec-124">Adición de la plantilla de ruta</span><span class="sxs-lookup"><span data-stu-id="526ec-124">Add route template</span></span>
+### <a name="add-route-template"></a><span data-ttu-id="040b9-128">Adición de la plantilla de ruta</span><span class="sxs-lookup"><span data-stu-id="040b9-128">Add route template</span></span>
 
-<span data-ttu-id="526ec-125">Actualice las páginas de Razor Edit, Details y Delete para usar la plantilla de ruta "{id:int}".</span><span class="sxs-lookup"><span data-stu-id="526ec-125">Update the Edit, Details, and Delete Razor Pages to use the "{id:int}" route template.</span></span> <span data-ttu-id="526ec-126">Cambie la directiva de página de cada una de estas páginas de `@page` a `@page "{id:int}"`.</span><span class="sxs-lookup"><span data-stu-id="526ec-126">Change the page directive for each of these pages from `@page` to `@page "{id:int}"`.</span></span> <span data-ttu-id="526ec-127">Ejecute la aplicación y luego vea el origen.</span><span class="sxs-lookup"><span data-stu-id="526ec-127">Run the app and then view source.</span></span> <span data-ttu-id="526ec-128">El HTML generado agrega el identificador a la parte de la ruta de acceso de la dirección URL:</span><span class="sxs-lookup"><span data-stu-id="526ec-128">The generated HTML adds the ID to the path portion of the URL:</span></span>
+<span data-ttu-id="040b9-129">Actualice las páginas Edit (Editar), Details (Detalles) y Delete (Eliminar) de Razor Pages para usar la plantilla de ruta `{id:int}`.</span><span class="sxs-lookup"><span data-stu-id="040b9-129">Update the Edit, Details, and Delete Razor Pages to use the `{id:int}` route template.</span></span> <span data-ttu-id="040b9-130">Cambie la directiva de página de cada una de estas páginas de `@page` a `@page "{id:int}"`.</span><span class="sxs-lookup"><span data-stu-id="040b9-130">Change the page directive for each of these pages from `@page` to `@page "{id:int}"`.</span></span> <span data-ttu-id="040b9-131">Ejecute la aplicación y luego vea el origen.</span><span class="sxs-lookup"><span data-stu-id="040b9-131">Run the app and then view source.</span></span>
+
+<span data-ttu-id="040b9-132">El HTML generado agrega el identificador a la parte de la ruta de acceso de la dirección URL:</span><span class="sxs-lookup"><span data-stu-id="040b9-132">The generated HTML adds the ID to the path portion of the URL:</span></span>
 
 ```html
 <td>
@@ -78,99 +89,101 @@ ms.locfileid: "93060071"
 </td>
 ```
 
-<span data-ttu-id="526ec-129">Una solicitud a la página con la plantilla de ruta "{id:int}" que **no** incluya el entero devolverá un error HTTP 404 (no encontrado).</span><span class="sxs-lookup"><span data-stu-id="526ec-129">A request to the page with the "{id:int}" route template that does **not** include the integer will return an HTTP 404 (not found) error.</span></span> <span data-ttu-id="526ec-130">Por ejemplo, `http://localhost:5000/Movies/Details` devolverá un error 404.</span><span class="sxs-lookup"><span data-stu-id="526ec-130">For example, `http://localhost:5000/Movies/Details` will return a 404 error.</span></span> <span data-ttu-id="526ec-131">Para que el identificador sea opcional, anexe `?` a la restricción de ruta:</span><span class="sxs-lookup"><span data-stu-id="526ec-131">To make the ID optional, append `?` to the route constraint:</span></span>
+<span data-ttu-id="040b9-133">Una solicitud a la página con la plantilla de ruta `{id:int}` que **no** incluya el entero devolverá un error HTTP 404 (no encontrado).</span><span class="sxs-lookup"><span data-stu-id="040b9-133">A request to the page with the `{id:int}` route template that does **not** include the integer will return an HTTP 404 (not found) error.</span></span> <span data-ttu-id="040b9-134">Por ejemplo, `https://localhost:5001/Movies/Details` devolverá un error 404.</span><span class="sxs-lookup"><span data-stu-id="040b9-134">For example, `https://localhost:5001/Movies/Details` will return a 404 error.</span></span> <span data-ttu-id="040b9-135">Para que el identificador sea opcional, anexe `?` a la restricción de ruta:</span><span class="sxs-lookup"><span data-stu-id="040b9-135">To make the ID optional, append `?` to the route constraint:</span></span>
 
- ```cshtml
+```cshtml
 @page "{id:int?}"
 ```
 
-<span data-ttu-id="526ec-132">Para probar el comportamiento de `@page "{id:int?}"`:</span><span class="sxs-lookup"><span data-stu-id="526ec-132">To test the behavior of `@page "{id:int?}"`:</span></span>
+<span data-ttu-id="040b9-136">Para probar el comportamiento de `@page "{id:int?}"`:</span><span class="sxs-lookup"><span data-stu-id="040b9-136">Test the behavior of `@page "{id:int?}"`:</span></span>
 
-* <span data-ttu-id="526ec-133">Establezca la directiva de página de *Pages/Movies/Details.cshtml* en `@page "{id:int?}"`.</span><span class="sxs-lookup"><span data-stu-id="526ec-133">Set the page directive in *Pages/Movies/Details.cshtml* to `@page "{id:int?}"`.</span></span>
-* <span data-ttu-id="526ec-134">Establezca un punto de interrupción en `public async Task<IActionResult> OnGetAsync(int? id)` (en *Pages/Movies/Details.cshtml.cs* ).</span><span class="sxs-lookup"><span data-stu-id="526ec-134">Set a break point in `public async Task<IActionResult> OnGetAsync(int? id)` (in *Pages/Movies/Details.cshtml.cs* ).</span></span>
-* <span data-ttu-id="526ec-135">Navegue a `https://localhost:5001/Movies/Details/`.</span><span class="sxs-lookup"><span data-stu-id="526ec-135">Navigate to `https://localhost:5001/Movies/Details/`.</span></span>
+1. <span data-ttu-id="040b9-137">Establezca la directiva de página de *Pages/Movies/Details.cshtml* en `@page "{id:int?}"`.</span><span class="sxs-lookup"><span data-stu-id="040b9-137">Set the page directive in *Pages/Movies/Details.cshtml* to `@page "{id:int?}"`.</span></span>
+1. <span data-ttu-id="040b9-138">Establezca un punto de interrupción en `public async Task<IActionResult> OnGetAsync(int? id)` (en *Pages/Movies/Details.cshtml.cs*).</span><span class="sxs-lookup"><span data-stu-id="040b9-138">Set a break point in `public async Task<IActionResult> OnGetAsync(int? id)`, in *Pages/Movies/Details.cshtml.cs*.</span></span>
+1. <span data-ttu-id="040b9-139">Navegue a `https://localhost:5001/Movies/Details/`.</span><span class="sxs-lookup"><span data-stu-id="040b9-139">Navigate to `https://localhost:5001/Movies/Details/`.</span></span>
 
-<span data-ttu-id="526ec-136">Con la directiva `@page "{id:int}"`, el punto de interrupción nunca se alcanza.</span><span class="sxs-lookup"><span data-stu-id="526ec-136">With the `@page "{id:int}"` directive, the break point is never hit.</span></span> <span data-ttu-id="526ec-137">El motor de enrutamiento devuelve HTTP 404.</span><span class="sxs-lookup"><span data-stu-id="526ec-137">The routing engine returns HTTP 404.</span></span> <span data-ttu-id="526ec-138">Con `@page "{id:int?}"`, el método `OnGetAsync` devuelve `NotFound` (HTTP 404).</span><span class="sxs-lookup"><span data-stu-id="526ec-138">Using `@page "{id:int?}"`, the `OnGetAsync` method returns `NotFound` (HTTP 404).</span></span>
+<span data-ttu-id="040b9-140">Con la directiva `@page "{id:int}"`, el punto de interrupción nunca se alcanza.</span><span class="sxs-lookup"><span data-stu-id="040b9-140">With the `@page "{id:int}"` directive, the break point is never hit.</span></span> <span data-ttu-id="040b9-141">El motor de enrutamiento devuelve HTTP 404.</span><span class="sxs-lookup"><span data-stu-id="040b9-141">The routing engine returns HTTP 404.</span></span> <span data-ttu-id="040b9-142">Con `@page "{id:int?}"`, el método `OnGetAsync` devuelve `NotFound` (HTTP 404):</span><span class="sxs-lookup"><span data-stu-id="040b9-142">Using `@page "{id:int?}"`, the `OnGetAsync` method returns `NotFound` (HTTP 404):</span></span>
 
-### <a name="review-concurrency-exception-handling"></a><span data-ttu-id="526ec-139">Revisión del control de excepciones de simultaneidad</span><span class="sxs-lookup"><span data-stu-id="526ec-139">Review concurrency exception handling</span></span>
+[!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie50/Pages/Movies/Details.cshtml.cs?name=snippet1&highlight=10-13)]
 
-<span data-ttu-id="526ec-140">Revise el método `OnPostAsync` en el archivo *Pages/Movies/Edit.cshtml.cs* :</span><span class="sxs-lookup"><span data-stu-id="526ec-140">Review the `OnPostAsync` method in the *Pages/Movies/Edit.cshtml.cs* file:</span></span>
+### <a name="review-concurrency-exception-handling"></a><span data-ttu-id="040b9-143">Revisión del control de excepciones de simultaneidad</span><span class="sxs-lookup"><span data-stu-id="040b9-143">Review concurrency exception handling</span></span>
+
+<span data-ttu-id="040b9-144">Revise el método `OnPostAsync` en el archivo *Pages/Movies/Edit.cshtml.cs*:</span><span class="sxs-lookup"><span data-stu-id="040b9-144">Review the `OnPostAsync` method in the *Pages/Movies/Edit.cshtml.cs* file:</span></span>
 
 [!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Pages/Movies/Edit.cshtml.cs?name=snippet)]
 
-<span data-ttu-id="526ec-141">El código anterior detecta las excepciones de simultaneidad cuando el cliente uno elimina la película y el otro cliente publica cambios en ella.</span><span class="sxs-lookup"><span data-stu-id="526ec-141">The previous code detects concurrency exceptions when the one client deletes the movie and the other client posts changes to the movie.</span></span>
+<span data-ttu-id="040b9-145">El código anterior detecta las excepciones de simultaneidad cuando un cliente elimina la película y el otro cliente publica cambios en ella.</span><span class="sxs-lookup"><span data-stu-id="040b9-145">The previous code detects concurrency exceptions when one client deletes the movie and the other client posts changes to the movie.</span></span>
 
-<span data-ttu-id="526ec-142">Para probar el bloque `catch`:</span><span class="sxs-lookup"><span data-stu-id="526ec-142">To test the `catch` block:</span></span>
+<span data-ttu-id="040b9-146">Para probar el bloque `catch`:</span><span class="sxs-lookup"><span data-stu-id="040b9-146">To test the `catch` block:</span></span>
 
-* <span data-ttu-id="526ec-143">Establecer un punto de interrupción en `catch (DbUpdateConcurrencyException)`</span><span class="sxs-lookup"><span data-stu-id="526ec-143">Set a breakpoint on `catch (DbUpdateConcurrencyException)`</span></span>
-* <span data-ttu-id="526ec-144">Seleccione **Editar** para una película y realice cambios, pero no seleccione **Guardar**.</span><span class="sxs-lookup"><span data-stu-id="526ec-144">Select **Edit** for a movie, make changes, but don't enter **Save**.</span></span>
-* <span data-ttu-id="526ec-145">En otra ventana del explorador, seleccione el vínculo de **eliminación** de la misma película y luego elimínela.</span><span class="sxs-lookup"><span data-stu-id="526ec-145">In another browser window, select the **Delete** link for the same movie, and then delete the movie.</span></span>
-* <span data-ttu-id="526ec-146">En la ventana anterior del explorador, publique los cambios en la película.</span><span class="sxs-lookup"><span data-stu-id="526ec-146">In the previous browser window, post changes to the movie.</span></span>
+1. <span data-ttu-id="040b9-147">establezca un punto de interrupción en `catch (DbUpdateConcurrencyException)`.</span><span class="sxs-lookup"><span data-stu-id="040b9-147">Set a breakpoint on `catch (DbUpdateConcurrencyException)`.</span></span>
+1. <span data-ttu-id="040b9-148">Seleccione **Editar** para una película y realice cambios, pero no seleccione **Guardar**.</span><span class="sxs-lookup"><span data-stu-id="040b9-148">Select **Edit** for a movie, make changes, but don't enter **Save**.</span></span>
+1. <span data-ttu-id="040b9-149">En otra ventana del explorador, seleccione el vínculo **Delete** (Eliminar) de la misma película y luego elimínela.</span><span class="sxs-lookup"><span data-stu-id="040b9-149">In another browser window, select the **Delete** link for the same movie, and then delete the movie.</span></span>
+1. <span data-ttu-id="040b9-150">En la ventana anterior del explorador, publique los cambios en la película.</span><span class="sxs-lookup"><span data-stu-id="040b9-150">In the previous browser window, post changes to the movie.</span></span>
 
-<span data-ttu-id="526ec-147">Es posible que el código de producción quiera detectar conflictos de simultaneidad.</span><span class="sxs-lookup"><span data-stu-id="526ec-147">Production code may want to detect concurrency conflicts.</span></span> <span data-ttu-id="526ec-148">Vea [Administración de conflictos de simultaneidad](xref:data/ef-rp/concurrency) para más información.</span><span class="sxs-lookup"><span data-stu-id="526ec-148">See [Handle concurrency conflicts](xref:data/ef-rp/concurrency) for more information.</span></span>
+<span data-ttu-id="040b9-151">Es posible que el código de producción quiera detectar conflictos de simultaneidad.</span><span class="sxs-lookup"><span data-stu-id="040b9-151">Production code may want to detect concurrency conflicts.</span></span> <span data-ttu-id="040b9-152">Vea [Administración de conflictos de simultaneidad](xref:data/ef-rp/concurrency) para más información.</span><span class="sxs-lookup"><span data-stu-id="040b9-152">See [Handle concurrency conflicts](xref:data/ef-rp/concurrency) for more information.</span></span>
 
-### <a name="posting-and-binding-review"></a><span data-ttu-id="526ec-149">Revisión de publicaciones y enlaces</span><span class="sxs-lookup"><span data-stu-id="526ec-149">Posting and binding review</span></span>
+### <a name="posting-and-binding-review"></a><span data-ttu-id="040b9-153">Revisión de publicaciones y enlaces</span><span class="sxs-lookup"><span data-stu-id="040b9-153">Posting and binding review</span></span>
 
-<span data-ttu-id="526ec-150">Examine el archivo *Pages/Movies/Edit.cshtml.cs* :</span><span class="sxs-lookup"><span data-stu-id="526ec-150">Examine the *Pages/Movies/Edit.cshtml.cs* file:</span></span>
+<span data-ttu-id="040b9-154">Examine el archivo *Pages/Movies/Edit.cshtml.cs*:</span><span class="sxs-lookup"><span data-stu-id="040b9-154">Examine the *Pages/Movies/Edit.cshtml.cs* file:</span></span>
 
 [!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/SnapShots/Edit.cshtml.cs?name=snippet2)]
 
-<span data-ttu-id="526ec-151">Cuando se realiza una solicitud HTTP GET a la página Movies/Edit (por ejemplo, `http://localhost:5000/Movies/Edit/2`):</span><span class="sxs-lookup"><span data-stu-id="526ec-151">When an HTTP GET request is made to the Movies/Edit page (for example, `http://localhost:5000/Movies/Edit/2`):</span></span>
+<span data-ttu-id="040b9-155">Cuando se realiza una solicitud HTTP GET a la página Movies/Edit (por ejemplo, `https://localhost:5001/Movies/Edit/3`):</span><span class="sxs-lookup"><span data-stu-id="040b9-155">When an HTTP GET request is made to the Movies/Edit page, for example, `https://localhost:5001/Movies/Edit/3`:</span></span>
 
-* <span data-ttu-id="526ec-152">El método `OnGetAsync` obtiene la película en la base de datos y devuelve el método `Page`.</span><span class="sxs-lookup"><span data-stu-id="526ec-152">The `OnGetAsync` method fetches the movie from the database and returns the `Page` method.</span></span>
-* <span data-ttu-id="526ec-153">El método `Page` representa la página de Razor *Pages/Movies/Edit.cshtml*.</span><span class="sxs-lookup"><span data-stu-id="526ec-153">The `Page` method renders the *Pages/Movies/Edit.cshtml* Razor Page.</span></span> <span data-ttu-id="526ec-154">El archivo *Pages/Movies/Edit.cshtml* contiene la directiva de modelo (`@model RazorPagesMovie.Pages.Movies.EditModel`), que hace que el modelo de película esté disponible en la página.</span><span class="sxs-lookup"><span data-stu-id="526ec-154">The *Pages/Movies/Edit.cshtml* file contains the model directive (`@model RazorPagesMovie.Pages.Movies.EditModel`), which makes the movie model available on the page.</span></span>
-* <span data-ttu-id="526ec-155">Se abre el formulario de edición con los valores de la película.</span><span class="sxs-lookup"><span data-stu-id="526ec-155">The Edit form is displayed with the values from the movie.</span></span>
+* <span data-ttu-id="040b9-156">El método `OnGetAsync` obtiene la película en la base de datos y devuelve el método `Page`.</span><span class="sxs-lookup"><span data-stu-id="040b9-156">The `OnGetAsync` method fetches the movie from the database and returns the `Page` method.</span></span>
+* <span data-ttu-id="040b9-157">El método `Page` representa la página de Razor *Pages/Movies/Edit.cshtml*.</span><span class="sxs-lookup"><span data-stu-id="040b9-157">The `Page` method renders the *Pages/Movies/Edit.cshtml* Razor Page.</span></span> <span data-ttu-id="040b9-158">El archivo *Pages/Movies/Edit.cshtml* contiene la directiva de modelo (`@model RazorPagesMovie.Pages.Movies.EditModel`), que hace que el modelo de película esté disponible en la página.</span><span class="sxs-lookup"><span data-stu-id="040b9-158">The *Pages/Movies/Edit.cshtml* file contains the model directive `@model RazorPagesMovie.Pages.Movies.EditModel`, which makes the movie model available on the page.</span></span>
+* <span data-ttu-id="040b9-159">Se abre el formulario de edición con los valores de la película.</span><span class="sxs-lookup"><span data-stu-id="040b9-159">The Edit form is displayed with the values from the movie.</span></span>
 
-<span data-ttu-id="526ec-156">Cuando se publica la página Movies/Edit:</span><span class="sxs-lookup"><span data-stu-id="526ec-156">When the Movies/Edit page is posted:</span></span>
+<span data-ttu-id="040b9-160">Cuando se publica la página Movies/Edit:</span><span class="sxs-lookup"><span data-stu-id="040b9-160">When the Movies/Edit page is posted:</span></span>
 
-* <span data-ttu-id="526ec-157">Los valores del formulario de la página se enlazan a la propiedad `Movie`.</span><span class="sxs-lookup"><span data-stu-id="526ec-157">The form values on the page are bound to the `Movie` property.</span></span> <span data-ttu-id="526ec-158">El atributo `[BindProperty]` habilita el [enlace de modelos](xref:mvc/models/model-binding).</span><span class="sxs-lookup"><span data-stu-id="526ec-158">The `[BindProperty]` attribute enables [Model binding](xref:mvc/models/model-binding).</span></span>
+* <span data-ttu-id="040b9-161">Los valores del formulario de la página se enlazan a la propiedad `Movie`.</span><span class="sxs-lookup"><span data-stu-id="040b9-161">The form values on the page are bound to the `Movie` property.</span></span> <span data-ttu-id="040b9-162">El atributo `[BindProperty]` habilita el [enlace de modelos](xref:mvc/models/model-binding).</span><span class="sxs-lookup"><span data-stu-id="040b9-162">The `[BindProperty]` attribute enables [Model binding](xref:mvc/models/model-binding).</span></span>
 
   ```csharp
   [BindProperty]
   public Movie Movie { get; set; }
   ```
 
-* <span data-ttu-id="526ec-159">Si hay errores en el estado del modelo (por ejemplo, `ReleaseDate` no se puede convertir en una fecha), el formulario se vuelve a mostrar con los valores enviados.</span><span class="sxs-lookup"><span data-stu-id="526ec-159">If there are errors in the model state (for example, `ReleaseDate` cannot be converted to a date), the form is redisplayed with the submitted values.</span></span>
-* <span data-ttu-id="526ec-160">Si no hay ningún error en el modelo, se guarda la película.</span><span class="sxs-lookup"><span data-stu-id="526ec-160">If there are no model errors, the movie is saved.</span></span>
+* <span data-ttu-id="040b9-163">Si hay errores en el estado del modelo (por ejemplo, `ReleaseDate` no se puede convertir en una fecha), el formulario se vuelve a mostrar con los valores enviados.</span><span class="sxs-lookup"><span data-stu-id="040b9-163">If there are errors in the model state, for example, `ReleaseDate` cannot be converted to a date, the form is redisplayed with the submitted values.</span></span>
+* <span data-ttu-id="040b9-164">Si no hay ningún error en el modelo, se guarda la película.</span><span class="sxs-lookup"><span data-stu-id="040b9-164">If there are no model errors, the movie is saved.</span></span>
 
-<span data-ttu-id="526ec-161">Los métodos HTTP GET de las páginas de Razor Index, Create y Delete siguen un patrón similar.</span><span class="sxs-lookup"><span data-stu-id="526ec-161">The HTTP GET methods in the Index, Create, and Delete Razor pages follow a similar pattern.</span></span> <span data-ttu-id="526ec-162">El método `OnPostAsync` HTTP POST de la página de Razor Create sigue un patrón similar al del método `OnPostAsync` de la página de Razor Edit.</span><span class="sxs-lookup"><span data-stu-id="526ec-162">The HTTP POST `OnPostAsync` method in the Create Razor Page follows a similar pattern to the `OnPostAsync` method in the Edit Razor Page.</span></span>
+<span data-ttu-id="040b9-165">Los métodos HTTP GET de las páginas Index (Índice), Create (Crear) y Delete (Eliminar) de Razor Pages siguen un patrón similar.</span><span class="sxs-lookup"><span data-stu-id="040b9-165">The HTTP GET methods in the Index, Create, and Delete Razor pages follow a similar pattern.</span></span> <span data-ttu-id="040b9-166">El método `OnPostAsync` HTTP POST de la página Create de Razor Pages sigue un patrón similar al del método `OnPostAsync` de la página de edición de Razor Pages.</span><span class="sxs-lookup"><span data-stu-id="040b9-166">The HTTP POST `OnPostAsync` method in the Create Razor Page follows a similar pattern to the `OnPostAsync` method in the Edit Razor Page.</span></span>
 
-## <a name="additional-resources"></a><span data-ttu-id="526ec-163">Recursos adicionales</span><span class="sxs-lookup"><span data-stu-id="526ec-163">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="040b9-167">Recursos adicionales</span><span class="sxs-lookup"><span data-stu-id="040b9-167">Additional resources</span></span>
 
 > [!div class="step-by-step"]
-> <span data-ttu-id="526ec-164">[Anterior: Trabajo con una base de datos](xref:tutorials/razor-pages/sql)
-> [Siguiente: Adición de búsqueda](xref:tutorials/razor-pages/search)</span><span class="sxs-lookup"><span data-stu-id="526ec-164">[Previous: Working with a database](xref:tutorials/razor-pages/sql)
+> <span data-ttu-id="040b9-168">[Anterior: Trabajo con una base de datos](xref:tutorials/razor-pages/sql)
+> [Siguiente: Adición de búsqueda](xref:tutorials/razor-pages/search)</span><span class="sxs-lookup"><span data-stu-id="040b9-168">[Previous: Work with a database](xref:tutorials/razor-pages/sql)
 [Next: Add search](xref:tutorials/razor-pages/search)</span></span>
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-3.0"
 
-<span data-ttu-id="526ec-165">La aplicación de películas con scaffolding pinta bien, pero la presentación no es ideal.</span><span class="sxs-lookup"><span data-stu-id="526ec-165">The scaffolded movie app has a good start, but the presentation isn't ideal.</span></span> <span data-ttu-id="526ec-166">**FechaDeLanzamiento** debe ser **Fecha de lanzamiento** (tres palabras).</span><span class="sxs-lookup"><span data-stu-id="526ec-166">**ReleaseDate** should be **Release Date** (two words).</span></span>
+<span data-ttu-id="040b9-169">La aplicación de películas con scaffolding pinta bien, pero la presentación no es ideal.</span><span class="sxs-lookup"><span data-stu-id="040b9-169">The scaffolded movie app has a good start, but the presentation isn't ideal.</span></span> <span data-ttu-id="040b9-170">**ReleaseDate** debe tener dos palabras: **Release Date** (Fecha lanzamiento).</span><span class="sxs-lookup"><span data-stu-id="040b9-170">**ReleaseDate** should be two words, **Release Date**.</span></span>
 
-![Aplicación Movie abierta en Chrome](sql/_static/m55.png)
+![Aplicación Movie abierta en Chrome](sql/_static/m55https.png)
 
-## <a name="update-the-generated-code"></a><span data-ttu-id="526ec-168">Actualización del código generado</span><span class="sxs-lookup"><span data-stu-id="526ec-168">Update the generated code</span></span>
+## <a name="update-the-generated-code"></a><span data-ttu-id="040b9-172">Actualización del código generado</span><span class="sxs-lookup"><span data-stu-id="040b9-172">Update the generated code</span></span>
 
-<span data-ttu-id="526ec-169">Abra el archivo *Models/Movie.cs* y agregue las líneas resaltadas mostradas en el código siguiente:</span><span class="sxs-lookup"><span data-stu-id="526ec-169">Open the *Models/Movie.cs* file and add the highlighted lines shown in the following code:</span></span>
+<span data-ttu-id="040b9-173">Abra el archivo *Models/Movie.cs* y agregue las líneas resaltadas mostradas en el código siguiente:</span><span class="sxs-lookup"><span data-stu-id="040b9-173">Open the *Models/Movie.cs* file and add the highlighted lines shown in the following code:</span></span>
 
 [!code-csharp[Main](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Models/MovieDateFixed.cs?name=snippet_1&highlight=3,12,17)]
 
-<span data-ttu-id="526ec-170">La anotación de datos `[Column(TypeName = "decimal(18, 2)")]` permite que Entity Framework Core asigne correctamente `Price` a la moneda en la base de datos.</span><span class="sxs-lookup"><span data-stu-id="526ec-170">The `[Column(TypeName = "decimal(18, 2)")]` data annotation enables Entity Framework Core to correctly map `Price` to currency in the database.</span></span> <span data-ttu-id="526ec-171">Para más información, vea [Tipos de datos](/ef/core/modeling/relational/data-types).</span><span class="sxs-lookup"><span data-stu-id="526ec-171">For more information, see [Data Types](/ef/core/modeling/relational/data-types).</span></span>
+<span data-ttu-id="040b9-174">La anotación de datos `[Column(TypeName = "decimal(18, 2)")]` permite que Entity Framework Core asigne correctamente `Price` a la moneda en la base de datos.</span><span class="sxs-lookup"><span data-stu-id="040b9-174">The `[Column(TypeName = "decimal(18, 2)")]` data annotation enables Entity Framework Core to correctly map `Price` to currency in the database.</span></span> <span data-ttu-id="040b9-175">Para más información, vea [Tipos de datos](/ef/core/modeling/relational/data-types).</span><span class="sxs-lookup"><span data-stu-id="040b9-175">For more information, see [Data Types](/ef/core/modeling/relational/data-types).</span></span>
 
-<span data-ttu-id="526ec-172">En el próximo tutorial, hablaremos de [DataAnnotations](/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6).</span><span class="sxs-lookup"><span data-stu-id="526ec-172">[DataAnnotations](/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) is covered in the next tutorial.</span></span> <span data-ttu-id="526ec-173">El atributo [Display](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.metadata.displaymetadata) especifica qué se muestra como nombre de un campo (en este caso, "Release Date" en lugar de "ReleaseDate").</span><span class="sxs-lookup"><span data-stu-id="526ec-173">The [Display](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.metadata.displaymetadata) attribute specifies what to display for the name of a field (in this case "Release Date" instead of "ReleaseDate").</span></span> <span data-ttu-id="526ec-174">El atributo [DataType](/dotnet/api/microsoft.aspnetcore.mvc.dataannotations.internal.datatypeattributeadapter) especifica el tipo de los datos (Date), así que la información de hora almacenada en el campo no se muestra.</span><span class="sxs-lookup"><span data-stu-id="526ec-174">The [DataType](/dotnet/api/microsoft.aspnetcore.mvc.dataannotations.internal.datatypeattributeadapter) attribute specifies the type of the data (Date), so the time information stored in the field isn't displayed.</span></span>
+<span data-ttu-id="040b9-176">En el próximo tutorial, hablaremos de [DataAnnotations](/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6).</span><span class="sxs-lookup"><span data-stu-id="040b9-176">[DataAnnotations](/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) is covered in the next tutorial.</span></span> <span data-ttu-id="040b9-177">El atributo [[Display]](xref:Microsoft.AspNetCore.Mvc.ModelBinding.Metadata.DisplayMetadata) especifica qué se muestra como nombre de un campo (en este caso, "Release Date" en lugar de "ReleaseDate").</span><span class="sxs-lookup"><span data-stu-id="040b9-177">The [[Display]](xref:Microsoft.AspNetCore.Mvc.ModelBinding.Metadata.DisplayMetadata) attribute specifies what to display for the name of a field, in this case "Release Date" instead of "ReleaseDate".</span></span> <span data-ttu-id="040b9-178">El atributo [DataType](xref:System.ComponentModel.DataAnnotations.DataTypeAttribute) especifica el tipo de los datos (`Date`), así que la información de hora almacenada en el campo no se muestra.</span><span class="sxs-lookup"><span data-stu-id="040b9-178">The [DataType](xref:System.ComponentModel.DataAnnotations.DataTypeAttribute) attribute specifies the type of the data (`Date`), so the time information stored in the field isn't displayed.</span></span>
 
-<span data-ttu-id="526ec-175">Vaya a Pages/Movies y mantenga el mouse sobre un vínculo de **edición** para ver la dirección URL de destino.</span><span class="sxs-lookup"><span data-stu-id="526ec-175">Browse to Pages/Movies and  hover over an **Edit** link to see the target URL.</span></span>
+<span data-ttu-id="040b9-179">Vaya a Pages/Movies y mantenga el mouse sobre un vínculo de **edición** para ver la dirección URL de destino.</span><span class="sxs-lookup"><span data-stu-id="040b9-179">Browse to Pages/Movies and  hover over an **Edit** link to see the target URL.</span></span>
 
 ![Ventana del explorador con el mouse sobre el vínculo Edit (Editar) donde se muestra una dirección URL de vínculo http://localhost:1234/Movies/Edit/5](~/tutorials/razor-pages/da1/edit7.png)
 
-<span data-ttu-id="526ec-177">Los vínculos **Edit** , **Details** y **Delete** son generados por el [asistente de etiquetas de delimitador](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) del archivo *Pages/Movies/Index.cshtml*.</span><span class="sxs-lookup"><span data-stu-id="526ec-177">The **Edit** , **Details** , and **Delete** links are generated by the [Anchor Tag Helper](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) in the *Pages/Movies/Index.cshtml* file.</span></span>
+<span data-ttu-id="040b9-181">Los vínculos **Edit** (Editar), **Details** (Detalles) y **Delete** (Eliminar) son generados por el [asistente de etiquetas de delimitador](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) del archivo *Pages/Movies/Index.cshtml*.</span><span class="sxs-lookup"><span data-stu-id="040b9-181">The **Edit**, **Details**, and **Delete** links are generated by the [Anchor Tag Helper](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) in the *Pages/Movies/Index.cshtml* file.</span></span>
 
 [!code-cshtml[](~/tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Index.cshtml?highlight=16-18&range=32-)]
 
-<span data-ttu-id="526ec-178">Las [aplicaciones auxiliares de etiquetas](xref:mvc/views/tag-helpers/intro) permiten que el código de servidor participe en la creación y la representación de elementos HTML en archivos de Razor.</span><span class="sxs-lookup"><span data-stu-id="526ec-178">[Tag Helpers](xref:mvc/views/tag-helpers/intro) enable server-side code to participate in creating and rendering HTML elements in Razor files.</span></span> <span data-ttu-id="526ec-179">En el código anterior, `AnchorTagHelper` genera de forma dinámica el valor del atributo `href` HTML desde la página de Razor (la ruta es relativa), el elemento `asp-page` y el identificador de ruta (`asp-route-id`).</span><span class="sxs-lookup"><span data-stu-id="526ec-179">In the preceding code, the `AnchorTagHelper` dynamically generates the HTML `href` attribute value from the Razor Page (the route is relative), the `asp-page`,  and the route id (`asp-route-id`).</span></span> <span data-ttu-id="526ec-180">Vea [Generación de direcciones URL para las páginas](xref:razor-pages/index#url-generation-for-pages) para obtener más información.</span><span class="sxs-lookup"><span data-stu-id="526ec-180">See [URL generation for Pages](xref:razor-pages/index#url-generation-for-pages) for more information.</span></span>
+<span data-ttu-id="040b9-182">Las [aplicaciones auxiliares de etiquetas](xref:mvc/views/tag-helpers/intro) permiten que el código de servidor participe en la creación y la representación de elementos HTML en archivos de Razor.</span><span class="sxs-lookup"><span data-stu-id="040b9-182">[Tag Helpers](xref:mvc/views/tag-helpers/intro) enable server-side code to participate in creating and rendering HTML elements in Razor files.</span></span> <span data-ttu-id="040b9-183">En el código anterior, `AnchorTagHelper` genera de forma dinámica el valor del atributo `href` HTML desde la página de Razor (la ruta es relativa), el elemento `asp-page` y el identificador de ruta (`asp-route-id`).</span><span class="sxs-lookup"><span data-stu-id="040b9-183">In the preceding code, the `AnchorTagHelper` dynamically generates the HTML `href` attribute value from the Razor Page (the route is relative), the `asp-page`, and the route id (`asp-route-id`).</span></span> <span data-ttu-id="040b9-184">Vea [Generación de direcciones URL para las páginas](xref:razor-pages/index#url-generation-for-pages) para obtener más información.</span><span class="sxs-lookup"><span data-stu-id="040b9-184">See [URL generation for Pages](xref:razor-pages/index#url-generation-for-pages) for more information.</span></span>
 
-<span data-ttu-id="526ec-181">Use **Ver código fuente** en su explorador preferido para examinar el marcado generado.</span><span class="sxs-lookup"><span data-stu-id="526ec-181">Use **View Source** from your favorite browser to examine the generated markup.</span></span> <span data-ttu-id="526ec-182">A continuación se muestra una parte del HTML generado:</span><span class="sxs-lookup"><span data-stu-id="526ec-182">A portion of the generated HTML is shown below:</span></span>
+<span data-ttu-id="040b9-185">Use **Ver código fuente** en un explorador para examinar el marcado generado.</span><span class="sxs-lookup"><span data-stu-id="040b9-185">Use **View Source** from a browser to examine the generated markup.</span></span> <span data-ttu-id="040b9-186">A continuación se muestra una parte del HTML generado:</span><span class="sxs-lookup"><span data-stu-id="040b9-186">A portion of the generated HTML is shown below:</span></span>
 
 ```html
 <td>
@@ -180,9 +193,9 @@ ms.locfileid: "93060071"
 </td>
 ```
 
-<span data-ttu-id="526ec-183">Los vínculos generados de forma dinámica pasan el identificador de la película con una cadena de consulta (por ejemplo, el `?id=1` de `https://localhost:5001/Movies/Details?id=1`).</span><span class="sxs-lookup"><span data-stu-id="526ec-183">The dynamically-generated links pass the movie ID with a query string (for example, the `?id=1` in  `https://localhost:5001/Movies/Details?id=1`).</span></span>
+<span data-ttu-id="040b9-187">Los vínculos generados de forma dinámica pasan el identificador de la película con una cadena de consulta.</span><span class="sxs-lookup"><span data-stu-id="040b9-187">The dynamically generated links pass the movie ID with a query string.</span></span> <span data-ttu-id="040b9-188">Por ejemplo, `?id=1` en `https://localhost:5001/Movies/Details?id=1`.</span><span class="sxs-lookup"><span data-stu-id="040b9-188">For example, the `?id=1` in  `https://localhost:5001/Movies/Details?id=1`.</span></span>
 
-<span data-ttu-id="526ec-184">Actualice las páginas de Razor Edit, Details y Delete para usar la plantilla de ruta "{id:int}".</span><span class="sxs-lookup"><span data-stu-id="526ec-184">Update the Edit, Details, and Delete Razor Pages to use the "{id:int}" route template.</span></span> <span data-ttu-id="526ec-185">Cambie la directiva de página de cada una de estas páginas de `@page` a `@page "{id:int}"`.</span><span class="sxs-lookup"><span data-stu-id="526ec-185">Change the page directive for each of these pages from `@page` to `@page "{id:int}"`.</span></span> <span data-ttu-id="526ec-186">Ejecute la aplicación y luego vea el origen.</span><span class="sxs-lookup"><span data-stu-id="526ec-186">Run the app and then view source.</span></span> <span data-ttu-id="526ec-187">El HTML generado agrega el identificador a la parte de la ruta de acceso de la dirección URL:</span><span class="sxs-lookup"><span data-stu-id="526ec-187">The generated HTML adds the ID to the path portion of the URL:</span></span>
+<span data-ttu-id="040b9-189">Actualice las páginas Edit (Editar), Details (Detalles) y Delete de Razor Pages para usar la plantilla de ruta "{id:int}".</span><span class="sxs-lookup"><span data-stu-id="040b9-189">Update the Edit, Details, and Delete Razor Pages to use the "{id:int}" route template.</span></span> <span data-ttu-id="040b9-190">Cambie la directiva de página de cada una de estas páginas de `@page` a `@page "{id:int}"`.</span><span class="sxs-lookup"><span data-stu-id="040b9-190">Change the page directive for each of these pages from `@page` to `@page "{id:int}"`.</span></span> <span data-ttu-id="040b9-191">Ejecute la aplicación y luego vea el origen.</span><span class="sxs-lookup"><span data-stu-id="040b9-191">Run the app and then view source.</span></span> <span data-ttu-id="040b9-192">El HTML generado agrega el identificador a la parte de la ruta de acceso de la dirección URL:</span><span class="sxs-lookup"><span data-stu-id="040b9-192">The generated HTML adds the ID to the path portion of the URL:</span></span>
 
 ```html
 <td>
@@ -192,72 +205,74 @@ ms.locfileid: "93060071"
 </td>
 ```
 
-<span data-ttu-id="526ec-188">Una solicitud a la página con la plantilla de ruta "{id:int}" que **no** incluya el entero devolverá un error HTTP 404 (no encontrado).</span><span class="sxs-lookup"><span data-stu-id="526ec-188">A request to the page with the "{id:int}" route template that does **not** include the integer will return an HTTP 404 (not found) error.</span></span> <span data-ttu-id="526ec-189">Por ejemplo, `http://localhost:5000/Movies/Details` devolverá un error 404.</span><span class="sxs-lookup"><span data-stu-id="526ec-189">For example, `http://localhost:5000/Movies/Details` will return a 404 error.</span></span> <span data-ttu-id="526ec-190">Para que el identificador sea opcional, anexe `?` a la restricción de ruta:</span><span class="sxs-lookup"><span data-stu-id="526ec-190">To make the ID optional, append `?` to the route constraint:</span></span>
+<span data-ttu-id="040b9-193">Una solicitud a la página con la plantilla de ruta "{id:int}" que **no** incluya el entero devolverá un error HTTP 404 (no encontrado).</span><span class="sxs-lookup"><span data-stu-id="040b9-193">A request to the page with the "{id:int}" route template that does **not** include the integer will return an HTTP 404 (not found) error.</span></span> <span data-ttu-id="040b9-194">Por ejemplo, `https://localhost:5001/Movies/Details` devolverá un error 404.</span><span class="sxs-lookup"><span data-stu-id="040b9-194">For example, `https://localhost:5001/Movies/Details` will return a 404 error.</span></span> <span data-ttu-id="040b9-195">Para que el identificador sea opcional, anexe `?` a la restricción de ruta:</span><span class="sxs-lookup"><span data-stu-id="040b9-195">To make the ID optional, append `?` to the route constraint:</span></span>
 
  ```cshtml
 @page "{id:int?}"
 ```
 
-<span data-ttu-id="526ec-191">Para probar el comportamiento de `@page "{id:int?}"`:</span><span class="sxs-lookup"><span data-stu-id="526ec-191">To test the behavior of `@page "{id:int?}"`:</span></span>
+<span data-ttu-id="040b9-196">Para probar el comportamiento de `@page "{id:int?}"`:</span><span class="sxs-lookup"><span data-stu-id="040b9-196">To test the behavior of `@page "{id:int?}"`:</span></span>
 
-* <span data-ttu-id="526ec-192">Establezca la directiva de página de *Pages/Movies/Details.cshtml* en `@page "{id:int?}"`.</span><span class="sxs-lookup"><span data-stu-id="526ec-192">Set the page directive in *Pages/Movies/Details.cshtml* to `@page "{id:int?}"`.</span></span>
-* <span data-ttu-id="526ec-193">Establezca un punto de interrupción en `public async Task<IActionResult> OnGetAsync(int? id)` (en *Pages/Movies/Details.cshtml.cs* ).</span><span class="sxs-lookup"><span data-stu-id="526ec-193">Set a break point in `public async Task<IActionResult> OnGetAsync(int? id)` (in *Pages/Movies/Details.cshtml.cs* ).</span></span>
-* <span data-ttu-id="526ec-194">Navegue a `https://localhost:5001/Movies/Details/`.</span><span class="sxs-lookup"><span data-stu-id="526ec-194">Navigate to `https://localhost:5001/Movies/Details/`.</span></span>
+* <span data-ttu-id="040b9-197">Establezca la directiva de página de *Pages/Movies/Details.cshtml* en `@page "{id:int?}"`.</span><span class="sxs-lookup"><span data-stu-id="040b9-197">Set the page directive in *Pages/Movies/Details.cshtml* to `@page "{id:int?}"`.</span></span>
+* <span data-ttu-id="040b9-198">Establezca un punto de interrupción en `public async Task<IActionResult> OnGetAsync(int? id)` (en *Pages/Movies/Details.cshtml.cs*).</span><span class="sxs-lookup"><span data-stu-id="040b9-198">Set a break point in `public async Task<IActionResult> OnGetAsync(int? id)`, in *Pages/Movies/Details.cshtml.cs*.</span></span>
+* <span data-ttu-id="040b9-199">Navegue a `https://localhost:5001/Movies/Details/`.</span><span class="sxs-lookup"><span data-stu-id="040b9-199">Navigate to `https://localhost:5001/Movies/Details/`.</span></span>
 
-<span data-ttu-id="526ec-195">Con la directiva `@page "{id:int}"`, el punto de interrupción nunca se alcanza.</span><span class="sxs-lookup"><span data-stu-id="526ec-195">With the `@page "{id:int}"` directive, the break point is never hit.</span></span> <span data-ttu-id="526ec-196">El motor de enrutamiento devuelve HTTP 404.</span><span class="sxs-lookup"><span data-stu-id="526ec-196">The routing engine returns HTTP 404.</span></span> <span data-ttu-id="526ec-197">Con `@page "{id:int?}"`, el método `OnGetAsync` devuelve `NotFound` (HTTP 404).</span><span class="sxs-lookup"><span data-stu-id="526ec-197">Using `@page "{id:int?}"`, the `OnGetAsync` method returns `NotFound` (HTTP 404).</span></span>
+<span data-ttu-id="040b9-200">Con la directiva `@page "{id:int}"`, el punto de interrupción nunca se alcanza.</span><span class="sxs-lookup"><span data-stu-id="040b9-200">With the `@page "{id:int}"` directive, the break point is never hit.</span></span> <span data-ttu-id="040b9-201">El motor de enrutamiento devuelve HTTP 404.</span><span class="sxs-lookup"><span data-stu-id="040b9-201">The routing engine returns HTTP 404.</span></span> <span data-ttu-id="040b9-202">Con `@page "{id:int?}"`, el método `OnGetAsync` devuelve `NotFound` (HTTP 404):</span><span class="sxs-lookup"><span data-stu-id="040b9-202">Using `@page "{id:int?}"`, the `OnGetAsync` method returns `NotFound` (HTTP 404):</span></span>
 
-### <a name="review-concurrency-exception-handling"></a><span data-ttu-id="526ec-198">Revisión del control de excepciones de simultaneidad</span><span class="sxs-lookup"><span data-stu-id="526ec-198">Review concurrency exception handling</span></span>
+[!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Pages/Movies/Details.cshtml.cs?name=snippet1&highlight=10-13)]
 
-<span data-ttu-id="526ec-199">Revise el método `OnPostAsync` en el archivo *Pages/Movies/Edit.cshtml.cs* :</span><span class="sxs-lookup"><span data-stu-id="526ec-199">Review the `OnPostAsync` method in the *Pages/Movies/Edit.cshtml.cs* file:</span></span>
+### <a name="review-concurrency-exception-handling"></a><span data-ttu-id="040b9-203">Revisión del control de excepciones de simultaneidad</span><span class="sxs-lookup"><span data-stu-id="040b9-203">Review concurrency exception handling</span></span>
+
+<span data-ttu-id="040b9-204">Revise el método `OnPostAsync` en el archivo *Pages/Movies/Edit.cshtml.cs*:</span><span class="sxs-lookup"><span data-stu-id="040b9-204">Review the `OnPostAsync` method in the *Pages/Movies/Edit.cshtml.cs* file:</span></span>
 
 [!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Pages/Movies/Edit.cshtml.cs?name=snippet)]
 
-<span data-ttu-id="526ec-200">El código anterior detecta las excepciones de simultaneidad cuando el cliente uno elimina la película y el otro cliente publica cambios en ella.</span><span class="sxs-lookup"><span data-stu-id="526ec-200">The previous code detects concurrency exceptions when the one client deletes the movie and the other client posts changes to the movie.</span></span>
+<span data-ttu-id="040b9-205">El código anterior detecta las excepciones de simultaneidad cuando el cliente uno elimina la película y el otro cliente publica cambios en ella.</span><span class="sxs-lookup"><span data-stu-id="040b9-205">The previous code detects concurrency exceptions when the one client deletes the movie and the other client posts changes to the movie.</span></span>
 
-<span data-ttu-id="526ec-201">Para probar el bloque `catch`:</span><span class="sxs-lookup"><span data-stu-id="526ec-201">To test the `catch` block:</span></span>
+<span data-ttu-id="040b9-206">Para probar el bloque `catch`:</span><span class="sxs-lookup"><span data-stu-id="040b9-206">To test the `catch` block:</span></span>
 
-* <span data-ttu-id="526ec-202">Establecer un punto de interrupción en `catch (DbUpdateConcurrencyException)`</span><span class="sxs-lookup"><span data-stu-id="526ec-202">Set a breakpoint on `catch (DbUpdateConcurrencyException)`</span></span>
-* <span data-ttu-id="526ec-203">Seleccione **Editar** para una película y realice cambios, pero no seleccione **Guardar**.</span><span class="sxs-lookup"><span data-stu-id="526ec-203">Select **Edit** for a movie, make changes, but don't enter **Save**.</span></span>
-* <span data-ttu-id="526ec-204">En otra ventana del explorador, seleccione el vínculo de **eliminación** de la misma película y luego elimínela.</span><span class="sxs-lookup"><span data-stu-id="526ec-204">In another browser window, select the **Delete** link for the same movie, and then delete the movie.</span></span>
-* <span data-ttu-id="526ec-205">En la ventana anterior del explorador, publique los cambios en la película.</span><span class="sxs-lookup"><span data-stu-id="526ec-205">In the previous browser window, post changes to the movie.</span></span>
+* <span data-ttu-id="040b9-207">Establecer un punto de interrupción en `catch (DbUpdateConcurrencyException)`</span><span class="sxs-lookup"><span data-stu-id="040b9-207">Set a breakpoint on `catch (DbUpdateConcurrencyException)`</span></span>
+* <span data-ttu-id="040b9-208">Seleccione **Editar** para una película y realice cambios, pero no seleccione **Guardar**.</span><span class="sxs-lookup"><span data-stu-id="040b9-208">Select **Edit** for a movie, make changes, but don't enter **Save**.</span></span>
+* <span data-ttu-id="040b9-209">En otra ventana del explorador, seleccione el vínculo **Delete** (Eliminar) de la misma película y luego elimínela.</span><span class="sxs-lookup"><span data-stu-id="040b9-209">In another browser window, select the **Delete** link for the same movie, and then delete the movie.</span></span>
+* <span data-ttu-id="040b9-210">En la ventana anterior del explorador, publique los cambios en la película.</span><span class="sxs-lookup"><span data-stu-id="040b9-210">In the previous browser window, post changes to the movie.</span></span>
 
-<span data-ttu-id="526ec-206">Es posible que el código de producción quiera detectar conflictos de simultaneidad.</span><span class="sxs-lookup"><span data-stu-id="526ec-206">Production code may want to detect concurrency conflicts.</span></span> <span data-ttu-id="526ec-207">Vea [Administración de conflictos de simultaneidad](xref:data/ef-rp/concurrency) para más información.</span><span class="sxs-lookup"><span data-stu-id="526ec-207">See [Handle concurrency conflicts](xref:data/ef-rp/concurrency) for more information.</span></span>
+<span data-ttu-id="040b9-211">Es posible que el código de producción quiera detectar conflictos de simultaneidad.</span><span class="sxs-lookup"><span data-stu-id="040b9-211">Production code may want to detect concurrency conflicts.</span></span> <span data-ttu-id="040b9-212">Vea [Administración de conflictos de simultaneidad](xref:data/ef-rp/concurrency) para más información.</span><span class="sxs-lookup"><span data-stu-id="040b9-212">See [Handle concurrency conflicts](xref:data/ef-rp/concurrency) for more information.</span></span>
 
-### <a name="posting-and-binding-review"></a><span data-ttu-id="526ec-208">Revisión de publicaciones y enlaces</span><span class="sxs-lookup"><span data-stu-id="526ec-208">Posting and binding review</span></span>
+### <a name="posting-and-binding-review"></a><span data-ttu-id="040b9-213">Revisión de publicaciones y enlaces</span><span class="sxs-lookup"><span data-stu-id="040b9-213">Posting and binding review</span></span>
 
-<span data-ttu-id="526ec-209">Examine el archivo *Pages/Movies/Edit.cshtml.cs* :</span><span class="sxs-lookup"><span data-stu-id="526ec-209">Examine the *Pages/Movies/Edit.cshtml.cs* file:</span></span>
+<span data-ttu-id="040b9-214">Examine el archivo *Pages/Movies/Edit.cshtml.cs*:</span><span class="sxs-lookup"><span data-stu-id="040b9-214">Examine the *Pages/Movies/Edit.cshtml.cs* file:</span></span>
 
 [!code-csharp[](~/tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Edit21.cshtml.cs?name=snippet2)]
 
-<span data-ttu-id="526ec-210">Cuando se realiza una solicitud HTTP GET a la página Movies/Edit (por ejemplo, `http://localhost:5000/Movies/Edit/2`):</span><span class="sxs-lookup"><span data-stu-id="526ec-210">When an HTTP GET request is made to the Movies/Edit page (for example, `http://localhost:5000/Movies/Edit/2`):</span></span>
+<span data-ttu-id="040b9-215">Cuando se realiza una solicitud HTTP GET a la página Movies/Edit (por ejemplo, `https://localhost:5001/Movies/Edit/3`):</span><span class="sxs-lookup"><span data-stu-id="040b9-215">When an HTTP GET request is made to the Movies/Edit page, for example, `https://localhost:5001/Movies/Edit/3`:</span></span>
 
-* <span data-ttu-id="526ec-211">El método `OnGetAsync` obtiene la película en la base de datos y devuelve el método `Page`.</span><span class="sxs-lookup"><span data-stu-id="526ec-211">The `OnGetAsync` method fetches the movie from the database and returns the `Page` method.</span></span> 
-* <span data-ttu-id="526ec-212">El método `Page` representa la página de Razor *Pages/Movies/Edit.cshtml*.</span><span class="sxs-lookup"><span data-stu-id="526ec-212">The `Page` method renders the *Pages/Movies/Edit.cshtml* Razor Page.</span></span> <span data-ttu-id="526ec-213">El archivo *Pages/Movies/Edit.cshtml* contiene la directiva de modelo (`@model RazorPagesMovie.Pages.Movies.EditModel`), que hace que el modelo de película esté disponible en la página.</span><span class="sxs-lookup"><span data-stu-id="526ec-213">The *Pages/Movies/Edit.cshtml* file contains the model directive (`@model RazorPagesMovie.Pages.Movies.EditModel`), which makes the movie model available on the page.</span></span>
-* <span data-ttu-id="526ec-214">Se abre el formulario de edición con los valores de la película.</span><span class="sxs-lookup"><span data-stu-id="526ec-214">The Edit form is displayed with the values from the movie.</span></span>
+* <span data-ttu-id="040b9-216">El método `OnGetAsync` obtiene la película en la base de datos y devuelve el método `Page`.</span><span class="sxs-lookup"><span data-stu-id="040b9-216">The `OnGetAsync` method fetches the movie from the database and returns the `Page` method.</span></span> 
+* <span data-ttu-id="040b9-217">El método `Page` representa la página de Razor *Pages/Movies/Edit.cshtml*.</span><span class="sxs-lookup"><span data-stu-id="040b9-217">The `Page` method renders the *Pages/Movies/Edit.cshtml* Razor Page.</span></span> <span data-ttu-id="040b9-218">El archivo *Pages/Movies/Edit.cshtml* contiene la directiva de modelo (`@model RazorPagesMovie.Pages.Movies.EditModel`), que hace que el modelo de película esté disponible en la página.</span><span class="sxs-lookup"><span data-stu-id="040b9-218">The *Pages/Movies/Edit.cshtml* file contains the model directive `@model RazorPagesMovie.Pages.Movies.EditModel`, which makes the movie model available on the page.</span></span>
+* <span data-ttu-id="040b9-219">Se abre el formulario de edición con los valores de la película.</span><span class="sxs-lookup"><span data-stu-id="040b9-219">The Edit form is displayed with the values from the movie.</span></span>
 
-<span data-ttu-id="526ec-215">Cuando se publica la página Movies/Edit:</span><span class="sxs-lookup"><span data-stu-id="526ec-215">When the Movies/Edit page is posted:</span></span>
+<span data-ttu-id="040b9-220">Cuando se publica la página Movies/Edit:</span><span class="sxs-lookup"><span data-stu-id="040b9-220">When the Movies/Edit page is posted:</span></span>
 
-* <span data-ttu-id="526ec-216">Los valores del formulario de la página se enlazan a la propiedad `Movie`.</span><span class="sxs-lookup"><span data-stu-id="526ec-216">The form values on the page are bound to the `Movie` property.</span></span> <span data-ttu-id="526ec-217">El atributo `[BindProperty]` habilita el [enlace de modelos](xref:mvc/models/model-binding).</span><span class="sxs-lookup"><span data-stu-id="526ec-217">The `[BindProperty]` attribute enables [Model binding](xref:mvc/models/model-binding).</span></span>
+* <span data-ttu-id="040b9-221">Los valores del formulario de la página se enlazan a la propiedad `Movie`.</span><span class="sxs-lookup"><span data-stu-id="040b9-221">The form values on the page are bound to the `Movie` property.</span></span> <span data-ttu-id="040b9-222">El atributo `[BindProperty]` habilita el [enlace de modelos](xref:mvc/models/model-binding).</span><span class="sxs-lookup"><span data-stu-id="040b9-222">The `[BindProperty]` attribute enables [Model binding](xref:mvc/models/model-binding).</span></span>
 
   ```csharp
   [BindProperty]
   public Movie Movie { get; set; }
   ```
 
-* <span data-ttu-id="526ec-218">Si hay errores en el estado del modelo (por ejemplo, `ReleaseDate` no se puede convertir en una fecha), el formulario se muestra con los valores enviados.</span><span class="sxs-lookup"><span data-stu-id="526ec-218">If there are errors in the model state (for example, `ReleaseDate` cannot be converted to a date), the form is displayed with the submitted values.</span></span>
-* <span data-ttu-id="526ec-219">Si no hay ningún error en el modelo, se guarda la película.</span><span class="sxs-lookup"><span data-stu-id="526ec-219">If there are no model errors, the movie is saved.</span></span>
+* <span data-ttu-id="040b9-223">Si hay errores en el estado del modelo (por ejemplo, `ReleaseDate` no se puede convertir en una fecha), el formulario se muestra con los valores enviados.</span><span class="sxs-lookup"><span data-stu-id="040b9-223">If there are errors in the model state, for example, `ReleaseDate` cannot be converted to a date, the form is displayed with the submitted values.</span></span>
+* <span data-ttu-id="040b9-224">Si no hay ningún error en el modelo, se guarda la película.</span><span class="sxs-lookup"><span data-stu-id="040b9-224">If there are no model errors, the movie is saved.</span></span>
 
-<span data-ttu-id="526ec-220">Los métodos HTTP GET de las páginas de Razor Index, Create y Delete siguen un patrón similar.</span><span class="sxs-lookup"><span data-stu-id="526ec-220">The HTTP GET methods in the Index, Create, and Delete Razor pages follow a similar pattern.</span></span> <span data-ttu-id="526ec-221">El método `OnPostAsync` HTTP POST de la página de Razor Create sigue un patrón similar al del método `OnPostAsync` de la página de Razor Edit.</span><span class="sxs-lookup"><span data-stu-id="526ec-221">The HTTP POST `OnPostAsync` method in the Create Razor Page follows a similar pattern to the `OnPostAsync` method in the Edit Razor Page.</span></span>
+<span data-ttu-id="040b9-225">Los métodos HTTP GET de las páginas Index (Índice), Create (Crear) y Delete (Eliminar) de Razor Pages siguen un patrón similar.</span><span class="sxs-lookup"><span data-stu-id="040b9-225">The HTTP GET methods in the Index, Create, and Delete Razor pages follow a similar pattern.</span></span> <span data-ttu-id="040b9-226">El método `OnPostAsync` HTTP POST de la página Create de Razor Pages sigue un patrón similar al del método `OnPostAsync` de la página de edición de Razor Pages.</span><span class="sxs-lookup"><span data-stu-id="040b9-226">The HTTP POST `OnPostAsync` method in the Create Razor Page follows a similar pattern to the `OnPostAsync` method in the Edit Razor Page.</span></span>
 
-<span data-ttu-id="526ec-222">La búsqueda se incluye en el tutorial siguiente.</span><span class="sxs-lookup"><span data-stu-id="526ec-222">Search is added in the next tutorial.</span></span>
+<span data-ttu-id="040b9-227">La búsqueda se incluye en el tutorial siguiente.</span><span class="sxs-lookup"><span data-stu-id="040b9-227">Search is added in the next tutorial.</span></span>
 
-## <a name="additional-resources"></a><span data-ttu-id="526ec-223">Recursos adicionales</span><span class="sxs-lookup"><span data-stu-id="526ec-223">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="040b9-228">Recursos adicionales</span><span class="sxs-lookup"><span data-stu-id="040b9-228">Additional resources</span></span>
 
-* [<span data-ttu-id="526ec-224">Versión en YouTube de este tutorial</span><span class="sxs-lookup"><span data-stu-id="526ec-224">YouTube version of this tutorial</span></span>](https://youtu.be/yLnnleREMtQ)
+* [<span data-ttu-id="040b9-229">Versión en YouTube de este tutorial</span><span class="sxs-lookup"><span data-stu-id="040b9-229">YouTube version of this tutorial</span></span>](https://youtu.be/yLnnleREMtQ)
 
 > [!div class="step-by-step"]
-> <span data-ttu-id="526ec-225">[Anterior: Trabajo con una base de datos](xref:tutorials/razor-pages/sql)
-> [Siguiente: Adición de búsqueda](xref:tutorials/razor-pages/search)</span><span class="sxs-lookup"><span data-stu-id="526ec-225">[Previous: Working with a database](xref:tutorials/razor-pages/sql)
+> <span data-ttu-id="040b9-230">[Anterior: Trabajo con una base de datos](xref:tutorials/razor-pages/sql)
+> [Siguiente: Adición de búsqueda](xref:tutorials/razor-pages/search)</span><span class="sxs-lookup"><span data-stu-id="040b9-230">[Previous: Work with a database](xref:tutorials/razor-pages/sql)
 [Next: Add search](xref:tutorials/razor-pages/search)</span></span>
 
 ::: moniker-end
