@@ -5,7 +5,7 @@ description: Obtenga información sobre cómo usar la herramienta global HttpRep
 monikerRange: '>= aspnetcore-2.1'
 ms.author: scaddie
 ms.custom: mvc, devx-track-azurecli
-ms.date: 11/11/2020
+ms.date: 11/12/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/http-repl
-ms.openlocfilehash: 8dd763d270a00c9a71913d68d6a039b2d98c3864
-ms.sourcegitcommit: 1ea3f23bec63e96ffc3a927992f30a5fc0de3ff9
+ms.openlocfilehash: c661141c1bec93c0f7b6404964dc0bca2319b529
+ms.sourcegitcommit: 827e8be18cebbcc09b467c089e17fa6f5e430cb2
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94570216"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94634618"
 ---
 # <a name="test-web-apis-with-the-httprepl"></a>Prueba de las API web con HttpRepl
 
@@ -604,7 +604,7 @@ Se trata del parámetro de ruta, si existe, que espera el método de acción del
 
 Para emitir una solicitud HTTP PUT, realice lo siguiente:
 
-1. *Opcional* : Ejecute el comando `get` para ver los datos antes de modificarlos:
+1. *Opcional*: Ejecute el comando `get` para ver los datos antes de modificarlos:
 
     ```console
     https://localhost:5001/fruits> get
@@ -666,7 +666,7 @@ Para emitir una solicitud HTTP PUT, realice lo siguiente:
     Server: Kestrel
     ```
 
-1. *Opcional* : Emita un comando `get` para ver las modificaciones. Por ejemplo, si ha escrito "Cherry" en el editor de texto, un elemento `get` devuelve el siguiente resultado:
+1. *Opcional*: Emita un comando `get` para ver las modificaciones. Por ejemplo, si ha escrito "Cherry" en el editor de texto, un elemento `get` devuelve el siguiente resultado:
 
     ```console
     https://localhost:5001/fruits> get
@@ -717,7 +717,7 @@ Se trata del parámetro de ruta, si existe, que espera el método de acción del
 
 Para emitir una solicitud HTTP DELETE, realice lo siguiente:
 
-1. *Opcional* : Ejecute el comando `get` para ver los datos antes de modificarlos:
+1. *Opcional*: Ejecute el comando `get` para ver los datos antes de modificarlos:
 
     ```console
     https://localhost:5001/fruits> get
@@ -757,7 +757,7 @@ Para emitir una solicitud HTTP DELETE, realice lo siguiente:
     Server: Kestrel
     ```
 
-1. *Opcional* : Emita un comando `get` para ver las modificaciones. En este ejemplo, un elemento `get` devuelve el siguiente resultado:
+1. *Opcional*: Emita un comando `get` para ver las modificaciones. En este ejemplo, un elemento `get` devuelve el siguiente resultado:
 
     ```console
     https://localhost:5001/fruits> get
@@ -1127,3 +1127,6 @@ https://localhost:5001/>
 
 * [Solicitudes de API REST](https://github.com/microsoft/api-guidelines/blob/vNext/Guidelines.md#74-supported-methods)
 * [Repositorio GitHub de HttpRepl](https://github.com/dotnet/HttpRepl)
+* [Configuración de Visual Studio para iniciar HttpRepl](https://devblogs.microsoft.com/aspnet/httprepl-a-command-line-tool-for-interacting-with-restful-http-services/#configure-visual-studio-for-windows-to-launch-httprepl-on-f5)
+* [Configuración de Visual Studio Code para iniciar HttpRepl](https://devblogs.microsoft.com/aspnet/httprepl-a-command-line-tool-for-interacting-with-restful-http-services/#configure-visual-studio-code-to-launch-httprepl-on-debug)
+* [Configuración de Visual Studio para Mac para iniciar HttpRepl](https://devblogs.microsoft.com/aspnet/httprepl-a-command-line-tool-for-interacting-with-restful-http-services/#configure-visual-studio-for-mac-to-launch-httprepl-as-a-custom-tool)

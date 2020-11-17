@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/filters
-ms.openlocfilehash: ecb4de3439656eb56507b920db704048d8f96759
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: d075faa951a34fb3856b54eb9e21593b6616b4f1
+ms.sourcegitcommit: bce62ceaac7782e22d185814f2e8532c84efa472
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93058511"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94673970"
 ---
 # <a name="filters-in-aspnet-core"></a>Filtros en ASP.NET Core
 
@@ -49,7 +49,7 @@ Este documento se aplica a Razor las páginas, controladores de API y controlado
 
 ## <a name="how-filters-work"></a>Funcionamiento de los filtros
 
-Los filtros se ejecutan dentro de la *canalización de invocación de acciones de ASP.NET Core* , a veces denominada *canalización de filtro* . La canalización de filtro se ejecuta después de que ASP.NET Core seleccione la acción que se va a ejecutar.
+Los filtros se ejecutan dentro de la *canalización de invocación de acciones de ASP.NET Core*, a veces denominada *canalización de filtro*. La canalización de filtro se ejecuta después de que ASP.NET Core seleccione la acción que se va a ejecutar.
 
 ![La solicitud se procesa a través de las fases Otro middleware, Middleware de enrutamiento, Selección de acción y Canalización de invocación de acción. El procesamiento de la solicitud continúa a la inversa, pasando por Selección de acción, Middleware de enrutamiento y varias fases de Otro middleware, antes de convertirse en una respuesta para enviarla al cliente.](filters/_static/filter-pipeline-1.png)
 
@@ -118,7 +118,7 @@ Los atributos permiten a los filtros aceptar argumentos, como se muestra en el e
 
 [!code-csharp[](./filters/3.1sample/FiltersSample/Controllers/SampleController.cs?name=snippet_AddHeader&highlight=1)]
 
-Use una herramienta como las [herramientas de desarrollo del explorador](https://developer.mozilla.org/docs/Learn/Common_questions/What_are_browser_developer_tools) para examinar los encabezados. En **Encabezados de respuesta** , se muestra `author: Rick Anderson`.
+Use una herramienta como las [herramientas de desarrollo del explorador](https://developer.mozilla.org/docs/Learn/Common_questions/What_are_browser_developer_tools) para examinar los encabezados. En **Encabezados de respuesta**, se muestra `author: Rick Anderson`.
 
 El código siguiente implementa un atributo `ActionFilterAttribute` que:
 
@@ -146,7 +146,7 @@ El siguiente código aplica el atributo `MyActionFilterAttribute` al método `In
 
 [!code-csharp[](./filters/3.1sample/FiltersSample/Controllers/SampleController.cs?name=snippet2&highlight=9)]
 
-En **encabezados de respuesta** , `author: Rick Anderson` y `Editor: Joe Smith` se muestra cuando `Sample/Index2` se llama al extremo.
+En **encabezados de respuesta**, `author: Rick Anderson` y `Editor: Joe Smith` se muestra cuando `Sample/Index2` se llama al extremo.
 
 El código siguiente aplica `MyActionFilterAttribute` y `AddHeaderAttribute` a la Razor página:
 
@@ -179,7 +179,7 @@ Un filtro se puede agregar a la canalización en uno de tres *ámbitos* posibles
 
 Cuando hay varios filtros en una determinada fase de la canalización, el ámbito determina el orden predeterminado en el que esos filtros se van a ejecutar.  Los filtros globales abarcan a los filtros de clase, que a su vez engloban a los filtros de método.
 
-Como resultado de este anidamiento de filtros, el código de filtros *posterior* se ejecuta en el orden inverso al código *anterior* . La secuencia de filtro:
+Como resultado de este anidamiento de filtros, el código de filtros *posterior* se ejecuta en el orden inverso al código *anterior*. La secuencia de filtro:
 
 * El código *anterior* de los filtros globales.
   * El código *anterior* de los filtros de controlador y de Razor página.
@@ -555,6 +555,18 @@ Por ejemplo, el siguiente filtro siempre ejecuta y establece un resultado de la 
 
 <xref:Microsoft.AspNetCore.Mvc.Filters.IFilterFactory> implementa <xref:Microsoft.AspNetCore.Mvc.Filters.IFilterMetadata>. Por tanto, una instancia de `IFilterFactory` se puede usar como una instancia de `IFilterMetadata` en cualquier parte de la canalización de filtro. Cuando el entorno de ejecución se prepara para invocar el filtro, intenta convertirlo a un `IFilterFactory`. Si esa conversión se realiza correctamente, se llama al método <xref:Microsoft.AspNetCore.Mvc.Filters.IFilterFactory.CreateInstance*> para crear la instancia `IFilterMetadata` que se va a invocar. Esto proporciona un diseño flexible, dado que no hay que establecer la canalización de filtro exacta de forma explícita cuando la aplicación se inicia.
 
+`IFilterFactory.IsReusable`:
+
+* Es una sugerencia de la factoría que la instancia de filtro creada por el generador se puede volver a usar fuera del ámbito de solicitud en el que se creó.
+* Debe ***no** _ usarse con un filtro que dependa de servicios con una duración distinta de singleton.
+
+El entorno de ejecución de ASP.NET Core no garantiza:
+
+_ Que se creará una única instancia del filtro.
+* El filtro no volverá a solicitarse desde el contenedor de inserción de dependencias en algún momento posterior.
+
+[!WARNING] Solo configure `IFilterFactory.IsReusable` para que devuelva `true` si el origen de los filtros es inequívoco, los filtros no tienen estado y pueden usarse de forma segura en varias solicitudes HTTP. Por ejemplo, no devuelva filtros de DI que estén registrados como de ámbito o transitorios si `IFilterFactory.IsReusable` devuelve `true`
+
 Puede implementar `IFilterFactory` con las implementaciones de atributos personalizados como método alternativo para crear filtros:
 
 [!code-csharp[](./filters/3.1sample/FiltersSample/Filters/AddHeaderWithFactoryAttribute.cs?name=snippet_IFilterFactory&highlight=1,4,5,6,7)]
@@ -638,7 +650,7 @@ Este documento se aplica a Razor las páginas, controladores de API y controlado
 
 ## <a name="how-filters-work"></a>Funcionamiento de los filtros
 
-Los filtros se ejecutan dentro de la *canalización de invocación de acciones de ASP.NET Core* , a veces denominada *canalización de filtro* .  La canalización de filtro se ejecuta después de que ASP.NET Core seleccione la acción que se va a ejecutar.
+Los filtros se ejecutan dentro de la *canalización de invocación de acciones de ASP.NET Core*, a veces denominada *canalización de filtro*.  La canalización de filtro se ejecuta después de que ASP.NET Core seleccione la acción que se va a ejecutar.
 
 ![La solicitud se procesa a través de las fases de otro middleware, del middleware de enrutamiento, de la selección de acción y de la canalización de invocación de acciones de ASP.NET Core. El procesamiento de la solicitud continúa a la inversa, pasando por Selección de acción, Middleware de enrutamiento y varias fases de Otro middleware, antes de convertirse en una respuesta para enviarla al cliente.](filters/_static/filter-pipeline-1.png)
 
@@ -723,9 +735,9 @@ El código anterior agrega tres filtros globalmente mediante la colección [MvcO
 
 ### <a name="default-order-of-execution"></a>Orden de ejecución predeterminado
 
-Cuando hay varios filtros *del mismo tipo* , el ámbito determina el orden predeterminado en el que esos filtros se van a ejecutar.  Los filtros globales delimitan los filtros de clase. Los filtros de clase delimitan los filtros de método.
+Cuando hay varios filtros *del mismo tipo*, el ámbito determina el orden predeterminado en el que esos filtros se van a ejecutar.  Los filtros globales delimitan los filtros de clase. Los filtros de clase delimitan los filtros de método.
 
-Como resultado de este anidamiento de filtros, el código de filtros *posterior* se ejecuta en el orden inverso al código *anterior* . La secuencia de filtro:
+Como resultado de este anidamiento de filtros, el código de filtros *posterior* se ejecuta en el orden inverso al código *anterior*. La secuencia de filtro:
 
 * El código *anterior* de los filtros globales.
   * El código *anterior* de los filtros de controlador.

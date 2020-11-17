@@ -19,12 +19,12 @@ no-loc:
 - SignalR
 - Models
 uid: tutorials/first-web-api
-ms.openlocfilehash: fc41dd13e7d027d9630cd596162f9b5fd2ef9e2b
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: ab06f2d347d7f05e9c72a85e0c6e0fbc67fe48a7
+ms.sourcegitcommit: 202144092067ea81be1dbb229329518d781dbdfb
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93058498"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94550717"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>Tutorial: Creación de una API web con ASP.NET Core
 
@@ -81,10 +81,10 @@ En el diagrama siguiente, se muestra el diseño de la aplicación.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* En el menú **Archivo** , seleccione **Nuevo** > **Proyecto**.
+* En el menú **Archivo**, seleccione **Nuevo** > **Proyecto**.
 * Seleccione la plantilla **Aplicación web ASP.NET Core** y haga clic en **Siguiente**.
 * Asigne al proyecto el nombre *TodoApi* y haga clic en **Crear**.
-* En el cuadro de diálogo **Crear una aplicación web ASP.NET Core** , confirme que las opciones **.NET Core** y **ASP.NET Core 5.0** están seleccionadas. Seleccione la plantilla **API** y haga clic en **Crear**.
+* En el cuadro de diálogo **Crear una aplicación web ASP.NET Core**, confirme que las opciones **.NET Core** y **ASP.NET Core 5.0** están seleccionadas. Seleccione la plantilla **API** y haga clic en **Crear**.
 
 ![Cuadro de diálogo de nuevo proyecto de VS](first-web-api/_static/5/vs.png)
 
@@ -119,7 +119,7 @@ En el diagrama siguiente, se muestra el diseño de la aplicación.
 
   ![Selección de plantilla de API de macOS](first-web-api-mac/_static/api_template.png)
 
-* En el cuadro de diálogo **Configurar la nueva API web de ASP.NET Core** , seleccione la **plataforma de destino** .NET Core 3.x más reciente. Seleccione **Siguiente**.
+* En el cuadro de diálogo **Configurar la nueva API web de ASP.NET Core**, seleccione la **plataforma de destino** .NET Core 5.x más reciente. Seleccione **Siguiente**.
 
 * Escriba *TodoApi* en **Nombre del proyecto** y seleccione **Crear**.
 
@@ -215,7 +215,7 @@ Se devuelve un JSON similar al siguiente:
 
 ### <a name="update-the-launchurl"></a>Actualización de launchUrl
 
-En *Properties\launchSettings.json* , actualice `launchUrl` de `"swagger"` a `"api/TodoItems"`:
+En *Properties\launchSettings.json*, actualice `launchUrl` de `"swagger"` a `"api/TodoItems"`:
 
 ```json
 "launchUrl": "api/TodoItems",
@@ -229,7 +229,7 @@ Un *modelo* es un conjunto de clases que representan los datos que la aplicació
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* En el **Explorador de soluciones** , haga clic con el botón derecho en el proyecto. Seleccione **Agregar** > **Nueva carpeta**. Asigne a la carpeta el nombre *Models* .
+* En el **Explorador de soluciones**, haga clic con el botón derecho en el proyecto. Seleccione **Agregar** > **Nueva carpeta**. Asigne a la carpeta el nombre *Models* .
 
 * Haga clic con el botón derecho en la carpeta *Models* y seleccione **Agregar** > **Clase**. Asigne a la clase el nombre *TodoItem* y seleccione **Agregar**.
 
@@ -269,7 +269,7 @@ El *contexto de base de datos* es la clase principal que coordina la funcionalid
 
 ### <a name="add-nuget-packages"></a>Adición de paquetes NuGet
 
-* En el menú **Herramientas** , seleccione **Administrador de paquetes NuGet > Administrar paquetes NuGet para la solución**.
+* En el menú **Herramientas**, seleccione **Administrador de paquetes NuGet > Administrar paquetes NuGet para la solución**.
 * Seleccione la pestaña **Examinar** y escriba **Microsoft.
 **EntityFrameworkCore.SqlServer** en el cuadro de búsqueda.
 <!-- https://github.com/dotnet/AspNetCore.Docs/issues/19782 Delete this line at RTM -->
@@ -379,7 +379,7 @@ En este tutorial se usa Postman para probar la API web.
 * Inicie la aplicación web.
 * Inicie Postman.
 * Deshabilite **Comprobación del certificado SSL**.
-  * En **Archivo** > **Configuración** (pestaña **General** ), deshabilite **Comprobación del certificado SSL**.
+  * En **Archivo** > **Configuración** (pestaña **General**), deshabilite **Comprobación del certificado SSL**.
     > [!WARNING]
     > Vuelva a habilitar la comprobación del certificado SSL tras probar el controlador.
 
@@ -413,7 +413,7 @@ El URI del encabezado de ubicación se puede probar en el explorador. Copie y pe
 Para probarlo en Postman:
 
 * Seleccione la pestaña **Encabezados** en el panel **Respuesta**.
-* Copie el valor de encabezado **Ubicación** :
+* Copie el valor de encabezado **Ubicación**:
 
   ![Pestaña Encabezados de la consola de Postman](first-web-api/_static/3/create.png)
 
@@ -607,10 +607,10 @@ En el diagrama siguiente, se muestra el diseño de la aplicación.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* En el menú **Archivo** , seleccione **Nuevo** > **Proyecto**.
+* En el menú **Archivo**, seleccione **Nuevo** > **Proyecto**.
 * Seleccione la plantilla **Aplicación web ASP.NET Core** y haga clic en **Siguiente**.
 * Asigne al proyecto el nombre *TodoApi* y haga clic en **Crear**.
-* En el cuadro de diálogo **Crear una aplicación web ASP.NET Core** , confirme que las opciones **.NET Core** y **ASP.NET Core 3.1** estén seleccionadas. Seleccione la plantilla **API** y haga clic en **Crear**.
+* En el cuadro de diálogo **Crear una aplicación web ASP.NET Core**, confirme que las opciones **.NET Core** y **ASP.NET Core 3.1** estén seleccionadas. Seleccione la plantilla **API** y haga clic en **Crear**.
 
 ![Cuadro de diálogo de nuevo proyecto de VS](first-web-api/_static/vs3.png)
 
@@ -645,7 +645,7 @@ En el diagrama siguiente, se muestra el diseño de la aplicación.
 
   ![Selección de plantilla de API de macOS](first-web-api-mac/_static/api_template.png)
 
-* En el cuadro de diálogo **Configurar la nueva API web de ASP.NET Core** , seleccione la **plataforma de destino** .NET Core 3.x más reciente. Seleccione **Siguiente**.
+* En el cuadro de diálogo **Configurar la nueva API web de ASP.NET Core**, seleccione la **plataforma de destino** .NET Core 3.x más reciente. Seleccione **Siguiente**.
 
 * Escriba *TodoApi* en **Nombre del proyecto** y seleccione **Crear**.
 
@@ -725,7 +725,7 @@ Un *modelo* es un conjunto de clases que representan los datos que la aplicació
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* En el **Explorador de soluciones** , haga clic con el botón derecho en el proyecto. Seleccione **Agregar** > **Nueva carpeta**. Asigne a la carpeta el nombre *Models* .
+* En el **Explorador de soluciones**, haga clic con el botón derecho en el proyecto. Seleccione **Agregar** > **Nueva carpeta**. Asigne a la carpeta el nombre *Models* .
 
 * Haga clic con el botón derecho en la carpeta *Models* y seleccione **Agregar** > **Clase**. Asigne a la clase el nombre *TodoItem* y seleccione **Agregar**.
 
@@ -765,7 +765,7 @@ El *contexto de base de datos* es la clase principal que coordina la funcionalid
 
 ### <a name="add-nuget-packages"></a>Adición de paquetes NuGet
 
-* En el menú **Herramientas** , seleccione **Administrador de paquetes NuGet > Administrar paquetes NuGet para la solución**.
+* En el menú **Herramientas**, seleccione **Administrador de paquetes NuGet > Administrar paquetes NuGet para la solución**.
 * Seleccione la pestaña **Examinar** y escriba **Microsoft.EntityFrameworkCore.SqlServer** en el cuadro de búsqueda.
 * Seleccione **Microsoft.EntityFrameworkCore.SqlServer** en el panel izquierdo.
 * Active la casilla **Proyecto** en el panel derecho y, después, seleccione **Instalar**.
@@ -870,7 +870,7 @@ En este tutorial se usa Postman para probar la API web.
 * Inicie la aplicación web.
 * Inicie Postman.
 * Deshabilite **Comprobación del certificado SSL**.
-  * En **Archivo** > **Configuración** (pestaña **General** ), deshabilite **Comprobación del certificado SSL**.
+  * En **Archivo** > **Configuración** (pestaña **General**), deshabilite **Comprobación del certificado SSL**.
     > [!WARNING]
     > Vuelva a habilitar la comprobación del certificado SSL tras probar el controlador.
 
@@ -900,7 +900,7 @@ En este tutorial se usa Postman para probar la API web.
 ### <a name="test-the-location-header-uri-with-postman"></a>Prueba del URI del encabezado de ubicación con Postman
 
 * Seleccione la pestaña **Encabezados** en el panel **Respuesta**.
-* Copie el valor de encabezado **Ubicación** :
+* Copie el valor de encabezado **Ubicación**:
 
   ![Pestaña Encabezados de la consola de Postman](first-web-api/_static/3/create.png)
 
@@ -1098,10 +1098,10 @@ En el diagrama siguiente, se muestra el diseño de la aplicación.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* En el menú **Archivo** , seleccione **Nuevo** > **Proyecto**.
+* En el menú **Archivo**, seleccione **Nuevo** > **Proyecto**.
 * Seleccione la plantilla **Aplicación web ASP.NET Core** y haga clic en **Siguiente**.
 * Asigne al proyecto el nombre *TodoApi* y haga clic en **Crear**.
-* En el cuadro de diálogo **Crear una aplicación web ASP.NET Core** , confirme que las opciones **.NET Core** y **ASP.NET Core 2.2** estén seleccionadas. Seleccione la plantilla **API** y haga clic en **Crear**. **No** seleccione **Habilitar compatibilidad con Docker**.
+* En el cuadro de diálogo **Crear una aplicación web ASP.NET Core**, confirme que las opciones **.NET Core** y **ASP.NET Core 2.2** estén seleccionadas. Seleccione la plantilla **API** y haga clic en **Crear**. **No** seleccione **Habilitar compatibilidad con Docker**.
 
 ![Cuadro de diálogo de nuevo proyecto de VS](first-web-api/_static/vs.png)
 
@@ -1128,7 +1128,7 @@ En el diagrama siguiente, se muestra el diseño de la aplicación.
 
 * En las versiones de Visual Studio para Mac anteriores a 8.6, seleccione **.NET Core** > **Aplicación** > **API** > **Siguiente**. En la versión 8.6 o posteriores, seleccione **Web y consola** > **Aplicación** > **API** > **Siguiente**.
   
-* En el cuadro de diálogo **Configurar la nueva API web de ASP.NET Core** , seleccione la **plataforma de destino** .NET Core 2.x más reciente. Seleccione **Siguiente**.
+* En el cuadro de diálogo **Configurar la nueva API web de ASP.NET Core**, seleccione la **plataforma de destino** .NET Core 2.x más reciente. Seleccione **Siguiente**.
 
 * Escriba *TodoApi* en **Nombre del proyecto** y seleccione **Crear**.
 
@@ -1168,7 +1168,7 @@ Un *modelo* es un conjunto de clases que representan los datos que la aplicació
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* En el **Explorador de soluciones** , haga clic con el botón derecho en el proyecto. Seleccione **Agregar** > **Nueva carpeta**. Asigne a la carpeta el nombre *Models* .
+* En el **Explorador de soluciones**, haga clic con el botón derecho en el proyecto. Seleccione **Agregar** > **Nueva carpeta**. Asigne a la carpeta el nombre *Models* .
 
 * Haga clic con el botón derecho en la carpeta *Models* y seleccione **Agregar** > **Clase**. Asigne a la clase el nombre *TodoItem* y seleccione **Agregar**.
 
@@ -1238,14 +1238,14 @@ El código anterior:
 
 * Haga clic con el botón derecho en la carpeta *Controllers*.
 * Seleccione **Agregar** > **Nuevo elemento**.
-* En el cuadro de diálogo **Agregar nuevo elemento** , seleccione la plantilla **Clase de controlador de API**.
+* En el cuadro de diálogo **Agregar nuevo elemento**, seleccione la plantilla **Clase de controlador de API**.
 * Asigne a la clase el nombre *TodoController* y seleccione **Agregar**.
 
   ![Cuadro de diálogo Agregar nuevo elemento con la palabra "controller" en el cuadro de búsqueda y la opción Clase de controlador de API web seleccionada](first-web-api/_static/new_controller.png)
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code/Visual Studio para Mac](#tab/visual-studio-code+visual-studio-mac)
 
-* En la carpeta *Controllers* , cree una clase denominada `TodoController`.
+* En la carpeta *Controllers*, cree una clase denominada `TodoController`.
 
 ---
 
@@ -1325,11 +1325,11 @@ En este tutorial se usa Postman para probar la API web.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* En **Archivo** > **Configuración** (pestaña **General** ), deshabilite **Comprobación del certificado SSL**.
+* En **Archivo** > **Configuración** (pestaña **General**), deshabilite **Comprobación del certificado SSL**.
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code/Visual Studio para Mac](#tab/visual-studio-code+visual-studio-mac)
 
-* En **Postman** > **Preferencias** (pestaña **General** ), deshabilite **Comprobación del certificado SSL**. También puede seleccionar la llave inglesa, hacer clic en **Configuración** y deshabilitar la comprobación del certificado SSL.
+* En **Postman** > **Preferencias** (pestaña **General**), deshabilite **Comprobación del certificado SSL**. También puede seleccionar la llave inglesa, hacer clic en **Configuración** y deshabilitar la comprobación del certificado SSL.
 
 ---
   
@@ -1346,7 +1346,7 @@ En este tutorial se usa Postman para probar la API web.
 
 ## <a name="add-a-create-method-21"></a>Incorporación de un método Create (2.1)
 
-Agregue el siguiente método `PostTodoItem` en *Controllers/TodoController.cs* : 
+Agregue el siguiente método `PostTodoItem` en *Controllers/TodoController.cs*: 
 
 [!code-csharp[](first-web-api/samples/2.2/TodoApi/Controllers/TodoController.cs?name=snippet_Create)]
 
@@ -1386,7 +1386,7 @@ El método `CreatedAtAction` realiza las acciones siguientes:
 ### <a name="test-the-location-header-uri-21"></a>Prueba del URI del encabezado de ubicación (2.1)
 
 * Seleccione la pestaña **Encabezados** en el panel **Respuesta**.
-* Copie el valor de encabezado **Ubicación** :
+* Copie el valor de encabezado **Ubicación**:
 
   ![Pestaña Encabezados de la consola de Postman](first-web-api/_static/pmc2.png)
 
@@ -1461,7 +1461,7 @@ Agregue un archivo JavaScript denominado *site.js* al directorio *wwwroot*. Reem
 Puede que sea necesario realizar un cambio en la configuración de inicio del proyecto de ASP.NET Core para probar la página HTML localmente:
 
 * Abra *Properties\launchSettings.json*.
-* Quite la propiedad `launchUrl` para forzar a la aplicación a abrirse en *index.html* , esto es, el archivo predeterminado del proyecto.
+* Quite la propiedad `launchUrl` para forzar a la aplicación a abrirse en *index.html*, esto es, el archivo predeterminado del proyecto.
 
 En este ejemplo se llama a todos los métodos CRUD de la API web. A continuación, encontrará algunas explicaciones de las llamadas a la API.
 

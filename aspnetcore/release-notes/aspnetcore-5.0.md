@@ -18,12 +18,12 @@ no-loc:
 - SignalR
 - Kestrel
 uid: aspnetcore-5.0
-ms.openlocfilehash: e9c74f7b45ebcdffc19a0483b4e98ad2f44d5747
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: e25549d557dd971d0f2f4d67a182574f07138acb
+ms.sourcegitcommit: 1be547564381873fe9e84812df8d2088514c622a
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93061754"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94508128"
 ---
 # <a name="whats-new-in-aspnet-core-50"></a>Novedades de ASP.NET Core 5.0
 
@@ -224,6 +224,8 @@ Para más información sobre gRPC, consulte <xref:grpc/index>.
 
 ## SignalR
 
+### <a name="no-locsignalr-hub-filters"></a>Filtros de concentrador de SignalR
+
 Los filtros del concentrador SignalR, denominados canalizaciones de concentrador en ASP.NET SignalR, es una característica que permite que el código se ejecute antes y después de que se llame a los métodos de concentrador. Ejecutar el código antes y después de llamar a los métodos de concentrador es similar a cómo el middleware tiene la capacidad de ejecutar el código antes y después de una solicitud HTTP. Entre los usos habituales se incluyen el registro, el control de errores y la validación de argumentos.
 
 Para más información, consulte [Uso de filtros del concentrador en ASP.NETSignalR](xref:signalr/hub-filters).
@@ -388,7 +390,7 @@ Consulte [Autenticación Kerberos y control de acceso basado en rol (RBAC)](xref
 
 Los datos JSON se pueden leer y escribir desde un `HttpRequest` y `HttpResponse` mediante los nuevos métodos de extensión <xref:System.Net.Http.Json.HttpContentJsonExtensions.ReadFromJsonAsync%2A> y `WriteAsJsonAsync`. Estos métodos de extensión utilizan el serializador [System.Text.JSON](xref:System.Text.Json) para controlar los datos JSON. El nuevo método de extensión de `HasJsonContentType` también puede comprobar si una solicitud tiene un tipo de contenido JSON.
 
-Los métodos de extensión JSON se pueden combinar con el [enrutamiento de punto de conexión](xref:fundamentals/routing) para crear las API JSON en un estilo de programación que llamamos * **ruta al código** _. Es una opción nueva para los desarrolladores que desean crear las API JSON básicas de una manera ligera. Por ejemplo, una aplicación web que tiene solo unos cuantos puntos de conexión puede optar por usar la ruta al código en lugar de la funcionalidad completa de ASP.NET Core MVC:
+Los métodos de extensión JSON se pueden combinar con el [enrutamiento de punto de conexión](xref:fundamentals/routing) para crear las API JSON en un estilo de programación que llamamos ***ruta al código** _. Es una opción nueva para los desarrolladores que desean crear las API JSON básicas de una manera ligera. Por ejemplo, una aplicación web que tiene solo unos cuantos puntos de conexión puede optar por usar la ruta al código en lugar de la funcionalidad completa de ASP.NET Core MVC:
 
 ```csharp
 endpoints.MapGet("/weather/{city:alpha}", async context =>
@@ -408,13 +410,14 @@ El formato predeterminado de <xref:System.Diagnostics.Activity?displayProperty=f
 
 ### <a name="frombodyattribute"></a>FromBodyAttribute
 
-<xref:Microsoft.AspNetCore.Mvc.FromBodyAttribute> anora admite la configuración de una opción que permite que estos parámetros o propiedades se consideren opcionales:
+<xref:Microsoft.AspNetCore.Mvc.FromBodyAttribute> ahora admite la configuración de una opción que permite que estos parámetros o propiedades se consideren opcionales:
 
 ```csharp
 public IActionResult Post([FromBody(EmptyBodyBehavior = EmptyBodyBehavior.Allow)]
-                           MyModel model) {
-     ...
-     }
+                          MyModel model)
+{
+    ...
+}
 ```
 
 ## <a name="miscellaneous-improvements"></a>Otras mejoras

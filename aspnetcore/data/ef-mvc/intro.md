@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/intro
-ms.openlocfilehash: 77cf1e9ad51b7044a35e1a9b2c125b0fdd91435e
-ms.sourcegitcommit: 33f631a4427b9a422755601ac9119953db0b4a3e
+ms.openlocfilehash: 428320f9d706b0dd16ced68d183ec4b331451965
+ms.sourcegitcommit: 202144092067ea81be1dbb229329518d781dbdfb
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93365387"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94550652"
 ---
 # <a name="tutorial-get-started-with-ef-core-in-an-aspnet-mvc-web-app"></a>Tutorial: Introducción a EF Core en una aplicación web de ASP.NET Core MVC
 
@@ -73,11 +73,15 @@ Los usuarios pueden ver y actualizar la información de estudiantes, cursos e in
 
 ## <a name="create-web-app"></a>Creación de una aplicación web
 
-* Inicie Visual Studio y seleccione **Aplicación web de ASP.NET Core** > **SIGUIENTE**.
-* Dé un nombre al proyecto `ContosoUniversity`. Es importante usar este nombre exacto, incluido el uso de mayúsculas, para que los espacios de nombres coincidan cuando se copie el código.
-* Seleccione **Crear**.
-* Seleccione **.NET Core** y **ASP.NET Core 5.0** en las listas desplegables y, luego, la plantilla **Aplicación web (Modelo-Vista-Controlador)** .
-  ![Cuadro de diálogo Nuevo proyecto ASP.NET Core](intro/_static/new-aspnet5.png)
+1. Inicie Visual Studio y seleccione **Crear un proyecto**.
+1. En el cuadro de diálogo **Crear un proyecto**, seleccione **Aplicación web ASP.NET Core** > **Siguiente**.
+1. En el cuadro de diálogo **Configurar su nuevo proyecto**, escriba `ContosoUniversity` en **Nombre del proyecto**. Es importante usar este nombre exacto, incluido el uso de mayúsculas, para que cada `namespace` coincida cuando se copie el código.
+1. Seleccione **Crear**.
+1. En el cuadro de diálogo **Crear una aplicación web ASP.NET Core**, seleccione:
+    1. **.NET Core** y **ASP.NET Core 5.0** en los menús desplegables.
+    1. **Aplicación web de ASP.NET Core (Modelo-Vista-Controlador)**
+    1. **Crear**
+      ![Cuadro de diálogo Nuevo proyecto de ASP.NET Core](~/data/ef-mvc/intro/_static/new-aspnet5.png)
 
 ## <a name="set-up-the-site-style"></a>Configurar el estilo del sitio
 
@@ -86,13 +90,13 @@ Con algunos cambios básicos se configura el menú del sitio, el diseño y la p�
 Abra *Views/Shared/_Layout.cshtml* y realice los cambios siguientes:
 
 * Cambie cada aparición de `ContosoUniversity` a `Contoso University`. Hay tres repeticiones.
-* Agregue entradas de menú para **About** , **Students** , **Courses** , **Instructors** y **Departments** , y elimine la entrada de menú **Privacy**.
+* Agregue entradas de menú para **About**, **Students**, **Courses**, **Instructors** y **Departments**, y elimine la entrada de menú **Privacy**.
 
 Los cambios anteriores se resaltan en el código siguiente:
 
 [!code-cshtml[](intro/samples/5cu/Views/Shared/_Layout.cshtml?highlight=6,24-38,52)]
 
-En *Views/Home/Index.cshtml* , reemplace el contenido del archivo por el marcado siguiente:
+En *Views/Home/Index.cshtml*, reemplace el contenido del archivo por el marcado siguiente:
 
 [!code-cshtml[](intro/samples/5cu/Views/Home/Index.cshtml)]
 
@@ -109,8 +113,8 @@ Este paquete de SQL Server de EF y sus dependencias (`Microsoft.EntityFramework
 Agregue los paquetes NuGet [Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore](https://www.nuget.org/packages/Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore) y [Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore](https://www.nuget.org/packages/Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore). En la consola del administrador de programas (PMC), escriba los siguientes comandos para agregar los paquetes NuGet:
 
 ```powershell
-Install-Package Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore -Version 5.0.0-rc.2.20475.17
-Install-Package Microsoft.EntityFrameworkCore.SqlServer -Version 5.0.0-rc.2.20475.6
+Install-Package Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore
+Install-Package Microsoft.EntityFrameworkCore.SqlServer
 ```
 
 El paquete NuGet `Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore` proporciona middleware de ASP.NET Core para páginas de error de EF Core. Este middleware ayuda a detectar y diagnosticar errores con migraciones de EF Core.
@@ -134,11 +138,11 @@ En las secciones siguientes, se crea una clase para cada una de estas entidades.
 
 ![Diagrama de la entidad Student](intro/_static/student-entity.png)
 
-En la carpeta *Models* , cree la clase `Student` con el código siguiente:
+En la carpeta *Models*, cree la clase `Student` con el código siguiente:
 
 [!code-csharp[](intro/samples/cu/Models/Student.cs?name=snippet_Intro)]
 
-La propiedad `ID` es la columna de clave principal ( **PK** ) de la tabla de base de datos que se corresponde a esta clase. De forma predeterminada, EF interpreta como la clave principal una propiedad que se denomine `ID` o `classnameID`. Por ejemplo, la clave principal podría tener el nombre `StudentID` en lugar de `ID`.
+La propiedad `ID` es la columna de clave principal (**PK**) de la tabla de base de datos que se corresponde a esta clase. De forma predeterminada, EF interpreta como la clave principal una propiedad que se denomine `ID` o `classnameID`. Por ejemplo, la clave principal podría tener el nombre `StudentID` en lugar de `ID`.
 
 La propiedad `Enrollments` es una [propiedad de navegación](/ef/core/modeling/relationships). Las propiedades de navegación contienen otras entidades relacionadas con esta entidad. La propiedad `Enrollments` de una entidad `Student`:
 
@@ -146,7 +150,7 @@ La propiedad `Enrollments` es una [propiedad de navegación](/ef/core/modeling/r
 * Si una fila de `Student` específica en la base de datos tiene dos filas `Enrollment` relacionadas:
   * La propiedad de navegación `Enrollments` de esa entidad `Student` contiene esas dos entidades `Enrollment`.
   
-Las filas `Enrollment` contienen el valor de clave principal del alumno en la columna de clave externa ( **FK** ) `StudentID`.
+Las filas `Enrollment` contienen el valor de clave principal del alumno en la columna de clave externa (**FK**) `StudentID`.
 
 Si una propiedad de navegación puede contener varias entidades:
 
@@ -159,7 +163,7 @@ Las relaciones de navegación de varios a varios y de uno a varios pueden conten
 
 ![Diagrama de la entidad Enrollment](intro/_static/enrollment-entity.png)
 
-En la carpeta *Models* , cree la clase `Enrollment` con el código siguiente:
+En la carpeta *Models*, cree la clase `Enrollment` con el código siguiente:
 
 [!code-csharp[](intro/samples/cu/Models/Enrollment.cs?name=snippet_Intro)]
 
@@ -177,7 +181,7 @@ Entity Framework interpreta una propiedad como una propiedad de clave externa si
 
 ![Diagrama de la entidad Course](intro/_static/course-entity.png)
 
-En la carpeta *Models* , cree la clase `Course` con el código siguiente:
+En la carpeta *Models*, cree la clase `Course` con el código siguiente:
 
 [!code-csharp[](intro/samples/cu/Models/Course.cs?name=snippet_Intro)]
 
@@ -191,7 +195,7 @@ La clase principal que coordina la funcionalidad de EF para un modelo de datos d
 
 En la carpeta del proyecto, cree una carpeta denominada `Data`.
 
-En la carpeta *Data* , cree una clase `SchoolContext` con el código siguiente:
+En la carpeta *Data*, cree una clase `SchoolContext` con el código siguiente:
 
 [!code-csharp[](intro/samples/cu/Data/SchoolContext.cs?name=snippet_Intro)]
 
@@ -241,7 +245,7 @@ EF crea una base de datos vacía. En esta sección, se agrega un método al que 
 
 El método `EnsureCreated` se usa para crear automáticamente la base de datos. En un [tutorial posterior](migrations.md), verá cómo controlar los cambios en el modelo mediante Migraciones de Code First para cambiar el esquema de base de datos en lugar de quitar y volver a crear la base de datos.
 
-En la carpeta *Data* , cree una nueva clase denominada `DbInitializer` con el código siguiente:
+En la carpeta *Data*, cree una nueva clase denominada `DbInitializer` con el código siguiente:
 
 [!code-csharp[DbInitializer](intro/samples/5cu-snap/DbInitializer.cs)]
 
@@ -276,10 +280,10 @@ Use el motor de scaffolding de Visual Studio para agregar un controlador y vist
 
 La creación automática de vistas y métodos de acción [CRUD](https://wikipedia.org/wiki/Create,_read,_update_and_delete) se conoce como scaffolding.
 
-* En el **Explorador de soluciones** , haga clic con el botón derecho en la carpeta `Controllers` y seleccione **Agregar > Nuevo elemento con scaffold**.
-* En el cuadro de diálogo **Agregar scaffold** :
+* En el **Explorador de soluciones**, haga clic con el botón derecho en la carpeta `Controllers` y seleccione **Agregar > Nuevo elemento con scaffold**.
+* En el cuadro de diálogo **Agregar scaffold**:
   * Seleccione **Controlador de MVC con vistas que usan Entity Framework**.
-  * Haga clic en **Agregar**. Aparece el cuadro de diálogo **Agregar un controlador de MVC con vistas que usan Entity Framework** : ![Scaffolding de Student](intro/_static/scaffold-student2.png)
+  * Haga clic en **Agregar**. Aparece el cuadro de diálogo **Agregar un controlador de MVC con vistas que usan Entity Framework**: ![Scaffolding de Student](intro/_static/scaffold-student2.png)
   * En **Clase de modelo** seleccione **Student**.
   * En **Clase de contexto de datos** seleccione **SchoolContext**.
   * Acepte el valor predeterminado **StudentsController** como el nombre.
@@ -388,11 +392,13 @@ Pase al tutorial siguiente para obtener información sobre cómo realizar operac
 
 ::: moniker-end
 
-::: moniker range="< aspnetcore-3.0"
+::: moniker range="<= aspnetcore-3.1"
 
 [!INCLUDE [RP better than MVC](~/includes/RP-EF/rp-over-mvc.md)]
 
 En la aplicación web de ejemplo Contoso University se muestra cómo crear aplicaciones web de ASP.NET Core 2.2 MVC con Entity Framework (EF) Core 2.2 y Visual Studio 2017 o 2019.
+
+Este tutorial no se ha actualizado para ASP.NET Core 3.1. Se ha actualizado para [ASP.NET Core 5.0](xref:data/ef-mvc/intro?view=aspnetcore-5.0).
 
 La aplicación de ejemplo es un sitio web de una universidad ficticia, Contoso University. Incluye funciones como la admisión de estudiantes, la creación de cursos y asignaciones de instructores. Este es el primero de una serie de tutoriales en los que se explica cómo crear la aplicación de ejemplo Contoso University desde el principio.
 
@@ -424,7 +430,7 @@ Los usuarios pueden ver y actualizar la información de estudiantes, cursos e in
 
 * Abra Visual Studio.
 
-* En el menú **Archivo** , seleccione **Nuevo > Proyecto**.
+* En el menú **Archivo**, seleccione **Nuevo > Proyecto**.
 
 * En el panel de la izquierda, seleccione **Instalado > Visual C# > Web**.
 
@@ -436,7 +442,7 @@ Los usuarios pueden ver y actualizar la información de estudiantes, cursos e in
 
 * Espere que aparezca el cuadro de diálogo **Nueva aplicación web ASP.NET Core**.
 
-* Seleccione **.NET Core** , **ASP.NET Core 2.2** y la plantilla **Aplicación web (controlador de vista de modelos)** .
+* Seleccione **.NET Core**, **ASP.NET Core 2.2** y la plantilla **Aplicación web (controlador de vista de modelos)** .
 
 * Asegúrese de que **Autenticación** esté establecida en **Sin autenticación**.
 
@@ -452,13 +458,13 @@ Abra *Views/Shared/_Layout.cshtml* y realice los cambios siguientes:
 
 * Cambie todas las repeticiones de "ContosoUniversity" por "Contoso University". Hay tres repeticiones.
 
-* Agregue entradas de menú para **About** , **Students** , **Courses** , **Instructors** y **Departments** , y elimine la entrada de menú **Privacy**.
+* Agregue entradas de menú para **About**, **Students**, **Courses**, **Instructors** y **Departments**, y elimine la entrada de menú **Privacy**.
 
 Los cambios aparecen resaltados.
 
 [!code-cshtml[](intro/samples/cu/Views/Shared/_Layout.cshtml?highlight=6,34-48,63)]
 
-En *Views/Home/Index.cshtml* , reemplace el contenido del archivo con el código siguiente para reemplazar el texto sobre ASP.NET y MVC con texto sobre esta aplicación:
+En *Views/Home/Index.cshtml*, reemplace el contenido del archivo con el código siguiente para reemplazar el texto sobre ASP.NET y MVC con texto sobre esta aplicación:
 
 [!code-cshtml[](intro/samples/cu/Views/Home/Index.cshtml)]
 
@@ -488,7 +494,7 @@ En las secciones siguientes creará una clase para cada una de estas entidades.
 
 ![Diagrama de la entidad Student](intro/_static/student-entity.png)
 
-En la carpeta *Models* , cree un archivo de clase denominado *Student.cs* y reemplace el código de plantilla con el código siguiente.
+En la carpeta *Models*, cree un archivo de clase denominado *Student.cs* y reemplace el código de plantilla con el código siguiente.
 
 [!code-csharp[](intro/samples/cu/Models/Student.cs?name=snippet_Intro)]
 
@@ -502,7 +508,7 @@ Si una propiedad de navegación puede contener varias entidades (como en las rel
 
 ![Diagrama de la entidad Enrollment](intro/_static/enrollment-entity.png)
 
-En la carpeta *Models* , cree *Enrollment.cs* y reemplace el código existente con el código siguiente:
+En la carpeta *Models*, cree *Enrollment.cs* y reemplace el código existente con el código siguiente:
 
 [!code-csharp[](intro/samples/cu/Models/Enrollment.cs?name=snippet_Intro)]
 
@@ -520,7 +526,7 @@ Entity Framework interpreta una propiedad como propiedad de clave externa si se 
 
 ![Diagrama de la entidad Course](intro/_static/course-entity.png)
 
-En la carpeta *Models* , cree *Course.cs* y reemplace el código existente con el código siguiente:
+En la carpeta *Models*, cree *Course.cs* y reemplace el código existente con el código siguiente:
 
 [!code-csharp[](intro/samples/cu/Models/Course.cs?name=snippet_Intro)]
 
@@ -534,7 +540,7 @@ La clase principal que coordina la funcionalidad de Entity Framework para un mod
 
 En la carpeta del proyecto, cree una carpeta denominada *Data*.
 
-En la carpeta *Data* , cree un archivo de clase denominado *SchoolContext.cs* y reemplace el código de plantilla con el código siguiente:
+En la carpeta *Data*, cree un archivo de clase denominado *SchoolContext.cs* y reemplace el código de plantilla con el código siguiente:
 
 [!code-csharp[](intro/samples/cu/Data/SchoolContext.cs?name=snippet_Intro)]
 
@@ -576,13 +582,13 @@ Entity Framework creará una base de datos vacía por usted. En esta sección, e
 
 Aquí usará el método `EnsureCreated` para crear automáticamente la base de datos. En un [tutorial posterior](migrations.md), verá cómo controlar los cambios en el modelo mediante Migraciones de Code First para cambiar el esquema de base de datos en lugar de quitar y volver a crear la base de datos.
 
-En la carpeta *Data* , cree un archivo de clase denominado *DbInitializer.cs* y reemplace el código de plantilla con el código siguiente, que hace que se cree una base de datos cuando es necesario y carga datos de prueba en la nueva base de datos.
+En la carpeta *Data*, cree un archivo de clase denominado *DbInitializer.cs* y reemplace el código de plantilla con el código siguiente, que hace que se cree una base de datos cuando es necesario y carga datos de prueba en la nueva base de datos.
 
 [!code-csharp[](intro/samples/cu/Data/DbInitializer.cs?name=snippet_Intro)]
 
 El código comprueba si hay estudiantes en la base de datos, y si no es así, asume que la base de datos es nueva y debe inicializarse con datos de prueba. Carga los datos de prueba en matrices en lugar de colecciones `List<T>` para optimizar el rendimiento.
 
-En *Program.cs* , modifique el método `Main` para que haga lo siguiente al iniciar la aplicación:
+En *Program.cs*, modifique el método `Main` para que haga lo siguiente al iniciar la aplicación:
 
 * Obtener una instancia del contexto de base de datos desde el contenedor de inserción de dependencias.
 * Llamar al método de inicialización, pasándolo al contexto.
@@ -604,15 +610,15 @@ En esta sección, se usa el motor de scaffolding de Visual Studio para agregar 
 La creación automática de vistas y métodos de acción CRUD se conoce como scaffolding. El scaffolding difiere de la generación de código en que el código con scaffolding es un punto de partida que se puede modificar para satisfacer sus propias necesidades, mientras que el código generado normalmente no se modifica. Cuando tenga que personalizar código generado, use clases parciales o regenere el código cuando se produzcan cambios.
 
 * Haga clic con el botón derecho en la carpeta **Controladores** en el **Explorador de soluciones** y seleccione **Agregar > Nuevo elemento con scaffold**.
-* En el cuadro de diálogo **Agregar scaffold** :
+* En el cuadro de diálogo **Agregar scaffold**:
   * Seleccione **Controlador de MVC con vistas que usan Entity Framework**.
-  * Haga clic en **Agregar**. Aparece el cuadro de diálogo **Agregar un controlador de MVC con vistas que usan Entity Framework** : ![Scaffolding de Student](intro/_static/scaffold-student2.png)
+  * Haga clic en **Agregar**. Aparece el cuadro de diálogo **Agregar un controlador de MVC con vistas que usan Entity Framework**: ![Scaffolding de Student](intro/_static/scaffold-student2.png)
   * En **Clase de modelo** seleccione **Student**.
   * En **Clase de contexto de datos** seleccione **SchoolContext**.
   * Acepte el valor predeterminado **StudentsController** como el nombre.
   * Haga clic en **Agregar**.
 
-El motor de scaffolding de Visual Studio crea un archivo *StudentsController.cs* y un conjunto de vistas (archivos *.cshtml* ) que funcionan con el controlador.
+El motor de scaffolding de Visual Studio crea un archivo *StudentsController.cs* y un conjunto de vistas (archivos *.cshtml*) que funcionan con el controlador.
 
 Observe que el controlador toma `SchoolContext` como parámetro de constructor.
 

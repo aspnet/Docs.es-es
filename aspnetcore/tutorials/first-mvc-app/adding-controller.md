@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/adding-controller
-ms.openlocfilehash: 11832efa6715f96856665f174d65b094806d2810
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 1851a61441ed351442f86939022319ad59d10006
+ms.sourcegitcommit: 91e14f1e2a25c98a57c2217fe91b172e0ff2958c
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93061293"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94422638"
 ---
 # <a name="part-2-add-a-controller-to-an-aspnet-core-mvc-app"></a>Parte 2. Adición de un controlador a una aplicación de ASP.NET Core MVC
 
@@ -46,24 +46,24 @@ En esta serie de tutoriales se tratarán estos conceptos y se mostrará cómo us
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* En el **Explorador de soluciones** , haga clic con el botón derecho en **Controladores > Agregar > Controlador**
-  ![Menú contextual](adding-controller/_static/add_controller.png).
+* En el **Explorador de soluciones**, haga clic con el botón derecho en **Controladores > Agregar > Controlador**
+  ![Explorador de soluciones, haga clic con el botón derecho en Controladores > Agregar Controlador](~/tutorials/first-mvc-app/adding-controller/_static/add_controllerCopy.png).
 
-* En el cuadro de diálogo **Agregar Scaffold** , seleccione **Controller Class - Empty** (Clase de controlador: en blanco)
+* En el cuadro de diálogo **Agregar Scaffold**, seleccione **MVC Controller - Empty** (Controlador MVC: en blanco)
 
-  ![Agregar un controlador de MVC y asignarle un nombre](adding-controller/_static/ac.png)
+  ![Agregar un controlador de MVC y asignarle un nombre](~/tutorials/first-mvc-app/adding-controller/_static/acCopy.png)
 
 * En el cuadro de diálogo **Add Empty MVC Controller** (Agregar controlador MVC en blanco), escriba **HelloWorldController** y seleccione **AGREGAR**.
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-Seleccione el icono **EXPLORADOR** , presione Ctrl y haga clic con el botón derecho en **Controladores > Nuevo archivo** y asigne al nuevo archivo el nombre *HelloWorldController.cs*.
+Seleccione el icono **EXPLORADOR**, presione Ctrl y haga clic con el botón derecho en **Controladores > Nuevo archivo** y asigne al nuevo archivo el nombre *HelloWorldController.cs*.
 
   ![Menú contextual](~/tutorials/first-mvc-app-xplat/adding-controller/_static/new_file.png)
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)
 
-En el **Explorador de soluciones** , haga clic con el botón derecho en **Controladores > Agregar > Nuevo archivo**.
+En el **Explorador de soluciones**, haga clic con el botón derecho en **Controladores > Agregar > Nuevo archivo**.
 ![Menú contextual](~/tutorials/first-mvc-app-mac/adding-controller/_static/add_controller.png)
 
 Seleccione **ASP.NET Core** y **Clase de controlador**.
@@ -160,24 +160,24 @@ En esta serie de tutoriales se tratarán estos conceptos y se mostrará cómo us
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* En el **Explorador de soluciones** , haga clic con el botón derecho en **Controladores > Agregar > Controlador**
-  ![Menú contextual](adding-controller/_static/add_controller.png).
+* En el **Explorador de soluciones**, haga clic con el botón derecho en **Controladores > Agregar > Controlador**
+  ![Menú contextual](~/tutorials/first-mvc-app/adding-controller/_static/add_controller.png).
 
-* En el cuadro de diálogo **Agregar Scaffold** , seleccione **MVC Controller - Empty** (Controlador MVC: en blanco)
+* En el cuadro de diálogo **Agregar Scaffold**, seleccione **MVC Controller - Empty** (Controlador MVC: en blanco)
 
-  ![Agregar un controlador de MVC y asignarle un nombre](adding-controller/_static/ac.png)
+  ![Agregar un controlador de MVC y asignarle un nombre](~/tutorials/first-mvc-app/adding-controller/_static/ac.png)
 
 * En el cuadro de diálogo **Add Empty MVC Controller** (Agregar controlador MVC en blanco), escriba **HelloWorldController** y seleccione **AGREGAR**.
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-Seleccione el icono **EXPLORADOR** , presione Ctrl y haga clic con el botón derecho en **Controladores > Nuevo archivo** y asigne al nuevo archivo el nombre *HelloWorldController.cs*.
+Seleccione el icono **EXPLORADOR**, presione Ctrl y haga clic con el botón derecho en **Controladores > Nuevo archivo** y asigne al nuevo archivo el nombre *HelloWorldController.cs*.
 
   ![Menú contextual](~/tutorials/first-mvc-app-xplat/adding-controller/_static/new_file.png)
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)
 
-En el **Explorador de soluciones** , haga clic con el botón derecho en **Controladores > Agregar > Nuevo archivo**.
+En el **Explorador de soluciones**, haga clic con el botón derecho en **Controladores > Agregar > Nuevo archivo**.
 ![Menú contextual](~/tutorials/first-mvc-app-mac/adding-controller/_static/add_controller.png)
 
 Seleccione **ASP.NET Core** y **Clase de controlador de MVC**.

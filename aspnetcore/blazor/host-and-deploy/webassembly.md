@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/webassembly
-ms.openlocfilehash: 0912b3fbcd0b891deb4985eaa18841c22f4f3264
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 7ae462ff9abd06fe4ab4b3e00a71515b76b0ee7d
+ms.sourcegitcommit: bb475e69cb647f22cf6d2c6f93d0836c160080d7
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93055755"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94339989"
 ---
 # <a name="host-and-deploy-aspnet-core-no-locblazor-webassembly"></a>Hospedaje e implementación de ASP.NET Core Blazor WebAssembly
 
@@ -523,7 +523,16 @@ Además de [configurarse la ruta de acceso base de la aplicación](xref:blazor/h
 
 #### <a name="brotli-and-gzip-compression"></a>Compresión Brotli y Gzip
 
-IIS se puede configurar a través de `web.config` para dar servicio a recursos de Blazor comprimidos con Brotli o Gzip. Para ver una configuración de ejemplo, consulte [`web.config`](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/blazor/host-and-deploy/webassembly/_samples/web.config?raw=true).
+*Esta sección solo se aplica a aplicaciones Blazor WebAssembly independientes. Las aplicaciones hospedadas de Blazor usan un archivo `web.config` de la aplicación ASP.NET Core predeterminado, no el archivo vinculado en esta sección.*
+
+IIS se puede configurar a través de `web.config` para dar servicio a recursos de Blazor comprimidos con Brotli o Gzip para aplicaciones de Blazor WebAssembly independientes. Para ver un archivo de configuración de ejemplo, consulte [`web.config`](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/blazor/host-and-deploy/webassembly/_samples/web.config?raw=true).
+
+Podría ser necesaria una configuración adicional del archivo `web.config` de ejemplo en los escenarios siguientes:
+
+* La especificación de la aplicación requiere cualquiera de las siguientes opciones:
+  * Servir archivos comprimidos que no están configurados por el archivo `web.config` de ejemplo.
+  * Servir archivos comprimidos configurados por el archivo `web.config` de ejemplo en un formato sin comprimir.
+* La configuración de IIS del servidor (por ejemplo, `applicationHost.config`) proporciona valores predeterminados de IIS de nivel de servidor. En función de la configuración de nivel de servidor, es posible que la aplicación requiera una configuración de IIS diferente de la que contiene el archivo de `web.config` de ejemplo.
 
 #### <a name="troubleshooting"></a>Solución de problemas
 
@@ -913,7 +922,7 @@ Cuando se compila una aplicación, el manifiesto de `blazor.boot.json` generado 
 
 Los motivos comunes por los que se produce un error son:
 
- * La respuesta del servidor web es un error (por ejemplo, *404 No encontrado* o *500 Error interno del servidor* ) en lugar del archivo solicitado por el explorador. El explorador lo detecta como un error de comprobación de integridad y no como un error de respuesta.
+ * La respuesta del servidor web es un error (por ejemplo, *404 No encontrado* o *500 Error interno del servidor*) en lugar del archivo solicitado por el explorador. El explorador lo detecta como un error de comprobación de integridad y no como un error de respuesta.
  * Algo ha cambiado el contenido de los archivos entre la compilación y la entrega de los archivos al explorador. Esto puede ocurrir:
    * Si el usuario o las herramientas de compilación modifican manualmente la salida de compilación.
    * Si algún aspecto del proceso de implementación ha modificado los archivos. Por ejemplo, si usa un mecanismo de implementación basado en Git, tenga en cuenta que Git convierte de forma transparente los finales de línea de estilo Windows en finales de línea de estilo Unix si confirma archivos en Windows y los comprueba en Linux. El cambio de los finales de línea de archivo cambia los algoritmos hash SHA-256. Para evitar este problema, considere la posibilidad de [usar `.gitattributes` para tratar los artefactos de compilación como archivos `binary`](https://git-scm.com/book/en/v2/Customizing-Git-Git-Attributes).

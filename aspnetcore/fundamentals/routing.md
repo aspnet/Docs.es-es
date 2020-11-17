@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/routing
-ms.openlocfilehash: 5b07a2839daf190d99b2787db70998373d34cd44
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: e134832ad00b10bb01239afa06acc74d86707af1
+ms.sourcegitcommit: 91e14f1e2a25c98a57c2217fe91b172e0ff2958c
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93060006"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94422566"
 ---
 # <a name="routing-in-aspnet-core"></a>Enrutamiento en ASP.NET Core
 
@@ -210,12 +210,12 @@ En el ejemplo anterior se muestran dos conceptos importantes:
 
 En el código anterior se muestra un ejemplo de middleware personalizado que admite directivas por punto de conexión. El middleware escribe un *registro de auditoría* de acceso a datos confidenciales en la consola. El middleware se puede configurar para *auditar* un punto de conexión con los metadatos de `AuditPolicyAttribute`. En este ejemplo se muestra un patrón *opcional* en el que solo se auditan los puntos de conexión marcados como confidenciales. Esta lógica se puede definir en orden inverso, para auditar todo lo que no esté marcado como seguro, por ejemplo. El sistema de metadatos de punto de conexión es flexible. Esta lógica se puede diseñar de la manera que mejor se adapte al caso de uso.
 
-El código del ejemplo anterior está diseñado para mostrar los conceptos básicos de los puntos de conexión. **No está pensado para su uso en producción**. Una versión más completa de un middleware de *registro de auditoría* :
+El código del ejemplo anterior está diseñado para mostrar los conceptos básicos de los puntos de conexión. **No está pensado para su uso en producción**. Una versión más completa de un middleware de *registro de auditoría*:
 
 * Realizaría el registro en un archivo o una base de datos.
 * Incluiría detalles como el usuario, la dirección IP, el nombre del punto de conexión confidencial, etc.
 
-El valor `AuditPolicyAttribute` de metadatos de directiva de auditoría se define como `Attribute` para facilitar su uso con marcos basados en clases como los controladores y SignalR. Cuando se usa *de ruta a código* :
+El valor `AuditPolicyAttribute` de metadatos de directiva de auditoría se define como `Attribute` para facilitar su uso con marcos basados en clases como los controladores y SignalR. Cuando se usa *de ruta a código*:
 
 * Los metadatos se asocian con una API de generador.
 * Los marcos basados en clases incluyen todos los atributos en el método y la clase correspondientes al crear los puntos de conexión.
@@ -973,7 +973,7 @@ La declaración de un tipo de metadatos como una interfaz agrega otro nivel de f
 
 [!code-csharp[](routing/samples/3.x/RoutingSample/ICoolMetadata.cs?name=snippet)]
 
-La mejor manera de seguir estas instrucciones es evitar la definición de **metadatos de marcador** :
+La mejor manera de seguir estas instrucciones es evitar la definición de **metadatos de marcador**:
 
 * No busque solo la presencia de un tipo de metadatos.
 * Defina una propiedad en los metadatos y compruébela.
@@ -1178,14 +1178,14 @@ Existen algunas diferencias entre el enrutamiento de punto de conexión de ASP.N
 
   Considere el ejemplo siguiente de ASP.NET Core 2.1 o una versión anterior. Al vincular a otra acción (o a otra página), los valores de ruta se pueden reutilizar de formas no deseadas.
 
-  En */Pages/Store/Product.cshtml* :
+  En */Pages/Store/Product.cshtml*:
 
   ```cshtml
   @page "{id}"
   @Url.Page("/Login")
   ```
 
-  En */Pages/Login.cshtml* :
+  En */Pages/Login.cshtml*:
 
   ```cshtml
   @page "{id?}"
@@ -1434,7 +1434,7 @@ Las siguientes palabras clave son nombres reservados y no se pueden usar como no
 Las restricciones de ruta se ejecutan cuando se ha producido una coincidencia con la dirección URL entrante y la ruta de dirección URL se convierte en tokens en valores de ruta. En general, las restricciones de ruta inspeccionan el valor de ruta asociado a través de la plantilla de ruta y deciden si el valor es aceptable o no. Algunas restricciones de ruta usan datos ajenos al valor de ruta para decidir si la solicitud se puede enrutar. Por ejemplo, <xref:Microsoft.AspNetCore.Routing.Constraints.HttpMethodRouteConstraint> puede aceptar o rechazar una solicitud basada en su verbo HTTP. Las restricciones se usan en las solicitudes de enrutamiento y la generación de vínculos.
 
 > [!WARNING]
-> No use las restricciones para las **validación de entrada**. Si las restricciones se usan para la **validación de entrada** , los resultados de entrada no válidos producirán un error *404 - No encontrado* en lugar de un error *400 - Solicitud incorrecta* con un mensaje de error adecuado. Las restricciones de ruta se usan para **eliminar la ambigüedad** entre rutas similares, no para validar las entradas de una ruta determinada.
+> No use las restricciones para las **validación de entrada**. Si las restricciones se usan para la **validación de entrada**, los resultados de entrada no válidos producirán un error *404 - No encontrado* en lugar de un error *400 - Solicitud incorrecta* con un mensaje de error adecuado. Las restricciones de ruta se usan para **eliminar la ambigüedad** entre rutas similares, no para validar las entradas de una ruta determinada.
 
 En la tabla siguiente se muestran algunas restricciones de ruta de ejemplo y su comportamiento esperado.
 
@@ -1884,7 +1884,7 @@ El uso de una plantilla suele ser el método de enrutamiento más sencillo. Las 
 Las restricciones de ruta se ejecutan cuando se ha producido una coincidencia con la dirección URL entrante y la ruta de dirección URL se convierte en tokens en valores de ruta. En general, las restricciones de ruta inspeccionan el valor de ruta asociado a través de la plantilla de ruta y deciden si el valor es aceptable o no. Algunas restricciones de ruta usan datos ajenos al valor de ruta para decidir si la solicitud se puede enrutar. Por ejemplo, <xref:Microsoft.AspNetCore.Routing.Constraints.HttpMethodRouteConstraint> puede aceptar o rechazar una solicitud basada en su verbo HTTP. Las restricciones se usan en las solicitudes de enrutamiento y la generación de vínculos.
 
 > [!WARNING]
-> No use las restricciones para las **validación de entrada**. Si las restricciones se usan para la **validación de entrada** , los resultados de entrada no válidos producirán un error *404 - No encontrado* en lugar de un error *400 - Solicitud incorrecta* con un mensaje de error adecuado. Las restricciones de ruta se usan para **eliminar la ambigüedad** entre rutas similares, no para validar las entradas de una ruta determinada.
+> No use las restricciones para las **validación de entrada**. Si las restricciones se usan para la **validación de entrada**, los resultados de entrada no válidos producirán un error *404 - No encontrado* en lugar de un error *400 - Solicitud incorrecta* con un mensaje de error adecuado. Las restricciones de ruta se usan para **eliminar la ambigüedad** entre rutas similares, no para validar las entradas de una ruta determinada.
 
 En la tabla siguiente se muestran algunas restricciones de ruta de ejemplo y su comportamiento esperado.
 

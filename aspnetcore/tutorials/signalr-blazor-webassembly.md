@@ -5,7 +5,7 @@ description: Cree una aplicación de chat que use ASP.NET Core SignalR con Blazo
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/01/2020
+ms.date: 11/11/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/signalr-blazor-webassembly
-ms.openlocfilehash: 81cbfb692ffbd0bb6335ccef6dd10ad6c20fb334
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: afbfc44db8cb833df7a79061f9bd73052859fec2
+ms.sourcegitcommit: 1be547564381873fe9e84812df8d2088514c622a
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93052713"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94508180"
 ---
 # <a name="use-aspnet-core-no-locsignalr-with-no-locblazor-webassembly"></a>Uso de ASP.NET Core SignalR con Blazor WebAssembly
 
@@ -49,8 +49,7 @@ Al final de este tutorial, tendrá una aplicación de chat funcional.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-<!-- * [Visual Studio 2019 16.8 or later](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019) with the **ASP.NET and web development** workload -->
-* [Versión 16.8 o posterior (en versión preliminar) de Visual Studio 2019](https://visualstudio.microsoft.com/vs/preview/) con la carga de trabajo **Desarrollo web y ASP.NET**
+* [Versión 16.8 o posterior de Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019) con la carga de trabajo **Desarrollo web y ASP.NET**
 * [!INCLUDE [.NET Core 5.0 SDK](~/includes/5.0-SDK.md)]
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
@@ -59,8 +58,7 @@ Al final de este tutorial, tendrá una aplicación de chat funcional.
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)
 
-<!-- * [Visual Studio for Mac version 8.8 or later (in preview)](https://visualstudio.microsoft.com/vs/mac/) -->
-* [Visual Studio para Mac, versión 8.8 o posterior (en versión preliminar)](/visualstudio/releasenotes/vs2019-mac-preview-relnotes)
+* [Visual Studio para Mac, versión 8.8 o posterior](https://visualstudio.microsoft.com/vs/mac/)
 * [!INCLUDE [.NET Core 5.0 SDK](~/includes/5.0-SDK.md)]
 
 # <a name="net-core-cli"></a>[CLI de .NET Core](#tab/netcore-cli/)
@@ -123,7 +121,7 @@ Siga las instrucciones para su elección de herramientas:
 
 1. Elija la plantilla **Aplicación de Blazor WebAssembly** .
 
-1. En **Avanzado** , active la casilla **ASP.NET Core hospedado**.
+1. En **Avanzado**, active la casilla **ASP.NET Core hospedado**.
 
 1. Seleccione **Crear**.
 
@@ -151,7 +149,7 @@ Siga las instrucciones para su elección de herramientas:
 
 1. Asegúrese de que la **autenticación** esté establecida en **Sin autenticación**. Active la casilla **ASP.NET Core hospedado**. Seleccione **Siguiente**.
 
-1. En el campo **Nombre del proyecto** , asigne un nombre a la aplicación `BlazorSignalRApp`. Seleccione **Crear**.
+1. En el campo **Nombre del proyecto**, asigne un nombre a la aplicación `BlazorSignalRApp`. Seleccione **Crear**.
 
    Si aparece un mensaje para que confíe en el certificado de desarrollo, hágalo y continúe. Las contraseñas de usuario y de cadena de claves son necesarias para confiar en el certificado.
 
@@ -171,21 +169,21 @@ dotnet new blazorwasm --hosted --output BlazorSignalRApp
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio/)
 
-1. En el **Explorador de soluciones** , haga clic con el botón derecho en el proyecto `BlazorSignalRApp.Client` y seleccione **Administrar paquetes NuGet**.
+1. En el **Explorador de soluciones**, haga clic con el botón derecho en el proyecto `BlazorSignalRApp.Client` y seleccione **Administrar paquetes NuGet**.
 
-1. En el cuadro de diálogo **Administrar paquetes NuGet** , confirme que **Origen del paquete** se ha establecido en `nuget.org`.
+1. En el cuadro de diálogo **Administrar paquetes NuGet**, confirme que **Origen del paquete** se ha establecido en `nuget.org`.
 
 1. Con **Examinar** seleccionado, escriba `Microsoft.AspNetCore.SignalR.Client` en el cuadro de búsqueda.
 
 1. En los resultados de la búsqueda, seleccione el paquete [`Microsoft.AspNetCore.SignalR.Client`](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR.Client) y, después, seleccione **Instalar**.
 
-1. Si aparece el cuadro de diálogo **Vista previa de los cambios** , seleccione **Aceptar**.
+1. Si aparece el cuadro de diálogo **Vista previa de los cambios**, seleccione **Aceptar**.
 
-1. Si aparece el cuadro de diálogo **Aceptación de la licencia** , seleccione **Acepto** si está de acuerdo con los términos de la licencia.
+1. Si aparece el cuadro de diálogo **Aceptación de la licencia**, seleccione **Acepto** si está de acuerdo con los términos de la licencia.
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code/)
 
-En **Terminal integrado** ( **Ver** > **Terminal** en la barra de herramientas), ejecute los siguientes comandos:
+En **Terminal integrado** (**Ver** > **Terminal** en la barra de herramientas), ejecute los siguientes comandos:
 
 ```dotnetcli
 dotnet add Client package Microsoft.AspNetCore.SignalR.Client
@@ -193,15 +191,15 @@ dotnet add Client package Microsoft.AspNetCore.SignalR.Client
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)
 
-1. En la barra lateral **Solución** , haga clic con el botón derecho en el proyecto `BlazorSignalRApp.Client` y, después, seleccione **Administrar paquetes NuGet**.
+1. En la barra lateral **Solución**, haga clic con el botón derecho en el proyecto `BlazorSignalRApp.Client` y, después, seleccione **Administrar paquetes NuGet**.
 
-1. En el cuadro de diálogo **Administrar paquetes NuGet** , confirme que la lista desplegable de origen se ha establecido en `nuget.org`.
+1. En el cuadro de diálogo **Administrar paquetes NuGet**, confirme que la lista desplegable de origen se ha establecido en `nuget.org`.
 
 1. Con **Examinar** seleccionado, escriba `Microsoft.AspNetCore.SignalR.Client` en el cuadro de búsqueda.
 
 1. En los resultados de la búsqueda, active la casilla situada junto al paquete [`Microsoft.AspNetCore.SignalR.Client`](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR.Client) y seleccione **Agregar paquete**.
 
-1. Si aparece el cuadro de diálogo **Aceptación de la licencia** , seleccione **Acepto** si está de acuerdo con los términos de la licencia.
+1. Si aparece el cuadro de diálogo **Aceptación de la licencia**, seleccione **Acepto** si está de acuerdo con los términos de la licencia.
 
 # <a name="net-core-cli"></a>[CLI de .NET Core](#tab/netcore-cli/)
 
@@ -295,7 +293,7 @@ En el proyecto `BlazorSignalRApp.Server`, cree una carpeta `Hubs` (plural) y agr
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-1. En el **Explorador de soluciones** , seleccione el proyecto `BlazorSignalRApp.Server`. Presione <kbd>F5</kbd> para ejecutar la aplicación con depuración o <kbd>Ctrl</kbd>+<kbd>F5</kbd> para ejecutarla sin depuración.
+1. En el **Explorador de soluciones**, seleccione el proyecto `BlazorSignalRApp.Server`. Presione <kbd>F5</kbd> para ejecutar la aplicación con depuración o <kbd>Ctrl</kbd>+<kbd>F5</kbd> para ejecutarla sin depuración.
 
 1. Copie la dirección URL de la barra de direcciones, abra otra instancia o pestaña del explorador, y pegue la dirección URL en la barra de direcciones.
 
@@ -337,7 +335,7 @@ En el proyecto `BlazorSignalRApp.Server`, cree una carpeta `Hubs` (plural) y agr
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)
 
-1. En la barra lateral **Solución** , seleccione el proyecto `BlazorSignalRApp.Server`. Presione <kbd>⌘</kbd>+<kbd>↩</kbd> para ejecutar la aplicación con depuración o <kbd>⌥</kbd>+<kbd>⌘</kbd>+<kbd>↩</kbd> para ejecutarla sin depuración.
+1. En la barra lateral **Solución**, seleccione el proyecto `BlazorSignalRApp.Server`. Presione <kbd>⌘</kbd>+<kbd>↩</kbd> para ejecutar la aplicación con depuración o <kbd>⌥</kbd>+<kbd>⌘</kbd>+<kbd>↩</kbd> para ejecutarla sin depuración.
 
 1. Copie la dirección URL de la barra de direcciones, abra otra instancia o pestaña del explorador, y pegue la dirección URL en la barra de direcciones.
 

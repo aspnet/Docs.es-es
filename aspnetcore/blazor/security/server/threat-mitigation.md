@@ -5,7 +5,7 @@ description: Obtenga información sobre cómo mitigar las amenazas de seguridad 
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/05/2020
+ms.date: 11/09/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,18 +19,18 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/server/threat-mitigation
-ms.openlocfilehash: 5c3a002a8e3df030d53c8625597342a68ca0d4b5
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 0e8b26110a970526b5f6306da236a92f52e64604
+ms.sourcegitcommit: fe5a287fa6b9477b130aa39728f82cdad57611ee
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93055417"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94430960"
 ---
 # <a name="threat-mitigation-guidance-for-aspnet-core-no-locblazor-server"></a>Guía de mitigación de amenazas para ASP.NET Core Blazor Server
 
 Por [Javier Calvarro Nelson](https://github.com/javiercn)
 
-Las aplicaciones Blazor Server adoptan un modelo de procesamiento de datos *con estado* , donde el servidor y el cliente mantienen una relación de larga duración. El estado persistente se mantiene mediante un [circuito](xref:blazor/state-management), el cual puede abarcar conexiones que también son potencialmente de larga duración.
+Las aplicaciones Blazor Server adoptan un modelo de procesamiento de datos *con estado*, donde el servidor y el cliente mantienen una relación de larga duración. El estado persistente se mantiene mediante un [circuito](xref:blazor/state-management), el cual puede abarcar conexiones que también son potencialmente de larga duración.
 
 Cuando un usuario visita un sitio web de Blazor Server, el servidor crea un circuito en su memoria. Este circuito indica al explorador qué contenido se va a representar y responde a los eventos, como cuando el usuario selecciona un botón en la UI. Para realizar estas acciones, el circuito invoca funciones de JavaScript en el explorador del usuario y métodos de .NET en el servidor. Esta interacción bidireccional basada en JavaScript se conoce como [interoperabilidad de JavaScript (interoperabilidad de JS)](xref:blazor/call-javascript-from-dotnet).
 
@@ -101,7 +101,10 @@ De forma predeterminada, no hay ningún límite en cuanto al número de conexion
     * Requiera autenticación para conectarse a la aplicación y realice un seguimiento de las sesiones activas por usuario.
     * Rechace nuevas sesiones cuando se alcance un límite.
     * Redirija las conexiones WebSocket a una aplicación mediante un proxy, como [Azure SignalR Service](/azure/azure-signalr/signalr-overview), que multiplexa las conexiones de los clientes a una aplicación. Esto proporciona una aplicación con mayor capacidad de conexión de la que puede establecer un solo cliente, lo que impide que un único cliente agote las conexiones al servidor.
-  * En el nivel de servidor: Use un proxy o una puerta de enlace delante de la aplicación. Por ejemplo, [Azure Front Door](/azure/frontdoor/front-door-overview) le permite definir, administrar y supervisar el enrutamiento global del tráfico web a una aplicación.
+  * En el nivel de servidor: Use un proxy o una puerta de enlace delante de la aplicación. Por ejemplo, [Azure Front Door](/azure/frontdoor/front-door-overview) le permite definir, administrar y supervisar el enrutamiento global del tráfico web a una aplicación y funciona cuando las aplicaciones de Blazor Server están configuradas para usar el sondeo largo.
+  
+    > [!NOTE]
+    > Aunque el sondeo largo es compatible con las aplicaciones de Blazor Server, [WebSockets es el protocolo de transporte recomendado](xref:blazor/host-and-deploy/server#azure-signalr-service). [Azure Front Door](/azure/frontdoor/front-door-overview) no es compatible con WebSockets en este momento, pero se está considerando la compatibilidad con WebSockets para una futura versión del servicio.
 
 ## <a name="denial-of-service-dos-attacks"></a>Ataques por denegación de servicio (DoS)
 

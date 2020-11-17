@@ -19,12 +19,12 @@ no-loc:
 - SignalR
 - Electron
 uid: security/samesite
-ms.openlocfilehash: 6f826416e3045df32abf41e94e667120e71ae717
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: f1aa388015bd540a6fda263eac53753ada63bf79
+ms.sourcegitcommit: bce62ceaac7782e22d185814f2e8532c84efa472
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93051621"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94673996"
 ---
 # <a name="work-with-samesite-no-loccookies-in-aspnet-core"></a>Trabajar con SameSite cookie s en ASP.net Core
 
@@ -101,7 +101,7 @@ El valor predeterminado de SameSite para la autenticación de formularios y el e
 
 Todos los componentes de ASP.NET Core que emiten cookie s invalidan los valores predeterminados anteriores con la configuración adecuada para sus escenarios. Los valores predeterminados anteriores invalidados no han cambiado.
 
-| Componente | cookie | Valor predeterminado |
+| Componente | cookie | Default |
 | ------------- | ------------- |
 | <xref:Microsoft.AspNetCore.Http.CookieBuilder> | <xref:Microsoft.AspNetCore.Http.CookieBuilder.SameSite> | `Unspecified` |
 | <xref:Microsoft.AspNetCore.Http.HttpContext.Session>  | [SessionOptions.Cookie](xref:Microsoft.AspNetCore.Builder.SessionOptions.Cookie) |`Lax` |
@@ -166,7 +166,7 @@ En `Startup.Configure` , agregue código que llame a <xref:Microsoft.AspNetCore.
 
 En `Startup.ConfigureServices` , agregue código similar al siguiente:
 
-::: moniker range="= aspnetcore-3.1"
+::: moniker range=">= aspnetcore-3.1"
 
 [!code-csharp[](samesite/sample/Startup31.cs?name=snippet)]
 
@@ -202,7 +202,7 @@ Pruebe las aplicaciones web con una versión de cliente que pueda participar en 
 
 ### <a name="test-with-chrome"></a>Prueba con Chrome
 
-Chrome 78 + ofrece resultados engañosos porque tiene una mitigación temporal en contexto. La mitigación temporal de Chrome 78 + permite cookie menos de dos minutos de antigüedad. Chrome 76 o 77 con las marcas de prueba adecuadas habilitadas proporcionan resultados más precisos. Para probar el nuevo comportamiento de SameSite, cambie `chrome://flags/#same-site-by-default-cookies` a **habilitado** . Las versiones anteriores de Chrome (75 e inferiores) se muestran como erróneas con la nueva `None` configuración. Consulte [compatibilidad con exploradores anteriores](#sob) en este documento.
+Chrome 78 + ofrece resultados engañosos porque tiene una mitigación temporal en contexto. La mitigación temporal de Chrome 78 + permite cookie menos de dos minutos de antigüedad. Chrome 76 o 77 con las marcas de prueba adecuadas habilitadas proporcionan resultados más precisos. Para probar el nuevo comportamiento de SameSite, cambie `chrome://flags/#same-site-by-default-cookies` a **habilitado**. Las versiones anteriores de Chrome (75 e inferiores) se muestran como erróneas con la nueva `None` configuración. Consulte [compatibilidad con exploradores anteriores](#sob) en este documento.
 
 Google no hace que las versiones anteriores de Chrome estén disponibles. Siga las instrucciones de [Descargar cromo](https://www.chromium.org/getting-involved/download-chromium) para probar versiones anteriores de Chrome. **No** Descargue Chrome desde los vínculos que se proporcionan al buscar versiones anteriores de Chrome.
 

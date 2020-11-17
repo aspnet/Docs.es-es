@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/index
-ms.openlocfilehash: d78076eb29d6d09756e408b388fcf12b4b6460f6
-ms.sourcegitcommit: 1be547564381873fe9e84812df8d2088514c622a
+ms.openlocfilehash: d8838a458943599890420adec4551ad87e43d328
+ms.sourcegitcommit: e087b6a38e3d38625ebb567a973e75b4d79547b9
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94507946"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94637709"
 ---
 # <a name="create-and-use-aspnet-core-no-locrazor-components"></a>Creación y uso de componentes de Razor de ASP.NET Core
 
@@ -244,17 +244,31 @@ Si un componente contiene un elemento HTML cuyo nombre empieza por mayúsculas 
 
 Los componentes pueden recibir parámetros de ruta de la plantilla de ruta proporcionada en la directiva [`@page`][9]. El enrutador usa parámetros de ruta para rellenar los parámetros de componente correspondientes con el mismo nombre.
 
+::: moniker range=">= aspnetcore-5.0"
+
+Se admiten parámetros opcionales. En el ejemplo siguiente, el parámetro opcional `text` asigna el valor del segmento de ruta a la propiedad `Text` del componente. Si el segmento no está presente, el valor de `Text` se establece en `fantastic`.
+
 `Pages/RouteParameter.razor`:
 
-[!code-razor[](index/samples_snapshot/RouteParameter.razor?highlight=2,7-8)]
+[!code-razor[](index/samples_snapshot/RouteParameter-5x.razor?highlight=1,6-7)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
+`Pages/RouteParameter.razor`:
+
+[!code-razor[](index/samples_snapshot/RouteParameter-3x.razor?highlight=2,7-8)]
 
 No se admiten parámetros opcionales, por lo que en el ejemplo anterior se aplican dos directivas [`@page`][9]. La primera permite navegar al componente sin un parámetro, mientras que la segunda directiva [`@page`][9] recibe el parámetro de ruta `{text}` y asigna el valor a la propiedad `Text`.
+
+::: moniker-end
 
 Para obtener información sobre los parámetros de ruta comodín (`{*pageRoute}`), que capturan rutas de acceso en varios límites de carpeta, vea <xref:blazor/fundamentals/routing#catch-all-route-parameters>.
 
 ### <a name="component-parameters"></a>Parámetros del componente
 
-Los componentes pueden tener *parámetros de componente* , que se definen por medio de propiedades públicas en la clase del componente con el atributo [`[Parameter]`](xref:Microsoft.AspNetCore.Components.ParameterAttribute). Use atributos para especificar argumentos para un componente en el marcado.
+Los componentes pueden tener *parámetros de componente*, que se definen por medio de propiedades públicas en la clase del componente con el atributo [`[Parameter]`](xref:Microsoft.AspNetCore.Components.ParameterAttribute). Use atributos para especificar argumentos para un componente en el marcado.
 
 `Components/ChildComponent.razor`:
 
@@ -266,8 +280,16 @@ En el siguiente ejemplo de la aplicación de muestra, `ParentComponent` establec
 
 [!code-razor[](index/samples_snapshot/ParentComponent.razor?highlight=5-6)]
 
+Por convención, un valor de atributo que se compone de código de C# se asigna a un parámetro usando el [`@` símbolo reservado de Razor](xref:mvc/views/razor#razor-syntax):
+
+* Propiedad o campo primario: `Title="@{FIELD OR PROPERTY}`, donde el marcador de posición `{FIELD OR PROPERTY}` es un campo o propiedad de C# del componente primario.
+* Resultado de un método: `Title="@{METHOD}"`, donde el marcador de posición `{METHOD}` es un método de C# del componente primario.
+* [Expresión implícita o explícita](xref:mvc/views/razor#implicit-razor-expressions): `Title="@({EXPRESSION})"`, donde el marcador de posición `{EXPRESSION}` es una expresión de C#.
+  
+Para obtener más información, vea <xref:mvc/views/razor>.
+
 > [!WARNING]
-> No cree componentes que escriban en sus propios *parámetros de componente* ; en su lugar, use un campo privado. Para obtener más información, vea la sección [Parámetros sobrescritos](#overwritten-parameters).
+> No cree componentes que escriban en sus propios *parámetros de componente*; en su lugar, use un campo privado. Para obtener más información, vea la sección [Parámetros sobrescritos](#overwritten-parameters).
 
 ## <a name="child-content"></a>Contenido secundario
 
@@ -294,7 +316,7 @@ Debido a la forma en que Blazor representa el contenido secundario, la represent
 > @for (int c = 0; c < 10; c++)
 > {
 >     var current = c;
->     <ChildComponent Param1="@c">
+>     <ChildComponent Title="@c">
 >         Child Content: Count: @current
 >     </ChildComponent>
 > }
@@ -305,7 +327,7 @@ Debido a la forma en que Blazor representa el contenido secundario, la represent
 > ```razor
 > @foreach(var c in Enumerable.Range(0,10))
 > {
->     <ChildComponent Param1="@c">
+>     <ChildComponent Title="@c">
 >         Child Content: Count: @c
 >     </ChildComponent>
 > }
@@ -650,7 +672,7 @@ Considere el componente `Expander` erróneo siguiente que:
 * El componente escribe directamente en el parámetro `Expanded`, que muestra el problema con los parámetros sobrescritos y debe evitarse.
 
 ```razor
-<div @onclick="@Toggle" class="card bg-light mb-3" style="width:30rem">
+<div @onclick="Toggle" class="card bg-light mb-3" style="width:30rem">
     <div class="card-body">
         <h2 class="card-title">Toggle (<code>Expanded</code> = @Expanded)</h2>
 
@@ -702,7 +724,7 @@ El siguiente componente `Expander` revisado:
 * Usa el campo privado para mantener su estado de alternancia interno, que muestra cómo evitar escribir directamente en un parámetro.
 
 ```razor
-<div @onclick="@Toggle" class="card bg-light mb-3" style="width:30rem">
+<div @onclick="Toggle" class="card bg-light mb-3" style="width:30rem">
     <div class="card-body">
         <h2 class="card-title">Toggle (<code>expanded</code> = @expanded)</h2>
 

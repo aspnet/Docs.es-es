@@ -1,5 +1,25 @@
 ## <a name="troubleshoot"></a>Solución de problemas
 
+::: moniker range=">= aspnetcore-5.0"
+
+### <a name="common-errors"></a>Errores comunes
+
+* Cliente no autorizado para AAD
+
+  > Información: Error de autorización de Microsoft.AspNetCore.Authorization.DefaultAuthorizationService[2]. No se cumplen estos requisitos: DenyAnonymousAuthorizationRequirement: se requiere un usuario autenticado.
+
+  Error de devolución de llamada de inicio de sesión de AAD:
+
+  * Error: `unauthorized_client`
+  * Description (Descripción): `AADB2C90058: The provided application is not configured to allow public clients.`
+
+  Para resolver el error:
+
+  1. En Azure Portal, acceda al [manifiesto de la aplicación](/azure/active-directory/develop/reference-app-manifest).
+  1. Defina el atributo [`allowPublicClient`](/azure/active-directory/develop/reference-app-manifest#allowpublicclient-attribute) en `null` o `true`.
+
+::: moniker-end
+
 ### <a name="cookies-and-site-data"></a>Cookies y datos de sitios
 
 Las cookies y los datos de sitios pueden persistir durante las actualizaciones de la aplicación e interferir con las pruebas y la solución de problemas. Borre los elementos siguientes al realizar cambios en el código de la aplicación, cambios en la cuenta de usuario con el proveedor o cuando el proveedor modifique la configuración de la aplicación:
