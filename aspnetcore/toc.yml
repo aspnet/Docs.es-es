@@ -167,7 +167,7 @@
           href: /learn/modules/create-razor-pages-aspnet-core/
         - name: Aplicaciones de API web >>
           displayName: tutorial
-          href: /learn/modules/build-web-api-net-core/
+          href: /learn/modules/build-web-api-aspnet-core/
         - name: Microservicios nativos de nube >>
           items:
             - name: Creación e implementación >>
@@ -1020,7 +1020,7 @@
   items:
     - name: Información general
       uid: security/index
-    - name: Autenticación
+    - name: Authentication
       items:
         - name: Información general
           uid: security/authentication/index

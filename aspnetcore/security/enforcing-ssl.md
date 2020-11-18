@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/enforcing-ssl
-ms.openlocfilehash: e473da9a7cbd91a601ad4af0c7c02c7f576f348c
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: aa109aaa89003fd7566e7dc219ecc9799b077355
+ms.sourcegitcommit: 8b867c4cb0c3b39bbc4d2d87815610d2ef858ae7
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93051127"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94703675"
 ---
 # <a name="enforce-https-in-aspnet-core"></a>Aplicación de HTTPS en ASP.NET Core
 
@@ -95,7 +95,7 @@ Código resaltado anterior:
 * Usa el valor predeterminado [HttpsRedirectionOptions. RedirectStatusCode](/dotnet/api/microsoft.aspnetcore.httpspolicy.httpsredirectionoptions.redirectstatuscode) ([Status307TemporaryRedirect](/dotnet/api/microsoft.aspnetcore.http.statuscodes.status307temporaryredirect)).
 * Usa el valor predeterminado de [HttpsRedirectionOptions. HttpsPort](/dotnet/api/microsoft.aspnetcore.httpspolicy.httpsredirectionoptions.httpsport) (NULL) a menos que se reemplace por la `ASPNETCORE_HTTPS_PORT` variable de entorno o [IServerAddressesFeature](/dotnet/api/microsoft.aspnetcore.hosting.server.features.iserveraddressesfeature).
 
-Se recomienda el uso de redirecciones temporales en lugar de redireccionamientos permanentes. El almacenamiento en caché de vínculos puede producir un comportamiento inestable en entornos de desarrollo. Si prefiere enviar un código de estado de redirección permanente cuando la aplicación se encuentra en un entorno que no es de desarrollo, consulte la sección [configuración de redirecciones permanentes en producción](#configure-permanent-redirects-in-production) . Se recomienda usar [HSTS](#http-strict-transport-security-protocol-hsts) para indicar a los clientes que solo se deben enviar solicitudes de recursos seguros a la aplicación (solo en producción).
+Se recomienda el uso de redirecciones temporales en lugar de redireccionamientos permanentes. El almacenamiento en caché de vínculos puede producir un comportamiento inestable en los entornos de desarrollo. Si prefiere enviar un código de estado de redirección permanente cuando la aplicación se encuentra en un entorno que no es de desarrollo, consulte la sección [configuración de redirecciones permanentes en producción](#configure-permanent-redirects-in-production) . Se recomienda usar [HSTS](#http-strict-transport-security-protocol-hsts) para indicar a los clientes que solo se deben enviar solicitudes de recursos seguros a la aplicación (solo en producción).
 
 ### <a name="port-configuration"></a>Configuración de puerto
 
@@ -136,7 +136,7 @@ Especifique el Puerto HTTPS mediante cualquiera de los métodos siguientes:
 
 ::: moniker-end
 
-* En desarrollo, establezca una dirección URL HTTPS en *launchsettings.jsen* . Habilite HTTPS cuando se use IIS Express.
+* En desarrollo, establezca una dirección URL HTTPS en *launchsettings.jsen*. Habilite HTTPS cuando se use IIS Express.
 
 * Configure un punto de conexión de dirección URL HTTPS para una implementación perimetral de acceso público del servidor [Kestrel](xref:fundamentals/servers/kestrel) o [HTTP.sys](xref:fundamentals/servers/httpsys) Server. La aplicación solo usa **un puerto https** . El middleware detecta el puerto a través de <xref:Microsoft.AspNetCore.Hosting.Server.Features.IServerAddressesFeature> .
 
@@ -193,7 +193,7 @@ De forma predeterminada, el middleware envía un [Status307TemporaryRedirect](/d
 
 ::: moniker range=">= aspnetcore-3.0"
 
-Al configurar servicios en *Startup.CS* :
+Al configurar servicios en *Startup.CS*:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -214,7 +214,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ::: moniker range="<= aspnetcore-2.2"
 
-Al configurar servicios en *Startup.CS* :
+Al configurar servicios en *Startup.CS*:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -289,7 +289,7 @@ El código siguiente:
 ::: moniker-end
 
 
-* Establece el parámetro preload del `Strict-Transport-Security` encabezado. La precarga no forma parte de la [especificación RFC HSTS](https://tools.ietf.org/html/rfc6797), pero es compatible con los exploradores Web para precargar sitios de HSTS en la instalación nueva. Para más información, vea [https://hstspreload.org/](https://hstspreload.org/).
+* Establece el parámetro preload del `Strict-Transport-Security` encabezado. La precarga no forma parte de la [especificación RFC HSTS](https://tools.ietf.org/html/rfc6797), pero es compatible con los exploradores Web para precargar sitios de HSTS en la instalación nueva. Para más información, consulte [https://hstspreload.org/](https://hstspreload.org/).
 * Habilita [includeSubDomain](https://tools.ietf.org/html/rfc6797#section-6.1.2), que aplica la Directiva HSTS para hospedar subdominios.
 * Establece explícitamente el `max-age` parámetro del `Strict-Transport-Security` encabezado en 60 días. Si no se establece, el valor predeterminado es 30 días. Para obtener más información, vea la [Directiva Max-Age](https://tools.ietf.org/html/rfc6797#section-6.1.1).
 * Agrega `example.com` a la lista de hosts que se van a excluir.
@@ -413,7 +413,7 @@ Los comandos anteriores solucionan la mayoría de los problemas de confianza del
 ### <a name="docker---certificate-not-trusted"></a>Docker: certificado no confiable
 
 * Elimine la carpeta *C:\Users \{ User} \AppData\Roaming\ASP.NET\Https*
-* Limpie la solución. Elimine las carpetas *bin* y *obj* .
+* Limpie la solución. Elimine las carpetas *bin* y *obj*.
 * Reinicie la herramienta de desarrollo. Por ejemplo, Visual Studio, Visual Studio Code o Visual Studio para Mac.
 
 ### <a name="windows---certificate-not-trusted"></a>Windows-certificado no confiable
@@ -450,6 +450,20 @@ Vea [error de https mediante IIS Express (dotnet/AspNetCore #16892)](https://git
 ### <a name="iis-express-ssl-certificate-used-with-visual-studio"></a>IIS Express certificado SSL usado con Visual Studio
 
 Para solucionar problemas con el certificado de IIS Express, seleccione **reparar** en el instalador de Visual Studio. Para más información, consulte [este problema de GitHub](https://github.com/dotnet/aspnetcore/issues/16892).
+
+<a name="trust-ff"></a>
+
+### <a name="firefox-sec_error_inadequate_key_usage-certificate-error"></a>ERROR de certificado SEC_ERROR_INADEQUATE_KEY_USAGE de Firefox
+
+El explorador Firefox usa su propio almacén de certificados y, por lo tanto, no confía en los certificados de desarrollador de [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview) o [Kestrel](xref:fundamentals/servers/kestrel) .
+
+Para usar Firefox con IIS Express o Kestrel, establezca  `security.enterprise_roots.enabled` = `true`
+
+1. Escriba `about:config` en el explorador Firefox.
+1. Seleccione **aceptar el riesgo y continuar** si acepta el riesgo.
+1. Seleccionar **Mostrar todo**
+1. Conjunto `security.enterprise_roots.enabled` = `true`
+1. Cierre y reinicie Firefox
 
 ## <a name="additional-information"></a>Información adicional
 
