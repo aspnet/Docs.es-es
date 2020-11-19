@@ -18,12 +18,12 @@ no-loc:
 - SignalR
 - Kestrel
 uid: aspnetcore-5.0
-ms.openlocfilehash: e25549d557dd971d0f2f4d67a182574f07138acb
-ms.sourcegitcommit: 1be547564381873fe9e84812df8d2088514c622a
+ms.openlocfilehash: 84747e2d13275a23e83dc2dc0f666cb0c8d001b1
+ms.sourcegitcommit: 827e8be18cebbcc09b467c089e17fa6f5e430cb2
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94508128"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94634631"
 ---
 # <a name="whats-new-in-aspnet-core-50"></a>Novedades de ASP.NET Core 5.0
 
@@ -453,8 +453,6 @@ En .NET 5, la ejecución de [dotnet watch](xref:tutorials/dotnet-watch) en un p
 _ Abrir un proyecto de ASP.NET Core en un editor de texto.
 * Ejecute `dotnet watch`.
 * Céntrese en los cambios de código mientras las herramientas controlan la reconstrucción, el reinicio y la recarga de la aplicación.
-
-Esperamos incorporar la funcionalidad de actualización automática a Visual Studio en el futuro.
 
 ### <a name="console-logger-formatter"></a>Formateador del registrador de consola
 

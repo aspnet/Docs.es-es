@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/start-mvc
-ms.openlocfilehash: 1c703cdbd168c2e83d09c40f7740689df8938dad
-ms.sourcegitcommit: 91e14f1e2a25c98a57c2217fe91b172e0ff2958c
+ms.openlocfilehash: c96e7107c85bf36f55f6571c71c20d09bc94ddb3
+ms.sourcegitcommit: fb208f907249cc7aab029afff941a0266c187050
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94422773"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94688530"
 ---
 # <a name="get-started-with-aspnet-core-mvc"></a>Introducción a ASP.NET Core MVC
 
@@ -75,7 +75,7 @@ Al final, tendrá una aplicación que le permitirá administrar y mostrar datos 
     1. **Aplicación web de ASP.NET Core (Modelo-Vista-Controlador**).
     1. **Creación**
 
-![Creación de una aplicación web de ASP.NET Core ](start-mvc/_static/5/mvc.png)
+![Creación de una aplicación web de ASP.NET Core ](start-mvc/_static/mvcVS19v16.9.png)
 
 Para obtener enfoques alternativos para crear el proyecto, vea [Creación de un proyecto nuevo en Visual Studio](/visualstudio/ide/create-new-project).
 
@@ -142,7 +142,7 @@ Presione **Ctrl-F5** para ejecutar la aplicación en modo de no depuración.
 
   En la imagen siguiente se muestra la aplicación:
 
-  ![Página Inicio o Índice](start-mvc/_static/home2.2.png)
+  ![Página Inicio o Índice](start-mvc/_static/home50-vs.png)
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -154,7 +154,7 @@ Presione Ctrl+F5 para ejecutarla sin el depurador.
 
   El inicio de la aplicación con Ctrl+F5 (modo de no depuración) permite realizar cambios en el código, guardar el archivo, actualizar el explorador y ver los cambios de código. Muchos desarrolladores prefieren usar el modo de no depuración para actualizar la página y ver los cambios.
 
-  ![Página Inicio o Índice](start-mvc/_static/home2.2.png)
+  ![Página Inicio o Índice](start-mvc/_static/home50-port5001.png)
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)
 

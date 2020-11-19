@@ -20,12 +20,12 @@ no-loc:
 - SignalR
 uid: blazor/state-management
 zone_pivot_groups: blazor-hosting-models
-ms.openlocfilehash: 1769ddbb95c9ffe373e916c885e411adc3d4c65b
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 7e79836e3dd1da175a62a84e11dfd30fee7b2f1b
+ms.sourcegitcommit: 1ea3f23bec63e96ffc3a927992f30a5fc0de3ff9
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93055001"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94570151"
 ---
 # <a name="aspnet-core-no-locblazor-state-management"></a>Administración de estado de Blazor en ASP.NET Core
 
@@ -61,12 +61,12 @@ Una aplicación solo puede conservar el *estado de la aplicación*. Las interfac
 
 Existen ubicaciones comunes para el estado persistente:
 
-* [Almacenamiento del lado servidor](#server-side-storage)
-* [URL](#url)
-* [Almacenamiento del explorador](#browser-storage)
-* [Servicio de contenedor de estado en memoria](#in-memory-state-container-service)
+* [Almacenamiento del lado servidor](#server-side-storage-wasm)
+* [URL](#url-wasm)
+* [Almacenamiento del explorador](#browser-storage-wasm)
+* [Servicio de contenedor de estado en memoria](#in-memory-state-container-service-wasm)
 
-### <a name="server-side-storage"></a>Almacenamiento del lado servidor
+<h2 id="server-side-storage-wasm">Almacenamiento del lado servidor</h2>
 
 Para una persistencia de datos permanente que abarque varios usuarios y dispositivos, la aplicación puede usar el almacenamiento del lado servidor independiente al que se accede a través de una API web. Las opciones incluyen:
 
@@ -90,7 +90,7 @@ Para obtener más información sobre las opciones de almacenamiento de datos de 
 * [Bases de datos de Azure](https://azure.microsoft.com/product-categories/databases/)
 * [Documentación de Azure Storage](/azure/storage/)
 
-### <a name="url"></a>Resolución
+<h2 id="url-wasm">Resolución</h2>
 
 Para los datos transitorios que representan el estado de navegación, modele los datos como parte de la dirección URL. Entre los ejemplos de estado de usuario modelado en la dirección URL se incluyen:
 
@@ -101,7 +101,7 @@ El contenido de la barra de direcciones del explorador se conserva si el usuario
 
 Para obtener información sobre cómo definir patrones de direcciones URL con la directiva [`@page`](xref:mvc/views/razor#page), vea <xref:blazor/fundamentals/routing>.
 
-### <a name="browser-storage"></a>Almacenamiento del explorador
+<h2 id="browser-storage-wasm">Almacenamiento del explorador</h2>
 
 En el caso de los datos transitorios que el usuario crea activamente, una ubicación de almacenamiento que se suele usar son las colecciones [`localStorage`](https://developer.mozilla.org/docs/Web/API/Window/localStorage) y [`sessionStorage`](https://developer.mozilla.org/docs/Web/API/Window/sessionStorage) del explorador:
 
@@ -121,7 +121,7 @@ Por lo general, es más seguro usar `sessionStorage`. `sessionStorage` evita el 
 > [!WARNING]
 > Los usuarios pueden ver o alterar los datos almacenados en `localStorage` y `sessionStorage`.
 
-## <a name="in-memory-state-container-service"></a>Servicio de contenedor de estado en memoria
+<h2 id="in-memory-state-container-service-wasm">Servicio de contenedor de estado en memoria</h2>
 
 [!INCLUDE[](~/includes/blazor-state-management/state-container.md)]
 
@@ -170,12 +170,12 @@ Una aplicación solo puede conservar el *estado de la aplicación*. Las interfac
 
 Existen ubicaciones comunes para el estado persistente:
 
-* [Almacenamiento del lado servidor](#server-side-storage)
-* [URL](#url)
-* [Almacenamiento del explorador](#browser-storage)
-* [Servicio de contenedor de estado en memoria](#in-memory-state-container-service)
+* [Almacenamiento del lado servidor](#server-side-storage-server)
+* [URL](#url-server)
+* [Almacenamiento del explorador](#browser-storage-server)
+* [Servicio de contenedor de estado en memoria](#in-memory-state-container-service-server)
 
-### <a name="server-side-storage"></a>Almacenamiento del lado servidor
+<h2 id="server-side-storage-server">Almacenamiento del lado servidor</h2>
 
 Para una persistencia de datos permanente que abarque varios usuarios y dispositivos, la aplicación puede usar el almacenamiento del lado servidor. Las opciones incluyen:
 
@@ -191,7 +191,7 @@ Para obtener más información sobre las opciones de almacenamiento de datos de 
 * [Bases de datos de Azure](https://azure.microsoft.com/product-categories/databases/)
 * [Documentación de Azure Storage](/azure/storage/)
 
-### <a name="url"></a>Resolución
+<h2 id="url-server">Resolución</h2>
 
 Para los datos transitorios que representan el estado de navegación, modele los datos como parte de la dirección URL. Entre los ejemplos de estado de usuario modelado en la dirección URL se incluyen:
 
@@ -205,7 +205,7 @@ Se conserva el contenido de la barra de direcciones del explorador:
 
 Para obtener información sobre cómo definir patrones de direcciones URL con la directiva [`@page`](xref:mvc/views/razor#page), vea <xref:blazor/fundamentals/routing>.
 
-### <a name="browser-storage"></a>Almacenamiento del explorador
+<h2 id="browser-storage-server">Almacenamiento del explorador</h2>
 
 En el caso de los datos transitorios que el usuario crea activamente, una ubicación de almacenamiento que se suele usar son las colecciones [`localStorage`](https://developer.mozilla.org/docs/Web/API/Window/localStorage) y [`sessionStorage`](https://developer.mozilla.org/docs/Web/API/Window/sessionStorage) del explorador:
 
@@ -448,7 +448,7 @@ No es necesario que el componente anterior interactúe con `ProtectedBrowserStor
 
 Para tratar la representación previa tal y como se ha descrito anteriormente, `CounterStateProvider` se puede modificar para que todos los componentes que consumen los datos del contador funcionen automáticamente con la representación previa. Para obtener más información, vea la sección [Controlar la representación previa](#handle-prerendering).
 
-En general, se recomienda el patrón *componente primario del proveedor de estado* :
+En general, se recomienda el patrón *componente primario del proveedor de estado*:
 
 * Para consumir el estado en muchos componentes.
 * Si solo hay un objeto de estado de nivel superior para conservar.
@@ -691,7 +691,7 @@ No es necesario que el componente anterior interactúe con `ProtectedBrowserStor
 
 Para tratar la representación previa tal y como se ha descrito anteriormente, `CounterStateProvider` se puede modificar para que todos los componentes que consumen los datos del contador funcionen automáticamente con la representación previa. Para obtener más información, vea la sección [Controlar la representación previa](#handle-prerendering).
 
-En general, se recomienda el patrón *componente primario del proveedor de estado* :
+En general, se recomienda el patrón *componente primario del proveedor de estado*:
 
 * Para consumir el estado en muchos componentes.
 * Si solo hay un objeto de estado de nivel superior para conservar.
@@ -700,7 +700,7 @@ Para conservar muchos objetos de estado diferentes y consumir distintos subconju
 
 ::: moniker-end
 
-## <a name="in-memory-state-container-service"></a>Servicio de contenedor de estado en memoria
+<h2 id="in-memory-state-container-service-server">Servicio de contenedor de estado en memoria</h2>
 
 [!INCLUDE[](~/includes/blazor-state-management/state-container.md)]
 
