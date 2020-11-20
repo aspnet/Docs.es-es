@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/models/model-binding
-ms.openlocfilehash: 49300d32096e577db9b13a0510cc310b91ddb51d
-ms.sourcegitcommit: 33f631a4427b9a422755601ac9119953db0b4a3e
+ms.openlocfilehash: 4de34a75da932b41190caa8434ac5be8cc0710fd
+ms.sourcegitcommit: 8363e44f630fcc6433ccd2a85f7aa9567cd274ed
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93365358"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94981939"
 ---
 # <a name="model-binding-in-aspnet-core"></a>Enlace de modelos en ASP.NET Core
 
@@ -211,7 +211,7 @@ Los tipos simples a los que el enlazador de modelos puede convertir las cadenas 
 * [DateTimeOffset](xref:System.ComponentModel.DateTimeOffsetConverter)
 * [Decimal](xref:System.ComponentModel.DecimalConverter)
 * [Double](xref:System.ComponentModel.DoubleConverter)
-* [Enumeración](xref:System.ComponentModel.EnumConverter)
+* [Enum](xref:System.ComponentModel.EnumConverter)
 * [Volumen](xref:System.ComponentModel.GuidConverter)
 * [Int16](xref:System.ComponentModel.Int16Converter), [Int32](xref:System.ComponentModel.Int32Converter), [Int64](xref:System.ComponentModel.Int64Converter)
 * [Single](xref:System.ComponentModel.SingleConverter)
@@ -488,7 +488,7 @@ Un archivo cargado incluido en la solicitud HTTP.  También se admite `IEnumerab
 
 ### <a name="cancellationtoken"></a>CancellationToken
 
-se usa para cancelar la actividad en controladores asincrónicos.
+Opcionalmente, las acciones pueden enlazar un `CancellationToken` como parámetro. Esto enlaza <xref:Microsoft.AspNetCore.Http.HttpContext.RequestAborted> que señala Cuándo se anula la conexión subyacente a la solicitud HTTP. Las acciones pueden usar este parámetro para cancelar operaciones asincrónicas de larga ejecución que se ejecutan como parte de las acciones de controlador.
 
 ### <a name="formcollection"></a>FormCollection
 
@@ -760,7 +760,7 @@ Los tipos simples a los que el enlazador de modelos puede convertir las cadenas 
 * [DateTimeOffset](xref:System.ComponentModel.DateTimeOffsetConverter)
 * [Decimal](xref:System.ComponentModel.DecimalConverter)
 * [Double](xref:System.ComponentModel.DoubleConverter)
-* [Enumeración](xref:System.ComponentModel.EnumConverter)
+* [Enum](xref:System.ComponentModel.EnumConverter)
 * [Volumen](xref:System.ComponentModel.GuidConverter)
 * [Int16](xref:System.ComponentModel.Int16Converter), [Int32](xref:System.ComponentModel.Int32Converter), [Int64](xref:System.ComponentModel.Int64Converter)
 * [Single](xref:System.ComponentModel.SingleConverter)
