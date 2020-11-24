@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/index
-ms.openlocfilehash: d8838a458943599890420adec4551ad87e43d328
-ms.sourcegitcommit: e087b6a38e3d38625ebb567a973e75b4d79547b9
+ms.openlocfilehash: cc4604f7f67a6648c96e099572ff27bfed838916
+ms.sourcegitcommit: 8363e44f630fcc6433ccd2a85f7aa9567cd274ed
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94637709"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94981874"
 ---
 # <a name="create-and-use-aspnet-core-no-locrazor-components"></a>Creación y uso de componentes de Razor de ASP.NET Core
 
@@ -268,7 +268,7 @@ Para obtener información sobre los parámetros de ruta comodín (`{*pageRoute}`
 
 ### <a name="component-parameters"></a>Parámetros del componente
 
-Los componentes pueden tener *parámetros de componente*, que se definen por medio de propiedades públicas en la clase del componente con el atributo [`[Parameter]`](xref:Microsoft.AspNetCore.Components.ParameterAttribute). Use atributos para especificar argumentos para un componente en el marcado.
+Los componentes pueden tener *parámetros de componente*, que se definen por medio de propiedades públicas simples o complejas en la clase del componente con el atributo [`[Parameter]`](xref:Microsoft.AspNetCore.Components.ParameterAttribute). Use atributos para especificar argumentos para un componente en el marcado.
 
 `Components/ChildComponent.razor`:
 
