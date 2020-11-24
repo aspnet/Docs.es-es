@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/intro
-ms.openlocfilehash: 428320f9d706b0dd16ced68d183ec4b331451965
-ms.sourcegitcommit: 202144092067ea81be1dbb229329518d781dbdfb
+ms.openlocfilehash: c0623de3c8031b6dbb518a6d25623b55a6500af5
+ms.sourcegitcommit: 8b867c4cb0c3b39bbc4d2d87815610d2ef858ae7
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94550652"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94703740"
 ---
 # <a name="tutorial-get-started-with-ef-core-in-an-aspnet-mvc-web-app"></a>Tutorial: Introducción a EF Core en una aplicación web de ASP.NET Core MVC
 
@@ -74,12 +74,12 @@ Los usuarios pueden ver y actualizar la información de estudiantes, cursos e in
 ## <a name="create-web-app"></a>Creación de una aplicación web
 
 1. Inicie Visual Studio y seleccione **Crear un proyecto**.
-1. En el cuadro de diálogo **Crear un proyecto**, seleccione **Aplicación web ASP.NET Core** > **Siguiente**.
+1. En el cuadro de diálogo **Crear un proyecto**, seleccione **Aplicación web ASP.NET Core** > **Siguiente**.
 1. En el cuadro de diálogo **Configurar su nuevo proyecto**, escriba `ContosoUniversity` en **Nombre del proyecto**. Es importante usar este nombre exacto, incluido el uso de mayúsculas, para que cada `namespace` coincida cuando se copie el código.
 1. Seleccione **Crear**.
-1. En el cuadro de diálogo **Crear una aplicación web ASP.NET Core**, seleccione:
+1. En el cuadro de diálogo **Crear una aplicación web ASP.NET Core**, seleccione:
     1. **.NET Core** y **ASP.NET Core 5.0** en los menús desplegables.
-    1. **Aplicación web de ASP.NET Core (Modelo-Vista-Controlador)**
+    1. **Aplicación web de ASP.NET Core (Modelo-Vista-Controlador**).
     1. **Crear**
       ![Cuadro de diálogo Nuevo proyecto de ASP.NET Core](~/data/ef-mvc/intro/_static/new-aspnet5.png)
 
@@ -110,7 +110,7 @@ En este tutorial se usa SQL Server y el paquete de proveedor es [Microsoft.Entit
 
 Este paquete de SQL Server de EF y sus dependencias (`Microsoft.EntityFrameworkCore` y `Microsoft.EntityFrameworkCore.Relational`) proporcionan compatibilidad en tiempo de ejecución para EF.
 
-Agregue los paquetes NuGet [Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore](https://www.nuget.org/packages/Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore) y [Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore](https://www.nuget.org/packages/Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore). En la consola del administrador de programas (PMC), escriba los siguientes comandos para agregar los paquetes NuGet:
+Agregue los paquetes NuGet [Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore](https://www.nuget.org/packages/Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore) y [Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore](https://www.nuget.org/packages/Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore). En la Consola del administrador de paquetes (PMC), escriba los comandos siguientes para agregar los paquetes NuGet:
 
 ```powershell
 Install-Package Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore
@@ -231,7 +231,7 @@ Abra el archivo *appsettings.json* y agregue una cadena de conexión como se mue
 
 Agregue <xref:Microsoft.Extensions.DependencyInjection.DatabaseDeveloperPageExceptionFilterServiceExtensions.AddDatabaseDeveloperPageExceptionFilter%2A> a `ConfigureServices`, tal como se muestra en el código siguiente:
 
-[!code-csharp[](intro/samples/5cu/Startup.cs?name=snippet&highlight=1=2,22-23)]
+[!code-csharp[](intro/samples/5cu/Startup.cs?name=snippet&highlight=6)]
 
 `AddDatabaseDeveloperPageExceptionFilter` proporciona información de error útil en el [entorno de desarrollo](xref:fundamentals/environments).
 

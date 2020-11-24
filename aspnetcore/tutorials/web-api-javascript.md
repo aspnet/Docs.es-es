@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/web-api-javascript
-ms.openlocfilehash: 4a80e3e82a18e0066c7628c8f40401155538e32b
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: c32c5befe0be3b1ad4bd87649d3cc74b0296a134
+ms.sourcegitcommit: 8b867c4cb0c3b39bbc4d2d87815610d2ef858ae7
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93061202"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94703714"
 ---
 # <a name="tutorial-call-an-aspnet-core-web-api-with-javascript"></a>Tutorial: Llamada a una API web de ASP.NET Core con JavaScript
 
@@ -52,7 +52,7 @@ La función `fetch` devuelve un objeto [Promise`Response`, que contiene una resp
 
 La llamada `fetch` más simple acepta un único parámetro que representa la ruta. Un segundo parámetro, conocido como el objeto `init`, es opcional. `init` se utiliza para configurar la solicitud HTTP.
 
-1. Configure la aplicación para [atender archivos estáticos](/dotnet/api/microsoft.aspnetcore.builder.staticfileextensions.usestaticfiles#Microsoft_AspNetCore_Builder_StaticFileExtensions_UseStaticFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_) y [habilitar la asignación de archivos predeterminada](/dotnet/api/microsoft.aspnetcore.builder.defaultfilesextensions.usedefaultfiles#Microsoft_AspNetCore_Builder_DefaultFilesExtensions_UseDefaultFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_). El siguiente código resaltado es necesario en el método `Configure` de *Startup.cs* :
+1. Configure la aplicación para [atender archivos estáticos](/dotnet/api/microsoft.aspnetcore.builder.staticfileextensions.usestaticfiles#Microsoft_AspNetCore_Builder_StaticFileExtensions_UseStaticFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_) y [habilitar la asignación de archivos predeterminada](/dotnet/api/microsoft.aspnetcore.builder.defaultfilesextensions.usedefaultfiles#Microsoft_AspNetCore_Builder_DefaultFilesExtensions_UseDefaultFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_). El siguiente código resaltado es necesario en el método `Configure` de *Startup.cs*:
 
     [!code-csharp[](first-web-api/samples/3.0/TodoApi/StartupJavaScript.cs?highlight=8-9&name=snippet_configure)]
 
@@ -64,20 +64,24 @@ La llamada `fetch` más simple acepta un único parámetro que representa la rut
 
     [!code-html[](first-web-api/samples/3.0/TodoApi/wwwroot/index.html)]
 
-1. Agregue un archivo de JavaScript denominado *site.js* , a la carpeta *wwwroot/js*. Reemplace el contenido de *site.js* por el código siguiente:
+1. Agregue un archivo CSS denominado *site.css* a la carpeta *wwwroot/css*. Reemplace el contenido de *site.css* por los estilos siguientes:
+
+    [!code-css[](first-web-api/samples/3.0/TodoApi/wwwroot/css/site.css)]
+
+1. Agregue un archivo de JavaScript denominado *site.js*, a la carpeta *wwwroot/js*. Reemplace el contenido de *site.js* por el código siguiente:
 
     [!code-javascript[](first-web-api/samples/3.0/TodoApi/wwwroot/js/site.js?name=snippet_SiteJs)]
 
 Puede que sea necesario realizar un cambio en la configuración de inicio del proyecto de ASP.NET Core para probar la página HTML localmente:
 
 1. Abra *Properties\launchSettings.json*.
-1. Quite la propiedad `launchUrl` para forzar a la aplicación a abrirse en *index.html* , esto es, el archivo predeterminado del proyecto.
+1. Quite la propiedad `launchUrl` para forzar a la aplicación a abrirse en *index.html*, esto es, el archivo predeterminado del proyecto.
 
 En este ejemplo se llama a todos los métodos CRUD de la API web. A continuación, encontrará algunas explicaciones de las solicitudes de la API web.
 
 ### <a name="get-a-list-of-to-do-items"></a>Obtención de una lista de tareas pendientes
 
-En el código siguiente, se envía una solicitud HTTP GET a la ruta *api/TodoItems* :
+En el código siguiente, se envía una solicitud HTTP GET a la ruta *api/TodoItems*:
 
 [!code-javascript[](first-web-api/samples/3.0/TodoApi/wwwroot/js/site.js?name=snippet_GetItems)]
 

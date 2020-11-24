@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/content-security-policy
-ms.openlocfilehash: 66fd41abe4f85071797bacc0a5531bbab35bd227
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 744449240fabc3dae317d0d7bc9090311521c224
+ms.sourcegitcommit: 1ea3f23bec63e96ffc3a927992f30a5fc0de3ff9
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93055599"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94570125"
 ---
 # <a name="enforce-a-content-security-policy-for-aspnet-core-no-locblazor"></a>Aplicación de una directiva de seguridad de contenido para Blazor de ASP.NET Core
 
@@ -57,12 +57,9 @@ Especifique como mínimo las siguientes directivas y orígenes en las aplicacion
   * Especifique el origen de host `https://stackpath.bootstrapcdn.com/` para los scripts de arranque.
   * Especifique `self` para indicar que el origen de la aplicación (incluido el esquema y el número de puerto) es un origen válido.
   * En una aplicación Blazor WebAssembly:
-    * Especifique los siguientes hash para permitir la carga de scripts en línea Blazor WebAssembly necesarios:
-      * `sha256-v8ZC9OgMhcnEQ/Me77/R9TlJfzOBqrMTW8e1KuqLaqc=`
-      * `sha256-If//FtbPc03afjLezvWHnC3Nbu4fDM04IIzkPaf3pH0=`
-      * `sha256-v8v3RKRPmN4odZ1CWM5gw80QKPCCWMcpNeOmimNL2AA=`
+    * Especifique códigos hash para permitir que se carguen los scripts necesarios.
     * Especifique `unsafe-eval` para usar `eval()` y métodos para crear código a partir de cadenas.
-  * En una aplicación Blazor Server, especifique el hash `sha256-34WLX60Tw3aG6hylk0plKbZZFXCuepeQ6Hu7OqRf8PI=` para el script en línea que realiza la detección de reserva en hojas de estilos.
+  * En una aplicación Blazor Server, especifique códigos hash para permitir que se carguen los scripts necesarios.
 * [style-src](https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Security-Policy/style-src): indica los orígenes de hojas de estilo válidos.
   * Especifique el origen de host `https://stackpath.bootstrapcdn.com/` para las hojas de estilo de arranque.
   * Especifique `self` para indicar que el origen de la aplicación (incluido el esquema y el número de puerto) es un origen válido.
@@ -93,6 +90,29 @@ En las secciones siguientes se muestran las directivas de ejemplo para Blazor We
 
 En el contenido de `<head>` de la página host `wwwroot/index.html`, aplique las directivas descritas en la sección [Directivas](#policy-directives):
 
+::: moniker range=">= aspnetcore-5.0"
+
+```html
+<meta http-equiv="Content-Security-Policy" 
+      content="base-uri 'self';
+               block-all-mixed-content;
+               default-src 'self';
+               img-src data: https:;
+               object-src 'none';
+               script-src https://stackpath.bootstrapcdn.com/ 
+                          'self' 
+                          'sha256-v8v3RKRPmN4odZ1CWM5gw80QKPCCWMcpNeOmimNL2AA=' 
+                          'unsafe-eval';
+               style-src https://stackpath.bootstrapcdn.com/
+                         'self'
+                         'unsafe-inline';
+               upgrade-insecure-requests;">
+```
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
 ```html
 <meta http-equiv="Content-Security-Policy" 
       content="base-uri 'self';
@@ -112,9 +132,38 @@ En el contenido de `<head>` de la página host `wwwroot/index.html`, aplique las
                upgrade-insecure-requests;">
 ```
 
+::: moniker-end
+
+Agregue los códigos hash `script-src` y `style-src` adicionales según lo requiera la aplicación. Durante el desarrollo, use una herramienta en línea o las herramientas para desarrolladores del explorador a fin de calcular los códigos hash. Por ejemplo, el siguiente error de la consola de herramientas del explorador notifica el hash de un script necesario no incluido en la directiva:
+
+> Se ha rechazado ejecutar el script en línea porque infringe la Directiva de seguridad de contenido siguiente: " ... ". Para habilitar la ejecución en línea se requiere la palabra clave "unsafe-inline", un hash ("sha256-v8v3RKRPmN4odZ1CWM5gw80QKPCCWMcpNeOmimNL2AA =") o un nonce ("nonce-...").
+
+El script concreto asociado al error se muestra en la consola junto a dicho error.
+
 ### Blazor Server
 
 En el contenido de `<head>` de la página host `Pages/_Host.cshtml`, aplique las directivas descritas en la sección [Directivas](#policy-directives):
+
+::: moniker range=">= aspnetcore-5.0"
+
+```cshtml
+<meta http-equiv="Content-Security-Policy" 
+      content="base-uri 'self';
+               block-all-mixed-content;
+               default-src 'self';
+               img-src data: https:;
+               object-src 'none';
+               script-src https://stackpath.bootstrapcdn.com/ 
+                          'self';
+               style-src https://stackpath.bootstrapcdn.com/
+                         'self' 
+                         'unsafe-inline';
+               upgrade-insecure-requests;">
+```
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
 
 ```cshtml
 <meta http-equiv="Content-Security-Policy" 
@@ -131,6 +180,14 @@ En el contenido de `<head>` de la página host `Pages/_Host.cshtml`, aplique las
                          'unsafe-inline';
                upgrade-insecure-requests;">
 ```
+
+::: moniker-end
+
+Agregue los códigos hash `script-src` y `style-src` adicionales según lo requiera la aplicación. Durante el desarrollo, use una herramienta en línea o las herramientas para desarrolladores del explorador a fin de calcular los códigos hash. Por ejemplo, el siguiente error de la consola de herramientas del explorador notifica el hash de un script necesario no incluido en la directiva:
+
+> Se ha rechazado ejecutar el script en línea porque infringe la Directiva de seguridad de contenido siguiente: " ... ". Para habilitar la ejecución en línea se requiere la palabra clave "unsafe-inline", un hash ("sha256-v8v3RKRPmN4odZ1CWM5gw80QKPCCWMcpNeOmimNL2AA =") o un nonce ("nonce-...").
+
+El script concreto asociado al error se muestra en la consola junto a dicho error.
 
 ## <a name="meta-tag-limitations"></a>Limitaciones de la etiqueta meta
 

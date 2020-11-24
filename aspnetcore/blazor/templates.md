@@ -5,7 +5,7 @@ description: Obtenga información sobre las plantillas de aplicación de Blazor 
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/04/2020
+ms.date: 11/17/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/templates
-ms.openlocfilehash: fc2e81cf130732d515fb871227031493e297cf9f
-ms.sourcegitcommit: 1be547564381873fe9e84812df8d2088514c622a
+ms.openlocfilehash: 602ad2908d607703a3b77b2047d51d912645b043
+ms.sourcegitcommit: 8b867c4cb0c3b39bbc4d2d87815610d2ef858ae7
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94507777"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94703727"
 ---
 # <a name="aspnet-core-no-locblazor-templates"></a>Plantillas de Blazor de ASP.NET Core
 
@@ -91,16 +91,30 @@ Los siguientes archivos y carpetas componen una aplicación Blazor generada a pa
     * Cuando se solicita inicialmente cualquier página de la aplicación, esta página se representa y se devuelve en la respuesta.
     * Se carga el archivo JavaScript `_framework/blazor.server.js`, que configura la conexión de SignalR en tiempo real entre el explorador y el servidor.
     * La página Host especifica dónde se va a representar el componente `App` raíz (`App.razor`).
-  * `Counter` (`Pages/Counter.razor`): implementa la página Counter.
-  * `Error` (`Error.razor`, solo aplicaciones Blazor Server): se representa cuando se produce una excepción no controlada en la aplicación.
-  * `FetchData` (`Pages/FetchData.razor`): implementa la página Fetch data (Recuperar datos).
-  * `Index` (`Pages/Index.razor`): implementa la página principal.
+  * Componente `Counter` (`Pages/Counter.razor`): implementa la página Counter.
+  * Componente `Error` (`Error.razor`, solo en la aplicación Blazor Server): se representa cuando se produce una excepción no controlada en la aplicación.
+  * Componente `FetchData` (`Pages/FetchData.razor`): implementa la página Fetch data (Recuperar datos).
+  * Componente `Index` (`Pages/Index.razor`): implementa la página principal.
   
 * `Properties/launchSettings.json`: Contiene la [configuración del entorno de desarrollo](xref:fundamentals/environments#development-and-launchsettingsjson).
 
+::: moniker range=">= aspnetcore-5.0"
+
 * Carpeta `Shared`: contiene otros componentes de interfaz de usuario (`.razor`) que la aplicación usa:
-  * `MainLayout` (`MainLayout.razor`): El [componente de diseño](xref:blazor/layouts) de la aplicación.
-  * `NavMenu` (`NavMenu.razor`): implementa la navegación de barra lateral. Incluye el [componente `NavLink`](xref:blazor/fundamentals/routing#navlink-component) (<xref:Microsoft.AspNetCore.Components.Routing.NavLink>), que representa los vínculos de navegación a otros componentes Razor. El componente <xref:Microsoft.AspNetCore.Components.Routing.NavLink> indica automáticamente un estado seleccionado cuando su componente se carga, lo que ayuda al usuario a saber qué componente se está mostrando actualmente.
+  * Componente `MainLayout` (`MainLayout.razor`): El [componente de diseño](xref:blazor/layouts) de la aplicación.
+  * `MainLayout.razor.css`: hoja de estilos del diseño principal de la aplicación.
+  * Componente `NavMenu` (`NavMenu.razor`): implementa la navegación de barra lateral. Incluye el [componente `NavLink`](xref:blazor/fundamentals/routing#navlink-component) (<xref:Microsoft.AspNetCore.Components.Routing.NavLink>), que representa los vínculos de navegación a otros componentes Razor. El componente <xref:Microsoft.AspNetCore.Components.Routing.NavLink> indica automáticamente un estado seleccionado cuando su componente se carga, lo que ayuda al usuario a saber qué componente se está mostrando actualmente.
+  * `NavMenu.razor.css`: hoja de estilos del menú de navegación de la aplicación.
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
+* Carpeta `Shared`: contiene otros componentes de interfaz de usuario (`.razor`) que la aplicación usa:
+  * Componente `MainLayout` (`MainLayout.razor`): El [componente de diseño](xref:blazor/layouts) de la aplicación.
+  * Componente `NavMenu` (`NavMenu.razor`): implementa la navegación de barra lateral. Incluye el [componente `NavLink`](xref:blazor/fundamentals/routing#navlink-component) (<xref:Microsoft.AspNetCore.Components.Routing.NavLink>), que representa los vínculos de navegación a otros componentes Razor. El componente <xref:Microsoft.AspNetCore.Components.Routing.NavLink> indica automáticamente un estado seleccionado cuando su componente se carga, lo que ayuda al usuario a saber qué componente se está mostrando actualmente.
+  
+::: moniker-end
 
 * `_Imports.razor`: Engloba las directivas de Razor comunes que se van a incluir en los componentes de la aplicación (`.razor`), como las directivas [`@using`](xref:mvc/views/razor#using) de los espacios de nombres.
 

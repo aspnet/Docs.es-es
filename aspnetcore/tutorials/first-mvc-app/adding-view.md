@@ -3,7 +3,7 @@ title: Parte 3. Adición de una vista a una aplicación de ASP.NET Core MVC
 author: rick-anderson
 description: Parte 3 de la serie de tutoriales sobre ASP.NET Core MVC.
 ms.author: riande
-ms.date: 8/04/2019
+ms.date: 11/16/2019
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/adding-view
-ms.openlocfilehash: 56f39643ccd69c6508148374033208eb3b2f25ab
-ms.sourcegitcommit: 91e14f1e2a25c98a57c2217fe91b172e0ff2958c
+ms.openlocfilehash: ce2754d22b61578bdbe5e78a69e08bdc1e83190d
+ms.sourcegitcommit: fb208f907249cc7aab029afff941a0266c187050
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94422722"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94688361"
 ---
 # <a name="part-3-add-a-view-to-an-aspnet-core-mvc-app"></a>Parte 3. Adición de una vista a una aplicación de ASP.NET Core MVC
 
@@ -38,13 +38,13 @@ Actualmente, el método `Index` devuelve una cadena con un mensaje que está cod
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/HelloWorldController.cs?name=snippet_4)]
 
-El código anterior llama al método <xref:Microsoft.AspNetCore.Mvc.Controller.View*> del controlador. Este usa una plantilla de vista para generar una respuesta HTML. Los métodos de controlador (también conocidos como *métodos de acción* ), como el método `Index` anterior, suelen devolver un valor <xref:Microsoft.AspNetCore.Mvc.IActionResult> o una clase derivada de <xref:Microsoft.AspNetCore.Mvc.ActionResult>, en lugar de un tipo como una cadena `string`.
+El código anterior llama al método <xref:Microsoft.AspNetCore.Mvc.Controller.View*> del controlador. Este usa una plantilla de vista para generar una respuesta HTML. Los métodos de controlador (también conocidos como *métodos de acción*), como el método `Index` anterior, suelen devolver un valor <xref:Microsoft.AspNetCore.Mvc.IActionResult> o una clase derivada de <xref:Microsoft.AspNetCore.Mvc.ActionResult>, en lugar de un tipo como una cadena `string`.
 
 ## <a name="add-a-view"></a>Agregar una vista
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Haga clic con el botón derecho en la carpeta *Vistas* , haga clic en **Agregar > Nueva carpeta** y asigne a la carpeta el nombre *HelloWorld*.
+* Haga clic con el botón derecho en la carpeta *Vistas*, haga clic en **Agregar > Nueva carpeta** y asigne a la carpeta el nombre *HelloWorld*.
 
 * Haga clic con el botón derecho en la carpeta *Views/HelloWorld* y, luego, haga clic en **Agregar > Nuevo elemento**.
 
@@ -54,7 +54,7 @@ El código anterior llama al método <xref:Microsoft.AspNetCore.Mvc.Controller.V
 
   * Seleccione **Vista de Razor** .
 
-  * Conserve el valor del cuadro **Nombre** , *Index.cshtml*.
+  * Conserve el valor del cuadro **Nombre**, *Index.cshtml*.
 
   * Seleccione **Agregar**.
 
@@ -69,16 +69,16 @@ Agregue una vista `Index` para el `HelloWorldController`.
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)
 
-* Haga clic con el botón derecho en la carpeta *Vistas* , haga clic en **Agregar > Nueva carpeta** y asigne a la carpeta el nombre *HelloWorld*.
+* Haga clic con el botón derecho en la carpeta *Vistas*, haga clic en **Agregar > Nueva carpeta** y asigne a la carpeta el nombre *HelloWorld*.
 * Haga clic con el botón derecho en la carpeta *Views/HelloWorld* y, luego, haga clic en **Agregar > Nuevo archivo**.
-* En el cuadro de diálogo **Nuevo archivo** :
+* En el cuadro de diálogo **Nuevo archivo**:
 
   * Seleccione **ASP .NET Core** en el panel izquierdo.
-  * Seleccione **Página de la vista de MVC** en el panel central.
+  * Seleccione **Vista de Razor** en el panel central.
   * Escriba *Índice* en el cuadro **Nombre**.
   * Seleccione **Nuevo**.
 
-![Cuadro de diálogo Agregar nuevo elemento](adding-view/_static/add_view_mac.png)
+![Cuadro de diálogo Agregar nuevo elemento](adding-view/_static/add_view_macVSM8.9.png)
 
 ---
 
@@ -92,7 +92,7 @@ Navegue a `https://localhost:{PORT}/HelloWorld`. El método `Index` en `HelloWor
 
 ## <a name="change-views-and-layout-pages"></a>Cambio de vistas y páginas de diseño
 
-Seleccione los vínculos de menú ( **MvcMovie** [Película de MVC], **Home** [Inicio] y **Privacy** [Privacidad]). Cada página muestra el mismo diseño de menú. El diseño de menú se implementa en el archivo *Views/Shared/_Layout.cshtml*. Abra el archivo *Views/Shared/_Layout.cshtml*.
+Seleccione los vínculos de menú (**MvcMovie** [Película de MVC], **Home** [Inicio] y **Privacy** [Privacidad]). Cada página muestra el mismo diseño de menú. El diseño de menú se implementa en el archivo *Views/Shared/_Layout.cshtml*. Abra el archivo *Views/Shared/_Layout.cshtml*.
 
 Las plantillas de [diseño](xref:mvc/views/layout) permiten especificar el diseño del contenedor HTML del sitio en un solo lugar y, después, aplicarlo en varias páginas del sitio. Busque la línea `@RenderBody()`. `RenderBody` es un marcador de posición donde se mostrarán todas las páginas específicas de vista que cree, *encapsuladas* en la página de diseño. Por ejemplo, si selecciona el vínculo **Privacy** (Privacidad), la vista **Views/Home/Privacy.cshtml** se representa dentro del método `RenderBody`.
 
@@ -121,7 +121,7 @@ En el marcado anterior se realizan los cambios siguientes:
 
 En el marcado anterior, se omitieron el `asp-area=""` [atributo del asistente de etiquetas delimitadoras](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) y el valor de atributo porque esta aplicación no utiliza [Áreas](xref:mvc/controllers/areas).
 
-**Nota** : El controlador `Movies` no se ha implementado. En este momento, el vínculo `Movie App` no es funcional.
+**Nota**: El controlador `Movies` no se ha implementado. En este momento, el vínculo `Movie App` no es funcional.
 
 Guarde los cambios y seleccione el vínculo **Privacy** (Privacidad). Observe cómo el título de la pestaña del explorador muestra ahora **Privacy Policy - Movie Ap** (Directiva de privacidad - Aplicación de película) en lugar de **Privacy Policy - Mvc Movie** (Directiva de privacidad - Aplicación de MVC):
 
@@ -129,7 +129,7 @@ Guarde los cambios y seleccione el vínculo **Privacy** (Privacidad). Observe c�
 
 Pulse el vínculo **Home** (Inicio) y observe que el texto del título y el delimitador también muestran **Movie App** (Aplicación de película). Hemos realizado el cambio una vez en la plantilla de diseño y hemos conseguido que todas las páginas del sitio reflejen el nuevo texto de vínculo y el nuevo título.
 
-Examine el archivo *Views/_ViewStart.cshtml* :
+Examine el archivo *Views/_ViewStart.cshtml*:
 
 ```cshtml
 @{
@@ -139,7 +139,7 @@ Examine el archivo *Views/_ViewStart.cshtml* :
 
 El archivo *Views/_ViewStart.cshtml* trae el archivo *Views/Shared/_Layout.cshtml* a cada vista. Se puede usar la propiedad `Layout` para establecer una vista de diseño diferente o establecerla en `null` para que no se use ningún archivo de diseño.
 
-Cambie el título y el elemento `<h2>` del archivo de vista *Views/HelloWorld/Index.cshtml* :
+Cambie el título y el elemento `<h2>` del archivo de vista *Views/HelloWorld/Index.cshtml*:
 
 [!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/HelloWorld/Index2.cshtml?highlight=2,5)]
 
@@ -167,7 +167,7 @@ Los controladores se encargan de proporcionar los datos necesarios para que una 
 
 Actualmente, el método `Welcome` de la clase `HelloWorldController` toma un parámetro `name` y `ID`, y luego obtiene los valores directamente en el explorador. En lugar de que el controlador represente esta respuesta como una cadena, cambie el controlador para que use una plantilla de vista. La plantilla de vista genera una respuesta dinámica, lo que significa que se deben pasar las partes de datos adecuadas desde el controlador a la vista para que se genere la respuesta. Para hacerlo, indique al controlador que coloque los datos dinámicos (parámetros) que necesita la plantilla de vista en un diccionario `ViewData` al que luego pueda obtener acceso la plantilla de vista.
 
-En *HelloWorldController.cs* , cambie el método `Welcome` para agregar un valor `Message` y `NumTimes` al diccionario `ViewData`. El diccionario `ViewData` es un objeto dinámico, lo que significa que puede utilizarse cualquier tipo; el objeto `ViewData` no tiene ninguna propiedad definida hasta que coloca algo dentro de él. El [sistema de enlace de modelos](xref:mvc/models/model-binding) de MVC asigna automáticamente los parámetros con nombre (`name` y `numTimes`) de la cadena de consulta en la barra de dirección a los parámetros del método. El archivo *HelloWorldController.cs* completo tiene este aspecto:
+En *HelloWorldController.cs*, cambie el método `Welcome` para agregar un valor `Message` y `NumTimes` al diccionario `ViewData`. El diccionario `ViewData` es un objeto dinámico, lo que significa que puede utilizarse cualquier tipo; el objeto `ViewData` no tiene ninguna propiedad definida hasta que coloca algo dentro de él. El [sistema de enlace de modelos](xref:mvc/models/model-binding) de MVC asigna automáticamente los parámetros con nombre (`name` y `numTimes`) de la cadena de consulta en la barra de dirección a los parámetros del método. El archivo *HelloWorldController.cs* completo tiene este aspecto:
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/HelloWorldController.cs?name=snippet_5)]
 
@@ -207,13 +207,13 @@ Actualmente, el método `Index` devuelve una cadena con un mensaje que está cod
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/HelloWorldController.cs?name=snippet_4)]
 
-El código anterior llama al método <xref:Microsoft.AspNetCore.Mvc.Controller.View*> del controlador. Este usa una plantilla de vista para generar una respuesta HTML. Los métodos de controlador (también conocidos como *métodos de acción* ), como el método `Index` anterior, suelen devolver un valor <xref:Microsoft.AspNetCore.Mvc.IActionResult> o una clase derivada de <xref:Microsoft.AspNetCore.Mvc.ActionResult>, en lugar de un tipo como una cadena `string`.
+El código anterior llama al método <xref:Microsoft.AspNetCore.Mvc.Controller.View*> del controlador. Este usa una plantilla de vista para generar una respuesta HTML. Los métodos de controlador (también conocidos como *métodos de acción*), como el método `Index` anterior, suelen devolver un valor <xref:Microsoft.AspNetCore.Mvc.IActionResult> o una clase derivada de <xref:Microsoft.AspNetCore.Mvc.ActionResult>, en lugar de un tipo como una cadena `string`.
 
 ## <a name="add-a-view"></a>Agregar una vista
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Haga clic con el botón derecho en la carpeta *Vistas* , haga clic en **Agregar > Nueva carpeta** y asigne a la carpeta el nombre *HelloWorld*.
+* Haga clic con el botón derecho en la carpeta *Vistas*, haga clic en **Agregar > Nueva carpeta** y asigne a la carpeta el nombre *HelloWorld*.
 
 * Haga clic con el botón derecho en la carpeta *Views/HelloWorld* y, luego, haga clic en **Agregar > Nuevo elemento**.
 
@@ -223,7 +223,7 @@ El código anterior llama al método <xref:Microsoft.AspNetCore.Mvc.Controller.V
 
   * Seleccione **Vista de Razor** .
 
-  * Conserve el valor del cuadro **Nombre** , *Index.cshtml*.
+  * Conserve el valor del cuadro **Nombre**, *Index.cshtml*.
 
   * Seleccione **Agregar**.
 
@@ -238,9 +238,9 @@ Agregue una vista `Index` para el `HelloWorldController`.
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)
 
-* Haga clic con el botón derecho en la carpeta *Vistas* , haga clic en **Agregar > Nueva carpeta** y asigne a la carpeta el nombre *HelloWorld*.
+* Haga clic con el botón derecho en la carpeta *Vistas*, haga clic en **Agregar > Nueva carpeta** y asigne a la carpeta el nombre *HelloWorld*.
 * Haga clic con el botón derecho en la carpeta *Views/HelloWorld* y, luego, haga clic en **Agregar > Nuevo archivo**.
-* En el cuadro de diálogo **Nuevo archivo** :
+* En el cuadro de diálogo **Nuevo archivo**:
 
   * Seleccione **Web** en el panel izquierdo.
   * Seleccione **Archivo HTML vacío** en el panel central.
@@ -261,7 +261,7 @@ Navegue a `https://localhost:{PORT}/HelloWorld`. El método `Index` en `HelloWor
 
 ## <a name="change-views-and-layout-pages"></a>Cambio de vistas y páginas de diseño
 
-Seleccione los vínculos de menú ( **MvcMovie** [Película de MVC], **Home** [Inicio] y **Privacy** [Privacidad]). Cada página muestra el mismo diseño de menú. El diseño de menú se implementa en el archivo *Views/Shared/_Layout.cshtml*. Abra el archivo *Views/Shared/_Layout.cshtml*.
+Seleccione los vínculos de menú (**MvcMovie** [Película de MVC], **Home** [Inicio] y **Privacy** [Privacidad]). Cada página muestra el mismo diseño de menú. El diseño de menú se implementa en el archivo *Views/Shared/_Layout.cshtml*. Abra el archivo *Views/Shared/_Layout.cshtml*.
 
 Las plantillas de [diseño](xref:mvc/views/layout) permiten especificar el diseño del contenedor HTML del sitio en un solo lugar y, después, aplicarlo en varias páginas del sitio. Busque la línea `@RenderBody()`. `RenderBody` es un marcador de posición donde se mostrarán todas las páginas específicas de vista que cree, *encapsuladas* en la página de diseño. Por ejemplo, si selecciona el vínculo **Privacy** (Privacidad), la vista **Views/Home/Privacy.cshtml** se representa dentro del método `RenderBody`.
 
@@ -281,7 +281,7 @@ En el marcado anterior, se omitió el `asp-area` [atributo del asistente de etiq
 > We haven't implemented the `Movies` controller yet, so if you click the `Movie App` link, you get a 404 (Not found) error.
 -->
 
-**Nota** : El controlador `Movies` no se ha implementado. En este momento, el vínculo `Movie App` no es funcional.
+**Nota**: El controlador `Movies` no se ha implementado. En este momento, el vínculo `Movie App` no es funcional.
 
 Guarde los cambios y seleccione el vínculo **Privacy** (Privacidad). Observe cómo el título de la pestaña del explorador muestra ahora **Privacy Policy - Movie Ap** (Directiva de privacidad - Aplicación de película) en lugar de **Privacy Policy - Mvc Movie** (Directiva de privacidad - Aplicación de MVC):
 
@@ -289,7 +289,7 @@ Guarde los cambios y seleccione el vínculo **Privacy** (Privacidad). Observe c�
 
 Pulse el vínculo **Home** (Inicio) y observe que el texto del título y el delimitador también muestran **Movie App** (Aplicación de película). Hemos realizado el cambio una vez en la plantilla de diseño y hemos conseguido que todas las páginas del sitio reflejen el nuevo texto de vínculo y el nuevo título.
 
-Examine el archivo *Views/_ViewStart.cshtml* :
+Examine el archivo *Views/_ViewStart.cshtml*:
 
 ```cshtml
 @{
@@ -299,7 +299,7 @@ Examine el archivo *Views/_ViewStart.cshtml* :
 
 El archivo *Views/_ViewStart.cshtml* trae el archivo *Views/Shared/_Layout.cshtml* a cada vista. Se puede usar la propiedad `Layout` para establecer una vista de diseño diferente o establecerla en `null` para que no se use ningún archivo de diseño.
 
-Cambie el título y el elemento `<h2>` del archivo de vista *Views/HelloWorld/Index.cshtml* :
+Cambie el título y el elemento `<h2>` del archivo de vista *Views/HelloWorld/Index.cshtml*:
 
 [!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/HelloWorld/Index2.cshtml?highlight=2,5)]
 
@@ -327,7 +327,7 @@ Los controladores se encargan de proporcionar los datos necesarios para que una 
 
 Actualmente, el método `Welcome` de la clase `HelloWorldController` toma un parámetro `name` y `ID`, y luego obtiene los valores directamente en el explorador. En lugar de que el controlador represente esta respuesta como una cadena, cambie el controlador para que use una plantilla de vista. La plantilla de vista genera una respuesta dinámica, lo que significa que se deben pasar las partes de datos adecuadas desde el controlador a la vista para que se genere la respuesta. Para hacerlo, indique al controlador que coloque los datos dinámicos (parámetros) que necesita la plantilla de vista en un diccionario `ViewData` al que luego pueda obtener acceso la plantilla de vista.
 
-En *HelloWorldController.cs* , cambie el método `Welcome` para agregar un valor `Message` y `NumTimes` al diccionario `ViewData`. El diccionario `ViewData` es un objeto dinámico, lo que significa que puede utilizarse cualquier tipo; el objeto `ViewData` no tiene ninguna propiedad definida hasta que coloca algo dentro de él. El [sistema de enlace de modelos](xref:mvc/models/model-binding) de MVC asigna automáticamente los parámetros con nombre (`name` y `numTimes`) de la cadena de consulta en la barra de dirección a los parámetros del método. El archivo *HelloWorldController.cs* completo tiene este aspecto:
+En *HelloWorldController.cs*, cambie el método `Welcome` para agregar un valor `Message` y `NumTimes` al diccionario `ViewData`. El diccionario `ViewData` es un objeto dinámico, lo que significa que puede utilizarse cualquier tipo; el objeto `ViewData` no tiene ninguna propiedad definida hasta que coloca algo dentro de él. El [sistema de enlace de modelos](xref:mvc/models/model-binding) de MVC asigna automáticamente los parámetros con nombre (`name` y `numTimes`) de la cadena de consulta en la barra de dirección a los parámetros del método. El archivo *HelloWorldController.cs* completo tiene este aspecto:
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/HelloWorldController.cs?name=snippet_5)]
 

@@ -19,12 +19,12 @@ no-loc:
 - SignalR
 ms.date: 10/27/2020
 uid: blazor/file-uploads
-ms.openlocfilehash: c0806c3a68a4d9e698925f6ec955dd2f53d7818f
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 77c2874eef788b8083758c087913a7a04c55fa2b
+ms.sourcegitcommit: 54fdca99f30b18d69cf0753ca3c84c7dab8f2b0e
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93056132"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94691175"
 ---
 # <a name="aspnet-core-no-locblazor-file-uploads"></a>Cargas de archivos de ASP.NET Core Blazor
 
@@ -46,12 +46,15 @@ De forma predeterminada, los usuarios seleccionan archivos individuales. Agregue
 Para leer datos de un archivo seleccionado por el usuario:
 
 * Llame a `Microsoft.AspNetCore.Components.Forms.IBrowserFile.OpenReadStream` en el archivo y lea desde el flujo devuelto. Para obtener más información, vea la sección [Flujos de archivos](#file-streams).
-* El valor <xref:System.IO.Stream> devuelto por `OpenReadStream` aplica un tamaño máximo en bytes del `Stream` que se lee. De forma predeterminada, solo se pueden leer los archivos con un tamaño inferior a 524 288 KB (512 KB) antes de que lecturas adicionales generen una excepción. Este límite está presente para evitar que los desarrolladores lean accidentalmente archivos de gran tamaño en la memoria. El parámetro `maxAllowedSize` de `Microsoft.AspNetCore.Components.Forms.IBrowserFile.OpenReadStream` se puede utilizar para especificar un tamaño mayor si es necesario.
+* El valor <xref:System.IO.Stream> devuelto por `OpenReadStream` aplica un tamaño máximo en bytes del `Stream` que se lee. De forma predeterminada, se pueden leer los archivos con un tamaño inferior a 512 000 bytes (500 KB) antes de que lecturas adicionales generen una excepción. Este límite está presente para evitar que los desarrolladores lean accidentalmente archivos de gran tamaño en la memoria. El parámetro `maxAllowedSize` de `Microsoft.AspNetCore.Components.Forms.IBrowserFile.OpenReadStream` se puede utilizar para especificar un tamaño mayor si es necesario.
 * Evite leer el flujo de archivos entrantes directamente en la memoria. Por ejemplo, no copie los bytes de un archivo en un elemento <xref:System.IO.MemoryStream> o lo lea como una matriz de bytes. Estos enfoques pueden dar lugar a problemas de rendimiento y seguridad, sobre todo en Blazor Server. En su lugar, considere la posibilidad de copiar bytes de un archivo en un almacén externo, como un blob o un archivo en disco.
 
 Un componente que recibe un archivo de imagen puede llamar al método de conveniencia `RequestImageFileAsync` en el archivo para cambiar el tamaño de los datos de imagen en el runtime de JavaScript del explorador antes de que la imagen se transmita a la aplicación.
 
 En el ejemplo siguiente se muestra la carga de varios archivos de imagen en un componente. `InputFileChangeEventArgs.GetMultipleFiles` permite leer varios archivos. Especifique el número máximo de archivos que espera leer para evitar que un usuario malintencionado cargue más de los que la aplicación espera. `InputFileChangeEventArgs.File` permite leer el primer y único archivo si la carga de archivos no admite varios.
+
+> [!NOTE]
+> <xref:Microsoft.AspNetCore.Components.Forms.InputFileChangeEventArgs> está en el espacio de nombres <xref:Microsoft.AspNetCore.Components.Forms?displayProperty=fullName>, que suele ser uno de los espacios de nombres del archivo `_Imports.razor` de la aplicación.
 
 ```razor
 <h3>Upload PNG images</h3>
@@ -75,7 +78,7 @@ En el ejemplo siguiente se muestra la carga de varios archivos de imagen en un c
 }
 
 @code {
-    IList<string> imageDataUrls = new List<string>();
+    private IList<string> imageDataUrls = new List<string>();
 
     private async Task OnInputFileChange(InputFileChangeEventArgs e)
     {

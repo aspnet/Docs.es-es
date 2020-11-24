@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/additional-scenarios
-ms.openlocfilehash: f8b6e65424948aaa7b28023497bbbf2a1ceb47dd
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: ef37c539d377f14a2744c3ead28234d8497df700
+ms.sourcegitcommit: e087b6a38e3d38625ebb567a973e75b4d79547b9
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93056054"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94637683"
 ---
 # <a name="aspnet-core-no-locblazor-hosting-model-configuration"></a>Configuración del modelo de hospedaje de Blazor en ASP.NET Core
 
@@ -102,32 +102,21 @@ En la tabla siguiente se describen las clases de CSS aplicadas al elemento `comp
 
 ## <a name="render-mode"></a>Modo de representación
 
+::: moniker range=">= aspnetcore-5.0"
+
+*Esta sección se aplica a Blazor WebAssembly y Blazor Server hospedados.*
+
+Las aplicaciones de Blazor se configuran de forma predeterminada para representar previamente la interfaz de usuario en el servidor. Para más información, consulte <xref:mvc/views/tag-helpers/builtin-th/component-tag-helper>.
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
 *Esta sección es aplicable a Blazor Server.*
 
-Las aplicaciones Blazor Server se configuran de forma predeterminada para realizar una representación previa de la interfaz de usuario en el servidor antes de que se establezca la conexión del cliente con él. Esto se configura en la página `_Host.cshtml` Razor:
+Las aplicaciones Blazor Server se configuran de forma predeterminada para realizar una representación previa de la interfaz de usuario en el servidor antes de que se establezca la conexión del cliente con él. Para más información, consulte <xref:mvc/views/tag-helpers/builtin-th/component-tag-helper>.
 
-```cshtml
-<body>
-    <app>
-      <component type="typeof(App)" render-mode="ServerPrerendered" />
-    </app>
-
-    <script src="_framework/blazor.server.js"></script>
-</body>
-```
-
-<xref:Microsoft.AspNetCore.Mvc.TagHelpers.ComponentTagHelper.RenderMode> configura si el componente:
-
-* Se representa previamente en la página.
-* Se representa como HTML estático en la página o si incluye la información necesaria para arrancar una aplicación Blazor desde el agente de usuario.
-
-| Modo de representación | Descripción |
-| --- | --- |
-| <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.ServerPrerendered> | Representa el componente en código HTML estático e incluye un marcador para una aplicación Blazor Server. Cuando se inicia el agente de usuario, este marcador se usa para arrancar una aplicación Blazor. |
-| <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Server> | Representa un marcador para una aplicación Blazor Server. La salida del componente no está incluida. Cuando se inicia el agente de usuario, este marcador se usa para arrancar una aplicación Blazor. |
-| <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Static> | Representa el componente en HTML estático. |
-
-No se admite la representación de componentes de servidor desde una página HTML estática.
+::: moniker-end
 
 ## <a name="initialize-the-no-locblazor-circuit"></a>Inicialización del circuito de Blazor
 
@@ -389,3 +378,4 @@ Para crear asignaciones de archivos adicionales con un objeto <xref:Microsoft.As
 ## <a name="additional-resources"></a>Recursos adicionales
 
 * <xref:fundamentals/logging/index>
+* [Eventos de reconexión y de ciclo de vida de componentes de Blazor Server](xref:blazor/components/lifecycle#blazor-server-reconnection-events)

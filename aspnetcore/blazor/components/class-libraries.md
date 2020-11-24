@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/class-libraries
-ms.openlocfilehash: f8e36cbe905b5ec2e674123c0f2ab6db99683c7c
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 24a5b93a18cfe36c50d9739ba56d12aca41615c0
+ms.sourcegitcommit: 1ea3f23bec63e96ffc3a927992f30a5fc0de3ff9
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93056418"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94570164"
 ---
 # <a name="aspnet-core-no-locrazor-components-class-libraries"></a>Bibliotecas de clases de componentes de Razor de ASP.NET Core
 
@@ -233,6 +233,7 @@ Cargue el paquete en NuGet usando el comando [`dotnet nuget push`](/dotnet/core/
 
 * <xref:razor-pages/ui-class>
 * [Adición de un archivo de configuración del recortador de lenguaje intermedio (IL) XML a una biblioteca](xref:blazor/host-and-deploy/configure-trimmer)
+* [Compatibilidad de aislamiento de CSS con bibliotecas de clases Razor](xref:blazor/components/css-isolation#razor-class-library-rcl-support)
 
 ::: moniker-end
 

@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/css-isolation
-ms.openlocfilehash: 628e7dc897912beaae0df792b82958517ac70ca4
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 4fec0fa750b9209849030d0d6b7de8f4e163d62f
+ms.sourcegitcommit: 1ea3f23bec63e96ffc3a927992f30a5fc0de3ff9
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93056327"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94570138"
 ---
 # <a name="aspnet-core-no-locblazor-css-isolation"></a>Aislamiento de CSS de Blazor de ASP.NET Core
 
@@ -34,9 +34,9 @@ El aislamiento de CSS simplifica la superficie de CSS de una aplicación al evit
 
 ## <a name="enable-css-isolation"></a>Habilitación del aislamiento de CSS 
 
-Para definir estilos específicos de un componente, cree un archivo `razor.css` cuyo nombre coincida con el del archivo `.razor` del componente. Este archivo `razor.css` es un *archivo CSS con ámbito*. 
+Para definir estilos específicos de un componente, cree un archivo `.razor.css` cuyo nombre coincida con el del archivo `.razor` del componente. Este archivo `.razor.css` es un *archivo CSS con ámbito*. 
 
-En un componente `MyComponent` que tenga un archivo `MyComponent.razor`, cree un archivo junto al componente denominado `MyComponent.razor.css`. El valor `MyComponent` del nombre de archivo `razor.css` **no** distingue mayúsculas de minúsculas.
+En un componente `MyComponent` que tenga un archivo `MyComponent.razor`, cree un archivo junto al componente denominado `MyComponent.razor.css`. El valor `MyComponent` del nombre de archivo `.razor.css` **no** distingue mayúsculas de minúsculas.
 
 Por ejemplo, para agregar aislamiento de CSS al componente `Counter` de la plantilla de proyecto de Blazor predeterminada, agregue un nuevo archivo denominado `Counter.razor.css` junto con el archivo `Counter.razor` y luego agregue el siguiente CSS:
 
@@ -86,7 +86,7 @@ Si se usan otros proyectos, como paquetes NuGet o [bibliotecas de clases de Razo
 
 ## <a name="child-component-support"></a>Compatibilidad de componente secundario
 
-De forma predeterminada, el aislamiento de CSS solo se aplica al componente que se asocia con el formato `{COMPONENT NAME}.razor.css`, donde el marcador de posición `{COMPONENT NAME}` suele ser el nombre del componente. Para aplicar cambios a un componente secundario, use el combinador `::deep` con los elementos descendientes del archivo `razor.css` del componente primario. El combinador `::deep` selecciona los elementos que son *descendientes* del identificador de ámbito generado de un elemento. 
+De forma predeterminada, el aislamiento de CSS solo se aplica al componente que se asocia con el formato `{COMPONENT NAME}.razor.css`, donde el marcador de posición `{COMPONENT NAME}` suele ser el nombre del componente. Para aplicar cambios a un componente secundario, use el combinador `::deep` con los elementos descendientes del archivo `.razor.css` del componente primario. El combinador `::deep` selecciona los elementos que son *descendientes* del identificador de ámbito generado de un elemento. 
 
 En el ejemplo siguiente se muestra un componente primario denominado `Parent` con un componente secundario denominado `Child`.
 
@@ -180,3 +180,24 @@ Para no usar el modo en que Blazor publica y carga archivos con ámbito en tiemp
   <DisableScopedCssBundling>true</DisableScopedCssBundling>
 </PropertyGroup>
 ```
+
+## <a name="no-locrazor-class-library-rcl-support"></a>Razor Compatibilidad con la biblioteca de clases (RCL)
+
+Cuando una [Razor biblioteca de clases (RCL)](xref:razor-pages/ui-class) proporciona estilos aislados, el atributo `href` de la etiqueta `<link>` apunta a `{STATIC WEB ASSET BASE PATH}/{ASSEMBLY NAME}.bundle.scp.css`, donde los marcadores de posición son los siguientes:
+
+* `{STATIC WEB ASSET BASE PATH}`: ruta de acceso base del recurso web estático.
+* `{ASSEMBLY NAME}`: nombre del ensamblado de la biblioteca de clases.
+
+En el ejemplo siguiente:
+
+* La ruta de acceso base del recurso web estático es `_content/ClassLib`.
+* El nombre del ensamblado de la biblioteca de clases es `ClassLib`.
+
+```html
+<link href="_content/ClassLib/ClassLib.bundle.scp.css" rel="stylesheet">
+```
+
+Para obtener más información sobre RCL y bibliotecas de componentes, vea lo siguiente:
+
+* <xref:razor-pages/ui-class>
+* <xref:blazor/components/class-libraries>.
