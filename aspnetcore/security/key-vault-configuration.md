@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/key-vault-configuration
-ms.openlocfilehash: fcd5524bed11cca2380ffd8956f437f742729b55
-ms.sourcegitcommit: aa85f2911792a1e4783bcabf0da3b3e7e218f63a
+ms.openlocfilehash: 7f5cd3de38f1e45d9b188c513a0e62ca658b2992
+ms.sourcegitcommit: 3f0ad1e513296ede1bff39a05be6c278e879afed
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95417622"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96035910"
 ---
 # <a name="azure-key-vault-configuration-provider-in-aspnet-core"></a>Azure Key Vault proveedor de configuración en ASP.NET Core
 
@@ -54,7 +54,7 @@ Para obtener más información sobre cómo configurar una aplicación de ejemplo
 
 ## <a name="secret-storage-in-the-development-environment"></a>Almacenamiento de secretos en el entorno de desarrollo
 
-Establezca secretos localmente mediante la [herramienta de administrador de secretos](xref:security/app-secrets). Cuando la aplicación de ejemplo se ejecuta en el equipo local en el entorno de desarrollo, los secretos se cargan desde el almacén del administrador secreto local.
+Establezca secretos localmente mediante la [herramienta de administrador de secretos](xref:security/app-secrets). Cuando la aplicación de ejemplo se ejecuta en el equipo local en el entorno de desarrollo, los secretos se cargan desde el almacén de secretos del usuario local.
 
 La herramienta Administrador de secretos requiere una `<UserSecretsId>` propiedad en el archivo de proyecto de la aplicación. Establezca el valor de propiedad ( `{GUID}` ) en cualquier GUID único:
 
@@ -349,7 +349,7 @@ Configuration.Reload();
 
 Los secretos deshabilitados y caducados producen una <xref:Azure.RequestFailedException> . Para evitar que se inicie la aplicación, proporcione la configuración mediante un proveedor de configuración diferente o actualice el secreto deshabilitado o expirado.
 
-## <a name="troubleshoot"></a>Solución de problemas
+## <a name="troubleshoot"></a>Solucionar problemas
 
 Cuando la aplicación no carga la configuración mediante el proveedor, se escribe un mensaje de error en la [infraestructura de registro de ASP.net Core](xref:fundamentals/logging/index). Las siguientes condiciones impedirán que se cargue la configuración:
 
@@ -398,7 +398,7 @@ Para obtener más información sobre cómo configurar una aplicación de ejemplo
 
 ## <a name="secret-storage-in-the-development-environment"></a>Almacenamiento de secretos en el entorno de desarrollo
 
-Establezca secretos localmente mediante la [herramienta de administrador de secretos](xref:security/app-secrets). Cuando la aplicación de ejemplo se ejecuta en el equipo local en el entorno de desarrollo, los secretos se cargan desde el almacén del administrador secreto local.
+Establezca secretos localmente mediante la [herramienta de administrador de secretos](xref:security/app-secrets). Cuando la aplicación de ejemplo se ejecuta en el equipo local en el entorno de desarrollo, los secretos se cargan desde el almacén de secretos del usuario local.
 
 La herramienta Administrador de secretos requiere una `<UserSecretsId>` propiedad en el archivo de proyecto de la aplicación. Establezca el valor de propiedad ( `{GUID}` ) en cualquier GUID único:
 
@@ -676,7 +676,7 @@ Configuration.Reload();
 
 Los secretos deshabilitados y caducados producen una <xref:Microsoft.Azure.KeyVault.Models.KeyVaultErrorException> . Para evitar que se inicie la aplicación, proporcione la configuración mediante un proveedor de configuración diferente o actualice el secreto deshabilitado o expirado.
 
-## <a name="troubleshoot"></a>Solución de problemas
+## <a name="troubleshoot"></a>Solucionar problemas
 
 Cuando la aplicación no carga la configuración mediante el proveedor, se escribe un mensaje de error en la [infraestructura de registro de ASP.net Core](xref:fundamentals/logging/index). Las siguientes condiciones impedirán que se cargue la configuración:
 
