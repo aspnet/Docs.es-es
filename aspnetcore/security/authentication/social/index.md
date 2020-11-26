@@ -18,18 +18,18 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/social/index
-ms.openlocfilehash: 1f7c8cd0716f1ada3517add0d37a09e419f38774
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: ca5fd8f746e759d1994dde9a2a0d5b5fd6c88d1a
+ms.sourcegitcommit: 59d95a9106301d5ec5c9f612600903a69c4580ef
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93053311"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95870456"
 ---
 # <a name="facebook-google-and-external-provider-authentication-in-aspnet-core"></a>Autenticación con Facebook, Google y proveedores externos en ASP.NET Core
 
 Por [Valeriy Novytskyy](https://github.com/01binary) y [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-En este tutorial se muestra cómo crear una aplicación de ASP.NET Core 3.0 que permita a los usuarios iniciar sesión mediante OAuth 2.0 con credenciales de proveedores de autenticación externos.
+En este tutorial se muestra cómo crear una aplicación de ASP.NET Core que permita a los usuarios iniciar sesión mediante OAuth 2.0 con credenciales de proveedores de autenticación externos.
 
 En las siguientes secciones se tratan los proveedores [Facebook](xref:security/authentication/facebook-logins), [Twitter](xref:security/authentication/twitter-logins), [Google](xref:security/authentication/google-logins) y [Microsoft](xref:security/authentication/microsoft-logins), y usan el proyecto inicial creado en este artículo. Hay disponibles otros proveedores en paquetes de terceros como [AspNet.Security.OAuth.Providers](https://github.com/aspnet-contrib/AspNet.Security.OAuth.Providers) y [AspNet.Security.OpenId.Providers](https://github.com/aspnet-contrib/AspNet.Security.OpenId.Providers).
 
@@ -45,11 +45,11 @@ Para ver ejemplos de cómo los inicios de sesión de las redes sociales pueden c
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Cree un nuevo proyecto.
-* Seleccione **Aplicación web de ASP.NET Core** y **Siguiente** .
-* Proporcione un **Nombre del proyecto** y confirme o cambie la **Ubicación** . Seleccione **Crear** .
-* Seleccione la versión más reciente de ASP.NET Core en la lista desplegable ( **ASP.NET Core {X.Y}** ) y, luego, **Aplicación web** .
-* En **Autenticación** , seleccione **Cambiar** y establezca la autenticación en **Cuentas de usuario individuales** . Seleccione **Aceptar** .
-* En la ventana **Crear una aplicación web ASP.NET Core** , seleccione **Crear** .
+* Seleccione **Aplicación web de ASP.NET Core** y **Siguiente**.
+* Proporcione un **Nombre del proyecto** y confirme o cambie la **Ubicación**. Seleccione **Crear**.
+* Seleccione la versión más reciente de ASP.NET Core en la lista desplegable (**ASP.NET Core {X.Y}** ) y, luego, **Aplicación web**.
+* En **Autenticación**, seleccione **Cambiar** y establezca la autenticación en **Cuentas de usuario individuales**. Seleccione **Aceptar**.
+* En la ventana **Crear una aplicación web ASP.NET Core**, seleccione **Crear**.
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code/Visual Studio para Mac](#tab/visual-studio-code+visual-studio-mac)
 
@@ -69,7 +69,7 @@ Para ver ejemplos de cómo los inicios de sesión de las redes sociales pueden c
   dotnet new webapp -o WebApp1 -au Individual
   ```
 
-  * El comando `dotnet new` crea un proyecto de RazorPages en la carpeta *WebApp1* .
+  * El comando `dotnet new` crea un proyecto de RazorPages en la carpeta *WebApp1*.
   * `-au Individual` crea el código para la autenticación individual.
   * `-uld` usa LocalDB, una versión ligera de SQL Server Express para Windows. Omita `-uld` para usar SQLite.
   * El comando `code` abre la carpeta *WebApp1* en una nueva instancia de Visual Studio Code.
@@ -78,8 +78,8 @@ Para ver ejemplos de cómo los inicios de sesión de las redes sociales pueden c
 
 ## <a name="apply-migrations"></a>Aplicación de migraciones
 
-* Ejecute la aplicación y seleccione el vínculo **Registrar** .
-* Escriba el correo electrónico y la contraseña de la cuenta nueva y, luego, seleccione **Registrarse** .
+* Ejecute la aplicación y seleccione el vínculo **Registrar**.
+* Escriba el correo electrónico y la contraseña de la cuenta nueva y, luego, seleccione **Registrarse**.
 * Siga estas instrucciones para aplicar las migraciones.
 
 [!INCLUDE[Forward request information when behind a proxy or load balancer section](includes/forwarded-headers-middleware.md)]
@@ -111,11 +111,11 @@ Si el registro se realiza mediante un proveedor de inicio de sesión externo, no
 
 Para crear una contraseña e iniciar sesión con el correo electrónico establecido durante el proceso de inicio de sesión con proveedores externos:
 
-* Seleccione el vínculo **Hola, &lt;alias de correo electrónico&gt;** situado en la esquina superior derecha para ir a la vista **Administración** .
+* Seleccione el vínculo **Hola, &lt;alias de correo electrónico&gt;** situado en la esquina superior derecha para ir a la vista **Administración**.
 
 ![Vista Administración de la aplicación web](index/_static/pass1a.png)
 
-* Seleccione **Crear** .
+* Seleccione **Crear**.
 
 ![Página para establecer la contraseña](index/_static/pass2a.png)
 
