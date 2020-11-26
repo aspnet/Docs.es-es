@@ -20,12 +20,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/page
-ms.openlocfilehash: a9494feacbe783b20a9f5eb98ef9e481f2c713fa
-ms.sourcegitcommit: 342588e10ae0054a6d6dc0fd11dae481006be099
+ms.openlocfilehash: d655be26a794f87a0be07046ae1d6415256d592c
+ms.sourcegitcommit: aa85f2911792a1e4783bcabf0da3b3e7e218f63a
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94360897"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95417635"
 ---
 # <a name="part-3-scaffolded-no-locrazor-pages-in-aspnet-core"></a>Parte 3. Razor Pages con scaffolding en ASP.NET Core
 
@@ -236,12 +236,6 @@ Para obtener más información sobre los asistentes de etiquetas como `<form met
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-3.0"
-
-Por [Rick Anderson](https://twitter.com/RickAndMSFT)
-
-En este tutorial se examinan las instancias de Razor Pages creadas con la técnica scaffolding en el [tutorial anterior](xref:tutorials/razor-pages/model).
-
-[Vea o descargue](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22) un ejemplo.
 
 ## <a name="the-no-loccreate-no-locdelete-details-and-edit-pages"></a>Páginas Create, Delete, de detalles y de edición
 
