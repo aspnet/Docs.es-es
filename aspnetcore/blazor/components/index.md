@@ -5,7 +5,7 @@ description: Aprenda a crear y usar componentes de Razor, lo que incluye cómo e
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/09/2020
+ms.date: 11/25/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,16 +19,16 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/index
-ms.openlocfilehash: cc4604f7f67a6648c96e099572ff27bfed838916
-ms.sourcegitcommit: 8363e44f630fcc6433ccd2a85f7aa9567cd274ed
+ms.openlocfilehash: b87986442bb8127f03df1f7ecff8167cafa27fdf
+ms.sourcegitcommit: 3f0ad1e513296ede1bff39a05be6c278e879afed
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94981874"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96035689"
 ---
 # <a name="create-and-use-aspnet-core-no-locrazor-components"></a>Creación y uso de componentes de Razor de ASP.NET Core
 
-Por [Luke Latham](https://github.com/guardrex), [Daniel Roth](https://github.com/danroth27) y [Tobias Bartsch](https://www.aveo-solutions.com/)
+Por [Luke Latham](https://github.com/guardrex), [Daniel Roth](https://github.com/danroth27), [Scott Addie](https://github.com/scottaddie) y [Tobias Bartsch](https://www.aveo-solutions.com/)
 
 [Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
@@ -886,6 +886,64 @@ Del mismo modo, se pueden usar imágenes SVG en las reglas de CSS de un archiv
 ```
 
 Pero no todos los escenarios admiten el uso de marcado SVG en línea. Si se coloca una etiqueta `<svg>` directamente en un archivo de componente (`.razor`), se puede usar la representación de imágenes básica, pero muchos escenarios avanzados no estarán admitidos. Por ejemplo, actualmente las etiquetas `<use>` no se cumplen, y [`@bind`][10] no se puede usar con algunas etiquetas SVG. Para más información, consulte la [compatibilidad con SVG en Blazor(dotnet/aspnetcore #18271)](https://github.com/dotnet/aspnetcore/issues/18271).
+
+## <a name="whitespace-rendering-behavior"></a>Comportamiento de la representación de espacios en blanco
+
+::: moniker range=">= aspnetcore-5.0"
+
+A menos que se use la directiva [`@preservewhitespace`](xref:mvc/views/razor#preservewhitespace) con un valor de `true`, el espacio en blanco adicional se quita de forma predeterminada si:
+
+* Está delante o detrás de un elemento.
+* Está delante o detrás de un parámetro `RenderFragment`. Por ejemplo, el contenido secundario se pasa a otro componente.
+* Precede o sigue a un bloque de código de C#, como `@if` o `@foreach`.
+
+La eliminación de espacios en blanco puede afectar a la salida representada cuando se usa una regla de CSS, como `white-space: pre`. Para deshabilitar esta optimización de rendimiento y conservar el espacio en blanco, realice una de las siguientes acciones:
+
+* Agregue la directiva `@preservewhitespace true` en la parte superior del archivo `.razor` para aplicar las preferencias a un componente específico.
+* Agregue la directiva `@preservewhitespace true` dentro de un archivo `_Imports.razor` para aplicar la preferencia a un subdirectorio completo o a todo el proyecto.
+
+En la mayoría de los casos, no se requiere ninguna acción, ya que las aplicaciones normalmente seguirán funcionando con normalidad (pero más rápido). Si la eliminación de espacios en blanco provoca problemas en un componente determinado, use `@preservewhitespace true` de ese componente para deshabilitar esta optimización.
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
+El espacio en blanco se conserva en el código fuente de un componente. El texto de solo espacio en blanco se representa en el modelo Document Object Model (DOM) del explorador aunque no haya ningún efecto visual.
+
+Considere el código de componente Razor siguiente:
+
+```razor
+<ul>
+    @foreach (var item in Items)
+    {
+        <li>
+            @item.Text
+        </li>
+    }
+</ul>
+```
+
+En el ejemplo anterior se representa el siguiente espacio en blanco innecesario:
+
+* Fuera del bloque de código `@foreach`.
+* Alrededor del elemento `<li>`.
+* Alrededor de la salida de `@item.Text`.
+
+Una lista que contiene 100 elementos da como resultado 402 áreas de espacio en blanco, y ninguno de los espacios en blanco adicionales afecta visualmente a la salida representada.
+
+Al representar HTML estático para componentes, no se conservaba el espacio en blanco dentro de una etiqueta. Por ejemplo, vea el origen del siguiente componente en la salida representada:
+
+```razor
+<img     alt="My image"   src="img.png"     />
+```
+
+No se conserva el espacio en blanco del marcado de Razor anterior:
+
+```razor
+<img alt="My image" src="img.png" />
+```
+
+::: moniker-end
 
 ## <a name="additional-resources"></a>Recursos adicionales
 

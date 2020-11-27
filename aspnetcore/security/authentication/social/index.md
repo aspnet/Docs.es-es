@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/social/index
-ms.openlocfilehash: ca5fd8f746e759d1994dde9a2a0d5b5fd6c88d1a
-ms.sourcegitcommit: 59d95a9106301d5ec5c9f612600903a69c4580ef
+ms.openlocfilehash: f7bc7c6a14d014f8c3c283fb09718b9191b7b478
+ms.sourcegitcommit: 3f0ad1e513296ede1bff39a05be6c278e879afed
 ms.translationtype: HT
 ms.contentlocale: es-ES
 ms.lasthandoff: 11/25/2020
-ms.locfileid: "95870456"
+ms.locfileid: "96035832"
 ---
 # <a name="facebook-google-and-external-provider-authentication-in-aspnet-core"></a>Autenticación con Facebook, Google y proveedores externos en ASP.NET Core
 
@@ -86,7 +86,7 @@ Para ver ejemplos de cómo los inicios de sesión de las redes sociales pueden c
 
 ## <a name="use-secretmanager-to-store-tokens-assigned-by-login-providers"></a>Uso de SecretManager para almacenar los tokens asignados por los proveedores de inicio de sesión
 
-Los proveedores de inicio de sesión de las redes sociales asignan los tokens **Id. de aplicación** y **Secreto de la aplicación** durante el proceso de registro. La nomenclatura puede variar en función del proveedor. Estos tokens representan las credenciales que usa la aplicación para acceder a su API. Los tokens constituyen los "secretos" que se pueden vincular a la configuración de la aplicación con la ayuda de [Secret Manager](xref:security/app-secrets#secret-manager). El Administrador de secretos es una alternativa más segura al almacenamiento de los tokens en un archivo de configuración, como, por ejemplo, *appsettings.json* .
+Los proveedores de inicio de sesión de las redes sociales asignan los tokens **Id. de aplicación** y **Secreto de la aplicación** durante el proceso de registro. La nomenclatura puede variar en función del proveedor. Estos tokens representan las credenciales que usa la aplicación para acceder a su API. Los tokens constituyen los "secretos de usuario" que se pueden vincular a la configuración de la aplicación con la ayuda del [Administrador de secretos](xref:security/app-secrets#secret-manager). Los secretos de usuario son una alternativa más segura al almacenamiento de los tokens en un archivo de configuración, como, por ejemplo, *appsettings.json* .
 
 > [!IMPORTANT]
 > Secret Manager solo está pensado para fines de desarrollo. Puede almacenar y proteger sus secretos de producción y pruebas de Azure con el [proveedor de configuración de Azure Key Vault](xref:security/key-vault-configuration).
