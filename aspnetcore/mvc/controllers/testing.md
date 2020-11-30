@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/testing
-ms.openlocfilehash: 962c1cf0be0f80ecd6c3adda7d22db7f16519a2a
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 348b0fe4da6037933aabdb5b400d36ca073a146a
+ms.sourcegitcommit: 43a540e703b9096921de27abc6b66bc0783fe905
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93060357"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96320101"
 ---
 # <a name="unit-test-controller-logic-in-aspnet-core"></a>Lógica del controlador de pruebas unitarias en ASP.NET Core
 
@@ -36,7 +36,7 @@ Las [pruebas unitarias](/dotnet/articles/core/testing/unit-testing-with-dotnet-t
 
 ## <a name="unit-testing-controllers"></a>Controladores de pruebas unitarias
 
-Configure pruebas unitarias de las acciones del controlador para centrarse en el comportamiento del controlador. Una prueba unitaria del controlador evita escenarios como [filtros](xref:mvc/controllers/filters), [enrutamiento](xref:fundamentals/routing) y [enlace de modelos](xref:mvc/models/model-binding). Las pruebas que abarcan las interacciones entre los componentes que colectivamente responden a una solicitud se controlan mediante *pruebas de integración* . Para más información sobre las pruebas de integración, vea <xref:test/integration-tests>.
+Configure pruebas unitarias de las acciones del controlador para centrarse en el comportamiento del controlador. Una prueba unitaria del controlador evita escenarios como [filtros](xref:mvc/controllers/filters), [enrutamiento](xref:fundamentals/routing) y [enlace de modelos](xref:mvc/models/model-binding). Las pruebas que abarcan las interacciones entre los componentes que colectivamente responden a una solicitud se controlan mediante *pruebas de integración*. Para más información sobre las pruebas de integración, vea <xref:test/integration-tests>.
 
 Si va a escribir filtros personalizados y rutas, realice pruebas unitarias en ellos de forma aislada, no como parte de las pruebas de una acción de controlador concreta.
 
@@ -50,7 +50,7 @@ El controlador Home muestra una lista de sesiones de lluvia de ideas y permite c
 
 El controlador anterior:
 
-* Sigue el [Principio de dependencias explícitas](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#explicit-dependencies).
+* Sigue el [Principio de dependencias explícitas](/dotnet/architecture/modern-web-apps-azure/architectural-principles#explicit-dependencies).
 * Espera la [inserción de dependencias (DI)](xref:fundamentals/dependency-injection) para ofrecer una instancia de `IBrainstormSessionRepository`.
 * Se puede probar con un servicio `IBrainstormSessionRepository` ficticio con el uso de un marco de objeto ficticio, como [Moq](https://www.nuget.org/packages/Moq/). Un *objeto ficticio* es un objeto fabricado con un conjunto predeterminado de comportamientos de propiedades y métodos utilizados para las pruebas. Para más información, vea [Introducción a las pruebas de integración](xref:test/integration-tests#introduction-to-integration-tests).
 
@@ -90,7 +90,7 @@ Las llamadas ficticias que no se efectúan se suelen ignorar, aunque llamar a `V
 > [!NOTE]
 > La biblioteca Moq usada en este ejemplo permite mezclar fácilmente objetos ficticios comprobables o "estrictos" con objetos ficticios no comprobables (también denominados "flexibles" o stub). Obtenga más información sobre cómo [personalizar el comportamiento de objetos ficticios con Moq](https://github.com/Moq/moq4/wiki/Quickstart#customizing-mock-behavior).
 
-[SessionController](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/controllers/testing/samples/3.x/TestingControllersSample/src/TestingControllersSample/Controllers/SessionController.cs) en la aplicación de ejemplo muestra información relacionada con una sesión de lluvia de ideas determinada. El controlador incluye lógica para tratar valores `id` no válidos (hay dos escenarios `return` en el ejemplo siguiente para abarcar estos escenarios). La última instrucción `return` devuelve un `StormSessionViewModel` nuevo a la vista ( *Controllers/SessionController.cs* ):
+[SessionController](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/controllers/testing/samples/3.x/TestingControllersSample/src/TestingControllersSample/Controllers/SessionController.cs) en la aplicación de ejemplo muestra información relacionada con una sesión de lluvia de ideas determinada. El controlador incluye lógica para tratar valores `id` no válidos (hay dos escenarios `return` en el ejemplo siguiente para abarcar estos escenarios). La última instrucción `return` devuelve un `StormSessionViewModel` nuevo a la vista (*Controllers/SessionController.cs*):
 
 [!code-csharp[](testing/samples/3.x/TestingControllersSample/src/TestingControllersSample/Controllers/SessionController.cs?name=snippet_SessionController&highlight=12-16,18-22,31)]
 
@@ -203,7 +203,7 @@ Los [controles](xref:mvc/controllers/actions) desempeñan un rol fundamental en 
 
 Las [pruebas unitarias](/dotnet/articles/core/testing/unit-testing-with-dotnet-test) implican probar una parte de una aplicación de forma aislada con respecto a su infraestructura y dependencias. Cuando se realizan pruebas unitarias de la lógica de controlador, solo se comprueba el contenido de una única acción, no el comportamiento de sus dependencias o del marco en sí.
 
-Configure pruebas unitarias de las acciones del controlador para centrarse en el comportamiento del controlador. Una prueba unitaria del controlador evita escenarios como [filtros](xref:mvc/controllers/filters), [enrutamiento](xref:fundamentals/routing) y [enlace de modelos](xref:mvc/models/model-binding). Las pruebas que abarcan las interacciones entre los componentes que colectivamente responden a una solicitud se controlan mediante *pruebas de integración* . Para más información sobre las pruebas de integración, vea <xref:test/integration-tests>.
+Configure pruebas unitarias de las acciones del controlador para centrarse en el comportamiento del controlador. Una prueba unitaria del controlador evita escenarios como [filtros](xref:mvc/controllers/filters), [enrutamiento](xref:fundamentals/routing) y [enlace de modelos](xref:mvc/models/model-binding). Las pruebas que abarcan las interacciones entre los componentes que colectivamente responden a una solicitud se controlan mediante *pruebas de integración*. Para más información sobre las pruebas de integración, vea <xref:test/integration-tests>.
 
 Si va a escribir filtros personalizados y rutas, realice pruebas unitarias en ellos de forma aislada, no como parte de las pruebas de una acción de controlador concreta.
 
@@ -253,7 +253,7 @@ Las llamadas ficticias que no se efectúan se suelen ignorar, aunque llamar a `V
 > [!NOTE]
 > La biblioteca Moq usada en este ejemplo permite mezclar fácilmente objetos ficticios comprobables o "estrictos" con objetos ficticios no comprobables (también denominados "flexibles" o stub). Obtenga más información sobre cómo [personalizar el comportamiento de objetos ficticios con Moq](https://github.com/Moq/moq4/wiki/Quickstart#customizing-mock-behavior).
 
-[SessionController](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/controllers/testing/samples/2.x/TestingControllersSample/src/TestingControllersSample/Controllers/SessionController.cs) en la aplicación de ejemplo muestra información relacionada con una sesión de lluvia de ideas determinada. El controlador incluye lógica para tratar valores `id` no válidos (hay dos escenarios `return` en el ejemplo siguiente para abarcar estos escenarios). La última instrucción `return` devuelve un `StormSessionViewModel` nuevo a la vista ( *Controllers/SessionController.cs* ):
+[SessionController](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/controllers/testing/samples/2.x/TestingControllersSample/src/TestingControllersSample/Controllers/SessionController.cs) en la aplicación de ejemplo muestra información relacionada con una sesión de lluvia de ideas determinada. El controlador incluye lógica para tratar valores `id` no válidos (hay dos escenarios `return` en el ejemplo siguiente para abarcar estos escenarios). La última instrucción `return` devuelve un `StormSessionViewModel` nuevo a la vista (*Controllers/SessionController.cs*):
 
 [!code-csharp[](testing/samples/2.x/TestingControllersSample/src/TestingControllersSample/Controllers/SessionController.cs?name=snippet_SessionController&highlight=12-16,18-22,31)]
 
@@ -360,6 +360,6 @@ Para una sesión válida `id`, la prueba final confirma que:
 
 * <xref:test/integration-tests>
 * [Crear y ejecutar pruebas unitarias con Visual Studio](/visualstudio/test/unit-test-your-code)
-* [MyTest. AspNetCore. Mvc: biblioteca de pruebas fluidas para ASP.net Core MVC](https://github.com/ivaylokenov/MyTested.AspNetCore.Mvc): biblioteca de pruebas unitarias fuertemente tipadas, que proporciona una interfaz fluida para probar MVC y aplicaciones de API Web. ( *Microsoft no realiza su mantenimiento ni su soporte técnico.* )
-* [JustMockLite](https://github.com/telerik/JustMockLite): marco ficticio para desarrolladores de .NET. ( *Microsoft no realiza su mantenimiento ni su soporte técnico.* )
+* [MyTest. AspNetCore. Mvc: biblioteca de pruebas fluidas para ASP.net Core MVC](https://github.com/ivaylokenov/MyTested.AspNetCore.Mvc): biblioteca de pruebas unitarias fuertemente tipadas, que proporciona una interfaz fluida para probar MVC y aplicaciones de API Web. (*Microsoft no realiza su mantenimiento ni su soporte técnico.* )
+* [JustMockLite](https://github.com/telerik/JustMockLite): marco ficticio para desarrolladores de .NET. (*Microsoft no realiza su mantenimiento ni su soporte técnico.* )
 
