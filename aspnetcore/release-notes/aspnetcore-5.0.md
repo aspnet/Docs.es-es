@@ -18,12 +18,12 @@ no-loc:
 - SignalR
 - Kestrel
 uid: aspnetcore-5.0
-ms.openlocfilehash: 84747e2d13275a23e83dc2dc0f666cb0c8d001b1
-ms.sourcegitcommit: 827e8be18cebbcc09b467c089e17fa6f5e430cb2
+ms.openlocfilehash: 8e848ef57a9164501fd3c4f29f47ad7c72118507
+ms.sourcegitcommit: aa85f2911792a1e4783bcabf0da3b3e7e218f63a
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94634631"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95417557"
 ---
 # <a name="whats-new-in-aspnet-core-50"></a>Novedades de ASP.NET Core 5.0
 
@@ -148,7 +148,7 @@ Blazor tiene los componentes integrados `InputRadio` y `InputRadioGroup` que sim
 
 ### <a name="component-virtualization"></a>Virtualización de componentes
 
-Mejore el rendimiento percibido de la representación de componentes usando la compatibilidad de virtualización integrada del marco Blazor. Para obtener más información, vea <xref:blazor/forms-validation#radio-buttons>.
+Mejore el rendimiento percibido de la representación de componentes usando la compatibilidad de virtualización integrada del marco Blazor. Para obtener más información, vea <xref:blazor/components/virtualization>.
 
 ### <a name="ontoggle-event-support"></a>Compatibilidad con eventos `ontoggle`
 
@@ -361,7 +361,7 @@ Antes de .NET 5.0, la creación y publicación de un *Dockerfile* para una apli
 
 ### <a name="azure-active-directory-authentication-with-microsoftno-locidentityweb"></a>Autenticación de Azure Active Directory con Microsoft.Identity.Web
 
-Las plantillas de proyecto de ASP.NET Core ahora se integran con <xref:Microsoft.Identity.Web?displayProperty=fullName> para controlar la autenticación con [Azure Active Directory](/azure/active-directory/fundamentals/active-directory-whatis) (Azure AD). El [paquete Microsoft.Identity.Web](https://www.nuget.org/packages/Microsoft.Identity.Web/) proporciona:
+Las plantillas de proyecto de ASP.NET Core ahora se integran con <xref:Microsoft.Identity.Web?displayProperty=fullName> para controlar la autenticación con [Azure Active Directory](/azure/active-directory/fundamentals/active-directory-whatis) (Azure AD). El [paquete Microsoft.Identity.Web](https://www.nuget.org/packages/Microsoft.Identity.Web/) proporciona:
 
 * Una mejor experiencia para la autenticación a través de Azure AD.
 * Una manera más sencilla de acceder a los recursos de Azure en nombre de los usuarios, incluido [Microsoft Graph](/graph/overview). Consulte el [ejemplo Microsoft.Identity.Web](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2), que comienza con un inicio de sesión básico y avanza a través de varios inquilinos, mediante el uso de las API de Azure, el uso de Microsoft Graph y la protección de sus propias API. `Microsoft.Identity.Web` está disponible junto con .NET 5.

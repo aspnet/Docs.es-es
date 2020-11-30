@@ -4,7 +4,7 @@ author: rick-anderson
 description: El comando dotnet aspnet-codegenerator aplica scaffolding a los proyectos de ASP.NET Core.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
-ms.date: 07/04/2019
+ms.date: 11/16/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/tools/dotnet-aspnet-codegenerator
-ms.openlocfilehash: 88d761b09833a14de5af9f9610753174867aa09a
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 8844b0014cac58f414d79df4c64bc0efac75bfe1
+ms.sourcegitcommit: d29535ea0b4197443fd884aaa6e5b4b763d04fc7
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93059993"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920708"
 ---
 # <a name="dotnet-aspnet-codegenerator"></a>dotnet aspnet-codegenerator
 
@@ -31,9 +31,9 @@ Por [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 `dotnet aspnet-codegenerator`: ejecuta el motor de scaffolding de ASP.NET Core. `dotnet aspnet-codegenerator` solo es necesario para aplicar scaffolding desde la línea de comandos, no es necesario para usar la técnica de scaffolding con Visual Studio.
 
-Este artículo se aplica al [SDK de .NET Core 2.1](https://dotnet.microsoft.com/download/dotnet-core/2.1) y versiones posteriores.
+## <a name="install-and-update-aspnet-codegenerator"></a>Instalación y actualización de aspnet-codegenerator
 
-## <a name="installing-aspnet-codegenerator"></a>Instalación de aspnet-codegenerator
+Instale el [SDK de .NET](https://dotnet.microsoft.com/download).
 
 `dotnet-aspnet-codegenerator` es una [herramienta global](/dotnet/core/tools/global-tools) que debe estar instalada. El comando siguiente instala la versión estable más reciente de la herramienta `dotnet-aspnet-codegenerator`:
 
@@ -45,6 +45,17 @@ El comando siguiente actualiza `dotnet-aspnet-codegenerator` a la versión estab
 
 ```dotnetcli
 dotnet tool update -g dotnet-aspnet-codegenerator
+```
+
+## <a name="uninstall-aspnet-codegenerator"></a>Desinstalación de aspnet-codegenerator
+
+Puede que sea necesario desinstalar `aspnet-codegenerator` para resolver problemas. Por ejemplo, si instaló una versión preliminar de `aspnet-codegenerator`, desinstálela antes de instalar la versión de publicación.
+
+El comando siguiente desinstala la herramienta `dotnet-aspnet-codegenerator` e instala la versión estable más reciente:
+
+```dotnetcli
+dotnet tool uninstall -g dotnet-aspnet-codegenerator
+dotnet tool install -g dotnet-aspnet-codegenerator
 ```
 
 ## <a name="synopsis"></a>Sinopsis
@@ -168,7 +179,7 @@ Es posible aplicar scaffolding a Razor Pages de manera individual si se especifi
 * `Details`
 * `List`
 
-Por ejemplo, el comando siguiente usa la plantilla de edición para generar *MyEdit.cshtml* y *MyEdit.cshtml.cs* :
+Por ejemplo, el comando siguiente usa la plantilla de edición para generar *MyEdit.cshtml* y *MyEdit.cshtml.cs*:
 
 ```dotnetcli
 dotnet aspnet-codegenerator razorpage MyEdit Edit -m Movie -dc RazorPagesMovieContext -outDir Pages/Movies

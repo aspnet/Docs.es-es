@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/webassembly-performance-best-practices
-ms.openlocfilehash: 423745d734d8da2b8f3f974f9b4dd1a0265d4877
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: cc090b4e56745e6b010e4a7ee17332b0d3a95560
+ms.sourcegitcommit: aa85f2911792a1e4783bcabf0da3b3e7e218f63a
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93054741"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95417388"
 ---
 # <a name="aspnet-core-no-locblazor-webassembly-performance-best-practices"></a>Procedimientos recomendados de rendimiento de Blazor WebAssembly en ASP.NET Core
 
@@ -32,8 +32,8 @@ Por [Pranav Krishnamoorthy](https://github.com/pranavkm) y [Steve Sanderson](htt
 
 Blazor WebAssembly se ha diseñado y optimizado cuidadosamente para permitir un alto rendimiento en los escenarios de interfaz de usuario de aplicaciones más realistas. Sin embargo, la generación de los mejores resultados depende de que los desarrolladores utilicen los patrones y características correctos. Considere los aspectos siguientes:
 
-* **Rendimiento del entorno de ejecución** : el código de .NET se ejecuta en un intérprete dentro del entorno de ejecución de WebAssembly, por lo que el rendimiento de la CPU es limitado. En escenarios exigentes, la aplicación se beneficia de la [optimización de la velocidad de representación](#optimize-rendering-speed).
-* **Tiempo de inicio** : la aplicación transfiere un entorno de ejecución de .NET al explorador; por ello, es importante usar características que [minimizan el tamaño de descarga de la aplicación](#minimize-app-download-size).
+* **Rendimiento del entorno de ejecución**: el código de .NET se ejecuta en un intérprete dentro del entorno de ejecución de WebAssembly, por lo que el rendimiento de la CPU es limitado. En escenarios exigentes, la aplicación se beneficia de la [optimización de la velocidad de representación](#optimize-rendering-speed).
+* **Tiempo de inicio**: la aplicación transfiere un entorno de ejecución de .NET al explorador; por ello, es importante usar características que [minimizan el tamaño de descarga de la aplicación](#minimize-app-download-size).
 
 ## <a name="optimize-rendering-speed"></a>Optimización de la velocidad de representación
 
@@ -297,7 +297,7 @@ En el ejemplo anterior, `Data` es diferente para cada celda, pero `Options` es c
 
 El componente `<CascadingValue>` tiene un parámetro opcional denominado `IsFixed`.
 
- * Si el valor `IsFixed` es `false` (el valor predeterminado), cada destinatario del valor en cascada configura una suscripción para recibir notificaciones de los cambios. En este caso, cada `[CascadingParameter]` es **sustancialmente más caro** que un `[Parameter]` normal debido al seguimiento de las suscripciones.
+ * Si el valor `IsFixed` es `false` (el valor predeterminado), cada destinatario del valor en cascada configura una suscripción para recibir notificaciones de los cambios. En este caso, `[CascadingParameter]` es **sustancialmente más caro** que un `[Parameter]` normal debido al seguimiento de las suscripciones.
  * Si el valor `IsFixed` es `true` (por ejemplo, `<CascadingValue Value="@someValue" IsFixed="true">`), los destinatarios reciben el valor inicial, pero *no* configuran ninguna suscripción para recibir actualizaciones. En este caso, cada `[CascadingParameter]` es ligero y **no es más caro** que un `[Parameter]` normal.
 
 Por tanto, siempre que sea posible, debe usar `IsFixed="true"` en valores en cascada. Puede hacerlo cada vez que el valor proporcionado no cambie con el tiempo. En el patrón común en el que un componente pasa `this` como un valor en cascada, debe utilizar `IsFixed="true"`:

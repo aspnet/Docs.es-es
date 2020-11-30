@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/httpapi
-ms.openlocfilehash: 45e2a1a5e6a9f00294147db769454b78c5b866e5
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 64d18114e2fe9ee10edb902a98a281c3cd9f3393
+ms.sourcegitcommit: aa85f2911792a1e4783bcabf0da3b3e7e218f63a
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93059941"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95417583"
 ---
 # <a name="create-json-web-apis-from-grpc"></a>Creación de API web JSON desde gRPC
 
@@ -39,7 +39,7 @@ Por [James Newton-King](https://twitter.com/jamesnk)
 
 gRPC es una forma moderna de comunicarse entre aplicaciones. gRPC usa HTTP/2, streaming, Protobuf y contratos de mensaje para crear servicios en tiempo real de alto rendimiento.
 
-Una limitación de gRPC es que no se puede usar en todas las plataformas. Los exploradores no son totalmente compatibles con HTTP/2, por lo que REST y JSON son la manera principal de obtener datos en aplicaciones de explorador. Incluso con las ventajas que aporta gRPC, REST y JSON ocupan un lugar importante en las aplicaciones modernas. La compilación de API web JSON * **y** _ gRPC agrega una sobrecarga no deseada al desarrollo de aplicaciones.
+Una limitación de gRPC es que no se puede usar en todas las plataformas. Los exploradores no son totalmente compatibles con HTTP/2, por lo que REST y JSON son la manera principal de obtener datos en aplicaciones de explorador. Incluso con las ventajas que aporta gRPC, REST y JSON ocupan un lugar importante en las aplicaciones modernas. La compilación de API web JSON ***y** _ gRPC agrega una sobrecarga no deseada al desarrollo de aplicaciones.
 
 En este documento se explica cómo crear API web JSON con servicios gRPC.
 
@@ -137,7 +137,7 @@ Queremos valorar el interés que tienen los desarrolladores por la API HTTP de g
 
 La principal diferencia entre grpc-gateway y la API HTTP de gRPC es que grpc-gateway usa la generación de código para crear un servidor proxy inverso. El proxy inverso traslada las llamadas de RESTful a gRPC y, luego, las envía al servicio gRPC.
 
-Para obtener información sobre la instalación y el uso de grpc-gateway, consulte la [documentación de grpc-gateway](https://grpc-ecosystem.github.io/grpc-gateway/docs/usage.html).
+Para obtener información sobre la instalación y el uso de grpc-gateway, consulte el [archivo LÉAME de grpc-gateway](https://github.com/grpc-ecosystem/grpc-gateway/#grpc-gateway).
 
 ## <a name="additional-resources"></a>Recursos adicionales
 

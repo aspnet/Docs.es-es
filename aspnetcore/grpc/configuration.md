@@ -5,7 +5,7 @@ description: Obtenga información sobre cómo configurar gRPC para aplicaciones 
 monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
 ms.custom: mvc
-ms.date: 05/26/2020
+ms.date: 11/23/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/configuration
-ms.openlocfilehash: e0b782a254cafc440638ca77a3b9ac885dc3575e
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 617c042c628dc431391f39c2ecb2d2f9c9463fa5
+ms.sourcegitcommit: aa85f2911792a1e4783bcabf0da3b3e7e218f63a
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93059967"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95417596"
 ---
 # <a name="grpc-for-net-configuration"></a>Configuración gRPC para .NET
 
@@ -65,6 +65,7 @@ La configuración de cliente gRPC se establece en `GrpcChannelOptions`. En la ta
 | <span style="word-break:normal;word-wrap:normal">MaxReceiveMessageSize</span> | 4 MB | Tamaño máximo de mensaje en bytes que puede recibir el cliente. Si el cliente recibe un mensaje que supere este límite, se produce una excepción. Aumentar este valor permite que el cliente reciba mensajes de mayor tamaño, pero puede afectar negativamente al consumo de memoria. Cuando se establece en `null`, el tamaño del mensaje es ilimitado. |
 | Credenciales | `null` | Instancia de `ChannelCredentials`. Las credenciales se usan para agregar metadatos de autenticación a llamadas gRPC. |
 | CompressionProviders | gzip | Colección de proveedores de compresión usados para comprimir y descomprimir mensajes. Los proveedores personalizados de compresión se pueden crear y agregar a la colección. Los proveedores configurados de forma predeterminada admiten la compresión **gzip**. |
+| ThrowOperationCanceledOnCancellation | `false` | Si se establece en `true`, los clientes inician <xref:System.OperationCanceledException> cuando se cancela una llamada o se supera su fecha límite. |
 
 El código siguiente:
 

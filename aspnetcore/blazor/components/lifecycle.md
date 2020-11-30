@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/lifecycle
-ms.openlocfilehash: f435870e1e73fdb1296699ed62052b72b3b78abf
-ms.sourcegitcommit: e087b6a38e3d38625ebb567a973e75b4d79547b9
+ms.openlocfilehash: 8a2dc802a1d05ead7445e350e3aef0ce7dfb2bb8
+ms.sourcegitcommit: 8363e44f630fcc6433ccd2a85f7aa9567cd274ed
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94637722"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94981926"
 ---
 # <a name="aspnet-core-no-locblazor-lifecycle"></a>Ciclo de vida de ASP.NET Core Blazor
 
@@ -39,7 +39,7 @@ Eventos del ciclo de vida del componente:
 1. Si el componente se representa por primera vez en una solicitud:
    * Cree la instancia del componente.
    * Realice la inserción de propiedades. Ejecute [`SetParametersAsync`](#before-parameters-are-set) .
-   * Llame a [`OnInitialized{Async}`](#component-initialization-methods). Si se devuelve <xref:System.Threading.Tasks.Task>, se esperará <xref:System.Threading.Tasks.Task> y, a continuación, se representará el componente. Si no se devuelve <xref:System.Threading.Tasks.Task>, represente el componente.
+   * Llame a [`OnInitialized{Async}`](#component-initialization-methods). Si se devuelve <xref:System.Threading.Tasks.Task>, se esperará <xref:System.Threading.Tasks.Task> y se representará el componente. Si no se devuelve <xref:System.Threading.Tasks.Task>, se representa el componente.
 1. Llame a [`OnParametersSet{Async}`](#after-parameters-are-set) y represente el componente. Si `OnParametersSetAsync` devuelve <xref:System.Threading.Tasks.Task>, se esperará <xref:System.Threading.Tasks.Task> y, a continuación, se representará el componente.
 
 ![Eventos de ciclo de vida de componentes de un componente Razor en Blazor](lifecycle/_static/lifecycle1.png)

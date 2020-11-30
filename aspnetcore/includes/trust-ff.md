@@ -1,0 +1,1 @@
+Para obtener información sobre cómo confiar en el explorador Firefox, consulte [Error de certificado SEC_ERROR_INADEQUATE_KEY_USAGE de Firefox](xref:security/enforcing-ssl#trust-ff).

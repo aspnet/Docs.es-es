@@ -19,16 +19,19 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/aad-groups-roles
-ms.openlocfilehash: 680b44a705b66be0aab824487119cdb118b44d0f
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: ded70f028b3021574ba260838837d9b23abd72f1
+ms.sourcegitcommit: 8363e44f630fcc6433ccd2a85f7aa9567cd274ed
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93055313"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94981887"
 ---
 # <a name="azure-active-directory-aad-groups-administrator-roles-and-user-defined-roles"></a>Grupos, roles de administrador y roles definidos por el usuario de Azure Active Directory (AAD)
 
 Por [Luke Latham](https://github.com/guardrex) y [Javier Calvarro Nelson](https://github.com/javiercn)
+
+> [!NOTE]
+> Este artículo se aplica a las aplicaciones de ASP.NET Core de Blazor, versión 3.1, con Microsoft Identity v 1.0, y está programada su actualización a 5.0 con Identity v2.0. Para obtener más información, vea [Blazor WASM con grupos y roles de AAD/B2C (dotnet/AspNetCore.Docs #17683)](https://github.com/dotnet/AspNetCore.Docs/issues/17683).
 
 Azure Active Directory (AAD) proporciona diversos enfoques de autorización que se pueden combinar con ASP.NET Core Identity:
 
@@ -506,7 +509,7 @@ Además de autorizar a los usuarios de la aplicación WebAssembly del lado clien
 > [!NOTE]
 > Esta guía no incluye actualmente la autorización de usuarios en función de sus [roles definidos por el usuario de AAD](#user-defined-roles).
 
-En las instrucciones de esta sección se configura la aplicación de API de servidor como una [*aplicación de demonio*](/azure/active-directory/develop/scenario-daemon-overview) para la llamada de Microsoft Graph API. Este enfoque **no** :
+En las instrucciones de esta sección se configura la aplicación de API de servidor como una [*aplicación de demonio*](/azure/active-directory/develop/scenario-daemon-overview) para la llamada de Microsoft Graph API. Este enfoque **no**:
 
 * Requiere el ámbito `access_as_user`.
 * Accede a Graph API en nombre del usuario o cliente que realiza la solicitud de API.
@@ -515,7 +518,7 @@ La llamada a Graph API por parte de la aplicación de API de servidor solo requi
 
 ### <a name="azure-configuration"></a>Configuración de Azure
 
-* Confirme que al registro de aplicación *Server* se le proporciona ámbito de Graph API **Application** (no **Delegated** ) en `Directory.Read.All`, que es el nivel de acceso con menos privilegios de los grupos de seguridad. Confirme que se aplica consentimiento del administrador al ámbito después de realizar la asignación de ámbito.
+* Confirme que al registro de aplicación *Server* se le proporciona ámbito de Graph API **Application** (no **Delegated**) en `Directory.Read.All`, que es el nivel de acceso con menos privilegios de los grupos de seguridad. Confirme que se aplica consentimiento del administrador al ámbito después de realizar la asignación de ámbito.
 * Asigne un nuevo secreto de cliente a la aplicación *Server*. Fíjese en el secreto de la configuración de la aplicación de la sección [Configuración de la aplicación](#app-settings).
 
 ### <a name="app-settings"></a>Configuración de la aplicación
@@ -586,7 +589,7 @@ Por ejemplo:
 
 ### <a name="authorization-policies"></a>Directivas de autorización
 
-Cree [directivas de autorización](xref:security/authorization/policies) para los grupos de seguridad y los roles de administrador de AAD en el elemento `Startup.ConfigureServices` de la aplicación *Server* (`Startup.cs`) en función de los identificadores de objeto de grupo y de los [identificadores de objeto de rol de administrador de AAD](#aad-administrator-role-object-ids).
+Cree [directivas de autorización](xref:security/authorization/policies) para los grupos de seguridad y los roles de administrador de AAD en el elemento `Startup.ConfigureServices` de la aplicación *Server*(`Startup.cs`) en función de los identificadores de objeto de grupo y de los [identificadores de objeto de rol de administrador de AAD](#aad-administrator-role-object-ids).
 
 Por ejemplo, una directiva de rol de administrador de facturación de Azure tiene la siguiente configuración:
 
@@ -758,7 +761,7 @@ Agregue referencias de paquete a la aplicación *Server* para los paquetes sigui
 
 ### <a name="service-configuration"></a>Configuración del servicio
 
-En el método `Startup.ConfigureServices` de la aplicación *Server* , agregue lógica para realizar la llamada Graph API y establezca notificaciones `group` de usuario para los roles y grupos de seguridad del usuario.
+En el método `Startup.ConfigureServices` de la aplicación *Server*, agregue lógica para realizar la llamada Graph API y establezca notificaciones `group` de usuario para los roles y grupos de seguridad del usuario.
 
 > [!NOTE]
 > En el código de ejemplo de esta sección se usa el Biblioteca de autenticación de Active Directory (ADAL), que se basa en Microsoft Identity Platform v1.0.
