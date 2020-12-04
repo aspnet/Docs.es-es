@@ -19,12 +19,12 @@ no-loc:
 - SignalR
 - Models
 uid: tutorials/first-web-api
-ms.openlocfilehash: ab06f2d347d7f05e9c72a85e0c6e0fbc67fe48a7
-ms.sourcegitcommit: 202144092067ea81be1dbb229329518d781dbdfb
+ms.openlocfilehash: ccbfc27eb89e23938a69f0ab4cb306d6a4136889
+ms.sourcegitcommit: fe2e3174c34bee1e425c6e52dd8f663fe52b8756
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94550717"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96175057"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>Tutorial: Creación de una API web con ASP.NET Core
 
@@ -149,7 +149,7 @@ Presione Ctrl+F5 para ejecutarla sin el depurador.
   Visual Studio inicia lo siguiente:
 
 * El servidor web de IIS Express.
-* El explorador predeterminado, y navega hasta `https://localhost:<port>/https://localhost:5001/swagger/index.html`, donde `<port>` es un número de puerto elegido aleatoriamente.
+* El explorador predeterminado, y navega hasta `https://localhost:<port>/swagger/index.html`, donde `<port>` es un número de puerto elegido aleatoriamente.
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -174,7 +174,7 @@ Se abre la página de Swagger `/swagger/index.html`. Seleccione **GET** > **Try 
 -->
 Swagger se usa para generar una documentación útil y páginas de ayuda para API web. Este tutorial se centra en cómo crear una API web. Para obtener más información sobre Swagger, vea <xref:tutorials/web-api-help-pages-using-swagger>.
 
-Copie y pegue la **dirección URL de solicitud** en el explorador: `https://localhost:<port>/WeatherForecast`.
+Copie y pegue la **URL de solicitud** en el explorador: `https://localhost:<port>/WeatherForecast`.
 
 Se devuelve un JSON similar al siguiente:
 
@@ -270,10 +270,8 @@ El *contexto de base de datos* es la clase principal que coordina la funcionalid
 ### <a name="add-nuget-packages"></a>Adición de paquetes NuGet
 
 * En el menú **Herramientas**, seleccione **Administrador de paquetes NuGet > Administrar paquetes NuGet para la solución**.
-* Seleccione la pestaña **Examinar** y escriba **Microsoft.
-**EntityFrameworkCore.SqlServer** en el cuadro de búsqueda.
+* Seleccione la pestaña **Examinar** y escriba **Microsoft.EntityFrameworkCore.SqlServer** en el cuadro de búsqueda.
 <!-- https://github.com/dotnet/AspNetCore.Docs/issues/19782 Delete this line at RTM -->
-* Active la casilla **Incluir versión previa** para que la versión RC 5.0 esté disponible. 
 * Seleccione **Microsoft.EntityFrameworkCore.SqlServer** en el panel izquierdo.
 * Active la casilla **Proyecto** en el panel derecho y, después, seleccione **Instalar**.
 * Use las instrucciones anteriores para agregar el paquete NuGet **Microsoft.EntityFrameworkCore.InMemory**.
@@ -330,8 +328,8 @@ Ejecute los comandos siguientes:
 ```dotnetcli
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
 dotnet add package Microsoft.EntityFrameworkCore.Design
-dotnet tool install --global dotnet-aspnet-codegenerator
-dotnet tool update -g Dotnet-aspnet-codegenerator
+dotnet tool install -g dotnet-aspnet-codegenerator
+dotnet tool update -g dotnet-aspnet-codegenerator
 dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m TodoItem -dc TodoContext -outDir Controllers
 ```
 
@@ -536,7 +534,7 @@ Se puede usar un DTO para:
 
 Para mostrar el enfoque del DTO, actualice la clase `TodoItem` a fin de que incluya un campo secreto:
 
-[!code-csharp[](first-web-api/samples/5.x/TodoApiDTO/Models/TodoItem.cs?name=snippet&highlight=6)]
+[!code-csharp[](first-web-api/samples/5.x/TodoApiDTO/Models/TodoItem.cs?name=snippet&highlight=8)]
 
 El campo secreto debe ocultarse en esta aplicación, pero una aplicación administrativa podría decidir exponerlo.
 
@@ -1364,7 +1362,7 @@ El método `CreatedAtAction` realiza las acciones siguientes:
 
 * Compile el proyecto.
 * En Postman, establezca el método HTTP en `POST`.
-* Establezca el URI en `https://localhost:<port>/api/TodoItem`. Por ejemplo: `https://localhost:5001/api/TodoItem`.
+* Establezca el URI en `https://localhost:<port>/api/Todo`. Por ejemplo: `https://localhost:5001/api/Todo`.
 * Seleccione la pestaña **Cuerpo**.
 * Seleccione el botón de radio **Raw** (Sin formato).
 * Establezca el tipo en **JSON (application/json)** .

@@ -6,8 +6,6 @@ ms.author: riande
 ms.date: 09/15/2020
 no-loc:
 - Index
-- Create
-- Delete
 - appsettings.json
 - ASP.NET Core Identity
 - cookie
@@ -20,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/razor-pages-start
-ms.openlocfilehash: fa113a3e0a2a69fb4aa1318056dcfc6e261490f6
-ms.sourcegitcommit: 8b867c4cb0c3b39bbc4d2d87815610d2ef858ae7
+ms.openlocfilehash: 4b8bd9c886e615add6b0d3e372843a8ddb33ae18
+ms.sourcegitcommit: db0a6eb0be7bd7f22810a71fe9bf30e957fd116a
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "96025036"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96420050"
 ---
 # <a name="tutorial-get-started-with-no-locrazor-pages-in-aspnet-core"></a>Tutorial: Introducción a Razor Pages en ASP.NET Core
 
@@ -43,7 +41,7 @@ Al final de la serie, tendrá una aplicación que puede administrar una base de 
 En este tutorial ha:
 
 > [!div class="checklist"]
-> * Create una aplicación web de Razor Pages.
+> * Creará una aplicación web de Razor Pages.
 > * Ejecutar la aplicación.
 > * Examinar los archivos de proyecto.
 
@@ -67,28 +65,28 @@ Al final de este tutorial, tendrá una aplicación web de Razor Pages que mejora
 
 ---
 
-## <a name="no-loccreate-a-no-locrazor-pages-web-app"></a>Create una aplicación web de Razor Pages
+## <a name="create-a-no-locrazor-pages-web-app"></a>Creación de una aplicación web de Razor Pages
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-1. Inicie Visual Studio y seleccione **Create un proyecto**. Para más información, consulte [Create de un proyecto nuevo en Visual Studio](/visualstudio/ide/create-new-project).
+1. Inicie Visual Studio y seleccione **Crear un proyecto**. Para obtener más información, consulte [Creación de un proyecto en Visual Studio](/visualstudio/ide/create-new-project).
 
-   ![Create de un proyecto desde la ventana de inicio](razor-pages-start/_static/5/start-window-create-new-project.png)
+   ![Creación de un proyecto nuevo desde la ventana de inicio](razor-pages-start/_static/5/start-window-create-new-project.png)
 
-1. En el cuadro de diálogo **Create un proyecto nuevo**, seleccione **Aplicación web ASP.NET Core** y, a continuación, seleccione **Siguiente**.
+1. En el cuadro de diálogo **Crear un proyecto nuevo**, seleccione **Aplicación web ASP.NET Core** y, a continuación, seleccione **Siguiente**.
 
     ![Nueva aplicación web de ASP.NET Core](razor-pages-start/_static/5/np.png)
     
 1. En el cuadro de diálogo **Configurar su nuevo proyecto**, escriba `RazorPagesMovie` en **Nombre del proyecto**. Es importante asignarle el nombre *RazorPagesMovie* al proyecto (respetando mayúsculas y minúsculas) para que los espacios de nombres coincidan al copiar y pegar el código de ejemplo.
 
-1. Seleccione **Create**.
+1. Seleccione **Crear**.
 
     ![Nueva aplicación web de ASP.NET Core](razor-pages-start/_static/config.png)
 
-1. En el cuadro de diálogo **Create una aplicación web ASP.NET Core**, seleccione:
+1. En el cuadro de diálogo **Crear una aplicación web ASP.NET Core**, seleccione:
     1. **.NET Core** y **ASP.NET Core 5.0** en los menús desplegables.
     1. **Aplicación web**.
-    1. **Create**.
+    1. **Crear**.
 
      ![Nueva aplicación web de ASP.NET Core](razor-pages-start/_static/5/npx.png)
 
@@ -128,7 +126,7 @@ Al final de este tutorial, tendrá una aplicación web de Razor Pages que mejora
     1. Si se presenta una opción para seleccionar una **plataforma de destino**, seleccione la versión .NET 5.x más reciente.
     1. Seleccione **Siguiente**.
 
-1. Asigne al proyecto el nombre *RazorPagesMovie* y seleccione **Create** .
+1. Asigne al proyecto el nombre *RazorPagesMovie* y seleccione **Crear**.
 
     ![Nombre del proyecto en macOS](razor-pages-start/_static/RazorPagesMovie.png)
 
@@ -191,7 +189,7 @@ Al final de la serie, tendrá una aplicación que puede administrar una base de 
 En este tutorial ha:
 
 > [!div class="checklist"]
-> * Create una aplicación web de Razor Pages.
+> * Creará una aplicación web de Razor Pages.
 > * Ejecutar la aplicación.
 > * Examinar los archivos de proyecto.
 
@@ -215,17 +213,17 @@ Al final de este tutorial, tendrá una aplicación web de Razor Pages que compil
 
 ---
 
-## <a name="no-loccreate-a-no-locrazor-pages-web-app"></a>Create una aplicación web de Razor Pages
+## <a name="create-a-no-locrazor-pages-web-app"></a>Creación de una aplicación web de Razor Pages
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * En el menú **Archivo** de Visual Studio, seleccione **Nuevo** > **Proyecto**.
-* Create una nueva aplicación web de ASP.NET Core y seleccione **Siguiente**.
+* Cree una nueva aplicación web de ASP.NET Core y seleccione **Siguiente**.
   ![Nueva aplicación web de ASP.NET Core](razor-pages-start/_static/np_2.1.png)
 * Asigne al proyecto el nombre **RazorPagesMovie**. Es importante asignarle el nombre *RazorPagesMovie* al proyecto para que los espacios de nombres coincidan al copiar y pegar el código.
   ![Nueva aplicación web de ASP.NET Core](razor-pages-start/_static/config.png)
 
-* Seleccione **ASP.NET Core 3.1** en la lista desplegable, después **Aplicación web** y, por último, **Create** .
+* Seleccione **ASP.NET Core 3.1** en la lista desplegable, después **Aplicación web** y, por último, **Crear**.
 
 ![Nueva aplicación web de ASP.NET Core](razor-pages-start/_static/3/npx.png)
 
@@ -270,7 +268,7 @@ Al final de este tutorial, tendrá una aplicación web de Razor Pages que compil
 
   Seleccione **Siguiente**.
 
-* Asigne al proyecto el nombre **RazorPagesMovie** y, luego, seleccione **Create** .
+* Asigne al proyecto el nombre **RazorPagesMovie** y, luego, seleccione **Crear**.
 
   ![Nombre del proyecto en macOS](razor-pages-start/_static/RazorPagesMovie.png)
 
@@ -333,7 +331,7 @@ Al final de la serie, tendrá una aplicación que puede administrar una base de 
 En este tutorial ha:
 
 > [!div class="checklist"]
-> * Create una aplicación web de Razor Pages.
+> * Creará una aplicación web de Razor Pages.
 > * Ejecutar la aplicación.
 > * Examinar los archivos de proyecto.
 
@@ -357,13 +355,13 @@ Al final de este tutorial, tendrá una aplicación web de Razor Pages que compil
 
 ---
 
-## <a name="no-loccreate-a-no-locrazor-pages-web-app"></a>Create una aplicación web de Razor Pages
+## <a name="create-a-no-locrazor-pages-web-app"></a>Creación de una aplicación web de Razor Pages
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * En el menú **Archivo** de Visual Studio, seleccione **Nuevo** > **Proyecto**.
 
-* Create una nueva aplicación web de ASP.NET Core y seleccione **Siguiente**.
+* Cree una nueva aplicación web de ASP.NET Core y seleccione **Siguiente**.
 
   ![Nueva aplicación web de ASP.NET Core](razor-pages-start/_static/np_2.1.png)
 
@@ -371,7 +369,7 @@ Al final de este tutorial, tendrá una aplicación web de Razor Pages que compil
 
   ![Nueva aplicación web de ASP.NET Core](razor-pages-start/_static/config.png)
 
-* Seleccione **ASP.NET Core 2.2** en la lista desplegable, después **Aplicación web** y, por último, **Create** .
+* Seleccione **ASP.NET Core 2.2** en la lista desplegable, después **Aplicación web** y, por último, **Crear**.
 
 ![Nueva aplicación web de ASP.NET Core](razor-pages-start/_static/np_2_2.2.png)
 
@@ -414,7 +412,7 @@ Al final de este tutorial, tendrá una aplicación web de Razor Pages que compil
 
   Seleccione **Siguiente**.
 
-* Asigne al proyecto el nombre **RazorPagesMovie** y, luego, seleccione **Create** .
+* Asigne al proyecto el nombre **RazorPagesMovie** y, luego, seleccione **Crear**.
 
   ![nameproj](razor-pages-start/_static/RazorPagesMovie.png)
 

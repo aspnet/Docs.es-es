@@ -6,8 +6,6 @@ ms.author: riande
 ms.date: 09/20/2020
 no-loc:
 - Index
-- Create
-- Delete
 - appsettings.json
 - ASP.NET Core Identity
 - cookie
@@ -20,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/da1
-ms.openlocfilehash: 7146c1955a578502a63578de4f1abce932cb8b32
-ms.sourcegitcommit: 342588e10ae0054a6d6dc0fd11dae481006be099
+ms.openlocfilehash: 460950413d1dd2d3539c1d62b0eb11f6bb5144a9
+ms.sourcegitcommit: db0a6eb0be7bd7f22810a71fe9bf30e957fd116a
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94360613"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96419972"
 ---
 # <a name="part-5-update-the-generated-pages-in-an-aspnet-core-app"></a>Parte 5. Actualización de las páginas generadas en una aplicación de ASP.NET Core
 
@@ -55,7 +53,7 @@ Vaya a *Pages/Movies* y mantenga el mouse sobre un vínculo de **edición** para
 
 ![Ventana del explorador con el mouse sobre el vínculo Edit (Editar) donde se muestra una dirección URL de vínculo https://localhost:1234/Movies/Edit/5](~/tutorials/razor-pages/da1/edit7.png)
 
-Los vínculos **Edit** (Editar), **Details** (Detalles) y **Delete** (Eliminar) son generados por el [asistente de etiquetas de delimitador](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) del archivo *Pages/Movies/Index.cshtml*.
+Los vínculos de **edición**, **detalles** y **eliminación** se generan mediante el [Asistente de etiquetas delimitadoras](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) en el archivo *Pages/Movies/Index.cshtml*.
 
 [!code-cshtml[](~/tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Index.cshtml?highlight=16-18&range=32-)]
 
@@ -77,7 +75,7 @@ Use **Ver código fuente** en un explorador para examinar el marcado generado. A
 
 ### <a name="add-route-template"></a>Adición de la plantilla de ruta
 
-Actualice las páginas Edit (Editar), Details (Detalles) y Delete (Eliminar) de Razor Pages para usar la plantilla de ruta `{id:int}`. Cambie la directiva de página de cada una de estas páginas de `@page` a `@page "{id:int}"`. Ejecute la aplicación y luego vea el origen.
+Actualice las páginas de Razor Edit, Details y Delete para usar la plantilla de ruta `{id:int}`. Cambie la directiva de página de cada una de estas páginas de `@page` a `@page "{id:int}"`. Ejecute la aplicación y luego vea el origen.
 
 El HTML generado agrega el identificador a la parte de la ruta de acceso de la dirección URL:
 
@@ -117,7 +115,7 @@ Para probar el bloque `catch`:
 
 1. establezca un punto de interrupción en `catch (DbUpdateConcurrencyException)`.
 1. Seleccione **Editar** para una película y realice cambios, pero no seleccione **Guardar**.
-1. En otra ventana del explorador, seleccione el vínculo **Delete** (Eliminar) de la misma película y luego elimínela.
+1. En otra ventana del explorador, seleccione el vínculo de **eliminación** de la misma película y luego elimínela.
 1. En la ventana anterior del explorador, publique los cambios en la película.
 
 Es posible que el código de producción quiera detectar conflictos de simultaneidad. Vea [Administración de conflictos de simultaneidad](xref:data/ef-rp/concurrency) para más información.
@@ -146,7 +144,7 @@ Cuando se publica la página Movies/Edit:
 * Si hay errores en el estado del modelo (por ejemplo, `ReleaseDate` no se puede convertir en una fecha), el formulario se vuelve a mostrar con los valores enviados.
 * Si no hay ningún error en el modelo, se guarda la película.
 
-Los métodos HTTP GET de las páginas Index (Índice), Create (Crear) y Delete (Eliminar) de Razor Pages siguen un patrón similar. El método `OnPostAsync` HTTP POST de la página Create de Razor Pages sigue un patrón similar al del método `OnPostAsync` de la página de edición de Razor Pages.
+Los métodos GET HTTP de las páginas de Razor Index, Create y Delete siguen un patrón similar. El método `OnPostAsync` HTTP POST de la página de Razor Create sigue un patrón similar al del método `OnPostAsync` de la página de Razor Edit.
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
@@ -176,7 +174,7 @@ Vaya a Pages/Movies y mantenga el mouse sobre un vínculo de **edición** para v
 
 ![Ventana del explorador con el mouse sobre el vínculo Edit (Editar) donde se muestra una dirección URL de vínculo http://localhost:1234/Movies/Edit/5](~/tutorials/razor-pages/da1/edit7.png)
 
-Los vínculos **Edit** (Editar), **Details** (Detalles) y **Delete** (Eliminar) son generados por el [asistente de etiquetas de delimitador](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) del archivo *Pages/Movies/Index.cshtml*.
+Los vínculos de **edición**, **detalles** y **eliminación** se generan mediante el [Asistente de etiquetas delimitadoras](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) en el archivo *Pages/Movies/Index.cshtml*.
 
 [!code-cshtml[](~/tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Index.cshtml?highlight=16-18&range=32-)]
 
@@ -194,7 +192,7 @@ Use **Ver código fuente** en un explorador para examinar el marcado generado. A
 
 Los vínculos generados de forma dinámica pasan el identificador de la película con una cadena de consulta. Por ejemplo, `?id=1` en `https://localhost:5001/Movies/Details?id=1`.
 
-Actualice las páginas Edit (Editar), Details (Detalles) y Delete de Razor Pages para usar la plantilla de ruta "{id:int}". Cambie la directiva de página de cada una de estas páginas de `@page` a `@page "{id:int}"`. Ejecute la aplicación y luego vea el origen. El HTML generado agrega el identificador a la parte de la ruta de acceso de la dirección URL:
+Actualice las páginas de Razor Edit, Details y Delete para usar la plantilla de ruta "{id:int}". Cambie la directiva de página de cada una de estas páginas de `@page` a `@page "{id:int}"`. Ejecute la aplicación y luego vea el origen. El HTML generado agrega el identificador a la parte de la ruta de acceso de la dirección URL:
 
 ```html
 <td>
@@ -232,7 +230,7 @@ Para probar el bloque `catch`:
 
 * Establecer un punto de interrupción en `catch (DbUpdateConcurrencyException)`
 * Seleccione **Editar** para una película y realice cambios, pero no seleccione **Guardar**.
-* En otra ventana del explorador, seleccione el vínculo **Delete** (Eliminar) de la misma película y luego elimínela.
+* En otra ventana del explorador, seleccione el vínculo de **eliminación** de la misma película y luego elimínela.
 * En la ventana anterior del explorador, publique los cambios en la película.
 
 Es posible que el código de producción quiera detectar conflictos de simultaneidad. Vea [Administración de conflictos de simultaneidad](xref:data/ef-rp/concurrency) para más información.
@@ -261,7 +259,7 @@ Cuando se publica la página Movies/Edit:
 * Si hay errores en el estado del modelo (por ejemplo, `ReleaseDate` no se puede convertir en una fecha), el formulario se muestra con los valores enviados.
 * Si no hay ningún error en el modelo, se guarda la película.
 
-Los métodos HTTP GET de las páginas Index (Índice), Create (Crear) y Delete (Eliminar) de Razor Pages siguen un patrón similar. El método `OnPostAsync` HTTP POST de la página Create de Razor Pages sigue un patrón similar al del método `OnPostAsync` de la página de edición de Razor Pages.
+Los métodos GET HTTP de las páginas de Razor Index, Create y Delete siguen un patrón similar. El método `OnPostAsync` HTTP POST de la página de Razor Create sigue un patrón similar al del método `OnPostAsync` de la página de Razor Edit.
 
 La búsqueda se incluye en el tutorial siguiente.
 

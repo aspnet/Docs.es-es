@@ -7,8 +7,6 @@ ms.custom: mvc
 ms.date: 09/29/2020
 no-loc:
 - Index
-- Create
-- Delete
 - appsettings.json
 - ASP.NET Core Identity
 - cookie
@@ -21,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/validation
-ms.openlocfilehash: d69ab3452f4f15e916049e5c772a20fe9f9fac65
-ms.sourcegitcommit: 1ea3f23bec63e96ffc3a927992f30a5fc0de3ff9
+ms.openlocfilehash: f155922c9cb5ea7fdbad0963221ceddd19f4fe60
+ms.sourcegitcommit: db0a6eb0be7bd7f22810a71fe9bf30e957fd116a
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94570229"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96419959"
 ---
 # <a name="part-8-of-tutorial-series-on-no-locrazor-pages"></a>Parte 8 de la serie de tutoriales sobre Razor Pages.
 
@@ -85,7 +83,7 @@ La aplicación automática de las reglas de validación por parte de ASP.NET res
 
 Ejecute la aplicación y vaya a Pages/Movies.
 
-Seleccione el vínculo **Create nuevo**. Rellene el formulario con algunos valores no válidos. Cuando la validación de cliente de jQuery detecta el error, muestra un mensaje de error.
+Seleccione el vínculo **Crear nuevo**. Rellene el formulario con algunos valores no válidos. Cuando la validación de cliente de jQuery detecta el error, muestra un mensaje de error.
 
 ![Formulario de vista de película con varios errores de validación de cliente de jQuery](validation/_static/val.png)
 
@@ -93,11 +91,11 @@ Seleccione el vínculo **Create nuevo**. Rellene el formulario con algunos valor
 
 Observe cómo el formulario presenta automáticamente un mensaje de error de validación en cada campo que contiene un valor no válido. Los errores se aplican al cliente (con JavaScript y jQuery) y al servidor (cuando un usuario tiene JavaScript deshabilitado).
 
-Una ventaja importante es que **no** se han necesitado cambios de código en las páginas Create o de edición. Una vez que se han aplicado al modelo las anotaciones de datos, la interfaz de usuario de validación se ha habilitado. Las instancias de Razor Pages creadas en este tutorial han obtenido automáticamente las reglas de validación (por medio de atributos de validación en las propiedades de la clase del modelo `Movie`). Al probar la validación en la página de edición, se aplica la misma validación.
+Una ventaja importante es que **no** se han necesitado cambios de código en las páginas de creación o edición. Una vez que se han aplicado al modelo las anotaciones de datos, la interfaz de usuario de validación se ha habilitado. Las instancias de Razor Pages creadas en este tutorial han obtenido automáticamente las reglas de validación (por medio de atributos de validación en las propiedades de la clase del modelo `Movie`). Al probar la validación en la página de edición, se aplica la misma validación.
 
 Los datos del formulario no se publicarán en el servidor hasta que dejen de producirse errores de validación de cliente. Compruebe que los datos del formulario no se publican mediante uno o varios de los métodos siguientes:
 
-* Coloque un punto de interrupción en el método `OnPostAsync`. Envíe el formulario seleccionando **Create** o **guarde**. El punto de interrupción nunca se alcanza.
+* Coloque un punto de interrupción en el método `OnPostAsync`. Para enviar el formulario, seleccione **Crear** o **Guardar**. El punto de interrupción nunca se alcanza.
 * Use la [herramienta Fiddler](https://www.telerik.com/fiddler).
 * Use las herramientas de desarrollo del explorador para supervisar el tráfico de red.
 
@@ -108,7 +106,7 @@ Cuando JavaScript está deshabilitado en el explorador, si se envía el formular
 Validación de servidor de prueba opcional:
 
 1. Deshabilite JavaScript en el explorador. JavaScript se puede deshabilitar con las herramientas de desarrollo del explorador. Si no se puede deshabilitar JavaScript en el explorador, pruebe con otro explorador.
-1. Establezca un punto de interrupción en el método `OnPostAsync` de la página Create o de edición.
+1. Establezca un punto de interrupción en el método `OnPostAsync` de la página de creación o edición.
 1. Envíe un formulario con datos no válidos.
 1. Compruebe que el estado del modelo no es válido:
 
@@ -121,16 +119,16 @@ Validación de servidor de prueba opcional:
   
 Como alternativa, [deshabilite la validación del lado cliente en el servidor](xref:mvc/models/validation#disable-client-side-validation).
 
-El código siguiente muestra una parte de la página *Create.cshtml* a la que se aplicó scaffolding anteriormente en el tutorial. Lo usan las páginas Create y de edición para:
+El código siguiente muestra una parte de la página *Create.cshtml* a la que se aplicó scaffolding anteriormente en el tutorial. Lo usan las páginas de creación y edición para lo siguiente:
 
 * Mostrar el formulario inicial.
 * Volver a mostrar el formulario en caso de error.
 
 [!code-cshtml[](razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Create.cshtml?range=14-20)]
 
-El [asistente de etiquetas de entrada](xref:mvc/views/working-with-forms) usa los atributos [DataAnnotations](/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) y genera los atributos HTML necesarios para la validación de jQuery en el cliente. El [asistente de etiquetas de validación](xref:mvc/views/working-with-forms#the-validation-tag-helpers) muestra errores de validación. Para más información, vea [Introduction to model validation in ASP.NET Core MVC](xref:mvc/models/validation) (Introducción a la validación de modelos en ASP.NET Core MVC).
+El [asistente de etiquetas de entrada](xref:mvc/views/working-with-forms) usa los atributos [DataAnnotations](/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) y genera los atributos HTML necesarios para la validación de jQuery en el cliente. El [asistente de etiquetas de validación](xref:mvc/views/working-with-forms#the-validation-tag-helpers) muestra errores de validación. Para más información, vea [Validación](xref:mvc/models/validation).
 
-Las páginas Create y de edición no tienen ninguna regla de validación. Las reglas de validación y las cadenas de error solo se especifican en la clase `Movie`. Estas reglas de validación se aplican automáticamente a las instancias de Razor Pages que editan el modelo `Movie`.
+Las páginas de creación y edición no tienen ninguna regla de validación. Las reglas de validación y las cadenas de error solo se especifican en la clase `Movie`. Estas reglas de validación se aplican automáticamente a las instancias de Razor Pages que editan el modelo `Movie`.
 
 Cuando es necesario modificar la lógica de validación, se hace únicamente en el modelo. La validación se aplica de forma coherente en toda la aplicación (la lógica de validación se define en un solo lugar). La validación en un solo lugar ayuda a mantener limpio el código y facilita su mantenimiento y actualización.
 

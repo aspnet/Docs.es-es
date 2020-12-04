@@ -6,8 +6,6 @@ ms.author: riande
 ms.date: 11/11/2020
 no-loc:
 - Index
-- Create
-- Delete
 - appsettings.json
 - ASP.NET Core Identity
 - cookie
@@ -20,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/model
-ms.openlocfilehash: 6244ac8798fb470a88802389961968fb52bd3c0a
-ms.sourcegitcommit: 202144092067ea81be1dbb229329518d781dbdfb
+ms.openlocfilehash: b2e840e20d034b42b2dc4a525b1dd76e44bbe3a8
+ms.sourcegitcommit: db0a6eb0be7bd7f22810a71fe9bf30e957fd116a
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94550699"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96420063"
 ---
 # <a name="part-2-add-a-model-to-a-no-locrazor-pages-app-in-aspnet-core"></a>Parte 2. Adición de un modelo a una aplicación de Razor Pages en ASP.NET Core
 
@@ -143,11 +141,11 @@ Compile el proyecto para comprobar que no haya errores de compilación.
 
 ## <a name="scaffold-the-movie-model"></a>Aplicar scaffolding al modelo de película
 
-En esta sección se aplica scaffolding al modelo de película; es decir, la herramienta de scaffolding genera páginas para las operaciones de Create, lectura, actualización y Delete (CRUD) del modelo de película.
+En esta sección se aplica scaffolding al modelo de película; es decir, la herramienta de scaffolding genera páginas para las operaciones de creación, lectura, actualización y eliminación (CRUD) del modelo de película.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-1. Create una carpeta *Pages/Movies*:
+1. Cree una carpeta *Pages/Movies*:
    1. Haga clic con el botón derecho en la carpeta *Pages* > **Agregar** > **Nueva carpeta**.
    1. Asigne a la carpeta el nombre *Movies*.
 
@@ -196,7 +194,7 @@ El archivo *appsettings.json* se actualiza con la cadena de conexión que se usa
 | `-dc`  | La clase `DbContext` que se va a usar. |
 | `-udl` | Usa el diseño predeterminado. |
 | `-outDir` | Ruta de acceso relativa de la carpeta de salida para crear las vistas |
-| `--referenceScriptLibraries` | Agrega `_ValidationScriptsPartial` a las páginas Editar y Create. |
+| `--referenceScriptLibraries` | Agrega `_ValidationScriptsPartial` a las páginas Editar y Crear. |
 
 Use la opción `-h` para obtener ayuda sobre el comando `aspnet-codegenerator razorpage`:
 
@@ -214,7 +212,7 @@ Cuando se selecciona SQLite, el código generado por la plantilla está listo pa
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)
 
-1. Create una carpeta *Pages/Movies*:
+1. Cree una carpeta *Pages/Movies*:
    1. Mientras mantiene presionado Ctrl, haga clic en la carpeta *Pages* > **Agregar** > **Nueva carpeta**.
    1. Asigne a la carpeta el nombre *Movies*.
 
@@ -282,11 +280,11 @@ Los archivos creados y actualizados se explican en la sección siguiente.
 
 <a name="pmc"></a>
 
-## <a name="no-loccreate-the-initial-database-schema-using-efs-migration-feature"></a>Create el esquema de base de datos inicial con la característica de migración de EF
+## <a name="create-the-initial-database-schema-using-efs-migration-feature"></a>Creación del esquema de la base de datos inicial mediante la característica de migración de EF
 
 La característica de migraciones de Entity Framework Core permite:
 
-* Create el esquema de base de datos inicial.
+* Cree el esquema de la base de datos inicial.
 * Actualizar incrementalmente el esquema de base de datos para mantenerlo sincronizado con el modelo de datos de la aplicación.  Se conservan los datos existentes en la base de datos.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
@@ -340,7 +338,7 @@ Examine el método `Startup.ConfigureServices`. El proveedor de scaffolding ha a
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Startup.cs?name=snippet_ConfigureServices&highlight=5-6)]
 
-El elemento `RazorPagesMovieContext` coordina la funcionalidad de EF Core. como Create, Read, Update y Delete, para el modelo `Movie`. El contexto de datos (`RazorPagesMovieContext`) se deriva de [Microsoft.EntityFrameworkCore.DbContext](xref:Microsoft.EntityFrameworkCore.DbContext). En el contexto de datos se especifica qué entidades se incluyen en el modelo de datos.
+`RazorPagesMovieContext` coordina la funcionalidad de EF Core, como la creación, lectura, actualización y eliminación, del modelo `Movie`. El contexto de datos (`RazorPagesMovieContext`) se deriva de [Microsoft.EntityFrameworkCore.DbContext](xref:Microsoft.EntityFrameworkCore.DbContext). En el contexto de datos se especifica qué entidades se incluyen en el modelo de datos.
 
 [!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie50/Data/RazorPagesMovieContext.cs)]
 
@@ -369,14 +367,14 @@ Examine el método `Up`.
 
    Quiere decir que falta el [paso de migraciones](#pmc).
 
-1. Pruebe el vínculo **Create** .
+1. Pruebe el vínculo **Crear**.
 
-   ![Página Create](model/_static/conan5.png)
+   ![Página Crear](model/_static/conan5.png)
 
    > [!NOTE]
    > Es posible que no pueda escribir comas decimales en el campo `Price`. La aplicación debe globalizarse para que la [validación de jQuery](https://jqueryvalidation.org/) sea compatible con configuraciones regionales distintas del inglés que usan una coma (",") en lugar de un punto decimal y formatos de fecha distintos del de Estados Unidos. Para obtener instrucciones sobre la globalización, consulte [esta cuestión en GitHub](https://github.com/dotnet/AspNetCore.Docs/issues/4076#issuecomment-326590420).
 
-1. Pruebe los vínculos **Edit**, **Details** y **Delete** .
+1. Pruebe los vínculos **Editar**, **Detalles** y **Eliminar**.
 
 En el tutorial siguiente se explican los archivos creados mediante scaffolding.
 
@@ -509,11 +507,11 @@ Compile el proyecto para comprobar que no haya errores de compilación.
 
 ## <a name="scaffold-the-movie-model"></a>Aplicar scaffolding al modelo de película
 
-En esta sección se aplica scaffolding al modelo de película; es decir, la herramienta de scaffolding genera páginas para las operaciones de Create, lectura, actualización y Delete (CRUD) del modelo de película.
+En esta sección se aplica scaffolding al modelo de película; es decir, la herramienta de scaffolding genera páginas para las operaciones de creación, lectura, actualización y eliminación (CRUD) del modelo de película.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-Create una carpeta *Pages/Movies*:
+Cree una carpeta *Pages/Movies*:
 
 * Haga clic con el botón derecho en la carpeta *Pages* > **Agregar** > **Nueva carpeta**.
 * Asigne a la carpeta el nombre *Movies*.
@@ -563,7 +561,7 @@ El archivo *appsettings.json* se actualiza con la cadena de conexión que se usa
 | `-dc`  | La clase `DbContext` que se va a usar. |
 | `-udl` | Usa el diseño predeterminado. |
 | `-outDir` | Ruta de acceso relativa de la carpeta de salida para crear las vistas |
-| `--referenceScriptLibraries` | Agrega `_ValidationScriptsPartial` a las páginas Editar y Create. |
+| `--referenceScriptLibraries` | Agrega `_ValidationScriptsPartial` a las páginas Editar y Crear. |
 
 Use la opción `-h` para obtener ayuda sobre el comando `aspnet-codegenerator razorpage`:
 
@@ -581,7 +579,7 @@ Cuando se selecciona SQLite, el código generado por la plantilla está listo pa
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)
 
-Create una carpeta *Pages/Movies*:
+Cree una carpeta *Pages/Movies*:
 
 * Haga clic con el botón derecho en la carpeta *Pages* > **Agregar** > **Nueva carpeta**.
 * Asigne a la carpeta el nombre *Movies*.
@@ -701,7 +699,7 @@ Ignore la advertencia, ya que se tratará en un paso posterior.
 
 El comando migrations genera código para crear el esquema de base de datos inicial. El esquema se basa en el modelo especificado en `DbContext`. El argumento `InitialCreate` se usa para asignar nombre a las migraciones. Se puede usar cualquier nombre, pero, por convención, se selecciona uno que describa la migración.
 
-El comando `update` ejecuta el método `Up` en las migraciones que no se han aplicado. En este caso, `update` ejecuta el método `Up` en el archivo *Migrations/\<time-stamp>_InitialCreate.cs*, que crea la base de datos.
+El comando `update` ejecuta el método `Up` en las migraciones que no se han aplicado. En este caso, `update` ejecuta el método `Up` en *Migrations/\<time-stamp>_InitialCreate.cs*, que crea la base de datos.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -715,7 +713,7 @@ Examine el método `Startup.ConfigureServices`. El proveedor de scaffolding ha a
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Startup.cs?name=snippet_ConfigureServices&highlight=5-6)]
 
-El elemento `RazorPagesMovieContext` coordina la funcionalidad de EF Core. como Create, Read, Update y Delete, para el modelo `Movie`. El contexto de datos (`RazorPagesMovieContext`) se deriva de [Microsoft.EntityFrameworkCore.DbContext](xref:Microsoft.EntityFrameworkCore.DbContext). En el contexto de datos se especifica qué entidades se incluyen en el modelo de datos.
+`RazorPagesMovieContext` coordina la funcionalidad de EF Core, como la creación, lectura, actualización y eliminación, del modelo `Movie`. El contexto de datos (`RazorPagesMovieContext`) se deriva de [Microsoft.EntityFrameworkCore.DbContext](xref:Microsoft.EntityFrameworkCore.DbContext). En el contexto de datos se especifica qué entidades se incluyen en el modelo de datos.
 
 [!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Data/RazorPagesMovieContext.cs)]
 
@@ -744,14 +742,14 @@ Login failed for user 'User-name'.
 
 Quiere decir que falta el [paso de migraciones](#pmc).
 
-* Pruebe el vínculo **Create** .
+* Pruebe el vínculo **Crear**.
 
-  ![Página Create](model/_static/conan5.png)
+  ![Página Crear](model/_static/conan5.png)
 
   > [!NOTE]
   > Es posible que no pueda escribir comas decimales en el campo `Price`. La aplicación debe globalizarse para que la [validación de jQuery](https://jqueryvalidation.org/) sea compatible con configuraciones regionales distintas del inglés que usan una coma (",") en lugar de un punto decimal y formatos de fecha distintos del de Estados Unidos. Para obtener instrucciones sobre la globalización, consulte [esta cuestión en GitHub](https://github.com/dotnet/AspNetCore.Docs/issues/4076#issuecomment-326590420).
 
-* Pruebe los vínculos **Edit**, **Details** y **Delete** .
+* Pruebe los vínculos **Editar**, **Detalles** y **Eliminar**.
 
 En el tutorial siguiente se explican los archivos creados mediante scaffolding.
 
@@ -895,11 +893,11 @@ Compile el proyecto para comprobar que no haya errores de compilación.
 
 ## <a name="scaffold-the-movie-model"></a>Aplicar scaffolding al modelo de película
 
-En esta sección se aplica scaffolding al modelo de película; es decir, la herramienta de scaffolding genera páginas para las operaciones de Create, lectura, actualización y Delete (CRUD) del modelo de película.
+En esta sección se aplica scaffolding al modelo de película; es decir, la herramienta de scaffolding genera páginas para las operaciones de creación, lectura, actualización y eliminación (CRUD) del modelo de película.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-Create una carpeta *Pages/Movies*:
+Cree una carpeta *Pages/Movies*:
 
 * Haga clic con el botón derecho en la carpeta *Pages* > **Agregar** > **Nueva carpeta**.
 * Asigne a la carpeta el nombre *Movies*.
@@ -953,7 +951,7 @@ El archivo *appsettings.json* se actualiza con la cadena de conexión que se usa
 | `-dc`  | La clase `DbContext` que se va a usar. |
 | `-udl` | Usa el diseño predeterminado. |
 | `-outDir` | Ruta de acceso relativa de la carpeta de salida para crear las vistas |
-| `--referenceScriptLibraries` | Agrega `_ValidationScriptsPartial` a las páginas Editar y Create. |
+| `--referenceScriptLibraries` | Agrega `_ValidationScriptsPartial` a las páginas Editar y Crear. |
 
 Use la opción `-h` para obtener ayuda sobre el comando `aspnet-codegenerator razorpage`:
 
@@ -965,7 +963,7 @@ Para más información, vea [dotnet-aspnet-codegenerator](xref:fundamentals/tool
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)
 
-Create una carpeta *Pages/Movies*:
+Cree una carpeta *Pages/Movies*:
 
 * Mientras mantiene presionado Ctrl, haga clic en la carpeta *Pages* > **Agregar** > **Nueva carpeta**.
 * Asigne a la carpeta el nombre *Movies*.
@@ -1058,7 +1056,7 @@ Examine el método `Startup.ConfigureServices`. El proveedor de scaffolding ha a
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie22/Startup.cs?name=snippet_ConfigureServices&highlight=15-18)]
 
-El elemento `RazorPagesMovieContext` coordina la funcionalidad de EF Core. como Create, Read, Update y Delete, para el modelo `Movie`. El contexto de datos (`RazorPagesMovieContext`) se deriva de [Microsoft.EntityFrameworkCore.DbContext](xref:Microsoft.EntityFrameworkCore.DbContext). En el contexto de datos se especifica qué entidades se incluyen en el modelo de datos.
+`RazorPagesMovieContext` coordina la funcionalidad de EF Core, como la creación, lectura, actualización y eliminación, del modelo `Movie`. El contexto de datos (`RazorPagesMovieContext`) se deriva de [Microsoft.EntityFrameworkCore.DbContext](xref:Microsoft.EntityFrameworkCore.DbContext). En el contexto de datos se especifica qué entidades se incluyen en el modelo de datos.
 
 [!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Data/RazorPagesMovieContext.cs)]
 
@@ -1087,14 +1085,14 @@ Login failed for user 'User-name'.
 
 Quiere decir que falta el [paso de migraciones](#pmc).
 
-* Pruebe el vínculo **Create** .
+* Pruebe el vínculo **Crear**.
 
-  ![Página Create](model/_static/conan.png)
+  ![Página Crear](model/_static/conan.png)
 
   > [!NOTE]
   > Es posible que no pueda escribir comas decimales en el campo `Price`. La aplicación debe globalizarse para que la [validación de jQuery](https://jqueryvalidation.org/) sea compatible con configuraciones regionales distintas del inglés que usan una coma (",") en lugar de un punto decimal y formatos de fecha distintos del de Estados Unidos. Para obtener instrucciones sobre la globalización, consulte [esta cuestión en GitHub](https://github.com/dotnet/AspNetCore.Docs/issues/4076#issuecomment-326590420).
 
-* Pruebe los vínculos **Edit**, **Details** y **Delete** .
+* Pruebe los vínculos **Editar**, **Detalles** y **Eliminar**.
 
 En el tutorial siguiente se explican los archivos creados mediante scaffolding.
 

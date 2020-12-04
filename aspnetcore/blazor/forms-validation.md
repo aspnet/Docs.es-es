@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/forms-validation
-ms.openlocfilehash: a8bbcbd6ac13ec064350a5b885423835baa4c4cc
-ms.sourcegitcommit: 59d95a9106301d5ec5c9f612600903a69c4580ef
+ms.openlocfilehash: 979e2615080a4f07b6091f0498fc7efa62ea1563
+ms.sourcegitcommit: 43a540e703b9096921de27abc6b66bc0783fe905
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95870378"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96320075"
 ---
 # <a name="aspnet-core-no-locblazor-forms-and-validation"></a>Formularios y validación de Blazor de ASP.NET Core
 
@@ -729,20 +729,15 @@ En el proyecto de cliente, el formulario *Starfleet Starship Database* se actual
 
 Use el componente <xref:Microsoft.AspNetCore.Components.Forms.InputText> para crear un componente personalizado que usa el evento `input` en lugar del evento `change`.
 
-En el siguiente ejemplo, el componente `CustomInputText` hereda el componente `InputText` del marco y establece el enlace de eventos (<xref:Microsoft.AspNetCore.Components.EventCallbackFactoryBinderExtensions.CreateBinder%2A>) en el evento `oninput`.
+En el ejemplo siguiente, el componente `CustomInputText` hereda el componente `InputText` del marco y establece el enlace de los eventos en el evento `oninput`.
 
 `Shared/CustomInputText.razor`:
 
 ```razor
 @inherits InputText
 
-<input 
-    @attributes="AdditionalAttributes" 
-    class="@CssClass" 
-    value="@CurrentValue"
-    @oninput="EventCallback.Factory.CreateBinder<string>(
-         this, __value => CurrentValueAsString = __value, 
-         CurrentValueAsString)" />
+<input @attributes="AdditionalAttributes" class="@CssClass" 
+    @bind="CurrentValueAsString" @bind:event="oninput" />
 ```
 
 El componente `CustomInputText` se puede usar en cualquier lugar donde <xref:Microsoft.AspNetCore.Components.Forms.InputText> se use:

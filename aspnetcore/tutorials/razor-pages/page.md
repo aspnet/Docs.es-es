@@ -6,8 +6,6 @@ ms.author: riande
 ms.date: 09/25/2020
 no-loc:
 - Index
-- Create
-- Delete
 - appsettings.json
 - ASP.NET Core Identity
 - cookie
@@ -20,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/page
-ms.openlocfilehash: d655be26a794f87a0be07046ae1d6415256d592c
-ms.sourcegitcommit: aa85f2911792a1e4783bcabf0da3b3e7e218f63a
+ms.openlocfilehash: 4a5369b9e40de89ac9a1895466e7bdd7afb9d32e
+ms.sourcegitcommit: db0a6eb0be7bd7f22810a71fe9bf30e957fd116a
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95417635"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96420037"
 ---
 # <a name="part-3-scaffolded-no-locrazor-pages-in-aspnet-core"></a>Parte 3. Razor Pages con scaffolding en ASP.NET Core
 
@@ -47,7 +45,7 @@ En este tutorial se examinan las instancias de Razor Pages creadas con la técni
 
 ::: moniker range=">= aspnetcore-3.0"
 
-## <a name="the-no-loccreate-no-locdelete-details-and-edit-pages"></a>Páginas Create, Delete, de detalles y de edición
+## <a name="the-create-delete-details-and-edit-pages"></a>Páginas de creación, eliminación, detalles y edición
 
 Examine el modelo de página *Pages/Movies/Index.cshtml.cs*:
 
@@ -151,7 +149,7 @@ La línea `@*Markup removed for brevity.*@` es un comentario de Razor. A diferen
 
 1. Guarde los cambios y pruebe la aplicación seleccionando el vínculo **RpMovie** (Película de RP). Si tiene cualquier problema, consulte el archivo [_Layout.cshtml](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Pages/Shared/_Layout.cshtml) en GitHub.
 
-1. Pruebe los vínculos **Home** (Inicio), **RpMovie** (Película de RP), **Create** , **Edit** (Editar) y **Delete** . Cada página establece el título, que puede ver en la pestaña del explorador. Al marcar una página, se usa el título para el marcador.
+1. Pruebe los vínculos de **inicio**, **creación**, **edición**, **eliminación** y **RpMovie**. Cada página establece el título, que puede ver en la pestaña del explorador. Al marcar una página, se usa el título para el marcador.
 
 > [!NOTE]
 > Es posible que no pueda escribir comas decimales en el campo `Price`. Para que la [validación de jQuery](https://jqueryvalidation.org/) sea compatible con configuraciones regionales distintas del inglés que usan una coma (",") en lugar de un punto decimal y formatos de fecha distintos del de Estados Unidos, debe seguir unos pasos para globalizar la aplicación. Consulte este [problema 4076 de GitHub](https://github.com/dotnet/AspNetCore.Docs/issues/4076#issuecomment-326590420) para instrucciones sobre cómo agregar la coma decimal.
@@ -162,15 +160,15 @@ La propiedad `Layout` se establece en el archivo *Pages/_ViewStart.cshtml*:
 
 El marcado anterior establece el archivo de diseño de todos los archivos de Razor de la carpeta *Pages* en *Pages/Shared/_Layout.cshtml*. Vea [Layout](xref:razor-pages/index#layout) (Diseño) para más información.
 
-### <a name="the-no-loccreate-page-model"></a>Modelo de página Create
+### <a name="the-create-page-model"></a>Modelo de página Crear
 
 Examine el modelo de página *Pages/Movies/Create.cshtml.cs*:
 
 [!code-csharp[](razor-pages-start/snapshot_sample3/RazorPagesMovie30/Pages/Movies/Create.cshtml.cs?name=snippetALL)]
 
-El método `OnGet` inicializa cualquier estado necesario para la página. La página `Page` no tiene ningún estado que inicializar, de modo que se devuelve Create. Más adelante en el tutorial se muestra un ejemplo del estado de inicialización de `OnGet`. El método `Page` crea un objeto `PageResult` que representa la página *Create.cshtml*.
+El método `OnGet` inicializa cualquier estado necesario para la página. La página Crear no tiene ningún estado que inicializar, de modo que se devuelve `Page`. Más adelante en el tutorial se muestra un ejemplo del estado de inicialización de `OnGet`. El método `Page` crea un objeto `PageResult` que representa la página *Create.cshtml*.
 
-La propiedad `Movie` usa el atributo [[BindProperty]](xref:Microsoft.AspNetCore.Mvc.BindPropertyAttribute) para participar en el [enlace de modelos](xref:mvc/models/model-binding). Cuando el formulario de `Movie` publica los valores del formulario, el tiempo de ejecución de ASP.NET Core enlaza los valores publicados con el modelo Create.
+La propiedad `Movie` usa el atributo [[BindProperty]](xref:Microsoft.AspNetCore.Mvc.BindPropertyAttribute) para participar en el [enlace de modelos](xref:mvc/models/model-binding). Cuando el formulario de creación publica los valores del formulario, el tiempo de ejecución de ASP.NET Core enlaza los valores publicados con el modelo `Movie`.
 
 El método `OnPostAsync` se ejecuta cuando la página publica los datos del formulario:
 
@@ -183,7 +181,7 @@ Si no hay ningún error de modelo:
 * Los datos se guardan.
 * El explorador se redirige a la página Index.
 
-### <a name="the-no-loccreate-no-locrazor-page"></a>La página Create de una instancia de Razor Pages
+### <a name="the-create-no-locrazor-page"></a>La página de creación de instancias de Razor Pages
 
 Examine el archivo de instancia de Razor Pages *Pages/Movies/Create.cshtml*:
 
@@ -237,7 +235,7 @@ Para obtener más información sobre los asistentes de etiquetas como `<form met
 
 ::: moniker range="< aspnetcore-3.0"
 
-## <a name="the-no-loccreate-no-locdelete-details-and-edit-pages"></a>Páginas Create, Delete, de detalles y de edición
+## <a name="the-create-delete-details-and-edit-pages"></a>Páginas de creación, eliminación, detalles y edición
 
 Examine el modelo de página *Pages/Movies/Index.cshtml.cs*:
 
@@ -326,7 +324,7 @@ El elemento delimitador anterior es un [asistente de etiquetas](xref:mvc/views/t
 
 Guarde los cambios y pruebe la aplicación haciendo clic en el vínculo **RpMovie**. Si tiene cualquier problema, consulte el archivo [_Layout.cshtml](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Pages/Shared/_Layout.cshtml) en GitHub.
 
-Pruebe los otros vínculos **Home** (Inicio), **RpMovie** (Película de RP), **Create** , **Edit** (Editar) y **Delete** . Cada página establece el título, que puede ver en la pestaña del explorador. Al marcar una página, se usa el título para el marcador.
+Pruebe los otros vínculos (**Inicio**, **RpMovie**, **Crear**, **Editar** y **Eliminar**). Cada página establece el título, que puede ver en la pestaña del explorador. Al marcar una página, se usa el título para el marcador.
 
 > [!NOTE]
 > Es posible que no pueda escribir comas decimales en el campo `Price`. Para que la [validación de jQuery](https://jqueryvalidation.org/) sea compatible con configuraciones regionales distintas del inglés que usan una coma (",") en lugar de un punto decimal y formatos de fecha distintos del de Estados Unidos, debe seguir unos pasos para globalizar la aplicación. Consulte el [problema 4076 de GitHub](https://github.com/dotnet/AspNetCore.Docs/issues/4076#issuecomment-326590420) para obtener instrucciones sobre cómo agregar la coma decimal.
@@ -337,15 +335,15 @@ La propiedad `Layout` se establece en el archivo *Pages/_ViewStart.cshtml*:
 
 El marcado anterior establece el archivo de diseño de todos los archivos de Razor de la carpeta *Pages* en *Pages/Shared/_Layout.cshtml*. Vea [Layout](xref:razor-pages/index#layout) (Diseño) para más información.
 
-### <a name="the-no-loccreate-page-model"></a>Modelo de página Create
+### <a name="the-create-page-model"></a>Modelo de página Crear
 
 Examine el modelo de página *Pages/Movies/Create.cshtml.cs*:
 
 [!code-csharp[](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Create.cshtml.cs?name=snippetALL)]
 
-El método `OnGet` inicializa cualquier estado necesario para la página. La página `Page` no tiene ningún estado que inicializar, de modo que se devuelve Create. Más adelante en el tutorial veremos el estado de inicialización del método `OnGet`. El método `Page` crea un objeto `PageResult` que representa la página *Create.cshtml*.
+El método `OnGet` inicializa cualquier estado necesario para la página. La página Crear no tiene ningún estado que inicializar, de modo que se devuelve `Page`. Más adelante en el tutorial veremos el estado de inicialización del método `OnGet`. El método `Page` crea un objeto `PageResult` que representa la página *Create.cshtml*.
 
-La propiedad `Movie` usa el atributo [[BindProperty]]<xref:Microsoft.AspNetCore.Mvc.BindPropertyAttribute> para participar en el [enlace de modelos](xref:mvc/models/model-binding). Cuando el formulario de `Movie` publica los valores del formulario, el tiempo de ejecución de ASP.NET Core enlaza los valores publicados con el modelo Create.
+La propiedad `Movie` usa el atributo [[BindProperty]]<xref:Microsoft.AspNetCore.Mvc.BindPropertyAttribute> para participar en el [enlace de modelos](xref:mvc/models/model-binding). Cuando el formulario de creación publica los valores del formulario, el tiempo de ejecución de ASP.NET Core enlaza los valores publicados con el modelo `Movie`.
 
 El método `OnPostAsync` se ejecuta cuando la página publica los datos del formulario:
 
@@ -355,7 +353,7 @@ Si hay algún error de modelo, se vuelve a mostrar el formulario, junto con los 
 
 Si no hay ningún error de modelo, los datos se guardan y el explorador se redirige a la página Index.
 
-### <a name="the-no-loccreate-no-locrazor-page"></a>La página Create de una instancia de Razor Pages
+### <a name="the-create-no-locrazor-page"></a>La página de creación de instancias de Razor Pages
 
 Examine el archivo de instancia de Razor Pages *Pages/Movies/Create.cshtml*:
 

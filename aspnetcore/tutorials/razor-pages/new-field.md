@@ -7,8 +7,6 @@ ms.custom: mvc
 ms.date: 09/28/2020
 no-loc:
 - Index
-- Create
-- Delete
 - appsettings.json
 - ASP.NET Core Identity
 - cookie
@@ -21,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/new-field
-ms.openlocfilehash: 2dca5a9552dd2800212f8cd78ace0578b3d38cdb
-ms.sourcegitcommit: 342588e10ae0054a6d6dc0fd11dae481006be099
+ms.openlocfilehash: 6b6856731c61957a9e23f76e2bc15befe56ea57d
+ms.sourcegitcommit: db0a6eb0be7bd7f22810a71fe9bf30e957fd116a
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94360884"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96420011"
 ---
 # <a name="part-7-add-a-new-field-to-a-no-locrazor-page-in-aspnet-core"></a>Parte 7. Adición de un campo nuevo a una instancia de Razor Pages en ASP.NET Core
 
@@ -63,7 +61,7 @@ La comprobación automática de la sincronización del esquema y el modelo facil
    [!code-cshtml[](razor-pages-start/sample/RazorPagesMovie50/SnapShots/IndexRating.cshtml?highlight=40-42,62-64)]
 
 1. Actualice las páginas siguientes:
-   1. Agregue el campo `Rating` a las páginas Delete (Eliminar) y Details (Detalles).
+   1. Agregue el campo `Rating` a las páginas Delete y Details.
    1. Actualice [Create.cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie50/Pages/Movies/Create.cshtml) con un campo `Rating`.
    1. Agregue el campo `Rating` a la página de edición.
 
@@ -108,7 +106,7 @@ Compile la solución.
 El comando `Add-Migration` indica al marco de trabajo que:
 
 * Compare el modelo `Movie` con el esquema de base de datos `Movie`.
-* Create código para migrar el esquema de la base de datos al nuevo modelo.
+* Cree el código pertinente para migrar el esquema de la base de datos al nuevo modelo.
 
 El nombre "Rating" es arbitrario y se usa para asignar nombre al archivo de migración. Resulta útil emplear un nombre descriptivo para el archivo de migración.
 
@@ -121,7 +119,7 @@ Si elimina todos los registros de la base de datos, el inicializador inicializar
 Otra opción es eliminar la base de datos y usar las migraciones para volver a crear la base de datos. Para eliminar la base de datos de SSOX:
 
 1. Seleccione la base de datos en SSOX.
-1. Haga clic con el botón derecho en la base de datos y seleccione **Delete** .
+1. Haga clic con el botón derecho en la base de datos y seleccione **Eliminar**.
 1. Active **Cerrar las conexiones existentes**.
 1. Seleccione **Aceptar**.
 1. En la [PMC](xref:tutorials/razor-pages/new-field#pmc), actualice la base de datos:
@@ -151,7 +149,7 @@ Otra opción es eliminar la base de datos y usar las migraciones para volver a c
 > * [Propagación de los datos](/ef/core/modeling/data-seeding)
 > * [Instrucción ALTER TABLE de SQLite](https://sqlite.org/lang_altertable.html)
 
-1. Delete la carpeta de migración.  
+1. Elimine la carpeta de migración.  
 
 1. Use estos comandos para volver a crear la base de datos.
 
@@ -204,7 +202,7 @@ La comprobación automática de la sincronización del esquema y el modelo facil
    [!code-cshtml[](razor-pages-start/sample/RazorPagesMovie30/SnapShots/IndexRating.cshtml?highlight=40-42,62-64)]
 
 1. Actualice las páginas siguientes:
-   1. Agregue el campo `Rating` a las páginas Delete (Eliminar) y Details (Detalles).
+   1. Agregue el campo `Rating` a las páginas Delete y Details.
    1. Actualice [Create.cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Pages/Movies/Create.cshtml) con un campo `Rating`.
    1. Agregue el campo `Rating` a la página de edición.
 
@@ -249,7 +247,7 @@ Compile la solución.
 El comando `Add-Migration` indica al marco de trabajo que:
 
 * Compare el modelo `Movie` con el esquema de base de datos `Movie`.
-* Create código para migrar el esquema de la base de datos al nuevo modelo.
+* Cree el código pertinente para migrar el esquema de la base de datos al nuevo modelo.
 
 El nombre "Rating" es arbitrario y se usa para asignar nombre al archivo de migración. Resulta útil emplear un nombre descriptivo para el archivo de migración.
 
@@ -262,7 +260,7 @@ Si elimina todos los registros de la base de datos, el inicializador inicializar
 Otra opción es eliminar la base de datos y usar las migraciones para volver a crear la base de datos. Para eliminar la base de datos de SSOX:
 
 * Seleccione la base de datos en SSOX.
-* Haga clic con el botón derecho en la base de datos y seleccione **Delete** .
+* Haga clic con el botón derecho en la base de datos y seleccione **Eliminar**.
 * Active **Cerrar las conexiones existentes**.
 * Seleccione **Aceptar**.
 * En la [PMC](xref:tutorials/razor-pages/new-field#pmc), actualice la base de datos:
@@ -292,7 +290,7 @@ Otra opción es eliminar la base de datos y usar las migraciones para volver a c
 > * [Propagación de los datos](/ef/core/modeling/data-seeding)
 > * [Instrucción ALTER TABLE de SQLite](https://sqlite.org/lang_altertable.html)
 
-1. Delete la carpeta de migración.  
+1. Elimine la carpeta de migración.  
 
 1. Use estos comandos para volver a crear la base de datos.
 
@@ -344,7 +342,7 @@ Edite *Pages/Movies/Index.cshtml* y agregue un campo `Rating`:
 
 Actualice las páginas siguientes:
 
-* Agregue el campo `Rating` a las páginas Delete (Eliminar) y Details (Detalles).
+* Agregue el campo `Rating` a las páginas Delete y Details.
 * Actualice [Create.cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Pages/Movies/Create.cshtml) con un campo `Rating`.
 * Agregue el campo `Rating` a la página de edición.
 
@@ -389,7 +387,7 @@ Update-Database
 El comando `Add-Migration` indica al marco de trabajo que:
 
 * Compare el modelo `Movie` con el esquema de base de datos `Movie`.
-* Create código para migrar el esquema de la base de datos al nuevo modelo.
+* Cree el código pertinente para migrar el esquema de la base de datos al nuevo modelo.
 
 El nombre "Rating" es arbitrario y se usa para asignar nombre al archivo de migración. Resulta útil emplear un nombre descriptivo para el archivo de migración.
 
@@ -402,7 +400,7 @@ Si elimina todos los registros de la base de datos, el inicializador inicializar
 Otra opción es eliminar la base de datos y usar las migraciones para volver a crear la base de datos. Para eliminar la base de datos de SSOX:
 
 * Seleccione la base de datos en SSOX.
-* Haga clic con el botón derecho en la base de datos y seleccione **Delete** .
+* Haga clic con el botón derecho en la base de datos y seleccione **Eliminar**.
 * Active **Cerrar las conexiones existentes**.
 * Seleccione **Aceptar**.
 * En la [PMC](xref:tutorials/razor-pages/new-field#pmc), actualice la base de datos:
@@ -432,7 +430,7 @@ Otra opción es eliminar la base de datos y usar las migraciones para volver a c
 > * [Propagación de los datos](/ef/core/modeling/data-seeding)
 > * [Instrucción ALTER TABLE de SQLite](https://sqlite.org/lang_altertable.html)
 
-Delete la base de datos y use las migraciones para volver a crear la base de datos. Para eliminar la base de datos, elimine el archivo de base de datos (*MvcMovie.db*). Luego, ejecute el comando `ef database update`:
+Elimine la base de datos y use las migraciones para volver a crear la base de datos. Para eliminar la base de datos, elimine el archivo de base de datos (*MvcMovie.db*). Luego, ejecute el comando `ef database update`:
 
 ```dotnetcli
 dotnet ef database update

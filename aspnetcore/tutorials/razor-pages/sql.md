@@ -6,8 +6,6 @@ ms.author: riande
 ms.date: 09/26/2020
 no-loc:
 - Index
-- Create
-- Delete
 - appsettings.json
 - ASP.NET Core Identity
 - cookie
@@ -20,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/sql
-ms.openlocfilehash: 2c5bc221901d9e41984fb591755a8ad94e7e1420
-ms.sourcegitcommit: 1ea3f23bec63e96ffc3a927992f30a5fc0de3ff9
+ms.openlocfilehash: 6627825239d815d2c8bcad98e22340f07f921ab9
+ms.sourcegitcommit: db0a6eb0be7bd7f22810a71fe9bf30e957fd116a
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94570242"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96420024"
 ---
 # <a name="part-4-of-tutorial-series-on-no-locrazor-pages"></a>Parte 4 de la serie de tutoriales sobre Razor Pages
 
@@ -118,7 +116,7 @@ Existen muchas herramientas de terceros que se pueden descargar para administrar
 
 ## <a name="seed-the-database"></a>Inicializar la base de datos
 
-Create una nueva clase denominada `SeedData` en la carpeta *Models* con el código siguiente:
+Cree una nueva clase denominada `SeedData` en la carpeta *Models* con el código siguiente:
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Models/SeedData.cs?name=snippet_1)]
 
@@ -154,7 +152,7 @@ La siguiente excepción se produce cuando no se ha ejecutado `Update-Database`:
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-1. Delete todos los registros de la base de datos. Use los vínculos de eliminación en el explorador o en [SSOX](xref:tutorials/razor-pages/new-field#ssox).
+1. Elimine todos los registros de la base de datos. Use los vínculos de eliminación en el explorador o en [SSOX](xref:tutorials/razor-pages/new-field#ssox).
 
 1. Obligue a la aplicación a inicializarse (llame a los métodos de la clase `Startup`) para que se ejecute el método de inicialización. Para forzar la inicialización, se debe detener y reiniciar IIS Express. Detenga y reinicie IIS con cualquiera de los métodos siguientes:
 
@@ -169,7 +167,7 @@ La siguiente excepción se produce cuando no se ha ejecutado `Update-Database`:
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code/Visual Studio para Mac](#tab/visual-studio-code+visual-studio-mac)
 
-Delete todos los registros de la base de datos, para que se ejecute el método de inicialización. Detenga e inicie la aplicación para inicializar la base de datos.
+Elimine todos los registros de la base de datos para que se ejecute el método de inicialización. Detenga e inicie la aplicación para inicializar la base de datos.
 
 ---
 
@@ -272,7 +270,7 @@ Existen muchas herramientas de terceros que se pueden descargar para administrar
 
 ## <a name="seed-the-database"></a>Inicializar la base de datos
 
-Create una nueva clase denominada `SeedData` en la carpeta *Models* con el código siguiente:
+Cree una nueva clase denominada `SeedData` en la carpeta *Models* con el código siguiente:
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Models/SeedData.cs?name=snippet_1)]
 
@@ -308,7 +306,7 @@ La siguiente excepción se produce cuando no se ha ejecutado `Update-Database`:
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Delete todos los registros de la base de datos. Use los vínculos de eliminación en el explorador o en [SSOX](xref:tutorials/razor-pages/new-field#ssox).
+* Elimine todos los registros de la base de datos. Use los vínculos de eliminación en el explorador o en [SSOX](xref:tutorials/razor-pages/new-field#ssox).
 * Obligue a la aplicación a inicializarse (llame a los métodos de la clase `Startup`) para que se ejecute el método de inicialización. Para forzar la inicialización, se debe detener y reiniciar IIS Express. Detenga y reinicie IIS con cualquiera de los métodos siguientes:
 
   * Haga clic con el botón derecho en el icono Bandeja del sistema de IIS Express del área de notificación y pulse en **Salir** o en **Detener sitio**:
@@ -322,7 +320,7 @@ La siguiente excepción se produce cuando no se ha ejecutado `Update-Database`:
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code/Visual Studio para Mac](#tab/visual-studio-code+visual-studio-mac)
 
-Delete todos los registros de la base de datos, para que se ejecute el método de inicialización. Detenga e inicie la aplicación para inicializar la base de datos.
+Elimine todos los registros de la base de datos para que se ejecute el método de inicialización. Detenga e inicie la aplicación para inicializar la base de datos.
 
 ---
 
@@ -416,7 +414,7 @@ Observe el icono de llave junto a `ID`. De forma predeterminada, EF crea una pro
 
 ## <a name="seed-the-database"></a>Inicializar la base de datos
 
-Create una nueva clase denominada `SeedData` en la carpeta *Models* con el código siguiente:
+Cree una nueva clase denominada `SeedData` en la carpeta *Models* con el código siguiente:
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie22/Models/SeedData.cs?name=snippet_1)]
 
@@ -452,7 +450,7 @@ Error de inicio de sesión del usuario <nombre de usuario>.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Delete todos los registros de la base de datos. Puede hacerlo con los vínculos de eliminación en el explorador o desde [SSOX](xref:tutorials/razor-pages/new-field#ssox).
+* Elimine todos los registros de la base de datos. Puede hacerlo con los vínculos de eliminación en el explorador o desde [SSOX](xref:tutorials/razor-pages/new-field#ssox).
 * Obligue a la aplicación a inicializarse (llame a los métodos de la clase `Startup`) para que se ejecute el método de inicialización. Para forzar la inicialización, se debe detener y reiniciar IIS Express. Puede hacerlo con cualquiera de los siguientes enfoques:
 
   * Haga clic con el botón derecho en el icono Bandeja del sistema de IIS Express del área de notificación y pulse en **Salir** o en **Detener sitio**:
@@ -466,11 +464,11 @@ Error de inicio de sesión del usuario <nombre de usuario>.
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-Delete todos los registros de la base de datos, para que se ejecute el método de inicialización. Detenga e inicie la aplicación para inicializar la base de datos.
+Elimine todos los registros de la base de datos para que se ejecute el método de inicialización. Detenga e inicie la aplicación para inicializar la base de datos.
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)
 
-Delete todos los registros de la base de datos, para que se ejecute el método de inicialización. Detenga e inicie la aplicación para inicializar la base de datos.
+Elimine todos los registros de la base de datos para que se ejecute el método de inicialización. Detenga e inicie la aplicación para inicializar la base de datos.
 
 ---
 
