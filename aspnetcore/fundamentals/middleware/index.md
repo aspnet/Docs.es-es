@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/middleware/index
-ms.openlocfilehash: aa51e53284bc25629b3975ff0e6de967b9a2b866
-ms.sourcegitcommit: 0bcc0d6df3145a0727da7c4be2f4bda8f27eeaa3
+ms.openlocfilehash: bdeccf81a3bb620c2e1fe15a798d5a83375842c8
+ms.sourcegitcommit: 92439194682dc788b8b5b3a08bd2184dc00e200b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96513127"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96556546"
 ---
 # <a name="aspnet-core-middleware"></a>Middleware de ASP.NET Core
 
@@ -113,9 +113,9 @@ Con el código anterior, la CPU podría guardarse almacenando en caché la respu
 La ordenación siguiente combina archivos estáticos para permitir el almacenamiento en caché de archivos estáticos comprimidos:
 
 ```csharp
-app.UseResponseCaching
-app.UseResponseCompression
-app.UseStaticFiles
+app.UseResponseCaching();
+app.UseResponseCompression();
+app.UseStaticFiles();
 ```
 
 El siguiente método `Startup.Configure` agrega los componentes de middleware para escenarios de aplicaciones comunes:
@@ -193,6 +193,8 @@ public void Configure(IApplicationBuilder app)
     // Static files aren't compressed by Static File Middleware.
     app.UseStaticFiles();
 
+    app.UseRouting();
+
     app.UseResponseCompression();
 
     app.UseEndpoints(endpoints =>
@@ -260,7 +262,7 @@ En la siguiente tabla se muestran las solicitudes y las respuestas de `http://lo
 
 <xref:Microsoft.AspNetCore.Builder.UseWhenExtensions.UseWhen%2A> también crea una rama de la canalización de solicitudes según el resultado del predicado proporcionado. A diferencia de lo que sucede con `MapWhen`, esta rama se vuelve a unir a la canalización principal si no realiza un cortocircuito ni contiene un middleware de terminal:
 
-[!code-csharp[](index/snapshot/Chain/StartupUseWhen.cs?highlight=25-26)]
+[!code-csharp[](index/snapshot/Chain/StartupUseWhen.cs?highlight=18-19)]
 
 En el ejemplo anterior, la respuesta "Hola desde la canalización principal." se escribe para todas las solicitudes. Si la solicitud incluye una variable de cadena de consulta `branch`, su valor se registra antes de que se vuelva a unir la canalización principal.
 
