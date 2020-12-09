@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/index
-ms.openlocfilehash: b87986442bb8127f03df1f7ecff8167cafa27fdf
-ms.sourcegitcommit: 3f0ad1e513296ede1bff39a05be6c278e879afed
+ms.openlocfilehash: a2738ab40e2a463a0166ce8916ed6f1b05ea1d08
+ms.sourcegitcommit: a71bb61f7add06acb949c9258fe506914dfe0c08
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96035689"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96855383"
 ---
 # <a name="create-and-use-aspnet-core-no-locrazor-components"></a>Creación y uso de componentes de Razor de ASP.NET Core
 
@@ -274,6 +274,13 @@ Los componentes pueden tener *parámetros de componente*, que se definen por med
 
 [!code-razor[](../common/samples/5.x/BlazorWebAssemblySample/Components/ChildComponent.razor?highlight=2,11-12)]
 
+Se puede asignar un valor predeterminado a los parámetros de componente:
+
+```csharp
+[Parameter]
+public string Title { get; set; } = "Panel Title from Child";
+```
+
 En el siguiente ejemplo de la aplicación de muestra, `ParentComponent` establece el valor de la propiedad `Title` de `ChildComponent`.
 
 `Pages/ParentComponent.razor`:
@@ -461,7 +468,7 @@ Las referencias de componentes son una forma de hacer referencia a una instancia
 }
 ```
 
-Cuando el componente se represente, el campo `loginDialog` se rellena con la instancia del componente secundario `MyLoginDialog`. Tras ello, se pueden invocar métodos de .NET en la instancia del componente.
+Cuando el componente se represente, el campo `loginDialog` se rellena con la instancia del componente secundario `CustomLoginDialog`. Tras ello, se pueden invocar métodos de .NET en la instancia del componente.
 
 > [!IMPORTANT]
 > La variable `loginDialog` solo se rellena después de que el componente se represente, y su salida incluye el elemento `MyLoginDialog`. Hasta que se represente el componente, no hay nada a lo que hacer referencia.
