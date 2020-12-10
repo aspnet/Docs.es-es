@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/graph-api
-ms.openlocfilehash: 6464b80d52837e7fe35efe5daac2193b77e21c84
-ms.sourcegitcommit: e087b6a38e3d38625ebb567a973e75b4d79547b9
+ms.openlocfilehash: 128ba34b1e2a9f8cc2986a8f1cb3fb8beba83b21
+ms.sourcegitcommit: a71bb61f7add06acb949c9258fe506914dfe0c08
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94637657"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96855396"
 ---
 # <a name="use-graph-api-with-aspnet-core-no-locblazor-webassembly"></a>Uso de Graph API con Blazor WebAssembly de ASP.NET Core
 
@@ -351,7 +351,6 @@ En un componente Razor:
 @inject IAccessTokenProvider TokenProvider
 @inject IHttpClientFactory ClientFactory
 @inject ILogger<CallUser> Logger
-@inject ICallProcessor CallProcessor
 
 <h3>Call User</h3>
 
@@ -393,7 +392,7 @@ En un componente Razor:
 
             if (userInfo != null)
             {
-                CallProcessor.Send(userInfo.MobilePhone, callInfo.Message);
+                // Use userInfo.MobilePhone and callInfo.Message to make a call
 
                 formStatus = "Form successfully processed.";
                 Logger.LogInformation(
@@ -422,9 +421,6 @@ En un componente Razor:
     }
 }
 ```
-
-> [!NOTE]
-> En el ejemplo anterior, el desarrollador implementa el `ICallProcessor` personalizado (`CallProcessor`) en la cola y luego realiza llamadas automatizadas.
 
 ### <a name="customize-user-claims-with-graph-api-and-a-named-client"></a>Personalización de notificaciones de usuario con Graph API y un cliente con nombre
 
