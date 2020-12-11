@@ -18,12 +18,12 @@ no-loc:
 - SignalR
 - Kestrel
 uid: aspnetcore-5.0
-ms.openlocfilehash: 8e848ef57a9164501fd3c4f29f47ad7c72118507
-ms.sourcegitcommit: aa85f2911792a1e4783bcabf0da3b3e7e218f63a
+ms.openlocfilehash: d7ffcb67637593ab2909885a9e1f6de74a78361b
+ms.sourcegitcommit: a71bb61f7add06acb949c9258fe506914dfe0c08
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95417557"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96855500"
 ---
 # <a name="whats-new-in-aspnet-core-50"></a>Novedades de ASP.NET Core 5.0
 

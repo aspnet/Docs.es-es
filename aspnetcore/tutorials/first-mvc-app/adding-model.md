@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/adding-model
-ms.openlocfilehash: 16cef6cc9e772f494515942072c2aaf58913ce91
-ms.sourcegitcommit: fb208f907249cc7aab029afff941a0266c187050
+ms.openlocfilehash: d99d5bfd84c8c7e7d0c479964211591be434330c
+ms.sourcegitcommit: a71bb61f7add06acb949c9258fe506914dfe0c08
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94688454"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96855526"
 ---
 # <a name="part-4-add-a-model-to-an-aspnet-core-mvc-app"></a>Parte 4. Adición de un modelo a una aplicación de ASP.NET Core MVC
 
@@ -227,6 +227,12 @@ La creación automática de estos archivos se conoce como *scaffolding*.
 ### <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)
 
 * Abra una ventana de comandos en el directorio del proyecto (el directorio que contiene los archivos *Program.cs*, *Startup.cs* y *.csproj*).
+
+* Exporte la ruta de acceso de la herramienta de scaffolding:
+
+  ```console
+  export PATH=$HOME/.dotnet/tools:$PATH
+  ```
 
 * Ejecute el siguiente comando:
 
@@ -550,11 +556,11 @@ Agregue una cadena de conexión al *appsettings.json* :
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-[!code-json[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/appsettings.json?highlight=10-12)]
+[!code-json[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/appsettings.json?highlight=10-13)]
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code/Visual Studio para Mac](#tab/visual-studio-code+visual-studio-mac)
 
-[!code-json[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/appsettings_SQLite.json?highlight=10-12)]
+[!code-json[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/appsettings_SQLite.json?highlight=10-13)]
 
 ---
 

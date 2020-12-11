@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/search
-ms.openlocfilehash: 3b95fe117895555ebcd44f971e7bb9d1173e1697
-ms.sourcegitcommit: db0a6eb0be7bd7f22810a71fe9bf30e957fd116a
+ms.openlocfilehash: 1e571966b78f93e29e7901dd9648fbe3aca52726
+ms.sourcegitcommit: a71bb61f7add06acb949c9258fe506914dfe0c08
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96419985"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96855487"
 ---
 # <a name="part-6-add-search-to-aspnet-core-no-locrazor-pages"></a>Parte 6. Adición de búsqueda a Razor Pages de ASP.NET Core
 
@@ -70,7 +70,7 @@ var movies = from m in _context.Movie
              select m;
 ```
 
-En este momento *solo* se define la consulta, **no** se ejecuta en la base de datos.
+En este momento, solo ***se define** _ la conulta, _*_no_*_ se ejecuta en la base de datos.
 
 Si la propiedad `SearchString` no es NULL ni está vacía, la consulta de películas se modifica para filtrar según la cadena de búsqueda:
 
@@ -95,7 +95,7 @@ La restricción de ruta anterior permite buscar el título como datos de ruta (u
 
 ![Vista Index con la palabra Ghost (Fantasma) agregada a la dirección URL y una lista de películas devuelta con dos películas, Ghostbusters y Ghostbusters 2](search/_static/g2.png)
 
-El entorno de ejecución de ASP.NET Core usa el [enlace de modelos](xref:mvc/models/model-binding) para establecer el valor de la propiedad `SearchString` de la cadena de consulta (`?searchString=Ghost`) o de los datos de ruta (`https://localhost:5001/Movies/Ghost`). El enlace de modelos **_no_* _ hace distinción entre mayúsculas y minúsculas.
+El entorno de ejecución de ASP.NET Core usa el [enlace de modelos](xref:mvc/models/model-binding) para establecer el valor de la propiedad `SearchString` de la cadena de consulta (`?searchString=Ghost`) o de los datos de ruta (`https://localhost:5001/Movies/Ghost`). El enlace de modelos _*_no_*_ distingue entre mayúsculas y minúsculas.
 
 Sin embargo, no se puede esperar que los usuarios modifiquen la dirección URL para buscar una película. En este paso, se agrega la interfaz de usuario para filtrar las películas. Si ha agregado la restricción de ruta `"{searchString?}"`, quítela.
 

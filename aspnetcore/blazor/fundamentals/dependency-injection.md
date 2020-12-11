@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/dependency-injection
-ms.openlocfilehash: 0cec9a1ea6f6df52103ab190c85518ddc42a573f
-ms.sourcegitcommit: 1be547564381873fe9e84812df8d2088514c622a
+ms.openlocfilehash: c68deb5237754872e11bfd9c83275b9a3b147319
+ms.sourcegitcommit: 92439194682dc788b8b5b3a08bd2184dc00e200b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94507934"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96556520"
 ---
 # <a name="aspnet-core-no-locblazor-dependency-injection"></a>Inserción de dependencias de Blazor de ASP.NET Core
 
@@ -154,7 +154,7 @@ Los servicios se pueden configurar con las duraciones que se muestran en la tabl
 
 | Período de duración | Descripción |
 | -------- | ----------- |
-| <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Scoped%2A> | Las aplicaciones Blazor WebAssembly no tienen actualmente un concepto de ámbitos de inserción de dependencias. Los servicios registrados con `Scoped` se comportan como servicios `Singleton`. Pero el modelo de hospedaje de Blazor Server admite la duración `Scoped`. En las aplicaciones Blazor Server, el ámbito del registro de un servicio con ámbito es la *conexión*. Por este motivo, se prefiere el uso de servicios con ámbito para los servicios que deben tener el ámbito del usuario actual, aunque la intención actual sea ejecutar el lado cliente en el explorador de una aplicación Blazor WebAssembly. |
+| <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Scoped%2A> | <p>Las aplicaciones Blazor WebAssembly no tienen actualmente un concepto de ámbitos de inserción de dependencias. Los servicios registrados con `Scoped` se comportan como servicios `Singleton`.</p><p>El modelo de hospedaje de Blazor Server admite la duración `Scoped` a través de las solicitudes HTTP, pero no a través de los mensajes de circuito/conexión de SingalR entre los componentes cargados en el cliente. Por lo general, Razor Razor o la parte de MVC de la aplicación trata los servicios con ámbito y vuelve a crear los servicios en *cada solicitud HTTP* al navegar entre páginas o vistas, o desde una página o vista a un componente. Los servicios con ámbito no se reconstruyen al navegar entre los componentes del cliente, donde la comunicación con el servidor se realiza a través de la conexión SignalR del circuito del usuario, no a través de solicitudes HTTP. En los escenarios de componentes del cliente siguientes, los servicios con ámbito se reconstruyen porque se crea un circuito nuevo para el usuario:</p><ul><li>El usuario cierra la ventana del explorador. El usuario abre una ventana nueva y vuelve a la aplicación.</li><li>El usuario cierra la última pestaña de la aplicación en una ventana del explorador. El usuario abre una pestaña nueva y vuelve a la aplicación.</li><li>El usuario selecciona el botón de recargar o actualizar del explorador.</li></ul><p>Para más información sobre cómo conservar el estado del usuario en los distintos servicios con ámbito en las aplicaciones Blazor Server, consulte <xref:blazor/hosting-models?pivots=server>.</p> |
 | <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Singleton%2A> | La inserción de dependencias crea una *sola instancia* del servicio. Todos los componentes que requieren un servicio `Singleton` reciben una instancia del mismo servicio. |
 | <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Transient%2A> | Cada vez que un componente obtiene una instancia de un servicio `Transient` del contenedor de servicios, recibe una *nueva instancia* del servicio. |
 

@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/routing
-ms.openlocfilehash: a83637bb2690407dac5994bb63c765fcfa97462f
-ms.sourcegitcommit: 8363e44f630fcc6433ccd2a85f7aa9567cd274ed
+ms.openlocfilehash: 3bfd623a206f260d24e2c9009acdb3b205b7ab2d
+ms.sourcegitcommit: a71bb61f7add06acb949c9258fe506914dfe0c08
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94981900"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96855409"
 ---
 # <a name="aspnet-core-no-locblazor-routing"></a>Enrutamiento de Blazor de ASP.NET Core
 
@@ -57,7 +57,7 @@ El componente <xref:Microsoft.AspNetCore.Components.Routing.Router> permite el e
 </Router>
 ```
 
-Cuando se compila un archivo `.razor` con una directiva `@page`, la clase generada recibe un elemento <xref:Microsoft.AspNetCore.Components.RouteAttribute>, donde se especifica la plantilla de ruta.
+Cuando se compila un archivo `.razor` con una directiva `@page`, la clase generada recibe un elemento <xref:Microsoft.AspNetCore.Components.RouteAttribute>, donde se especifica la plantilla de ruta. Cuando se inicia la aplicación, el ensamblado especificado como `AppAssembly` se examina para recopilar información sobre todos los componentes que tienen un elemento <xref:Microsoft.AspNetCore.Components.RouteAttribute>.
 
 En tiempo de ejecución, el componente <xref:Microsoft.AspNetCore.Components.RouteView>:
 

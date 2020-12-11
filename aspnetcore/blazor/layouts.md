@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/layouts
-ms.openlocfilehash: 9462b73ad67394e79de08e7d2b13bf6a3145a04e
-ms.sourcegitcommit: 1be547564381873fe9e84812df8d2088514c622a
+ms.openlocfilehash: c6f9815f473380f96092d663cdd785fd19109701
+ms.sourcegitcommit: a71bb61f7add06acb949c9258fe506914dfe0c08
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94507972"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96855305"
 ---
 # <a name="aspnet-core-no-locblazor-layouts"></a>Diseños de ASP.NET Core Blazor
 
@@ -34,9 +34,9 @@ Algunos elementos de la aplicación, como los menús, los mensajes de copyright 
 
 Técnicamente, un diseño es simplemente otro componente. Un diseño se define en una plantilla de Razor o en código de C# y puede usar el [enlace de datos](xref:blazor/components/data-binding), la [inserción de dependencias](xref:blazor/fundamentals/dependency-injection) y otros escenarios de componente.
 
-Para convertir un *componente* en un *diseño* , el componente debe:
+Para convertir un componente en un diseño:
 
-* Heredarse de <xref:Microsoft.AspNetCore.Components.LayoutComponentBase>, que define una propiedad <xref:Microsoft.AspNetCore.Components.LayoutComponentBase.Body> para el contenido representado dentro del diseño.
+* Herede el componente de <xref:Microsoft.AspNetCore.Components.LayoutComponentBase>. <xref:Microsoft.AspNetCore.Components.LayoutComponentBase> define una propiedad <xref:Microsoft.AspNetCore.Components.LayoutComponentBase.Body> para el contenido representado dentro del diseño.
 * Use la sintaxis `@Body` de Razor para especificar la ubicación en el marcado de diseño donde se representa el contenido.
 
 En el ejemplo de código siguiente se muestra la plantilla de Razor de un componente de diseño, `MainLayout.razor`. El diseño hereda <xref:Microsoft.AspNetCore.Components.LayoutComponentBase> y establece `@Body` entre la barra de navegación y el pie de página:

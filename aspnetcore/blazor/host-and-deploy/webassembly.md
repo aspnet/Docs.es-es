@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/webassembly
-ms.openlocfilehash: 7ae462ff9abd06fe4ab4b3e00a71515b76b0ee7d
-ms.sourcegitcommit: bb475e69cb647f22cf6d2c6f93d0836c160080d7
+ms.openlocfilehash: 7edba338716a0545390ec53775f69eaef141d389
+ms.sourcegitcommit: a71bb61f7add06acb949c9258fe506914dfe0c08
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94339989"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96855292"
 ---
 # <a name="host-and-deploy-aspnet-core-no-locblazor-webassembly"></a>Hospedaje e implementación de ASP.NET Core Blazor WebAssembly
 
@@ -934,11 +934,33 @@ Para diagnosticar cuál de ellas se aplica en su caso:
  1. Abra las herramientas de desarrollo del explorador y mire en la pestaña *Red*. Si es necesario, vuelva a cargar la página para ver la lista de solicitudes y respuestas. Busque el archivo que desencadena el error en esa lista.
  1. Compruebe el código de estado HTTP en la respuesta. Si el servidor devuelve un valor distinto de *200 - Correcto* (u otro código de estado 2XX), tiene un problema de servidor por diagnosticar. Por ejemplo, el código de estado 403 significa que hay un problema de autorización, mientras que el código de estado 500 significa que el servidor está dando error de una manera no especificada. Consulte los registros del servidor para diagnosticar y corregir la aplicación.
  1. Si el código de estado es *200 - Correcto* para el recurso, examine el contenido de la respuesta en las herramientas de desarrollo del explorador y compruebe que el contenido coincida con los datos esperados. Por ejemplo, un problema común es configurar erróneamente el enrutamiento de modo que las solicitudes devuelvan los datos de `index.html` incluso para otros archivos. Asegúrese de que las respuestas a las solicitudes de `.wasm` son archivos binarios de WebAssembly y que las respuestas a las solicitudes de `.dll` son archivos binarios de ensamblado de .NET. Si no es así, tiene un problema de enrutamiento del lado servidor por diagnosticar.
+ 1. Trate de validar la salida publicada e implementada de la aplicación con el [script de PowerShell para solucionar problemas de integridad](#troubleshoot-integrity-powershell-script).
 
 Si confirma que el servidor está devolviendo datos plausiblemente correctos, debe haber algo más que modifique el contenido entre la compilación y la entrega del archivo. Para investigarlo:
 
  * Examine la cadena de herramientas de compilación y el mecanismo de implementación en caso de que estén modificando archivos después de compilarlos. Un ejemplo de esto es cuando GIT transforma los finales de línea de los archivos, tal y como se ha descrito anteriormente.
  * Examine el servidor web o la configuración de CDN en caso de que estén configurados para modificar las respuestas de forma dinámica (por ejemplo, intentando minimizar HTML). Está adecuado que el servidor web implemente la compresión HTTP (por ejemplo, devolviendo `content-encoding: br` o `content-encoding: gzip`), ya que esto no afecta al resultado después de la descompresión. Sin embargo, *no* es adecuado que el servidor web modifique los datos sin comprimir.
+
+### <a name="troubleshoot-integrity-powershell-script"></a>Script de PowerShell para solucionar problemas de integridad
+
+Use el script [`integrity.ps1`](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/blazor/host-and-deploy/webassembly/_samples/integrity.ps1?raw=true) de PowerShell para validar una aplicación Blazor publicada e implementada. El script se proporciona como punto inicial cuando la aplicación tiene problemas de integridad que el marco Blazor no puede identificar. Podría ser necesario personalizar el script para sus aplicaciones.
+
+El script revisa los archivos de la carpeta `publish` y los descarga de la aplicación implementada para detectar problemas en los distintos manifiestos que contienen valores hash de integridad. Estas comprobaciones deben detectar los problemas más comunes:
+
+* Modificó un archivo en la salida publicada sin darse cuenta.
+* La aplicación no se implementó correctamente en el destino de la implementación o hubo algún cambio en el entorno del destino de la implementación.
+* Hay diferencias entre la aplicación implementada y la salida de la publicación de la aplicación.
+
+Use el comando siguiente en un shell de comandos de PowerShell para invocar el script:
+
+```powershell
+.\integrity.ps1 {BASE URL} {PUBLISH OUTPUT FOLDER}
+```
+
+Marcadores de posición:
+
+* `{BASE URL}`: la dirección URL de la aplicación implementada.
+* `{PUBLISH OUTPUT FOLDER}`: la ruta de acceso a la carpeta `publish` de la aplicación o a la ubicación donde se publica la aplicación para la implementación.
 
 ### <a name="disable-integrity-checking-for-non-pwa-apps"></a>Deshabilitación de la comprobación de integridad para aplicaciones que no son de PWA
 

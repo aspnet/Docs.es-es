@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: azure/devops/cicd
-ms.openlocfilehash: eddd7034bf1860fb35cf00eefb7a11a408869700
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 2ac7a130d223b21330d0a797c1d460fc0cf467d7
+ms.sourcegitcommit: 6af9016d1ffc2dffbb2454c7da29c880034cefcd
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93052648"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96901215"
 ---
 # <a name="continuous-integration-and-deployment"></a>Integración e implementación continuas
 
@@ -43,7 +43,7 @@ En esta sección se van a realizar las tareas siguientes:
 ## <a name="publish-the-apps-code-to-github"></a>Publicar el código de la aplicación en GitHub
 
 1. Abra una ventana del explorador y vaya a `https://github.com`.
-1. Haga clic en la lista desplegable **+** del encabezado y seleccione **Nuevo repositorio** :
+1. Haga clic en la lista desplegable **+** del encabezado y seleccione **Nuevo repositorio**:
 
     ![Opción Nuevo repositorio de GitHub](media/cicd/github-new-repo.png)
 
@@ -86,12 +86,12 @@ Quite la implementación de Git local con los pasos siguientes. Azure Pipelines 
 
 1. Abra un explorador y vaya a la [página de creación de organización de Azure DevOps](https://go.microsoft.com/fwlink/?LinkId=307137).
 1. Escriba un nombre único en el cuadro de texto **Elija un nombre fácil de recordar** para formar la dirección URL para acceder a la organización de Azure DevOps.
-1. Seleccione el botón de radio **Git** , ya que el código está hospedado en un repositorio de GitHub.
+1. Seleccione el botón de radio **Git**, ya que el código está hospedado en un repositorio de GitHub.
 1. Haga clic en el botón **Continuar**. Tras una breve espera, se crean una cuenta y un proyecto de equipo que se denomina *MyFirstProject*.
 
     ![Página de creación de organización de Azure DevOps](media/cicd/vsts-account-creation.png)
 
-1. Abra el correo electrónico de confirmación que indica que la organización y el proyecto de Azure DevOps están listos para su uso. Haga clic en el botón **Inicie su proyecto** :
+1. Abra el correo electrónico de confirmación que indica que la organización y el proyecto de Azure DevOps están listos para su uso. Haga clic en el botón **Inicie su proyecto**:
 
     ![Botón Inicie su proyecto](media/cicd/vsts-start-project.png)
 
@@ -103,11 +103,11 @@ Hay tres pasos diferentes que se deben realizar. La realización de los pasos de
 
 ### <a name="grant-azure-devops-access-to-the-github-repository"></a>Conceder acceso de Azure DevOps al repositorio de GitHub
 
-1. Expanda el acordeón **o compilar código desde un repositorio externo**. Haga clic en el botón **Configurar compilación** :
+1. Expanda el acordeón **o compilar código desde un repositorio externo**. Haga clic en el botón **Configurar compilación**:
 
     ![Botón de configuración de compilación](media/cicd/vsts-setup-build.png)
 
-1. Seleccione la opción **GitHub** en la sección **Seleccionar un origen** :
+1. Seleccione la opción **GitHub** en la sección **Seleccionar un origen**:
 
     ![Seleccionar un origen - GitHub](media/cicd/vsts-select-source.png)
 
@@ -118,7 +118,7 @@ Hay tres pasos diferentes que se deben realizar. La realización de los pasos de
 1. Si la autenticación en dos fases está habilitada en la cuenta de GitHub, se requiere un token de acceso personal. En ese caso, haga clic en el vínculo **Autorizar con un token de acceso personal de GitHub**. Vea las [instrucciones oficiales de creación de tokens de acceso personales de GitHub](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/) para obtener ayuda. Solo se necesita el ámbito *repo* de permisos. De lo contrario, haga clic en el botón **Autorizar el uso de OAuth**.
 1. Cuando se le pida, inicie sesión en la cuenta de GitHub. Luego, seleccione Autorizar para conceder acceso a la organización de Azure DevOps. Si la operación se realiza correctamente, se crea un nuevo punto de conexión de servicio.
 1. Haga clic en el botón de puntos suspensivos situado junto al botón **Repositorio**. En la lista, seleccione el repositorio *<nombreUsuario_GitHub>/simple-feed-reader*. Haga clic en el botón **Seleccionar**.
-1. Seleccione la rama *master* de la lista desplegable **Rama predeterminada para compilaciones manuales y programadas**. Haga clic en el botón **Continuar**. Aparece la página de selección de plantilla.
+1. Seleccione la rama predeterminada (*master*) de la lista desplegable **Rama predeterminada para compilaciones manuales y programadas**. Haga clic en el botón **Continuar**. Aparece la página de selección de plantilla.
 
 ### <a name="create-the-build-definition"></a>Creación de la definición de compilación
 
@@ -128,13 +128,13 @@ Hay tres pasos diferentes que se deben realizar. La realización de los pasos de
 
 1. Aparecen los resultados de búsqueda de la plantilla. Mantenga el mouse sobre la plantilla **ASP.NET Core** y haga clic en el botón **Aplicar**.
 1. Aparece la pestaña **Tareas** de la definición de compilación. Haga clic en la pestaña **Desencadenadores**.
-1. Active la casilla **Habilitar la integración continua**. En la sección **Filtros de rama** , confirme que la lista desplegable **Tipo** está establecida en *Incluir*. Establezca la lista desplegable **Especificación de rama** en *master*.
+1. Active la casilla **Habilitar la integración continua**. En la sección **Filtros de rama**, confirme que la lista desplegable **Tipo** está establecida en *Incluir*. Establezca la lista desplegable **Especificación de rama** en *master*.
 
     ![Habilitación de la configuración de integración continua](media/cicd/vsts-enable-ci.png)
 
-    Esta configuración hace que se desencadene una compilación cada vez que se inserta cualquier cambio en la rama *master* del repositorio de GitHub. La integración continua se prueba en la sección [Confirmar cambios en GitHub e implementar automáticamente en Azure](#commit-changes-to-github-and-automatically-deploy-to-azure).
+    Esta configuración hace que se desencadene una compilación cada vez que se inserta cualquier cambio en la rama predeterminada (*master*) del repositorio de GitHub. La integración continua se prueba en la sección [Confirmar cambios en GitHub e implementar automáticamente en Azure](#commit-changes-to-github-and-automatically-deploy-to-azure).
 
-1. Haga clic en el botón **Guardar y poner en cola** y seleccione la opción **Guardar** :
+1. Haga clic en el botón **Guardar y poner en cola** y seleccione la opción **Guardar**:
 
     ![Botón Guardar](media/cicd/vsts-save-build.png)
 
@@ -160,14 +160,14 @@ Hay tres pasos diferentes que se deben realizar. La realización de los pasos de
 
     ![Pestaña Canalización de la canalización de versión](media/cicd/vsts-release-definition-pipeline.png)
 
-1. Haga clic en el botón **Agregar** del cuadro **Artefactos**. Aparece el panel **Agregar artefacto** :
+1. Haga clic en el botón **Agregar** del cuadro **Artefactos**. Aparece el panel **Agregar artefacto**:
 
     ![Canalización de versión - panel Agregar artefacto](media/cicd/vsts-release-add-artifact.png)
 
 1. Seleccione el icono **Compilación** de la sección **Tipo de origen**. Este tipo permite la vinculación de la canalización de versión a la definición de compilación.
 1. Seleccione *MyFirstProject* en la lista desplegable **Proyecto**.
-1. Seleccione el nombre de la definición de compilación, *MyFirstProject-ASP.NET Core-CI* , en la lista desplegable **Origen (definición de compilación)** .
-1. En la lista desplegable *Versión predeterminada* , seleccione **Más reciente**. Esta opción compila los artefactos generados por la última ejecución de la definición de compilación.
+1. Seleccione el nombre de la definición de compilación, *MyFirstProject-ASP.NET Core-CI*, en la lista desplegable **Origen (definición de compilación)** .
+1. En la lista desplegable *Versión predeterminada*, seleccione **Más reciente**. Esta opción compila los artefactos generados por la última ejecución de la definición de compilación.
 1. Reemplace el texto del cuadro de texto **Alias de origen** por *Drop*.
 1. Haga clic en el botón **Agregar**. La sección **Artefactos** se actualiza para mostrar los cambios.
 1. Haga clic en el icono de rayo para habilitar las implementaciones continuas:
@@ -176,13 +176,13 @@ Hay tres pasos diferentes que se deben realizar. La realización de los pasos de
 
     Con esta opción habilitada, se produce una implementación cada vez que hay una nueva compilación disponible.
 1. Aparece un panel **Desencadenador de implementación continua** a la derecha. Haga clic en el botón de alternancia para habilitar la característica. No es necesario habilitar **Desencadenador de solicitud de incorporación de cambios**.
-1. Haga clic en la lista desplegable **Agregar** de la sección **Filtros de rama de compilación**. Seleccione la opción **Rama predeterminada de la definición de compilación**. Este filtro hace que la versión se desencadene solo para una compilación de la rama *master* del repositorio de GitHub.
+1. Haga clic en la lista desplegable **Agregar** de la sección **Filtros de rama de compilación**. Seleccione la opción **Rama predeterminada de la definición de compilación**. Este filtro hace que la versión se desencadene solo para una compilación de la rama predeterminada del repositorio de GitHub (*master*).
 1. Haga clic en el botón **Guardar**. Haga clic en el botón **Aceptar** del cuadro de diálogo modal **Guardar** resultante.
 1. Haga clic en el cuadro **Environment 1**. Aparece un panel **Entorno** a la derecha. Cambie el texto de *Environment 1* en el cuadro de texto **Nombre del entorno** a *Production*.
 
    ![Canalización de versión - cuadro de texto Nombre del entorno](media/cicd/vsts-environment-name-textbox.png)
 
-1. Haga clic en el vínculo **1 fase, 2 tareas** del cuadro **Production** :
+1. Haga clic en el vínculo **1 fase, 2 tareas** del cuadro **Production**:
 
     ![Canalización de versión - Production environment link.png](media/cicd/vsts-production-link.png)
 
@@ -211,15 +211,15 @@ Hay tres pasos diferentes que se deben realizar. La realización de los pasos de
     git commit -a -m "upgraded to V4"
     ```
 
-1. Inserte el cambio en la rama *master* del elemento *origin* remoto del repositorio de GitHub:
+1. Inserte el cambio en la rama predeterminada (*master*) del elemento *origin* remoto del repositorio de GitHub. En el comando siguiente, reemplace el marcador de posición `{BRANCH}` por la rama predeterminada (use `master`):
 
     ```console
-    git push origin master
+    git push origin {BRANCH}
     ```
 
-    La confirmación aparece en la rama *master* del repositorio de GitHub:
+    La confirmación aparece en la rama predeterminada (*master*) del repositorio de GitHub:
 
-    ![Confirmación de GitHub en la rama master](media/cicd/github-commit.png)
+    ![Confirmación de GitHub en la rama predeterminada (master)](media/cicd/github-commit.png)
 
     La compilación se desencadena, ya que la integración continua está habilitada en la pestaña **Desencadenadores** de la definición de compilación:
 
@@ -250,7 +250,7 @@ La pestaña **Tareas** de la definición de compilación muestra los pasos indiv
     > [!NOTE]
     > Para comprobar que las pruebas unitarias funcionan, modifique *SimpleFeedReader.Tests\Services\NewsServiceTests.cs* para interrumpir una de las pruebas a propósito. Por ejemplo, cambie `Assert.True(result.Count > 0);` por `Assert.False(result.Count > 0);` en el método `Returns_News_Stories_Given_Valid_Uri`. Confirme e inserte el cambio en GitHub. La compilación se desencadena y se produce un error. El estado de la canalización de compilación cambia a **error**. Revierta el cambio, confirme e inserte de nuevo. La compilación se realiza correctamente.
 
-1. **Publicar** &mdash; Ejecuta el comando `dotnet publish --configuration release --output <local_path_on_build_agent>` para generar un archivo *.zip* con los artefactos que se van a implementar. La opción `--output` especifica la ubicación de publicación del archivo *.zip*. Esa ubicación se especifica al pasar una [variable predefinida](/azure/devops/pipelines/build/variables) denominada `$(build.artifactstagingdirectory)`. Esa variable se expande a una ruta de acceso local, como *c:\agent\_work\1\a* , en el agente de compilación.
+1. **Publicar** &mdash; Ejecuta el comando `dotnet publish --configuration release --output <local_path_on_build_agent>` para generar un archivo *.zip* con los artefactos que se van a implementar. La opción `--output` especifica la ubicación de publicación del archivo *.zip*. Esa ubicación se especifica al pasar una [variable predefinida](/azure/devops/pipelines/build/variables) denominada `$(build.artifactstagingdirectory)`. Esa variable se expande a una ruta de acceso local, como *c:\agent\_work\1\a*, en el agente de compilación.
 1. **Publicar artefacto** &mdash; Publica el archivo *.zip* generado por la tarea **Publicar**. La tarea acepta la ubicación del archivo *.zip* como parámetro, que es la variable predefinida `$(build.artifactstagingdirectory)`. El archivo *.zip* se publica como una carpeta denominada *drop*.
 
 Haga clic en el vínculo **Resumen** de la definición de compilación para ver un historial de compilaciones con la definición:
@@ -269,11 +269,11 @@ Use los vínculos **Descargar** y **Explorar** para inspeccionar los artefactos 
 
 ### <a name="release-pipeline"></a>Canalización de versión
 
-Se ha creado una canalización de versión con el nombre *MyFirstProject-ASP.NET Core-CI* :
+Se ha creado una canalización de versión con el nombre *MyFirstProject-ASP.NET Core-CI*:
 
 ![Captura de pantalla que muestra información general de la canalización de versión](media/cicd/release-definition-overview.png)
 
-Los dos componentes principales de la canalización de versión son los **Artefactos** y los **Entornos**. Al hacer clic en el cuadro de la sección **Artefactos** , se revela el siguiente panel:
+Los dos componentes principales de la canalización de versión son los **Artefactos** y los **Entornos**. Al hacer clic en el cuadro de la sección **Artefactos**, se revela el siguiente panel:
 
 ![Captura de pantalla que muestra los artefactos de la canalización de versión](media/cicd/release-definition-artifacts.png)
 

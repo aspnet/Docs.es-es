@@ -20,12 +20,12 @@ no-loc:
 - SignalR
 uid: blazor/state-management
 zone_pivot_groups: blazor-hosting-models
-ms.openlocfilehash: 7e79836e3dd1da175a62a84e11dfd30fee7b2f1b
-ms.sourcegitcommit: 1ea3f23bec63e96ffc3a927992f30a5fc0de3ff9
+ms.openlocfilehash: 24f845bc1d98331f2ee54710d17beb6ffa95ad88
+ms.sourcegitcommit: a71bb61f7add06acb949c9258fe506914dfe0c08
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94570151"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96855422"
 ---
 # <a name="aspnet-core-no-locblazor-state-management"></a>Administración de estado de Blazor en ASP.NET Core
 
@@ -43,6 +43,9 @@ Entre los ejemplos de estado de usuario almacenados en la memoria del explorador
 * Los valores establecidos mediante llamadas de [interoperabilidad de JavaScript](xref:blazor/call-javascript-from-dotnet).
 
 Cuando un usuario cierra y vuelve a abrir el explorador, o vuelve a cargar la página, se pierde el estado de usuario guardado en la memoria del explorador.
+
+> [!NOTE]
+> El [almacenamiento del explorador protegido](xref:blazor/state-management?pivots=server#aspnet-core-protected-browser-storage) (espacio de nombres <xref:Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage?displayProperty=fullName>) se basa en la protección de datos de ASP.NET Core y solo se admite para aplicaciones de Blazor Server.
 
 ## <a name="persist-state-across-browser-sessions"></a>Conservación del estado en todas las sesiones del explorador
 
