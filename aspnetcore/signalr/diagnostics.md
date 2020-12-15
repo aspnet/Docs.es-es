@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/diagnostics
-ms.openlocfilehash: 6e5e9d866a1e03e69856cc63dcfe30284048dd6d
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 49029bbd53b98425a05bdb82517238e3aa2e3b1f
+ms.sourcegitcommit: 6b87f2e064cea02e65dacd206394b44f5c604282
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93061319"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97506635"
 ---
 # <a name="logging-and-diagnostics-in-aspnet-core-no-locsignalr"></a>Registro y diagnósticos en ASP.NET Core SignalR
 
@@ -81,7 +81,7 @@ Habilite la opción de **registro de aplicaciones (sistema de archivos)** en la 
 
 Si la aplicación se implementa en otro entorno (por ejemplo, Docker, Kubernetes o un servicio de Windows), vea <xref:fundamentals/logging/index> para obtener más información sobre cómo configurar los proveedores de registro adecuados para el entorno.
 
-## <a name="javascript-client-logging"></a>Registro de cliente JavaScript
+## <a name="javascript-client-logging"></a>Registros del cliente de JavaScript
 
 > [!WARNING]
 > Los registros del lado cliente pueden contener información confidencial de la aplicación. **Nunca** publique registros sin procesar de las aplicaciones de producción en foros públicos como GitHub.
@@ -110,14 +110,14 @@ Si desea enviar registros a un sistema de registro personalizado, puede proporci
 
 [!code-typescript[](diagnostics/custom-logger.ts?highlight=3-7,13)]
 
-## <a name="net-client-logging"></a>Registro de clientes de  .NET
+## <a name="net-client-logging"></a>Registros del cliente de .NET
 
 > [!WARNING]
 > Los registros del lado cliente pueden contener información confidencial de la aplicación. **Nunca** publique registros sin procesar de las aplicaciones de producción en foros públicos como GitHub.
 
 Para obtener los registros del cliente .NET, puede usar el `ConfigureLogging` método en `HubConnectionBuilder` . Esto funciona de la misma manera que el `ConfigureLogging` método en `WebHostBuilder` y `HostBuilder` . Puede configurar los mismos proveedores de registro que utiliza en ASP.NET Core. Sin embargo, tiene que instalar y habilitar manualmente los paquetes de NuGet para los proveedores de registro individuales.
 
-Para agregar el registro de cliente .NET a una Blazor WebAssembly aplicación, vea <xref:blazor/fundamentals/logging#blazor-webassembly-signalr-net-client-logging> .
+Para agregar el registro de cliente .NET a una Blazor WebAssembly aplicación, vea <xref:blazor/fundamentals/logging#signalr-net-client-logging> .
 
 ### <a name="console-logging"></a>Registro de consolas
 
@@ -226,7 +226,7 @@ Métricas es una representación de medidas de datos a lo largo de intervalos de
 
 SignalR las métricas del servidor se indican en el <xref:Microsoft.AspNetCore.Http.Connections> origen del evento.
 
-| NOMBRE                    | Descripción                 |
+| Nombre                    | Descripción                 |
 |-------------------------|-----------------------------|
 | `connections-started`   | Conexiones totales iniciadas   |
 | `connections-stopped`   | Conexiones totales detenidas   |
