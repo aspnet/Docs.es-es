@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/filters
-ms.openlocfilehash: d075faa951a34fb3856b54eb9e21593b6616b4f1
-ms.sourcegitcommit: bce62ceaac7782e22d185814f2e8532c84efa472
+ms.openlocfilehash: 72ee8f5dfdf8ffd6cfcb74b13fa0738893d8e214
+ms.sourcegitcommit: 6299f08aed5b7f0496001d093aae617559d73240
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94673970"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97486140"
 ---
 # <a name="filters-in-aspnet-core"></a>Filtros en ASP.NET Core
 
@@ -290,7 +290,7 @@ En el siguiente código, tanto el filtro `ShortCircuitingResourceFilter` como el
 
 Por tanto, el filtro `AddHeader` nunca se ejecuta en relación con la acción `SomeResource`. Este comportamiento sería el mismo si ambos filtros se aplicaran en el nivel de método de acción, siempre y cuando `ShortCircuitingResourceFilter` se haya ejecutado primero. `ShortCircuitingResourceFilter` se ejecuta primero debido a su tipo de filtro o al uso explícito de la propiedad `Order`.
 
-[!code-csharp[](./filters/3.1sample/FiltersSample/Controllers/SampleController.cs?name=snippet_AddHeader&highlight=1)]
+[!code-csharp[](./filters/3.1sample/FiltersSample/Controllers/SampleController.cs?name=snippet3&highlight=1,15)]
 
 ## <a name="dependency-injection"></a>Inserción de dependencias
 
@@ -578,7 +578,7 @@ El filtro se aplica en el código siguiente:
 Pruebe el código anterior mediante la ejecución del [ejemplo de descarga](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/3.1sample):
 
 * Invoque las herramientas de desarrollador de F12.
-* Vaya a `https://localhost:5001/Sample/HeaderWithFactory`.
+* Navegue a `https://localhost:5001/Sample/HeaderWithFactory`.
 
 Las herramientas de desarrollador F12 muestran los siguientes encabezados de respuesta agregados por el código de ejemplo:
 
@@ -1101,7 +1101,7 @@ Puede implementar `IFilterFactory` con las implementaciones de atributos persona
 El código anterior se puede probar mediante la ejecución del [ejemplo de descargar](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/sample):
 
 * Invoque las herramientas de desarrollador de F12.
-* Vaya a `https://localhost:5001/Sample/HeaderWithFactory`.
+* Navegue a `https://localhost:5001/Sample/HeaderWithFactory`.
 
 Las herramientas de desarrollador F12 muestran los siguientes encabezados de respuesta agregados por el código de ejemplo:
 
