@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/index
-ms.openlocfilehash: 6435a7c9ce2a30873f0d3475a38270d3dea1b300
-ms.sourcegitcommit: 98f92d766d4f343d7e717b542c1b08da29e789c1
+ms.openlocfilehash: 8a61472da556db48a8572b0a59075beb7737a547
+ms.sourcegitcommit: 6b87f2e064cea02e65dacd206394b44f5c604282
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94595472"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97506830"
 ---
 # <a name="aspnet-core-no-locblazor-authentication-and-authorization"></a>Autenticación y autorización de ASP.NET Core Blazor
 
@@ -231,6 +231,8 @@ Configure el parámetro en cascada `Task<`<xref:Microsoft.AspNetCore.Components.
 </CascadingAuthenticationState>
 ```
 
+[!INCLUDE[](~/blazor/includes/prefer-exact-matches.md)]
+
 En una aplicación de Blazor WebAssembly, agregue servicios relativos a opciones y autorización a `Program.Main`:
 
 ```csharp
@@ -422,6 +424,8 @@ En la plantilla de proyecto de Blazor Server predeterminada, el componente `App`
 </CascadingAuthenticationState>
 ```
 
+[!INCLUDE[](~/blazor/includes/prefer-exact-matches.md)]
+
 El contenido de las etiquetas `<NotFound>`, `<NotAuthorized>` y `<Authorizing>` puede incluir elementos arbitrarios, como otros componentes interactivos.
 
 Si no se especifica la etiqueta `<NotAuthorized>`, <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeRouteView> usa el siguiente mensaje de reserva:
@@ -499,6 +503,8 @@ Es probable que el proyecto no se haya creado mediante una plantilla de Blazor S
     </Router>
 </CascadingAuthenticationState>
 ```
+
+[!INCLUDE[](~/blazor/includes/prefer-exact-matches.md)]
 
 El <xref:Microsoft.AspNetCore.Components.Authorization.CascadingAuthenticationState> proporciona el parámetro en cascada `Task<`<xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationState>`>`, que a su vez recibe el servicio DI <xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider> subyacente.
 
