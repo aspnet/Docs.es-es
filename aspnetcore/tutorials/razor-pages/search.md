@@ -4,6 +4,7 @@ author: rick-anderson
 description: Parte 6 de la serie de tutoriales sobre Razor Pages.
 ms.author: riande
 ms.date: 12/05/2019
+ms.custom: contperf-fy21q2
 no-loc:
 - Index
 - appsettings.json
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/search
-ms.openlocfilehash: 1e571966b78f93e29e7901dd9648fbe3aca52726
-ms.sourcegitcommit: a71bb61f7add06acb949c9258fe506914dfe0c08
+ms.openlocfilehash: d852766c9706941a1a5f4f3af2c9293ffc4e6a26
+ms.sourcegitcommit: 6299f08aed5b7f0496001d093aae617559d73240
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96855487"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97486218"
 ---
 # <a name="part-6-add-search-to-aspnet-core-no-locrazor-pages"></a>Parte 6. Adición de búsqueda a Razor Pages de ASP.NET Core
 

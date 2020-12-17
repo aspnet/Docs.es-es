@@ -20,12 +20,12 @@ no-loc:
 - SignalR
 uid: blazor/components/prerendering-and-integration
 zone_pivot_groups: blazor-hosting-models
-ms.openlocfilehash: affca6c9b585b91787f94a13144d07bedfefdd37
-ms.sourcegitcommit: fe5a287fa6b9477b130aa39728f82cdad57611ee
+ms.openlocfilehash: 3402117334548f9d90880d4f536e8baa288e7bc9
+ms.sourcegitcommit: 6b87f2e064cea02e65dacd206394b44f5c604282
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94431694"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97506986"
 ---
 # <a name="prerender-and-integrate-aspnet-core-no-locrazor-components"></a>Integración y representación previa de componentes Razor de ASP.NET Core
 
@@ -308,6 +308,8 @@ Para admitir componentes Razor enrutables en aplicaciones Razor Pages:
    </Router>
    ```
 
+   [!INCLUDE[](~/blazor/includes/prefer-exact-matches.md)]
+
 1. Agregue un archivo `_Host.cshtml` a la carpeta `Pages` con el contenido siguiente:
 
    ```cshtml
@@ -376,6 +378,8 @@ Para admitir componentes Razor enrutables en aplicaciones MVC, haga lo siguiente
        </NotFound>
    </Router>
    ```
+
+   [!INCLUDE[](~/blazor/includes/prefer-exact-matches.md)]
 
 1. Agregue un archivo `_Host.cshtml` a la carpeta `Views/Home` con el contenido siguiente:
 

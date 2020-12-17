@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/httpcontext
-ms.openlocfilehash: f51814d25d4e87d166c7b587306da6c77dbf047e
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: d5ada72bb03cd74cf77c31450e5eafb9c2841049
+ms.sourcegitcommit: 6b87f2e064cea02e65dacd206394b44f5c604282
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93059980"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97506999"
 ---
 # <a name="access-httpcontext-in-aspnet-core"></a>Acceso a HttpContext en ASP.NET Core
 
@@ -179,4 +179,4 @@ public class EmailController : Controller
 
 ## <a name="no-locblazor-and-shared-state"></a>Blazor y estado compartido
 
-[!INCLUDE[](~/includes/blazor-security/blazor-shared-state.md)]
+[!INCLUDE[](~/blazor/includes/security/blazor-shared-state.md)]

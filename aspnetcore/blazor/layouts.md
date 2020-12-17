@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/layouts
-ms.openlocfilehash: c6f9815f473380f96092d663cdd785fd19109701
-ms.sourcegitcommit: a71bb61f7add06acb949c9258fe506914dfe0c08
+ms.openlocfilehash: 3cb7c6184c13a003b4f4294f887d8938caa42f97
+ms.sourcegitcommit: 6b87f2e064cea02e65dacd206394b44f5c604282
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96855305"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97506908"
 ---
 # <a name="aspnet-core-no-locblazor-layouts"></a>Diseños de ASP.NET Core Blazor
 
@@ -65,9 +65,13 @@ Especifique el diseño predeterminado de la aplicación en el componente <xref:M
 
 [!code-razor[](layouts/sample_snapshot/3.x/App1.razor?highlight=3)]
 
+[!INCLUDE[](~/blazor/includes/prefer-exact-matches.md)]
+
 Para proporcionar un diseño predeterminado para el contenido <xref:Microsoft.AspNetCore.Components.Routing.Router.NotFound>, especifique un elemento <xref:Microsoft.AspNetCore.Components.LayoutView> para el contenido <xref:Microsoft.AspNetCore.Components.Routing.Router.NotFound>:
 
 [!code-razor[](layouts/sample_snapshot/3.x/App2.razor?highlight=6-9)]
+
+[!INCLUDE[](~/blazor/includes/prefer-exact-matches.md)]
 
 Para obtener más información sobre el componente <xref:Microsoft.AspNetCore.Components.Routing.Router>, consulte el artículo <xref:blazor/fundamentals/routing>.
 

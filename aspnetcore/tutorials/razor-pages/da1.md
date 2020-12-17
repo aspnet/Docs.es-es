@@ -4,6 +4,7 @@ author: rick-anderson
 description: Parte 5 de la serie de tutoriales sobre Razor Pages.
 ms.author: riande
 ms.date: 09/20/2020
+ms.custom: contperf-fy21q2
 no-loc:
 - Index
 - appsettings.json
@@ -18,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/da1
-ms.openlocfilehash: 460950413d1dd2d3539c1d62b0eb11f6bb5144a9
-ms.sourcegitcommit: db0a6eb0be7bd7f22810a71fe9bf30e957fd116a
+ms.openlocfilehash: 46fbfb50afd03f918f9e02bcc8c1dbde9a080ca4
+ms.sourcegitcommit: 6299f08aed5b7f0496001d093aae617559d73240
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96419972"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97485945"
 ---
 # <a name="part-5-update-the-generated-pages-in-an-aspnet-core-app"></a>Parte 5. Actualización de las páginas generadas en una aplicación de ASP.NET Core
 

@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/call-javascript-from-dotnet
-ms.openlocfilehash: a98537f53229d098328f5b14bf1d5060001ebd80
-ms.sourcegitcommit: a71bb61f7add06acb949c9258fe506914dfe0c08
+ms.openlocfilehash: 11312a34dc62dd3bace791819f62379bffbb1c49
+ms.sourcegitcommit: 6b87f2e064cea02e65dacd206394b44f5c604282
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96855242"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97592846"
 ---
 # <a name="call-javascript-functions-from-net-methods-in-aspnet-core-no-locblazor"></a>Llamada a funciones de JavaScript con métodos de .NET en Blazor de ASP.NET Core
 
@@ -172,7 +172,7 @@ Use <xref:Microsoft.JSInterop.JSRuntimeExtensions.InvokeVoidAsync%2A?displayProp
 
 ## <a name="detect-when-a-no-locblazor-server-app-is-prerendering"></a>Detección de cuándo se está obteniendo una representación previa de la aplicación Blazor Server
  
-[!INCLUDE[](~/includes/blazor-prerendering.md)]
+[!INCLUDE[](~/blazor/includes/prerendering.md)]
 
 ## <a name="capture-references-to-elements"></a>Captura de referencias a elementos
 
@@ -492,7 +492,7 @@ La interoperabilidad de JS puede no funcionar debido a errores de red y debe tr
 
 Para más información sobre el agotamiento de recursos, vea <xref:blazor/security/server/threat-mitigation>.
 
-[!INCLUDE[](~/includes/blazor-share-interop-code.md)]
+[!INCLUDE[](~/blazor/includes/share-interop-code.md)]
 
 ## <a name="avoid-circular-object-references"></a>Evitar referencias de objetos circulares
 
