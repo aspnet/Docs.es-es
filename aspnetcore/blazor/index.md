@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/index
-ms.openlocfilehash: ecdf4f59aca0fe71bbfcfe61a99109127c8b92df
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 79c225a0714562a01afe67bf8e59f3b3f98a6265
+ms.sourcegitcommit: e9b8835a02f75b6378b766edb8bab23b14a4192b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93055717"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97666864"
 ---
 # <a name="introduction-to-aspnet-core-no-locblazor"></a>Introducción a ASP.NET Core Blazor
 
@@ -50,7 +50,7 @@ El uso de .NET para el desarrollo web en el lado cliente ofrece las siguientes v
 
 ## <a name="components"></a>Componentes
 
-Las aplicaciones de Blazor se basan en *componentes* . En Blazor, un componente es un elemento de la interfaz de usuario, como una página, un cuadro de diálogo o un formulario de entrada de datos.
+Las aplicaciones de Blazor se basan en *componentes*. En Blazor, un componente es un elemento de la interfaz de usuario, como una página, un cuadro de diálogo o un formulario de entrada de datos.
 
 Los componentes son clases C# de .NET integradas en [ensamblados de .NET](/dotnet/standard/assembly/) que:
 
@@ -108,7 +108,7 @@ El cuadro de diálogo se representa cuando se accede al componente `Index` en un
 
 ![Componente Dialog representado en el explorador anidado en el interior del componente Index. La consola de herramientas de desarrollo del explorador muestra el mensaje escrito por el código de C# cuando el usuario selecciona el botón Sí. en la interfaz de usuario.](index/_static/dialog.png)
 
-Los componentes se representan en una representación en memoria del elemento [Document Object Model (DOM)](https://developer.mozilla.org/docs/Web/API/Document_Object_Model/Introduction) del explorador denominado *árbol de representación* , que se usa para actualizar la interfaz de usuario de manera eficaz y flexible.
+Los componentes se representan en una representación en memoria del elemento [Document Object Model (DOM)](https://developer.mozilla.org/docs/Web/API/Document_Object_Model/Introduction) del explorador denominado *árbol de representación*, que se usa para actualizar la interfaz de usuario de manera eficaz y flexible.
 
 ## Blazor WebAssembly
 
@@ -116,7 +116,7 @@ Blazor WebAssembly es un [marco de aplicaciones de página única (SPA)](/dotnet
 
 La ejecución de código .NET dentro de exploradores web se consigue mediante [WebAssembly](https://webassembly.org) (abreviado como `wasm`). WebAssembly es un formato de código de bytes compacto optimizado para descargas rápidas y una velocidad de ejecución máxima. WebAssembly es un estándar web abierto y se admite en exploradores web sin complementos.
 
-El código de WebAssembly puede acceder a toda la funcionalidad del explorador mediante JavaScript, denominada *interoperabilidad de JavaScript* . El código de .NET que se ejecuta a través de WebAssembly en el explorador se ejecuta a su vez en el espacio aislado de JavaScript del explorador con las protecciones que proporciona dicho espacio aislado contra acciones malintencionadas en la máquina cliente.
+El código de WebAssembly puede acceder a toda la funcionalidad del explorador mediante JavaScript, denominada *interoperabilidad de JavaScript*. El código de .NET que se ejecuta a través de WebAssembly en el explorador se ejecuta a su vez en el espacio aislado de JavaScript del explorador con las protecciones que proporciona dicho espacio aislado contra acciones malintencionadas en la máquina cliente.
 
 ![Blazor WebAssembly ejecuta código de .NET en el explorador con WebAssembly.](index/_static/blazor-webassembly.png)
 
@@ -126,7 +126,7 @@ Cuando se compila y ejecuta una aplicación de Blazor WebAssembly en un explorad
 * Los ensamblados y el [runtime de .NET](/dotnet/framework/get-started/overview) se descargan en el explorador.
 * Blazor WebAssembly arranca el entorno de ejecución .NET y lo configura para cargar los ensamblados de la aplicación. El entorno de ejecución de Blazor WebAssembly emplea la interoperabilidad de JavaScript para gestionar la manipulación de DOM y las llamadas API del explorador.
 
-El tamaño de la aplicación publicada, su *tamaño de carga* , es un factor de rendimiento crítico para la facilidad de uso de una aplicación. Una aplicación grande tarda un tiempo relativamente largo en descargarse en un explorador, lo que repercute en la experiencia del usuario. Blazor WebAssembly optimiza el tamaño de carga para reducir los tiempos de descarga:
+El tamaño de la aplicación publicada, su *tamaño de carga*, es un factor de rendimiento crítico para la facilidad de uso de una aplicación. Una aplicación grande tarda un tiempo relativamente largo en descargarse en un explorador, lo que repercute en la experiencia del usuario. Blazor WebAssembly optimiza el tamaño de carga para reducir los tiempos de descarga:
 
 ::: moniker range=">= aspnetcore-5.0"
 

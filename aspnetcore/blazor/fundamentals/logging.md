@@ -5,7 +5,7 @@ description: Obtenga información sobre cómo realizar registros en aplicaciones
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 06/10/2020
+ms.date: 12/11/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,26 +19,31 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/logging
-ms.openlocfilehash: 72d339a4768b734ff33e7642b0af14f3f5725c7b
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+zone_pivot_groups: blazor-hosting-models
+ms.openlocfilehash: 78117fa6e9c7d5aed3fb31bbd3afee55b3b5b875
+ms.sourcegitcommit: 6b87f2e064cea02e65dacd206394b44f5c604282
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93055989"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97506713"
 ---
 # <a name="aspnet-core-no-locblazor-logging"></a>Registro de Blazor en ASP.NET Core
 
-## Blazor WebAssembly
+::: zone pivot="webassembly"
 
-Configure el registro en aplicaciones Blazor WebAssembly con la propiedad `WebAssemblyHostBuilder.Logging` establecida en `Program.Main`:
+Configure el registro personalizado en aplicaciones Blazor WebAssembly con la propiedad <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.WebAssemblyHostBuilder.Logging?displayProperty=nameWithType>.
+
+Agregue el espacio de nombres de <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting?displayProperty=fullName> a `Program.cs`:
 
 ```csharp
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+```
 
-...
+En `Program.Main` de `Program.cs`, establezca el nivel de registro mínimo con <xref:Microsoft.Extensions.Logging.LoggingBuilderExtensions.SetMinimumLevel%2A?displayProperty=nameWithType> y agregue el proveedor de registro personalizado:
 
+```csharp
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
-
+...
 builder.Logging.SetMinimumLevel(LogLevel.Debug);
 builder.Logging.AddProvider(new CustomLoggingProvider());
 ```
@@ -47,82 +52,51 @@ La propiedad `Logging` es del tipo <xref:Microsoft.Extensions.Logging.ILoggingBu
 
 La configuración de registro se puede cargar desde archivos de configuración de la aplicación. Para obtener más información, vea <xref:blazor/fundamentals/configuration#logging-configuration>.
 
-## Blazor Server
-
-Para obtener instrucciones generales sobre el registro en ASP.NET Core, vea <xref:fundamentals/logging/index>.
-
-## <a name="no-locblazor-webassembly-no-locsignalr-net-client-logging"></a>Registro de clientes de Blazor WebAssembly SignalR .NET
+## <a name="no-locsignalr-net-client-logging"></a>Registro de clientes de SignalR .NET
 
 Inserte un proveedor <xref:Microsoft.Extensions.Logging.ILoggerProvider> para agregar un registrador `WebAssemblyConsoleLogger` a los proveedores de registro pasados a <xref:Microsoft.AspNetCore.SignalR.Client.HubConnectionBuilder>. A diferencia de los registradores <xref:Microsoft.Extensions.Logging.Console.ConsoleLogger> tradicionales, `WebAssemblyConsoleLogger` es un contenedor de API de registro específicas de explorador (por ejemplo, `console.log`). El uso de `WebAssemblyConsoleLogger` hace posible el registro en Mono dentro de un contexto de explorador.
+
+Agregue el espacio de nombres de <xref:Microsoft.Extensions.Logging?displayProperty=fullName> e inserte un elemento <xref:Microsoft.Extensions.Logging.ILoggerProvider> en el componente:
 
 ```csharp
 @using Microsoft.Extensions.Logging
 @inject ILoggerProvider LoggerProvider
+```
 
-...
+En el [método `OnInitializedAsync`](xref:blazor/components/lifecycle#component-initialization-methods) del componente, use <xref:Microsoft.AspNetCore.SignalR.Client.HubConnectionBuilderExtensions.ConfigureLogging%2A?displayProperty=nameWithType>:
 
+```csharp
 var connection = new HubConnectionBuilder()
     .WithUrl(NavigationManager.ToAbsoluteUri("/chathub"))
     .ConfigureLogging(logging => logging.AddProvider(LoggerProvider))
     .Build();
 ```
 
+::: zone-end
+
+::: zone pivot="server"
+
+Para obtener instrucciones generales sobre el registro en ASP.NET Core que pertenece a Blazor Server, consulte <xref:fundamentals/logging/index>.
+
+::: zone-end
+
 ## <a name="log-in-no-locrazor-components"></a>Registro en componentes Razor
 
 Los registradores respetan la configuración de inicio de la aplicación.
 
-La directiva `using` para <xref:Microsoft.Extensions.Logging> es necesaria con el fin de permitir las finalizaciones de IntelliSense para las API, como <xref:Microsoft.Extensions.Logging.LoggerExtensions.LogWarning%2A> y <xref:Microsoft.Extensions.Logging.LoggerExtensions.LogError%2A>.
+La directiva `using` para <xref:Microsoft.Extensions.Logging> es necesaria con el fin de permitir las finalizaciones de [IntelliSense](/visualstudio/ide/using-intellisense) para las API, como <xref:Microsoft.Extensions.Logging.LoggerExtensions.LogWarning%2A> y <xref:Microsoft.Extensions.Logging.LoggerExtensions.LogError%2A>.
 
-En el siguiente ejemplo se muestra el registro con un <xref:Microsoft.Extensions.Logging.ILogger> en componentes Razor:
+En el siguiente ejemplo se muestra el registro con <xref:Microsoft.Extensions.Logging.ILogger> en componentes.
 
-```razor
-@page "/counter"
-@using Microsoft.Extensions.Logging;
-@inject ILogger<Counter> logger;
+`Pages/Counter.razor`:
 
-<h1>Counter</h1>
+[!code-razor[](logging/samples_snapshot/Counter1.razor?highlight=3,16)]
 
-<p>Current count: @currentCount</p>
+En el siguiente ejemplo se muestra el registro con <xref:Microsoft.Extensions.Logging.ILoggerFactory> en componentes.
 
-<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+`Pages/Counter.razor`:
 
-@code {
-    private int currentCount = 0;
-
-    private void IncrementCount()
-    {
-        logger.LogWarning("Someone has clicked me!");
-
-        currentCount++;
-    }
-}
-```
-
-En el siguiente ejemplo se muestra el registro con un <xref:Microsoft.Extensions.Logging.ILoggerFactory> en componentes Razor:
-
-```razor
-@page "/counter"
-@using Microsoft.Extensions.Logging;
-@inject ILoggerFactory LoggerFactory
-
-<h1>Counter</h1>
-
-<p>Current count: @currentCount</p>
-
-<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
-
-@code {
-    private int currentCount = 0;
-
-    private void IncrementCount()
-    {
-        var logger = LoggerFactory.CreateLogger<Counter>();
-        logger.LogWarning("Someone has clicked me!");
-
-        currentCount++;
-    }
-}
-```
+[!code-razor[](logging/samples_snapshot/Counter2.razor?highlight=3,16-17)]
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
