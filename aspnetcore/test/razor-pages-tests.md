@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: test/razor-pages-tests
 ms.openlocfilehash: 2486eb8c9fd0fc33ea77b0fedd99795218d7f4ca
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93058043"
 ---
 # <a name="no-locrazor-pages-unit-tests-in-aspnet-core"></a>Pruebas unitarias de Razor Pages en ASP.NET Core
@@ -52,7 +52,7 @@ El proyecto de ejemplo se compone de dos aplicaciones:
 | Aplicación de mensajes | *src/RazorPagesTestSample*         | Permite a un usuario agregar un mensaje, eliminar un mensaje, eliminar todos los mensajes y analizar mensajes (hallar la media de palabras por mensaje). |
 | Probar la aplicación    | *tests/RazorPagesTestSample.Tests* | Sirve para realizar una prueba unitaria del modelo de página Index y la DAL de la aplicación de mensajes. |
 
-Las pruebas se pueden ejecutar con las características de prueba integradas de un IDE, como [Visual Studio](/visualstudio/test/unit-test-your-code) o [Visual Studio para Mac](/dotnet/core/tutorials/using-on-mac-vs-full-solution). Si usa [Visual Studio Code](https://code.visualstudio.com/) o la línea de comandos, ejecute el siguiente comando en un símbolo del sistema en la carpeta *tests/RazorPagesTestSample.Tests* :
+Las pruebas se pueden ejecutar con las características de prueba integradas de un IDE, como [Visual Studio](/visualstudio/test/unit-test-your-code) o [Visual Studio para Mac](/dotnet/core/tutorials/using-on-mac-vs-full-solution). Si usa [Visual Studio Code](https://code.visualstudio.com/) o la línea de comandos, ejecute el siguiente comando en un símbolo del sistema en la carpeta *tests/RazorPagesTestSample.Tests*:
 
 ```dotnetcli
 dotnet test
@@ -62,10 +62,10 @@ dotnet test
 
 La aplicación de mensajes es un sistema de mensajes de Razor Pages con las siguientes características:
 
-* La página Index de la aplicación ( *Pages/Index.cshtml* y *Pages/Index.cshtml.cs* ) proporciona una interfaz de usuario y métodos de modelo de página para controlar la adición, eliminación y análisis de mensajes (hallar la media de palabras por mensaje).
-* La clase `Message` ( *Data/Message.cs* ) describe un mensaje con dos propiedades: `Id` (clave) y `Text` (mensaje). Se necesita la propiedad `Text`, que está limitada a 200 caracteres.
+* La página Index de la aplicación (*Pages/Index.cshtml* y *Pages/Index.cshtml.cs*) proporciona una interfaz de usuario y métodos de modelo de página para controlar la adición, eliminación y análisis de mensajes (hallar la media de palabras por mensaje).
+* La clase `Message` (*Data/Message.cs*) describe un mensaje con dos propiedades: `Id` (clave) y `Text` (mensaje). Se necesita la propiedad `Text`, que está limitada a 200 caracteres.
 * Los mensajes se almacenan en la [base de datos en memoria de Entity Framework](/ef/core/providers/in-memory/)&#8224;.
-* La aplicación contiene una DAL en su clase de contexto de base de datos, `AppDbContext` ( *Data/AppDbContext.cs* ). Los métodos de DAL se marcan como `virtual`, lo que permite realizar simulaciones en ellos para usarlos en las pruebas.
+* La aplicación contiene una DAL en su clase de contexto de base de datos, `AppDbContext` (*Data/AppDbContext.cs*). Los métodos de DAL se marcan como `virtual`, lo que permite realizar simulaciones en ellos para usarlos en las pruebas.
 * Si la base de datos está vacía al inicio de una aplicación, el almacén de mensajes se inicializa con tres mensajes. Estos *mensajes inicializados* también se usan en las pruebas.
 
 &#8224;En el tema de EF, [Pruebas con InMemory](/ef/core/miscellaneous/testing/in-memory), se explica cómo usar una base de datos en memoria con las pruebas con MSTest. En este tema se usa el marco de pruebas [xUnit](https://xunit.github.io/). Los conceptos y las implementaciones de prueba de diferentes marcos de pruebas son similares, pero no idénticos.
@@ -85,7 +85,7 @@ El marco de pruebas es [xUnit](https://xunit.github.io/). El marco de trabajo de
 
 ## <a name="unit-tests-of-the-data-access-layer-dal"></a>Pruebas unitarias de la capa de acceso a datos (DAL)
 
-La aplicación de mensajes tiene una DAL con cuatro métodos contenidos en la clase `AppDbContext` ( *src/RazorPagesTestSample/Data/AppDbContext.cs* ). Cada método tiene una o dos pruebas unitarias en la aplicación de prueba.
+La aplicación de mensajes tiene una DAL con cuatro métodos contenidos en la clase `AppDbContext` (*src/RazorPagesTestSample/Data/AppDbContext.cs*). Cada método tiene una o dos pruebas unitarias en la aplicación de prueba.
 
 | Método de DAL               | Función                                                                   |
 | ------------------------ | -------------------------------------------------------------------------- |
@@ -106,7 +106,7 @@ using (var db = new AppDbContext(optionsBuilder.Options))
 }
 ```
 
-El inconveniente de este método es que cada prueba recibe la base de datos en el estado en el que la dejó la prueba anterior. Esto puede ser problemático al intentar escribir pruebas unitarias atómicas que no interfieran entre sí. Para forzar que `AppDbContext` use un nuevo contexto de base de datos en cada prueba, proporcione una instancia de `DbContextOptions` que esté basada en un nuevo proveedor de servicios. La aplicación de prueba muestra cómo llevar esto a cabo usando el método `TestDbContextOptions` de su clase `Utilities` ( *tests/RazorPagesTestSample.Tests/Utilities/Utilities.cs* ):
+El inconveniente de este método es que cada prueba recibe la base de datos en el estado en el que la dejó la prueba anterior. Esto puede ser problemático al intentar escribir pruebas unitarias atómicas que no interfieran entre sí. Para forzar que `AppDbContext` use un nuevo contexto de base de datos en cada prueba, proporcione una instancia de `DbContextOptions` que esté basada en un nuevo proveedor de servicios. La aplicación de prueba muestra cómo llevar esto a cabo usando el método `TestDbContextOptions` de su clase `Utilities` (*tests/RazorPagesTestSample.Tests/Utilities/Utilities.cs*):
 
 [!code-csharp[](razor-pages-tests/samples/3.x/tests/RazorPagesTestSample.Tests/Utilities/Utilities.cs?name=snippet1)]
 
@@ -119,13 +119,13 @@ using (var db = new AppDbContext(Utilities.TestDbContextOptions()))
 }
 ```
 
-Cada método de prueba de la clase `DataAccessLayerTest` ( *UnitTests/DataAccessLayerTest.cs* ) sigue un patrón Organización-Acción-Aserción similar:
+Cada método de prueba de la clase `DataAccessLayerTest` (*UnitTests/DataAccessLayerTest.cs*) sigue un patrón Organización-Acción-Aserción similar:
 
 1. Organización: la base de datos se configura para la prueba y/o el resultado previsto se define.
 1. Acción: la prueba se ejecuta.
 1. Aserción: se realizan aserciones para determinar si el resultado de la prueba es correcto.
 
-Por ejemplo, el método `DeleteMessageAsync` es responsable de quitar un mensaje individual identificado por su `Id` ( *src/RazorPagesTestSample/Data/AppDbContext.cs* ):
+Por ejemplo, el método `DeleteMessageAsync` es responsable de quitar un mensaje individual identificado por su `Id` (*src/RazorPagesTestSample/Data/AppDbContext.cs*):
 
 [!code-csharp[](razor-pages-tests/samples/3.x/src/RazorPagesTestSample/Data/AppDbContext.cs?name=snippet4)]
 
@@ -166,7 +166,7 @@ Otro conjunto de pruebas unitarias es responsable de las pruebas de los métodos
 | `OnPostDeleteMessageAsync` | Ejecuta `DeleteMessageAsync` para eliminar un mensaje con el `Id` especificado. |
 | `OnPostAnalyzeMessagesAsync` | Si hay uno o más mensajes en la base de datos, calcula la media de palabras por mensaje. |
 
-Los métodos del modelo de página se comprueban con siete pruebas en la clase `IndexPageTests` ( *tests/RazorPagesTestSample.Tests/UnitTests/IndexPageTests.cs* ). Las pruebas usan el conocido patrón Organización-Aserción-Acción. Estas pruebas se centran en lo siguiente:
+Los métodos del modelo de página se comprueban con siete pruebas en la clase `IndexPageTests` (*tests/RazorPagesTestSample.Tests/UnitTests/IndexPageTests.cs*). Las pruebas usan el conocido patrón Organización-Aserción-Acción. Estas pruebas se centran en lo siguiente:
 
 * Determinar si los métodos siguen el comportamiento correcto cuando [ModelState](xref:Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary) no es válido.
 * Confirmar que los métodos generan el elemento <xref:Microsoft.AspNetCore.Mvc.IActionResult> correcto.
@@ -180,11 +180,11 @@ La prueba `OnGetAsync_PopulatesThePageModel_WithAListOfMessages` muestra cómo s
 
 Cuando el método `OnGetAsync` se ejecuta en el paso de acción, llama al método `GetMessagesAsync` del modelo de página.
 
-Paso de acción de prueba unitaria ( *tests/RazorPagesTestSample.Tests/UnitTests/IndexPageTests.cs* ):
+Paso de acción de prueba unitaria (*tests/RazorPagesTestSample.Tests/UnitTests/IndexPageTests.cs*):
 
 [!code-csharp[](razor-pages-tests/samples/3.x/tests/RazorPagesTestSample.Tests/UnitTests/IndexPageTests.cs?name=snippet2)]
 
-Método `OnGetAsync` del modelo de página `IndexPage` ( *src/RazorPagesTestSample/Pages/Index.cshtml.cs* ):
+Método `OnGetAsync` del modelo de página `IndexPage` (*src/RazorPagesTestSample/Pages/Index.cshtml.cs*):
 
 [!code-csharp[](razor-pages-tests/samples/3.x/src/RazorPagesTestSample/Pages/Index.cshtml.cs?name=snippet1&highlight=3)]
 
@@ -236,7 +236,7 @@ El proyecto de ejemplo se compone de dos aplicaciones:
 | Aplicación de mensajes | *src/RazorPagesTestSample*         | Permite a un usuario agregar un mensaje, eliminar un mensaje, eliminar todos los mensajes y analizar mensajes (hallar la media de palabras por mensaje). |
 | Probar la aplicación    | *tests/RazorPagesTestSample.Tests* | Sirve para realizar una prueba unitaria del modelo de página Index y la DAL de la aplicación de mensajes. |
 
-Las pruebas se pueden ejecutar con las características de prueba integradas de un IDE, como [Visual Studio](/visualstudio/test/unit-test-your-code) o [Visual Studio para Mac](/dotnet/core/tutorials/using-on-mac-vs-full-solution). Si usa [Visual Studio Code](https://code.visualstudio.com/) o la línea de comandos, ejecute el siguiente comando en un símbolo del sistema en la carpeta *tests/RazorPagesTestSample.Tests* :
+Las pruebas se pueden ejecutar con las características de prueba integradas de un IDE, como [Visual Studio](/visualstudio/test/unit-test-your-code) o [Visual Studio para Mac](/dotnet/core/tutorials/using-on-mac-vs-full-solution). Si usa [Visual Studio Code](https://code.visualstudio.com/) o la línea de comandos, ejecute el siguiente comando en un símbolo del sistema en la carpeta *tests/RazorPagesTestSample.Tests*:
 
 ```dotnetcli
 dotnet test
@@ -246,10 +246,10 @@ dotnet test
 
 La aplicación de mensajes es un sistema de mensajes de Razor Pages con las siguientes características:
 
-* La página Index de la aplicación ( *Pages/Index.cshtml* y *Pages/Index.cshtml.cs* ) proporciona una interfaz de usuario y métodos de modelo de página para controlar la adición, eliminación y análisis de mensajes (hallar la media de palabras por mensaje).
-* La clase `Message` ( *Data/Message.cs* ) describe un mensaje con dos propiedades: `Id` (clave) y `Text` (mensaje). Se necesita la propiedad `Text`, que está limitada a 200 caracteres.
+* La página Index de la aplicación (*Pages/Index.cshtml* y *Pages/Index.cshtml.cs*) proporciona una interfaz de usuario y métodos de modelo de página para controlar la adición, eliminación y análisis de mensajes (hallar la media de palabras por mensaje).
+* La clase `Message` (*Data/Message.cs*) describe un mensaje con dos propiedades: `Id` (clave) y `Text` (mensaje). Se necesita la propiedad `Text`, que está limitada a 200 caracteres.
 * Los mensajes se almacenan en la [base de datos en memoria de Entity Framework](/ef/core/providers/in-memory/)&#8224;.
-* La aplicación contiene una DAL en su clase de contexto de base de datos, `AppDbContext` ( *Data/AppDbContext.cs* ). Los métodos de DAL se marcan como `virtual`, lo que permite realizar simulaciones en ellos para usarlos en las pruebas.
+* La aplicación contiene una DAL en su clase de contexto de base de datos, `AppDbContext` (*Data/AppDbContext.cs*). Los métodos de DAL se marcan como `virtual`, lo que permite realizar simulaciones en ellos para usarlos en las pruebas.
 * Si la base de datos está vacía al inicio de una aplicación, el almacén de mensajes se inicializa con tres mensajes. Estos *mensajes inicializados* también se usan en las pruebas.
 
 &#8224;En el tema de EF, [Pruebas con InMemory](/ef/core/miscellaneous/testing/in-memory), se explica cómo usar una base de datos en memoria con las pruebas con MSTest. En este tema se usa el marco de pruebas [xUnit](https://xunit.github.io/). Los conceptos y las implementaciones de prueba de diferentes marcos de pruebas son similares, pero no idénticos.
@@ -269,7 +269,7 @@ El marco de pruebas es [xUnit](https://xunit.github.io/). El marco de trabajo de
 
 ## <a name="unit-tests-of-the-data-access-layer-dal"></a>Pruebas unitarias de la capa de acceso a datos (DAL)
 
-La aplicación de mensajes tiene una DAL con cuatro métodos contenidos en la clase `AppDbContext` ( *src/RazorPagesTestSample/Data/AppDbContext.cs* ). Cada método tiene una o dos pruebas unitarias en la aplicación de prueba.
+La aplicación de mensajes tiene una DAL con cuatro métodos contenidos en la clase `AppDbContext` (*src/RazorPagesTestSample/Data/AppDbContext.cs*). Cada método tiene una o dos pruebas unitarias en la aplicación de prueba.
 
 | Método de DAL               | Función                                                                   |
 | ------------------------ | -------------------------------------------------------------------------- |
@@ -290,7 +290,7 @@ using (var db = new AppDbContext(optionsBuilder.Options))
 }
 ```
 
-El inconveniente de este método es que cada prueba recibe la base de datos en el estado en el que la dejó la prueba anterior. Esto puede ser problemático al intentar escribir pruebas unitarias atómicas que no interfieran entre sí. Para forzar que `AppDbContext` use un nuevo contexto de base de datos en cada prueba, proporcione una instancia de `DbContextOptions` que esté basada en un nuevo proveedor de servicios. La aplicación de prueba muestra cómo llevar esto a cabo usando el método `TestDbContextOptions` de su clase `Utilities` ( *tests/RazorPagesTestSample.Tests/Utilities/Utilities.cs* ):
+El inconveniente de este método es que cada prueba recibe la base de datos en el estado en el que la dejó la prueba anterior. Esto puede ser problemático al intentar escribir pruebas unitarias atómicas que no interfieran entre sí. Para forzar que `AppDbContext` use un nuevo contexto de base de datos en cada prueba, proporcione una instancia de `DbContextOptions` que esté basada en un nuevo proveedor de servicios. La aplicación de prueba muestra cómo llevar esto a cabo usando el método `TestDbContextOptions` de su clase `Utilities` (*tests/RazorPagesTestSample.Tests/Utilities/Utilities.cs*):
 
 [!code-csharp[](razor-pages-tests/samples/2.x/tests/RazorPagesTestSample.Tests/Utilities/Utilities.cs?name=snippet1)]
 
@@ -303,13 +303,13 @@ using (var db = new AppDbContext(Utilities.TestDbContextOptions()))
 }
 ```
 
-Cada método de prueba de la clase `DataAccessLayerTest` ( *UnitTests/DataAccessLayerTest.cs* ) sigue un patrón Organización-Acción-Aserción similar:
+Cada método de prueba de la clase `DataAccessLayerTest` (*UnitTests/DataAccessLayerTest.cs*) sigue un patrón Organización-Acción-Aserción similar:
 
 1. Organización: la base de datos se configura para la prueba y/o el resultado previsto se define.
 1. Acción: la prueba se ejecuta.
 1. Aserción: se realizan aserciones para determinar si el resultado de la prueba es correcto.
 
-Por ejemplo, el método `DeleteMessageAsync` es responsable de quitar un mensaje individual identificado por su `Id` ( *src/RazorPagesTestSample/Data/AppDbContext.cs* ):
+Por ejemplo, el método `DeleteMessageAsync` es responsable de quitar un mensaje individual identificado por su `Id` (*src/RazorPagesTestSample/Data/AppDbContext.cs*):
 
 [!code-csharp[](razor-pages-tests/samples/2.x/src/RazorPagesTestSample/Data/AppDbContext.cs?name=snippet4)]
 
@@ -350,7 +350,7 @@ Otro conjunto de pruebas unitarias es responsable de las pruebas de los métodos
 | `OnPostDeleteMessageAsync` | Ejecuta `DeleteMessageAsync` para eliminar un mensaje con el `Id` especificado. |
 | `OnPostAnalyzeMessagesAsync` | Si hay uno o más mensajes en la base de datos, calcula la media de palabras por mensaje. |
 
-Los métodos del modelo de página se comprueban con siete pruebas en la clase `IndexPageTests` ( *tests/RazorPagesTestSample.Tests/UnitTests/IndexPageTests.cs* ). Las pruebas usan el conocido patrón Organización-Aserción-Acción. Estas pruebas se centran en lo siguiente:
+Los métodos del modelo de página se comprueban con siete pruebas en la clase `IndexPageTests` (*tests/RazorPagesTestSample.Tests/UnitTests/IndexPageTests.cs*). Las pruebas usan el conocido patrón Organización-Aserción-Acción. Estas pruebas se centran en lo siguiente:
 
 * Determinar si los métodos siguen el comportamiento correcto cuando [ModelState](xref:Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary) no es válido.
 * Confirmar que los métodos generan el elemento <xref:Microsoft.AspNetCore.Mvc.IActionResult> correcto.
@@ -364,11 +364,11 @@ La prueba `OnGetAsync_PopulatesThePageModel_WithAListOfMessages` muestra cómo s
 
 Cuando el método `OnGetAsync` se ejecuta en el paso de acción, llama al método `GetMessagesAsync` del modelo de página.
 
-Paso de acción de prueba unitaria ( *tests/RazorPagesTestSample.Tests/UnitTests/IndexPageTests.cs* ):
+Paso de acción de prueba unitaria (*tests/RazorPagesTestSample.Tests/UnitTests/IndexPageTests.cs*):
 
 [!code-csharp[](razor-pages-tests/samples/2.x/tests/RazorPagesTestSample.Tests/UnitTests/IndexPageTests.cs?name=snippet2)]
 
-Método `OnGetAsync` del modelo de página `IndexPage` ( *src/RazorPagesTestSample/Pages/Index.cshtml.cs* ):
+Método `OnGetAsync` del modelo de página `IndexPage` (*src/RazorPagesTestSample/Pages/Index.cshtml.cs*):
 
 [!code-csharp[](razor-pages-tests/samples/2.x/src/RazorPagesTestSample/Pages/Index.cshtml.cs?name=snippet1&highlight=3)]
 
@@ -393,6 +393,6 @@ Otras pruebas de este grupo crean objetos de modelo de página que incluyen <xre
 * [Introducción a xUnit.net: Uso de .NET Core con la línea de comandos del SDK de .NET](https://xunit.github.io/docs/getting-started-dotnet-core)
 * [Moq](https://github.com/moq/moq4)
 * [Inicio rápido de Moq](https://github.com/Moq/moq4/wiki/Quickstart)
-* [JustMockLite](https://github.com/telerik/JustMockLite): marco ficticio para desarrolladores de .NET. ( *Microsoft no realiza su mantenimiento ni su soporte técnico.* )
+* [JustMockLite](https://github.com/telerik/JustMockLite): marco ficticio para desarrolladores de .NET. (*Microsoft no realiza su mantenimiento ni su soporte técnico.* )
 
 ::: moniker-end

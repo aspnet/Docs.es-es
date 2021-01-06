@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: spa/react
 ms.openlocfilehash: 6c3539d96329489189f49a3af0c718791824be6b
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93054455"
 ---
 # <a name="use-the-react-project-template-with-aspnet-core"></a>Uso de la plantilla de proyecto de React con ASP.NET Core
@@ -63,7 +63,7 @@ Ejecute [dotnet run](/dotnet/core/tools/dotnet-run) para iniciar la aplicación.
 
 ---
 
-La plantilla de proyecto crea una aplicación ASP.NET Core y una aplicación de React. El uso previsto de la aplicación ASP.NET Core es el acceso a los datos, la autorización y otros problemas relativos al servidor. La aplicación de React, que reside en el subdirectorio *ClientApp* , está diseñada para utilizarse para su uso con todos los problemas de la interfaz de usuario.
+La plantilla de proyecto crea una aplicación ASP.NET Core y una aplicación de React. El uso previsto de la aplicación ASP.NET Core es el acceso a los datos, la autorización y otros problemas relativos al servidor. La aplicación de React, que reside en el subdirectorio *ClientApp*, está diseñada para utilizarse para su uso con todos los problemas de la interfaz de usuario.
 
 ## <a name="add-pages-images-styles-modules-etc"></a>Adición de páginas, imágenes, estilos, módulos, etc.
 
@@ -109,7 +109,7 @@ Sin embargo, esta configuración predeterminada tiene un inconveniente. Cada vez
     npm start
     ```
 
-3. Modifique la aplicación ASP.NET Core para usar la instancia del servidor de CRA externo en lugar de iniciar una de las suyas. En la clase *Startup* , reemplace la invocación de `spa.UseReactDevelopmentServer` por lo siguiente:
+3. Modifique la aplicación ASP.NET Core para usar la instancia del servidor de CRA externo en lugar de iniciar una de las suyas. En la clase *Startup*, reemplace la invocación de `spa.UseReactDevelopmentServer` por lo siguiente:
 
     ```csharp
     spa.UseProxyToSpaDevelopmentServer("http://localhost:3000");

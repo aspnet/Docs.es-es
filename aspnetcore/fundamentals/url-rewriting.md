@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: fundamentals/url-rewriting
 ms.openlocfilehash: e7bd5f4d61661dd23eb0907f896d0d32b7799aac
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93061306"
 ---
 # <a name="url-rewriting-middleware-in-aspnet-core"></a>Middleware de reescritura de URL en ASP.NET Core
@@ -118,7 +118,7 @@ Hay tres opciones que permiten a la aplicación redirigir solicitudes distintas 
 
 ### <a name="url-redirect"></a>Redirección de URL
 
-Use <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.AddRedirect*> para redirigir las solicitudes. El primer parámetro contiene la expresión regular para hacer coincidir la ruta de acceso de la URL entrante. El segundo parámetro es la cadena de reemplazo. El tercer parámetro, si está presente, especifica el código de estado. Si no se especifica el código de estado, el valor predeterminado es *302 - Encontrado* , lo que indica que el recurso se ha movido o reemplazado temporalmente.
+Use <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.AddRedirect*> para redirigir las solicitudes. El primer parámetro contiene la expresión regular para hacer coincidir la ruta de acceso de la URL entrante. El segundo parámetro es la cadena de reemplazo. El tercer parámetro, si está presente, especifica el código de estado. Si no se especifica el código de estado, el valor predeterminado es *302 - Encontrado*, lo que indica que el recurso se ha movido o reemplazado temporalmente.
 
 [!code-csharp[](url-rewriting/samples/3.x/SampleApp/Startup.cs?name=snippet1&highlight=9)]
 
@@ -226,7 +226,7 @@ No hay ningún recorrido de ida y vuelta al servidor para obtener el recurso. Si
 
 Aplique reglas mod_rewrite de Apache con <xref:Microsoft.AspNetCore.Rewrite.ApacheModRewriteOptionsExtensions.AddApacheModRewrite*>. Asegúrese de que el archivo de reglas se implementa con la aplicación. Para obtener más información y ejemplos de reglas mod_rewrite, vea [Apache mod_rewrite](https://httpd.apache.org/docs/2.4/rewrite/) (mod_rewrite de Apache).
 
-Se usa <xref:System.IO.StreamReader> para leer las reglas del archivo de reglas *ApacheModRewrite.txt* :
+Se usa <xref:System.IO.StreamReader> para leer las reglas del archivo de reglas *ApacheModRewrite.txt*:
 
 [!code-csharp[](url-rewriting/samples/3.x/SampleApp/Startup.cs?name=snippet1&highlight=3-4,12)]
 
@@ -274,7 +274,7 @@ El middleware admite las siguientes variables de servidor mod_rewrite de Apache:
 
 Para usar el mismo conjunto de reglas que se aplica al módulo URL Rewrite para IIS, use <xref:Microsoft.AspNetCore.Rewrite.IISUrlRewriteOptionsExtensions.AddIISUrlRewrite*>. Asegúrese de que el archivo de reglas se implementa con la aplicación. No dirija el middleware para que use el archivo *web.config* de la aplicación cuando se ejecute en Windows Server IIS. Con IIS, estas reglas se deben almacenar fuera del archivo *web.config* de la aplicación para evitar conflictos con el Módulo URL Rewrite para IIS. Para obtener más información y ejemplos de reglas del Módulo URL Rewrite para IIS, vea [Using Url Rewrite Module 2.0](/iis/extensions/url-rewrite-module/using-url-rewrite-module-20) (Uso del Módulo URL Rewrite 2.0) y [URL Rewrite Module Configuration Reference](/iis/extensions/url-rewrite-module/url-rewrite-module-configuration-reference) (Referencia de configuración del Módulo URL Rewrite).
 
-Se usa <xref:System.IO.StreamReader> para leer las reglas del archivo de reglas *IISUrlRewrite.xml* :
+Se usa <xref:System.IO.StreamReader> para leer las reglas del archivo de reglas *IISUrlRewrite.xml*:
 
 [!code-csharp[](url-rewriting/samples/3.x/SampleApp/Startup.cs?name=snippet1&highlight=5-6,13)]
 
@@ -337,9 +337,9 @@ Use <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.Add*> para imple
 
 [!code-csharp[](url-rewriting/samples/3.x/SampleApp/Startup.cs?name=snippet1&highlight=14)]
 
-La aplicación de ejemplo muestra un método que redirige las solicitudes para las rutas de acceso que terminen con *.xml*. Si se realiza una solicitud de `/file.xml`, la solicitud se redirige a `/xmlfiles/file.xml`. El código de estado se establece en *301 - Movido definitivamente*. Cuando el explorador realiza una solicitud nueva a */xmlfiles/file.xml* , el middleware de archivos estáticos sirve el archivo al cliente desde la carpeta *wwwroot/xmlfiles*. Para un redireccionamiento, debe establecer de forma explícita el código de estado de la respuesta. En caso contrario, se devuelve un código de estado *200: correcto* y no se produce el redireccionamiento en el cliente.
+La aplicación de ejemplo muestra un método que redirige las solicitudes para las rutas de acceso que terminen con *.xml*. Si se realiza una solicitud de `/file.xml`, la solicitud se redirige a `/xmlfiles/file.xml`. El código de estado se establece en *301 - Movido definitivamente*. Cuando el explorador realiza una solicitud nueva a */xmlfiles/file.xml*, el middleware de archivos estáticos sirve el archivo al cliente desde la carpeta *wwwroot/xmlfiles*. Para un redireccionamiento, debe establecer de forma explícita el código de estado de la respuesta. En caso contrario, se devuelve un código de estado *200: correcto* y no se produce el redireccionamiento en el cliente.
 
-*RewriteRules.cs* :
+*RewriteRules.cs*:
 
 [!code-csharp[](url-rewriting/samples/3.x/SampleApp/RewriteRules.cs?name=snippet_RedirectXmlFileRequests&highlight=14-18)]
 
@@ -347,7 +347,7 @@ Este enfoque también permite volver a escribir las solicitudes. En la aplicaci�
 
 [!code-csharp[](url-rewriting/samples/3.x/SampleApp/Startup.cs?name=snippet1&highlight=15,22)]
 
-*RewriteRules.cs* :
+*RewriteRules.cs*:
 
 [!code-csharp[](url-rewriting/samples/3.x/SampleApp/RewriteRules.cs?name=snippet_RewriteTextFileRequests&highlight=7-8)]
 
@@ -357,7 +357,7 @@ Utilice <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.Add*> para u
 
 [!code-csharp[](url-rewriting/samples/3.x/SampleApp/Startup.cs?name=snippet1&highlight=16-17)]
 
-Se comprueba que los valores de los parámetros en la aplicación de ejemplo para `extension` y `newPath` cumplen ciertas condiciones. `extension` debe contener un valor, que debe ser *.png* , *.jpg* o *.gif*. Si `newPath` no es válido, se genera <xref:System.ArgumentException> . Si se realiza una solicitud de *image.png* , la solicitud se redirige a `/png-images/image.png`. Si se realiza una solicitud de *image.jpg* , la solicitud se redirige a `/jpg-images/image.jpg`. El código de estado se establece en *301 - Movido definitivamente* y se establece `context.Result` para detener el procesamiento de las reglas y enviar la respuesta.
+Se comprueba que los valores de los parámetros en la aplicación de ejemplo para `extension` y `newPath` cumplen ciertas condiciones. `extension` debe contener un valor, que debe ser *.png*, *.jpg* o *.gif*. Si `newPath` no es válido, se genera <xref:System.ArgumentException> . Si se realiza una solicitud de *image.png*, la solicitud se redirige a `/png-images/image.png`. Si se realiza una solicitud de *image.jpg*, la solicitud se redirige a `/jpg-images/image.jpg`. El código de estado se establece en *301 - Movido definitivamente* y se establece `context.Result` para detener el procesamiento de las reglas y enviar la respuesta.
 
 [!code-csharp[](url-rewriting/samples/3.x/SampleApp/RewriteRules.cs?name=snippet_RedirectImageRequests)]
 
@@ -472,7 +472,7 @@ Hay tres opciones que permiten a la aplicación redirigir solicitudes distintas 
 
 ### <a name="url-redirect"></a>Redirección de URL
 
-Use <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.AddRedirect*> para redirigir las solicitudes. El primer parámetro contiene la expresión regular para hacer coincidir la ruta de acceso de la URL entrante. El segundo parámetro es la cadena de reemplazo. El tercer parámetro, si está presente, especifica el código de estado. Si no se especifica el código de estado, el valor predeterminado es *302 - Encontrado* , lo que indica que el recurso se ha movido o reemplazado temporalmente.
+Use <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.AddRedirect*> para redirigir las solicitudes. El primer parámetro contiene la expresión regular para hacer coincidir la ruta de acceso de la URL entrante. El segundo parámetro es la cadena de reemplazo. El tercer parámetro, si está presente, especifica el código de estado. Si no se especifica el código de estado, el valor predeterminado es *302 - Encontrado*, lo que indica que el recurso se ha movido o reemplazado temporalmente.
 
 [!code-csharp[](url-rewriting/samples/2.x/SampleApp/Startup.cs?name=snippet1&highlight=9)]
 
@@ -580,7 +580,7 @@ No hay ningún recorrido de ida y vuelta al servidor para obtener el recurso. Si
 
 Aplique reglas mod_rewrite de Apache con <xref:Microsoft.AspNetCore.Rewrite.ApacheModRewriteOptionsExtensions.AddApacheModRewrite*>. Asegúrese de que el archivo de reglas se implementa con la aplicación. Para obtener más información y ejemplos de reglas mod_rewrite, vea [Apache mod_rewrite](https://httpd.apache.org/docs/2.4/rewrite/) (mod_rewrite de Apache).
 
-Se usa <xref:System.IO.StreamReader> para leer las reglas del archivo de reglas *ApacheModRewrite.txt* :
+Se usa <xref:System.IO.StreamReader> para leer las reglas del archivo de reglas *ApacheModRewrite.txt*:
 
 [!code-csharp[](url-rewriting/samples/2.x/SampleApp/Startup.cs?name=snippet1&highlight=3-4,12)]
 
@@ -628,7 +628,7 @@ El middleware admite las siguientes variables de servidor mod_rewrite de Apache:
 
 Para usar el mismo conjunto de reglas que se aplica al módulo URL Rewrite para IIS, use <xref:Microsoft.AspNetCore.Rewrite.IISUrlRewriteOptionsExtensions.AddIISUrlRewrite*>. Asegúrese de que el archivo de reglas se implementa con la aplicación. No dirija el middleware para que use el archivo *web.config* de la aplicación cuando se ejecute en Windows Server IIS. Con IIS, estas reglas se deben almacenar fuera del archivo *web.config* de la aplicación para evitar conflictos con el Módulo URL Rewrite para IIS. Para obtener más información y ejemplos de reglas del Módulo URL Rewrite para IIS, vea [Using Url Rewrite Module 2.0](/iis/extensions/url-rewrite-module/using-url-rewrite-module-20) (Uso del Módulo URL Rewrite 2.0) y [URL Rewrite Module Configuration Reference](/iis/extensions/url-rewrite-module/url-rewrite-module-configuration-reference) (Referencia de configuración del Módulo URL Rewrite).
 
-Se usa <xref:System.IO.StreamReader> para leer las reglas del archivo de reglas *IISUrlRewrite.xml* :
+Se usa <xref:System.IO.StreamReader> para leer las reglas del archivo de reglas *IISUrlRewrite.xml*:
 
 [!code-csharp[](url-rewriting/samples/2.x/SampleApp/Startup.cs?name=snippet1&highlight=5-6,13)]
 
@@ -691,9 +691,9 @@ Use <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.Add*> para imple
 
 [!code-csharp[](url-rewriting/samples/2.x/SampleApp/Startup.cs?name=snippet1&highlight=14)]
 
-La aplicación de ejemplo muestra un método que redirige las solicitudes para las rutas de acceso que terminen con *.xml*. Si se realiza una solicitud de `/file.xml`, la solicitud se redirige a `/xmlfiles/file.xml`. El código de estado se establece en *301 - Movido definitivamente*. Cuando el explorador realiza una solicitud nueva a */xmlfiles/file.xml* , el middleware de archivos estáticos sirve el archivo al cliente desde la carpeta *wwwroot/xmlfiles*. Para un redireccionamiento, debe establecer de forma explícita el código de estado de la respuesta. En caso contrario, se devuelve un código de estado *200: correcto* y no se produce el redireccionamiento en el cliente.
+La aplicación de ejemplo muestra un método que redirige las solicitudes para las rutas de acceso que terminen con *.xml*. Si se realiza una solicitud de `/file.xml`, la solicitud se redirige a `/xmlfiles/file.xml`. El código de estado se establece en *301 - Movido definitivamente*. Cuando el explorador realiza una solicitud nueva a */xmlfiles/file.xml*, el middleware de archivos estáticos sirve el archivo al cliente desde la carpeta *wwwroot/xmlfiles*. Para un redireccionamiento, debe establecer de forma explícita el código de estado de la respuesta. En caso contrario, se devuelve un código de estado *200: correcto* y no se produce el redireccionamiento en el cliente.
 
-*RewriteRules.cs* :
+*RewriteRules.cs*:
 
 [!code-csharp[](url-rewriting/samples/2.x/SampleApp/RewriteRules.cs?name=snippet_RedirectXmlFileRequests&highlight=14-18)]
 
@@ -701,7 +701,7 @@ Este enfoque también permite volver a escribir las solicitudes. En la aplicaci�
 
 [!code-csharp[](url-rewriting/samples/2.x/SampleApp/Startup.cs?name=snippet1&highlight=15,22)]
 
-*RewriteRules.cs* :
+*RewriteRules.cs*:
 
 [!code-csharp[](url-rewriting/samples/2.x/SampleApp/RewriteRules.cs?name=snippet_RewriteTextFileRequests&highlight=7-8)]
 
@@ -711,7 +711,7 @@ Utilice <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.Add*> para u
 
 [!code-csharp[](url-rewriting/samples/2.x/SampleApp/Startup.cs?name=snippet1&highlight=16-17)]
 
-Se comprueba que los valores de los parámetros en la aplicación de ejemplo para `extension` y `newPath` cumplen ciertas condiciones. `extension` debe contener un valor, que debe ser *.png* , *.jpg* o *.gif*. Si `newPath` no es válido, se genera <xref:System.ArgumentException> . Si se realiza una solicitud de *image.png* , la solicitud se redirige a `/png-images/image.png`. Si se realiza una solicitud de *image.jpg* , la solicitud se redirige a `/jpg-images/image.jpg`. El código de estado se establece en *301 - Movido definitivamente* y se establece `context.Result` para detener el procesamiento de las reglas y enviar la respuesta.
+Se comprueba que los valores de los parámetros en la aplicación de ejemplo para `extension` y `newPath` cumplen ciertas condiciones. `extension` debe contener un valor, que debe ser *.png*, *.jpg* o *.gif*. Si `newPath` no es válido, se genera <xref:System.ArgumentException> . Si se realiza una solicitud de *image.png*, la solicitud se redirige a `/png-images/image.png`. Si se realiza una solicitud de *image.jpg*, la solicitud se redirige a `/jpg-images/image.jpg`. El código de estado se establece en *301 - Movido definitivamente* y se establece `context.Result` para detener el procesamiento de las reglas y enviar la respuesta.
 
 [!code-csharp[](url-rewriting/samples/2.x/SampleApp/RewriteRules.cs?name=snippet_RedirectImageRequests)]
 

@@ -18,10 +18,10 @@ no-loc:
 - SignalR
 uid: tutorials/first-mvc-app/controller-methods-views
 ms.openlocfilehash: b4850821317b6907452793ef09194844c90c0137
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93050776"
 ---
 # <a name="part-6-controller-methods-and-views-in-aspnet-core"></a>Parte 6. Vistas y métodos de controlador en ASP.NET Core
@@ -58,7 +58,7 @@ Las [aplicaciones auxiliares de etiquetas](xref:mvc/views/tag-helpers/intro) per
 </td>
 ```
 
-Recupere el formato para el [enrutamiento](xref:mvc/controllers/routing) establecido en el archivo *Startup.cs* :
+Recupere el formato para el [enrutamiento](xref:mvc/controllers/routing) establecido en el archivo *Startup.cs*:
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/Startup.cs?name=snippet_1&highlight=5)]
 
@@ -108,7 +108,7 @@ Observe que el segundo método de acción `Edit` va precedido del atributo `[Htt
 
 El atributo `HttpPost` especifica que este método `Edit` se puede invocar *solamente* para solicitudes `POST`. Podría aplicar el atributo `[HttpGet]` al primer método de edición, pero no es necesario hacerlo porque `[HttpGet]` es el valor predeterminado.
 
-El atributo `ValidateAntiForgeryToken` se usa para [impedir la falsificación de una solicitud](xref:security/anti-request-forgery) y se empareja con un token antifalsificación generado en el archivo de vista de edición ( *Views/Movies/Edit.cshtml* ). El archivo de vista de edición genera el token antifalsificación con el [asistente de etiquetas de formulario](xref:mvc/views/working-with-forms).
+El atributo `ValidateAntiForgeryToken` se usa para [impedir la falsificación de una solicitud](xref:security/anti-request-forgery) y se empareja con un token antifalsificación generado en el archivo de vista de edición (*Views/Movies/Edit.cshtml*). El archivo de vista de edición genera el token antifalsificación con el [asistente de etiquetas de formulario](xref:mvc/views/working-with-forms).
 
 [!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Movies/Edit.cshtml?range=9)]
 

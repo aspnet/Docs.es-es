@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: data/ef-rp/concurrency
 ms.openlocfilehash: 573a509041bfb34faf50a227c451824db03f92ee
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93054000"
 ---
 # <a name="part-8-no-locrazor-pages-with-ef-core-in-aspnet-core---concurrency"></a>Parte 8. Razor Pages con EF Core en ASP.NET Core: Simultaneidad
@@ -56,7 +56,7 @@ La simultaneidad optimista permite que se produzcan conflictos de simultaneidad 
 
 ![Cambiar el presupuesto a 0](concurrency/_static/change-budget30.png)
 
-Antes de que Jane haga clic en **Save** , John visita la misma página y cambia el campo Start Date de 9/1/2007 a 9/1/2013.
+Antes de que Jane haga clic en **Save**, John visita la misma página y cambia el campo Start Date de 9/1/2007 a 9/1/2013.
 
 ![Cambiar la fecha de inicio a 2013](concurrency/_static/change-date30.png)
 
@@ -98,7 +98,7 @@ EF Core inicia excepciones `DbConcurrencyException` cuando detecta conflictos. E
 
 ## <a name="add-a-tracking-property"></a>Agrega una propiedad de seguimiento
 
-En *Models/Department.cs* , agregue una propiedad de seguimiento denominada RowVersion:
+En *Models/Department.cs*, agregue una propiedad de seguimiento denominada RowVersion:
 
 [!code-csharp[](intro/samples/cu30/Models/Department.cs?highlight=26,27)]
 
@@ -246,7 +246,7 @@ Compile el proyecto.
 
 La herramienta de scaffolding ha creado una columna `RowVersion` para la página de índice, pero ese campo no se debería mostrar en una aplicación de producción. En este tutorial, se muestra el último byte de `RowVersion` para ayudar a entender el funcionamiento de la simultaneidad. No se garantiza que el último byte sea único por si mismo.
 
-Actualice la página *Pages\Departments\Index.cshtml* :
+Actualice la página *Pages\Departments\Index.cshtml*:
 
 * Reemplace Index por Departments.
 * Cambie el código que contiene `RowVersion` para mostrar solo el último byte de la matriz de bytes.
@@ -280,7 +280,7 @@ En el código siguiente se agrega un mensaje de error personalizado para cada co
 
 [!code-csharp[](intro/samples/cu30/Pages/Departments/Edit.cshtml.cs?name=snippet_Error)]
 
-En el código resaltado siguiente se establece el valor `RowVersion` en el nuevo valor recuperado de la base de datos. La próxima vez que el usuario haga clic en **Save** , solo se detectarán los errores de simultaneidad que se produzcan desde la última visualización de la página Edit.
+En el código resaltado siguiente se establece el valor `RowVersion` en el nuevo valor recuperado de la base de datos. La próxima vez que el usuario haga clic en **Save**, solo se detectarán los errores de simultaneidad que se produzcan desde la última visualización de la página Edit.
 
 [!code-csharp[](intro/samples/cu30/Pages/Departments/Edit.cshtml.cs?name=snippet_TryUpdateModel&highlight=28)]
 
@@ -408,7 +408,7 @@ La simultaneidad optimista permite que se produzcan conflictos de simultaneidad 
 
 ![Cambiar el presupuesto a 0](concurrency/_static/change-budget.png)
 
-Antes de que Jane haga clic en **Save** , John visita la misma página y cambia el campo Start Date de 9/1/2007 a 9/1/2013.
+Antes de que Jane haga clic en **Save**, John visita la misma página y cambia el campo Start Date de 9/1/2007 a 9/1/2013.
 
 ![Cambiar la fecha de inicio a 2013](concurrency/_static/change-date.png)
 
@@ -472,7 +472,7 @@ En EF Core, cuando un comando `Update` o `Delete` no han actualizado ninguna fil
 
 ### <a name="add-a-tracking-property-to-the-department-entity"></a>Agregar una propiedad de seguimiento a la entidad Department
 
-En *Models/Department.cs* , agregue una propiedad de seguimiento denominada RowVersion:
+En *Models/Department.cs*, agregue una propiedad de seguimiento denominada RowVersion:
 
 [!code-csharp[](intro/samples/cu/Models/Department.cs?name=snippet_Final&highlight=26,27)]
 
@@ -576,7 +576,7 @@ El código siguiente agrega un mensaje de error personalizado para cada columna 
 
 [!code-csharp[](intro/samples/cu/Pages/Departments/Edit.cshtml.cs?name=snippet_err)]
 
-El código resaltado a continuación establece el valor `RowVersion` para el nuevo valor recuperado de la base de datos. La próxima vez que el usuario haga clic en **Save** , solo se detectarán los errores de simultaneidad que se produzcan desde la última visualización de la página Edit.
+El código resaltado a continuación establece el valor `RowVersion` para el nuevo valor recuperado de la base de datos. La próxima vez que el usuario haga clic en **Save**, solo se detectarán los errores de simultaneidad que se produzcan desde la última visualización de la página Edit.
 
 [!code-csharp[](intro/samples/cu/Pages/Departments/Edit.cshtml.cs?name=snippet_try&highlight=23)]
 

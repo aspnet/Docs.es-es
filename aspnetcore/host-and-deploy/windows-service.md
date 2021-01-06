@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: host-and-deploy/windows-service
 ms.openlocfilehash: 31a738e7aa8779171dfa09a5678d7240b8f62343
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93057237"
 ---
 # <a name="host-aspnet-core-in-a-windows-service"></a>Hospedaje de ASP.NET Core en un servicio de Windows
@@ -62,7 +62,7 @@ Se llama a `IHostBuilder.UseWindowsService` al compilar el host. Si la aplicaci�
   * Invalide el nivel de registro predeterminado con la clave `Logging:EventLog:LogLevel:Default` en *appsettings.json* /*appsettings.{Environment}.json* u otro proveedor de configuración.
   * Los administradores son los únicos que pueden crear nuevos orígenes de eventos. Cuando no se puede crear un origen de eventos con el nombre de la aplicación, se registra una advertencia para el origen *Aplicación* y los registros de eventos se deshabilitan.
 
-En `CreateHostBuilder` de *Program.cs* :
+En `CreateHostBuilder` de *Program.cs*:
 
 ```csharp
 Host.CreateDefaultBuilder(args)
@@ -97,9 +97,9 @@ Si el servicio solo ejecuta tareas en segundo plano (por ejemplo, [servicios hos
 
 ### <a name="framework-dependent-deployment-fdd"></a>Implementación dependiente de marco (FDD)
 
-La implementación dependiente de marco de trabajo (FDD) se basa en la presencia de una versión compartida de .NET Core en todo el sistema en el sistema de destino. Cuando se adopta el escenario FDD siguiendo las instrucciones de este artículo, el SDK genera un archivo ejecutable ( *.exe* ), denominado *ejecutable dependiente del marco*.
+La implementación dependiente de marco de trabajo (FDD) se basa en la presencia de una versión compartida de .NET Core en todo el sistema en el sistema de destino. Cuando se adopta el escenario FDD siguiendo las instrucciones de este artículo, el SDK genera un archivo ejecutable ( *.exe*), denominado *ejecutable dependiente del marco*.
 
-Si se usa el [SDK web](#sdk), para una aplicación de Windows Services no se requiere un archivo *web.config* , que normalmente se crea cuando se publica una aplicación ASP.NET Core. Para deshabilitar la creación de un archivo *web.config* agregue la propiedad `<IsTransformWebConfigDisabled>` establecida en `true`.
+Si se usa el [SDK web](#sdk), para una aplicación de Windows Services no se requiere un archivo *web.config*, que normalmente se crea cuando se publica una aplicación ASP.NET Core. Para deshabilitar la creación de un archivo *web.config* agregue la propiedad `<IsTransformWebConfigDisabled>` establecida en `true`.
 
 ```xml
 <PropertyGroup>
@@ -254,7 +254,7 @@ Use [IHostEnvironment.ContentRootPath](xref:Microsoft.Extensions.Hosting.IHostEn
 
 Cuando la aplicación se ejecuta como un servicio, <xref:Microsoft.Extensions.Hosting.WindowsServiceLifetimeHostBuilderExtensions.UseWindowsService*> establece la ruta de acceso <xref:Microsoft.Extensions.Hosting.IHostEnvironment.ContentRootPath> en [AppContext.BaseDirectory](xref:System.AppContext.BaseDirectory).
 
-Los archivos de configuración predeterminados de la aplicación, *appsettings.json* y *appsettings.{Environment}.json* , se cargan desde la raíz del contenido de la aplicación mediante una llamada a [CreateDefaultBuilder durante la construcción del host](xref:fundamentals/host/generic-host#set-up-a-host).
+Los archivos de configuración predeterminados de la aplicación, *appsettings.json* y *appsettings.{Environment}.json*, se cargan desde la raíz del contenido de la aplicación mediante una llamada a [CreateDefaultBuilder durante la construcción del host](xref:fundamentals/host/generic-host#set-up-a-host).
 
 En el caso de otros archivos de configuración cargados por el código para desarrolladores en <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*>, no es necesario llamar a <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*>. En el ejemplo siguiente, el archivo *custom_settings.json* ya se encuentra en la raíz del contenido de la aplicación y se carga sin establecer explícitamente una ruta de acceso base:
 
@@ -288,7 +288,7 @@ Para solucionar problemas de una aplicación de servicio de Windows, consulte <x
 Acceda a los registros de eventos del sistema y de aplicación:
 
 1. Abra el menú Inicio, busque *Visor de eventos* y seleccione la aplicación **Visor de eventos**.
-1. En **Visor de eventos** , abra el nodo **Registros de Windows**.
+1. En **Visor de eventos**, abra el nodo **Registros de Windows**.
 1. Seleccione **Sistema** para abrir el registro de eventos del sistema. Seleccione **Aplicación** para abrir el registro de eventos de la aplicación.
 1. Busque los errores asociados a la aplicación objeto del error.
 
@@ -399,11 +399,11 @@ Si el servicio solo ejecuta tareas en segundo plano (por ejemplo, [servicios hos
 
 ### <a name="framework-dependent-deployment-fdd"></a>Implementación dependiente de marco (FDD)
 
-La implementación dependiente de marco de trabajo (FDD) se basa en la presencia de una versión compartida de .NET Core en todo el sistema en el sistema de destino. Cuando se adopta el escenario FDD siguiendo las instrucciones de este artículo, el SDK genera un archivo ejecutable ( *.exe* ), denominado *ejecutable dependiente del marco*.
+La implementación dependiente de marco de trabajo (FDD) se basa en la presencia de una versión compartida de .NET Core en todo el sistema en el sistema de destino. Cuando se adopta el escenario FDD siguiendo las instrucciones de este artículo, el SDK genera un archivo ejecutable ( *.exe*), denominado *ejecutable dependiente del marco*.
 
-El [identificador en tiempo de ejecución (RID)](/dotnet/core/rid-catalog) ([\<RuntimeIdentifier>](/dotnet/core/tools/csproj#runtimeidentifier)) contiene la plataforma de destino. En el ejemplo siguiente, el RID se establece en `win7-x64`. La propiedad `<SelfContained>` se establece en `false`. Estas propiedades indican al SDK que genere un archivo ejecutable ( *.exe* ) para Windows y una aplicación que depende del marco .NET Core compartido.
+El [identificador en tiempo de ejecución (RID)](/dotnet/core/rid-catalog) ([\<RuntimeIdentifier>](/dotnet/core/tools/csproj#runtimeidentifier)) contiene la plataforma de destino. En el ejemplo siguiente, el RID se establece en `win7-x64`. La propiedad `<SelfContained>` se establece en `false`. Estas propiedades indican al SDK que genere un archivo ejecutable ( *.exe*) para Windows y una aplicación que depende del marco .NET Core compartido.
 
-No se requiere un archivo *web.config* , que normalmente se produce cuando se publica una aplicación ASP.NET Core, para una aplicación de Windows Services. Para deshabilitar la creación de un archivo *web.config* agregue la propiedad `<IsTransformWebConfigDisabled>` establecida en `true`.
+No se requiere un archivo *web.config*, que normalmente se produce cuando se publica una aplicación ASP.NET Core, para una aplicación de Windows Services. Para deshabilitar la creación de un archivo *web.config* agregue la propiedad `<IsTransformWebConfigDisabled>` establecida en `true`.
 
 ```xml
 <PropertyGroup>
@@ -622,7 +622,7 @@ Para solucionar problemas de una aplicación de servicio de Windows, consulte <x
 Acceda a los registros de eventos del sistema y de aplicación:
 
 1. Abra el menú Inicio, busque *Visor de eventos* y seleccione la aplicación **Visor de eventos**.
-1. En **Visor de eventos** , abra el nodo **Registros de Windows**.
+1. En **Visor de eventos**, abra el nodo **Registros de Windows**.
 1. Seleccione **Sistema** para abrir el registro de eventos del sistema. Seleccione **Aplicación** para abrir el registro de eventos de la aplicación.
 1. Busque los errores asociados a la aplicación objeto del error.
 
@@ -733,13 +733,13 @@ Si el servicio solo ejecuta tareas en segundo plano (por ejemplo, [servicios hos
 
 ### <a name="framework-dependent-deployment-fdd"></a>Implementación dependiente de marco (FDD)
 
-La implementación dependiente de marco de trabajo (FDD) se basa en la presencia de una versión compartida de .NET Core en todo el sistema en el sistema de destino. Cuando se adopta el escenario FDD siguiendo las instrucciones de este artículo, el SDK genera un archivo ejecutable ( *.exe* ), denominado *ejecutable dependiente del marco*.
+La implementación dependiente de marco de trabajo (FDD) se basa en la presencia de una versión compartida de .NET Core en todo el sistema en el sistema de destino. Cuando se adopta el escenario FDD siguiendo las instrucciones de este artículo, el SDK genera un archivo ejecutable ( *.exe*), denominado *ejecutable dependiente del marco*.
 
-El [identificador en tiempo de ejecución (RID)](/dotnet/core/rid-catalog) ([\<RuntimeIdentifier>](/dotnet/core/tools/csproj#runtimeidentifier)) contiene la plataforma de destino. En el ejemplo siguiente, el RID se establece en `win7-x64`. La propiedad `<SelfContained>` se establece en `false`. Estas propiedades indican al SDK que genere un archivo ejecutable ( *.exe* ) para Windows y una aplicación que depende del marco .NET Core compartido.
+El [identificador en tiempo de ejecución (RID)](/dotnet/core/rid-catalog) ([\<RuntimeIdentifier>](/dotnet/core/tools/csproj#runtimeidentifier)) contiene la plataforma de destino. En el ejemplo siguiente, el RID se establece en `win7-x64`. La propiedad `<SelfContained>` se establece en `false`. Estas propiedades indican al SDK que genere un archivo ejecutable ( *.exe*) para Windows y una aplicación que depende del marco .NET Core compartido.
 
-La propiedad `<UseAppHost>` se establece en `true`. Esta propiedad proporciona el servicio con una ruta de acceso de activación (un archivo ejecutable, *.exe* ) para una FDD.
+La propiedad `<UseAppHost>` se establece en `true`. Esta propiedad proporciona el servicio con una ruta de acceso de activación (un archivo ejecutable, *.exe*) para una FDD.
 
-No se requiere un archivo *web.config* , que normalmente se produce cuando se publica una aplicación ASP.NET Core, para una aplicación de Windows Services. Para deshabilitar la creación de un archivo *web.config* agregue la propiedad `<IsTransformWebConfigDisabled>` establecida en `true`.
+No se requiere un archivo *web.config*, que normalmente se produce cuando se publica una aplicación ASP.NET Core, para una aplicación de Windows Services. Para deshabilitar la creación de un archivo *web.config* agregue la propiedad `<IsTransformWebConfigDisabled>` establecida en `true`.
 
 ```xml
 <PropertyGroup>
@@ -959,7 +959,7 @@ Para solucionar problemas de una aplicación de servicio de Windows, consulte <x
 Acceda a los registros de eventos del sistema y de aplicación:
 
 1. Abra el menú Inicio, busque *Visor de eventos* y seleccione la aplicación **Visor de eventos**.
-1. En **Visor de eventos** , abra el nodo **Registros de Windows**.
+1. En **Visor de eventos**, abra el nodo **Registros de Windows**.
 1. Seleccione **Sistema** para abrir el registro de eventos del sistema. Seleccione **Aplicación** para abrir el registro de eventos de la aplicación.
 1. Busque los errores asociados a la aplicación objeto del error.
 

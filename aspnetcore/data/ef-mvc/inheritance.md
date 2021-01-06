@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: data/ef-mvc/inheritance
 ms.openlocfilehash: 581a31bad4069523699fbbac63862c9dff12034d
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93054221"
 ---
 # <a name="tutorial-implement-inheritance---aspnet-mvc-with-ef-core"></a>Tutorial: Implementación de la herencia: ASP.NET MVC con EF Core
@@ -88,7 +88,7 @@ En la carpeta Models, cree Person.cs y reemplace el código de plantilla por el 
 
 ## <a name="update-instructor-and-student"></a>Actualiza Instructor y Student
 
-En *Instructor.cs* , derive la clase Instructor de la clase Person y quite los campos de clave y nombre. El código tendrá un aspecto similar al ejemplo siguiente:
+En *Instructor.cs*, derive la clase Instructor de la clase Person y quite los campos de clave y nombre. El código tendrá un aspecto similar al ejemplo siguiente:
 
 [!code-csharp[](intro/samples/cu/Models/Instructor.cs?name=snippet_AfterInheritance&highlight=8)]
 
@@ -155,7 +155,7 @@ dotnet ef database update
 
 Ejecute la aplicación y haga la prueba en distintas páginas. Todo funciona igual que antes.
 
-En **Explorador de objetos de SQL Server** , expanda **Conexiones de datos/SchoolContext** y después **Tables** , y verá que las tablas Student e Instructor se han reemplazado por una tabla Person. Abra el diseñador de la tabla Person y verá que contiene todas las columnas que solía haber en las tablas Student e Instructor.
+En **Explorador de objetos de SQL Server**, expanda **Conexiones de datos/SchoolContext** y después **Tables**, y verá que las tablas Student e Instructor se han reemplazado por una tabla Person. Abra el diseñador de la tabla Person y verá que contiene todas las columnas que solía haber en las tablas Student e Instructor.
 
 ![Tabla Person en SSOX](inheritance/_static/ssox-person-table.png)
 

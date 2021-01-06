@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: host-and-deploy/iis/advanced
 ms.openlocfilehash: 9f14929a7d298d6f4d66abcc88665db34fc072bf
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93058621"
 ---
 # <a name="advanced-configuration-of-the-aspnet-core-module-and-iis"></a>Configuración avanzada del módulo de ASP.NET Core e IIS
@@ -95,7 +95,7 @@ Para configurar la protección de datos en IIS para conservar el conjunto de cla
 
 * **Configurar el grupo de aplicaciones de IIS para cargar el perfil de usuario**
 
-  Esta opción está en la sección **Modelo de proceso** , en la **Configuración avanzada** del grupo de aplicaciones. Establezca **Cargar perfil de usuario** en `True`. Cuando se establece en `True`, las claves se almacenan en el directorio del perfil de usuario y se protegen mediante DPAPI con una clave específica de la cuenta de usuario. Las claves se conservan en la carpeta `%LOCALAPPDATA%/ASP.NET/DataProtection-Keys`.
+  Esta opción está en la sección **Modelo de proceso**, en la **Configuración avanzada** del grupo de aplicaciones. Establezca **Cargar perfil de usuario** en `True`. Cuando se establece en `True`, las claves se almacenan en el directorio del perfil de usuario y se protegen mediante DPAPI con una clave específica de la cuenta de usuario. Las claves se conservan en la carpeta `%LOCALAPPDATA%/ASP.NET/DataProtection-Keys`.
 
   También se debe habilitar el [atributo `setProfileEnvironment`](/iis/configuration/system.applicationhost/applicationpools/add/processmodel#configuration) del grupo de aplicaciones. El valor predeterminado de `setProfileEnvironment` es `true`. En algunos escenarios (por ejemplo, SO Windows), `setProfileEnvironment` está establecido en `false`. Si las claves no se almacenan en el directorio del perfil de usuario como se esperaba:
 
@@ -123,11 +123,11 @@ Para configurar la protección de datos en IIS para conservar el conjunto de cla
 
 Habilite el rol de servidor **Servidor web (IIS)** y establezca los servicios de rol.
 
-1. Use el asistente **Agregar roles y características** del menú **Administrar** o el vínculo de **Administrador del servidor**. En el paso **Roles de servidor** , active la casilla de **Servidor web (IIS)** .
+1. Use el asistente **Agregar roles y características** del menú **Administrar** o el vínculo de **Administrador del servidor**. En el paso **Roles de servidor**, active la casilla de **Servidor web (IIS)** .
 
    ![El rol Servidor web (IIS) se activa en el paso Seleccionar roles de servidor.](index/_static/server-roles-ws2016.png)
 
-1. Después del paso **Características** , el paso **Servicios de rol** se carga para el servidor Web (IIS). Seleccione los servicios de rol IIS que quiera o acepte los servicios de rol predeterminados proporcionados.
+1. Después del paso **Características**, el paso **Servicios de rol** se carga para el servidor Web (IIS). Seleccione los servicios de rol IIS que quiera o acepte los servicios de rol predeterminados proporcionados.
 
    ![Los servicios de rol predeterminados se activan en el paso Seleccionar servicios de rol.](index/_static/role-services-ws2016.png)
 
@@ -183,7 +183,7 @@ Para hospedar una aplicación ASP.NET Core como aplicación secundaria en otra a
 
 1. Haga clic con el botón derecho en la carpeta de la aplicación secundaria en el Administrador de IIS y seleccione **Convertir en aplicación**.
 
-1. En el cuadro de diálogo **Agregar aplicación** , use el botón **Seleccionar** en **Grupo de aplicaciones** para asignar el grupo de aplicaciones que ha creado para la aplicación secundaria. Seleccione **Aceptar**.
+1. En el cuadro de diálogo **Agregar aplicación**, use el botón **Seleccionar** en **Grupo de aplicaciones** para asignar el grupo de aplicaciones que ha creado para la aplicación secundaria. Seleccione **Aceptar**.
 
 La asignación de un grupo de aplicaciones independiente de la aplicación secundaria es un requisito cuando se utiliza el modelo de hospedaje en proceso.
 
@@ -196,7 +196,7 @@ El aislamiento de los grupos de aplicaciones se determinan mediante el modelo de
 * Hospedaje dentro de proceso: es necesario que las aplicaciones se ejecuten en grupos de aplicaciones distintos.
 * Hospedaje fuera de proceso: nuestra recomendación es aislar las aplicaciones entre sí ejecutándolas en su propio grupo de aplicaciones.
 
-El valor predeterminado del cuadro de diálogo **Agregar sitio web** de IIS es un único grupo de aplicaciones por aplicación. Cuando se proporciona el **Nombre del sitio** , el texto se transfiere automáticamente al cuadro de texto **Grupo de aplicaciones**. Al agregar el sitio se crea un grupo de aplicaciones con el nombre del sitio.
+El valor predeterminado del cuadro de diálogo **Agregar sitio web** de IIS es un único grupo de aplicaciones por aplicación. Cuando se proporciona el **Nombre del sitio**, el texto se transfiere automáticamente al cuadro de texto **Grupo de aplicaciones**. Al agregar el sitio se crea un grupo de aplicaciones con el nombre del sitio.
 
 ## <a name="application-pool-no-locidentity"></a>Identity del grupo de aplicaciones
 
@@ -212,7 +212,7 @@ Si el proceso de trabajo de IIS requiere acceso con privilegios elevados a la ap
 
 1. Haga clic con el botón derecho en el directorio y seleccione **Propiedades**.
 
-1. En la pestaña **Seguridad** , haga clic en el botón **Editar** y en el botón **Agregar**.
+1. En la pestaña **Seguridad**, haga clic en el botón **Editar** y en el botón **Agregar**.
 
 1. Haga clic en el botón **Ubicaciones** y asegúrese de seleccionar el sistema.
 
@@ -282,7 +282,7 @@ En Windows 7 o sistemas de escritorio posteriores cuando se usa IIS localmente:
 En Windows Server 2008 R2 o posterior:
 
 1. Abra el **Asistente para agregar roles y características**.
-1. En el panel **Seleccionar servicios de rol** , abra el nodo **Desarrollo de aplicaciones**.
+1. En el panel **Seleccionar servicios de rol**, abra el nodo **Desarrollo de aplicaciones**.
 1. Active la casilla de **Inicialización de aplicaciones**.
 
 Use cualquiera de los enfoques siguientes para habilitar el módulo de inicialización de aplicaciones para el sitio:
@@ -379,6 +379,6 @@ Para evitar que las aplicaciones hospedadas [fuera de proceso](xref:host-and-dep
 
 * Visual Studio: `{APPLICATION ROOT}\.vs\config\applicationHost.config`
 
-* CLI de *iisexpress.exe* : `%USERPROFILE%\Documents\IISExpress\config\applicationhost.config`
+* CLI de *iisexpress.exe*: `%USERPROFILE%\Documents\IISExpress\config\applicationhost.config`
 
 Los archivos se pueden encontrar mediante la búsqueda de `aspnetcore` en el archivo `applicationHost.config`.

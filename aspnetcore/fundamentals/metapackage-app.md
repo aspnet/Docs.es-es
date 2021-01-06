@@ -19,17 +19,17 @@ no-loc:
 - SignalR
 uid: fundamentals/metapackage-app
 ms.openlocfilehash: 225bb1f55c099a476319191726c5a661f9a4893a
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93057809"
 ---
 # <a name="microsoftaspnetcoreapp-for-aspnet-core"></a>Microsoft.AspNetCore.App para ASP.NET Core
 
 ::: moniker range=">= aspnetcore-3.0"
 
- El marco compartido de ASP.NET Core (`Microsoft.AspNetCore.App`) contiene ensamblados desarrollados y admitidos por Microsoft. `Microsoft.AspNetCore.App` se instala cuando se instala el [SDK de .NET Core 3.0 o posterior](https://dotnet.microsoft.com/download/dotnet-core/3.0). El *marco compartido* es el conjunto de ensamblados (archivos *.dll* ) que se instalan en la máquina e incluye un componente de entorno de ejecución y un paquete de destino. Para más información, consulte este artículo sobre el [marco de trabajo compartido](https://natemcmaster.com/blog/2018/08/29/netcore-primitives-2/).
+ El marco compartido de ASP.NET Core (`Microsoft.AspNetCore.App`) contiene ensamblados desarrollados y admitidos por Microsoft. `Microsoft.AspNetCore.App` se instala cuando se instala el [SDK de .NET Core 3.0 o posterior](https://dotnet.microsoft.com/download/dotnet-core/3.0). El *marco compartido* es el conjunto de ensamblados (archivos *.dll*) que se instalan en la máquina e incluye un componente de entorno de ejecución y un paquete de destino. Para más información, consulte este artículo sobre el [marco de trabajo compartido](https://natemcmaster.com/blog/2018/08/29/netcore-primitives-2/).
 
 * Los proyectos que tienen como destino el SDK de `Microsoft.NET.Sdk.Web` hacen referencia implícitamente al marco `Microsoft.AspNetCore.App`.
 

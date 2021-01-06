@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: data/ef-rp/complex-data-model
 ms.openlocfilehash: 1ac9d6303daac82f3973c5d027fe1f453dc32e02
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93054104"
 ---
 # <a name="part-5-no-locrazor-pages-with-ef-core-in-aspnet-core---data-model"></a>Parte 5. Razor Pages con EF Core en ASP.NET Core: Modelo de datos
@@ -113,7 +113,7 @@ El atributo `StringLength` no impide que un usuario escriba un espacio en blanco
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-En el **Explorador de objetos de SQL Server** , (SSOX) abra el diseñador de tablas de Student haciendo doble clic en la tabla **Student**.
+En el **Explorador de objetos de SQL Server**, (SSOX) abra el diseñador de tablas de Student haciendo doble clic en la tabla **Student**.
 
 ![Tabla de estudiantes en SSOX antes de las migraciones](complex-data-model/_static/ssox-before-migration.png)
 
@@ -538,7 +538,7 @@ El diagrama anterior muestra:
 
 ## <a name="seed-the-database"></a>Inicializar la base de datos
 
-Actualice el código en *Data/DbInitializer.cs* :
+Actualice el código en *Data/DbInitializer.cs*:
 
 [!code-csharp[](intro/samples/cu30/Data/DbInitializer.cs)]
 
@@ -648,7 +648,7 @@ Abra la base de datos en SSOX:
 
   ![Tablas en SSOX](complex-data-model/_static/ssox-tables.png)
 
-* Examine la tabla **CourseAssignment** :
+* Examine la tabla **CourseAssignment**:
 
   * Haga clic con el botón derecho en la tabla **CourseAssignment** y seleccione **Ver datos**.
   * Compruebe que la tabla **CourseAssignment** contiene datos.
@@ -807,11 +807,11 @@ Ejecute la aplicación:
 
 * Vaya a la página Students.
 * Seleccione **Create New** y escriba un nombre más de 50 caracteres.
-* Seleccione **Create** , la validación del lado cliente muestra un mensaje de error.
+* Seleccione **Create**, la validación del lado cliente muestra un mensaje de error.
 
 ![Página de índice de estudiantes en la que se muestran errores de longitud de cadena](complex-data-model/_static/string-length-errors.png)
 
-En el **Explorador de objetos de SQL Server** , (SSOX) abra el diseñador de tablas de Student haciendo doble clic en la tabla **Student**.
+En el **Explorador de objetos de SQL Server**, (SSOX) abra el diseñador de tablas de Student haciendo doble clic en la tabla **Student**.
 
 ![Tabla de estudiantes en SSOX antes de las migraciones](complex-data-model/_static/ssox-before-migration.png)
 
@@ -1196,7 +1196,7 @@ La entidad de combinación `Enrollment` define su propia clave principal, por lo
 
 ## <a name="update-the-db-context"></a>Actualizar el contexto de la base de datos
 
-Agregue el código resaltado siguiente a *Data/SchoolContext.cs* :
+Agregue el código resaltado siguiente a *Data/SchoolContext.cs*:
 
 [!code-csharp[](intro/samples/cu21/Data/SchoolContext.cs?name=snippet_BeforeInheritance&highlight=15-18,25-31)]
 
@@ -1246,7 +1246,7 @@ El diagrama anterior muestra:
 
 ## <a name="seed-the-db-with-test-data"></a>Inicializar la base de datos con datos de prueba
 
-Actualice el código en *Data/DbInitializer.cs* :
+Actualice el código en *Data/DbInitializer.cs*:
 
 [!code-csharp[](intro/samples/cu21/Data/DbInitializer.cs?name=snippet_Final)]
 
@@ -1290,7 +1290,7 @@ database "ContosoUniversity", table "dbo.Department", column 'DepartmentID'.
 Ahora que tiene una base de datos existente, debe pensar cómo aplicar los cambios futuros en ella. En este tutorial se muestran dos enfoques:
 
 * [Quitar y volver a crear la base de datos](#drop)
-* [Aplicar la migración a la base de datos existente](#applyexisting). Aunque este método es más complejo y lento, es el método preferido para entornos de producción del mundo real. **Nota** : Esta sección del tutorial es opcional. Puede realizar la operación de quitar y volver a crear, y omitir esta sección. Si quiere seguir los pasos descritos en esta sección, no realice la operación de quitar y volver a crear. 
+* [Aplicar la migración a la base de datos existente](#applyexisting). Aunque este método es más complejo y lento, es el método preferido para entornos de producción del mundo real. **Nota**: Esta sección del tutorial es opcional. Puede realizar la operación de quitar y volver a crear, y omitir esta sección. Si quiere seguir los pasos descritos en esta sección, no realice la operación de quitar y volver a crear. 
 
 <a name="drop"></a>
 
@@ -1331,7 +1331,7 @@ Abra la base de datos en SSOX:
 
 ![Tablas en SSOX](complex-data-model/_static/ssox-tables.png)
 
-Examine la tabla **CourseAssignment** :
+Examine la tabla **CourseAssignment**:
 
 * Haga clic con el botón derecho en la tabla **CourseAssignment** y seleccione **Ver datos**.
 * Compruebe que la tabla **CourseAssignment** contiene datos.

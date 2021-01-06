@@ -2,7 +2,7 @@
 
 En este ejemplo se muestra el uso de proveedores personalizados de modelo de página y ruta de páginas de Razor. En este ejemplo se muestran las características descritas en el tema [Convenciones de aplicación y ruta de las páginas de Razor](https://docs.microsoft.com/aspnet/core/razor-pages/razor-pages-convention-features).
 
-## <a name="examples-in-this-sample"></a>Ejemplos incluidos
+## <a name="examples-in-this-sample"></a>Ejemplos que se incluyen
 
 | Escenario | Demostración de ejemplo |
 | -------- | ----------- |

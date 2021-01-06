@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: data/ef-rp/read-related-data
 ms.openlocfilehash: e52e4aefc18b84f85bea28a9724894eed50ca54a
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93061072"
 ---
 # <a name="part-6-no-locrazor-pages-with-ef-core-in-aspnet-core---read-related-data"></a>Parte 6. Razor Pages con EF Core en ASP.NET Core: Lectura de datos relacionados
@@ -216,7 +216,7 @@ Actualice *Pages/Instructors/Index.cshtml.cs* con el código siguiente:
 
 El método `OnGetAsync` acepta datos de ruta opcionales para el identificador del instructor seleccionado.
 
-Examine la consulta en el archivo *Pages/Instructors/Index.cshtml.cs* :
+Examine la consulta en el archivo *Pages/Instructors/Index.cshtml.cs*:
 
 [!code-csharp[](intro/samples/cu30snapshots/6-related/Pages/Instructors/Index1.cshtml.cs?name=snippet_EagerLoading)]
 
@@ -477,7 +477,7 @@ En esta página se leen y muestran los datos relacionados de las maneras siguien
 
 En la página Instructors se muestran datos de tres tablas diferentes. Se crea un modelo de vista que incluye las tres entidades que representan las tres tablas.
 
-En la carpeta *SchoolViewModels* , cree *InstructorIndexData.cs* con el código siguiente:
+En la carpeta *SchoolViewModels*, cree *InstructorIndexData.cs* con el código siguiente:
 
 [!code-csharp[](intro/samples/cu/Models/SchoolViewModels/InstructorIndexData.cs)]
 
@@ -506,7 +506,7 @@ Reemplace *Pages/Instructors/Index.cshtml.cs* con el código siguiente:
 
 El método `OnGetAsync` acepta datos de ruta opcionales para el identificador del instructor seleccionado.
 
-Examine la consulta en el archivo *Pages/Instructors/Index.cshtml.cs* :
+Examine la consulta en el archivo *Pages/Instructors/Index.cshtml.cs*:
 
 [!code-csharp[](intro/samples/cu/Pages/Instructors/Index1.cshtml.cs?name=snippet_ThenInclude)]
 
@@ -597,7 +597,7 @@ El código siguiente rellena la propiedad `Enrollments` del modelo de vista cuan
 
 [!code-csharp[](intro/samples/cu/Pages/Instructors/Index2.cshtml.cs?name=snippet_courseID)]
 
-Agregue el siguiente marcado al final de la página de Razor *Pages/Instructors/Index.cshtml* :
+Agregue el siguiente marcado al final de la página de Razor *Pages/Instructors/Index.cshtml*:
 
 [!code-cshtml[](intro/samples/cu/Pages/Instructors/IndexRRD.cshtml?range=60-102&highlight=7-999)]
 

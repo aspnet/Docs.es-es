@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: data/ef-mvc/concurrency
 ms.openlocfilehash: d476c836e8d497ca1291992dda38da1fc9f59ed2
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93054377"
 ---
 # <a name="tutorial-handle-concurrency---aspnet-mvc-with-ef-core"></a>Tutorial: Control de simultaneidad: ASP.NET MVC con EF Core
@@ -69,7 +69,7 @@ La alternativa a la simultaneidad pesimista es la simultaneidad optimista. La si
 
 ![Cambiar el presupuesto a 0](concurrency/_static/change-budget.png)
 
-Antes de que Jane haga clic en **Save** , John visita la misma página y cambia el campo Start Date de 9/1/2007 a 9/1/2013.
+Antes de que Jane haga clic en **Save**, John visita la misma página y cambia el campo Start Date de 9/1/2007 a 9/1/2013.
 
 ![Cambiar la fecha de inicio a 2013](concurrency/_static/change-date.png)
 
@@ -111,13 +111,13 @@ En el resto de este tutorial agregará una propiedad de seguimiento `rowversion`
 
 ## <a name="add-a-tracking-property"></a>Agrega una propiedad de seguimiento
 
-En *Models/Department.cs* , agregue una propiedad de seguimiento denominada RowVersion:
+En *Models/Department.cs*, agregue una propiedad de seguimiento denominada RowVersion:
 
 [!code-csharp[](intro/samples/cu/Models/Department.cs?name=snippet_Final&highlight=26,27)]
 
 El atributo `Timestamp` especifica que esta columna se incluirá en la cláusula Where de los comandos Update y Delete enviados a la base de datos. El atributo se denomina `Timestamp` porque las versiones anteriores de SQL Server usaban un tipo de datos `timestamp` antes de que la `rowversion` de SQL lo sustituyera por otro. El tipo .NET de `rowversion` es una matriz de bytes.
 
-Si prefiere usar la API fluida, puede usar el método `IsConcurrencyToken` (en *Data/SchoolContext.cs* ) para especificar la propiedad de seguimiento, tal como se muestra en el ejemplo siguiente:
+Si prefiere usar la API fluida, puede usar el método `IsConcurrencyToken` (en *Data/SchoolContext.cs*) para especificar la propiedad de seguimiento, tal como se muestra en el ejemplo siguiente:
 
 ```csharp
 modelBuilder.Entity<Department>()
@@ -142,7 +142,7 @@ Aplique la técnica scaffolding a un controlador y vistas de Departments como lo
 
 ![Aplicar la técnica scaffolding a Department](concurrency/_static/add-departments-controller.png)
 
-En el archivo *DepartmentsController.cs* , cambie las cuatro repeticiones de "FirstMidName" a "FullName" para que las listas desplegables del administrador del departamento contengan el nombre completo del instructor en lugar de simplemente el apellido.
+En el archivo *DepartmentsController.cs*, cambie las cuatro repeticiones de "FirstMidName" a "FullName" para que las listas desplegables del administrador del departamento contengan el nombre completo del instructor en lugar de simplemente el apellido.
 
 [!code-csharp[](intro/samples/cu/Controllers/DepartmentsController.cs?name=snippet_Dropdown)]
 
@@ -188,7 +188,7 @@ El código agrega un mensaje de error personalizado para cada columna que tenga 
 
 [!code-csharp[](intro/samples/cu/Controllers/DepartmentsController.cs?range=174-178)]
 
-Por último, el código establece el valor `RowVersion` de `departmentToUpdate` para el nuevo valor recuperado de la base de datos. Este nuevo valor `RowVersion` se almacenará en el campo oculto cuando se vuelva a mostrar la página Edit y, la próxima vez que el usuario haga clic en **Save** , solo se detectarán los errores de simultaneidad que se produzcan desde que se vuelva a mostrar la página Edit.
+Por último, el código establece el valor `RowVersion` de `departmentToUpdate` para el nuevo valor recuperado de la base de datos. Este nuevo valor `RowVersion` se almacenará en el campo oculto cuando se vuelva a mostrar la página Edit y, la próxima vez que el usuario haga clic en **Save**, solo se detectarán los errores de simultaneidad que se produzcan desde que se vuelva a mostrar la página Edit.
 
 [!code-csharp[](intro/samples/cu/Controllers/DepartmentsController.cs?range=199-200)]
 
@@ -196,7 +196,7 @@ La instrucción `ModelState.Remove` es necesaria porque `ModelState` tiene el va
 
 ## <a name="update-edit-view"></a>Actualiza la vista de edición
 
-En *Views/Departments/Edit.cshtml* , realice los cambios siguientes:
+En *Views/Departments/Edit.cshtml*, realice los cambios siguientes:
 
 * Agregue un campo oculto para guardar el valor de propiedad `RowVersion`, inmediatamente después de un campo oculto para la propiedad `DepartmentID`.
 
@@ -230,7 +230,7 @@ Para la página Delete, Entity Framework detecta los conflictos de simultaneidad
 
 ### <a name="update-the-delete-methods-in-the-departments-controller"></a>Actualizar los métodos Delete en el controlador de Departments
 
-En *DepartmentsController.cs* , reemplace el método `Delete` de HttpGet por el código siguiente:
+En *DepartmentsController.cs*, reemplace el método `Delete` de HttpGet por el código siguiente:
 
 [!code-csharp[](intro/samples/cu/Controllers/DepartmentsController.cs?name=snippet_DeleteGet&highlight=1,10,14-17,21-29)]
 
@@ -260,7 +260,7 @@ Si se detecta un error de simultaneidad, el código vuelve a mostrar la página 
 
 ### <a name="update-the-delete-view"></a>Actualizar la vista Delete
 
-En *Views/Departments/Delete.cshtml* , reemplace el código al que se aplicó la técnica scaffolding con el siguiente código, que agrega un campo de mensaje de error y campos ocultos para las propiedades DepartmentID y RowVersion. Los cambios aparecen resaltados.
+En *Views/Departments/Delete.cshtml*, reemplace el código al que se aplicó la técnica scaffolding con el siguiente código, que agrega un campo de mensaje de error y campos ocultos para las propiedades DepartmentID y RowVersion. Los cambios aparecen resaltados.
 
 [!code-cshtml[](intro/samples/cu/Views/Departments/Delete.cshtml?highlight=9,38,44,45,48)]
 
@@ -276,7 +276,7 @@ Esto realiza los cambios siguientes:
 
 Ejecute la aplicación y vaya a la página de índice de Departments. Haga clic con el botón derecho en el hipervínculo **Delete** del departamento de inglés, seleccione **Abrir en nueva pestaña** y, después, en la primera pestaña, haga clic en el hipervínculo **Edit** del departamento de inglés.
 
-En la primera ventana, cambie uno de los valores y haga clic en **Save** :
+En la primera ventana, cambie uno de los valores y haga clic en **Save**:
 
 ![Página Department Edit después del cambio antes de eliminar](concurrency/_static/edit-after-change-for-delete.png)
 
@@ -284,7 +284,7 @@ En la segunda pestaña, haga clic en **Delete**. Verá el mensaje de error de si
 
 ![Página de confirmación de Department Delete con error de simultaneidad](concurrency/_static/delete-error.png)
 
-Si vuelve a hacer clic en **Delete** , se le redirigirá a la página de índice, que muestra que se ha eliminado el departamento.
+Si vuelve a hacer clic en **Delete**, se le redirigirá a la página de índice, que muestra que se ha eliminado el departamento.
 
 ## <a name="update-details-and-create-views"></a>Actualizar las vistas Details y Create
 

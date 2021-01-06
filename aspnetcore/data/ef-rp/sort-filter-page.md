@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: data/ef-rp/sort-filter-page
 ms.openlocfilehash: 51a1e2a90259898262ac655b7a0e8a55d766f0c7
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93061046"
 ---
 # <a name="part-3-no-locrazor-pages-with-ef-core-in-aspnet-core---sort-filter-paging"></a>Página 3. Razor Pages con EF Core en ASP.NET Core: Ordenación, filtrado y paginación
@@ -62,7 +62,7 @@ La instancia de Razor Pages usa `NameSort` y `DateSort` para configurar los hipe
 
 [!code-csharp[Main](intro/samples/cu30snapshots/3-sorting/Pages/Students/Index1.cshtml.cs?name=snippet_Ternary)]
 
-En el código se usa el [operador condicional ?:](/dotnet/csharp/language-reference/operators/conditional-operator) de C#. El operador `?:` es ternario, por lo que toma tres operandos. La primera línea especifica que, cuando `sortOrder` es NULL o está vacío, `NameSort` se establece en `name_desc`. Si `sortOrder` * *_no_* es NULL ni está vacío, `NameSort` se establece en una cadena vacía.
+En el código se usa el [operador condicional ?:](/dotnet/csharp/language-reference/operators/conditional-operator) de C#. El operador `?:` es ternario, por lo que toma tres operandos. La primera línea especifica que, cuando `sortOrder` es NULL o está vacío, `NameSort` se establece en `name_desc`. Si `sortOrder` **_no_* es NULL ni está vacío, `NameSort` se establece en una cadena vacía.
 
 Estas dos instrucciones habilitan la página para establecer los hipervínculos de encabezado de columna de la siguiente forma:
 
@@ -208,7 +208,7 @@ La propiedad `CurrentFilter` proporciona a la instancia de Razor Pages la cadena
 * Debe incluirse en los vínculos de paginación para mantener la configuración del filtro durante la paginación.
 * Debe restaurarse en el cuadro de texto cuando se vuelva a mostrar la página.
 
-Si se cambia la cadena de búsqueda durante la paginación, la página se restablece a 1. La página debe restablecerse a 1 porque el nuevo filtro puede hacer que se muestren diferentes datos. Cuando se escribe un valor de búsqueda y se selecciona **Submit** :
+Si se cambia la cadena de búsqueda durante la paginación, la página se restablece a 1. La página debe restablecerse a 1 porque el nuevo filtro puede hacer que se muestren diferentes datos. Cuando se escribe un valor de búsqueda y se selecciona **Submit**:
 
   * La cadena de búsqueda cambia.
   * El parámetro `searchString` no es NULL.
@@ -358,9 +358,9 @@ Para comprobar que la ordenación funciona:
 
 Para comprender mejor el código:
 
-* En *Student/Index.cshtml.cs* , establezca un punto de interrupción en `switch (sortOrder)`.
+* En *Student/Index.cshtml.cs*, establezca un punto de interrupción en `switch (sortOrder)`.
 * Agregue una inspección para `NameSort` y `DateSort`.
-* En *Student/Index.cshtml* , establezca un punto de interrupción en `@Html.DisplayNameFor(model => model.Student[0].LastName)`.
+* En *Student/Index.cshtml*, establezca un punto de interrupción en `@Html.DisplayNameFor(model => model.Student[0].LastName)`.
 
 Ejecute paso a paso el depurador.
 
@@ -397,7 +397,7 @@ Hay una disminución del rendimiento por llamar a `ToUpper`. El código `ToUpper
 
 ### <a name="add-a-search-box-to-the-student-index-page"></a>Agregar un cuadro de búsqueda a la página de índice de Student
 
-En *Pages/Student/Index.cshtml* , agregue el siguiente código resaltado para crear un botón **Search** y cromo ordenado.
+En *Pages/Student/Index.cshtml*, agregue el siguiente código resaltado para crear un botón **Search** y cromo ordenado.
 
 [!code-cshtml[](intro/samples/cu21/Pages/Students/Index3.cshtml?highlight=14-23&range=1-25)]
 
@@ -434,7 +434,7 @@ El método `CreateAsync` se usa para crear la `PaginatedList<T>`. No se puede cr
 
 ## <a name="add-paging-functionality-to-the-index-method"></a>Agregar la funcionalidad de paginación al método Index
 
-En *Students/Index.cshtml.cs* , actualice el tipo de `Student` de `IList<Student>` a `PaginatedList<Student>`:
+En *Students/Index.cshtml.cs*, actualice el tipo de `Student` de `IList<Student>` a `PaginatedList<Student>`:
 
 [!code-csharp[](intro/samples/cu21/Pages/Students/Index.cshtml.cs?name=snippet_SortFilterPageType)]
 
@@ -460,7 +460,7 @@ Cuando se hace clic en un vínculo de paginación, la variable de índice de pá
 * Debe incluirse en los vínculos de paginación para mantener la configuración del filtro durante la paginación.
 * Debe restaurarse en el cuadro de texto cuando se vuelva a mostrar la página.
 
-Si se cambia la cadena de búsqueda durante la paginación, la página se restablece a 1. La página debe restablecerse a 1 porque el nuevo filtro puede hacer que se muestren diferentes datos. Cuando se escribe un valor de búsqueda y se selecciona **Submit** :
+Si se cambia la cadena de búsqueda durante la paginación, la página se restablece a 1. La página debe restablecerse a 1 porque el nuevo filtro puede hacer que se muestren diferentes datos. Cuando se escribe un valor de búsqueda y se selecciona **Submit**:
 
 * La cadena de búsqueda cambia.
 * El parámetro `searchString` no es NULL.
@@ -496,9 +496,9 @@ Ejecute la aplicación y vaya a la página Students.
 
 Para comprender mejor el código:
 
-* En *Student/Index.cshtml.cs* , establezca un punto de interrupción en `switch (sortOrder)`.
+* En *Student/Index.cshtml.cs*, establezca un punto de interrupción en `switch (sortOrder)`.
 * Agregue una inspección para `NameSort`, `DateSort`, `CurrentSort` y `Model.Student.PageIndex`.
-* En *Student/Index.cshtml* , establezca un punto de interrupción en `@Html.DisplayNameFor(model => model.Student[0].LastName)`.
+* En *Student/Index.cshtml*, establezca un punto de interrupción en `@Html.DisplayNameFor(model => model.Student[0].LastName)`.
 
 Ejecute paso a paso el depurador.
 
@@ -513,7 +513,7 @@ En este paso, se actualiza *Pages/About.cshtml* para mostrar cuántos alumnos se
 
 Cree una carpeta *SchoolViewModels* en la carpeta *Models*.
 
-En la carpeta *SchoolViewModels* , agregue *EnrollmentDateGroup.cs* con el código siguiente:
+En la carpeta *SchoolViewModels*, agregue *EnrollmentDateGroup.cs* con el código siguiente:
 
 [!code-csharp[](intro/samples/cu21/Models/SchoolViewModels/EnrollmentDateGroup.cs)]
 

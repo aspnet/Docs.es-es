@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: host-and-deploy/azure-apps/azure-continuous-deployment
 ms.openlocfilehash: 1485e1a97e51bb4d12d0d74ca1550e5cf18258d8
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93053792"
 ---
 # <a name="continuous-deployment-to-azure-with-visual-studio-and-git-with-aspnet-core"></a>Implementación continua en Azure con Visual Studio y Git con ASP.NET Core
@@ -50,13 +50,13 @@ En este tutorial se da por hecho que está instalado el siguiente software:
 
 1. Inicie Visual Studio.
 
-1. En el menú **Archivo** , seleccione **Nuevo** > **Proyecto**.
+1. En el menú **Archivo**, seleccione **Nuevo** > **Proyecto**.
 
 1. Seleccione la plantilla de proyecto **Aplicación web ASP.NET Core**. Aparece en **Instalados** > **Plantillas** > **Visual C#**  >  **.NET Core**. Dé un nombre al proyecto `SampleWebAppDemo`. Seleccione la opción **Crear nuevo repositorio de Git** y haga clic en **Aceptar**.
 
    ![Cuadro de diálogo Nuevo proyecto](azure-continuous-deployment/_static/01-new-project.png)
 
-1. En el cuadro de diálogo **Nuevo proyecto ASP.NET Core** , seleccione la plantilla **Vacía** de ASP.NET Core y haga clic en **Aceptar**.
+1. En el cuadro de diálogo **Nuevo proyecto ASP.NET Core**, seleccione la plantilla **Vacía** de ASP.NET Core y haga clic en **Aceptar**.
 
    ![Cuadro de diálogo Nuevo proyecto ASP.NET Core](azure-continuous-deployment/_static/02-web-site-template.png)
 
@@ -85,14 +85,14 @@ Los pasos siguientes le permiten crear una aplicación web en Azure Portal:
 
    ![Microsoft Azure Portal: botón Nuevo: Web y móvil en Marketplace: Botón Aplicación web en Aplicaciones destacadas](azure-continuous-deployment/_static/05-azure-newwebapp.png)
 
-1. En la hoja **Aplicación web** , escriba un valor único para el **nombre del servicio de aplicaciones**.
+1. En la hoja **Aplicación web**, escriba un valor único para el **nombre del servicio de aplicaciones**.
 
    ![Hoja Aplicación web](azure-continuous-deployment/_static/06-azure-newappblade.png)
 
    > [!NOTE]
    > El **nombre de App Service** debe ser único. El portal aplica esta regla cuando se proporciona el nombre. Si proporciona un valor diferente, sustituya ese valor por cada aparición de **SampleWebAppDemo** en este tutorial.
 
-   También en la hoja **Aplicación web** , seleccione un **plan o ubicación existente de App Service** o bien cree uno. Si va a crear un plan, seleccione el plan de tarifa, la ubicación y otras opciones. Para más información sobre los planes de App Service, consulte [Introducción detallada a los planes de Azure App Service](/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview).
+   También en la hoja **Aplicación web**, seleccione un **plan o ubicación existente de App Service** o bien cree uno. Si va a crear un plan, seleccione el plan de tarifa, la ubicación y otras opciones. Para más información sobre los planes de App Service, consulte [Introducción detallada a los planes de Azure App Service](/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview).
 
 1. Seleccione **Crear**. Azure aprovisionará e iniciará la aplicación web.
 
@@ -108,7 +108,7 @@ Git es un sistema distribuido de control de versiones que se puede usar para imp
 
 1. Seleccione la aplicación web que creó en la sección anterior de este tutorial.
 
-1. En la hoja **Implementación** , seleccione **Opciones de implementación** > **Elegir origen** > **Repositorio de Git local**.
+1. En la hoja **Implementación**, seleccione **Opciones de implementación** > **Elegir origen** > **Repositorio de Git local**.
 
    ![Hoja Configuración: Hoja Origen de implementación: Hoja Elegir origen](azure-continuous-deployment/_static/deployment-options.png)
 
@@ -120,7 +120,7 @@ Git es un sistema distribuido de control de versiones que se puede usar para imp
    * Cree un nombre de usuario y una contraseña. Guarde la contraseña; la necesitará más adelante al configurar Git.
    * Seleccione **Guardar**.
 
-1. En la hoja **Aplicación web** , seleccione **Configuración** > **Propiedades**. La dirección URL del repositorio de Git remoto en el que va a efectuar la implementación aparece en **Dirección URL de Git**.
+1. En la hoja **Aplicación web**, seleccione **Configuración** > **Propiedades**. La dirección URL del repositorio de Git remoto en el que va a efectuar la implementación aparece en **Dirección URL de Git**.
 
 1. Copie el valor de **Dirección URL de Git** para usarlo más adelante en el tutorial.
 
@@ -134,13 +134,13 @@ En esta sección, creará un repositorio de Git local con Visual Studio y lo ins
 * Confirmar los cambios en el proyecto
 * Insertar los cambios en el proyecto desde el repositorio local hasta el repositorio remoto en Azure
 
-1. En el **Explorador de soluciones** , haga clic con el botón derecho en **Solución 'SampleWebAppDemo'** y seleccione **Confirmar**. Se muestra **Team Explorer**.
+1. En el **Explorador de soluciones**, haga clic con el botón derecho en **Solución 'SampleWebAppDemo'** y seleccione **Confirmar**. Se muestra **Team Explorer**.
 
    ![Pestaña Team Explorer: Conexión](azure-continuous-deployment/_static/10-team-explorer.png)
 
-1. En **Team Explorer** , seleccione **Inicio** (icono Inicio) > **Configuración** > **Configuración del repositorio**.
+1. En **Team Explorer**, seleccione **Inicio** (icono Inicio) > **Configuración** > **Configuración del repositorio**.
 
-1. En la sección **Remotos** de **Configuración del repositorio** , seleccione **Agregar**. Aparece el cuadro de diálogo **Agregar remoto**.
+1. En la sección **Remotos** de **Configuración del repositorio**, seleccione **Agregar**. Aparece el cuadro de diálogo **Agregar remoto**.
 
 1. Establezca el **nombre** del repositorio remoto en **Azure-SampleApp**.
 
@@ -149,7 +149,7 @@ En esta sección, creará un repositorio de Git local con Visual Studio y lo ins
    ![Cuadro de diálogo Editar Azure-SampleApp remoto](azure-continuous-deployment/_static/11-add-remote.png)
 
    > [!NOTE]
-   > Como alternativa, especifique el repositorio remoto desde la **ventana de comandos**. Para ello, abra la **ventana de comandos** , cambie al directorio del proyecto y escriba el comando. Ejemplo:
+   > Como alternativa, especifique el repositorio remoto desde la **ventana de comandos**. Para ello, abra la **ventana de comandos**, cambie al directorio del proyecto y escriba el comando. Ejemplo:
    >
    > `git remote add Azure-SampleApp https://me@sampleapp.scm.azurewebsites.net:443/SampleApp.git`
 
@@ -162,7 +162,7 @@ En esta sección, creará un repositorio de Git local con Visual Studio y lo ins
    ![Pestaña Team Explorer: Conexión](azure-continuous-deployment/_static/12-initial-commit.png)
 
    > [!NOTE]
-   > Como alternativa, puede confirmar los cambios desde la **ventana de comandos**. Para ello, abra la **ventana de comandos** , cambie al directorio del proyecto y escriba los comandos de Git. Ejemplo:
+   > Como alternativa, puede confirmar los cambios desde la **ventana de comandos**. Para ello, abra la **ventana de comandos**, cambie al directorio del proyecto y escriba los comandos de Git. Ejemplo:
    >
    > `git add .`
    >
@@ -221,7 +221,7 @@ Después de realizar cambios en el código local, vuelva a publicar la aplicaci�
 
 1. Guarde los cambios en *Startup.cs*.
 
-1. En el **Explorador de soluciones** , haga clic con el botón derecho en **Solución 'SampleWebAppDemo'** y seleccione **Confirmar**. Se muestra **Team Explorer**.
+1. En el **Explorador de soluciones**, haga clic con el botón derecho en **Solución 'SampleWebAppDemo'** y seleccione **Confirmar**. Se muestra **Team Explorer**.
 
 1. Escriba un mensaje de confirmación, como `Update #2`.
 
@@ -230,7 +230,7 @@ Después de realizar cambios en el código local, vuelva a publicar la aplicaci�
 1. Seleccione **Inicio** > **Sincronizar** > **Acciones** > **Inserción**.
 
 > [!NOTE]
-> Como alternativa, inserte los cambios desde la **ventana de comandos**. Para ello, abra la **ventana de comandos** , cambie al directorio del proyecto y escriba un comando de Git. Ejemplo:
+> Como alternativa, inserte los cambios desde la **ventana de comandos**. Para ello, abra la **ventana de comandos**, cambie al directorio del proyecto y escriba un comando de Git. Ejemplo:
 > 
 > `git push -u Azure-SampleApp master`
 

@@ -18,10 +18,10 @@ no-loc:
 - SignalR
 uid: tutorials/dotnet-watch
 ms.openlocfilehash: 27420fe00ba6375e15b67fb359be06df055eff1f
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93060045"
 ---
 # <a name="develop-aspnet-core-apps-using-a-file-watcher"></a>Desarrollar aplicaciones ASP.NET Core con un monitor de archivos
@@ -63,7 +63,7 @@ Navegue a la API del producto (`http://localhost:<port number>/api/math/product?
 
 La herramienta de monitor de archivos `dotnet watch` se incluye con la versión 2.1.300 del SDK de .NET Core. Si se usa una versión anterior del SDK de .NET Core, será necesario realizar los siguientes pasos.
 
-1. Agregue una referencia de paquete `Microsoft.DotNet.Watcher.Tools` al archivo *.csproj* :
+1. Agregue una referencia de paquete `Microsoft.DotNet.Watcher.Tools` al archivo *.csproj*:
 
     ```xml
     <ItemGroup>
@@ -95,7 +95,7 @@ Ejecute `dotnet watch run` en la carpeta *WebApp*. La salida de la consola indic
 ::: moniker range=">= aspnetcore-5.0"
 La ejecución de `dotnet watch run` en una aplicación web inicia un explorador que navega a la dirección URL de la aplicación una vez lista. Para ello, `dotnet watch` lee la salida de la consola de la aplicación y espera el mensaje de preparado que <xref:Microsoft.AspNetCore.WebHost> muestra.
 
-`dotnet watch` actualiza el explorador cuando detecta cambios en los archivos inspeccionados. Para ello, el comando watch inserta un middleware en la aplicación que modifica las respuestas HTML creadas por la aplicación. El middleware agrega un bloque de script de JavaScript a la página que permite a `dotnet watch` indicar al explorador que actualice. Actualmente, los cambios en todos los archivos inspeccionados, que incluye contenido estático como los archivos *.html* y *.css* , hacen que la aplicación se vuelva a generar.
+`dotnet watch` actualiza el explorador cuando detecta cambios en los archivos inspeccionados. Para ello, el comando watch inserta un middleware en la aplicación que modifica las respuestas HTML creadas por la aplicación. El middleware agrega un bloque de script de JavaScript a la página que permite a `dotnet watch` indicar al explorador que actualice. Actualmente, los cambios en todos los archivos inspeccionados, que incluye contenido estático como los archivos *.html* y *.css*, hacen que la aplicación se vuelva a generar.
 
 `dotnet watch`:
 
@@ -161,7 +161,7 @@ Se pueden agregar más elementos a la lista de control inspección editando el a
 
 ## <a name="opt-out-of-files-to-be-watched"></a>Descartar archivos de la inspección
 
-`dotnet-watch` se puede configurar para pasar por alto su configuración predeterminada. Para omitir archivos concretos, agregue el atributo `Watch="false"` a la definición de un elemento en el archivo *.csproj* :
+`dotnet-watch` se puede configurar para pasar por alto su configuración predeterminada. Para omitir archivos concretos, agregue el atributo `Watch="false"` a la definición de un elemento en el archivo *.csproj*:
 
 ```xml
 <ItemGroup>

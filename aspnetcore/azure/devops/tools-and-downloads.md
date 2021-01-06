@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: azure/devops/tools-and-downloads
 ms.openlocfilehash: 8c7f10a6b6f8504efaba6054533aba034982820c
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93056574"
 ---
 # <a name="tools-and-downloads"></a>Herramientas y descargas
@@ -40,7 +40,7 @@ Se requieren las suscripciones siguientes:
 Se requieren las herramientas siguientes:
 
 * [Git](https://git-scm.com/downloads): se recomienda una comprensión fundamental de Git para esta guía. Revise la [Documentación de Git](https://git-scm.com/doc), concretamente [Git remoto](https://git-scm.com/docs/git-remote) y [Git Push](https://git-scm.com/docs/git-push).
-* [SDK de .NET Core](https://dotnet.microsoft.com/download/): se necesita la versión 2.1.300 o una posterior para compilar y ejecutar la aplicación de ejemplo. Si Visual Studio se instala con la carga de trabajo de **desarrollo multiplataforma de .NET Core** , el SDK de .NET Core ya está instalado.
+* [SDK de .NET Core](https://dotnet.microsoft.com/download/): se necesita la versión 2.1.300 o una posterior para compilar y ejecutar la aplicación de ejemplo. Si Visual Studio se instala con la carga de trabajo de **desarrollo multiplataforma de .NET Core**, el SDK de .NET Core ya está instalado.
 
     Compruebe la instalación del SDK de .NET Core. Abra un shell de comandos y ejecute el comando siguiente:
 

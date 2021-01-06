@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: data/ef-mvc/update-related-data
 ms.openlocfilehash: f41d0b1d7ba46ef4867e0d160dc61f21042ce403
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93053948"
 ---
 # <a name="tutorial-update-related-data---aspnet-mvc-with-ef-core"></a>Tutorial: Actualización de datos relacionados: ASP.NET MVC con EF Core
@@ -53,7 +53,7 @@ En este tutorial ha:
 
 Cuando se crea una entidad de curso, debe tener una relación con un departamento existente. Para facilitar esto, el código con scaffolding incluye métodos de controlador y vistas de Create y Edit que incluyen una lista desplegable para seleccionar el departamento. La lista desplegable establece la propiedad de clave externa de `Course.DepartmentID`, y eso es todo lo que necesita de Entity Framework para cargar la propiedad de navegación de `Department` con la entidad Department adecuada. Podrá usar el código con scaffolding, pero cámbielo ligeramente para agregar el control de errores y ordenar la lista desplegable.
 
-En *CoursesController.cs* , elimine los cuatro métodos de creación y edición, y reemplácelos con el código siguiente:
+En *CoursesController.cs*, elimine los cuatro métodos de creación y edición, y reemplácelos con el código siguiente:
 
 [!code-csharp[](intro/samples/cu/Controllers/CoursesController.cs?name=snippet_CreateGet)]
 
@@ -89,27 +89,27 @@ Para optimizar el rendimiento de las páginas Course Details y Delete, agregue l
 
 ### <a name="modify-the-course-views"></a>Modificar las vistas de Course
 
-En *Views/Courses/Create.cshtml* , agregue una opción "Select Department" a la lista desplegable **Department** , cambie el título de **DepartmentID** a  **Department** y agregue un mensaje de validación.
+En *Views/Courses/Create.cshtml*, agregue una opción "Select Department" a la lista desplegable **Department**, cambie el título de **DepartmentID** a  **Department** y agregue un mensaje de validación.
 
 [!code-cshtml[](intro/samples/cu/Views/Courses/Create.cshtml?highlight=2-6&range=29-34)]
 
-En *Views/Courses/Edit.cshtml* , realice el mismo cambio que acaba de hacer en *Create.cshtml* en el campo Department.
+En *Views/Courses/Edit.cshtml*, realice el mismo cambio que acaba de hacer en *Create.cshtml* en el campo Department.
 
-También en *Views/Courses/Edit.cshtml* , agregue un campo de número de curso antes del campo **Title**. Dado que el número de curso es la clave principal, esta se muestra, pero no se puede cambiar.
+También en *Views/Courses/Edit.cshtml*, agregue un campo de número de curso antes del campo **Title**. Dado que el número de curso es la clave principal, esta se muestra, pero no se puede cambiar.
 
 [!code-cshtml[](intro/samples/cu/Views/Courses/Edit.cshtml?range=15-18)]
 
 Ya hay un campo oculto (`<input type="hidden">`) para el número de curso en la vista Edit. Agregar un asistente de etiquetas `<label>` no elimina la necesidad de un campo oculto, porque no hace que el número de curso se incluya en los datos enviados cuando el usuario hace clic en **Save** en la página **Edit**.
 
-En *Views/Courses/Delete.cshtml* , agregue un campo de número de curso en la parte superior y cambie el identificador del departamento por el nombre del departamento.
+En *Views/Courses/Delete.cshtml*, agregue un campo de número de curso en la parte superior y cambie el identificador del departamento por el nombre del departamento.
 
 [!code-cshtml[](intro/samples/cu/Views/Courses/Delete.cshtml?highlight=14-19,36)]
 
-En *Views/Courses/Details.cshtml* , realice el mismo cambio que acaba de hacer en *Delete.cshtml*.
+En *Views/Courses/Details.cshtml*, realice el mismo cambio que acaba de hacer en *Delete.cshtml*.
 
 ### <a name="test-the-course-pages"></a>Probar las páginas Course
 
-Ejecute la aplicación, seleccione la pestaña **Courses** , haga clic en **Create New** y escriba los datos del curso nuevo:
+Ejecute la aplicación, seleccione la pestaña **Courses**, haga clic en **Create New** y escriba los datos del curso nuevo:
 
 ![Página Course Create](update-related-data/_static/course-create.png)
 
@@ -133,7 +133,7 @@ Al editar un registro de instructor, necesita poder actualizar la asignación de
 
 ### <a name="update-the-instructors-controller"></a>Actualizar el controlador de Instructors
 
-En *InstructorsController.cs* , cambie el código en el método `Edit` de HttpGet para que cargue la propiedad de navegación `OfficeAssignment` de la entidad Instructor y llame a `AsNoTracking`:
+En *InstructorsController.cs*, cambie el código en el método `Edit` de HttpGet para que cargue la propiedad de navegación `OfficeAssignment` de la entidad Instructor y llame a `AsNoTracking`:
 
 [!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?highlight=8-11&name=snippet_EditGetOA)]
 
@@ -173,7 +173,7 @@ El código realiza lo siguiente:
 
 ### <a name="update-the-instructor-edit-view"></a>Actualizar la vista de Edit de Instructor
 
-En *Views/Instructors/Edit.cshtml* , agregue un nuevo campo para editar la ubicación de la oficina, al final antes del botón **Save** :
+En *Views/Instructors/Edit.cshtml*, agregue un nuevo campo para editar la ubicación de la oficina, al final antes del botón **Save**:
 
 [!code-cshtml[](intro/samples/cu/Views/Instructors/Edit.cshtml?range=30-34)]
 
@@ -199,7 +199,7 @@ Cree *AssignedCourseData.cs* en la carpeta *SchoolViewModels* y reemplace el có
 
 [!code-csharp[](intro/samples/cu/Models/SchoolViewModels/AssignedCourseData.cs)]
 
-En *InstructorsController.cs* , reemplace el método `Edit` de HttpGet por el código siguiente. Los cambios aparecen resaltados.
+En *InstructorsController.cs*, reemplace el método `Edit` de HttpGet por el código siguiente. Los cambios aparecen resaltados.
 
 [!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?highlight=10,17,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36&name=snippet_EditGetCourses)]
 
@@ -233,7 +233,7 @@ Si no se ha activado la casilla para un curso pero este se encuentra en la propi
 
 ### <a name="update-the-instructor-views"></a>Actualizar las vistas de Instructor
 
-En *Views/Instructors/Edit.cshtml* , agregue un campo **Courses** con una matriz de casillas al agregar el siguiente código inmediatamente después de los elementos `div` del campo **Office** y antes del elemento `div` del botón **Save**.
+En *Views/Instructors/Edit.cshtml*, agregue un campo **Courses** con una matriz de casillas al agregar el siguiente código inmediatamente después de los elementos `div` del campo **Office** y antes del elemento `div` del botón **Save**.
 
 <a id="notepad"></a>
 > [!NOTE]
@@ -256,7 +256,7 @@ Cambie algunas asignaciones de cursos y haga clic en Save. Los cambios que haga 
 
 ## <a name="update-delete-page"></a>Actualiza la página Delete
 
-En *InstructorsController.cs* , elimine el método `DeleteConfirmed` e inserte el siguiente código en su lugar.
+En *InstructorsController.cs*, elimine el método `DeleteConfirmed` e inserte el siguiente código en su lugar.
 
 [!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?highlight=5-7,9-12&name=snippet_DeleteConfirmed)]
 
@@ -268,7 +268,7 @@ Este código realiza los cambios siguientes:
 
 ## <a name="add-office-location-and-courses-to-create-page"></a>Agrega la ubicación de la oficina y cursos a la página Create
 
-En *InstructorsController.cs* , elimine los métodos `Create` de HttpGet y HttpPost y, después, agregue el código siguiente en su lugar:
+En *InstructorsController.cs*, elimine los métodos `Create` de HttpGet y HttpPost y, después, agregue el código siguiente en su lugar:
 
 [!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?name=snippet_Create&highlight=3-5,12,14-22,29)]
 
@@ -301,7 +301,7 @@ public ICollection<CourseAssignment> CourseAssignments
 
 Si modifica la propiedad `CourseAssignments` de esta manera, puede quitar el código de inicialización de propiedad explícito del controlador.
 
-En *Views/Instructor/Create.cshtml* , agregue un cuadro de texto de la ubicación de la oficina y casillas para cursos antes del botón Submit. Al igual que en el caso de la página Edit, [corrija el formato si Visual Studio vuelve a aplicar formato al código al pegarlo](#notepad).
+En *Views/Instructor/Create.cshtml*, agregue un cuadro de texto de la ubicación de la oficina y casillas para cursos antes del botón Submit. Al igual que en el caso de la página Edit, [corrija el formato si Visual Studio vuelve a aplicar formato al código al pegarlo](#notepad).
 
 [!code-cshtml[](intro/samples/cu/Views/Instructors/Create.cshtml?range=29-61)]
 

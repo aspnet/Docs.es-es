@@ -7,25 +7,25 @@ Al ejecutar el ejemplo, las respuestas que no son archivos devuelven la direcci�
 ## <a name="examples-in-this-sample"></a>Ejemplos que se incluyen
 
 * `AddRedirect("redirect-rule/(.*)", "redirected/$1")`
-  - Código de estado correcto: 302 (encontrado)
+  - Código de estado correcto: 302 (Encontrado)
   - Ejemplo (redireccionamiento): **/redirect-rule/{capture_group}** a **/redirected/{capture_group}**
 * `AddRewrite(@"^rewrite-rule/(\d+)/(\d+)", "rewritten?var1=$1&var2=$2", skipRemainingRules: true)`
-  - Código de estado correcto: 200 (OK)
+  - Código de estado correcto: 200 - Correcto
   - Ejemplo (reescritura): **/rewrite-rule/{capture_group_1}/{capture_group_2}** a **/rewritten?var1={capture_group_1}&var2={capture_group_2}**
 * `AddApacheModRewrite(env.ContentRootFileProvider, "ApacheModRewrite.txt")`
-  - Código de estado correcto: 302 (encontrado)
+  - Código de estado correcto: 302 (Encontrado)
   - Ejemplo (redireccionamiento): **/apache-mod-rules-redirect/{capture_group}** a **/redirected?id={capture_group}**
 * `AddIISUrlRewrite(env.ContentRootFileProvider, "IISUrlRewrite.xml")`
-  - Código de estado correcto: 200 (OK)
+  - Código de estado correcto: 200 - Correcto
   - Ejemplo (reescritura): **/iis-rules-rewrite/{capture_group}** a **/rewritten?id={capture_group}**
 * `Add(RedirectXmlFileRequests)`
-  - Código de estado correcto: 301 (movido permanentemente)
+  - Código de estado correcto: 301 - Movido definitivamente
   - Ejemplo (redireccionamiento): **/file.xml** a **/xmlfiles/file.xml**
 * `Add(RewriteTextFileRequests)`
-  - Código de estado correcto: 200 (OK)
+  - Código de estado correcto: 200 - Correcto
   - Ejemplo (reescritura): **/un_archivo.txt** por **/archivo.txt**
 * `Add(new RedirectImageRequests(".png", "/png-images")))`<br>`Add(new RedirectImageRequests(".jpg", "/jpg-images")))`
-  - Código de estado correcto: 301 (movido permanentemente)
+  - Código de estado correcto: 301 - Movido definitivamente
   - Ejemplo (redireccionamiento): **/image.png** a **/png-images/image.png**
   - Ejemplo (redireccionamiento): **/image.jpg** a **/jpg-images/image.jpg**
 

@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: host-and-deploy/azure-iis-errors-reference
 ms.openlocfilehash: b009cc61a94e618a48d96ecbd770ef6371308f6a
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93059850"
 ---
 # <a name="common-errors-reference-for-azure-app-service-and-iis-with-aspnet-core"></a>Referencia de errores comunes de Azure App Service e IIS con ASP.NET Core
@@ -40,8 +40,8 @@ Recopile la siguiente información:
 * Entradas de registro de eventos de la aplicación
   * Azure App Service: Vea <xref:test/troubleshoot-azure-iis>.
   * IIS
-    1. Seleccione **Inicio** en el menú **Windows** , escriba *Visor de eventos* y presione **Entrar**.
-    1. Una vez abierto el **Visor de eventos** , expanda **Registros de Windows** > **Aplicación** en la barra lateral.
+    1. Seleccione **Inicio** en el menú **Windows**, escriba *Visor de eventos* y presione **Entrar**.
+    1. Una vez abierto el **Visor de eventos**, expanda **Registros de Windows** > **Aplicación** en la barra lateral.
 * Entradas de registro de stdout y depuración de módulo ASP.NET Core
   * Azure App Service: Vea <xref:test/troubleshoot-azure-iis>.
   * IIS: siga las instrucciones de las secciones [Creación y redireccionamiento de registros](xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection) y [Registros de diagnóstico mejorados](xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs) del tema Módulo ASP.NET Core.
@@ -328,8 +328,8 @@ Recopile la siguiente información:
 * Entradas de registro de eventos de la aplicación
   * Azure App Service: Vea <xref:test/troubleshoot-azure-iis>.
   * IIS
-    1. Seleccione **Inicio** en el menú **Windows** , escriba *Visor de eventos* y presione **Entrar**.
-    1. Una vez abierto el **Visor de eventos** , expanda **Registros de Windows** > **Aplicación** en la barra lateral.
+    1. Seleccione **Inicio** en el menú **Windows**, escriba *Visor de eventos* y presione **Entrar**.
+    1. Una vez abierto el **Visor de eventos**, expanda **Registros de Windows** > **Aplicación** en la barra lateral.
 * Entradas de registro de stdout y depuración de módulo ASP.NET Core
   * Azure App Service: Vea <xref:test/troubleshoot-azure-iis>.
   * IIS: siga las instrucciones de las secciones [Creación y redireccionamiento de registros](xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection) y [Registros de diagnóstico mejorados](xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs) del tema Módulo ASP.NET Core.

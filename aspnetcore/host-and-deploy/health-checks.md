@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: host-and-deploy/health-checks
 ms.openlocfilehash: 32b7a4c6722ba45ba998f9430f5d6da6ddca53f9
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93058667"
 ---
 # <a name="health-checks-in-aspnet-core"></a>Comprobaciones de estado en ASP.NET Core
@@ -64,13 +64,13 @@ Otro escenario de comprobación de estado muestra cómo filtrar las comprobacion
 
 ## <a name="basic-health-probe"></a>Sondeo de estado básico
 
-Para muchas aplicaciones, una configuración de sondeo de estado básico que notifique la disponibilidad de la aplicación para procesar las solicitudes ( *ejecución* ) es suficiente para detectar el estado de la aplicación.
+Para muchas aplicaciones, una configuración de sondeo de estado básico que notifique la disponibilidad de la aplicación para procesar las solicitudes (*ejecución*) es suficiente para detectar el estado de la aplicación.
 
 La configuración básica registra los servicios de comprobación de estado y llama al middleware de comprobaciones de estado para responder a un punto de conexión de dirección URL con una respuesta de estado. De forma predeterminada, no se registran comprobaciones de estado específicas para probar cualquier dependencia o subsistema concretos. La aplicación se considera correcta si es capaz de responder en la dirección URL de punto de conexión de estado. El escritor de respuesta predeterminado escribe el estado (<xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus>) como respuesta de texto no cifrado al cliente, que indica un estado [HealthStatus.Healthy](xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus), [HealthStatus.Degraded](xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus) o [HealthStatus.Unhealthy](xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus).
 
 Registre los servicios de comprobación de estado con <xref:Microsoft.Extensions.DependencyInjection.HealthCheckServiceCollectionExtensions.AddHealthChecks*> de `Startup.ConfigureServices`. Cree un punto de conexión de comprobación de estado llamando a `MapHealthChecks` en `Startup.Configure`.
 
-En la aplicación de ejemplo, el punto de conexión de la comprobación de estado se crea en `/health` ( *BasicStartup.cs* ):
+En la aplicación de ejemplo, el punto de conexión de la comprobación de estado se crea en `/health` (*BasicStartup.cs*):
 
 ```csharp
 public class BasicStartup
@@ -353,7 +353,7 @@ Proporcione una cadena de conexión a base de datos válida en el archivo *appse
 
 [!code-json[](health-checks/samples/3.x/HealthChecksSample/appsettings.json?highlight=3)]
 
-Registre los servicios de comprobación de estado con <xref:Microsoft.Extensions.DependencyInjection.HealthCheckServiceCollectionExtensions.AddHealthChecks*> de `Startup.ConfigureServices`. La aplicación de ejemplo llama al método `AddSqlServer` con la cadena de conexión de la base de datos ( *DbHealthStartup.cs* ):
+Registre los servicios de comprobación de estado con <xref:Microsoft.Extensions.DependencyInjection.HealthCheckServiceCollectionExtensions.AddHealthChecks*> de `Startup.ConfigureServices`. La aplicación de ejemplo llama al método `AddSqlServer` con la cadena de conexión de la base de datos (*DbHealthStartup.cs*):
 
 [!code-csharp[](health-checks/samples/3.x/HealthChecksSample/DbHealthStartup.cs?name=snippet_ConfigureServices)]
 
@@ -389,7 +389,7 @@ De manera predeterminada:
 * `DbContextHealthCheck` llama al método `CanConnectAsync` de EF Core. Se puede personalizar qué operación se ejecuta al comprobar el estado con sobrecargas del método `AddDbContextCheck`.
 * El nombre de la comprobación de estado es el nombre del tipo `TContext`.
 
-En la aplicación de ejemplo, `AppDbContext` se proporciona para `AddDbContextCheck` y se registra como un servicio en `Startup.ConfigureServices` ( *DbContextHealthStartup.cs* ):
+En la aplicación de ejemplo, `AppDbContext` se proporciona para `AddDbContextCheck` y se registra como un servicio en `Startup.ConfigureServices` (*DbContextHealthStartup.cs*):
 
 [!code-csharp[](health-checks/samples/3.x/HealthChecksSample/DbContextHealthStartup.cs?name=snippet_ConfigureServices)]
 
@@ -453,15 +453,15 @@ En algunos escenarios de hospedaje, se usa un par de comprobaciones de estado qu
 
 Considere el ejemplo siguiente: Antes de estar lista para procesar solicitudes, una aplicación debe descargar un archivo de configuración de gran tamaño. No queremos que se reinicie la aplicación si se produce un error en la descarga inicial, dado que la aplicación puede volver a intentar descargar el archivo varias veces. Usamos un *sondeo de ejecución* para describir la ejecución del proceso, sin realizar ninguna otra comprobación. También queremos evitar que las solicitudes se envíen a la aplicación antes de que finalice la descarga del archivo de configuración. Hasta que no finaliza la descarga y la aplicación está lista para recibir solicitudes, usamos un *sondeo de preparación* para indicar un estado "no preparado".
 
-La aplicación de ejemplo contiene una comprobación de estado para notificar la finalización de la tarea de inicio de ejecución prolongada en un [servicio hospedado](xref:fundamentals/host/hosted-services). El elemento `StartupHostedServiceHealthCheck` expone una propiedad, `StartupTaskCompleted`, que el servicio hospedado puede establecer en `true` al terminar su tarea de ejecución prolongada ( *StartupHostedServiceHealthCheck.cs* ):
+La aplicación de ejemplo contiene una comprobación de estado para notificar la finalización de la tarea de inicio de ejecución prolongada en un [servicio hospedado](xref:fundamentals/host/hosted-services). El elemento `StartupHostedServiceHealthCheck` expone una propiedad, `StartupTaskCompleted`, que el servicio hospedado puede establecer en `true` al terminar su tarea de ejecución prolongada (*StartupHostedServiceHealthCheck.cs*):
 
 [!code-csharp[](health-checks/samples/3.x/HealthChecksSample/StartupHostedServiceHealthCheck.cs?name=snippet1&highlight=7-11)]
 
-Un [servicio hospedado](xref:fundamentals/host/hosted-services) ( *Services/StartupHostedService* ) se encarga de iniciar la tarea en segundo plano de larga ejecución. Al finalizar la tarea, `StartupHostedServiceHealthCheck.StartupTaskCompleted` se establece en `true`:
+Un [servicio hospedado](xref:fundamentals/host/hosted-services) (*Services/StartupHostedService*) se encarga de iniciar la tarea en segundo plano de larga ejecución. Al finalizar la tarea, `StartupHostedServiceHealthCheck.StartupTaskCompleted` se establece en `true`:
 
 [!code-csharp[](health-checks/samples/3.x/HealthChecksSample/Services/StartupHostedService.cs?name=snippet1&highlight=18-20)]
 
-La comprobación de estado se registra con <xref:Microsoft.Extensions.DependencyInjection.HealthChecksBuilderAddCheckExtensions.AddCheck*> en `Startup.ConfigureServices` junto con el servicio hospedado. Dado que el servicio hospedado debe establecer la propiedad en la comprobación de estado, esta también se registra en el contenedor de servicios ( *LivenessProbeStartup.cs* ):
+La comprobación de estado se registra con <xref:Microsoft.Extensions.DependencyInjection.HealthChecksBuilderAddCheckExtensions.AddCheck*> en `Startup.ConfigureServices` junto con el servicio hospedado. Dado que el servicio hospedado debe establecer la propiedad en la comprobación de estado, esta también se registra en el contenedor de servicios (*LivenessProbeStartup.cs*):
 
 [!code-csharp[](health-checks/samples/3.x/HealthChecksSample/LivenessProbeStartup.cs?name=snippet_ConfigureServices)]
 
@@ -496,7 +496,7 @@ Para ejecutar el escenario de configuración de la preparación/ejecución media
 dotnet run --scenario liveness
 ```
 
-En un explorador, visite `/health/ready` varias veces hasta que hayan pasado 15 segundos. La comprobación de estado notifica un estado *Incorrecto* durante los primeros 15 segundos. Pasados 15 segundos, el punto de conexión notifica un estado *Correcto* , lo que indica que el servicio hospedado ya ha finalizado la tarea de ejecución prolongada.
+En un explorador, visite `/health/ready` varias veces hasta que hayan pasado 15 segundos. La comprobación de estado notifica un estado *Incorrecto* durante los primeros 15 segundos. Pasados 15 segundos, el punto de conexión notifica un estado *Correcto*, lo que indica que el servicio hospedado ya ha finalizado la tarea de ejecución prolongada.
 
 En este ejemplo también se crea un publicador de la comprobación de estado (<xref:Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheckPublisher> implementación) que ejecuta la primera comprobación de preparación con un retraso de dos segundos. Para obtener más información, consulte la sección [Publicador de la comprobación de estado](#health-check-publisher).
 
@@ -527,7 +527,7 @@ spec:
 
 La aplicación de ejemplo muestra una comprobación de estado de memoria con un escritor de respuesta personalizada.
 
-`MemoryHealthCheck` notifica un estado degradado si la aplicación usa más de un umbral de memoria determinado (1 GB en la aplicación de ejemplo). El elemento <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckResult> incluye información del recolector de elementos no utilizados (GC) de la aplicación ( *MemoryHealthCheck.cs* ):
+`MemoryHealthCheck` notifica un estado degradado si la aplicación usa más de un umbral de memoria determinado (1 GB en la aplicación de ejemplo). El elemento <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckResult> incluye información del recolector de elementos no utilizados (GC) de la aplicación (*MemoryHealthCheck.cs*):
 
 [!code-csharp[](health-checks/samples/3.x/HealthChecksSample/MemoryHealthCheck.cs?name=snippet1)]
 
@@ -620,9 +620,9 @@ app.UseEndpoints(endpoints =>
 ```
 
 > [!NOTE]
-> Para evitar la creación del archivo *launchSettings.json* en la aplicación de ejemplo, configure el puerto de administración explícitamente en código. En *Program.cs* , donde se crea <xref:Microsoft.Extensions.Hosting.HostBuilder>, agregue una llamada a <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.ListenAnyIP*> y proporcione el punto de conexión del puerto de administración de la aplicación. En `Configure` de *ManagementPortStartup.cs* , especifique el puerto de administración con `RequireHost`:
+> Para evitar la creación del archivo *launchSettings.json* en la aplicación de ejemplo, configure el puerto de administración explícitamente en código. En *Program.cs*, donde se crea <xref:Microsoft.Extensions.Hosting.HostBuilder>, agregue una llamada a <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.ListenAnyIP*> y proporcione el punto de conexión del puerto de administración de la aplicación. En `Configure` de *ManagementPortStartup.cs*, especifique el puerto de administración con `RequireHost`:
 >
-> *Program.cs* :
+> *Program.cs*:
 >
 > ```csharp
 > return new HostBuilder()
@@ -638,7 +638,7 @@ app.UseEndpoints(endpoints =>
 >     .Build();
 > ```
 >
-> *ManagementPortStartup.cs* :
+> *ManagementPortStartup.cs*:
 >
 > ```csharp
 > app.UseEndpoints(endpoints =>
@@ -833,13 +833,13 @@ Otro escenario de comprobación de estado muestra cómo filtrar las comprobacion
 
 ## <a name="basic-health-probe"></a>Sondeo de estado básico
 
-Para muchas aplicaciones, una configuración de sondeo de estado básico que notifique la disponibilidad de la aplicación para procesar las solicitudes ( *ejecución* ) es suficiente para detectar el estado de la aplicación.
+Para muchas aplicaciones, una configuración de sondeo de estado básico que notifique la disponibilidad de la aplicación para procesar las solicitudes (*ejecución*) es suficiente para detectar el estado de la aplicación.
 
 La configuración básica registra los servicios de comprobación de estado y llama al middleware de comprobaciones de estado para responder a un punto de conexión de dirección URL con una respuesta de estado. De forma predeterminada, no se registran comprobaciones de estado específicas para probar cualquier dependencia o subsistema concretos. La aplicación se considera correcta si es capaz de responder en la dirección URL de punto de conexión de estado. El escritor de respuesta predeterminado escribe el estado (<xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus>) como respuesta de texto no cifrado al cliente, que indica un estado [HealthStatus.Healthy](xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus), [HealthStatus.Degraded](xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus) o [HealthStatus.Unhealthy](xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus).
 
 Registre los servicios de comprobación de estado con <xref:Microsoft.Extensions.DependencyInjection.HealthCheckServiceCollectionExtensions.AddHealthChecks*> de `Startup.ConfigureServices`. Agregue un punto de conexión para el middleware de comprobaciones de estado con <xref:Microsoft.AspNetCore.Builder.HealthCheckApplicationBuilderExtensions.UseHealthChecks*> en la canalización de procesamiento de solicitudes de `Startup.Configure`.
 
-En la aplicación de ejemplo, el punto de conexión de la comprobación de estado se crea en `/health` ( *BasicStartup.cs* ):
+En la aplicación de ejemplo, el punto de conexión de la comprobación de estado se crea en `/health` (*BasicStartup.cs*):
 
 ```csharp
 public class BasicStartup
@@ -1072,7 +1072,7 @@ Proporcione una cadena de conexión a base de datos válida en el archivo *appse
 
 [!code-json[](health-checks/samples/2.x/HealthChecksSample/appsettings.json?highlight=3)]
 
-Registre los servicios de comprobación de estado con <xref:Microsoft.Extensions.DependencyInjection.HealthCheckServiceCollectionExtensions.AddHealthChecks*> de `Startup.ConfigureServices`. La aplicación de ejemplo llama al método `AddSqlServer` con la cadena de conexión de la base de datos ( *DbHealthStartup.cs* ):
+Registre los servicios de comprobación de estado con <xref:Microsoft.Extensions.DependencyInjection.HealthCheckServiceCollectionExtensions.AddHealthChecks*> de `Startup.ConfigureServices`. La aplicación de ejemplo llama al método `AddSqlServer` con la cadena de conexión de la base de datos (*DbHealthStartup.cs*):
 
 [!code-csharp[](health-checks/samples/2.x/HealthChecksSample/DbHealthStartup.cs?name=snippet_ConfigureServices)]
 
@@ -1105,7 +1105,7 @@ De manera predeterminada:
 * `DbContextHealthCheck` llama al método `CanConnectAsync` de EF Core. Se puede personalizar qué operación se ejecuta al comprobar el estado con sobrecargas del método `AddDbContextCheck`.
 * El nombre de la comprobación de estado es el nombre del tipo `TContext`.
 
-En la aplicación de ejemplo, `AppDbContext` se proporciona para `AddDbContextCheck` y se registra como un servicio en `Startup.ConfigureServices` ( *DbContextHealthStartup.cs* ):
+En la aplicación de ejemplo, `AppDbContext` se proporciona para `AddDbContextCheck` y se registra como un servicio en `Startup.ConfigureServices` (*DbContextHealthStartup.cs*):
 
 [!code-csharp[](health-checks/samples/2.x/HealthChecksSample/DbContextHealthStartup.cs?name=snippet_ConfigureServices)]
 
@@ -1166,15 +1166,15 @@ En algunos escenarios de hospedaje, se usa un par de comprobaciones de estado qu
 
 Considere el ejemplo siguiente: Antes de estar lista para procesar solicitudes, una aplicación debe descargar un archivo de configuración de gran tamaño. No queremos que se reinicie la aplicación si se produce un error en la descarga inicial, dado que la aplicación puede volver a intentar descargar el archivo varias veces. Usamos un *sondeo de ejecución* para describir la ejecución del proceso, sin realizar ninguna otra comprobación. También queremos evitar que las solicitudes se envíen a la aplicación antes de que finalice la descarga del archivo de configuración. Hasta que no finaliza la descarga y la aplicación está lista para recibir solicitudes, usamos un *sondeo de preparación* para indicar un estado "no preparado".
 
-La aplicación de ejemplo contiene una comprobación de estado para notificar la finalización de la tarea de inicio de ejecución prolongada en un [servicio hospedado](xref:fundamentals/host/hosted-services). El elemento `StartupHostedServiceHealthCheck` expone una propiedad, `StartupTaskCompleted`, que el servicio hospedado puede establecer en `true` al terminar su tarea de ejecución prolongada ( *StartupHostedServiceHealthCheck.cs* ):
+La aplicación de ejemplo contiene una comprobación de estado para notificar la finalización de la tarea de inicio de ejecución prolongada en un [servicio hospedado](xref:fundamentals/host/hosted-services). El elemento `StartupHostedServiceHealthCheck` expone una propiedad, `StartupTaskCompleted`, que el servicio hospedado puede establecer en `true` al terminar su tarea de ejecución prolongada (*StartupHostedServiceHealthCheck.cs*):
 
 [!code-csharp[](health-checks/samples/2.x/HealthChecksSample/StartupHostedServiceHealthCheck.cs?name=snippet1&highlight=7-11)]
 
-Un [servicio hospedado](xref:fundamentals/host/hosted-services) ( *Services/StartupHostedService* ) se encarga de iniciar la tarea en segundo plano de larga ejecución. Al finalizar la tarea, `StartupHostedServiceHealthCheck.StartupTaskCompleted` se establece en `true`:
+Un [servicio hospedado](xref:fundamentals/host/hosted-services) (*Services/StartupHostedService*) se encarga de iniciar la tarea en segundo plano de larga ejecución. Al finalizar la tarea, `StartupHostedServiceHealthCheck.StartupTaskCompleted` se establece en `true`:
 
 [!code-csharp[](health-checks/samples/2.x/HealthChecksSample/Services/StartupHostedService.cs?name=snippet1&highlight=18-20)]
 
-La comprobación de estado se registra con <xref:Microsoft.Extensions.DependencyInjection.HealthChecksBuilderAddCheckExtensions.AddCheck*> en `Startup.ConfigureServices` junto con el servicio hospedado. Dado que el servicio hospedado debe establecer la propiedad en la comprobación de estado, esta también se registra en el contenedor de servicios ( *LivenessProbeStartup.cs* ):
+La comprobación de estado se registra con <xref:Microsoft.Extensions.DependencyInjection.HealthChecksBuilderAddCheckExtensions.AddCheck*> en `Startup.ConfigureServices` junto con el servicio hospedado. Dado que el servicio hospedado debe establecer la propiedad en la comprobación de estado, esta también se registra en el contenedor de servicios (*LivenessProbeStartup.cs*):
 
 [!code-csharp[](health-checks/samples/2.x/HealthChecksSample/LivenessProbeStartup.cs?name=snippet_ConfigureServices)]
 
@@ -1198,7 +1198,7 @@ Para ejecutar el escenario de configuración de la preparación/ejecución media
 dotnet run --scenario liveness
 ```
 
-En un explorador, visite `/health/ready` varias veces hasta que hayan pasado 15 segundos. La comprobación de estado notifica un estado *Incorrecto* durante los primeros 15 segundos. Pasados 15 segundos, el punto de conexión notifica un estado *Correcto* , lo que indica que el servicio hospedado ya ha finalizado la tarea de ejecución prolongada.
+En un explorador, visite `/health/ready` varias veces hasta que hayan pasado 15 segundos. La comprobación de estado notifica un estado *Incorrecto* durante los primeros 15 segundos. Pasados 15 segundos, el punto de conexión notifica un estado *Correcto*, lo que indica que el servicio hospedado ya ha finalizado la tarea de ejecución prolongada.
 
 En este ejemplo también se crea un publicador de la comprobación de estado (<xref:Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheckPublisher> implementación) que ejecuta la primera comprobación de preparación con un retraso de dos segundos. Para obtener más información, consulte la sección [Publicador de la comprobación de estado](#health-check-publisher).
 
@@ -1229,13 +1229,13 @@ spec:
 
 La aplicación de ejemplo muestra una comprobación de estado de memoria con un escritor de respuesta personalizada.
 
-`MemoryHealthCheck` notifica un estado incorrecto si la aplicación usa más de un umbral de memoria determinado (1 GB en la aplicación de ejemplo). El elemento <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckResult> incluye información del recolector de elementos no utilizados (GC) de la aplicación ( *MemoryHealthCheck.cs* ):
+`MemoryHealthCheck` notifica un estado incorrecto si la aplicación usa más de un umbral de memoria determinado (1 GB en la aplicación de ejemplo). El elemento <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckResult> incluye información del recolector de elementos no utilizados (GC) de la aplicación (*MemoryHealthCheck.cs*):
 
 [!code-csharp[](health-checks/samples/2.x/HealthChecksSample/MemoryHealthCheck.cs?name=snippet1)]
 
 Registre los servicios de comprobación de estado con <xref:Microsoft.Extensions.DependencyInjection.HealthCheckServiceCollectionExtensions.AddHealthChecks*> de `Startup.ConfigureServices`. En lugar de pasar la comprobación de estado a <xref:Microsoft.Extensions.DependencyInjection.HealthChecksBuilderAddCheckExtensions.AddCheck*> para habilitarla, `MemoryHealthCheck` se registra como servicio. Todos los servicios registrados de <xref:Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheck> están disponibles para los servicios de comprobación de estado y middleware. Se recomienda registrar los servicios de comprobación de estado como los servicios de Singleton.
 
-En la aplicación de ejemplo ( *CustomWriterStartup.cs* ):
+En la aplicación de ejemplo (*CustomWriterStartup.cs*):
 
 [!code-csharp[](health-checks/samples/2.x/HealthChecksSample/CustomWriterStartup.cs?name=snippet_ConfigureServices&highlight=4)]
 
@@ -1295,14 +1295,14 @@ El siguiente archivo *Properties/launchSettings.json* de la aplicación de ejemp
 }
 ```
 
-Registre los servicios de comprobación de estado con <xref:Microsoft.Extensions.DependencyInjection.HealthCheckServiceCollectionExtensions.AddHealthChecks*> de `Startup.ConfigureServices`. La llamada a <xref:Microsoft.AspNetCore.Builder.HealthCheckApplicationBuilderExtensions.UseHealthChecks*> especifica el puerto de administración ( *ManagementPortStartup.cs* ):
+Registre los servicios de comprobación de estado con <xref:Microsoft.Extensions.DependencyInjection.HealthCheckServiceCollectionExtensions.AddHealthChecks*> de `Startup.ConfigureServices`. La llamada a <xref:Microsoft.AspNetCore.Builder.HealthCheckApplicationBuilderExtensions.UseHealthChecks*> especifica el puerto de administración (*ManagementPortStartup.cs*):
 
 [!code-csharp[](health-checks/samples/2.x/HealthChecksSample/ManagementPortStartup.cs?name=snippet1&highlight=17)]
 
 > [!NOTE]
-> Para evitar la creación del archivo *launchSettings.json* en la aplicación de ejemplo, configure las direcciones URL y el puerto de administración explícitamente en código. En *Program.cs* , donde se crea <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder>, agregue una llamada a <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseUrls*> y proporcione el punto de conexión de respuesta normal de la aplicación y el punto de conexión del puerto de administración. En *ManagementPortStartup.cs* , donde se llama a <xref:Microsoft.AspNetCore.Builder.HealthCheckApplicationBuilderExtensions.UseHealthChecks*>, especifique explícitamente el puerto de administración.
+> Para evitar la creación del archivo *launchSettings.json* en la aplicación de ejemplo, configure las direcciones URL y el puerto de administración explícitamente en código. En *Program.cs*, donde se crea <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder>, agregue una llamada a <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseUrls*> y proporcione el punto de conexión de respuesta normal de la aplicación y el punto de conexión del puerto de administración. En *ManagementPortStartup.cs*, donde se llama a <xref:Microsoft.AspNetCore.Builder.HealthCheckApplicationBuilderExtensions.UseHealthChecks*>, especifique explícitamente el puerto de administración.
 >
-> *Program.cs* :
+> *Program.cs*:
 >
 > ```csharp
 > return new WebHostBuilder()
@@ -1319,7 +1319,7 @@ Registre los servicios de comprobación de estado con <xref:Microsoft.Extensions
 >     .Build();
 > ```
 >
-> *ManagementPortStartup.cs* :
+> *ManagementPortStartup.cs*:
 >
 > ```csharp
 > app.UseHealthChecks("/health", port: 5001);

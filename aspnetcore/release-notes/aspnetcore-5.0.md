@@ -19,10 +19,10 @@ no-loc:
 - Kestrel
 uid: aspnetcore-5.0
 ms.openlocfilehash: d7ffcb67637593ab2909885a9e1f6de74a78361b
-ms.sourcegitcommit: a71bb61f7add06acb949c9258fe506914dfe0c08
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "96855500"
 ---
 # <a name="whats-new-in-aspnet-core-50"></a>Novedades de ASP.NET Core 5.0

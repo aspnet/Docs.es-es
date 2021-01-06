@@ -18,10 +18,10 @@ no-loc:
 - SignalR
 uid: data/ef-rp/update-related-data
 ms.openlocfilehash: 3ec88a862697c540a1a98e733c31d76922f81f7c
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93060539"
 ---
 # <a name="part-7-no-locrazor-pages-with-ef-core-in-aspnet-core---update-related-data"></a>Parte 7. Razor Pages con EF Core en ASP.NET Core: Actualización de datos relacionados
@@ -120,7 +120,7 @@ Actualice *Pages/Courses/Delete.cshtml.cs* con el código siguiente para agregar
 
 [!code-csharp[](intro/samples/cu30/Pages/Courses/Delete.cshtml.cs?highlight=29)]
 
-Realice el mismo cambio en el archivo *Pages/Courses/Details.cshtml.cs* :
+Realice el mismo cambio en el archivo *Pages/Courses/Details.cshtml.cs*:
 
 [!code-csharp[](intro/samples/cu30/Pages/Courses/Details.cshtml.cs?highlight=28)]
 
@@ -156,7 +156,7 @@ La clase `AssignedCourseData` contiene datos para crear las casillas para los cu
 
 ### <a name="create-an-instructor-page-model-base-class"></a>Creación de una clase base de modelo de páginas Instructor
 
-Cree la clase base *Pages/Instructors/InstructorCoursesPageModel.cs* :
+Cree la clase base *Pages/Instructors/InstructorCoursesPageModel.cs*:
 
 [!code-csharp[](intro/samples/cu30/Pages/Instructors/InstructorCoursesPageModel.cs?name=snippet_All)]
 
@@ -333,7 +333,7 @@ Pruebe el código actualizado. Cree, modifique y elimine un curso.
 
 [!code-csharp[](intro/samples/cu/Pages/Courses/Delete.cshtml.cs?name=snippet&highlight=21,23,40,41)]
 
-Actualice el método `OnGetAsync` en el archivo *Pages/Courses/Details.cshtml.cs* :
+Actualice el método `OnGetAsync` en el archivo *Pages/Courses/Details.cshtml.cs*:
 
 [!code-csharp[](intro/samples/cu/Pages/Courses/Details.cshtml.cs?name=snippet)]
 
@@ -400,7 +400,7 @@ Cree *SchoolViewModels/AssignedCourseData.cs* con el código siguiente:
 
 La clase `AssignedCourseData` contiene datos para crear las casillas para los cursos asignados por un instructor.
 
-Cree la clase base *Pages/Instructors/InstructorCoursesPageModel.cshtml.cs* :
+Cree la clase base *Pages/Instructors/InstructorCoursesPageModel.cshtml.cs*:
 
 [!code-csharp[](intro/samples/cu/Pages/Instructors/InstructorCoursesPageModel.cshtml.cs)]
 

@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: fundamentals/host/hosted-services
 ms.openlocfilehash: b8d6ec079ed39fb3a2c314816ebae6cea0847a36
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93061085"
 ---
 # <a name="background-tasks-with-hosted-services-in-aspnet-core"></a>Tareas en segundo plano con servicios hospedados en ASP.NET Core
@@ -54,7 +54,7 @@ Para usar la plantilla como base de una aplicación de servicios hospedados:
 
 ## <a name="package"></a>Package
 
-Una aplicación basada en la plantilla Worker Service usa el SDK de `Microsoft.NET.Sdk.Worker` y tiene una referencia de paquete explícita al paquete [Microsoft.Extensions.Hosting](https://www.nuget.org/packages/Microsoft.Extensions.Hosting). Por ejemplo, consulte el archivo del proyecto de la aplicación de ejemplo ( *BackgroundTasksSample.csproj* ).
+Una aplicación basada en la plantilla Worker Service usa el SDK de `Microsoft.NET.Sdk.Worker` y tiene una referencia de paquete explícita al paquete [Microsoft.Extensions.Hosting](https://www.nuget.org/packages/Microsoft.Extensions.Hosting). Por ejemplo, consulte el archivo del proyecto de la aplicación de ejemplo (*BackgroundTasksSample.csproj*).
 
 En el caso de las aplicaciones web que usan el SDK de `Microsoft.NET.Sdk.Web`, desde el marco compartido se hace una referencia implícita al paquete [Microsoft.Extensions.Hosting](https://www.nuget.org/packages/Microsoft.Extensions.Hosting). No se requiere una referencia de paquete explícita en el archivo del proyecto de la aplicación.
 
@@ -62,7 +62,7 @@ En el caso de las aplicaciones web que usan el SDK de `Microsoft.NET.Sdk.Web`, d
 
 La interfaz <xref:Microsoft.Extensions.Hosting.IHostedService> define dos métodos para los objetos administrados por el host:
 
-* [StartAsync(CancellationToken)](xref:Microsoft.Extensions.Hosting.IHostedService.StartAsync*): `StartAsync` contiene la lógica para iniciar la tarea en segundo plano. Se llama a `StartAsync`*antes de que* :
+* [StartAsync(CancellationToken)](xref:Microsoft.Extensions.Hosting.IHostedService.StartAsync*): `StartAsync` contiene la lógica para iniciar la tarea en segundo plano. Se llama a `StartAsync`*antes de que*:
 
   * La canalización de procesamiento de solicitudes de la aplicación está configurada (`Startup.Configure`).
   * El servidor se haya iniciado y [IApplicationLifetime.ApplicationStarted](xref:Microsoft.AspNetCore.Hosting.IApplicationLifetime.ApplicationStarted*) se haya activado.
@@ -128,7 +128,7 @@ Una tarea en segundo plano temporizada hace uso de la clase [System.Threading.Ti
 
 <xref:System.Threading.Timer> no espera a que finalicen las ejecuciones anteriores de `DoWork`, por lo que es posible que el enfoque mostrado no sea adecuado para todos los escenarios. [Interlocked.Increment](xref:System.Threading.Interlocked.Increment*) se usa para incrementar el contador de ejecución como una operación atómica, lo que garantiza que varios subprocesos no actualicen `executionCount` simultáneamente.
 
-El servicio se registra en `IHostBuilder.ConfigureServices` ( *Program.cs* ) con el método de extensión `AddHostedService`:
+El servicio se registra en `IHostBuilder.ConfigureServices` (*Program.cs*) con el método de extensión `AddHostedService`:
 
 [!code-csharp[](hosted-services/samples/3.x/BackgroundTasksSample/Program.cs?name=snippet1)]
 
@@ -147,7 +147,7 @@ El servicio hospedado crea un ámbito con el fin de resolver el servicio de tare
 
 [!code-csharp[](hosted-services/samples/3.x/BackgroundTasksSample/Services/ConsumeScopedServiceHostedService.cs?name=snippet1&highlight=19,22-35)]
 
-Los servicios se registran en `IHostBuilder.ConfigureServices` ( *Program.cs* ). El servicio hospedado se registra en con el método de extensión `AddHostedService`:
+Los servicios se registran en `IHostBuilder.ConfigureServices` (*Program.cs*). El servicio hospedado se registra en con el método de extensión `AddHostedService`:
 
 [!code-csharp[](hosted-services/samples/3.x/BackgroundTasksSample/Program.cs?name=snippet2)]
 
@@ -175,7 +175,7 @@ Un servicio `MonitorLoop` controla las tareas de puesta en cola para el servicio
 
 [!code-csharp[](hosted-services/samples/3.x/BackgroundTasksSample/Services/MonitorLoop.cs?name=snippet_Monitor&highlight=7,33)]
 
-Los servicios se registran en `IHostBuilder.ConfigureServices` ( *Program.cs* ). El servicio hospedado se registra en con el método de extensión `AddHostedService`:
+Los servicios se registran en `IHostBuilder.ConfigureServices` (*Program.cs*). El servicio hospedado se registra en con el método de extensión `AddHostedService`:
 
 [!code-csharp[](hosted-services/samples/3.x/BackgroundTasksSample/Program.cs?name=snippet3)]
 

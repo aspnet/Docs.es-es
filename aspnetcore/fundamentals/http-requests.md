@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: fundamentals/http-requests
 ms.openlocfilehash: 34c35daac3da845bac9156fe96078df7902a4cd0
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93059499"
 ---
 # <a name="make-http-requests-using-ihttpclientfactory-in-aspnet-core"></a>Realización de solicitudes HTTP mediante IHttpClientFactory en ASP.NET Core
@@ -378,9 +378,9 @@ Llame a <xref:Microsoft.Extensions.DependencyInjection.HttpClientBuilderExtensio
 
 Los clientes que se han creado a través de `IHttpClientFactory` registran mensajes de registro de todas las solicitudes. Habilite el nivel de información adecuado en la configuración del registro para ver los mensajes de registro predeterminados. El registro de más información, como el registro de encabezados de solicitud, solo se incluye en el nivel de seguimiento.
 
-La categoría de registro usada en cada cliente incluye el nombre del cliente. Un cliente denominado *MyNamedClient* , por ejemplo, registra mensajes con una categoría de "System.Net.Http.HttpClient. **MyNamedClient**.LogicalHandler". Los mensajes con el sufijo *LogicalHandler* se producen fuera de la canalización de controlador de la solicitud. En la solicitud, los mensajes se registran antes de que cualquier otro controlador de la canalización haya procesado la solicitud. En la respuesta, los mensajes se registran después de que cualquier otro controlador de la canalización haya recibido la respuesta.
+La categoría de registro usada en cada cliente incluye el nombre del cliente. Un cliente denominado *MyNamedClient*, por ejemplo, registra mensajes con una categoría de "System.Net.Http.HttpClient.**MyNamedClient**.LogicalHandler". Los mensajes con el sufijo *LogicalHandler* se producen fuera de la canalización de controlador de la solicitud. En la solicitud, los mensajes se registran antes de que cualquier otro controlador de la canalización haya procesado la solicitud. En la respuesta, los mensajes se registran después de que cualquier otro controlador de la canalización haya recibido la respuesta.
 
-El registro también se produce dentro de la canalización de controlador de la solicitud. En el ejemplo *MyNamedClient* , esos mensajes se registran con la categoría de registro "System.Net.Http.HttpClient. **MyNamedClient**.ClientHandler". En la solicitud, esto tiene lugar después de que todos los demás controladores se hayan ejecutado y justo antes de que se envíe la solicitud. En la respuesta, este registro incluye el estado de la respuesta antes de que vuelva a pasar por la canalización del controlador.
+El registro también se produce dentro de la canalización de controlador de la solicitud. En el ejemplo *MyNamedClient*, esos mensajes se registran con la categoría de registro "System.Net.Http.HttpClient.**MyNamedClient**.ClientHandler". En la solicitud, esto tiene lugar después de que todos los demás controladores se hayan ejecutado y justo antes de que se envíe la solicitud. En la respuesta, este registro incluye el estado de la respuesta antes de que vuelva a pasar por la canalización del controlador.
 
 Al habilitar el registro tanto dentro como fuera de la canalización, se podrán inspeccionar los cambios realizados por otros controladores de la canalización. Esto puede incluir cambios en los encabezados de solicitud o en el código de estado de la respuesta.
 
@@ -698,7 +698,7 @@ Los clientes que se han creado a través de `IHttpClientFactory` registran mensa
 
 La categoría de registro usada en cada cliente incluye el nombre del cliente. Así, por ejemplo, un cliente llamado *MyNamedClient* registra mensajes con una categoría `System.Net.Http.HttpClient.MyNamedClient.LogicalHandler`. Los mensajes con el sufijo *LogicalHandler* se producen fuera de la canalización de controlador de la solicitud. En la solicitud, los mensajes se registran antes de que cualquier otro controlador de la canalización haya procesado la solicitud. En la respuesta, los mensajes se registran después de que cualquier otro controlador de la canalización haya recibido la respuesta.
 
-El registro también se produce dentro de la canalización de controlador de la solicitud. En nuestro caso de ejemplo de *MyNamedClient* , esos mensajes se registran en la categoría de registro `System.Net.Http.HttpClient.MyNamedClient.ClientHandler`. En la solicitud, esto tiene lugar después de que todos los demás controladores se hayan ejecutado y justo antes de que la solicitud se envíe por la red. En la respuesta, este registro incluye el estado de la respuesta antes de que vuelva a pasar por la canalización del controlador.
+El registro también se produce dentro de la canalización de controlador de la solicitud. En nuestro caso de ejemplo de *MyNamedClient*, esos mensajes se registran en la categoría de registro `System.Net.Http.HttpClient.MyNamedClient.ClientHandler`. En la solicitud, esto tiene lugar después de que todos los demás controladores se hayan ejecutado y justo antes de que la solicitud se envíe por la red. En la respuesta, este registro incluye el estado de la respuesta antes de que vuelva a pasar por la canalización del controlador.
 
 Al habilitar el registro tanto dentro como fuera de la canalización, se podrán inspeccionar los cambios realizados por otros controladores de la canalización. Esto puede englobar cambios, por ejemplo, en los encabezados de solicitud o en el código de estado de la respuesta.
 
@@ -1006,7 +1006,7 @@ Los clientes que se han creado a través de `IHttpClientFactory` registran mensa
 
 La categoría de registro usada en cada cliente incluye el nombre del cliente. Así, por ejemplo, un cliente llamado *MyNamedClient* registra mensajes con una categoría `System.Net.Http.HttpClient.MyNamedClient.LogicalHandler`. Los mensajes con el sufijo *LogicalHandler* se producen fuera de la canalización de controlador de la solicitud. En la solicitud, los mensajes se registran antes de que cualquier otro controlador de la canalización haya procesado la solicitud. En la respuesta, los mensajes se registran después de que cualquier otro controlador de la canalización haya recibido la respuesta.
 
-El registro también se produce dentro de la canalización de controlador de la solicitud. En nuestro caso de ejemplo de *MyNamedClient* , esos mensajes se registran en la categoría de registro `System.Net.Http.HttpClient.MyNamedClient.ClientHandler`. En la solicitud, esto tiene lugar después de que todos los demás controladores se hayan ejecutado y justo antes de que la solicitud se envíe por la red. En la respuesta, este registro incluye el estado de la respuesta antes de que vuelva a pasar por la canalización del controlador.
+El registro también se produce dentro de la canalización de controlador de la solicitud. En nuestro caso de ejemplo de *MyNamedClient*, esos mensajes se registran en la categoría de registro `System.Net.Http.HttpClient.MyNamedClient.ClientHandler`. En la solicitud, esto tiene lugar después de que todos los demás controladores se hayan ejecutado y justo antes de que la solicitud se envíe por la red. En la respuesta, este registro incluye el estado de la respuesta antes de que vuelva a pasar por la canalización del controlador.
 
 Al habilitar el registro tanto dentro como fuera de la canalización, se podrán inspeccionar los cambios realizados por otros controladores de la canalización. Esto puede englobar cambios, por ejemplo, en los encabezados de solicitud o en el código de estado de la respuesta.
 

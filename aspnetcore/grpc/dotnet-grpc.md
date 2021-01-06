@@ -19,17 +19,17 @@ no-loc:
 - SignalR
 uid: grpc/dotnet-grpc
 ms.openlocfilehash: f34e1543d9695e138a85db3b79e013cf5fb6d138
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93059915"
 ---
 # <a name="manage-protobuf-references-with-dotnet-grpc"></a>Administración de referencias de Protobuf con dotnet-grpc
 
 Por [John Luo](https://github.com/juntaoluo)
 
-`dotnet-grpc` es una herramienta global de .NET Core para administrar referencias de [Protobuf ( *.proto* )](xref:grpc/basics#proto-file) dentro de un proyecto gRPC de .NET. La herramienta se puede usar para agregar, actualizar, quitar y enumerar las referencias de Protobuf.
+`dotnet-grpc` es una herramienta global de .NET Core para administrar referencias de [Protobuf ( *.proto*)](xref:grpc/basics#proto-file) dentro de un proyecto gRPC de .NET. La herramienta se puede usar para agregar, actualizar, quitar y enumerar las referencias de Protobuf.
 
 ## <a name="installation"></a>Instalación
 
@@ -41,7 +41,7 @@ dotnet tool install -g dotnet-grpc
 
 ## <a name="add-references"></a>Agregar referencias
 
-`dotnet-grpc` se puede usar para agregar referencias de Protobuf como elementos `<Protobuf />` al archivo *.csproj* :
+`dotnet-grpc` se puede usar para agregar referencias de Protobuf como elementos `<Protobuf />` al archivo *.csproj*:
 
 ```xml
 <Protobuf Include="Protos\greet.proto" GrpcServices="Server" />
@@ -116,7 +116,7 @@ dotnet-grpc add-url [options] <url>
 El comando `remove` se usa para quitar las referencias de Protobuf del archivo *.csproj*. El comando acepta argumentos de ruta de acceso y direcciones URL de origen como argumentos. La herramienta:
 
 * Solo quita la referencia de Protobuf.
-* No elimina el archivo *.proto* , incluso si se ha descargado originalmente desde una dirección URL remota.
+* No elimina el archivo *.proto*, incluso si se ha descargado originalmente desde una dirección URL remota.
 
 ### <a name="usage"></a>Uso
 

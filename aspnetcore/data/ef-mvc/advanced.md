@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: data/ef-mvc/advanced
 ms.openlocfilehash: 386be395399bf4131e4b6c8cac8221f994e8b7c5
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93054390"
 ---
 # <a name="tutorial-learn-about-advanced-scenarios---aspnet-mvc-with-ef-core"></a>Tutorial: Información sobre escenarios avanzados: ASP.NET MVC con EF Core
@@ -63,7 +63,7 @@ Como siempre es true cuando ejecuta comandos SQL en una aplicación web, debe to
 
 La clase `DbSet<TEntity>` proporciona un método que puede usar para ejecutar una consulta que devuelve una entidad de tipo `TEntity`. Para ver cómo funciona, cambiará el código en el método `Details` del controlador de departamento.
 
-En *DepartmentsController.cs* , en el método `Details`, reemplace el código que recupera un departamento con una llamada al método `FromSql`, como se muestra en el código resaltado siguiente:
+En *DepartmentsController.cs*, en el método `Details`, reemplace el código que recupera un departamento con una llamada al método `FromSql`, como se muestra en el código resaltado siguiente:
 
 [!code-csharp[](intro/samples/cu/Controllers/DepartmentsController.cs?name=snippet_RawSQL&highlight=8,9,10)]
 
@@ -75,7 +75,7 @@ Para comprobar que el nuevo código funciona correctamente, seleccione la pesta�
 
 Anteriormente creó una cuadrícula de estadísticas de alumno de la página About que mostraba el número de alumnos para cada fecha de inscripción. Obtuvo los datos del conjunto de entidades Students (`_context.Students`) y usó LINQ para proyectar los resultados en una lista de objetos de modelo de vista `EnrollmentDateGroup`. Suponga que quiere escribir la instrucción SQL propia en lugar de usar LINQ. Para ello, necesita ejecutar una consulta SQL que devuelve un valor distinto de objetos entidad. En EF Core 1.0, una manera de hacerlo es escribir código de ADO.NET y obtener la conexión de base de datos de EF.
 
-En *HomeController.cs* , reemplace el método `About` por el código siguiente:
+En *HomeController.cs*, reemplace el método `About` por el código siguiente:
 
 [!code-csharp[](intro/samples/cu/Controllers/HomeController.cs?name=snippet_UseRawSQL&highlight=3-32)]
 
@@ -93,7 +93,7 @@ Imagine que los administradores de Contoso University quieren realizar cambios g
 
 ![Página Update Course Credits](advanced/_static/update-credits.png)
 
-En *CoursesContoller.cs* , agregue los métodos UpdateCourseCredits para HttpGet y HttpPost:
+En *CoursesContoller.cs*, agregue los métodos UpdateCourseCredits para HttpGet y HttpPost:
 
 [!code-csharp[](intro/samples/cu/Controllers/CoursesController.cs?name=snippet_UpdateGet)]
 
@@ -101,17 +101,17 @@ En *CoursesContoller.cs* , agregue los métodos UpdateCourseCredits para HttpGet
 
 Cuando el controlador procesa una solicitud HttpGet, no se devuelve nada en `ViewData["RowsAffected"]` y la vista muestra un cuadro de texto vacío y un botón de envío, tal como se muestra en la ilustración anterior.
 
-Cuando se hace clic en el botón **Update** , se llama al método HttpPost y el multiplicador tiene el valor especificado en el cuadro de texto. A continuación, el código ejecuta la instrucción SQL que actualiza los cursos y devuelve el número de filas afectadas a la vista en `ViewData`. Cuando la vista obtiene un valor `RowsAffected`, muestra el número de filas actualizadas.
+Cuando se hace clic en el botón **Update**, se llama al método HttpPost y el multiplicador tiene el valor especificado en el cuadro de texto. A continuación, el código ejecuta la instrucción SQL que actualiza los cursos y devuelve el número de filas afectadas a la vista en `ViewData`. Cuando la vista obtiene un valor `RowsAffected`, muestra el número de filas actualizadas.
 
-En el **Explorador de soluciones** , haga clic con el botón derecho en la carpeta *Views/Courses* y luego haga clic en **Agregar > Nuevo elemento**.
+En el **Explorador de soluciones**, haga clic con el botón derecho en la carpeta *Views/Courses* y luego haga clic en **Agregar > Nuevo elemento**.
 
-En el cuadro de diálogo **Agregar nuevo elemento** , haga clic en **ASP.NET Core** en **Instalado** en el panel izquierdo, haga clic en **Vista de Razor** y ponga el nombre *UpdateCourseCredits.cshtml* a la nueva vista.
+En el cuadro de diálogo **Agregar nuevo elemento**, haga clic en **ASP.NET Core** en **Instalado** en el panel izquierdo, haga clic en **Vista de Razor** y ponga el nombre *UpdateCourseCredits.cshtml* a la nueva vista.
 
-En *Views/Courses/UpdateCourseCredits.cshtml* , reemplace el código de plantilla con el código siguiente:
+En *Views/Courses/UpdateCourseCredits.cshtml*, reemplace el código de plantilla con el código siguiente:
 
 [!code-cshtml[](intro/samples/cu/Views/Courses/UpdateCourseCredits.cshtml)]
 
-Ejecute el método `UpdateCourseCredits` seleccionando la pestaña **Courses** , después, agregue "/UpdateCourseCredits" al final de la dirección URL en la barra de direcciones del explorador (por ejemplo: `http://localhost:5813/Courses/UpdateCourseCredits`). Escriba un número en el cuadro de texto:
+Ejecute el método `UpdateCourseCredits` seleccionando la pestaña **Courses**, después, agregue "/UpdateCourseCredits" al final de la dirección URL en la barra de direcciones del explorador (por ejemplo: `http://localhost:5813/Courses/UpdateCourseCredits`). Escriba un número en el cuadro de texto:
 
 ![Página Update Course Credits](advanced/_static/update-credits.png)
 
@@ -243,7 +243,7 @@ Al hacer cambios en el esquema, se pueden generar otros errores en una base de d
 
 El enfoque más sencillo consiste en cambiar el nombre de la base de datos en *appsettings.json* . La próxima vez que ejecute `database update`, se creará una base de datos.
 
-Para eliminar una base de datos en SSOX, haga clic con el botón derecho en la base de datos, haga clic en **Eliminar** y, después, en el cuadro de diálogo **Eliminar base de datos** , seleccione **Cerrar conexiones existentes** y haga clic en **Aceptar**.
+Para eliminar una base de datos en SSOX, haga clic con el botón derecho en la base de datos, haga clic en **Eliminar** y, después, en el cuadro de diálogo **Eliminar base de datos**, seleccione **Cerrar conexiones existentes** y haga clic en **Aceptar**.
 
 Para eliminar una base de datos mediante el uso de la CLI, ejecute el comando de la CLI `database drop`:
 

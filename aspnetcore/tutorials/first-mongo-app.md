@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: tutorials/first-mongo-app
 ms.openlocfilehash: 350df417886fe1ea5fef89dc221c217d596768b3
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93060747"
 ---
 # <a name="create-a-web-api-with-aspnet-core-and-mongodb"></a>Creación de una API Web con ASP.NET Core y MongoDB
@@ -165,7 +165,7 @@ La base de datos está lista. Puede empezar a crear la API web de ASP.NET Core.
 1. Seleccione el tipo de proyecto **Aplicación web de ASP.NET Core** y, luego, **Siguiente**.
 1. Denomine el proyecto *BooksApi* y seleccione **Crear**.
 1. Seleccione **.NET Core** como plataforma de destino y **ASP.NET Core 3.0**. Seleccione la plantilla de proyecto **API** y, luego, **Crear**.
-1. Visite la [galería de NuGet: MongoDB.Driver](https://www.nuget.org/packages/MongoDB.Driver/) para determinar la última versión estable del controlador .NET para MongoDB. En la ventana **Consola del Administrador de paquetes** , desplácese hasta la raíz del proyecto. Ejecute el siguiente comando para instalar el controlador .NET para MongoDB:
+1. Visite la [galería de NuGet: MongoDB.Driver](https://www.nuget.org/packages/MongoDB.Driver/) para determinar la última versión estable del controlador .NET para MongoDB. En la ventana **Consola del Administrador de paquetes**, desplácese hasta la raíz del proyecto. Ejecute el siguiente comando para instalar el controlador .NET para MongoDB:
 
    ```powershell
    Install-Package MongoDB.Driver -Version {VERSION}
@@ -195,7 +195,7 @@ La base de datos está lista. Puede empezar a crear la API web de ASP.NET Core.
 1. Seleccione la plantilla de proyecto de C# **ASP.NET Core** > **API** y, luego, **Siguiente**.
 1. Seleccione **.NET Core 3.1** en la lista desplegable **Plataforma de destino** y, luego, **Siguiente**.
 1. Escriba *BooksApi* en **Nombre del proyecto** y seleccione **Crear**.
-1. En el panel **Explorador de soluciones** , haga clic con el botón derecho en el nodo **Dependencias** del proyecto y seleccione **Agregar paquetes**.
+1. En el panel **Explorador de soluciones**, haga clic con el botón derecho en el nodo **Dependencias** del proyecto y seleccione **Agregar paquetes**.
 1. Escriba *MongoDB.Driver* en el cuadro de búsqueda, seleccione el paquete *MongoDB.Driver* y, luego, **Agregar paquete**.
 1. Seleccione el botón **Aceptar** del cuadro de diálogo **Aceptación de la licencia**.
 
@@ -366,7 +366,7 @@ Para satisfacer los requisitos anteriores, realice los cambios siguientes:
 
    Con el cambio anterior, los nombres de propiedad de la respuesta JSON serializada de la API web coinciden con sus nombres de propiedad correspondientes en el tipo de objeto CLR. Por ejemplo, la propiedad `Author` de la clase `Book` se serializa como `Author`.
 
-1. En *Models/Book.cs* , anote la propiedad `BookName` con el atributo [`[JsonProperty]`](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_JsonPropertyAttribute.htm) siguiente:
+1. En *Models/Book.cs*, anote la propiedad `BookName` con el atributo [`[JsonProperty]`](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_JsonPropertyAttribute.htm) siguiente:
 
    [!code-csharp[](first-mongo-app/samples/3.x/SampleApp/Models/Book.cs?name=snippet_BookNameProperty&highlight=2)]
 
@@ -515,7 +515,7 @@ La base de datos está lista. Puede empezar a crear la API web de ASP.NET Core.
 1. Seleccione el tipo de proyecto **Aplicación web de ASP.NET Core** y, luego, **Siguiente**.
 1. Denomine el proyecto *BooksApi* y seleccione **Crear**.
 1. Seleccione el marco de destino **.NET Core** y **ASP.NET Core 2.2**. Seleccione la plantilla de proyecto **API** y, luego, **Crear**.
-1. Visite la [galería de NuGet: MongoDB.Driver](https://www.nuget.org/packages/MongoDB.Driver/) para determinar la última versión estable del controlador .NET para MongoDB. En la ventana **Consola del Administrador de paquetes** , desplácese hasta la raíz del proyecto. Ejecute el siguiente comando para instalar el controlador .NET para MongoDB:
+1. Visite la [galería de NuGet: MongoDB.Driver](https://www.nuget.org/packages/MongoDB.Driver/) para determinar la última versión estable del controlador .NET para MongoDB. En la ventana **Consola del Administrador de paquetes**, desplácese hasta la raíz del proyecto. Ejecute el siguiente comando para instalar el controlador .NET para MongoDB:
 
    ```powershell
    Install-Package MongoDB.Driver -Version {VERSION}
@@ -545,7 +545,7 @@ La base de datos está lista. Puede empezar a crear la API web de ASP.NET Core.
 1. Seleccione la plantilla de proyecto de C# **API web ASP.NET Core** y, luego, **Siguiente**.
 1. Seleccione **.NET Core 2.2** en la lista desplegable **Plataforma de destino** y, luego, **Siguiente**.
 1. Escriba *BooksApi* en **Nombre del proyecto** y seleccione **Crear**.
-1. En el panel **Explorador de soluciones** , haga clic con el botón derecho en el nodo **Dependencias** del proyecto y seleccione **Agregar paquetes**.
+1. En el panel **Explorador de soluciones**, haga clic con el botón derecho en el nodo **Dependencias** del proyecto y seleccione **Agregar paquetes**.
 1. Escriba *MongoDB.Driver* en el cuadro de búsqueda, seleccione el paquete *MongoDB.Driver* y, luego, **Agregar paquete**.
 1. Seleccione el botón **Aceptar** del cuadro de diálogo **Aceptación de la licencia**.
 
@@ -714,7 +714,7 @@ Para satisfacer los requisitos anteriores, realice los cambios siguientes:
 
    Con el cambio anterior, los nombres de propiedad de la respuesta JSON serializada de la API web coinciden con sus nombres de propiedad correspondientes en el tipo de objeto CLR. Por ejemplo, la propiedad `Author` de la clase `Book` se serializa como `Author`.
 
-1. En *Models/Book.cs* , anote la propiedad `BookName` con el atributo [`[JsonProperty]`](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_JsonPropertyAttribute.htm) siguiente:
+1. En *Models/Book.cs*, anote la propiedad `BookName` con el atributo [`[JsonProperty]`](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_JsonPropertyAttribute.htm) siguiente:
 
    [!code-csharp[](first-mongo-app/samples/2.x/SampleApp/Models/Book.cs?name=snippet_BookNameProperty&highlight=2)]
 

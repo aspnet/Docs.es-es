@@ -18,10 +18,10 @@ no-loc:
 - SignalR
 uid: fundamentals/localization
 ms.openlocfilehash: 07e2f561b0e9db58780d6e8a271e32b00132b1b5
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93059525"
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>Globalización y localización en ASP.NET Core
@@ -134,17 +134,17 @@ En el código anterior, `SharedResource` es la clase correspondiente al archivo 
 
 ### <a name="supportedcultures-and-supporteduicultures"></a>SupportedCultures y SupportedUICultures
 
-ASP.NET Core permite especificar dos valores de referencia cultural, `SupportedCultures` y `SupportedUICultures`. El objeto [CultureInfo](/dotnet/api/system.globalization.cultureinfo) para `SupportedCultures` determina los resultados de funciones dependientes de la referencia cultural, como el formato de fecha, hora, número y moneda. `SupportedCultures` también determina el criterio de ordenación del texto, las convenciones sobre el uso de mayúsculas y minúsculas, y las comparaciones de cadenas. Vea [CultureInfo.CurrentCulture](/dotnet/api/system.stringcomparer.currentculture#System_StringComparer_CurrentCulture) para obtener más información sobre la manera en que el servidor obtiene la referencia cultural. `SupportedUICultures` determina qué cadenas traducidas buscará [ResourceManager](/dotnet/api/system.resources.resourcemanager) (en archivos *.resx* ). `ResourceManager` simplemente busca cadenas específicas de referencias culturales determinadas por `CurrentUICulture`. Todos los subprocesos de .NET tienen objetos `CurrentCulture` y `CurrentUICulture`. ASP.NET Core inspecciona estos valores al representar funciones dependientes de la referencia cultural. Por ejemplo, si la referencia cultural del subproceso actual está establecida en "en-US" (inglés (Estados Unidos)), `DateTime.Now.ToLongDateString()` mostrará "Thursday, February 18, 2016". En cambio, si `CurrentCulture` está establecido en "es-ES" (español (España)), la salida será "jueves, 18 de febrero de 2016".
+ASP.NET Core permite especificar dos valores de referencia cultural, `SupportedCultures` y `SupportedUICultures`. El objeto [CultureInfo](/dotnet/api/system.globalization.cultureinfo) para `SupportedCultures` determina los resultados de funciones dependientes de la referencia cultural, como el formato de fecha, hora, número y moneda. `SupportedCultures` también determina el criterio de ordenación del texto, las convenciones sobre el uso de mayúsculas y minúsculas, y las comparaciones de cadenas. Vea [CultureInfo.CurrentCulture](/dotnet/api/system.stringcomparer.currentculture#System_StringComparer_CurrentCulture) para obtener más información sobre la manera en que el servidor obtiene la referencia cultural. `SupportedUICultures` determina qué cadenas traducidas buscará [ResourceManager](/dotnet/api/system.resources.resourcemanager) (en archivos *.resx*). `ResourceManager` simplemente busca cadenas específicas de referencias culturales determinadas por `CurrentUICulture`. Todos los subprocesos de .NET tienen objetos `CurrentCulture` y `CurrentUICulture`. ASP.NET Core inspecciona estos valores al representar funciones dependientes de la referencia cultural. Por ejemplo, si la referencia cultural del subproceso actual está establecida en "en-US" (inglés (Estados Unidos)), `DateTime.Now.ToLongDateString()` mostrará "Thursday, February 18, 2016". En cambio, si `CurrentCulture` está establecido en "es-ES" (español (España)), la salida será "jueves, 18 de febrero de 2016".
 
 ## <a name="resource-files"></a>Archivos de recursos
 
 Un archivo de recursos es un mecanismo útil para separar del código las cadenas localizables. Las cadenas traducidas para el idioma no predeterminado están aisladas en archivos de recursos *.resx*. Pongamos por caso que quiere crear un archivo de recursos de español denominado *Welcome.es.resx* que contenga cadenas traducidas. "es" es el código de idioma para español. Para crear este archivo de recursos en Visual Studio:
 
-1. En el **Explorador de soluciones** , haga clic con el botón derecho en la carpeta que contendrá el archivo de recursos > **Agregar** > **Nuevo elemento**.
+1. En el **Explorador de soluciones**, haga clic con el botón derecho en la carpeta que contendrá el archivo de recursos > **Agregar** > **Nuevo elemento**.
 
    ![Menú contextual anidado: en el Explorador de soluciones, se abre un menú contextual para los recursos. Se abre un segundo menú contextual, Agregar, en el que se muestra el comando Nuevo elemento resaltado.](localization/_static/newi.png)
 
-1. En el cuadro para **buscar plantillas instaladas** , escriba "recurso" y asigne un nombre al archivo.
+1. En el cuadro para **buscar plantillas instaladas**, escriba "recurso" y asigne un nombre al archivo.
 
    ![Cuadro de diálogo Agregar nuevo elemento](localization/_static/res.png)
 
@@ -213,11 +213,11 @@ Consideremos, por ejemplo, que quita el designador de referencia cultural ".fr" 
 
 ### <a name="generate-resource-files-with-visual-studio"></a>Generar archivos de recursos con Visual Studio
 
-Si crea un archivo de recursos en Visual Studio sin una referencia cultural en el nombre de archivo (por ejemplo, *Welcome.resx* ), Visual Studio creará una clase de C# con una propiedad para cada cadena. Normalmente esto no interesa con ASP.NET Core; por lo general, no tendrá un archivo de recursos *.resx* predeterminado (un archivo *.resx* sin el nombre de la referencia cultural). Se recomienda que cree el archivo *.resx* con un nombre de referencia cultural (por ejemplo, *Welcome.fr.resx* ). Cuando cree un archivo *.resx* con un nombre de referencia cultural, Visual Studio no generará el archivo de clase.
+Si crea un archivo de recursos en Visual Studio sin una referencia cultural en el nombre de archivo (por ejemplo, *Welcome.resx*), Visual Studio creará una clase de C# con una propiedad para cada cadena. Normalmente esto no interesa con ASP.NET Core; por lo general, no tendrá un archivo de recursos *.resx* predeterminado (un archivo *.resx* sin el nombre de la referencia cultural). Se recomienda que cree el archivo *.resx* con un nombre de referencia cultural (por ejemplo, *Welcome.fr.resx*). Cuando cree un archivo *.resx* con un nombre de referencia cultural, Visual Studio no generará el archivo de clase.
 
 ### <a name="add-other-cultures"></a>Agregar otras referencias culturales
 
-Cada combinación de idioma y referencia cultural (que no sea el idioma predeterminado) requiere un archivo de recursos único. Para crear archivos de recursos para otras referencias culturales y configuraciones regionales, debe crear archivos de recursos en los que los códigos de idioma ISO formen parte del nombre de archivo (por ejemplo, **en-us** , **fr-ca** y  **en-gb** ). Estos códigos ISO se colocan entre el nombre de archivo y la extensión de archivo *.resx* , como en *Welcome.es-MX.resx* (español [México]).
+Cada combinación de idioma y referencia cultural (que no sea el idioma predeterminado) requiere un archivo de recursos único. Para crear archivos de recursos para otras referencias culturales y configuraciones regionales, debe crear archivos de recursos en los que los códigos de idioma ISO formen parte del nombre de archivo (por ejemplo, **en-us**, **fr-ca** y  **en-gb**). Estos códigos ISO se colocan entre el nombre de archivo y la extensión de archivo *.resx*, como en *Welcome.es-MX.resx* (español [México]).
 
 ## <a name="implement-a-strategy-to-select-the-languageculture-for-each-request"></a>Implementar una estrategia para seleccionar el idioma o la referencia cultural de cada solicitud
 
@@ -488,17 +488,17 @@ En el código anterior, `SharedResource` es la clase correspondiente al archivo 
 
 ### <a name="supportedcultures-and-supporteduicultures"></a>SupportedCultures y SupportedUICultures
 
-ASP.NET Core permite especificar dos valores de referencia cultural, `SupportedCultures` y `SupportedUICultures`. El objeto [CultureInfo](/dotnet/api/system.globalization.cultureinfo) para `SupportedCultures` determina los resultados de funciones dependientes de la referencia cultural, como el formato de fecha, hora, número y moneda. `SupportedCultures` también determina el criterio de ordenación del texto, las convenciones sobre el uso de mayúsculas y minúsculas, y las comparaciones de cadenas. Vea [CultureInfo.CurrentCulture](/dotnet/api/system.stringcomparer.currentculture#System_StringComparer_CurrentCulture) para obtener más información sobre la manera en que el servidor obtiene la referencia cultural. `SupportedUICultures` determina qué cadenas traducidas buscará [ResourceManager](/dotnet/api/system.resources.resourcemanager) (en archivos *.resx* ). `ResourceManager` simplemente busca cadenas específicas de referencias culturales determinadas por `CurrentUICulture`. Todos los subprocesos de .NET tienen objetos `CurrentCulture` y `CurrentUICulture`. ASP.NET Core inspecciona estos valores al representar funciones dependientes de la referencia cultural. Por ejemplo, si la referencia cultural del subproceso actual está establecida en "en-US" (inglés (Estados Unidos)), `DateTime.Now.ToLongDateString()` mostrará "Thursday, February 18, 2016". En cambio, si `CurrentCulture` está establecido en "es-ES" (español (España)), la salida será "jueves, 18 de febrero de 2016".
+ASP.NET Core permite especificar dos valores de referencia cultural, `SupportedCultures` y `SupportedUICultures`. El objeto [CultureInfo](/dotnet/api/system.globalization.cultureinfo) para `SupportedCultures` determina los resultados de funciones dependientes de la referencia cultural, como el formato de fecha, hora, número y moneda. `SupportedCultures` también determina el criterio de ordenación del texto, las convenciones sobre el uso de mayúsculas y minúsculas, y las comparaciones de cadenas. Vea [CultureInfo.CurrentCulture](/dotnet/api/system.stringcomparer.currentculture#System_StringComparer_CurrentCulture) para obtener más información sobre la manera en que el servidor obtiene la referencia cultural. `SupportedUICultures` determina qué cadenas traducidas buscará [ResourceManager](/dotnet/api/system.resources.resourcemanager) (en archivos *.resx*). `ResourceManager` simplemente busca cadenas específicas de referencias culturales determinadas por `CurrentUICulture`. Todos los subprocesos de .NET tienen objetos `CurrentCulture` y `CurrentUICulture`. ASP.NET Core inspecciona estos valores al representar funciones dependientes de la referencia cultural. Por ejemplo, si la referencia cultural del subproceso actual está establecida en "en-US" (inglés (Estados Unidos)), `DateTime.Now.ToLongDateString()` mostrará "Thursday, February 18, 2016". En cambio, si `CurrentCulture` está establecido en "es-ES" (español (España)), la salida será "jueves, 18 de febrero de 2016".
 
 ## <a name="resource-files"></a>Archivos de recursos
 
 Un archivo de recursos es un mecanismo útil para separar del código las cadenas localizables. Las cadenas traducidas para el idioma no predeterminado están aisladas en archivos de recursos *.resx*. Pongamos por caso que quiere crear un archivo de recursos de español denominado *Welcome.es.resx* que contenga cadenas traducidas. "es" es el código de idioma para español. Para crear este archivo de recursos en Visual Studio:
 
-1. En el **Explorador de soluciones** , haga clic con el botón derecho en la carpeta que contendrá el archivo de recursos > **Agregar** > **Nuevo elemento**.
+1. En el **Explorador de soluciones**, haga clic con el botón derecho en la carpeta que contendrá el archivo de recursos > **Agregar** > **Nuevo elemento**.
 
    ![Menú contextual anidado: en el Explorador de soluciones, se abre un menú contextual para los recursos. Se abre un segundo menú contextual, Agregar, en el que se muestra el comando Nuevo elemento resaltado.](localization/_static/newi.png)
 
-1. En el cuadro para **buscar plantillas instaladas** , escriba "recurso" y asigne un nombre al archivo.
+1. En el cuadro para **buscar plantillas instaladas**, escriba "recurso" y asigne un nombre al archivo.
 
    ![Cuadro de diálogo Agregar nuevo elemento](localization/_static/res.png)
 
@@ -567,11 +567,11 @@ Consideremos, por ejemplo, que quita el designador de referencia cultural ".fr" 
 
 ### <a name="generate-resource-files-with-visual-studio"></a>Generar archivos de recursos con Visual Studio
 
-Si crea un archivo de recursos en Visual Studio sin una referencia cultural en el nombre de archivo (por ejemplo, *Welcome.resx* ), Visual Studio creará una clase de C# con una propiedad para cada cadena. Normalmente esto no interesa con ASP.NET Core; por lo general, no tendrá un archivo de recursos *.resx* predeterminado (un archivo *.resx* sin el nombre de la referencia cultural). Se recomienda que cree el archivo *.resx* con un nombre de referencia cultural (por ejemplo, *Welcome.fr.resx* ). Cuando cree un archivo *.resx* con un nombre de referencia cultural, Visual Studio no generará el archivo de clase.
+Si crea un archivo de recursos en Visual Studio sin una referencia cultural en el nombre de archivo (por ejemplo, *Welcome.resx*), Visual Studio creará una clase de C# con una propiedad para cada cadena. Normalmente esto no interesa con ASP.NET Core; por lo general, no tendrá un archivo de recursos *.resx* predeterminado (un archivo *.resx* sin el nombre de la referencia cultural). Se recomienda que cree el archivo *.resx* con un nombre de referencia cultural (por ejemplo, *Welcome.fr.resx*). Cuando cree un archivo *.resx* con un nombre de referencia cultural, Visual Studio no generará el archivo de clase.
 
 ### <a name="add-other-cultures"></a>Agregar otras referencias culturales
 
-Cada combinación de idioma y referencia cultural (que no sea el idioma predeterminado) requiere un archivo de recursos único. Para crear archivos de recursos para otras referencias culturales y configuraciones regionales, debe crear archivos de recursos en los que los códigos de idioma ISO formen parte del nombre de archivo (por ejemplo, **en-us** , **fr-ca** y  **en-gb** ). Estos códigos ISO se colocan entre el nombre de archivo y la extensión de archivo *.resx* , como en *Welcome.es-MX.resx* (español [México]).
+Cada combinación de idioma y referencia cultural (que no sea el idioma predeterminado) requiere un archivo de recursos único. Para crear archivos de recursos para otras referencias culturales y configuraciones regionales, debe crear archivos de recursos en los que los códigos de idioma ISO formen parte del nombre de archivo (por ejemplo, **en-us**, **fr-ca** y  **en-gb**). Estos códigos ISO se colocan entre el nombre de archivo y la extensión de archivo *.resx*, como en *Welcome.es-MX.resx* (español [México]).
 
 ## <a name="implement-a-strategy-to-select-the-languageculture-for-each-request"></a>Implementar una estrategia para seleccionar el idioma o la referencia cultural de cada solicitud
 
@@ -843,17 +843,17 @@ En el código anterior, `SharedResource` es la clase correspondiente al archivo 
 
 ### <a name="supportedcultures-and-supporteduicultures"></a>SupportedCultures y SupportedUICultures
 
-ASP.NET Core permite especificar dos valores de referencia cultural, `SupportedCultures` y `SupportedUICultures`. El objeto [CultureInfo](/dotnet/api/system.globalization.cultureinfo) para `SupportedCultures` determina los resultados de funciones dependientes de la referencia cultural, como el formato de fecha, hora, número y moneda. `SupportedCultures` también determina el criterio de ordenación del texto, las convenciones sobre el uso de mayúsculas y minúsculas, y las comparaciones de cadenas. Vea [CultureInfo.CurrentCulture](/dotnet/api/system.stringcomparer.currentculture#System_StringComparer_CurrentCulture) para obtener más información sobre la manera en que el servidor obtiene la referencia cultural. `SupportedUICultures` determina qué cadenas traducidas buscará [ResourceManager](/dotnet/api/system.resources.resourcemanager) (en archivos *.resx* ). `ResourceManager` simplemente busca cadenas específicas de referencias culturales determinadas por `CurrentUICulture`. Todos los subprocesos de .NET tienen objetos `CurrentCulture` y `CurrentUICulture`. ASP.NET Core inspecciona estos valores al representar funciones dependientes de la referencia cultural. Por ejemplo, si la referencia cultural del subproceso actual está establecida en "en-US" (inglés (Estados Unidos)), `DateTime.Now.ToLongDateString()` mostrará "Thursday, February 18, 2016". En cambio, si `CurrentCulture` está establecido en "es-ES" (español (España)), la salida será "jueves, 18 de febrero de 2016".
+ASP.NET Core permite especificar dos valores de referencia cultural, `SupportedCultures` y `SupportedUICultures`. El objeto [CultureInfo](/dotnet/api/system.globalization.cultureinfo) para `SupportedCultures` determina los resultados de funciones dependientes de la referencia cultural, como el formato de fecha, hora, número y moneda. `SupportedCultures` también determina el criterio de ordenación del texto, las convenciones sobre el uso de mayúsculas y minúsculas, y las comparaciones de cadenas. Vea [CultureInfo.CurrentCulture](/dotnet/api/system.stringcomparer.currentculture#System_StringComparer_CurrentCulture) para obtener más información sobre la manera en que el servidor obtiene la referencia cultural. `SupportedUICultures` determina qué cadenas traducidas buscará [ResourceManager](/dotnet/api/system.resources.resourcemanager) (en archivos *.resx*). `ResourceManager` simplemente busca cadenas específicas de referencias culturales determinadas por `CurrentUICulture`. Todos los subprocesos de .NET tienen objetos `CurrentCulture` y `CurrentUICulture`. ASP.NET Core inspecciona estos valores al representar funciones dependientes de la referencia cultural. Por ejemplo, si la referencia cultural del subproceso actual está establecida en "en-US" (inglés (Estados Unidos)), `DateTime.Now.ToLongDateString()` mostrará "Thursday, February 18, 2016". En cambio, si `CurrentCulture` está establecido en "es-ES" (español (España)), la salida será "jueves, 18 de febrero de 2016".
 
 ## <a name="resource-files"></a>Archivos de recursos
 
 Un archivo de recursos es un mecanismo útil para separar del código las cadenas localizables. Las cadenas traducidas para el idioma no predeterminado están aisladas en archivos de recursos *.resx*. Pongamos por caso que quiere crear un archivo de recursos de español denominado *Welcome.es.resx* que contenga cadenas traducidas. "es" es el código de idioma para español. Para crear este archivo de recursos en Visual Studio:
 
-1. En el **Explorador de soluciones** , haga clic con el botón derecho en la carpeta que contendrá el archivo de recursos > **Agregar** > **Nuevo elemento**.
+1. En el **Explorador de soluciones**, haga clic con el botón derecho en la carpeta que contendrá el archivo de recursos > **Agregar** > **Nuevo elemento**.
 
    ![Menú contextual anidado: en el Explorador de soluciones, se abre un menú contextual para los recursos. Se abre un segundo menú contextual, Agregar, en el que se muestra el comando Nuevo elemento resaltado.](localization/_static/newi.png)
 
-1. En el cuadro para **buscar plantillas instaladas** , escriba "recurso" y asigne un nombre al archivo.
+1. En el cuadro para **buscar plantillas instaladas**, escriba "recurso" y asigne un nombre al archivo.
 
    ![Cuadro de diálogo Agregar nuevo elemento](localization/_static/res.png)
 
@@ -922,11 +922,11 @@ Consideremos, por ejemplo, que quita el designador de referencia cultural ".fr" 
 
 ### <a name="generate-resource-files-with-visual-studio"></a>Generar archivos de recursos con Visual Studio
 
-Si crea un archivo de recursos en Visual Studio sin una referencia cultural en el nombre de archivo (por ejemplo, *Welcome.resx* ), Visual Studio creará una clase de C# con una propiedad para cada cadena. Normalmente esto no interesa con ASP.NET Core; por lo general, no tendrá un archivo de recursos *.resx* predeterminado (un archivo *.resx* sin el nombre de la referencia cultural). Se recomienda que cree el archivo *.resx* con un nombre de referencia cultural (por ejemplo, *Welcome.fr.resx* ). Cuando cree un archivo *.resx* con un nombre de referencia cultural, Visual Studio no generará el archivo de clase.
+Si crea un archivo de recursos en Visual Studio sin una referencia cultural en el nombre de archivo (por ejemplo, *Welcome.resx*), Visual Studio creará una clase de C# con una propiedad para cada cadena. Normalmente esto no interesa con ASP.NET Core; por lo general, no tendrá un archivo de recursos *.resx* predeterminado (un archivo *.resx* sin el nombre de la referencia cultural). Se recomienda que cree el archivo *.resx* con un nombre de referencia cultural (por ejemplo, *Welcome.fr.resx*). Cuando cree un archivo *.resx* con un nombre de referencia cultural, Visual Studio no generará el archivo de clase.
 
 ### <a name="add-other-cultures"></a>Agregar otras referencias culturales
 
-Cada combinación de idioma y referencia cultural (que no sea el idioma predeterminado) requiere un archivo de recursos único. Para crear archivos de recursos para otras referencias culturales y configuraciones regionales, debe crear archivos de recursos en los que los códigos de idioma ISO formen parte del nombre de archivo (por ejemplo, **en-us** , **fr-ca** y  **en-gb** ). Estos códigos ISO se colocan entre el nombre de archivo y la extensión de archivo *.resx* , como en *Welcome.es-MX.resx* (español [México]).
+Cada combinación de idioma y referencia cultural (que no sea el idioma predeterminado) requiere un archivo de recursos único. Para crear archivos de recursos para otras referencias culturales y configuraciones regionales, debe crear archivos de recursos en los que los códigos de idioma ISO formen parte del nombre de archivo (por ejemplo, **en-us**, **fr-ca** y  **en-gb**). Estos códigos ISO se colocan entre el nombre de archivo y la extensión de archivo *.resx*, como en *Welcome.es-MX.resx* (español [México]).
 
 ## <a name="implement-a-strategy-to-select-the-languageculture-for-each-request"></a>Implementar una estrategia para seleccionar el idioma o la referencia cultural de cada solicitud
 

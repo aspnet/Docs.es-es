@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: blazor/test
 ms.openlocfilehash: cd4aee66fd6df6cc0ce520d8ca66e0a2cf130eff
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93054871"
 ---
 # <a name="test-components-in-aspnet-core-no-locblazor"></a>Prueba de componentes en Blazor de ASP.NET Core
@@ -42,7 +42,7 @@ Para probar un componente de Blazor, el *componente en prueba* (CUT):
 
 Dos enfoques habituales para probar componentes de Blazor son las pruebas de un extremo a otro (E2E) y las pruebas unitarias:
 
-* **Pruebas unitarias** : las [pruebas unitarias](/dotnet/core/testing/) se escriben con una biblioteca de pruebas unitarias que proporciona lo siguiente:
+* **Pruebas unitarias**: las [pruebas unitarias](/dotnet/core/testing/) se escriben con una biblioteca de pruebas unitarias que proporciona lo siguiente:
   * Representación de componentes.
   * Inspección del estado y la salida del componente.
   * Desencadenamiento de controladores de eventos y métodos de ciclo de vida.
@@ -50,7 +50,7 @@ Dos enfoques habituales para probar componentes de Blazor son las pruebas de un 
 
   [bUnit](https://github.com/egil/bUnit) es un ejemplo de una biblioteca que permite realizar pruebas unitarias de componentes de Razor.
 
-* **Pruebas de E2E** : un ejecutor de pruebas ejecuta una aplicación Blazor que contiene el CUT y automatiza una instancia del explorador. La herramienta de pruebas inspecciona el CUT e interactúa con él a través del explorador. [Selenium](https://github.com/SeleniumHQ/selenium) es un ejemplo de un marco de pruebas de E2E que se puede usar con aplicaciones Blazor.
+* **Pruebas de E2E**: un ejecutor de pruebas ejecuta una aplicación Blazor que contiene el CUT y automatiza una instancia del explorador. La herramienta de pruebas inspecciona el CUT e interactúa con él a través del explorador. [Selenium](https://github.com/SeleniumHQ/selenium) es un ejemplo de un marco de pruebas de E2E que se puede usar con aplicaciones Blazor.
 
 En las pruebas unitarias, solo está implicado el componente de Blazor (Razor/C#). Las dependencias externas, como los servicios y la interoperabilidad de JS, deben ser ficticias. En las pruebas de E2E, el componente de Blazor y toda su infraestructura auxiliar forman parte de la prueba, incluidos CSS, JS y el DOM y las API del explorador.
 
@@ -143,11 +143,11 @@ public void CounterShouldIncrementWhenSelected()
 
 En cada paso de la prueba tienen lugar las acciones siguientes:
 
-* *Organización* : el componente `Counter` se representa mediante el objeto `TestContext` de bUnit. Se encuentra el elemento de párrafo del CUT (`<p>`) y se asigna a `paraElm`.
+* *Organización*: el componente `Counter` se representa mediante el objeto `TestContext` de bUnit. Se encuentra el elemento de párrafo del CUT (`<p>`) y se asigna a `paraElm`.
 
-* *Acción* : se encuentra el elemento de botón (`<button>`) y, después, se selecciona mediante una llamada a `Click`, que debe incrementar el contador y actualizar el contenido de la etiqueta de párrafo (`<p>`). El contenido textual del elemento de párrafo se obtiene mediante una llamada a `TextContent`.
+* *Acción*: se encuentra el elemento de botón (`<button>`) y, después, se selecciona mediante una llamada a `Click`, que debe incrementar el contador y actualizar el contenido de la etiqueta de párrafo (`<p>`). El contenido textual del elemento de párrafo se obtiene mediante una llamada a `TextContent`.
 
-* *Aserción* : se llama a `MarkupMatches` en el contenido textual para comprobar que coincide con la cadena esperada, que es `Current count: 1`.
+* *Aserción*: se llama a `MarkupMatches` en el contenido textual para comprobar que coincide con la cadena esperada, que es `Current count: 1`.
 
 > [!NOTE]
 > El método de aserción `MarkupMatches` difiere de una aserción de comparación de cadenas convencional (por ejemplo, `Assert.Equal("Current count: 1", paraElmText);`); `MarkupMatches` realiza una comparación semántica de la entrada y el marcado HTML esperado. Una comparación semántica tiene en cuenta la semántica de HTML, lo que significa que se omiten elementos como un espacio en blanco insignificante. Esto genera pruebas más estables. Para obtener más información, vea [Personalización de la comparación HTML semántica](https://bunit.egilhansen.com/docs/verification/semantic-html-comparison).

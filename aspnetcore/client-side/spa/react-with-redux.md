@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: spa/react-with-redux
 ms.openlocfilehash: 9ae96b14f3f50d4079933bbd893ff95fa677d273
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93054507"
 ---
 # <a name="use-the-react-with-redux-project-template-with-aspnet-core"></a>Uso de la plantilla de proyecto React-with-Redux con ASP.NET Core

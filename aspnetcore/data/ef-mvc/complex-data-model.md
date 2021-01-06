@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: data/ef-mvc/complex-data-model
 ms.openlocfilehash: cee9e9eb4c5435f3f63f7d1d04f131d88effe9f6
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93054481"
 ---
 # <a name="tutorial-create-a-complex-data-model---aspnet-mvc-with-ef-core"></a>Tutorial: Creación de un modelo de datos complejo: ASP.NET MVC con EF Core
@@ -62,7 +62,7 @@ En esta sección verá cómo personalizar el modelo de datos mediante el uso de 
 
 Para las fechas de inscripción de estudiantes, en todas las páginas web se muestra actualmente la hora junto con la fecha, aunque todo lo que le interesa para este campo es la fecha. Mediante los atributos de anotación de datos, puede realizar un cambio de código que fijará el formato de presentación en cada vista en la que se muestren los datos. Para ver un ejemplo de cómo hacerlo, deberá agregar un atributo a la propiedad `EnrollmentDate` en la clase `Student`.
 
-En *Models/Student.cs* , agregue una instrucción `using` para el espacio de nombres `System.ComponentModel.DataAnnotations` y los atributos `DataType` y `DisplayFormat` a la propiedad `EnrollmentDate`, como se muestra en el ejemplo siguiente:
+En *Models/Student.cs*, agregue una instrucción `using` para el espacio de nombres `System.ComponentModel.DataAnnotations` y los atributos `DataType` y `DisplayFormat` a la propiedad `EnrollmentDate`, como se muestra en el ejemplo siguiente:
 
 [!code-csharp[](intro/samples/cu/Models/Student.cs?name=snippet_DataType&highlight=3,12-13)]
 
@@ -122,7 +122,7 @@ El comando `migrations add` advierte de que se puede producir pérdida de datos,
 
 Entity Framework usa la marca de tiempo que precede al nombre de archivo de migraciones para ordenar las migraciones. Puede crear varias migraciones antes de ejecutar el comando de actualización de bases de datos y, después, todas las migraciones se aplican en el orden en el que se hayan creado.
 
-Ejecute la aplicación, haga clic en la pestaña **Students** , haga clic en **Create New** (Crear) e intente escribir cualquier nombre de más de 50 caracteres. La aplicación debería impedir que lo haga. 
+Ejecute la aplicación, haga clic en la pestaña **Students**, haga clic en **Create New** (Crear) e intente escribir cualquier nombre de más de 50 caracteres. La aplicación debería impedir que lo haga. 
 
 ### <a name="the-column-attribute"></a>El atributo Column
 
@@ -130,7 +130,7 @@ También puede usar atributos para controlar cómo se asignan las clases y propi
 
 El atributo `Column` especifica que, cuando se cree la base de datos, la columna de la tabla `Student` que se asigna a la propiedad `FirstMidName` se denominará `FirstName`. En otras palabras, cuando el código hace referencia a `Student.FirstMidName`, los datos procederán o se actualizarán en la columna `FirstName` de la tabla `Student`. Si no especifica nombres de columna, se les asigna el mismo nombre que el de la propiedad.
 
-En el archivo *Student.cs* , agregue una instrucción `using` para `System.ComponentModel.DataAnnotations.Schema` y agregue el atributo de nombre de columna a la propiedad `FirstMidName`, como se muestra en el código resaltado siguiente:
+En el archivo *Student.cs*, agregue una instrucción `using` para `System.ComponentModel.DataAnnotations.Schema` y agregue el atributo de nombre de columna a la propiedad `FirstMidName`, como se muestra en el código resaltado siguiente:
 
 [!code-csharp[](intro/samples/cu/Models/Student.cs?name=snippet_Column&highlight=4,14)]
 
@@ -146,7 +146,7 @@ dotnet ef migrations add ColumnFirstName
 dotnet ef database update
 ```
 
-En el **Explorador de objetos de SQL Server** , abra el diseñador de tablas de Student haciendo doble clic en la tabla **Student**.
+En el **Explorador de objetos de SQL Server**, abra el diseñador de tablas de Student haciendo doble clic en la tabla **Student**.
 
 ![Tabla de estudiantes en SSOX después de las migraciones](complex-data-model/_static/ssox-after-migration.png)
 
@@ -159,7 +159,7 @@ Antes de aplicar las dos primeras migraciones, las columnas de nombre eran de ti
 
 ![Entidad Student](complex-data-model/_static/student-entity.png)
 
-En *Models/Student.cs* , reemplace el código que agregó anteriormente con el código siguiente. Los cambios aparecen resaltados.
+En *Models/Student.cs*, reemplace el código que agregó anteriormente con el código siguiente. Los cambios aparecen resaltados.
 
 [!code-csharp[](intro/samples/cu/Models/Student.cs?name=snippet_BeforeInheritance&highlight=11,13,15,18,22,24-31)]
 
@@ -251,7 +251,7 @@ Podría incluir un atributo `[Required]` en la propiedad de navegación de Instr
 
 ![La entidad Course](complex-data-model/_static/course-entity.png)
 
-En *Models/Course.cs* , reemplace el código que agregó anteriormente con el código siguiente. Los cambios aparecen resaltados.
+En *Models/Course.cs*, reemplace el código que agregó anteriormente con el código siguiente. Los cambios aparecen resaltados.
 
 [!code-csharp[](intro/samples/cu/Models/Course.cs?name=snippet_Final&highlight=2,10,13,16,19,21,23)]
 
@@ -346,7 +346,7 @@ public ICollection<Course> Courses { get; set; }
 
 ![La entidad Enrollment](complex-data-model/_static/enrollment-entity.png)
 
-En *Models/Enrollment.cs* , reemplace el código que agregó anteriormente con el código siguiente:
+En *Models/Enrollment.cs*, reemplace el código que agregó anteriormente con el código siguiente:
 
 [!code-csharp[](intro/samples/cu/Models/Enrollment.cs?name=snippet_Final&highlight=1-2,16)]
 
@@ -402,7 +402,7 @@ La clave compuesta garantiza que, aunque es posible tener varias filas para un c
 
 ## <a name="update-the-database-context"></a>Actualizar el contexto de base de datos
 
-Agregue el código resaltado siguiente al archivo *Data/SchoolContext.cs* :
+Agregue el código resaltado siguiente al archivo *Data/SchoolContext.cs*:
 
 [!code-csharp[](intro/samples/cu/Data/SchoolContext.cs?name=snippet_BeforeInheritance&highlight=15-18,25-31)]
 
@@ -510,7 +510,7 @@ dotnet ef database update
 
 Ejecute la aplicación para que el método `DbInitializer.Initialize` ejecute y rellene la base de datos nueva.
 
-Abra la base de datos en SSOX como hizo anteriormente y expanda el nodo **Tablas** para ver que se han creado todas las tablas. (Si SSOX sigue abierto de la vez anterior, haga clic en el botón **Actualizar** ).
+Abra la base de datos en SSOX como hizo anteriormente y expanda el nodo **Tablas** para ver que se han creado todas las tablas. (Si SSOX sigue abierto de la vez anterior, haga clic en el botón **Actualizar**).
 
 ![Tablas en SSOX](complex-data-model/_static/ssox-tables.png)
 

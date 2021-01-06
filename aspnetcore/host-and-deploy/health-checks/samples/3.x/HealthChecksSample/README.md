@@ -4,7 +4,7 @@ En este ejemplo, se muestra el uso de Middleware de comprobación de estado y de
 
 Para ejecutar la aplicación de ejemplo para un escenario descrito en el tema, use el comando [dotnet run](https://docs.microsoft.com/dotnet/core/tools/dotnet-run) desde la carpeta del proyecto en un shell de comandos. Pase un modificador para el escenario que esté explorando. De manera predeterminada, la aplicación adopta la configuración `basic` cuando no se proporciona ningún modificador para `dotnet run`.
 
-| Escenario                                               | Comando de aplicación de ejemplo               | Description |
+| Escenario                                               | Comando de aplicación de ejemplo               | Descripción |
 | ------------------------------------------------------ | -------------------------------- | ----------- |
 | Sondeo de estado básico (predeterminado)                           | `dotnet run --scenario basic`    | Confirma que la aplicación puede procesar las solicitudes HTTP. |
 | Sondeo de bases de datos                                         | `dotnet run --scenario db`       | Comprueba una conexión a la base de datos de SQL Server. Consulte la sección [Sondeo de bases de datos](https://docs.microsoft.com/aspnet/core/host-and-deploy/health-checks#database-probe) del tema para obtener instrucciones. |

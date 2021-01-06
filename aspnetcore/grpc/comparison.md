@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: grpc/comparison
 ms.openlocfilehash: 0fb50f07153f5f9953b667fe32062ad24b2bd66d
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93059954"
 ---
 # <a name="compare-grpc-services-with-http-apis"></a>Comparación entre los servicios gRPC y las API HTTP
@@ -37,7 +37,7 @@ En la tabla siguiente se ofrece una comparación general de las características
 
 | Característica          | gRPC                                               | API HTTP con JSON           |
 | ---------------- | -------------------------------------------------- | ----------------------------- |
-| Contrato         | Obligatorio ( *.proto* )                                | Opcional (OpenAPI)            |
+| Contrato         | Obligatorio ( *.proto*)                                | Opcional (OpenAPI)            |
 | Protocolo         | HTTP/2                                             | HTTP                          |
 | Payload          | [Protobuf (pequeño, binario)](#performance)           | JSON (grande, legible para usuarios)  |
 | Carácter preceptivo | [Especificación estricta](#strict-specification)      | Flexible. Cualquier HTTP es válido.     |
@@ -92,10 +92,10 @@ La propagación de la fecha límite y la cancelación mediante llamadas secundar
 
 gRPC se adapta perfectamente a los escenarios siguientes:
 
-* **Microservicios** : gRPC está diseñado para la comunicación de baja latencia y rendimiento alto. gRPC resulta idóneo para microservicios ligeros en los que la eficiencia sea crítica.
-* **Comunicación punto a punto en tiempo real** : gRPC tiene una excelente compatibilidad con el streaming bidireccional. Los servicios gRPC pueden insertar mensajes en tiempo real sin sondeos.
-* **Entornos políglotas** : las herramientas de gRPC admiten todos los lenguajes de desarrollo más populares, lo que convierte a gRPC en una buena opción para entornos de varios lenguajes.
-* **Entornos restringidos de red** : los mensajes gRPC se serializan con Protobuf, un formato de mensaje ligero. Un mensaje gRPC siempre es más pequeño que un mensaje JSON equivalente.
+* **Microservicios**: gRPC está diseñado para la comunicación de baja latencia y rendimiento alto. gRPC resulta idóneo para microservicios ligeros en los que la eficiencia sea crítica.
+* **Comunicación punto a punto en tiempo real**: gRPC tiene una excelente compatibilidad con el streaming bidireccional. Los servicios gRPC pueden insertar mensajes en tiempo real sin sondeos.
+* **Entornos políglotas**: las herramientas de gRPC admiten todos los lenguajes de desarrollo más populares, lo que convierte a gRPC en una buena opción para entornos de varios lenguajes.
+* **Entornos restringidos de red**: los mensajes gRPC se serializan con Protobuf, un formato de mensaje ligero. Un mensaje gRPC siempre es más pequeño que un mensaje JSON equivalente.
 * **(IPC)** : los transportes de IPC, como los sockets de dominio de Unix y las canalizaciones con nombre, se pueden usar con gRPC para la comunicación entre aplicaciones en el mismo equipo. Para obtener más información, vea <xref:grpc/interprocess>.
 
 ## <a name="grpc-weaknesses"></a>Inconvenientes de gRPC
@@ -126,8 +126,8 @@ Existen características como la [reflexión del servidor](https://github.com/gr
 
 En los escenarios siguientes se recomiendan otros marcos de trabajo antes que gRPC:
 
-* **API accesibles de explorador** : gRPC no se admite de forma completa en el explorador. gRPC-Web puede ofrecer compatibilidad con el explorador, pero tiene limitaciones e introduce un proxy de servidor.
-* **Retransmisión de la comunicación en tiempo real** : gRPC admite la comunicación en tiempo real a través de streaming, pero no existe el concepto de retransmisión de un mensaje a las conexiones registradas. Por ejemplo, en un escenario de salón de chat en el que se deben enviar nuevos mensajes de chat a todos los clientes, es necesario que cada llamada gRPC transmita de forma individual los nuevos mensajes de chat al cliente. [SignalR](xref:signalr/introduction) es un marco útil para este escenario. SignalR tiene el concepto de conexiones persistentes y compatibilidad integrada para la retransmisión de mensajes.
+* **API accesibles de explorador**: gRPC no se admite de forma completa en el explorador. gRPC-Web puede ofrecer compatibilidad con el explorador, pero tiene limitaciones e introduce un proxy de servidor.
+* **Retransmisión de la comunicación en tiempo real**: gRPC admite la comunicación en tiempo real a través de streaming, pero no existe el concepto de retransmisión de un mensaje a las conexiones registradas. Por ejemplo, en un escenario de salón de chat en el que se deben enviar nuevos mensajes de chat a todos los clientes, es necesario que cada llamada gRPC transmita de forma individual los nuevos mensajes de chat al cliente. [SignalR](xref:signalr/introduction) es un marco útil para este escenario. SignalR tiene el concepto de conexiones persistentes y compatibilidad integrada para la retransmisión de mensajes.
 
 ## <a name="additional-resources"></a>Recursos adicionales
 

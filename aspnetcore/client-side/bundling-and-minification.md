@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: client-side/bundling-and-minification
 ms.openlocfilehash: 7dd11ceb7a7c01ce1042f50595013b7fe7f1cd5c
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93054845"
 ---
 # <a name="bundle-and-minify-static-assets-in-aspnet-core"></a>Unión y minimización de recursos estáticos en ASP.NET Core
@@ -90,25 +90,25 @@ En ASP.NET Core 2.0 o versiones anteriores, las plantillas de proyecto de MVC y
 
 ::: moniker range=">= aspnetcore-2.1"
 
-En ASP.NET Core 2.1 o versiones posteriores, agregue un archivo JSON, denominado *bundleconfig.json* , a la raíz del proyecto de MVC o Razor Pages. Incluya el código JSON siguiente en ese archivo como punto inicial:
+En ASP.NET Core 2.1 o versiones posteriores, agregue un archivo JSON, denominado *bundleconfig.json*, a la raíz del proyecto de MVC o Razor Pages. Incluya el código JSON siguiente en ese archivo como punto inicial:
 
 ::: moniker-end
 
 [!code-json[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/bundleconfig.json)]
 
-El archivo *bundleconfig.json* define las opciones de cada conjunto. En el ejemplo anterior, se define una configuración de conjunto única para los archivos personalizados de JavaScript ( *wwwroot/JS/site.js* ) y de hoja de estilo ( *wwwroot/CSS/site.css* ).
+El archivo *bundleconfig.json* define las opciones de cada conjunto. En el ejemplo anterior, se define una configuración de conjunto única para los archivos personalizados de JavaScript (*wwwroot/JS/site.js*) y de hoja de estilo (*wwwroot/CSS/site.css*).
 
 Las opciones de configuración incluyen lo siguiente:
 
 * `outputFileName`: nombre del archivo de conjunto que se va a generar. Puede contener una ruta de acceso relativa del archivo *bundleconfig.json*. **requerido**
-* `inputFiles`: matriz de archivos que se van a unir. Se trata de rutas de acceso relativas al archivo de configuración. **opcional** , *un valor vacío da como resultado un archivo de salida vacío. Se admiten los patrones [globales](https://www.tldp.org/LDP/abs/html/globbingref.html).
-* `minify`: opciones de minimización para el tipo de salida. **opcional** , *valor predeterminado: `minify: { enabled: true }`*
+* `inputFiles`: matriz de archivos que se van a unir. Se trata de rutas de acceso relativas al archivo de configuración. **opcional**, *un valor vacío da como resultado un archivo de salida vacío. Se admiten los patrones [globales](https://www.tldp.org/LDP/abs/html/globbingref.html).
+* `minify`: opciones de minimización para el tipo de salida. **opcional**, *valor predeterminado: `minify: { enabled: true }`*
   * Las opciones de configuración están disponibles por tipo de archivo de salida.
     * [Minimizador CSS](https://github.com/madskristensen/BundlerMinifier/wiki/cssminifier)
     * [Minimizador de JavaScript](https://github.com/madskristensen/BundlerMinifier/wiki/JavaScript-Minifier-settings)
     * [Minimizador HTML](https://github.com/madskristensen/BundlerMinifier/wiki)
-* `includeInProject`: marca que indica si se van a agregar los archivos generados al archivo del proyecto. **opcional** , *valor predeterminado: false*
-* `sourceMap`: marca que indica si se debe generar un mapa de origen para el archivo unido. **opcional** , *valor predeterminado: false*
+* `includeInProject`: marca que indica si se van a agregar los archivos generados al archivo del proyecto. **opcional**, *valor predeterminado: false*
+* `sourceMap`: marca que indica si se debe generar un mapa de origen para el archivo unido. **opcional**, *valor predeterminado: false*
 * `sourceMapRootPath`: ruta de acceso raíz para almacenar el archivo de asignación de origen generado.
 
 ## <a name="add-files-to-workflow"></a>Incorporación de archivos al flujo de trabajo
@@ -117,7 +117,7 @@ Considere un ejemplo en el que se agrega un archivo *custom.css* adicional simil
 
 [!code-css[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/wwwroot/css/custom.css)]
 
-Para minimizar *custom.css* y unirlo con *site.css* en un archivo *site.min.css* , agregue la ruta de acceso relativa a *bundleconfig.json* :
+Para minimizar *custom.css* y unirlo con *site.css* en un archivo *site.min.css*, agregue la ruta de acceso relativa a *bundleconfig.json*:
 
 [!code-json[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/bundleconfig2.json?highlight=6)]
 
@@ -172,7 +172,7 @@ Hay casos en los que el flujo de trabajo de unión y minimización de una aplica
 
 ### <a name="manually-convert-the-bundling-and-minification-workflow-to-use-gulp"></a>Conversión manual del flujo de unión y minificación para usar Gulp
 
-Agregue un archivo *package.json* , con el elemento `devDependencies` siguiente, a la raíz del proyecto:
+Agregue un archivo *package.json*, con el elemento `devDependencies` siguiente, a la raíz del proyecto:
 
 > [!WARNING]
 > El módulo `gulp-uglify` no es compatible con ECMAScript (ES) 2015/ES6 y versiones posteriores. Instale [gulp-terser](https://www.npmjs.com/package/gulp-terser) en lugar de `gulp-uglify` para usar ES2015/ES6 o versiones posteriores.

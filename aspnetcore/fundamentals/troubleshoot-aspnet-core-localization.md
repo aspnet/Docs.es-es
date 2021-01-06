@@ -18,10 +18,10 @@ no-loc:
 - SignalR
 uid: fundamentals/troubleshoot-aspnet-core-localization
 ms.openlocfilehash: 995db4c8c9d0c0f1f77b1fd3665e707975406a7f
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93053623"
 ---
 # <a name="troubleshoot-aspnet-core-localization"></a>Solución de problemas de localización de ASP.NET Core
@@ -62,7 +62,7 @@ Estas son algunas de las causas que suelen provocar que no se encuentren los arc
 - Falta el recurso en `resx` para algunos idiomas, pero existe para otros.
 - Si sigue teniendo problemas, compruebe los mensajes del registro de localización (que están en el nivel de registro `Debug`) para obtener información detallada sobre los recursos que faltan.
 
-_**Sugerencia** : Si usa `CookieRequestCultureProvider`, compruebe que no se usen comillas simples con las referencias culturales dentro del valor de la cookie de localización. Por ejemplo, `c='en-UK'|uic='en-US'` es un valor de cookie no válido, pero `c=en-UK|uic=en-US` es válido._
+_**Sugerencia**: Si usa `CookieRequestCultureProvider`, compruebe que no se usen comillas simples con las referencias culturales dentro del valor de la cookie de localización. Por ejemplo, `c='en-UK'|uic='en-US'` es un valor de cookie no válido, pero `c=en-UK|uic=en-US` es válido._
 
 ## <a name="resources--class-libraries-issues"></a>Problemas de las bibliotecas de clases y recursos
 
@@ -118,4 +118,4 @@ Si el espacio de nombres raíz de un ensamblado es distinto al nombre del ensamb
 
 ## <a name="resources--build-action"></a>Acción de compilación y recursos
 
-Si usa archivos de recursos para la localización, es importante que estos tengan una acción de compilación adecuada. Deben ser **recursos insertados** , puesto que, de lo contrario, `ResourceStringLocalizer` no podrá encontrarlos.
+Si usa archivos de recursos para la localización, es importante que estos tengan una acción de compilación adecuada. Deben ser **recursos insertados**, puesto que, de lo contrario, `ResourceStringLocalizer` no podrá encontrarlos.

@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: grpc/test-tools
 ms.openlocfilehash: d8d12c34a54b278e0b116f964e120047b1d2d5d1
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93058797"
 ---
 # <a name="test-grpc-services-with-grpcurl-in-aspnet-core"></a>Comprobación de servicios gRPC con gRPCurl en ASP.NET Core

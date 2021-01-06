@@ -17,10 +17,10 @@ no-loc:
 - SignalR
 uid: data/entity-framework-6
 ms.openlocfilehash: 086418c161677f585b08ed360555c93d8575e701
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93059460"
 ---
 # <a name="aspnet-core-and-entity-framework-6"></a>ASP.NET Core y Entity Framework 6
@@ -105,7 +105,7 @@ Este ejemplo se puede crear desde cero mediante los pasos siguientes en Visual S
 
 * En el proyecto de Core, agregue una referencia de proyecto al proyecto de biblioteca de clases.    
 
-* En el proyecto de Core, en *Startup.cs* , registre el contexto para DI.    
+* En el proyecto de Core, en *Startup.cs*, registre el contexto para DI.    
 
 * En el proyecto de Core, en *appsettings.json* , agregue la cadena de conexión.  
 

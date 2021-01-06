@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: tutorials/signalr-typescript-webpack
 ms.openlocfilehash: 949276bf4aae33c3af3fd1b8219a83868095f378
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93056847"
 ---
 # <a name="use-aspnet-core-no-locsignalr-with-typescript-and-webpack"></a>Uso de ASP.NET Core SignalR con TypeScript and Webpack
@@ -81,13 +81,13 @@ Se ha completado la configuración de Visual Studio.
 
 Agregue el paquete `Microsoft.TypeScript.MSBuild` al proyecto:
 
-1. En el **Explorador de soluciones** (panel derecho), haga clic con el botón derecho en el nodo del proyecto y seleccione **Administrar paquetes NuGet**. En la pestaña **Examinar** , busque `Microsoft.TypeScript.MSBuild` y luego haga clic en **Instalar** a la derecha para instalar el paquete.
+1. En el **Explorador de soluciones** (panel derecho), haga clic con el botón derecho en el nodo del proyecto y seleccione **Administrar paquetes NuGet**. En la pestaña **Examinar**, busque `Microsoft.TypeScript.MSBuild` y luego haga clic en **Instalar** a la derecha para instalar el paquete.
 
-Visual Studio agrega el paquete NuGet en el nodo **Dependencias** del **Explorador de soluciones** , que habilita la compilación de TypeScript en el proyecto.
+Visual Studio agrega el paquete NuGet en el nodo **Dependencias** del **Explorador de soluciones**, que habilita la compilación de TypeScript en el proyecto.
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-Ejecute el comando siguiente en el **terminal integrado** :
+Ejecute el comando siguiente en el **terminal integrado**:
 
 ```dotnetcli
 dotnet new web -o SignalRWebPack
@@ -97,7 +97,7 @@ code -r SignalRWebPack
 * El comando `dotnet new` crea una aplicación web ASP.NET Core vacía en el directorio *SignalRWebPack*.
 * El comando `code` abre la carpeta *SignalRWebPack* en la instancia actual de Visual Studio Code.
 
-Ejecute el siguiente comando de CLI de .NET Core en el **terminal integrado** :
+Ejecute el siguiente comando de CLI de .NET Core en el **terminal integrado**:
 
 ```dotnetcli
 dotnet add package Microsoft.TypeScript.MSBuild
@@ -111,7 +111,7 @@ El comando anterior agrega el paquete [Microsoft.TypeScript.MSBuild](https://www
 
 Los pasos siguientes permiten configurar la conversión de TypeScript a JavaScript y la agrupación de los recursos del lado cliente.
 
-1. Ejecute el comando siguiente en la raíz del proyecto para crear un archivo *package.json* :
+1. Ejecute el comando siguiente en la raíz del proyecto para crear un archivo *package.json*:
 
     ```console
     npm init -y
@@ -152,7 +152,7 @@ Los pasos siguientes permiten configurar la conversión de TypeScript a JavaScri
     * `release`: agrupa los recursos del lado cliente en modo de producción.
     * `publish`: ejecuta el script `release` para agrupar los recursos del lado cliente en modo de producción. Llama al comando [publish](/dotnet/core/tools/dotnet-publish) de la CLI de .NET Core para publicar la aplicación.
 
-1. Cree un archivo denominado *webpack.config.js* , en la raíz del proyecto, con el código siguiente:
+1. Cree un archivo denominado *webpack.config.js*, en la raíz del proyecto, con el código siguiente:
 
     [!code-javascript[webpack.config.js](signalr-typescript-webpack/sample/3.x/webpack.config.js)]
 
@@ -233,7 +233,7 @@ La aplicación actualmente muestra un formulario básico para enviar mensajes, p
      * El [cliente TypeScript de SignalR](https://www.npmjs.com/package/@microsoft/signalr), que permite al cliente enviar mensajes al servidor.
      * Las definiciones de tipo de TypeScript para Node.js, que habilita la comprobación en tiempo de compilación de los tipos de Node.js.
 
-1. Agregue el código resaltado al archivo *src/index.ts* :
+1. Agregue el código resaltado al archivo *src/index.ts*:
 
     [!code-typescript[index.ts](signalr-typescript-webpack/sample/3.x/snippets/index2.ts?name=snippet_IndexTsPhase2File&highlight=2,9-23)]
 
@@ -241,7 +241,7 @@ La aplicación actualmente muestra un formulario básico para enviar mensajes, p
 
     SignalR permite el intercambio de mensajes entre un cliente y un servidor. Cada mensaje tiene un nombre específico. Por ejemplo, puede haber mensajes con el nombre `messageReceived` que pueden ejecutar la lógica responsable de mostrar el nuevo mensaje en la zona de mensajes. La escucha a un mensaje concreto se puede realizar mediante la función `on`. Se puede escuchar cualquier número de nombres de mensaje. También se pueden pasar parámetros al mensaje, como el nombre del autor y el contenido del mensaje recibido. Una vez que el cliente recibe un mensaje, se crea un elemento `div` con el nombre del autor y el contenido del mensaje en su atributo `innerHTML`. Se agrega al elemento `div` principal que muestra los mensajes.
 
-1. Ahora que el cliente puede recibir mensajes, debe configurarlo para poder enviarlos. Agregue el código resaltado al archivo *src/index.ts* :
+1. Ahora que el cliente puede recibir mensajes, debe configurarlo para poder enviarlos. Agregue el código resaltado al archivo *src/index.ts*:
 
     [!code-typescript[index.ts](signalr-typescript-webpack/sample/3.x/src/index.ts?highlight=34-35)]
 
@@ -261,7 +261,7 @@ Confirme que la aplicación funciona con los pasos siguientes.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-1. Ejecute Webpack en modo *release*. Desde la ventana **Consola del Administrador de paquetes** , ejecute el comando siguiente en la raíz del proyecto. Si no está en la raíz del proyecto, escriba `cd SignalRWebPack` antes de introducir el comando.
+1. Ejecute Webpack en modo *release*. Desde la ventana **Consola del Administrador de paquetes**, ejecute el comando siguiente en la raíz del proyecto. Si no está en la raíz del proyecto, escriba `cd SignalRWebPack` antes de introducir el comando.
 
     [!INCLUDE [npm-run-release](../includes/signalr-typescript-webpack/npm-run-release.md)]
 
@@ -337,7 +337,7 @@ Se ha completado la configuración de Visual Studio. Es el momento de crear el p
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-Ejecute el comando siguiente en el **terminal integrado** :
+Ejecute el comando siguiente en el **terminal integrado**:
 
 ```dotnetcli
 dotnet new web -o SignalRWebPack
@@ -351,13 +351,13 @@ Se crea una aplicación web ASP.NET Core vacía, destinada a .NET Core, en el 
 
 Los pasos siguientes permiten configurar la conversión de TypeScript a JavaScript y la agrupación de los recursos del lado cliente.
 
-1. Ejecute el comando siguiente en la raíz del proyecto para crear un archivo *package.json* :
+1. Ejecute el comando siguiente en la raíz del proyecto para crear un archivo *package.json*:
 
     ```console
     npm init -y
     ```
 
-1. Agregue la propiedad resaltada al archivo *package.json* :
+1. Agregue la propiedad resaltada al archivo *package.json*:
 
     [!code-json[package.json](signalr-typescript-webpack/sample/2.x/snippets/package1.json?highlight=4)]
 
@@ -392,7 +392,7 @@ Los pasos siguientes permiten configurar la conversión de TypeScript a JavaScri
     * `release`: agrupa los recursos del lado cliente en modo de producción.
     * `publish`: ejecuta el script `release` para agrupar los recursos del lado cliente en modo de producción. Llama al comando [publish](/dotnet/core/tools/dotnet-publish) de la CLI de .NET Core para publicar la aplicación.
 
-1. Cree un archivo denominado *webpack.config.js* , en la raíz del proyecto, con el código siguiente:
+1. Cree un archivo denominado *webpack.config.js*, en la raíz del proyecto, con el código siguiente:
 
     [!code-javascript[webpack.config.js](signalr-typescript-webpack/sample/2.x/webpack.config.js)]
 
@@ -438,7 +438,7 @@ Los pasos siguientes permiten configurar la conversión de TypeScript a JavaScri
 
     [!code-csharp[Startup](signalr-typescript-webpack/sample/2.x/Startup.cs?name=snippet_UseStaticDefaultFiles)]
 
-    El código anterior permite que el servidor busque y proporcione el archivo *index.html* , con independencia de que el usuario escriba su dirección URL completa o la dirección URL raíz de la aplicación web.
+    El código anterior permite que el servidor busque y proporcione el archivo *index.html*, con independencia de que el usuario escriba su dirección URL completa o la dirección URL raíz de la aplicación web.
 
 1. Llame a [AddSignalR](/dotnet/api/microsoft.extensions.dependencyinjection.signalrdependencyinjectionextensions.addsignalr#Microsoft_Extensions_DependencyInjection_SignalRDependencyInjectionExtensions_AddSignalR_Microsoft_Extensions_DependencyInjection_IServiceCollection_) en `Startup.ConfigureServices`. Esta acción agrega los servicios SignalR al proyecto.
 
@@ -470,7 +470,7 @@ Actualmente, en la aplicación se muestra un formulario simple para enviar mensa
 
     El comando anterior instala el [cliente TypeScript de SignalR](https://www.npmjs.com/package/@microsoft/signalr), que permite al cliente enviar mensajes al servidor.
 
-1. Agregue el código resaltado al archivo *src/index.ts* :
+1. Agregue el código resaltado al archivo *src/index.ts*:
 
     [!code-typescript[index.ts](signalr-typescript-webpack/sample/2.x/snippets/index2.ts?name=snippet_IndexTsPhase2File&highlight=2,9-23)]
 
@@ -478,7 +478,7 @@ Actualmente, en la aplicación se muestra un formulario simple para enviar mensa
 
     SignalR permite el intercambio de mensajes entre un cliente y un servidor. Cada mensaje tiene un nombre específico. Por ejemplo, puede haber mensajes con el nombre `messageReceived` que pueden ejecutar la lógica responsable de mostrar el nuevo mensaje en la zona de mensajes. La escucha a un mensaje concreto se puede realizar mediante la función `on`. Puede escuchar a cualquier número de nombres de mensaje. También se pueden pasar parámetros al mensaje, como el nombre del autor y el contenido del mensaje recibido. Una vez que el cliente recibe un mensaje, se crea un elemento `div` con el nombre del autor y el contenido del mensaje en su atributo `innerHTML`. El nuevo mensaje se agrega al elemento `div` principal que muestra los mensajes.
 
-1. Ahora que el cliente puede recibir mensajes, debe configurarlo para poder enviarlos. Agregue el código resaltado al archivo *src/index.ts* :
+1. Ahora que el cliente puede recibir mensajes, debe configurarlo para poder enviarlos. Agregue el código resaltado al archivo *src/index.ts*:
 
     [!code-typescript[index.ts](signalr-typescript-webpack/sample/2.x/src/index.ts?highlight=34-35)]
 
@@ -498,7 +498,7 @@ Confirme que la aplicación funciona con los pasos siguientes.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-1. Ejecute Webpack en modo *release*. Desde la ventana **Consola del Administrador de paquetes** , ejecute el comando siguiente en la raíz del proyecto. Si no está en la raíz del proyecto, escriba `cd SignalRWebPack` antes de introducir el comando.
+1. Ejecute Webpack en modo *release*. Desde la ventana **Consola del Administrador de paquetes**, ejecute el comando siguiente en la raíz del proyecto. Si no está en la raíz del proyecto, escriba `cd SignalRWebPack` antes de introducir el comando.
 
     [!INCLUDE [npm-run-release](../includes/signalr-typescript-webpack/npm-run-release.md)]
 

@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: tutorials/get-started-with-swashbuckle
 ms.openlocfilehash: 9fbd4bc5e91d8f05afc99a4f04c706399f83a518
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93057614"
 ---
 # <a name="get-started-with-swashbuckle-and-aspnet-core"></a>Introducción a Swashbuckle y ASP.NET Core
@@ -45,7 +45,7 @@ Se puede agregar Swashbuckle con los métodos siguientes:
 
 ### <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* En la ventana **Consola del Administrador de paquetes** :
+* En la ventana **Consola del Administrador de paquetes**:
   * Vaya a **Vista** > **Otras ventanas** > **Consola del Administrador de paquetes**.
   * Vaya al directorio en el que está *TodoApi.csproj*.
   * Ejecute el siguiente comando:
@@ -54,7 +54,7 @@ Se puede agregar Swashbuckle con los métodos siguientes:
     Install-Package Swashbuckle.AspNetCore -Version 5.5.0
     ```
 
-* En el cuadro de diálogo **Administrar paquetes NuGet** :
+* En el cuadro de diálogo **Administrar paquetes NuGet**:
   * Haga clic con el botón derecho en el proyecto en el **Explorador de soluciones** > **Administrar paquetes NuGet**.
   * Establezca el **origen del paquete** en "nuget.org".
   * Asegúrese de que la opción "Incluir versión preliminar" está habilitada.
@@ -71,7 +71,7 @@ Se puede agregar Swashbuckle con los métodos siguientes:
 
 ### <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-Ejecute el siguiente comando en el **terminal integrado** :
+Ejecute el siguiente comando en el **terminal integrado**:
 
 ```dotnetcli
 dotnet add TodoApi.csproj package Swashbuckle.AspNetCore -v 5.5.0
@@ -181,7 +181,7 @@ Los comentarios XML se pueden habilitar con los métodos siguientes:
 ::: moniker range=">= aspnetcore-2.0"
 
 * Haga clic con el botón derecho en el **Explorador de soluciones** y seleccione **Editar <nombre_de_proyecto>.csproj**.
-* Agregue manualmente las líneas resaltadas al archivo *.csproj* :
+* Agregue manualmente las líneas resaltadas al archivo *.csproj*:
 
 [!code-xml[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.Swashbuckle/TodoApi.csproj?name=snippet_SuppressWarnings&highlight=1-2,4)]
 
@@ -198,8 +198,8 @@ Los comentarios XML se pueden habilitar con los métodos siguientes:
 
 ::: moniker range=">= aspnetcore-2.0"
 
-* Desde el *Panel de solución* , presione **Control** y haga clic en el nombre del proyecto. Vaya a **Herramientas** > **Editar archivo**.
-* Agregue manualmente las líneas resaltadas al archivo *.csproj* :
+* Desde el *Panel de solución*, presione **Control** y haga clic en el nombre del proyecto. Vaya a **Herramientas** > **Editar archivo**.
+* Agregue manualmente las líneas resaltadas al archivo *.csproj*:
 
 [!code-xml[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.Swashbuckle/TodoApi.csproj?name=snippet_SuppressWarnings&highlight=1-2,4)]
 
@@ -214,7 +214,7 @@ Los comentarios XML se pueden habilitar con los métodos siguientes:
 
 #### <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-Agregue manualmente las líneas resaltadas al archivo *.csproj* :
+Agregue manualmente las líneas resaltadas al archivo *.csproj*:
 
 ::: moniker range=">= aspnetcore-2.0"
 
@@ -230,7 +230,7 @@ Agregue manualmente las líneas resaltadas al archivo *.csproj* :
 
 #### <a name="net-core-cli"></a>[CLI de .NET Core](#tab/netcore-cli)
 
-Agregue manualmente las líneas resaltadas al archivo *.csproj* :
+Agregue manualmente las líneas resaltadas al archivo *.csproj*:
 
 ::: moniker range=">= aspnetcore-2.0"
 
@@ -409,7 +409,7 @@ La presencia de este atributo cambia el comportamiento de la interfaz de usuario
 },
 ```
 
-Agregue el atributo `[Produces("application/json")]` al controlador de API. Su propósito consiste en declarar que las acciones del controlador admiten un contenido de respuesta de tipo *application/json* :
+Agregue el atributo `[Produces("application/json")]` al controlador de API. Su propósito consiste en declarar que las acciones del controlador admiten un contenido de respuesta de tipo *application/json*:
 
 ::: moniker range="<= aspnetcore-2.0"
 
