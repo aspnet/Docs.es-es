@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/areas
-ms.openlocfilehash: 42eec406813adce4d7edbc1ab66a1f689c4aca0e
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: f3d76f612e67aeabf1f7fef694199332c732c593
+ms.sourcegitcommit: 53e01d6e9b70a18a05618f0011cf115a16633c21
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93053532"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97878417"
 ---
 # <a name="areas-in-aspnet-core"></a>Áreas de ASP.NET Core
 
@@ -63,7 +63,7 @@ Una aplicación web ASP.NET Core típica en la que se usen áreas, controladores
 
 ### <a name="area-folder-structure"></a>Estructura de carpetas de área
 
-Considere una aplicación que tiene dos grupos lógicos, *Productos* y *Servicios* . Mediante las áreas, la estructura de carpetas sería similar a la siguiente:
+Considere una aplicación que tiene dos grupos lógicos, *Productos* y *Servicios*. Mediante las áreas, la estructura de carpetas sería similar a la siguiente:
 
 * Nombre de proyecto
   * Áreas
@@ -149,7 +149,7 @@ La carpeta raíz de la aplicación es la carpeta que contiene *Startup.CS* en la
 
 ### <a name="_viewimportscshtml"></a>_ViewImports.cshtml
 
- */Views/_ViewImports. cshtml* , para MVC y */pages/_ViewImports. cshtml* para Razor páginas, no se importa a las vistas de las áreas. Use uno de los métodos siguientes para proporcionar las importaciones de vistas a todas las vistas:
+ */Views/_ViewImports. cshtml*, para MVC y */pages/_ViewImports. cshtml* para Razor páginas, no se importa a las vistas de las áreas. Use uno de los métodos siguientes para proporcionar las importaciones de vistas a todas las vistas:
 
 * Agregue *_ViewImports. cshtml* a la [carpeta raíz](#arf)de la aplicación. Un *_ViewImports. cshtml* en la carpeta raíz de la aplicación se aplicará a todas las vistas de la aplicación.
 * Copie el archivo *_ViewImports. cshtml* en la carpeta vista adecuada en áreas.
@@ -191,7 +191,7 @@ El código siguiente de la [descarga de ejemplo](https://github.com/dotnet/AspNe
 
 En la descarga de ejemplo se incluye una [vista parcial](xref:mvc/views/partial) que contiene los vínculos anteriores y los mismos vínculos sin especificar el área. En el [archivo de diseño](xref:mvc/views/layout) se hace referencia a la vista parcial, por lo que en todas las páginas de la aplicación se muestran los vínculos generados. Los vínculos generados sin especificar el área solo son válidos cuando se les hace referencia desde una página de la misma área.
 
-Cuando no se especifica el área, el enrutamiento depende de los valores *ambient* . Los valores de ruta actuales de la solicitud actual se consideran valores de ambiente para la generación de vínculos. En muchos casos de la aplicación de ejemplo, el uso de valores de ambiente genera vínculos incorrectos. Por ejemplo, tenga en cuenta los vínculos generados desde el código siguiente:
+Cuando no se especifica el área, el enrutamiento depende de los valores *ambient*. Los valores de ruta actuales de la solicitud actual se consideran valores de ambiente para la generación de vínculos. En muchos casos de la aplicación de ejemplo, el uso de valores de ambiente genera vínculos incorrectos. Por ejemplo, tenga en cuenta los vínculos generados desde el código siguiente:
 
 [!code-cshtml[](areas/31samples/RPareas/Pages/Shared/_testLinksPartial.cshtml?name=snippet2)]
 
@@ -205,16 +205,16 @@ En el código anterior:
 
 Se puede Agregar un archivo *_ViewImports. cshtml* a cada carpeta de *páginas* de área para importar las aplicaciones auxiliares de espacio de nombres y etiquetas a cada Razor Página de la carpeta.
 
-Tenga en cuenta el área *Services* del código de ejemplo, que no contiene un archivo *_ViewImports.cshtml* . En el marcado siguiente se muestra la página */Services/Manage/about* Razor :
+Tenga en cuenta el área *Services* del código de ejemplo, que no contiene un archivo *_ViewImports.cshtml*. En el marcado siguiente se muestra la página */Services/Manage/about* Razor :
 
 [!code-cshtml[](areas/31samples/RPareas/Areas/Services/Pages/Manage/About.cshtml)]
 
 En el marcado anterior:
 
-* El nombre de dominio completo debe usarse para especificar el modelo (`@model RPareas.Areas.Services.Pages.Manage.AboutModel`).
+* El nombre completo de la clase debe usarse para especificar el modelo ( `@model RPareas.Areas.Services.Pages.Manage.AboutModel` ).
 * Habilita las [aplicaciones auxiliares de etiquetas](xref:mvc/views/tag-helpers/intro)`@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers`
 
-En la descarga de ejemplo, el área Products contiene el siguiente archivo *_ViewImports.cshtml* :
+En la descarga de ejemplo, el área Products contiene el siguiente archivo *_ViewImports.cshtml*:
 
 [!code-cshtml[](areas/31samples/RPareas/Areas/Products/Pages/_ViewImports.cshtml)]
 
@@ -222,7 +222,7 @@ En el marcado siguiente se muestra la página */Products/about* Razor :
 
 [!code-cshtml[](areas/31samples/RPareas/Areas/Products/Pages/About.cshtml)]
 
-En el archivo anterior, el espacio de nombres y la directiva `@addTagHelper` se importan en el archivo mediante el archivo *Areas/Products/Pages/_ViewImports.cshtml* .
+En el archivo anterior, el espacio de nombres y la directiva `@addTagHelper` se importan en el archivo mediante el archivo *Areas/Products/Pages/_ViewImports.cshtml*.
 
 Para más información, consulte [Administración del ámbito de los asistentes de etiquetas](xref:mvc/views/tag-helpers/intro?view=aspnetcore-2.2#managing-tag-helper-scope) y [Importar directivas compartidas](xref:mvc/views/layout#importing-shared-directives).
 
@@ -265,7 +265,7 @@ Una aplicación web ASP.NET Core típica en la que se usen áreas, controladores
 
 ### <a name="area-folder-structure"></a>Estructura de carpetas de área
 
-Considere una aplicación que tiene dos grupos lógicos, *Productos* y *Servicios* . Mediante las áreas, la estructura de carpetas sería similar a la siguiente:
+Considere una aplicación que tiene dos grupos lógicos, *Productos* y *Servicios*. Mediante las áreas, la estructura de carpetas sería similar a la siguiente:
 
 * Nombre de proyecto
   * Áreas
@@ -331,7 +331,7 @@ Los vínculos generados con el código anterior son válidos en cualquier parte 
 
 En la descarga de ejemplo se incluye una [vista parcial](xref:mvc/views/partial) que contiene los vínculos anteriores y los mismos vínculos sin especificar el área. En el [archivo de diseño](xref:mvc/views/layout) se hace referencia a la vista parcial, por lo que en todas las páginas de la aplicación se muestran los vínculos generados. Los vínculos generados sin especificar el área solo son válidos cuando se les hace referencia desde una página en el mismo área y controlador.
 
-Cuando no se especifica el área o el controlador, el enrutamiento depende de los valores de *ambiente* . Los valores de ruta actuales de la solicitud actual se consideran valores de ambiente para la generación de vínculos. En muchos casos de la aplicación de ejemplo, el uso de valores de ambiente genera vínculos incorrectos.
+Cuando no se especifica el área o el controlador, el enrutamiento depende de los valores de *ambiente*. Los valores de ruta actuales de la solicitud actual se consideran valores de ambiente para la generación de vínculos. En muchos casos de la aplicación de ejemplo, el uso de valores de ambiente genera vínculos incorrectos.
 
 Para más información, vea [Enrutar a acciones de controlador](xref:mvc/controllers/routing).
 
@@ -380,7 +380,7 @@ Los vínculos generados con el código anterior son válidos en cualquier parte 
 
 En la descarga de ejemplo se incluye una [vista parcial](xref:mvc/views/partial) que contiene los vínculos anteriores y los mismos vínculos sin especificar el área. En el [archivo de diseño](xref:mvc/views/layout) se hace referencia a la vista parcial, por lo que en todas las páginas de la aplicación se muestran los vínculos generados. Los vínculos generados sin especificar el área solo son válidos cuando se les hace referencia desde una página de la misma área.
 
-Cuando no se especifica el área, el enrutamiento depende de los valores *ambient* . Los valores de ruta actuales de la solicitud actual se consideran valores de ambiente para la generación de vínculos. En muchos casos de la aplicación de ejemplo, el uso de valores de ambiente genera vínculos incorrectos. Por ejemplo, tenga en cuenta los vínculos generados desde el código siguiente:
+Cuando no se especifica el área, el enrutamiento depende de los valores *ambient*. Los valores de ruta actuales de la solicitud actual se consideran valores de ambiente para la generación de vínculos. En muchos casos de la aplicación de ejemplo, el uso de valores de ambiente genera vínculos incorrectos. Por ejemplo, tenga en cuenta los vínculos generados desde el código siguiente:
 
 [!code-cshtml[](areas/samples/RPareas/Pages/Shared/_testLinksPartial.cshtml?name=snippet2)]
 
@@ -394,7 +394,7 @@ En el código anterior:
 
 Se puede Agregar un archivo *_ViewImports. cshtml* a cada carpeta de *páginas* de área para importar las aplicaciones auxiliares de espacio de nombres y etiquetas a cada Razor Página de la carpeta.
 
-Tenga en cuenta el área *Services* del código de ejemplo, que no contiene un archivo *_ViewImports.cshtml* . En el marcado siguiente se muestra la página */Services/Manage/about* Razor :
+Tenga en cuenta el área *Services* del código de ejemplo, que no contiene un archivo *_ViewImports.cshtml*. En el marcado siguiente se muestra la página */Services/Manage/about* Razor :
 
 [!code-cshtml[](areas/samples/RPareas/Areas/Services/Pages/Manage/About.cshtml)]
 
@@ -403,7 +403,7 @@ En el marcado anterior:
 * El nombre de dominio completo debe usarse para especificar el modelo (`@model RPareas.Areas.Services.Pages.Manage.AboutModel`).
 * Habilita las [aplicaciones auxiliares de etiquetas](xref:mvc/views/tag-helpers/intro)`@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers`
 
-En la descarga de ejemplo, el área Products contiene el siguiente archivo *_ViewImports.cshtml* :
+En la descarga de ejemplo, el área Products contiene el siguiente archivo *_ViewImports.cshtml*:
 
 [!code-cshtml[](areas/samples/RPareas/Areas/Products/Pages/_ViewImports.cshtml)]
 
@@ -411,7 +411,7 @@ En el marcado siguiente se muestra la página */Products/about* Razor :
 
 [!code-cshtml[](areas/samples/RPareas/Areas/Products/Pages/About.cshtml)]
 
-En el archivo anterior, el espacio de nombres y la directiva `@addTagHelper` se importan en el archivo mediante el archivo *Areas/Products/Pages/_ViewImports.cshtml* .
+En el archivo anterior, el espacio de nombres y la directiva `@addTagHelper` se importan en el archivo mediante el archivo *Areas/Products/Pages/_ViewImports.cshtml*.
 
 Para más información, consulte [Administración del ámbito de los asistentes de etiquetas](xref:mvc/views/tag-helpers/intro?view=aspnetcore-2.2#managing-tag-helper-scope) y [Importar directivas compartidas](xref:mvc/views/layout#importing-shared-directives).
 

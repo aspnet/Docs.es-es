@@ -1,9 +1,9 @@
 ---
 title: Registro y diagnósticos en ASP.NET Core SignalR
-author: anurse
+author: bradygaster
 description: Obtenga información sobre cómo recopilar diagnósticos desde la SignalR aplicación ASP.net Core.
 monikerRange: '>= aspnetcore-2.1'
-ms.author: anurse
+ms.author: bradyg
 ms.custom: devx-track-csharp, signalr, devx-track-js
 ms.date: 06/12/2020
 no-loc:
@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/diagnostics
-ms.openlocfilehash: 49029bbd53b98425a05bdb82517238e3aa2e3b1f
-ms.sourcegitcommit: 6b87f2e064cea02e65dacd206394b44f5c604282
+ms.openlocfilehash: 23ebd61d9931f9cd83afbdcc5a718e42cc565317
+ms.sourcegitcommit: b23fed8c1a1d2aec2f9b5e09041442ecfafedd56
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97506635"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797345"
 ---
 # <a name="logging-and-diagnostics-in-aspnet-core-no-locsignalr"></a>Registro y diagnósticos en ASP.NET Core SignalR
 
@@ -108,9 +108,19 @@ Una vez que haya configurado el nivel de detalle, los registros se escribirán e
 
 Si desea enviar registros a un sistema de registro personalizado, puede proporcionar un objeto de JavaScript que implemente la `ILogger` interfaz. El único método que debe implementarse es `log` , que toma el nivel del evento y el mensaje asociado al evento. Por ejemplo:
 
-[!code-typescript[](diagnostics/custom-logger.ts?highlight=3-7,13)]
+::: moniker range=">= aspnetcore-3.0"
 
-## <a name="net-client-logging"></a>Registros del cliente de .NET
+[!code-typescript[](diagnostics/3.x/custom-logger.ts?highlight=3-7,13)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
+[!code-typescript[](diagnostics/2.x/custom-logger.ts?highlight=3-7,13)]
+
+::: moniker-end
+
+## <a name="net-client-logging"></a>Registro de clientes de  .NET
 
 > [!WARNING]
 > Los registros del lado cliente pueden contener información confidencial de la aplicación. **Nunca** publique registros sin procesar de las aplicaciones de producción en foros públicos como GitHub.

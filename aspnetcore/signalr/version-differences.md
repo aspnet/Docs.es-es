@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/version-differences
-ms.openlocfilehash: c4c0ff83cb789e9aa35085496daa461404615726
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: c37f0a3c528b6285fbf35f41eed781fb76c68de4
+ms.sourcegitcommit: 04a404a9655c59ad1ea02aff5d399ae1b833ad6a
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93061215"
+ms.lasthandoff: 01/03/2021
+ms.locfileid: "97854605"
 ---
 # <a name="differences-between-aspnet-no-locsignalr-and-aspnet-core-no-locsignalr"></a>Diferencias entre ASP.NET SignalR y ASP.net Core SignalR
 
@@ -203,8 +203,8 @@ La dependencia de jQuery se ha quitado, pero los proyectos todavía pueden usar 
 
 ### <a name="internet-explorer-support"></a>Compatibilidad con Internet Explorer
 
-ASP.NET Core SignalR admite Microsoft Internet Explorer 11 o posterior, mientras que ASP.net SignalR es compatible con Microsoft Internet Explorer 8 o posterior.
-Puede encontrar más información sobre la compatibilidad con exploradores en [plataformas admitidas](xref:signalr/supported-platforms#javascript-client).
+ASP.NET Core SignalR no es compatible con Microsoft Internet Explorer, mientras que ASP.net SignalR es compatible con Microsoft Internet Explorer 8 o posterior.
+Para obtener más información, vea <xref:signalr/supported-platforms#javascript-client>.
 
 ### <a name="javascript-client-method-syntax"></a>Sintaxis del método de cliente JavaScript
 

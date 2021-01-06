@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/key-vault-configuration
-ms.openlocfilehash: 7f5cd3de38f1e45d9b188c513a0e62ca658b2992
-ms.sourcegitcommit: 3f0ad1e513296ede1bff39a05be6c278e879afed
+ms.openlocfilehash: 4b035fe59b8576eb387ddce67943386ccab55492
+ms.sourcegitcommit: 8dfcd2b4be936950c228b4d98430622a04254cd7
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96035910"
+ms.lasthandoff: 12/26/2020
+ms.locfileid: "97792088"
 ---
 # <a name="azure-key-vault-configuration-provider-in-aspnet-core"></a>Azure Key Vault proveedor de configuración en ASP.NET Core
 
@@ -41,7 +41,10 @@ En este documento se explica cómo usar el proveedor de configuración de [Azure
 
 ## <a name="packages"></a>Paquetes
 
-Agregue una referencia de paquete al [Azure.Extensions.AspNetCore.Configprimario. ](https://www.nuget.org/packages/Azure.Extensions.AspNetCore.Configuration.Secrets/) Paquete de secretos.
+Agregue las referencias de paquete para los siguientes paquetes:
+
+* [Azure.Extensions.AspNetCore.Configuration.Secrets](https://www.nuget.org/packages/Azure.Extensions.AspNetCore.Configuration.Secrets)
+* [Azure.Identity](https://www.nuget.org/packages/Azure.Identity)
 
 ## <a name="sample-app"></a>Aplicación de ejemplo
 
@@ -193,7 +196,7 @@ La aplicación de ejemplo:
 
 * Crea una instancia de la `DefaultAzureCredential` clase, la credencial intenta obtener un token de acceso del entorno para los recursos de Azure.
 * [`Azure.Security.KeyVault.Secrets.Secrets`](/dotnet/api/azure.security.keyvault.secrets)Se crea un nuevo con la `DefaultAzureCredential` instancia de.
-* La `Azure.Security.KeyVault.Secrets.Secrets` instancia se utiliza con una implementación predeterminada de `Azure.Extensions.Aspnetcore.Configuration.Secrets` que carga todos los valores secretos y reemplaza los dobles guiones ( `--` ) por dos puntos ( `:` ) en los nombres de clave.
+* La `Azure.Security.KeyVault.Secrets.Secrets` instancia se utiliza con una implementación predeterminada de `Azure.Extensions.AspNetCore.Configuration.Secrets` que carga todos los valores secretos y reemplaza los dobles guiones ( `--` ) por dos puntos ( `:` ) en los nombres de clave.
 
 [!code-csharp[](key-vault-configuration/samples/3.x/SampleApp/Program.cs?name=snippet2&highlight=12-14)]
 
@@ -227,23 +230,23 @@ config.AddAzureKeyVault(new SecretClient(new URI("Your Key Vault Endpoint"), new
 
 | Propiedad         | Descripción |
 | ---------------- | ----------- |
-| `Manager`        | `Azure.Extensions.Aspnetcore.Configuration.Secrets` instancia usada para controlar la carga de secretos. |
+| `Manager`        | `Azure.Extensions.AspNetCore.Configuration.Secrets` instancia usada para controlar la carga de secretos. |
 | `ReloadInterval` | `Timespan` para esperar entre los intentos de sondeo del almacén de claves en busca de cambios. El valor predeterminado es `null` (la configuración no se recarga). |
 
 ## <a name="use-a-key-name-prefix"></a>Usar un prefijo de nombre de clave
 
-AddAzureKeyVault proporciona una sobrecarga que acepta una implementación de `Azure.Extensions.Aspnetcore.Configuration.Secrets` , que le permite controlar cómo se convierten los secretos del almacén de claves en claves de configuración. Por ejemplo, puede implementar la interfaz para cargar valores de secreto basados en un valor de prefijo que se proporciona al inicio de la aplicación. Esto le permite, por ejemplo, cargar secretos en función de la versión de la aplicación.
+AddAzureKeyVault proporciona una sobrecarga que acepta una implementación de `Azure.Extensions.AspNetCore.Configuration.Secrets` , que le permite controlar cómo se convierten los secretos del almacén de claves en claves de configuración. Por ejemplo, puede implementar la interfaz para cargar valores de secreto basados en un valor de prefijo que se proporciona al inicio de la aplicación. Esto le permite, por ejemplo, cargar secretos en función de la versión de la aplicación.
 
 > [!WARNING]
 > No use prefijos en secretos del almacén de claves para colocar secretos para varias aplicaciones en el mismo almacén de claves o para colocar secretos de entorno (por ejemplo, *desarrollo* frente a secretos de *producción* ) en el mismo almacén. Se recomienda que las distintas aplicaciones y entornos de desarrollo y producción usen almacenes de claves independientes para aislar los entornos de aplicación para obtener el máximo nivel de seguridad.
 
 En el siguiente ejemplo, se establece un secreto en el almacén de claves (y el uso de la herramienta Administrador de secretos para el entorno de desarrollo) para `5000-AppSecret` (no se permiten puntos en los nombres de secreto del almacén de claves). Este secreto representa un secreto de aplicación para la versión 5.0.0.0 de la aplicación. Para otra versión de la aplicación, 5.1.0.0, se agrega un secreto al almacén de claves (y con la herramienta de administración de secretos) para `5100-AppSecret` . Cada versión de la aplicación carga su valor de secreto con versión en su configuración como, lo que `AppSecret` elimina la versión mientras carga el secreto.
 
-Se llama a AddAzureKeyVault con un personalizado `Azure.Extensions.Aspnetcore.Configuration.Secrets` :
+Se llama a AddAzureKeyVault con un personalizado `Azure.Extensions.AspNetCore.Configuration.Secrets` :
 
 [!code-csharp[](key-vault-configuration/samples_snapshot/Program.cs)]
 
-La `Azure.Extensions.Aspnetcore.Configuration.Secrets` implementación reacciona a los prefijos de versión de los secretos para cargar el secreto adecuado en la configuración:
+La `Azure.Extensions.AspNetCore.Configuration.Secrets` implementación reacciona a los prefijos de versión de los secretos para cargar el secreto adecuado en la configuración:
 
 * `Load` carga un secreto cuando su nombre comienza con el prefijo. No se cargan otros secretos.
 * `GetKey`:
@@ -328,7 +331,7 @@ Examine la siguiente configuración de proveedor de registro de [Serilog](https:
 
 La configuración que se muestra en el archivo JSON anterior se almacena en Azure Key Vault mediante la notación de doble guión ( `--` ) y los segmentos numéricos:
 
-| Key | Valor |
+| Clave | Valor |
 | --- | ----- |
 | `Serilog--WriteTo--0--Name` | `AzureTableStorage` |
 | `Serilog--WriteTo--0--Args--storageTableName` | `logs` |
@@ -349,7 +352,7 @@ Configuration.Reload();
 
 Los secretos deshabilitados y caducados producen una <xref:Azure.RequestFailedException> . Para evitar que se inicie la aplicación, proporcione la configuración mediante un proveedor de configuración diferente o actualice el secreto deshabilitado o expirado.
 
-## <a name="troubleshoot"></a>Solucionar problemas
+## <a name="troubleshoot"></a>Solución de problemas
 
 Cuando la aplicación no carga la configuración mediante el proveedor, se escribe un mensaje de error en la [infraestructura de registro de ASP.net Core](xref:fundamentals/logging/index). Las siguientes condiciones impedirán que se cargue la configuración:
 
@@ -655,7 +658,7 @@ Examine la siguiente configuración de proveedor de registro de [Serilog](https:
 
 La configuración que se muestra en el archivo JSON anterior se almacena en Azure Key Vault mediante la notación de doble guión ( `--` ) y los segmentos numéricos:
 
-| Key | Valor |
+| Clave | Valor |
 | --- | ----- |
 | `Serilog--WriteTo--0--Name` | `AzureTableStorage` |
 | `Serilog--WriteTo--0--Args--storageTableName` | `logs` |
@@ -676,7 +679,7 @@ Configuration.Reload();
 
 Los secretos deshabilitados y caducados producen una <xref:Microsoft.Azure.KeyVault.Models.KeyVaultErrorException> . Para evitar que se inicie la aplicación, proporcione la configuración mediante un proveedor de configuración diferente o actualice el secreto deshabilitado o expirado.
 
-## <a name="troubleshoot"></a>Solucionar problemas
+## <a name="troubleshoot"></a>Solución de problemas
 
 Cuando la aplicación no carga la configuración mediante el proveedor, se escribe un mensaje de error en la [infraestructura de registro de ASP.net Core](xref:fundamentals/logging/index). Las siguientes condiciones impedirán que se cargue la configuración:
 

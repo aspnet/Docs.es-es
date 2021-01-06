@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authorization/secure-data
-ms.openlocfilehash: accfd46fa72c33976f8af2a39267c993447e036e
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: dc70cfe7cb0c0f044f5f1e7ee68a293b3ea7507f
+ms.sourcegitcommit: 04a404a9655c59ad1ea02aff5d399ae1b833ad6a
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93051946"
+ms.lasthandoff: 01/03/2021
+ms.locfileid: "97854657"
 ---
 # <a name="create-an-aspnet-core-web-app-with-user-data-protected-by-authorization"></a>Creación de una aplicación Web de ASP.NET Core con los datos de usuario protegidos por autorización
 
@@ -93,7 +93,7 @@ Este tutorial es avanzado. Debe estar familiarizado con:
 
 [Descargue](xref:index#how-to-download-a-sample) la aplicación de [Inicio](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/) .
 
-Ejecute la aplicación, pulse el vínculo **ContactManager** y compruebe que puede crear, editar y eliminar un contacto.
+Ejecute la aplicación, pulse el vínculo **ContactManager** y compruebe que puede crear, editar y eliminar un contacto. Para crear la aplicación de inicio, consulte [crear la aplicación de inicio](#create-the-starter-app).
 
 ## <a name="secure-user-data"></a>Proteger los datos de usuario
 
@@ -128,7 +128,7 @@ Establezca la Directiva de autenticación de reserva para requerir la autenticac
 
 [!code-csharp[](secure-data/samples/final3/Startup.cs?name=snippet&highlight=13-99)]
 
-El código resaltado anterior establece la [Directiva de autenticación de reserva](xref:Microsoft.AspNetCore.Authorization.AuthorizationOptions.FallbackPolicy). La Directiva de autenticación de reserva requiere * *_All_* _ usuarios para autenticarse, excepto Razor las páginas, los controladores o los métodos de acción con un atributo de autenticación. Por ejemplo, Razor páginas, controladores o métodos de acción con `[AllowAnonymous]` o `[Authorize(PolicyName="MyPolicy")]` usan el atributo de autenticación aplicado en lugar de la Directiva de autenticación de reserva.
+El código resaltado anterior establece la [Directiva de autenticación de reserva](xref:Microsoft.AspNetCore.Authorization.AuthorizationOptions.FallbackPolicy). La Directiva de autenticación de reserva requiere **_All_* _ usuarios para autenticarse, excepto Razor las páginas, los controladores o los métodos de acción con un atributo de autenticación. Por ejemplo, Razor páginas, controladores o métodos de acción con `[AllowAnonymous]` o `[Authorize(PolicyName="MyPolicy")]` usan el atributo de autenticación aplicado en lugar de la Directiva de autenticación de reserva.
 
 La Directiva de autenticación de reserva:
 
@@ -152,7 +152,7 @@ Agregue [AllowAnonymous](/dotnet/api/microsoft.aspnetcore.authorization.allowano
 
 ### <a name="configure-the-test-account"></a>Configurar la cuenta de prueba
 
-La `SeedData` clase crea dos cuentas: administrador y administrador. Use la [herramienta Administrador de secretos](xref:security/app-secrets) para establecer una contraseña para estas cuentas. Establezca la contraseña desde el directorio del proyecto (el directorio que contiene *Program.CS* ):
+La `SeedData` clase crea dos cuentas: administrador y administrador. Use la [herramienta Administrador de secretos](xref:security/app-secrets) para establecer una contraseña para estas cuentas. Establezca la contraseña desde el directorio del proyecto (el directorio que contiene *Program.CS*):
 
 ```dotnetcli
 dotnet user-secrets set SeedUserPW <PW>
@@ -343,7 +343,7 @@ Cree un contacto en el explorador del administrador. Copie la dirección URL par
 ## <a name="create-the-starter-app"></a>Creación de la aplicación de inicio
 
 * Crear una Razor aplicación de páginas denominada "ContactManager"
-  * Cree la aplicación con **cuentas de usuario individuales** .
+  * Cree la aplicación con **cuentas de usuario individuales**.
   * Asígnele el nombre "ContactManager" para que el espacio de nombres coincida con el espacio de nombres usado en el ejemplo.
   * `-uld` especifica LocalDB en lugar de SQLite.
 
@@ -351,7 +351,7 @@ Cree un contacto en el explorador del administrador. Copie la dirección URL par
   dotnet new webapp -o ContactManager -au Individual -uld
   ```
 
-* Agregue *Models/contact. CS* :
+* Agregue *Models/contact. CS*:
 
   [!code-csharp[](secure-data/samples/starter2.1/Models/Contact.cs?name=snippet1)]
 
@@ -488,7 +488,7 @@ Agregue [AllowAnonymous](/dotnet/api/microsoft.aspnetcore.authorization.allowano
 
 ### <a name="configure-the-test-account"></a>Configurar la cuenta de prueba
 
-La `SeedData` clase crea dos cuentas: administrador y administrador. Use la [herramienta Administrador de secretos](xref:security/app-secrets) para establecer una contraseña para estas cuentas. Establezca la contraseña desde el directorio del proyecto (el directorio que contiene *Program.CS* ):
+La `SeedData` clase crea dos cuentas: administrador y administrador. Use la [herramienta Administrador de secretos](xref:security/app-secrets) para establecer una contraseña para estas cuentas. Establezca la contraseña desde el directorio del proyecto (el directorio que contiene *Program.CS*):
 
 ```dotnetcli
 dotnet user-secrets set SeedUserPW <PW>
@@ -670,7 +670,7 @@ Cree un contacto en el explorador del administrador. Copie la dirección URL par
 ## <a name="create-the-starter-app"></a>Creación de la aplicación de inicio
 
 * Crear una Razor aplicación de páginas denominada "ContactManager"
-  * Cree la aplicación con **cuentas de usuario individuales** .
+  * Cree la aplicación con **cuentas de usuario individuales**.
   * Asígnele el nombre "ContactManager" para que el espacio de nombres coincida con el espacio de nombres usado en el ejemplo.
   * `-uld` especifica LocalDB en lugar de SQLite.
 
@@ -678,7 +678,7 @@ Cree un contacto en el explorador del administrador. Copie la dirección URL par
   dotnet new webapp -o ContactManager -au Individual -uld
   ```
 
-* Agregue *Models/contact. CS* :
+* Agregue *Models/contact. CS*:
 
   [!code-csharp[](secure-data/samples/starter2.1/Models/Contact.cs?name=snippet1)]
 

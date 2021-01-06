@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/index
-ms.openlocfilehash: 8a61472da556db48a8572b0a59075beb7737a547
-ms.sourcegitcommit: 6b87f2e064cea02e65dacd206394b44f5c604282
+ms.openlocfilehash: fcd4569c72fd33e5135a8469155f470b73c2ff57
+ms.sourcegitcommit: 04a404a9655c59ad1ea02aff5d399ae1b833ad6a
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97506830"
+ms.lasthandoff: 01/03/2021
+ms.locfileid: "97854527"
 ---
 # <a name="aspnet-core-no-locblazor-authentication-and-authorization"></a>Autenticación y autorización de ASP.NET Core Blazor
 
@@ -498,7 +498,7 @@ Es probable que el proyecto no se haya creado mediante una plantilla de Blazor S
 
 ```razor
 <CascadingAuthenticationState>
-    <Router AppAssembly="typeof(Startup).Assembly">
+    <Router AppAssembly="@typeof(Program).Assembly">
         ...
     </Router>
 </CascadingAuthenticationState>

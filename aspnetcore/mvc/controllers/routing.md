@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/routing
-ms.openlocfilehash: 59ad373cefaa12370aa7c02a367125c7a94f59a6
-ms.sourcegitcommit: 91e14f1e2a25c98a57c2217fe91b172e0ff2958c
+ms.openlocfilehash: a163c87fdb9a02c1b074ab32c19c11932c66cfd4
+ms.sourcegitcommit: 04a404a9655c59ad1ea02aff5d399ae1b833ad6a
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94422605"
+ms.lasthandoff: 01/03/2021
+ms.locfileid: "97854540"
 ---
 # <a name="routing-to-controller-actions-in-aspnet-core"></a>Enrutar a acciones de controlador de ASP.NET Core
 
@@ -260,7 +260,7 @@ Nombres de ruta:
 * No tiene ningún impacto en la coincidencia de direcciones URL ni en el control de solicitudes.
 * Solo se usan para la generación de direcciones URL.
 
-El concepto de nombre de ruta se representa en enrutamiento como [IEndpointNameMetadata](xref:Microsoft.AspNetCore.Routing.IEndpointNameMetadata). El nombre de **ruta** de los términos y el **nombre del punto de conexión** :
+El concepto de nombre de ruta se representa en enrutamiento como [IEndpointNameMetadata](xref:Microsoft.AspNetCore.Routing.IEndpointNameMetadata). El nombre de **ruta** de los términos y el **nombre del punto de conexión**:
 
 * Son intercambiables.
 * La que se usa en la documentación y el código depende de la API que se describe.
@@ -472,7 +472,7 @@ AmbiguousMatchException: The request matched multiple endpoints. Matches:
 
 [!code-csharp[](routing/samples/3.x/main/Controllers/MyDemo3Controller.cs?name=snippet3& highlight=2)]
 
-Con el código anterior, `/home` ejecuta el `HomeController.Index` punto de conexión. Para llegar a la `MyDemoController.MyIndex` solicitud, `/home/MyIndex` . **Nota** :
+Con el código anterior, `/home` ejecuta el `HomeController.Index` punto de conexión. Para llegar a la `MyDemoController.MyIndex` solicitud, `/home/MyIndex` . **Nota**:
 
 * El código anterior es un ejemplo o un diseño de enrutamiento deficiente. Se usó para ilustrar la `Order` propiedad.
 * La `Order` propiedad solo resuelve la ambigüedad, no se puede encontrar una coincidencia con esa plantilla. Sería mejor quitar la `[Route("Home")]` plantilla.
@@ -485,12 +485,7 @@ En algunos casos, se devuelve un error HTTP 500 con rutas ambiguas. Utilice el [
 
 ## <a name="token-replacement-in-route-templates-controller-action-area"></a>Reemplazo de tokens en las plantillas de ruta [Controller], [Action], [Area]
 
-Para mayor comodidad, las rutas de atributo admiten el reemplazo de tokens para los parámetros de ruta reservados mediante la inclusión de un token en una de las siguientes opciones:
-
-* Corchetes: `[]`
-* Llaves: `{}`
-
-Los tokens `[action]` , `[area]` y `[controller]` se reemplazan por los valores del nombre de acción, el nombre del área y el nombre del controlador de la acción en la que se define la ruta:
+Para mayor comodidad, las rutas de atributo admiten el *reemplazo de tokens* mediante la inclusión de un token entre corchetes ( `[` , `]` ). Los tokens `[action]` , `[area]` y `[controller]` se reemplazan por los valores del nombre de acción, el nombre del área y el nombre del controlador de la acción en la que se define la ruta:
 
 [!code-csharp[](routing/samples/3.x/main/Controllers/ProductsController.cs?name=snippet)]
 
@@ -717,7 +712,7 @@ Si `{ d = Donovan }` se agrega el valor:
 * `{ d = David }`Se omite el valor.
 * La ruta de dirección URL generada es `Alice/Bob/Carol/Donovan` .
 
-**ADVERTENCIA** : las rutas de dirección URL son jerárquicas. En el ejemplo anterior, si `{ c = Cheryl }` se agrega el valor:
+**ADVERTENCIA**: las rutas de dirección URL son jerárquicas. En el ejemplo anterior, si `{ c = Cheryl }` se agrega el valor:
 
 * Ambos valores `{ c = Carol, d = David }` se omiten.
 * Ya no hay un valor para `d` y se produce un error en la generación de direcciones URL.
@@ -823,7 +818,7 @@ Con el ejemplo anterior, los valores de ruta `{ area = Blog, controller = Users,
 
 [!code-csharp[](routing/samples/3.x/AreasRouting/Areas/Blog/Controllers/UsersController.cs)]
 
-El atributo [[Area]](xref:Microsoft.AspNetCore.Mvc.AreaAttribute) es lo que denota un controlador como parte de un área. Este controlador está en el `Blog` área. Los controladores sin un `[Area]` atributo no son miembros de ningún área y no **not** coinciden cuando el `area` enrutamiento proporciona el valor de ruta. En el ejemplo siguiente, solo el primer controlador enumerado puede coincidir con los valores de ruta `{ area = Blog, controller = Users, action = AddUser }`.
+El atributo [[Area]](xref:Microsoft.AspNetCore.Mvc.AreaAttribute) es lo que denota un controlador como parte de un área. Este controlador está en el `Blog` área. Los controladores sin un `[Area]` atributo no son miembros de ningún área y no  coinciden cuando el `area` enrutamiento proporciona el valor de ruta. En el ejemplo siguiente, solo el primer controlador enumerado puede coincidir con los valores de ruta `{ area = Blog, controller = Users, action = AddUser }`.
 
 [!code-csharp[](routing/samples/3.x/AreasRouting/Areas/Blog/Controllers/UsersController.cs)]
 
@@ -837,7 +832,7 @@ Los dos primeros controladores son miembros de las áreas y solo coinciden cuand
 
 <a name="aa"></a>
 
-En términos de búsqueda de coincidencias de *ningún valor* , la ausencia del valor `area` es igual que si el valor de `area` fuese null o una cadena vacía.
+En términos de búsqueda de coincidencias de *ningún valor*, la ausencia del valor `area` es igual que si el valor de `area` fuese null o una cadena vacía.
 
 Al ejecutar una acción dentro de un área, el valor de ruta de `area` está disponible como [valor ambiente](#ambient) para el enrutamiento que se va a usar para la generación de direcciones URL. Esto significa que, de forma predeterminada, las áreas actúan de forma *adhesiva* para la generación de direcciones URL, tal como se muestra en el ejemplo siguiente.
 
@@ -1000,7 +995,7 @@ app.UseMvc(routes =>
 });
 ```
 
-Aquí, la ruta `blog` es una *ruta convencional dedicada* , lo que significa que utiliza el sistema de enrutamiento convencional, pero que está dedicada a una acción específica. Puesto que `controller` y `action` no aparecen en la plantilla de ruta como parámetros, solo pueden tener los valores predeterminados y, por tanto, esta ruta siempre se asignará a la acción `BlogController.Article`.
+Aquí, la ruta `blog` es una *ruta convencional dedicada*, lo que significa que utiliza el sistema de enrutamiento convencional, pero que está dedicada a una acción específica. Puesto que `controller` y `action` no aparecen en la plantilla de ruta como parámetros, solo pueden tener los valores predeterminados y, por tanto, esta ruta siempre se asignará a la acción `BlogController.Article`.
 
 Las rutas de la colección de rutas están ordenadas y se procesan en el orden en que se hayan agregado. Por tanto, la ruta `blog` de este ejemplo se intentará antes que la ruta `default`.
 
@@ -1009,7 +1004,7 @@ Las rutas de la colección de rutas están ordenadas y se procesan en el orden e
 
 ### <a name="fallback"></a>Reserva
 
-Como parte del procesamiento de la solicitud, MVC comprobará que los valores de ruta se pueden usar para buscar un controlador y la acción en la aplicación. Si los valores de ruta no coinciden con una acción, entonces la ruta no se considera una coincidencia y se intentará la ruta siguiente. Esto se denomina *reserva* , y se ha diseñado para simplificar los casos donde se superponen rutas convencionales.
+Como parte del procesamiento de la solicitud, MVC comprobará que los valores de ruta se pueden usar para buscar un controlador y la acción en la aplicación. Si los valores de ruta no coinciden con una acción, entonces la ruta no se considera una coincidencia y se intentará la ruta siguiente. Esto se denomina *reserva*, y se ha diseñado para simplificar los casos donde se superponen rutas convencionales.
 
 ### <a name="disambiguating-actions"></a>Eliminar la ambigüedad de acciones
 
@@ -1562,7 +1557,7 @@ En el ejemplo anterior, los valores de ruta coincidirían con la acción siguien
 Los dos primeros controladores son miembros de las áreas y solo coinciden cuando el valor de ruta `area` proporciona su respectivo nombre de área. El tercer controlador no es miembro de ningún área y solo puede coincidir cuando el enrutamiento no proporciona ningún valor para `area`.
 
 > [!NOTE]
-> En términos de búsqueda de coincidencias de *ningún valor* , la ausencia del valor `area` es igual que si el valor de `area` fuese null o una cadena vacía.
+> En términos de búsqueda de coincidencias de *ningún valor*, la ausencia del valor `area` es igual que si el valor de `area` fuese null o una cadena vacía.
 
 Al ejecutar una acción en un área, el valor de ruta para `area` estará disponible como un *valor de ambiente* para que el enrutamiento pueda usarlo en la generación de direcciones URL. Esto significa que, de forma predeterminada, las áreas actúan de forma *adhesiva* para la generación de direcciones URL, tal como se muestra en el ejemplo siguiente.
 [!code-csharp[](routing/samples/3.x/AreasRouting/Startup.cs?name=snippet3)]
@@ -1590,9 +1585,9 @@ public class ProductsController : Controller
 
 Adoptando la ruta convencional predeterminada, la ruta de dirección URL `/Products/Edit` generaría los valores `{ controller = Products, action = Edit }`, que coincidirían con **ambas** acciones que se muestran aquí. En terminología de `IActionConstraint`, diríamos que ambas acciones se consideran candidatas, puesto que las dos coinciden con los datos de ruta.
 
-Cuando `HttpGetAttribute` se ejecute, dirá que *Edit()* es una coincidencia para *GET* , pero no para cualquier otro verbo HTTP. La acción `Edit(...)` no tiene ninguna restricción definida, por lo que coincidirá con cualquier verbo HTTP. Con `POST`, solamente `Edit(...)` coincide. Pero con `GET` ambas acciones pueden coincidir. No obstante, una acción con `IActionConstraint` siempre se considera *mejor* que una acción sin dicha restricción. Por tanto, como `Edit()` tiene `[HttpGet]`, se considera más específica y se seleccionará si ambas acciones pueden coincidir.
+Cuando `HttpGetAttribute` se ejecute, dirá que *Edit()* es una coincidencia para *GET*, pero no para cualquier otro verbo HTTP. La acción `Edit(...)` no tiene ninguna restricción definida, por lo que coincidirá con cualquier verbo HTTP. Con `POST`, solamente `Edit(...)` coincide. Pero con `GET` ambas acciones pueden coincidir. No obstante, una acción con `IActionConstraint` siempre se considera *mejor* que una acción sin dicha restricción. Por tanto, como `Edit()` tiene `[HttpGet]`, se considera más específica y se seleccionará si ambas acciones pueden coincidir.
 
-Conceptualmente, `IActionConstraint` es una forma de *sobrecarga* , pero en lugar de sobrecargar métodos con el mismo nombre, la sobrecarga se produce entre acciones que coinciden con la misma dirección URL. El enrutamiento mediante atributos también utiliza `IActionConstraint` y puede dar lugar a que acciones de diferentes controladores se consideren candidatas.
+Conceptualmente, `IActionConstraint` es una forma de *sobrecarga*, pero en lugar de sobrecargar métodos con el mismo nombre, la sobrecarga se produce entre acciones que coinciden con la misma dirección URL. El enrutamiento mediante atributos también utiliza `IActionConstraint` y puede dar lugar a que acciones de diferentes controladores se consideren candidatas.
 
 <a name="iactionconstraint-impl-ref-label"></a>
 
