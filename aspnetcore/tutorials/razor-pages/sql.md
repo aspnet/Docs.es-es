@@ -20,108 +20,108 @@ no-loc:
 - SignalR
 uid: tutorials/razor-pages/sql
 ms.openlocfilehash: 552a74016c281af248ce735c6ed6a5a55768a16a
-ms.sourcegitcommit: 6299f08aed5b7f0496001d093aae617559d73240
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 12/14/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "97486237"
 ---
-# <a name="part-4-of-tutorial-series-on-no-locrazor-pages"></a><span data-ttu-id="53844-103">Parte 4 de la serie de tutoriales sobre Razor Pages</span><span class="sxs-lookup"><span data-stu-id="53844-103">Part 4 of tutorial series on Razor Pages</span></span>
+# <a name="part-4-of-tutorial-series-on-no-locrazor-pages"></a><span data-ttu-id="b8b63-103">Parte 4 de la serie de tutoriales sobre Razor Pages</span><span class="sxs-lookup"><span data-stu-id="b8b63-103">Part 4 of tutorial series on Razor Pages</span></span>
 
-<span data-ttu-id="53844-104">Por [Rick Anderson](https://twitter.com/RickAndMSFT) y [Joe Audette](https://twitter.com/joeaudette)</span><span class="sxs-lookup"><span data-stu-id="53844-104">By [Rick Anderson](https://twitter.com/RickAndMSFT) and [Joe Audette](https://twitter.com/joeaudette)</span></span>
+<span data-ttu-id="b8b63-104">Por [Rick Anderson](https://twitter.com/RickAndMSFT) y [Joe Audette](https://twitter.com/joeaudette)</span><span class="sxs-lookup"><span data-stu-id="b8b63-104">By [Rick Anderson](https://twitter.com/RickAndMSFT) and [Joe Audette](https://twitter.com/joeaudette)</span></span>
 
 ::: moniker range=">= aspnetcore-5.0"
 
-<span data-ttu-id="53844-105">[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie50) ([cómo descargarlo](xref:index#how-to-download-a-sample)).</span><span class="sxs-lookup"><span data-stu-id="53844-105">[View or download sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie50) ([how to download](xref:index#how-to-download-a-sample)).</span></span>
+<span data-ttu-id="b8b63-105">[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie50) ([cómo descargarlo](xref:index#how-to-download-a-sample)).</span><span class="sxs-lookup"><span data-stu-id="b8b63-105">[View or download sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie50) ([how to download](xref:index#how-to-download-a-sample)).</span></span>
 
-<span data-ttu-id="53844-106">El objeto `RazorPagesMovieContext` controla la tarea de conexión a la base de datos y asignación de objetos `Movie` a los registros de la base de datos.</span><span class="sxs-lookup"><span data-stu-id="53844-106">The `RazorPagesMovieContext` object handles the task of connecting to the database and mapping `Movie` objects to database records.</span></span> <span data-ttu-id="53844-107">El contexto de base de datos se registra con el contenedor de [inserción de dependencias](xref:fundamentals/dependency-injection) en el método `ConfigureServices` de *Startup.cs*:</span><span class="sxs-lookup"><span data-stu-id="53844-107">The database context is registered with the [Dependency Injection](xref:fundamentals/dependency-injection) container in the `ConfigureServices` method in *Startup.cs*:</span></span>
+<span data-ttu-id="b8b63-106">El objeto `RazorPagesMovieContext` controla la tarea de conexión a la base de datos y asignación de objetos `Movie` a los registros de la base de datos.</span><span class="sxs-lookup"><span data-stu-id="b8b63-106">The `RazorPagesMovieContext` object handles the task of connecting to the database and mapping `Movie` objects to database records.</span></span> <span data-ttu-id="b8b63-107">El contexto de base de datos se registra con el contenedor de [inserción de dependencias](xref:fundamentals/dependency-injection) en el método `ConfigureServices` de *Startup.cs*:</span><span class="sxs-lookup"><span data-stu-id="b8b63-107">The database context is registered with the [Dependency Injection](xref:fundamentals/dependency-injection) container in the `ConfigureServices` method in *Startup.cs*:</span></span>
 
-# <a name="visual-studio"></a>[<span data-ttu-id="53844-108">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="53844-108">Visual Studio</span></span>](#tab/visual-studio)
+# <a name="visual-studio"></a>[<span data-ttu-id="b8b63-108">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="b8b63-108">Visual Studio</span></span>](#tab/visual-studio)
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Startup.cs?name=snippet_ConfigureServices&highlight=15-18)]
 
-# <a name="visual-studio-code--visual-studio-for-mac"></a>[<span data-ttu-id="53844-109">Visual Studio Code/Visual Studio para Mac</span><span class="sxs-lookup"><span data-stu-id="53844-109">Visual Studio Code / Visual Studio for Mac</span></span>](#tab/visual-studio-code+visual-studio-mac)
+# <a name="visual-studio-code--visual-studio-for-mac"></a>[<span data-ttu-id="b8b63-109">Visual Studio Code/Visual Studio para Mac</span><span class="sxs-lookup"><span data-stu-id="b8b63-109">Visual Studio Code / Visual Studio for Mac</span></span>](#tab/visual-studio-code+visual-studio-mac)
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Startup.cs?name=snippet_UseSqlite&highlight=11-12)]
 
 ---
 
-<span data-ttu-id="53844-110">El sistema [Configuración](xref:fundamentals/configuration/index) de ASP.NET Core lee la clave `ConnectionString`.</span><span class="sxs-lookup"><span data-stu-id="53844-110">The ASP.NET Core [Configuration](xref:fundamentals/configuration/index) system reads the `ConnectionString` key.</span></span> <span data-ttu-id="53844-111">Para el desarrollo local, la configuración obtiene la cadena de conexión del archivo *appsettings.json* .</span><span class="sxs-lookup"><span data-stu-id="53844-111">For local development, configuration gets the connection string from the *appsettings.json* file.</span></span>
+<span data-ttu-id="b8b63-110">El sistema [Configuración](xref:fundamentals/configuration/index) de ASP.NET Core lee la clave `ConnectionString`.</span><span class="sxs-lookup"><span data-stu-id="b8b63-110">The ASP.NET Core [Configuration](xref:fundamentals/configuration/index) system reads the `ConnectionString` key.</span></span> <span data-ttu-id="b8b63-111">Para el desarrollo local, la configuración obtiene la cadena de conexión del archivo *appsettings.json* .</span><span class="sxs-lookup"><span data-stu-id="b8b63-111">For local development, configuration gets the connection string from the *appsettings.json* file.</span></span>
 
-# <a name="visual-studio"></a>[<span data-ttu-id="53844-112">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="53844-112">Visual Studio</span></span>](#tab/visual-studio)
+# <a name="visual-studio"></a>[<span data-ttu-id="b8b63-112">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="b8b63-112">Visual Studio</span></span>](#tab/visual-studio)
 
-<span data-ttu-id="53844-113">La cadena de conexión generada será similar a la siguiente:</span><span class="sxs-lookup"><span data-stu-id="53844-113">The generated connection string will be similar to the following:</span></span>
+<span data-ttu-id="b8b63-113">La cadena de conexión generada será similar a la siguiente:</span><span class="sxs-lookup"><span data-stu-id="b8b63-113">The generated connection string will be similar to the following:</span></span>
 
 [!code-json[](razor-pages-start/sample/RazorPagesMovie30/appsettings.json?highlight=10-12)]
 
-# <a name="visual-studio-code--visual-studio-for-mac"></a>[<span data-ttu-id="53844-114">Visual Studio Code/Visual Studio para Mac</span><span class="sxs-lookup"><span data-stu-id="53844-114">Visual Studio Code / Visual Studio for Mac</span></span>](#tab/visual-studio-code+visual-studio-mac)
+# <a name="visual-studio-code--visual-studio-for-mac"></a>[<span data-ttu-id="b8b63-114">Visual Studio Code/Visual Studio para Mac</span><span class="sxs-lookup"><span data-stu-id="b8b63-114">Visual Studio Code / Visual Studio for Mac</span></span>](#tab/visual-studio-code+visual-studio-mac)
 
 [!code-json[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/appsettings_SQLite.json?highlight=8-10)]
 
 ---
 
-<span data-ttu-id="53844-115">Cuando la aplicación se implementa en un servidor de prueba o producción, se puede utilizar una variable de entorno para establecer la cadena de conexión en un servidor de base de datos de prueba o producción.</span><span class="sxs-lookup"><span data-stu-id="53844-115">When the app is deployed to a test or production server, an environment variable can be used to set the connection string to a test or production database server.</span></span> <span data-ttu-id="53844-116">Para obtener más información, vea [Configuración](xref:fundamentals/configuration/index).</span><span class="sxs-lookup"><span data-stu-id="53844-116">For more information, see [Configuration](xref:fundamentals/configuration/index).</span></span>
+<span data-ttu-id="b8b63-115">Cuando la aplicación se implementa en un servidor de prueba o producción, se puede utilizar una variable de entorno para establecer la cadena de conexión en un servidor de base de datos de prueba o producción.</span><span class="sxs-lookup"><span data-stu-id="b8b63-115">When the app is deployed to a test or production server, an environment variable can be used to set the connection string to a test or production database server.</span></span> <span data-ttu-id="b8b63-116">Para obtener más información, vea [Configuración](xref:fundamentals/configuration/index).</span><span class="sxs-lookup"><span data-stu-id="b8b63-116">For more information, see [Configuration](xref:fundamentals/configuration/index).</span></span>
 
-# <a name="visual-studio"></a>[<span data-ttu-id="53844-117">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="53844-117">Visual Studio</span></span>](#tab/visual-studio)
+# <a name="visual-studio"></a>[<span data-ttu-id="b8b63-117">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="b8b63-117">Visual Studio</span></span>](#tab/visual-studio)
 
-## <a name="sql-server-express-localdb"></a><span data-ttu-id="53844-118">SQL Server Express LocalDB</span><span class="sxs-lookup"><span data-stu-id="53844-118">SQL Server Express LocalDB</span></span>
+## <a name="sql-server-express-localdb"></a><span data-ttu-id="b8b63-118">SQL Server Express LocalDB</span><span class="sxs-lookup"><span data-stu-id="b8b63-118">SQL Server Express LocalDB</span></span>
 
-<span data-ttu-id="53844-119">LocalDB es una versión ligera del motor de base de datos de SQL Server Express dirigida al desarrollo de programas.</span><span class="sxs-lookup"><span data-stu-id="53844-119">LocalDB is a lightweight version of the SQL Server Express database engine that's targeted for program development.</span></span> <span data-ttu-id="53844-120">LocalDB se inicia a petición y se ejecuta en modo de usuario, sin necesidad de una configuración compleja.</span><span class="sxs-lookup"><span data-stu-id="53844-120">LocalDB starts on demand and runs in user mode, so there's no complex configuration.</span></span> <span data-ttu-id="53844-121">De forma predeterminada, la base de datos LocalDB crea archivos `*.mdf` en el directorio `C:\Users\<user>\`.</span><span class="sxs-lookup"><span data-stu-id="53844-121">By default, LocalDB database creates `*.mdf` files in the `C:\Users\<user>\` directory.</span></span>
+<span data-ttu-id="b8b63-119">LocalDB es una versión ligera del motor de base de datos de SQL Server Express dirigida al desarrollo de programas.</span><span class="sxs-lookup"><span data-stu-id="b8b63-119">LocalDB is a lightweight version of the SQL Server Express database engine that's targeted for program development.</span></span> <span data-ttu-id="b8b63-120">LocalDB se inicia a petición y se ejecuta en modo de usuario, sin necesidad de una configuración compleja.</span><span class="sxs-lookup"><span data-stu-id="b8b63-120">LocalDB starts on demand and runs in user mode, so there's no complex configuration.</span></span> <span data-ttu-id="b8b63-121">De forma predeterminada, la base de datos LocalDB crea archivos `*.mdf` en el directorio `C:\Users\<user>\`.</span><span class="sxs-lookup"><span data-stu-id="b8b63-121">By default, LocalDB database creates `*.mdf` files in the `C:\Users\<user>\` directory.</span></span>
 
 <a name="ssox"></a>
-1. <span data-ttu-id="53844-122">En el menú **Ver**, abra **Explorador de objetos de SQL Server** (SSOX).</span><span class="sxs-lookup"><span data-stu-id="53844-122">From the **View** menu, open **SQL Server Object Explorer** (SSOX).</span></span>
+1. <span data-ttu-id="b8b63-122">En el menú **Ver**, abra **Explorador de objetos de SQL Server** (SSOX).</span><span class="sxs-lookup"><span data-stu-id="b8b63-122">From the **View** menu, open **SQL Server Object Explorer** (SSOX).</span></span>
 
    ![Menú Ver](sql/_static/5/ssox.png)
 
-1. <span data-ttu-id="53844-124">Haga clic con el botón derecho en la tabla `Movie` y seleccione **Diseñador de vistas**:</span><span class="sxs-lookup"><span data-stu-id="53844-124">Right-click on the `Movie` table and select **View Designer**:</span></span>
+1. <span data-ttu-id="b8b63-124">Haga clic con el botón derecho en la tabla `Movie` y seleccione **Diseñador de vistas**:</span><span class="sxs-lookup"><span data-stu-id="b8b63-124">Right-click on the `Movie` table and select **View Designer**:</span></span>
 
    ![Menús contextuales abiertos en la tabla Movie](sql/_static/5/design.png)
 
    ![Tablas Movie abiertas en el diseñador](sql/_static/dv.png)
 
-   <span data-ttu-id="53844-127">Observe el icono de llave junto a `ID`.</span><span class="sxs-lookup"><span data-stu-id="53844-127">Note the key icon next to `ID`.</span></span> <span data-ttu-id="53844-128">De forma predeterminada, EF crea una propiedad denominada `ID` para la clave principal.</span><span class="sxs-lookup"><span data-stu-id="53844-128">By default, EF creates a property named `ID` for the primary key.</span></span>
+   <span data-ttu-id="b8b63-127">Observe el icono de llave junto a `ID`.</span><span class="sxs-lookup"><span data-stu-id="b8b63-127">Note the key icon next to `ID`.</span></span> <span data-ttu-id="b8b63-128">De forma predeterminada, EF crea una propiedad denominada `ID` para la clave principal.</span><span class="sxs-lookup"><span data-stu-id="b8b63-128">By default, EF creates a property named `ID` for the primary key.</span></span>
 
-1. <span data-ttu-id="53844-129">Haga clic con el botón derecho en la tabla `Movie` y seleccione **Ver datos**:</span><span class="sxs-lookup"><span data-stu-id="53844-129">Right-click on the `Movie` table and select **View Data**:</span></span>
+1. <span data-ttu-id="b8b63-129">Haga clic con el botón derecho en la tabla `Movie` y seleccione **Ver datos**:</span><span class="sxs-lookup"><span data-stu-id="b8b63-129">Right-click on the `Movie` table and select **View Data**:</span></span>
 
    ![Tabla Movie abierta mostrando datos de la tabla](sql/_static/vd22.png)
 
-# <a name="visual-studio-code--visual-studio-for-mac"></a>[<span data-ttu-id="53844-131">Visual Studio Code/Visual Studio para Mac</span><span class="sxs-lookup"><span data-stu-id="53844-131">Visual Studio Code / Visual Studio for Mac</span></span>](#tab/visual-studio-code+visual-studio-mac)
+# <a name="visual-studio-code--visual-studio-for-mac"></a>[<span data-ttu-id="b8b63-131">Visual Studio Code/Visual Studio para Mac</span><span class="sxs-lookup"><span data-stu-id="b8b63-131">Visual Studio Code / Visual Studio for Mac</span></span>](#tab/visual-studio-code+visual-studio-mac)
 
-## <a name="sqlite"></a><span data-ttu-id="53844-132">SQLite</span><span class="sxs-lookup"><span data-stu-id="53844-132">SQLite</span></span>
+## <a name="sqlite"></a><span data-ttu-id="b8b63-132">SQLite</span><span class="sxs-lookup"><span data-stu-id="b8b63-132">SQLite</span></span>
 
-<span data-ttu-id="53844-133">Según la información del sitio web de [SQLite](https://www.sqlite.org/):</span><span class="sxs-lookup"><span data-stu-id="53844-133">The [SQLite](https://www.sqlite.org/) website states:</span></span>
+<span data-ttu-id="b8b63-133">Según la información del sitio web de [SQLite](https://www.sqlite.org/):</span><span class="sxs-lookup"><span data-stu-id="b8b63-133">The [SQLite](https://www.sqlite.org/) website states:</span></span>
 
-> <span data-ttu-id="53844-134">SQLite es un motor de base de datos SQL independiente, de alta confiabilidad, insertado, con características completas y dominio público.</span><span class="sxs-lookup"><span data-stu-id="53844-134">SQLite is a self-contained, high-reliability, embedded, full-featured, public-domain, SQL database engine.</span></span> <span data-ttu-id="53844-135">SQLite es el motor de base de datos más usado en el mundo.</span><span class="sxs-lookup"><span data-stu-id="53844-135">SQLite is the most used database engine in the world.</span></span>
+> <span data-ttu-id="b8b63-134">SQLite es un motor de base de datos SQL independiente, de alta confiabilidad, insertado, con características completas y dominio público.</span><span class="sxs-lookup"><span data-stu-id="b8b63-134">SQLite is a self-contained, high-reliability, embedded, full-featured, public-domain, SQL database engine.</span></span> <span data-ttu-id="b8b63-135">SQLite es el motor de base de datos más usado en el mundo.</span><span class="sxs-lookup"><span data-stu-id="b8b63-135">SQLite is the most used database engine in the world.</span></span>
 
-<span data-ttu-id="53844-136">Existen muchas herramientas de terceros que se pueden descargar para administrar y ver una base de datos de SQLite.</span><span class="sxs-lookup"><span data-stu-id="53844-136">There are many third-party tools you can download to manage and view a SQLite database.</span></span> <span data-ttu-id="53844-137">La imagen de abajo es de [DB Browser for SQLite](https://sqlitebrowser.org/).</span><span class="sxs-lookup"><span data-stu-id="53844-137">The image below is from [DB Browser for SQLite](https://sqlitebrowser.org/).</span></span> <span data-ttu-id="53844-138">Si tiene una herramienta favorita de SQLite, deje un comentario sobre lo que le gusta de ella.</span><span class="sxs-lookup"><span data-stu-id="53844-138">If you have a favorite SQLite tool, leave a comment on what you like about it.</span></span>
+<span data-ttu-id="b8b63-136">Existen muchas herramientas de terceros que se pueden descargar para administrar y ver una base de datos de SQLite.</span><span class="sxs-lookup"><span data-stu-id="b8b63-136">There are many third-party tools you can download to manage and view a SQLite database.</span></span> <span data-ttu-id="b8b63-137">La imagen de abajo es de [DB Browser for SQLite](https://sqlitebrowser.org/).</span><span class="sxs-lookup"><span data-stu-id="b8b63-137">The image below is from [DB Browser for SQLite](https://sqlitebrowser.org/).</span></span> <span data-ttu-id="b8b63-138">Si tiene una herramienta favorita de SQLite, deje un comentario sobre lo que le gusta de ella.</span><span class="sxs-lookup"><span data-stu-id="b8b63-138">If you have a favorite SQLite tool, leave a comment on what you like about it.</span></span>
 
 ![DB Browser for SQLite mostrando una base de datos de películas](~/tutorials/first-mvc-app-xplat/working-with-sql/_static/dbb.png)
 
 > [!NOTE]
-> <span data-ttu-id="53844-140">Para este tutorial, se usa la característica de las *migraciones* de Entity Framework Core siempre que sea posible.</span><span class="sxs-lookup"><span data-stu-id="53844-140">For this tutorial, the Entity Framework Core *migrations* feature is used where possible.</span></span> <span data-ttu-id="53844-141">Las migraciones actualizan el esquema de la base de datos para que coincida con los cambios en el modelo de datos.</span><span class="sxs-lookup"><span data-stu-id="53844-141">Migrations updates the database schema to match changes in the data model.</span></span> <span data-ttu-id="53844-142">Aun así, las migraciones solo pueden realizar los tipos de cambios que admite el proveedor de EF Core; las capacidades del de SQLite son limitadas.</span><span class="sxs-lookup"><span data-stu-id="53844-142">However, migrations can only do the kinds of changes that the EF Core provider supports, and the SQLite provider's capabilities are limited.</span></span> <span data-ttu-id="53844-143">Por ejemplo, se permite agregar una columna, pero no eliminarla ni cambiarla.</span><span class="sxs-lookup"><span data-stu-id="53844-143">For example, adding a column is supported, but removing or changing a column is not supported.</span></span> <span data-ttu-id="53844-144">Si se crea una migración para quitar o cambiar una columna, el comando `ef migrations add` se ejecuta correctamente, pero el comando `ef database update` produce un error.</span><span class="sxs-lookup"><span data-stu-id="53844-144">If a migration is created to remove or change a column, the `ef migrations add` command succeeds but the `ef database update` command fails.</span></span> <span data-ttu-id="53844-145">Debido a estas limitaciones, este tutorial no usa las migraciones para realizar cambios en el esquema de SQLite.</span><span class="sxs-lookup"><span data-stu-id="53844-145">Due to these limitations, this tutorial doesn't use migrations for SQLite schema changes.</span></span> <span data-ttu-id="53844-146">En su lugar, cuando cambie el esquema, la base de datos se quitará y se volverá a crear.</span><span class="sxs-lookup"><span data-stu-id="53844-146">Instead, when the schema changes, the database is dropped and re-created.</span></span>
+> <span data-ttu-id="b8b63-140">Para este tutorial, se usa la característica de las *migraciones* de Entity Framework Core siempre que sea posible.</span><span class="sxs-lookup"><span data-stu-id="b8b63-140">For this tutorial, the Entity Framework Core *migrations* feature is used where possible.</span></span> <span data-ttu-id="b8b63-141">Las migraciones actualizan el esquema de la base de datos para que coincida con los cambios en el modelo de datos.</span><span class="sxs-lookup"><span data-stu-id="b8b63-141">Migrations updates the database schema to match changes in the data model.</span></span> <span data-ttu-id="b8b63-142">Aun así, las migraciones solo pueden realizar los tipos de cambios que admite el proveedor de EF Core; las capacidades del de SQLite son limitadas.</span><span class="sxs-lookup"><span data-stu-id="b8b63-142">However, migrations can only do the kinds of changes that the EF Core provider supports, and the SQLite provider's capabilities are limited.</span></span> <span data-ttu-id="b8b63-143">Por ejemplo, se permite agregar una columna, pero no eliminarla ni cambiarla.</span><span class="sxs-lookup"><span data-stu-id="b8b63-143">For example, adding a column is supported, but removing or changing a column is not supported.</span></span> <span data-ttu-id="b8b63-144">Si se crea una migración para quitar o cambiar una columna, el comando `ef migrations add` se ejecuta correctamente, pero el comando `ef database update` produce un error.</span><span class="sxs-lookup"><span data-stu-id="b8b63-144">If a migration is created to remove or change a column, the `ef migrations add` command succeeds but the `ef database update` command fails.</span></span> <span data-ttu-id="b8b63-145">Debido a estas limitaciones, este tutorial no usa las migraciones para realizar cambios en el esquema de SQLite.</span><span class="sxs-lookup"><span data-stu-id="b8b63-145">Due to these limitations, this tutorial doesn't use migrations for SQLite schema changes.</span></span> <span data-ttu-id="b8b63-146">En su lugar, cuando cambie el esquema, la base de datos se quitará y se volverá a crear.</span><span class="sxs-lookup"><span data-stu-id="b8b63-146">Instead, when the schema changes, the database is dropped and re-created.</span></span>
 >
-><span data-ttu-id="53844-147">La solución alternativa para las limitaciones de SQLite consiste en escribir de forma manual el código de migraciones para llevar a cabo una recompilación de la tabla cuando cambie algún elemento de esta.</span><span class="sxs-lookup"><span data-stu-id="53844-147">The workaround for the SQLite limitations is to manually write migrations code to perform a table rebuild when something in the table changes.</span></span> <span data-ttu-id="53844-148">La recompilación de una tabla implica lo siguiente:</span><span class="sxs-lookup"><span data-stu-id="53844-148">A table rebuild involves:</span></span>
+><span data-ttu-id="b8b63-147">La solución alternativa para las limitaciones de SQLite consiste en escribir de forma manual el código de migraciones para llevar a cabo una recompilación de la tabla cuando cambie algún elemento de esta.</span><span class="sxs-lookup"><span data-stu-id="b8b63-147">The workaround for the SQLite limitations is to manually write migrations code to perform a table rebuild when something in the table changes.</span></span> <span data-ttu-id="b8b63-148">La recompilación de una tabla implica lo siguiente:</span><span class="sxs-lookup"><span data-stu-id="b8b63-148">A table rebuild involves:</span></span>
 >
->* <span data-ttu-id="53844-149">Crear una tabla.</span><span class="sxs-lookup"><span data-stu-id="53844-149">Creating a new table.</span></span>
->* <span data-ttu-id="53844-150">Copiar datos de la tabla antigua a la nueva tabla.</span><span class="sxs-lookup"><span data-stu-id="53844-150">Copying data from the old table to the new table.</span></span>
->* <span data-ttu-id="53844-151">Eliminar la tabla anterior.</span><span class="sxs-lookup"><span data-stu-id="53844-151">Dropping the old table.</span></span>
->* <span data-ttu-id="53844-152">Cambiar el nombre de la tabla nueva.</span><span class="sxs-lookup"><span data-stu-id="53844-152">Renaming the new table.</span></span>
+>* <span data-ttu-id="b8b63-149">Crear una tabla.</span><span class="sxs-lookup"><span data-stu-id="b8b63-149">Creating a new table.</span></span>
+>* <span data-ttu-id="b8b63-150">Copiar datos de la tabla antigua a la nueva tabla.</span><span class="sxs-lookup"><span data-stu-id="b8b63-150">Copying data from the old table to the new table.</span></span>
+>* <span data-ttu-id="b8b63-151">Eliminar la tabla anterior.</span><span class="sxs-lookup"><span data-stu-id="b8b63-151">Dropping the old table.</span></span>
+>* <span data-ttu-id="b8b63-152">Cambiar el nombre de la tabla nueva.</span><span class="sxs-lookup"><span data-stu-id="b8b63-152">Renaming the new table.</span></span>
 >
-><span data-ttu-id="53844-153">Para obtener más información, vea los siguientes recursos:</span><span class="sxs-lookup"><span data-stu-id="53844-153">For more information, see the following resources:</span></span>
-> * [<span data-ttu-id="53844-154">Limitaciones del proveedor de base de datos SQLite para EF Core</span><span class="sxs-lookup"><span data-stu-id="53844-154">SQLite EF Core Database Provider Limitations</span></span>](/ef/core/providers/sqlite/limitations)
-> * [<span data-ttu-id="53844-155">Personalización del código de migración</span><span class="sxs-lookup"><span data-stu-id="53844-155">Customize migration code</span></span>](/ef/core/managing-schemas/migrations/#customize-migration-code)
-> * [<span data-ttu-id="53844-156">Propagación de los datos</span><span class="sxs-lookup"><span data-stu-id="53844-156">Data seeding</span></span>](/ef/core/modeling/data-seeding)
-> * [<span data-ttu-id="53844-157">Instrucción ALTER TABLE de SQLite</span><span class="sxs-lookup"><span data-stu-id="53844-157">SQLite ALTER TABLE statement</span></span>](https://sqlite.org/lang_altertable.html)
+><span data-ttu-id="b8b63-153">Para obtener más información, vea los siguientes recursos:</span><span class="sxs-lookup"><span data-stu-id="b8b63-153">For more information, see the following resources:</span></span>
+> * [<span data-ttu-id="b8b63-154">Limitaciones del proveedor de base de datos SQLite para EF Core</span><span class="sxs-lookup"><span data-stu-id="b8b63-154">SQLite EF Core Database Provider Limitations</span></span>](/ef/core/providers/sqlite/limitations)
+> * [<span data-ttu-id="b8b63-155">Personalización del código de migración</span><span class="sxs-lookup"><span data-stu-id="b8b63-155">Customize migration code</span></span>](/ef/core/managing-schemas/migrations/#customize-migration-code)
+> * [<span data-ttu-id="b8b63-156">Propagación de los datos</span><span class="sxs-lookup"><span data-stu-id="b8b63-156">Data seeding</span></span>](/ef/core/modeling/data-seeding)
+> * [<span data-ttu-id="b8b63-157">Instrucción ALTER TABLE de SQLite</span><span class="sxs-lookup"><span data-stu-id="b8b63-157">SQLite ALTER TABLE statement</span></span>](https://sqlite.org/lang_altertable.html)
 
 ---
 
-## <a name="seed-the-database"></a><span data-ttu-id="53844-158">Inicializar la base de datos</span><span class="sxs-lookup"><span data-stu-id="53844-158">Seed the database</span></span>
+## <a name="seed-the-database"></a><span data-ttu-id="b8b63-158">Inicializar la base de datos</span><span class="sxs-lookup"><span data-stu-id="b8b63-158">Seed the database</span></span>
 
-<span data-ttu-id="53844-159">Cree una nueva clase denominada `SeedData` en la carpeta *Models* con el código siguiente:</span><span class="sxs-lookup"><span data-stu-id="53844-159">Create a new class named `SeedData` in the *Models* folder with the following code:</span></span>
+<span data-ttu-id="b8b63-159">Cree una nueva clase denominada `SeedData` en la carpeta *Models* con el código siguiente:</span><span class="sxs-lookup"><span data-stu-id="b8b63-159">Create a new class named `SeedData` in the *Models* folder with the following code:</span></span>
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Models/SeedData.cs?name=snippet_1)]
 
-<span data-ttu-id="53844-160">Si hay alguna película en la base de datos, se devuelve el inicializador y no se agrega ninguna película.</span><span class="sxs-lookup"><span data-stu-id="53844-160">If there are any movies in the database, the seed initializer returns and no movies are added.</span></span>
+<span data-ttu-id="b8b63-160">Si hay alguna película en la base de datos, se devuelve el inicializador y no se agrega ninguna película.</span><span class="sxs-lookup"><span data-stu-id="b8b63-160">If there are any movies in the database, the seed initializer returns and no movies are added.</span></span>
 
 ```csharp
 if (context.Movie.Any())
@@ -132,151 +132,151 @@ if (context.Movie.Any())
 
 <a name="si"></a>
 
-### <a name="add-the-seed-initializer"></a><span data-ttu-id="53844-161">Agregar el inicializador</span><span class="sxs-lookup"><span data-stu-id="53844-161">Add the seed initializer</span></span>
+### <a name="add-the-seed-initializer"></a><span data-ttu-id="b8b63-161">Agregar el inicializador</span><span class="sxs-lookup"><span data-stu-id="b8b63-161">Add the seed initializer</span></span>
 
-<span data-ttu-id="53844-162">Reemplace su contenido por el código siguiente:</span><span class="sxs-lookup"><span data-stu-id="53844-162">Replace the contents of the *Program.cs* with the following code:</span></span>
+<span data-ttu-id="b8b63-162">Reemplace su contenido por el código siguiente:</span><span class="sxs-lookup"><span data-stu-id="b8b63-162">Replace the contents of the *Program.cs* with the following code:</span></span>
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie50/Program.cs)]
 
-<span data-ttu-id="53844-163">En el código anterior, el método `Main` se ha modificado para hacer lo siguiente:</span><span class="sxs-lookup"><span data-stu-id="53844-163">In the previous code, the `Main` method has been modified to do the following:</span></span>
+<span data-ttu-id="b8b63-163">En el código anterior, el método `Main` se ha modificado para hacer lo siguiente:</span><span class="sxs-lookup"><span data-stu-id="b8b63-163">In the previous code, the `Main` method has been modified to do the following:</span></span>
 
-* <span data-ttu-id="53844-164">Obtener una instancia del contexto de base de datos desde el contenedor de inserción de dependencias.</span><span class="sxs-lookup"><span data-stu-id="53844-164">Get a database context instance from the dependency injection container.</span></span>
-* <span data-ttu-id="53844-165">Llame al método `seedData.Initialize`, pasándole la instancia de contexto de la base de datos.</span><span class="sxs-lookup"><span data-stu-id="53844-165">Call the `seedData.Initialize` method, passing to it the database context instance.</span></span>
-* <span data-ttu-id="53844-166">Eliminar el contexto cuando el método de inicialización finalice.</span><span class="sxs-lookup"><span data-stu-id="53844-166">Dispose the context when the seed method completes.</span></span> <span data-ttu-id="53844-167">La [instrucción using](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/using-statement) garantiza que se elimine el contexto.</span><span class="sxs-lookup"><span data-stu-id="53844-167">The [using statement](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/using-statement) ensures the context is disposed.</span></span>
+* <span data-ttu-id="b8b63-164">Obtener una instancia del contexto de base de datos desde el contenedor de inserción de dependencias.</span><span class="sxs-lookup"><span data-stu-id="b8b63-164">Get a database context instance from the dependency injection container.</span></span>
+* <span data-ttu-id="b8b63-165">Llame al método `seedData.Initialize`, pasándole la instancia de contexto de la base de datos.</span><span class="sxs-lookup"><span data-stu-id="b8b63-165">Call the `seedData.Initialize` method, passing to it the database context instance.</span></span>
+* <span data-ttu-id="b8b63-166">Eliminar el contexto cuando el método de inicialización finalice.</span><span class="sxs-lookup"><span data-stu-id="b8b63-166">Dispose the context when the seed method completes.</span></span> <span data-ttu-id="b8b63-167">La [instrucción using](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/using-statement) garantiza que se elimine el contexto.</span><span class="sxs-lookup"><span data-stu-id="b8b63-167">The [using statement](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/using-statement) ensures the context is disposed.</span></span>
 
-<span data-ttu-id="53844-168">La siguiente excepción se produce cuando no se ha ejecutado `Update-Database`:</span><span class="sxs-lookup"><span data-stu-id="53844-168">The following exception occurs when `Update-Database` has not been run:</span></span>
+<span data-ttu-id="b8b63-168">La siguiente excepción se produce cuando no se ha ejecutado `Update-Database`:</span><span class="sxs-lookup"><span data-stu-id="b8b63-168">The following exception occurs when `Update-Database` has not been run:</span></span>
 
 > `SqlException: Cannot open database "RazorPagesMovieContext-" requested by the login. The login failed.`
 > `Login failed for user 'user name'.`
 
-### <a name="test-the-app"></a><span data-ttu-id="53844-169">Prueba de la aplicación</span><span class="sxs-lookup"><span data-stu-id="53844-169">Test the app</span></span>
+### <a name="test-the-app"></a><span data-ttu-id="b8b63-169">Prueba de la aplicación</span><span class="sxs-lookup"><span data-stu-id="b8b63-169">Test the app</span></span>
 
-# <a name="visual-studio"></a>[<span data-ttu-id="53844-170">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="53844-170">Visual Studio</span></span>](#tab/visual-studio)
+# <a name="visual-studio"></a>[<span data-ttu-id="b8b63-170">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="b8b63-170">Visual Studio</span></span>](#tab/visual-studio)
 
-1. <span data-ttu-id="53844-171">Elimine todos los registros de la base de datos.</span><span class="sxs-lookup"><span data-stu-id="53844-171">Delete all the records in the database.</span></span> <span data-ttu-id="53844-172">Use los vínculos de eliminación en el explorador o en [SSOX](xref:tutorials/razor-pages/new-field#ssox).</span><span class="sxs-lookup"><span data-stu-id="53844-172">Use the delete links in the browser or from [SSOX](xref:tutorials/razor-pages/new-field#ssox)</span></span>
+1. <span data-ttu-id="b8b63-171">Elimine todos los registros de la base de datos.</span><span class="sxs-lookup"><span data-stu-id="b8b63-171">Delete all the records in the database.</span></span> <span data-ttu-id="b8b63-172">Use los vínculos de eliminación en el explorador o en [SSOX](xref:tutorials/razor-pages/new-field#ssox).</span><span class="sxs-lookup"><span data-stu-id="b8b63-172">Use the delete links in the browser or from [SSOX](xref:tutorials/razor-pages/new-field#ssox)</span></span>
 
-1. <span data-ttu-id="53844-173">Obligue a la aplicación a inicializarse (llame a los métodos de la clase `Startup`) para que se ejecute el método de inicialización.</span><span class="sxs-lookup"><span data-stu-id="53844-173">Force the app to initialize by calling the methods in the `Startup` class, so the seed method runs.</span></span> <span data-ttu-id="53844-174">Para forzar la inicialización, se debe detener y reiniciar IIS Express.</span><span class="sxs-lookup"><span data-stu-id="53844-174">To force initialization, IIS Express must be stopped and restarted.</span></span> <span data-ttu-id="53844-175">Detenga y reinicie IIS con cualquiera de los métodos siguientes:</span><span class="sxs-lookup"><span data-stu-id="53844-175">Stop and restart IIS with any of the following approaches:</span></span>
+1. <span data-ttu-id="b8b63-173">Obligue a la aplicación a inicializarse (llame a los métodos de la clase `Startup`) para que se ejecute el método de inicialización.</span><span class="sxs-lookup"><span data-stu-id="b8b63-173">Force the app to initialize by calling the methods in the `Startup` class, so the seed method runs.</span></span> <span data-ttu-id="b8b63-174">Para forzar la inicialización, se debe detener y reiniciar IIS Express.</span><span class="sxs-lookup"><span data-stu-id="b8b63-174">To force initialization, IIS Express must be stopped and restarted.</span></span> <span data-ttu-id="b8b63-175">Detenga y reinicie IIS con cualquiera de los métodos siguientes:</span><span class="sxs-lookup"><span data-stu-id="b8b63-175">Stop and restart IIS with any of the following approaches:</span></span>
 
-   1. <span data-ttu-id="53844-176">Haga clic con el botón derecho en el icono Bandeja del sistema de IIS Express del área de notificación y seleccione **Salir** o **Detener sitio**:</span><span class="sxs-lookup"><span data-stu-id="53844-176">Right-click the IIS Express system tray icon in the notification area and select **Exit** or **Stop Site**:</span></span>
+   1. <span data-ttu-id="b8b63-176">Haga clic con el botón derecho en el icono Bandeja del sistema de IIS Express del área de notificación y seleccione **Salir** o **Detener sitio**:</span><span class="sxs-lookup"><span data-stu-id="b8b63-176">Right-click the IIS Express system tray icon in the notification area and select **Exit** or **Stop Site**:</span></span>
 
       ![Icono Bandeja del sistema de IIS Express](../first-mvc-app/working-with-sql/_static/iisExIcon.png)
 
       ![Menú contextual](sql/_static/stopIIS.png)
 
-   1. <span data-ttu-id="53844-179">Si está ejecutando la aplicación en modo de no depuración, presione <kbd>F5</kbd> para ejecutar en modo de depuración.</span><span class="sxs-lookup"><span data-stu-id="53844-179">If the app is running in non-debug mode, press <kbd>F5</kbd> to run in debug mode.</span></span>
-   1. <span data-ttu-id="53844-180">Si la aplicación está en modo de depuración, detenga el depurador y presione <kbd>F5</kbd>.</span><span class="sxs-lookup"><span data-stu-id="53844-180">If the app in debug mode, stop the debugger and press <kbd>F5</kbd>.</span></span>
+   1. <span data-ttu-id="b8b63-179">Si está ejecutando la aplicación en modo de no depuración, presione <kbd>F5</kbd> para ejecutar en modo de depuración.</span><span class="sxs-lookup"><span data-stu-id="b8b63-179">If the app is running in non-debug mode, press <kbd>F5</kbd> to run in debug mode.</span></span>
+   1. <span data-ttu-id="b8b63-180">Si la aplicación está en modo de depuración, detenga el depurador y presione <kbd>F5</kbd>.</span><span class="sxs-lookup"><span data-stu-id="b8b63-180">If the app in debug mode, stop the debugger and press <kbd>F5</kbd>.</span></span>
 
-# <a name="visual-studio-code--visual-studio-for-mac"></a>[<span data-ttu-id="53844-181">Visual Studio Code/Visual Studio para Mac</span><span class="sxs-lookup"><span data-stu-id="53844-181">Visual Studio Code / Visual Studio for Mac</span></span>](#tab/visual-studio-code+visual-studio-mac)
+# <a name="visual-studio-code--visual-studio-for-mac"></a>[<span data-ttu-id="b8b63-181">Visual Studio Code/Visual Studio para Mac</span><span class="sxs-lookup"><span data-stu-id="b8b63-181">Visual Studio Code / Visual Studio for Mac</span></span>](#tab/visual-studio-code+visual-studio-mac)
 
-<span data-ttu-id="53844-182">Elimine todos los registros de la base de datos para que se ejecute el método de inicialización.</span><span class="sxs-lookup"><span data-stu-id="53844-182">Delete all the records in the database, so the seed method will run.</span></span> <span data-ttu-id="53844-183">Detenga e inicie la aplicación para inicializar la base de datos.</span><span class="sxs-lookup"><span data-stu-id="53844-183">Stop and start the app to seed the database.</span></span>
+<span data-ttu-id="b8b63-182">Elimine todos los registros de la base de datos para que se ejecute el método de inicialización.</span><span class="sxs-lookup"><span data-stu-id="b8b63-182">Delete all the records in the database, so the seed method will run.</span></span> <span data-ttu-id="b8b63-183">Detenga e inicie la aplicación para inicializar la base de datos.</span><span class="sxs-lookup"><span data-stu-id="b8b63-183">Stop and start the app to seed the database.</span></span>
 
 ---
 
-<span data-ttu-id="53844-184">La aplicación muestra los datos inicializados:</span><span class="sxs-lookup"><span data-stu-id="53844-184">The app shows the seeded data:</span></span>
+<span data-ttu-id="b8b63-184">La aplicación muestra los datos inicializados:</span><span class="sxs-lookup"><span data-stu-id="b8b63-184">The app shows the seeded data:</span></span>
 
 ![Aplicación de películas abierta en el explorador donde se muestran los datos de películas](sql/_static/5/m55.png)
 
-## <a name="additional-resources"></a><span data-ttu-id="53844-186">Recursos adicionales</span><span class="sxs-lookup"><span data-stu-id="53844-186">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="b8b63-186">Recursos adicionales</span><span class="sxs-lookup"><span data-stu-id="b8b63-186">Additional resources</span></span>
 
 > [!div class="step-by-step"]
-> <span data-ttu-id="53844-187">[Anterior: Razor Pages con scaffolding](xref:tutorials/razor-pages/page)
-> [Siguiente: Actualización de las páginas](xref:tutorials/razor-pages/da1)</span><span class="sxs-lookup"><span data-stu-id="53844-187">[Previous: Scaffolded Razor Pages](xref:tutorials/razor-pages/page)
+> <span data-ttu-id="b8b63-187">[Anterior: Razor Pages con scaffolding](xref:tutorials/razor-pages/page)
+> [Siguiente: Actualización de las páginas](xref:tutorials/razor-pages/da1)</span><span class="sxs-lookup"><span data-stu-id="b8b63-187">[Previous: Scaffolded Razor Pages](xref:tutorials/razor-pages/page)
 [Next: Update the pages](xref:tutorials/razor-pages/da1)</span></span>
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-5.0 >= aspnetcore-3.0"
 
-<span data-ttu-id="53844-188">[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30) ([cómo descargarlo](xref:index#how-to-download-a-sample)).</span><span class="sxs-lookup"><span data-stu-id="53844-188">[View or download sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30) ([how to download](xref:index#how-to-download-a-sample)).</span></span>
+<span data-ttu-id="b8b63-188">[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30) ([cómo descargarlo](xref:index#how-to-download-a-sample)).</span><span class="sxs-lookup"><span data-stu-id="b8b63-188">[View or download sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30) ([how to download](xref:index#how-to-download-a-sample)).</span></span>
 
-<span data-ttu-id="53844-189">El objeto `RazorPagesMovieContext` controla la tarea de conexión a la base de datos y asignación de objetos `Movie` a los registros de la base de datos.</span><span class="sxs-lookup"><span data-stu-id="53844-189">The `RazorPagesMovieContext` object handles the task of connecting to the database and mapping `Movie` objects to database records.</span></span> <span data-ttu-id="53844-190">El contexto de base de datos se registra con el contenedor de [inserción de dependencias](xref:fundamentals/dependency-injection) en el método `ConfigureServices` de *Startup.cs*:</span><span class="sxs-lookup"><span data-stu-id="53844-190">The database context is registered with the [Dependency Injection](xref:fundamentals/dependency-injection) container in the `ConfigureServices` method in *Startup.cs*:</span></span>
+<span data-ttu-id="b8b63-189">El objeto `RazorPagesMovieContext` controla la tarea de conexión a la base de datos y asignación de objetos `Movie` a los registros de la base de datos.</span><span class="sxs-lookup"><span data-stu-id="b8b63-189">The `RazorPagesMovieContext` object handles the task of connecting to the database and mapping `Movie` objects to database records.</span></span> <span data-ttu-id="b8b63-190">El contexto de base de datos se registra con el contenedor de [inserción de dependencias](xref:fundamentals/dependency-injection) en el método `ConfigureServices` de *Startup.cs*:</span><span class="sxs-lookup"><span data-stu-id="b8b63-190">The database context is registered with the [Dependency Injection](xref:fundamentals/dependency-injection) container in the `ConfigureServices` method in *Startup.cs*:</span></span>
 
-# <a name="visual-studio"></a>[<span data-ttu-id="53844-191">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="53844-191">Visual Studio</span></span>](#tab/visual-studio)
+# <a name="visual-studio"></a>[<span data-ttu-id="b8b63-191">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="b8b63-191">Visual Studio</span></span>](#tab/visual-studio)
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Startup.cs?name=snippet_ConfigureServices&highlight=15-18)]
 
-# <a name="visual-studio-code--visual-studio-for-mac"></a>[<span data-ttu-id="53844-192">Visual Studio Code/Visual Studio para Mac</span><span class="sxs-lookup"><span data-stu-id="53844-192">Visual Studio Code / Visual Studio for Mac</span></span>](#tab/visual-studio-code+visual-studio-mac)
+# <a name="visual-studio-code--visual-studio-for-mac"></a>[<span data-ttu-id="b8b63-192">Visual Studio Code/Visual Studio para Mac</span><span class="sxs-lookup"><span data-stu-id="b8b63-192">Visual Studio Code / Visual Studio for Mac</span></span>](#tab/visual-studio-code+visual-studio-mac)
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Startup.cs?name=snippet_UseSqlite&highlight=11-12)]
 
 ---
 
-<span data-ttu-id="53844-193">El sistema [Configuración](xref:fundamentals/configuration/index) de ASP.NET Core lee la clave `ConnectionString`.</span><span class="sxs-lookup"><span data-stu-id="53844-193">The ASP.NET Core [Configuration](xref:fundamentals/configuration/index) system reads the `ConnectionString` key.</span></span> <span data-ttu-id="53844-194">Para el desarrollo local, la configuración obtiene la cadena de conexión del archivo *appsettings.json* .</span><span class="sxs-lookup"><span data-stu-id="53844-194">For local development, configuration gets the connection string from the *appsettings.json* file.</span></span>
+<span data-ttu-id="b8b63-193">El sistema [Configuración](xref:fundamentals/configuration/index) de ASP.NET Core lee la clave `ConnectionString`.</span><span class="sxs-lookup"><span data-stu-id="b8b63-193">The ASP.NET Core [Configuration](xref:fundamentals/configuration/index) system reads the `ConnectionString` key.</span></span> <span data-ttu-id="b8b63-194">Para el desarrollo local, la configuración obtiene la cadena de conexión del archivo *appsettings.json* .</span><span class="sxs-lookup"><span data-stu-id="b8b63-194">For local development, configuration gets the connection string from the *appsettings.json* file.</span></span>
 
-# <a name="visual-studio"></a>[<span data-ttu-id="53844-195">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="53844-195">Visual Studio</span></span>](#tab/visual-studio)
+# <a name="visual-studio"></a>[<span data-ttu-id="b8b63-195">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="b8b63-195">Visual Studio</span></span>](#tab/visual-studio)
 
-<span data-ttu-id="53844-196">La cadena de conexión generada será similar a la siguiente:</span><span class="sxs-lookup"><span data-stu-id="53844-196">The generated connection string will be similar to the following:</span></span>
+<span data-ttu-id="b8b63-196">La cadena de conexión generada será similar a la siguiente:</span><span class="sxs-lookup"><span data-stu-id="b8b63-196">The generated connection string will be similar to the following:</span></span>
 
 [!code-json[](razor-pages-start/sample/RazorPagesMovie30/appsettings.json?highlight=10-12)]
 
-# <a name="visual-studio-code--visual-studio-for-mac"></a>[<span data-ttu-id="53844-197">Visual Studio Code/Visual Studio para Mac</span><span class="sxs-lookup"><span data-stu-id="53844-197">Visual Studio Code / Visual Studio for Mac</span></span>](#tab/visual-studio-code+visual-studio-mac)
+# <a name="visual-studio-code--visual-studio-for-mac"></a>[<span data-ttu-id="b8b63-197">Visual Studio Code/Visual Studio para Mac</span><span class="sxs-lookup"><span data-stu-id="b8b63-197">Visual Studio Code / Visual Studio for Mac</span></span>](#tab/visual-studio-code+visual-studio-mac)
 
 [!code-json[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/appsettings_SQLite.json?highlight=8-10)]
 
 ---
 
-<span data-ttu-id="53844-198">Cuando la aplicación se implementa en un servidor de prueba o producción, se puede utilizar una variable de entorno para establecer la cadena de conexión en un servidor de base de datos de prueba o producción.</span><span class="sxs-lookup"><span data-stu-id="53844-198">When the app is deployed to a test or production server, an environment variable can be used to set the connection string to a test or production database server.</span></span> <span data-ttu-id="53844-199">Para más información, vea [Configuración](xref:fundamentals/configuration/index).</span><span class="sxs-lookup"><span data-stu-id="53844-199">See [Configuration](xref:fundamentals/configuration/index) for more information.</span></span>
+<span data-ttu-id="b8b63-198">Cuando la aplicación se implementa en un servidor de prueba o producción, se puede utilizar una variable de entorno para establecer la cadena de conexión en un servidor de base de datos de prueba o producción.</span><span class="sxs-lookup"><span data-stu-id="b8b63-198">When the app is deployed to a test or production server, an environment variable can be used to set the connection string to a test or production database server.</span></span> <span data-ttu-id="b8b63-199">Para más información, vea [Configuración](xref:fundamentals/configuration/index).</span><span class="sxs-lookup"><span data-stu-id="b8b63-199">See [Configuration](xref:fundamentals/configuration/index) for more information.</span></span>
 
-# <a name="visual-studio"></a>[<span data-ttu-id="53844-200">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="53844-200">Visual Studio</span></span>](#tab/visual-studio)
+# <a name="visual-studio"></a>[<span data-ttu-id="b8b63-200">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="b8b63-200">Visual Studio</span></span>](#tab/visual-studio)
 
-## <a name="sql-server-express-localdb"></a><span data-ttu-id="53844-201">SQL Server Express LocalDB</span><span class="sxs-lookup"><span data-stu-id="53844-201">SQL Server Express LocalDB</span></span>
+## <a name="sql-server-express-localdb"></a><span data-ttu-id="b8b63-201">SQL Server Express LocalDB</span><span class="sxs-lookup"><span data-stu-id="b8b63-201">SQL Server Express LocalDB</span></span>
 
-<span data-ttu-id="53844-202">LocalDB es una versión ligera del motor de base de datos de SQL Server Express dirigida al desarrollo de programas.</span><span class="sxs-lookup"><span data-stu-id="53844-202">LocalDB is a lightweight version of the SQL Server Express database engine that's targeted for program development.</span></span> <span data-ttu-id="53844-203">LocalDB se inicia a petición y se ejecuta en modo de usuario, sin necesidad de una configuración compleja.</span><span class="sxs-lookup"><span data-stu-id="53844-203">LocalDB starts on demand and runs in user mode, so there's no complex configuration.</span></span> <span data-ttu-id="53844-204">De forma predeterminada, la base de datos LocalDB crea archivos `*.mdf` en el directorio `C:\Users\<user>\`.</span><span class="sxs-lookup"><span data-stu-id="53844-204">By default, LocalDB database creates `*.mdf` files in the `C:\Users\<user>\` directory.</span></span>
+<span data-ttu-id="b8b63-202">LocalDB es una versión ligera del motor de base de datos de SQL Server Express dirigida al desarrollo de programas.</span><span class="sxs-lookup"><span data-stu-id="b8b63-202">LocalDB is a lightweight version of the SQL Server Express database engine that's targeted for program development.</span></span> <span data-ttu-id="b8b63-203">LocalDB se inicia a petición y se ejecuta en modo de usuario, sin necesidad de una configuración compleja.</span><span class="sxs-lookup"><span data-stu-id="b8b63-203">LocalDB starts on demand and runs in user mode, so there's no complex configuration.</span></span> <span data-ttu-id="b8b63-204">De forma predeterminada, la base de datos LocalDB crea archivos `*.mdf` en el directorio `C:\Users\<user>\`.</span><span class="sxs-lookup"><span data-stu-id="b8b63-204">By default, LocalDB database creates `*.mdf` files in the `C:\Users\<user>\` directory.</span></span>
 
 <a name="ssox"></a>
-* <span data-ttu-id="53844-205">En el menú **Ver**, abra **Explorador de objetos de SQL Server** (SSOX).</span><span class="sxs-lookup"><span data-stu-id="53844-205">From the **View** menu, open **SQL Server Object Explorer** (SSOX).</span></span>
+* <span data-ttu-id="b8b63-205">En el menú **Ver**, abra **Explorador de objetos de SQL Server** (SSOX).</span><span class="sxs-lookup"><span data-stu-id="b8b63-205">From the **View** menu, open **SQL Server Object Explorer** (SSOX).</span></span>
 
   ![Menú Ver](sql/_static/ssox.png)
 
-* <span data-ttu-id="53844-207">Haga clic con el botón derecho en la tabla `Movie` y seleccione **Diseñador de vistas**:</span><span class="sxs-lookup"><span data-stu-id="53844-207">Right-click on the `Movie` table and select **View Designer**:</span></span>
+* <span data-ttu-id="b8b63-207">Haga clic con el botón derecho en la tabla `Movie` y seleccione **Diseñador de vistas**:</span><span class="sxs-lookup"><span data-stu-id="b8b63-207">Right-click on the `Movie` table and select **View Designer**:</span></span>
 
   ![Menús contextuales abiertos en la tabla Movie](sql/_static/design.png)
 
   ![Tablas Movie abiertas en el diseñador](sql/_static/dv.png)
 
-<span data-ttu-id="53844-210">Observe el icono de llave junto a `ID`.</span><span class="sxs-lookup"><span data-stu-id="53844-210">Note the key icon next to `ID`.</span></span> <span data-ttu-id="53844-211">De forma predeterminada, EF crea una propiedad denominada `ID` para la clave principal.</span><span class="sxs-lookup"><span data-stu-id="53844-211">By default, EF creates a property named `ID` for the primary key.</span></span>
+<span data-ttu-id="b8b63-210">Observe el icono de llave junto a `ID`.</span><span class="sxs-lookup"><span data-stu-id="b8b63-210">Note the key icon next to `ID`.</span></span> <span data-ttu-id="b8b63-211">De forma predeterminada, EF crea una propiedad denominada `ID` para la clave principal.</span><span class="sxs-lookup"><span data-stu-id="b8b63-211">By default, EF creates a property named `ID` for the primary key.</span></span>
 
-* <span data-ttu-id="53844-212">Haga clic con el botón derecho en la tabla `Movie` y seleccione **Ver datos**:</span><span class="sxs-lookup"><span data-stu-id="53844-212">Right-click on the `Movie` table and select **View Data**:</span></span>
+* <span data-ttu-id="b8b63-212">Haga clic con el botón derecho en la tabla `Movie` y seleccione **Ver datos**:</span><span class="sxs-lookup"><span data-stu-id="b8b63-212">Right-click on the `Movie` table and select **View Data**:</span></span>
 
   ![Tabla Movie abierta mostrando datos de la tabla](sql/_static/vd22.png)
 
-# <a name="visual-studio-code--visual-studio-for-mac"></a>[<span data-ttu-id="53844-214">Visual Studio Code/Visual Studio para Mac</span><span class="sxs-lookup"><span data-stu-id="53844-214">Visual Studio Code / Visual Studio for Mac</span></span>](#tab/visual-studio-code+visual-studio-mac)
+# <a name="visual-studio-code--visual-studio-for-mac"></a>[<span data-ttu-id="b8b63-214">Visual Studio Code/Visual Studio para Mac</span><span class="sxs-lookup"><span data-stu-id="b8b63-214">Visual Studio Code / Visual Studio for Mac</span></span>](#tab/visual-studio-code+visual-studio-mac)
 
-## <a name="sqlite"></a><span data-ttu-id="53844-215">SQLite</span><span class="sxs-lookup"><span data-stu-id="53844-215">SQLite</span></span>
+## <a name="sqlite"></a><span data-ttu-id="b8b63-215">SQLite</span><span class="sxs-lookup"><span data-stu-id="b8b63-215">SQLite</span></span>
 
-<span data-ttu-id="53844-216">Según la información del sitio web de [SQLite](https://www.sqlite.org/):</span><span class="sxs-lookup"><span data-stu-id="53844-216">The [SQLite](https://www.sqlite.org/) website states:</span></span>
+<span data-ttu-id="b8b63-216">Según la información del sitio web de [SQLite](https://www.sqlite.org/):</span><span class="sxs-lookup"><span data-stu-id="b8b63-216">The [SQLite](https://www.sqlite.org/) website states:</span></span>
 
-> <span data-ttu-id="53844-217">SQLite es un motor de base de datos SQL independiente, de alta confiabilidad, insertado, con características completas y dominio público.</span><span class="sxs-lookup"><span data-stu-id="53844-217">SQLite is a self-contained, high-reliability, embedded, full-featured, public-domain, SQL database engine.</span></span> <span data-ttu-id="53844-218">SQLite es el motor de base de datos más usado en el mundo.</span><span class="sxs-lookup"><span data-stu-id="53844-218">SQLite is the most used database engine in the world.</span></span>
+> <span data-ttu-id="b8b63-217">SQLite es un motor de base de datos SQL independiente, de alta confiabilidad, insertado, con características completas y dominio público.</span><span class="sxs-lookup"><span data-stu-id="b8b63-217">SQLite is a self-contained, high-reliability, embedded, full-featured, public-domain, SQL database engine.</span></span> <span data-ttu-id="b8b63-218">SQLite es el motor de base de datos más usado en el mundo.</span><span class="sxs-lookup"><span data-stu-id="b8b63-218">SQLite is the most used database engine in the world.</span></span>
 
-<span data-ttu-id="53844-219">Existen muchas herramientas de terceros que se pueden descargar para administrar y ver una base de datos de SQLite.</span><span class="sxs-lookup"><span data-stu-id="53844-219">There are many third-party tools you can download to manage and view a SQLite database.</span></span> <span data-ttu-id="53844-220">La imagen de abajo es de [DB Browser for SQLite](https://sqlitebrowser.org/).</span><span class="sxs-lookup"><span data-stu-id="53844-220">The image below is from [DB Browser for SQLite](https://sqlitebrowser.org/).</span></span> <span data-ttu-id="53844-221">Si tiene una herramienta favorita de SQLite, deje un comentario sobre lo que le gusta de ella.</span><span class="sxs-lookup"><span data-stu-id="53844-221">If you have a favorite SQLite tool, leave a comment on what you like about it.</span></span>
+<span data-ttu-id="b8b63-219">Existen muchas herramientas de terceros que se pueden descargar para administrar y ver una base de datos de SQLite.</span><span class="sxs-lookup"><span data-stu-id="b8b63-219">There are many third-party tools you can download to manage and view a SQLite database.</span></span> <span data-ttu-id="b8b63-220">La imagen de abajo es de [DB Browser for SQLite](https://sqlitebrowser.org/).</span><span class="sxs-lookup"><span data-stu-id="b8b63-220">The image below is from [DB Browser for SQLite](https://sqlitebrowser.org/).</span></span> <span data-ttu-id="b8b63-221">Si tiene una herramienta favorita de SQLite, deje un comentario sobre lo que le gusta de ella.</span><span class="sxs-lookup"><span data-stu-id="b8b63-221">If you have a favorite SQLite tool, leave a comment on what you like about it.</span></span>
 
 ![DB Browser for SQLite mostrando una base de datos de películas](~/tutorials/first-mvc-app-xplat/working-with-sql/_static/dbb.png)
 
 > [!NOTE]
-> <span data-ttu-id="53844-223">Para este tutorial, se usa la característica de las *migraciones* de Entity Framework Core siempre que sea posible.</span><span class="sxs-lookup"><span data-stu-id="53844-223">For this tutorial, the Entity Framework Core *migrations* feature is used where possible.</span></span> <span data-ttu-id="53844-224">Las migraciones actualizan el esquema de la base de datos para que coincida con los cambios en el modelo de datos.</span><span class="sxs-lookup"><span data-stu-id="53844-224">Migrations updates the database schema to match changes in the data model.</span></span> <span data-ttu-id="53844-225">Aun así, las migraciones solo pueden realizar los tipos de cambios que admite el proveedor de EF Core; las capacidades del de SQLite son limitadas.</span><span class="sxs-lookup"><span data-stu-id="53844-225">However, migrations can only do the kinds of changes that the EF Core provider supports, and the SQLite provider's capabilities are limited.</span></span> <span data-ttu-id="53844-226">Por ejemplo, se permite agregar una columna, pero no eliminarla ni cambiarla.</span><span class="sxs-lookup"><span data-stu-id="53844-226">For example, adding a column is supported, but removing or changing a column is not supported.</span></span> <span data-ttu-id="53844-227">Si se crea una migración para quitar o cambiar una columna, el comando `ef migrations add` se ejecuta correctamente, pero el comando `ef database update` produce un error.</span><span class="sxs-lookup"><span data-stu-id="53844-227">If a migration is created to remove or change a column, the `ef migrations add` command succeeds but the `ef database update` command fails.</span></span> <span data-ttu-id="53844-228">Debido a estas limitaciones, este tutorial no usa las migraciones para realizar cambios en el esquema de SQLite.</span><span class="sxs-lookup"><span data-stu-id="53844-228">Due to these limitations, this tutorial doesn't use migrations for SQLite schema changes.</span></span> <span data-ttu-id="53844-229">En su lugar, cuando cambie el esquema, la base de datos se quitará y se volverá a crear.</span><span class="sxs-lookup"><span data-stu-id="53844-229">Instead, when the schema changes, the database is dropped and re-created.</span></span>
+> <span data-ttu-id="b8b63-223">Para este tutorial, se usa la característica de las *migraciones* de Entity Framework Core siempre que sea posible.</span><span class="sxs-lookup"><span data-stu-id="b8b63-223">For this tutorial, the Entity Framework Core *migrations* feature is used where possible.</span></span> <span data-ttu-id="b8b63-224">Las migraciones actualizan el esquema de la base de datos para que coincida con los cambios en el modelo de datos.</span><span class="sxs-lookup"><span data-stu-id="b8b63-224">Migrations updates the database schema to match changes in the data model.</span></span> <span data-ttu-id="b8b63-225">Aun así, las migraciones solo pueden realizar los tipos de cambios que admite el proveedor de EF Core; las capacidades del de SQLite son limitadas.</span><span class="sxs-lookup"><span data-stu-id="b8b63-225">However, migrations can only do the kinds of changes that the EF Core provider supports, and the SQLite provider's capabilities are limited.</span></span> <span data-ttu-id="b8b63-226">Por ejemplo, se permite agregar una columna, pero no eliminarla ni cambiarla.</span><span class="sxs-lookup"><span data-stu-id="b8b63-226">For example, adding a column is supported, but removing or changing a column is not supported.</span></span> <span data-ttu-id="b8b63-227">Si se crea una migración para quitar o cambiar una columna, el comando `ef migrations add` se ejecuta correctamente, pero el comando `ef database update` produce un error.</span><span class="sxs-lookup"><span data-stu-id="b8b63-227">If a migration is created to remove or change a column, the `ef migrations add` command succeeds but the `ef database update` command fails.</span></span> <span data-ttu-id="b8b63-228">Debido a estas limitaciones, este tutorial no usa las migraciones para realizar cambios en el esquema de SQLite.</span><span class="sxs-lookup"><span data-stu-id="b8b63-228">Due to these limitations, this tutorial doesn't use migrations for SQLite schema changes.</span></span> <span data-ttu-id="b8b63-229">En su lugar, cuando cambie el esquema, la base de datos se quitará y se volverá a crear.</span><span class="sxs-lookup"><span data-stu-id="b8b63-229">Instead, when the schema changes, the database is dropped and re-created.</span></span>
 >
-><span data-ttu-id="53844-230">La solución alternativa para las limitaciones de SQLite consiste en escribir de forma manual el código de migraciones para llevar a cabo una recompilación de la tabla cuando cambie algún elemento de esta.</span><span class="sxs-lookup"><span data-stu-id="53844-230">The workaround for the SQLite limitations is to manually write migrations code to perform a table rebuild when something in the table changes.</span></span> <span data-ttu-id="53844-231">La recompilación de una tabla implica lo siguiente:</span><span class="sxs-lookup"><span data-stu-id="53844-231">A table rebuild involves:</span></span>
+><span data-ttu-id="b8b63-230">La solución alternativa para las limitaciones de SQLite consiste en escribir de forma manual el código de migraciones para llevar a cabo una recompilación de la tabla cuando cambie algún elemento de esta.</span><span class="sxs-lookup"><span data-stu-id="b8b63-230">The workaround for the SQLite limitations is to manually write migrations code to perform a table rebuild when something in the table changes.</span></span> <span data-ttu-id="b8b63-231">La recompilación de una tabla implica lo siguiente:</span><span class="sxs-lookup"><span data-stu-id="b8b63-231">A table rebuild involves:</span></span>
 >
->* <span data-ttu-id="53844-232">Crear una tabla.</span><span class="sxs-lookup"><span data-stu-id="53844-232">Creating a new table.</span></span>
->* <span data-ttu-id="53844-233">Copiar datos de la tabla antigua a la nueva tabla.</span><span class="sxs-lookup"><span data-stu-id="53844-233">Copying data from the old table to the new table.</span></span>
->* <span data-ttu-id="53844-234">Eliminar la tabla anterior.</span><span class="sxs-lookup"><span data-stu-id="53844-234">Dropping the old table.</span></span>
->* <span data-ttu-id="53844-235">Cambiar el nombre de la tabla nueva.</span><span class="sxs-lookup"><span data-stu-id="53844-235">Renaming the new table.</span></span>
+>* <span data-ttu-id="b8b63-232">Crear una tabla.</span><span class="sxs-lookup"><span data-stu-id="b8b63-232">Creating a new table.</span></span>
+>* <span data-ttu-id="b8b63-233">Copiar datos de la tabla antigua a la nueva tabla.</span><span class="sxs-lookup"><span data-stu-id="b8b63-233">Copying data from the old table to the new table.</span></span>
+>* <span data-ttu-id="b8b63-234">Eliminar la tabla anterior.</span><span class="sxs-lookup"><span data-stu-id="b8b63-234">Dropping the old table.</span></span>
+>* <span data-ttu-id="b8b63-235">Cambiar el nombre de la tabla nueva.</span><span class="sxs-lookup"><span data-stu-id="b8b63-235">Renaming the new table.</span></span>
 >
-><span data-ttu-id="53844-236">Para obtener más información, vea los siguientes recursos:</span><span class="sxs-lookup"><span data-stu-id="53844-236">For more information, see the following resources:</span></span>
-> * [<span data-ttu-id="53844-237">Limitaciones del proveedor de base de datos SQLite para EF Core</span><span class="sxs-lookup"><span data-stu-id="53844-237">SQLite EF Core Database Provider Limitations</span></span>](/ef/core/providers/sqlite/limitations)
-> * [<span data-ttu-id="53844-238">Personalización del código de migración</span><span class="sxs-lookup"><span data-stu-id="53844-238">Customize migration code</span></span>](/ef/core/managing-schemas/migrations/#customize-migration-code)
-> * [<span data-ttu-id="53844-239">Propagación de los datos</span><span class="sxs-lookup"><span data-stu-id="53844-239">Data seeding</span></span>](/ef/core/modeling/data-seeding)
-> * [<span data-ttu-id="53844-240">Instrucción ALTER TABLE de SQLite</span><span class="sxs-lookup"><span data-stu-id="53844-240">SQLite ALTER TABLE statement</span></span>](https://sqlite.org/lang_altertable.html)
+><span data-ttu-id="b8b63-236">Para obtener más información, vea los siguientes recursos:</span><span class="sxs-lookup"><span data-stu-id="b8b63-236">For more information, see the following resources:</span></span>
+> * [<span data-ttu-id="b8b63-237">Limitaciones del proveedor de base de datos SQLite para EF Core</span><span class="sxs-lookup"><span data-stu-id="b8b63-237">SQLite EF Core Database Provider Limitations</span></span>](/ef/core/providers/sqlite/limitations)
+> * [<span data-ttu-id="b8b63-238">Personalización del código de migración</span><span class="sxs-lookup"><span data-stu-id="b8b63-238">Customize migration code</span></span>](/ef/core/managing-schemas/migrations/#customize-migration-code)
+> * [<span data-ttu-id="b8b63-239">Propagación de los datos</span><span class="sxs-lookup"><span data-stu-id="b8b63-239">Data seeding</span></span>](/ef/core/modeling/data-seeding)
+> * [<span data-ttu-id="b8b63-240">Instrucción ALTER TABLE de SQLite</span><span class="sxs-lookup"><span data-stu-id="b8b63-240">SQLite ALTER TABLE statement</span></span>](https://sqlite.org/lang_altertable.html)
 
 ---
 
-## <a name="seed-the-database"></a><span data-ttu-id="53844-241">Inicializar la base de datos</span><span class="sxs-lookup"><span data-stu-id="53844-241">Seed the database</span></span>
+## <a name="seed-the-database"></a><span data-ttu-id="b8b63-241">Inicializar la base de datos</span><span class="sxs-lookup"><span data-stu-id="b8b63-241">Seed the database</span></span>
 
-<span data-ttu-id="53844-242">Cree una nueva clase denominada `SeedData` en la carpeta *Models* con el código siguiente:</span><span class="sxs-lookup"><span data-stu-id="53844-242">Create a new class named `SeedData` in the *Models* folder with the following code:</span></span>
+<span data-ttu-id="b8b63-242">Cree una nueva clase denominada `SeedData` en la carpeta *Models* con el código siguiente:</span><span class="sxs-lookup"><span data-stu-id="b8b63-242">Create a new class named `SeedData` in the *Models* folder with the following code:</span></span>
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Models/SeedData.cs?name=snippet_1)]
 
-<span data-ttu-id="53844-243">Si hay alguna película en la base de datos, se devuelve el inicializador y no se agrega ninguna película.</span><span class="sxs-lookup"><span data-stu-id="53844-243">If there are any movies in the database, the seed initializer returns and no movies are added.</span></span>
+<span data-ttu-id="b8b63-243">Si hay alguna película en la base de datos, se devuelve el inicializador y no se agrega ninguna película.</span><span class="sxs-lookup"><span data-stu-id="b8b63-243">If there are any movies in the database, the seed initializer returns and no movies are added.</span></span>
 
 ```csharp
 if (context.Movie.Any())
@@ -287,141 +287,141 @@ if (context.Movie.Any())
 
 <a name="si"></a>
 
-### <a name="add-the-seed-initializer"></a><span data-ttu-id="53844-244">Agregar el inicializador</span><span class="sxs-lookup"><span data-stu-id="53844-244">Add the seed initializer</span></span>
+### <a name="add-the-seed-initializer"></a><span data-ttu-id="b8b63-244">Agregar el inicializador</span><span class="sxs-lookup"><span data-stu-id="b8b63-244">Add the seed initializer</span></span>
 
-<span data-ttu-id="53844-245">Reemplace su contenido por el código siguiente:</span><span class="sxs-lookup"><span data-stu-id="53844-245">Replace the contents of the *Program.cs* with the following code:</span></span>
+<span data-ttu-id="b8b63-245">Reemplace su contenido por el código siguiente:</span><span class="sxs-lookup"><span data-stu-id="b8b63-245">Replace the contents of the *Program.cs* with the following code:</span></span>
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Program.cs)]
 
-<span data-ttu-id="53844-246">En el código anterior, el método `Main` se ha modificado para hacer lo siguiente:</span><span class="sxs-lookup"><span data-stu-id="53844-246">In the previous code, the `Main` method has been modified to do the following:</span></span>
+<span data-ttu-id="b8b63-246">En el código anterior, el método `Main` se ha modificado para hacer lo siguiente:</span><span class="sxs-lookup"><span data-stu-id="b8b63-246">In the previous code, the `Main` method has been modified to do the following:</span></span>
 
-* <span data-ttu-id="53844-247">Obtener una instancia del contexto de base de datos desde el contenedor de inserción de dependencias.</span><span class="sxs-lookup"><span data-stu-id="53844-247">Get a database context instance from the dependency injection container.</span></span>
-* <span data-ttu-id="53844-248">Llame al método `seedData.Initialize`, pasándole la instancia de contexto de la base de datos.</span><span class="sxs-lookup"><span data-stu-id="53844-248">Call the `seedData.Initialize` method, passing to it the database context instance.</span></span>
-* <span data-ttu-id="53844-249">Eliminar el contexto cuando el método de inicialización finalice.</span><span class="sxs-lookup"><span data-stu-id="53844-249">Dispose the context when the seed method completes.</span></span> <span data-ttu-id="53844-250">La [instrucción using](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/using-statement) garantiza que se elimine el contexto.</span><span class="sxs-lookup"><span data-stu-id="53844-250">The [using statement](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/using-statement) ensures the context is disposed.</span></span>
+* <span data-ttu-id="b8b63-247">Obtener una instancia del contexto de base de datos desde el contenedor de inserción de dependencias.</span><span class="sxs-lookup"><span data-stu-id="b8b63-247">Get a database context instance from the dependency injection container.</span></span>
+* <span data-ttu-id="b8b63-248">Llame al método `seedData.Initialize`, pasándole la instancia de contexto de la base de datos.</span><span class="sxs-lookup"><span data-stu-id="b8b63-248">Call the `seedData.Initialize` method, passing to it the database context instance.</span></span>
+* <span data-ttu-id="b8b63-249">Eliminar el contexto cuando el método de inicialización finalice.</span><span class="sxs-lookup"><span data-stu-id="b8b63-249">Dispose the context when the seed method completes.</span></span> <span data-ttu-id="b8b63-250">La [instrucción using](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/using-statement) garantiza que se elimine el contexto.</span><span class="sxs-lookup"><span data-stu-id="b8b63-250">The [using statement](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/using-statement) ensures the context is disposed.</span></span>
 
-<span data-ttu-id="53844-251">La siguiente excepción se produce cuando no se ha ejecutado `Update-Database`:</span><span class="sxs-lookup"><span data-stu-id="53844-251">The following exception occurs when `Update-Database` has not been run:</span></span>
+<span data-ttu-id="b8b63-251">La siguiente excepción se produce cuando no se ha ejecutado `Update-Database`:</span><span class="sxs-lookup"><span data-stu-id="b8b63-251">The following exception occurs when `Update-Database` has not been run:</span></span>
 
 > `SqlException: Cannot open database "RazorPagesMovieContext-" requested by the login. The login failed.`
 > `Login failed for user 'user name'.`
 
-### <a name="test-the-app"></a><span data-ttu-id="53844-252">Prueba de la aplicación</span><span class="sxs-lookup"><span data-stu-id="53844-252">Test the app</span></span>
+### <a name="test-the-app"></a><span data-ttu-id="b8b63-252">Prueba de la aplicación</span><span class="sxs-lookup"><span data-stu-id="b8b63-252">Test the app</span></span>
 
-# <a name="visual-studio"></a>[<span data-ttu-id="53844-253">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="53844-253">Visual Studio</span></span>](#tab/visual-studio)
+# <a name="visual-studio"></a>[<span data-ttu-id="b8b63-253">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="b8b63-253">Visual Studio</span></span>](#tab/visual-studio)
 
-* <span data-ttu-id="53844-254">Elimine todos los registros de la base de datos.</span><span class="sxs-lookup"><span data-stu-id="53844-254">Delete all the records in the database.</span></span> <span data-ttu-id="53844-255">Use los vínculos de eliminación en el explorador o en [SSOX](xref:tutorials/razor-pages/new-field#ssox).</span><span class="sxs-lookup"><span data-stu-id="53844-255">Use the delete links in the browser or from [SSOX](xref:tutorials/razor-pages/new-field#ssox).</span></span>
-* <span data-ttu-id="53844-256">Obligue a la aplicación a inicializarse (llame a los métodos de la clase `Startup`) para que se ejecute el método de inicialización.</span><span class="sxs-lookup"><span data-stu-id="53844-256">Force the app to initialize by calling the methods in the `Startup` class, so the seed method runs.</span></span> <span data-ttu-id="53844-257">Para forzar la inicialización, se debe detener y reiniciar IIS Express.</span><span class="sxs-lookup"><span data-stu-id="53844-257">To force initialization, IIS Express must be stopped and restarted.</span></span> <span data-ttu-id="53844-258">Detenga y reinicie IIS con cualquiera de los métodos siguientes:</span><span class="sxs-lookup"><span data-stu-id="53844-258">Stop and restart IIS with any of the following approaches:</span></span>
+* <span data-ttu-id="b8b63-254">Elimine todos los registros de la base de datos.</span><span class="sxs-lookup"><span data-stu-id="b8b63-254">Delete all the records in the database.</span></span> <span data-ttu-id="b8b63-255">Use los vínculos de eliminación en el explorador o en [SSOX](xref:tutorials/razor-pages/new-field#ssox).</span><span class="sxs-lookup"><span data-stu-id="b8b63-255">Use the delete links in the browser or from [SSOX](xref:tutorials/razor-pages/new-field#ssox).</span></span>
+* <span data-ttu-id="b8b63-256">Obligue a la aplicación a inicializarse (llame a los métodos de la clase `Startup`) para que se ejecute el método de inicialización.</span><span class="sxs-lookup"><span data-stu-id="b8b63-256">Force the app to initialize by calling the methods in the `Startup` class, so the seed method runs.</span></span> <span data-ttu-id="b8b63-257">Para forzar la inicialización, se debe detener y reiniciar IIS Express.</span><span class="sxs-lookup"><span data-stu-id="b8b63-257">To force initialization, IIS Express must be stopped and restarted.</span></span> <span data-ttu-id="b8b63-258">Detenga y reinicie IIS con cualquiera de los métodos siguientes:</span><span class="sxs-lookup"><span data-stu-id="b8b63-258">Stop and restart IIS with any of the following approaches:</span></span>
 
-  * <span data-ttu-id="53844-259">Haga clic con el botón derecho en el icono Bandeja del sistema de IIS Express del área de notificación y pulse en **Salir** o en **Detener sitio**:</span><span class="sxs-lookup"><span data-stu-id="53844-259">Right-click the IIS Express system tray icon in the notification area and tap **Exit** or **Stop Site**:</span></span>
+  * <span data-ttu-id="b8b63-259">Haga clic con el botón derecho en el icono Bandeja del sistema de IIS Express del área de notificación y pulse en **Salir** o en **Detener sitio**:</span><span class="sxs-lookup"><span data-stu-id="b8b63-259">Right-click the IIS Express system tray icon in the notification area and tap **Exit** or **Stop Site**:</span></span>
 
     ![Icono Bandeja del sistema de IIS Express](../first-mvc-app/working-with-sql/_static/iisExIcon.png)
 
     ![Menú contextual](sql/_static/stopIIS.png)
 
-    * <span data-ttu-id="53844-262">Si está ejecutando la aplicación en modo de no depuración, presione <kbd>F5</kbd> para ejecutar en modo de depuración.</span><span class="sxs-lookup"><span data-stu-id="53844-262">If the app is running in non-debug mode, press <kbd>F5</kbd> to run in debug mode.</span></span>
-    * <span data-ttu-id="53844-263">Si la aplicación está en modo de depuración, detenga el depurador y presione <kbd>F5</kbd>.</span><span class="sxs-lookup"><span data-stu-id="53844-263">If the app in debug mode, stop the debugger and press <kbd>F5</kbd>.</span></span>
+    * <span data-ttu-id="b8b63-262">Si está ejecutando la aplicación en modo de no depuración, presione <kbd>F5</kbd> para ejecutar en modo de depuración.</span><span class="sxs-lookup"><span data-stu-id="b8b63-262">If the app is running in non-debug mode, press <kbd>F5</kbd> to run in debug mode.</span></span>
+    * <span data-ttu-id="b8b63-263">Si la aplicación está en modo de depuración, detenga el depurador y presione <kbd>F5</kbd>.</span><span class="sxs-lookup"><span data-stu-id="b8b63-263">If the app in debug mode, stop the debugger and press <kbd>F5</kbd>.</span></span>
 
-# <a name="visual-studio-code--visual-studio-for-mac"></a>[<span data-ttu-id="53844-264">Visual Studio Code/Visual Studio para Mac</span><span class="sxs-lookup"><span data-stu-id="53844-264">Visual Studio Code / Visual Studio for Mac</span></span>](#tab/visual-studio-code+visual-studio-mac)
+# <a name="visual-studio-code--visual-studio-for-mac"></a>[<span data-ttu-id="b8b63-264">Visual Studio Code/Visual Studio para Mac</span><span class="sxs-lookup"><span data-stu-id="b8b63-264">Visual Studio Code / Visual Studio for Mac</span></span>](#tab/visual-studio-code+visual-studio-mac)
 
-<span data-ttu-id="53844-265">Elimine todos los registros de la base de datos para que se ejecute el método de inicialización.</span><span class="sxs-lookup"><span data-stu-id="53844-265">Delete all the records in the database, so the seed method will run.</span></span> <span data-ttu-id="53844-266">Detenga e inicie la aplicación para inicializar la base de datos.</span><span class="sxs-lookup"><span data-stu-id="53844-266">Stop and start the app to seed the database.</span></span>
+<span data-ttu-id="b8b63-265">Elimine todos los registros de la base de datos para que se ejecute el método de inicialización.</span><span class="sxs-lookup"><span data-stu-id="b8b63-265">Delete all the records in the database, so the seed method will run.</span></span> <span data-ttu-id="b8b63-266">Detenga e inicie la aplicación para inicializar la base de datos.</span><span class="sxs-lookup"><span data-stu-id="b8b63-266">Stop and start the app to seed the database.</span></span>
 
 ---
 
-<span data-ttu-id="53844-267">La aplicación muestra los datos inicializados:</span><span class="sxs-lookup"><span data-stu-id="53844-267">The app shows the seeded data:</span></span>
+<span data-ttu-id="b8b63-267">La aplicación muestra los datos inicializados:</span><span class="sxs-lookup"><span data-stu-id="b8b63-267">The app shows the seeded data:</span></span>
 
 ![La aplicación Movie se abre en Chrome y muestra datos de la película](sql/_static/m55https.png)
 
-## <a name="additional-resources"></a><span data-ttu-id="53844-269">Recursos adicionales</span><span class="sxs-lookup"><span data-stu-id="53844-269">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="b8b63-269">Recursos adicionales</span><span class="sxs-lookup"><span data-stu-id="b8b63-269">Additional resources</span></span>
 
 > [!div class="step-by-step"]
-> <span data-ttu-id="53844-270">[Anterior: Razor Pages con scaffolding](xref:tutorials/razor-pages/page)
-> [Siguiente: Actualización de las páginas](xref:tutorials/razor-pages/da1)</span><span class="sxs-lookup"><span data-stu-id="53844-270">[Previous: Scaffolded Razor Pages](xref:tutorials/razor-pages/page)
+> <span data-ttu-id="b8b63-270">[Anterior: Razor Pages con scaffolding](xref:tutorials/razor-pages/page)
+> [Siguiente: Actualización de las páginas](xref:tutorials/razor-pages/da1)</span><span class="sxs-lookup"><span data-stu-id="b8b63-270">[Previous: Scaffolded Razor Pages](xref:tutorials/razor-pages/page)
 [Next: Update the pages](xref:tutorials/razor-pages/da1)</span></span>
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-3.0"
 
-<span data-ttu-id="53844-271">[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start) ([cómo descargarlo](xref:index#how-to-download-a-sample)).</span><span class="sxs-lookup"><span data-stu-id="53844-271">[View or download sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start) ([how to download](xref:index#how-to-download-a-sample)).</span></span>
+<span data-ttu-id="b8b63-271">[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start) ([cómo descargarlo](xref:index#how-to-download-a-sample)).</span><span class="sxs-lookup"><span data-stu-id="b8b63-271">[View or download sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start) ([how to download](xref:index#how-to-download-a-sample)).</span></span>
 
-<span data-ttu-id="53844-272">El objeto `RazorPagesMovieContext` controla la tarea de conexión a la base de datos y asignación de objetos `Movie` a los registros de la base de datos.</span><span class="sxs-lookup"><span data-stu-id="53844-272">The `RazorPagesMovieContext` object handles the task of connecting to the database and mapping `Movie` objects to database records.</span></span> <span data-ttu-id="53844-273">El contexto de base de datos se registra con el contenedor de [inserción de dependencias](xref:fundamentals/dependency-injection) en el método `ConfigureServices` de *Startup.cs*:</span><span class="sxs-lookup"><span data-stu-id="53844-273">The database context is registered with the [Dependency Injection](xref:fundamentals/dependency-injection) container in the `ConfigureServices` method in *Startup.cs*:</span></span>
+<span data-ttu-id="b8b63-272">El objeto `RazorPagesMovieContext` controla la tarea de conexión a la base de datos y asignación de objetos `Movie` a los registros de la base de datos.</span><span class="sxs-lookup"><span data-stu-id="b8b63-272">The `RazorPagesMovieContext` object handles the task of connecting to the database and mapping `Movie` objects to database records.</span></span> <span data-ttu-id="b8b63-273">El contexto de base de datos se registra con el contenedor de [inserción de dependencias](xref:fundamentals/dependency-injection) en el método `ConfigureServices` de *Startup.cs*:</span><span class="sxs-lookup"><span data-stu-id="b8b63-273">The database context is registered with the [Dependency Injection](xref:fundamentals/dependency-injection) container in the `ConfigureServices` method in *Startup.cs*:</span></span>
 
-# <a name="visual-studio"></a>[<span data-ttu-id="53844-274">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="53844-274">Visual Studio</span></span>](#tab/visual-studio)
+# <a name="visual-studio"></a>[<span data-ttu-id="b8b63-274">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="b8b63-274">Visual Studio</span></span>](#tab/visual-studio)
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie22/Startup.cs?name=snippet_ConfigureServices&highlight=15-18)]
 
-# <a name="visual-studio-code--visual-studio-for-mac"></a>[<span data-ttu-id="53844-275">Visual Studio Code/Visual Studio para Mac</span><span class="sxs-lookup"><span data-stu-id="53844-275">Visual Studio Code / Visual Studio for Mac</span></span>](#tab/visual-studio-code+visual-studio-mac)
+# <a name="visual-studio-code--visual-studio-for-mac"></a>[<span data-ttu-id="b8b63-275">Visual Studio Code/Visual Studio para Mac</span><span class="sxs-lookup"><span data-stu-id="b8b63-275">Visual Studio Code / Visual Studio for Mac</span></span>](#tab/visual-studio-code+visual-studio-mac)
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie22/Startup.cs?name=snippet_UseSqlite&highlight=11-12)]
 
 ---
 
-<span data-ttu-id="53844-276">Para más información sobre los modelos empleados en `ConfigureServices`, vea:</span><span class="sxs-lookup"><span data-stu-id="53844-276">For more information on the methods used in `ConfigureServices`, see:</span></span>
+<span data-ttu-id="b8b63-276">Para más información sobre los modelos empleados en `ConfigureServices`, vea:</span><span class="sxs-lookup"><span data-stu-id="b8b63-276">For more information on the methods used in `ConfigureServices`, see:</span></span>
 
-* <span data-ttu-id="53844-277">[Compatibilidad con el Reglamento general de protección de datos (RGPD) en ASP.NET Core](xref:security/gdpr) para `CookiePolicyOptions`.</span><span class="sxs-lookup"><span data-stu-id="53844-277">[EU General Data Protection Regulation (GDPR) support in ASP.NET Core](xref:security/gdpr) for `CookiePolicyOptions`.</span></span>
-* [<span data-ttu-id="53844-278">SetCompatibilityVersion</span><span class="sxs-lookup"><span data-stu-id="53844-278">SetCompatibilityVersion</span></span>](xref:mvc/compatibility-version)
+* <span data-ttu-id="b8b63-277">[Compatibilidad con el Reglamento general de protección de datos (RGPD) en ASP.NET Core](xref:security/gdpr) para `CookiePolicyOptions`.</span><span class="sxs-lookup"><span data-stu-id="b8b63-277">[EU General Data Protection Regulation (GDPR) support in ASP.NET Core](xref:security/gdpr) for `CookiePolicyOptions`.</span></span>
+* [<span data-ttu-id="b8b63-278">SetCompatibilityVersion</span><span class="sxs-lookup"><span data-stu-id="b8b63-278">SetCompatibilityVersion</span></span>](xref:mvc/compatibility-version)
 
-<span data-ttu-id="53844-279">El sistema [Configuración](xref:fundamentals/configuration/index) de ASP.NET Core lee la clave `ConnectionString`.</span><span class="sxs-lookup"><span data-stu-id="53844-279">The ASP.NET Core [Configuration](xref:fundamentals/configuration/index) system reads the `ConnectionString` key.</span></span> <span data-ttu-id="53844-280">Para el desarrollo local, la configuración obtiene la cadena de conexión del archivo *appsettings.json* .</span><span class="sxs-lookup"><span data-stu-id="53844-280">For local development, configuration gets the connection string from the *appsettings.json* file.</span></span>
+<span data-ttu-id="b8b63-279">El sistema [Configuración](xref:fundamentals/configuration/index) de ASP.NET Core lee la clave `ConnectionString`.</span><span class="sxs-lookup"><span data-stu-id="b8b63-279">The ASP.NET Core [Configuration](xref:fundamentals/configuration/index) system reads the `ConnectionString` key.</span></span> <span data-ttu-id="b8b63-280">Para el desarrollo local, la configuración obtiene la cadena de conexión del archivo *appsettings.json* .</span><span class="sxs-lookup"><span data-stu-id="b8b63-280">For local development, configuration gets the connection string from the *appsettings.json* file.</span></span>
 
-# <a name="visual-studio"></a>[<span data-ttu-id="53844-281">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="53844-281">Visual Studio</span></span>](#tab/visual-studio)
+# <a name="visual-studio"></a>[<span data-ttu-id="b8b63-281">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="b8b63-281">Visual Studio</span></span>](#tab/visual-studio)
 
-<span data-ttu-id="53844-282">La cadena de conexión generada será similar a la siguiente:</span><span class="sxs-lookup"><span data-stu-id="53844-282">The generated connection string will be similar to the following:</span></span>
+<span data-ttu-id="b8b63-282">La cadena de conexión generada será similar a la siguiente:</span><span class="sxs-lookup"><span data-stu-id="b8b63-282">The generated connection string will be similar to the following:</span></span>
 
 [!code-json[](razor-pages-start/sample/RazorPagesMovie22/appsettings.json)]
 
-# <a name="visual-studio-code"></a>[<span data-ttu-id="53844-283">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="53844-283">Visual Studio Code</span></span>](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[<span data-ttu-id="b8b63-283">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="b8b63-283">Visual Studio Code</span></span>](#tab/visual-studio-code)
 
 [!code-json[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/appsettings_SQLite.json?highlight=8-10)]
 
-# <a name="visual-studio-for-mac"></a>[<span data-ttu-id="53844-284">Visual Studio para Mac</span><span class="sxs-lookup"><span data-stu-id="53844-284">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[<span data-ttu-id="b8b63-284">Visual Studio para Mac</span><span class="sxs-lookup"><span data-stu-id="b8b63-284">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
 
 [!code-json[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/appsettings_SQLite.json?highlight=8-10)]
 
 ---
 
-<span data-ttu-id="53844-285">Cuando la aplicación se implementa en un servidor de prueba o producción, se puede utilizar una variable de entorno para establecer la cadena de conexión en un servidor de base de datos de prueba o producción.</span><span class="sxs-lookup"><span data-stu-id="53844-285">When the app is deployed to a test or production server, an environment variable can be used to set the connection string to a test or production database server.</span></span> <span data-ttu-id="53844-286">Para más información, vea [Configuración](xref:fundamentals/configuration/index).</span><span class="sxs-lookup"><span data-stu-id="53844-286">See [Configuration](xref:fundamentals/configuration/index) for more information.</span></span>
+<span data-ttu-id="b8b63-285">Cuando la aplicación se implementa en un servidor de prueba o producción, se puede utilizar una variable de entorno para establecer la cadena de conexión en un servidor de base de datos de prueba o producción.</span><span class="sxs-lookup"><span data-stu-id="b8b63-285">When the app is deployed to a test or production server, an environment variable can be used to set the connection string to a test or production database server.</span></span> <span data-ttu-id="b8b63-286">Para más información, vea [Configuración](xref:fundamentals/configuration/index).</span><span class="sxs-lookup"><span data-stu-id="b8b63-286">See [Configuration](xref:fundamentals/configuration/index) for more information.</span></span>
 
-# <a name="visual-studio"></a>[<span data-ttu-id="53844-287">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="53844-287">Visual Studio</span></span>](#tab/visual-studio)
+# <a name="visual-studio"></a>[<span data-ttu-id="b8b63-287">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="b8b63-287">Visual Studio</span></span>](#tab/visual-studio)
 
-## <a name="sql-server-express-localdb"></a><span data-ttu-id="53844-288">SQL Server Express LocalDB</span><span class="sxs-lookup"><span data-stu-id="53844-288">SQL Server Express LocalDB</span></span>
+## <a name="sql-server-express-localdb"></a><span data-ttu-id="b8b63-288">SQL Server Express LocalDB</span><span class="sxs-lookup"><span data-stu-id="b8b63-288">SQL Server Express LocalDB</span></span>
 
-<span data-ttu-id="53844-289">LocalDB es una versión ligera del motor de base de datos de SQL Server Express dirigida al desarrollo de programas.</span><span class="sxs-lookup"><span data-stu-id="53844-289">LocalDB is a lightweight version of the SQL Server Express database engine that's targeted for program development.</span></span> <span data-ttu-id="53844-290">LocalDB se inicia a petición y se ejecuta en modo de usuario, sin necesidad de una configuración compleja.</span><span class="sxs-lookup"><span data-stu-id="53844-290">LocalDB starts on demand and runs in user mode, so there's no complex configuration.</span></span> <span data-ttu-id="53844-291">De forma predeterminada, la base de datos LocalDB crea archivos `*.mdf` en el directorio `C:/Users/<user/>`.</span><span class="sxs-lookup"><span data-stu-id="53844-291">By default, LocalDB database creates `*.mdf` files in the `C:/Users/<user/>` directory.</span></span>
+<span data-ttu-id="b8b63-289">LocalDB es una versión ligera del motor de base de datos de SQL Server Express dirigida al desarrollo de programas.</span><span class="sxs-lookup"><span data-stu-id="b8b63-289">LocalDB is a lightweight version of the SQL Server Express database engine that's targeted for program development.</span></span> <span data-ttu-id="b8b63-290">LocalDB se inicia a petición y se ejecuta en modo de usuario, sin necesidad de una configuración compleja.</span><span class="sxs-lookup"><span data-stu-id="b8b63-290">LocalDB starts on demand and runs in user mode, so there's no complex configuration.</span></span> <span data-ttu-id="b8b63-291">De forma predeterminada, la base de datos LocalDB crea archivos `*.mdf` en el directorio `C:/Users/<user/>`.</span><span class="sxs-lookup"><span data-stu-id="b8b63-291">By default, LocalDB database creates `*.mdf` files in the `C:/Users/<user/>` directory.</span></span>
 
 <a name="ssox"></a>
-* <span data-ttu-id="53844-292">En el menú **Ver**, abra **Explorador de objetos de SQL Server** (SSOX).</span><span class="sxs-lookup"><span data-stu-id="53844-292">From the **View** menu, open **SQL Server Object Explorer** (SSOX).</span></span>
+* <span data-ttu-id="b8b63-292">En el menú **Ver**, abra **Explorador de objetos de SQL Server** (SSOX).</span><span class="sxs-lookup"><span data-stu-id="b8b63-292">From the **View** menu, open **SQL Server Object Explorer** (SSOX).</span></span>
 
   ![Menú Ver](sql/_static/ssox.png)
 
-* <span data-ttu-id="53844-294">Haga clic con el botón derecho en la tabla `Movie` y seleccione **Diseñador de vistas**:</span><span class="sxs-lookup"><span data-stu-id="53844-294">Right-click on the `Movie` table and select **View Designer**:</span></span>
+* <span data-ttu-id="b8b63-294">Haga clic con el botón derecho en la tabla `Movie` y seleccione **Diseñador de vistas**:</span><span class="sxs-lookup"><span data-stu-id="b8b63-294">Right-click on the `Movie` table and select **View Designer**:</span></span>
 
   ![Menú contextual abierto en la tabla Movie](sql/_static/design.png)
 
   ![Tabla Movie abierta en el diseñador](sql/_static/dv.png)
 
-<span data-ttu-id="53844-297">Observe el icono de llave junto a `ID`.</span><span class="sxs-lookup"><span data-stu-id="53844-297">Note the key icon next to `ID`.</span></span> <span data-ttu-id="53844-298">De forma predeterminada, EF crea una propiedad denominada `ID` para la clave principal.</span><span class="sxs-lookup"><span data-stu-id="53844-298">By default, EF creates a property named `ID` for the primary key.</span></span>
+<span data-ttu-id="b8b63-297">Observe el icono de llave junto a `ID`.</span><span class="sxs-lookup"><span data-stu-id="b8b63-297">Note the key icon next to `ID`.</span></span> <span data-ttu-id="b8b63-298">De forma predeterminada, EF crea una propiedad denominada `ID` para la clave principal.</span><span class="sxs-lookup"><span data-stu-id="b8b63-298">By default, EF creates a property named `ID` for the primary key.</span></span>
 
-* <span data-ttu-id="53844-299">Haga clic con el botón derecho en la tabla `Movie` y seleccione **Ver datos**:</span><span class="sxs-lookup"><span data-stu-id="53844-299">Right-click on the `Movie` table and select **View Data**:</span></span>
+* <span data-ttu-id="b8b63-299">Haga clic con el botón derecho en la tabla `Movie` y seleccione **Ver datos**:</span><span class="sxs-lookup"><span data-stu-id="b8b63-299">Right-click on the `Movie` table and select **View Data**:</span></span>
 
   ![Tabla Movie abierta mostrando datos de la tabla](sql/_static/vd22.png)
 
-# <a name="visual-studio-code"></a>[<span data-ttu-id="53844-301">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="53844-301">Visual Studio Code</span></span>](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[<span data-ttu-id="b8b63-301">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="b8b63-301">Visual Studio Code</span></span>](#tab/visual-studio-code)
 
 [!INCLUDE[](~/includes/rp/sqlite.md)]
 [!INCLUDE[](~/includes/RP-mvc-shared/sqlite-warn.md)]
 
-# <a name="visual-studio-for-mac"></a>[<span data-ttu-id="53844-302">Visual Studio para Mac</span><span class="sxs-lookup"><span data-stu-id="53844-302">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[<span data-ttu-id="b8b63-302">Visual Studio para Mac</span><span class="sxs-lookup"><span data-stu-id="b8b63-302">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
 
 [!INCLUDE[](~/includes/rp/sqlite.md)]
 [!INCLUDE[](~/includes/RP-mvc-shared/sqlite-warn.md)]
 
 ---
 
-## <a name="seed-the-database"></a><span data-ttu-id="53844-303">Inicializar la base de datos</span><span class="sxs-lookup"><span data-stu-id="53844-303">Seed the database</span></span>
+## <a name="seed-the-database"></a><span data-ttu-id="b8b63-303">Inicializar la base de datos</span><span class="sxs-lookup"><span data-stu-id="b8b63-303">Seed the database</span></span>
 
-<span data-ttu-id="53844-304">Cree una nueva clase denominada `SeedData` en la carpeta *Models* con el código siguiente:</span><span class="sxs-lookup"><span data-stu-id="53844-304">Create a new class named `SeedData` in the *Models* folder with the following code:</span></span>
+<span data-ttu-id="b8b63-304">Cree una nueva clase denominada `SeedData` en la carpeta *Models* con el código siguiente:</span><span class="sxs-lookup"><span data-stu-id="b8b63-304">Create a new class named `SeedData` in the *Models* folder with the following code:</span></span>
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie22/Models/SeedData.cs?name=snippet_1)]
 
-<span data-ttu-id="53844-305">Si hay alguna película en la base de datos, se devuelve el inicializador y no se agrega ninguna película.</span><span class="sxs-lookup"><span data-stu-id="53844-305">If there are any movies in the database, the seed initializer returns and no movies are added.</span></span>
+<span data-ttu-id="b8b63-305">Si hay alguna película en la base de datos, se devuelve el inicializador y no se agrega ninguna película.</span><span class="sxs-lookup"><span data-stu-id="b8b63-305">If there are any movies in the database, the seed initializer returns and no movies are added.</span></span>
 
 ```csharp
 if (context.Movie.Any())
@@ -432,62 +432,62 @@ if (context.Movie.Any())
 
 <a name="si"></a>
 
-### <a name="add-the-seed-initializer"></a><span data-ttu-id="53844-306">Agregar el inicializador</span><span class="sxs-lookup"><span data-stu-id="53844-306">Add the seed initializer</span></span>
+### <a name="add-the-seed-initializer"></a><span data-ttu-id="b8b63-306">Agregar el inicializador</span><span class="sxs-lookup"><span data-stu-id="b8b63-306">Add the seed initializer</span></span>
 
-<span data-ttu-id="53844-307">Reemplace su contenido por el código siguiente:</span><span class="sxs-lookup"><span data-stu-id="53844-307">Replace the contents of the *Program.cs* with the following code:</span></span>
+<span data-ttu-id="b8b63-307">Reemplace su contenido por el código siguiente:</span><span class="sxs-lookup"><span data-stu-id="b8b63-307">Replace the contents of the *Program.cs* with the following code:</span></span>
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie22/Program.cs)]
 
-<span data-ttu-id="53844-308">En el código anterior, el método `Main` se ha modificado para hacer lo siguiente:</span><span class="sxs-lookup"><span data-stu-id="53844-308">In the previous code, the `Main` method has been modified to do the following:</span></span>
+<span data-ttu-id="b8b63-308">En el código anterior, el método `Main` se ha modificado para hacer lo siguiente:</span><span class="sxs-lookup"><span data-stu-id="b8b63-308">In the previous code, the `Main` method has been modified to do the following:</span></span>
 
-* <span data-ttu-id="53844-309">Obtener una instancia del contexto de base de datos desde el contenedor de inserción de dependencias.</span><span class="sxs-lookup"><span data-stu-id="53844-309">Get a database context instance from the dependency injection container.</span></span>
-* <span data-ttu-id="53844-310">Llame al método `seedData.Initialize`, pasándole la instancia de contexto de la base de datos.</span><span class="sxs-lookup"><span data-stu-id="53844-310">Call the `seedData.Initialize` method, passing to it the database context instance.</span></span>
-* <span data-ttu-id="53844-311">Eliminar el contexto cuando el método de inicialización finalice.</span><span class="sxs-lookup"><span data-stu-id="53844-311">Dispose the context when the seed method completes.</span></span> <span data-ttu-id="53844-312">La [instrucción using](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/using-statement) garantiza que se elimine el contexto.</span><span class="sxs-lookup"><span data-stu-id="53844-312">The [using statement](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/using-statement) ensures the context is disposed.</span></span>
+* <span data-ttu-id="b8b63-309">Obtener una instancia del contexto de base de datos desde el contenedor de inserción de dependencias.</span><span class="sxs-lookup"><span data-stu-id="b8b63-309">Get a database context instance from the dependency injection container.</span></span>
+* <span data-ttu-id="b8b63-310">Llame al método `seedData.Initialize`, pasándole la instancia de contexto de la base de datos.</span><span class="sxs-lookup"><span data-stu-id="b8b63-310">Call the `seedData.Initialize` method, passing to it the database context instance.</span></span>
+* <span data-ttu-id="b8b63-311">Eliminar el contexto cuando el método de inicialización finalice.</span><span class="sxs-lookup"><span data-stu-id="b8b63-311">Dispose the context when the seed method completes.</span></span> <span data-ttu-id="b8b63-312">La [instrucción using](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/using-statement) garantiza que se elimine el contexto.</span><span class="sxs-lookup"><span data-stu-id="b8b63-312">The [using statement](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/using-statement) ensures the context is disposed.</span></span>
 
-<span data-ttu-id="53844-313">Una aplicación de producción no llamaría a `Database.Migrate`.</span><span class="sxs-lookup"><span data-stu-id="53844-313">A production app would not call `Database.Migrate`.</span></span> <span data-ttu-id="53844-314">Se agrega al código anterior para evitar que se produzca la siguiente excepción cuando `Update-Database` no se ha ejecutado:</span><span class="sxs-lookup"><span data-stu-id="53844-314">It's added to the preceding code to prevent the following exception when `Update-Database` has not been run:</span></span>
+<span data-ttu-id="b8b63-313">Una aplicación de producción no llamaría a `Database.Migrate`.</span><span class="sxs-lookup"><span data-stu-id="b8b63-313">A production app would not call `Database.Migrate`.</span></span> <span data-ttu-id="b8b63-314">Se agrega al código anterior para evitar que se produzca la siguiente excepción cuando `Update-Database` no se ha ejecutado:</span><span class="sxs-lookup"><span data-stu-id="b8b63-314">It's added to the preceding code to prevent the following exception when `Update-Database` has not been run:</span></span>
 
-<span data-ttu-id="53844-315">SqlException: No se puede abrir la base de datos "RazorPagesMovieContext-21" solicitada por el inicio de sesión.</span><span class="sxs-lookup"><span data-stu-id="53844-315">SqlException: Cannot open database "RazorPagesMovieContext-21" requested by the login.</span></span> <span data-ttu-id="53844-316">Error de inicio de sesión.</span><span class="sxs-lookup"><span data-stu-id="53844-316">The login failed.</span></span>
-<span data-ttu-id="53844-317">Error de inicio de sesión del usuario <nombre de usuario>.</span><span class="sxs-lookup"><span data-stu-id="53844-317">Login failed for user 'user name'.</span></span>
+<span data-ttu-id="b8b63-315">SqlException: No se puede abrir la base de datos "RazorPagesMovieContext-21" solicitada por el inicio de sesión.</span><span class="sxs-lookup"><span data-stu-id="b8b63-315">SqlException: Cannot open database "RazorPagesMovieContext-21" requested by the login.</span></span> <span data-ttu-id="b8b63-316">Error de inicio de sesión.</span><span class="sxs-lookup"><span data-stu-id="b8b63-316">The login failed.</span></span>
+<span data-ttu-id="b8b63-317">Error de inicio de sesión del usuario <nombre de usuario>.</span><span class="sxs-lookup"><span data-stu-id="b8b63-317">Login failed for user 'user name'.</span></span>
 
-### <a name="test-the-app"></a><span data-ttu-id="53844-318">Prueba de la aplicación</span><span class="sxs-lookup"><span data-stu-id="53844-318">Test the app</span></span>
+### <a name="test-the-app"></a><span data-ttu-id="b8b63-318">Prueba de la aplicación</span><span class="sxs-lookup"><span data-stu-id="b8b63-318">Test the app</span></span>
 
-# <a name="visual-studio"></a>[<span data-ttu-id="53844-319">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="53844-319">Visual Studio</span></span>](#tab/visual-studio)
+# <a name="visual-studio"></a>[<span data-ttu-id="b8b63-319">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="b8b63-319">Visual Studio</span></span>](#tab/visual-studio)
 
-* <span data-ttu-id="53844-320">Elimine todos los registros de la base de datos.</span><span class="sxs-lookup"><span data-stu-id="53844-320">Delete all the records in the database.</span></span> <span data-ttu-id="53844-321">Puede hacerlo con los vínculos de eliminación en el explorador o desde [SSOX](xref:tutorials/razor-pages/new-field#ssox).</span><span class="sxs-lookup"><span data-stu-id="53844-321">You can do this with the delete links in the browser or from [SSOX](xref:tutorials/razor-pages/new-field#ssox)</span></span>
-* <span data-ttu-id="53844-322">Obligue a la aplicación a inicializarse (llame a los métodos de la clase `Startup`) para que se ejecute el método de inicialización.</span><span class="sxs-lookup"><span data-stu-id="53844-322">Force the app to initialize by calling the methods in the `Startup` class, so the seed method runs.</span></span> <span data-ttu-id="53844-323">Para forzar la inicialización, se debe detener y reiniciar IIS Express.</span><span class="sxs-lookup"><span data-stu-id="53844-323">To force initialization, IIS Express must be stopped and restarted.</span></span> <span data-ttu-id="53844-324">Puede hacerlo con cualquiera de los siguientes enfoques:</span><span class="sxs-lookup"><span data-stu-id="53844-324">You can do this with any of the following approaches:</span></span>
+* <span data-ttu-id="b8b63-320">Elimine todos los registros de la base de datos.</span><span class="sxs-lookup"><span data-stu-id="b8b63-320">Delete all the records in the database.</span></span> <span data-ttu-id="b8b63-321">Puede hacerlo con los vínculos de eliminación en el explorador o desde [SSOX](xref:tutorials/razor-pages/new-field#ssox).</span><span class="sxs-lookup"><span data-stu-id="b8b63-321">You can do this with the delete links in the browser or from [SSOX](xref:tutorials/razor-pages/new-field#ssox)</span></span>
+* <span data-ttu-id="b8b63-322">Obligue a la aplicación a inicializarse (llame a los métodos de la clase `Startup`) para que se ejecute el método de inicialización.</span><span class="sxs-lookup"><span data-stu-id="b8b63-322">Force the app to initialize by calling the methods in the `Startup` class, so the seed method runs.</span></span> <span data-ttu-id="b8b63-323">Para forzar la inicialización, se debe detener y reiniciar IIS Express.</span><span class="sxs-lookup"><span data-stu-id="b8b63-323">To force initialization, IIS Express must be stopped and restarted.</span></span> <span data-ttu-id="b8b63-324">Puede hacerlo con cualquiera de los siguientes enfoques:</span><span class="sxs-lookup"><span data-stu-id="b8b63-324">You can do this with any of the following approaches:</span></span>
 
-  * <span data-ttu-id="53844-325">Haga clic con el botón derecho en el icono Bandeja del sistema de IIS Express del área de notificación y pulse en **Salir** o en **Detener sitio**:</span><span class="sxs-lookup"><span data-stu-id="53844-325">Right-click the IIS Express system tray icon in the notification area and tap **Exit** or **Stop Site**:</span></span>
+  * <span data-ttu-id="b8b63-325">Haga clic con el botón derecho en el icono Bandeja del sistema de IIS Express del área de notificación y pulse en **Salir** o en **Detener sitio**:</span><span class="sxs-lookup"><span data-stu-id="b8b63-325">Right-click the IIS Express system tray icon in the notification area and tap **Exit** or **Stop Site**:</span></span>
 
     ![Icono Bandeja del sistema de IIS Express](../first-mvc-app/working-with-sql/_static/iisExIcon.png)
 
     ![Menú contextual](sql/_static/stopIIS.png)
 
-    * <span data-ttu-id="53844-328">Si está ejecutando la aplicación en modo de no depuración, presione <kbd>F5</kbd> para ejecutar en modo de depuración.</span><span class="sxs-lookup"><span data-stu-id="53844-328">If the app is running in non-debug mode, press <kbd>F5</kbd> to run in debug mode.</span></span>
-    * <span data-ttu-id="53844-329">Si la aplicación está en modo de depuración, detenga el depurador y presione <kbd>F5</kbd>.</span><span class="sxs-lookup"><span data-stu-id="53844-329">If the app in debug mode, stop the debugger and press <kbd>F5</kbd>.</span></span>
+    * <span data-ttu-id="b8b63-328">Si está ejecutando la aplicación en modo de no depuración, presione <kbd>F5</kbd> para ejecutar en modo de depuración.</span><span class="sxs-lookup"><span data-stu-id="b8b63-328">If the app is running in non-debug mode, press <kbd>F5</kbd> to run in debug mode.</span></span>
+    * <span data-ttu-id="b8b63-329">Si la aplicación está en modo de depuración, detenga el depurador y presione <kbd>F5</kbd>.</span><span class="sxs-lookup"><span data-stu-id="b8b63-329">If the app in debug mode, stop the debugger and press <kbd>F5</kbd>.</span></span>
 
-# <a name="visual-studio-code"></a>[<span data-ttu-id="53844-330">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="53844-330">Visual Studio Code</span></span>](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[<span data-ttu-id="b8b63-330">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="b8b63-330">Visual Studio Code</span></span>](#tab/visual-studio-code)
 
-<span data-ttu-id="53844-331">Elimine todos los registros de la base de datos para que se ejecute el método de inicialización.</span><span class="sxs-lookup"><span data-stu-id="53844-331">Delete all the records in the database, so the seed method will run.</span></span> <span data-ttu-id="53844-332">Detenga e inicie la aplicación para inicializar la base de datos.</span><span class="sxs-lookup"><span data-stu-id="53844-332">Stop and start the app to seed the database.</span></span>
+<span data-ttu-id="b8b63-331">Elimine todos los registros de la base de datos para que se ejecute el método de inicialización.</span><span class="sxs-lookup"><span data-stu-id="b8b63-331">Delete all the records in the database, so the seed method will run.</span></span> <span data-ttu-id="b8b63-332">Detenga e inicie la aplicación para inicializar la base de datos.</span><span class="sxs-lookup"><span data-stu-id="b8b63-332">Stop and start the app to seed the database.</span></span>
 
-# <a name="visual-studio-for-mac"></a>[<span data-ttu-id="53844-333">Visual Studio para Mac</span><span class="sxs-lookup"><span data-stu-id="53844-333">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[<span data-ttu-id="b8b63-333">Visual Studio para Mac</span><span class="sxs-lookup"><span data-stu-id="b8b63-333">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
 
-<span data-ttu-id="53844-334">Elimine todos los registros de la base de datos para que se ejecute el método de inicialización.</span><span class="sxs-lookup"><span data-stu-id="53844-334">Delete all the records in the database, so the seed method will run.</span></span> <span data-ttu-id="53844-335">Detenga e inicie la aplicación para inicializar la base de datos.</span><span class="sxs-lookup"><span data-stu-id="53844-335">Stop and start the app to seed the database.</span></span>
+<span data-ttu-id="b8b63-334">Elimine todos los registros de la base de datos para que se ejecute el método de inicialización.</span><span class="sxs-lookup"><span data-stu-id="b8b63-334">Delete all the records in the database, so the seed method will run.</span></span> <span data-ttu-id="b8b63-335">Detenga e inicie la aplicación para inicializar la base de datos.</span><span class="sxs-lookup"><span data-stu-id="b8b63-335">Stop and start the app to seed the database.</span></span>
 
 ---
 
-<span data-ttu-id="53844-336">La aplicación muestra los datos inicializados:</span><span class="sxs-lookup"><span data-stu-id="53844-336">The app shows the seeded data:</span></span>
+<span data-ttu-id="b8b63-336">La aplicación muestra los datos inicializados:</span><span class="sxs-lookup"><span data-stu-id="b8b63-336">The app shows the seeded data:</span></span>
 
 ![La aplicación Movie se abre en Chrome y muestra datos de la película](sql/_static/m55https.png)
 
-<span data-ttu-id="53844-338">El siguiente tutorial limpia la presentación de los datos.</span><span class="sxs-lookup"><span data-stu-id="53844-338">The next tutorial will clean up the presentation of the data.</span></span>
+<span data-ttu-id="b8b63-338">El siguiente tutorial limpia la presentación de los datos.</span><span class="sxs-lookup"><span data-stu-id="b8b63-338">The next tutorial will clean up the presentation of the data.</span></span>
 
-## <a name="additional-resources"></a><span data-ttu-id="53844-339">Recursos adicionales</span><span class="sxs-lookup"><span data-stu-id="53844-339">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="b8b63-339">Recursos adicionales</span><span class="sxs-lookup"><span data-stu-id="b8b63-339">Additional resources</span></span>
 
-* [<span data-ttu-id="53844-340">Versión en YouTube de este tutorial</span><span class="sxs-lookup"><span data-stu-id="53844-340">YouTube version of this tutorial</span></span>](https://youtu.be/A_5ff11sDHY)
+* [<span data-ttu-id="b8b63-340">Versión en YouTube de este tutorial</span><span class="sxs-lookup"><span data-stu-id="b8b63-340">YouTube version of this tutorial</span></span>](https://youtu.be/A_5ff11sDHY)
 
 > [!div class="step-by-step"]
-> <span data-ttu-id="53844-341">[Anterior: Razor Pages con scaffolding](xref:tutorials/razor-pages/page)
-> [Siguiente: Actualización de las páginas](xref:tutorials/razor-pages/da1)</span><span class="sxs-lookup"><span data-stu-id="53844-341">[Previous: Scaffolded Razor Pages](xref:tutorials/razor-pages/page)
+> <span data-ttu-id="b8b63-341">[Anterior: Razor Pages con scaffolding](xref:tutorials/razor-pages/page)
+> [Siguiente: Actualización de las páginas](xref:tutorials/razor-pages/da1)</span><span class="sxs-lookup"><span data-stu-id="b8b63-341">[Previous: Scaffolded Razor Pages](xref:tutorials/razor-pages/page)
 [Next: Update the pages](xref:tutorials/razor-pages/da1)</span></span>
 
 ::: moniker-end
