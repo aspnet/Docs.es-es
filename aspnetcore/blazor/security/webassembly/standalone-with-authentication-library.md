@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/standalone-with-authentication-library
-ms.openlocfilehash: d030e97a3adc17f53b42b98a53f04f155ea93bb6
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: b16533ef662b341053498162ce4ecb62445f2061
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93055118"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97854435"
 ---
 # <a name="secure-an-aspnet-core-no-locblazor-webassembly-standalone-app-with-the-authentication-library"></a>Protección de una aplicación independiente Blazor WebAssembly de ASP.NET Core con la biblioteca de autenticación
 
@@ -38,7 +38,7 @@ Para crear una [aplicación Blazor WebAssembly independiente](xref:blazor/hostin
 
 Para crear un nuevo proyecto de Blazor WebAssembly con un mecanismo de autenticación:
 
-1. Después de elegir la plantilla de aplicación de **Blazor WebAssembly** en el cuadro de diálogo **Crear una aplicación web ASP.NET Core** , seleccione **Cambiar** en **Autenticación**.
+1. Después de elegir la plantilla de aplicación de **Blazor WebAssembly** en el cuadro de diálogo **Crear una aplicación web ASP.NET Core**, seleccione **Cambiar** en **Autenticación**.
 
 1. Seleccione **Cuentas de usuario individuales** con la opción **Almacenar cuentas de usuario en aplicación** para almacenar usuarios dentro de la aplicación mediante el sistema [Identity](xref:security/authentication/identity) de ASP.NET Core.
 
@@ -122,26 +122,26 @@ builder.Services.AddOidcAuthentication(options =>
 });
 ```
 
-Para más información, vea las siguientes secciones del artículo *Otros escenarios* :
+Para más información, vea las siguientes secciones del artículo *Otros escenarios*:
 
 * [Solicitar tokens de acceso adicionales](xref:blazor/security/webassembly/additional-scenarios#request-additional-access-tokens)
 * [Adjuntar tokens a solicitudes salientes](xref:blazor/security/webassembly/additional-scenarios#attach-tokens-to-outgoing-requests)
 
 ## <a name="imports-file"></a>Archivo Imports
 
-[!INCLUDE[](~/includes/blazor-security/imports-file-standalone.md)]
+[!INCLUDE[](~/blazor/includes/security/imports-file-standalone.md)]
 
 ## <a name="index-page"></a>Página de índice
 
-[!INCLUDE[](~/includes/blazor-security/index-page-authentication.md)]
+[!INCLUDE[](~/blazor/includes/security/index-page-authentication.md)]
 
 ## <a name="app-component"></a>Componente App
 
-[!INCLUDE[](~/includes/blazor-security/app-component.md)]
+[!INCLUDE[](~/blazor/includes/security/app-component.md)]
 
 ## <a name="redirecttologin-component"></a>Componente RedirectToLogin
 
-[!INCLUDE[](~/includes/blazor-security/redirecttologin-component.md)]
+[!INCLUDE[](~/blazor/includes/security/redirecttologin-component.md)]
 
 ## <a name="logindisplay-component"></a>Componente LoginDisplay
 
@@ -181,9 +181,9 @@ El componente `LoginDisplay` (`Shared/LoginDisplay.razor`) se representa en el c
 
 ## <a name="authentication-component"></a>Componente Authentication
 
-[!INCLUDE[](~/includes/blazor-security/authentication-component.md)]
+[!INCLUDE[](~/blazor/includes/security/authentication-component.md)]
 
-[!INCLUDE[](~/includes/blazor-security/troubleshoot.md)]
+[!INCLUDE[](~/blazor/includes/security/troubleshoot.md)]
 
 ## <a name="additional-resources"></a>Recursos adicionales
 

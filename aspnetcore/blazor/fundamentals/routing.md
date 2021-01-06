@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: blazor/fundamentals/routing
 ms.openlocfilehash: ec183f4aadc6bafd8e77f9d97291ba3d47bd92f5
-ms.sourcegitcommit: 6b87f2e064cea02e65dacd206394b44f5c604282
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 12/15/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "97506934"
 ---
 # <a name="aspnet-core-no-locblazor-routing"></a>Enrutamiento de Blazor de ASP.NET Core

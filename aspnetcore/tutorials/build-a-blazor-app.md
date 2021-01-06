@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/build-a-blazor-app
-ms.openlocfilehash: 87626ff30589de82a04c95634fc0dcbcf2eeac18
-ms.sourcegitcommit: 6b87f2e064cea02e65dacd206394b44f5c604282
+ms.openlocfilehash: 6659b075f54292d9546466919f6842b920e6ece1
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507012"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97808743"
 ---
 # <a name="build-a-no-locblazor-todo-list-app"></a>Creación de una aplicación de lista de tareas pendientes Blazor
 
@@ -83,7 +83,7 @@ Al final de este tutorial, tendrá una aplicación de lista de tareas funcional.
 
    `Pages/Todo.razor`:
 
-   [!code-razor[](build-a-blazor-app/samples_snapshot/ToDo0.razor?highlight=1)]
+   [!code-razor[](build-a-blazor-app/samples_snapshot/Todo0.razor?highlight=1)]
 
    Guarde el archivo `Pages/Todo.razor`.
 
@@ -116,11 +116,11 @@ Al final de este tutorial, tendrá una aplicación de lista de tareas funcional.
 
    `Pages/Todo.razor`:
 
-   [!code-razor[](build-a-blazor-app/samples_snapshot/ToDo2.razor?highlight=5-10,13)]
+   [!code-razor[](build-a-blazor-app/samples_snapshot/Todo2.razor?highlight=5-10,13)]
 
 1. Para agregar elementos de tareas pendientes a la lista, la aplicación requiere elementos de la interfaz de usuario. Agregue una entrada de texto (`<input>`) y un botón (`<button>`) debajo de la lista no ordenada (`<ul>...</ul>`):
 
-   [!code-razor[](build-a-blazor-app/samples_snapshot/ToDo3.razor?highlight=12-13)]
+   [!code-razor[](build-a-blazor-app/samples_snapshot/Todo3.razor?highlight=12-13)]
 
 1. Guarde el archivo `TodoItem.cs` y el archivo `Pages/Todo.razor` actualizado. En el shell de comandos, la aplicación se vuelve a compilar automáticamente cuando se guardan los archivos. El explorador pierde temporalmente su conexión con la aplicación y, a continuación, vuelve a cargar la página cuando se restablece la conexión.
 
@@ -128,11 +128,11 @@ Al final de este tutorial, tendrá una aplicación de lista de tareas funcional.
 
 1. Agregue un método `AddTodo` al componente `Todo` y registre el método para el botón mediante el atributo `@onclick`. El método `AddTodo` de C# se llama cuando se selecciona el botón:
 
-   [!code-razor[](build-a-blazor-app/samples_snapshot/ToDo4.razor?highlight=2,7-10)]
+   [!code-razor[](build-a-blazor-app/samples_snapshot/Todo4.razor?highlight=2,7-10)]
 
 1. Para obtener el título del nuevo elemento de la lista de tareas pendientes, agregue un campo de cadena `newTodo` en la parte superior del bloque `@code`:
 
-   [!code-razor[](build-a-blazor-app/samples_snapshot/ToDo5.razor?highlight=3)]
+   [!code-razor[](build-a-blazor-app/samples_snapshot/Todo5.razor?highlight=3)]
 
    Modifique el elemento `<input>` de texto para enlazar `newTodo` con el atributo `@bind`:
 
@@ -142,13 +142,13 @@ Al final de este tutorial, tendrá una aplicación de lista de tareas funcional.
 
 1. Actualice el método `AddTodo` para agregar el `TodoItem` con el título especificado a la lista. Borre el valor de la entrada de texto mediante el establecimiento de `newTodo` en una cadena vacía:
 
-   [!code-razor[](build-a-blazor-app/samples_snapshot/ToDo6.razor?highlight=19-26)]
+   [!code-razor[](build-a-blazor-app/samples_snapshot/Todo6.razor?highlight=19-26)]
 
-1. Guarde el archivo `Pages/ToDo.razor`. La aplicación se vuelve a compilar automáticamente en el shell de comandos. La página vuelve a cargarse en el explorador después de que el explorador vuelve a conectarse a la aplicación.
+1. Guarde el archivo `Pages/Todo.razor`. La aplicación se vuelve a compilar automáticamente en el shell de comandos. La página vuelve a cargarse en el explorador después de que el explorador vuelve a conectarse a la aplicación.
 
 1. Se puede hacer que el texto de título de cada elemento de tarea pendiente sea editable y una casilla puede ayudar al usuario a realizar un seguimiento de los elementos completados. Agregue una entrada de casilla a cada elemento de tarea pendiente y enlace su valor a la propiedad `IsDone`. Cambie `@todo.Title` a un elemento `<input>` enlazado a `todo.Title` con `@bind`:
 
-   [!code-razor[](build-a-blazor-app/samples_snapshot/ToDo7.razor?highlight=4-7)]
+   [!code-razor[](build-a-blazor-app/samples_snapshot/Todo7.razor?highlight=4-7)]
 
 1. Actualice el encabezado `<h3>` para mostrar un recuento del número de elementos de la lista de tareas que no se han completado (`IsDone` es `false`).
 
@@ -160,7 +160,7 @@ Al final de este tutorial, tendrá una aplicación de lista de tareas funcional.
 
    [!code-razor[](build-a-blazor-app/samples_snapshot/Todo1.razor)]
 
-1. Guarde el archivo `Pages/ToDo.razor`. La aplicación se vuelve a compilar automáticamente en el shell de comandos. La página vuelve a cargarse en el explorador después de que el explorador vuelve a conectarse a la aplicación.
+1. Guarde el archivo `Pages/Todo.razor`. La aplicación se vuelve a compilar automáticamente en el shell de comandos. La página vuelve a cargarse en el explorador después de que el explorador vuelve a conectarse a la aplicación.
 
 1. Agregue los elementos, edite los elementos y marque los elementos de la lista de tareas realizados para probar el componente.
 

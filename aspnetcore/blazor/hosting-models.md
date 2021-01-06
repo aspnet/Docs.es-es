@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: blazor/hosting-models
 ms.openlocfilehash: a6f1c88b8e93c0d8ccfebca482895ebab8d18a81
-ms.sourcegitcommit: 6b87f2e064cea02e65dacd206394b44f5c604282
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 12/15/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "97506921"
 ---
 # <a name="aspnet-core-no-locblazor-hosting-models"></a>Modelos de hospedaje Blazor en ASP.NET Core

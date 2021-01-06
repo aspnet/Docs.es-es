@@ -20,12 +20,12 @@ no-loc:
 - SignalR
 uid: blazor/state-management
 zone_pivot_groups: blazor-hosting-models
-ms.openlocfilehash: 6e6f3047da30490caff4f820003a3018e8c26aaa
-ms.sourcegitcommit: 6b87f2e064cea02e65dacd206394b44f5c604282
+ms.openlocfilehash: 5b7a6fefd13d7255fbe3ae7010df48c6211fa755
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97506621"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97854348"
 ---
 # <a name="aspnet-core-no-locblazor-state-management"></a>Administración de estado de Blazor en ASP.NET Core
 
@@ -421,7 +421,7 @@ Para usar el componente `CounterStateProvider`, encapsule una instancia del comp
 
 ```razor
 <CounterStateProvider>
-    <Router AppAssembly="typeof(Startup).Assembly">
+    <Router AppAssembly="@typeof(Program).Assembly">
         ...
     </Router>
 </CounterStateProvider>
@@ -666,7 +666,7 @@ Para usar el componente `CounterStateProvider`, encapsule una instancia del comp
 
 ```razor
 <CounterStateProvider>
-    <Router AppAssembly="typeof(Startup).Assembly">
+    <Router AppAssembly="@typeof(Program).Assembly">
         ...
     </Router>
 </CounterStateProvider>
