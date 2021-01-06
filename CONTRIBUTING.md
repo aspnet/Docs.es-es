@@ -34,7 +34,7 @@ Para cada archivo con Markdown, puede haber una carpeta para las imágenes y una
 ![description of image for alt attribute](configuration/index/_static/imagename.png)
 ```
 
-Todas las imágenes deben tener [texto alternativo (alt)](https://wikipedia.org/wiki/Alt_attribute). Para obtener consejos sobre cómo especificar texto alternativo, consulte recursos en línea, como [WebAIM: Alternative Text](https://webaim.org/techniques/alttext/) (WebAIM: Texto alternativo).
+Todas las imágenes deben tener [texto alternativo (alt)](https://wikipedia.org/wiki/Alt_attribute). Para obtener consejos sobre cómo especificar el texto alternativo, eche un vistazo a recursos en línea, como [WebAIM: Alternative Text](https://webaim.org/techniques/alttext/) (WebAIM: Texto alternativo).
 
 Use minúsculas para nombres de archivo Markdown y nombres de archivo de imagen.
 
@@ -155,6 +155,6 @@ Nuestro objetivo consiste en escribir documentación que sea fácil de comprende
 
 La [Guía de estilo de redacción de Microsoft](https://docs.microsoft.com/style-guide/welcome/) sirve de guía en cuanto a terminología y el estilo de redacción para las comunicaciones de cualquier tecnología, incluida la documentación de ASP.NET Core.
 
-## <a name="redirects"></a>Redirecciones
+## <a name="redirects"></a>Redireccionamientos
 
 Si elimina un artículo, cambie su nombre de archivo o muévalo a otra carpeta, cree un redireccionamiento para que las personas que hayan marcado el artículo no reciban un error *404 No encontrado*. Agregue redirecciones al [archivo de redireccionamiento principal](https://github.com/dotnet/AspNetCore.Docs/blob/master/.openpublishing.redirection.json).

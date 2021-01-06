@@ -9,10 +9,10 @@ products:
 - vs
 urlFragment: aspnetcore-webapi-mongodb
 ms.openlocfilehash: 95a2a6fcda0a4f7148183981f7dbacd06388329d
-ms.sourcegitcommit: 58722eb309767e462bdbf3082bd38737a4ef168f
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "84106525"
 ---
 # <a name="create-a-web-api-with-aspnet-core-and-mongodb"></a>Creación de una API Web con ASP.NET Core y MongoDB
