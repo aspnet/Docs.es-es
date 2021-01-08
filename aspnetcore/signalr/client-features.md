@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/client-features
-ms.openlocfilehash: 1d1778f95c53179ca05eaced3d1913f208220df4
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 65ad619bb943a0e5ffbaec7ec80243972dafc49f
+ms.sourcegitcommit: 8b0e9a72c1599ce21830c843558a661ba908ce32
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93050984"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98024670"
 ---
 # <a name="aspnet-core-no-locsignalr-clients"></a>SignalRClientes ASP.net Core
 
@@ -47,7 +47,7 @@ Las versiones 1. x de SignalR se asignan a las versiones 2,1 y 2,2 de .net Core 
 
 En la tabla siguiente se muestran las características y la compatibilidad de los clientes que ofrecen compatibilidad en tiempo real. Para cada característica, se muestra la versión *mínima* que admite esta característica. Si no aparece ninguna versión, no se admite la característica.
 
-| Característica | Servidor | Cliente .NET | Cliente de JavaScript | Cliente de Java |
+| Característica | Server | Cliente .NET | Cliente de JavaScript | Cliente de Java |
 | ---- | :-: | :-: | :-: | :-: |
 | SignalRCompatibilidad con servicios de Azure |2.1.0|1.0.0|1.0.0|1.0.0|
 | [Streaming de servidor a cliente](xref:signalr/streaming)          |2.1.0|1.0.0|1.0.0|1.0.0|
@@ -57,7 +57,7 @@ En la tabla siguiente se muestran las características y la compatibilidad de lo
 | Transporte de eventos Server-Sent |2.1.0|1.0.0|1.0.0|❌|
 | Transporte de sondeo prolongado |2.1.0|1.0.0|1.0.0|3.0.0|
 | Protocolo de concentrador de JSON |2.1.0|1.0.0|1.0.0|1.0.0|
-| Protocolo de concentrador MessagePack |2.1.0|1.0.0|1.0.0|❌|
+| Protocolo de concentrador MessagePack |2.1.0|1.0.0|1.0.0|5.0.0|
 
 Se realiza un seguimiento de la compatibilidad con la habilitación de características de cliente adicionales en [nuestro seguimiento de problemas](https://github.com/dotnet/AspNetCore/issues).
 
