@@ -5,7 +5,7 @@ description: Obtenga información sobre cómo las aplicaciones Blazor pueden ins
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/11/2020
+ms.date: 12/19/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -20,12 +20,12 @@ no-loc:
 - SignalR
 uid: blazor/fundamentals/dependency-injection
 zone_pivot_groups: blazor-hosting-models
-ms.openlocfilehash: af6b645fc3c398414c85c78e1cfeb213e538c2a6
-ms.sourcegitcommit: 6b87f2e064cea02e65dacd206394b44f5c604282
+ms.openlocfilehash: 3f2b4eff5422acbec80b2fd9b801101271cc3f75
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97506804"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97808730"
 ---
 # <a name="aspnet-core-no-locblazor-dependency-injection"></a>Inserción de dependencias de Blazor de ASP.NET Core
 
@@ -98,7 +98,7 @@ Los servicios se pueden configurar con las duraciones que se muestran en la tabl
 
 | Período de duración | Descripción |
 | -------- | ----------- |
-| <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Scoped%2A> | <p>Las aplicaciones Blazor WebAssembly no tienen actualmente un concepto de ámbitos de inserción de dependencias. Los servicios registrados con `Scoped` se comportan como servicios `Singleton`.</p><p>El modelo de hospedaje de Blazor Server admite la duración `Scoped` a través de las solicitudes HTTP, pero no a través de los mensajes de circuito/conexión de SingalR entre los componentes cargados en el cliente. Por lo general, Razor Razor o la parte de MVC de la aplicación trata los servicios con ámbito y vuelve a crear los servicios en *cada solicitud HTTP* al navegar entre páginas o vistas, o desde una página o vista a un componente. Los servicios con ámbito no se reconstruyen al navegar entre los componentes del cliente, donde la comunicación con el servidor se realiza a través de la conexión SignalR del circuito del usuario, no a través de solicitudes HTTP. En los escenarios de componentes del cliente siguientes, los servicios con ámbito se reconstruyen porque se crea un circuito nuevo para el usuario:</p><ul><li>El usuario cierra la ventana del explorador. El usuario abre una ventana nueva y vuelve a la aplicación.</li><li>El usuario cierra la última pestaña de la aplicación en una ventana del explorador. El usuario abre una pestaña nueva y vuelve a la aplicación.</li><li>El usuario selecciona el botón de recargar o actualizar del explorador.</li></ul><p>Para más información sobre cómo conservar el estado del usuario en los distintos servicios con ámbito en las aplicaciones Blazor Server, consulte <xref:blazor/hosting-models?pivots=server>.</p> |
+| <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Scoped%2A> | <p>Las aplicaciones Blazor WebAssembly no tienen actualmente un concepto de ámbitos de inserción de dependencias. Los servicios registrados con `Scoped` se comportan como servicios `Singleton`.</p><p>El modelo de hospedaje de Blazor Server admite la duración `Scoped` a través de las solicitudes HTTP, pero no a través de los mensajes de circuito/conexión de SignalR entre los componentes cargados en el cliente. Por lo general, Razor Razor o la parte de MVC de la aplicación trata los servicios con ámbito y vuelve a crear los servicios en *cada solicitud HTTP* al navegar entre páginas o vistas, o desde una página o vista a un componente. Los servicios con ámbito no se reconstruyen al navegar entre los componentes del cliente, donde la comunicación con el servidor se realiza a través de la conexión SignalR del circuito del usuario, no a través de solicitudes HTTP. En los escenarios de componentes del cliente siguientes, los servicios con ámbito se reconstruyen porque se crea un circuito nuevo para el usuario:</p><ul><li>El usuario cierra la ventana del explorador. El usuario abre una ventana nueva y vuelve a la aplicación.</li><li>El usuario cierra la última pestaña de la aplicación en una ventana del explorador. El usuario abre una pestaña nueva y vuelve a la aplicación.</li><li>El usuario selecciona el botón de recargar o actualizar del explorador.</li></ul><p>Para más información sobre cómo conservar el estado del usuario en los distintos servicios con ámbito en las aplicaciones Blazor Server, consulte <xref:blazor/hosting-models?pivots=server>.</p> |
 | <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Singleton%2A> | La inserción de dependencias crea una *sola instancia* del servicio. Todos los componentes que requieren un servicio `Singleton` reciben una instancia del mismo servicio. |
 | <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Transient%2A> | Cada vez que un componente obtiene una instancia de un servicio `Transient` del contenedor de servicios, recibe una *nueva instancia* del servicio. |
 
@@ -106,7 +106,7 @@ El sistema de inserción de dependencias se basa en el sistema de inserción de 
 
 ## <a name="request-a-service-in-a-component"></a>Solicitud de un servicio en un componente
 
-Una vez que se han agregado los servicios a la colección de servicios, insértelos en los componentes mediante la directiva [\@inject](xref:mvc/views/razor#inject) de Razor. [`@inject`](xref:mvc/views/razor#inject) tiene dos parámetros:
+Una vez que se han agregado los servicios a la colección de servicios, insértelos en los componentes mediante la directiva [`@inject`](xref:mvc/views/razor#inject) de Razor, que tiene dos parámetros:
 
 * Tipo: el tipo de servicio que se va a insertar.
 * Propiedad: el nombre de la propiedad que recibe el servicio de aplicación insertado. La propiedad no requiere la creación manual. El compilador crea la propiedad.
@@ -192,8 +192,6 @@ Hay dos versiones del tipo <xref:Microsoft.AspNetCore.Components.OwningComponent
 
 Para obtener más información, vea <xref:blazor/blazor-server-ef-core>.
 
-::: moniker range="< aspnetcore-5.0"
-
 ## <a name="detect-transient-disposables"></a>Detección de transitorios descartables
 
 En los siguientes ejemplos se muestra cómo detectar servicios transitorios descartables en una aplicación que debe usar <xref:Microsoft.AspNetCore.Components.OwningComponentBase>. Para obtener más información, consulte la sección [Clases de componentes base de utilidad para administrar un ámbito de inserción de dependencias](#utility-base-component-classes-to-manage-a-di-scope).
@@ -206,17 +204,17 @@ En los siguientes ejemplos se muestra cómo detectar servicios transitorios desc
 
 En el ejemplo siguiente se detecta `TransientDisposable` (`Program.cs`):
 
-<!-- moniker range=">= aspnetcore-5.0"
+::: moniker range=">= aspnetcore-5.0"
 
 [!code-csharp[](dependency-injection/samples_snapshot/5.x/transient-disposables/DetectIncorrectUsagesOfTransientDisposables-wasm-program.cs?highlight=6,9,17,22-25)]
 
-moniker-end 
+::: moniker-end 
 
-moniker range="< aspnetcore-5.0" -->
+::: moniker range="< aspnetcore-5.0"
 
 [!code-csharp[](dependency-injection/samples_snapshot/3.x/transient-disposables/DetectIncorrectUsagesOfTransientDisposables-wasm-program.cs?highlight=6,9,17,22-25)]
 
-<!-- moniker-end -->
+::: moniker-end
 
 ::: zone-end
 
@@ -242,7 +240,20 @@ En el ejemplo siguiente se detecta `TransientDependency` (`Startup.cs`):
 
 ::: zone-end
 
-::: moniker-end
+La aplicación puede registrar transitorios descartables sin producir una excepción. Sin embargo, intentar resolver un transitorio descartable resulta en una clase <xref:System.InvalidOperationException>, como se muestra en el ejemplo siguiente.
+
+`Pages/TransientDisposable.razor`:
+
+```razor
+@page "/transient-disposable"
+@inject TransientDisposable TransientDisposable
+
+<h1>Transient Disposable Detection</h1>
+```
+
+Navegue al componente `TransientDisposable` en `/transient-disposable`, y se lanza una clase <xref:System.InvalidOperationException> cuando el marco intenta construir una instancia de `TransientDisposable`:
+
+> System.InvalidOperationException: intentando resolver el servicio del transitorio descartable TransientDisposable en el ámbito incorrecto. Use una clase base de componente "OwningComponentBase\<T>" para el servicio "T" que está intentando resolver.
 
 ## <a name="additional-resources"></a>Recursos adicionales
 

@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/error-handling
-ms.openlocfilehash: c8174c7e253a596d02dbc6cec183453b3723bc24
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: ad9920ccd830b93d083f3c5ede03702164842b6e
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93060474"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97753119"
 ---
 # <a name="handle-errors-in-aspnet-core"></a>Controlar errores en ASP.NET Core
 
@@ -46,7 +46,7 @@ El código resaltado anterior habilita la página de excepciones para el desarro
 
 Las plantillas colocan <xref:Microsoft.AspNetCore.Builder.DeveloperExceptionPageExtensions.UseDeveloperExceptionPage%2A> al principio de la canalización de middleware para que pueda detectar las excepciones que se producen en el middleware que sigue.
 
-El código anterior * **solo** habilita la página de excepciones para el desarrollador cuando la aplicación se ejecuta en el entorno de desarrollo. La información detallada de la excepción no debe mostrarse públicamente cuando la aplicación se ejecuta en el entorno de producción. Para más información sobre la configuración de entornos, consulte <xref:fundamentals/environments>.
+El código anterior ***solo** habilita la página de excepciones para el desarrollador cuando la aplicación se ejecuta en el entorno de desarrollo. La información detallada de la excepción no debe mostrarse públicamente cuando la aplicación se ejecuta en el entorno de producción. Para más información sobre la configuración de entornos, consulte <xref:fundamentals/environments>.
 
 La página de excepciones para el desarrollador incluye la siguiente información sobre la excepción y la solicitud:
 
@@ -66,7 +66,7 @@ En el ejemplo siguiente, <xref:Microsoft.AspNetCore.Builder.ExceptionHandlerExte
 
 [!code-csharp[](error-handling/samples/2.x/ErrorHandlingSample/Startup.cs?name=snippet_DevPageAndHandlerPage&highlight=5-9)]
 
-La plantilla de aplicación de Razor Pages proporciona una página de error ( *.cshtml* ) y una clase <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel> (`ErrorModel`) en la carpeta *Pages*. Para una aplicación de MVC, la plantilla de proyecto incluye un método de acción de `Error` y una vista del error para el controlador de inicio.
+La plantilla de aplicación de Razor Pages proporciona una página de error ( *.cshtml*) y una clase <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel> (`ErrorModel`) en la carpeta *Pages*. Para una aplicación de MVC, la plantilla de proyecto incluye un método de acción de `Error` y una vista del error para el controlador de inicio.
 
 No marque el método de acción del controlador de errores con atributos de método HTTP, como `HttpGet`. Los verbos explícitos impiden que algunas solicitudes lleguen al método de acción. Permita el acceso anónimo al método si los usuarios no autenticados deben recibir la vista del error.
 
@@ -108,15 +108,9 @@ Para probar la expresión lambda de control de excepciones en la [aplicación de
 
 ## <a name="usestatuscodepages"></a>UseStatusCodePages
 
-Una aplicación ASP.NET Core no proporciona de forma predeterminada ninguna página de códigos de estado para los códigos de estado HTTP, como *404 - No encontrado*. Cuando la aplicación encuentra una condición de error HTTP 400-499 que no tiene cuerpo, devuelve el código de estado y un cuerpo de respuesta vacío. Para proporcionar páginas de códigos de estado, use el middleware de páginas de códigos de estado. Para habilitar los controladores de solo texto predeterminados para los códigos de estado de error comunes, llame a <xref:Microsoft.AspNetCore.Builder.StatusCodePagesExtensions.UseStatusCodePages%2A> en el método `Startup.Configure`:
+Una aplicación ASP.NET Core no proporciona de forma predeterminada ninguna página de códigos de estado para los códigos de estado HTTP, como *404 - No encontrado*. Cuando la aplicación encuentra un código de estado de error HTTP 400-599 que no tiene cuerpo, devuelve el código de estado y un cuerpo de respuesta vacío. Para proporcionar páginas de códigos de estado, use el middleware de páginas de códigos de estado. Para habilitar los controladores de solo texto predeterminados para los códigos de estado de error comunes, llame a <xref:Microsoft.AspNetCore.Builder.StatusCodePagesExtensions.UseStatusCodePages%2A> en el método `Startup.Configure`:
 
 [!code-csharp[](error-handling/samples/5.x/ErrorHandlingSample/StartupUseStatusCodePages.cs?name=snippet&highlight=13)]
-
-<!-- Review: 
-When you comment out // UseExceptionHandler("/Error");`
-you get a browser dependant error, not the codepage as I expected.
-call /index/2 -> return StatusCode(500); -> you get the codepage 
--->
 
 Llame a `UseStatusCodePages` antes del middleware de control de solicitudes. Por ejemplo, llame a `UseStatusCodePages` antes del middleware de archivos estáticos y el middleware de puntos de conexión.
 
@@ -133,6 +127,9 @@ Para probar `UseStatusCodePages` en la [aplicación de ejemplo](https://github.c
 * Establezca el entorno en producción.
 * Quite los comentarios de `webBuilder.UseStartup<StartupUseStatusCodePages>();` en *Program.cs*.
 * Seleccione los vínculos en la página principal.
+
+> [!NOTE]
+> El middleware de páginas de códigos de estado **no** detecta excepciones. Para proporcionar una página de control de errores personalizada, use la [página del controlador de excepciones](#exception-handler-page).
 
 ### <a name="usestatuscodepages-with-format-string"></a>UseStatusCodePages con cadena de formato
 
@@ -301,7 +298,7 @@ La página de excepciones para el desarrollador incluye la siguiente informació
 * Seguimiento de la pila
 * Parámetros de cadena de consulta (si existen)
 * Cookie (si existen)
-* encabezados
+* Encabezados
 
 ## <a name="exception-handler-page"></a>Página del controlador de excepciones
 
@@ -314,7 +311,7 @@ En el ejemplo siguiente, <xref:Microsoft.AspNetCore.Builder.ExceptionHandlerExte
 
 [!code-csharp[](error-handling/samples/2.x/ErrorHandlingSample/Startup.cs?name=snippet_DevPageAndHandlerPage&highlight=5-9)]
 
-La plantilla de aplicación de Razor Pages proporciona una página de error ( *.cshtml* ) y una clase <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel> (`ErrorModel`) en la carpeta *Pages*. Para una aplicación de MVC, la plantilla de proyecto incluye un método de acción para el error y una vista del error.
+La plantilla de aplicación de Razor Pages proporciona una página de error ( *.cshtml*) y una clase <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel> (`ErrorModel`) en la carpeta *Pages*. Para una aplicación de MVC, la plantilla de proyecto incluye un método de acción para el error y una vista del error.
 
 No marque el método de acción del controlador de errores con atributos de método HTTP, como `HttpGet`. Los verbos explícitos impiden que algunas solicitudes lleguen al método. Permita el acceso anónimo al método si los usuarios no autenticados deben recibir la vista del error.
 

@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/graph-api
-ms.openlocfilehash: 128ba34b1e2a9f8cc2986a8f1cb3fb8beba83b21
-ms.sourcegitcommit: a71bb61f7add06acb949c9258fe506914dfe0c08
+ms.openlocfilehash: 58c201d6d1172c1ff82521589f988e33d5c984ae
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96855396"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97854501"
 ---
 # <a name="use-graph-api-with-aspnet-core-no-locblazor-webassembly"></a>Uso de Graph API con Blazor WebAssembly de ASP.NET Core
 
@@ -107,7 +107,7 @@ internal static class GraphClientExtensions
             var result = await TokenProvider.RequestAccessToken(
                 new AccessTokenRequestOptions()
                 {
-                    Scopes = {STRING ARRAY OF SCOPES}
+                    Scopes = new[] { "{SCOPE 1}", "{SCOPE 2}", ... "{SCOPE X}" }
                 });
 
             if (result.TryGetToken(out var token))
@@ -150,7 +150,7 @@ internal static class GraphClientExtensions
 }
 ```
 
-El marcador de posición `{STRING ARRAY OF SCOPES}` del código anterior es una matriz de cadenas de los ámbitos permitidos. Por ejemplo, establezca `Scopes` en el ámbito `User.Read` en los ejemplos de las secciones siguientes de este artículo:
+Los marcadores de posición de ámbito `"{SCOPE 1}", "{SCOPE 2}", ... "{SCOPE X}"` del código anterior representan uno o varios ámbitos permitidos. Por ejemplo, establezca `Scopes` en una matriz de cadena de un ámbito para `User.Read` en los ejemplos de las secciones siguientes de este artículo:
 
 ```csharp
 Scopes = new[] { "https://graph.microsoft.com/User.Read" }
@@ -159,10 +159,10 @@ Scopes = new[] { "https://graph.microsoft.com/User.Read" }
 En `Program.Main` (`Program.cs`), agregue los servicios y la configuración del cliente de Graph con el método de extensión `AddGraphClient`:
 
 ```csharp
-builder.Services.AddGraphClient({STRING ARRAY OF SCOPES});
+builder.Services.AddGraphClient("{SCOPE 1}", "{SCOPE 2}", ... "{SCOPE X}");
 ```
 
-El marcador de posición `{STRING ARRAY OF SCOPES}` del código anterior es una matriz de cadenas de los ámbitos permitidos. Por ejemplo, pase el ámbito `User.Read` a `AddGraphClient` en los ejemplos de las secciones siguientes de este artículo:
+Los marcadores de posición de ámbito `"{SCOPE 1}", "{SCOPE 2}", ... "{SCOPE X}"` del código anterior representan uno o varios ámbitos permitidos. Por ejemplo, pase el ámbito `User.Read` a `AddGraphClient` en los ejemplos de las secciones siguientes de este artículo:
 
 ```csharp
 builder.Services.AddGraphClient("https://graph.microsoft.com/User.Read");

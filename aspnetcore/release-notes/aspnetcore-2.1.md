@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: aspnetcore-2.1
-ms.openlocfilehash: 62fc9d866adcf05ff024501db68cce8bb8b11a98
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 199ca62f71df5c0ee5ca2f78caf53ad8d6be1179
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93059720"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97854566"
 ---
 # <a name="whats-new-in-aspnet-core-21"></a>Novedades de ASP.NET Core 2.1
 
@@ -93,7 +93,7 @@ ASP.NET Core proporciona API y plantillas para cumplir algunos de los requisitos
 
 Se ha incorporado un nuevo paquete que optimiza las tareas de creación y ejecución de pruebas. El paquete [Microsoft.AspNetCore.Mvc.Testing](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Testing/) se encarga de estas tareas:
 
-* Copia el archivo de dependencia ( *\*.deps* ) de la aplicación que se está probando en la carpeta *bin* del proyecto de prueba.
+* Copia el archivo de dependencia ( *\*.deps*) de la aplicación que se está probando en la carpeta *bin* del proyecto de prueba.
 * Establece la raíz de contenido en la raíz de proyecto de la aplicación que se está probando, lo que permite encontrar archivos estáticos y páginas o vistas cuando se ejecutan las pruebas.
 * Proporciona la clase [WebApplicationFactory](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1) para optimizar el arranque de la aplicación que se está probando con [TestServer](/dotnet/api/microsoft.aspnetcore.testhost.testserver).
 
@@ -141,9 +141,9 @@ ASP.NET Core 2.1 incluye un nuevo servicio `IHttpClientFactory` que facilita la 
 
 Para más información, vea [Inicio de solicitudes HTTP](xref:fundamentals/http-requests).
 
-## <a name="kestrel-transport-configuration"></a>Configuración de transporte de Kestrel
+## <a name="kestrel-libuv-transport-configuration"></a>Configuración de transporte de Libuv de Kestrel
 
-Desde el lanzamiento de ASP.NET Core 2.1, el transporte predeterminado de Kestrel deja de basarse en Libuv y pasa a basarse en sockets administrados. Para más información, consulte [Kestrel web server implementation: Transport configuration](xref:fundamentals/servers/kestrel#transport-configuration) (Implementación del servidor web de Kestrel: configuración de transporte).
+Desde el lanzamiento de ASP.NET Core 2.1, el transporte predeterminado de Kestrel deja de basarse en Libuv y pasa a basarse en sockets administrados. Para más información, consulte [Kestrel web server implementation: Configuración de transporte de Libuv](xref:fundamentals/servers/kestrel#libuv-transport-configuration).
 
 ## <a name="generic-host-builder"></a>Generador de host genérico
 

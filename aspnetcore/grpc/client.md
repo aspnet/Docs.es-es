@@ -4,7 +4,7 @@ author: jamesnk
 description: Obtenga información sobre cómo llamar a servicios gRPC con el cliente gRPC de .NET.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
-ms.date: 07/27/2020
+ms.date: 12/18/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/client
-ms.openlocfilehash: 9322020083ce25b00b2979633ae8a692cfd4da4a
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 39f9b3fde19e31ca970668552e5829308705f513
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93060968"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97699131"
 ---
 # <a name="call-grpc-services-with-the-net-client"></a>Llamada a servicios gRPC con el cliente .NET
 
@@ -201,11 +201,33 @@ Para obtener el mejor rendimiento y evitar errores innecesarios en el cliente y 
 
 Durante una llamada de streaming bidireccional, el cliente y el servicio se pueden enviar mensajes entre sí en cualquier momento. La mejor lógica de cliente para interactuar con una llamada bidireccional varía en función de la lógica del servicio.
 
+## <a name="access-grpc-headers"></a>Acceso a encabezados de gRPC
+
+Las llamadas a gRPC devuelven encabezados de respuesta. Los encabezados de respuesta HTTP pasan los metadatos de nombre y valor sobre una llamada que no está relacionada con el mensaje devuelto.
+
+Se puede acceder a los encabezados mediante `ResponseHeadersAsync`, que devuelve una colección de metadatos. Normalmente, los encabezados se devuelven con el mensaje de respuesta; por lo tanto, debe esperar.
+
+```csharp
+var client = new Greet.GreeterClient(channel);
+using var call = client.SayHelloAsync(new HelloRequest { Name = "World" });
+
+var headers = await call.ResponseHeadersAsync;
+var myValue = headers.GetValue("my-trailer-name");
+
+var response = await call.ResponseAsync;
+```
+
+Uso de `ResponseHeadersAsync`:
+
+* Debe esperar el resultado de `ResponseHeadersAsync` para obtener la colección de encabezados.
+* No tiene que tener acceso antes de `ResponseAsync`, o la secuencia de respuesta durante el streaming. Si se ha devuelto una respuesta, `ResponseHeadersAsync` devuelve los encabezados al instante.
+* Producirá una excepción si se produjo un error de conexión o del servidor y no se devolvieron encabezados para la llamada a gRPC.
+
 ## <a name="access-grpc-trailers"></a>Acceso a los finalizadores gRPC
 
-Las llamadas gRPC pueden devolver finalizadores gRPC. Los finalizadores gRPC se usan para proporcionar metadatos de nombre y valor sobre una llamada. Los finalizadores proporcionan una funcionalidad similar a los encabezados HTTP, pero se reciben al final de la llamada.
+Las llamadas a gRPC pueden devolver finalizadores de respuesta. Los finalizadores se usan para proporcionar metadatos de nombre y valor sobre una llamada. Los finalizadores proporcionan una funcionalidad similar a los encabezados HTTP, pero se reciben al final de la llamada.
 
-Los finalizadores gRPC son accesibles mediante `GetTrailers()`, que devuelve una colección de metadatos. Los finalizadores se devuelven una vez que se completa la respuesta, por lo que debe esperar todos los mensajes de respuesta antes de acceder a ellos.
+Se puede acceder a los finalizadores mediante `GetTrailers()`, que devuelve una colección de metadatos. Se devuelven los finalizadores una vez completada la respuesta. Por lo tanto, debe esperar todos los mensajes de respuesta antes de acceder a los finalizadores.
 
 Las llamadas de streaming unarias y de cliente deben esperar `ResponseAsync` antes de llamar a `GetTrailers()`:
 
@@ -237,7 +259,7 @@ var trailers = call.GetTrailers();
 var myValue = trailers.GetValue("my-trailer-name");
 ```
 
-También se puede acceder a los finalizadores gRPC desde `RpcException`. Un servicio puede devolver los finalizadores junto con un estado de gRPC que no sea correcto. En esta situación, los finalizadores se recuperan de la excepción que genera el cliente de gRPC:
+También se puede acceder a los finalizadores desde `RpcException`. Un servicio puede devolver los finalizadores junto con un estado de gRPC que no sea correcto. En esta situación, los finalizadores se recuperan de la excepción que genera el cliente de gRPC:
 
 ```csharp
 var client = new Greet.GreeterClient(channel);

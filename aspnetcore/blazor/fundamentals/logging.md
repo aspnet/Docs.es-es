@@ -5,7 +5,7 @@ description: Obtenga información sobre cómo realizar registros en aplicaciones
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/11/2020
+ms.date: 12/16/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -20,12 +20,12 @@ no-loc:
 - SignalR
 uid: blazor/fundamentals/logging
 zone_pivot_groups: blazor-hosting-models
-ms.openlocfilehash: 78117fa6e9c7d5aed3fb31bbd3afee55b3b5b875
-ms.sourcegitcommit: 6b87f2e064cea02e65dacd206394b44f5c604282
+ms.openlocfilehash: 10c96bd2d0cc64f3bd035e7079b0996eb5768595
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97506713"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97666838"
 ---
 # <a name="aspnet-core-no-locblazor-logging"></a>Registro de Blazor en ASP.NET Core
 
@@ -55,6 +55,9 @@ La configuración de registro se puede cargar desde archivos de configuración d
 ## <a name="no-locsignalr-net-client-logging"></a>Registro de clientes de SignalR .NET
 
 Inserte un proveedor <xref:Microsoft.Extensions.Logging.ILoggerProvider> para agregar un registrador `WebAssemblyConsoleLogger` a los proveedores de registro pasados a <xref:Microsoft.AspNetCore.SignalR.Client.HubConnectionBuilder>. A diferencia de los registradores <xref:Microsoft.Extensions.Logging.Console.ConsoleLogger> tradicionales, `WebAssemblyConsoleLogger` es un contenedor de API de registro específicas de explorador (por ejemplo, `console.log`). El uso de `WebAssemblyConsoleLogger` hace posible el registro en Mono dentro de un contexto de explorador.
+
+> [!NOTE]
+> `WebAssemblyConsoleLogger` es [interno](/dotnet/csharp/language-reference/keywords/internal) y no está disponible para el uso directo en el código para desarrolladores.
 
 Agregue el espacio de nombres de <xref:Microsoft.Extensions.Logging?displayProperty=fullName> e inserte un elemento <xref:Microsoft.Extensions.Logging.ILoggerProvider> en el componente:
 

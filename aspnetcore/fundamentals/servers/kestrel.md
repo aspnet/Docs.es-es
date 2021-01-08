@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/servers/kestrel
-ms.openlocfilehash: 56ac6635639eed93a84f47fc915c7013c6ed2381
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 5c9e1717ad603687343f015826a113e6945e4a41
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93052336"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97854618"
 ---
 # <a name="kestrel-web-server-implementation-in-aspnet-core"></a>Implementación del servidor web Kestrel en ASP.NET Core
 
@@ -67,7 +67,7 @@ HTTP/2 está deshabilitado de manera predeterminada. Para obtener más informaci
 
 ## <a name="when-to-use-kestrel-with-a-reverse-proxy"></a>Cuándo usar Kestrel con un proxy inverso
 
-Kestrel se puede usar por sí solo o con un *servidor proxy inverso* , como [Internet Information Services (IIS)](https://www.iis.net/), [Nginx](https://nginx.org) o [Apache](https://httpd.apache.org/). Un servidor proxy inverso recibe las solicitudes HTTP de la red y las reenvía a Kestrel.
+Kestrel se puede usar por sí solo o con un *servidor proxy inverso*, como [Internet Information Services (IIS)](https://www.iis.net/), [Nginx](https://nginx.org) o [Apache](https://httpd.apache.org/). Un servidor proxy inverso recibe las solicitudes HTTP de la red y las reenvía a Kestrel.
 
 Kestrel empleado como servidor web perimetral (accesible desde Internet):
 
@@ -95,7 +95,7 @@ Un proxy inverso puede hacer lo siguiente:
 
 ## <a name="kestrel-in-aspnet-core-apps"></a>Kestrel en aplicaciones ASP.NET Core
 
-Las plantillas de proyecto de ASP.NET Core usan Kestrel de forma predeterminada. En *Program.cs* , el método <xref:Microsoft.Extensions.Hosting.GenericHostBuilderExtensions.ConfigureWebHostDefaults*> llama a <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderKestrelExtensions.UseKestrel*>:
+Las plantillas de proyecto de ASP.NET Core usan Kestrel de forma predeterminada. En *Program.cs*, el método <xref:Microsoft.Extensions.Hosting.GenericHostBuilderExtensions.ConfigureWebHostDefaults*> llama a <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderKestrelExtensions.UseKestrel*>:
 
 [!code-csharp[](kestrel/samples/3.x/KestrelSample/Program.cs?name=snippet_DefaultBuilder&highlight=8)]
 
@@ -128,7 +128,7 @@ En los ejemplos siguientes se usa el espacio de nombres <xref:Microsoft.AspNetCo
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 ```
 
-En los ejemplos que se muestran más adelante en este artículo, las opciones de Kestrel se configuran en código de C#. Las opciones de Kestrel también se pueden establecer mediante un [proveedor de configuración](xref:fundamentals/configuration/index). Por ejemplo, el [proveedor de configuración de archivo](xref:fundamentals/configuration/index#file-configuration-provider) puede cargar la configuración de Kestrel desde un archivo *appsettings.json* o *appsettings.{Environment}.json* :
+En los ejemplos que se muestran más adelante en este artículo, las opciones de Kestrel se configuran en código de C#. Las opciones de Kestrel también se pueden establecer mediante un [proveedor de configuración](xref:fundamentals/configuration/index). Por ejemplo, el [proveedor de configuración de archivo](xref:fundamentals/configuration/index#file-configuration-provider) puede cargar la configuración de Kestrel desde un archivo *appsettings.json* o *appsettings.{Environment}.json*:
 
 ```json
 {
@@ -179,7 +179,7 @@ Siga **uno** de estos procedimientos:
 
 * Configure Kestrel al compilar el host:
 
-  En *Program.cs* , cargue la sección de configuración `Kestrel` en la configuración de Kestrel:
+  En *Program.cs*, cargue la sección de configuración `Kestrel` en la configuración de Kestrel:
 
   ```csharp
   // using Microsoft.Extensions.DependencyInjection;
@@ -258,7 +258,7 @@ La velocidad mínima predeterminada es 240 bytes por segundo, con un período de
 
 También se aplica una velocidad mínima a la respuesta. El código para establecer el límite de solicitudes y el límite de respuestas es el mismo, salvo que tienen `RequestBody` o `Response` en los nombres de propiedad y de interfaz.
 
-Este es un ejemplo que muestra cómo configurar las velocidades de datos mínimas en *Program.cs* :
+Este es un ejemplo que muestra cómo configurar las velocidades de datos mínimas en *Program.cs*:
 
 [!code-csharp[](kestrel/samples/3.x/KestrelSample/Program.cs?name=snippet_Limits&highlight=6-11)]
 
@@ -531,7 +531,7 @@ Kestrel escucha en `http://localhost:5000` y en `https://localhost:5001` (si hay
 En el ejemplo *appsettings.json* siguiente:
 
 * Establezca **AllowInvalid** en `true` para permitir el uso de certificados no válidos (por ejemplo, certificados autofirmados).
-* Cualquier punto de conexión HTTPS que no especifique un certificado ( **HttpsDefaultCert** en el siguiente ejemplo) revierte al certificado definido en **Certificados** > **Predeterminado** o al certificado de desarrollo.
+* Cualquier punto de conexión HTTPS que no especifique un certificado (**HttpsDefaultCert** en el siguiente ejemplo) revierte al certificado definido en **Certificados** > **Predeterminado** o al certificado de desarrollo.
 
 ```json
 {
@@ -919,37 +919,6 @@ En el siguiente ejemplo de *appsettings.json* se establece el protocolo de conex
 
 Los protocolos especificados en el código invalidan los valores establecidos por la configuración.
 
-## <a name="transport-configuration"></a>Configuración de transporte
-
-Para los proyectos que necesitan el uso de Libuv (<xref:Microsoft.AspNetCore.Hosting.WebHostBuilderLibuvExtensions.UseLibuv*>):
-
-* Agregar una dependencia del paquete [Microsoft.AspNetCore.Server.Kestrel.Transport.Libuv](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.Kestrel.Transport.Libuv/) al archivo de proyecto de la aplicación:
-
-   ```xml
-   <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel.Transport.Libuv"
-                     Version="{VERSION}" />
-   ```
-
-* Llame a <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderLibuvExtensions.UseLibuv*> en `IWebHostBuilder`:
-
-   ```csharp
-   public class Program
-   {
-       public static void Main(string[] args)
-       {
-           CreateHostBuilder(args).Build().Run();
-       }
-
-       public static IHostBuilder CreateHostBuilder(string[] args) =>
-           Host.CreateDefaultBuilder(args)
-               .ConfigureWebHostDefaults(webBuilder =>
-               {
-                   webBuilder.UseLibuv();
-                   webBuilder.UseStartup<Startup>();
-               });
-   }
-   ```
-
 ### <a name="url-prefixes"></a>Prefijos de URL
 
 Al usar `UseUrls`, el argumento de línea de comandos `--urls`, la clave de configuración de host `urls` o una variable de entorno `ASPNETCORE_URLS`, los prefijos de dirección URL pueden tener cualquiera de estos formatos.
@@ -1004,7 +973,7 @@ Como solución alternativa, use el Middleware de filtrado de hosts. El middlewar
 
 El Middleware de filtrado de hosts está deshabilitado de forma predeterminada. Para habilitarlo, defina una clave `AllowedHosts` en *appsettings.json* /*appsettings.\<EnvironmentName>.json*. El valor es una lista delimitada por punto y coma de nombres de host sin los números de puerto:
 
-*appsettings.json* :
+*appsettings.json*:
 
 ```json
 {
@@ -1016,6 +985,49 @@ El Middleware de filtrado de hosts está deshabilitado de forma predeterminada. 
 > [Middleware de encabezados reenviados](xref:host-and-deploy/proxy-load-balancer) también tiene una opción <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.AllowedHosts>. El Middleware de encabezados reenviados y el Middleware de filtrado de hosts tienen una funcionalidad similar en diferentes escenarios. Establecer `AllowedHosts` con el Middleware de encabezados reenviados es adecuado cuando el encabezado `Host` no se conserva mientras se reenvían solicitudes con un servidor proxy inverso o un equilibrador de carga. Establecer `AllowedHosts` con el Middleware de filtrado de hosts es adecuado cuando se usa Kestrel como un servidor perimetral de acceso público o cuando el encabezado `Host` se reenvía directamente.
 >
 > Para obtener más información sobre el Middleware de encabezados reenviados, consulte <xref:host-and-deploy/proxy-load-balancer>.
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-5.0"
+
+## <a name="libuv-transport-configuration"></a>Configuración de transporte de Libuv
+
+A partir de ASP.NET Core 5.0, el transporte de Libuv de Kestrel está obsoleto. El transporte de Libuv no recibe actualizaciones para admitir nuevas plataformas de sistema operativo, como Windows ARM64, y se eliminará en una versión futura. Quite todas las llamadas al método obsoleto <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderLibuvExtensions.UseLibuv%2A> y, en su lugar, use el transporte de sockets predeterminado de Kestrel.
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.0 < aspnetcore-5.0"
+
+## <a name="libuv-transport-configuration"></a>Configuración de transporte de Libuv
+
+Para los proyectos que necesitan el uso de Libuv (<xref:Microsoft.AspNetCore.Hosting.WebHostBuilderLibuvExtensions.UseLibuv%2A>):
+
+* Agregue una dependencia para el paquete [`Microsoft.AspNetCore.Server.Kestrel.Transport.Libuv`](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.Kestrel.Transport.Libuv) al archivo del proyecto de la aplicación:
+
+  ```xml
+  <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel.Transport.Libuv"
+                    Version="{VERSION}" />
+  ```
+
+* Llame a <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderLibuvExtensions.UseLibuv%2A> en `IWebHostBuilder`:
+
+  ```csharp
+  public class Program
+  {
+      public static void Main(string[] args)
+      {
+          CreateHostBuilder(args).Build().Run();
+      }
+
+      public static IHostBuilder CreateHostBuilder(string[] args) =>
+          Host.CreateDefaultBuilder(args)
+              .ConfigureWebHostDefaults(webBuilder =>
+              {
+                  webBuilder.UseLibuv();
+                  webBuilder.UseStartup<Startup>();
+              });
+  }
+  ```
 
 ::: moniker-end
 
@@ -1056,7 +1068,7 @@ HTTP/2 está deshabilitado de manera predeterminada. Para obtener más informaci
 
 ## <a name="when-to-use-kestrel-with-a-reverse-proxy"></a>Cuándo usar Kestrel con un proxy inverso
 
-Kestrel se puede usar por sí solo o con un *servidor proxy inverso* , como [Internet Information Services (IIS)](https://www.iis.net/), [Nginx](https://nginx.org) o [Apache](https://httpd.apache.org/). Un servidor proxy inverso recibe las solicitudes HTTP de la red y las reenvía a Kestrel.
+Kestrel se puede usar por sí solo o con un *servidor proxy inverso*, como [Internet Information Services (IIS)](https://www.iis.net/), [Nginx](https://nginx.org) o [Apache](https://httpd.apache.org/). Un servidor proxy inverso recibe las solicitudes HTTP de la red y las reenvía a Kestrel.
 
 Kestrel empleado como servidor web perimetral (accesible desde Internet):
 
@@ -1086,7 +1098,7 @@ Un proxy inverso puede hacer lo siguiente:
 
 El paquete [Microsoft.AspNetCore.Server.Kestrel](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.Kestrel/) se incluye en el [metapaquete Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app).
 
-Las plantillas de proyecto de ASP.NET Core usan Kestrel de forma predeterminada. En *Program.cs* , el código de plantilla llama a <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*>, que a su vez llama a <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderKestrelExtensions.UseKestrel*> en segundo plano.
+Las plantillas de proyecto de ASP.NET Core usan Kestrel de forma predeterminada. En *Program.cs*, el código de plantilla llama a <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*>, que a su vez llama a <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderKestrelExtensions.UseKestrel*> en segundo plano.
 
 [!code-csharp[](kestrel/samples/2.x/KestrelSample/Program.cs?name=snippet_DefaultBuilder&highlight=7)]
 
@@ -1136,7 +1148,7 @@ En los ejemplos siguientes se usa el espacio de nombres <xref:Microsoft.AspNetCo
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 ```
 
-Las opciones de Kestrel, que se configuran en código de C# en los siguientes ejemplos, también se pueden establecer mediante un [proveedor de configuración](xref:fundamentals/configuration/index). Por ejemplo, el proveedor de configuración de archivo puede cargar la configuración de Kestrel desde un archivo *appsettings.json* o *appsettings.{Environment}.json* :
+Las opciones de Kestrel, que se configuran en código de C# en los siguientes ejemplos, también se pueden establecer mediante un [proveedor de configuración](xref:fundamentals/configuration/index). Por ejemplo, el proveedor de configuración de archivo puede cargar la configuración de Kestrel desde un archivo *appsettings.json* o *appsettings.{Environment}.json*:
 
 ```json
 {
@@ -1183,7 +1195,7 @@ Siga **uno** de estos procedimientos:
 
 * Configure Kestrel al compilar el host:
 
-  En *Program.cs* , cargue la sección de configuración `Kestrel` en la configuración de Kestrel:
+  En *Program.cs*, cargue la sección de configuración `Kestrel` en la configuración de Kestrel:
 
   ```csharp
   // using Microsoft.Extensions.DependencyInjection;
@@ -1259,7 +1271,7 @@ La velocidad mínima predeterminada es 240 bytes por segundo, con un período de
 
 También se aplica una velocidad mínima a la respuesta. El código para establecer el límite de solicitudes y el límite de respuestas es el mismo, salvo que tienen `RequestBody` o `Response` en los nombres de propiedad y de interfaz.
 
-Este es un ejemplo que muestra cómo configurar las velocidades de datos mínimas en *Program.cs* :
+Este es un ejemplo que muestra cómo configurar las velocidades de datos mínimas en *Program.cs*:
 
 [!code-csharp[](kestrel/samples/2.x/KestrelSample/Program.cs?name=snippet_Limits&highlight=6-9)]
 
@@ -1519,7 +1531,7 @@ Kestrel escucha en `http://localhost:5000` y en `https://localhost:5001` (si hay
 En el ejemplo *appsettings.json* siguiente:
 
 * Establezca **AllowInvalid** en `true` para permitir el uso de certificados no válidos (por ejemplo, certificados autofirmados).
-* Cualquier punto de conexión HTTPS que no especifique un certificado ( **HttpsDefaultCert** en el siguiente ejemplo) revierte al certificado definido en **Certificados** > **Predeterminado** o al certificado de desarrollo.
+* Cualquier punto de conexión HTTPS que no especifique un certificado (**HttpsDefaultCert** en el siguiente ejemplo) revierte al certificado definido en **Certificados** > **Predeterminado** o al certificado de desarrollo.
 
 ```json
 {
@@ -1868,7 +1880,7 @@ El siguiente ejemplo de archivo de configuración establece un protocolo de cone
 
 Los protocolos especificados en el código invalidan los valores establecidos por la configuración.
 
-## <a name="transport-configuration"></a>Configuración de transporte
+## <a name="libuv-transport-configuration"></a>Configuración de transporte de Libuv
 
 Desde el lanzamiento de ASP.NET Core 2.1, el transporte predeterminado de Kestrel deja de basarse en Libuv y pasa a basarse en sockets administrados. Se trata de un cambio muy importante para las aplicaciones ASP.NET Core 2.0 que actualizan a 2.1 y llaman a <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderLibuvExtensions.UseLibuv*>, y que dependen de cualquiera de los siguientes paquetes:
 
@@ -1955,7 +1967,7 @@ Como solución alternativa, use el Middleware de filtrado de hosts. El middlewar
 
 El Middleware de filtrado de hosts está deshabilitado de forma predeterminada. Para habilitarlo, defina una clave `AllowedHosts` en *appsettings.json* /*appsettings.\<EnvironmentName>.json*. El valor es una lista delimitada por punto y coma de nombres de host sin los números de puerto:
 
-*appsettings.json* :
+*appsettings.json*:
 
 ```json
 {
@@ -1986,7 +1998,7 @@ Kestrel admite todas las plataformas y versiones que sean compatibles con .NET C
 
 ## <a name="when-to-use-kestrel-with-a-reverse-proxy"></a>Cuándo usar Kestrel con un proxy inverso
 
-Kestrel se puede usar por sí solo o con un *servidor proxy inverso* , como [Internet Information Services (IIS)](https://www.iis.net/), [Nginx](https://nginx.org) o [Apache](https://httpd.apache.org/). Un servidor proxy inverso recibe las solicitudes HTTP de la red y las reenvía a Kestrel.
+Kestrel se puede usar por sí solo o con un *servidor proxy inverso*, como [Internet Information Services (IIS)](https://www.iis.net/), [Nginx](https://nginx.org) o [Apache](https://httpd.apache.org/). Un servidor proxy inverso recibe las solicitudes HTTP de la red y las reenvía a Kestrel.
 
 Kestrel empleado como servidor web perimetral (accesible desde Internet):
 
@@ -2016,7 +2028,7 @@ Un proxy inverso puede hacer lo siguiente:
 
 El paquete [Microsoft.AspNetCore.Server.Kestrel](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.Kestrel/) se incluye en el [metapaquete Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app).
 
-Las plantillas de proyecto de ASP.NET Core usan Kestrel de forma predeterminada. En *Program.cs* , el código de plantilla llama a <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*>, que a su vez llama a <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderKestrelExtensions.UseKestrel*> en segundo plano.
+Las plantillas de proyecto de ASP.NET Core usan Kestrel de forma predeterminada. En *Program.cs*, el código de plantilla llama a <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*>, que a su vez llama a <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderKestrelExtensions.UseKestrel*> en segundo plano.
 
 Para proporcionar configuración adicional después de llamar a `CreateDefaultBuilder`, llame a <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderKestrelExtensions.UseKestrel*>:
 
@@ -2044,7 +2056,7 @@ En los ejemplos siguientes se usa el espacio de nombres <xref:Microsoft.AspNetCo
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 ```
 
-Las opciones de Kestrel, que se configuran en código de C# en los siguientes ejemplos, también se pueden establecer mediante un [proveedor de configuración](xref:fundamentals/configuration/index). Por ejemplo, el proveedor de configuración de archivo puede cargar la configuración de Kestrel desde un archivo *appsettings.json* o *appsettings.{Environment}.json* :
+Las opciones de Kestrel, que se configuran en código de C# en los siguientes ejemplos, también se pueden establecer mediante un [proveedor de configuración](xref:fundamentals/configuration/index). Por ejemplo, el proveedor de configuración de archivo puede cargar la configuración de Kestrel desde un archivo *appsettings.json* o *appsettings.{Environment}.json*:
 
 ```json
 {
@@ -2091,7 +2103,7 @@ Siga **uno** de estos procedimientos:
 
 * Configure Kestrel al compilar el host:
 
-  En *Program.cs* , cargue la sección de configuración `Kestrel` en la configuración de Kestrel:
+  En *Program.cs*, cargue la sección de configuración `Kestrel` en la configuración de Kestrel:
 
   ```csharp
   // using Microsoft.Extensions.DependencyInjection;
@@ -2199,7 +2211,7 @@ La velocidad mínima predeterminada es 240 bytes por segundo, con un período de
 
 También se aplica una velocidad mínima a la respuesta. El código para establecer el límite de solicitudes y el límite de respuestas es el mismo, salvo que tienen `RequestBody` o `Response` en los nombres de propiedad y de interfaz.
 
-Este es un ejemplo que muestra cómo configurar las velocidades de datos mínimas en *Program.cs* :
+Este es un ejemplo que muestra cómo configurar las velocidades de datos mínimas en *Program.cs*:
 
 ```csharp
 public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -2383,7 +2395,7 @@ Kestrel escucha en `http://localhost:5000` y en `https://localhost:5001` (si hay
 En el ejemplo *appsettings.json* siguiente:
 
 * Establezca **AllowInvalid** en `true` para permitir el uso de certificados no válidos (por ejemplo, certificados autofirmados).
-* Cualquier punto de conexión HTTPS que no especifique un certificado ( **HttpsDefaultCert** en el siguiente ejemplo) revierte al certificado definido en **Certificados** > **Predeterminado** o al certificado de desarrollo.
+* Cualquier punto de conexión HTTPS que no especifique un certificado (**HttpsDefaultCert** en el siguiente ejemplo) revierte al certificado definido en **Certificados** > **Predeterminado** o al certificado de desarrollo.
 
 ```json
 {
@@ -2658,7 +2670,7 @@ Estos métodos son útiles para que el código funcione con servidores que no se
 
 Cuando se usa IIS, los enlaces de direcciones URL de IIS reemplazan a los enlaces que se hayan establecido por medio de `Listen` o de `UseUrls`. Para más información, vea el tema [Módulo ASP.NET Core](xref:host-and-deploy/aspnet-core-module).
 
-## <a name="transport-configuration"></a>Configuración de transporte
+## <a name="libuv-transport-configuration"></a>Configuración de transporte de Libuv
 
 Desde el lanzamiento de ASP.NET Core 2.1, el transporte predeterminado de Kestrel deja de basarse en Libuv y pasa a basarse en sockets administrados. Se trata de un cambio muy importante para las aplicaciones ASP.NET Core 2.0 que actualizan a 2.1 y llaman a <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderLibuvExtensions.UseLibuv*>, y que dependen de cualquiera de los siguientes paquetes:
 
@@ -2745,7 +2757,7 @@ Como solución alternativa, use el Middleware de filtrado de hosts. El middlewar
 
 El Middleware de filtrado de hosts está deshabilitado de forma predeterminada. Para habilitarlo, defina una clave `AllowedHosts` en *appsettings.json* /*appsettings.\<EnvironmentName>.json*. El valor es una lista delimitada por punto y coma de nombres de host sin los números de puerto:
 
-*appsettings.json* :
+*appsettings.json*:
 
 ```json
 {

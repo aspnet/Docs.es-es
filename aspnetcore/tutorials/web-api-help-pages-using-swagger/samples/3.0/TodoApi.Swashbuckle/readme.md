@@ -11,10 +11,10 @@ products:
 - vs-mac
 urlFragment: getstarted-swashbuckle-aspnetcore
 ms.openlocfilehash: e02247325f430b0ce23dbb3f5bc344a60a1a164a
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "78647591"
 ---
 # <a name="get-started-with-swashbuckle-and-aspnet-core"></a>Introducción a Swashbuckle y ASP.NET Core
@@ -421,4 +421,4 @@ Ahora, la interfaz de usuario de Swagger documenta de forma clara los códigos d
 
 En ASP.NET Core 2.2 o versiones posteriores, las convenciones se pueden usar como alternativa a la representación explícita de acciones individuales con `[ProducesResponseType]`. Para más información, consulte [Uso de convenciones de API web](https://docs.microsoft.com/aspnet/core/web-api/advanced/conventions).
 
-Para información sobre cómo personalizar la interfaz de usuario, consulte: [Personalización de la interfaz de usuario](/aspnet/core/tutorials/getting-started-with-swashbuckle?#customize-and-extend)
+Para información sobre cómo personalizar la interfaz de usuario, consulte: [Personalización de la interfaz de usuario](/aspnet/core/tutorials/getting-started-with-swashbuckle?#customize-and-extend).

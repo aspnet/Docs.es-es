@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/virtualization
-ms.openlocfilehash: b23e4814daaabbe2c8660d49cc5b6940a9cc3b4f
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 920a23aee0d0555e93c829142700709d5881afd2
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93056171"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97753104"
 ---
 # <a name="aspnet-core-no-locblazor-component-virtualization"></a>Virtualización de componentes de ASP.NET Core Blazor
 
@@ -89,7 +89,9 @@ Si no se quieren cargar todos los elementos en la memoria, se puede especificar 
 </Virtualize>
 ```
 
-El proveedor de elementos recibe un objeto `ItemsProviderRequest`, que especifica el número necesario de elementos empezando por un índice de inicio específico. Luego, el proveedor de elementos recupera los elementos solicitados de una base de datos u otro servicio y los devuelve como un objeto `ItemsProviderResult<TItem>` junto con un recuento total de elementos. El proveedor de elementos puede elegir entre recuperar los elementos con cada solicitud o almacenarlos en la memoria caché para que estén disponibles fácilmente. No intente usar un proveedor de elementos y asignar una colección a `Items` con el mismo componente `Virtualize`.
+El proveedor de elementos recibe un objeto `ItemsProviderRequest`, que especifica el número necesario de elementos empezando por un índice de inicio específico. Luego, el proveedor de elementos recupera los elementos solicitados de una base de datos u otro servicio y los devuelve como un objeto `ItemsProviderResult<TItem>` junto con un recuento total de elementos. El proveedor de elementos puede elegir entre recuperar los elementos con cada solicitud o almacenarlos en la memoria caché para que estén disponibles fácilmente.
+
+Un componente `Virtualize` solo puede aceptar **un origen de elementos** de sus parámetros, por lo que no intente usar simultáneamente un proveedor de elementos y asignar una colección a `Items`. Si se asignan ambos, se genera una clase <xref:System.InvalidOperationException> cuando los parámetros del componente se establecen en tiempo de ejecución.
 
 En el siguiente ejemplo se cargan empleados desde `EmployeeService`:
 

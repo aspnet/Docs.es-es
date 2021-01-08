@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/standalone-with-azure-active-directory-b2c
-ms.openlocfilehash: 14eda03419e22538e17b7b4d6fa697d61cb384c8
-ms.sourcegitcommit: 45aa1c24c3fdeb939121e856282b00bdcf00ea55
+ms.openlocfilehash: 679f14642f4a611a5e65a7f472c68663fc1fb16b
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93343717"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97764714"
 ---
 # <a name="secure-an-aspnet-core-no-locblazor-webassembly-standalone-app-with-azure-active-directory-b2c"></a>Protección de una aplicación independiente Blazor WebAssembly de ASP.NET Core con Azure Active Directory B2C
 
@@ -32,30 +32,30 @@ Por [Javier Calvarro Nelson](https://github.com/javiercn) y [Luke Latham](https:
 
 En este artículo se trata cómo crear una [aplicación Blazor WebAssembly independiente](xref:blazor/hosting-models#blazor-webassembly) que usa [Azure Active Directory (AAD) B2C](/azure/active-directory-b2c/overview) para la autenticación.
 
-Cree un inquilino o determine un inquilino de B2C existente para que la aplicación lo use en Azure Portal siguiendo las instrucciones del artículo [Creación de un inquilino de Azure Active Directory B2C (documentación de Azure)](/azure/active-directory-b2c/tutorial-create-tenant).
+Cree un inquilino o determine un inquilino de B2C existente para que la aplicación lo use en Azure Portal siguiendo las instrucciones del artículo [Creación de un inquilino de Azure Active Directory B2C (documentación de Azure)](/azure/active-directory-b2c/tutorial-create-tenant). Vuelva a este artículo inmediatamente después de crear o identificar un inquilino que vaya a usar.
 
 Registre la siguiente información:
 
 * Instancia de AAD B2C (por ejemplo, `https://contoso.b2clogin.com/`, barra diagonal final incluida): La instancia es el esquema y el host de un registro de la aplicación de Azure B2C, que se puede encontrar abriendo la ventana **Puntos de conexión** de la página **Registros de aplicaciones** de Azure Portal.
 * Dominio de AAD B2C Principal/Publicador/Inquilino (por ejemplo, `contoso.onmicrosoft.com`): El dominio está disponible como **Dominio del publicador** en la hoja **Personalización de marca** de Azure Portal de la aplicación registrada.
 
-Registre una aplicación AAD B2C (instrucciones relacionadas en la documentación de Azure: [Tutorial: Registro de una aplicación en Azure Active Directory B2C](/azure/active-directory-b2c/tutorial-register-applications)):
+Registre una aplicación AAD B2C:
 
 ::: moniker range=">= aspnetcore-5.0"
 
-1. En **Azure Active Directory** > **Registros de aplicaciones** , seleccione **Nuevo registro**.
-1. Indique un **Nombre** para la aplicación (por ejemplo, **Blazor Standalone AAD B2C** ).
-1. En **Tipos de cuenta compatibles** , seleccione la opción multiinquilino: **Cuentas de cualquier directorio de la organización o proveedor de identidades. Elija esta opción para realizar la autenticación con Azure AD B2C.**
+1. En **Azure Active Directory** > **Registros de aplicaciones**, seleccione **Nuevo registro**.
+1. Indique un **Nombre** para la aplicación (por ejemplo, **Blazor Standalone AAD B2C**).
+1. En **Tipos de cuenta compatibles**, seleccione la opción multiinquilino: **Cuentas de cualquier directorio de la organización o proveedor de identidades. Elija esta opción para realizar la autenticación con Azure AD B2C.**
 1. Establezca la lista desplegable **URI de redirección** en **Aplicación de página única** y proporcione el siguiente URI de redirección: `https://localhost:{PORT}/authentication/login-callback`. El puerto predeterminado de una aplicación que se ejecuta en Kestrel es 5001. Si la aplicación se ejecuta en otro puerto de Kestrel, use el puerto de la aplicación. En el caso de IIS Express, el puerto generado aleatoriamente para la aplicación se encuentra en las propiedades de la aplicación, en el panel **Depurar**. Dado que la aplicación no existe en este momento y no conocemos el puerto de IIS Express, vuelva a este paso después de crear la aplicación y actualice el URI de redirección. Más adelante en este tema aparece un comentario para recordar a los usuarios de IIS Express que actualicen el URI de redirección.
 1. Confirme que la casilla **Permisos** > **Conceda consentimiento del administrador a los permisos openid y offline_access** está activada.
 1. Seleccione **Registrar**.
 
 Registre el identificador de aplicación (cliente); por ejemplo, `41451fa7-82d9-4673-8fa5-69eff5a761fd`.
 
-En **Autenticación** > **Configuraciones de plataforma** > **Aplicación de página única** :
+En **Autenticación** > **Configuraciones de plataforma** > **Aplicación de página única**:
 
 1. Confirme que el **URI de redirección** de `https://localhost:{PORT}/authentication/login-callback` está presente.
-1. En **Concesión implícita** , asegúrese de que las casillas **Tokens de acceso** y **Tokens de id.** **no** están seleccionadas.
+1. En **Concesión implícita**, asegúrese de que las casillas **Tokens de acceso** y **Tokens de id.** **no** están seleccionadas.
 1. Los valores predeterminados restantes de la aplicación son aceptables en esta experiencia.
 1. Seleccione el botón **Guardar**.
 
@@ -63,25 +63,25 @@ En **Autenticación** > **Configuraciones de plataforma** > **Aplicación de pá
 
 ::: moniker range="< aspnetcore-5.0"
 
-1. En **Azure Active Directory** > **Registros de aplicaciones** , seleccione **Nuevo registro**.
-1. Indique un **Nombre** para la aplicación (por ejemplo, **Blazor Standalone AAD B2C** ).
-1. En **Tipos de cuenta compatibles** , seleccione la opción multiinquilino: **Cuentas de cualquier directorio de la organización o proveedor de identidades. Elija esta opción para realizar la autenticación con Azure AD B2C.**
+1. En **Azure Active Directory** > **Registros de aplicaciones**, seleccione **Nuevo registro**.
+1. Indique un **Nombre** para la aplicación (por ejemplo, **Blazor Standalone AAD B2C**).
+1. En **Tipos de cuenta compatibles**, seleccione la opción multiinquilino: **Cuentas de cualquier directorio de la organización o proveedor de identidades. Elija esta opción para realizar la autenticación con Azure AD B2C.**
 1. Deje la lista desplegable **URI de redirección** establecida en **Web** y proporcione el siguiente URI de redirección: `https://localhost:{PORT}/authentication/login-callback`. El puerto predeterminado de una aplicación que se ejecuta en Kestrel es 5001. Si la aplicación se ejecuta en otro puerto de Kestrel, use el puerto de la aplicación. En el caso de IIS Express, el puerto generado aleatoriamente para la aplicación se encuentra en las propiedades de la aplicación, en el panel **Depurar**. Dado que la aplicación no existe en este momento y no conocemos el puerto de IIS Express, vuelva a este paso después de crear la aplicación y actualice el URI de redirección. Más adelante en este tema aparece un comentario para recordar a los usuarios de IIS Express que actualicen el URI de redirección.
 1. Confirme que la casilla **Permisos** > **Conceda consentimiento del administrador a los permisos openid y offline_access** está activada.
 1. Seleccione **Registrar**.
 
 Registre el identificador de aplicación (cliente); por ejemplo, `41451fa7-82d9-4673-8fa5-69eff5a761fd`.
 
-En **Autenticación** > **Configuraciones de plataforma** > **Web** :
+En **Autenticación** > **Configuraciones de plataforma** > **Web**:
 
 1. Confirme que el **URI de redirección** de `https://localhost:{PORT}/authentication/login-callback` está presente.
-1. En **Concesión implícita** , active las casillas **Tokens de acceso** y **Tokens de id.**
+1. En **Concesión implícita**, active las casillas **Tokens de acceso** y **Tokens de id.**
 1. Los valores predeterminados restantes de la aplicación son aceptables en esta experiencia.
 1. Seleccione el botón **Guardar**.
 
 ::: moniker-end
 
-En **Inicio** > **Azure AD B2C** > **Flujos de usuario** :
+En **Inicio** > **Azure AD B2C** > **Flujos de usuario**:
 
 [Creación de un flujo de usuario de registro e inicio de sesión](/azure/active-directory-b2c/tutorial-create-user-flows)
 
@@ -114,7 +114,7 @@ La ubicación de salida especificada con la opción `-o|--output` crea una carpe
 
 ::: moniker range=">= aspnetcore-5.0"
 
-[!INCLUDE[](~/includes/blazor-security/additional-scopes-standalone-nonAAD.md)]
+[!INCLUDE[](~/blazor/includes/security/additional-scopes-standalone-nonAAD.md)]
 
 ::: moniker-end
 
@@ -197,7 +197,7 @@ Especifique ámbitos adicionales con `AdditionalScopesToConsent`:
 options.ProviderOptions.AdditionalScopesToConsent.Add("{ADDITIONAL SCOPE URI}");
 ```
 
-Para más información, vea las siguientes secciones del artículo *Otros escenarios* :
+Para más información, vea las siguientes secciones del artículo *Otros escenarios*:
 
 * [Solicitar tokens de acceso adicionales](xref:blazor/security/webassembly/additional-scenarios#request-additional-access-tokens)
 * [Adjuntar tokens a solicitudes salientes](xref:blazor/security/webassembly/additional-scenarios#attach-tokens-to-outgoing-requests)
@@ -206,37 +206,37 @@ Para más información, vea las siguientes secciones del artículo *Otros escena
 
 ## <a name="login-mode"></a>Modo de inicio de sesión
 
-[!INCLUDE[](~/includes/blazor-security/msal-login-mode.md)]
+[!INCLUDE[](~/blazor/includes/security/msal-login-mode.md)]
 
 ::: moniker-end
 
 ## <a name="imports-file"></a>Archivo Imports
 
-[!INCLUDE[](~/includes/blazor-security/imports-file-standalone.md)]
+[!INCLUDE[](~/blazor/includes/security/imports-file-standalone.md)]
 
 ## <a name="index-page"></a>Página de índice
 
-[!INCLUDE[](~/includes/blazor-security/index-page-msal.md)]
+[!INCLUDE[](~/blazor/includes/security/index-page-msal.md)]
 
 ## <a name="app-component"></a>Componente App
 
-[!INCLUDE[](~/includes/blazor-security/app-component.md)]
+[!INCLUDE[](~/blazor/includes/security/app-component.md)]
 
 ## <a name="redirecttologin-component"></a>Componente RedirectToLogin
 
-[!INCLUDE[](~/includes/blazor-security/redirecttologin-component.md)]
+[!INCLUDE[](~/blazor/includes/security/redirecttologin-component.md)]
 
 ## <a name="logindisplay-component"></a>Componente LoginDisplay
 
-[!INCLUDE[](~/includes/blazor-security/logindisplay-component.md)]
+[!INCLUDE[](~/blazor/includes/security/logindisplay-component.md)]
 
 ## <a name="authentication-component"></a>Componente Authentication
 
-[!INCLUDE[](~/includes/blazor-security/authentication-component.md)]
+[!INCLUDE[](~/blazor/includes/security/authentication-component.md)]
 
-[!INCLUDE[](~/includes/blazor-security/wasm-aad-b2c-userflows.md)]
+[!INCLUDE[](~/blazor/includes/security/wasm-aad-b2c-userflows.md)]
 
-[!INCLUDE[](~/includes/blazor-security/troubleshoot.md)]
+[!INCLUDE[](~/blazor/includes/security/troubleshoot.md)]
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
@@ -244,4 +244,5 @@ Para más información, vea las siguientes secciones del artículo *Otros escena
 * [Solicitudes de API web no autenticadas o no autorizadas en una aplicación con un cliente predeterminado seguro](xref:blazor/security/webassembly/additional-scenarios#unauthenticated-or-unauthorized-web-api-requests-in-an-app-with-a-secure-default-client)
 * <xref:security/authentication/azure-ad-b2c>
 * [Tutorial: Creación de un inquilino de Azure Active Directory B2C](/azure/active-directory-b2c/tutorial-create-tenant)
+* [Tutorial: Registro de una aplicación en Azure Active Directory B2C](/azure/active-directory-b2c/tutorial-register-applications)
 * [Documentación de la plataforma de identidad de Microsoft](/azure/active-directory/develop/)
