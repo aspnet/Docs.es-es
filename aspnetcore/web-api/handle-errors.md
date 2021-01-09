@@ -5,7 +5,7 @@ description: Obtenga información sobre el control de errores con API web de ASP
 monikerRange: '>= aspnetcore-2.1'
 ms.author: prkrishn
 ms.custom: mvc
-ms.date: 07/23/2020
+ms.date: 1/11/2021
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/handle-errors
-ms.openlocfilehash: 0efcf1bbeeb65cf7f4420f8c50fb4adf7d1d016d
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 92e9350a7892f8f38f64d4ebd68d54a97ec7e994
+ms.sourcegitcommit: 97243663fd46c721660e77ef652fe2190a461f81
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93052531"
+ms.lasthandoff: 01/09/2021
+ms.locfileid: "98058381"
 ---
 # <a name="handle-errors-in-aspnet-core-web-apis"></a>Control de errores en API web de ASP.NET Core
 
@@ -127,7 +127,9 @@ La respuesta con formato HTML resulta útil al realizar pruebas mediante herrami
 ::: moniker-end
 
 > [!WARNING]
-> Habilite la página de excepciones para el desarrollador **solo cuando la aplicación se ejecute en el entorno de desarrollo** . No le interesa compartir públicamente información detallada sobre las excepciones cuando la aplicación se ejecute en producción. Para más información sobre la configuración de entornos, consulte <xref:fundamentals/environments>.
+> Habilite la página de excepciones para el desarrollador **solo cuando la aplicación se ejecute en el entorno de desarrollo**. No comparta información detallada de la excepción públicamente cuando la aplicación se ejecute en producción. Para más información sobre la configuración de entornos, consulte <xref:fundamentals/environments>.
+>
+> No marque el método de acción del controlador de errores con atributos de método HTTP, como `HttpGet`. Los verbos explícitos impiden que algunas solicitudes lleguen al método de acción. Permita el acceso anónimo al método si los usuarios no autenticados deberían ver el error.
 
 ## <a name="exception-handler"></a>Controlador de excepciones
 
@@ -222,6 +224,8 @@ El middleware de control de excepciones también puede proporcionar una salida n
 
     ::: moniker-end
 
+    El código anterior llama a [ControllerBase. problema](xref:Microsoft.AspNetCore.Mvc.ControllerBase.Problem%2A) para crear una <xref:Microsoft.AspNetCore.Mvc.ProblemDetails> respuesta.
+
 ## <a name="use-exceptions-to-modify-the-response"></a>Uso de excepciones para modificar la respuesta
 
 El contenido de la respuesta se puede modificar desde fuera del controlador. En la API web de ASP.NET 4.x, una manera de hacerlo era usar el tipo <xref:System.Web.Http.HttpResponseException>. ASP.NET Core no incluye un tipo equivalente. Se pueden agregar compatibilidad para `HttpResponseException` con los pasos siguientes:
@@ -234,7 +238,7 @@ El contenido de la respuesta se puede modificar desde fuera del controlador. En 
 
     [!code-csharp[](handle-errors/samples/3.x/Filters/HttpResponseExceptionFilter.cs?name=snippet_HttpResponseExceptionFilter)]
 
-    En el filtro anterior, el número mágico 10 se resta del valor entero máximo. Restar este número permite que otros filtros se ejecuten al final de la canalización.
+    El filtro anterior especifica una `Order` del valor entero máximo menos 10. Esto permite que otros filtros se ejecuten al final de la canalización.
 
 1. En `Startup.ConfigureServices`, agregue el filtro de acción a la colección de filtros:
 
@@ -337,3 +341,7 @@ Use la propiedad <xref:Microsoft.AspNetCore.Mvc.ApiBehaviorOptions.ClientErrorMa
 [!code-csharp[](index/samples/2.x/2.2/Startup.cs?name=snippet_ConfigureApiBehaviorOptions&highlight=9-10)]
 
 ::: moniker-end
+
+## <a name="custom-middleware-to-handle-exceptions"></a>Middleware personalizado para controlar las excepciones
+
+Los valores predeterminados en el middleware de control de excepciones funcionan bien para la mayoría de las aplicaciones. En el caso de las aplicaciones que requieren un control de excepciones especializado, considere la posibilidad de [personalizar el middleware de control de excepciones](xref:fundamentals/error-handling#exception-handler-lambda).

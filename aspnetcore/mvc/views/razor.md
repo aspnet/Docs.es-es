@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/razor
-ms.openlocfilehash: 91e35a7cbd97e2bd6e77566362f02409915de7d7
-ms.sourcegitcommit: 3f0ad1e513296ede1bff39a05be6c278e879afed
+ms.openlocfilehash: cb9ffab19062bf726dd519c782d502f76e372073
+ms.sourcegitcommit: 97243663fd46c721660e77ef652fe2190a461f81
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96035715"
+ms.lasthandoff: 01/09/2021
+ms.locfileid: "98058290"
 ---
 # <a name="no-locrazor-syntax-reference-for-aspnet-core"></a>Razor referencia de sintaxis para ASP.NET Core
 
@@ -32,7 +32,7 @@ Razor es una sintaxis de marcado para insertar código basado en servidor en pá
 
 ## <a name="rendering-html"></a>Representación de HTML
 
-El Razor idioma predeterminado es HTML. La representación de HTML a partir del Razor marcado no es diferente de representar HTML desde un archivo HTML. *.cshtml* Razor El servidor no ha cambiado el formato HTML en los archivos. cshtml.
+El Razor idioma predeterminado es HTML. La representación de HTML a partir del Razor marcado no es diferente de representar HTML desde un archivo HTML.  Razor El servidor no ha cambiado el formato HTML en los archivos. cshtml.
 
 ## <a name="no-locrazor-syntax"></a>Sintaxis de Razor
 
@@ -611,7 +611,7 @@ La `@inject` directiva permite Razor que la página Inserte un servicio del [con
 
 *Este escenario solo se aplica a Razor los componentes de (. Razor).*
 
-La `@layout` Directiva especifica un diseño para un Razor componente. Los componentes de diseño se usan para evitar incoherencias y contenido duplicado en el código. Para obtener más información, vea <xref:blazor/layouts>.
+La `@layout` Directiva especifica un diseño para los componentes enrutables Razor que tienen una [`@page`](#page) Directiva. Los componentes de diseño se usan para evitar incoherencias y contenido duplicado en el código. Para obtener más información, vea <xref:blazor/layouts>.
 
 ::: moniker-end
 
@@ -705,9 +705,9 @@ La `@page` Directiva en la primera línea de un archivo *. cshtml* indica que el
 
 Cuando se establece en `false` (valor predeterminado), se quita el espacio en blanco en el marcado representado de Razor Components ( `.razor` ) si:
 
-* Inicial o final de un elemento.
-* Inicial o final de un `RenderFragment` parámetro. Por ejemplo, el contenido secundario que se pasa a otro componente.
-* Precede o sigue a un bloque de código de C#, como `@if` o `@foreach` .
+* Está delante o detrás de un elemento.
+* Está delante o detrás de un parámetro `RenderFragment`. Por ejemplo, el contenido secundario se pasa a otro componente.
+* Precede o sigue a un bloque de código de C#, como `@if` o `@foreach`.
 
 ::: moniker-end
 
