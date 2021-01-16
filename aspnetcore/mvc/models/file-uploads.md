@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/models/file-uploads
-ms.openlocfilehash: 14561bace565c104d0a9c926cad3105c4865e72a
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: c32d20d4616650db004c78fb4d8ea9a4d5a3beab
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93061176"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98252804"
 ---
 # <a name="upload-files-in-aspnet-core"></a>Carga de archivos en ASP.NET Core
 
@@ -125,7 +125,7 @@ El streaming de archivos grandes se describe en la sección [Carga de archivos d
 
 Para cargar archivos pequeños, se puede usar un formulario de varias partes o construir una solicitud POST con JavaScript.
 
-En el ejemplo siguiente se muestra el uso de un Razor formulario de páginas para cargar un único archivo ( *pages/BufferedSingleFileUploadPhysical. cshtml* en la aplicación de ejemplo):
+En el ejemplo siguiente se muestra el uso de un Razor formulario de páginas para cargar un único archivo (*pages/BufferedSingleFileUploadPhysical. cshtml* en la aplicación de ejemplo):
 
 ```cshtml
 <form enctype="multipart/form-data" method="post">
@@ -436,7 +436,7 @@ El método `StreamingController.UploadDatabase` completo para streaming a una ba
 
 [!code-csharp[](file-uploads/samples/3.x/SampleApp/Controllers/StreamingController.cs?name=snippet_UploadDatabase)]
 
-`MultipartRequestHelper` ( *Utilities/MultipartRequestHelper.cs* ):
+`MultipartRequestHelper` (*Utilities/MultipartRequestHelper.cs*):
 
 [!code-csharp[](file-uploads/samples/3.x/SampleApp/Utilities/MultipartRequestHelper.cs)]
 
@@ -448,7 +448,7 @@ En la aplicación de ejemplo, las comprobaciones de validación las controla `Fi
 
 ## <a name="validation"></a>Validación
 
-La clase `FileHelpers` de la aplicación de ejemplo muestra varias comprobaciones de cargas de archivos de streaming y <xref:Microsoft.AspNetCore.Http.IFormFile> almacenado en búfer. Para procesar cargas de archivos almacenadas en búfer de <xref:Microsoft.AspNetCore.Http.IFormFile> en la aplicación de ejemplo, consulte el método `ProcessFormFile` en el archivo *Utilities/FileHelpers.cs* . Para procesar archivos de streaming, consulte el método `ProcessStreamedFile` en el mismo archivo.
+La clase `FileHelpers` de la aplicación de ejemplo muestra varias comprobaciones de cargas de archivos de streaming y <xref:Microsoft.AspNetCore.Http.IFormFile> almacenado en búfer. Para procesar cargas de archivos almacenadas en búfer de <xref:Microsoft.AspNetCore.Http.IFormFile> en la aplicación de ejemplo, consulte el método `ProcessFormFile` en el archivo *Utilities/FileHelpers.cs*. Para procesar archivos de streaming, consulte el método `ProcessStreamedFile` en el mismo archivo.
 
 > [!WARNING]
 > Los métodos de procesamiento de validación mostrados en la aplicación de ejemplo no examinan el contenido de los archivos cargados. En la mayoría de los escenarios de producción, se usa una API de analizador de virus/malware en el archivo antes de que el archivo esté disponible para los usuarios u otros sistemas.
@@ -460,7 +460,7 @@ La clase `FileHelpers` de la aplicación de ejemplo muestra varias comprobacione
 >
 > **No implemente nunca de manera indiscriminada el código de seguridad en una aplicación sin abordar estos requisitos.**
 
-### <a name="content-validation"></a>Validación de contenido
+### <a name="content-validation"></a>Validación del contenido
 
 **Use una API de detección de virus/malware de terceros en el contenido cargado.**
 
@@ -651,7 +651,7 @@ public class BufferedSingleFileUploadPhysicalModel : PageModel
 
 ### <a name="kestrel-maximum-request-body-size"></a>Tamaño máximo del cuerpo de la solicitud de Kestrel
 
-En el caso de las aplicaciones hospedadas por Kestrel, el tamaño máximo predeterminado del cuerpo de solicitud es 30 000 000 bytes, que son aproximadamente 28,6 MB. Personalice el límite con la opción [MaxRequestBodySize](xref:fundamentals/servers/kestrel#maximum-request-body-size) del servidor de Kestrel:
+En el caso de las aplicaciones hospedadas por Kestrel, el tamaño máximo predeterminado del cuerpo de solicitud es 30 000 000 bytes, que son aproximadamente 28,6 MB. Personalice el límite con la opción [MaxRequestBodySize](xref:fundamentals/servers/kestrel/options#maximum-request-body-size) del servidor de Kestrel:
 
 ```csharp
 public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -667,7 +667,7 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
         });
 ```
 
-<xref:Microsoft.AspNetCore.Mvc.RequestSizeLimitAttribute> se usa para establecer el valor de [MaxRequestBodySize](xref:fundamentals/servers/kestrel#maximum-request-body-size) de una sola página o acción.
+<xref:Microsoft.AspNetCore.Mvc.RequestSizeLimitAttribute> se usa para establecer el valor de [MaxRequestBodySize](xref:fundamentals/servers/kestrel/options#maximum-request-body-size) de una sola página o acción.
 
 En una Razor aplicación de páginas, aplique el filtro con una [Convención](xref:razor-pages/razor-pages-conventions) en `Startup.ConfigureServices` :
 
@@ -706,8 +706,8 @@ public class BufferedSingleFileUploadPhysicalModel : PageModel
 
 Otros límites de Kestrel pueden aplicarse a las aplicaciones hospedadas por Kestrel:
 
-* [Las conexiones máximas de cliente](xref:fundamentals/servers/kestrel#maximum-client-connections)
-* [Tarifas de datos de solicitud y respuesta](xref:fundamentals/servers/kestrel#minimum-request-body-data-rate)
+* [Las conexiones máximas de cliente](xref:fundamentals/servers/kestrel/options#maximum-client-connections)
+* [Tarifas de datos de solicitud y respuesta](xref:fundamentals/servers/kestrel/options#minimum-request-body-data-rate)
 
 ### <a name="iis"></a>IIS
 
@@ -849,7 +849,7 @@ El streaming de archivos grandes se describe en la sección [Carga de archivos d
 
 Para cargar archivos pequeños, se puede usar un formulario de varias partes o construir una solicitud POST con JavaScript.
 
-En el ejemplo siguiente se muestra el uso de un Razor formulario de páginas para cargar un único archivo ( *pages/BufferedSingleFileUploadPhysical. cshtml* en la aplicación de ejemplo):
+En el ejemplo siguiente se muestra el uso de un Razor formulario de páginas para cargar un único archivo (*pages/BufferedSingleFileUploadPhysical. cshtml* en la aplicación de ejemplo):
 
 ```cshtml
 <form enctype="multipart/form-data" method="post">
@@ -1160,7 +1160,7 @@ El método `StreamingController.UploadDatabase` completo para streaming a una ba
 
 [!code-csharp[](file-uploads/samples/3.x/SampleApp/Controllers/StreamingController.cs?name=snippet_UploadDatabase)]
 
-`MultipartRequestHelper` ( *Utilities/MultipartRequestHelper.cs* ):
+`MultipartRequestHelper` (*Utilities/MultipartRequestHelper.cs*):
 
 [!code-csharp[](file-uploads/samples/3.x/SampleApp/Utilities/MultipartRequestHelper.cs)]
 
@@ -1172,7 +1172,7 @@ En la aplicación de ejemplo, las comprobaciones de validación las controla `Fi
 
 ## <a name="validation"></a>Validación
 
-La clase `FileHelpers` de la aplicación de ejemplo muestra varias comprobaciones de cargas de archivos de streaming y <xref:Microsoft.AspNetCore.Http.IFormFile> almacenado en búfer. Para procesar cargas de archivos almacenadas en búfer de <xref:Microsoft.AspNetCore.Http.IFormFile> en la aplicación de ejemplo, consulte el método `ProcessFormFile` en el archivo *Utilities/FileHelpers.cs* . Para procesar archivos de streaming, consulte el método `ProcessStreamedFile` en el mismo archivo.
+La clase `FileHelpers` de la aplicación de ejemplo muestra varias comprobaciones de cargas de archivos de streaming y <xref:Microsoft.AspNetCore.Http.IFormFile> almacenado en búfer. Para procesar cargas de archivos almacenadas en búfer de <xref:Microsoft.AspNetCore.Http.IFormFile> en la aplicación de ejemplo, consulte el método `ProcessFormFile` en el archivo *Utilities/FileHelpers.cs*. Para procesar archivos de streaming, consulte el método `ProcessStreamedFile` en el mismo archivo.
 
 > [!WARNING]
 > Los métodos de procesamiento de validación mostrados en la aplicación de ejemplo no examinan el contenido de los archivos cargados. En la mayoría de los escenarios de producción, se usa una API de analizador de virus/malware en el archivo antes de que el archivo esté disponible para los usuarios u otros sistemas.
@@ -1184,7 +1184,7 @@ La clase `FileHelpers` de la aplicación de ejemplo muestra varias comprobacione
 >
 > **No implemente nunca de manera indiscriminada el código de seguridad en una aplicación sin abordar estos requisitos.**
 
-### <a name="content-validation"></a>Validación de contenido
+### <a name="content-validation"></a>Validación del contenido
 
 **Use una API de detección de virus/malware de terceros en el contenido cargado.**
 
@@ -1584,7 +1584,7 @@ El streaming de archivos grandes se describe en la sección [Carga de archivos d
 
 Para cargar archivos pequeños, se puede usar un formulario de varias partes o construir una solicitud POST con JavaScript.
 
-En el ejemplo siguiente se muestra el uso de un Razor formulario de páginas para cargar un único archivo ( *pages/BufferedSingleFileUploadPhysical. cshtml* en la aplicación de ejemplo):
+En el ejemplo siguiente se muestra el uso de un Razor formulario de páginas para cargar un único archivo (*pages/BufferedSingleFileUploadPhysical. cshtml* en la aplicación de ejemplo):
 
 ```cshtml
 <form enctype="multipart/form-data" method="post">
@@ -1895,7 +1895,7 @@ El método `StreamingController.UploadDatabase` completo para streaming a una ba
 
 [!code-csharp[](file-uploads/samples/2.x/SampleApp/Controllers/StreamingController.cs?name=snippet_UploadDatabase)]
 
-`MultipartRequestHelper` ( *Utilities/MultipartRequestHelper.cs* ):
+`MultipartRequestHelper` (*Utilities/MultipartRequestHelper.cs*):
 
 [!code-csharp[](file-uploads/samples/2.x/SampleApp/Utilities/MultipartRequestHelper.cs)]
 
@@ -1907,7 +1907,7 @@ En la aplicación de ejemplo, las comprobaciones de validación las controla `Fi
 
 ## <a name="validation"></a>Validación
 
-La clase `FileHelpers` de la aplicación de ejemplo muestra varias comprobaciones de cargas de archivos de streaming y <xref:Microsoft.AspNetCore.Http.IFormFile> almacenado en búfer. Para procesar cargas de archivos almacenadas en búfer de <xref:Microsoft.AspNetCore.Http.IFormFile> en la aplicación de ejemplo, consulte el método `ProcessFormFile` en el archivo *Utilities/FileHelpers.cs* . Para procesar archivos de streaming, consulte el método `ProcessStreamedFile` en el mismo archivo.
+La clase `FileHelpers` de la aplicación de ejemplo muestra varias comprobaciones de cargas de archivos de streaming y <xref:Microsoft.AspNetCore.Http.IFormFile> almacenado en búfer. Para procesar cargas de archivos almacenadas en búfer de <xref:Microsoft.AspNetCore.Http.IFormFile> en la aplicación de ejemplo, consulte el método `ProcessFormFile` en el archivo *Utilities/FileHelpers.cs*. Para procesar archivos de streaming, consulte el método `ProcessStreamedFile` en el mismo archivo.
 
 > [!WARNING]
 > Los métodos de procesamiento de validación mostrados en la aplicación de ejemplo no examinan el contenido de los archivos cargados. En la mayoría de los escenarios de producción, se usa una API de analizador de virus/malware en el archivo antes de que el archivo esté disponible para los usuarios u otros sistemas.
@@ -1919,7 +1919,7 @@ La clase `FileHelpers` de la aplicación de ejemplo muestra varias comprobacione
 >
 > **No implemente nunca de manera indiscriminada el código de seguridad en una aplicación sin abordar estos requisitos.**
 
-### <a name="content-validation"></a>Validación de contenido
+### <a name="content-validation"></a>Validación del contenido
 
 **Use una API de detección de virus/malware de terceros en el contenido cargado.**
 
@@ -2222,7 +2222,13 @@ Los ejemplos de este tema se basan en <xref:System.IO.MemoryStream> para almacen
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
+::: moniker range="< aspnetcore-5.0"
 * [Agotamiento de la solicitud de conexión HTTP](xref:fundamentals/servers/kestrel#http11-request-draining)
+::: moniker-end
+::: moniker range=">= aspnetcore-5.0"
+* [Agotamiento de la solicitud de conexión HTTP](xref:fundamentals/servers/kestrel/request-draining)
+::: moniker-end
+
 * [Unrestricted File Upload](https://owasp.org/www-community/vulnerabilities/Unrestricted_File_Upload) (Carga de archivos sin restricciones)
 * [Seguridad de Azure: marco de seguridad: validación de entrada | Mitigaciones](/azure/security/azure-security-threat-modeling-tool-input-validation)
 * [Patrones de diseño en la nube de Azure: patrón de clave valet](/azure/architecture/patterns/valet-key)

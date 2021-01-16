@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/tag-helpers/builtin-th/environment-tag-helper
-ms.openlocfilehash: 4f8330521bb9114f6639c1889cc15ebd18adc0ed
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: d63364b0c052ba7f9e745e1ad829b8d1ca9122d2
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93061137"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98253129"
 ---
 # <a name="environment-tag-helper-in-aspnet-core"></a>Asistente de etiquetas de entorno en ASP.NET Core
 
@@ -39,13 +39,13 @@ Para obtener información general sobre asistentes de etiquetas, vea <xref:mvc/v
 
 `names` acepta un solo nombre de entorno de hospedaje o una lista de nombres de entorno de hospedaje separados por comas que desencadenan la representación del contenido incluido.
 
-Los valores de entorno se comparan con el valor actual devuelto por [IHostingEnvironment.EnvironmentName](xref:Microsoft.AspNetCore.Hosting.IHostingEnvironment.EnvironmentName*). La comparación ignora el uso de mayúsculas y minúsculas.
+Los valores de entorno se comparan con el valor actual devuelto por [IWebHostEnvironment. EnvironmentName](xref:Microsoft.AspNetCore.Hosting.IHostingEnvironment.EnvironmentName*). La comparación ignora el uso de mayúsculas y minúsculas.
 
 En este ejemplo se usa un asistente de etiquetas de entorno. El contenido se representa si el entorno de hospedaje es de almacenamiento provisional o de producción:
 
 ```cshtml
 <environment names="Staging,Production">
-    <strong>HostingEnvironment.EnvironmentName is Staging or Production</strong>
+    <strong>IWebHostEnvironment.EnvironmentName is Staging or Production</strong>
 </environment>
 ```
 
@@ -57,11 +57,11 @@ En este ejemplo se usa un asistente de etiquetas de entorno. El contenido se rep
 
 ### <a name="include"></a>include
 
-La propiedad `include` exhibe un comportamiento similar al atributo `names`. Un entorno que se muestra en el valor de atributo `include` debe coincidir con el entorno de hospedaje de la aplicación ([IHostingEnvironment.EnvironmentName](xref:Microsoft.AspNetCore.Hosting.IHostingEnvironment.EnvironmentName*)) para representar el contenido de la etiqueta `<environment>`.
+La propiedad `include` exhibe un comportamiento similar al atributo `names`. Un entorno incluido en el `include` valor del atributo debe coincidir con el entorno de hospedaje de la aplicación ([IWebHostEnvironment. EnvironmentName](xref:Microsoft.AspNetCore.Hosting.IHostingEnvironment.EnvironmentName*)) para representar el contenido de la `<environment>` etiqueta.
 
 ```cshtml
 <environment include="Staging,Production">
-    <strong>HostingEnvironment.EnvironmentName is Staging or Production</strong>
+    <strong>IWebHostEnvironment.EnvironmentName is Staging or Production</strong>
 </environment>
 ```
 
@@ -71,7 +71,7 @@ A diferencia del atributo `include`, el contenido de la etiqueta `<environment>`
 
 ```cshtml
 <environment exclude="Development">
-    <strong>HostingEnvironment.EnvironmentName is not Development</strong>
+    <strong>IWebHostEnvironment.EnvironmentName is not Development</strong>
 </environment>
 ```
 

@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/routing
-ms.openlocfilehash: a163c87fdb9a02c1b074ab32c19c11932c66cfd4
-ms.sourcegitcommit: 04a404a9655c59ad1ea02aff5d399ae1b833ad6a
+ms.openlocfilehash: 44c507fb5e0ff4477a84bfc1e4d0c62180c8dd37
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/03/2021
-ms.locfileid: "97854540"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98252843"
 ---
 # <a name="routing-to-controller-actions-in-aspnet-core"></a>Enrutar a acciones de controlador de ASP.NET Core
 
@@ -30,7 +30,7 @@ Por [Ryan Nowak](https://github.com/rynowak), [Kirk Larkin](https://twitter.com/
 
 ::: moniker range=">= aspnetcore-3.0"
 
-Los controladores de ASP.NET Core usan el [middleware](xref:fundamentals/middleware/index) de enrutamiento para hacer coincidir las direcciones URL de las solicitudes entrantes y asignarlas a [las acciones](#action).  Plantillas de rutas:
+Los controladores de ASP.NET Core usan el [middleware](xref:fundamentals/middleware/index) de enrutamiento para hacer coincidir las direcciones URL de las solicitudes entrantes y asignarlas a [las acciones](#action).  Plantillas de ruta:
 
 * Se definen en el código de inicio o en los atributos.
 * Describa cómo las rutas de dirección URL coinciden con [las acciones](#action).
@@ -43,7 +43,7 @@ Este documento:
 * Explica las interacciones entre MVC y el enrutamiento:
   * La forma en que las aplicaciones MVC típicas usan las características de enrutamiento.
   * Abarca ambos:
-    * El [enrutamiento convencional](#cr) normalmente se usa con controladores y vistas.
+    * [Enrutamiento convencional](#cr) que se usa normalmente con controladores y vistas.
     * *Enrutamiento de atributos* usado con las API de REST. Si está interesado principalmente en el enrutamiento de las API de REST, vaya a la sección [enrutamiento de atributo para las API de REST](#ar) .
   * Consulte [enrutamiento](xref:fundamentals/routing) para obtener detalles de enrutamiento avanzados.
 * Hace referencia al sistema de enrutamiento predeterminado agregado en ASP.NET Core 3,0, denominado enrutamiento de punto de conexión. Es posible usar controladores con la versión anterior de enrutamiento para fines de compatibilidad. Consulte la [Guía de migración 2.2-3.0](xref:migration/22-to-30) para obtener instrucciones. Consulte la [versión 2,2 de este documento](xref:mvc/controllers/routing?view=aspnetcore-2.2) para obtener material de referencia sobre el sistema de enrutamiento heredado.
@@ -570,7 +570,7 @@ Las rutas de atributo admiten la misma sintaxis en línea que las rutas convenci
 
 [!code-csharp[](routing/samples/3.x/main/Controllers/ProductsController.cs?name=snippet8&highlight=3)]
 
-En el código anterior, `[HttpPost("product/{id:int}")]` aplica una restricción de ruta. La `ProductsController.ShowProduct` acción coincide solo en rutas de dirección URL como `/product/3` . La parte de la plantilla de ruta `{id:int}` restringe ese segmento a solo enteros.
+En el código anterior, `[HttpPost("product14/{id:int}")]` aplica una restricción de ruta. La `Products14Controller.ShowProduct` acción coincide solo en rutas de dirección URL como `/product14/3` . La parte de la plantilla de ruta `{id:int}` restringe ese segmento a solo enteros.
 
 Consulte [Referencia de plantilla de ruta](xref:fundamentals/routing#route-template-reference) para obtener una descripción detallada de la sintaxis de la plantilla de ruta.
 

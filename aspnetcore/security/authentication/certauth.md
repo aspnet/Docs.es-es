@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/certauth
-ms.openlocfilehash: 83525a4c1e87a60b57130c1bba14360c7d03f552
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 71f05163c075a2ef88d5c606814925cdcef879d2
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93061384"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98253051"
 ---
 # <a name="configure-certificate-authentication-in-aspnet-core"></a>Configurar la autenticación de certificados en ASP.NET Core
 
@@ -40,7 +40,7 @@ La autenticación de certificados es un escenario con estado que se usa principa
 
 Una alternativa a la autenticación de certificados en entornos en los que se usan servidores proxy y equilibradores de carga es Active Directory Federated Services (ADFS) con OpenID Connect (OIDC).
 
-## <a name="get-started"></a>Primeros pasos
+## <a name="get-started"></a>Introducción
 
 Adquiera un certificado HTTPS, aplíquelo y [Configure el servidor](#configure-your-server-to-require-certificates) para que requiera certificados.
 
@@ -152,37 +152,37 @@ El controlador tiene dos eventos:
   * Determinar si los servicios conocen el certificado.
   * Construir su propia entidad de seguridad. Considere el ejemplo siguiente de `Startup.ConfigureServices`:
 
-```csharp
-services.AddAuthentication(
-    CertificateAuthenticationDefaults.AuthenticationScheme)
-    .AddCertificate(options =>
-    {
-        options.Events = new CertificateAuthenticationEvents
+    ```csharp
+    services.AddAuthentication(
+        CertificateAuthenticationDefaults.AuthenticationScheme)
+        .AddCertificate(options =>
         {
-            OnCertificateValidated = context =>
+            options.Events = new CertificateAuthenticationEvents
             {
-                var claims = new[]
+                OnCertificateValidated = context =>
                 {
-                    new Claim(
-                        ClaimTypes.NameIdentifier, 
-                        context.ClientCertificate.Subject,
-                        ClaimValueTypes.String, 
-                        context.Options.ClaimsIssuer),
-                    new Claim(ClaimTypes.Name,
-                        context.ClientCertificate.Subject,
-                        ClaimValueTypes.String, 
-                        context.Options.ClaimsIssuer)
-                };
-
-                context.Principal = new ClaimsPrincipal(
-                    new ClaimsIdentity(claims, context.Scheme.Name));
-                context.Success();
-
-                return Task.CompletedTask;
-            }
-        };
-    });
-```
+                    var claims = new[]
+                    {
+                        new Claim(
+                            ClaimTypes.NameIdentifier, 
+                            context.ClientCertificate.Subject,
+                            ClaimValueTypes.String, 
+                            context.Options.ClaimsIssuer),
+                        new Claim(ClaimTypes.Name,
+                            context.ClientCertificate.Subject,
+                            ClaimValueTypes.String, 
+                            context.Options.ClaimsIssuer)
+                    };
+    
+                    context.Principal = new ClaimsPrincipal(
+                        new ClaimsIdentity(claims, context.Scheme.Name));
+                    context.Success();
+    
+                    return Task.CompletedTask;
+                }
+            };
+        });
+    ```
 
 Si encuentra que el certificado de entrada no cumple su validación adicional, llame a `context.Fail("failure reason")` con un motivo del error.
 
@@ -235,7 +235,7 @@ Conceptualmente, la validación del certificado es un problema de autorización.
 
 ### <a name="kestrel"></a>Kestrel
 
-En *Program.CS* , configure Kestrel como se indica a continuación:
+En *Program.CS*, configure Kestrel como se indica a continuación:
 
 ```csharp
 public static void Main(string[] args)
@@ -301,7 +301,7 @@ public void ConfigureServices(IServiceCollection services)
         options.HeaderConverter = (headerValue) =>
         {
             X509Certificate2 clientCertificate = null;
-        
+
             if(!string.IsNullOrWhiteSpace(headerValue))
             {
                 byte[] bytes = StringToByteArray(headerValue);
@@ -638,9 +638,27 @@ ASP.NET Core 5 Preview 7 y versiones posteriores agregan una compatibilidad más
 
 El siguiente enfoque admite certificados de cliente opcionales:
 
+::: moniker range=">= aspnetcore-5.0"
+
 * Configure el enlace para el dominio y el subdominio:
   * Por ejemplo, configure los enlaces en `contoso.com` y `myClient.contoso.com` . El `contoso.com` host no requiere un certificado de cliente, pero sí lo `myClient.contoso.com` hace.
-  * Para más información, consulte:
+  * Para obtener más información, consulte:
+    * [Kestrel](/fundamentals/servers/kestrel):
+      * [ListenOptions.UseHttps](xref:fundamentals/servers/kestrel/endpoints#listenoptionsusehttps)
+      * <xref:Microsoft.AspNetCore.Server.Kestrel.Https.HttpsConnectionAdapterOptions.ClientCertificateMode>
+      * Nota Kestrel no admite actualmente varias configuraciones de TLS en un enlace, necesitará dos enlaces con direcciones IP o puertos únicos. Consulta https://github.com/dotnet/runtime/issues/31097.
+    * IIS
+      * [Hospedaje de IIS](xref:host-and-deploy/iis/index#create-the-iis-site)
+      * [Configurar la seguridad en IIS](/iis/manage/configuring-security/how-to-set-up-ssl-on-iis#configure-ssl-settings-2)
+    * Http.Sys: [configurar Windows Server](xref:fundamentals/servers/httpsys#configure-windows-server)
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
+* Configure el enlace para el dominio y el subdominio:
+  * Por ejemplo, configure los enlaces en `contoso.com` y `myClient.contoso.com` . El `contoso.com` host no requiere un certificado de cliente, pero sí lo `myClient.contoso.com` hace.
+  * Para obtener más información, consulte:
     * [Kestrel](/fundamentals/servers/kestrel):
       * [ListenOptions.UseHttps](xref:fundamentals/servers/kestrel#listenoptionsusehttps)
       * <xref:Microsoft.AspNetCore.Server.Kestrel.Https.HttpsConnectionAdapterOptions.ClientCertificateMode>
@@ -649,6 +667,9 @@ El siguiente enfoque admite certificados de cliente opcionales:
       * [Hospedaje de IIS](xref:host-and-deploy/iis/index#create-the-iis-site)
       * [Configurar la seguridad en IIS](/iis/manage/configuring-security/how-to-set-up-ssl-on-iis#configure-ssl-settings-2)
     * Http.Sys: [configurar Windows Server](xref:fundamentals/servers/httpsys#configure-windows-server)
+
+::: moniker-end
+
 * Para las solicitudes a la aplicación web que requieren un certificado de cliente y no tienen una:
   * Redirigir a la misma página mediante el subdominio protegido por el certificado de cliente.
   * Por ejemplo, redirigir a `myClient.contoso.com/requestedPage` . Dado que la solicitud a `myClient.contoso.com/requestedPage` es un nombre de host diferente que `contoso.com/requestedPage` , el cliente establece una conexión diferente y se proporciona el certificado de cliente.
