@@ -344,6 +344,8 @@
               uid: blazor/components/event-handling
             - name: Ciclo de vida
               uid: blazor/components/lifecycle
+            - name: Representación
+              uid: blazor/components/rendering
             - name: Virtualización de componentes
               uid: blazor/components/virtualization
             - name: Componentes con plantilla
@@ -970,8 +972,29 @@
           displayName: 'deploy, publish'
           uid: host-and-deploy/iis/protocols
     - name: Kestrel
-      uid: fundamentals/servers/kestrel
       displayName: 'deploy, publish, server'
+      items:
+        - name: Información general
+          displayName: 'deploy, publish, server'
+          uid: fundamentals/servers/kestrel
+        - name: Puntos de conexión
+          displayName: 'deploy, publish, server'
+          uid: fundamentals/servers/kestrel/endpoints
+        - name: Opciones
+          displayName: 'deploy, publish, server'
+          uid: fundamentals/servers/kestrel/options
+        - name: HTTP/2
+          displayName: 'deploy, publish, server'
+          uid: fundamentals/servers/kestrel/http2
+        - name: Casos en los que usar un proxy inverso
+          displayName: 'deploy, publish, server'
+          uid: fundamentals/servers/kestrel/when-to-use-a-reverse-proxy
+        - name: Filtrado de hosts
+          displayName: 'deploy, publish, server'
+          uid: fundamentals/servers/kestrel/host-filtering
+        - name: Vaciado de solicitudes
+          displayName: 'deploy, publish, server'
+          uid: fundamentals/servers/kestrel/request-draining
     - name: HTTP.sys
       displayName: 'deploy, publish, server'
       uid: fundamentals/servers/httpsys
