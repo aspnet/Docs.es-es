@@ -19,66 +19,81 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/virtualization
-ms.openlocfilehash: 920a23aee0d0555e93c829142700709d5881afd2
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: afd2da19641b41871f06426934c39348daa54b1f
+ms.sourcegitcommit: 2fea9bfe6127bbbdbb438406c82529b2bc331944
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97753104"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065537"
 ---
-# <a name="aspnet-core-no-locblazor-component-virtualization"></a><span data-ttu-id="33124-103">Virtualización de componentes de ASP.NET Core Blazor</span><span class="sxs-lookup"><span data-stu-id="33124-103">ASP.NET Core Blazor component virtualization</span></span>
+# <a name="aspnet-core-no-locblazor-component-virtualization"></a><span data-ttu-id="a9f8f-103">Virtualización de componentes de ASP.NET Core Blazor</span><span class="sxs-lookup"><span data-stu-id="a9f8f-103">ASP.NET Core Blazor component virtualization</span></span>
 
-<span data-ttu-id="33124-104">Por [Daniel Roth](https://github.com/danroth27)</span><span class="sxs-lookup"><span data-stu-id="33124-104">By [Daniel Roth](https://github.com/danroth27)</span></span>
+<span data-ttu-id="a9f8f-104">Por [Daniel Roth](https://github.com/danroth27)</span><span class="sxs-lookup"><span data-stu-id="a9f8f-104">By [Daniel Roth](https://github.com/danroth27)</span></span>
 
-<span data-ttu-id="33124-105">Mejore el rendimiento percibido de la representación de componentes usando la compatibilidad de virtualización integrada del marco Blazor.</span><span class="sxs-lookup"><span data-stu-id="33124-105">Improve the perceived performance of component rendering using the Blazor framework's built-in virtualization support.</span></span> <span data-ttu-id="33124-106">La virtualización es una técnica para limitar la representación de la interfaz de usuario a únicamente las partes visibles actualmente.</span><span class="sxs-lookup"><span data-stu-id="33124-106">Virtualization is a technique for limiting UI rendering to just the parts that are currently visible.</span></span> <span data-ttu-id="33124-107">Por ejemplo, la virtualización es útil cuando la aplicación debe representar una lista larga de elementos y solo es necesario que haya un subconjunto de elementos visible en un momento dado.</span><span class="sxs-lookup"><span data-stu-id="33124-107">For example, virtualization is helpful when the app must render a long list of items and only a subset of items is required to be visible at any given time.</span></span> <span data-ttu-id="33124-108">Blazor proporciona el componente `Virtualize`, que se puede usar para agregar virtualización a los componentes de una aplicación.</span><span class="sxs-lookup"><span data-stu-id="33124-108">Blazor provides the `Virtualize` component that can be used to add virtualization to an app's components.</span></span>
+<span data-ttu-id="a9f8f-105">Mejore el rendimiento percibido de la representación de componentes usando la compatibilidad de virtualización integrada del marco Blazor.</span><span class="sxs-lookup"><span data-stu-id="a9f8f-105">Improve the perceived performance of component rendering using the Blazor framework's built-in virtualization support.</span></span> <span data-ttu-id="a9f8f-106">La virtualización es una técnica para limitar la representación de la interfaz de usuario a únicamente las partes visibles actualmente.</span><span class="sxs-lookup"><span data-stu-id="a9f8f-106">Virtualization is a technique for limiting UI rendering to just the parts that are currently visible.</span></span> <span data-ttu-id="a9f8f-107">Por ejemplo, la virtualización es útil cuando la aplicación debe representar una lista larga de elementos y solo es necesario que haya un subconjunto de elementos visible en un momento dado.</span><span class="sxs-lookup"><span data-stu-id="a9f8f-107">For example, virtualization is helpful when the app must render a long list of items and only a subset of items is required to be visible at any given time.</span></span> <span data-ttu-id="a9f8f-108">Blazor proporciona el [componente `Virtualize`](xref:Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize%601), que se puede usar para agregar virtualización a los componentes de una aplicación.</span><span class="sxs-lookup"><span data-stu-id="a9f8f-108">Blazor provides the [`Virtualize` component](xref:Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize%601) that can be used to add virtualization to an app's components.</span></span>
 
-<span data-ttu-id="33124-109">Sin la virtualización, una lista típica podría usar un bucle [`foreach`](/dotnet/csharp/language-reference/keywords/foreach-in) de C# para representar cada elemento de la lista:</span><span class="sxs-lookup"><span data-stu-id="33124-109">Without virtualization, a typical list might use a C# [`foreach`](/dotnet/csharp/language-reference/keywords/foreach-in) loop to render each item in the list:</span></span>
+<span data-ttu-id="a9f8f-109">El componente `Virtualize` se puede usar cuando:</span><span class="sxs-lookup"><span data-stu-id="a9f8f-109">The `Virtualize` component can be used when:</span></span>
 
-```razor
-@foreach (var employee in employees)
-{
-    <p>
-        @employee.FirstName @employee.LastName has the 
-        job title of @employee.JobTitle.
-    </p>
-}
-```
+* <span data-ttu-id="a9f8f-110">La representación de un conjunto de elementos de datos en un bucle.</span><span class="sxs-lookup"><span data-stu-id="a9f8f-110">Rendering a set of data items in a loop.</span></span>
+* <span data-ttu-id="a9f8f-111">La mayoría de los elementos no están visibles debido al desplazamiento.</span><span class="sxs-lookup"><span data-stu-id="a9f8f-111">Most of the items aren't visible due to scrolling.</span></span>
+* <span data-ttu-id="a9f8f-112">Los elementos representados tienen exactamente el mismo tamaño.</span><span class="sxs-lookup"><span data-stu-id="a9f8f-112">The rendered items are exactly the same size.</span></span> <span data-ttu-id="a9f8f-113">Cuando el usuario se desplaza a un punto arbitrario, el componente puede calcular los elementos visibles que se van a mostrar.</span><span class="sxs-lookup"><span data-stu-id="a9f8f-113">When the user scrolls to an arbitrary point, the component can calculate the visible items to show.</span></span>
 
-<span data-ttu-id="33124-110">Si la lista contiene miles de elementos, la representación de la lista podría tardar mucho tiempo,</span><span class="sxs-lookup"><span data-stu-id="33124-110">If the list contains thousands of items, then rendering the list may take a long time.</span></span> <span data-ttu-id="33124-111">con el consiguiente retraso de la interfaz de usuario que puede experimentarse.</span><span class="sxs-lookup"><span data-stu-id="33124-111">The user may experience a noticeable UI lag.</span></span>
-
-<span data-ttu-id="33124-112">En lugar de representar todos y cada uno de los elementos de la lista a la vez, reemplace el bucle [`foreach`](/dotnet/csharp/language-reference/keywords/foreach-in) por el componente `Virtualize` y especifique un origen de elemento fijo con `Items`.</span><span class="sxs-lookup"><span data-stu-id="33124-112">Instead of rendering each item in the list all at one time, replace the [`foreach`](/dotnet/csharp/language-reference/keywords/foreach-in) loop with the `Virtualize` component and specify a fixed item source with `Items`.</span></span> <span data-ttu-id="33124-113">Solo se representarán los elementos visibles actualmente:</span><span class="sxs-lookup"><span data-stu-id="33124-113">Only the items that are currently visible are rendered:</span></span>
+<span data-ttu-id="a9f8f-114">Sin la virtualización, una lista típica podría usar un bucle [`foreach`](/dotnet/csharp/language-reference/keywords/foreach-in) de C# para representar cada elemento de la lista:</span><span class="sxs-lookup"><span data-stu-id="a9f8f-114">Without virtualization, a typical list might use a C# [`foreach`](/dotnet/csharp/language-reference/keywords/foreach-in) loop to render each item in the list:</span></span>
 
 ```razor
-<Virtualize Context="employee" Items="@employees">
-    <p>
-        @employee.FirstName @employee.LastName has the 
-        job title of @employee.JobTitle.
-    </p>
-</Virtualize>
+<div style="height:500px;overflow-y:scroll">
+    @foreach (var flight in allFlights)
+    {
+        <FlightSummary @key="flight.FlightId" Details="@flight.Summary" />
+    }
+</div>
 ```
 
-<span data-ttu-id="33124-114">Si no especifica un contexto en el componente con `Context`, use el valor de `context` (`@context.{PROPERTY}`) en la plantilla de contenido del elemento:</span><span class="sxs-lookup"><span data-stu-id="33124-114">If not specifying a context to the component with `Context`, use the `context` value (`@context.{PROPERTY}`) in the item content template:</span></span>
+<span data-ttu-id="a9f8f-115">Si la lista contiene miles de elementos, la representación de la lista podría tardar mucho tiempo,</span><span class="sxs-lookup"><span data-stu-id="a9f8f-115">If the list contains thousands of items, then rendering the list may take a long time.</span></span> <span data-ttu-id="a9f8f-116">con el consiguiente retraso de la interfaz de usuario que puede experimentarse.</span><span class="sxs-lookup"><span data-stu-id="a9f8f-116">The user may experience a noticeable UI lag.</span></span>
+
+<span data-ttu-id="a9f8f-117">En lugar de representar todos y cada uno de los elementos de la lista a la vez, reemplace el bucle [`foreach`](/dotnet/csharp/language-reference/keywords/foreach-in) por el componente `Virtualize` y especifique un origen de elemento fijo con <xref:Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize%601.Items%2A?displayProperty=nameWithType>.</span><span class="sxs-lookup"><span data-stu-id="a9f8f-117">Instead of rendering each item in the list all at one time, replace the [`foreach`](/dotnet/csharp/language-reference/keywords/foreach-in) loop with the `Virtualize` component and specify a fixed item source with <xref:Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize%601.Items%2A?displayProperty=nameWithType>.</span></span> <span data-ttu-id="a9f8f-118">Solo se representarán los elementos visibles actualmente:</span><span class="sxs-lookup"><span data-stu-id="a9f8f-118">Only the items that are currently visible are rendered:</span></span>
 
 ```razor
-<Virtualize Items="@employees">
-    <p>
-        @context.FirstName @context.LastName has the 
-        job title of @context.JobTitle.
-    </p>
-</Virtualize>
+<div style="height:500px;overflow-y:scroll">
+    <Virtualize Items="@allFlights" Context="flight">
+        <FlightSummary @key="flight.FlightId" Details="@flight.Summary" />
+    </Virtualize>
+</div>
 ```
 
-<span data-ttu-id="33124-115">El componente `Virtualize` calcula el número de elementos que se van a representar en función del alto del contenedor y del tamaño de los elementos representados.</span><span class="sxs-lookup"><span data-stu-id="33124-115">The `Virtualize` component calculates how many items to render based on the height of the container and the size of the rendered items.</span></span>
+<span data-ttu-id="a9f8f-119">Si no especifica un contexto para el componente con `Context`, use el valor `context` en la plantilla de contenido del elemento:</span><span class="sxs-lookup"><span data-stu-id="a9f8f-119">If not specifying a context to the component with `Context`, use the `context` value in the item content template:</span></span>
 
-<span data-ttu-id="33124-116">El contenido del elemento para el componente `Virtualize` puede incluir lo siguiente:</span><span class="sxs-lookup"><span data-stu-id="33124-116">The item content for the `Virtualize` component can include:</span></span>
+```razor
+<div style="height:500px;overflow-y:scroll">
+    <Virtualize Items="@allFlights">
+        <FlightSummary @key="context.FlightId" Details="@context.Summary" />
+    </Virtualize>
+</div>
+```
 
-* <span data-ttu-id="33124-117">HTML sin formato y código Razor, tal como se muestra en el ejemplo anterior.</span><span class="sxs-lookup"><span data-stu-id="33124-117">Plain HTML and Razor code, as the preceding example shows.</span></span>
-* <span data-ttu-id="33124-118">Uno o más componentes Razor.</span><span class="sxs-lookup"><span data-stu-id="33124-118">One or more Razor components.</span></span>
-* <span data-ttu-id="33124-119">Una combinación de componentes HTML/Razor y Razor.</span><span class="sxs-lookup"><span data-stu-id="33124-119">A mix of HTML/Razor and Razor components.</span></span>
+> [!NOTE]
+> <span data-ttu-id="a9f8f-120">El proceso de asignación de objetos de modelo a elementos y componentes se puede controlar con el atributo de la directiva [`@key`](xref:mvc/views/razor#key).</span><span class="sxs-lookup"><span data-stu-id="a9f8f-120">The mapping process of model objects to elements and components can be controlled with the [`@key`](xref:mvc/views/razor#key) directive attribute.</span></span> <span data-ttu-id="a9f8f-121">`@key` hace que el algoritmo de comparación garantice la conservación de elementos o componentes en función del valor de la clave.</span><span class="sxs-lookup"><span data-stu-id="a9f8f-121">`@key` causes the diffing algorithm to guarantee preservation of elements or components based on the key's value.</span></span>
+>
+> <span data-ttu-id="a9f8f-122">Para más información, consulte los siguientes artículos.</span><span class="sxs-lookup"><span data-stu-id="a9f8f-122">For more information, see the following articles:</span></span>
+>
+> * <xref:blazor/components/index#use-key-to-control-the-preservation-of-elements-and-components>
+> * <xref:mvc/views/razor#key>
 
-## <a name="item-provider-delegate"></a><span data-ttu-id="33124-120">Delegado de proveedor de elementos</span><span class="sxs-lookup"><span data-stu-id="33124-120">Item provider delegate</span></span>
+<span data-ttu-id="a9f8f-123">El componente `Virtualize`:</span><span class="sxs-lookup"><span data-stu-id="a9f8f-123">The `Virtualize` component:</span></span>
 
-<span data-ttu-id="33124-121">Si no se quieren cargar todos los elementos en la memoria, se puede especificar un método de delegado de proveedor de elementos en el parámetro `ItemsProvider` del componente, que recupera los elementos solicitados a petición de manera asincrónica:</span><span class="sxs-lookup"><span data-stu-id="33124-121">If you don't want to load all of the items into memory, you can specify an items provider delegate method to the component's `ItemsProvider` parameter that asynchronously retrieves the requested items on demand:</span></span>
+* <span data-ttu-id="a9f8f-124">calcula el número de elementos que se van a representar en función del alto del contenedor y del tamaño de los elementos representados.</span><span class="sxs-lookup"><span data-stu-id="a9f8f-124">Calculates how many items to render based on the height of the container and the size of the rendered items.</span></span>
+* <span data-ttu-id="a9f8f-125">Vuelve a calcular los elementos y los representa a medida que el usuario se desplaza.</span><span class="sxs-lookup"><span data-stu-id="a9f8f-125">Recalculates and rerenders items as the user scrolls.</span></span>
+* <span data-ttu-id="a9f8f-126">Solo captura el segmento de registros de una API externa que se corresponde a la región visible actual, en lugar de descargar todos los datos de la colección.</span><span class="sxs-lookup"><span data-stu-id="a9f8f-126">Only fetches the slice of records from an external API that correspond to the current visible region, instead of downloading all of the data from the collection.</span></span>
+
+<span data-ttu-id="a9f8f-127">El contenido del elemento para el componente `Virtualize` puede incluir lo siguiente:</span><span class="sxs-lookup"><span data-stu-id="a9f8f-127">The item content for the `Virtualize` component can include:</span></span>
+
+* <span data-ttu-id="a9f8f-128">HTML sin formato y código Razor, tal como se muestra en el ejemplo anterior.</span><span class="sxs-lookup"><span data-stu-id="a9f8f-128">Plain HTML and Razor code, as the preceding example shows.</span></span>
+* <span data-ttu-id="a9f8f-129">Uno o más componentes Razor.</span><span class="sxs-lookup"><span data-stu-id="a9f8f-129">One or more Razor components.</span></span>
+* <span data-ttu-id="a9f8f-130">Una combinación de componentes HTML/Razor y Razor.</span><span class="sxs-lookup"><span data-stu-id="a9f8f-130">A mix of HTML/Razor and Razor components.</span></span>
+
+## <a name="item-provider-delegate"></a><span data-ttu-id="a9f8f-131">Delegado de proveedor de elementos</span><span class="sxs-lookup"><span data-stu-id="a9f8f-131">Item provider delegate</span></span>
+
+<span data-ttu-id="a9f8f-132">Si no se quieren cargar todos los elementos en la memoria, se puede especificar un método de delegado de proveedor de elementos en el parámetro <xref:Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize%601.ItemsProvider%2A?displayProperty=nameWithType> del componente, que recupera de manera asincrónica los elementos solicitados a petición.</span><span class="sxs-lookup"><span data-stu-id="a9f8f-132">If you don't want to load all of the items into memory, you can specify an items provider delegate method to the component's <xref:Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize%601.ItemsProvider%2A?displayProperty=nameWithType> parameter that asynchronously retrieves the requested items on demand.</span></span> <span data-ttu-id="a9f8f-133">En el ejemplo siguiente, el método `LoadEmployees` proporciona los elementos al componente `Virtualize`:</span><span class="sxs-lookup"><span data-stu-id="a9f8f-133">In the following example, the `LoadEmployees` method provides the items to the `Virtualize` component:</span></span>
 
 ```razor
 <Virtualize Context="employee" ItemsProvider="@LoadEmployees">
@@ -89,11 +104,11 @@ ms.locfileid: "97753104"
 </Virtualize>
 ```
 
-<span data-ttu-id="33124-122">El proveedor de elementos recibe un objeto `ItemsProviderRequest`, que especifica el número necesario de elementos empezando por un índice de inicio específico.</span><span class="sxs-lookup"><span data-stu-id="33124-122">The items provider receives an `ItemsProviderRequest`, which specifies the required number of items starting at a specific start index.</span></span> <span data-ttu-id="33124-123">Luego, el proveedor de elementos recupera los elementos solicitados de una base de datos u otro servicio y los devuelve como un objeto `ItemsProviderResult<TItem>` junto con un recuento total de elementos.</span><span class="sxs-lookup"><span data-stu-id="33124-123">The items provider then retrieves the requested items from a database or other service and returns them as an `ItemsProviderResult<TItem>` along with a count of the total items.</span></span> <span data-ttu-id="33124-124">El proveedor de elementos puede elegir entre recuperar los elementos con cada solicitud o almacenarlos en la memoria caché para que estén disponibles fácilmente.</span><span class="sxs-lookup"><span data-stu-id="33124-124">The items provider can choose to retrieve the items with each request or cache them so that they're readily available.</span></span>
+<span data-ttu-id="a9f8f-134">El proveedor de elementos recibe un objeto <xref:Microsoft.AspNetCore.Components.Web.Virtualization.ItemsProviderRequest>, que especifica el número necesario de elementos empezando por un índice de inicio específico.</span><span class="sxs-lookup"><span data-stu-id="a9f8f-134">The items provider receives an <xref:Microsoft.AspNetCore.Components.Web.Virtualization.ItemsProviderRequest>, which specifies the required number of items starting at a specific start index.</span></span> <span data-ttu-id="a9f8f-135">Luego, el proveedor de elementos recupera los elementos solicitados de una base de datos u otro servicio y los devuelve como un objeto <xref:Microsoft.AspNetCore.Components.Web.Virtualization.ItemsProviderResult%601> junto con un recuento total de elementos.</span><span class="sxs-lookup"><span data-stu-id="a9f8f-135">The items provider then retrieves the requested items from a database or other service and returns them as an <xref:Microsoft.AspNetCore.Components.Web.Virtualization.ItemsProviderResult%601> along with a count of the total items.</span></span> <span data-ttu-id="a9f8f-136">El proveedor de elementos puede elegir entre recuperar los elementos con cada solicitud o almacenarlos en la memoria caché para que estén disponibles fácilmente.</span><span class="sxs-lookup"><span data-stu-id="a9f8f-136">The items provider can choose to retrieve the items with each request or cache them so that they're readily available.</span></span>
 
-<span data-ttu-id="33124-125">Un componente `Virtualize` solo puede aceptar **un origen de elementos** de sus parámetros, por lo que no intente usar simultáneamente un proveedor de elementos y asignar una colección a `Items`.</span><span class="sxs-lookup"><span data-stu-id="33124-125">A `Virtualize` component can only accept **one item source** from its parameters, so don't attempt to simultaneously use an items provider and assign a collection to `Items`.</span></span> <span data-ttu-id="33124-126">Si se asignan ambos, se genera una clase <xref:System.InvalidOperationException> cuando los parámetros del componente se establecen en tiempo de ejecución.</span><span class="sxs-lookup"><span data-stu-id="33124-126">If both are assigned, an <xref:System.InvalidOperationException> is thrown when the component's parameters are set at runtime.</span></span>
+<span data-ttu-id="a9f8f-137">Un componente `Virtualize` solo puede aceptar **un origen de elementos** de sus parámetros, por lo que no intente usar simultáneamente un proveedor de elementos y asignar una colección a `Items`.</span><span class="sxs-lookup"><span data-stu-id="a9f8f-137">A `Virtualize` component can only accept **one item source** from its parameters, so don't attempt to simultaneously use an items provider and assign a collection to `Items`.</span></span> <span data-ttu-id="a9f8f-138">Si se asignan ambos, se genera una clase <xref:System.InvalidOperationException> cuando los parámetros del componente se establecen en tiempo de ejecución.</span><span class="sxs-lookup"><span data-stu-id="a9f8f-138">If both are assigned, an <xref:System.InvalidOperationException> is thrown when the component's parameters are set at runtime.</span></span>
 
-<span data-ttu-id="33124-127">En el siguiente ejemplo se cargan empleados desde `EmployeeService`:</span><span class="sxs-lookup"><span data-stu-id="33124-127">The following example loads employees from an `EmployeeService`:</span></span>
+<span data-ttu-id="a9f8f-139">En el ejemplo del método `LoadEmployees` siguiente se cargan empleados de `EmployeeService` (no se muestra):</span><span class="sxs-lookup"><span data-stu-id="a9f8f-139">The following `LoadEmployees` method example loads employees from an `EmployeeService` (not shown):</span></span>
 
 ```csharp
 private async ValueTask<ItemsProviderResult<Employee>> LoadEmployees(
@@ -107,9 +122,14 @@ private async ValueTask<ItemsProviderResult<Employee>> LoadEmployees(
 }
 ```
 
-## <a name="placeholder"></a><span data-ttu-id="33124-128">Marcador de posición</span><span class="sxs-lookup"><span data-stu-id="33124-128">Placeholder</span></span>
+<span data-ttu-id="a9f8f-140"><xref:Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize%601.RefreshDataAsync%2A?displayProperty=nameWithType> indica al componente que vuelva a solicitar datos de su elemento <xref:Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize%601.ItemsProvider%2A>.</span><span class="sxs-lookup"><span data-stu-id="a9f8f-140"><xref:Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize%601.RefreshDataAsync%2A?displayProperty=nameWithType> instructs the component to rerequest data from its <xref:Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize%601.ItemsProvider%2A>.</span></span> <span data-ttu-id="a9f8f-141">Esto resulta útil cuando cambian los datos externos.</span><span class="sxs-lookup"><span data-stu-id="a9f8f-141">This is useful when external data changes.</span></span> <span data-ttu-id="a9f8f-142">No es necesario llamar a este método cuando se usa <xref:Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize%601.Items%2A>.</span><span class="sxs-lookup"><span data-stu-id="a9f8f-142">There's no need to call this when using <xref:Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize%601.Items%2A>.</span></span>
 
-<span data-ttu-id="33124-129">Dado que la solicitud de elementos de un origen de datos remoto puede tardar tiempo, existe la posibilidad de representar un marcador de posición (`<Placeholder>...</Placeholder>`) hasta que los datos del elemento estén disponibles:</span><span class="sxs-lookup"><span data-stu-id="33124-129">Because requesting items from a remote data source might take some time, you have the option to render a placeholder (`<Placeholder>...</Placeholder>`) until the item data is available:</span></span>
+## <a name="placeholder"></a><span data-ttu-id="a9f8f-143">Marcador de posición</span><span class="sxs-lookup"><span data-stu-id="a9f8f-143">Placeholder</span></span>
+
+<span data-ttu-id="a9f8f-144">Como la solicitud de elementos de un origen de datos remoto puede tardar tiempo, tiene la opción de representar un marcador de posición con contenido de los elementos:</span><span class="sxs-lookup"><span data-stu-id="a9f8f-144">Because requesting items from a remote data source might take some time, you have the option to render a placeholder with item content:</span></span>
+
+* <span data-ttu-id="a9f8f-145">Use una instancia de <xref:Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize%601.Placeholder%2A> (`<Placeholder>...</Placeholder>`) para mostrar el contenido hasta que los datos del elemento estén disponibles.</span><span class="sxs-lookup"><span data-stu-id="a9f8f-145">Use a <xref:Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize%601.Placeholder%2A> (`<Placeholder>...</Placeholder>`) to display content until the item data is available.</span></span>
+* <span data-ttu-id="a9f8f-146">Use <xref:Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize%601.ItemContent%2A?displayProperty=nameWithType> para establecer la plantilla de elemento de la lista.</span><span class="sxs-lookup"><span data-stu-id="a9f8f-146">Use <xref:Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize%601.ItemContent%2A?displayProperty=nameWithType> to set the item template for the list.</span></span>
 
 ```razor
 <Virtualize Context="employee" ItemsProvider="@LoadEmployees">
@@ -127,9 +147,9 @@ private async ValueTask<ItemsProviderResult<Employee>> LoadEmployees(
 </Virtualize>
 ```
 
-## <a name="item-size"></a><span data-ttu-id="33124-130">Tamaño del elemento</span><span class="sxs-lookup"><span data-stu-id="33124-130">Item size</span></span>
+## <a name="item-size"></a><span data-ttu-id="a9f8f-147">Tamaño del elemento</span><span class="sxs-lookup"><span data-stu-id="a9f8f-147">Item size</span></span>
 
-<span data-ttu-id="33124-131">El tamaño de cada elemento en píxeles se puede establecer con `ItemSize` (valor predeterminado: 50 px):</span><span class="sxs-lookup"><span data-stu-id="33124-131">The size of each item in pixels can be set with `ItemSize` (default: 50px):</span></span>
+<span data-ttu-id="a9f8f-148">El tamaño de cada elemento en píxeles se puede establecer con <xref:Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize%601.ItemSize%2A?displayProperty=nameWithType> (valor predeterminado: 50):</span><span class="sxs-lookup"><span data-stu-id="a9f8f-148">The size of each item in pixels can be set with <xref:Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize%601.ItemSize%2A?displayProperty=nameWithType> (default: 50):</span></span>
 
 ```razor
 <Virtualize Context="employee" Items="@employees" ItemSize="25">
@@ -137,9 +157,9 @@ private async ValueTask<ItemsProviderResult<Employee>> LoadEmployees(
 </Virtualize>
 ```
 
-## <a name="overscan-count"></a><span data-ttu-id="33124-132">Recuento de sobrebarridos</span><span class="sxs-lookup"><span data-stu-id="33124-132">Overscan count</span></span>
+## <a name="overscan-count"></a><span data-ttu-id="a9f8f-149">Recuento de sobrebarridos</span><span class="sxs-lookup"><span data-stu-id="a9f8f-149">Overscan count</span></span>
 
-<span data-ttu-id="33124-133">`OverscanCount` determina el número de elementos adicionales que se representan antes y después del área visible.</span><span class="sxs-lookup"><span data-stu-id="33124-133">`OverscanCount` determines how many additional items are rendered before and after the visible region.</span></span> <span data-ttu-id="33124-134">Esta configuración ayuda a reducir la frecuencia de representación durante el desplazamiento.</span><span class="sxs-lookup"><span data-stu-id="33124-134">This setting helps to reduce the frequency of rendering during scrolling.</span></span> <span data-ttu-id="33124-135">Pese a esto, unos valores superiores hacen que se representen más elementos en la página (valor predeterminado: 3):</span><span class="sxs-lookup"><span data-stu-id="33124-135">However, higher values result in more elements rendered in the page (default: 3):</span></span>
+<span data-ttu-id="a9f8f-150"><xref:Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize%601.OverscanCount%2A?displayProperty=nameWithType> determina el número de elementos adicionales que se representan antes y después del área visible.</span><span class="sxs-lookup"><span data-stu-id="a9f8f-150"><xref:Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize%601.OverscanCount%2A?displayProperty=nameWithType> determines how many additional items are rendered before and after the visible region.</span></span> <span data-ttu-id="a9f8f-151">Esta configuración ayuda a reducir la frecuencia de representación durante el desplazamiento.</span><span class="sxs-lookup"><span data-stu-id="a9f8f-151">This setting helps to reduce the frequency of rendering during scrolling.</span></span> <span data-ttu-id="a9f8f-152">Pese a esto, unos valores superiores hacen que se representen más elementos en la página (valor predeterminado: 3):</span><span class="sxs-lookup"><span data-stu-id="a9f8f-152">However, higher values result in more elements rendered in the page (default: 3):</span></span>
 
 ```razor
 <Virtualize Context="employee" Items="@employees" OverscanCount="4">
@@ -147,6 +167,6 @@ private async ValueTask<ItemsProviderResult<Employee>> LoadEmployees(
 </Virtualize>
 ```
 
-## <a name="state-changes"></a><span data-ttu-id="33124-136">Cambios de estado</span><span class="sxs-lookup"><span data-stu-id="33124-136">State changes</span></span>
+## <a name="state-changes"></a><span data-ttu-id="a9f8f-153">Cambios de estado</span><span class="sxs-lookup"><span data-stu-id="a9f8f-153">State changes</span></span>
 
-<span data-ttu-id="33124-137">Al realizar cambios en los elementos representados por el componente `Virtualize`, llame a <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> para forzar que el componente vuelva a evaluarse y representarse.</span><span class="sxs-lookup"><span data-stu-id="33124-137">When making changes to items rendered by the `Virtualize` component, call <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> to force re-evaluation and rerendering of the component.</span></span>
+<span data-ttu-id="a9f8f-154">Al realizar cambios en los elementos representados por el componente `Virtualize`, llame a <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> para forzar que el componente vuelva a evaluarse y representarse.</span><span class="sxs-lookup"><span data-stu-id="a9f8f-154">When making changes to items rendered by the `Virtualize` component, call <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> to force re-evaluation and rerendering of the component.</span></span>
