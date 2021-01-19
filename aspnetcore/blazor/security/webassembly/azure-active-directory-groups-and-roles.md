@@ -19,19 +19,22 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/aad-groups-roles
-ms.openlocfilehash: ded70f028b3021574ba260838837d9b23abd72f1
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 96a7dde9a5a756e40125ffda4c54fbf24fdc616a
+ms.sourcegitcommit: 97243663fd46c721660e77ef652fe2190a461f81
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "94981887"
+ms.lasthandoff: 01/09/2021
+ms.locfileid: "98058264"
 ---
 # <a name="azure-active-directory-aad-groups-administrator-roles-and-user-defined-roles"></a>Grupos, roles de administrador y roles definidos por el usuario de Azure Active Directory (AAD)
 
 Por [Luke Latham](https://github.com/guardrex) y [Javier Calvarro Nelson](https://github.com/javiercn)
 
 > [!NOTE]
-> Este artículo se aplica a las aplicaciones de ASP.NET Core de Blazor, versión 3.1, con Microsoft Identity v 1.0, y está programada su actualización a 5.0 con Identity v2.0. Para obtener más información, vea [Blazor WASM con grupos y roles de AAD/B2C (dotnet/AspNetCore.Docs #17683)](https://github.com/dotnet/AspNetCore.Docs/issues/17683).
+> Este artículo se aplica a las aplicaciones ASP.NET Core de Blazor, versión 3.1, con Microsoft Identity 1.0 y se actualizará a 5.0 con Identity 2.0 en breve. Para obtener más información, vea la siguiente incidencia de GitHub y la solicitud de incorporación de cambios. La pestaña **Files changed** (Archivos cambiados) de la solicitud de incorporación de cambios contiene el borrador y los ejemplos de las actualizaciones de este artículo. Después de la revisión y las actualizaciones finales, la solicitud de incorporación de cambios se combinará en el conjunto de documentación publicado.
+>
+> * Problema: [Blazor WASM con grupos y roles de AAD (dotnet/AspNetCore.Docs n.º 17683)](https://github.com/dotnet/AspNetCore.Docs/issues/17683)
+> * Solicitud de incorporación de cambios: [Blazor Tema de grupos y roles de AAD 5.0 (dotnet/AspNetCore.Docs n.º 20856)](https://github.com/dotnet/AspNetCore.Docs/pull/20856)
 
 Azure Active Directory (AAD) proporciona diversos enfoques de autorización que se pueden combinar con ASP.NET Core Identity:
 

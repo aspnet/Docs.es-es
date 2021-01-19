@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/webassembly-performance-best-practices
-ms.openlocfilehash: cc090b4e56745e6b010e4a7ee17332b0d3a95560
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 0753ef0f1cde7bbb45ecc09b97fecb5ce364811c
+ms.sourcegitcommit: 8b0e9a72c1599ce21830c843558a661ba908ce32
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "95417388"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98024657"
 ---
 # <a name="aspnet-core-no-locblazor-webassembly-performance-best-practices"></a>Procedimientos recomendados de rendimiento de Blazor WebAssembly en ASP.NET Core
 
@@ -43,16 +43,16 @@ En las secciones siguientes se proporcionan recomendaciones para minimizar la ca
 
 En el entorno de ejecución, los componentes existen como una jerarquía. Un componente raíz tiene componentes secundarios. A su vez, los elementos secundarios de la raíz tienen sus propios componentes secundarios, etc. Cuando se produce un evento, como la selección de un botón por un usuario, este es el modo en que Blazor decide qué componentes se representarán:
 
- 1. El propio evento se envía a cualquier componente que represente el controlador del evento. Después de ejecutar el controlador de eventos, ese componente se volverá a representar.
- 1. Siempre que se vuelve a representar cualquier componente, este proporciona una nueva copia de los valores de los parámetros a cada uno de sus componentes secundarios.
- 1. Al recibir un nuevo conjunto de valores de parámetros, cada componente elige si desea volver a representarlo. De forma predeterminada, los componentes se vuelven a representar si los valores de los parámetros pueden haber cambiado (por ejemplo, si son objetos mutables).
+1. El propio evento se envía a cualquier componente que represente el controlador del evento. Después de ejecutar el controlador de eventos, ese componente se volverá a representar.
+1. Siempre que se vuelve a representar cualquier componente, este proporciona una nueva copia de los valores de los parámetros a cada uno de sus componentes secundarios.
+1. Al recibir un nuevo conjunto de valores de parámetros, cada componente elige si desea volver a representarlo. De forma predeterminada, los componentes se vuelven a representar si los valores de los parámetros pueden haber cambiado (por ejemplo, si son objetos mutables).
 
 Los dos últimos pasos de esta secuencia continúan de forma recursiva hacia abajo en la jerarquía de componentes. En muchos casos, se volverá a representar el subárbol completo. Esto significa que los eventos que tienen como destino componentes de alto nivel pueden provocar procesos de nueva representación costosos, ya que todo lo que se encuentra por debajo de ese punto debe volver a representarse.
 
 Si desea interrumpir este proceso y evitar la representación de la recursividad en un subárbol en particular, puede hacer lo siguiente:
 
- * Asegúrese de que todos los parámetros de un determinado componente son de tipos primitivos inmutables (por ejemplo, `string`, `int`, `bool`, `DateTime` y otros). La lógica integrada para detectar cambios omite automáticamente la nueva representación si ninguno de estos valores de los parámetros ha cambiado. Si representa un componente secundario con `<Customer CustomerId="@item.CustomerId" />`, donde `CustomerId` es un valor de `int`, no se volverá a representar excepto cuando `item.CustomerId` cambie.
- * Si necesita aceptar valores de parámetros no primitivos (por ejemplo, tipos de modelos personalizados), devoluciones de llamada de eventos o valores <xref:Microsoft.AspNetCore.Components.RenderFragment>, puede invalidar <xref:Microsoft.AspNetCore.Components.ComponentBase.ShouldRender%2A> para controlar la decisión sobre si se va a representar, lo que se describe en la sección [Uso de `ShouldRender`](#use-of-shouldrender).
+* Asegúrese de que todos los parámetros de un determinado componente son de tipos primitivos inmutables (por ejemplo, `string`, `int`, `bool`, `DateTime` y otros). La lógica integrada para detectar cambios omite automáticamente la nueva representación si ninguno de estos valores de los parámetros ha cambiado. Si representa un componente secundario con `<Customer CustomerId="@item.CustomerId" />`, donde `CustomerId` es un valor de `int`, no se volverá a representar excepto cuando `item.CustomerId` cambie.
+* Si necesita aceptar valores de parámetros no primitivos (por ejemplo, tipos de modelos personalizados), devoluciones de llamada de eventos o valores <xref:Microsoft.AspNetCore.Components.RenderFragment>, puede invalidar <xref:Microsoft.AspNetCore.Components.ComponentBase.ShouldRender%2A> para controlar la decisión sobre si se va a representar, lo que se describe en la sección [Uso de `ShouldRender`](#use-of-shouldrender).
 
 Al omitir la nueva representación de subárboles completos, es posible que pueda suprimir la gran mayoría de los costos de representación cuando se produce un evento.
 
@@ -109,38 +109,7 @@ Para más información, consulte <xref:blazor/components/lifecycle>.
 
 Al representar grandes cantidades de interfaz de usuario dentro de un bucle, por ejemplo, una lista o una cuadrícula con miles de entradas, la gran cantidad de operaciones de representación puede provocar un retraso en la representación de la interfaz de usuario y, por tanto, una mala experiencia del usuario. Dado que el usuario solo puede ver un pequeño número de elementos a la vez sin desplazarse, parece que no vale la pena dedicar tanto tiempo a representar elementos que no son visibles actualmente.
 
-Para solucionar esto, Blazor proporciona un [componente `<Virtualize>`](xref:blazor/components/virtualization) integrado que crea la apariencia y los comportamientos de desplazamiento de una lista arbitrariamente grande, pero en realidad solo representa los elementos de la lista que están dentro de la ventanilla de desplazamiento actual. Por ejemplo, esto significa que la aplicación puede tener una lista con 100 000 entradas, pero solo debe pagar el costo de representación de 20 elementos que son visibles a la vez. El uso del componente `<Virtualize>` puede escalar verticalmente el rendimiento de la interfaz de usuario en órdenes de magnitud.
-
-`<Virtualize>` se puede usar en estos casos:
-
- * La representación de un conjunto de elementos de datos en un bucle.
- * La mayoría de los elementos no están visibles debido al desplazamiento.
- * Los elementos representados tienen exactamente el mismo tamaño. Cuando el usuario se desplaza a un punto arbitrario, el componente puede calcular los elementos visibles que se van a mostrar.
-
-A continuación se muestra un ejemplo de una lista no virtualizada:
-
-```razor
-<div class="all-flights" style="height:500px;overflow-y:scroll">
-    @foreach (var flight in allFlights)
-    {
-        <FlightSummary @key="flight.FlightId" Flight="@flight" />
-    }
-</div>
-```
-
-Si la colección `allFlights` contiene 10 000 elementos, crea instancias y representa 10 000 instancias de componentes `<FlightSummary>`. En comparación, el ejemplo siguiente muestra una lista virtualizada:
-
-```razor
-<div class="all-flights" style="height:500px;overflow-y:scroll">
-    <Virtualize Items="@allFlights" Context="flight">
-        <FlightSummary @key="flight.FlightId" Flight="@flight" />
-    </Virtualize>
-</div>
-```
-
-Aunque la interfaz de usuario resultante tiene el mismo aspecto para un usuario, en segundo plano el componente solo crea instancias y representa tantas instancias de `<FlightSummary>` como se requieran para rellenar la región desplazable. El conjunto de instancias de `<FlightSummary>` que se muestran se vuelve a calcular y se representa cuando el usuario se desplaza.
-
-`<Virtualize>` también tiene otras ventajas. Por ejemplo, cuando un componente solicita datos de una API externa, `<Virtualize>` permite que el componente capture solo el segmento de registros que corresponde a la región visible actual, en lugar de descargar todos los datos de la colección.
+Para solucionar esto, Blazor proporciona el componente `Virtualize` que crea los comportamientos de apariencia y desplazamiento de una lista arbitrariamente grande, pero que solo representa los elementos de lista que están dentro de la ventanilla de desplazamiento actual. Por ejemplo, esto significa que la aplicación puede tener una lista con 100 000 entradas, pero solo debe pagar el costo de representación de 20 elementos que son visibles a la vez. El uso del componente `Virtualize` puede escalar verticalmente el rendimiento de la interfaz de usuario en órdenes de magnitud.
 
 Para más información, consulte <xref:blazor/components/virtualization>.
 
@@ -152,9 +121,9 @@ La mayoría de los componentes de Blazor no requieren esfuerzos de optimización
 
 Sin embargo, también existen escenarios comunes en los que se compilan componentes que deben repetirse a gran escala. Por ejemplo:
 
- * Los formularios anidados grandes pueden tener cientos de entradas individuales, etiquetas y otros elementos.
- * Las cuadrículas pueden tener miles de celdas.
- * Los gráficos de dispersión pueden tener millones de puntos de datos.
+* Los formularios anidados grandes pueden tener cientos de entradas individuales, etiquetas y otros elementos.
+* Las cuadrículas pueden tener miles de celdas.
+* Los gráficos de dispersión pueden tener millones de puntos de datos.
 
 Si modela cada unidad como instancias de componente independientes, habrá tantas que el rendimiento de su representación se vuelve crítico. En esta sección se proporcionan consejos sobre cómo crear estos componentes ligeros para que la interfaz de usuario se mantenga rápida y con capacidad de respuesta.
 
@@ -162,8 +131,8 @@ Si modela cada unidad como instancias de componente independientes, habrá tanta
 
 Cada componente es una isla independiente que se puede representar independientemente de sus elementos primarios y secundarios. Al elegir cómo dividir la interfaz de usuario en una jerarquía de componentes, toma el control sobre el nivel de detalle de la representación de la interfaz de usuario. Esto puede ser bueno o malo para el rendimiento.
 
- * Al dividir la interfaz de usuario en más componentes, puede ocurrir que se vuelvan a representar partes más pequeñas de la interfaz de usuario cuando se produzcan eventos. Por ejemplo, cuando un usuario hace clic en un botón en una fila de la tabla, es posible que solo pueda volver a representar esa fila en lugar de toda la página o tabla.
- * Sin embargo, cada componente adicional implica algo de memoria adicional y sobrecarga de CPU para tratar con su estado independiente y su ciclo de vida de representación.
+* Al dividir la interfaz de usuario en más componentes, puede ocurrir que se vuelvan a representar partes más pequeñas de la interfaz de usuario cuando se produzcan eventos. Por ejemplo, cuando un usuario hace clic en un botón en una fila de la tabla, es posible que solo pueda volver a representar esa fila en lugar de toda la página o tabla.
+* Sin embargo, cada componente adicional implica algo de memoria adicional y sobrecarga de CPU para tratar con su estado independiente y su ciclo de vida de representación.
 
 Al optimizar el rendimiento de Blazor WebAssembly en .NET 5, se midió una sobrecarga de representación de alrededor de 0,06 ms por instancia de componente. Esto se basa en un componente simple que acepta tres parámetros que se ejecutan en un equipo portátil típico. Internamente, la sobrecarga se debe en gran parte a la recuperación del estado de cada componente de los diccionarios y al paso y recepción de parámetros. Mediante la multiplicación, puede ver que agregar 2000 instancias de componentes adicionales agregaría 0,12 segundos al tiempo de representación y la interfaz de usuario comenzaría a ser lenta para los usuarios.
 
@@ -297,8 +266,8 @@ En el ejemplo anterior, `Data` es diferente para cada celda, pero `Options` es c
 
 El componente `<CascadingValue>` tiene un parámetro opcional denominado `IsFixed`.
 
- * Si el valor `IsFixed` es `false` (el valor predeterminado), cada destinatario del valor en cascada configura una suscripción para recibir notificaciones de los cambios. En este caso, `[CascadingParameter]` es **sustancialmente más caro** que un `[Parameter]` normal debido al seguimiento de las suscripciones.
- * Si el valor `IsFixed` es `true` (por ejemplo, `<CascadingValue Value="@someValue" IsFixed="true">`), los destinatarios reciben el valor inicial, pero *no* configuran ninguna suscripción para recibir actualizaciones. En este caso, cada `[CascadingParameter]` es ligero y **no es más caro** que un `[Parameter]` normal.
+* Si el valor `IsFixed` es `false` (el valor predeterminado), cada destinatario del valor en cascada configura una suscripción para recibir notificaciones de los cambios. En este caso, `[CascadingParameter]` es **sustancialmente más caro** que un `[Parameter]` normal debido al seguimiento de las suscripciones.
+* Si el valor `IsFixed` es `true` (por ejemplo, `<CascadingValue Value="@someValue" IsFixed="true">`), los destinatarios reciben el valor inicial, pero *no* configuran ninguna suscripción para recibir actualizaciones. En este caso, cada `[CascadingParameter]` es ligero y **no es más caro** que un `[Parameter]` normal.
 
 Por tanto, siempre que sea posible, debe usar `IsFixed="true"` en valores en cascada. Puede hacerlo cada vez que el valor proporcionado no cambie con el tiempo. En el patrón común en el que un componente pasa `this` como un valor en cascada, debe utilizar `IsFixed="true"`:
 
@@ -338,9 +307,9 @@ Uno de los principales aspectos de la sobrecarga de representación por componen
 
 En algunos casos extremos, puede que desee evitar la reflexión e implementar su propia lógica de configuración de parámetros de forma manual. Esto puede ser aplicable cuando:
 
- * Tiene un componente que se representa con mucha frecuencia (por ejemplo, hay cientos o miles de copias suyas en la interfaz de usuario).
- * Acepta muchos parámetros.
- * Observa que la sobrecarga de recibir parámetros tiene una incidencia observable en la capacidad de respuesta de la interfaz de usuario.
+* Tiene un componente que se representa con mucha frecuencia (por ejemplo, hay cientos o miles de copias suyas en la interfaz de usuario).
+* Acepta muchos parámetros.
+* Observa que la sobrecarga de recibir parámetros tiene una incidencia observable en la capacidad de respuesta de la interfaz de usuario.
 
 En estos casos, puede invalidar el método <xref:Microsoft.AspNetCore.Components.ComponentBase.SetParametersAsync%2A> virtual del componente e implementar su propia lógica específica del componente. En el ejemplo siguiente se evita deliberadamente cualquier búsqueda en el diccionario:
 
@@ -452,8 +421,8 @@ Esta técnica puede ser aún más importante para Blazor Server, ya que cada inv
 
 Las llamadas entre .NET y JavaScript implican una sobrecarga adicional porque:
 
- * De forma predeterminada, las llamadas son asincrónicas.
- * De forma predeterminada, los parámetros y los valores devueltos se serializan en JSON. Esto es para proporcionar un mecanismo de conversión fácil de comprender entre los tipos de .NET y JavaScript.
+* De forma predeterminada, las llamadas son asincrónicas.
+* De forma predeterminada, los parámetros y los valores devueltos se serializan en JSON. Esto es para proporcionar un mecanismo de conversión fácil de comprender entre los tipos de .NET y JavaScript.
 
 Además, en Blazor Server, estas llamadas se pasan a través de la red.
 

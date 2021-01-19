@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/layouts
-ms.openlocfilehash: 3cb7c6184c13a003b4f4294f887d8938caa42f97
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 417f69e797296cdcd01fc4ce326388512a406368
+ms.sourcegitcommit: 97243663fd46c721660e77ef652fe2190a461f81
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97506908"
+ms.lasthandoff: 01/09/2021
+ms.locfileid: "98058277"
 ---
 # <a name="aspnet-core-no-locblazor-layouts"></a>Diseños de ASP.NET Core Blazor
 
@@ -32,7 +32,7 @@ Por [Rainer Stropek](https://www.timecockpit.com) y [Luke Latham](https://github
 
 Algunos elementos de la aplicación, como los menús, los mensajes de copyright y los logotipos de la empresa, normalmente forman parte del diseño general de la aplicación y se usan en todos sus componentes. Copiar el código de estos elementos en todos los componentes de una aplicación no es una estrategia eficaz. Cada vez que uno de los elementos necesita una actualización, todos los componentes deben actualizarse. Esta duplicación es difícil de mantener y puede dar lugar a contenido incoherente con el tiempo. Los *diseños* solucionan este problema.
 
-Técnicamente, un diseño es simplemente otro componente. Un diseño se define en una plantilla de Razor o en código de C# y puede usar el [enlace de datos](xref:blazor/components/data-binding), la [inserción de dependencias](xref:blazor/fundamentals/dependency-injection) y otros escenarios de componente.
+Técnicamente, un diseño es simplemente otro componente. Un diseño se define en una plantilla de Razor o en código de C# y puede usar el [enlace de datos](xref:blazor/components/data-binding), la [inserción de dependencias](xref:blazor/fundamentals/dependency-injection) y otros escenarios de componente. Los diseños solo se aplican a los componentes enrutables de Razor que tienen directivas [`@page`](xref:mvc/views/razor#page).
 
 Para convertir un componente en un diseño:
 
@@ -79,7 +79,7 @@ Especificar el diseño como un diseño predeterminado en el enrutador es una pr�
 
 ## <a name="specify-a-layout-in-a-component"></a>Especificación de un diseño en un componente
 
-Use la directiva `@layout` de Razor para aplicar un diseño a un componente. El compilador convierte `@layout` en un atributo <xref:Microsoft.AspNetCore.Components.LayoutAttribute>, que se aplica a la clase de componentes.
+Use la directiva [`@layout`](xref:mvc/views/razor#layout) de Razor para aplicar un diseño a un componente de Razor enrutable que también tenga una directiva [`@page`](xref:mvc/views/razor#page). El compilador convierte `@layout` en un atributo <xref:Microsoft.AspNetCore.Components.LayoutAttribute>, que se aplica a la clase de componentes.
 
 El contenido del siguiente componente `MasterList` se inserta en `MasterLayout` en la posición `@Body`:
 
@@ -105,6 +105,9 @@ Al especificar un diseño en `_Imports.razor`, se invalida un diseño especifica
 
 > [!WARNING]
 > **No** agregue una directiva Razor `@layout` al archivo raíz `_Imports.razor`, que da como resultado un bucle infinito de diseños en la aplicación. Para controlar el diseño predeterminado de la aplicación, especifique el diseño en el componente `Router`. Para obtener más información, vea la sección [Diseño predeterminado](#default-layout).
+
+> [!NOTE]
+> La directiva [`@layout`](xref:mvc/views/razor#layout) de Razor solo aplica un diseño a los componentes enrutables de Razor con directivas [`@page`](xref:mvc/views/razor#page).
 
 ## <a name="nested-layouts"></a>Diseños anidados
 

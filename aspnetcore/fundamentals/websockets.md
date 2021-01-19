@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/websockets
-ms.openlocfilehash: 83a41d503b2d56bca3f1bac14eeb9d54a8257642
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 6edf2017cc889321cfb484e643b75711fd66004d
+ms.sourcegitcommit: 97243663fd46c721660e77ef652fe2190a461f81
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93057783"
+ms.lasthandoff: 01/09/2021
+ms.locfileid: "98058355"
 ---
 # <a name="websockets-support-in-aspnet-core"></a>Compatibilidad con WebSockets en ASP.NET Core
 
@@ -67,7 +67,6 @@ Agregue el middleware de WebSockets al método `Configure` de la clase `Startup`
 Se pueden configurar estas opciones:
 
 * `KeepAliveInterval`: la frecuencia con que se envían marcos "ping" al cliente, para asegurarse de que los servidores proxy mantienen abierta la conexión. El valor predeterminado es de dos minutos.
-* `ReceiveBufferSize`: el tamaño del búfer usado para recibir datos. Puede que los usuarios avanzados tengan que cambiar estas opciones para ajustar el rendimiento según el tamaño de los datos. El valor predeterminado es 4 KB.
 
 ::: moniker-end
 
@@ -76,7 +75,6 @@ Se pueden configurar estas opciones:
 Se pueden configurar estas opciones:
 
 * `KeepAliveInterval`: la frecuencia con que se envían marcos "ping" al cliente, para asegurarse de que los servidores proxy mantienen abierta la conexión. El valor predeterminado es de dos minutos.
-* <xref:Microsoft.AspNetCore.Builder.WebSocketOptions.ReceiveBufferSize>: el tamaño del búfer usado para recibir datos. Puede que los usuarios avanzados tengan que cambiar estas opciones para ajustar el rendimiento según el tamaño de los datos. El valor predeterminado es 4 KB.
 * `AllowedOrigins` - Una lista de valores de encabezado de origen permitidos para las solicitudes WebSocket. De forma predeterminada, se permiten todos los orígenes. Consulte "Restricción de los orígenes de WebSocket" a continuación para obtener información detallada.
 
 ::: moniker-end
@@ -188,11 +186,10 @@ Si usa la compatibilidad de WebSocket en [socket.io](https://socket.io/) en [Nod
 
 ## <a name="sample-app"></a>Aplicación de ejemplo
 
-La [aplicación de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/websockets/samples) que acompaña a este artículo es una aplicación de eco. Tiene una página web que realiza las conexiones WebSocket y el servidor reenvía de vuelta al cliente todos los mensajes que reciba. Ejecute la aplicación desde un símbolo del sistema (no está configurada para ejecutarse desde Visual Studio con IIS Express) y vaya a http://localhost:5000. En la página web se muestra el estado de conexión en la parte superior izquierda:
+La [aplicación de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/websockets/samples) que acompaña a este artículo es una aplicación de eco. Tiene una página web que realiza las conexiones de WebSocket y el servidor reenvía de vuelta al cliente todos los mensajes que recibe. La aplicación de ejemplo no está configurada para ejecutarse desde Visual Studio con IIS Express, por lo que debe ejecutarla en un shell de comandos con [`dotnet run`](/dotnet/core/tools/dotnet-run) e ir a `http://localhost:5000` en un explorador. La página web muestra el estado de la conexión:
 
-![Estado inicial de la página web](websockets/_static/start.png)
+![Estado inicial de la página web antes de la conexión de WebSockets](websockets/_static/start.png)
 
 Seleccione **Connect** (Conectar) para enviar una solicitud WebSocket para la URL mostrada. Escriba un mensaje de prueba y seleccione **Send** (Enviar). Cuando haya terminado, seleccione **Close Socket** (Cerrar socket). Los informes de la sección **Communication Log** (Registro de comunicación) informan de cada acción de abrir, enviar y cerrar a medida que se producen.
 
-![Estado inicial de la página web](websockets/_static/end.png)
-
+![Estado final de la página web después de enviar y recibir mensajes de prueba y conexiones de WebSockets](websockets/_static/end.png)

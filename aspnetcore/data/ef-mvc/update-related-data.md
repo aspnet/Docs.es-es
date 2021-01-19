@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/update-related-data
-ms.openlocfilehash: f41d0b1d7ba46ef4867e0d160dc61f21042ce403
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 9ad0de9984b42c2b14dfaf48c74660915de93be1
+ms.sourcegitcommit: 97243663fd46c721660e77ef652fe2190a461f81
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93053948"
+ms.lasthandoff: 01/09/2021
+ms.locfileid: "98058329"
 ---
 # <a name="tutorial-update-related-data---aspnet-mvc-with-ef-core"></a>Tutorial: Actualización de datos relacionados: ASP.NET MVC con EF Core
 
@@ -34,7 +34,7 @@ En las ilustraciones siguientes se muestran algunas de las páginas con las que 
 
 ![Página Course Edit](update-related-data/_static/course-edit.png)
 
-![Página Instructor Edit](update-related-data/_static/instructor-edit-courses.png)
+![Página de edición del instructor](update-related-data/_static/instructor-edit-courses.png)
 
 En este tutorial ha:
 
@@ -91,7 +91,7 @@ Para optimizar el rendimiento de las páginas Course Details y Delete, agregue l
 
 En *Views/Courses/Create.cshtml*, agregue una opción "Select Department" a la lista desplegable **Department**, cambie el título de **DepartmentID** a  **Department** y agregue un mensaje de validación.
 
-[!code-cshtml[](intro/samples/cu/Views/Courses/Create.cshtml?highlight=2-6&range=29-34)]
+[!code-cshtml[](intro/samples/cu/Views/Courses/Create.cshtml?highlight=2-6&range=29-35)]
 
 En *Views/Courses/Edit.cshtml*, realice el mismo cambio que acaba de hacer en *Create.cshtml* en el campo Department.
 
