@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/windows-service
-ms.openlocfilehash: 31a738e7aa8779171dfa09a5678d7240b8f62343
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 63267bf938c6d16b8a1b13940a4b3f8a02d1a1e4
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93057237"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98252752"
 ---
 # <a name="host-aspnet-core-in-a-windows-service"></a>Hospedaje de ASP.NET Core en un servicio de Windows
 
@@ -236,7 +236,22 @@ ASP.NET Core se enlaza a `http://localhost:5000` de forma predeterminada. Config
 
 Para información sobre otros enfoques de configuración de direcciones URL y puertos, consulte el artículo en cuestión:
 
+::: moniker-end
+
+::: moniker range=">= aspnetcore-5.0"
+
+* <xref:fundamentals/servers/kestrel/endpoints>
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0 >= aspnetcore-3.0"
+
 * <xref:fundamentals/servers/kestrel#endpoint-configuration>
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.0"
+
 * <xref:fundamentals/servers/httpsys#configure-windows-server>
 
 En la guía anterior se trata la compatibilidad con los puntos de conexión HTTPS. Por ejemplo, configure la aplicación para HTTPS cuando se use la autenticación con un servicio de Windows.
@@ -246,25 +261,25 @@ En la guía anterior se trata la compatibilidad con los puntos de conexión HTTP
 
 ## <a name="current-directory-and-content-root"></a>Directorio actual y raíz del contenido
 
-El directorio de trabajo actual devuelto por una llamada a <xref:System.IO.Directory.GetCurrentDirectory*> para un servicio de Windows es la carpeta *C:\\WINDOWS\\system32*. La carpeta *system32* no es una ubicación adecuada para almacenar los archivos de un servicio (por ejemplo los archivos de configuración). Utilice uno de los siguientes enfoques para mantener los archivos de configuración y los activos de un servicio, así como para acceder a ellos.
+El directorio de trabajo actual devuelto por una llamada a <xref:System.IO.Directory.GetCurrentDirectory%2A> para un servicio de Windows es la carpeta *C:\\WINDOWS\\system32*. La carpeta *system32* no es una ubicación adecuada para almacenar los archivos de un servicio (por ejemplo los archivos de configuración). Utilice uno de los siguientes enfoques para mantener los archivos de configuración y los activos de un servicio, así como para acceder a ellos.
 
 ### <a name="use-contentrootpath-or-contentrootfileprovider"></a>Uso de ContentRootPath o ContentRootFileProvider
 
 Use [IHostEnvironment.ContentRootPath](xref:Microsoft.Extensions.Hosting.IHostEnvironment.ContentRootPath) o <xref:Microsoft.Extensions.Hosting.IHostEnvironment.ContentRootFileProvider> para buscar los recursos de una aplicación.
 
-Cuando la aplicación se ejecuta como un servicio, <xref:Microsoft.Extensions.Hosting.WindowsServiceLifetimeHostBuilderExtensions.UseWindowsService*> establece la ruta de acceso <xref:Microsoft.Extensions.Hosting.IHostEnvironment.ContentRootPath> en [AppContext.BaseDirectory](xref:System.AppContext.BaseDirectory).
+Cuando la aplicación se ejecuta como un servicio, <xref:Microsoft.Extensions.Hosting.WindowsServiceLifetimeHostBuilderExtensions.UseWindowsService%2A> establece la ruta de acceso <xref:Microsoft.Extensions.Hosting.IHostEnvironment.ContentRootPath> en [AppContext.BaseDirectory](xref:System.AppContext.BaseDirectory).
 
 Los archivos de configuración predeterminados de la aplicación, *appsettings.json* y *appsettings.{Environment}.json*, se cargan desde la raíz del contenido de la aplicación mediante una llamada a [CreateDefaultBuilder durante la construcción del host](xref:fundamentals/host/generic-host#set-up-a-host).
 
-En el caso de otros archivos de configuración cargados por el código para desarrolladores en <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*>, no es necesario llamar a <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*>. En el ejemplo siguiente, el archivo *custom_settings.json* ya se encuentra en la raíz del contenido de la aplicación y se carga sin establecer explícitamente una ruta de acceso base:
+En el caso de otros archivos de configuración cargados por el código para desarrolladores en <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration%2A>, no es necesario llamar a <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath%2A>. En el ejemplo siguiente, el archivo *custom_settings.json* ya se encuentra en la raíz del contenido de la aplicación y se carga sin establecer explícitamente una ruta de acceso base:
 
 [!code-csharp[](windows-service/samples_snapshot/CustomSettingsExample.cs?highlight=13)]
 
-No intente usar <xref:System.IO.Directory.GetCurrentDirectory*> para obtener una ruta de acceso a recursos porque una aplicación de servicio de Windows devuelve la carpeta *C:\\WINDOWS\\system32* como su directorio actual.
+No intente usar <xref:System.IO.Directory.GetCurrentDirectory%2A> para obtener una ruta de acceso a recursos porque una aplicación de servicio de Windows devuelve la carpeta *C:\\WINDOWS\\system32* como su directorio actual.
 
 ### <a name="store-a-services-files-in-a-suitable-location-on-disk"></a>Almacenamiento de los archivos de un servicio en una ubicación adecuada en el disco
 
-Especifique una ruta de acceso absoluta con <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*> al utilizar un <xref:Microsoft.Extensions.Configuration.IConfigurationBuilder> a la carpeta que contiene los archivos.
+Especifique una ruta de acceso absoluta con <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath%2A> al utilizar un <xref:Microsoft.Extensions.Configuration.IConfigurationBuilder> a la carpeta que contiene los archivos.
 
 ## <a name="troubleshoot"></a>Solucionar problemas
 
@@ -345,7 +360,16 @@ El volcado de memoria se puede analizar de varias maneras. Para obtener más inf
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
+::: moniker-end
+
+::: moniker range=">= aspnetcore-5.0"
+* [Kestrel: configuración de punto de conexión](xref:fundamentals/servers/kestrel/endpoints) (configuración de HTTPS y compatibilidad de SNI incluidas)
+::: moniker-end
+::: moniker range="< aspnetcore-5.0 >= aspnetcore-3.0"
 * [Kestrel: configuración de punto de conexión](xref:fundamentals/servers/kestrel#endpoint-configuration) (configuración de HTTPS y compatibilidad de SNI incluidas)
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.0"
 * <xref:fundamentals/host/generic-host>
 * <xref:test/troubleshoot>
 

@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/call-web-api
-ms.openlocfilehash: 85b3ded6ec25310a573e99cbedf0df005d92bdbe
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 18afa7faa254f89ef664e0188be357a85c790523
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93234418"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98252440"
 ---
 # <a name="call-a-web-api-from-aspnet-core-no-locblazor"></a>Llamada a una API web desde Blazor de ASP.NET Core
 
@@ -414,5 +414,10 @@ Para obtener información general sobre CORS con aplicaciones de ASP.NET Core, c
 * <xref:blazor/security/webassembly/additional-scenarios>: incluye cobertura sobre el uso de <xref:System.Net.Http.HttpClient> para hacer solicitudes seguras de API web.
 * <xref:fundamentals/http-requests>
 * <xref:security/enforcing-ssl>
+::: moniker range=">= aspnetcore-5.0"
+* [Configuración de puntos de conexión HTTPS de Kestrel](xref:fundamentals/servers/kestrel/endpoints)
+::: moniker-end
+::: moniker range="< aspnetcore-5.0"
 * [Configuración de puntos de conexión HTTPS de Kestrel](xref:fundamentals/servers/kestrel#endpoint-configuration)
+::: moniker-end
 * [Uso compartido de recursos entre orígenes (CORS) en W3C](https://www.w3.org/TR/cors/)

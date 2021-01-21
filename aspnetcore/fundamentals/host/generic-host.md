@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/host/generic-host
-ms.openlocfilehash: 263c7713166005dfdec8ede6bfa9b03b730dede7
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: b99b0f0ab6e67ac84bf1232ff6681c5edd54ffb9
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "96035819"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98253181"
 ---
 # <a name="net-generic-host-in-aspnet-core"></a>Host genérico de .NET en ASP.NET Core
 
@@ -129,8 +129,8 @@ El método <xref:Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder*> realiz
 El método <xref:Microsoft.Extensions.Hosting.GenericHostBuilderExtensions.ConfigureWebHostDefaults*> realiza las acciones siguientes:
 
 * Carga la configuración de host desde las variables de entorno con el prefijo `ASPNETCORE_`.
-* Establece el servidor [Kestrel](xref:fundamentals/servers/kestrel) como servidor web y lo configura por medio de los proveedores de configuración de hospedaje de la aplicación. Para conocer las opciones predeterminadas del servidor Kestrel, consulte <xref:fundamentals/servers/kestrel#kestrel-options>.
-* Agrega el [middleware de filtrado de hosts](xref:fundamentals/servers/kestrel#host-filtering).
+* Establece el servidor [Kestrel](xref:fundamentals/servers/kestrel) como servidor web y lo configura por medio de los proveedores de configuración de hospedaje de la aplicación. Para conocer las opciones predeterminadas del servidor Kestrel, consulte <xref:fundamentals/servers/kestrel/options>.
+* Agrega el [middleware de filtrado de hosts](xref:fundamentals/servers/kestrel/host-filtering).
 * Agrega [middleware de encabezados reenviados](xref:host-and-deploy/proxy-load-balancer#forwarded-headers) si `ASPNETCORE_FORWARDEDHEADERS_ENABLED` es igual a `true`.
 * Permite la integración de IIS. Para consultar las opciones predeterminadas de IIS, vea <xref:host-and-deploy/iis/index#iis-options>.
 
@@ -437,7 +437,7 @@ Para establecer este valor, use la variable de entorno o llame a `UseUrls`:
 webBuilder.UseUrls("http://*:5000;http://localhost:5001;https://hostname:5002");
 ```
 
-Kestrel tiene su propia API de configuración de punto de conexión. Para obtener más información, vea <xref:fundamentals/servers/kestrel#endpoint-configuration>.
+Kestrel tiene su propia API de configuración de punto de conexión. Para obtener más información, vea <xref:fundamentals/servers/kestrel/endpoints>.
 
 ### <a name="webroot"></a>WebRoot
 

@@ -20,12 +20,12 @@ no-loc:
 - SignalR
 uid: blazor/tooling
 zone_pivot_groups: operating-systems
-ms.openlocfilehash: 4813668f5278473fbaae36d572e69700b3fe771a
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 5901a1cb693dfe8e34e62ce2a28456bcf584221c
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97764242"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98252271"
 ---
 # <a name="tooling-for-aspnet-core-no-locblazor"></a>Herramientas para ASP.NET Core Blazor
 
@@ -129,7 +129,7 @@ Si aparece un mensaje para que confíe en el certificado de desarrollo, hágalo 
 
 ## <a name="use-visual-studio-code-for-cross-platform-no-locblazor-development"></a>Uso de Visual Studio Code para el desarrollo multiplataforma de Blazor
 
-[Visual Studio Code](https://code.visualstudio.com/) es un entorno de desarrollo integrado (IDE) multiplataforma de código abierto que se puede usar para desarrollar aplicaciones Blazor. Use la CLI de .NET para crear una aplicación Blazor para su desarrollo con Visual Studio Code. Para obtener más información, consulte la versión [Linux de este artículo](/aspnet/core/blazor/tooling?pivots=linux).
+[Visual Studio Code](https://code.visualstudio.com/) es un entorno de desarrollo integrado (IDE) multiplataforma de código abierto que se puede usar para desarrollar aplicaciones Blazor. Use la CLI de .NET para crear una aplicación Blazor para su desarrollo con Visual Studio Code. Para obtener más información, consulte la versión [Linux de este artículo](?pivots=linux).
 
 ## <a name="no-locblazor-template-options"></a>Opciones de plantilla de Blazor
 
