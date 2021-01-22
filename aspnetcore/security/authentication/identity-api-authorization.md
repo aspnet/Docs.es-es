@@ -19,30 +19,30 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/identity/spa
-ms.openlocfilehash: 8acc34c88bf62b3da1b920acc7318c94435c100e
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 5a6c160ebdda3ec600980aa839770f4f22a9c2fc
+ms.sourcegitcommit: cc405f20537484744423ddaf87bd1e7d82b6bdf0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93051985"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98658669"
 ---
 # <a name="authentication-and-authorization-for-spas"></a>Autenticación y autorización para spa
 
 Las plantillas ASP.NET Core 3,1 y posteriores ofrecen autenticación en las aplicaciones de una sola página (Spa) mediante la compatibilidad con la autorización de la API. ASP.NET Core Identitypara la autenticación y el almacenamiento de usuarios se combina con el [ Identity servidor](https://identityserver.io/) para implementar OpenID Connect.
 
-Se ha agregado un parámetro de autenticación a las plantillas de proyecto **angular** y **reAct** que es similar al parámetro de autenticación en las plantillas de proyecto **aplicación web (controlador de vista de modelos)** (MVC) y **aplicación web** ( Razor páginas). Los valores de parámetro permitidos son **None** y **individual** . La plantilla de proyecto **React.js y Redux** no admite el parámetro de autenticación en este momento.
+Se ha agregado un parámetro de autenticación a las plantillas de proyecto **angular** y **reAct** que es similar al parámetro de autenticación en las plantillas de proyecto **aplicación web (controlador de vista de modelos)** (MVC) y **aplicación web** ( Razor páginas). Los valores de parámetro permitidos son **None** y **individual**. La plantilla de proyecto **React.js y Redux** no admite el parámetro de autenticación en este momento.
 
 ## <a name="create-an-app-with-api-authorization-support"></a>Creación de una aplicación con compatibilidad con la autorización de API
 
 Se puede usar la autenticación y autorización de usuario con angular y reAct Spa. Abra un shell de comandos y ejecute el siguiente comando:
 
-**Angular** :
+**Angular**:
 
 ```dotnetcli
 dotnet new angular -o <output_directory_name> -au Individual
 ```
 
-**ReAct** :
+**ReAct**:
 
 ```dotnetcli
 dotnet new react -o <output_directory_name> -au Individual
@@ -98,6 +98,27 @@ La `Startup` clase tiene las siguientes adiciones:
     app.UseIdentityServer();
     ```
 
+### <a name="azure-app-service-on-linux"></a>Azure App Service en Linux
+
+En el caso de las implementaciones de Azure App Service en Linux, especifique el emisor explícitamente en `Startup.ConfigureServices` :
+
+```csharp
+services.Configure<JwtBearerOptions>(
+    IdentityServerJwtConstants.IdentityServerJwtBearerScheme, 
+    options =>
+    {
+        options.Authority = "{AUTHORITY}";
+    });
+```
+
+En el código anterior, el `{AUTHORITY}` marcador de posición es el <xref:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerOptions.Authority> que se va a usar al realizar llamadas a OpenID Connect.
+
+Ejemplo:
+
+```csharp
+options.Authority = "https://contoso-service.azurewebsites.net";
+```
+
 ### <a name="addapiauthorization"></a>AddApiAuthorization
 
 Este método auxiliar configura el Identity servidor para usar la configuración admitida. IdentityServer es un marco eficaz y extensible que sirve para abordar los problemas de seguridad de las aplicaciones. Al mismo tiempo, esto expone una complejidad innecesaria para los escenarios más comunes. Por lo tanto, se le proporciona un conjunto de convenciones y opciones de configuración que se consideran un buen punto de partida. Una vez que cambien las necesidades de autenticación, todo el potencial del Identity servidor sigue estando disponible para personalizar la autenticación para satisfacer sus necesidades.
@@ -151,9 +172,9 @@ En el *appsettings.Development.jsen* el archivo de la raíz del proyecto, hay un
 La compatibilidad con la autenticación y la autorización de API en la plantilla de angular reside en su propio módulo angular en el directorio *ClientApp\src\api-Authorization* El módulo se compone de los siguientes elementos:
 
 * 3 componentes:
-  * *login. Component. ts* : controla el flujo de inicio de sesión de la aplicación.
-  * *logout. Component. ts* : controla el flujo de cierre de sesión de la aplicación.
-  * *login-menu. Component. ts* : un widget que muestra uno de los siguientes conjuntos de vínculos:
+  * *login. Component. ts*: controla el flujo de inicio de sesión de la aplicación.
+  * *logout. Component. ts*: controla el flujo de cierre de sesión de la aplicación.
+  * *login-menu. Component. ts*: un widget que muestra uno de los siguientes conjuntos de vínculos:
     * Los vínculos de administración de perfiles de usuario y cierre de sesión cuando el usuario está autenticado.
     * Los vínculos registro e inicio de sesión cuando el usuario no está autenticado.
 * Una protección de ruta `AuthorizeGuard` que se puede Agregar a las rutas y requiere que un usuario se autentique antes de visitar la ruta.
@@ -166,12 +187,12 @@ La compatibilidad con la autenticación y la autorización de API en la plantill
 La compatibilidad con la autenticación y la autorización de API en la plantilla reAct reside en el directorio *ClientApp\src\components\api-Authorization* Se compone de los siguientes elementos:
 
 * 4 componentes:
-  * *Login.js* : controla el flujo de inicio de sesión de la aplicación.
-  * *Logout.js* : controla el flujo de cierre de sesión de la aplicación.
-  * *LoginMenu.js* : un widget que muestra uno de los siguientes conjuntos de vínculos:
+  * *Login.js*: controla el flujo de inicio de sesión de la aplicación.
+  * *Logout.js*: controla el flujo de cierre de sesión de la aplicación.
+  * *LoginMenu.js*: un widget que muestra uno de los siguientes conjuntos de vínculos:
     * Los vínculos de administración de perfiles de usuario y cierre de sesión cuando el usuario está autenticado.
     * Los vínculos registro e inicio de sesión cuando el usuario no está autenticado.
-  * *AuthorizeRoute.js* : componente de ruta que requiere que un usuario se autentique antes de representar el componente indicado en el `Component` parámetro.
+  * *AuthorizeRoute.js*: componente de ruta que requiere que un usuario se autentique antes de representar el componente indicado en el `Component` parámetro.
 * Instancia exportada `authService` de la clase `AuthorizeService` que controla los detalles de nivel inferior del proceso de autenticación y expone información sobre el usuario autenticado al resto de la aplicación para su consumo.
 
 Ahora que ha visto los componentes principales de la solución, puede profundizar en los escenarios individuales de la aplicación.
