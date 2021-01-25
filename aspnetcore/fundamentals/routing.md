@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/routing
-ms.openlocfilehash: e134832ad00b10bb01239afa06acc74d86707af1
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 1355fdaeae58b6f4e0cf8d41a74b1c28aee0e8fe
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "94422566"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98253090"
 ---
 # <a name="routing-in-aspnet-core"></a>Enrutamiento en ASP.NET Core
 
@@ -663,7 +663,7 @@ El proceso de generación de direcciones URL comienza con una llamada a [LinkGen
 
 El primer paso consiste en usar la dirección para resolver un conjunto de puntos de conexión candidatos con una instancia de [`IEndpointAddressScheme<TAddress>`](xref:Microsoft.AspNetCore.Routing.IEndpointAddressScheme`1) que coincide con el tipo de la dirección.
 
-Una vez que el esquema de direcciones encuentra un conjunto de candidatos, los puntos de conexión se ordenan y procesan de forma iterativa hasta que una operación de generación de direcciones URL se realiza correctamente. La generación de direcciones URL **no** comprueba si hay ambigüedades; el primer resultado devuelto es el resultado final.
+Una vez que el esquema de direcciones encuentra el conjunto de candidatos, los puntos de conexión se ordenan y procesan de forma iterativa hasta que se realiza correctamente una operación de generación de direcciones URL. La generación de direcciones URL **no** comprueba si hay ambigüedades; el primer resultado devuelto es el resultado final.
 
 ### <a name="troubleshooting-url-generation-with-logging"></a>Solución de problemas de generación de direcciones URL con registro
 

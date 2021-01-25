@@ -37,7 +37,7 @@ En el componente siguiente se muestra cómo usar la interoperabilidad de JavaScr
 
 Cuando se llama a <xref:Microsoft.JSInterop.JSRuntime.InvokeAsync%2A?displayProperty=nameWithType>, `ElementRef` solo se utiliza en <xref:Microsoft.AspNetCore.Components.ComponentBase.OnAfterRenderAsync%2A> y no en ningún otro método de ciclo de vida anterior porque no existe ningún elemento de JavaScript hasta después de representar el componente.
 
-Se llama a [StateHasChanged](xref:blazor/components/lifecycle#state-changes) para representar el componente con el nuevo estado obtenido de la llamada de interoperabilidad de JavaScript. El código no crea un bucle infinito porque solo se llama a `StateHasChanged` cuando `null` es `infoFromJs`.
+Se llama a [StateHasChanged](xref:blazor/components/lifecycle#state-changes) para volver a representar el componente con el nuevo estado obtenido de la llamada de interoperabilidad de JavaScript (para obtener más información, vea <xref:blazor/components/rendering>). El código no crea un bucle infinito porque solo se llama a `StateHasChanged` cuando `null` es `infoFromJs`.
 
 ```cshtml
 @page "/prerendered-interop"

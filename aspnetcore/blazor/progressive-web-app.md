@@ -5,7 +5,7 @@ description: Obtenga información sobre cómo compilar aplicaciones web progresi
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 06/10/2020
+ms.date: 01/11/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/progressive-web-app
-ms.openlocfilehash: f400319ef81b3d7768bdbdab84f46d3f9c50bb46
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 196e19528341e98ac06cefb08ba92f9e47d265ea
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "96855448"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98252479"
 ---
 # <a name="build-progressive-web-applications-with-aspnet-core-no-locblazor-webassembly"></a>Creación de aplicaciones web progresivas con ASP.NET Core Blazor WebAssembly
 
@@ -59,15 +59,109 @@ Al crear una **aplicación Blazor WebAssembly** en el cuadro de diálogo **Crear
 
 # <a name="visual-studio-code--net-core-cli"></a>[Visual Studio Code y CLI de .NET Core](#tab/visual-studio-code+netcore-cli)
 
-Cree un proyecto de PWA en un shell de comandos con el modificador `--pwa`:
+Use el comando siguiente para crear un proyecto de PWA en un shell de comandos con el modificador `--pwa`:
 
 ```dotnetcli
-dotnet new blazorwasm -o MyNewProject --pwa
+dotnet new blazorwasm -o MyBlazorPwa --pwa
 ```
+
+En el comando anterior, la opción `-o|--output` crea una carpeta para la aplicación denominada `MyBlazorPwa`.
 
 ---
 
 Opcionalmente, PWA se puede configurar para una aplicación creada a partir de la plantilla ASP.NET Core hospedado. El escenario de PWA es independiente del modelo de hospedaje.
+
+## <a name="convert-an-existing-no-locblazor-webassembly-app-into-a-pwa"></a>Conversión de una aplicación de Blazor WebAssembly existente en un PWA
+
+Siga las instrucciones de esta sección para convertir una aplicación de Blazor WebAssembly existente en una PWA.
+
+En el archivo de proyecto de la aplicación:
+
+* Agregue la siguiente propiedad `ServiceWorkerAssetsManifest` a un objeto `PropertyGroup`:
+
+  ```xml
+    ...
+    <ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
+  </PropertyGroup>
+   ```
+
+* Agregue el siguiente elemento `ServiceWorker` a un objeto `ItemGroup`:
+
+  ```xml
+  <ItemGroup>
+    <ServiceWorker Include="wwwroot\service-worker.js" 
+      PublishedContent="wwwroot\service-worker.published.js" />
+  </ItemGroup>
+  ```
+
+Para obtener recursos estáticos, use **uno** de los enfoques siguientes:
+
+::: moniker range=">= aspnetcore-5.0"
+
+* Cree un proyecto de PWA independiente con el comando [`dotnet new`](/dotnet/core/tools/dotnet-new) en un shell de comandos:
+
+  ```dotnetcli
+  dotnet new blazorwasm -o MyBlazorPwa --pwa
+  ```
+  
+  En el comando anterior, la opción `-o|--output` crea una carpeta para la aplicación denominada `MyBlazorPwa`.
+  
+  Si no va a convertir una aplicación para la versión más reciente, pase la opción `-f|--framework`. En el ejemplo siguiente se crea la aplicación para la versión 3.1 de ASP.NET Core:
+  
+  ```dotnetcli
+  dotnet new blazorwasm -o MyBlazorPwa --pwa -f netcoreapp3.1
+  ```
+
+* Vaya al repositorio de ASP.NET Core en GitHub, disponible en la siguiente dirección URL, que se vincula al origen y los recursos de referencia de la versión 5.0. Si no va a convertir una aplicación para la versión 5.0, seleccione la versión con la que trabaja en la lista desplegable **Switch branches or tags** (Cambiar ramas o etiquetas) correspondiente a la aplicación.
+
+  [Carpeta `wwwroot` de la plantilla de proyecto Blazor WebAssembly dotnet/aspnetcore (versión 5.0)](https://github.com/dotnet/aspnetcore/tree/release/5.0/src/ProjectTemplates/Web.ProjectTemplates/content/ComponentsWebAssembly-CSharp/Client/wwwroot)
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
+* Cree un proyecto de PWA independiente con el comando [`dotnet new`](/dotnet/core/tools/dotnet-new) en un shell de comandos. Pase la opción `-f|--framework` para seleccionar la versión. En el ejemplo siguiente se crea la aplicación para la versión 3.1 de ASP.NET Core:
+  
+  ```dotnetcli
+  dotnet new blazorwasm -o MyBlazorPwa --pwa -f netcoreapp3.1
+  ```
+  
+  En el comando anterior, la opción `-o|--output` crea una carpeta para la aplicación denominada `MyBlazorPwa`.
+
+* Vaya al repositorio de ASP.NET Core en GitHub, disponible en la siguiente dirección URL, que se vincula al origen y los recursos de referencia de la versión 3.1:
+
+  [Carpeta `wwwroot` de la plantilla de proyecto Blazor WebAssembly dotnet/aspnetcore (versión 3.1)](https://github.com/dotnet/aspnetcore/tree/release/3.1/src/ProjectTemplates/ComponentsWebAssembly.ProjectTemplates/content/ComponentsWebAssembly-CSharp/Client/wwwroot)
+
+  > [!NOTE]
+  > La dirección URL de la plantilla de proyecto Blazor WebAssembly ha cambiado después de la publicación de ASP.NET Core 3.1. Los recursos de referencia para la versión 5.0 o posterior están disponibles en la siguiente dirección URL:
+  >
+  > [Carpeta `wwwroot` de la plantilla de proyecto Blazor WebAssembly dotnet/aspnetcore (versión 5.0)](https://github.com/dotnet/aspnetcore/tree/release/5.0/src/ProjectTemplates/Web.ProjectTemplates/content/ComponentsWebAssembly-CSharp/Client/wwwroot)
+
+::: moniker-end
+
+Desde la carpeta `wwwroot` de origen en la aplicación que ha creado o desde los recursos de referencia del repositorio `dotnet/aspnetcore` de GitHub, copie los archivos siguientes en la carpeta `wwwroot` de la aplicación:
+
+* `icon-512.png`
+* `manifest.json`
+* `service-worker.js`
+* `service-worker.published.js`
+
+En el archivo `wwwroot/index.html` de la aplicación:
+
+* Agregue elementos `<link>` para el manifiesto y el icono de la aplicación:
+
+  ```html
+  <link href="manifest.json" rel="manifest" />
+  <link rel="apple-touch-icon" sizes="512x512" href="icon-512.png" />
+  ```
+
+* Agregue la etiqueta `<script>` siguiente dentro de la etiqueta `</body>` de cierre inmediatamente después de la etiqueta de script `blazor.webassembly.js`:
+
+  ```html
+      ...
+      <script>navigator.serviceWorker.register('service-worker.js');</script>
+  </body>
+  ```
 
 ## <a name="installation-and-app-manifest"></a>Instalación y manifiesto de la aplicación
 

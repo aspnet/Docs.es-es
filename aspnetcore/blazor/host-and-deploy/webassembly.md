@@ -5,7 +5,7 @@ description: Aprenda a hospedar e implementar una aplicación Blazor con ASP.NET
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/09/2020
+ms.date: 01/12/2021
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/webassembly
-ms.openlocfilehash: 55289dd7048c08ac61432c7cc062e74d2e69ee24
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 2b464c2b6ca434ce4c3b559480da69945266ff69
+ms.sourcegitcommit: cb984e0d7dc23a88c3a4121f23acfaea0acbfe1e
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97753132"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98570978"
 ---
 # <a name="host-and-deploy-aspnet-core-no-locblazor-webassembly"></a>Hospedaje e implementación de ASP.NET Core Blazor WebAssembly
 
@@ -52,15 +52,12 @@ Blazor se basa en el host para proporcionar los archivos comprimidos adecuados. 
 * Para ver la configuración de compresión de `web.config` de IIS, vea la sección [IIS: compresión Brotli y Gzip](#brotli-and-gzip-compression). 
 * Al hospedar en soluciones de hospedaje estáticas que no admiten la negociación de contenido de archivos comprimidos estáticamente (como es el caso de las páginas de GitHub), considere la posibilidad de configurar la aplicación para capturar y descodificar archivos comprimidos Brotli:
 
-  * Obtenga el descodificador Brotli de JavaScript del [repositorio de GitHub google/brotli](https://github.com/google/brotli). A partir de septiembre de 2020, el archivo del descodificador se llama `decode.js` y se encuentra en la [carpeta `js`](https://github.com/google/brotli/tree/master/js) del repositorio.
-  
-    > [!NOTE]
-    > En la versión reducida del script `decode.js` (`decode.min.js`) en el [repositorio de GitHub google/brotli](https://github.com/google/brotli) se encuentra una regresión. Minimice el script por su cuenta o use el [paquete npm](https://www.npmjs.com/package/brotli) hasta que se resuelva la incidencia [Window.BrotliDecode no se ha establecido en decode.min.js (google/brotli #844)](https://github.com/google/brotli/issues/844). En el código de ejemplo de esta sección se usa la versión **no reducida** del script.
+  * Obtenga el descodificador Brotli de JavaScript del [repositorio de GitHub google/brotli](https://github.com/google/brotli). El archivo del descodificador se llama `decode.min.js` y se encuentra en la [carpeta `js`](https://github.com/google/brotli/tree/master/js) del repositorio.
 
   * Actualice la aplicación para que use el descodificador. Cambie el marcado de la etiqueta `<body>` de cierre en `wwwroot/index.html` por lo siguiente:
   
     ```html
-    <script src="decode.js"></script>
+    <script src="decode.min.js"></script>
     <script src="_framework/blazor.webassembly.js" autostart="false"></script>
     <script>
       Blazor.start({
@@ -620,18 +617,6 @@ Aumente el valor si las herramientas de desarrollo del explorador o la herramien
 
 Para obtener más información sobre la configuración del servidor web de producción de Nginx, consulte [Creating NGINX Plus and NGINX Configuration Files](https://docs.nginx.com/nginx/admin-guide/basic-functionality/managing-configuration-files/) (Creación de archivos de configuración de NGINX y NGINX Plus).
 
-### <a name="nginx-in-docker"></a>Nginx en Docker
-
-Para hospedar Blazor en Docker mediante Nginx, configure Dockerfile para usar la imagen de Nginx basada en Alpine. Actualice el Dockerfile para copiar el archivo `nginx.config` en el contenedor.
-
-Agregue una línea al Dockerfile, como se muestra en el ejemplo siguiente:
-
-```dockerfile
-FROM nginx:alpine
-COPY ./bin/Release/netstandard2.0/publish /usr/share/nginx/html/
-COPY nginx.conf /etc/nginx/nginx.conf
-```
-
 ### <a name="apache"></a>Apache
 
 Para implementar una aplicación Blazor WebAssembly en CentOS 7 o posterior:
@@ -874,7 +859,7 @@ Si los recursos de trabajo de servicio también están en uso, agregue el siguie
 En Linux o macOS:
 
 ```console
-for f in _framework/_bin/*; do mv "$f" "`echo $f | sed -e 's/\.dll\b/.bin/g'`"; done
+for f in _framework/_bin/*; do mv "$f" "`echo $f | sed -e 's/\.dll/.bin/g'`"; done
 sed -i 's/\.dll"/.bin"/g' _framework/blazor.boot.json
 ```
 

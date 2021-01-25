@@ -3,7 +3,7 @@ title: Interfaz de usuario reutilizable de Razor en bibliotecas de clases con AS
 author: Rick-Anderson
 description: Aquí se explica cómo crear una interfaz de usuario de Razor reutilizable mediante vistas parciales en una biblioteca de clases de ASP.NET Core.
 ms.author: riande
-ms.date: 01/25/2020
+ms.date: 01/19/2021
 ms.custom: mvc, seodec18
 no-loc:
 - appsettings.json
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: razor-pages/ui-class
-ms.openlocfilehash: 0bfdb1932d829ec00c9de1bd38b7920cb1f40c51
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: a878a3485ecee0782b21ac69c5ec6ff832b9f06c
+ms.sourcegitcommit: cb984e0d7dc23a88c3a4121f23acfaea0acbfe1e
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "94570177"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98571012"
 ---
 # <a name="create-reusable-ui-using-the-no-locrazor-class-library-project-in-aspnet-core"></a>Creación de una interfaz de usuario reutilizable con el proyecto de biblioteca de clases de Razor en ASP.NET Core
 
@@ -94,6 +94,14 @@ Imagine que *RazorUIClassLib/Pages/Shared* contiene dos archivos parciales: *_He
   @RenderBody()
   <partial name="_Footer">
 </body>
+```
+
+Agregue el archivo *_ViewStart.cshtml* a la carpeta *Pages* del proyecto RCL para usar el archivo *_Layout.cshtml* de la aplicación web host:
+
+```cshtml
+@{
+    Layout = "_Layout";
+}
 ```
 
 ## <a name="create-an-rcl-with-static-assets"></a>Creación de una RCL con recursos estáticos

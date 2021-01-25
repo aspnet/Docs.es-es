@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/lifecycle
-ms.openlocfilehash: e5f9a07db742ce2e26f03c0b6e1caa1904e4e0d9
-ms.sourcegitcommit: 97243663fd46c721660e77ef652fe2190a461f81
+ms.openlocfilehash: acaa276efda9fb4d09a5c1b1ca59c6abde1b64ec
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/09/2021
-ms.locfileid: "98058238"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98252400"
 ---
 # <a name="aspnet-core-no-locblazor-lifecycle"></a>Ciclo de vida de ASP.NET Core Blazor
 
@@ -53,7 +53,7 @@ Procesamiento de eventos de Document Object Model (DOM):
 
 Ciclo de vida de `Render`:
 
-1. Detenga operaciones de representación adicionales en el componente:
+1. Evite operaciones de representación adicionales en el componente:
    * Después de la primera representación.
    * Cuando [`ShouldRender`](#suppress-ui-refreshing) es `false`.
 1. Compile la diff (comparación) del árbol de representación y represente el componente.
@@ -62,7 +62,7 @@ Ciclo de vida de `Render`:
 
 ![Ciclo de vida de representación](lifecycle/_static/lifecycle3.png)
 
-Las llamadas del desarrollador a [`StateHasChanged`](#state-changes) producen una representación.
+Las llamadas del desarrollador a [`StateHasChanged`](#state-changes) producen una representación. Para obtener más información, vea <xref:blazor/components/rendering>.
 
 ## <a name="lifecycle-methods"></a>Métodos de ciclo de vida
 
@@ -215,6 +215,8 @@ Para obtener más información, vea <xref:blazor/webassembly-performance-best-pr
 <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> notifica al componente que su estado ha cambiado. Cuando es aplicable, la llamada a <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> hace que el componente se represente.
 
 A <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> se le llama automáticamente para métodos <xref:Microsoft.AspNetCore.Components.EventCallback>. Para obtener más información, vea <xref:blazor/components/event-handling#eventcallback>.
+
+Para obtener más información, vea <xref:blazor/components/rendering>.
 
 ## <a name="handle-incomplete-async-actions-at-render"></a>Control de acciones asincrónicas incompletas en la representación
 
