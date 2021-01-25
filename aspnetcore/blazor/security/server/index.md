@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/server/index
-ms.openlocfilehash: aa24def1a003a2c2608691e6168066c740f47205
-ms.sourcegitcommit: 8b0e9a72c1599ce21830c843558a661ba908ce32
+ms.openlocfilehash: 5031273c3395be4365b3a6d239ebce7aaf9b66ac
+ms.sourcegitcommit: cc405f20537484744423ddaf87bd1e7d82b6bdf0
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98024631"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98658643"
 ---
 # <a name="secure-aspnet-core-no-locblazor-server-apps"></a>Protección de aplicaciones de ASP.NET Core Blazor Server
 
@@ -126,6 +126,10 @@ Scaffolding para Identity en un proyecto de Blazor Server:
 
 * [Sin autorización existente](xref:security/authentication/scaffold-identity#scaffold-identity-into-a-blazor-server-project-without-existing-authorization)
 * [Con autorización](xref:security/authentication/scaffold-identity#scaffold-identity-into-a-blazor-server-project-with-authorization)
+
+## <a name="azure-app-service-on-linux-with-no-locidentity-server"></a>Azure App Service en Linux con Identity Server
+
+Al realizar una implementación en Azure App Service en Linux con Identity Server, especifique el emisor de forma explícita. Para obtener más información, vea <xref:security/authentication/identity/spa#azure-app-service-on-linux>.
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
