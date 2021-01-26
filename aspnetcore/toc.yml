@@ -461,9 +461,9 @@
             - name: MainLayout
               href: blazor/layouts.md#mainlayout-component
             - name: NavLink
-              href: blazor/fundamentals/routing.md#navlink-component
+              href: blazor/fundamentals/routing.md#navlink-and-navmenu-components
             - name: NavMenu
-              href: blazor/fundamentals/routing.md#navlink-component
+              href: blazor/fundamentals/routing.md#navlink-and-navmenu-components
             - name: Router
               href: blazor/fundamentals/routing.md#route-templates
             - name: Virtualize
@@ -1044,7 +1044,7 @@
   items:
     - name: Información general
       uid: security/index
-    - name: Authentication
+    - name: Autenticación
       items:
         - name: Información general
           uid: security/authentication/index
