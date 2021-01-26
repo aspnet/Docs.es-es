@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/index
-ms.openlocfilehash: fcd4569c72fd33e5135a8469155f470b73c2ff57
-ms.sourcegitcommit: 04a404a9655c59ad1ea02aff5d399ae1b833ad6a
+ms.openlocfilehash: f8b31c617ef71003042d31690de49d48946ac3d5
+ms.sourcegitcommit: da5a5bed5718a9f8db59356ef8890b4b60ced6e9
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/03/2021
-ms.locfileid: "97854527"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98710651"
 ---
 # <a name="aspnet-core-no-locblazor-authentication-and-authorization"></a>Autenticación y autorización de ASP.NET Core Blazor
 
@@ -512,4 +512,5 @@ El <xref:Microsoft.AspNetCore.Components.Authorization.CascadingAuthenticationSt
 
 * <xref:security/index>
 * <xref:security/authentication/windowsauth>
+* [Creación de una versión personalizada de la biblioteca de JavaScript Authentication.MSAL](xref:blazor/security/webassembly/additional-scenarios#build-a-custom-version-of-the-authenticationmsal-javascript-library)
 * [GenialBlazor: Vínculos de ejemplo de la comunidad de autenticación](https://github.com/AdrienTorris/awesome-blazor#authentication)
