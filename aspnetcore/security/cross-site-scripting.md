@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/cross-site-scripting
-ms.openlocfilehash: 1c90a786efe8c3c205a729a2da9d3a99d0222012
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: a7a0c0ff44de5b04d7fa9a8f2f16f7c9f786f64b
+ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93053090"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99057075"
 ---
 # <a name="prevent-cross-site-scripting-xss-in-aspnet-core"></a>Impedir el scripting entre sitios (XSS) en ASP.NET Core
 
@@ -162,9 +162,9 @@ El código anterior genera el siguiente resultado:
 ```
 
 >[!WARNING]
-> Do * **Not** _ concatenar la entrada que no es de confianza en JavaScript para crear elementos DOM o usar `document.write()` en contenido generado dinámicamente.
+> Do ***Not** _ concatenar la entrada que no es de confianza en JavaScript para crear elementos DOM o usar `document.write()` en contenido generado dinámicamente.
 >
-> Use uno de los métodos siguientes para evitar que el código se exponga a XSS: _ `createElement()` y asigne valores de propiedad con métodos o propiedades adecuados, como `node.textContent=` o nodo. InnerText = '.
+> Use uno de los métodos siguientes para evitar que el código se exponga a XSS: _ `createElement()` y asigne valores de propiedad con métodos o propiedades adecuados como `node.textContent=` o `node.InnerText=` .
 > * `document.CreateTextNode()` y agréguelo en la ubicación del DOM adecuada.
 > * `element.SetAttribute()`
 > * `element[attribute]=`
@@ -173,7 +173,7 @@ El código anterior genera el siguiente resultado:
 
 Los codificadores HTML, JavaScript y URL están disponibles para el código de dos maneras: puede inyectarlos a través de la [inserción de dependencias](xref:fundamentals/dependency-injection) o puede usar los codificadores predeterminados contenidos en el `System.Text.Encodings.Web` espacio de nombres. Si usa los codificadores predeterminados, los que aplique a los intervalos de caracteres que se tratarán como seguros no surtirán efecto: los codificadores predeterminados usan las reglas de codificación más seguras posibles.
 
-Para usar los codificadores configurables a través de DI, los constructores deben tomar un parámetro *HtmlEncoder* , *JavaScriptEncoder* y *UrlEncoder* , según corresponda. Por ejemplo:
+Para usar los codificadores configurables a través de DI, los constructores deben tomar un parámetro *HtmlEncoder*, *JavaScriptEncoder* y *UrlEncoder* , según corresponda. Por ejemplo:
 
 ```csharp
 public class HomeController : Controller

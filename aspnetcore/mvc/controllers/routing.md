@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/routing
-ms.openlocfilehash: 44c507fb5e0ff4477a84bfc1e4d0c62180c8dd37
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: 04ece9628265135efd0dd92d29c8b14fc897329e
+ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98252843"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99057361"
 ---
 # <a name="routing-to-controller-actions-in-aspnet-core"></a>Enrutar a acciones de controlador de ASP.NET Core
 
@@ -120,7 +120,7 @@ El enrutamiento convencional se usa con controladores y vistas. La ruta `default
 
 [!code-csharp[](routing/samples/3.x/main/StartupDefaultMVC.cs?name=snippet2)]
 
-es un ejemplo de un *enrutamiento convencional*. Se denomina *enrutamiento convencional* porque establece una *Convención* para las rutas de dirección URL:
+Lo anterior es un ejemplo de una *ruta convencional*. Se denomina *enrutamiento convencional* porque establece una *Convención* para las rutas de dirección URL:
 
 * El primer segmento de la ruta de acceso, `{controller=Home}` , se asigna al nombre del controlador.
 * El segundo segmento, `{action=Index}` , se asigna al nombre de la [acción](#action) .

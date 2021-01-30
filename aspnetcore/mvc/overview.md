@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/overview
-ms.openlocfilehash: 4f0e98057c03769a672ef350cc3ec724a4f7e721
-ms.sourcegitcommit: fe5a287fa6b9477b130aa39728f82cdad57611ee
+ms.openlocfilehash: 642a7b26a3ba0a79a35437a5c19ee0be63a367af
+ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94431074"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99057322"
 ---
 # <a name="overview-of-aspnet-core-mvc"></a>Información general de ASP.NET Core MVC
 
@@ -81,14 +81,14 @@ ASP.NET Core MVC incluye lo siguiente:
 * [Capacidad de prueba](#testability)
 * [Razor motor de vista](#razor-view-engine)
 * [Vistas fuertemente tipadas](#strongly-typed-views)
-* [Asistentes de etiquetas](#tag-helpers)
+* [Aplicaciones auxiliares de etiquetas](#tag-helpers)
 * [Ver componentes](#view-components)
 
 ### <a name="routing"></a>Enrutamiento
 
 ASP.NET Core MVC se basa en el [enrutamiento de ASP.NET Core](../fundamentals/routing.md), un eficaz componente de asignación de URL que permite compilar aplicaciones que tengan direcciones URL comprensibles y que admitan búsquedas. Esto permite definir patrones de nomenclatura de URL de la aplicación que funcionen bien para la optimización del motor de búsqueda (SEO) y para la generación de vínculos, sin tener en cuenta cómo se organizan los archivos en el servidor web. Puede definir las rutas mediante una sintaxis de plantilla de ruta adecuada que admita las restricciones de valores de ruta, los valores predeterminados y los valores opcionales.
 
-El *enrutamiento basado en la convención* permite definir globalmente los formatos de URL que acepta la aplicación y cómo cada uno de esos formatos se asigna a un método de acción específico en un determinado controlador. Cuando se recibe una solicitud entrante, el motor de enrutamiento analiza la URL y la hace coincidir con uno de los formatos de URL definidos. Después, llama al método de acción del controlador asociado.
+El *enrutamiento basado en convenciones* permite definir globalmente los formatos de dirección URL que acepta la aplicación y cómo cada uno de estos formatos se asigna a un método de acción específico en un controlador determinado. Cuando se recibe una solicitud entrante, el motor de enrutamiento analiza la URL y la hace coincidir con uno de los formatos de URL definidos. Después, llama al método de acción del controlador asociado.
 
 ```csharp
 routes.MapRoute(name: "Default", template: "{controller=Home}/{action=Index}/{id?}");
@@ -269,5 +269,5 @@ Para obtener más información, vea <xref:mvc/compatibility-version>.
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
-* [MyTest. AspNetCore. Mvc: biblioteca de pruebas fluidas para ASP.net Core MVC](https://github.com/ivaylokenov/MyTested.AspNetCore.Mvc): biblioteca de pruebas unitarias fuertemente tipadas, que proporciona una interfaz fluida para probar MVC y aplicaciones de API Web. ( *Microsoft no realiza su mantenimiento ni su soporte técnico.* )
+* [MyTest. AspNetCore. Mvc: biblioteca de pruebas fluidas para ASP.net Core MVC](https://github.com/ivaylokenov/MyTested.AspNetCore.Mvc): biblioteca de pruebas unitarias fuertemente tipadas, que proporciona una interfaz fluida para probar MVC y aplicaciones de API Web. (*Microsoft no realiza su mantenimiento ni su soporte técnico.* )
 * <xref:blazor/components/prerendering-and-integration>

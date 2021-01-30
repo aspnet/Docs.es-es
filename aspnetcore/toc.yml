@@ -607,7 +607,7 @@
       uid: web-api/handle-errors
     - name: Prueba con HttpRepl
       items:
-        - name: Información general
+        - name: Introducción
           uid: web-api/http-repl
         - name: Telemetría
           uid: web-api/http-repl/telemetry
@@ -748,6 +748,8 @@
           uid: grpc/deadlines-cancellation
     - name: Servicios gRPC con ASP.NET Core
       uid: grpc/aspnetcore
+    - name: Plataformas compatibles
+      uid: grpc/supported-platforms
     - name: Uso de gRPC en aplicaciones de explorador
       uid: grpc/browser
     - name: Configuración
@@ -1275,7 +1277,7 @@
       href: 'https://cheatsheetseries.owasp.org/cheatsheets/DotNet_Security_Cheat_Sheet.html'
 - name: Rendimiento
   items:
-    - name: Información general
+    - name: Introducción
       uid: performance/performance-best-practices
     - name: Memoria y recolección de elementos no utilizados
       uid: performance/memory
