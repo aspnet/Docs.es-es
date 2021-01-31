@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/certauth
-ms.openlocfilehash: 71f05163c075a2ef88d5c606814925cdcef879d2
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: c862bc8bff6c4cc80696d92067e814889d6e7782
+ms.sourcegitcommit: 7e394a8527c9818caebb940f692ae4fcf2f1b277
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98253051"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99217536"
 ---
 # <a name="configure-certificate-authentication-in-aspnet-core"></a>Configurar la autenticación de certificados en ASP.NET Core
 
@@ -642,7 +642,7 @@ El siguiente enfoque admite certificados de cliente opcionales:
 
 * Configure el enlace para el dominio y el subdominio:
   * Por ejemplo, configure los enlaces en `contoso.com` y `myClient.contoso.com` . El `contoso.com` host no requiere un certificado de cliente, pero sí lo `myClient.contoso.com` hace.
-  * Para obtener más información, consulte:
+  * Para más información, consulte:
     * [Kestrel](/fundamentals/servers/kestrel):
       * [ListenOptions.UseHttps](xref:fundamentals/servers/kestrel/endpoints#listenoptionsusehttps)
       * <xref:Microsoft.AspNetCore.Server.Kestrel.Https.HttpsConnectionAdapterOptions.ClientCertificateMode>
@@ -650,7 +650,7 @@ El siguiente enfoque admite certificados de cliente opcionales:
     * IIS
       * [Hospedaje de IIS](xref:host-and-deploy/iis/index#create-the-iis-site)
       * [Configurar la seguridad en IIS](/iis/manage/configuring-security/how-to-set-up-ssl-on-iis#configure-ssl-settings-2)
-    * Http.Sys: [configurar Windows Server](xref:fundamentals/servers/httpsys#configure-windows-server)
+    * HTTP.sys: [configurar Windows Server](xref:fundamentals/servers/httpsys#configure-windows-server)
 
 ::: moniker-end
 
@@ -658,7 +658,7 @@ El siguiente enfoque admite certificados de cliente opcionales:
 
 * Configure el enlace para el dominio y el subdominio:
   * Por ejemplo, configure los enlaces en `contoso.com` y `myClient.contoso.com` . El `contoso.com` host no requiere un certificado de cliente, pero sí lo `myClient.contoso.com` hace.
-  * Para obtener más información, consulte:
+  * Para más información, consulte:
     * [Kestrel](/fundamentals/servers/kestrel):
       * [ListenOptions.UseHttps](xref:fundamentals/servers/kestrel#listenoptionsusehttps)
       * <xref:Microsoft.AspNetCore.Server.Kestrel.Https.HttpsConnectionAdapterOptions.ClientCertificateMode>
@@ -666,7 +666,7 @@ El siguiente enfoque admite certificados de cliente opcionales:
     * IIS
       * [Hospedaje de IIS](xref:host-and-deploy/iis/index#create-the-iis-site)
       * [Configurar la seguridad en IIS](/iis/manage/configuring-security/how-to-set-up-ssl-on-iis#configure-ssl-settings-2)
-    * Http.Sys: [configurar Windows Server](xref:fundamentals/servers/httpsys#configure-windows-server)
+    * HTTP.sys: [configurar Windows Server](xref:fundamentals/servers/httpsys#configure-windows-server)
 
 ::: moniker-end
 

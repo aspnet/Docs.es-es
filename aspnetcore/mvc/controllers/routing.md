@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/routing
-ms.openlocfilehash: 04ece9628265135efd0dd92d29c8b14fc897329e
-ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
+ms.openlocfilehash: 0863b5758f33b720636f3b927fcb9014cd106c21
+ms.sourcegitcommit: 7e394a8527c9818caebb940f692ae4fcf2f1b277
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99057361"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99217549"
 ---
 # <a name="routing-to-controller-actions-in-aspnet-core"></a>Enrutar a acciones de controlador de ASP.NET Core
 
@@ -826,7 +826,7 @@ El atributo [[Area]](xref:Microsoft.AspNetCore.Mvc.AreaAttribute) es lo que deno
 
 [!code-csharp[](routing/samples/3.x/AreasRouting/Controllers/UsersController.cs)]
 
-Aquí se muestra el espacio de nombres de cada controlador por integridad. Si los controladores anteriores usan el mismo espacio de nombres, se generaría un error del compilador. Los espacios de nombres de clase no tienen ningún efecto en el enrutamiento de MVC.
+Aquí se muestra el espacio de nombres de cada controlador por integridad. Si los controladores anteriores usaban el mismo espacio de nombres, se generaría un error del compilador. Los espacios de nombres de clase no tienen ningún efecto en el enrutamiento de MVC.
 
 Los dos primeros controladores son miembros de las áreas y solo coinciden cuando el valor de ruta `area` proporciona su respectivo nombre de área. El tercer controlador no es miembro de ningún área y solo puede coincidir cuando el enrutamiento no proporciona ningún valor para `area`.
 
