@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/index
-ms.openlocfilehash: 2df938f3ace47472536020f9848e954fc4446f15
-ms.sourcegitcommit: cc405f20537484744423ddaf87bd1e7d82b6bdf0
+ms.openlocfilehash: 0b555ad7befe882c4ffd06e2505a9edc1263eee2
+ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98658591"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99057088"
 ---
-# <a name="secure-aspnet-core-no-locblazor-webassembly"></a>Protección de ASP.NET Core Blazor WebAssembly
+# <a name="secure-aspnet-core-blazor-webassembly"></a>Protección de ASP.NET Core Blazor WebAssembly
 
 Por [Javier Calvarro Nelson](https://github.com/javiercn)
 
@@ -107,9 +107,17 @@ Las aplicaciones a menudo requieren notificaciones para usuarios basadas en una 
 * [Otros escenarios: Personalizar el usuario](xref:blazor/security/webassembly/additional-scenarios#customize-the-user)
 * <xref:blazor/security/webassembly/aad-groups-roles>
 
-## <a name="azure-app-service-on-linux-with-no-locidentity-server"></a>Azure App Service en Linux con Identity Server
+## <a name="azure-app-service-on-linux-with-identity-server"></a>Azure App Service en Linux con Identity Server
 
 Al realizar una implementación en Azure App Service en Linux con Identity Server, especifique el emisor de forma explícita. Para obtener más información, vea <xref:security/authentication/identity/spa#azure-app-service-on-linux>.
+
+## <a name="windows-authentication"></a>Autenticación de Windows
+
+No se recomienda usar la autenticación de Windows con Blazor Webassembly ni ningún otro marco de SPA. Se recomienda usar protocolos basados en tokens, en lugar de la autenticación de Windows, como OIDC con Servicios de federación de Active Directory (AD FS).
+
+Si se usa la autenticación de Windows con Blazor Webassembly o con cualquier otro marco de SPA, se necesitan medidas adicionales para proteger la aplicación ante tokens de falsificación de solicitud entre sitios (CSRF). Los mismos problemas que se aplican a las cookies se aplican a la autenticación de Windows y, además, la autenticación de Windows no ofrece ningún mecanismo para evitar el uso compartido del contexto de autenticación entre orígenes. Las aplicaciones que utilizan la autenticación de Windows sin la protección adicional de CSRF se deben limitar, al menos, a la intranet de una organización y no usarse en Internet.
+
+Para obtener información, vea <xref:security/anti-request-forgery>.
 
 ## <a name="implementation-guidance"></a>Guía de implementación
 

@@ -4,7 +4,7 @@ author: mjrousos
 description: Obtenga más información sobre la autenticación en ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/03/2020
+ms.date: 1/24/2021
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/index
-ms.openlocfilehash: e9e4ca11d20557666c75b84e56af825d002df0f1
-ms.sourcegitcommit: fbd5427293d9ecccc388bd5fd305c2eb8ada7281
+ms.openlocfilehash: 72036e9c4c92ee5dd82ac4a67e766fb0e5c8f924
+ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94464008"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99057296"
 ---
 # <a name="overview-of-aspnet-core-authentication"></a>Información general sobre la autenticación de ASP.NET Core
 
@@ -62,7 +62,19 @@ Para agregar el middleware de autenticación en `Startup.Configure`, se llama al
 
 ## <a name="authentication-concepts"></a>Conceptos sobre la autenticación
 
+La autenticación es responsable de proporcionar el elemento <xref:System.Security.Claims.ClaimsPrincipal> para la autorización sobre el que tomar decisiones relativas a los permisos. Hay varios enfoques de esquema de autenticación para seleccionar el controlador de autenticación responsable de la generación del conjunto de notificaciones correcto:
+
+  * El [esquema de autenticación](xref:security/authorization/limitingidentitybyscheme), que también se describe en la sección siguiente.
+  * El esquema de autenticación predeterminado, que se describe en la sección siguiente.
+  * El establecimiento directo de [HttpContext.User](xref:Microsoft.AspNetCore.Http.HttpContext.User).
+
+No hay sondeos automáticos de esquemas. Si no se especifica el esquema predeterminado, el esquema se debe especificar en el atributo authorize; de lo contrario, se producirá el error siguiente:
+
+  InvalidOperationException: No se ha especificado authenticationScheme y no se ha encontrado DefaultAuthenticateScheme. Los esquemas predeterminados se pueden establecer mediante AddAuthentication(string defaultScheme) o AddAuthentication(Action&lt;AuthenticationOptions&gt; configureOptions).
+
 ### <a name="authentication-scheme"></a>Esquema de autenticación
+
+El [esquema de autenticación](xref:security/authorization/limitingidentitybyscheme) puede seleccionar el controlador de autenticación responsable de la generación del conjunto de notificaciones correcto. Para obtener más información, vea [Autorizar con un esquema específico en ASP.NET Core](xref:security/authorization/limitingidentitybyscheme).
 
 Un esquema de autenticación es un nombre que corresponde a:
 
