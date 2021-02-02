@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/filters
-ms.openlocfilehash: 72ee8f5dfdf8ffd6cfcb74b13fa0738893d8e214
-ms.sourcegitcommit: 6299f08aed5b7f0496001d093aae617559d73240
+ms.openlocfilehash: ee30ef89c5d7aeae83f23a81eb02235397c89ac2
+ms.sourcegitcommit: 75db2f684a9302b0be7925eab586aa091c6bd19f
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97486140"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99238318"
 ---
 # <a name="filters-in-aspnet-core"></a>Filtros en ASP.NET Core
 
@@ -565,7 +565,8 @@ El entorno de ejecución de ASP.NET Core no garantiza:
 _ Que se creará una única instancia del filtro.
 * El filtro no volverá a solicitarse desde el contenedor de inserción de dependencias en algún momento posterior.
 
-[!WARNING] Solo configure `IFilterFactory.IsReusable` para que devuelva `true` si el origen de los filtros es inequívoco, los filtros no tienen estado y pueden usarse de forma segura en varias solicitudes HTTP. Por ejemplo, no devuelva filtros de DI que estén registrados como de ámbito o transitorios si `IFilterFactory.IsReusable` devuelve `true`
+> [!WARNING] 
+> Solo configure <xref:Microsoft.AspNetCore.Mvc.Filters.IFilterFactory.IsReusable?displayProperty=nameWithType> para que devuelva `true` si el origen de los filtros es inequívoco, los filtros no tienen estado y los filtros se pueden usar de forma segura en varias solicitudes HTTP. Por ejemplo, no devuelva filtros de DI que estén registrados como con ámbito o transitorios si `IFilterFactory.IsReusable` devuelve `true` .
 
 Puede implementar `IFilterFactory` con las implementaciones de atributos personalizados como método alternativo para crear filtros:
 
@@ -578,7 +579,7 @@ El filtro se aplica en el código siguiente:
 Pruebe el código anterior mediante la ejecución del [ejemplo de descarga](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/3.1sample):
 
 * Invoque las herramientas de desarrollador de F12.
-* Navegue a `https://localhost:5001/Sample/HeaderWithFactory`.
+* Vaya a `https://localhost:5001/Sample/HeaderWithFactory`.
 
 Las herramientas de desarrollador F12 muestran los siguientes encabezados de respuesta agregados por el código de ejemplo:
 
@@ -1101,7 +1102,7 @@ Puede implementar `IFilterFactory` con las implementaciones de atributos persona
 El código anterior se puede probar mediante la ejecución del [ejemplo de descargar](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/sample):
 
 * Invoque las herramientas de desarrollador de F12.
-* Navegue a `https://localhost:5001/Sample/HeaderWithFactory`.
+* Vaya a `https://localhost:5001/Sample/HeaderWithFactory`.
 
 Las herramientas de desarrollador F12 muestran los siguientes encabezados de respuesta agregados por el código de ejemplo:
 
