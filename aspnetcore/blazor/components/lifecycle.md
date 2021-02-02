@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/lifecycle
-ms.openlocfilehash: acaa276efda9fb4d09a5c1b1ca59c6abde1b64ec
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: 3591ba18351b89e2d5dfaef796777273c97ce98b
+ms.sourcegitcommit: 610936e4d3507f7f3d467ed7859ab9354ec158ba
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98252400"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751615"
 ---
-# <a name="aspnet-core-no-locblazor-lifecycle"></a>Ciclo de vida de ASP.NET Core Blazor
+# <a name="aspnet-core-blazor-lifecycle"></a>Ciclo de vida de ASP.NET Core Blazor
 
 Por [Luke Latham](https://github.com/guardrex) y [Daniel Roth](https://github.com/danroth27)
 
@@ -68,14 +68,38 @@ Las llamadas del desarrollador a [`StateHasChanged`](#state-changes) producen un
 
 ### <a name="before-parameters-are-set"></a>Antes de establecer los parámetros
 
-<xref:Microsoft.AspNetCore.Components.ComponentBase.SetParametersAsync%2A> establece los parámetros que proporciona el elemento primario del componente en el árbol de representación:
+<xref:Microsoft.AspNetCore.Components.ComponentBase.SetParametersAsync%2A> establece los parámetros que proporciona el elemento primario del componente en el árbol de representación o a partir de los parámetros de ruta. Al invalidar el método, el código de desarrollador puede interactuar directamente con los parámetros de <xref:Microsoft.AspNetCore.Components.ParameterView>.
 
-```csharp
-public override async Task SetParametersAsync(ParameterView parameters)
-{
-    await ...
+En el ejemplo siguiente, <xref:Microsoft.AspNetCore.Components.ParameterView.TryGetValue%2A?displayProperty=nameWithType> asigna el valor del parámetro `Param` a `value` si el análisis de un parámetro de ruta para `Param` se realiza correctamente. Cuando `value` no es `null`, el componente `SetParametersAsyncExample` muestra el valor.
 
-    await base.SetParametersAsync(parameters);
+`Pages/SetParametersAsyncExample.razor`:
+
+```razor
+@page "/setparametersasync-example/{Param?}"
+
+<h1>SetParametersAsync Example</h1>
+
+<p>@message</p>
+
+@code {
+    private string message;
+
+    [Parameter]
+    public string Param { get; set; }
+
+    public override async Task SetParametersAsync(ParameterView parameters)
+    {
+        if (parameters.TryGetValue<string>(nameof(Param), out var value))
+        {
+            message = $"The value of 'Param' is {value}.";
+        }
+        else 
+        {
+            message = "The value of 'Param' is null.";
+        }
+
+        await base.SetParametersAsync(parameters);
+    }
 }
 ```
 
@@ -296,9 +320,9 @@ Para obtener más información sobre <xref:Microsoft.AspNetCore.Mvc.TagHelpers.C
 
 [!INCLUDE[](~/blazor/includes/prerendering.md)]
 
-## <a name="component-disposal-with-idisposable"></a>Eliminación de componentes con IDisposable
+## <a name="component-disposal-with-idisposable"></a>Eliminación de componentes con `IDisposable`
 
-Si un componente implementa <xref:System.IDisposable>, se llama al [método `Dispose`](/dotnet/standard/garbage-collection/implementing-dispose) cuando se quita el componente de la interfaz de usuario. La eliminación puede realizarse en cualquier momento, incluso durante la [inicialización de componentes](#component-initialization-methods). El componente siguiente utiliza `@implements IDisposable` y el método `Dispose`:
+Si un componente implementa <xref:System.IDisposable>, el marco llama al [método de eliminación](/dotnet/standard/garbage-collection/implementing-dispose) cuando se quita el componente de la interfaz de usuario, donde se pueden liberar los recursos no administrados. La eliminación puede realizarse en cualquier momento, incluso durante la [inicialización de componentes](#component-initialization-methods). El componente siguiente implementa <xref:System.IDisposable> con la directiva [`@implements`](xref:mvc/views/razor#implements) Razor.
 
 ```razor
 @using System
@@ -314,6 +338,15 @@ Si un componente implementa <xref:System.IDisposable>, se llama al [método `Dis
 }
 ```
 
+En el caso de las tareas de eliminación asincrónica, use `DisposeAsync` en lugar de `Dispose` en el ejemplo anterior:
+
+```csharp
+public async ValueTask DisposeAsync()
+{
+    ...
+}
+```
+
 > [!NOTE]
 > No se admite la llamada a <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> en `Dispose`. <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> se puede invocar como parte de la desactivación del representador, por lo que no se admite la solicitud de actualizaciones de la interfaz de usuario en ese momento.
 
@@ -326,6 +359,8 @@ Cancele la suscripción de los controladores de eventos de .NET. En los ejemplos
 * Enfoque de método privado
 
   [!code-razor[](lifecycle/samples_snapshot/event-handler-disposal-2.razor?highlight=16,26)]
+  
+Para obtener más información, vea [Limpiar recursos no administrados](/dotnet/standard/garbage-collection/unmanaged) y los temas siguientes sobre la implementación de los métodos `Dispose` y `DisposeAsync`.
 
 ## <a name="cancelable-background-work"></a>Trabajo en segundo plano cancelable
 
@@ -397,6 +432,6 @@ En el ejemplo siguiente:
 }
 ```
 
-## <a name="no-locblazor-server-reconnection-events"></a>Eventos de reconexión de Blazor Server
+## <a name="blazor-server-reconnection-events"></a>Eventos de reconexión de Blazor Server
 
 Los eventos de ciclo de vida de componentes que se tratan en este artículo funcionan independientemente de los [controladores de eventos de reconexión de Blazor Server](xref:blazor/fundamentals/additional-scenarios#reflect-the-connection-state-in-the-ui). Cuando una aplicación Blazor Server pierde su conexión SignalR con el cliente, solo se interrumpen las actualizaciones de la interfaz de usuario. Dichas actualizaciones se reanudan cuando se restablece la conexión. Para obtener más información sobre los eventos de controlador de circuito y su configuración, vea <xref:blazor/fundamentals/additional-scenarios>.

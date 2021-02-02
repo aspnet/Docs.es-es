@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/error-handling
-ms.openlocfilehash: ad9920ccd830b93d083f3c5ede03702164842b6e
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: e65983fb1a440057283111ea5a79a79b765607b7
+ms.sourcegitcommit: 610936e4d3507f7f3d467ed7859ab9354ec158ba
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97753119"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751682"
 ---
 # <a name="handle-errors-in-aspnet-core"></a>Controlar errores en ASP.NET Core
 
@@ -68,7 +68,14 @@ En el ejemplo siguiente, <xref:Microsoft.AspNetCore.Builder.ExceptionHandlerExte
 
 La plantilla de aplicación de Razor Pages proporciona una página de error ( *.cshtml*) y una clase <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel> (`ErrorModel`) en la carpeta *Pages*. Para una aplicación de MVC, la plantilla de proyecto incluye un método de acción de `Error` y una vista del error para el controlador de inicio.
 
-No marque el método de acción del controlador de errores con atributos de método HTTP, como `HttpGet`. Los verbos explícitos impiden que algunas solicitudes lleguen al método de acción. Permita el acceso anónimo al método si los usuarios no autenticados deben recibir la vista del error.
+El middleware de control de excepciones vuelve a ejecutar la solicitud mediante el método HTTP *original*. Si un punto de conexión de controlador de errores está restringido a un conjunto específico de métodos HTTP, solo se ejecuta para esos métodos HTTP. Por ejemplo, una acción de controlador de MVC que usa el atributo `[HttpGet]` solo se ejecuta para solicitudes GET. Para asegurarse de que *todas* las solicitudes lleguen a la página de control de errores personalizada, no las restrinja a un conjunto específico de métodos HTTP.
+
+Para controlar las excepciones de manera diferente en función del método HTTP original:
+
+* En el caso de Razor Pages, cree varios métodos de control. Por ejemplo, use `OnGet` para controlar las excepciones GET y use `OnPost` para controlar las excepciones POST.
+* Para MVC, aplique los atributos de verbo HTTP a varias acciones. Por ejemplo, use `[HttpGet]` para controlar las excepciones GET y use `[HttpPost]` para controlar las excepciones POST.
+
+Para permitir que los usuarios no autenticados vean la página de control de errores personalizada, asegúrese de que admite el acceso anónimo.
 
 ### <a name="access-the-exception"></a>Acceso a la excepción
 
@@ -298,7 +305,7 @@ La página de excepciones para el desarrollador incluye la siguiente informació
 * Seguimiento de la pila
 * Parámetros de cadena de consulta (si existen)
 * Cookie (si existen)
-* Encabezados
+* encabezados
 
 ## <a name="exception-handler-page"></a>Página del controlador de excepciones
 

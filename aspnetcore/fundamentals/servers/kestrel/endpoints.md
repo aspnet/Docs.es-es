@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/servers/kestrel/endpoints
-ms.openlocfilehash: 780250feab456fa3eedee4e023c9bc774e748291
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: 5fec573013da5bcb5039b7a189fd84d964349b3a
+ms.sourcegitcommit: cc405f20537484744423ddaf87bd1e7d82b6bdf0
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98253896"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98658747"
 ---
 # <a name="configure-endpoints-for-the-aspnet-core-kestrel-web-server"></a>Configuración de puntos de conexión para el servidor web Kestrel de ASP.NET Core
 
@@ -169,7 +169,7 @@ Hay disponible un esquema de configuración de aplicación HTTPS predeterminado 
 En el ejemplo *appsettings.json* siguiente:
 
 * Establezca `AllowInvalid` en `true` para permitir el uso de certificados no válidos (por ejemplo, certificados autofirmados).
-* Cualquier punto de conexión HTTPS que no especifique un certificado (`HttpsDefaultCert` en el siguiente ejemplo) revierte al certificado definido en `Certificates` > `Default` o al certificado de desarrollo.
+* Cualquier punto de conexión HTTPS que no especifique un certificado (`HttpsDefaultCert` en el siguiente ejemplo) revierte al certificado definido en `Certificates:Default` o al certificado de desarrollo.
 
 ```json
 {
@@ -185,8 +185,16 @@ En el ejemplo *appsettings.json* siguiente:
           "Password": "<certificate password>"
         }
       },
-      "HttpsInlineCertStore": {
+      "HttpsInlineCertAndKeyFile": {
         "Url": "https://localhost:5002",
+        "Certificate": {
+          "Path": "<path to .pem/.crt file>",
+          "KeyPath": "<path to .key file>",
+          "Password": "<certificate password>"
+        }
+      },
+      "HttpsInlineCertStore": {
+        "Url": "https://localhost:5003",
         "Certificate": {
           "Subject": "<subject; required>",
           "Store": "<certificate store; required>",
@@ -195,14 +203,7 @@ En el ejemplo *appsettings.json* siguiente:
         }
       },
       "HttpsDefaultCert": {
-        "Url": "https://localhost:5003"
-      },
-      "Https": {
-        "Url": "https://*:5004",
-        "Certificate": {
-          "Path": "<path to .pfx file>",
-          "Password": "<certificate password>"
-        }
+        "Url": "https://localhost:5004"
       }
     },
     "Certificates": {
@@ -215,7 +216,24 @@ En el ejemplo *appsettings.json* siguiente:
 }
 ```
 
-Una alternativa al uso de `Path` y `Password` en cualquier nodo de certificado consiste en especificar el certificado por medio de campos del almacén de certificados. Por ejemplo, el certificado en `Certificates` > `Default` se puede especificar así:
+Notas sobre el esquema:
+
+* En los nombres de los puntos de conexión [se distingue entre mayúsculas y minúsculas](xref:fundamentals/configuration/index#configuration-keys-and-values). Por ejemplo, `HTTPS` and `Https` son equivalentes.
+* El parámetro `Url` es necesario en cada punto de conexión. El formato de este parámetro es el mismo que el del parámetro de configuración `Urls` de nivel superior, excepto por el hecho de que está limitado a un único valor.
+* En vez de agregarse, estos puntos de conexión reemplazan a los que están definidos en la configuración `Urls` de nivel superior. Los puntos de conexión definidos en el código a través de `Listen` son acumulativos con respecto a los puntos de conexión definidos en la sección de configuración.
+* La sección `Certificate` es opcional. Si la sección `Certificate` no se especifica, se usan los valores predeterminados definidos en `Certificates:Default`. Si no hay valores predeterminados disponibles, se utiliza el certificado de desarrollo. Si no hay valores predeterminados y el certificado de desarrollo no está presente, el servidor produce una excepción y no se inicia.
+* En la sección `Certificate` se admiten varios [orígenes de certificados](#certificate-sources).
+* Se puede definir el número de puntos de conexión que se quiera en la [configuración](xref:fundamentals/configuration/index), siempre y cuando no produzcan conflictos de puerto.
+
+#### <a name="certificate-sources"></a>Orígenes de certificados
+
+Los nodos de certificado se pueden configurar para cargar certificados de varios orígenes:
+
+* `Path` y `Password` para cargar archivos *.pfx*.
+* `Path`, `KeyPath` y `Password` para cargar archivos *.pem*/ *.crt* y *.key*.
+* `Subject` y `Store` cargar desde el almacén de certificados.
+
+Por ejemplo, el certificado en `Certificates:Default` se puede especificar así:
 
 ```json
 "Default": {
@@ -226,15 +244,9 @@ Una alternativa al uso de `Path` y `Password` en cualquier nodo de certificado c
 }
 ```
 
-Notas sobre el esquema:
+#### <a name="configurationloader"></a>ConfigurationLoader
 
-* En los nombres de los puntos de conexión se distingue entre mayúsculas y minúsculas. Por ejemplo, `HTTPS` y `Https` son válidos.
-* El parámetro `Url` es necesario en cada punto de conexión. El formato de este parámetro es el mismo que el del parámetro de configuración `Urls` de nivel superior, excepto por el hecho de que está limitado a un único valor.
-* En vez de agregarse, estos puntos de conexión reemplazan a los que están definidos en la configuración `Urls` de nivel superior. Los puntos de conexión definidos en el código a través de `Listen` son acumulativos con respecto a los puntos de conexión definidos en la sección de configuración.
-* La sección `Certificate` es opcional. Si la sección `Certificate` no se especifica, se usan los valores predeterminados definidos en escenarios anteriores. Si no hay valores predeterminados disponibles, el servidor produce una excepción y no se inicia.
-* La sección `Certificate` admite certificadostanto `Path`&ndash;`Password` como `Subject`&ndash;`Store`.
-* Se puede definir el número de puntos de conexión que se quiera de esta manera, siempre y cuando no produzcan conflictos de puerto.
-* `options.Configure(context.Configuration.GetSection("{SECTION}"))` devuelve un `KestrelConfigurationLoader` con un método `.Endpoint(string name, listenOptions => { })` que se puede usar para complementar la configuración de un punto de conexión configurado:
+`options.Configure(context.Configuration.GetSection("{SECTION}"))` devuelve un <xref:Microsoft.AspNetCore.Server.Kestrel.KestrelConfigurationLoader> con un método `.Endpoint(string name, listenOptions => { })` que se puede usar para complementar la configuración de un punto de conexión configurado:
 
 ```csharp
 webBuilder.UseKestrel((context, serverOptions) =>

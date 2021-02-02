@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/comparison
-ms.openlocfilehash: 0fb50f07153f5f9953b667fe32062ad24b2bd66d
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 1ec553d54a9cad170cb322bc186bb67ac8bbded4
+ms.sourcegitcommit: cc405f20537484744423ddaf87bd1e7d82b6bdf0
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93059954"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98658734"
 ---
 # <a name="compare-grpc-services-with-http-apis"></a>Comparación entre los servicios gRPC y las API HTTP
 
@@ -61,7 +61,7 @@ HTTP/2 no es exclusivo de gRPC. Muchos tipos de solicitud, incluidas las API HTT
 
 ### <a name="code-generation"></a>Generación de código
 
-Todos los marcos de trabajo de gRPC proporcionan compatibilidad de primera clase con la generación de código. Un archivo principal para el desarrollo de gRPC es [.proto](https://developers.google.com/protocol-buffers/docs/proto3), en el que se define el contrato de servicios y mensajes de gRPC. A partir de este archivo, los marcos gRPC generarán el código de una clase base de servicio, mensajes y un cliente completo.
+Todos los marcos de trabajo de gRPC proporcionan compatibilidad de primera clase con la generación de código. Un archivo principal para el desarrollo de gRPC es el [archivo `.proto`](https://developers.google.com/protocol-buffers/docs/proto3), en el que se define el contrato de servicios y mensajes de gRPC. A partir de este archivo, los marcos gRPC generan el código de una clase base de servicio, mensajes y un cliente completo.
 
 Mediante el uso compartido del archivo *.proto* entre el servidor y el cliente, los mensajes y el código de cliente se pueden generar de extremo a extremo. La generación de código del cliente elimina la duplicación de mensajes en el cliente y el servidor, y crea de forma automática un cliente fuertemente tipado. Al no tener que escribir un cliente se ahorra considerablemente tiempo de desarrollo en las aplicaciones con muchos servicios.
 

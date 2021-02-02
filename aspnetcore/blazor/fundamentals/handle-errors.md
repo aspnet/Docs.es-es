@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/handle-errors
-ms.openlocfilehash: c789928252417ef1cf95c60deb7edef24d58126e
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 5a255c2d3535311cecd6b7219447e80d1ae78877
+ms.sourcegitcommit: d4836f9b7c508f51c6c4ee6d0cc719b38c1729c4
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93056002"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98758256"
 ---
-# <a name="handle-errors-in-aspnet-core-no-locblazor-apps"></a>Control de errores en aplicaciones Blazor de ASP.NET Core
+# <a name="handle-errors-in-aspnet-core-blazor-apps"></a>Control de errores en aplicaciones Blazor de ASP.NET Core
 
 Por [Steve Sanderson](https://github.com/SteveSandersonMS)
 
@@ -89,7 +89,36 @@ Los estilos incluidos en las plantillas de Blazor (`wwwroot/css/app.css` o `wwwr
 }
 ```
 
-## <a name="how-a-no-locblazor-server-app-reacts-to-unhandled-exceptions"></a>Cómo reacciona una aplicación Blazor Server a las excepciones no controladas
+## <a name="blazor-server-detailed-circuit-errors"></a>Errores de circuito detallados de Blazor Server
+
+El error del lado cliente no incluye la pila de llamadas y no proporciona detalles sobre la causa del error, pero los registros del servidor sí contienen dicha información. La información de errores de circuito confidencial puede ponerse a disposición del cliente con fines de desarrollo mediante la habilitación de errores detallados.
+
+Habilite los errores detallados de Blazor Server con los siguientes enfoques:
+
+* <xref:Microsoft.AspNetCore.Components.Server.CircuitOptions.DetailedErrors?displayProperty=nameWithType>.
+* Clave de configuración `DetailedErrors` establecida en `true`, la cual se puede establecer en el archivo de configuración de desarrollo de la aplicación (`appsettings.Development.json`). La clave también se puede establecer mediante la variable de entorno `ASPNETCORE_DETAILEDERRORS` con un valor `true`.
+* [El registro de lado servidor de SignalR](xref:signalr/diagnostics#server-side-logging) (`Microsoft.AspNetCore.SignalR`) se puede establecer en [Depurar](xref:Microsoft.Extensions.Logging.LogLevel) o [Seguimiento](xref:Microsoft.Extensions.Logging.LogLevel) para el registro detallado de SignalR.
+
+`appsettings.Development.json`:
+
+```json
+{
+  "DetailedErrors": true,
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft": "Warning",
+      "Microsoft.Hosting.Lifetime": "Information",
+      "Microsoft.AspNetCore.SignalR": "Debug"
+    }
+  }
+}
+```
+
+> [!WARNING]
+> La exposición de información de errores a los clientes en Internet es un riesgo de seguridad que debe evitarse siempre.
+
+## <a name="how-a-blazor-server-app-reacts-to-unhandled-exceptions"></a>Cómo reacciona una aplicación Blazor Server a las excepciones no controladas
 
 Blazor Server es un marco con estado. Mientras los usuarios interactúan con una aplicación, mantienen una conexión con el servidor, lo que se denomina *circuito*. El circuito contiene instancias de componentes activas, además de muchos otros aspectos del estado, como:
 
@@ -225,7 +254,7 @@ Para obtener más información, vea los artículos siguientes:
 * <xref:blazor/call-javascript-from-dotnet>
 * <xref:blazor/call-dotnet-from-javascript>
 
-### <a name="no-locblazor-server-prerendering"></a>Representación previa de Blazor Server
+### <a name="blazor-server-prerendering"></a>Representación previa de Blazor Server
 
 Se puede realizar la representación previa de los componentes de Blazor mediante el [asistente de etiquetas de componente](xref:mvc/views/tag-helpers/builtin-th/component-tag-helper) para que su marcado HTML representado se devuelva como parte de la solicitud HTTP inicial del usuario. El funcionamiento es el siguiente:
 

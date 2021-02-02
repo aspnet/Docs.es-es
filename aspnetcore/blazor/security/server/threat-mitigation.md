@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/server/threat-mitigation
-ms.openlocfilehash: d0ed36731d78d3e98aa294aca50492f0a3ac8174
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 4256e90ca5f185992a73d1e43460ca5d27159d6f
+ms.sourcegitcommit: d4836f9b7c508f51c6c4ee6d0cc719b38c1729c4
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97506700"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98758273"
 ---
-# <a name="threat-mitigation-guidance-for-aspnet-core-no-locblazor-server"></a>Guía de mitigación de amenazas para ASP.NET Core Blazor Server
+# <a name="threat-mitigation-guidance-for-aspnet-core-blazor-server"></a>Guía de mitigación de amenazas para ASP.NET Core Blazor Server
 
 Por [Javier Calvarro Nelson](https://github.com/javiercn)
 
@@ -41,7 +41,7 @@ En entornos restringidos, como redes o intranets corporativas, algunas de las in
 * No se aplican en el entorno restringido.
 * No merecen la pena porque el riesgo de seguridad en los entornos restringidos es bajo.
 
-## <a name="no-locblazor-and-shared-state"></a>Blazor y estado compartido
+## <a name="blazor-and-shared-state"></a>Blazor y estado compartido
 
 [!INCLUDE[](~/blazor/includes/security/blazor-shared-state.md)]
 
@@ -306,12 +306,7 @@ Las interacciones de interoperabilidad de JS entre el cliente y el servidor se r
 
 Cuando se produce un error en el servidor, el marco notifica al cliente y anula la sesión. De forma predeterminada, el cliente recibe un mensaje de error genérico que se puede consultar en las herramientas de desarrollo del explorador.
 
-El error del lado cliente no incluye la pila de llamadas y no proporciona detalles sobre la causa del error, pero los registros del servidor sí contienen dicha información. La información de errores confidencial puede ponerse a disposición del cliente con fines de desarrollo mediante la habilitación de errores detallados.
-
-Habilite los errores detallados en JavaScript con:
-
-* <xref:Microsoft.AspNetCore.Components.Server.CircuitOptions.DetailedErrors?displayProperty=nameWithType>.
-* Clave de configuración `DetailedErrors` establecida en `true`, la cual se puede establecer en el archivo de configuración de la aplicación (`appsettings.json`). La clave también se puede establecer mediante la variable de entorno `ASPNETCORE_DETAILEDERRORS` con un valor `true`.
+El error del lado cliente no incluye la pila de llamadas y no proporciona detalles sobre la causa del error, pero los registros del servidor sí contienen dicha información. La información de errores confidencial puede ponerse a disposición del cliente con fines de desarrollo mediante la [habilitación de errores detallados](xref:blazor/fundamentals/handle-errors#blazor-server-detailed-circuit-errors).
 
 > [!WARNING]
 > La exposición de información de errores a los clientes en Internet es un riesgo de seguridad que debe evitarse siempre.

@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/routing
-ms.openlocfilehash: ec183f4aadc6bafd8e77f9d97291ba3d47bd92f5
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 74886eae7431045e56de535b5221040bd56cdc2d
+ms.sourcegitcommit: 610936e4d3507f7f3d467ed7859ab9354ec158ba
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97506934"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751573"
 ---
-# <a name="aspnet-core-no-locblazor-routing"></a>Enrutamiento de Blazor de ASP.NET Core
+# <a name="aspnet-core-blazor-routing"></a>Enrutamiento de Blazor de ASP.NET Core
 
 Por [Luke Latham](https://github.com/guardrex)
 
@@ -326,11 +326,11 @@ Para obtener más información sobre la eliminación de componentes, vea <xref:b
 La cadena de consulta de una solicitud se obtiene de la propiedad <xref:Microsoft.AspNetCore.Components.NavigationManager.Uri?displayProperty=nameWithType>:
 
 ```razor
-@inject NavigationManager Navigation
+@inject NavigationManager NavigationManager
 
 ...
 
-var query = new Uri(Navigation.Uri).Query;
+var query = new Uri(NavigationManager.Uri).Query;
 ```
 
 Para analizar los parámetros de una cadena de consulta:
@@ -354,7 +354,7 @@ En el siguiente ejemplo del componente `ParseQueryString` se analiza una clave d
 
 ::: moniker-end
 
-## <a name="navlink-component"></a>Componente de `NavLink`
+## <a name="navlink-and-navmenu-components"></a>componentes `NavLink` y `NavMenu`
 
 Use un componente <xref:Microsoft.AspNetCore.Components.Routing.NavLink> en lugar de los elementos de hipervínculo HTML (`<a>`) cuando cree vínculos de navegación. Un componente <xref:Microsoft.AspNetCore.Components.Routing.NavLink> se comporta igual que un elemento `<a>`, salvo que alterna una clase CSS `active` en función de si su elemento `href` coincide con la dirección URL actual. La clase `active` ayuda a un usuario a entender qué página es la página activa entre los vínculos de navegación mostrados. Opcionalmente, asigne un nombre de clase CSS a <xref:Microsoft.AspNetCore.Components.Routing.NavLink.ActiveClass?displayProperty=nameWithType> para aplicar una clase CSS personalizada al vínculo representado cuando la ruta actual coincida con `href`.
 
