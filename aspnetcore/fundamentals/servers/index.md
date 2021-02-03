@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/servers/index
-ms.openlocfilehash: 2acddd212639ac0a82b3c46f2225ff66d0999dd0
-ms.sourcegitcommit: 7e394a8527c9818caebb940f692ae4fcf2f1b277
+ms.openlocfilehash: a49388c73f2ec0ea03b35dbba1575ce70a4e1512
+ms.sourcegitcommit: 75db2f684a9302b0be7925eab586aa091c6bd19f
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99217562"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99238323"
 ---
 # <a name="web-server-implementations-in-aspnet-core"></a>Implementaciones de servidores web en ASP.NET Core
 
@@ -38,7 +38,7 @@ Una aplicación ASP.NET Core se ejecuta con una implementación de servidor HTTP
 
 ASP.NET Core se suministra con los siguientes componentes:
 
-* El servidor [Kestrel](xref:fundamentals/servers/kestrel) es la implementación de servidor HTTP multiplataforma predeterminada. Kestrel proporciona el mejor rendimiento y uso de memoria, pero carece de algunas de las características avanzadas de HTTP.sys. Para obtener más información, vea [Diferencias entre Kestrel y HTTP.sys](#korh) en este documento.
+* El servidor [Kestrel](xref:fundamentals/servers/kestrel) es la implementación de servidor HTTP multiplataforma predeterminada. Kestrel proporciona el mejor rendimiento y uso de memoria, pero carece de algunas de las características avanzadas de HTTP.sys. Para obtener más información, vea [Diferencias entre Kestrel y HTTP.sys](#korh) en la sección siguiente.
 * El servidor HTTP de IIS es un [servidor en proceso](#hosting-models) de IIS.
 * El [servidor HTTP.sys](xref:fundamentals/servers/httpsys) es un servidor HTTP solo de Windows basado en el [controlador del kernel HTTP.sys y la API de servidor HTTP](/windows/desktop/Http/http-api-start-page).
 
