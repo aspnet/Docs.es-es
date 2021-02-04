@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/read-related-data
-ms.openlocfilehash: b1adca435b48db22a176d33a216c07d6647a6695
-ms.sourcegitcommit: 97243663fd46c721660e77ef652fe2190a461f81
+ms.openlocfilehash: 5f0e8efdf57e0a8ba5483680224d33ea5d60f06a
+ms.sourcegitcommit: e311cfb77f26a0a23681019bd334929d1aaeda20
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/09/2021
-ms.locfileid: "98058316"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99530156"
 ---
 # <a name="tutorial-read-related-data---aspnet-mvc-with-ef-core"></a>Tutorial: Lectura de datos relacionados: ASP.NET MVC con EF Core
 
@@ -226,7 +226,7 @@ Ejecute la aplicación y haga clic en la pestaña **Instructors**. En la página
 
 En el archivo *Views/Instructors/Index.cshtml*, después del elemento de tabla de cierre (situado al final del archivo), agregue el código siguiente. Este código muestra una lista de cursos relacionados con un instructor cuando se selecciona un instructor.
 
-[!code-cshtml[](intro/samples/cu/Views/Instructors/Index1.cshtml?range=66-101)]
+[!code-cshtml[](intro/samples/cu/Views/Instructors/Index1.cshtml?range=63-98)]
 
 Este código lee la propiedad `Courses` del modelo de vista para mostrar una lista de cursos. También proporciona un hipervínculo **Select** que envía el identificador del curso seleccionado al método de acción `Index`.
 

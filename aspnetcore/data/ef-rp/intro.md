@@ -18,14 +18,14 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-rp/intro
-ms.openlocfilehash: 86b57a9cad27673b72ad174a18741f5528f9f78a
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: e797228d498ec9b269e718c099a0532bbb4504d3
+ms.sourcegitcommit: e311cfb77f26a0a23681019bd334929d1aaeda20
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97011863"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99530247"
 ---
-# <a name="no-locrazor-pages-with-entity-framework-core-in-aspnet-core---tutorial-1-of-8"></a>Razor Pages con Entity Framework Core en ASP.NET Core: Tutorial 1 de 8
+# <a name="razor-pages-with-entity-framework-core-in-aspnet-core---tutorial-1-of-8"></a>Razor Pages con Entity Framework Core en ASP.NET Core: Tutorial 1 de 8
 
 Por [Tom Dykstra](https://github.com/tdykstra) y [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -127,7 +127,7 @@ To run the app after downloading the completed project:
     1. **.NET Core** y **ASP.NET Core 5.0** en los menús desplegables.
     1. **Aplicación web de ASP.NET Core**.
     1. **Crear**
-      ![Cuadro de diálogo Nuevo proyecto de ASP.NET Core](~/data/ef-mvc/intro/_static/new-aspnet5.png)
+      ![Cuadro de diálogo Nuevo proyecto de ASP.NET Core](~/data/ef-rp/intro/_static/new-aspnet5.png)
     
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -384,7 +384,7 @@ Agregue el paquete NuGet [Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore](
 En la PMC, escriba lo siguiente para agregar el paquete NuGet:
 
 ```powershell
-Install-Package Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore -Version 5.0.0-rc.2.20475.17
+Install-Package Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore
 ```
 
 # <a name="visual-studio-code"></a>Tener [Visual Studio Code](#tab/visual-studio-code)
@@ -999,7 +999,7 @@ Los usuarios pueden ver y actualizar la información de estudiantes, cursos e in
 
 El estilo de la interfaz de usuario de este sitio se mantiene fiel a lo que generan las plantillas integradas. El tutorial se centra en EF Core con Razor Pages, no en la interfaz de usuario.
 
-## <a name="create-the-contosouniversity-no-locrazor-pages-web-app"></a>Creación de la aplicación web de Razor Pages ContosoUniversity
+## <a name="create-the-contosouniversity-razor-pages-web-app"></a>Creación de la aplicación web de Razor Pages ContosoUniversity
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 

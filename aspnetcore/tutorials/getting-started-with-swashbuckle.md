@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/get-started-with-swashbuckle
-ms.openlocfilehash: 9fbd4bc5e91d8f05afc99a4f04c706399f83a518
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 7a6ceea09bde8999b9e64796c0ba5fc6f3f45a2d
+ms.sourcegitcommit: e311cfb77f26a0a23681019bd334929d1aaeda20
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93057614"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99530234"
 ---
 # <a name="get-started-with-swashbuckle-and-aspnet-core"></a>Introducción a Swashbuckle y ASP.NET Core
 
@@ -51,7 +51,7 @@ Se puede agregar Swashbuckle con los métodos siguientes:
   * Ejecute el siguiente comando:
 
     ```powershell
-    Install-Package Swashbuckle.AspNetCore -Version 5.5.0
+    Install-Package Swashbuckle.AspNetCore -Version 5.6.3
     ```
 
 * En el cuadro de diálogo **Administrar paquetes NuGet**:
@@ -74,7 +74,7 @@ Se puede agregar Swashbuckle con los métodos siguientes:
 Ejecute el siguiente comando en el **terminal integrado**:
 
 ```dotnetcli
-dotnet add TodoApi.csproj package Swashbuckle.AspNetCore -v 5.5.0
+dotnet add TodoApi.csproj package Swashbuckle.AspNetCore -v 5.6.3
 ```
 
 ### <a name="net-core-cli"></a>[CLI de .NET Core](#tab/netcore-cli)
@@ -82,7 +82,7 @@ dotnet add TodoApi.csproj package Swashbuckle.AspNetCore -v 5.5.0
 Ejecute el siguiente comando:
 
 ```dotnetcli
-dotnet add TodoApi.csproj package Swashbuckle.AspNetCore -v 5.5.0
+dotnet add TodoApi.csproj package Swashbuckle.AspNetCore -v 5.6.3
 ```
 
 ---
