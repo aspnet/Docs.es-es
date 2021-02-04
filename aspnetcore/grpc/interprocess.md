@@ -18,22 +18,22 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/interprocess
-ms.openlocfilehash: d806a340d8540fce8af6ccc6ff68325e4b733922
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 8c0f8fb1468e61d5aa2e7f42cb5da33c01819124
+ms.sourcegitcommit: 7e394a8527c9818caebb940f692ae4fcf2f1b277
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93059889"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99217471"
 ---
-# <a name="inter-process-communication-with-grpc"></a><span data-ttu-id="85d66-103">Comunicación entre procesos con gRPC</span><span class="sxs-lookup"><span data-stu-id="85d66-103">Inter-process communication with gRPC</span></span>
+# <a name="inter-process-communication-with-grpc"></a><span data-ttu-id="e9858-103">Comunicación entre procesos con gRPC</span><span class="sxs-lookup"><span data-stu-id="e9858-103">Inter-process communication with gRPC</span></span>
 
-<span data-ttu-id="85d66-104">Por [James Newton-King](https://twitter.com/jamesnk)</span><span class="sxs-lookup"><span data-stu-id="85d66-104">By [James Newton-King](https://twitter.com/jamesnk)</span></span>
+<span data-ttu-id="e9858-104">Por [James Newton-King](https://twitter.com/jamesnk)</span><span class="sxs-lookup"><span data-stu-id="e9858-104">By [James Newton-King](https://twitter.com/jamesnk)</span></span>
 
-<span data-ttu-id="85d66-105">Las llamadas gRPC entre un cliente y un servicio se envían normalmente a través de sockets TCP.</span><span class="sxs-lookup"><span data-stu-id="85d66-105">gRPC calls between a client and service are usually sent over TCP sockets.</span></span> <span data-ttu-id="85d66-106">TCP se ha diseñado para comunicarse a través de una red.</span><span class="sxs-lookup"><span data-stu-id="85d66-106">TCP was designed for communicating across a network.</span></span> <span data-ttu-id="85d66-107">La [comunicación entre procesos (IPC)](https://wikipedia.org/wiki/Inter-process_communication) es más eficaz que TCP cuando el cliente y el servicio están en el mismo equipo.</span><span class="sxs-lookup"><span data-stu-id="85d66-107">[Inter-process communication (IPC)](https://wikipedia.org/wiki/Inter-process_communication) is more efficient than TCP when the client and service are on the same machine.</span></span> <span data-ttu-id="85d66-108">En este documento se explica cómo usar gRPC con transportes personalizados en escenarios de IPC.</span><span class="sxs-lookup"><span data-stu-id="85d66-108">This document explains how to use gRPC with custom transports in IPC scenarios.</span></span>
+<span data-ttu-id="e9858-105">Las llamadas gRPC entre un cliente y un servicio se envían normalmente a través de sockets TCP.</span><span class="sxs-lookup"><span data-stu-id="e9858-105">gRPC calls between a client and service are usually sent over TCP sockets.</span></span> <span data-ttu-id="e9858-106">TCP se ha diseñado para comunicarse a través de una red.</span><span class="sxs-lookup"><span data-stu-id="e9858-106">TCP was designed for communicating across a network.</span></span> <span data-ttu-id="e9858-107">La [comunicación entre procesos (IPC)](https://wikipedia.org/wiki/Inter-process_communication) es más eficaz que TCP cuando el cliente y el servicio están en el mismo equipo.</span><span class="sxs-lookup"><span data-stu-id="e9858-107">[Inter-process communication (IPC)](https://wikipedia.org/wiki/Inter-process_communication) is more efficient than TCP when the client and service are on the same machine.</span></span> <span data-ttu-id="e9858-108">En este documento se explica cómo usar gRPC con transportes personalizados en escenarios de IPC.</span><span class="sxs-lookup"><span data-stu-id="e9858-108">This document explains how to use gRPC with custom transports in IPC scenarios.</span></span>
 
-## <a name="server-configuration"></a><span data-ttu-id="85d66-109">Configuración del servidor</span><span class="sxs-lookup"><span data-stu-id="85d66-109">Server configuration</span></span>
+## <a name="server-configuration"></a><span data-ttu-id="e9858-109">Configuración del servidor</span><span class="sxs-lookup"><span data-stu-id="e9858-109">Server configuration</span></span>
 
-<span data-ttu-id="85d66-110">[Kestrel](xref:fundamentals/servers/kestrel) admite transportes personalizados.</span><span class="sxs-lookup"><span data-stu-id="85d66-110">Custom transports are supported by [Kestrel](xref:fundamentals/servers/kestrel).</span></span> <span data-ttu-id="85d66-111">Kestrel se configura en *Program.cs*:</span><span class="sxs-lookup"><span data-stu-id="85d66-111">Kestrel is configured in *Program.cs*:</span></span>
+<span data-ttu-id="e9858-110">[Kestrel](xref:fundamentals/servers/kestrel) admite transportes personalizados.</span><span class="sxs-lookup"><span data-stu-id="e9858-110">Custom transports are supported by [Kestrel](xref:fundamentals/servers/kestrel).</span></span> <span data-ttu-id="e9858-111">Kestrel se configura en *Program.cs*:</span><span class="sxs-lookup"><span data-stu-id="e9858-111">Kestrel is configured in *Program.cs*:</span></span>
 
 ```csharp
 public static readonly string SocketPath = Path.Combine(Path.GetTempPath(), "socket.tmp");
@@ -54,21 +54,18 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
         });
 ```
 
-<span data-ttu-id="85d66-112">Ejemplo anterior:</span><span class="sxs-lookup"><span data-stu-id="85d66-112">The preceding example:</span></span>
+<span data-ttu-id="e9858-112">Ejemplo anterior:</span><span class="sxs-lookup"><span data-stu-id="e9858-112">The preceding example:</span></span>
 
-* <span data-ttu-id="85d66-113">Se configuran los puntos de conexión de Kestrel en `ConfigureKestrel`.</span><span class="sxs-lookup"><span data-stu-id="85d66-113">Configures Kestrel's endpoints in `ConfigureKestrel`.</span></span>
-* <span data-ttu-id="85d66-114">Se llama a <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.ListenUnixSocket*> para escuchar un [socket de dominio Unix (UDS)](https://wikipedia.org/wiki/Unix_domain_socket) con la ruta de acceso especificada.</span><span class="sxs-lookup"><span data-stu-id="85d66-114">Calls <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.ListenUnixSocket*> to listen to a [Unix domain socket (UDS)](https://wikipedia.org/wiki/Unix_domain_socket) with the specified path.</span></span>
+* <span data-ttu-id="e9858-113">Se configuran los puntos de conexión de Kestrel en `ConfigureKestrel`.</span><span class="sxs-lookup"><span data-stu-id="e9858-113">Configures Kestrel's endpoints in `ConfigureKestrel`.</span></span>
+* <span data-ttu-id="e9858-114">Se llama a <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.ListenUnixSocket*> para escuchar un [socket de dominio Unix (UDS)](https://wikipedia.org/wiki/Unix_domain_socket) con la ruta de acceso especificada.</span><span class="sxs-lookup"><span data-stu-id="e9858-114">Calls <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.ListenUnixSocket*> to listen to a [Unix domain socket (UDS)](https://wikipedia.org/wiki/Unix_domain_socket) with the specified path.</span></span>
 
-<span data-ttu-id="85d66-115">Kestrel tiene compatibilidad integrada con los puntos de conexión de UDS.</span><span class="sxs-lookup"><span data-stu-id="85d66-115">Kestrel has built-in support for UDS endpoints.</span></span> <span data-ttu-id="85d66-116">UDS se admite en Linux, macOS y las [versiones modernas de Windows](https://devblogs.microsoft.com/commandline/af_unix-comes-to-windows/).</span><span class="sxs-lookup"><span data-stu-id="85d66-116">UDS are supported on Linux, macOS and [modern versions of Windows](https://devblogs.microsoft.com/commandline/af_unix-comes-to-windows/).</span></span>
+<span data-ttu-id="e9858-115">Kestrel tiene compatibilidad integrada con los puntos de conexión de UDS.</span><span class="sxs-lookup"><span data-stu-id="e9858-115">Kestrel has built-in support for UDS endpoints.</span></span> <span data-ttu-id="e9858-116">UDS se admite en Linux, macOS y las [versiones modernas de Windows](https://devblogs.microsoft.com/commandline/af_unix-comes-to-windows/).</span><span class="sxs-lookup"><span data-stu-id="e9858-116">UDS are supported on Linux, macOS and [modern versions of Windows](https://devblogs.microsoft.com/commandline/af_unix-comes-to-windows/).</span></span>
 
-## <a name="client-configuration"></a><span data-ttu-id="85d66-117">Configuración de cliente</span><span class="sxs-lookup"><span data-stu-id="85d66-117">Client configuration</span></span>
+## <a name="client-configuration"></a><span data-ttu-id="e9858-117">Configuración de cliente</span><span class="sxs-lookup"><span data-stu-id="e9858-117">Client configuration</span></span>
 
-<span data-ttu-id="85d66-118">`GrpcChannel` admite la realización de llamadas gRPC a través de transportes personalizados.</span><span class="sxs-lookup"><span data-stu-id="85d66-118">`GrpcChannel` supports making gRPC calls over custom transports.</span></span> <span data-ttu-id="85d66-119">Cuando se crea un canal, se puede configurar con un elemento `SocketsHttpHandler` que tenga un elemento `ConnectCallback` personalizado.</span><span class="sxs-lookup"><span data-stu-id="85d66-119">When a channel is created, it can be configured with a `SocketsHttpHandler` that has a custom `ConnectCallback`.</span></span> <span data-ttu-id="85d66-120">La devolución de llamada permite al cliente realizar conexiones a través de transportes personalizados y, después, enviar solicitudes HTTP a través de ese transporte.</span><span class="sxs-lookup"><span data-stu-id="85d66-120">The callback allows the client to make connections over custom transports and then send HTTP requests over that transport.</span></span>
+<span data-ttu-id="e9858-118">`GrpcChannel` admite la realización de llamadas gRPC a través de transportes personalizados.</span><span class="sxs-lookup"><span data-stu-id="e9858-118">`GrpcChannel` supports making gRPC calls over custom transports.</span></span> <span data-ttu-id="e9858-119">Cuando se crea un canal, se puede configurar con un elemento `SocketsHttpHandler` que tenga un elemento `ConnectCallback` personalizado.</span><span class="sxs-lookup"><span data-stu-id="e9858-119">When a channel is created, it can be configured with a `SocketsHttpHandler` that has a custom `ConnectCallback`.</span></span> <span data-ttu-id="e9858-120">La devolución de llamada permite al cliente realizar conexiones a través de transportes personalizados y, después, enviar solicitudes HTTP a través de ese transporte.</span><span class="sxs-lookup"><span data-stu-id="e9858-120">The callback allows the client to make connections over custom transports and then send HTTP requests over that transport.</span></span>
 
-> [!IMPORTANT]
-> <span data-ttu-id="85d66-121">`SocketsHttpHandler.ConnectCallback` es una nueva API de la versión candidata para lanzamiento 2 de .NET 5.</span><span class="sxs-lookup"><span data-stu-id="85d66-121">`SocketsHttpHandler.ConnectCallback` is a new API in .NET 5 release candidate 2.</span></span>
-
-<span data-ttu-id="85d66-122">Ejemplo de fábrica de conexiones de sockets de dominio de Unix:</span><span class="sxs-lookup"><span data-stu-id="85d66-122">Unix domain sockets connection factory example:</span></span>
+<span data-ttu-id="e9858-121">Ejemplo de fábrica de conexiones de sockets de dominio de Unix:</span><span class="sxs-lookup"><span data-stu-id="e9858-121">Unix domain sockets connection factory example:</span></span>
 
 ```csharp
 public class UnixDomainSocketConnectionFactory
@@ -99,7 +96,7 @@ public class UnixDomainSocketConnectionFactory
 }
 ```
 
-<span data-ttu-id="85d66-123">Uso del generador de conexiones personalizadas para crear un canal:</span><span class="sxs-lookup"><span data-stu-id="85d66-123">Using the custom connection factory to create a channel:</span></span>
+<span data-ttu-id="e9858-122">Uso del generador de conexiones personalizadas para crear un canal:</span><span class="sxs-lookup"><span data-stu-id="e9858-122">Using the custom connection factory to create a channel:</span></span>
 
 ```csharp
 public static readonly string SocketPath = Path.Combine(Path.GetTempPath(), "socket.tmp");
@@ -120,4 +117,4 @@ public static GrpcChannel CreateChannel()
 }
 ```
 
-<span data-ttu-id="85d66-124">Los canales creados con el código anterior envían llamadas gRPC a través de sockets de dominio de Unix.</span><span class="sxs-lookup"><span data-stu-id="85d66-124">Channels created using the preceding code send gRPC calls over Unix domain sockets.</span></span> <span data-ttu-id="85d66-125">Se puede implementar la compatibilidad con otras tecnologías IPC por medio de la extensibilidad en Kestrel y `SocketsHttpHandler`.</span><span class="sxs-lookup"><span data-stu-id="85d66-125">Support for other IPC technologies can be implemented using the extensibility in Kestrel and `SocketsHttpHandler`.</span></span>
+<span data-ttu-id="e9858-123">Los canales creados con el código anterior envían llamadas gRPC a través de sockets de dominio de Unix.</span><span class="sxs-lookup"><span data-stu-id="e9858-123">Channels created using the preceding code send gRPC calls over Unix domain sockets.</span></span> <span data-ttu-id="e9858-124">Se puede implementar la compatibilidad con otras tecnologías IPC por medio de la extensibilidad en Kestrel y `SocketsHttpHandler`.</span><span class="sxs-lookup"><span data-stu-id="e9858-124">Support for other IPC technologies can be implemented using the extensibility in Kestrel and `SocketsHttpHandler`.</span></span>
