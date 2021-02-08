@@ -17,14 +17,14 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/identity
-ms.openlocfilehash: ad4184fce494ba06acf7e583a42a54d04d37ea20
-ms.sourcegitcommit: 92439194682dc788b8b5b3a08bd2184dc00e200b
+ms.openlocfilehash: 266781d0abc564952e124bc6eca3805c07592251
+ms.sourcegitcommit: 50d3e939a90c5480df480f651dda032901468dd5
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96556650"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99819060"
 ---
-# <a name="introduction-to-no-locidentity-on-aspnet-core"></a>Introducción a Identity en ASP.net Core
+# <a name="introduction-to-identity-on-aspnet-core"></a>Introducción a Identity en ASP.net Core
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -39,7 +39,7 @@ Los usuarios pueden crear una cuenta con la información de inicio de sesión al
 
 [!INCLUDE[](~/includes/requireAuth.md)]
 
-El [ Identity código fuente](https://github.com/dotnet/AspNetCore/tree/master/src/Identity) está disponible en github. [Scaffolding Identity ](xref:security/authentication/scaffold-identity) y vea los archivos generados para revisar la interacción de la plantilla con Identity .
+El [ Identity código fuente](https://github.com/dotnet/AspNetCore/tree/main/src/Identity) está disponible en github. [Scaffolding Identity ](xref:security/authentication/scaffold-identity) y vea los archivos generados para revisar la interacción de la plantilla con Identity .
 
 Identity normalmente se configura mediante una base de datos de SQL Server para almacenar nombres de usuario, contraseñas y datos de perfil. Como alternativa, se puede usar otro almacén persistente, por ejemplo, Azure Table Storage.
 
@@ -63,7 +63,7 @@ Cree un proyecto de aplicación Web de ASP.NET Core con cuentas de usuario indiv
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Seleccione **archivo** > **nuevo** > **proyecto**.
-* Seleccione **Aplicación web de ASP.NET Core**. Asigne al proyecto el nombre **WebApp1** para que tenga el mismo espacio de nombres que la descarga del proyecto. Haga clic en **Aceptar**.
+* Seleccione **Aplicación web de ASP.NET Core**. Asigne al proyecto el nombre **WebApp1** para que tenga el mismo espacio de nombres que la descarga del proyecto. Haga clic en **OK**.
 * Seleccione una **aplicación web** de ASP.net Core y, a continuación, seleccione **cambiar autenticación**.
 * Seleccione **cuentas de usuario individuales** y haga clic en **Aceptar**.
 
@@ -119,7 +119,7 @@ Ejecute la aplicación y registre un usuario. En función del tamaño de la pant
 
 <a name="pw"></a>
 
-### <a name="configure-no-locidentity-services"></a>Configurar Identity servicios
+### <a name="configure-identity-services"></a>Configurar Identity servicios
 
 Los servicios se agregan en `ConfigureServices` . El patrón habitual consiste en llamar a todos los métodos `Add{Service}` y, luego, a todos los métodos `services.Configure{Service}`.
 
@@ -214,7 +214,7 @@ Post se especifica en *pages/Shared/_LoginPartial. cshtml*:
 
 [!code-cshtml[](identity/sample/WebApp3/Pages/Shared/_LoginPartial.cshtml?highlight=15)]
 
-## <a name="test-no-locidentity"></a>Muestre Identity
+## <a name="test-identity"></a>Muestre Identity
 
 Las plantillas predeterminadas del proyecto web permiten el acceso anónimo a las páginas principales. Para probar Identity , agregue [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) :
 
@@ -222,20 +222,20 @@ Las plantillas predeterminadas del proyecto web permiten el acceso anónimo a la
 
 Si ha iniciado sesión, cierre la sesión. Ejecute la aplicación y seleccione el vínculo de **privacidad** . Se le redirige a la página de inicio de sesión.
 
-### <a name="explore-no-locidentity"></a>Visite Identity
+### <a name="explore-identity"></a>Visite Identity
 
 Para explorar Identity con más detalle:
 
 * [Crear origen de la interfaz de usuario de identidad completa](xref:security/authentication/scaffold-identity#create-full-identity-ui-source)
 * Examine el origen de cada página y recorra el depurador.
 
-## <a name="no-locidentity-components"></a>Identity Componentes
+## <a name="identity-components"></a>Identity Componentes
 
 Todos los Identity paquetes de NuGet dependientes de se incluyen en el [ASP.net Core marco de trabajo compartido](xref:aspnetcore-3.0#use-the-aspnet-core-shared-framework).
 
 El paquete principal de Identity es [Microsoft. AspNetCore. Identity ](https://www.nuget.org/packages/Microsoft.AspNetCore.Identity/). Este paquete contiene el conjunto principal de interfaces para ASP.NET Core Identity y lo incluye `Microsoft.AspNetCore.Identity.EntityFrameworkCore` .
 
-## <a name="migrating-to-no-locaspnet-core-identity"></a>Migrar a ASP.NET Core Identity
+## <a name="migrating-to-aspnet-core-identity"></a>Migrar a ASP.NET Core Identity
 
 Para obtener más información e instrucciones sobre cómo migrar el Identity almacén existente, vea [migrar Identity la autenticación y ](xref:migration/identity).
 
@@ -243,7 +243,7 @@ Para obtener más información e instrucciones sobre cómo migrar el Identity al
 
 Consulte [configuración](#pw) para obtener un ejemplo que establece los requisitos mínimos de contraseña.
 
-## <a name="adddefaultno-locidentity-and-addno-locidentity"></a>AddDefault Identity y agregarIdentity
+## <a name="adddefaultidentity-and-addidentity"></a>AddDefault Identity y agregarIdentity
 
 <xref:Microsoft.Extensions.DependencyInjection.IdentityServiceCollectionUIExtensions.AddDefaultIdentity*> se presentó en ASP.NET Core 2,1. Llamar `AddDefaultIdentity` a es similar a llamar a lo siguiente:
 
@@ -253,7 +253,7 @@ Consulte [configuración](#pw) para obtener un ejemplo que establece los requisi
 
 Vea [ Identity origen de AddDefault](https://github.com/dotnet/AspNetCore/blob/release/3.1/src/Identity/UI/src/IdentityServiceCollectionUIExtensions.cs#L47-L63) para obtener más información.
 
-## <a name="prevent-publish-of-static-no-locidentity-assets"></a>Impedir la publicación de Identity recursos estáticos
+## <a name="prevent-publish-of-static-identity-assets"></a>Impedir la publicación de Identity recursos estáticos
 
 Para evitar la publicación de recursos estáticos Identity (hojas de estilos y archivos JavaScript para Identity la interfaz de usuario) en la raíz Web, agregue la siguiente `ResolveStaticWebAssetsInputsDependsOn` propiedad y `RemoveIdentityAssets` destino al archivo de proyecto de la aplicación:
 
@@ -300,7 +300,7 @@ En este tema, aprenderá a usar Identity para registrar, iniciar sesión y cerra
 
 <a name="adi"></a>
 
-## <a name="adddefaultno-locidentity-and-addno-locidentity"></a>AddDefault Identity y agregarIdentity
+## <a name="adddefaultidentity-and-addidentity"></a>AddDefault Identity y agregarIdentity
 
 <xref:Microsoft.Extensions.DependencyInjection.IdentityServiceCollectionUIExtensions.AddDefaultIdentity*> se presentó en ASP.NET Core 2,1. Llamar `AddDefaultIdentity` a es similar a llamar a lo siguiente:
 
@@ -317,7 +317,7 @@ Cree un proyecto de aplicación Web de ASP.NET Core con cuentas de usuario indiv
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Seleccione **archivo** > **nuevo** > **proyecto**.
-* Seleccione **Aplicación web de ASP.NET Core**. Asigne al proyecto el nombre **WebApp1** para que tenga el mismo espacio de nombres que la descarga del proyecto. Haga clic en **Aceptar**.
+* Seleccione **Aplicación web de ASP.NET Core**. Asigne al proyecto el nombre **WebApp1** para que tenga el mismo espacio de nombres que la descarga del proyecto. Haga clic en **OK**.
 * Seleccione una **aplicación web** de ASP.net Core y, a continuación, seleccione **cambiar autenticación**.
 * Seleccione **cuentas de usuario individuales** y haga clic en **Aceptar**.
 
@@ -363,7 +363,7 @@ Ejecute la aplicación y registre un usuario. En función del tamaño de la pant
 
 <a name="pw"></a>
 
-### <a name="configure-no-locidentity-services"></a>Configurar Identity servicios
+### <a name="configure-identity-services"></a>Configurar Identity servicios
 
 Los servicios se agregan en `ConfigureServices` . El patrón habitual consiste en llamar a todos los métodos `Add{Service}` y, luego, a todos los métodos `services.Configure{Service}`.
 
@@ -431,7 +431,7 @@ Post se especifica en *pages/Shared/_LoginPartial. cshtml*:
 
 [!code-cshtml[](identity/sample/WebApp1/Pages/Shared/_LoginPartial.cshtml?highlight=16)]
 
-## <a name="test-no-locidentity"></a>Muestre Identity
+## <a name="test-identity"></a>Muestre Identity
 
 Las plantillas predeterminadas del proyecto web permiten el acceso anónimo a las páginas principales. Para probar Identity , agregue [`[Authorize]`](/dotnet/api/microsoft.aspnetcore.authorization.authorizeattribute) a la página de privacidad.
 
@@ -439,20 +439,20 @@ Las plantillas predeterminadas del proyecto web permiten el acceso anónimo a la
 
 Si ha iniciado sesión, cierre la sesión. Ejecute la aplicación y seleccione el vínculo de **privacidad** . Se le redirige a la página de inicio de sesión.
 
-### <a name="explore-no-locidentity"></a>Visite Identity
+### <a name="explore-identity"></a>Visite Identity
 
 Para explorar Identity con más detalle:
 
 * [Crear origen de la interfaz de usuario de identidad completa](xref:security/authentication/scaffold-identity#create-full-identity-ui-source)
 * Examine el origen de cada página y recorra el depurador.
 
-## <a name="no-locidentity-components"></a>Identity Componentes
+## <a name="identity-components"></a>Identity Componentes
 
 Todos los Identity paquetes de NuGet dependientes se incluyen en el [metapaquete Microsoft. AspNetCore. app](xref:fundamentals/metapackage-app).
 
 El paquete principal de Identity es [Microsoft. AspNetCore. Identity ](https://www.nuget.org/packages/Microsoft.AspNetCore.Identity/). Este paquete contiene el conjunto principal de interfaces para ASP.NET Core Identity y lo incluye `Microsoft.AspNetCore.Identity.EntityFrameworkCore` .
 
-## <a name="migrating-to-no-locaspnet-core-identity"></a>Migrar a ASP.NET Core Identity
+## <a name="migrating-to-aspnet-core-identity"></a>Migrar a ASP.NET Core Identity
 
 Para obtener más información e instrucciones sobre cómo migrar el Identity almacén existente, vea [migrar Identity la autenticación y ](xref:migration/identity).
 
