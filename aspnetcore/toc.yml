@@ -105,9 +105,9 @@
         - name: SignalR con TypeScript
           displayName: tutorial
           uid: tutorials/signalr-typescript-webpack
-        - name: SignalR con Blazor WebAssembly
+        - name: SignalR con Blazor
           displayName: tutorial
-          uid: tutorials/signalr-blazor-webassembly
+          uid: tutorials/signalr-blazor
     - name: Aplicaciones de llamada a procedimiento remoto
       items:
         - name: Introducción a un servicio gRPC
@@ -308,8 +308,8 @@
           items:
             - name: Compilación de una aplicación de lista de tareas pendientes en Blazor
               uid: tutorials/build-a-blazor-app
-            - name: SignalR con Blazor WebAssembly
-              uid: tutorials/signalr-blazor-webassembly
+            - name: SignalR con Blazor
+              uid: tutorials/signalr-blazor
         - name: Estructura del proyecto
           uid: blazor/project-structure
         - name: Aspectos básicos
@@ -607,7 +607,7 @@
       uid: web-api/handle-errors
     - name: Prueba con HttpRepl
       items:
-        - name: Introducción
+        - name: Información general
           uid: web-api/http-repl
         - name: Telemetría
           uid: web-api/http-repl/telemetry
@@ -625,8 +625,8 @@
           uid: tutorials/signalr
         - name: SignalR con TypeScript
           uid: tutorials/signalr-typescript-webpack
-        - name: SignalR con Blazor WebAssembly
-          uid: tutorials/signalr-blazor-webassembly
+        - name: SignalR con Blazor
+          uid: tutorials/signalr-blazor
     - name: Muestras
       href: 'https://github.com/aspnet/SignalR-samples'
       displayName: signalr
@@ -1046,7 +1046,7 @@
   items:
     - name: Información general
       uid: security/index
-    - name: Autenticación
+    - name: Authentication
       items:
         - name: Información general
           uid: security/authentication/index
@@ -1277,7 +1277,7 @@
       href: 'https://cheatsheetseries.owasp.org/cheatsheets/DotNet_Security_Cheat_Sheet.html'
 - name: Rendimiento
   items:
-    - name: Introducción
+    - name: Información general
       uid: performance/performance-best-practices
     - name: Memoria y recolección de elementos no utilizados
       uid: performance/memory
