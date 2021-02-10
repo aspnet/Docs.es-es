@@ -4,7 +4,7 @@ author: juntaoluo
 description: Conozca los conceptos básicos a la hora de escribir servicios gRPC con ASP.NET Core.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
-ms.date: 01/14/2021
+ms.date: 01/29/2021
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/aspnetcore
-ms.openlocfilehash: 44a6f1d2a25314460fa4bce469f697a2fa4c0825
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: f17ba247747f906cf026fc0f7bc04d51f4c8cb2a
+ms.sourcegitcommit: e311cfb77f26a0a23681019bd334929d1aaeda20
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98252856"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99530208"
 ---
 # <a name="grpc-services-with-aspnet-core"></a>Servicios gRPC con ASP.NET Core
 
@@ -77,22 +77,41 @@ En *Startup.cs*:
 
 El middleware y las características de ASP.NET Core comparten la canalización de enrutamiento, por lo que se puede configurar una aplicación para que preste servicio a controladores de solicitudes adicionales. Los controladores de solicitudes adicionales, como los controladores MVC, trabajan en paralelo con los servicios gRPC configurados.
 
+## <a name="server-options"></a>Opciones de servidor
+
+Los servicios gRPC se pueden hospedar por todos los servidores de ASP.NET Core integrados.
+
+> [!div class="checklist"]
+>
+> * Kestrel
+> * TestServer
+> * IIS&dagger;
+> * HTTP.sys&Dagger;
+
+&dagger;IIS requiere .NET 5 y Windows 10, compilación 20241 o posterior.
+
+&Dagger;HTTP.sys requiere .NET 5 y Windows 10, compilación 19529 o posterior.
+
+Para obtener más información sobre cómo elegir el servidor adecuado para una aplicación ASP.NET Core, vea <xref:fundamentals/servers/index>.
+
 ::: moniker range=">= aspnetcore-5.0"
 
-### <a name="configure-kestrel"></a>Configuración de Kestrel
+## <a name="kestrel"></a>Kestrel
+
+[Kestrel](xref:fundamentals/servers/kestrel) es un servidor web multiplataforma de ASP.NET Core. Kestrel proporciona el mejor rendimiento y uso de memoria, pero carece de algunas de las características avanzadas de HTTP.sys (como el uso compartido de puertos).
 
 Los puntos de conexión para gRPC de Kestrel:
 
 * Requieren HTTP/2.
 * Deben protegerse con [Seguridad de la capa de transporte (TLS)](https://tools.ietf.org/html/rfc5246).
 
-#### <a name="http2"></a>HTTP/2
+### <a name="http2"></a>HTTP/2
 
 gRPC requiere HTTP/2. gRPC para ASP.NET Core valida que [HttpRequest.Protocol](xref:Microsoft.AspNetCore.Http.HttpRequest.Protocol%2A) sea `HTTP/2`.
 
 Kestrel [admite HTTP/2](xref:fundamentals/servers/kestrel/http2) en la mayoría de los sistemas operativos modernos. Los puntos de conexión de Kestrel se configuran para admitir conexiones HTTP/1.1 y HTTP/2 de forma predeterminada.
 
-#### <a name="tls"></a>TLS
+### <a name="tls"></a>TLS
 
 Los puntos de conexión de Kestrel usados para gRPC deben protegerse con TLS. En la fase de desarrollo, se crea automáticamente un punto de conexión protegido con TLS en `https://localhost:5001` cuando el certificado de desarrollo de ASP.NET Core está presente. No se requiere ninguna configuración. Un prefijo `https` comprueba que el punto de conexión de Kestrel está usando TLS.
 
@@ -104,7 +123,7 @@ Como alternativa, se pueden configurar puntos de conexión de Kestrel en *Progra
 
 [!code-csharp[](~/grpc/aspnetcore/sample/Program.cs?highlight=7&name=snippet)]
 
-#### <a name="protocol-negotiation"></a>Negociación del protocolo
+### <a name="protocol-negotiation"></a>Negociación del protocolo
 
 TLS no solo se usa para proteger la comunicación. El protocolo de enlace [Application-Layer Protocol Negotiation (ALPN)](https://tools.ietf.org/html/rfc7301#section-3) de TLS se usa para negociar el protocolo de conexión entre el cliente y el servidor cuando un punto de conexión admite varios protocolos. Esta negociación determina si la conexión usa HTTP/1.1 o HTTP/2.
 
@@ -115,24 +134,38 @@ Para obtener más información sobre cómo habilitar HTTP/2 y TLS con Kestrel, c
 > [!NOTE]
 > macOS no admite gRPC de ASP.NET Core con TLS. Se requiere configuración adicional para ejecutar correctamente servicios gRPC en macOS. Para obtener más información, vea [No se puede iniciar la aplicación gRPC de ASP.NET Core en macOS](xref:grpc/troubleshoot#unable-to-start-aspnet-core-grpc-app-on-macos).
 
+## <a name="iis"></a>IIS
+
+[Internet Information Services (IIS)](xref:host-and-deploy/iis/index) es un servidor web flexible, seguro y administrable para el hospedaje de aplicaciones web, incluido ASP.NET Core. Se requieren .NET 5 y Windows 10, compilación 20241 o posterior, para hospedar servicios de gRPC con IIS.
+
+IIS debe estar configurado para usar TLS y HTTP/2. Para obtener más información, vea <xref:host-and-deploy/iis/protocols>.
+
+## <a name="httpsys"></a>HTTP.sys
+
+[HTTP.sys](xref:fundamentals/servers/httpsys) es un servidor web de ASP.NET Core que solo se ejecuta en Windows. Se requieren .NET 5 y Windows 10, compilación 20241 o posterior, para hospedar servicios de gRPC con HTTP.sys.
+
+HTTP.sys debe estar configurado para usar TLS y HTTP/2. Para obtener más información, vea [Compatibilidad con HTTP/2 del servidor web HTTP.sys](xref:fundamentals/servers/httpsys#http2-support).
+
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-5.0"
 
-### <a name="configure-kestrel"></a>Configuración de Kestrel
+## <a name="kestrel"></a>Kestrel
+
+[Kestrel](xref:fundamentals/servers/kestrel) es un servidor web multiplataforma de ASP.NET Core. Kestrel proporciona el mejor rendimiento y uso de memoria, pero carece de algunas de las características avanzadas de HTTP.sys (como el uso compartido de puertos).
 
 Los puntos de conexión para gRPC de Kestrel:
 
 * Requieren HTTP/2.
 * Deben protegerse con [Seguridad de la capa de transporte (TLS)](https://tools.ietf.org/html/rfc5246).
 
-#### <a name="http2"></a>HTTP/2
+### <a name="http2"></a>HTTP/2
 
 gRPC requiere HTTP/2. gRPC para ASP.NET Core valida que [HttpRequest.Protocol](xref:Microsoft.AspNetCore.Http.HttpRequest.Protocol%2A) sea `HTTP/2`.
 
 Kestrel [admite HTTP/2](xref:fundamentals/servers/kestrel#http2-support) en la mayoría de los sistemas operativos modernos. Los puntos de conexión de Kestrel se configuran para admitir conexiones HTTP/1.1 y HTTP/2 de forma predeterminada.
 
-#### <a name="tls"></a>TLS
+### <a name="tls"></a>TLS
 
 Los puntos de conexión de Kestrel usados para gRPC deben protegerse con TLS. En la fase de desarrollo, se crea automáticamente un punto de conexión protegido con TLS en `https://localhost:5001` cuando el certificado de desarrollo de ASP.NET Core está presente. No se requiere ninguna configuración. Un prefijo `https` comprueba que el punto de conexión de Kestrel está usando TLS.
 
@@ -144,7 +177,7 @@ Como alternativa, se pueden configurar puntos de conexión de Kestrel en *Progra
 
 [!code-csharp[](~/grpc/aspnetcore/sample/Program.cs?highlight=7&name=snippet)]
 
-#### <a name="protocol-negotiation"></a>Negociación del protocolo
+### <a name="protocol-negotiation"></a>Negociación del protocolo
 
 TLS no solo se usa para proteger la comunicación. El protocolo de enlace [Application-Layer Protocol Negotiation (ALPN)](https://tools.ietf.org/html/rfc7301#section-3) de TLS se usa para negociar el protocolo de conexión entre el cliente y el servidor cuando un punto de conexión admite varios protocolos. Esta negociación determina si la conexión usa HTTP/1.1 o HTTP/2.
 

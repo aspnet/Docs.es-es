@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/data-binding
-ms.openlocfilehash: e873fdd201cf0cdc809030fde30c6a8da2899861
-ms.sourcegitcommit: 610936e4d3507f7f3d467ed7859ab9354ec158ba
+ms.openlocfilehash: 67a63f1b4f705a4857dea2e6d1a942d4f21469f5
+ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98751560"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99057101"
 ---
 # <a name="aspnet-core-blazor-data-binding"></a>Enlace de datos de ASP.NET Core Blazor
 
@@ -146,7 +146,7 @@ No se recomienda especificar un formato para el tipo de campo `date` porque Blaz
 
 Un escenario habitual es enlazar una propiedad de un componente secundario a una propiedad de su elemento primario. Este escenario se denomina *enlace encadenado* porque se producen varios niveles de enlace simultáneamente.
 
-Los [parámetros de componente](xref:blazor/components/index#component-parameters) permiten el enlace de propiedades y campos de un componente primario con la sintaxis `@bind-{PROPERTY OR FIELD}`.
+Los [parámetros de componente](xref:blazor/components/index#component-parameters) permiten el enlace de propiedades de un componente primario con la sintaxis `@bind-{PROPERTY}`.
 
 No se pueden implementar enlaces encadenados con sintaxis [`@bind`](xref:mvc/views/razor#bind) en el componente secundario. Es necesario especificar un controlador de eventos y un valor por separado para permitir la actualización de la propiedad en el elemento primario desde el componente secundario.
 

@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/localization
-ms.openlocfilehash: 07e2f561b0e9db58780d6e8a271e32b00132b1b5
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 67f245b7f4e4aa97b30c5318c73732617aea44c7
+ms.sourcegitcommit: 7e394a8527c9818caebb940f692ae4fcf2f1b277
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93059525"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99217575"
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>Globalización y localización en ASP.NET Core
 
@@ -134,7 +134,7 @@ En el código anterior, `SharedResource` es la clase correspondiente al archivo 
 
 ### <a name="supportedcultures-and-supporteduicultures"></a>SupportedCultures y SupportedUICultures
 
-ASP.NET Core permite especificar dos valores de referencia cultural, `SupportedCultures` y `SupportedUICultures`. El objeto [CultureInfo](/dotnet/api/system.globalization.cultureinfo) para `SupportedCultures` determina los resultados de funciones dependientes de la referencia cultural, como el formato de fecha, hora, número y moneda. `SupportedCultures` también determina el criterio de ordenación del texto, las convenciones sobre el uso de mayúsculas y minúsculas, y las comparaciones de cadenas. Vea [CultureInfo.CurrentCulture](/dotnet/api/system.stringcomparer.currentculture#System_StringComparer_CurrentCulture) para obtener más información sobre la manera en que el servidor obtiene la referencia cultural. `SupportedUICultures` determina qué cadenas traducidas buscará [ResourceManager](/dotnet/api/system.resources.resourcemanager) (en archivos *.resx*). `ResourceManager` simplemente busca cadenas específicas de referencias culturales determinadas por `CurrentUICulture`. Todos los subprocesos de .NET tienen objetos `CurrentCulture` y `CurrentUICulture`. ASP.NET Core inspecciona estos valores al representar funciones dependientes de la referencia cultural. Por ejemplo, si la referencia cultural del subproceso actual está establecida en "en-US" (inglés (Estados Unidos)), `DateTime.Now.ToLongDateString()` mostrará "Thursday, February 18, 2016". En cambio, si `CurrentCulture` está establecido en "es-ES" (español (España)), la salida será "jueves, 18 de febrero de 2016".
+ASP.NET Core permite especificar dos valores de referencia cultural, <xref:Microsoft.AspNetCore.Builder.RequestLocalizationOptions.SupportedCultures> y <xref:Microsoft.AspNetCore.Builder.RequestLocalizationOptions.SupportedUICultures>. El objeto <xref:System.Globalization.CultureInfo> para `SupportedCultures` determina los resultados de funciones dependientes de la referencia cultural, como el formato de fecha, hora, número y moneda. `SupportedCultures` también determina el criterio de ordenación del texto, las convenciones sobre el uso de mayúsculas y minúsculas, y las comparaciones de cadenas. Para obtener más información sobre cómo el servidor obtiene la referencia cultural, vea <xref:System.Globalization.CultureInfo.CurrentCulture?displayProperty=nameWithType> y <xref:System.Globalization.CultureInfo.CurrentUICulture?displayProperty=nameWithType>. `SupportedUICultures` determina qué cadenas traducidas buscará <xref:System.Resources.ResourceManager> (en archivos `.resx`). `ResourceManager` busca cadenas específicas de referencias culturales determinadas por `CurrentUICulture`. Todos los subprocesos de .NET tienen objetos `CurrentCulture` y `CurrentUICulture`. El marco inspecciona estos valores al representar funciones dependientes de la referencia cultural. Si la referencia cultural del subproceso actual está configurada como `en-US` (inglés, Estados Unidos), `DateTime.Now.ToLongDateString()` muestra `Thursday, February 18, 2016`; pero si `CurrentCulture` está configurada como `es-ES` (español, España), la salida es `jueves, 18 de febrero de 2016`.
 
 ## <a name="resource-files"></a>Archivos de recursos
 
@@ -177,7 +177,7 @@ Si no usa la opción `ResourcesPath`, el archivo *.resx* de una vista se ubicar�
 
 ### <a name="rootnamespaceattribute"></a>RootNamespaceAttribute 
 
-El atributo [RootNamespace](/dotnet/api/microsoft.extensions.localization.rootnamespaceattribute?view=aspnetcore-2.1) proporciona el espacio de nombres raíz de un ensamblado cuando el espacio de nombres raíz del ensamblado es diferente del nombre de ensamblado. 
+El atributo <xref:Microsoft.Extensions.Localization.RootNamespaceAttribute> proporciona el espacio de nombres raíz de un ensamblado cuando el espacio de nombres raíz del ensamblado es diferente del nombre de ensamblado. 
 
 > [!WARNING]
 > Esto puede ocurrir cuando el nombre de un proyecto no es un identificador de .NET válido. Por ejemplo `my-project-name.csproj` usará el espacio de nombres raíz `my_project_name` y el nombre de ensamblado `my-project-name`, lo que lleva a este error. 
@@ -261,7 +261,7 @@ Si solo pasa uno de los dos parámetros (`culture` o `ui-culture`), el proveedor
 http://localhost:5000/?culture=es-MX
 ```
 
-### <a name="no-loccookierequestcultureprovider"></a>CookieRequestCultureProvider
+### <a name="cookierequestcultureprovider"></a>CookieRequestCultureProvider
 
 Las aplicaciones de producción suelen proporcionar un mecanismo para establecer la referencia cultural con la cookie de la referencia cultural de ASP.NET Core. Use el método `MakeCookieValue` para crear una cookie.
 
@@ -531,7 +531,7 @@ Si no usa la opción `ResourcesPath`, el archivo *.resx* de una vista se ubicar�
 
 ### <a name="rootnamespaceattribute"></a>RootNamespaceAttribute 
 
-El atributo [RootNamespace](/dotnet/api/microsoft.extensions.localization.rootnamespaceattribute?view=aspnetcore-2.1) proporciona el espacio de nombres raíz de un ensamblado cuando el espacio de nombres raíz del ensamblado es diferente del nombre de ensamblado. 
+El atributo <xref:Microsoft.Extensions.Localization.RootNamespaceAttribute> proporciona el espacio de nombres raíz de un ensamblado cuando el espacio de nombres raíz del ensamblado es diferente del nombre de ensamblado. 
 
 > [!WARNING]
 > Esto puede ocurrir cuando el nombre de un proyecto no es un identificador de .NET válido. Por ejemplo `my-project-name.csproj` usará el espacio de nombres raíz `my_project_name` y el nombre de ensamblado `my-project-name`, lo que lleva a este error. 
@@ -617,7 +617,7 @@ Si solo pasa uno de los dos parámetros (`culture` o `ui-culture`), el proveedor
 http://localhost:5000/?culture=es-MX
 ```
 
-### <a name="no-loccookierequestcultureprovider"></a>CookieRequestCultureProvider
+### <a name="cookierequestcultureprovider"></a>CookieRequestCultureProvider
 
 Las aplicaciones de producción suelen proporcionar un mecanismo para establecer la referencia cultural con la cookie de la referencia cultural de ASP.NET Core. Use el método `MakeCookieValue` para crear una cookie.
 
@@ -886,7 +886,7 @@ Si no usa la opción `ResourcesPath`, el archivo *.resx* de una vista se ubicar�
 
 ### <a name="rootnamespaceattribute"></a>RootNamespaceAttribute 
 
-El atributo [RootNamespace](/dotnet/api/microsoft.extensions.localization.rootnamespaceattribute?view=aspnetcore-2.1) proporciona el espacio de nombres raíz de un ensamblado cuando el espacio de nombres raíz del ensamblado es diferente del nombre de ensamblado. 
+El atributo <xref:Microsoft.Extensions.Localization.RootNamespaceAttribute> proporciona el espacio de nombres raíz de un ensamblado cuando el espacio de nombres raíz del ensamblado es diferente del nombre de ensamblado. 
 
 > [!WARNING]
 > Esto puede ocurrir cuando el nombre de un proyecto no es un identificador de .NET válido. Por ejemplo `my-project-name.csproj` usará el espacio de nombres raíz `my_project_name` y el nombre de ensamblado `my-project-name`, lo que lleva a este error. 
@@ -972,7 +972,7 @@ Si solo pasa uno de los dos parámetros (`culture` o `ui-culture`), el proveedor
 http://localhost:5000/?culture=es-MX
 ```
 
-### <a name="no-loccookierequestcultureprovider"></a>CookieRequestCultureProvider
+### <a name="cookierequestcultureprovider"></a>CookieRequestCultureProvider
 
 Las aplicaciones de producción suelen proporcionar un mecanismo para establecer la referencia cultural con la cookie de la referencia cultural de ASP.NET Core. Use el método `MakeCookieValue` para crear una cookie.
 

@@ -5,7 +5,7 @@ description: Obtenga información sobre cómo usar la interfaz IHttpClientFactor
 monikerRange: '>= aspnetcore-2.1'
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 02/09/2020
+ms.date: 1/21/2021
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,18 +19,18 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/http-requests
-ms.openlocfilehash: 34c35daac3da845bac9156fe96078df7902a4cd0
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 1cf3029452f87a396847f969f0f3136a75874752
+ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93059499"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99057335"
 ---
 # <a name="make-http-requests-using-ihttpclientfactory-in-aspnet-core"></a>Realización de solicitudes HTTP mediante IHttpClientFactory en ASP.NET Core
 
 ::: moniker range=">= aspnetcore-3.0"
 
-Por [Glenn Condron](https://github.com/glennc), [Ryan Nowak](https://github.com/rynowak), [Steve Gordon](https://github.com/stevejgordon), [Rick Anderson](https://twitter.com/RickAndMSFT) y [Kirk Larkin](https://github.com/serpent5)
+Por [Kirk Larkin](https://github.com/serpent5), [Steve Gordon](https://github.com/stevejgordon), [Glenn Condron](https://github.com/glennc) y [Ryan Nowak](https://github.com/rynowak).
 
 Se puede registrar y usar una interfaz <xref:System.Net.Http.IHttpClientFactory> para crear y configurar instancias de <xref:System.Net.Http.HttpClient> en una aplicación. `IHttpClientFactory` ofrece las ventajas siguientes:
 
@@ -58,7 +58,7 @@ El mejor enfoque depende de los requisitos de la aplicación.
 
 `IHttpClientFactory` se puede registrar mediante una llamada a `AddHttpClient`:
 
-[!code-csharp[](http-requests/samples/3.x/HttpClientFactorySample/Startup.cs?name=snippet1)]
+[!code-csharp[](http-requests/samples/3.x/HttpClientFactorySample/Startup.cs?name=snippet1&highlight=13)]
 
 Se puede solicitar una instancia de `IHttpClientFactory` mediante la [inserción de dependencias (DI)](xref:fundamentals/dependency-injection). En el código siguiente se usa `IHttpClientFactory` para crear una instancia de `HttpClient`:
 
@@ -238,16 +238,15 @@ Para obtener más información sobre el uso de verbos HTTP diferentes con `HttpC
 
 `HttpClient` tiene el concepto de controladores de delegación, que se pueden vincular entre sí para las solicitudes HTTP salientes. `IHttpClientFactory`:
 
-* simplifica la definición de controladores que se aplicarán por cada cliente con nombre.
-* Admite el registro y encadenamiento de varios controladores para crear una canalización de middleware de solicitud saliente. Cada uno de estos controladores es capaz de realizar la tarea antes y después de la solicitud de salida. Este patrón:
-
-  * Es similar a la canalización de middleware de entrada de ASP.NET Core.
-  * Proporciona un mecanismo para administrar los intereses transversales relacionados con las solicitudes HTTP, como:
-
-    * el almacenamiento en caché
-    * el control de errores
-    * la serialización
-    * el registro
+  * simplifica la definición de controladores que se aplicarán por cada cliente con nombre.
+  * Admite el registro y encadenamiento de varios controladores para crear una canalización de middleware de solicitud de salida. Cada uno de estos controladores es capaz de realizar la tarea antes y después de la solicitud de salida. Este patrón:
+  
+    * Es similar a la canalización de middleware de entrada de ASP.NET Core.
+    * Proporciona un mecanismo para administrar los intereses transversales relacionados con las solicitudes HTTP, como:
+      * el almacenamiento en caché
+      * el control de errores
+      * la serialización
+      * el registro
 
 Para crear un controlador de delegación:
 
@@ -262,13 +261,31 @@ Se puede agregar más de un controlador a la configuración de una instancia de 
 
 [!code-csharp[](http-requests/samples/3.x/HttpClientFactorySample/Startup2.cs?name=snippet1)]
 
-En el código anterior, `ValidateHeaderHandler` se ha registrado con inserción de dependencias. `IHttpClientFactory` crea un ámbito de inserción de dependencias independiente para cada controlador. Los controladores pueden depender de servicios de cualquier ámbito. Los servicios de los que dependen los controladores se eliminan cuando se elimina el controlador.
-
-Una vez registrado, se puede llamar a <xref:Microsoft.Extensions.DependencyInjection.HttpClientBuilderExtensions.AddHttpMessageHandler*>, pasando el tipo del controlador.
+En el código anterior, `ValidateHeaderHandler` se ha registrado con inserción de dependencias. Una vez registrado, se puede llamar a <xref:Microsoft.Extensions.DependencyInjection.HttpClientBuilderExtensions.AddHttpMessageHandler*>, pasando el tipo del controlador.
 
 Se pueden registrar varios controladores en el orden en que deben ejecutarse. Cada controlador contiene el siguiente controlador hasta que el último `HttpClientHandler` ejecuta la solicitud:
 
 [!code-csharp[](http-requests/samples/3.x/HttpClientFactorySample/Startup.cs?name=snippet6)]
+
+### <a name="use-di-in-outgoing-request-middleware"></a>Uso de la inserción de dependencias en el middleware de solicitud de salida
+
+Cuando `IHttpClientFactory` crea un nuevo controlador de delegación, usa la inserción de dependencias para cumplir con los parámetros de constructor del controlador. `IHttpClientFactory` crea un ámbito de inserción de dependencias **independiente** para cada controlador, lo que puede provocar un comportamiento sorprendente cuando un controlador consume un servicio *con ámbito*.
+
+Por ejemplo, considere la siguiente interfaz y su implementación, que representa una tarea como una operación con un identificador, `OperationId`:
+
+[!code-csharp[](http-requests/samples/3.x/HttpRequestsSample/Models/OperationScoped.cs?name=snippet_Types)]
+
+Como sugiere su nombre, `IOperationScoped` se registra con la inserción de dependencias mediante una duración con *ámbito*:
+
+[!code-csharp[](http-requests/samples/3.x/HttpRequestsSample/Startup.cs?name=snippet_IOperationScoped&highlight=18,26)]
+
+El siguiente controlador de delegación consume y usa `IOperationScoped` para establecer el encabezado `X-OPERATION-ID` para la solicitud de salida:
+
+[!code-csharp[](http-requests/samples/3.x/HttpRequestsSample/Handlers/OperationHandler.cs?name=snippet_Class&highlight=13)]
+
+En la [descarga de `HttpRequestsSample`](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/http-requests/samples/3.x/HttpRequestsSample), vaya a `/Operation` y actualice la página. El valor del ámbito de la solicitud cambia para cada solicitud, pero el valor del ámbito del controlador solo cambia cada 5 segundos.
+
+Los controladores pueden depender de servicios de cualquier ámbito. Los servicios de los que dependen los controladores se eliminan cuando se elimina el controlador.
 
 Use uno de los siguientes enfoques para compartir el estado por solicitud con controladores de mensajes:
 
@@ -363,7 +380,7 @@ Los enfoques anteriores solucionan los problemas de administración de recursos 
 - `SocketsHttpHandler` comparte las conexiones entre las instancias de `HttpClient`. Este uso compartido impide el agotamiento del socket.
 - `SocketsHttpHandler` recorre las conexiones según `PooledConnectionLifetime` para evitar problemas de DNS obsoletos.
 
-### <a name="no-loccookies"></a>Cookies
+### <a name="cookies"></a>Cookies
 
 Las instancias de `HttpMessageHandler` agrupadas generan objetos `CookieContainer` que se comparten. El uso compartido de objetos `CookieContainer` no previsto suele generar código incorrecto. En el caso de las aplicaciones que requieren cookies, tenga en cuenta lo siguiente:
 
@@ -681,7 +698,7 @@ Los enfoques anteriores solucionan los problemas de administración de recursos 
 - `SocketsHttpHandler` comparte las conexiones entre las instancias de `HttpClient`. Este uso compartido impide el agotamiento del socket.
 - `SocketsHttpHandler` recorre las conexiones según `PooledConnectionLifetime` para evitar problemas de DNS obsoletos.
 
-### <a name="no-loccookies"></a>Cookies
+### <a name="cookies"></a>Cookies
 
 Las instancias de `HttpMessageHandler` agrupadas generan objetos `CookieContainer` que se comparten. El uso compartido de objetos `CookieContainer` no previsto suele generar código incorrecto. En el caso de las aplicaciones que requieren cookies, tenga en cuenta lo siguiente:
 
@@ -989,7 +1006,7 @@ Los enfoques anteriores solucionan los problemas de administración de recursos 
 - `SocketsHttpHandler` comparte las conexiones entre las instancias de `HttpClient`. Este uso compartido impide el agotamiento del socket.
 - `SocketsHttpHandler` recorre las conexiones según `PooledConnectionLifetime` para evitar problemas de DNS obsoletos.
 
-### <a name="no-loccookies"></a>Cookies
+### <a name="cookies"></a>Cookies
 
 Las instancias de `HttpMessageHandler` agrupadas generan objetos `CookieContainer` que se comparten. El uso compartido de objetos `CookieContainer` no previsto suele generar código incorrecto. En el caso de las aplicaciones que requieren cookies, tenga en cuenta lo siguiente:
 

@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/call-javascript-from-dotnet
-ms.openlocfilehash: 53b702cddca778e06e617df3798bffb21677d36b
-ms.sourcegitcommit: 610936e4d3507f7f3d467ed7859ab9354ec158ba
+ms.openlocfilehash: ca42b611a61fc394655e396f914e8e050c578e6a
+ms.sourcegitcommit: e311cfb77f26a0a23681019bd334929d1aaeda20
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98751648"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99530091"
 ---
 # <a name="call-javascript-functions-from-net-methods-in-aspnet-core-blazor"></a>Llamada a funciones de JavaScript con métodos de .NET en Blazor de ASP.NET Core
 
@@ -523,14 +523,14 @@ export function showPrompt(message) {
 }
 ```
 
-Agregue el módulo de JavaScript anterior a una biblioteca de .NET como un recurso web estático (`wwwroot/exampleJsInterop.js`) y, después, importe dicho módulo al código .NET usando el servicio <xref:Microsoft.JSInterop.IJSRuntime>. El servicio se inserta como `js` (no se muestra) en el siguiente ejemplo:
+Agregue el módulo de JavaScript anterior a una biblioteca de .NET como un recurso web estático (`wwwroot/exampleJsInterop.js`) y, después, importe dicho módulo al código .NET llamando a <xref:Microsoft.JSInterop.IJSRuntime.InvokeAsync%2A> en el servicio <xref:Microsoft.JSInterop.IJSRuntime>. El servicio se inserta como `js` (no se muestra) en el siguiente ejemplo:
 
 ```csharp
 var module = await js.InvokeAsync<IJSObjectReference>(
     "import", "./_content/MyComponents/exampleJsInterop.js");
 ```
 
-El identificador de `import` del ejemplo anterior es un identificador especial que se usa específicamente para importar un módulo de JavaScript. Especifique el módulo por medio de su ruta de acceso de recurso web estático estable: `./_content/{LIBRARY NAME}/{PATH UNDER WWWROOT}`. El segmento de tazado del directorio actual (`./`) es necesario para crear la ruta de recurso estático correcta para el archivo JavaScript. El marcador de posición `{LIBRARY NAME}` es el nombre de la biblioteca. El marcador de posición `{PATH UNDER WWWROOT}` es la ruta de acceso al script en `wwwroot`.
+El identificador de `import` del ejemplo anterior es un identificador especial que se usa específicamente para importar un módulo de JavaScript. Especifique el módulo por medio de su ruta de acceso de recurso web estático estable: `./_content/{LIBRARY NAME}/{PATH UNDER WWWROOT}`. El segmento de tazado del directorio actual (`./`) es necesario para crear la ruta de recurso estático correcta para el archivo JavaScript. La importación dinámica de un módulo requiere una solicitud de red, por lo que solo se puede lograr de forma asincrónica llamando a <xref:Microsoft.JSInterop.IJSRuntime.InvokeAsync%2A>. El marcador de posición `{LIBRARY NAME}` es el nombre de la biblioteca. El marcador de posición `{PATH UNDER WWWROOT}` es la ruta de acceso al script en `wwwroot`.
 
 <xref:Microsoft.JSInterop.IJSRuntime> importa el módulo como un elemento `IJSObjectReference`, que es una referencia a un objeto de JavaScript hecha desde código .NET. Use `IJSObjectReference` para invocar funciones de JavaScript exportadas desde el módulo:
 

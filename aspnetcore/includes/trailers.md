@@ -1,4 +1,4 @@
-Los finalizadores HTTP son similares a los encabezados HTTP, salvo que se envían después de enviar el cuerpo de la respuesta. Para IIS y HTTP.SYS, solo se admiten los finalizadores de respuesta HTTP/2.
+Los finalizadores HTTP son similares a los encabezados HTTP, salvo que se envían después de enviar el cuerpo de la respuesta. Para IIS y HTTP.sys, solo se admiten los finalizadores de respuesta HTTP/2.
 
 ```csharp
 if (httpContext.Response.SupportsTrailers())

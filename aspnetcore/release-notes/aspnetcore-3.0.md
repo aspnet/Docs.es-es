@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: aspnetcore-3.0
-ms.openlocfilehash: 235daac5c08248ca2052de6b44e66a8162ce23ad
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 161d6aeefe1882b86ce97cdcfa7e5b23048693f0
+ms.sourcegitcommit: 7e394a8527c9818caebb940f692ae4fcf2f1b277
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93051244"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99217510"
 ---
 # <a name="whats-new-in-aspnet-core-30"></a>Novedades de ASP.NET Core 3.0
 
@@ -53,11 +53,11 @@ Para obtener más información, vea <xref:blazor/index>.
 
 Blazor separa la lógica de representación de componentes del modo en el que se aplican las actualizaciones de la interfaz de usuario. Blazor Server admite el hospedaje de componentes de Razor en el servidor de una aplicación de ASP.NET Core. Las actualizaciones de la interfaz de usuario se administran mediante una conexión de SignalR. Blazor Server se admite en ASP.NET Core 3.0.
 
-### <a name="no-locblazor-webassembly-preview"></a>Blazor WebAssembly (versión preliminar)
+### <a name="blazor-webassembly-preview"></a>Blazor WebAssembly (versión preliminar)
 
 Las aplicaciones Blazor también se pueden ejecutar directamente en el explorador mediante un entorno de ejecución .NET basado en WebAssembly. Blazor WebAssembly se encuentra en versión preliminar y *no* se admite en ASP.NET Core 3.0. Blazor WebAssembly se admitirá en una versión futura de ASP.NET Core.
 
-### <a name="no-locrazor-components"></a>Componentes de Razor
+### <a name="razor-components"></a>Componentes de Razor
 
 Las aplicaciones Blazor se crean a partir de componentes. Los componentes son fragmentos independientes de la interfaz de usuario, como una página, un cuadro de diálogo o un formulario. Los componentes son clases .NET normales que definen la lógica de representación de la interfaz de usuario y los controladores de eventos del lado cliente. Puede crear aplicaciones web interactivas enriquecidas sin JavaScript.
 
@@ -324,14 +324,14 @@ ASP.NET Core 3.0 ahora usa <xref:System.Text.Json> de forma predeterminada para 
 
 Para agregar Json.NET a ASP.NET Core 3.0, consulte [Adición de compatibilidad con el formato JSON basado en Newtonsoft.Json](xref:web-api/advanced/formatting#add-newtonsoftjson-based-json-format-support).
 
-## <a name="new-no-locrazor-directives"></a>Nuevas directivas de Razor
+## <a name="new-razor-directives"></a>Nuevas directivas de Razor
 
 La lista siguiente contiene nuevas directivas de Razor:
 
 * [`@attribute`](xref:mvc/views/razor#attribute): la directiva `@attribute` aplica el atributo especificado a la clase de la página o vista generada. Por ejemplo: `@attribute [Authorize]`.
 * [`@implements`](xref:mvc/views/razor#implements): La directiva `@implements` implementa una interfaz para la clase generada. Por ejemplo: `@implements IDisposable`.
 
-## <a name="no-locidentityserver4-supports-authentication-and-authorization-for-web-apis-and-spas"></a>IdentityServer4 admite la autenticación y la autorización de SPA y API web
+## <a name="identityserver4-supports-authentication-and-authorization-for-web-apis-and-spas"></a>IdentityServer4 admite la autenticación y la autorización de SPA y API web
 
 ASP.NET Core 3.0 ofrece autenticación en aplicaciones de página única (SPA) mediante la compatibilidad con la autorización de API web. ASP.NET Core Identity para autenticar y almacenar usuarios se combina con [IdentityServer4](https://identityserver.io/) para implementar OpenID Connect.
 
@@ -376,7 +376,7 @@ Entre las opciones de autenticación de certificados se incluye la capacidad de:
 
 Una entidad de seguridad de usuario predeterminada se construye a partir de las propiedades del certificado. La entidad de seguridad de usuario contiene un evento que permite complementar o reemplazar la entidad de seguridad. Para obtener más información, vea <xref:security/authentication/certauth>.
 
-La [autenticación de Windows](/windows-server/security/windows-authentication/windows-authentication-overview) se ha ampliado a Linux y macOS. En versiones anteriores, la autenticación de Windows se limitaba a [IIS](xref:host-and-deploy/iis/index) y [HttpSys](xref:fundamentals/servers/httpsys). En ASP.NET Core 3,0, [Kestrel](xref:fundamentals/servers/kestrel) tiene la capacidad de usar Negotiate, [Kerberos](/windows-server/security/kerberos/kerberos-authentication-overview) y [NTLM en Windows](/windows-server/security/kerberos/ntlm-overview), Linux y macOS para hosts unidos a un dominio de Windows. La compatibilidad con Kestrel de estos esquemas de autenticación se proporciona mediante el paquete [Microsoft.AspNetCore.Authentication.Negotiate NuGet](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Negotiate). Al igual que con los demás servicios de autenticación, configure la autenticación en toda la aplicación y luego configure el servicio:
+La [autenticación de Windows](/windows-server/security/windows-authentication/windows-authentication-overview) se ha ampliado a Linux y macOS. En versiones anteriores, la autenticación de Windows se limitaba a [IIS](xref:host-and-deploy/iis/index) y [HTTP.sys](xref:fundamentals/servers/httpsys). En ASP.NET Core 3,0, [Kestrel](xref:fundamentals/servers/kestrel) tiene la capacidad de usar Negotiate, [Kerberos](/windows-server/security/kerberos/kerberos-authentication-overview) y [NTLM en Windows](/windows-server/security/kerberos/ntlm-overview), Linux y macOS para hosts unidos a un dominio de Windows. La compatibilidad con Kestrel de estos esquemas de autenticación se proporciona mediante el paquete [Microsoft.AspNetCore.Authentication.Negotiate NuGet](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Negotiate). Al igual que con los demás servicios de autenticación, configure la autenticación en toda la aplicación y luego configure el servicio:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)

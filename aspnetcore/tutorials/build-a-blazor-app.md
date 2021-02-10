@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/build-a-blazor-app
-ms.openlocfilehash: 6659b075f54292d9546466919f6842b920e6ece1
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 106e1119db777074b5eae24f5d7e216e6127ca13
+ms.sourcegitcommit: 75db2f684a9302b0be7925eab586aa091c6bd19f
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97808743"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99238299"
 ---
-# <a name="build-a-no-locblazor-todo-list-app"></a>Creación de una aplicación de lista de tareas pendientes Blazor
+# <a name="build-a-blazor-todo-list-app"></a>Creación de una aplicación de lista de tareas pendientes Blazor
 
 Por [Daniel Roth](https://github.com/danroth27) y [Luke Latham](https://github.com/guardrex)
 
@@ -54,7 +54,7 @@ Al final de este tutorial, tendrá una aplicación de lista de tareas funcional.
 
 ::: moniker-end
 
-## <a name="create-a-todo-list-no-locblazor-app"></a>Creación de una aplicación Blazor de lista de tareas
+## <a name="create-a-todo-list-blazor-app"></a>Creación de una aplicación Blazor de lista de tareas
 
 1. Cree una nueva aplicación de Blazor denominada `TodoList` en un shell de comandos:
 
@@ -108,6 +108,12 @@ Al final de este tutorial, tendrá una aplicación de lista de tareas funcional.
    `TodoItem.cs`:
 
    [!code-csharp[](build-a-blazor-app/samples_snapshot/TodoItem.cs)]
+   
+   > [!NOTE]
+   > Si usa Visual Studio para crear el archivo `ToDoItem.cs` y la clase `ToDoItem`, use cualquiera de los métodos siguientes:
+   >
+   > * Quite el espacio de nombres que genera Visual Studio para la clase.
+   > * Use el botón **Copiar** del bloque de código anterior y reemplace todo el contenido del archivo que genera Visual Studio.
 
 1. Vuelva al componente `Todo` y realice las tareas siguientes:
 
