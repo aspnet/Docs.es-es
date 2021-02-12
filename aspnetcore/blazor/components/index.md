@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/index
-ms.openlocfilehash: efc73022d0bd8c29595f9bed1c06fe07002eb54a
-ms.sourcegitcommit: e311cfb77f26a0a23681019bd334929d1aaeda20
+ms.openlocfilehash: 111512916cb7f0a4fc1f17648e2f9c69e366dff3
+ms.sourcegitcommit: 04ad9cd26fcaa8bd11e261d3661f375f5f343cdc
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99530104"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100107056"
 ---
 # <a name="create-and-use-aspnet-core-razor-components"></a>Creación y uso de componentes de Razor de ASP.NET Core
 
@@ -268,7 +268,7 @@ Para obtener información sobre los parámetros de ruta comodín (`{*pageRoute}`
 
 ### <a name="component-parameters"></a>Parámetros del componente
 
-Los componentes pueden tener *parámetros de componente*, que se definen por medio de propiedades públicas simples o complejas en la clase del componente con el atributo [`[Parameter]`](xref:Microsoft.AspNetCore.Components.ParameterAttribute). Use atributos para especificar argumentos para un componente en el marcado.
+Los componentes pueden tener *parámetros de componente*, que se definen por medio de propiedades públicas simples o complejas en la clase del componente con el [atributo `[Parameter]`](xref:Microsoft.AspNetCore.Components.ParameterAttribute). Use atributos para especificar argumentos para un componente en el marcado.
 
 `Components/ChildComponent.razor`:
 
@@ -396,7 +396,7 @@ Los elementos `<input>` representados con ambos métodos son idénticos:
        size="50">
 ```
 
-Para aceptar atributos arbitrarios, defina un parámetro de componente usando el atributo [`[Parameter]`](xref:Microsoft.AspNetCore.Components.ParameterAttribute) con la propiedad <xref:Microsoft.AspNetCore.Components.ParameterAttribute.CaptureUnmatchedValues> establecida en `true`:
+Para aceptar atributos arbitrarios, defina un parámetro de componente usando el [atributo `[Parameter]`](xref:Microsoft.AspNetCore.Components.ParameterAttribute) con la propiedad <xref:Microsoft.AspNetCore.Components.ParameterAttribute.CaptureUnmatchedValues> establecida en `true`:
 
 ```razor
 @code {
@@ -584,7 +584,10 @@ Use el elemento `NotifierService` para actualizar un componente:
 }
 ```
 
-En el ejemplo anterior, `NotifierService` invoca el método `OnNotify` del componente fuera del contexto de sincronización de Blazor. `InvokeAsync` se utiliza para cambiar al contexto correcto y poner una representación en cola. Para obtener más información, vea <xref:blazor/components/rendering>.
+En el ejemplo anterior:
+
+* `NotifierService` invoca el método `OnNotify` del componente fuera del contexto de sincronización de Blazor. `InvokeAsync` se utiliza para cambiar al contexto correcto y poner una representación en cola. Para obtener más información, vea <xref:blazor/components/rendering>.
+* El componente implementa <xref:System.IDisposable>, y el elemento delegado `OnNotify` anula su inscripción en el método `Dispose`, al que llama el marco cuando se desecha el componente. Para obtener más información, vea <xref:blazor/components/lifecycle#component-disposal-with-idisposable>.
 
 ## <a name="use-key-to-control-the-preservation-of-elements-and-components"></a>Uso de \@key para controlar la conservación de elementos y componentes
 
@@ -772,7 +775,7 @@ Para obtener información adicional, consulte [Error de enlace bidireccional de 
 
 ## <a name="apply-an-attribute"></a>Aplicación de un atributo
 
-En los componentes de Razor se pueden aplicar atributos con la directiva [`@attribute`][7]. En el siguiente ejemplo se aplica el atributo [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) a la clase del componente:
+En los componentes de Razor se pueden aplicar atributos con la directiva [`@attribute`][7]. En el siguiente ejemplo se aplica el [atributo `[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) a la clase del componente:
 
 ```razor
 @page "/"

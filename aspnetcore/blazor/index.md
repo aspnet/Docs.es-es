@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/index
-ms.openlocfilehash: bd42ba41c6f599d7c0308febbbde71e0d060cc84
-ms.sourcegitcommit: 20a41c8e40a2e69e99291e2fe18caa04c02e7109
+ms.openlocfilehash: d42136de00ccc9b7565c5ae088e1ecf4560a63c5
+ms.sourcegitcommit: 04ad9cd26fcaa8bd11e261d3661f375f5f343cdc
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99578300"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100106887"
 ---
 # <a name="introduction-to-aspnet-core-blazor"></a>Introducción a ASP.NET Core Blazor
 
@@ -148,8 +148,9 @@ El tamaño de la aplicación publicada, su *tamaño de carga*, es un factor de r
 
 Blazor separa la lógica de representación de componentes del modo en el que se aplican las actualizaciones de la interfaz de usuario. *Blazor Server* ofrece compatibilidad con el hospedaje de componentes de Razor en el servidor de una aplicación ASP.NET Core. Las actualizaciones de la interfaz de usuario se controlan mediante una conexión de [SignalR](xref:signalr/introduction).
 
-El runtime controla:
+El entorno de ejecución permanece en el servidor y controla lo siguiente:
 
+* Ejecución del código C# de la aplicación.
 * El envío de eventos de interfaz de usuario desde el explorador al servidor.
 * La aplicación de actualizaciones de la interfaz de usuario al componente representado que devuelve el servidor.
 
