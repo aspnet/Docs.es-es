@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/caching/distributed
-ms.openlocfilehash: 6d87c8de66bf5600189465b96dee903841106b6f
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 6f89046f2e1805111dd81b3282253a72a7c6ea09
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93061150"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100281022"
 ---
 # <a name="distributed-caching-in-aspnet-core"></a>Almacenamiento en caché distribuido en ASP.NET Core
 
@@ -129,12 +129,12 @@ Consulte [este problema de github](https://github.com/dotnet/AspNetCore.Docs/iss
 
 [NCache](https://github.com/Alachisoft/NCache) es una caché distribuida en memoria de código abierto desarrollada de forma nativa en .NET y .net Core. NCache funciona localmente y se configura como un clúster de caché distribuida para una aplicación ASP.NET Core que se ejecuta en Azure o en otras plataformas de hospedaje.
 
-Para instalar y configurar NCache en el equipo local, consulte [Guía de introducción de NCache para Windows](https://www.alachisoft.com/resources/docs/ncache-oss/getting-started-guide-windows/).
+Para instalar y configurar NCache en el equipo local, consulte [Introducción Guía para Windows (.net y .net Core)](https://www.alachisoft.com/resources/docs/ncache/getting-started-guide-windows/).
 
 Para configurar NCache:
 
 1. Instalación de [NuGet de código abierto de NCache](https://www.nuget.org/packages/Alachisoft.NCache.OpenSource.SDK/).
-1. Configure el clúster de caché en [Client. ncconf](https://www.alachisoft.com/resources/docs/ncache-oss/admin-guide/client-config.html).
+1. Configure el clúster de caché en [Client. ncconf](https://www.alachisoft.com/resources/docs/ncache/admin-guide/client-config.html).
 1. Agregue el siguiente código a `Startup.ConfigureServices`:
 
    ```csharp
@@ -156,7 +156,7 @@ Cuando se inicia la aplicación de ejemplo, <xref:Microsoft.Extensions.Caching.D
 
 La aplicación de ejemplo inyecta <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> en el `IndexModel` para su uso en la página de índice.
 
-Cada vez que se carga la página de índice, se comprueba la hora almacenada en caché en `OnGetAsync` . Si la hora almacenada en caché no ha expirado, se muestra la hora. Si han transcurrido 20 segundos desde la última vez que se tuvo acceso a la hora almacenada en caché (la última vez que se cargó esta página), la página muestra la *fecha de expiración de la memoria caché* .
+Cada vez que se carga la página de índice, se comprueba la hora almacenada en caché en `OnGetAsync` . Si la hora almacenada en caché no ha expirado, se muestra la hora. Si han transcurrido 20 segundos desde la última vez que se tuvo acceso a la hora almacenada en caché (la última vez que se cargó esta página), la página muestra la *fecha de expiración de la memoria caché*.
 
 Actualice inmediatamente la hora almacenada en caché a la hora actual; para ello, seleccione el botón **restablecer hora de almacenamiento en caché** . El botón desencadena el `OnPostResetCachedTime` método de control.
 
@@ -173,7 +173,7 @@ A la hora de decidir qué implementación de <xref:Microsoft.Extensions.Caching.
 
 * Infraestructura existente
 * Requisitos de rendimiento
-* Coste
+* Costos
 * Experiencia del equipo
 
 Las soluciones de almacenamiento en caché suelen basarse en el almacenamiento en memoria para proporcionar una recuperación rápida de los datos almacenados en memoria caché, pero la memoria es un recurso limitado y se amplía de forma costosa. Almacene solo los datos usados habitualmente en una memoria caché.
@@ -299,12 +299,12 @@ Para instalar Redis en el equipo local:
 
 [NCache](https://github.com/Alachisoft/NCache) es una caché distribuida en memoria de código abierto desarrollada de forma nativa en .NET y .net Core. NCache funciona localmente y se configura como un clúster de caché distribuida para una aplicación ASP.NET Core que se ejecuta en Azure o en otras plataformas de hospedaje.
 
-Para instalar y configurar NCache en el equipo local, consulte [Guía de introducción de NCache para Windows](https://www.alachisoft.com/resources/docs/ncache-oss/getting-started-guide-windows/).
+Para instalar y configurar NCache en el equipo local, consulte [Introducción Guía para Windows (.net y .net Core)](https://www.alachisoft.com/resources/docs/ncache/getting-started-guide-windows/).
 
 Para configurar NCache:
 
 1. Instalación de [NuGet de código abierto de NCache](https://www.nuget.org/packages/Alachisoft.NCache.OpenSource.SDK/).
-1. Configure el clúster de caché en [Client. ncconf](https://www.alachisoft.com/resources/docs/ncache-oss/admin-guide/client-config.html).
+1. Configure el clúster de caché en [Client. ncconf](https://www.alachisoft.com/resources/docs/ncache/admin-guide/client-config.html).
 1. Agregue el siguiente código a `Startup.ConfigureServices`:
 
    ```csharp
@@ -326,7 +326,7 @@ Cuando se inicia la aplicación de ejemplo, <xref:Microsoft.Extensions.Caching.D
 
 La aplicación de ejemplo inyecta <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> en el `IndexModel` para su uso en la página de índice.
 
-Cada vez que se carga la página de índice, se comprueba la hora almacenada en caché en `OnGetAsync` . Si la hora almacenada en caché no ha expirado, se muestra la hora. Si han transcurrido 20 segundos desde la última vez que se tuvo acceso a la hora almacenada en caché (la última vez que se cargó esta página), la página muestra la *fecha de expiración de la memoria caché* .
+Cada vez que se carga la página de índice, se comprueba la hora almacenada en caché en `OnGetAsync` . Si la hora almacenada en caché no ha expirado, se muestra la hora. Si han transcurrido 20 segundos desde la última vez que se tuvo acceso a la hora almacenada en caché (la última vez que se cargó esta página), la página muestra la *fecha de expiración de la memoria caché*.
 
 Actualice inmediatamente la hora almacenada en caché a la hora actual; para ello, seleccione el botón **restablecer hora de almacenamiento en caché** . El botón desencadena el `OnPostResetCachedTime` método de control.
 
@@ -343,7 +343,7 @@ A la hora de decidir qué implementación de <xref:Microsoft.Extensions.Caching.
 
 * Infraestructura existente
 * Requisitos de rendimiento
-* Coste
+* Costos
 * Experiencia del equipo
 
 Las soluciones de almacenamiento en caché suelen basarse en el almacenamiento en memoria para proporcionar una recuperación rápida de los datos almacenados en memoria caché, pero la memoria es un recurso limitado y se amplía de forma costosa. Almacene solo los datos usados habitualmente en una memoria caché.
@@ -475,12 +475,12 @@ Para instalar Redis en el equipo local:
 
 [NCache](https://github.com/Alachisoft/NCache) es una caché distribuida en memoria de código abierto desarrollada de forma nativa en .NET y .net Core. NCache funciona localmente y se configura como un clúster de caché distribuida para una aplicación ASP.NET Core que se ejecuta en Azure o en otras plataformas de hospedaje.
 
-Para instalar y configurar NCache en el equipo local, consulte [Guía de introducción de NCache para Windows](https://www.alachisoft.com/resources/docs/ncache-oss/getting-started-guide-windows/).
+Para instalar y configurar NCache en el equipo local, consulte [Introducción Guía para Windows (.net y .net Core)](https://www.alachisoft.com/resources/docs/ncache/getting-started-guide-windows/).
 
 Para configurar NCache:
 
 1. Instalación de [NuGet de código abierto de NCache](https://www.nuget.org/packages/Alachisoft.NCache.OpenSource.SDK/).
-1. Configure el clúster de caché en [Client. ncconf](https://www.alachisoft.com/resources/docs/ncache-oss/admin-guide/client-config.html).
+1. Configure el clúster de caché en [Client. ncconf](https://www.alachisoft.com/resources/docs/ncache/admin-guide/client-config.html).
 1. Agregue el siguiente código a `Startup.ConfigureServices`:
 
    ```csharp
@@ -502,7 +502,7 @@ Cuando se inicia la aplicación de ejemplo, <xref:Microsoft.Extensions.Caching.D
 
 La aplicación de ejemplo inyecta <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> en el `IndexModel` para su uso en la página de índice.
 
-Cada vez que se carga la página de índice, se comprueba la hora almacenada en caché en `OnGetAsync` . Si la hora almacenada en caché no ha expirado, se muestra la hora. Si han transcurrido 20 segundos desde la última vez que se tuvo acceso a la hora almacenada en caché (la última vez que se cargó esta página), la página muestra la *fecha de expiración de la memoria caché* .
+Cada vez que se carga la página de índice, se comprueba la hora almacenada en caché en `OnGetAsync` . Si la hora almacenada en caché no ha expirado, se muestra la hora. Si han transcurrido 20 segundos desde la última vez que se tuvo acceso a la hora almacenada en caché (la última vez que se cargó esta página), la página muestra la *fecha de expiración de la memoria caché*.
 
 Actualice inmediatamente la hora almacenada en caché a la hora actual; para ello, seleccione el botón **restablecer hora de almacenamiento en caché** . El botón desencadena el `OnPostResetCachedTime` método de control.
 
@@ -519,7 +519,7 @@ A la hora de decidir qué implementación de <xref:Microsoft.Extensions.Caching.
 
 * Infraestructura existente
 * Requisitos de rendimiento
-* Coste
+* Costos
 * Experiencia del equipo
 
 Las soluciones de almacenamiento en caché suelen basarse en el almacenamiento en memoria para proporcionar una recuperación rápida de los datos almacenados en memoria caché, pero la memoria es un recurso limitado y se amplía de forma costosa. Almacene solo los datos usados habitualmente en una memoria caché.

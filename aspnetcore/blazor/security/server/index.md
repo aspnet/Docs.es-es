@@ -19,20 +19,18 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/server/index
-ms.openlocfilehash: 5031273c3395be4365b3a6d239ebce7aaf9b66ac
-ms.sourcegitcommit: cc405f20537484744423ddaf87bd1e7d82b6bdf0
+ms.openlocfilehash: 5a3d3c6e06653de7f0d01565444d37013f347a5b
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98658643"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280321"
 ---
-# <a name="secure-aspnet-core-no-locblazor-server-apps"></a>Protección de aplicaciones de ASP.NET Core Blazor Server
-
-Por [Luke Latham](https://github.com/guardrex)
+# <a name="secure-aspnet-core-blazor-server-apps"></a>Protección de aplicaciones de ASP.NET Core Blazor Server
 
 La seguridad de las aplicaciones de Blazor Server se configura de la misma forma que la de las aplicaciones de ASP.NET Core. Para obtener más información, vea los artículos en <xref:security/index>. Los temas de esta información general se aplican específicamente a Blazor Server.
 
-## <a name="no-locblazor-server-project-template"></a>Plantilla de proyecto de Blazor Server
+## <a name="blazor-server-project-template"></a>Plantilla de proyecto de Blazor Server
 
 Se puede configurar la autenticación de la plantilla de proyecto de Blazor Server cuando se crea el proyecto.
 
@@ -120,14 +118,14 @@ Para obtener más información:
 
 ---
 
-## <a name="scaffold-no-locidentity"></a>Scaffolding para Identity
+## <a name="scaffold-identity"></a>Scaffolding para Identity
 
 Scaffolding para Identity en un proyecto de Blazor Server:
 
 * [Sin autorización existente](xref:security/authentication/scaffold-identity#scaffold-identity-into-a-blazor-server-project-without-existing-authorization)
 * [Con autorización](xref:security/authentication/scaffold-identity#scaffold-identity-into-a-blazor-server-project-with-authorization)
 
-## <a name="azure-app-service-on-linux-with-no-locidentity-server"></a>Azure App Service en Linux con Identity Server
+## <a name="azure-app-service-on-linux-with-identity-server"></a>Azure App Service en Linux con Identity Server
 
 Al realizar una implementación en Azure App Service en Linux con Identity Server, especifique el emisor de forma explícita. Para obtener más información, vea <xref:security/authentication/identity/spa#azure-app-service-on-linux>.
 
