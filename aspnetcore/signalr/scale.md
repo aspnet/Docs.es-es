@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/scale
-ms.openlocfilehash: d3e9cd23a55702bcf9b002dcce556428683afeca
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: e70f3143159a1817e326a95b30e7369a5c9ab025
+ms.sourcegitcommit: f77a7467651bab61b24261da9dc5c1dd75fc1fa9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93052778"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100564013"
 ---
-# <a name="aspnet-core-no-locsignalr-hosting-and-scaling"></a>SignalRHospedaje y escalado de ASP.net Core
+# <a name="aspnet-core-signalr-hosting-and-scaling"></a>SignalRHospedaje y escalado de ASP.net Core
 
 Por [Andrew Stanton-enfermera](https://twitter.com/anurse), [Brady transgastor](https://twitter.com/bradygaster)y [Tom Dykstra](https://github.com/tdykstra)
 
@@ -46,7 +46,7 @@ Para obtener instrucciones sobre la configuración de Azure App Service para Sig
 
 ## <a name="tcp-connection-resources"></a>Recursos de conexión TCP
 
-El número de conexiones TCP simultáneas que un servidor web puede admitir es limitado. Los clientes HTTP estándar usan conexiones *efímeras* . Estas conexiones se pueden cerrar cuando el cliente se queda inactivo y se vuelve a abrir posteriormente. Por otro lado, una SignalR conexión es *persistente* . SignalR las conexiones permanecen abiertas incluso cuando el cliente se queda inactivo. En una aplicación de alto tráfico que sirve a muchos clientes, estas conexiones persistentes pueden hacer que los servidores alcancen el número máximo de conexiones.
+El número de conexiones TCP simultáneas que un servidor web puede admitir es limitado. Los clientes HTTP estándar usan conexiones *efímeras* . Estas conexiones se pueden cerrar cuando el cliente se queda inactivo y se vuelve a abrir posteriormente. Por otro lado, una SignalR conexión es *persistente*. SignalR las conexiones permanecen abiertas incluso cuando el cliente se queda inactivo. En una aplicación de alto tráfico que sirve a muchos clientes, estas conexiones persistentes pueden hacer que los servidores alcancen el número máximo de conexiones.
 
 Las conexiones persistentes también consumen memoria adicional, para realizar un seguimiento de cada conexión.
 
@@ -70,7 +70,7 @@ Una aplicación que usa SignalR debe realizar un seguimiento de todas sus conexi
 
 Las opciones para resolver este problema son el [ SignalR servicio de Azure](#azure-signalr-service) y el [backplane de Redis](#redis-backplane).
 
-## <a name="azure-no-locsignalr-service"></a>Azure SignalR Service
+## <a name="azure-signalr-service"></a>Azure SignalR Service
 
 El servicio de Azure SignalR es un proxy en lugar de un backplane. Cada vez que un cliente inicia una conexión al servidor, el cliente se redirige para conectarse al servicio. Ese proceso se ilustra en el diagrama siguiente:
 
@@ -201,14 +201,15 @@ Para obtener más información sobre el equilibrio de carga y las sesiones perma
 Para obtener más información sobre ASP.NET Core con NGINX, vea el siguiente artículo:
 * <xref:host-and-deploy/linux-nginx>
 
-## <a name="third-party-no-locsignalr-backplane-providers"></a>Proveedores de backplane de terceros SignalR
+## <a name="third-party-signalr-backplane-providers"></a>Proveedores de backplane de terceros SignalR
 
 * [NCache](https://www.alachisoft.com/ncache/asp-net-core-signalr.html)
 * [Orleans](https://github.com/OrleansContrib/SignalR.Orleans)
+* [Rebus](https://github.com/rebus-org/Rebus.SignalR)
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Para obtener más información, vea los siguientes recursos:
+Para obtener más información, consulte los siguientes recursos:
 
 * [Documentación del servicio de Azure SignalR](/azure/azure-signalr/signalr-overview)
 * [Configuración de un backplane de Redis](xref:signalr/redis-backplane)
