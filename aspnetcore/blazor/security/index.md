@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/index
-ms.openlocfilehash: c786c00892772f9f0ce80c903bde495d4f2523f2
-ms.sourcegitcommit: 04ad9cd26fcaa8bd11e261d3661f375f5f343cdc
+ms.openlocfilehash: 9a14a8e16d8e50b47c479cf4d973459fbf61cec7
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100106744"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280369"
 ---
 # <a name="aspnet-core-blazor-authentication-and-authorization"></a>Autenticación y autorización de ASP.NET Core Blazor
-
-De [Steve Sanderson](https://github.com/SteveSandersonMS) y [Luke Latham](https://github.com/guardrex)
 
 ASP.NET Core admite la configuración y administración de seguridad en las aplicaciones de Blazor.
 
@@ -300,6 +298,55 @@ Si no se especifican las condiciones de la autorización, <xref:Microsoft.AspNet
 * A los usuarios no autenticados (sin sesión no iniciada) como no autorizados.
 
 El componente <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView> se puede usar en el componente `NavMenu` (`Shared/NavMenu.razor`) para mostrar un elemento de lista (`<li>...</li>`) para un [componente `NavLink`](xref:blazor/fundamentals/routing#navlink-and-navmenu-components) (<xref:Microsoft.AspNetCore.Components.Routing.NavLink>), pero tenga en cuenta que este enfoque solo quita el elemento de lista desde la salida representada. No impide que el usuario navegue hasta el componente.
+
+Las aplicaciones creadas a partir de una plantilla de proyecto de Blazor que incluyen autenticación utilizan un componente `LoginDisplay` que depende de un componente `AuthorizeView`. El componente `AuthorizeView` muestra selectivamente el contenido a los usuarios para el trabajo relacionado con Identity. El ejemplo siguiente procede de la plantilla de proyecto de Blazor WebAssembly.
+
+`Shared/LoginDisplay.razor`:
+
+```razor
+@using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+
+@inject NavigationManager Navigation
+@inject SignOutSessionStateManager SignOutManager
+
+<AuthorizeView>
+    <Authorized>
+        Hello, @context.User.Identity.Name!
+        <button class="nav-link btn btn-link" @onclick="BeginLogout">Log out</button>
+    </Authorized>
+    <NotAuthorized>
+        <a href="authentication/login">Log in</a>
+    </NotAuthorized>
+</AuthorizeView>
+
+@code{
+    private async Task BeginLogout(MouseEventArgs args)
+    {
+        await SignOutManager.SetSignOutState();
+        Navigation.NavigateTo("authentication/logout");
+    }
+}
+```
+
+El siguiente ejemplo procede la plantilla de proyecto de Blazor Server y utiliza puntos de conexión de ASP.NET Core Identity en el área `Identity` de la aplicación para procesar el trabajo relacionado con Identity.
+
+`Shared/LoginDisplay.razor`:
+
+```razor
+<AuthorizeView>
+    <Authorized>
+        <a href="Identity/Account/Manage">Hello, @context.User.Identity.Name!</a>
+        <form method="post" action="Identity/Account/LogOut">
+            <button type="submit" class="nav-link btn btn-link">Log out</button>
+        </form>
+    </Authorized>
+    <NotAuthorized>
+        <a href="Identity/Account/Register">Register</a>
+        <a href="Identity/Account/Login">Log in</a>
+    </NotAuthorized>
+</AuthorizeView>
+```
 
 ### <a name="role-based-and-policy-based-authorization"></a>Autorización basada en roles y en directivas
 
