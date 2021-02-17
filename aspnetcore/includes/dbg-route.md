@@ -1,6 +1,26 @@
-## <a name="debug-diagnostics"></a><span data-ttu-id="52ea9-101">Diagnóstico de depuración</span><span class="sxs-lookup"><span data-stu-id="52ea9-101">Debug diagnostics</span></span>
+---
+no-loc:
+- appsettings.json
+- ASP.NET Core Identity
+- cookie
+- Cookie
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+ms.openlocfilehash: 087c5a7dd20bc653a05c337dde905716032e00b3
+ms.sourcegitcommit: a49c47d5a573379effee5c6b6e36f5c302aa756b
+ms.translationtype: HT
+ms.contentlocale: es-ES
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100552691"
+---
+## <a name="debug-diagnostics"></a><span data-ttu-id="be49a-101">Diagnóstico de depuración</span><span class="sxs-lookup"><span data-stu-id="be49a-101">Debug diagnostics</span></span>
 
-<span data-ttu-id="52ea9-102">Para ver la salida detallada del diagnóstico de cálculo de ruta, establezca `Logging:LogLevel:Microsoft` en `Debug`.</span><span class="sxs-lookup"><span data-stu-id="52ea9-102">For detailed routing diagnostic output, set `Logging:LogLevel:Microsoft` to `Debug`.</span></span> <span data-ttu-id="52ea9-103">En el entorno de desarrollo, establezca el nivel de registro en *appsettings.Development.json*:</span><span class="sxs-lookup"><span data-stu-id="52ea9-103">In the development environment, set the log level in *appsettings.Development.json*:</span></span>
+<span data-ttu-id="be49a-102">Para ver la salida detallada del diagnóstico de cálculo de ruta, establezca `Logging:LogLevel:Microsoft` en `Debug`.</span><span class="sxs-lookup"><span data-stu-id="be49a-102">For detailed routing diagnostic output, set `Logging:LogLevel:Microsoft` to `Debug`.</span></span> <span data-ttu-id="be49a-103">En el entorno de desarrollo, establezca el nivel de registro en *appsettings.Development.json*:</span><span class="sxs-lookup"><span data-stu-id="be49a-103">In the development environment, set the log level in *appsettings.Development.json*:</span></span>
 
 ```json
 {
