@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/content-security-policy
-ms.openlocfilehash: 744449240fabc3dae317d0d7bc9090311521c224
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: f44f348947e31864f5d0d44c9caf1a3aa9c3b1d4
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "94570125"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280344"
 ---
-# <a name="enforce-a-content-security-policy-for-aspnet-core-no-locblazor"></a>Aplicación de una directiva de seguridad de contenido para Blazor de ASP.NET Core
-
-Por [Javier Calvarro Nelson](https://github.com/javiercn) y [Luke Latham](https://github.com/guardrex)
+# <a name="enforce-a-content-security-policy-for-aspnet-core-blazor"></a>Aplicación de una directiva de seguridad de contenido para Blazor de ASP.NET Core
 
 Los [ataques de scripts de sitios (XSS)](xref:security/cross-site-scripting) son una vulnerabilidad de seguridad en la que un atacante coloca uno o más scripts de cliente malintencionados en el contenido representado de una aplicación. Una directiva de seguridad de contenido ayuda a protegerse de ataques XSS, ya que informa al explorador de la validez de los siguientes elementos:
 

@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/layouts
-ms.openlocfilehash: 417f69e797296cdcd01fc4ce326388512a406368
-ms.sourcegitcommit: 97243663fd46c721660e77ef652fe2190a461f81
+ms.openlocfilehash: d1f3e2028ca120b5901aca0b24802d872ae52597
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/09/2021
-ms.locfileid: "98058277"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100279732"
 ---
-# <a name="aspnet-core-no-locblazor-layouts"></a>Diseños de ASP.NET Core Blazor
-
-Por [Rainer Stropek](https://www.timecockpit.com) y [Luke Latham](https://github.com/guardrex)
+# <a name="aspnet-core-blazor-layouts"></a>Diseños de ASP.NET Core Blazor
 
 Algunos elementos de la aplicación, como los menús, los mensajes de copyright y los logotipos de la empresa, normalmente forman parte del diseño general de la aplicación y se usan en todos sus componentes. Copiar el código de estos elementos en todos los componentes de una aplicación no es una estrategia eficaz. Cada vez que uno de los elementos necesita una actualización, todos los componentes deben actualizarse. Esta duplicación es difícil de mantener y puede dar lugar a contenido incoherente con el tiempo. Los *diseños* solucionan este problema.
 
@@ -125,7 +123,7 @@ Por último, `MasterLayout` en `MasterLayout.razor` contiene los elementos de di
 
 [!code-razor[](layouts/sample_snapshot/3.x/MasterLayout.razor?highlight=6)]
 
-## <a name="share-a-no-locrazor-pages-layout-with-integrated-components"></a>Uso compartido de un diseño de Razor Pages con componentes integrados
+## <a name="share-a-razor-pages-layout-with-integrated-components"></a>Uso compartido de un diseño de Razor Pages con componentes integrados
 
 Si los componentes enrutables se integran en una aplicación de Razor Pages, el diseño compartido de la aplicación se puede usar con los componentes. Para obtener más información, vea <xref:blazor/components/prerendering-and-integration>.
 

@@ -20,16 +20,14 @@ no-loc:
 - SignalR
 uid: blazor/components/prerendering-and-integration
 zone_pivot_groups: blazor-hosting-models
-ms.openlocfilehash: 3402117334548f9d90880d4f536e8baa288e7bc9
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: d120440c292d15b7741260ed31af92d60db2261c
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97506986"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280068"
 ---
-# <a name="prerender-and-integrate-aspnet-core-no-locrazor-components"></a>Integración y representación previa de componentes Razor de ASP.NET Core
-
-Por [Luke Latham](https://github.com/guardrex) y [Daniel Roth](https://github.com/danroth27)
+# <a name="prerender-and-integrate-aspnet-core-razor-components"></a>Integración y representación previa de componentes Razor de ASP.NET Core
 
 ::: zone pivot="webassembly"
 
@@ -284,7 +282,7 @@ Una aplicación Razor Pages o MVC existente puede integrar componentes Razor en 
 
 1. Integre los componentes en cualquier página o vista. Para obtener más información, vea la sección [Representación de componentes a partir de una página o vista](#render-components-from-a-page-or-view).
 
-## <a name="use-routable-components-in-a-no-locrazor-pages-app"></a>Uso de componentes enrutables en una aplicación Razor Pages
+## <a name="use-routable-components-in-a-razor-pages-app"></a>Uso de componentes enrutables en una aplicación Razor Pages
 
 *Esta sección pertenece a la incorporación de componentes que se pueden enrutar directamente desde las solicitudes del usuario.*
 

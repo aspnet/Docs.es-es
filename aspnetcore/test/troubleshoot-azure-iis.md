@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: test/troubleshoot-azure-iis
-ms.openlocfilehash: d51a4a43f585b0a0b7e3aab2c5de1b2d215de494
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: a8bb659a72e8370c31cc9c213689399e74f11b5c
+ms.sourcegitcommit: f77a7467651bab61b24261da9dc5c1dd75fc1fa9
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93059603"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100564058"
 ---
 # <a name="troubleshoot-aspnet-core-on-azure-app-service-and-iis"></a>Solución de problemas de ASP.NET Core en Azure App Service e IIS
 
@@ -321,6 +321,8 @@ El registro stdout del módulo ASP.NET Core con frecuencia registra mensajes de 
 Establezca `stdoutLogEnabled="false"` para deshabilitar el registro de stdout una vez que haya solucionado los problemas.
 
 Para obtener más información, vea <xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection>.
+
+<a name="enhanced-diagnostic-logs"></a>
 
 ### <a name="aspnet-core-module-debug-log-azure-app-service"></a>Registro de depuración del módulo ASP.NET Core (Azure App Service)
 
@@ -760,7 +762,7 @@ La salida de consola de la aplicación, que muestra los posibles errores, se can
 1. `cd D:\home\SiteExtensions\AspNetCoreRuntime.{X.Y}.x32` (`{X.Y}` es la versión del runtime)
 1. Ejecute la aplicación: `dotnet \home\site\wwwroot\{ASSEMBLY NAME}.dll`
 
-La salida de la consola de la aplicación, en la que se muestra cualquier error, se canaliza a la consola de Kudu.
+La salida de consola de la aplicación, que muestra los posibles errores, se canaliza a la consola de Kudu.
 
 #### <a name="test-a-64-bit-x64-app"></a>Prueba de una aplicación de 64 bits (x64)
 
@@ -773,7 +775,7 @@ La salida de la consola de la aplicación, en la que se muestra cualquier error,
   1. `cd D:\home\site\wwwroot`
   1. Ejecute la aplicación: `{ASSEMBLY NAME}.exe`
 
-La salida de la consola de la aplicación, en la que se muestra cualquier error, se canaliza a la consola de Kudu.
+La salida de consola de la aplicación, que muestra los posibles errores, se canaliza a la consola de Kudu.
 
 **Implementación dependiente del marco en ejecución en una versión preliminar**
 
@@ -1238,7 +1240,7 @@ La salida de consola de la aplicación, que muestra los posibles errores, se can
 1. `cd D:\home\SiteExtensions\AspNetCoreRuntime.{X.Y}.x32` (`{X.Y}` es la versión del runtime)
 1. Ejecute la aplicación: `dotnet \home\site\wwwroot\{ASSEMBLY NAME}.dll`
 
-La salida de la consola de la aplicación, en la que se muestra cualquier error, se canaliza a la consola de Kudu.
+La salida de consola de la aplicación, que muestra los posibles errores, se canaliza a la consola de Kudu.
 
 #### <a name="test-a-64-bit-x64-app"></a>Prueba de una aplicación de 64 bits (x64)
 
@@ -1251,7 +1253,7 @@ La salida de la consola de la aplicación, en la que se muestra cualquier error,
   1. `cd D:\home\site\wwwroot`
   1. Ejecute la aplicación: `{ASSEMBLY NAME}.exe`
 
-La salida de la consola de la aplicación, en la que se muestra cualquier error, se canaliza a la consola de Kudu.
+La salida de consola de la aplicación, que muestra los posibles errores, se canaliza a la consola de Kudu.
 
 **Implementación dependiente del marco en ejecución en una versión preliminar**
 

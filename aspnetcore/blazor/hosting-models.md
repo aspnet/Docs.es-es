@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/hosting-models
-ms.openlocfilehash: a6f1c88b8e93c0d8ccfebca482895ebab8d18a81
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 780161090d376f08b849fadb47127810d6661d0c
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97506921"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100279757"
 ---
-# <a name="aspnet-core-no-locblazor-hosting-models"></a>Modelos de hospedaje Blazor en ASP.NET Core
-
-Por [Daniel Roth](https://github.com/danroth27)
+# <a name="aspnet-core-blazor-hosting-models"></a>Modelos de hospedaje Blazor en ASP.NET Core
 
 Blazor es un marco web diseñado para ejecutar el lado cliente en el explorador en un entorno de tiempo de ejecución de .NET basado en [WebAssembly](https://webassembly.org/) ( *Blazor WebAssembly* ) o el lado servidor en ASP.NET Core ( *Blazor Server* ). Independientemente del modelo de hospedaje, los modelos de la aplicación y los componentes *son los mismos*.
 
@@ -38,7 +36,7 @@ El modelo de hospedaje principal de Blazor se ejecuta del lado cliente en el exp
 
 ![Blazor WebAssembly: La aplicación Blazor se ejecuta en un subproceso de interfaz de usuario dentro del explorador.](hosting-models/_static/blazor-webassembly.png)
 
-Cuando la aplicación Blazor WebAssembly se crea para su implementación sin una aplicación de back-end ASP.NET Core, se denomina aplicación Blazor WebAssembly *independiente*. Cuando la aplicación se crea para su implementación con una aplicación de back-end para dar servicio a sus archivos, la aplicación se denomina aplicación Blazor WebAssembly *hospedada*. Una aplicación Blazor WebAssembly hospedada suele interactuar con el servidor a través de la red mediante llamadas API web o [SignalR](xref:signalr/introduction) (<xref:tutorials/signalr-blazor-webassembly>).
+Cuando la aplicación Blazor WebAssembly se crea para su implementación sin una aplicación de back-end ASP.NET Core, se denomina aplicación Blazor WebAssembly *independiente*. Cuando la aplicación se crea para su implementación con una aplicación de back-end para dar servicio a sus archivos, la aplicación se denomina aplicación Blazor WebAssembly *hospedada*. Una aplicación Blazor WebAssembly hospedada suele interactuar con el servidor a través de la red mediante llamadas API web o [SignalR](xref:signalr/introduction) (<xref:tutorials/signalr-blazor>).
 
 El script `blazor.webassembly.js` lo proporciona el marco y controla:
 
@@ -160,5 +158,5 @@ Cuando se usa IIS, se habilitan sesiones temporales con el módulo *Enrutamiento
 
 * <xref:blazor/tooling>
 * <xref:signalr/introduction>
-* <xref:blazor/fundamentals/additional-scenarios>
-* <xref:tutorials/signalr-blazor-webassembly>
+* <xref:blazor/fundamentals/signalr>
+* <xref:tutorials/signalr-blazor>

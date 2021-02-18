@@ -5,7 +5,7 @@ description: Obtenga información sobre cómo usar la API de configuración para
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/24/2020
+ms.date: 1/29/2021
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/configuration/index
-ms.openlocfilehash: 62c9d1a58e0f771d91e2bc57f39ec5ebb25baaed
-ms.sourcegitcommit: 37186f76e4a50d7fb7389026dd0e5e234b51ebb2
+ms.openlocfilehash: 0f069b049889f7caade493e238ac7a23db5e79af
+ms.sourcegitcommit: a49c47d5a573379effee5c6b6e36f5c302aa756b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99541373"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100536329"
 ---
 # <a name="configuration-in-aspnet-core"></a>Configuración en ASP.NET Core
 
@@ -232,9 +232,30 @@ setx Logging__1__Name=ToConsole
 setx Logging__1__Level=Information
 ```
 
-### <a name="environment-variables-set-in-launchsettingsjson"></a>Variables de entorno configuradas en launchSettings.json
+### <a name="environment-variables-set-in-generated-launchsettingsjson"></a>Variables de entorno configuradas en el archivo launchSettings.json generado
 
-Las variables de entorno configuradas en *launchSettings.json* invalidan aquellas configuradas en el entorno del sistema.
+Las variables de entorno configuradas en *launchSettings.json* invalidan aquellas configuradas en el entorno del sistema. Por ejemplo, las plantillas web ASP.NET Core generan un archivo *launchSettings.json* que establece la configuración del punto de conexión en:
+
+```json
+"applicationUrl": "https://localhost:5001;http://localhost:5000"
+```
+
+Al configurar `applicationUrl`, se establece la variable de entorno `ASPNETCORE_URLS` y se invalidan los valores establecidos en el entorno.
+
+### <a name="escape-environment-variables-on-linux"></a>Variables de entorno de escape en Linux
+
+En Linux, el valor de las variables de entorno de URL debe ser de escape, para que `systemd` pueda analizarlas. Uso de la herramienta de Linux `systemd-escape` que produce `http:--localhost:5001`
+ 
+ ```cmd
+ groot@terminus:~$ systemd-escape http://localhost:5001
+ http:--localhost:5001
+ ```
+
+### <a name="display-environment-variables"></a>Visualización de las variables de entorno
+
+En el código siguiente se muestran las variables de entorno y los valores en el inicio de la aplicación, lo que puede resultar útil al depurar la configuración del entorno:
+
+[!code-csharp[](~/fundamentals/configuration/index/samples_snippets/5.x/Program.cs?name=snippet)]
 
 <a name="clcp"></a>
 
@@ -556,6 +577,38 @@ En el código anterior, `config.AddInMemoryCollection(Dict)` se agrega después 
 
 Consulte la sección [Enlace de matrices](#boa) para ver otro ejemplo que usa `MemoryConfigurationProvider`.
 
+::: moniker-end
+::: moniker range=">= aspnetcore-5.0"
+
+<a name="kestrel"></a>
+
+## <a name="kestrel-endpoint-configuration"></a>Configuración del punto de conexión de Kestrel
+
+La configuración del punto de conexión específico de Kestrel invalida todas las configuraciones del punto de conexión [entre servidores](xref:fundamentals/servers/index). Las configuraciones del punto de conexión entre servidores incluyen:
+
+  * [UseUrls](xref:fundamentals/host/web-host#server-urls)
+  * `--urls` en la [línea de comandos](xref:fundamentals/configuration/index#command-line)
+  * La [variable de entorno](xref:fundamentals/configuration/index#environment-variables) `ASPNETCORE_URLS`
+
+Tenga en cuenta el archivo siguiente *appsettings.json* usado en una aplicación web de ASP.NET Core:
+
+[!code-json[](~/fundamentals/configuration/index/samples_snippets/5.x/appsettings.json?highlight=2-8)]
+
+Cuando el marcado resaltado anterior se usa en una aplicación web de ASP.NET Core ***y*** la aplicación se inicia en la línea de comandos con la siguiente configuración del punto de conexión entre servidores:
+
+`dotnet run --urls="https://localhost:7777"`
+
+Kestrel se enlaza con el punto de conexión configurado específicamente para él en el archivo *appsettings.json* (`https://localhost:9999`) y no `https://localhost:7777`.
+
+Considere el punto de conexión específico de Kestrel configurado como una variable de entorno:
+
+`set Kestrel__Endpoints__Https__Url=https://localhost:8888`
+
+En la variable de entorno anterior, `Https` es el nombre del punto de conexión específico de Kestrel. En el archivo *appsettings.json* anterior también se define un punto de conexión específico de Kestrel denominado `Https`. De [manera predeterminada](#default-configuration), las variables de entorno que utilizan el [proveedor de configuración de variables de entorno](#evcp) se leen después de *appsettings.* `Environment` *.json*, por lo tanto, la variable de entorno anterior se usa para el punto de conexión `Https`.
+
+::: moniker-end
+::: moniker range=">= aspnetcore-3.0"
+
 ## <a name="getvalue"></a>GetValue
 
 [`ConfigurationBinder.GetValue<T>`](xref:Microsoft.Extensions.Configuration.ConfigurationBinder.GetValue*) extrae un único valor de la configuración con una clave determinada y lo convierte al tipo especificado:
@@ -773,7 +826,7 @@ Antes de configurar e iniciar la aplicación, se configura e inicia un *host*. E
 
 ## <a name="default-host-configuration"></a>Configuración predeterminada del host
 
-Para obtener más información sobre la configuración predeterminada al usar el [host de web](xref:fundamentals/host/web-host), vea la [versión de este tema para ASP.NET Core 2.2](?view=aspnetcore-2.2).
+Para obtener más información sobre la configuración predeterminada al usar el [host de web](xref:fundamentals/host/web-host), vea la [versión de este tema para ASP.NET Core 2.2](?view=aspnetcore-2.2&preserve-view=true).
 
 * La configuración del host la proporcionan los siguientes elementos:
   * Las variables de entorno con el prefijo `DOTNET_` (por ejemplo, `DOTNET_ENVIRONMENT`) mediante el [proveedor de configuración de variables de entorno](#environment-variables). El prefijo (`DOTNET_`) se quita cuando se cargan los pares clave-valor de configuración.

@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/progressive-web-app
-ms.openlocfilehash: fcf06295deb41f304b92caa82535a1197c909898
-ms.sourcegitcommit: 75db2f684a9302b0be7925eab586aa091c6bd19f
+ms.openlocfilehash: 515da543fc6b6cca0b90968b154d91b611ea3345
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99238236"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280545"
 ---
 # <a name="build-progressive-web-applications-with-aspnet-core-blazor-webassembly"></a>Creación de aplicaciones web progresivas con ASP.NET Core Blazor WebAssembly
-
-Por [Steve Sanderson](https://github.com/SteveSandersonMS)
 
 Una aplicación web progresiva suele ser una aplicación de página única que usa las API y funciones de exploradores modernos para comportarse como una aplicación de escritorio. Blazor WebAssembly es una plataforma de aplicaciones web del lado cliente basada en estándares, por lo que puede usar cualquier API de explorador, incluidas las de PWA necesarias para las siguientes funcionalidades:
 
@@ -406,4 +404,4 @@ La aplicación de ejemplo [`CarChecker`](https://github.com/SteveSandersonMS/Car
 ## <a name="additional-resources"></a>Recursos adicionales
 
 * [Script de PowerShell para solucionar problemas de integridad](xref:blazor/host-and-deploy/webassembly#troubleshoot-integrity-powershell-script)
-* [Negociación entre orígenes de SignalR para la autenticación](xref:blazor/fundamentals/additional-scenarios#signalr-cross-origin-negotiation-for-authentication)
+* [Negociación entre orígenes de SignalR para la autenticación](xref:blazor/fundamentals/signalr#signalr-cross-origin-negotiation-for-authentication)
