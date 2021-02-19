@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: fundamentals/app-state
 ms.openlocfilehash: c11b748f9d79235b14c9541019da6e1fb3428af6
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.sourcegitcommit: c1839f2992b003c92cd958244a2e0771ae928786
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/04/2021
+ms.lasthandoff: 02/05/2021
 ms.locfileid: "93051413"
 ---
 # <a name="session-and-state-management-in-aspnet-core"></a>Administración del estado y la sesión en ASP.NET Core
@@ -49,9 +49,9 @@ El estado se puede almacenar mediante varios enfoques. Cada enfoque se describe 
 | [HttpContext.Items](#httpcontextitems) | Código de aplicación del lado servidor |
 | [Caché](#cache) | Código de aplicación del lado servidor |
 
-## <a name="no-loccookies"></a>Cookies
+## <a name="cookies"></a>Cookies
 
-Las Cookies almacenan datos de todas las solicitudes. Dado que las cookies se envían con cada solicitud, su tamaño debe reducirse al mínimo. Lo ideal es que en cada cookie se almacene un solo identificador con los datos almacenados por la aplicación. La mayoría de los exploradores restringen el tamaño de las cookies a 4096 bytes. Solo hay disponible un número limitado de cookies para cada dominio.
+Las Cookies almacenan datos de todas las solicitudes. Dado que las cookies se envían con cada solicitud, su tamaño debe reducirse al mínimo. Lo ideal es que en cada cookie se almacene un solo identificador con los datos almacenados por la aplicación. La mayoría de los exploradores restringen el tamaño de las cookies a 4096 bytes. Solo hay disponible un número limitado de cookies para cada dominio.
 
 Como las cookies están expuestas a alteraciones, deben validarse por la aplicación. Los usuarios pueden eliminar las Cookies y estas pueden caducar en los clientes. Pero las cookies generalmente son la forma más duradera de persistencia de datos en el cliente.
 
@@ -288,7 +288,7 @@ El middleware de sesión puede no conservar una sesión si la memoria auxiliar n
 
 El enfoque recomendado para comprobar si hay errores es llamar a `await feature.Session.CommitAsync` cuando la aplicación haya terminado de escribir en la sesión. <xref:Microsoft.AspNetCore.Http.ISession.CommitAsync*> produce una excepción si la memoria auxiliar no está disponible. Si `CommitAsync` produce un error, la aplicación puede procesar la excepción. <xref:Microsoft.AspNetCore.Http.ISession.LoadAsync*> se produce en las mismas condiciones cuando el almacén de datos no está disponible.
   
-## <a name="no-locsignalr-and-session-state"></a>SignalR y estado de la sesión
+## <a name="signalr-and-session-state"></a>SignalR y estado de la sesión
 
 Las aplicaciones SignalR no deben usar el estado de sesión para almacenar información. Las aplicaciones SignalR pueden almacenarse por estado de conexión en `Context.Items` en el concentrador. <!-- https://github.com/aspnet/SignalR/issues/2139 -->
 
@@ -320,7 +320,7 @@ El estado se puede almacenar mediante varios enfoques. Cada enfoque se describe 
 | [Caché](#cache) | Código de aplicación del lado servidor |
 | [Inserción de dependencias](#dependency-injection) | Código de aplicación del lado servidor |
 
-## <a name="no-loccookies"></a>Cookies
+## <a name="cookies"></a>Cookies
 
 Las Cookies almacenan datos de todas las solicitudes. Dado que las cookies se envían con cada solicitud, su tamaño debe reducirse al mínimo. Lo ideal es que en cada cookie se almacene un solo identificador con los datos almacenados por la aplicación. La mayoría de los exploradores restringen el tamaño de las cookies a 4096 bytes. Solo hay disponible un número limitado de cookies para cada dominio.
 
@@ -599,7 +599,7 @@ Use [inserción de dependencias](xref:fundamentals/dependency-injection) para qu
 
   El enfoque recomendado para comprobar los errores es llamar a `await feature.Session.CommitAsync();` desde el código de la aplicación cuando esta haya terminado de escribir en la sesión. `CommitAsync` produce una excepción si la memoria auxiliar no está disponible. Si `CommitAsync` produce un error, la aplicación puede procesar la excepción. `LoadAsync` se produce en las mismas condiciones donde el almacén de datos no está disponible.
   
-## <a name="no-locsignalr-and-session-state"></a>SignalR y estado de la sesión
+## <a name="signalr-and-session-state"></a>SignalR y estado de la sesión
 
 Las aplicaciones SignalR no deben usar el estado de sesión para almacenar información. Las aplicaciones SignalR pueden almacenarse por estado de conexión en `Context.Items` en el concentrador. <!-- https://github.com/aspnet/SignalR/issues/2139 -->
 
