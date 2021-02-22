@@ -4,7 +4,7 @@ author: ardalis
 description: Descubra la manera en que ASP.NET Core es compatible con la interfaz web abierta para .NET (OWIN), que permite que las aplicaciones web se desacoplen de servidores web.
 ms.author: riande
 ms.custom: H1Hack27Feb2017
-ms.date: 12/18/2018
+ms.date: 2/8/2021
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -18,18 +18,23 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/owin
-ms.openlocfilehash: 6085abc45137223d7a676107cf06dc2cf97a5c19
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: c44803c6f67d8e03759a01f7aa71d82088be9a11
+ms.sourcegitcommit: ef8d8c79993a6608bf597ad036edcf30b231843f
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93060682"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99975279"
 ---
 # <a name="open-web-interface-for-net-owin-with-aspnet-core"></a>Interfaz web abierta para .NET (OWIN) con ASP.NET Core
 
 Por [Steve Smith](https://ardalis.com/) y [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-ASP.NET Core es compatible con la interfaz web abierta para .NET (OWIN). OWIN permite que las aplicaciones web se desacoplen de los servidores web. Define una manera estándar para usar software intermedio en una canalización a fin de controlar las solicitudes y las respuestas asociadas. El software intermedio y las aplicaciones de ASP.NET Core pueden interoperar con aplicaciones, servidores y software intermedio basados en OWIN.
+ASP.NET Core:
+
+* Es compatible con la interfaz web abierta para .NET (OWIN).
+* Tiene reemplazos compatibles con .NET Core para las bibliotecas `Microsoft.Owin.*` ([Katana](/aspnet/aspnet/overview/owin-and-katana/)).
+
+OWIN permite que las aplicaciones web se desacoplen de los servidores web. Define una manera estándar para usar software intermedio en una canalización a fin de controlar las solicitudes y las respuestas asociadas. El software intermedio y las aplicaciones de ASP.NET Core pueden interoperar con aplicaciones, servidores y software intermedio basados en OWIN.
 
 OWIN proporciona una capa de desacoplamiento que permite que dos marcos de trabajo con modelos de objetos dispares se usen juntos. El paquete `Microsoft.AspNetCore.Owin` proporciona dos implementaciones del adaptador:
 

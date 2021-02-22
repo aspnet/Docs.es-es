@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/webassembly
-ms.openlocfilehash: 2b464c2b6ca434ce4c3b559480da69945266ff69
-ms.sourcegitcommit: cb984e0d7dc23a88c3a4121f23acfaea0acbfe1e
+ms.openlocfilehash: 04eba2e004e920e9ca799b316781857f0b0b4ca3
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570978"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100279765"
 ---
-# <a name="host-and-deploy-aspnet-core-no-locblazor-webassembly"></a>Hospedaje e implementación de ASP.NET Core Blazor WebAssembly
-
-Por [Luke Latham](https://github.com/guardrex), [Rainer Stropek](https://www.timecockpit.com), [Daniel Roth](https://github.com/danroth27), [Ben Adams](https://twitter.com/ben_a_adams) y [Safia Abdalla](https://safia.rocks)
+# <a name="host-and-deploy-aspnet-core-blazor-webassembly"></a>Hospedaje e implementación de ASP.NET Core Blazor WebAssembly
 
 Con el [modelo de hospedaje de Blazor WebAssembly](xref:blazor/hosting-models#blazor-webassembly):
 
@@ -52,12 +50,15 @@ Blazor se basa en el host para proporcionar los archivos comprimidos adecuados. 
 * Para ver la configuración de compresión de `web.config` de IIS, vea la sección [IIS: compresión Brotli y Gzip](#brotli-and-gzip-compression). 
 * Al hospedar en soluciones de hospedaje estáticas que no admiten la negociación de contenido de archivos comprimidos estáticamente (como es el caso de las páginas de GitHub), considere la posibilidad de configurar la aplicación para capturar y descodificar archivos comprimidos Brotli:
 
-  * Obtenga el descodificador Brotli de JavaScript del [repositorio de GitHub google/brotli](https://github.com/google/brotli). El archivo del descodificador se llama `decode.min.js` y se encuentra en la [carpeta `js`](https://github.com/google/brotli/tree/master/js) del repositorio.
+  * Obtenga el descodificador Brotli de JavaScript del [repositorio de GitHub google/brotli](https://github.com/google/brotli). El archivo del descodificador se llama `decode.js` y se encuentra en la [carpeta `js`](https://github.com/google/brotli/tree/master/js) del repositorio.
+  
+    > [!NOTE]
+    > En la versión reducida del script `decode.js` (`decode.min.js`) en el [repositorio de GitHub google/brotli](https://github.com/google/brotli) se encuentra una regresión. Minimice el script por su cuenta (por ejemplo, vea el tema sobre la [Unión y minificación de BuildBundlerMinifier](xref:client-side/bundling-and-minification#configure-bundling-and-minification)) o use el [paquete NPM](https://www.npmjs.com/package/brotli) hasta que se resuelva el problema [TypeError en decode.min.js (google/brotli #881](https://github.com/google/brotli/issues/881)). En el código de ejemplo de esta sección se usa la versión **no reducida** del script.
 
   * Actualice la aplicación para que use el descodificador. Cambie el marcado de la etiqueta `<body>` de cierre en `wwwroot/index.html` por lo siguiente:
   
     ```html
-    <script src="decode.min.js"></script>
+    <script src="decode.js"></script>
     <script src="_framework/blazor.webassembly.js" autostart="false"></script>
     <script>
       Blazor.start({
@@ -128,7 +129,7 @@ Para obtener más información sobre la implementación y el hospedaje de aplica
 
 Para obtener información sobre cómo implementar en Azure App Service, vea <xref:tutorials/publish-to-azure-webapp-using-vs>.
 
-## <a name="hosted-deployment-with-multiple-no-locblazor-webassembly-apps"></a>Implementación hospedada con varias aplicaciones Blazor WebAssembly
+## <a name="hosted-deployment-with-multiple-blazor-webassembly-apps"></a>Implementación hospedada con varias aplicaciones Blazor WebAssembly
 
 ### <a name="app-configuration"></a>Configuración de la aplicación
 
@@ -315,7 +316,7 @@ Use los métodos siguientes para los recursos estáticos:
 Components provided to a client app by a class library are referenced normally. If any components require stylesheets or JavaScript files, use either of the following approaches to obtain the static assets:
 
 * The client app's `wwwroot/index.html` file can link (`<link>`) to the static assets.
-* The component can use the framework's [`Link` component](xref:blazor/fundamentals/additional-scenarios#influence-html-head-tag-elements) to obtain the static assets.
+* The component can use the framework's [`Link` component](xref:blazor/fundamentals/signalr#influence-html-head-tag-elements) to obtain the static assets.
 
 The preceding approaches are demonstrated in the following examples.
 
@@ -369,7 +370,7 @@ Agregue el siguiente componente `Jeep` a una de las aplicaciones cliente. El com
 
 ::: moniker range=">= aspnetcore-5.0"
 
-The library's `jeep-yj.png` image can also be added to the library's `Component1` component (`Component1.razor`). To provide the `my-component` CSS class to the client app's page, link to the library's stylesheet using the framework's [`Link` component](xref:blazor/fundamentals/additional-scenarios#influence-html-head-tag-elements):
+The library's `jeep-yj.png` image can also be added to the library's `Component1` component (`Component1.razor`). To provide the `my-component` CSS class to the client app's page, link to the library's stylesheet using the framework's [`Link` component](xref:blazor/fundamentals/signalr#influence-html-head-tag-elements):
 
 ```razor
 <div class="my-component">
@@ -387,7 +388,7 @@ The library's `jeep-yj.png` image can also be added to the library's `Component1
 </div>
 ```
 
-An alternative to using the [`Link` component](xref:blazor/fundamentals/additional-scenarios#influence-html-head-tag-elements) is to load the stylesheet from the client app's `wwwroot/index.html` file. This approach makes the stylesheet available to all of the components in the client app:
+An alternative to using the [`Link` component](xref:blazor/fundamentals/signalr#influence-html-head-tag-elements) is to load the stylesheet from the client app's `wwwroot/index.html` file. This approach makes the stylesheet available to all of the components in the client app:
 
 ```html
 <head>

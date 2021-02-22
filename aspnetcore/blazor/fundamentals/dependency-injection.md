@@ -20,14 +20,14 @@ no-loc:
 - SignalR
 uid: blazor/fundamentals/dependency-injection
 zone_pivot_groups: blazor-hosting-models
-ms.openlocfilehash: 3f2b4eff5422acbec80b2fd9b801101271cc3f75
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 30edffedf1faf96ed54d5380762c8558e478966c
+ms.sourcegitcommit: 04ad9cd26fcaa8bd11e261d3661f375f5f343cdc
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97808730"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100106926"
 ---
-# <a name="aspnet-core-no-locblazor-dependency-injection"></a>Inserción de dependencias de Blazor de ASP.NET Core
+# <a name="aspnet-core-blazor-dependency-injection"></a>Inserción de dependencias de Blazor de ASP.NET Core
 
 Por [Rainer Stropek](https://www.timecockpit.com) y [Mike Rousos](https://github.com/mjrousos)
 
@@ -119,7 +119,7 @@ En el ejemplo siguiente se muestra cómo utilizar [`@inject`](xref:mvc/views/raz
 
 [!code-razor[](dependency-injection/samples_snapshot/CustomerList.razor?highlight=2-3,20)]
 
-De forma interna, la propiedad generada (`DataRepository`) usa el atributo [`[Inject]`](xref:Microsoft.AspNetCore.Components.InjectAttribute). Normalmente, este atributo no se usa de manera directa. Si se necesita una clase base para los componentes y las propiedades insertadas también son necesarias para la clase base, agregue manualmente el atributo [`[Inject]`](xref:Microsoft.AspNetCore.Components.InjectAttribute):
+De forma interna, la propiedad generada (`DataRepository`) usa el [atributo `[Inject]`](xref:Microsoft.AspNetCore.Components.InjectAttribute). Normalmente, este atributo no se usa de manera directa. Si se necesita una clase base para los componentes y las propiedades insertadas también son necesarias para la clase base, agregue manualmente el [atributo `[Inject]`](xref:Microsoft.AspNetCore.Components.InjectAttribute):
 
 ```csharp
 using Microsoft.AspNetCore.Components;
@@ -144,7 +144,7 @@ En los componentes derivados de la clase base, la directiva [`@inject`](xref:mvc
 
 ## <a name="use-di-in-services"></a>Uso de la inserción de dependencias en servicios
 
-Es posible que los servicios complejos requieran servicios adicionales. En el ejemplo siguiente, `DataAccess` requiere el servicio predeterminado <xref:System.Net.Http.HttpClient>. [`@inject`](xref:mvc/views/razor#inject) (o el atributo [`[Inject]`](xref:Microsoft.AspNetCore.Components.InjectAttribute)) no está disponible para su uso en los servicios. En su lugar se debe usar la *inserción de constructores*. Los servicios necesarios se agregan mediante la adición de parámetros al constructor del servicio. Cuando la inserción de dependencias crea el servicio, reconoce los servicios que requiere en el constructor y los proporciona en consecuencia. En el ejemplo siguiente, el constructor recibe <xref:System.Net.Http.HttpClient> a través de DI. <xref:System.Net.Http.HttpClient> es un servicio predeterminado.
+Es posible que los servicios complejos requieran servicios adicionales. En el ejemplo siguiente, `DataAccess` requiere el servicio predeterminado <xref:System.Net.Http.HttpClient>. [`@inject`](xref:mvc/views/razor#inject) (o el [atributo `[Inject]`](xref:Microsoft.AspNetCore.Components.InjectAttribute)) no está disponible para su uso en los servicios. En su lugar se debe usar la *inserción de constructores*. Los servicios necesarios se agregan mediante la adición de parámetros al constructor del servicio. Cuando la inserción de dependencias crea el servicio, reconoce los servicios que requiere en el constructor y los proporciona en consecuencia. En el ejemplo siguiente, el constructor recibe <xref:System.Net.Http.HttpClient> a través de DI. <xref:System.Net.Http.HttpClient> es un servicio predeterminado.
 
 ```csharp
 using System.Net.Http;
@@ -180,7 +180,7 @@ Hay dos versiones del tipo <xref:Microsoft.AspNetCore.Components.OwningComponent
 
 * <xref:Microsoft.AspNetCore.Components.OwningComponentBase> es un elemento secundario abstracto y descartable del tipo <xref:Microsoft.AspNetCore.Components.ComponentBase> con una propiedad <xref:Microsoft.AspNetCore.Components.OwningComponentBase.ScopedServices> protegida de tipo <xref:System.IServiceProvider>. Este proveedor se puede usar para resolver los servicios cuyo ámbito es la duración del componente.
 
-  Los servicios de inserción de dependencias insertados en el componente mediante [`@inject`](xref:mvc/views/razor#inject) o el atributo[`[Inject]`](xref:Microsoft.AspNetCore.Components.InjectAttribute) no se crean en el ámbito del componente. Para usar el ámbito del componente, los servicios se deben resolver mediante <xref:Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService%2A> o <xref:System.IServiceProvider.GetService%2A>. Los servicios que se resuelvan mediante el proveedor de <xref:Microsoft.AspNetCore.Components.OwningComponentBase.ScopedServices> reciben sus dependencias desde ese mismo ámbito.
+  Los servicios de inserción de dependencias insertados en el componente mediante [`@inject`](xref:mvc/views/razor#inject) o el [atributo`[Inject]`](xref:Microsoft.AspNetCore.Components.InjectAttribute) no se crean en el ámbito del componente. Para usar el ámbito del componente, los servicios se deben resolver mediante <xref:Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService%2A> o <xref:System.IServiceProvider.GetService%2A>. Los servicios que se resuelvan mediante el proveedor de <xref:Microsoft.AspNetCore.Components.OwningComponentBase.ScopedServices> reciben sus dependencias desde ese mismo ámbito.
 
   [!code-razor[](dependency-injection/samples_snapshot/Preferences.razor?highlight=3,20-21)]
 

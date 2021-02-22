@@ -5,7 +5,7 @@ description: Obtenga información sobre las herramientas disponibles para compil
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/28/2020
+ms.date: 02/11/2021
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -20,16 +20,14 @@ no-loc:
 - SignalR
 uid: blazor/tooling
 zone_pivot_groups: operating-systems
-ms.openlocfilehash: 5901a1cb693dfe8e34e62ce2a28456bcf584221c
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: 6b61d9a4645d273b0c78fae0388d569771c43a2d
+ms.sourcegitcommit: a49c47d5a573379effee5c6b6e36f5c302aa756b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98252271"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100536251"
 ---
-# <a name="tooling-for-aspnet-core-no-locblazor"></a>Herramientas para ASP.NET Core Blazor
-
-Por [Daniel Roth](https://github.com/danroth27) y [Luke Latham](https://github.com/guardrex)
+# <a name="tooling-for-aspnet-core-blazor"></a>Herramientas para ASP.NET Core Blazor
 
 ::: zone pivot="windows"
 
@@ -50,6 +48,8 @@ Por [Daniel Roth](https://github.com/danroth27) y [Luke Latham](https://github.c
 1. Presione <kbd>Ctrl</kbd>+<kbd>F5</kbd> para ejecutar la aplicación.
 
 Para obtener más información sobre la confianza en el certificado de desarrollo de HTTPS, consulte <xref:security/enforcing-ssl#trust-the-aspnet-core-https-development-certificate-on-windows-and-macos>.
+
+Al ejecutar una aplicación hospedada Blazor WebAssembly, ejecute la aplicación desde el proyecto **`Server`** de la solución.
 
 ::: zone-end
 
@@ -72,11 +72,11 @@ Para obtener más información sobre la confianza en el certificado de desarroll
    ```
 
    En el caso de una experiencia de Blazor WebAssembly hospedada, agregue la opción hospedada (`-ho` o `--hosted`) al comando:
-   
+
    ```dotnetcli
    dotnet new blazorwasm -o WebApplication1 -ho
    ```
-   
+
    Para disfrutar de una experiencia de Blazor Server, ejecute el siguiente comando en un shell de comandos:
 
    ```dotnetcli
@@ -88,6 +88,57 @@ Para obtener más información sobre la confianza en el certificado de desarroll
 1. Abra la carpeta `WebApplication1` en Visual Studio Code.
 
 1. El IDE solicita que agregue recursos para compilar y depurar el proyecto. Seleccione **Sí**.
+
+   **Configuración de inicio y tarea de aplicación Blazor WebAssembly hospedada**
+
+   En el caso de las soluciones hospedadas de Blazor WebAssembly, agregue (o mueva) la carpeta `.vscode` con los archivos `launch.json` y `tasks.json` a la carpeta principal de la solución, que es la carpeta que contiene los nombres de carpeta de proyecto típicos de `Client`, `Server` y `Shared`. Actualice o confirme que la configuración de los archivos `launch.json` y `tasks.json` ejecuta una aplicación Blazor WebAssembly hospedada desde el proyecto **`Server`** .
+
+   **`.vscode/launch.json`** (configuración de `launch`):
+
+   ```json
+   ...
+   "cwd": "${workspaceFolder}/{SERVER APP FOLDER}",
+   ...
+   ```
+
+   En la configuración anterior para el directorio de trabajo actual (`cwd`), el marcador de posición `{SERVER APP FOLDER}` es la carpeta del proyecto **`Server`** , normalmente "`Server`".
+
+   Si se usa Microsoft Edge y Google Chrome no está instalado en el sistema, agregue una propiedad adicional de `"browser": "edge"` a la configuración.
+
+   Ejemplo de una carpeta de proyecto de `Server` que genera Microsoft Edge como explorador para las ejecuciones de depuración, en lugar del explorador predeterminado Google Chrome:
+
+   ```json
+   ...
+   "cwd": "${workspaceFolder}/Server",
+   "browser": "edge"
+   ...
+   ```
+
+   **`.vscode/tasks.json`** (argumentos del [comando `dotnet`](/dotnet/core/tools/dotnet)):
+
+   ```json
+   ...
+   "${workspaceFolder}/{SERVER APP FOLDER}/{PROJECT NAME}.csproj",
+   ...
+   ```
+
+   En el argumento anterior:
+
+   * El marcador de posición `{SERVER APP FOLDER}` es la carpeta del proyecto **`Server`** , normalmente "`Server`".
+   * El marcador de posición `{PROJECT NAME}` es el nombre de la aplicación, normalmente basado en el nombre de la solución seguido de "`.Server`" en una aplicación generada a partir de la plantilla de proyecto Blazor.
+
+   En el ejemplo siguiente del [tutorial para usar SignalR con una aplicación Blazor WebAssembly](xref:tutorials/signalr-blazor), se usa un nombre de carpeta de proyecto `Server` y un nombre de proyecto `BlazorWebAssemblySignalRApp.Server`:
+
+   ```json
+   ...
+   "args": [
+     "build",
+       "${workspaceFolder}/Server/BlazorWebAssemblySignalRApp.Server.csproj",
+       "/property:GenerateFullPaths=true",
+       "/consoleloggerparameters:NoSummary"
+   ],
+   ...
+   ```
 
 1. Presione <kbd>Ctrl</kbd>+<kbd>F5</kbd> para ejecutar la aplicación.
 
@@ -125,13 +176,15 @@ Para más información, consulte las instrucciones proporcionadas por el fabrica
 
 Si aparece un mensaje para que confíe en el certificado de desarrollo, hágalo y continúe. Las contraseñas de usuario y de cadena de claves son necesarias para confiar en el certificado. Para obtener más información sobre la confianza en el certificado de desarrollo de HTTPS, consulte <xref:security/enforcing-ssl#trust-the-aspnet-core-https-development-certificate-on-windows-and-macos>.
 
+Al ejecutar una aplicación hospedada Blazor WebAssembly, ejecute la aplicación desde el proyecto **`Server`** de la solución.
+
 ::: zone-end
 
-## <a name="use-visual-studio-code-for-cross-platform-no-locblazor-development"></a>Uso de Visual Studio Code para el desarrollo multiplataforma de Blazor
+## <a name="use-visual-studio-code-for-cross-platform-blazor-development"></a>Uso de Visual Studio Code para el desarrollo multiplataforma de Blazor
 
 [Visual Studio Code](https://code.visualstudio.com/) es un entorno de desarrollo integrado (IDE) multiplataforma de código abierto que se puede usar para desarrollar aplicaciones Blazor. Use la CLI de .NET para crear una aplicación Blazor para su desarrollo con Visual Studio Code. Para obtener más información, consulte la versión [Linux de este artículo](?pivots=linux).
 
-## <a name="no-locblazor-template-options"></a>Opciones de plantilla de Blazor
+## <a name="blazor-template-options"></a>Opciones de plantilla de Blazor
 
 El marco de Blazor proporciona plantillas para la creación de aplicaciones para cada uno de los dos modelos de hospedaje de Blazor. Las plantillas se usan para crear soluciones y proyectos de Blazor independientemente de las herramientas que seleccione para el desarrollo de Blazor (Visual Studio, Visual Studio para Mac, Visual Studio Code o la CLI de .NET):
 

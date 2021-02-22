@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/virtualization
-ms.openlocfilehash: 72b33bc3c2861380551915b1e8caab49122e8fab
-ms.sourcegitcommit: e311cfb77f26a0a23681019bd334929d1aaeda20
+ms.openlocfilehash: d9fc767a4b5160c616053b075ba92194bcffa275
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99529922"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280022"
 ---
 # <a name="aspnet-core-blazor-component-virtualization"></a>Virtualización de componentes de ASP.NET Core Blazor
-
-Por [Daniel Roth](https://github.com/danroth27)
 
 Mejore el rendimiento percibido de la representación de componentes usando la compatibilidad de virtualización integrada del marco Blazor. La virtualización es una técnica para limitar la representación de la interfaz de usuario a únicamente las partes visibles actualmente. Por ejemplo, la virtualización es útil cuando la aplicación debe representar una lista larga de elementos y solo es necesario que haya un subconjunto de elementos visible en un momento dado. Blazor proporciona el [componente `Virtualize`](xref:Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize%601), que se puede usar para agregar virtualización a los componentes de una aplicación.
 
@@ -156,6 +154,8 @@ El alto de cada elemento en píxeles se puede establecer con <xref:Microsoft.Asp
     ...
 </Virtualize>
 ```
+
+De forma predeterminada, el componente `Virtualize` mide el tamaño de representación real *después* de que se produzca la inicial. Use <xref:Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize%601.ItemSize%2A> para proporcionar de antemano un tamaño de elemento exacto, con el fin de permitir un rendimiento de representación inicial preciso y garantizar la posición de desplazamiento correcta para las recargas de páginas. Si el valor predeterminado de <xref:Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize%601.ItemSize%2A> hace que algunos elementos se representen fuera de la vista actualmente visible, se desencadena una segunda representación. Para mantener correctamente la posición de desplazamiento del explorador en una lista virtualizada, la representación inicial debe ser correcta. De lo contrario, los usuarios podrían ver elementos incorrectos. 
 
 ## <a name="overscan-count"></a>Recuento de sobrebarridos
 

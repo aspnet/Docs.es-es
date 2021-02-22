@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/call-dotnet-from-javascript
-ms.openlocfilehash: e602f29e6932280f4625ade64201ff232e02150d
-ms.sourcegitcommit: 610936e4d3507f7f3d467ed7859ab9354ec158ba
+ms.openlocfilehash: 45ddcc9e006df2c5e86a7859efc76882b269a496
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98751634"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280395"
 ---
 # <a name="call-net-methods-from-javascript-functions-in-aspnet-core-blazor"></a>Llamada a métodos de .NET desde funciones de JavaScript en ASP.NET Core Blazor
-
-Por [Javier Calvarro Nelson](https://github.com/javiercn), [Daniel Roth](https://github.com/danroth27), [Shashikant Rudrawadi](http://wisne.co) y [Luke Latham](https://github.com/guardrex)
 
 Una aplicación de Blazor puede invocar funciones de JavaScript desde métodos de .NET y viceversa. Estos escenarios se denominan *interoperabilidad de JavaScript* (o *interoperabilidad de JS*).
 
@@ -41,9 +39,9 @@ En este artículo se describe cómo invocar métodos de .NET desde JavaScript. P
 
 ## <a name="static-net-method-call"></a>Llamada al método estático de .NET
 
-Para invocar un método de .NET estático desde JavaScript, use las funciones `DotNet.invokeMethod` o `DotNet.invokeMethodAsync`. Pase el identificador del método estático al que quiere llamar, el nombre del ensamblado que contiene la función, y los argumentos. La versión asincrónica es preferible para admitir escenarios de Blazor Server. El método de .NET debe ser público y estático y debe tener el atributo [`[JSInvokable]`](xref:Microsoft.JSInterop.JSInvokableAttribute). Actualmente no se admite la llamada a métodos genéricos abiertos.
+Para invocar un método de .NET estático desde JavaScript, use las funciones `DotNet.invokeMethod` o `DotNet.invokeMethodAsync`. Pase el identificador del método estático al que quiere llamar, el nombre del ensamblado que contiene la función, y los argumentos. La versión asincrónica es preferible para admitir escenarios de Blazor Server. El método de .NET debe ser público y estático, y debe tener el [atributo `[JSInvokable]`](xref:Microsoft.JSInterop.JSInvokableAttribute). Actualmente no se admite la llamada a métodos genéricos abiertos.
 
-La aplicación de ejemplo incluye un método de C# para devolver una matriz `int`. El atributo [`[JSInvokable]`](xref:Microsoft.JSInterop.JSInvokableAttribute) se aplica al método.
+La aplicación de ejemplo incluye un método de C# para devolver una matriz `int`. El [atributo `[JSInvokable]`](xref:Microsoft.JSInterop.JSInvokableAttribute) se aplica al método.
 
 `Pages/JsInterop.razor`:
 
@@ -78,7 +76,7 @@ Array(4) [ 1, 2, 3, 4 ]
 
 El cuarto valor de matriz se inserta en la matriz (`data.push(4);`) devuelta por `ReturnArrayAsync`.
 
-De forma predeterminada, el identificador del método es su nombre, pero puede especificar un identificador diferente mediante el constructor de atributo [`[JSInvokable]`](xref:Microsoft.JSInterop.JSInvokableAttribute):
+De forma predeterminada, el identificador del método es su nombre, pero puede especificar un identificador diferente mediante el constructor del [atributo `[JSInvokable]`](xref:Microsoft.JSInterop.JSInvokableAttribute):
 
 ```csharp
 @code {

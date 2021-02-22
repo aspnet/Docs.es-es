@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/hosted-with-identity-server
-ms.openlocfilehash: d35dd0acf626a6305f00e295e7918c82c7d6a912
-ms.sourcegitcommit: cc405f20537484744423ddaf87bd1e7d82b6bdf0
+ms.openlocfilehash: c74711c10fe399718600f879c3d9151bfb1abd42
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98658708"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100281001"
 ---
 # <a name="secure-an-aspnet-core-blazor-webassembly-hosted-app-with-identity-server"></a>Protección de una aplicación hospedada Blazor WebAssembly de ASP.NET Core con Identity Server
-
-Por [Javier Calvarro Nelson](https://github.com/javiercn) y [Luke Latham](https://github.com/guardrex)
 
 En este artículo se explica cómo crear una [aplicación Blazor WebAssembly hospedada](xref:blazor/hosting-models#blazor-webassembly) que usa [IdentityServer](https://identityserver.io/) para autenticar usuarios y llamadas API.
 
@@ -126,7 +124,6 @@ La clase `Startup` tiene las siguientes adiciones.
   * El middleware Authorization habilita capacidades de autorización:
 
     ```csharp
-    app.UseAuthentication();
     app.UseAuthorization();
     ```
 
@@ -147,7 +144,7 @@ El método auxiliar <xref:Microsoft.AspNetCore.Authentication.AuthenticationBuil
 
 ### <a name="weatherforecastcontroller"></a>WeatherForecastController
 
-En `WeatherForecastController` (`Controllers/WeatherForecastController.cs`), el atributo [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) se aplica a la clase. Este atributo señala que, para acceder al recurso, el usuario debe estar autorizado en función de la directiva predeterminada. La directiva de autorización predeterminada está configurada para usar el esquema de autenticación predeterminado, que <xref:Microsoft.AspNetCore.Authentication.AuthenticationBuilderExtensions.AddIdentityServerJwt%2A> configura. El método auxiliar configura <xref:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler> como el controlador predeterminado de las solicitudes a la aplicación.
+En `WeatherForecastController` (`Controllers/WeatherForecastController.cs`), el [atributo `[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) se aplica a la clase. Este atributo señala que, para acceder al recurso, el usuario debe estar autorizado en función de la directiva predeterminada. La directiva de autorización predeterminada está configurada para usar el esquema de autenticación predeterminado, que <xref:Microsoft.AspNetCore.Authentication.AuthenticationBuilderExtensions.AddIdentityServerJwt%2A> configura. El método auxiliar configura <xref:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler> como el controlador predeterminado de las solicitudes a la aplicación.
 
 ### <a name="applicationdbcontext"></a>ApplicationDbContext
 

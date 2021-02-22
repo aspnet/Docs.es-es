@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/lifecycle
-ms.openlocfilehash: 3591ba18351b89e2d5dfaef796777273c97ce98b
-ms.sourcegitcommit: 610936e4d3507f7f3d467ed7859ab9354ec158ba
+ms.openlocfilehash: 03a49c827a1f70e6b721adf293857bb33475ed36
+ms.sourcegitcommit: 04ad9cd26fcaa8bd11e261d3661f375f5f343cdc
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98751615"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100107082"
 ---
 # <a name="aspnet-core-blazor-lifecycle"></a>Ciclo de vida de ASP.NET Core Blazor
-
-Por [Luke Latham](https://github.com/guardrex) y [Daniel Roth](https://github.com/danroth27)
 
 El marco de Blazor incluye métodos de ciclo de vida sincrónicos y asincrónicos. Invalide los métodos de ciclo de vida para realizar operaciones adicionales en los componentes durante la inicialización y representación de componentes.
 
@@ -70,7 +68,9 @@ Las llamadas del desarrollador a [`StateHasChanged`](#state-changes) producen un
 
 <xref:Microsoft.AspNetCore.Components.ComponentBase.SetParametersAsync%2A> establece los parámetros que proporciona el elemento primario del componente en el árbol de representación o a partir de los parámetros de ruta. Al invalidar el método, el código de desarrollador puede interactuar directamente con los parámetros de <xref:Microsoft.AspNetCore.Components.ParameterView>.
 
-En el ejemplo siguiente, <xref:Microsoft.AspNetCore.Components.ParameterView.TryGetValue%2A?displayProperty=nameWithType> asigna el valor del parámetro `Param` a `value` si el análisis de un parámetro de ruta para `Param` se realiza correctamente. Cuando `value` no es `null`, el componente `SetParametersAsyncExample` muestra el valor.
+En el ejemplo siguiente, <xref:Microsoft.AspNetCore.Components.ParameterView.TryGetValue%2A?displayProperty=nameWithType> asigna el valor del parámetro `Param` a `value` si el análisis de un parámetro de ruta para `Param` se realiza correctamente. Cuando `value` no es `null`, el componente muestra el valor.
+
+Aunque [la coincidencia de parámetros de ruta no distingue entre mayúsculas y minúsculas](xref:blazor/fundamentals/routing#route-parameters), <xref:Microsoft.AspNetCore.Components.ParameterView.TryGetValue%2A> solo coincide con los nombres de parámetro que sí lo hacen en la plantilla de ruta. En el ejemplo siguiente es necesario usar `/{Param?}`, no `/{param?}`, para obtener el valor. Si se usa `/{param?}` en este escenario, <xref:Microsoft.AspNetCore.Components.ParameterView.TryGetValue%2A> devuelve `false` y no se establece `message` en ninguna cadena.
 
 `Pages/SetParametersAsyncExample.razor`:
 
@@ -91,11 +91,14 @@ En el ejemplo siguiente, <xref:Microsoft.AspNetCore.Components.ParameterView.Try
     {
         if (parameters.TryGetValue<string>(nameof(Param), out var value))
         {
-            message = $"The value of 'Param' is {value}.";
-        }
-        else 
-        {
-            message = "The value of 'Param' is null.";
+            if (value is null)
+            {
+                message = "The value of 'Param' is null.";
+            }
+            else
+            {
+                message = $"The value of 'Param' is {value}.";
+            }
         }
 
         await base.SetParametersAsync(parameters);
@@ -105,7 +108,7 @@ En el ejemplo siguiente, <xref:Microsoft.AspNetCore.Components.ParameterView.Try
 
 <xref:Microsoft.AspNetCore.Components.ParameterView> contiene el conjunto de valores de parámetros del componente cada vez que se llama a <xref:Microsoft.AspNetCore.Components.ComponentBase.SetParametersAsync%2A>.
 
-La implementación predeterminada de <xref:Microsoft.AspNetCore.Components.ComponentBase.SetParametersAsync%2A> establece el valor de cada propiedad con el atributo [`[Parameter]`](xref:Microsoft.AspNetCore.Components.ParameterAttribute) o [`[CascadingParameter]`](xref:Microsoft.AspNetCore.Components.CascadingParameterAttribute), que tiene un valor correspondiente en <xref:Microsoft.AspNetCore.Components.ParameterView>. Los parámetros que no tienen un valor correspondiente en <xref:Microsoft.AspNetCore.Components.ParameterView> se dejan sin cambios.
+La implementación predeterminada de <xref:Microsoft.AspNetCore.Components.ComponentBase.SetParametersAsync%2A> establece el valor de cada propiedad con el [atributo `[Parameter]`](xref:Microsoft.AspNetCore.Components.ParameterAttribute) o [`[CascadingParameter]`](xref:Microsoft.AspNetCore.Components.CascadingParameterAttribute), que tiene un valor correspondiente en <xref:Microsoft.AspNetCore.Components.ParameterView>. Los parámetros que no tienen un valor correspondiente en <xref:Microsoft.AspNetCore.Components.ParameterView> se dejan sin cambios.
 
 Si no se invoca [`base.SetParametersAsync`](xref:Microsoft.AspNetCore.Components.ComponentBase.SetParametersAsync%2A), el código personalizado puede interpretar el valor de los parámetros entrantes de cualquier manera que sea necesaria. Por ejemplo, no hay ningún requisito para asignar los parámetros entrantes a las propiedades de la clase.
 
@@ -135,7 +138,7 @@ protected override async Task OnInitializedAsync()
 }
 ```
 
-Las aplicaciones Blazor Server que [representan previamente su contenido](xref:blazor/fundamentals/additional-scenarios#render-mode) llaman a <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A> *dos veces*:
+Las aplicaciones Blazor Server que [representan previamente su contenido](xref:blazor/fundamentals/signalr#render-mode) llaman a <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A> *dos veces*:
 
 * Una primera vez cuando el componente se representa inicialmente de forma estática como parte de la página.
 * Una segunda vez cuando el explorador establece una conexión de vuelta al servidor.
@@ -314,7 +317,7 @@ public class WeatherForecastService
 }
 ```
 
-Para obtener más información sobre <xref:Microsoft.AspNetCore.Mvc.TagHelpers.ComponentTagHelper.RenderMode>, vea <xref:blazor/fundamentals/additional-scenarios#render-mode>.
+Para obtener más información sobre <xref:Microsoft.AspNetCore.Mvc.TagHelpers.ComponentTagHelper.RenderMode>, vea <xref:blazor/fundamentals/signalr#render-mode>.
 
 ## <a name="detect-when-the-app-is-prerendering"></a>Detección de cuándo se está obteniendo una representación previa de la aplicación
 
@@ -338,7 +341,45 @@ Si un componente implementa <xref:System.IDisposable>, el marco llama al [métod
 }
 ```
 
-En el caso de las tareas de eliminación asincrónica, use `DisposeAsync` en lugar de `Dispose` en el ejemplo anterior:
+Si un objeto requiere la eliminación, se puede usar una expresión lambda para eliminar el objeto cuando se llama a <xref:System.IDisposable.Dispose%2A?displayProperty=nameWithType>:
+
+`Pages/CounterWithTimerDisposal.razor`:
+
+```razor
+@page "/counter-with-timer-disposal"
+@using System.Timers
+@implements IDisposable
+
+<h1>Counter with <code>Timer</code> disposal</h1>
+
+<p>Current count: @currentCount</p>
+
+@code {
+    private int currentCount = 0;
+    private Timer timer = new Timer(1000);
+
+    protected override void OnInitialized()
+    {
+        timer.Elapsed += (sender, eventArgs) => OnTimerCallback();
+        timer.Start();
+    }
+
+    private void OnTimerCallback()
+    {
+        _ = InvokeAsync(() =>
+        {
+            currentCount++;
+            StateHasChanged();
+        });
+    }
+
+    public void IDisposable.Dispose() => timer.Dispose();
+}
+```
+
+El ejemplo anterior aparece en <xref:blazor/components/rendering#receiving-a-call-from-something-external-to-the-blazor-rendering-and-event-handling-system>.
+
+En el caso de las tareas de eliminación asincrónica, use `DisposeAsync` en lugar de <xref:System.IDisposable.Dispose>:
 
 ```csharp
 public async ValueTask DisposeAsync()
@@ -350,7 +391,7 @@ public async ValueTask DisposeAsync()
 > [!NOTE]
 > No se admite la llamada a <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> en `Dispose`. <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> se puede invocar como parte de la desactivación del representador, por lo que no se admite la solicitud de actualizaciones de la interfaz de usuario en ese momento.
 
-Cancele la suscripción de los controladores de eventos de .NET. En los ejemplos de [formulario de Blazor](xref:blazor/forms-validation) siguientes se muestra cómo desenlazar un controlador de eventos en el método `Dispose`:
+Cancele la suscripción de los controladores de eventos de .NET. En los ejemplos de [formulario de Blazor](xref:blazor/forms-validation) siguientes se muestra cómo cancelar la suscripción de un controlador de eventos en el método `Dispose`:
 
 * Enfoque de campo privado y expresión lambda
 
@@ -359,7 +400,47 @@ Cancele la suscripción de los controladores de eventos de .NET. En los ejemplos
 * Enfoque de método privado
 
   [!code-razor[](lifecycle/samples_snapshot/event-handler-disposal-2.razor?highlight=16,26)]
-  
+
+Cuando se usan métodos, expresiones o funciones de tipo [anónimo](/dotnet/csharp/programming-guide/statements-expressions-operators/anonymous-functions), no es necesario implementar <xref:System.IDisposable> y cancelar la suscripción de los delegados. Pero el hecho de no cancelar la suscripción de un delegado es un problema **cuando el objeto que expone el evento supera la duración del componente que registra el delegado**. Si esto ocurre, se produce una pérdida de memoria porque el delegado registrado mantiene activo el objeto original. Por lo tanto, use solo los siguientes enfoques cuando sepa que el delegado de eventos se elimina rápidamente. En caso de duda sobre la duración de los objetos que requieren la eliminación, suscríbase a un método de delegado y elimine correctamente el delegado como se muestra en los ejemplos anteriores.
+
+* Enfoque de método lambda anónimo (no se requiere eliminación explícita)
+
+  ```csharp
+  private void HandleFieldChanged(object sender, FieldChangedEventArgs e)
+  {
+      formInvalid = !editContext.Validate();
+      StateHasChanged();
+  }
+
+  protected override void OnInitialized()
+  {
+      editContext = new EditContext(starship);
+      editContext.OnFieldChanged += (s, e) => HandleFieldChanged((editContext)s, e);
+  }
+  ```
+
+* Enfoque de expresión lambda anónima (no se requiere eliminación explícita)
+
+  ```csharp
+  private ValidationMessageStore messageStore;
+
+  [CascadingParameter]
+  private EditContext CurrentEditContext { get; set; }
+
+  protected override void OnInitialized()
+  {
+      ...
+
+      messageStore = new ValidationMessageStore(CurrentEditContext);
+
+      CurrentEditContext.OnValidationRequested += (s, e) => messageStore.Clear();
+      CurrentEditContext.OnFieldChanged += (s, e) => 
+          messageStore.Clear(e.FieldIdentifier);
+  }
+  ```
+
+  El ejemplo completo del código anterior con expresiones lambda anónimas aparece en <xref:blazor/forms-validation#validator-components>.
+
 Para obtener más información, vea [Limpiar recursos no administrados](/dotnet/standard/garbage-collection/unmanaged) y los temas siguientes sobre la implementación de los métodos `Dispose` y `DisposeAsync`.
 
 ## <a name="cancelable-background-work"></a>Trabajo en segundo plano cancelable
@@ -434,4 +515,4 @@ En el ejemplo siguiente:
 
 ## <a name="blazor-server-reconnection-events"></a>Eventos de reconexión de Blazor Server
 
-Los eventos de ciclo de vida de componentes que se tratan en este artículo funcionan independientemente de los [controladores de eventos de reconexión de Blazor Server](xref:blazor/fundamentals/additional-scenarios#reflect-the-connection-state-in-the-ui). Cuando una aplicación Blazor Server pierde su conexión SignalR con el cliente, solo se interrumpen las actualizaciones de la interfaz de usuario. Dichas actualizaciones se reanudan cuando se restablece la conexión. Para obtener más información sobre los eventos de controlador de circuito y su configuración, vea <xref:blazor/fundamentals/additional-scenarios>.
+Los eventos de ciclo de vida de componentes que se tratan en este artículo funcionan independientemente de los [controladores de eventos de reconexión de Blazor Server](xref:blazor/fundamentals/signalr#reflect-the-connection-state-in-the-ui). Cuando una aplicación Blazor Server pierde su conexión SignalR con el cliente, solo se interrumpen las actualizaciones de la interfaz de usuario. Dichas actualizaciones se reanudan cuando se restablece la conexión. Para obtener más información sobre los eventos de controlador de circuito y su configuración, vea <xref:blazor/fundamentals/signalr>.

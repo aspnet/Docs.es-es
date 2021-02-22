@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/debug
-ms.openlocfilehash: 5bdfcc5660b4c897d3552d4cf25e43dade71541c
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: 9214fa10a2bf7d53a4cb12263a3fa69bded84b29
+ms.sourcegitcommit: a49c47d5a573379effee5c6b6e36f5c302aa756b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98252518"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100536238"
 ---
-# <a name="debug-aspnet-core-no-locblazor-webassembly"></a>Depuración de Blazor WebAssembly en ASP.NET Core
-
-[Daniel Roth](https://github.com/danroth27)
+# <a name="debug-aspnet-core-blazor-webassembly"></a>Depuración de Blazor WebAssembly en ASP.NET Core
 
 Las aplicaciones Blazor WebAssembly se pueden depurar con las herramientas de desarrollo del explorador en exploradores basados en Chromium (Edge/Chrome). También puede depurar la aplicación con los siguientes entornos de desarrollo integrado (IDE):
 
@@ -164,6 +162,8 @@ Para obtener información sobre el uso de una ruta de acceso base de la aplicaci
 
 <h2 id="vscode">Depuración de una aplicación independiente Blazor WebAssembly</h2>
 
+Para obtener información sobre cómo configurar recursos de VS Code en la carpeta `.vscode`, consulte la guía del sistema operativo **Linux** en <xref:blazor/tooling>.
+
 1. Abra la aplicación independiente Blazor WebAssembly en VS Code.
 
    Puede recibir una notificación que indica que se requiere más información para habilitar la depuración:
@@ -192,13 +192,15 @@ Para obtener información sobre el uso de una ruta de acceso base de la aplicaci
 > [!NOTE]
 > Los puntos de interrupción **no** se alcanzan durante el inicio de la aplicación antes de que se ejecute el proxy de depuración. Esto incluye los puntos de interrupción de `Program.Main` (`Program.cs`) y los de los [métodos `OnInitialized{Async}`](xref:blazor/components/lifecycle#component-initialization-methods) de los componentes que se cargan en la primera página solicitada desde la aplicación.
 
-## <a name="debug-hosted-no-locblazor-webassembly"></a>Depuración de una aplicación hospedada Blazor WebAssembly
+## <a name="debug-hosted-blazor-webassembly"></a>Depuración de una aplicación hospedada Blazor WebAssembly
 
 1. Abra la carpeta de la solución de la aplicación Blazor WebAssembly hospedada en VS Code.
 
 1. Si no hay ninguna configuración de inicio establecida para el proyecto, aparece la notificación siguiente. Seleccione **Sí**.
 
    > Faltan los recursos necesarios para compilar y depurar desde "{NOMBRE DE LA APLICACIÓN}". Add them?"
+
+   Para obtener información sobre cómo configurar recursos de VS Code en la carpeta `.vscode`, consulte la guía del sistema operativo **Linux** en <xref:blazor/tooling>.
 
 1. En la paleta de comandos de la parte superior de la ventana, seleccione el proyecto *Server* en la solución hospedada.
 
@@ -238,7 +240,7 @@ Estas opciones de configuración de inicio son compatibles con el tipo de depura
 
 ## <a name="example-launch-configurations"></a>Configuraciones de inicio de ejemplo
 
-### <a name="launch-and-debug-a-standalone-no-locblazor-webassembly-app"></a>Inicio y depuración de una aplicación independiente Blazor WebAssembly
+### <a name="launch-and-debug-a-standalone-blazor-webassembly-app"></a>Inicio y depuración de una aplicación independiente Blazor WebAssembly
 
 ```json
 {
@@ -259,7 +261,7 @@ Estas opciones de configuración de inicio son compatibles con el tipo de depura
 }
 ```
 
-### <a name="launch-and-debug-a-hosted-no-locblazor-webassembly-app-with-microsoft-edge"></a>Inicio y depuración de una aplicación Blazor WebAssembly hospedada con Microsoft Edge
+### <a name="launch-and-debug-a-hosted-blazor-webassembly-app-with-microsoft-edge"></a>Inicio y depuración de una aplicación Blazor WebAssembly hospedada con Microsoft Edge
 
 La configuración predeterminada del explorador es Google Chrome. Al usar Microsoft Edge para la depuración, establezca `browser` en `edge`. Para usar Google Chrome, no establezca la opción `browser` ni establezca el valor de la opción en `chrome`.
 

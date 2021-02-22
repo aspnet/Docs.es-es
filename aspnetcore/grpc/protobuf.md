@@ -4,7 +4,7 @@ author: jamesnk
 description: Obtenga información sobre cómo crear mensajes de Protobuf para aplicaciones .NET.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
-ms.date: 08/23/2020
+ms.date: 02/12/2021
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/protobuf
-ms.openlocfilehash: b70a5ee00405eecfce900b86dc631a54682dce1a
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: adb048c9b20e172ef8a7bc13f9b56928b1d4bf77
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93058901"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280285"
 ---
 # <a name="create-protobuf-messages-for-net-apps"></a>Creación de mensajes de Protobuf para aplicaciones .NET
 
@@ -48,6 +48,8 @@ message Person {
 ```
 
 La definición de mensaje anterior especifica tres campos como pares de nombre-valor. Al igual que las propiedades de los tipos .NET, cada campo tiene un nombre y un tipo. El tipo del campo puede ser un [tipo de valor escalar de Protobuf](#scalar-value-types), por ejemplo, `int32` u otro mensaje.
+
+En la [Guía de estilo de Protobuf](https://developers.google.com/protocol-buffers/docs/style) se recomienda usar `underscore_separated_names` para los nombres de campo. Los nuevos mensajes de Protobuf creados para aplicaciones .NET deben seguir las directrices de estilo de Protobuf. Las herramientas de .NET generan automáticamente tipos de .NET que usan los estándares de nomenclatura de .NET. Por ejemplo, un campo `first_name` de Protobuf genera una propiedad `FirstName` de .NET.
 
 Además de un nombre, cada campo de la definición del mensaje tiene un número único. Los números del campo se utilizan para identificar los campos cuando el mensaje se serializa en Protobuf. Serializar un número pequeño es más rápido que serializar todo el nombre del campo. Dado que los números del campo identifican un campo, es importante tener cuidado al cambiarlos. Para obtener más información sobre cómo cambiar los mensajes de Protobuf, vea <xref:grpc/versioning>.
 

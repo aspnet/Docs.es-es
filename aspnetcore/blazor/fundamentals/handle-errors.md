@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/handle-errors
-ms.openlocfilehash: 5a255c2d3535311cecd6b7219447e80d1ae78877
-ms.sourcegitcommit: d4836f9b7c508f51c6c4ee6d0cc719b38c1729c4
+ms.openlocfilehash: c1f859e0113d5bff65c7075ad1eb03088429174e
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98758256"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100279970"
 ---
 # <a name="handle-errors-in-aspnet-core-blazor-apps"></a>Control de errores en aplicaciones Blazor de ASP.NET Core
-
-Por [Steve Sanderson](https://github.com/SteveSandersonMS)
 
 En este artículo se describe cómo Blazor administra las excepciones no controladas y cómo desarrollar aplicaciones que detecten y controlen los errores.
 
@@ -173,7 +171,7 @@ Las excepciones no controladas anteriores se describen en las siguientes seccion
 Cuando Blazor crea una instancia de un componente:
 
 * Se invoca el constructor del componente.
-* Se invocan los constructores de cualquier servicio de inserción de dependencias que no sea singleton proporcionado al constructor del componente a través de la directiva [`@inject`](xref:mvc/views/razor#inject) o el atributo [`[Inject]`](xref:blazor/fundamentals/dependency-injection#request-a-service-in-a-component).
+* Se invocan los constructores de cualquier servicio de inserción de dependencias que no sea singleton proporcionado al constructor del componente a través de la directiva [`@inject`](xref:mvc/views/razor#inject) o el [atributo `[Inject]`](xref:blazor/fundamentals/dependency-injection#request-a-service-in-a-component).
 
 Se produce un error en un circuito de Blazor Server cuando cualquier constructor ejecutado o un establecedor de cualquier propiedad `[Inject]` inicia una excepción no controlada. La excepción es grave porque el marco no puede crear una instancia del componente. Si la lógica del constructor puede iniciar excepciones, la aplicación debe interceptarlas mediante una instrucción [`try-catch`](/dotnet/csharp/language-reference/keywords/try-catch) con control de errores y registro.
 
@@ -242,7 +240,7 @@ Se aplican las condiciones siguientes al control de errores con <xref:Microsoft.
 * Si se produce un error en una llamada a <xref:Microsoft.JSInterop.IJSRuntime.InvokeAsync%2A> de forma asincrónica, se produce un error en el objeto <xref:System.Threading.Tasks.Task> de .NET. Se puede producir un error en una llamada a <xref:Microsoft.JSInterop.IJSRuntime.InvokeAsync%2A>, por ejemplo, porque el código de JavaScript inicia una excepción o devuelve un objeto `Promise` que se ha completado como `rejected`. El código del desarrollador debe detectar la excepción. Si usa el operador [`await`](/dotnet/csharp/language-reference/keywords/await), considere la posibilidad de encapsular la llamada de método en una instrucción [`try-catch`](/dotnet/csharp/language-reference/keywords/try-catch) con control de errores y registro. De lo contrario, el código con error provoca una excepción no controlada que es grave para un circuito de Blazor Server.
 * De forma predeterminada, las llamadas a <xref:Microsoft.JSInterop.IJSRuntime.InvokeAsync%2A> se deben completar en un período determinado o, de lo contrario, se agota el tiempo de espera de la llamada. El período de tiempo de expiración predeterminado es de un minuto. El tiempo de expiración protege al código de una pérdida en la conectividad de red o de código JavaScript que nunca devuelve un mensaje de finalización. Si se agota el tiempo de espera de la llamada, se produce un error en el objeto <xref:System.Threading.Tasks> resultante con una excepción <xref:System.OperationCanceledException>. Capture y procese la excepción con el registro.
 
-Del mismo modo, el código de JavaScript puede iniciar llamadas a métodos de .NET indicados por el atributo [`[JSInvokable]`](xref:blazor/call-dotnet-from-javascript). Si estos métodos de .NET inician una excepción no controlada:
+Del mismo modo, el código de JavaScript puede iniciar llamadas a métodos de .NET indicados por el [atributo `[JSInvokable]`](xref:blazor/call-dotnet-from-javascript). Si estos métodos de .NET inician una excepción no controlada:
 
 * La excepción no se trata como grave para un circuito de Blazor Server.
 * Se rechaza el objeto `Promise` del lado de JavaScript.

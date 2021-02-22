@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/server/threat-mitigation
-ms.openlocfilehash: 4256e90ca5f185992a73d1e43460ca5d27159d6f
-ms.sourcegitcommit: d4836f9b7c508f51c6c4ee6d0cc719b38c1729c4
+ms.openlocfilehash: 524a1f85838d083ed2f01afd96601bcd5e6ce12b
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98758273"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280977"
 ---
 # <a name="threat-mitigation-guidance-for-aspnet-core-blazor-server"></a>Guía de mitigación de amenazas para ASP.NET Core Blazor Server
-
-Por [Javier Calvarro Nelson](https://github.com/javiercn)
 
 Las aplicaciones Blazor Server adoptan un modelo de procesamiento de datos *con estado*, donde el servidor y el cliente mantienen una relación de larga duración. El estado persistente se mantiene mediante un [circuito](xref:blazor/state-management), el cual puede abarcar conexiones que también son potencialmente de larga duración.
 
@@ -108,20 +106,18 @@ De forma predeterminada, no hay ningún límite en cuanto al número de conexion
 
 ## <a name="denial-of-service-dos-attacks"></a>Ataques por denegación de servicio (DoS)
 
-Los ataques por denegación de servicio (DoS) se producen cuando un cliente provoca que el servidor agote uno o más de sus recursos, lo que hace que la aplicación no esté disponible. Las aplicaciones Blazor Server incluyen algunos límites predeterminados y dependen de otros límites de ASP.NET Core y SignalR para ofrecer protección contra los ataques DoS que se establecen en <xref:Microsoft.AspNetCore.Components.Server.CircuitOptions>.
+Los ataques por denegación de servicio (DoS) se producen cuando un cliente provoca que el servidor agote uno o más de sus recursos, lo que hace que la aplicación no esté disponible. Las aplicaciones Blazor Server incluyen límites predeterminados y dependen de otros límites de ASP.NET Core y SignalR para ofrecer protección contra los ataques DoS que se establecen en <xref:Microsoft.AspNetCore.Components.Server.CircuitOptions>:
 
-| Límite de aplicaciones Blazor Server | Descripción | Default |
-| --- | --- | --- |
-| <xref:Microsoft.AspNetCore.Components.Server.CircuitOptions.DisconnectedCircuitMaxRetained> | Número máximo de circuitos desconectados que contiene a la vez un servidor determinado en la memoria. | 100 |
-| <xref:Microsoft.AspNetCore.Components.Server.CircuitOptions.DisconnectedCircuitRetentionPeriod> | Cantidad máxima de tiempo que un circuito desconectado se conserva en la memoria antes de desactivarlo. | 3 minutos |
-| <xref:Microsoft.AspNetCore.Components.Server.CircuitOptions.JSInteropDefaultCallTimeout> | Cantidad máxima de tiempo que el servidor aguarda antes de agotar el tiempo de espera de invocación de una función de JavaScript asincrónica. | 1 minuto |
-| <xref:Microsoft.AspNetCore.Components.Server.CircuitOptions.MaxBufferedUnacknowledgedRenderBatches> | Número máximo de lotes de representación no confirmados por circuito que el servidor mantiene en la memoria en un momento dado para admitir una reconexión sólida. Después de alcanzar el límite, el servidor deja de generar nuevos lotes de representación hasta que el cliente confirma uno o varios lotes. | 10 |
+* <xref:Microsoft.AspNetCore.Components.Server.CircuitOptions.DisconnectedCircuitMaxRetained?displayProperty=nameWithType>
+* <xref:Microsoft.AspNetCore.Components.Server.CircuitOptions.DisconnectedCircuitRetentionPeriod?displayProperty=nameWithType>
+* <xref:Microsoft.AspNetCore.Components.Server.CircuitOptions.JSInteropDefaultCallTimeout?displayProperty=nameWithType>
+* <xref:Microsoft.AspNetCore.Components.Server.CircuitOptions.MaxBufferedUnacknowledgedRenderBatches?displayProperty=nameWithType>
+* <xref:Microsoft.AspNetCore.SignalR.HubConnectionContextOptions.MaximumReceiveMessageSize?displayProperty=nameWithType>
 
-Establezca el tamaño máximo del mensaje para un solo mensaje entrante del centro de conectividad con <xref:Microsoft.AspNetCore.SignalR.HubConnectionContextOptions>.
+Para obtener más información y ejemplos de codificación de configuración, vea los artículos siguientes:
 
-| Límite de SignalR y ASP.NET Core | Descripción | Default |
-| --- | --- | --- |
-| <xref:Microsoft.AspNetCore.SignalR.HubConnectionContextOptions.MaximumReceiveMessageSize?displayProperty=nameWithType> | Tamaño del mensaje para un mensaje individual. | 32 KB |
+* <xref:blazor/fundamentals/signalr>
+* <xref:signalr/configuration>
 
 ## <a name="interactions-with-the-browser-client"></a>Interacciones con el explorador (cliente)
 

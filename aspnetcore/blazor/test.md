@@ -19,16 +19,16 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/test
-ms.openlocfilehash: cd4aee66fd6df6cc0ce520d8ca66e0a2cf130eff
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 67ebfcd322ae08acf2fddae9bd6101f13fa77e7e
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93054871"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280705"
 ---
-# <a name="test-components-in-aspnet-core-no-locblazor"></a>Prueba de componentes en Blazor de ASP.NET Core
+# <a name="test-components-in-aspnet-core-blazor"></a>Prueba de componentes en Blazor de ASP.NET Core
 
-[Egil Hansen](https://egilhansen.com/)
+Por [Egil Hansen](https://egilhansen.com/)
 
 Las pruebas son un aspecto importante de la creación de software estable y fácil de mantener.
 

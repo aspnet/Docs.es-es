@@ -4,7 +4,7 @@ author: rick-anderson
 description: Aprenda a crear de una API web con ASP.NET Core.
 ms.author: riande
 ms.custom: mvc, devx-track-js
-ms.date: 08/13/2020
+ms.date: 02/04/2021
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,12 +19,12 @@ no-loc:
 - SignalR
 - Models
 uid: tutorials/first-web-api
-ms.openlocfilehash: ccbfc27eb89e23938a69f0ab4cb306d6a4136889
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 1f7c7db857090ff0a174d37b86e1265bab40b4fd
+ms.sourcegitcommit: f77a7467651bab61b24261da9dc5c1dd75fc1fa9
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "96175057"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100564078"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>Tutorial: Creación de una API web con ASP.NET Core
 
@@ -51,7 +51,7 @@ En este tutorial se crea la siguiente API:
 
 |API | Descripción | Cuerpo de la solicitud | Cuerpo de la respuesta |
 |--- | ---- | ---- | ---- |
-|`GET /api/TodoItems` | Obtener todas las tareas pendientes | Ninguna | Matriz de tareas pendientes|
+|`GET /api/TodoItems` | Obtener todas las tareas pendientes | None | Matriz de tareas pendientes|
 |`GET /api/TodoItems/{id}` | Obtener un elemento por identificador | None | Tarea pendiente|
 |`POST /api/TodoItems` | Incorporación de un nuevo elemento | Tarea pendiente | Tarea pendiente |
 |`PUT /api/TodoItems/{id}` | Actualizar un elemento existente &nbsp; | Tarea pendiente | None |
@@ -97,7 +97,6 @@ En el diagrama siguiente, se muestra el diseño de la aplicación.
    ```dotnetcli
    dotnet new webapi -o TodoApi
    cd TodoApi
-   dotnet add package Microsoft.EntityFrameworkCore.SqlServer
    dotnet add package Microsoft.EntityFrameworkCore.InMemory
    code -r ../TodoApi
    ```
@@ -127,10 +126,9 @@ En el diagrama siguiente, se muestra el diseño de la aplicación.
 
 [!INCLUDE[](~/includes/mac-terminal-access.md)]
 
-Abra un terminal de comandos en la carpeta del proyecto y ejecute los comandos siguientes:
+Abra un terminal de comandos en la carpeta del proyecto y ejecute el comando siguiente:
 
    ```dotnetcli
-   dotnet add package Microsoft.EntityFrameworkCore.SqlServer
    dotnet add package Microsoft.EntityFrameworkCore.InMemory
    ```
 
@@ -270,14 +268,11 @@ El *contexto de base de datos* es la clase principal que coordina la funcionalid
 ### <a name="add-nuget-packages"></a>Adición de paquetes NuGet
 
 * En el menú **Herramientas**, seleccione **Administrador de paquetes NuGet > Administrar paquetes NuGet para la solución**.
-* Seleccione la pestaña **Examinar** y escriba **Microsoft.EntityFrameworkCore.SqlServer** en el cuadro de búsqueda.
-<!-- https://github.com/dotnet/AspNetCore.Docs/issues/19782 Delete this line at RTM -->
-* Seleccione **Microsoft.EntityFrameworkCore.SqlServer** en el panel izquierdo.
+* Seleccione la pestaña **Examinar** y escriba **Microsoft.EntityFrameworkCore.InMemory** en el cuadro de búsqueda.
+* Seleccione **Microsoft.EntityFrameworkCore.InMemory** en el panel izquierdo.
 * Active la casilla **Proyecto** en el panel derecho y, después, seleccione **Instalar**.
-* Use las instrucciones anteriores para agregar el paquete NuGet **Microsoft.EntityFrameworkCore.InMemory**.
 
-<!-- https://github.com/dotnet/AspNetCore.Docs/issues/19782 Update this image at RTM -->
-![Administrador de paquetes NuGet](first-web-api/_static/5/vsNuGet.png)
+![Administrador de paquetes de NuGet](first-web-api/_static/5/vsNuGet.png)
 
 ## <a name="add-the-todocontext-database-context"></a>Adición del contexto de la base de datos TodoContext
 
@@ -355,7 +350,7 @@ Si el token `[action]` no está en la plantilla de ruta, el nombre de la [acció
 
 ## <a name="update-the-posttodoitem-create-method"></a>Actualización del método create de PostTodoItem
 
-Reemplace la instrucción return en `PostTodoItem` para usar el operador [nameof](/dotnet/csharp/language-reference/operators/nameof):
+Actualice la instrucción "return" en `PostTodoItem` para usar el operador [nameof](/dotnet/csharp/language-reference/operators/nameof):
 
 [!code-csharp[](first-web-api/samples/5.x/TodoApi/Controllers/TodoItemsController.cs?name=snippet_Create)]
 
@@ -621,7 +616,6 @@ En el diagrama siguiente, se muestra el diseño de la aplicación.
    ```dotnetcli
    dotnet new webapi -o TodoApi
    cd TodoApi
-   dotnet add package Microsoft.EntityFrameworkCore.SqlServer
    dotnet add package Microsoft.EntityFrameworkCore.InMemory
    code -r ../TodoApi
    ```
@@ -651,10 +645,9 @@ En el diagrama siguiente, se muestra el diseño de la aplicación.
 
 [!INCLUDE[](~/includes/mac-terminal-access.md)]
 
-Abra un terminal de comandos en la carpeta del proyecto y ejecute los comandos siguientes:
+Abra un terminal de comandos en la carpeta del proyecto y ejecute el comando siguiente:
 
    ```dotnetcli
-   dotnet add package Microsoft.EntityFrameworkCore.SqlServer
    dotnet add package Microsoft.EntityFrameworkCore.InMemory
    ```
 
@@ -764,10 +757,9 @@ El *contexto de base de datos* es la clase principal que coordina la funcionalid
 ### <a name="add-nuget-packages"></a>Adición de paquetes NuGet
 
 * En el menú **Herramientas**, seleccione **Administrador de paquetes NuGet > Administrar paquetes NuGet para la solución**.
-* Seleccione la pestaña **Examinar** y escriba **Microsoft.EntityFrameworkCore.SqlServer** en el cuadro de búsqueda.
-* Seleccione **Microsoft.EntityFrameworkCore.SqlServer** en el panel izquierdo.
+* Seleccione la pestaña **Examinar** y escriba **Microsoft.EntityFrameworkCore.InMemory** en el cuadro de búsqueda.
+* Seleccione **Microsoft.EntityFrameworkCore.InMemory** en el panel izquierdo.
 * Active la casilla **Proyecto** en el panel derecho y, después, seleccione **Instalar**.
-* Use las instrucciones anteriores para agregar el paquete NuGet **Microsoft.EntityFrameworkCore.InMemory**.
 
 ![Administrador de paquetes de NuGet](first-web-api/_static/vs3NuGet.png)
 

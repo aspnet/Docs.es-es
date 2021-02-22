@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/forms-validation
-ms.openlocfilehash: 1287ab5ce61e58848329c96393c3ee8c37610245
-ms.sourcegitcommit: cc405f20537484744423ddaf87bd1e7d82b6bdf0
+ms.openlocfilehash: 012c8794b3d239ce93ac942000c7ec4f71d06cbf
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98658695"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280010"
 ---
-# <a name="aspnet-core-no-locblazor-forms-and-validation"></a>Formularios y validación de Blazor de ASP.NET Core
-
-Por [Daniel Roth](https://github.com/danroth27), [Rémi Bourgarel](https://remibou.github.io/) y [Luke Latham](https://github.com/guardrex)
+# <a name="aspnet-core-blazor-forms-and-validation"></a>Formularios y validación de Blazor de ASP.NET Core
 
 Blazor admite los formularios y la validación a través de [anotaciones de datos](xref:mvc/models/validation).
 
@@ -380,6 +378,9 @@ public class CustomValidator : ComponentBase
     }
 }
 ```
+
+> [!NOTE]
+> Las expresiones lambda anónimas son controladores de eventos registrados para <xref:Microsoft.AspNetCore.Components.Forms.EditContext.OnValidationRequested> y <xref:Microsoft.AspNetCore.Components.Forms.EditContext.OnFieldChanged> en el ejemplo anterior. No es necesario implementar <xref:System.IDisposable> y cancelar la suscripción de los delegados de eventos en este escenario. Para obtener más información, vea <xref:blazor/components/lifecycle#component-disposal-with-idisposable>.
 
 ## <a name="business-logic-validation"></a>Validación de la lógica de negocios
 
@@ -1052,7 +1053,7 @@ private class MyFieldClassProvider : FieldCssClassProvider
 
 ::: moniker-end
 
-### <a name="no-locblazor-data-annotations-validation-package"></a>Paquete de validación de anotaciones de datos de Blazor
+### <a name="blazor-data-annotations-validation-package"></a>Paquete de validación de anotaciones de datos de Blazor
 
 [`Microsoft.AspNetCore.Components.DataAnnotations.Validation`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.DataAnnotations.Validation) es un paquete que llena los huecos de experiencia de validación mediante el componente <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator>. Actualmente, el paquete está en fase *experimental*.
 
@@ -1063,7 +1064,7 @@ private class MyFieldClassProvider : FieldCssClassProvider
 
 ### <a name="compareproperty-attribute"></a>Atributo `[CompareProperty]`
 
-<xref:System.ComponentModel.DataAnnotations.CompareAttribute> no funciona bien con el componente <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> porque no asocia el resultado de la validación a un miembro específico. Esto puede generar un comportamiento incoherente entre la validación de nivel de campo y el momento en que el modelo completo se valida al enviarse. El paquete *experimental* [`Microsoft.AspNetCore.Components.DataAnnotations.Validation`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.DataAnnotations.Validation) incluye un atributo de validación más, `ComparePropertyAttribute`, que pone fin a estas limitaciones. En una aplicación Blazor, `[CompareProperty]` es un reemplazo directo del atributo [`[Compare]`](xref:System.ComponentModel.DataAnnotations.CompareAttribute).
+<xref:System.ComponentModel.DataAnnotations.CompareAttribute> no funciona bien con el componente <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> porque no asocia el resultado de la validación a un miembro específico. Esto puede generar un comportamiento incoherente entre la validación de nivel de campo y el momento en que el modelo completo se valida al enviarse. El paquete *experimental* [`Microsoft.AspNetCore.Components.DataAnnotations.Validation`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.DataAnnotations.Validation) incluye un atributo de validación más, `ComparePropertyAttribute`, que pone fin a estas limitaciones. En una aplicación Blazor, `[CompareProperty]` es un reemplazo directo del [atributo `[Compare]`](xref:System.ComponentModel.DataAnnotations.CompareAttribute).
 
 ::: moniker-end
 
@@ -1124,7 +1125,7 @@ Para habilitar el botón Enviar según la validación del formulario:
 
 * Use el elemento <xref:Microsoft.AspNetCore.Components.Forms.EditContext> del formulario para asignar el modelo cuando el componente se inicialice.
 * Valide el formulario en la devolución de llamada <xref:Microsoft.AspNetCore.Components.Forms.EditContext.OnFieldChanged> del contexto para habilitar y deshabilitar el botón Enviar.
-* Desenlace el controlador de eventos en el método `Dispose`. Para obtener más información, vea <xref:blazor/components/lifecycle#component-disposal-with-idisposable>.
+* Implemente <xref:System.IDisposable> y cancele la suscripción del controlador de eventos en el método `Dispose`. Para obtener más información, vea <xref:blazor/components/lifecycle#component-disposal-with-idisposable>.
 
 > [!NOTE]
 > Cuando use un objeto <xref:Microsoft.AspNetCore.Components.Forms.EditContext>, no asigne también una instancia de <xref:Microsoft.AspNetCore.Components.Forms.EditForm.Model> al objeto <xref:Microsoft.AspNetCore.Components.Forms.EditForm>.

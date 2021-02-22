@@ -5,7 +5,7 @@ description: Obtenga información sobre cómo proteger una aplicación independi
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/27/2020
+ms.date: 02/10/2021
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,20 +19,18 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/standalone-with-authentication-library
-ms.openlocfilehash: 3da9ea045de996602ead052f6f13ffc999273a50
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: a198606caf55232c221f1d1f1224918d3f87f04c
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98252492"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280887"
 ---
-# <a name="secure-an-aspnet-core-no-locblazor-webassembly-standalone-app-with-the-authentication-library"></a>Protección de una aplicación independiente Blazor WebAssembly de ASP.NET Core con la biblioteca de autenticación
-
-Por [Javier Calvarro Nelson](https://github.com/javiercn) y [Luke Latham](https://github.com/guardrex)
+# <a name="secure-an-aspnet-core-blazor-webassembly-standalone-app-with-the-authentication-library"></a>Protección de una aplicación independiente Blazor WebAssembly de ASP.NET Core con la biblioteca de autenticación
 
 *No siga las instrucciones de este tema con Azure Active Directory (AAD) ni Azure Active Directory B2C (AAD B2C). Vea los temas relativos a AAD y AAD B2C del índice.*
 
-Para crear una [aplicación Blazor WebAssembly independiente](xref:blazor/hosting-models#blazor-webassembly) que use la biblioteca [`Microsoft.AspNetCore.Components.WebAssembly.Authentication`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication), siga las instrucciones para sus herramientas elegidas.
+Para crear una [aplicación Blazor WebAssembly independiente](xref:blazor/hosting-models#blazor-webassembly) que use la biblioteca [`Microsoft.AspNetCore.Components.WebAssembly.Authentication`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication), siga las instrucciones para sus herramientas elegidas. Si va a agregar compatibilidad con la autenticación, consulte las siguientes secciones de este artículo para obtener instrucciones sobre cómo instalar y configurar la aplicación.
 
 > [!NOTE]
 > El proveedor (IP) Identity debe usar [OpenID Connect (OIDC)](https://openid.net/connect/). Por ejemplo, la dirección IP de Facebook no es un proveedor compatible con OIDC, por lo que las instrucciones de este tema no funcionan con la dirección IP de Facebook. Para obtener más información, vea <xref:blazor/security/webassembly/index#authentication-library>.
@@ -43,11 +41,11 @@ Para crear un nuevo proyecto de Blazor WebAssembly con un mecanismo de autentica
 
 1. Después de elegir la plantilla de aplicación de **Blazor WebAssembly** en el cuadro de diálogo **Crear una aplicación web ASP.NET Core**, seleccione **Cambiar** en **Autenticación**.
 
-1. Seleccione **Cuentas de usuario individuales** con la opción **Almacenar cuentas de usuario en aplicación** para almacenar usuarios dentro de la aplicación mediante el sistema [Identity](xref:security/authentication/identity) de ASP.NET Core.
+1. Seleccione **Cuentas de usuario individuales** con la opción **Almacenar cuentas de usuario en aplicación** para usar el sistema [Identity](xref:security/authentication/identity) de ASP.NET Core. Esta selección agrega compatibilidad con la autenticación y no conlleva el almacenamiento de usuarios en una base de datos. En las siguientes secciones de este artículo se proporcionan más detalles.
 
 # <a name="visual-studio-code--net-core-cli"></a>[Visual Studio Code y CLI de .NET Core](#tab/visual-studio-code+netcore-cli)
 
-Cree un nuevo proyecto de Blazor WebAssembly con un mecanismo de autenticación en una carpeta vacía. Especifique el mecanismo de autenticación `Individual` con la opción `-au|--auth` para almacenar usuarios dentro de la aplicación mediante el sistema [Identity](xref:security/authentication/identity) de ASP.NET Core:
+Cree un nuevo proyecto de Blazor WebAssembly con un mecanismo de autenticación en una carpeta vacía. Especifique el mecanismo de autenticación `Individual` con la opción `-au|--auth` para usar el sistema [Identity](xref:security/authentication/identity) de ASP.NET Core. Esta selección agrega compatibilidad con la autenticación y no conlleva el almacenamiento de usuarios en una base de datos. En las siguientes secciones de este artículo se proporcionan más detalles.
 
 ```dotnetcli
 dotnet new blazorwasm -au Individual -o {APP NAME}
@@ -67,7 +65,7 @@ Para crear un nuevo proyecto de Blazor WebAssembly con un mecanismo de autentica
 
 1. En el paso **Configure your new Blazor WebAssembly App** (Configurar la nueva aplicación de Blazor Server), seleccione **Individual Authentication (in-app)** (Autenticación individual [en aplicación]) en la lista desplegable **Authentication** (Autenticación).
 
-1. La aplicación se crea para usuarios individuales almacenados en la aplicación con ASP.NET Core [Identity](xref:security/authentication/identity).
+1. La aplicación se crea para usar [Identity](xref:security/authentication/identity) de ASP.NET Core y no conlleva el almacenamiento de usuarios en una base de datos. En las siguientes secciones de este artículo se proporcionan más detalles.
 
 ---
 
@@ -88,6 +86,8 @@ En el caso del marcador de posición `{VERSION}`, la versión estable más recie
 ## <a name="authentication-service-support"></a>Compatibilidad con el servicio de autenticación
 
 La compatibilidad para autenticar usuarios se registra en el contenedor de servicios con el método de extensión <xref:Microsoft.Extensions.DependencyInjection.WebAssemblyAuthenticationServiceCollectionExtensions.AddOidcAuthentication%2A> proporcionado por el paquete [`Microsoft.AspNetCore.Components.WebAssembly.Authentication`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication). Este método configura los servicios necesarios para que la aplicación interactúe con el proveedor de Identity.
+
+Para una nueva aplicación, proporcione valores para los marcadores de posición `{AUTHORITY}` y `{CLIENT ID}` en la siguiente configuración. Proporcione otros valores de configuración que sean necesarios para su uso con la dirección IP de la aplicación. El ejemplo es para Google, que requiere `PostLogoutRedirectUri`, `RedirectUri` y `ResponseType`. Si incluye autenticación en una aplicación, agregue manualmente el código y la configuración siguientes a la aplicación con valores para los marcadores de posición y otros valores de configuración.
 
 `Program.cs`:
 
@@ -131,7 +131,9 @@ La compatibilidad con la autenticación de aplicaciones independientes se ofrece
 
 La plantilla Blazor WebAssembly configura automáticamente los ámbitos predeterminados para `openid` y `profile`.
 
-La plantilla de Blazor WebAssembly no configura la aplicación automáticamente para solicitar un token de acceso relativo a una API segura. Para aprovisionar un token de acceso como parte del flujo de inicio de sesión, agregue el ámbito a los ámbitos de token predeterminados de <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.OidcProviderOptions>:
+La plantilla de Blazor WebAssembly no configura la aplicación automáticamente para solicitar un token de acceso relativo a una API segura. Para aprovisionar un token de acceso como parte del flujo de inicio de sesión, agregue el ámbito a los ámbitos de token predeterminados de <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.OidcProviderOptions>. Si incluye autenticación en una aplicación, agregue manualmente el código siguiente y configure el URI de ámbito.
+
+`Program.cs`:
 
 ```csharp
 builder.Services.AddOidcAuthentication(options =>
