@@ -1,7 +1,27 @@
+---
+no-loc:
+- appsettings.json
+- ASP.NET Core Identity
+- cookie
+- Cookie
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+ms.openlocfilehash: 4f143476d2f850371bea6c9c652d977c0f46b700
+ms.sourcegitcommit: a49c47d5a573379effee5c6b6e36f5c302aa756b
+ms.translationtype: HT
+ms.contentlocale: es-ES
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100552157"
+---
 > [!IMPORTANT]
-> <span data-ttu-id="0374a-101">**Versiones preliminares de ASP.NET Core con Azure App Service**</span><span class="sxs-lookup"><span data-stu-id="0374a-101">**ASP.NET Core preview releases with Azure App Service**</span></span>
+> <span data-ttu-id="a157a-101">**Versiones preliminares de ASP.NET Core con Azure App Service**</span><span class="sxs-lookup"><span data-stu-id="a157a-101">**ASP.NET Core preview releases with Azure App Service**</span></span>
 >
-> <span data-ttu-id="0374a-102">Las versiones preliminares de ASP.NET Core no se implementan de forma predeterminada en Azure App Service.</span><span class="sxs-lookup"><span data-stu-id="0374a-102">ASP.NET Core preview releases aren't deployed to Azure App Service by default.</span></span> <span data-ttu-id="0374a-103">Para hospedar una aplicación que usa una versión preliminar de ASP.NET Core, vea [Implementar una versión preliminar de ASP.NET Core en Azure App Service](xref:host-and-deploy/azure-apps/index#deploy-aspnet-core-preview-release-to-azure-app-service).</span><span class="sxs-lookup"><span data-stu-id="0374a-103">To host an app that uses an ASP.NET Core preview release, see [Deploy ASP.NET Core preview release to Azure App Service](xref:host-and-deploy/azure-apps/index#deploy-aspnet-core-preview-release-to-azure-app-service).</span></span>
+> <span data-ttu-id="a157a-102">Las versiones preliminares de ASP.NET Core no se implementan de forma predeterminada en Azure App Service.</span><span class="sxs-lookup"><span data-stu-id="a157a-102">ASP.NET Core preview releases aren't deployed to Azure App Service by default.</span></span> <span data-ttu-id="a157a-103">Para hospedar una aplicación que usa una versión preliminar de ASP.NET Core, vea [Implementar una versión preliminar de ASP.NET Core en Azure App Service](xref:host-and-deploy/azure-apps/index#deploy-aspnet-core-preview-release-to-azure-app-service).</span><span class="sxs-lookup"><span data-stu-id="a157a-103">To host an app that uses an ASP.NET Core preview release, see [Deploy ASP.NET Core preview release to Azure App Service](xref:host-and-deploy/azure-apps/index#deploy-aspnet-core-preview-release-to-azure-app-service).</span></span>
 <!-- 
 > [!IMPORTANT]
 > **ASP.NET Core 3.0 with Azure App Service**
