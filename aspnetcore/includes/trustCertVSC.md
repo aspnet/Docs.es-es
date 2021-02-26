@@ -1,3 +1,23 @@
+---
+no-loc:
+- appsettings.json
+- ASP.NET Core Identity
+- cookie
+- Cookie
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+ms.openlocfilehash: df4a9a7db8097ea765b2d0f404305b771f994ddf
+ms.sourcegitcommit: a49c47d5a573379effee5c6b6e36f5c302aa756b
+ms.translationtype: HT
+ms.contentlocale: es-ES
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100552567"
+---
 * Para confiar en el certificado de desarrollo de HTTPS, ejecute el comando siguiente:
 
   ```dotnetcli

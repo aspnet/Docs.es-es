@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/build-a-blazor-app
-ms.openlocfilehash: 939841ca7214e212a2f197ea1e00b0f6152c471e
-ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
+ms.openlocfilehash: d984023a1c46c5383d47a1634c54e61747b83d60
+ms.sourcegitcommit: 422e8444b9f5cedc373be5efe8032822db54fcaf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 02/12/2021
-ms.locfileid: "100280515"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101101215"
 ---
 # <a name="build-a-blazor-todo-list-app"></a>Creación de una aplicación de lista de tareas pendientes Blazor
 
@@ -117,7 +117,7 @@ Al final de este tutorial, tendrá una aplicación de lista de tareas funcional.
 
    Guarde el archivo `Shared/NavMenu.razor`.
 
-1. Compile y ejecute la aplicación mediante el comando [`dotnet watch run`](/aspnet/core/tutorials/dotnet-watch) en el shell de comandos desde la carpeta `TodoList`. Cuando la aplicación se ejecute, visite la nueva página de tareas pendientes seleccionando el vínculo **`Todo`** en la barra de navegación de la aplicación, que carga la página en `/todo`.
+1. Compile y ejecute la aplicación mediante el comando [`dotnet watch run`](xref:tutorials/dotnet-watch) en el shell de comandos desde la carpeta `TodoList`. Cuando la aplicación se ejecute, visite la nueva página de tareas pendientes seleccionando el vínculo **`Todo`** en la barra de navegación de la aplicación, que carga la página en `/todo`.
 
    Deje la aplicación ejecutando el shell de comandos. Cada vez que se guarda un archivo, la aplicación se vuelve a compilar automáticamente. El explorador pierde temporalmente su conexión con la aplicación durante la compilación y el reinicio. La página del explorador se recarga automáticamente cuando se restablece la conexión.
 
