@@ -1,3 +1,23 @@
+---
+no-loc:
+- appsettings.json
+- ASP.NET Core Identity
+- cookie
+- Cookie
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+ms.openlocfilehash: 76dbf3cae1c264fa474101bc4398da28f45a1c10
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
+ms.translationtype: HT
+ms.contentlocale: es-ES
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100254382"
+---
 Los componentes anidados normalmente enlazan datos mediante un *enlace encadenado*, tal y como se describe en <xref:blazor/components/data-binding>. Los componentes anidados y no anidados pueden compartir el acceso a los datos mediante un contenedor registrado de estado en memoria. Una clase de contenedor de estado personalizado puede usar un elemento <xref:System.Action> asignable para notificar cambios de estado a los componentes en diferentes partes de la aplicación. En el ejemplo siguiente:
 
 * Un par de componentes usa un contenedor de estado para realizar el seguimiento de una propiedad.
@@ -22,7 +42,7 @@ public class StateContainer
 }
 ```
 
-En `Program.Main` (WebAssembly de Blazor):
+En `Program.Main` (Blazor WebAssembly):
 
 ```csharp
 builder.Services.AddSingleton<StateContainer>();
@@ -59,7 +79,7 @@ services.AddSingleton<StateContainer>();
 
     private void ChangePropertyValue()
     {
-        StateContainer.SetProperty($"New value set in Component 1 {DateTime.Now}");
+        StateContainer.SetProperty($"New value set in Component 1: {DateTime.Now}");
     }
 
     public void Dispose()
@@ -91,7 +111,7 @@ services.AddSingleton<StateContainer>();
 
     private void ChangePropertyValue()
     {
-        StateContainer.SetProperty($"New value set in Component 2 {DateTime.Now}");
+        StateContainer.SetProperty($"New value set in Component 2: {DateTime.Now}");
     }
 
     public void Dispose()
@@ -100,3 +120,5 @@ services.AddSingleton<StateContainer>();
     }
 }
 ```
+
+Los componentes anteriores implementan <xref:System.IDisposable>, y se cancela la suscripción de los delegados de `OnChange` en los métodos `Dispose`, a los que llama el marco cuando se eliminan los componentes. Para más información, consulte <xref:blazor/components/lifecycle#component-disposal-with-idisposable>.

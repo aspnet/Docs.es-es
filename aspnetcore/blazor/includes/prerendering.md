@@ -1,4 +1,24 @@
-Durante la representación previa de una aplicación Blazor Server, no es posible realizar ciertas acciones (como llamar a JavaScript), ya que no se ha establecido una conexión con el explorador. Es posible que los componentes tengan que representarse de forma diferente cuando se representen previamente.
+---
+no-loc:
+- appsettings.json
+- ASP.NET Core Identity
+- cookie
+- Cookie
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+ms.openlocfilehash: c152524e0acd3803bd3b8078f667cce01180e25d
+ms.sourcegitcommit: a49c47d5a573379effee5c6b6e36f5c302aa756b
+ms.translationtype: HT
+ms.contentlocale: es-ES
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100552695"
+---
+Durante la representación previa de una aplicación de Blazor Server, no es posible realizar ciertas acciones (como llamar a JavaScript), ya que no se ha establecido una conexión con el explorador. Es posible que los componentes tengan que representarse de forma diferente cuando se representen previamente.
 
 Para retrasar las llamadas de interoperabilidad de JavaScript hasta que se establezca la conexión con el explorador, puede usar el [evento de ciclo de vida del componente OnAfterRenderAsync](xref:blazor/components/lifecycle#after-component-render). Solo se llama a este evento después de que la aplicación se represente por completo y se establezca la conexión con el cliente.
 
@@ -22,7 +42,7 @@ Para retrasar las llamadas de interoperabilidad de JavaScript hasta que se estab
 }
 ```
 
-En el código de ejemplo anterior, proporcione una función de JavaScript `setElementText` dentro del elemento `<head>` de `wwwroot/index.html` (WebAssembly de Blazor) o `Pages/_Host.cshtml` (Blazor Server). Se llama a la función con <xref:Microsoft.JSInterop.JSRuntimeExtensions.InvokeVoidAsync%2A?displayProperty=nameWithType> y no se devuelve un valor:
+En el código de ejemplo anterior, proporcione una función de JavaScript `setElementText` dentro del elemento `<head>` de `wwwroot/index.html` (Blazor WebAssembly) o `Pages/_Host.cshtml` (Blazor Server). Se llama a la función con <xref:Microsoft.JSInterop.JSRuntimeExtensions.InvokeVoidAsync%2A?displayProperty=nameWithType> y no se devuelve un valor:
 
 ```html
 <script>
@@ -70,7 +90,7 @@ Set value via JS interop call:
 }
 ```
 
-En el código de ejemplo anterior, proporcione una función de JavaScript `setElementText` dentro del elemento `<head>` de `wwwroot/index.html` (WebAssembly de Blazor) o `Pages/_Host.cshtml` (Blazor Server). Se llama a la función con <xref:Microsoft.JSInterop.IJSRuntime.InvokeAsync%2A?displayProperty=nameWithType> y se devuelve un valor:
+En el código de ejemplo anterior, proporcione una función de JavaScript `setElementText` dentro del elemento `<head>` de `wwwroot/index.html` (Blazor WebAssembly) o `Pages/_Host.cshtml` (Blazor Server). Se llama a la función con <xref:Microsoft.JSInterop.IJSRuntime.InvokeAsync%2A?displayProperty=nameWithType> y se devuelve un valor:
 
 ```html
 <script>

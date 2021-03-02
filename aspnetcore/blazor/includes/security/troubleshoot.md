@@ -1,3 +1,23 @@
+---
+no-loc:
+- appsettings.json
+- ASP.NET Core Identity
+- cookie
+- Cookie
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+ms.openlocfilehash: 4e7c0e9b0a164e0181af5d6baaedf0669c1c06aa
+ms.sourcegitcommit: a49c47d5a573379effee5c6b6e36f5c302aa756b
+ms.translationtype: HT
+ms.contentlocale: es-ES
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100552532"
+---
 ## <a name="troubleshoot"></a>Solución de problemas
 
 ::: moniker range=">= aspnetcore-5.0"
@@ -16,22 +36,22 @@
   Para resolver el error:
 
   1. En Azure Portal, acceda al [manifiesto de la aplicación](/azure/active-directory/develop/reference-app-manifest).
-  1. Defina el atributo [`allowPublicClient`](/azure/active-directory/develop/reference-app-manifest#allowpublicclient-attribute) en `null` o `true`.
+  1. Establezca el [atributo `allowPublicClient`](/azure/active-directory/develop/reference-app-manifest#allowpublicclient-attribute) en `null` o `true`.
 
 ::: moniker-end
 
-### <a name="cookies-and-site-data"></a>Cookies y datos de sitios
+### <a name="cookies-and-site-data"></a>Cookies y datos del sitio
 
-Las cookies y los datos de sitios pueden persistir durante las actualizaciones de la aplicación e interferir con las pruebas y la solución de problemas. Borre los elementos siguientes al realizar cambios en el código de la aplicación, cambios en la cuenta de usuario con el proveedor o cuando el proveedor modifique la configuración de la aplicación:
+Las Cookies y los datos del sitio pueden persistir entre las actualizaciones de la aplicación e interferir con las pruebas y la solución de problemas. Borre los elementos siguientes al realizar cambios en el código de la aplicación, cambios en la cuenta de usuario con el proveedor o cuando el proveedor modifique la configuración de la aplicación:
 
-* Cookies de inicio de sesión de usuario
-* Cookies de aplicación
+* cookies de inicio de sesión del usuario
+* cookies de aplicaciones
 * Datos de sitios almacenados y en caché
 
-El enfoque siguiente sirve para evitar que las cookies persistentes y los datos de sitios interfieran con las pruebas y la solución de problemas:
+El enfoque siguiente sirve para evitar que las cookies persistentes y los datos del sitio interfieran con las pruebas y la solución de problemas:
 
 * Configuración de un explorador
-  * Use un explorador para las pruebas y configúrelo para que elimine todas las cookies y los datos de sitios cada vez que se cierre.
+  * Use un explorador para las pruebas, y configúrelo para que elimine todas las cookies y los datos del sitio cada vez que se cierre.
   * Asegúrese de que el explorador se cierra manualmente o mediante el IDE siempre que se produzca cualquier cambio en la aplicación, el usuario de prueba o la configuración del proveedor.
 * Use un comando personalizado para abrir un explorador en el modo incógnito o privado en Visual Studio:
   * Abra el cuadro de diálogo **Examinar con** mediante el botón **Ejecutar** de Visual Studio.
@@ -51,7 +71,7 @@ El enfoque siguiente sirve para evitar que las cookies persistentes y los datos 
 
 ### <a name="run-the-server-app"></a>Ejecución de la aplicación Server
 
-Al probar y solucionar problemas de una aplicación Blazor hospedada, asegúrese de que está ejecutando la aplicación desde el proyecto **`Server`** . Por ejemplo, en Visual Studio, confirme que el proyecto Server está resaltado en el **Explorador de soluciones** antes de iniciar la aplicación con cualquiera de los métodos siguientes:
+Al probar y solucionar problemas de una aplicación Blazor hospedada, asegúrese de que la ejecuta desde el proyecto **`Server`** . Por ejemplo, en Visual Studio, confirme que el proyecto Server está resaltado en el **Explorador de soluciones** antes de iniciar la aplicación con cualquiera de los métodos siguientes:
 
 * Haga clic en el botón **Ejecutar**.
 * En el menú, seleccione **Depurar** > **Iniciar depuración**.

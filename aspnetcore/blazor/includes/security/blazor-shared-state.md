@@ -1,11 +1,31 @@
-Las aplicaciones Blazor Server residen en la memoria del servidor. Eso significa que hay varias aplicaciones hospedadas dentro del mismo proceso. En cada sesión de aplicación, Blazor inicia un circuito con su propio ámbito de contenedor de DI. Eso significa que los servicios con ámbito son únicos por sesión de Blazor.
+---
+no-loc:
+- appsettings.json
+- ASP.NET Core Identity
+- cookie
+- Cookie
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+ms.openlocfilehash: 5ff4e4368d9e6d7c8525ae4ef0625d176a256a85
+ms.sourcegitcommit: a49c47d5a573379effee5c6b6e36f5c302aa756b
+ms.translationtype: HT
+ms.contentlocale: es-ES
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100552455"
+---
+Las aplicaciones Blazor Server residen en la memoria del servidor. Eso significa que hay varias aplicaciones hospedadas dentro del mismo proceso. En cada sesión de aplicación, Blazor inicia un circuito con su propio ámbito de contenedor de DI. Eso significa que los servicios con ámbito son únicos en cada sesión de Blazor.
 
 > [!WARNING]
 > No se recomienda que las aplicaciones del mismo servidor compartan estado mediante servicios singleton, a menos que se tomen precauciones, ya que esto puede incorporar vulnerabilidades de seguridad, como la pérdida de estado de usuario entre circuitos.
 
-Puede usar servicios singleton con estado en aplicaciones Blazor si están específicamente diseñadas para ello. Por ejemplo, es correcto usar una caché de memoria como singleton porque requiere una clave para acceder a una entrada determinada, dando por hecho que los usuarios no tienen control sobre las claves de caché que se usan.
+Puede usar servicios singleton con estado en las aplicaciones Blazor si están específicamente diseñadas para ello. Por ejemplo, es correcto usar una caché de memoria como singleton porque requiere una clave para acceder a una entrada determinada, dando por hecho que los usuarios no tienen control sobre las claves de caché que se usan.
 
-**Además, de nuevo por motivos de seguridad, no debe usar <xref:Microsoft.AspNetCore.Http.IHttpContextAccessor> en aplicaciones Blazor.** Las aplicaciones de Blazor se ejecutan fuera del contexto de la canalización de ASP.NET Core. No se garantiza que <xref:Microsoft.AspNetCore.Http.HttpContext> esté disponible en <xref:Microsoft.AspNetCore.Http.IHttpContextAccessor>, ni tampoco se garantiza que contenga el contexto que inició la aplicación de Blazor.
+**Además, de nuevo por motivos de seguridad, no debe usar <xref:Microsoft.AspNetCore.Http.IHttpContextAccessor> en aplicaciones Blazor.** Las aplicaciones Blazor se ejecutan fuera del contexto de la canalización de ASP.NET Core. No se garantiza que <xref:Microsoft.AspNetCore.Http.HttpContext> esté disponible en <xref:Microsoft.AspNetCore.Http.IHttpContextAccessor>, ni tampoco que contenga el contexto que ha iniciado la aplicación Blazor.
 
 La manera recomendada de pasar el estado de la solicitud a la aplicación Blazor es por medio de parámetros al componente raíz en la representación inicial de la aplicación:
 
