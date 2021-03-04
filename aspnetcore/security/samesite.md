@@ -19,14 +19,14 @@ no-loc:
 - SignalR
 - Electron
 uid: security/samesite
-ms.openlocfilehash: f1aa388015bd540a6fda263eac53753ada63bf79
-ms.sourcegitcommit: bce62ceaac7782e22d185814f2e8532c84efa472
+ms.openlocfilehash: e06c73edfc999053e0aa37f05d984a2b428f69a9
+ms.sourcegitcommit: a1db01b4d3bd8c57d7a9c94ce122a6db68002d66
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94673996"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102109941"
 ---
-# <a name="work-with-samesite-no-loccookies-in-aspnet-core"></a>Trabajar con SameSite cookie s en ASP.net Core
+# <a name="work-with-samesite-cookies-in-aspnet-core"></a>Trabajar con SameSite cookie s en ASP.net Core
 
 Por [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -42,17 +42,17 @@ La `SameSite=Lax` configuración funciona con la mayoría de las aplicaciones co
 
 Cada componente de ASP.NET Core que emite cookie s necesita decidir si SameSite es adecuado.
 
-## <a name="samesite-and-no-locidentity"></a>SameSite y Identity
+## <a name="samesite-and-identity"></a>SameSite y Identity
 
 [!INCLUDE[](~/includes/SameSiteIdentity.md)]
 
 ## <a name="samesite-test-sample-code"></a>Código de ejemplo de prueba de SameSite
 
- ::: moniker range=">= aspnetcore-2.1 < aspnetcore-3.0"
+::: moniker range=">= aspnetcore-2.1 < aspnetcore-3.0"
 
 Los ejemplos siguientes se pueden descargar y probar:
 
-| Ejemplo               | Documento |
+| Muestra               | Documento |
 | ----------------- | ------------ |
 | [MVC de .NET Core](https://github.com/blowdart/AspNetSameSiteSamples/tree/master/AspNetCore21MVC)  | <xref:security/samesite/mvc21> |
 | [Páginas de .NET Core Razor](https://github.com/blowdart/AspNetSameSiteSamples/tree/master/AspNetCore21RazorPages)  | <xref:security/samesite/rp21> |
@@ -63,8 +63,7 @@ Los ejemplos siguientes se pueden descargar y probar:
 
 El ejemplo siguiente se puede descargar y probar:
 
-
-| Ejemplo               | Documento |
+| Muestra               | Documento |
 | ----------------- | ------------ |
 | [Páginas de .NET Core Razor](https://github.com/blowdart/AspNetSameSiteSamples/tree/master/AspNetCore31RazorPages)  | <xref:security/samesite/rp31> |
 
@@ -227,7 +226,7 @@ Edge es compatible con el estándar SameSite antiguo. La versión perimetral 44 
 
 Las marcas SameSite se establecen en la `edge://flags/#same-site-by-default-cookies` página. No se detectaron problemas de compatibilidad con el cromo perimetral.
 
-### <a name="test-with-no-locelectron"></a>Prueba con Electron
+### <a name="test-with-electron"></a>Prueba con Electron
 
 Las versiones de Electron incluyen versiones anteriores de cromo. Por ejemplo, la versión de Electron utilizada por los equipos es cromo 66, que exhibe el comportamiento anterior. Debe realizar sus propias pruebas de compatibilidad con la versión de que Electron usa el producto. Consulte [compatibilidad con exploradores anteriores](#sob) en la sección siguiente.
 
@@ -239,7 +238,7 @@ Las versiones de Electron incluyen versiones anteriores de cromo. Por ejemplo, l
 
  ::: moniker range=">= aspnetcore-2.1 < aspnetcore-3.0"
 
-| Ejemplo               | Documento |
+| Muestra               | Documento |
 | ----------------- | ------------ |
 | [MVC de .NET Core](https://github.com/blowdart/AspNetSameSiteSamples/tree/master/AspNetCore21MVC)  | <xref:security/samesite/mvc21> |
 | [Páginas de .NET Core Razor](https://github.com/blowdart/AspNetSameSiteSamples/tree/master/AspNetCore21RazorPages)  | <xref:security/samesite/rp21> |
@@ -248,7 +247,7 @@ Las versiones de Electron incluyen versiones anteriores de cromo. Por ejemplo, l
 
  ::: moniker range=">= aspnetcore-3.0"
 
-| Ejemplo               | Documento |
+| Muestra               | Documento |
 | ----------------- | ------------ |
 | [Páginas de .NET Core Razor](https://github.com/blowdart/AspNetSameSiteSamples/tree/master/AspNetCore31RazorPages)  | <xref:security/samesite/rp31> |
 

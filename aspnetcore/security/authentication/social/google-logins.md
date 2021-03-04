@@ -4,7 +4,7 @@ author: rick-anderson
 description: En este tutorial se muestra la integración de la autenticación de usuarios de cuentas de Google en una aplicación ASP.NET Core existente.
 ms.author: riande
 ms.custom: mvc, seodec18
-ms.date: 03/19/2020
+ms.date: 02/18/2021
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/google-logins
-ms.openlocfilehash: 111ea7c972778dfd5296d0401c16563aeaa36a63
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 181ce87e8085839e0fcc0d77010c588ef7a290b1
+ms.sourcegitcommit: a1db01b4d3bd8c57d7a9c94ce122a6db68002d66
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93060318"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102110136"
 ---
 # <a name="google-external-login-setup-in-aspnet-core"></a>Configuración de inicio de sesión externo de Google en ASP.NET Core
 
@@ -33,12 +33,16 @@ En este tutorial se muestra cómo permitir que los usuarios inicien sesión con 
 
 ## <a name="create-a-google-api-console-project-and-client-id"></a>Creación de un proyecto y un identificador de cliente de la consola de API de Google
 
-* Instale [Microsoft. AspNetCore. Authentication. Google](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Google).
-* Vaya a [integración de Google Sign-In en la aplicación web](https://developers.google.com/identity/sign-in/web/sign-in) y seleccione **configurar un proyecto** .
-* En el cuadro de diálogo **configurar el cliente de OAuth** , seleccione **servidor Web** .
-* En el cuadro de entrada de texto **URI de redireccionamiento autorizados** , establezca el URI de redirección. Por ejemplo: `https://localhost:44312/signin-google`
-* Guarde el **identificador de cliente** y el **secreto de cliente** .
-* Al implementar el sitio, registre la nueva dirección URL pública en la **consola de Google** .
+* Agregue el paquete de NuGet [Microsoft. AspNetCore. Authentication. Google](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Google) a la aplicación.
+* Siga las instrucciones de [integración de google Sign-In en la aplicación web](https://developers.google.com/identity/sign-in/web/sign-in) (documentación de Google).
+* En la página **credenciales** de la [consola de Google](https://console.developers.google.com/apis/credentials), seleccione **crear credenciales**  >  **ID**. de cliente de OAuth.
+* En el cuadro de diálogo **tipo de aplicación** , seleccione **aplicación web**. Proporcione un **nombre** para la aplicación.
+* En la sección **URI de redireccionamiento autorizados** , seleccione **Agregar URI** para establecer el URI de redirección. Ejemplo de URI de redireccionamiento: `https://localhost:{PORT}/signin-google` , donde el `{PORT}` marcador de posición es el puerto de la aplicación.
+* Seleccione el botón **crear** .
+* Guarde el **identificador de cliente** y el **secreto de cliente** para su uso en la configuración de la aplicación.
+* Al implementar el sitio, puede:
+  * Actualice el URI de redirección de la aplicación en la **consola de Google** para el URI de redireccionamiento implementado de la aplicación.
+  * Cree un nuevo registro de la API de Google en la **consola de Google** para la aplicación de producción con su URI de redirección de producción.
 
 ## <a name="store-the-google-client-id-and-secret"></a>Almacenar el identificador y el secreto de cliente de Google
 
@@ -66,7 +70,7 @@ Agregue el servicio de Google a `Startup.ConfigureServices` :
 
 ## <a name="sign-in-with-google"></a>Inicio de sesión con Google
 
-* Ejecute la aplicación y haga clic en **iniciar sesión** . Aparece una opción para iniciar sesión con Google.
+* Ejecute la aplicación y haga clic en **iniciar sesión**. Aparece una opción para iniciar sesión con Google.
 * Haga clic en el botón **Google** , que redirige a Google para la autenticación.
 * Después de escribir las credenciales de Google, se le redirigirá al sitio Web.
 
@@ -78,7 +82,7 @@ Consulte la <xref:Microsoft.AspNetCore.Authentication.Google.GoogleOptions> refe
 
 ## <a name="change-the-default-callback-uri"></a>Cambiar el URI de devolución de llamada predeterminado
 
-El segmento URI `/signin-google` se establece como la devolución de llamada predeterminada del proveedor de autenticación de Google. Puede cambiar el URI de devolución de llamada predeterminado mientras configura el middleware de autenticación de Google a través de la propiedad heredada [RemoteAuthenticationOptions. CallbackPath](/dotnet/api/microsoft.aspnetcore.authentication.remoteauthenticationoptions.callbackpath) de la clase [GoogleOptions](/dotnet/api/microsoft.aspnetcore.authentication.google.googleoptions) .
+El segmento URI `/signin-google` se establece como la devolución de llamada predeterminada del proveedor de autenticación de Google. Puede cambiar el URI de devolución de llamada predeterminado mientras configura el middleware de autenticación de Google a través de la propiedad heredada <xref:Microsoft.AspNetCore.Authentication.RemoteAuthenticationOptions.CallbackPath?displayProperty=nameWithType> ) de la <xref:Microsoft.AspNetCore.Authentication.Google.GoogleOptions> clase.
 
 ## <a name="troubleshooting"></a>Solución de problemas
 

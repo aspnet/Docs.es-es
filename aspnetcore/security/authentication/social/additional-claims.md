@@ -5,7 +5,7 @@ description: Obtenga información sobre cómo establecer notificaciones y tokens
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/30/2020
+ms.date: 02/18/2021
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/social/additional-claims
-ms.openlocfilehash: 4503291ff887f79b1ad6eacd4e56943ce23335bc
-ms.sourcegitcommit: 5156eab2118584405eb663e1fcd82f8bd7764504
+ms.openlocfilehash: 9c04ca466566e956b5e6dfec8131096c3995bc14
+ms.sourcegitcommit: a1db01b4d3bd8c57d7a9c94ce122a6db68002d66
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/31/2020
-ms.locfileid: "93141513"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102110149"
 ---
 # <a name="persist-additional-claims-and-tokens-from-external-providers-in-aspnet-core"></a>Conservar notificaciones y tokens adicionales de proveedores externos en ASP.NET Core
 
@@ -80,7 +80,7 @@ La aplicación de ejemplo crea `urn:google:locale` notificaciones de configuraci
 
 En `Microsoft.AspNetCore.Identity.UI.Pages.Account.Internal.ExternalLoginModel.OnPostConfirmationAsync` , <xref:Microsoft.AspNetCore.Identity.IdentityUser> `ApplicationUser` se inicia una sesión de () en la aplicación con <xref:Microsoft.AspNetCore.Identity.SignInManager%601.SignInAsync*> . Durante el proceso de inicio de sesión, el <xref:Microsoft.AspNetCore.Identity.UserManager%601> puede almacenar `ApplicationUser` notificaciones para los datos de usuario disponibles en <xref:Microsoft.AspNetCore.Identity.ExternalLoginInfo.Principal*> .
 
-En la aplicación de ejemplo, `OnPostConfirmationAsync` ( *account/ExternalLogin. cshtml. CS* ) establece las `urn:google:locale` notificaciones de configuración regional () e imagen ( `urn:google:picture` ) para la sesión iniciada `ApplicationUser` , incluida una notificación para <xref:System.Security.Claims.ClaimTypes.GivenName> :
+En la aplicación de ejemplo, `OnPostConfirmationAsync` (*account/ExternalLogin. cshtml. CS*) establece las `urn:google:locale` notificaciones de configuración regional () e imagen ( `urn:google:picture` ) para la sesión iniciada `ApplicationUser` , incluida una notificación para <xref:System.Security.Claims.ClaimTypes.GivenName> :
 
 [!code-csharp[](additional-claims/samples/3.x/ClaimsSample/Areas/Identity/Pages/Account/ExternalLogin.cshtml.cs?name=snippet_OnPostConfirmationAsync&highlight=35-51)]
 
@@ -104,9 +104,12 @@ La aplicación de ejemplo establece el valor `SaveTokens` de `true` en en <xref:
 
 Cuando se `OnPostConfirmationAsync` ejecute, almacene el token de acceso ([ExternalLoginInfo. AuthenticationTokens](xref:Microsoft.AspNetCore.Identity.ExternalLoginInfo.AuthenticationTokens*)) del proveedor externo en el `ApplicationUser` `AuthenticationProperties` .
 
-La aplicación de ejemplo guarda el token de acceso en `OnPostConfirmationAsync` (nuevo registro de usuario) y `OnGetCallbackAsync` (usuario registrado previamente) en *account/ExternalLogin. cshtml. CS* :
+La aplicación de ejemplo guarda el token de acceso en `OnPostConfirmationAsync` (nuevo registro de usuario) y `OnGetCallbackAsync` (usuario registrado previamente) en *account/ExternalLogin. cshtml. CS*:
 
 [!code-csharp[](additional-claims/samples/3.x/ClaimsSample/Areas/Identity/Pages/Account/ExternalLogin.cshtml.cs?name=snippet_OnPostConfirmationAsync&highlight=54-56)]
+
+> [!NOTE]
+> Para obtener información sobre cómo pasar tokens a los Razor componentes de una Blazor Server aplicación, vea <xref:blazor/security/server/additional-scenarios#pass-tokens-to-a-blazor-server-app> .
 
 ## <a name="how-to-add-additional-custom-tokens"></a>Cómo agregar tokens personalizados adicionales
 
@@ -121,6 +124,131 @@ El marco de trabajo proporciona acciones comunes y métodos de extensión para c
 Los usuarios pueden definir acciones personalizadas derivando de <xref:Microsoft.AspNetCore.Authentication.OAuth.Claims.ClaimAction> e implementando el <xref:Microsoft.AspNetCore.Authentication.OAuth.Claims.ClaimAction.Run*> método abstracto.
 
 Para obtener más información, vea <xref:Microsoft.AspNetCore.Authentication.OAuth.Claims>.
+
+## <a name="add-and-update-user-claims"></a>Adición y actualización de notificaciones de usuario
+
+Las notificaciones se copian de proveedores externos a la base de datos de usuario en el primer registro, no en el inicio de sesión. Si se habilitan notificaciones adicionales en una aplicación después de que un usuario se registre para usar la aplicación, llame a [SignInManager. RefreshSignInAsync](xref:Microsoft.AspNetCore.Identity.SignInManager%601) en un usuario para forzar la generación de una nueva autenticación cookie .
+
+En el entorno de desarrollo que trabaja con las cuentas de usuario de prueba, puede simplemente eliminar y volver a crear la cuenta de usuario. En el caso de los sistemas de producción, las nuevas notificaciones agregadas a la aplicación se pueden rellenar en cuentas de usuario. Después de aplicar el [scaffolding de la `ExternalLogin` Página](xref:security/authentication/scaffold-identity) a la aplicación en `Areas/Pages/Identity/Account/Manage` , agregue el código siguiente a `ExternalLoginModel` en el `ExternalLogin.cshtml.cs` archivo.
+
+Agregue un diccionario de notificaciones agregadas. Use las claves de diccionario para contener los tipos de notificaciones y use los valores para contener un valor predeterminado. Agregue la siguiente línea a la parte superior de la clase. En el ejemplo siguiente se da por supuesto que se ha agregado una Claim para la imagen de Google del usuario con una imagen de Headshot genérica como valor predeterminado:
+
+```csharp
+private readonly IReadOnlyDictionary<string, string> _claimsToSync = 
+    new Dictionary<string, string>()
+    {
+        { "urn:google:picture", "https://localhost:5001/headshot.png" },
+    };
+```
+
+Reemplace el código predeterminado del `OnGetCallbackAsync` método por el código siguiente. El código recorre en bucle el Diccionario de notificaciones. Las notificaciones se agregan (rellenan) o se actualizan para cada usuario. Cuando se agregan o actualizan notificaciones, el inicio de sesión de usuario se actualiza mediante el <xref:Microsoft.AspNetCore.Identity.SignInManager%601> , conservando las propiedades de autenticación ( `AuthenticationProperties` ) existentes.
+
+```csharp
+public async Task<IActionResult> OnGetCallbackAsync(
+    string returnUrl = null, string remoteError = null)
+{
+    returnUrl = returnUrl ?? Url.Content("~/");
+
+    if (remoteError != null)
+    {
+        ErrorMessage = $"Error from external provider: {remoteError}";
+
+        return RedirectToPage("./Login", new {ReturnUrl = returnUrl });
+    }
+
+    var info = await _signInManager.GetExternalLoginInfoAsync();
+
+    if (info == null)
+    {
+        ErrorMessage = "Error loading external login information.";
+        return RedirectToPage("./Login", new { ReturnUrl = returnUrl });
+    }
+
+    // Sign in the user with this external login provider if the user already has a 
+    // login.
+    var result = await _signInManager.ExternalLoginSignInAsync(info.LoginProvider, 
+        info.ProviderKey, isPersistent: false, bypassTwoFactor : true);
+
+    if (result.Succeeded)
+    {
+        _logger.LogInformation("{Name} logged in with {LoginProvider} provider.", 
+            info.Principal.Identity.Name, info.LoginProvider);
+
+        if (_claimsToSync.Count > 0)
+        {
+            var user = await _userManager.FindByLoginAsync(info.LoginProvider, 
+                info.ProviderKey);
+            var userClaims = await _userManager.GetClaimsAsync(user);
+            bool refreshSignIn = false;
+
+            foreach (var addedClaim in _claimsToSync)
+            {
+                var userClaim = userClaims
+                    .FirstOrDefault(c => c.Type == addedClaim.Key);
+
+                if (info.Principal.HasClaim(c => c.Type == addedClaim.Key))
+                {
+                    var externalClaim = info.Principal.FindFirst(addedClaim.Key);
+
+                    if (userClaim == null)
+                    {
+                        await _userManager.AddClaimAsync(user, 
+                            new Claim(addedClaim.Key, externalClaim.Value));
+                        refreshSignIn = true;
+                    }
+                    else if (userClaim.Value != externalClaim.Value)
+                    {
+                        await _userManager
+                            .ReplaceClaimAsync(user, userClaim, externalClaim);
+                        refreshSignIn = true;
+                    }
+                }
+                else if (userClaim == null)
+                {
+                    // Fill with a default value
+                    await _userManager.AddClaimAsync(user, new Claim(addedClaim.Key, 
+                        addedClaim.Value));
+                    refreshSignIn = true;
+                }
+            }
+
+            if (refreshSignIn)
+            {
+                await _signInManager.RefreshSignInAsync(user);
+            }
+        }
+
+        return LocalRedirect(returnUrl);
+    }
+
+    if (result.IsLockedOut)
+    {
+        return RedirectToPage("./Lockout");
+    }
+    else
+    {
+        // If the user does not have an account, then ask the user to create an 
+        // account.
+        ReturnUrl = returnUrl;
+        ProviderDisplayName = info.ProviderDisplayName;
+
+        if (info.Principal.HasClaim(c => c.Type == ClaimTypes.Email))
+        {
+            Input = new InputModel
+            {
+                Email = info.Principal.FindFirstValue(ClaimTypes.Email)
+            };
+        }
+
+        return Page();
+    }
+}
+```
+
+Se realiza un enfoque similar cuando las notificaciones cambian mientras un usuario inicia sesión, pero no se requiere un paso de reposición. Para actualizar las notificaciones de un usuario, llame a lo siguiente en el usuario:
+
+* [UserManager. ReplaceClaimAsync](xref:Microsoft.AspNetCore.Identity.UserManager%601) en el usuario para las notificaciones almacenadas en la base de datos de identidad.
+* [SignInManager. RefreshSignInAsync](xref:Microsoft.AspNetCore.Identity.SignInManager%601) en el usuario para forzar la generación de una nueva autenticación cookie .
 
 ## <a name="removal-of-claim-actions-and-claims"></a>Eliminación de las notificaciones y las acciones de notificación
 
@@ -220,7 +348,7 @@ La aplicación de ejemplo crea `urn:google:locale` notificaciones de configuraci
 
 En `Microsoft.AspNetCore.Identity.UI.Pages.Account.Internal.ExternalLoginModel.OnPostConfirmationAsync` , <xref:Microsoft.AspNetCore.Identity.IdentityUser> `ApplicationUser` se inicia una sesión de () en la aplicación con <xref:Microsoft.AspNetCore.Identity.SignInManager%601.SignInAsync*> . Durante el proceso de inicio de sesión, el <xref:Microsoft.AspNetCore.Identity.UserManager%601> puede almacenar `ApplicationUser` notificaciones para los datos de usuario disponibles en <xref:Microsoft.AspNetCore.Identity.ExternalLoginInfo.Principal*> .
 
-En la aplicación de ejemplo, `OnPostConfirmationAsync` ( *account/ExternalLogin. cshtml. CS* ) establece las `urn:google:locale` notificaciones de configuración regional () e imagen ( `urn:google:picture` ) para la sesión iniciada `ApplicationUser` , incluida una notificación para <xref:System.Security.Claims.ClaimTypes.GivenName> :
+En la aplicación de ejemplo, `OnPostConfirmationAsync` (*account/ExternalLogin. cshtml. CS*) establece las `urn:google:locale` notificaciones de configuración regional () e imagen ( `urn:google:picture` ) para la sesión iniciada `ApplicationUser` , incluida una notificación para <xref:System.Security.Claims.ClaimTypes.GivenName> :
 
 [!code-csharp[](additional-claims/samples/2.x/ClaimsSample/Areas/Identity/Pages/Account/ExternalLogin.cshtml.cs?name=snippet_OnPostConfirmationAsync&highlight=35-51)]
 
@@ -244,7 +372,7 @@ La aplicación de ejemplo establece el valor `SaveTokens` de `true` en en <xref:
 
 Cuando se `OnPostConfirmationAsync` ejecute, almacene el token de acceso ([ExternalLoginInfo. AuthenticationTokens](xref:Microsoft.AspNetCore.Identity.ExternalLoginInfo.AuthenticationTokens*)) del proveedor externo en el `ApplicationUser` `AuthenticationProperties` .
 
-La aplicación de ejemplo guarda el token de acceso en `OnPostConfirmationAsync` (nuevo registro de usuario) y `OnGetCallbackAsync` (usuario registrado previamente) en *account/ExternalLogin. cshtml. CS* :
+La aplicación de ejemplo guarda el token de acceso en `OnPostConfirmationAsync` (nuevo registro de usuario) y `OnGetCallbackAsync` (usuario registrado previamente) en *account/ExternalLogin. cshtml. CS*:
 
 [!code-csharp[](additional-claims/samples/2.x/ClaimsSample/Areas/Identity/Pages/Account/ExternalLogin.cshtml.cs?name=snippet_OnPostConfirmationAsync&highlight=54-56)]
 

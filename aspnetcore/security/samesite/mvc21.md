@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: security/samesite/mvc21
-ms.openlocfilehash: 61878af0f9af72284b43ffd46cca42b0cf043326
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 8f819d283e136a63ad9f82d6432a93866210b36b
+ms.sourcegitcommit: a1db01b4d3bd8c57d7a9c94ce122a6db68002d66
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93051556"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102110110"
 ---
-# <a name="aspnet-core-21-mvc-samesite-no-loccookie-sample"></a>ASP.NET Core 2,1 MVC SameSite cookie ejemplo
+# <a name="aspnet-core-21-mvc-samesite-cookie-sample"></a>ASP.NET Core 2,1 MVC SameSite cookie ejemplo
 
 ASP.NET Core 2,1 tiene compatibilidad integrada con el atributo [SameSite](https://www.owasp.org/index.php/SameSite) , pero se escribió en el estándar original. El [comportamiento revisado](https://github.com/dotnet/aspnetcore/issues/8212) ha cambiado el significado de `SameSite.None` para emitir el atributo sameSite con un valor de `None` , en lugar de no emitir el valor. Si desea que no se emita el valor, puede establecer la `SameSite` propiedad en cookie -1.
 
@@ -36,7 +36,7 @@ ASP.NET Core 2,1 tiene compatibilidad integrada con el atributo [SameSite](https
 
 A continuación se describe un ejemplo de cómo escribir un atributo SameSite en un cookie :
 
-```c#
+```csharp
 var cookieOptions = new CookieOptions
 {
     // Set the secure flag, which Chrome's changes will require for SameSite none.
@@ -56,11 +56,11 @@ var cookieOptions = new CookieOptions
 Response.Cookies.Append(CookieName, "cookieValue", cookieOptions);
 ```
 
-## <a name="setting-no-loccookie-authentication-and-session-state-no-loccookies"></a>Establecimiento Cookie de la autenticación y el estado de la sesión cookie
+## <a name="setting-cookie-authentication-and-session-state-cookies"></a>Establecimiento Cookie de la autenticación y el estado de la sesión cookie
 
 Cookie autenticación, estado de sesión y [otros componentes](../samesite.md?view=aspnetcore-2.1) establecen sus opciones de sameSite a través Cookie de opciones, por ejemplo
 
-```c#
+```csharp
 services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
     {
@@ -87,13 +87,13 @@ Si ejecuta el [proyecto de ejemplo](https://github.com/blowdart/AspNetSameSiteSa
 
 Puede ver en la imagen anterior que el cookie creado por el ejemplo al hacer clic en el botón "crear SameSite Cookie " tiene un valor de atributo SameSite de `Lax` , que coincide con el valor establecido en el [código de ejemplo](#sampleCode).
 
-## <a name="intercepting-no-loccookies"></a><a name="interception"></a>Interceptar cookie
+## <a name="intercepting-cookies"></a><a name="interception"></a>Interceptar cookie
 
 Para interceptar cookie s, para ajustar el valor NONE según su compatibilidad en el agente del explorador del usuario, debe usar el `CookiePolicy` middleware. Debe colocarse en la canalización de solicitudes HTTP **antes** que los componentes que escriben cookie y se configuran en `ConfigureServices()` .
 
 Para insertarlo en el uso de la canalización `app.UseCookiePolicy()` en el `Configure(IApplicationBuilder, IHostingEnvironment)` método de [Startup.CS](https://github.com/blowdart/AspNetSameSiteSamples/blob/master/AspNetCore21MVC/Startup.cs). Por ejemplo:
 
-```c#
+```csharp
 public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 {
     if (env.IsDevelopment())
@@ -123,7 +123,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 Después, en la `ConfigureServices(IServiceCollection services)` configuración de la cookie Directiva que se va a llamar a una clase auxiliar cuando cookie se anexan o eliminan. Por ejemplo:
 
-```c#
+```csharp
 public void ConfigureServices(IServiceCollection services)
 {
     services.Configure<CookiePolicyOptions>(options =>
@@ -159,9 +159,9 @@ La función auxiliar `CheckSameSite(HttpContext, CookieOptions)` :
 
 ## <a name="targeting-net-framework"></a>Destinar .NET Framework
 
-ASP.NET Core y System. Web (ASP.NET clásico) tienen implementaciones independientes de SameSite. Las revisiones de SameSite KB para .NET Framework no son necesarias si se usa ASP.NET Core y el requisito de versión mínima del marco de trabajo de System. Web SameSite (.NET 4.7.2) se aplican a ASP.NET Core.
+ASP.NET Core y System. Web (ASP.NET 4. x) tienen implementaciones independientes de SameSite. Las revisiones de SameSite KB para .NET Framework no son necesarias si se usa ASP.NET Core y el requisito de versión mínima del marco de trabajo de System. Web SameSite (.NET Framework 4.7.2) se aplican a ASP.NET Core.
 
-ASP.NET Core en .NET requiere la actualización de las dependencias de paquetes Nuget para obtener las correcciones correspondientes.
+ASP.NET Core en .NET requiere la actualización de las dependencias de paquetes NuGet para obtener las correcciones correspondientes.
 
 Para obtener los cambios de ASP.NET Core para .NET Framework Asegúrese de que tiene una referencia directa a las versiones y los paquetes revisados (2.1.14 o versiones posteriores 2,1).
 
