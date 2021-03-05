@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/advanced/formatting
-ms.openlocfilehash: 5d228af00ee34e7f8ca60a5085872fdb93842367
-ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
+ms.openlocfilehash: 5fa7bc15bac2609c89fea54f8a788aaf9f5ad055
+ms.sourcegitcommit: 3982ff9dabb5b12aeb0a61cde2686b5253364f5d
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99057504"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102119037"
 ---
 # <a name="format-response-data-in-aspnet-core-web-api"></a>Aplicación de formato a datos de respuesta en ASP.NET Core Web API
 
@@ -132,7 +132,7 @@ El código anterior serializa los resultados mediante `XmlSerializer`.
 
 Cuando se usa el código anterior, los métodos de controlador devuelven el formato adecuado en función del encabezado `Accept` de la solicitud.
 
-### <a name="configure-systemtextjson-based-formatters"></a>Configurar System.Text.Jsen formateadores basados en
+### <a name="configure-systemtextjson-based-formatters"></a>Configurar `System.Text.Json` formateadores basados en
 
 Las características de los `System.Text.Json` formateadores basados en se pueden configurar mediante <xref:Microsoft.AspNetCore.Mvc.JsonOptions.JsonSerializerOptions?displayProperty=fullName> . El formato predeterminado es camelCase. El código resaltado siguiente establece el formato PascalCase:
 
@@ -188,7 +188,7 @@ En el código anterior, la llamada a `AddNewtonsoftJson` configura las siguiente
 
 Es posible que algunas características no funcionen bien con formateadores basados en `System.Text.Json` y requieren una referencia a los formateadores basados en `Newtonsoft.Json`. Siga usando los formateadores basados en `Newtonsoft.Json` si la aplicación:
 
-* Usa atributos `Newtonsoft.Json`. Por ejemplo, `[JsonProperty]` o `[JsonIgnore]`.
+* Usa atributos `Newtonsoft.Json`.  Por ejemplo, `[JsonProperty]` o `[JsonIgnore]`.
 * Proporciona la configuración de la serialización.
 * Se basa en las características que `Newtonsoft.Json` proporciona.
 * Configura `Microsoft.AspNetCore.Mvc.JsonResult.SerializerSettings`. Antes de ASP.NET Core 3.0, `JsonResult.SerializerSettings` acepta una instancia de `JsonSerializerSettings` específica de `Newtonsoft.Json`.
