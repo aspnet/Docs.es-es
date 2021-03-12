@@ -6,12 +6,12 @@ metadata:
   description: Obtenga información sobre el contenido nuevo y actualizado de la documentación de ASP.NET Core.
   ms.topic: landing-page
   ms.date: 03/04/2021
-  ms.openlocfilehash: a4ef3edbf260c6f2ee34ac739884bd9a605bd396
-  ms.sourcegitcommit: 3982ff9dabb5b12aeb0a61cde2686b5253364f5d
+  ms.openlocfilehash: 5982d49321739b637e8a7352145da18c69705c88
+  ms.sourcegitcommit: acfe51c35497a204f75c2a61125c9408c04493e6
   ms.translationtype: HT
   ms.contentlocale: es-ES
-  ms.lasthandoff: 03/04/2021
-  ms.locfileid: "102119011"
+  ms.lasthandoff: 03/10/2021
+  ms.locfileid: "102605664"
 landingContent:
 - title: Búsqueda de actualizaciones de la documentación de ASP.NET Core
   linkLists:
@@ -34,17 +34,17 @@ landingContent:
   - linkListType: overview
     links:
     - text: Repositorio de la documentación de ASP.NET Core
-      url: https://github.com/dotnet/AspNetCore.Docs/blob/master/README.md
+      url: https://github.com/dotnet/AspNetCore.Docs/blob/main/README.md
     - text: Estructura y etiquetas del proyecto para problemas y solicitudes de incorporación de cambios
-      url: https://github.com/dotnet/docs/blob/master/styleguide/labels-projects.md
+      url: https://github.com/dotnet/docs/blob/main/styleguide/labels-projects.md
   - linkListType: concept
     links:
     - text: Guía para colaboradores de Microsoft Docs
       url: /contribute
     - text: Guía para colaboradores de la documentación de ASP.NET Core
-      url: https://github.com/dotnet/AspNetCore.Docs/blob/master/CONTRIBUTING.md
+      url: https://github.com/dotnet/AspNetCore.Docs/blob/main/CONTRIBUTING.md
     - text: Guía para colaboradores de la documentación de referencia de API de ASP.NET Core
-      url: https://github.com/dotnet/AspNetApiDocs/blob/master/CONTRIBUTING.md
+      url: https://github.com/dotnet/AspNetApiDocs/blob/main/CONTRIBUTING.md
 - title: comunidad
   linkLists:
   - linkListType: whats-new
@@ -58,11 +58,11 @@ landingContent:
     - text: Actualizaciones de la documentación de Xamarin
       url: /xamarin/whats-new/
     - text: Notas de la versión de .NET Core
-      url: https://github.com/dotnet/core/blob/master/release-notes/README.md
+      url: https://github.com/dotnet/core/blob/main/release-notes/README.md
     - text: Notas de la versión de ASP.NET Core
       url: ../release-notes/aspnetcore-3.1.md
     - text: Notas de la versión del compilador de C# (Roslyn)
-      url: https://github.com/dotnet/roslyn/tree/master/docs/ide
+      url: https://github.com/dotnet/roslyn/tree/main/docs/ide
     - text: Notas de la versión de Visual Studio
       url: /visualstudio/releases/2019/release-notes
     - text: Notas de la versión de Visual Studio para Mac
