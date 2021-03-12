@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/routing
-ms.openlocfilehash: 0863b5758f33b720636f3b927fcb9014cd106c21
-ms.sourcegitcommit: 7e394a8527c9818caebb940f692ae4fcf2f1b277
+ms.openlocfilehash: c90ac92cf0866b78bcdb11663e76c116d714ca5d
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99217549"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589067"
 ---
 # <a name="routing-to-controller-actions-in-aspnet-core"></a>Enrutar a acciones de controlador de ASP.NET Core
 
@@ -757,7 +757,7 @@ El Razor archivo siguiente genera un vínculo HTML a `Destination_Route` :
 
 <a name="routing-gen-urls-html-ref-label"></a>
 
-### <a name="generate-urls-in-html-and-no-locrazor"></a>Generar direcciones URL en HTML y Razor
+### <a name="generate-urls-in-html-and-razor"></a>Generar direcciones URL en HTML y Razor
 
 <xref:Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper> proporciona los <xref:Microsoft.AspNetCore.Mvc.ViewFeatures.HtmlHelper> métodos [HTML. BeginForm](xref:Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper.BeginForm*) y [HTML. ActionLink](xref:Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper.ActionLink*) para generar `<form>` `<a>` los elementos y, respectivamente. Estos métodos usan el método [URL. Action](xref:Microsoft.AspNetCore.Mvc.IUrlHelper.Action*) para generar una dirección URL y aceptan argumentos similares. Los métodos `Url.RouteUrl` complementarios de `HtmlHelper` son `Html.BeginRouteForm` y `Html.RouteLink`, cuya funcionalidad es similar.
 
@@ -853,7 +853,7 @@ Los métodos públicos de un controlador, excepto aquellos con el atributo no [A
 ## <a name="sample-code"></a>Código de ejemplo
 
 * [!INCLUDE[](~/includes/MyDisplayRouteInfo.md)]
-* [Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/routing/samples/3.x) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+* [Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/controllers/routing/samples/3.x) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
 [!INCLUDE[](~/includes/dbg-route.md)]
 

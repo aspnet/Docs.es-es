@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/model
-ms.openlocfilehash: 92bfda330399b43871b3ae0e6b609726f7ad4a91
-ms.sourcegitcommit: f77a7467651bab61b24261da9dc5c1dd75fc1fa9
+ms.openlocfilehash: 3677cd6fe5c2ff901a17c9dccdc749d8eb2709f2
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100564049"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102588671"
 ---
 # <a name="part-2-add-a-model-to-a-razor-pages-app-in-aspnet-core"></a>Parte 2. Adición de un modelo a una aplicación de Razor Pages en ASP.NET Core
 
@@ -38,7 +38,7 @@ En esta sección, se agregan clases para administrar películas en una base de d
 
 Las clases de modelo se conocen como clases POCO (del inglés "**P** lain-**O** ld **C** LR **O** bjects", objetos CLR antiguos sin formato) porque no tienen ninguna dependencia de EF Core. Definen las propiedades de los datos que se almacenan en la base de datos.
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie50) ([cómo descargarlo](xref:index#how-to-download-a-sample)).
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie50) ([cómo descargarlo](xref:index#how-to-download-a-sample)).
 
 ## <a name="add-a-data-model"></a>Agregar un modelo de datos
 
@@ -397,7 +397,7 @@ En esta sección, se agregan clases para administrar películas. Las clases de m
 
 Las clases de modelo se conocen como clases POCO (del inglés "plain-old CLR objects", objetos CLR antiguos sin formato) porque no tienen ninguna dependencia de EF Core. Definen las propiedades de los datos que se almacenan en la base de datos.
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30) ([cómo descargarlo](xref:index#how-to-download-a-sample)).
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30) ([cómo descargarlo](xref:index#how-to-download-a-sample)).
 
 ## <a name="add-a-data-model"></a>Agregar un modelo de datos
 
@@ -769,7 +769,7 @@ En esta sección, se agregan clases para administrar películas en una [base de 
 
 Las clases de modelo se conocen como clases POCO (del inglés "plain-old CLR objects", objetos CLR antiguos sin formato) porque no tienen ninguna dependencia de EF Core. Definen las propiedades de los datos que se almacenan en la base de datos.
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start) ([cómo descargarlo](xref:index#how-to-download-a-sample)).
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/tutorials/razor-pages/razor-pages-start) ([cómo descargarlo](xref:index#how-to-download-a-sample)).
 
 ## <a name="add-a-data-model"></a>Agregar un modelo de datos
 

@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/docker-compose-https
-ms.openlocfilehash: 37a0142dac1e26afd26dbf2aad46bee20693652e
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 69c449527a64ec928d436245e9e971ec49303489
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93051647"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102588762"
 ---
 # <a name="hosting-aspnet-core-images-with-docker-compose-over-https"></a>Hospedaje de imágenes de ASP.NET Core con Docker Compose a través de HTTPS
 
@@ -33,9 +33,9 @@ ms.locfileid: "93051647"
 
 En este documento se explica cómo ejecutar imágenes de contenedor creadas previamente con HTTPS.
 
-Consulte [desarrollo de aplicaciones ASP.net Core con Docker a través de https](https://github.com/dotnet/dotnet-docker/blob/master/samples/run-aspnetcore-https-development.md) para escenarios de desarrollo.
+Consulte [desarrollo de aplicaciones ASP.net Core con Docker a través de https](https://github.com/dotnet/dotnet-docker/blob/main/samples/run-aspnetcore-https-development.md) para escenarios de desarrollo.
 
-Este ejemplo requiere [docker 17,06](https://docs.docker.com/release-notes/docker-ce) o posterior del [cliente de Docker](https://www.docker.com/products/docker).
+En este ejemplo se necesita la versión [Docker 17.06](https://docs.docker.com/release-notes/docker-ce) o posterior del [cliente Docker](https://www.docker.com/products/docker).
 
 ## <a name="prerequisites"></a>Requisitos previos
 
@@ -52,7 +52,7 @@ Para los certificados de producción:
 * La `dotnet dev-certs` herramienta no es necesaria.
 * Los certificados no tienen que almacenarse en la ubicación usada en las instrucciones. Almacene los certificados en cualquier ubicación fuera del directorio del sitio.
 
-Las instrucciones contenidas en la sección siguiente desmontan certificados en contenedores mediante la `volumes` propiedad de *Docker-Compose. yml.* Puede agregar certificados a las imágenes de contenedor con un `COPY` comando en un *Dockerfile* , pero no se recomienda. No se recomienda copiar certificados en una imagen por los siguientes motivos:
+Las instrucciones contenidas en la sección siguiente desmontan certificados en contenedores mediante la `volumes` propiedad de *Docker-Compose. yml.* Puede agregar certificados a las imágenes de contenedor con un `COPY` comando en un *Dockerfile*, pero no se recomienda. No se recomienda copiar certificados en una imagen por los siguientes motivos:
 
 * Dificulta el uso de la misma imagen para realizar pruebas con certificados de desarrollador.
 * Dificulta el uso de la misma imagen para hospedar con certificados de producción.

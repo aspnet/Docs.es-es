@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/aad-groups-roles
-ms.openlocfilehash: c180580ec56313e444f2daf2b7d08c4d909b498a
-ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
+ms.openlocfilehash: b725a60a310be23f7ceb626d4c543d0df6fadf62
+ms.sourcegitcommit: 1436bd4d70937d6ec3140da56d96caab33c4320b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 02/12/2021
-ms.locfileid: "100280530"
+ms.lasthandoff: 03/06/2021
+ms.locfileid: "102394764"
 ---
 # <a name="azure-active-directory-aad-groups-administrator-roles-and-app-roles"></a>Grupos, roles de administrador y roles de aplicación de Azure Active Directory (AAD)
 
@@ -46,8 +46,8 @@ Las instrucciones de este artículo atañen a los escenarios de implementación 
 
 En la guía del artículo se proporcionan instrucciones para las aplicaciones de cliente y servidor:
 
-* **CLIENTE**: Aplicaciones Blazor WebAssembly independientes o la aplicación *`Client`* de una solución Blazor hospedada.
-* **SERVIDOR**: Aplicaciones de API web/API de servidor de ASP.NET Core independientes o la aplicación *`Server`* de una solución Blazor hospedada.
+* **CLIENTE**: Aplicaciones Blazor WebAssembly independientes o la aplicación **`Client`** de una solución Blazor hospedada.
+* **SERVIDOR**: Aplicaciones de API web/API de servidor de ASP.NET Core independientes o la aplicación **`Server`** de una solución Blazor hospedada.
 
 ## <a name="scopes"></a>Ámbitos
 

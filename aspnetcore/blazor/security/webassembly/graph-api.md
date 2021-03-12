@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/graph-api
-ms.openlocfilehash: 997d4dec05ddb6b9d0acb5ed36a6510c0836a4fb
-ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
+ms.openlocfilehash: b9e95afc2ccff95c6acd215a70c8b0f92fb1b8c0
+ms.sourcegitcommit: 1436bd4d70937d6ec3140da56d96caab33c4320b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 02/12/2021
-ms.locfileid: "100280503"
+ms.lasthandoff: 03/06/2021
+ms.locfileid: "102394738"
 ---
 # <a name="use-graph-api-with-aspnet-core-blazor-webassembly"></a>Uso de Graph API con Blazor WebAssembly de ASP.NET Core
 
@@ -36,7 +36,7 @@ ms.locfileid: "100280503"
 
 Los [SDK de Microsoft Graph](/graph/sdks/sdks-overview) se han diseñado para simplificar la compilación de aplicaciones eficaces, resistentes y de alta calidad que acceden a Microsoft Graph.
 
-En los ejemplos de esta sección se necesitan referencias de paquete de los siguientes paquetes en el archivo del proyecto del archivo del proyecto de la aplicación independiente o *`Client`* :
+En los ejemplos de esta sección se necesitan referencias de paquete de los siguientes paquetes en el archivo del proyecto del archivo del proyecto de la aplicación independiente o **`Client`** :
 
 * [`Microsoft.Extensions.Http`](https://www.nuget.org/packages/Microsoft.Extensions.Http)
 * [`Microsoft.Graph`](https://www.nuget.org/packages/Microsoft.Graph)
@@ -48,7 +48,7 @@ En cada una de las siguientes subsecciones de este artículo se usan las siguien
 
 Después de agregar los ámbitos de Microsoft Graph API al área de AAD de Azure Portal:
 
-* Agregue la siguiente clase `GraphClientExtensions.cs` a la aplicación independiente o la aplicación *`Client`* de una solución de Blazor hospedada.
+* Agregue la siguiente clase `GraphClientExtensions.cs` a la aplicación independiente o la aplicación **`Client`** de una solución de Blazor hospedada.
 * Proporcione los ámbitos necesarios para la propiedad <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AccessTokenRequestOptions.Scopes> de <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AccessTokenRequestOptions> en el método `AuthenticateRequestAsync`. En el siguiente ejemplo se especifica el ámbito `User.Read` para ajustarse a los ejemplos de secciones posteriores de este artículo.
 
 ```csharp
@@ -291,7 +291,7 @@ builder.Services.AddMsalAuthentication<RemoteAuthenticationState,
 
 En los ejemplos de esta sección se usa una instancia de <xref:System.Net.Http.HttpClient> con nombre para que Graph API obtenga el número de teléfono móvil de un usuario para procesar una llamada.
 
-En los ejemplos de esta sección se necesita una referencia de paquete de [`Microsoft.Extensions.Http`](https://www.nuget.org/packages/Microsoft.Extensions.Http) en el archivo del proyecto del archivo del proyecto de la aplicación independiente o *`Client`* .
+En los ejemplos de esta sección se necesita una referencia de paquete de [`Microsoft.Extensions.Http`](https://www.nuget.org/packages/Microsoft.Extensions.Http) en el archivo del proyecto del archivo del proyecto de la aplicación independiente o **`Client`** .
 
 Cree la siguiente configuración de clase y proyecto para trabajar con Graph API. En cada una de las siguientes subsecciones de este artículo se usan las siguientes clase y configuración:
 

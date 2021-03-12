@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/docker-https
-ms.openlocfilehash: a4aac2ce06fee20bdef157efc361f3099a217b1a
-ms.sourcegitcommit: 619200f2981656ede6d89adb6a22ad1a0e16da22
+ms.openlocfilehash: 3af2aff477604eb19ac211753f848d08d0c67c72
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96332159"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102588645"
 ---
 # <a name="hosting-aspnet-core-images-with-docker-over-https"></a>Hospedaje de imágenes de ASP.NET Core con Docker a través de HTTPS
 
@@ -33,9 +33,9 @@ Por [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 En este documento se explica cómo ejecutar imágenes de contenedor creadas previamente con HTTPS.
 
-Consulte [desarrollo de aplicaciones ASP.net Core con Docker a través de https](https://github.com/dotnet/dotnet-docker/blob/master/samples/run-aspnetcore-https-development.md) para escenarios de desarrollo.
+Consulte [desarrollo de aplicaciones ASP.net Core con Docker a través de https](https://github.com/dotnet/dotnet-docker/blob/main/samples/run-aspnetcore-https-development.md) para escenarios de desarrollo.
 
-Este ejemplo requiere [docker 17,06](https://docs.docker.com/release-notes/docker-ce) o posterior del [cliente de Docker](https://www.docker.com/products/docker).
+En este ejemplo se necesita la versión [Docker 17.06](https://docs.docker.com/release-notes/docker-ce) o posterior del [cliente Docker](https://www.docker.com/products/docker).
 
 ## <a name="prerequisites"></a>Requisitos previos
 
@@ -102,7 +102,7 @@ dotnet dev-certs https --trust
 
 En los comandos anteriores, reemplace `{ password here }` por una contraseña.
 
-Ejecute la imagen de contenedor con ASP.NET Core configurado para HTTPS:
+Ejecute la imagen de contenedor con ASP.NET Core configurado para HTTPS:
 
 ```console
 docker pull mcr.microsoft.com/dotnet/core/samples:aspnetapp
@@ -122,7 +122,7 @@ dotnet dev-certs https --trust
 
 En los comandos anteriores, reemplace `{ password here }` por una contraseña. Al usar [PowerShell](/powershell/scripting/overview), reemplace `%USERPROFILE%` por `$env:USERPROFILE` .
 
-Ejecute la imagen de contenedor con ASP.NET Core configurado para HTTPS:
+Ejecute la imagen de contenedor con ASP.NET Core configurado para HTTPS:
 
 ```console
 docker pull mcr.microsoft.com/dotnet/core/samples:aspnetapp

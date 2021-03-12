@@ -18,18 +18,18 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/caching/response
-ms.openlocfilehash: 2864de5b9931ed255569cb087c67c71004c4df92
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 539ddb118279adb3a53394cdb0c2e5169092ebc0
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93059018"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589236"
 ---
 # <a name="response-caching-in-aspnet-core"></a>Almacenamiento en caché de respuestas en ASP.NET Core
 
 Por [John Luo](https://github.com/JunTaoLuo), [Rick Anderson](https://twitter.com/RickAndMSFT)y [Steve Smith](https://ardalis.com/)
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/performance/caching/response/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/performance/caching/response/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
 El almacenamiento en caché de respuestas reduce el número de solicitudes que un cliente o proxy realiza a un servidor Web. El almacenamiento en caché de respuestas también reduce la cantidad de trabajo que realiza el servidor web para generar una respuesta. El almacenamiento en caché de respuestas está controlado por encabezados que especifican cómo desea que el cliente, el proxy y el middleware almacenen en caché las respuestas.
 
@@ -48,14 +48,14 @@ La [especificación HTTP 1,1 Caching](https://tools.ietf.org/html/rfc7234) descr
 | [public](https://tools.ietf.org/html/rfc7234#section-5.2.2.5)   | Una memoria caché puede almacenar la respuesta. |
 | [private](https://tools.ietf.org/html/rfc7234#section-5.2.2.6)  | La respuesta no debe almacenarse en una memoria caché compartida. Una caché privada puede almacenar y reutilizar la respuesta. |
 | [Max-Age](https://tools.ietf.org/html/rfc7234#section-5.2.1.1)  | El cliente no acepta una respuesta cuya antigüedad sea mayor que el número de segundos especificado. Ejemplos: `max-age=60` (60 segundos), `max-age=2592000` (1 mes) |
-| [no-cache](https://tools.ietf.org/html/rfc7234#section-5.2.1.4) | **En las solicitudes** : una memoria caché no debe usar una respuesta almacenada para satisfacer la solicitud. El servidor de origen regenera la respuesta para el cliente y el middleware actualiza la respuesta almacenada en su caché.<br><br>**En las respuestas** : la respuesta no se debe utilizar para una solicitud subsiguiente sin validación en el servidor de origen. |
-| [sin almacén](https://tools.ietf.org/html/rfc7234#section-5.2.1.5) | **En las solicitudes** : una memoria caché no debe almacenar la solicitud.<br><br>**En las respuestas** : una memoria caché no debe almacenar ninguna parte de la respuesta. |
+| [no-cache](https://tools.ietf.org/html/rfc7234#section-5.2.1.4) | **En las solicitudes**: una memoria caché no debe usar una respuesta almacenada para satisfacer la solicitud. El servidor de origen regenera la respuesta para el cliente y el middleware actualiza la respuesta almacenada en su caché.<br><br>**En las respuestas**: la respuesta no se debe utilizar para una solicitud subsiguiente sin validación en el servidor de origen. |
+| [sin almacén](https://tools.ietf.org/html/rfc7234#section-5.2.1.5) | **En las solicitudes**: una memoria caché no debe almacenar la solicitud.<br><br>**En las respuestas**: una memoria caché no debe almacenar ninguna parte de la respuesta. |
 
 En la tabla siguiente se muestran otros encabezados de caché que desempeñan un rol en el almacenamiento en caché.
 
 | Encabezado                                                     | Función |
 | ---------------------------------------------------------- | -------- |
-| [Age](https://tools.ietf.org/html/rfc7234#section-5.1): edad     | Una estimación de la cantidad de tiempo en segundos transcurrido desde que se generó la respuesta o se validó correctamente en el servidor de origen. |
+| [Age](https://tools.ietf.org/html/rfc7234#section-5.1)     | Una estimación de la cantidad de tiempo en segundos transcurrido desde que se generó la respuesta o se validó correctamente en el servidor de origen. |
 | [Expira](https://tools.ietf.org/html/rfc7234#section-5.3) | Hora a partir de la cual la respuesta se considera obsoleta. |
 | [Omiti](https://tools.ietf.org/html/rfc7234#section-5.4)  | Existe por compatibilidad con versiones anteriores de caché HTTP/1.0 para establecer el `no-cache` comportamiento. Si el `Cache-Control` encabezado está presente, `Pragma` se omite el encabezado. |
 | [Variaciones](https://tools.ietf.org/html/rfc7231#section-7.1.4)  | Especifica que no se debe enviar una respuesta almacenada en caché a menos que todos los `Vary` campos de encabezado coincidan en la solicitud original de la respuesta almacenada en caché y la nueva solicitud. |
@@ -72,7 +72,7 @@ No hay ningún control de desarrollador sobre este comportamiento de almacenamie
 
 ### <a name="in-memory-caching"></a>Almacenamiento en caché en memoria
 
-El almacenamiento en caché en memoria utiliza la memoria del servidor para almacenar los datos en caché. Este tipo de almacenamiento en caché es adecuado para un solo servidor o para varios servidores que usan *sesiones permanentes* . Las sesiones permanentes significan que las solicitudes de un cliente siempre se enrutan al mismo servidor para su procesamiento.
+El almacenamiento en caché en memoria utiliza la memoria del servidor para almacenar los datos en caché. Este tipo de almacenamiento en caché es adecuado para un solo servidor o para varios servidores que usan *sesiones permanentes*. Las sesiones permanentes significan que las solicitudes de un cliente siempre se enrutan al mismo servidor para su procesamiento.
 
 Para obtener más información, vea <xref:performance/caching/memory>.
 
@@ -211,7 +211,7 @@ Cache-Control: public,max-age=30
 ## <a name="additional-resources"></a>Recursos adicionales
 
 * [Almacenar respuestas en cachés](https://tools.ietf.org/html/rfc7234#section-3)
-* [Cache-control](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9)
+* [Cache-Control](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9)
 * <xref:performance/caching/memory>
 * <xref:performance/caching/distributed>
 * <xref:fundamentals/change-tokens>

@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/environments
-ms.openlocfilehash: a5ead59e467da331b585e8daefb1d7d259c7edba
-ms.sourcegitcommit: 422e8444b9f5cedc373be5efe8032822db54fcaf
+ms.openlocfilehash: 86484fe2e2ce8e20e397a78f118d8b1bbe0cc88a
+ms.sourcegitcommit: 1436bd4d70937d6ec3140da56d96caab33c4320b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101101053"
+ms.lasthandoff: 03/06/2021
+ms.locfileid: "102395115"
 ---
 # <a name="aspnet-core-blazor-environments"></a>Entornos de Blazor de ASP.NET Core
 
@@ -33,7 +33,7 @@ ms.locfileid: "101101053"
 
 Cuando una aplicación se ejecuta de manera local, el entorno se establece de manera predeterminada en Desarrollo. Cuando la aplicación se publica, el entorno se establece de manera predeterminada en Producción.
 
-La aplicación de Blazor del lado cliente ( *`Client`* ) de una solución de Blazor WebAssembly hospedada determina el entorno a partir de la aplicación *`Server`* de la solución a través de un middleware que comunica el entorno con el explorador. La aplicación *`Server`* agrega un encabezado denominado `blazor-environment` con el entorno como valor del encabezado. La aplicación *`Client`* lee el encabezado. La aplicación *`Server`* de la solución es una aplicación ASP.NET Core, por lo que se encuentra más información sobre cómo configurar el entorno en <xref:fundamentals/environments>.
+La aplicación de Blazor del lado cliente ( **`Client`** ) de una solución de Blazor WebAssembly hospedada determina el entorno a partir de la aplicación **`Server`** de la solución a través de un middleware que comunica el entorno con el explorador. La aplicación **`Server`** agrega un encabezado denominado `blazor-environment` con el entorno como valor del encabezado. La aplicación **`Client`** lee el encabezado. La aplicación **`Server`** de la solución es una aplicación ASP.NET Core, por lo que se encuentra más información sobre cómo configurar el entorno en <xref:fundamentals/environments>.
 
 En el caso de una aplicación Blazor WebAssembly independiente que se ejecuta localmente, el servidor de desarrollo agrega el encabezado `blazor-environment` para especificar el entorno de desarrollo. Para especificar el entorno para otros entornos de hospedaje, agregue el encabezado `blazor-environment`.
 

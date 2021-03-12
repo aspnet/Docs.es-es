@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/response-compression
-ms.openlocfilehash: 9327c98c22a4d42d31ea8ba1eb8337153040b5b5
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 239f9e84d068bfd75c84ccf16f0e74cdbbbebfb2
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93056977"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102586324"
 ---
 # <a name="response-compression-in-aspnet-core"></a>Compresión de respuesta en ASP.NET Core
 
@@ -32,7 +32,7 @@ ms.locfileid: "93056977"
 
 El ancho de banda de red es un recurso limitado. Reducir el tamaño de la respuesta normalmente aumenta la capacidad de respuesta de una aplicación, a menudo drásticamente. Una manera de reducir los tamaños de carga es comprimir las respuestas de una aplicación.
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/performance/response-compression/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/performance/response-compression/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
 ## <a name="when-to-use-response-compression-middleware"></a>Cuándo usar el middleware de compresión de respuesta
 
@@ -54,7 +54,7 @@ Normalmente, cualquier respuesta no comprimida de forma nativa puede beneficiars
 
 Cuando un cliente puede procesar contenido comprimido, el cliente debe informar al servidor de sus funcionalidades enviando el `Accept-Encoding` encabezado con la solicitud. Cuando un servidor envía contenido comprimido, debe incluir información en el `Content-Encoding` encabezado sobre cómo se codifica la respuesta comprimida. En la tabla siguiente se muestran las designaciones de codificación de contenido que admite el middleware.
 
-| `Accept-Encoding` valores de encabezado | Middleware compatible | Descripción |
+| `Accept-Encoding` valores de encabezado | Middleware compatible | Description |
 | ------------------------------- | :------------------: | ----------- |
 | `br`                            | Sí (predeterminado)        | [Brotli formato de datos comprimidos](https://tools.ietf.org/html/rfc7932) |
 | `deflate`                       | No                   | [Desinflar formato de datos comprimidos](https://tools.ietf.org/html/rfc1951) |
@@ -83,7 +83,7 @@ En la tabla siguiente se describen los encabezados implicados en la solicitud, e
 | `Content-Type`     | Especifica el tipo MIME del contenido. Cada respuesta debe especificar su `Content-Type` . El middleware comprueba este valor para determinar si se debe comprimir la respuesta. El middleware especifica un conjunto de [tipos MIME predeterminados](#mime-types) que se pueden codificar, pero puede reemplazar o agregar tipos MIME. |
 | `Vary`             | Cuando lo envía el servidor con un valor de `Accept-Encoding` a los clientes y servidores proxy, el `Vary` encabezado indica al cliente o al proxy que debe almacenar en caché (variar) respuestas en función del valor del `Accept-Encoding` encabezado de la solicitud. El resultado de devolver el contenido con el `Vary: Accept-Encoding` encabezado es que las respuestas comprimidas y sin comprimir se almacenan en caché por separado. |
 
-Explore las características del middleware de compresión de respuesta con la [aplicación de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/performance/response-compression/samples). En el ejemplo se muestra:
+Explore las características del middleware de compresión de respuesta con la [aplicación de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/performance/response-compression/samples). En el ejemplo se muestra:
 
 * Compresión de las respuestas de la aplicación mediante gzip y proveedores de compresión personalizados.
 * Cómo agregar un tipo MIME a la lista predeterminada de tipos MIME para la compresión.
@@ -148,7 +148,7 @@ El proveedor de compresión Brotli debe agregarse cuando se agreguen explícitam
 
 Establezca el nivel de compresión con <xref:Microsoft.AspNetCore.ResponseCompression.BrotliCompressionProviderOptions> . El proveedor de compresión Brotli tiene como valor predeterminado el nivel de compresión más rápido ([CompressionLevel. Fast](xref:System.IO.Compression.CompressionLevel)), que podría no producir la compresión más eficaz. Si se desea la compresión más eficaz, configure el middleware para una compresión óptima.
 
-| Nivel de compresión | Descripción |
+| Nivel de compresión | Description |
 | ----------------- | ----------- |
 | [CompressionLevel. más rápido](xref:System.IO.Compression.CompressionLevel) | La compresión debe completarse tan pronto como sea posible, incluso si la salida resultante no se comprime de forma óptima. |
 | [CompressionLevel. NoCompression](xref:System.IO.Compression.CompressionLevel) | No se debe realizar ninguna compresión. |
@@ -188,7 +188,7 @@ El proveedor de compresión gzip debe agregarse cuando se agreguen explícitamen
 
 Establezca el nivel de compresión con <xref:Microsoft.AspNetCore.ResponseCompression.GzipCompressionProviderOptions> . El proveedor de compresión gzip tiene como valor predeterminado el nivel de compresión más rápido ([CompressionLevel. Fast](xref:System.IO.Compression.CompressionLevel)), que podría no producir la compresión más eficaz. Si se desea la compresión más eficaz, configure el middleware para una compresión óptima.
 
-| Nivel de compresión | Descripción |
+| Nivel de compresión | Description |
 | ----------------- | ----------- |
 | [CompressionLevel. más rápido](xref:System.IO.Compression.CompressionLevel) | La compresión debe completarse tan pronto como sea posible, incluso si la salida resultante no se comprime de forma óptima. |
 | [CompressionLevel. NoCompression](xref:System.IO.Compression.CompressionLevel) | No se debe realizar ninguna compresión. |
@@ -234,7 +234,7 @@ El middleware especifica un conjunto predeterminado de tipos MIME para la compre
 * `text/plain`
 * `text/xml`
 
-Reemplazar o anexar tipos MIME con las opciones de middleware de compresión de respuesta. Tenga en cuenta que no se admiten los tipos MIME comodín, como `text/*` . La aplicación de ejemplo agrega un tipo MIME para `image/svg+xml` y comprime y sirve la imagen de banner ASP.net Core ( *banner. svg* ).
+Reemplazar o anexar tipos MIME con las opciones de middleware de compresión de respuesta. Tenga en cuenta que no se admiten los tipos MIME comodín, como `text/*` . La aplicación de ejemplo agrega un tipo MIME para `image/svg+xml` y comprime y sirve la imagen de banner ASP.net Core (*banner. svg*).
 
 [!code-csharp[](response-compression/samples/3.x/SampleApp/Startup.cs?name=snippet1&highlight=8-10)]
 
@@ -278,7 +278,7 @@ Use una herramienta como [Fiddler](https://www.telerik.com/fiddler), [Firebug](h
 
 El ancho de banda de red es un recurso limitado. Reducir el tamaño de la respuesta normalmente aumenta la capacidad de respuesta de una aplicación, a menudo drásticamente. Una manera de reducir los tamaños de carga es comprimir las respuestas de una aplicación.
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/performance/response-compression/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/performance/response-compression/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
 ## <a name="when-to-use-response-compression-middleware"></a>Cuándo usar el middleware de compresión de respuesta
 
@@ -300,7 +300,7 @@ Normalmente, cualquier respuesta no comprimida de forma nativa puede beneficiars
 
 Cuando un cliente puede procesar contenido comprimido, el cliente debe informar al servidor de sus funcionalidades enviando el `Accept-Encoding` encabezado con la solicitud. Cuando un servidor envía contenido comprimido, debe incluir información en el `Content-Encoding` encabezado sobre cómo se codifica la respuesta comprimida. En la tabla siguiente se muestran las designaciones de codificación de contenido que admite el middleware.
 
-| `Accept-Encoding` valores de encabezado | Middleware compatible | Descripción |
+| `Accept-Encoding` valores de encabezado | Middleware compatible | Description |
 | ------------------------------- | :------------------: | ----------- |
 | `br`                            | Sí (predeterminado)        | [Brotli formato de datos comprimidos](https://tools.ietf.org/html/rfc7932) |
 | `deflate`                       | No                   | [Desinflar formato de datos comprimidos](https://tools.ietf.org/html/rfc1951) |
@@ -329,7 +329,7 @@ En la tabla siguiente se describen los encabezados implicados en la solicitud, e
 | `Content-Type`     | Especifica el tipo MIME del contenido. Cada respuesta debe especificar su `Content-Type` . El middleware comprueba este valor para determinar si se debe comprimir la respuesta. El middleware especifica un conjunto de [tipos MIME predeterminados](#mime-types) que se pueden codificar, pero puede reemplazar o agregar tipos MIME. |
 | `Vary`             | Cuando lo envía el servidor con un valor de `Accept-Encoding` a los clientes y servidores proxy, el `Vary` encabezado indica al cliente o al proxy que debe almacenar en caché (variar) respuestas en función del valor del `Accept-Encoding` encabezado de la solicitud. El resultado de devolver el contenido con el `Vary: Accept-Encoding` encabezado es que las respuestas comprimidas y sin comprimir se almacenan en caché por separado. |
 
-Explore las características del middleware de compresión de respuesta con la [aplicación de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/performance/response-compression/samples). En el ejemplo se muestra:
+Explore las características del middleware de compresión de respuesta con la [aplicación de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/performance/response-compression/samples). En el ejemplo se muestra:
 
 * Compresión de las respuestas de la aplicación mediante gzip y proveedores de compresión personalizados.
 * Cómo agregar un tipo MIME a la lista predeterminada de tipos MIME para la compresión.
@@ -394,7 +394,7 @@ El proveedor de compresión Brotli debe agregarse cuando se agreguen explícitam
 
 Establezca el nivel de compresión con <xref:Microsoft.AspNetCore.ResponseCompression.BrotliCompressionProviderOptions> . El proveedor de compresión Brotli tiene como valor predeterminado el nivel de compresión más rápido ([CompressionLevel. Fast](xref:System.IO.Compression.CompressionLevel)), que podría no producir la compresión más eficaz. Si se desea la compresión más eficaz, configure el middleware para una compresión óptima.
 
-| Nivel de compresión | Descripción |
+| Nivel de compresión | Description |
 | ----------------- | ----------- |
 | [CompressionLevel. más rápido](xref:System.IO.Compression.CompressionLevel) | La compresión debe completarse tan pronto como sea posible, incluso si la salida resultante no se comprime de forma óptima. |
 | [CompressionLevel. NoCompression](xref:System.IO.Compression.CompressionLevel) | No se debe realizar ninguna compresión. |
@@ -434,7 +434,7 @@ El proveedor de compresión gzip debe agregarse cuando se agreguen explícitamen
 
 Establezca el nivel de compresión con <xref:Microsoft.AspNetCore.ResponseCompression.GzipCompressionProviderOptions> . El proveedor de compresión gzip tiene como valor predeterminado el nivel de compresión más rápido ([CompressionLevel. Fast](xref:System.IO.Compression.CompressionLevel)), que podría no producir la compresión más eficaz. Si se desea la compresión más eficaz, configure el middleware para una compresión óptima.
 
-| Nivel de compresión | Descripción |
+| Nivel de compresión | Description |
 | ----------------- | ----------- |
 | [CompressionLevel. más rápido](xref:System.IO.Compression.CompressionLevel) | La compresión debe completarse tan pronto como sea posible, incluso si la salida resultante no se comprime de forma óptima. |
 | [CompressionLevel. NoCompression](xref:System.IO.Compression.CompressionLevel) | No se debe realizar ninguna compresión. |
@@ -479,7 +479,7 @@ El middleware especifica un conjunto predeterminado de tipos MIME para la compre
 * `text/plain`
 * `text/xml`
 
-Reemplazar o anexar tipos MIME con las opciones de middleware de compresión de respuesta. Tenga en cuenta que no se admiten los tipos MIME comodín, como `text/*` . La aplicación de ejemplo agrega un tipo MIME para `image/svg+xml` y comprime y sirve la imagen de banner ASP.net Core ( *banner. svg* ).
+Reemplazar o anexar tipos MIME con las opciones de middleware de compresión de respuesta. Tenga en cuenta que no se admiten los tipos MIME comodín, como `text/*` . La aplicación de ejemplo agrega un tipo MIME para `image/svg+xml` y comprime y sirve la imagen de banner ASP.net Core (*banner. svg*).
 
 [!code-csharp[](response-compression/samples/2.x/SampleApp/Startup.cs?name=snippet1&highlight=8-10)]
 
@@ -523,7 +523,7 @@ Use una herramienta como [Fiddler](https://www.telerik.com/fiddler), [Firebug](h
 
 El ancho de banda de red es un recurso limitado. Reducir el tamaño de la respuesta normalmente aumenta la capacidad de respuesta de una aplicación, a menudo drásticamente. Una manera de reducir los tamaños de carga es comprimir las respuestas de una aplicación.
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/performance/response-compression/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/performance/response-compression/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
 ## <a name="when-to-use-response-compression-middleware"></a>Cuándo usar el middleware de compresión de respuesta
 
@@ -574,7 +574,7 @@ En la tabla siguiente se describen los encabezados implicados en la solicitud, e
 | `Content-Type`     | Especifica el tipo MIME del contenido. Cada respuesta debe especificar su `Content-Type` . El middleware comprueba este valor para determinar si se debe comprimir la respuesta. El middleware especifica un conjunto de [tipos MIME predeterminados](#mime-types) que se pueden codificar, pero puede reemplazar o agregar tipos MIME. |
 | `Vary`             | Cuando lo envía el servidor con un valor de `Accept-Encoding` a los clientes y servidores proxy, el `Vary` encabezado indica al cliente o al proxy que debe almacenar en caché (variar) respuestas en función del valor del `Accept-Encoding` encabezado de la solicitud. El resultado de devolver el contenido con el `Vary: Accept-Encoding` encabezado es que las respuestas comprimidas y sin comprimir se almacenan en caché por separado. |
 
-Explore las características del middleware de compresión de respuesta con la [aplicación de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/performance/response-compression/samples). En el ejemplo se muestra:
+Explore las características del middleware de compresión de respuesta con la [aplicación de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/performance/response-compression/samples). En el ejemplo se muestra:
 
 * Compresión de las respuestas de la aplicación mediante gzip y proveedores de compresión personalizados.
 * Cómo agregar un tipo MIME a la lista predeterminada de tipos MIME para la compresión.
@@ -639,7 +639,7 @@ El proveedor de compresión gzip debe agregarse cuando se agreguen explícitamen
 
 Establezca el nivel de compresión con <xref:Microsoft.AspNetCore.ResponseCompression.GzipCompressionProviderOptions> . El proveedor de compresión gzip tiene como valor predeterminado el nivel de compresión más rápido ([CompressionLevel. Fast](xref:System.IO.Compression.CompressionLevel)), que podría no producir la compresión más eficaz. Si se desea la compresión más eficaz, configure el middleware para una compresión óptima.
 
-| Nivel de compresión | Descripción |
+| Nivel de compresión | Description |
 | ----------------- | ----------- |
 | [CompressionLevel. más rápido](xref:System.IO.Compression.CompressionLevel) | La compresión debe completarse tan pronto como sea posible, incluso si la salida resultante no se comprime de forma óptima. |
 | [CompressionLevel. NoCompression](xref:System.IO.Compression.CompressionLevel) | No se debe realizar ninguna compresión. |
@@ -684,7 +684,7 @@ El middleware especifica un conjunto predeterminado de tipos MIME para la compre
 * `text/plain`
 * `text/xml`
 
-Reemplazar o anexar tipos MIME con las opciones de middleware de compresión de respuesta. Tenga en cuenta que no se admiten los tipos MIME comodín, como `text/*` . La aplicación de ejemplo agrega un tipo MIME para `image/svg+xml` y comprime y sirve la imagen de banner ASP.net Core ( *banner. svg* ).
+Reemplazar o anexar tipos MIME con las opciones de middleware de compresión de respuesta. Tenga en cuenta que no se admiten los tipos MIME comodín, como `text/*` . La aplicación de ejemplo agrega un tipo MIME para `image/svg+xml` y comprime y sirve la imagen de banner ASP.net Core (*banner. svg*).
 
 [!code-csharp[](response-compression/samples/2.x/SampleApp/Startup.cs?name=snippet1&highlight=8-10)]
 

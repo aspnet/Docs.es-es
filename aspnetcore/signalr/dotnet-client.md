@@ -19,22 +19,22 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/dotnet-client
-ms.openlocfilehash: 7849322e50aeceda0850d94f9c9bcda79a6051c8
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: db2bfa6d3aa440615c5a9c17ae843dbe22755c97
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93061228"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589249"
 ---
-# <a name="aspnet-core-no-locsignalr-net-client"></a>Cliente de ASP.NET Core SignalR .net
+# <a name="aspnet-core-signalr-net-client"></a>Cliente de ASP.NET Core SignalR .net
 
 La SignalR biblioteca de cliente de ASP.net Core .net le permite comunicarse con los SignalR concentradores de aplicaciones .net.
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/dotnet-client/sample) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/signalr/dotnet-client/sample) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
 El ejemplo de código de este artículo es una aplicación de WPF que usa el SignalR cliente ASP.net Core .net.
 
-## <a name="install-the-no-locsignalr-net-client-package"></a>Instalar el SignalR paquete de cliente de .net
+## <a name="install-the-signalr-net-client-package"></a>Instalar el SignalR paquete de cliente de .net
 
 [Microsoft. AspNetCore. SignalR . ](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR.Client)El paquete de cliente es necesario para que los clientes de .net se conecten a los SignalR concentradores.
 
@@ -270,5 +270,5 @@ Controlar los errores con una instrucción try-catch. Inspeccione el `Exception`
 
 * [Concentradores](xref:signalr/hubs)
 * [Cliente de JavaScript](xref:signalr/javascript-client)
-* [Publicación en Azure](xref:signalr/publish-to-azure-web-app)
+* [Publicar en Azure](xref:signalr/publish-to-azure-web-app)
 * [Documentación sin servidor del servicio de Azure SignalR](/azure/azure-signalr/signalr-concept-serverless-development-config)

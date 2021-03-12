@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/windows-service
-ms.openlocfilehash: 63267bf938c6d16b8a1b13940a4b3f8a02d1a1e4
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: e5c7dd0e52f1246d3ac6ad9622573db4c276654b
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98252752"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102588820"
 ---
 # <a name="host-aspnet-core-in-a-windows-service"></a>Hospedaje de ASP.NET Core en un servicio de Windows
 
@@ -32,7 +32,7 @@ ms.locfileid: "98252752"
 
 Una aplicación de ASP.NET Core se puede hospedar en Windows sin usar IIS como [servicio de Windows](/dotnet/framework/windows-services/introduction-to-windows-service-applications). Cuando se hospeda como un servicio de Windows, la aplicación se inicia automáticamente después de reiniciar el servidor.
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/host-and-deploy/windows-service/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/host-and-deploy/windows-service/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
 ## <a name="prerequisites"></a>Requisitos previos
 
@@ -332,14 +332,14 @@ Un *volcado de memoria* es una instantánea de la memoria del sistema que puede 
 Obtenga y analice un volcado de memoria en [Informe de errores de Windows (WER)](/windows/desktop/wer/windows-error-reporting):
 
 1. Cree una carpeta para almacenar los archivos de volcado de memoria en `c:\dumps`.
-1. Ejecute el script [EnableDumps PowerShell](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/host-and-deploy/windows-service/samples/scripts/EnableDumps.ps1) con el nombre del archivo ejecutable de la aplicación:
+1. Ejecute el script [EnableDumps PowerShell](https://github.com/dotnet/AspNetCore.Docs/blob/main/aspnetcore/host-and-deploy/windows-service/samples/scripts/EnableDumps.ps1) con el nombre del archivo ejecutable de la aplicación:
 
    ```powershell
    .\EnableDumps {APPLICATION EXE} c:\dumps
    ```
 
 1. Ejecute la aplicación en las condiciones que hacen que se produzca el bloqueo.
-1. Una vez que se haya producido el bloqueo, ejecute el [script DisableDumps de PowerShell](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/host-and-deploy/windows-service/samples/scripts/DisableDumps.ps1):
+1. Una vez que se haya producido el bloqueo, ejecute el [script DisableDumps de PowerShell](https://github.com/dotnet/AspNetCore.Docs/blob/main/aspnetcore/host-and-deploy/windows-service/samples/scripts/DisableDumps.ps1):
 
    ```powershell
    .\DisableDumps {APPLICATION EXE}
@@ -379,7 +379,7 @@ El volcado de memoria se puede analizar de varias maneras. Para obtener más inf
 
 Una aplicación de ASP.NET Core se puede hospedar en Windows sin usar IIS como [servicio de Windows](/dotnet/framework/windows-services/introduction-to-windows-service-applications). Cuando se hospeda como un servicio de Windows, la aplicación se inicia automáticamente después de reiniciar el servidor.
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/host-and-deploy/windows-service/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/host-and-deploy/windows-service/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
 ## <a name="prerequisites"></a>Requisitos previos
 
@@ -675,14 +675,14 @@ Un *volcado de memoria* es una instantánea de la memoria del sistema que puede 
 Obtenga y analice un volcado de memoria en [Informe de errores de Windows (WER)](/windows/desktop/wer/windows-error-reporting):
 
 1. Cree una carpeta para almacenar los archivos de volcado de memoria en `c:\dumps`.
-1. Ejecute el script [EnableDumps PowerShell](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/host-and-deploy/windows-service/scripts/EnableDumps.ps1) con el nombre del archivo ejecutable de la aplicación:
+1. Ejecute el script [EnableDumps PowerShell](https://github.com/dotnet/AspNetCore.Docs/blob/main/aspnetcore/host-and-deploy/windows-service/scripts/EnableDumps.ps1) con el nombre del archivo ejecutable de la aplicación:
 
    ```console
    .\EnableDumps {APPLICATION EXE} c:\dumps
    ```
 
 1. Ejecute la aplicación en las condiciones que hacen que se produzca el bloqueo.
-1. Una vez que se haya producido el bloqueo, ejecute el [script DisableDumps de PowerShell](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/host-and-deploy/windows-service/scripts/DisableDumps.ps1):
+1. Una vez que se haya producido el bloqueo, ejecute el [script DisableDumps de PowerShell](https://github.com/dotnet/AspNetCore.Docs/blob/main/aspnetcore/host-and-deploy/windows-service/scripts/DisableDumps.ps1):
 
    ```console
    .\DisableDumps {APPLICATION EXE}
@@ -713,7 +713,7 @@ El volcado de memoria se puede analizar de varias maneras. Para obtener más inf
 
 Una aplicación de ASP.NET Core se puede hospedar en Windows sin usar IIS como [servicio de Windows](/dotnet/framework/windows-services/introduction-to-windows-service-applications). Cuando se hospeda como un servicio de Windows, la aplicación se inicia automáticamente después de reiniciar el servidor.
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/host-and-deploy/windows-service/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/host-and-deploy/windows-service/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
 ## <a name="prerequisites"></a>Requisitos previos
 
@@ -1012,14 +1012,14 @@ Un *volcado de memoria* es una instantánea de la memoria del sistema que puede 
 Obtenga y analice un volcado de memoria en [Informe de errores de Windows (WER)](/windows/desktop/wer/windows-error-reporting):
 
 1. Cree una carpeta para almacenar los archivos de volcado de memoria en `c:\dumps`.
-1. Ejecute el script [EnableDumps PowerShell](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/host-and-deploy/windows-service/scripts/EnableDumps.ps1) con el nombre del archivo ejecutable de la aplicación:
+1. Ejecute el script [EnableDumps PowerShell](https://github.com/dotnet/AspNetCore.Docs/blob/main/aspnetcore/host-and-deploy/windows-service/scripts/EnableDumps.ps1) con el nombre del archivo ejecutable de la aplicación:
 
    ```console
    .\EnableDumps {APPLICATION EXE} c:\dumps
    ```
 
 1. Ejecute la aplicación en las condiciones que hacen que se produzca el bloqueo.
-1. Una vez que se haya producido el bloqueo, ejecute el [script DisableDumps de PowerShell](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/host-and-deploy/windows-service/scripts/DisableDumps.ps1):
+1. Una vez que se haya producido el bloqueo, ejecute el [script DisableDumps de PowerShell](https://github.com/dotnet/AspNetCore.Docs/blob/main/aspnetcore/host-and-deploy/windows-service/scripts/DisableDumps.ps1):
 
    ```console
    .\DisableDumps {APPLICATION EXE}

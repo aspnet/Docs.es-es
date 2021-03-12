@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/configuration/options
-ms.openlocfilehash: dedc17d7d793a6fd2eac1c8017b704d98a86f1cb
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: cb78147050ebdafc7de4ad150ae2644689d6efbc
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93061098"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102586220"
 ---
 # <a name="options-pattern-in-aspnet-core"></a>Patrón de opciones en ASP.NET Core
 
@@ -41,7 +41,7 @@ Las opciones también proporcionan un mecanismo para validar los datos de config
 
 En este tema se proporciona información sobre el patrón de opciones de ASP.NET Core. Para más información sobre el uso del patrón de opciones en las aplicaciones de consola, consulte [Patrón de opciones en .NET](/dotnet/core/extensions/options).
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/options/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/configuration/options/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
 <a name="optpat"></a>
 
@@ -55,7 +55,8 @@ En este tema se proporciona información sobre el patrón de opciones de ASP.NET
 
 <xref:Microsoft.Extensions.Options.IOptions%601>:
 
-* ***no** se admite: lectura de los datos de configuración una vez iniciada la aplicación.
+* ***No*** admite:
+  * Lectura de los datos de configuración una vez iniciada la aplicación.
   * [Opciones con nombre](#named)
 * Se registra como [Singleton](xref:fundamentals/dependency-injection#singleton) y se puede insertar en cualquier [duración del servicio](xref:fundamentals/dependency-injection#service-lifetimes).
 
@@ -291,7 +292,7 @@ El patrón de opciones usa clases para representar grupos de configuraciones rel
 
 Las opciones también proporcionan un mecanismo para validar los datos de configuración. Para obtener más información, consulte la sección [Opciones de validación](#options-validation).
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/options/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/configuration/options/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
 ## <a name="prerequisites"></a>Requisitos previos
 
@@ -713,7 +714,7 @@ El patrón de opciones usa clases para representar grupos de configuraciones rel
 
 Las opciones también proporcionan un mecanismo para validar los datos de configuración. Para obtener más información, consulte la sección [Opciones de validación](#options-validation).
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/options/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/configuration/options/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
 ## <a name="prerequisites"></a>Requisitos previos
 

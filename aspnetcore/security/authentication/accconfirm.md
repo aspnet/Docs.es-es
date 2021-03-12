@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/accconfirm
-ms.openlocfilehash: 91148c67d5dc0bf97e2f926f50dcff5dd0708f4b
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: f71ae5e619b875c03401fa78320582c406875401
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93052323"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102586116"
 ---
 # <a name="account-confirmation-and-password-recovery-in-aspnet-core"></a>Confirmación de las cuentas y recuperación de contraseñas en ASP.NET Core
 
@@ -57,7 +57,7 @@ Ejecute la aplicación, seleccione el vínculo **registrar** y registre un usuar
 * Seleccione el `Click here to confirm your account` vínculo.
 * Seleccione el vínculo de **Inicio de sesión** e inicie sesión con las mismas credenciales.
 * Seleccione el `Hello YourEmail@provider.com!` vínculo, que le redirigirá a la `/Identity/Account/Manage/PersonalData` página.
-* Seleccione la pestaña **datos personales** de la izquierda y, a continuación, seleccione **eliminar** .
+* Seleccione la pestaña **datos personales** de la izquierda y, a continuación, seleccione **eliminar**.
 
 ### <a name="configure-an-email-provider"></a>Configuración de un proveedor de correo electrónico
 
@@ -65,7 +65,7 @@ En este tutorial, se usa [SendGrid](https://sendgrid.com) para enviar correo ele
 
 Es posible que la cuenta de SendGrid necesite [Agregar un remitente](https://sendgrid.com/docs/ui/sending-email/senders/).
 
-Cree una clase para capturar la clave de correo electrónico segura. Para este ejemplo, cree *Services/AuthMessageSenderOptions. CS* :
+Cree una clase para capturar la clave de correo electrónico segura. Para este ejemplo, cree *Services/AuthMessageSenderOptions. CS*:
 
 [!code-csharp[](accconfirm/sample/WebPWrecover30/Services/AuthMessageSenderOptions.cs?name=snippet1)]
 
@@ -139,7 +139,7 @@ Agregue el código siguiente al `ConfigureServices` método en el archivo *Start
 Siga las instrucciones de [scaffolding Identity ](xref:security/authentication/scaffold-identity) y scaffold `RegisterConfirmation` .
 
 <!-- .NET 5 fixes this, see
-https://github.com/dotnet/aspnetcore/blob/master/src/Identity/UI/src/Areas/Identity/Pages/V4/Account/RegisterConfirmation.cshtml.cs#L74-L77
+https://github.com/dotnet/aspnetcore/blob/main/src/Identity/UI/src/Areas/Identity/Pages/V4/Account/RegisterConfirmation.cshtml.cs#L74-L77
 -->
 
 [!INCLUDE[](~/includes/disableVer.md)]
@@ -156,7 +156,7 @@ Ejecute la aplicación web y pruebe el flujo de recuperación de la contraseña 
 
 ### <a name="test-password-reset"></a>Restablecimiento de la contraseña de prueba
 
-* Si ha iniciado sesión, seleccione **Logout** .
+* Si ha iniciado sesión, seleccione **Logout**.
 * Seleccione el vínculo **iniciar sesión** y seleccione el vínculo **¿olvidó su contraseña?** .
 * Escriba el correo electrónico que usó para registrar la cuenta.
 * Se envía un correo electrónico con un vínculo para restablecer la contraseña. Compruebe su correo electrónico y haga clic en el vínculo para restablecer la contraseña. Una vez que la contraseña se haya restablecido correctamente, puede iniciar sesión con el correo electrónico y la nueva contraseña.
@@ -241,7 +241,7 @@ La habilitación de la confirmación de cuenta en un sitio con usuarios bloquea 
 
 [SDK de .NET Core 2,2 o posterior](https://dotnet.microsoft.com/download/dotnet-core)
 
-## <a name="create-a-web--app-and-scaffold-no-locidentity"></a>Creación de una aplicación web y scaffolding Identity
+## <a name="create-a-web--app-and-scaffold-identity"></a>Creación de una aplicación web y scaffolding Identity
 
 Ejecute los siguientes comandos para crear una aplicación web con autenticación.
 
@@ -267,7 +267,7 @@ Ejecute la aplicación, seleccione el vínculo **registrar** y registre un usuar
 
 Tenga en cuenta que el campo de la tabla `EmailConfirmed` es `False` .
 
-Es posible que desee usar este correo electrónico de nuevo en el paso siguiente cuando la aplicación envíe un correo electrónico de confirmación. Haga clic con el botón derecho en la fila y seleccione **eliminar** . Al eliminar el alias de correo electrónico, se facilitan los pasos siguientes.
+Es posible que desee usar este correo electrónico de nuevo en el paso siguiente cuando la aplicación envíe un correo electrónico de confirmación. Haga clic con el botón derecho en la fila y seleccione **eliminar**. Al eliminar el alias de correo electrónico, se facilitan los pasos siguientes.
 
 <a name="prevent-login-at-registration"></a>
 
@@ -287,7 +287,7 @@ Actualización `Startup.ConfigureServices`  para requerir un correo electrónico
 
 En este tutorial, se usa [SendGrid](https://sendgrid.com) para enviar correo electrónico. Necesita una cuenta y una clave de SendGrid para enviar el correo electrónico. Puede usar otros proveedores de correo electrónico. ASP.NET Core 2. x incluye `System.Net.Mail` , que le permite enviar correo electrónico desde su aplicación. Se recomienda usar SendGrid u otro servicio de correo electrónico para enviar correo electrónico. SMTP es difícil de proteger y configurar correctamente.
 
-Cree una clase para capturar la clave de correo electrónico segura. Para este ejemplo, cree *Services/AuthMessageSenderOptions. CS* :
+Cree una clase para capturar la clave de correo electrónico segura. Para este ejemplo, cree *Services/AuthMessageSenderOptions. CS*:
 
 [!code-csharp[](accconfirm/sample/WebPWrecover22/Services/AuthMessageSenderOptions.cs?name=snippet1)]
 
@@ -356,7 +356,7 @@ Agregue el código siguiente al `ConfigureServices` método en el archivo *Start
 
 ## <a name="enable-account-confirmation-and-password-recovery"></a>Habilitar la confirmación de la cuenta y la recuperación de la contraseña
 
-La plantilla tiene el código para la confirmación de la cuenta y la recuperación de la contraseña. Busque el `OnPostAsync` método en *areas/ Identity /pages/Account/Register.cshtml.CS* .
+La plantilla tiene el código para la confirmación de la cuenta y la recuperación de la contraseña. Busque el `OnPostAsync` método en *areas/ Identity /pages/Account/Register.cshtml.CS*.
 
 Evite que los usuarios recién registrados inicien sesión automáticamente al comentar la siguiente línea:
 
@@ -386,7 +386,7 @@ La página Administrar se muestra con la pestaña **perfil** seleccionada. El **
 
 ### <a name="test-password-reset"></a>Restablecimiento de la contraseña de prueba
 
-* Si ha iniciado sesión, seleccione **Logout** .
+* Si ha iniciado sesión, seleccione **Logout**.
 * Seleccione el vínculo **iniciar sesión** y seleccione el vínculo **¿olvidó su contraseña?** .
 * Escriba el correo electrónico que usó para registrar la cuenta.
 * Se envía un correo electrónico con un vínculo para restablecer la contraseña. Compruebe su correo electrónico y haga clic en el vínculo para restablecer la contraseña. Una vez que la contraseña se haya restablecido correctamente, puede iniciar sesión con el correo electrónico y la nueva contraseña.

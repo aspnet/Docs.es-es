@@ -19,20 +19,20 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authorization/razor-pages-authorization
-ms.openlocfilehash: 69e1d639aeb55ae64cc54b1cda402ed6bcbb04ab
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: ffcb16b626773da69c45b8ab5dbd7c3cdc84bb5f
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93060188"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589119"
 ---
-# <a name="no-locrazor-pages-authorization-conventions-in-aspnet-core"></a>Razor Convenciones de autorización de páginas en ASP.NET Core
+# <a name="razor-pages-authorization-conventions-in-aspnet-core"></a>Razor Convenciones de autorización de páginas en ASP.NET Core
 
 ::: moniker range=">= aspnetcore-3.0"
 
 Una manera de controlar el acceso en la Razor aplicación páginas es usar las convenciones de autorización en el inicio. Estas convenciones permiten autorizar a los usuarios y permitir que los usuarios anónimos tengan acceso a páginas individuales o carpetas de páginas. Las convenciones descritas en este tema aplican automáticamente los [filtros de autorización](xref:mvc/controllers/filters#authorization-filters) para controlar el acceso.
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/razor-pages-authorization/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/authorization/razor-pages-authorization/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
 La aplicación de ejemplo usa la [ cookie autenticación sin ASP.NET Core Identity ](xref:security/authentication/cookie). Los conceptos y los ejemplos que se muestran en este tema se aplican igualmente a las aplicaciones que usan ASP.NET Core Identity . Para usar ASP.NET Core Identity , siga las instrucciones de <xref:security/authentication/identity> .
 
@@ -75,7 +75,7 @@ Use la <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionEx
 options.Conventions.AuthorizeAreaPage("Identity", "/Manage/Accounts");
 ```
 
-El nombre de página es la ruta de acceso del archivo sin una extensión relativa al directorio raíz de páginas del área especificada. Por ejemplo, el nombre de página de las *áreas de archivo/ Identity /pages/Manage/accounts.cshtml* es */Manage/accounts* .
+El nombre de página es la ruta de acceso del archivo sin una extensión relativa al directorio raíz de páginas del área especificada. Por ejemplo, el nombre de página de las *áreas de archivo/ Identity /pages/Manage/accounts.cshtml* es */Manage/accounts*.
 
 Para especificar una [Directiva de autorización](xref:security/authorization/policies), use una [sobrecarga AuthorizeAreaPage](xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizeAreaPage*):
 
@@ -91,7 +91,7 @@ Use la <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionEx
 options.Conventions.AuthorizeAreaFolder("Identity", "/Manage");
 ```
 
-La ruta de acceso de la carpeta es la ruta de acceso de la carpeta relativa al directorio raíz de páginas del área especificada. Por ejemplo, la ruta de acceso de la carpeta para los archivos en *areas/ Identity /pages/Manage/* es */Manage* .
+La ruta de acceso de la carpeta es la ruta de acceso de la carpeta relativa al directorio raíz de páginas del área especificada. Por ejemplo, la ruta de acceso de la carpeta para los archivos en *areas/ Identity /pages/Manage/* es */Manage*.
 
 Para especificar una [Directiva de autorización](xref:security/authorization/policies), use una [sobrecarga AuthorizeAreaFolder](xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizeAreaFolder*):
 
@@ -144,7 +144,7 @@ Se produce un error en la solicitud de autorización en la página privada. Cuan
 
 Una manera de controlar el acceso en la Razor aplicación páginas es usar las convenciones de autorización en el inicio. Estas convenciones permiten autorizar a los usuarios y permitir que los usuarios anónimos tengan acceso a páginas individuales o carpetas de páginas. Las convenciones descritas en este tema aplican automáticamente los [filtros de autorización](xref:mvc/controllers/filters#authorization-filters) para controlar el acceso.
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/razor-pages-authorization/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/authorization/razor-pages-authorization/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
 La aplicación de ejemplo usa la [ cookie autenticación sin ASP.NET Core Identity ](xref:security/authentication/cookie). Los conceptos y los ejemplos que se muestran en este tema se aplican igualmente a las aplicaciones que usan ASP.NET Core Identity . Para usar ASP.NET Core Identity , siga las instrucciones de <xref:security/authentication/identity> .
 
@@ -187,7 +187,7 @@ Use la <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionEx
 options.Conventions.AuthorizeAreaPage("Identity", "/Manage/Accounts");
 ```
 
-El nombre de página es la ruta de acceso del archivo sin una extensión relativa al directorio raíz de páginas del área especificada. Por ejemplo, el nombre de página de las *áreas de archivo/ Identity /pages/Manage/accounts.cshtml* es */Manage/accounts* .
+El nombre de página es la ruta de acceso del archivo sin una extensión relativa al directorio raíz de páginas del área especificada. Por ejemplo, el nombre de página de las *áreas de archivo/ Identity /pages/Manage/accounts.cshtml* es */Manage/accounts*.
 
 Para especificar una [Directiva de autorización](xref:security/authorization/policies), use una [sobrecarga AuthorizeAreaPage](xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizeAreaPage*):
 
@@ -203,7 +203,7 @@ Use la <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionEx
 options.Conventions.AuthorizeAreaFolder("Identity", "/Manage");
 ```
 
-La ruta de acceso de la carpeta es la ruta de acceso de la carpeta relativa al directorio raíz de páginas del área especificada. Por ejemplo, la ruta de acceso de la carpeta para los archivos en *areas/ Identity /pages/Manage/* es */Manage* .
+La ruta de acceso de la carpeta es la ruta de acceso de la carpeta relativa al directorio raíz de páginas del área especificada. Por ejemplo, la ruta de acceso de la carpeta para los archivos en *areas/ Identity /pages/Manage/* es */Manage*.
 
 Para especificar una [Directiva de autorización](xref:security/authorization/policies), use una [sobrecarga AuthorizeAreaFolder](xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AuthorizeAreaFolder*):
 

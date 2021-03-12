@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/configuration/index
-ms.openlocfilehash: 24b4d5fc11d21dce4d9e0fd2f8f0dd2d45e82baa
-ms.sourcegitcommit: a1db01b4d3bd8c57d7a9c94ce122a6db68002d66
+ms.openlocfilehash: fa7fbf1ae88b28cd36c5aece626240d849669a96
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102110084"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102586350"
 ---
 # <a name="configuration-in-aspnet-core"></a>Configuración en ASP.NET Core
 
@@ -45,7 +45,7 @@ La configuración de ASP.NET Core se realiza mediante uno o varios [proveedores 
 
 En este tema se proporciona información sobre la configuración de ASP.NET Core. Para más información sobre el uso de la configuración en las aplicaciones de consola, consulte [Configuración de .NET](/dotnet/core/extensions/configuration).
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/index/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/configuration/index/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
 <a name="default"></a>
 
@@ -78,7 +78,7 @@ Fíjese en el siguiente archivo *appsettings.json* :
 
 [!code-json[](index/samples/3.x/ConfigSample/appsettings.json)]
 
-El siguiente código de la [descarga de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/index/samples/3.x/ConfigSample) muestra algunas de las configuraciones anteriores:
+El siguiente código de la [descarga de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/configuration/index/samples/3.x/ConfigSample) muestra algunas de las configuraciones anteriores:
 
 [!code-csharp[](index/samples/3.x/ConfigSample/Pages/Test.cshtml.cs?name=snippet)]
 
@@ -138,7 +138,7 @@ Al usar la configuración [predeterminada](#default), <xref:Microsoft.Extensions
 Los siguientes comandos `set`:
 
 * Establecen las claves de entorno y los valores del [ejemplo anterior](#appsettingsjson) en Windows.
-* Prueban la configuración al usar la [descarga de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/index/samples/3.x/ConfigSample). El comando `dotnet run` debe ejecutarse en el directorio del proyecto.
+* Prueban la configuración al usar la [descarga de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/configuration/index/samples/3.x/ConfigSample). El comando `dotnet run` debe ejecutarse en el directorio del proyecto.
 
 ```dotnetcli
 set MyKey="My key from Environment"
@@ -329,11 +329,11 @@ En el caso de las aplicaciones que usen las asignaciones de modificador, la llam
 
 La API de configuración lee los datos de configuración jerárquica al disminuir los datos jerárquicos mediante el uso de un delimitador en las claves de configuración.
 
-La [descarga de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/index/samples/3.x/ConfigSample) contiene el siguiente archivo *appsettings.json* :
+La [descarga de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/configuration/index/samples/3.x/ConfigSample) contiene el siguiente archivo *appsettings.json* :
 
 [!code-json[](index/samples/3.x/ConfigSample/appsettings.json)]
 
-El siguiente código de la [descarga de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/index/samples/3.x/ConfigSample) muestra algunas de las opciones de configuración:
+El siguiente código de la [descarga de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/configuration/index/samples/3.x/ConfigSample) muestra algunas de las opciones de configuración:
 
 [!code-csharp[](index/samples/3.x/ConfigSample/Pages/Test.cshtml.cs?name=snippet)]
 
@@ -442,11 +442,11 @@ En el código anterior, se reemplaza la configuración de los archivos *MyIniCon
 * [Proveedor de configuración de variables de entorno](#evcp)
 * [Proveedor de configuración de línea de comandos](#clcp)
 
-La [descarga de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/index/samples/3.x/ConfigSample) contiene el siguiente archivo *MyIniConfig.ini*:
+La [descarga de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/configuration/index/samples/3.x/ConfigSample) contiene el siguiente archivo *MyIniConfig.ini*:
 
 [!code-ini[](index/samples/3.x/ConfigSample/MyIniConfig.ini)]
 
-El siguiente código de la [descarga de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/index/samples/3.x/ConfigSample) muestra algunas de las configuraciones anteriores:
+El siguiente código de la [descarga de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/configuration/index/samples/3.x/ConfigSample) muestra algunas de las configuraciones anteriores:
 
 [!code-csharp[](index/samples/3.x/ConfigSample/Pages/Test.cshtml.cs?name=snippet)]
 
@@ -483,11 +483,11 @@ En el código anterior, la configuración de los archivos *MyConfig.json* y *MyC
 * Invalida la configuración de los archivos *appsettings.json* y *appsettings*.`Environment`.*json*.
 * Es reemplazada por la configuración del [proveedor de configuración de variables de entorno](#evcp) y del [proveedor de configuración de línea de comandos](#clcp).
 
-La [descarga de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/index/samples/3.x/ConfigSample) contiene el siguiente archivo *MyConfig.json*:
+La [descarga de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/configuration/index/samples/3.x/ConfigSample) contiene el siguiente archivo *MyConfig.json*:
 
 [!code-json[](index/samples/3.x/ConfigSample/MyConfig.json)]
 
-El siguiente código de la [descarga de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/index/samples/3.x/ConfigSample) muestra algunas de las configuraciones anteriores:
+El siguiente código de la [descarga de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/configuration/index/samples/3.x/ConfigSample) muestra algunas de las configuraciones anteriores:
 
 [!code-csharp[](index/samples/3.x/ConfigSample/Pages/Test.cshtml.cs?name=snippet)]
 
@@ -504,11 +504,11 @@ En el código anterior, se reemplaza la configuración de los archivos *MyXMLFil
 * [Proveedor de configuración de variables de entorno](#evcp)
 * [Proveedor de configuración de línea de comandos](#clcp)
 
-La [descarga de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/index/samples/3.x/ConfigSample) contiene el siguiente archivo *MyXMLFile.xml*:
+La [descarga de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/configuration/index/samples/3.x/ConfigSample) contiene el siguiente archivo *MyXMLFile.xml*:
 
 [!code-xml[](index/samples/3.x/ConfigSample/MyXMLFile.xml)]
 
-El siguiente código de la [descarga de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/index/samples/3.x/ConfigSample) muestra algunas de las configuraciones anteriores:
+El siguiente código de la [descarga de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/configuration/index/samples/3.x/ConfigSample) muestra algunas de las configuraciones anteriores:
 
 [!code-csharp[](index/samples/3.x/ConfigSample/Pages/Test.cshtml.cs?name=snippet)]
 
@@ -571,7 +571,7 @@ El código siguiente agrega una colección en memoria al sistema de configuraci�
 
 [!code-csharp[](index/samples/3.x/ConfigSample/ProgramArray.cs?name=snippet6)]
 
-El siguiente código de la [descarga de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/index/samples/3.x/ConfigSample) muestra las opciones de configuración anteriores:
+El siguiente código de la [descarga de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/configuration/index/samples/3.x/ConfigSample) muestra las opciones de configuración anteriores:
 
 [!code-csharp[](index/samples/3.x/ConfigSample/Pages/Test.cshtml.cs?name=snippet)]
 
@@ -659,7 +659,7 @@ El código anterior llama a [ConfigurationExtensions.Exists](xref:Microsoft.Exte
 
 El método [ConfigurationBinder.Bind](xref:Microsoft.Extensions.Configuration.ConfigurationBinder.Bind*) permite enlazar matrices a objetos mediante el uso de los índices de matriz en las claves de configuración. Cualquier formato de matriz que exponga un segmento de clave numérica es capaz de enlazar una matriz a una matriz de clase [POCO](https://wikipedia.org/wiki/Plain_Old_CLR_Object).
 
-Tenga en cuenta este archivo *MyArray.json* de la [descarga de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/index/samples/3.x/ConfigSample):
+Tenga en cuenta este archivo *MyArray.json* de la [descarga de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/configuration/index/samples/3.x/ConfigSample):
 
 [!code-json[](index/samples/3.x/ConfigSample/MyArray.json)]
 
@@ -860,7 +860,7 @@ Una implementación de <xref:Microsoft.AspNetCore.Hosting.IHostingStartup> permi
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
-* [Configuración del código fuente](https://github.com/dotnet/runtime/tree/master/src/libraries/Microsoft.Extensions.Configuration)
+* [Configuración del código fuente](https://github.com/dotnet/runtime/tree/main/src/libraries/Microsoft.Extensions.Configuration)
 * <xref:fundamentals/configuration/options>
 * <xref:blazor/fundamentals/configuration>
 
@@ -889,7 +889,7 @@ using Microsoft.Extensions.Configuration;
 
 El *patrón de opciones* es una extensión de los conceptos de configuración que se describen en este tema. Las opciones usan clases para representar grupos de configuraciones relacionadas. Para obtener más información, vea <xref:fundamentals/configuration/options>.
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/index/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/configuration/index/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
 ## <a name="host-versus-app-configuration"></a>Configuración de host y de aplicación
 
@@ -1203,7 +1203,7 @@ En el caso de las aplicaciones que usen las asignaciones de modificador, la llam
 
 Después de crear el diccionario de asignaciones de modificador, contiene los datos que se muestran en la tabla siguiente.
 
-| Clave       | Valor             |
+| Key       | Valor             |
 | --------- | ----------------- |
 | `-CLKey1` | `CommandLineKey1` |
 | `-CLKey2` | `CommandLineKey2` |
@@ -1780,7 +1780,7 @@ config.AddJsonFile(
 
 El par clave-valor que se muestra en la tabla se carga en la configuración.
 
-| Clave             | Valor  |
+| Key             | Valor  |
 | :-------------: | :----: |
 | array:entries:3 | value3 |
 

@@ -18,29 +18,29 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authorization/resourcebased
-ms.openlocfilehash: 202ca681a66ddf7f729d8835e2f77da846583df1
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 61c97be03709f63f57a6383ab0c51ca9a511fbbb
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93060175"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102585778"
 ---
 # <a name="resource-based-authorization-in-aspnet-core"></a>Autorización basada en recursos en ASP.NET Core
 
 La estrategia de autorización depende del recurso al que se tiene acceso. Considere un documento que tiene una propiedad Author. Solo el autor puede actualizar el documento. Por consiguiente, el documento se debe recuperar del almacén de datos antes de que se pueda realizar la evaluación de la autorización.
 
-La evaluación de atributos se produce antes del enlace de datos y antes de la ejecución del controlador de páginas o la acción que carga el documento. Por estos motivos, la autorización declarativa con un `[Authorize]` atributo no basta. En su lugar, puede invocar un método de autorización personalizado que &mdash; sea un estilo conocido como *autorización imperativa* .
+La evaluación de atributos se produce antes del enlace de datos y antes de la ejecución del controlador de páginas o la acción que carga el documento. Por estos motivos, la autorización declarativa con un `[Authorize]` atributo no basta. En su lugar, puede invocar un método de autorización personalizado que &mdash; sea un estilo conocido como *autorización imperativa*.
 
 ::: moniker range=">= aspnetcore-3.0"
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/resourcebased/samples/3_0) ([cómo descargarlo](xref:index#how-to-download-a-sample)).
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/authorization/resourcebased/samples/3_0) ([cómo descargarlo](xref:index#how-to-download-a-sample)).
 ::: moniker-end
 
  ::: moniker range=">= aspnetcore-2.0 < aspnetcore-3.0"
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/resourcebased/samples/2_2) ([cómo descargarlo](xref:index#how-to-download-a-sample)).
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/authorization/resourcebased/samples/2_2) ([cómo descargarlo](xref:index#how-to-download-a-sample)).
 ::: moniker-end
 
 ::: moniker range="<= aspnetcore-1.1"
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/resourcebased/samples/1_1) ([cómo descargarlo](xref:index#how-to-download-a-sample)).
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/authorization/resourcebased/samples/1_1) ([cómo descargarlo](xref:index#how-to-download-a-sample)).
 ::: moniker-end
 
 [Creación de una aplicación ASP.net Core con datos de usuario protegidos por la autorización](xref:security/authorization/secure-data) contiene una aplicación de ejemplo que usa la autorización basada en recursos.

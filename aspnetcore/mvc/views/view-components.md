@@ -18,18 +18,18 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/view-components
-ms.openlocfilehash: 61fcc07aeb30db15014fb716194328d366f27859
-ms.sourcegitcommit: 97243663fd46c721660e77ef652fe2190a461f81
+ms.openlocfilehash: 1d0e0da3a5d047d7457e7ca7587c81029e33cb69
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/09/2021
-ms.locfileid: "98058342"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102586012"
 ---
 # <a name="view-components-in-aspnet-core"></a>Componentes de vista en ASP.NET Core
 
 Por [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/view-components/sample) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/views/view-components/sample) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
 ## <a name="view-components"></a>Componentes de vista
 
@@ -167,7 +167,7 @@ En este ejemplo, se llama al componente de vista directamente desde el controlad
 
 ## <a name="walkthrough-creating-a-simple-view-component"></a>Tutorial: Creación de un componente de vista simple
 
-[Descargue](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/view-components/sample), compile y pruebe el código de inicio. Se trata de un proyecto simple con un controlador `ToDo` que muestra una lista de *tareas pendientes*.
+[Descargue](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/views/view-components/sample), compile y pruebe el código de inicio. Se trata de un proyecto simple con un controlador `ToDo` que muestra una lista de *tareas pendientes*.
 
 ![Lista de tareas pendientes](view-components/_static/2dos.png)
 
@@ -193,7 +193,7 @@ Notas sobre el código:
 * `InvokeAsync` expone un método al que se puede llamar desde una vista y puede tomar un número arbitrario de argumentos.
 * El método `InvokeAsync` devuelve el conjunto de elementos `ToDo` que cumplen los parámetros `isDone` y `maxPriority`.
 
-### <a name="create-the-view-component-no-locrazor-view"></a>Crear la vista de componentes de vista Razor
+### <a name="create-the-view-component-razor-view"></a>Crear la vista de componentes de vista Razor
 
 * Cree la carpeta *Views/Shared/Components*. Esta carpeta **debe** denominarse *Components*.
 

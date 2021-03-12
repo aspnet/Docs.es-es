@@ -20,12 +20,12 @@ no-loc:
 - SignalR
 uid: blazor/fundamentals/dependency-injection
 zone_pivot_groups: blazor-hosting-models
-ms.openlocfilehash: 30edffedf1faf96ed54d5380762c8558e478966c
-ms.sourcegitcommit: 04ad9cd26fcaa8bd11e261d3661f375f5f343cdc
+ms.openlocfilehash: aefeac2f3a68a669b7c84cbeee2f6a4ec0621f6f
+ms.sourcegitcommit: a1db01b4d3bd8c57d7a9c94ce122a6db68002d66
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100106926"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102109681"
 ---
 # <a name="aspnet-core-blazor-dependency-injection"></a>Inserción de dependencias de Blazor de ASP.NET Core
 
@@ -54,15 +54,65 @@ Un proveedor de servicios personalizado no proporciona automáticamente los serv
 
 Configure los servicios de la colección de servicios de la aplicación en el método `Program.Main` de `Program.cs`. En el ejemplo siguiente, la implementación de `MyDependency` se registra para `IMyDependency`:
 
-[!code-csharp[](dependency-injection/samples_snapshot/Program1.cs?highlight=7)]
+```csharp
+public class Program
+{
+    public static async Task Main(string[] args)
+    {
+        var builder = WebAssemblyHostBuilder.CreateDefault(args);
+        ...
+        builder.Services.AddSingleton<IMyDependency, MyDependency>();
+        ...
+
+        await builder.Build().RunAsync();
+    }
+}
+```
 
 Después de compilar el host, los servicios están disponibles en el ámbito de inserción de dependencias raíz antes de que se representen los componentes. Esto puede ser útil para ejecutar la lógica de inicialización antes de representar el contenido:
 
-[!code-csharp[](dependency-injection/samples_snapshot/Program2.cs?highlight=7,12-13)]
+```csharp
+public class Program
+{
+    public static async Task Main(string[] args)
+    {
+        var builder = WebAssemblyHostBuilder.CreateDefault(args);
+        ...
+        builder.Services.AddSingleton<WeatherService>();
+        ...
+
+        var host = builder.Build();
+
+        var weatherService = host.Services.GetRequiredService<WeatherService>();
+        await weatherService.InitializeWeatherAsync();
+
+        await host.RunAsync();
+    }
+}
+```
 
 El host también proporciona una instancia de configuración central para la aplicación. En función del ejemplo anterior, la dirección URL del servicio meteorológico se pasa de un origen de configuración predeterminado (por ejemplo, `appsettings.json`) a `InitializeWeatherAsync`:
 
-[!code-csharp[](dependency-injection/samples_snapshot/Program3.cs?highlight=13-14)]
+```csharp
+public class Program
+{
+    public static async Task Main(string[] args)
+    {
+        var builder = WebAssemblyHostBuilder.CreateDefault(args);
+        ...
+        builder.Services.AddSingleton<WeatherService>();
+        ...
+
+        var host = builder.Build();
+
+        var weatherService = host.Services.GetRequiredService<WeatherService>();
+        await weatherService.InitializeWeatherAsync(
+            host.Configuration["WeatherServiceUrl"]);
+
+        await host.RunAsync();
+    }
+}
+```
 
 ::: zone-end
 
@@ -117,7 +167,17 @@ Use varias instrucciones [`@inject`](xref:mvc/views/razor#inject) para insertar 
 
 En el ejemplo siguiente se muestra cómo utilizar [`@inject`](xref:mvc/views/razor#inject). El servicio que implementa `Services.IDataAccess` se inserta en la propiedad `DataRepository` del componente. Observe cómo el código solo usa la abstracción de `IDataAccess`:
 
-[!code-razor[](dependency-injection/samples_snapshot/CustomerList.razor?highlight=2-3,20)]
+::: moniker range=">= aspnetcore-5.0"
+
+[!code-razor[](~/blazor/common/samples/5.x/BlazorSample_Server/Pages/dependency-injection/CustomerList.razor?name=snippet&highlight=2,19)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
+[!code-razor[](~/blazor/common/samples/3.x/BlazorSample_Server/Pages/dependency-injection/CustomerList.razor?name=snippet&highlight=2,19)]
+
+::: moniker-end
 
 De forma interna, la propiedad generada (`DataRepository`) usa el [atributo `[Inject]`](xref:Microsoft.AspNetCore.Components.InjectAttribute). Normalmente, este atributo no se usa de manera directa. Si se necesita una clase base para los componentes y las propiedades insertadas también son necesarias para la clase base, agregue manualmente el [atributo `[Inject]`](xref:Microsoft.AspNetCore.Components.InjectAttribute):
 
@@ -182,11 +242,34 @@ Hay dos versiones del tipo <xref:Microsoft.AspNetCore.Components.OwningComponent
 
   Los servicios de inserción de dependencias insertados en el componente mediante [`@inject`](xref:mvc/views/razor#inject) o el [atributo`[Inject]`](xref:Microsoft.AspNetCore.Components.InjectAttribute) no se crean en el ámbito del componente. Para usar el ámbito del componente, los servicios se deben resolver mediante <xref:Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService%2A> o <xref:System.IServiceProvider.GetService%2A>. Los servicios que se resuelvan mediante el proveedor de <xref:Microsoft.AspNetCore.Components.OwningComponentBase.ScopedServices> reciben sus dependencias desde ese mismo ámbito.
 
-  [!code-razor[](dependency-injection/samples_snapshot/Preferences.razor?highlight=3,20-21)]
+  ::: moniker range=">= aspnetcore-5.0"
+
+  [!code-razor[](~/blazor/common/samples/5.x/BlazorSample_WebAssembly/Pages/dependency-injection/Preferences.razor?name=snippet&highlight=3,20-21)]
+
+  ::: moniker-end
+
+  ::: moniker range="< aspnetcore-5.0"
+
+  [!code-razor[](~/blazor/common/samples/3.x/BlazorSample_WebAssembly/Pages/dependency-injection/Preferences.razor?name=snippet&highlight=3,20-21)]
+
+  ::: moniker-end
 
 * <xref:Microsoft.AspNetCore.Components.OwningComponentBase%601> deriva de <xref:Microsoft.AspNetCore.Components.OwningComponentBase> y agrega una propiedad <xref:Microsoft.AspNetCore.Components.OwningComponentBase%601.Service%2A> que devuelve una instancia de `T` desde el proveedor de inserción de dependencias con ámbito. Este tipo es una manera cómoda de acceder a los servicios con ámbito sin usar una instancia de <xref:System.IServiceProvider> cuando hay un servicio principal que la aplicación necesita del contenedor de inserción de dependencias que usa el ámbito del componente. La propiedad <xref:Microsoft.AspNetCore.Components.OwningComponentBase.ScopedServices> está disponible, por lo que la aplicación puede obtener servicios de otros tipos, si es necesario.
 
-  [!code-razor[](dependency-injection/samples_snapshot/Users.razor?highlight=3,5,8)]
+  ```razor
+  @page "/users"
+  @attribute [Authorize]
+  @inherits OwningComponentBase<AppDbContext>
+
+  <h1>Users (@Service.Users.Count())</h1>
+
+  <ul>
+      @foreach (var user in Service.Users)
+      {
+          <li>@user.UserName</li>
+      }
+  </ul>
+  ```
 
 ## <a name="use-of-an-entity-framework-core-ef-core-dbcontext-from-di"></a>Uso de un objeto DbContext de Entity Framework Core (EF Core) desde la inserción de dependencias
 
@@ -200,19 +283,81 @@ En los siguientes ejemplos se muestra cómo detectar servicios transitorios desc
 
 `DetectIncorrectUsagesOfTransientDisposables.cs`:
 
-[!code-csharp[](dependency-injection/samples_snapshot/3.x/transient-disposables/DetectIncorrectUsagesOfTransientDisposables-wasm.cs)]
+::: moniker range=">= aspnetcore-5.0"
+
+[!code-csharp[](~/blazor/common/samples/5.x/BlazorSample_WebAssembly/dependency-injection/DetectIncorrectUsagesOfTransientDisposables.cs)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
+[!code-csharp[](~/blazor/common/samples/3.x/BlazorSample_WebAssembly/dependency-injection/DetectIncorrectUsagesOfTransientDisposables.cs)]
+
+::: moniker-end
 
 En el ejemplo siguiente se detecta `TransientDisposable` (`Program.cs`):
 
 ::: moniker range=">= aspnetcore-5.0"
 
-[!code-csharp[](dependency-injection/samples_snapshot/5.x/transient-disposables/DetectIncorrectUsagesOfTransientDisposables-wasm-program.cs?highlight=6,9,17,22-25)]
+```csharp
+public class Program
+{
+    public static async Task Main(string[] args)
+    {
+        var builder = WebAssemblyHostBuilder.CreateDefault(args);
+        builder.DetectIncorrectUsageOfTransients();
+        builder.RootComponents.Add<App>("#app");
 
-::: moniker-end 
+        builder.Services.AddTransient<TransientDisposable>();
+        builder.Services.AddScoped(sp =>
+            new HttpClient
+            {
+                BaseAddress = new Uri(builder.HostEnvironment.BaseAddress)
+            });
+
+        var host = builder.Build();
+        host.EnableTransientDisposableDetection();
+        await host.RunAsync();
+    }
+}
+
+public class TransientDisposable : IDisposable
+{
+    public void Dispose() => throw new NotImplementedException();
+}
+```
+
+::: moniker-end
 
 ::: moniker range="< aspnetcore-5.0"
 
-[!code-csharp[](dependency-injection/samples_snapshot/3.x/transient-disposables/DetectIncorrectUsagesOfTransientDisposables-wasm-program.cs?highlight=6,9,17,22-25)]
+```csharp
+public class Program
+{
+    public static async Task Main(string[] args)
+    {
+        var builder = WebAssemblyHostBuilder.CreateDefault(args);
+        builder.DetectIncorrectUsageOfTransients();
+        builder.RootComponents.Add<App>("app");
+
+        builder.Services.AddTransient<TransientDisposable>();
+        builder.Services.AddScoped(sp =>
+            new HttpClient
+            {
+                BaseAddress = new Uri(builder.HostEnvironment.BaseAddress)
+            });
+
+        var host = builder.Build();
+        host.EnableTransientDisposableDetection();
+        await host.RunAsync();
+    }
+}
+
+public class TransientDisposable : IDisposable
+{
+    public void Dispose() => throw new NotImplementedException();
+}
+```
 
 ::: moniker-end
 
@@ -222,7 +367,17 @@ En el ejemplo siguiente se detecta `TransientDisposable` (`Program.cs`):
 
 `DetectIncorrectUsagesOfTransientDisposables.cs`:
 
-[!code-csharp[](dependency-injection/samples_snapshot/3.x/transient-disposables/DetectIncorrectUsagesOfTransientDisposables-server.cs)]
+::: moniker range=">= aspnetcore-5.0"
+
+[!code-csharp[](~/blazor/common/samples/5.x/BlazorSample_Server/dependency-injection/DetectIncorrectUsagesOfTransientDisposables.cs)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
+[!code-csharp[](~/blazor/common/samples/3.x/BlazorSample_Server/dependency-injection/DetectIncorrectUsagesOfTransientDisposables.cs)]
+
+::: moniker-end
 
 Agregue el espacio de nombres de <xref:Microsoft.Extensions.DependencyInjection?displayProperty=fullName> a `Program.cs`:
 
@@ -232,11 +387,52 @@ using Microsoft.Extensions.DependencyInjection;
 
 En `Program.CreateHostBuilder` de `Program.cs`:
 
-[!code-csharp[](dependency-injection/samples_snapshot/3.x/transient-disposables/DetectIncorrectUsagesOfTransientDisposables-server-program.cs?highlight=3)]
+```csharp
+public static IHostBuilder CreateHostBuilder(string[] args) =>
+    Host.CreateDefaultBuilder(args)
+        .DetectIncorrectUsageOfTransients()
+        .ConfigureWebHostDefaults(webBuilder =>
+        {
+            webBuilder.UseStartup<Startup>();
+        });
+```
 
 En el ejemplo siguiente se detecta `TransientDependency` (`Startup.cs`):
 
-[!code-csharp[](dependency-injection/samples_snapshot/3.x/transient-disposables/DetectIncorrectUsagesOfTransientDisposables-server-startup.cs?highlight=6-8,11-32)]
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddRazorPages();
+    services.AddServerSideBlazor();
+    services.AddSingleton<WeatherForecastService>();
+    services.AddTransient<TransientDependency>();
+    services.AddTransient<ITransitiveTransientDisposableDependency, 
+        TransitiveTransientDisposableDependency>();
+}
+
+public class TransitiveTransientDisposableDependency 
+    : ITransitiveTransientDisposableDependency, IDisposable
+{
+    public void Dispose() { }
+}
+
+public interface ITransitiveTransientDisposableDependency
+{
+}
+
+public class TransientDependency
+{
+    private readonly ITransitiveTransientDisposableDependency 
+        _transitiveTransientDisposableDependency;
+
+    public TransientDependency(ITransitiveTransientDisposableDependency 
+        transitiveTransientDisposableDependency)
+    {
+        _transitiveTransientDisposableDependency = 
+            transitiveTransientDisposableDependency;
+    }
+}
+```
 
 ::: zone-end
 

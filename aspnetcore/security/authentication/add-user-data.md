@@ -18,14 +18,14 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/add-user-data
-ms.openlocfilehash: a4e1fd780947cfa5f09fb1e03964595fa09f0f18
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 2d921a0c72fb7c03cd88966077e2d33e4b19ffa1
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93061423"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102585921"
 ---
-# <a name="add-download-and-delete-custom-user-data-to-no-locidentity-in-an-aspnet-core-project"></a>Agregar, descargar y eliminar datos de usuario personalizados Identity en un proyecto de ASP.net Core
+# <a name="add-download-and-delete-custom-user-data-to-identity-in-an-aspnet-core-project"></a>Agregar, descargar y eliminar datos de usuario personalizados Identity en un proyecto de ASP.net Core
 
 Por [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -36,7 +36,7 @@ En este artículo se muestra cómo:
 
 El ejemplo de proyecto se crea a partir de una Razor aplicación Web de páginas, pero las instrucciones son similares para una aplicación web MVC ASP.net Core.
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/add-user-data) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/authentication/add-user-data) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
 ## <a name="prerequisites"></a>Requisitos previos
 
@@ -52,13 +52,13 @@ El ejemplo de proyecto se crea a partir de una Razor aplicación Web de páginas
 
 ::: moniker-end
 
-## <a name="create-a-no-locrazor-web-app"></a>Creación de una Razor aplicación Web
+## <a name="create-a-razor-web-app"></a>Creación de una Razor aplicación Web
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 ::: moniker range=">= aspnetcore-3.0"
 
-* En el menú **Archivo** de Visual Studio, seleccione **Nuevo** > **Proyecto** . Asigne al proyecto el nombre **WebApp1** si desea que coincida con el espacio de nombres del código de [ejemplo de descarga](https://github.com/dotnet/AspNetCore.Docs/tree/live/aspnetcore/security/authentication/add-user-data) .
+* En el menú **Archivo** de Visual Studio, seleccione **Nuevo** > **Proyecto**. Asigne al proyecto el nombre **WebApp1** si desea que coincida con el espacio de nombres del código de [ejemplo de descarga](https://github.com/dotnet/AspNetCore.Docs/tree/live/aspnetcore/security/authentication/add-user-data) .
 * Seleccionar **ASP.net Core aplicación web** > **correcta**
 * Seleccione **ASP.NET Core 3,0** en la lista desplegable.
 * Seleccionar **aplicación web** > **correcta**
@@ -68,7 +68,7 @@ El ejemplo de proyecto se crea a partir de una Razor aplicación Web de páginas
 
 ::: moniker range="< aspnetcore-3.0"
 
-* En el menú **Archivo** de Visual Studio, seleccione **Nuevo** > **Proyecto** . Asigne al proyecto el nombre **WebApp1** si desea que coincida con el espacio de nombres del código de [ejemplo de descarga](https://github.com/dotnet/AspNetCore.Docs/tree/live/aspnetcore/security/authentication/add-user-data) .
+* En el menú **Archivo** de Visual Studio, seleccione **Nuevo** > **Proyecto**. Asigne al proyecto el nombre **WebApp1** si desea que coincida con el espacio de nombres del código de [ejemplo de descarga](https://github.com/dotnet/AspNetCore.Docs/tree/live/aspnetcore/security/authentication/add-user-data) .
 * Seleccionar **ASP.net Core aplicación web** > **correcta**
 * Seleccione **ASP.NET Core 2,2** en la lista desplegable.
 * Seleccionar **aplicación web** > **correcta**
@@ -85,20 +85,20 @@ dotnet new webapp -o WebApp1
 
 ---
 
-## <a name="run-the-no-locidentity-scaffolder"></a>Ejecutar el Identity scaffolding
+## <a name="run-the-identity-scaffolder"></a>Ejecutar el Identity scaffolding
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* En **Explorador de soluciones** , haga clic con el botón derecho en el proyecto > **Agregar**  >  **nuevo elemento con scaffolding** .
-* En el panel izquierdo del cuadro de diálogo **Agregar scaffold** , seleccione **Identity**  >  **Agregar** .
+* En **Explorador de soluciones**, haga clic con el botón derecho en el proyecto > **Agregar**  >  **nuevo elemento con scaffolding**.
+* En el panel izquierdo del cuadro de diálogo **Agregar scaffold** , seleccione **Identity**  >  **Agregar**.
 * En el cuadro de diálogo **agregar Identity** , las siguientes opciones:
   * Seleccione el archivo de diseño existente  *~/Pages/Shared/_Layout. cshtml*
   * Seleccione los siguientes archivos para invalidar:
     * **Cuenta/registro**
     * **Cuenta/administración/índice**
-  * Seleccione el **+** botón para crear una nueva **clase de contexto de datos** . Acepte el tipo ( **WebApp1. Models. WebApp1Context** si el proyecto se denomina **WebApp1** ).
-  * Seleccione el **+** botón para crear una nueva **clase de usuario** . Acepte el tipo ( **WebApp1User** si el proyecto se denomina **WebApp1** ) > **Agregar** .
-* Seleccione **Agregar** .
+  * Seleccione el **+** botón para crear una nueva **clase de contexto de datos**. Acepte el tipo (**WebApp1. Models. WebApp1Context** si el proyecto se denomina **WebApp1**).
+  * Seleccione el **+** botón para crear una nueva **clase de usuario**. Acepte el tipo (**WebApp1User** si el proyecto se denomina **WebApp1**) > **Agregar**.
+* Seleccione **Agregar**.
 
 # <a name="net-core-cli"></a>[CLI de .NET Core](#tab/netcore-cli)
 
@@ -141,9 +141,9 @@ Siga las instrucciones de [migraciones, UseAuthentication y diseño](xref:securi
   * Seleccione el botón **Descargar** y examine el *PersonalData.jsen* el archivo.
   * Pruebe el botón **eliminar** , que elimina el usuario que ha iniciado sesión.
 
-## <a name="add-custom-user-data-to-the-no-locidentity-db"></a>Agregar datos de usuario personalizados a la base de datos Identity
+## <a name="add-custom-user-data-to-the-identity-db"></a>Agregar datos de usuario personalizados a la base de datos Identity
 
-Actualice la `IdentityUser` clase derivada con propiedades personalizadas. Si ha llamado al proyecto WebApp1, el archivo se denomina *areas/ Identity /Data/WebApp1User.CS* . Actualice el archivo con el código siguiente:
+Actualice la `IdentityUser` clase derivada con propiedades personalizadas. Si ha llamado al proyecto WebApp1, el archivo se denomina *areas/ Identity /Data/WebApp1User.CS*. Actualice el archivo con el código siguiente:
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -241,7 +241,7 @@ Pruebe la aplicación:
 * Vea los datos de usuario personalizados en la `/Identity/Account/Manage` página.
 * Descargue y vea los datos personales de los usuarios en la `/Identity/Account/Manage/PersonalData` página.
 
-## <a name="add-claims-to-no-locidentity-using-iuserclaimsprincipalfactoryapplicationuser"></a>Adición de notificaciones al Identity uso de IUserClaimsPrincipalFactory<ApplicationUser>
+## <a name="add-claims-to-identity-using-iuserclaimsprincipalfactoryapplicationuser"></a>Adición de notificaciones al Identity uso de IUserClaimsPrincipalFactory<ApplicationUser>
 
 > [!NOTE]
 > Esta sección no es una extensión del tutorial anterior. Para aplicar los pasos siguientes a la aplicación compilada con el tutorial, consulte [este problema de github](https://github.com/dotnet/AspNetCore.Docs/issues/18797).

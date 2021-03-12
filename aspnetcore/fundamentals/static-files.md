@@ -16,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/static-files
-ms.openlocfilehash: fad569ab06735600299d8051a258651e329db8ce
-ms.sourcegitcommit: 04ad9cd26fcaa8bd11e261d3661f375f5f343cdc
+ms.openlocfilehash: 807cffb2f9b3bf89ff06c62e76d51d4040b8d91a
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100107186"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589015"
 ---
 # <a name="static-files-in-aspnet-core"></a>Archivos estáticos en ASP.NET Core
 
@@ -31,7 +31,7 @@ Por [Rick Anderson](https://twitter.com/RickAndMSFT) y [Kirk Larkin](https://twi
 
 Los archivos estáticos, como HTML, CSS, imágenes y JavaScript, son activos que una aplicación de ASP.NET Core proporciona directamente a los clientes de forma predeterminada.
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/static-files/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/static-files/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
 ## <a name="serve-static-files"></a>Proporcionar archivos estáticos
 
@@ -123,7 +123,7 @@ Para proporcionar archivos estáticos según su autorización:
 
   <xref:Microsoft.AspNetCore.Authorization.AuthorizationPolicyBuilder.RequireAuthenticatedUser%2A> agrega <xref:Microsoft.AspNetCore.Authorization.Infrastructure.DenyAnonymousAuthorizationRequirement> a la instancia actual, lo que exige que el usuario actual se autentique.
 
-  Los recursos estáticos en `wwwroot` son accesibles públicamente porque se llama al middleware de archivos estáticos predeterminado (`app.UseStaticFiles();`) antes de a `UseAuthentication`. Los recursos estáticos de la carpeta *MyStaticFiles* requieren autenticación. En el [código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/static-files/samples) se muestra esto.
+  Los recursos estáticos en `wwwroot` son accesibles públicamente porque se llama al middleware de archivos estáticos predeterminado (`app.UseStaticFiles();`) antes de a `UseAuthentication`. Los recursos estáticos de la carpeta *MyStaticFiles* requieren autenticación. En el [código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/static-files/samples) se muestra esto.
 
 Un enfoque alternativo a proporcionar archivos según la autorización es:
 
@@ -289,7 +289,7 @@ Por [Rick Anderson](https://twitter.com/RickAndMSFT) y [Scott Addie](https://twi
 
 Los archivos estáticos, como HTML, CSS, imágenes y JavaScript, son activos que una aplicación de ASP.NET Core proporciona directamente a los clientes. Se necesita alguna configuración para habilitar el servicio de estos archivos.
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/static-files/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/static-files/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
 ## <a name="serve-static-files"></a>Proporcionar archivos estáticos
 

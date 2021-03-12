@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/anti-request-forgery
-ms.openlocfilehash: 3bb3c059eafa8e948fe2e719207927c009902e59
-ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
+ms.openlocfilehash: 5d6f2915dd9b27142ac7d8ac55e68c6a26e41f81
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99057452"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102585791"
 ---
 # <a name="prevent-cross-site-request-forgery-xsrfcsrf-attacks-in-aspnet-core"></a>Prevención de ataques de falsificación de solicitud entre sitios (XSRF/CSRF) en ASP.NET Core
 
@@ -85,7 +85,7 @@ Sin embargo, las vulnerabilidades CSRF son fundamentalmente un problema con la a
 
 Cookiela autenticación basada en es una forma popular de autenticación. Los sistemas de autenticación basados en tokens están creciendo en popularidad, especialmente en el caso de las aplicaciones de una sola página (Spa).
 
-### <a name="no-loccookie-based-authentication"></a>Cookieautenticación basada en
+### <a name="cookie-based-authentication"></a>Cookieautenticación basada en
 
 Cuando un usuario se autentica con su nombre de usuario y contraseña, se le emite un token que contiene un vale de autenticación que se puede usar para la autenticación y la autorización. El token se almacena como un cookie que acompaña a cada solicitud que el cliente realiza. La generación y validación cookie se realiza mediante el Cookie middleware de autenticación. El [middleware](xref:fundamentals/middleware/index) serializa una entidad de seguridad de usuario en un cifrado cookie . En las solicitudes posteriores, el middleware valida cookie , vuelve a crear la entidad de seguridad y asigna la entidad de seguridad a la propiedad [User](/dotnet/api/microsoft.aspnetcore.http.httpcontext.user) de [HttpContext](/dotnet/api/microsoft.aspnetcore.http.httpcontext).
 
@@ -222,12 +222,12 @@ services.AddAntiforgery(options =>
 
 &dagger;Establezca las propiedades antifalsificación `Cookie` mediante las propiedades de la clase de [ Cookie generador](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder) .
 
-| Opción | Descripción |
+| Opción | Description |
 | ------ | ----------- |
 | [Cookie](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookie) | Determina la configuración utilizada para crear la antifalsificación cookie . |
 | [FormFieldName](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.formfieldname) | Nombre del campo de formulario oculto utilizado por el sistema antifalsificación para representar los tokens antifalsificación en las vistas. |
 | [HeaderName](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.headername) | Nombre del encabezado que usa el sistema antifalsificación. Si es `null` , el sistema solo tiene en cuenta los datos de formulario. |
-| [SuppressXFrameOptionsHeader](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.suppressxframeoptionsheader) | Especifica si se va a suprimir la generación del `X-Frame-Options` encabezado. De forma predeterminada, el encabezado se genera con un valor de "SAMEORIGIN". Tiene como valor predeterminado `false`. |
+| [SuppressXFrameOptionsHeader](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.suppressxframeoptionsheader) | Especifica si se va a suprimir la generación del `X-Frame-Options` encabezado. De forma predeterminada, el encabezado se genera con un valor de "SAMEORIGIN". Su valor predeterminado es `false`. |
 
 ::: moniker-end
 
@@ -246,16 +246,16 @@ services.AddAntiforgery(options =>
 });
 ```
 
-| Opción | Descripción |
+| Opción | Description |
 | ------ | ----------- |
 | [Cookie](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookie) | Determina la configuración utilizada para crear la antifalsificación cookie . |
-| [CookieDomain](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookiedomain) | Dominio de cookie . Tiene como valor predeterminado `null`. Esta propiedad está obsoleta y se quitará en una versión futura. La alternativa recomendada es Cookie . Dominio. |
+| [CookieDomain](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookiedomain) | Dominio de cookie . Su valor predeterminado es `null`. Esta propiedad está obsoleta y se quitará en una versión futura. La alternativa recomendada es Cookie . Dominio. |
 | [CookieNombre](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookiename) | Nombre del objeto cookie. Si no se establece, el sistema genera un nombre único que empieza con el [ Cookie prefijo predeterminado](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.defaultcookieprefix) (". AspNetCore. antifalsificación. "). Esta propiedad está obsoleta y se quitará en una versión futura. La alternativa recomendada es Cookie . Name. |
 | [CookieRuta de acceso](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookiepath) | La ruta de acceso establecida en cookie . Esta propiedad está obsoleta y se quitará en una versión futura. La alternativa recomendada es Cookie . Camino. |
 | [FormFieldName](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.formfieldname) | Nombre del campo de formulario oculto utilizado por el sistema antifalsificación para representar los tokens antifalsificación en las vistas. |
 | [HeaderName](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.headername) | Nombre del encabezado que usa el sistema antifalsificación. Si es `null` , el sistema solo tiene en cuenta los datos de formulario. |
-| [RequireSsl](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.requiressl) | Especifica si el sistema antifalsificación requiere HTTPS. Si `true` es, se produce un error en las solicitudes que no son https. Tiene como valor predeterminado `false`. Esta propiedad está obsoleta y se quitará en una versión futura. La alternativa recomendada es establecer Cookie . SecurePolicy. |
-| [SuppressXFrameOptionsHeader](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.suppressxframeoptionsheader) | Especifica si se va a suprimir la generación del `X-Frame-Options` encabezado. De forma predeterminada, el encabezado se genera con un valor de "SAMEORIGIN". Tiene como valor predeterminado `false`. |
+| [RequireSsl](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.requiressl) | Especifica si el sistema antifalsificación requiere HTTPS. Si `true` es, se produce un error en las solicitudes que no son https. Su valor predeterminado es `false`. Esta propiedad está obsoleta y se quitará en una versión futura. La alternativa recomendada es establecer Cookie . SecurePolicy. |
+| [SuppressXFrameOptionsHeader](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.suppressxframeoptionsheader) | Especifica si se va a suprimir la generación del `X-Frame-Options` encabezado. De forma predeterminada, el encabezado se genera con un valor de "SAMEORIGIN". Su valor predeterminado es `false`. |
 
 ::: moniker-end
 
@@ -487,9 +487,9 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/anti-request-forgery/sample/AngularSample) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/anti-request-forgery/sample/AngularSample) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
-## <a name="windows-authentication-and-antiforgery-no-loccookies"></a>Autenticación de Windows y antifalsificación cookie
+## <a name="windows-authentication-and-antiforgery-cookies"></a>Autenticación de Windows y antifalsificación cookie
 
 Cuando se usa la autenticación de Windows, los puntos de conexión de la aplicación deben protegerse contra los ataques CSRF de la misma manera que para cookie s.  El explorador envía implícitamente el contexto de autenticación al servidor, por lo que los extremos deben protegerse frente a ataques CSRF.
 

@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/servers/kestrel
-ms.openlocfilehash: d53cafb605939fd85bdbb71b2fbf13e7bd7a9b7b
-ms.sourcegitcommit: cb984e0d7dc23a88c3a4121f23acfaea0acbfe1e
+ms.openlocfilehash: 54d7304430c2a77347b6e3279f638cf6d7add77e
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98571004"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589053"
 ---
 # <a name="kestrel-web-server-implementation-in-aspnet-core"></a>Implementación del servidor web Kestrel en ASP.NET Core
 
@@ -45,7 +45,7 @@ Kestrel admite los siguientes escenarios:
 
 Kestrel admite todas las plataformas y versiones que sean compatibles con .NET Core.
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/servers/kestrel/samples/5.x) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/servers/kestrel/samples/5.x) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
 ## <a name="get-started"></a>Introducción
 
@@ -93,7 +93,7 @@ Kestrel admite los siguientes escenarios:
 
 Kestrel admite todas las plataformas y versiones que sean compatibles con .NET Core.
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/servers/kestrel/samples/3.x) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/servers/kestrel/samples/3.x) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
 ## <a name="http2-support"></a>Compatibilidad con HTTP/2
 
@@ -1092,7 +1092,7 @@ Kestrel admite los siguientes escenarios:
 
 Kestrel admite todas las plataformas y versiones que sean compatibles con .NET Core.
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/servers/kestrel/samples/2.x) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/servers/kestrel/samples/2.x) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
 ## <a name="http2-support"></a>Compatibilidad con HTTP/2
 
@@ -2078,7 +2078,7 @@ Kestrel admite los siguientes escenarios:
 
 Kestrel admite todas las plataformas y versiones que sean compatibles con .NET Core.
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/servers/kestrel/samples/2.x) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/servers/kestrel/samples/2.x) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
 ## <a name="when-to-use-kestrel-with-a-reverse-proxy"></a>Cuándo usar Kestrel con un proxy inverso
 

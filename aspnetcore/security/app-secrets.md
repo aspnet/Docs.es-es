@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/app-secrets
-ms.openlocfilehash: 63032895ce45ad096612a8c39a2709628c12790f
-ms.sourcegitcommit: 6299f08aed5b7f0496001d093aae617559d73240
+ms.openlocfilehash: b309b834bc7156b901447c8697e6d2b0156a30f1
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97486205"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102585817"
 ---
 # <a name="safe-storage-of-app-secrets-in-development-in-aspnet-core"></a>Almacenamiento seguro de secretos de aplicación en el desarrollo en ASP.NET Core
 
@@ -31,7 +31,7 @@ ms.locfileid: "97486205"
 
 Por [Rick Anderson](https://twitter.com/RickAndMSFT), [Kirk Larkin](https://twitter.com/serpent5), [Daniel Roth](https://github.com/danroth27)y [Scott Addie](https://github.com/scottaddie)
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/app-secrets/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/app-secrets/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
 En este documento se explica cómo administrar la información confidencial de una aplicación ASP.NET Core en una máquina de desarrollo. Nunca almacene contraseñas u otros datos confidenciales en el código fuente. Los secretos de producción no deben usarse para el desarrollo o las pruebas. Los secretos no deben implementarse con la aplicación. En su lugar, se debe tener acceso a los secretos de producción a través de un medio controlado como variables de entorno o Azure Key Vault. Puede almacenar y proteger sus secretos de producción y pruebas de Azure con el [proveedor de configuración de Azure Key Vault](xref:security/key-vault-configuration).
 
@@ -296,7 +296,7 @@ No secrets configured for this application.
 
 Por [Rick Anderson](https://twitter.com/RickAndMSFT), [Daniel Roth](https://github.com/danroth27)y [Scott Addie](https://github.com/scottaddie)
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/app-secrets/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/app-secrets/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
 En este documento se explica cómo administrar la información confidencial de una aplicación ASP.NET Core en una máquina de desarrollo. Nunca almacene contraseñas u otros datos confidenciales en el código fuente. Los secretos de producción no deben usarse para el desarrollo o las pruebas. Los secretos no deben implementarse con la aplicación. En su lugar, se debe tener acceso a los secretos de producción a través de un medio controlado como variables de entorno o Azure Key Vault. Puede almacenar y proteger sus secretos de producción y pruebas de Azure con el [proveedor de configuración de Azure Key Vault](xref:security/key-vault-configuration).
 

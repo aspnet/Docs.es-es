@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/lifecycle
-ms.openlocfilehash: 03a49c827a1f70e6b721adf293857bb33475ed36
-ms.sourcegitcommit: 04ad9cd26fcaa8bd11e261d3661f375f5f343cdc
+ms.openlocfilehash: 6e9d2c3180fb9e4c3e5ccc0b6d8e17183f78d698
+ms.sourcegitcommit: a1db01b4d3bd8c57d7a9c94ce122a6db68002d66
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100107082"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102109850"
 ---
 # <a name="aspnet-core-blazor-lifecycle"></a>Ciclo de vida de ASP.NET Core Blazor
 
@@ -253,11 +253,21 @@ En el componente `FetchData` de las plantillas de Blazor, <xref:Microsoft.AspNet
 
 `Pages/FetchData.razor` en la plantilla de Blazor Server:
 
-[!code-razor[](lifecycle/samples_snapshot/FetchData.razor?highlight=9,21,25)]
+::: moniker range=">= aspnetcore-5.0"
+
+[!code-razor[](~/blazor/common/samples/5.x/BlazorSample_Server/Pages/components-lifecycle/FetchData.razor?name=snippet&highlight=9,21,25)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
+[!code-razor[](~/blazor/common/samples/3.x/BlazorSample_Server/Pages/components-lifecycle/FetchData.razor?name=snippet&highlight=9,21,25)]
+
+::: moniker-end
 
 ## <a name="handle-errors"></a>Control de errores
 
-Para obtener información sobre cómo controlar los errores durante la ejecución del método de ciclo de vida, vea <xref:blazor/fundamentals/handle-errors#lifecycle-methods>.
+Para obtener información sobre cómo controlar los errores durante la ejecución del método de ciclo de vida, vea <xref:blazor/fundamentals/handle-errors>.
 
 ## <a name="stateful-reconnection-after-prerendering"></a>Reconexión con estado después de la representación previa
 
@@ -395,11 +405,31 @@ Cancele la suscripción de los controladores de eventos de .NET. En los ejemplos
 
 * Enfoque de campo privado y expresión lambda
 
-  [!code-razor[](lifecycle/samples_snapshot/event-handler-disposal-1.razor?highlight=23,28)]
+  ::: moniker range=">= aspnetcore-5.0"
+
+  [!code-razor[](~/blazor/common/samples/5.x/BlazorSample_WebAssembly/Pages/components-lifecycle/EventHandlerDisposal1.razor?name=snippet&highlight=24,29)]
+
+  ::: moniker-end
+
+  ::: moniker range="< aspnetcore-5.0"
+
+  [!code-razor[](~/blazor/common/samples/3.x/BlazorSample_WebAssembly/Pages/components-lifecycle/EventHandlerDisposal1.razor?name=snippet&highlight=24,29)]
+
+  ::: moniker-end
 
 * Enfoque de método privado
 
-  [!code-razor[](lifecycle/samples_snapshot/event-handler-disposal-2.razor?highlight=16,26)]
+  ::: moniker range=">= aspnetcore-5.0"
+
+  [!code-razor[](~/blazor/common/samples/5.x/BlazorSample_WebAssembly/Pages/components-lifecycle/EventHandlerDisposal2.razor?name=snippet&highlight=16,26)]
+
+  ::: moniker-end
+
+  ::: moniker range="< aspnetcore-5.0"
+
+  [!code-razor[](~/blazor/common/samples/3.x/BlazorSample_WebAssembly/Pages/components-lifecycle/EventHandlerDisposal2.razor?name=snippet&highlight=16,26)]
+
+  ::: moniker-end
 
 Cuando se usan métodos, expresiones o funciones de tipo [anónimo](/dotnet/csharp/programming-guide/statements-expressions-operators/anonymous-functions), no es necesario implementar <xref:System.IDisposable> y cancelar la suscripción de los delegados. Pero el hecho de no cancelar la suscripción de un delegado es un problema **cuando el objeto que expone el evento supera la duración del componente que registra el delegado**. Si esto ocurre, se produce una pérdida de memoria porque el delegado registrado mantiene activo el objeto original. Por lo tanto, use solo los siguientes enfoques cuando sepa que el delegado de eventos se elimina rápidamente. En caso de duda sobre la duración de los objetos que requieren la eliminación, suscríbase a un método de delegado y elimine correctamente el delegado como se muestra en los ejemplos anteriores.
 

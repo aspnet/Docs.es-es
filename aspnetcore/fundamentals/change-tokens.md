@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/change-tokens
-ms.openlocfilehash: f20d44c7767b284f727ce19a46224dae0cf6a5e1
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: df2be1b89ad9681ff70dd71cb3026786f59c8b2a
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93053779"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589392"
 ---
 # <a name="detect-changes-with-change-tokens-in-aspnet-core"></a>Detección de cambios con tokens de cambio en ASP.NET Core
 
@@ -31,7 +31,7 @@ ms.locfileid: "93053779"
 
 Un *token de cambio* es un bloque de creación de bajo nivel y uso general que se usa para realizar el seguimiento de los cambios de estado.
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/change-tokens/samples/) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/change-tokens/samples/) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
 ## <a name="ichangetoken-interface"></a>Interfaz IChangeToken
 
@@ -229,7 +229,7 @@ En el token compuesto, `HasChanged` notifica `true` si algún token representado
 
 Un *token de cambio* es un bloque de creación de bajo nivel y uso general que se usa para realizar el seguimiento de los cambios de estado.
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/change-tokens/samples/) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/change-tokens/samples/) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
 ## <a name="ichangetoken-interface"></a>Interfaz IChangeToken
 

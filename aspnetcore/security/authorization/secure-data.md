@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authorization/secure-data
-ms.openlocfilehash: ebd3c0dc9baa63b30f142773d7a3d621ce4082d9
-ms.sourcegitcommit: ebc5beccba5f3f7619de20baa58ad727d2a3d18c
+ms.openlocfilehash: 662456af59c453df66ca48139a6de40d0e2cbf0d
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98689310"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589197"
 ---
 # <a name="create-an-aspnet-core-web-app-with-user-data-protected-by-authorization"></a>Creación de una aplicación Web de ASP.NET Core con los datos de usuario protegidos por autorización
 
@@ -87,11 +87,11 @@ Este tutorial es avanzado. Debe estar familiarizado con:
 
 ## <a name="the-starter-and-completed-app"></a>La aplicación de inicio y completada
 
-[Descargue](xref:index#how-to-download-a-sample) la aplicación [completada](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples) . [Pruebe](#test-the-completed-app) la aplicación completada para familiarizarse con sus características de seguridad.
+[Descargue](xref:index#how-to-download-a-sample) la aplicación [completada](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/authorization/secure-data/samples) . [Pruebe](#test-the-completed-app) la aplicación completada para familiarizarse con sus características de seguridad.
 
 ### <a name="the-starter-app"></a>La aplicación de inicio
 
-[Descargue](xref:index#how-to-download-a-sample) la aplicación de [Inicio](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/) .
+[Descargue](xref:index#how-to-download-a-sample) la aplicación de [Inicio](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/authorization/secure-data/samples/) .
 
 Ejecute la aplicación, pulse el vínculo **ContactManager** y compruebe que puede crear, editar y eliminar un contacto. Para crear la aplicación de inicio, consulte [crear la aplicación de inicio](#create-the-starter-app).
 
@@ -114,7 +114,7 @@ dotnet ef migrations add userID_Status
 dotnet ef database update
 ```
 
-### <a name="add-role-services-to-no-locidentity"></a>Agregar servicios de función a Identity
+### <a name="add-role-services-to-identity"></a>Agregar servicios de función a Identity
 
 Anexe [AddRoles](/dotnet/api/microsoft.aspnetcore.identity.identitybuilder.addroles#Microsoft_AspNetCore_Identity_IdentityBuilder_AddRoles__1) para agregar servicios de rol:
 
@@ -128,13 +128,13 @@ Establezca la Directiva de autenticación de reserva para requerir la autenticac
 
 [!code-csharp[](secure-data/samples/final3/Startup.cs?name=snippet&highlight=13-99)]
 
-El código resaltado anterior establece la [Directiva de autenticación de reserva](xref:Microsoft.AspNetCore.Authorization.AuthorizationOptions.FallbackPolicy). La Directiva de autenticación de reserva requiere **_All_* _ usuarios para autenticarse, excepto Razor las páginas, los controladores o los métodos de acción con un atributo de autenticación. Por ejemplo, Razor páginas, controladores o métodos de acción con `[AllowAnonymous]` o `[Authorize(PolicyName="MyPolicy")]` usan el atributo de autenticación aplicado en lugar de la Directiva de autenticación de reserva.
+El código resaltado anterior establece la [Directiva de autenticación de reserva](xref:Microsoft.AspNetCore.Authorization.AuthorizationOptions.FallbackPolicy). La Directiva de autenticación de reserva requiere que ***todos*** los usuarios se autentiquen, excepto Razor las páginas, los controladores o los métodos de acción con un atributo de autenticación. Por ejemplo, Razor páginas, controladores o métodos de acción con `[AllowAnonymous]` o `[Authorize(PolicyName="MyPolicy")]` usan el atributo de autenticación aplicado en lugar de la Directiva de autenticación de reserva.
 
-<xref:Microsoft.AspNetCore.Authorization.AuthorizationPolicyBuilder.RequireAuthenticatedUser%2A> agrega <xref:Microsoft.AspNetCore.Authorization.Infrastructure.DenyAnonymousAuthorizationRequirement> a la instancia actual, lo que exige que se autentique el usuario actual.
+<xref:Microsoft.AspNetCore.Authorization.AuthorizationPolicyBuilder.RequireAuthenticatedUser%2A> agrega <xref:Microsoft.AspNetCore.Authorization.Infrastructure.DenyAnonymousAuthorizationRequirement> a la instancia actual, lo que exige que el usuario actual se autentique.
 
 La Directiva de autenticación de reserva:
 
-_ Se aplica a todas las solicitudes que no especifican explícitamente una directiva de autenticación. En el caso de las solicitudes atendidas por el enrutamiento del punto de conexión, esto incluiría cualquier punto de conexión que no especifique un atributo de autorización. En el caso de las solicitudes atendidas por otro middleware después del middleware de autorización, como [archivos estáticos](xref:fundamentals/static-files), esto aplicaría la Directiva a todas las solicitudes.
+* Se aplica a todas las solicitudes que no especifican explícitamente una directiva de autenticación. En el caso de las solicitudes atendidas por el enrutamiento del punto de conexión, esto incluiría cualquier punto de conexión que no especifique un atributo de autorización. En el caso de las solicitudes atendidas por otro middleware después del middleware de autorización, como [archivos estáticos](xref:fundamentals/static-files), esto aplicaría la Directiva a todas las solicitudes.
 
 La configuración de la Directiva de autenticación de reserva para requerir que los usuarios se autentiquen protege Razor las páginas y controladores recién agregados. Tener autenticación necesaria de forma predeterminada es más seguro que confiar en nuevas páginas y controladores Razor para incluir el `[Authorize]` atributo.
 
@@ -221,7 +221,7 @@ Revise la `ContactOperations` clase. Esta clase contiene los requisitos que admi
 
 [!code-csharp[](secure-data/samples/final3/Authorization/ContactOperations.cs)]
 
-### <a name="create-a-base-class-for-the-contacts-no-locrazor-pages"></a>Crear una clase base para las páginas de contactos Razor
+### <a name="create-a-base-class-for-the-contacts-razor-pages"></a>Crear una clase base para las páginas de contactos Razor
 
 Cree una clase base que contenga los servicios usados en las Razor páginas de contactos. La clase base coloca el código de inicialización en una ubicación:
 
@@ -381,7 +381,7 @@ Si experimenta un error con el `dotnet aspnet-codegenerator razorpage` comando, 
 
 ### <a name="seed-the-database"></a>Inicializar la base de datos
 
-Agregue la clase [SeedData](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/starter3/Data/SeedData.cs) a la carpeta de *datos* :
+Agregue la clase [SeedData](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/authorization/secure-data/samples/starter3/Data/SeedData.cs) a la carpeta de *datos* :
 
 [!code-csharp[](secure-data/samples/starter3/Data/SeedData.cs)]
 
@@ -443,11 +443,11 @@ Este tutorial es avanzado. Debe estar familiarizado con:
 
 ## <a name="the-starter-and-completed-app"></a>La aplicación de inicio y completada
 
-[Descargue](xref:index#how-to-download-a-sample) la aplicación [completada](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples) . [Pruebe](#test-the-completed-app) la aplicación completada para familiarizarse con sus características de seguridad.
+[Descargue](xref:index#how-to-download-a-sample) la aplicación [completada](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/authorization/secure-data/samples) . [Pruebe](#test-the-completed-app) la aplicación completada para familiarizarse con sus características de seguridad.
 
 ### <a name="the-starter-app"></a>La aplicación de inicio
 
-[Descargue](xref:index#how-to-download-a-sample) la aplicación de [Inicio](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/) .
+[Descargue](xref:index#how-to-download-a-sample) la aplicación de [Inicio](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/authorization/secure-data/samples/) .
 
 Ejecute la aplicación, pulse el vínculo **ContactManager** y compruebe que puede crear, editar y eliminar un contacto.
 
@@ -470,7 +470,7 @@ dotnet ef migrations add userID_Status
 dotnet ef database update
 ```
 
-### <a name="add-role-services-to-no-locidentity"></a>Agregar servicios de función a Identity
+### <a name="add-role-services-to-identity"></a>Agregar servicios de función a Identity
 
 Anexe [AddRoles](/dotnet/api/microsoft.aspnetcore.identity.identitybuilder.addroles#Microsoft_AspNetCore_Identity_IdentityBuilder_AddRoles__1) para agregar servicios de rol:
 
@@ -557,7 +557,7 @@ Revise la `ContactOperations` clase. Esta clase contiene los requisitos que admi
 
 [!code-csharp[](secure-data/samples/final2.1/Authorization/ContactOperations.cs)]
 
-### <a name="create-a-base-class-for-the-contacts-no-locrazor-pages"></a>Crear una clase base para las páginas de contactos Razor
+### <a name="create-a-base-class-for-the-contacts-razor-pages"></a>Crear una clase base para las páginas de contactos Razor
 
 Cree una clase base que contenga los servicios usados en las Razor páginas de contactos. La clase base coloca el código de inicialización en una ubicación:
 
@@ -704,7 +704,7 @@ Cree un contacto en el explorador del administrador. Copie la dirección URL par
 
 ### <a name="seed-the-database"></a>Inicializar la base de datos
 
-Agregue la clase [SeedData](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/starter2.1/Data/SeedData.cs) a la carpeta de *datos* .
+Agregue la clase [SeedData](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/authorization/secure-data/samples/starter2.1/Data/SeedData.cs) a la carpeta de *datos* .
 
 Llamada `SeedData.Initialize` desde `Main` :
 

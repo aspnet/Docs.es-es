@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/filters
-ms.openlocfilehash: 416fc292d82cf841b2134e23a8e494e3e8d945ca
-ms.sourcegitcommit: f77a7467651bab61b24261da9dc5c1dd75fc1fa9
+ms.openlocfilehash: b53b017e63ada62438e352a6c5112b7584ff0b26
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100563984"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589106"
 ---
 # <a name="filters-in-aspnet-core"></a>Filtros en ASP.NET Core
 
@@ -45,7 +45,7 @@ Este documento se aplica a Razor las páginas, controladores de API y controlado
 * El componente está insertado en una página o vista.
 * La página o el controlador o la vista utiliza el filtro.
 
-[Vea o descargue el ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/3.1sample) ([cómo descargarlo](xref:index#how-to-download-a-sample)).
+[Vea o descargue el ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/controllers/filters/3.1sample) ([cómo descargarlo](xref:index#how-to-download-a-sample)).
 
 ## <a name="how-filters-work"></a>Funcionamiento de los filtros
 
@@ -88,7 +88,7 @@ Los filtros sincrónicos ejecutan código antes y después de la fase de canaliz
 
 [!code-csharp[](./filters/3.1sample/FiltersSample/Filters/MySampleActionFilter.cs?name=snippet_ActionFilter)]
 
-En el código anterior, [aldebug](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/controllers/filters/3.1sample/FiltersSample/Helper/MyDebug.cs) es una función de utilidad en la [descarga del ejemplo](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/controllers/filters/3.1sample/FiltersSample/Helper/MyDebug.cs).
+En el código anterior, [aldebug](https://github.com/dotnet/AspNetCore.Docs/blob/main/aspnetcore/mvc/controllers/filters/3.1sample/FiltersSample/Helper/MyDebug.cs) es una función de utilidad en la [descarga del ejemplo](https://github.com/dotnet/AspNetCore.Docs/blob/main/aspnetcore/mvc/controllers/filters/3.1sample/FiltersSample/Helper/MyDebug.cs).
 
 Los filtros asincrónicos definen un método `On-Stage-ExecutionAsync`. Por ejemplo, <xref:Microsoft.AspNetCore.Mvc.Controller.OnActionExecutionAsync*>:
 
@@ -232,7 +232,7 @@ Si se dirige a `https://localhost:5001/Test/FilterTest2`, se ejecuta el código 
   * `MySampleActionFilter.OnActionExecuted`
 * `TestController.OnActionExecuted`
 
-Los filtros de nivel de controlador establecen la propiedad [Order](https://github.com/dotnet/AspNetCore/blob/master/src/Mvc/Mvc.Core/src/Filters/ControllerActionFilter.cs#L15-L17) en `int.MinValue`. Los filtros de nivel de controlador **no** pueden establecerse para ejecutarse tras aplicarse los filtros a los métodos. Order se explica en la sección siguiente.
+Los filtros de nivel de controlador establecen la propiedad [Order](https://github.com/dotnet/AspNetCore/blob/main/src/Mvc/Mvc.Core/src/Filters/ControllerActionFilter.cs#L15-L17) en `int.MinValue`. Los filtros de nivel de controlador **no** pueden establecerse para ejecutarse tras aplicarse los filtros a los métodos. Order se explica en la sección siguiente.
 
 Para Razor las páginas, consulte [implementar Razor filtros de página mediante la invalidación de métodos de filtro](xref:razor-pages/filter#implement-razor-page-filters-by-overriding-filter-methods).
 
@@ -265,7 +265,7 @@ Los tres filtros se ejecutan en el siguiente orden:
   * `MySampleActionFilter.OnActionExecuted`
 * `Test2Controller.OnActionExecuted`
 
-La propiedad `Order` invalida el ámbito al determinar el orden en el que se ejecutarán los filtros. Los filtros se clasifican por orden en primer lugar y, después, se usa el ámbito para priorizar en caso de igualdad. Todos los filtros integrados implementan `IOrderedFilter` y establecen el valor predeterminado de `Order` en 0. Como se mencionó anteriormente, los filtros de nivel de controlador establecen la propiedad [Order](https://github.com/dotnet/AspNetCore/blob/master/src/Mvc/Mvc.Core/src/Filters/ControllerActionFilter.cs#L15-L17) en `int.MinValue`. En el caso de los filtros integrados, el ámbito determina el orden a menos que se establezca `Order` en un valor distinto de cero.
+La propiedad `Order` invalida el ámbito al determinar el orden en el que se ejecutarán los filtros. Los filtros se clasifican por orden en primer lugar y, después, se usa el ámbito para priorizar en caso de igualdad. Todos los filtros integrados implementan `IOrderedFilter` y establecen el valor predeterminado de `Order` en 0. Como se mencionó anteriormente, los filtros de nivel de controlador establecen la propiedad [Order](https://github.com/dotnet/AspNetCore/blob/main/src/Mvc/Mvc.Core/src/Filters/ControllerActionFilter.cs#L15-L17) en `int.MinValue`. En el caso de los filtros integrados, el ámbito determina el orden a menos que se establezca `Order` en un valor distinto de cero.
 
 En el código anterior, `MySampleActionFilter` tiene ámbito global, por lo que se ejecuta antes de `MyAction2FilterAttribute`, que tiene ámbito de controlador. Para que `MyAction2FilterAttribute` se ejecute en primer lugar, establezca el orden en `int.MinValue`:
 
@@ -576,10 +576,10 @@ El filtro se aplica en el código siguiente:
 
 [!code-csharp[](./filters/3.1sample/FiltersSample/Controllers/SampleController.cs?name=snippet3&highlight=21)]
 
-Pruebe el código anterior mediante la ejecución del [ejemplo de descarga](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/3.1sample):
+Pruebe el código anterior mediante la ejecución del [ejemplo de descarga](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/controllers/filters/3.1sample):
 
 * Invoque las herramientas de desarrollador de F12.
-* Vaya a `https://localhost:5001/Sample/HeaderWithFactory`.
+* Navegue a `https://localhost:5001/Sample/HeaderWithFactory`.
 
 Las herramientas de desarrollador F12 muestran los siguientes encabezados de respuesta agregados por el código de ejemplo:
 
@@ -628,7 +628,7 @@ Los filtros de middleware se ejecutan en la misma fase de la canalización de fi
 ## <a name="next-actions"></a>Siguientes acciones
 
 * Vea [métodos de filtro para Razor páginas](xref:razor-pages/filter).
-* Para experimentar con los filtros, [descargue, pruebe y modifique el ejemplo de GitHub](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/3.1sample).
+* Para experimentar con los filtros, [descargue, pruebe y modifique el ejemplo de GitHub](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/controllers/filters/3.1sample).
 
 ::: moniker-end
 
@@ -647,7 +647,7 @@ Se pueden crear filtros personalizados que se encarguen de cuestiones transversa
 
 Este documento se aplica a Razor las páginas, controladores de API y controladores con vistas.
 
-[Vea o descargue el ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/sample) ([cómo descargarlo](xref:index#how-to-download-a-sample)).
+[Vea o descargue el ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/controllers/filters/sample) ([cómo descargarlo](xref:index#how-to-download-a-sample)).
 
 ## <a name="how-filters-work"></a>Funcionamiento de los filtros
 
@@ -1099,10 +1099,10 @@ Puede implementar `IFilterFactory` con las implementaciones de atributos persona
 
 [!code-csharp[](./filters/sample/FiltersSample/Filters/AddHeaderWithFactoryAttribute.cs?name=snippet_IFilterFactory&highlight=1,4,5,6,7)]
 
-El código anterior se puede probar mediante la ejecución del [ejemplo de descargar](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/sample):
+El código anterior se puede probar mediante la ejecución del [ejemplo de descargar](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/controllers/filters/sample):
 
 * Invoque las herramientas de desarrollador de F12.
-* Vaya a `https://localhost:5001/Sample/HeaderWithFactory`.
+* Navegue a `https://localhost:5001/Sample/HeaderWithFactory`.
 
 Las herramientas de desarrollador F12 muestran los siguientes encabezados de respuesta agregados por el código de ejemplo:
 
@@ -1151,6 +1151,6 @@ Los filtros de middleware se ejecutan en la misma fase de la canalización de fi
 ## <a name="next-actions"></a>Siguientes acciones
 
 * Vea [métodos de filtro para Razor páginas](xref:razor-pages/filter).
-* Para experimentar con los filtros, [descargue, pruebe y modifique el ejemplo de GitHub](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/sample).
+* Para experimentar con los filtros, [descargue, pruebe y modifique el ejemplo de GitHub](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/controllers/filters/sample).
 
 ::: moniker-end

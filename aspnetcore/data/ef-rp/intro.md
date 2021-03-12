@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-rp/intro
-ms.openlocfilehash: e797228d498ec9b269e718c099a0532bbb4504d3
-ms.sourcegitcommit: e311cfb77f26a0a23681019bd334929d1aaeda20
+ms.openlocfilehash: 55fcc2883dac31fc22bad1b5f9367e20879b6c43
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99530247"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102586428"
 ---
 # <a name="razor-pages-with-entity-framework-core-in-aspnet-core---tutorial-1-of-8"></a>Razor Pages con Entity Framework Core en ASP.NET Core: Tutorial 1 de 8
 
@@ -33,7 +33,7 @@ Por [Tom Dykstra](https://github.com/tdykstra) y [Rick Anderson](https://twitter
 
 Este es el primero de una serie de tutoriales en los que se muestra cómo usar Entity Framework (EF) Core en una [aplicación Razor Pages](xref:razor-pages/index) en ASP.NET Core. En el tutorial se crea un sitio web de una universidad ficticia, Contoso University. El sitio incluye funciones como la admisión de alumnos, la creación de cursos y las asignaciones de instructores. En el tutorial se usa el enfoque de Code First. Para obtener información sobre cómo seguir este tutorial mediante el enfoque de Database First, consulte [este problema de GitHub](https://github.com/dotnet/AspNetCore.Docs/issues/16897).
 
-[Descargue o vea la aplicación completa.](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples) [Instrucciones de descarga](xref:index#how-to-download-a-sample).
+[Descargue o vea la aplicación completa.](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/data/ef-rp/intro/samples) [Instrucciones de descarga](xref:index#how-to-download-a-sample).
 
 ## <a name="prerequisites"></a>Requisitos previos
 
@@ -59,7 +59,7 @@ Si decide usar SQLite, descargue e instale una herramienta de terceros para admi
 
 ## <a name="troubleshooting"></a>Solución de problemas
 
-Si experimenta un problema que no puede resolver, compare el código con el [proyecto completado](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples). Una buena forma de obtener ayuda consiste en publicar una pregunta en StackOverflow.com con la [etiqueta ASP.NET Core](https://stackoverflow.com/questions/tagged/asp.net-core) o la [etiqueta EF Core](https://stackoverflow.com/questions/tagged/entity-framework-core).
+Si experimenta un problema que no puede resolver, compare el código con el [proyecto completado](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/data/ef-rp/intro/samples). Una buena forma de obtener ayuda consiste en publicar una pregunta en StackOverflow.com con la [etiqueta ASP.NET Core](https://stackoverflow.com/questions/tagged/asp.net-core) o la [etiqueta EF Core](https://stackoverflow.com/questions/tagged/entity-framework-core).
 
 ## <a name="the-sample-app"></a>La aplicación de ejemplo
 
@@ -530,7 +530,7 @@ La paginación se trata más adelante en el tutorial.
 
 Este es el primero de una serie de tutoriales en los que se muestra cómo usar Entity Framework (EF) Core en una [aplicación Razor Pages](xref:razor-pages/index) en ASP.NET Core. En el tutorial se crea un sitio web de una universidad ficticia, Contoso University. El sitio incluye funciones como la admisión de alumnos, la creación de cursos y las asignaciones de instructores. En el tutorial se usa el enfoque de Code First. Para obtener información sobre cómo seguir este tutorial mediante el enfoque de Database First, consulte [este problema de GitHub](https://github.com/dotnet/AspNetCore.Docs/issues/16897).
 
-[Descargue o vea la aplicación completa.](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples) [Instrucciones de descarga](xref:index#how-to-download-a-sample).
+[Descargue o vea la aplicación completa.](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/data/ef-rp/intro/samples) [Instrucciones de descarga](xref:index#how-to-download-a-sample).
 
 ## <a name="prerequisites"></a>Requisitos previos
 
@@ -556,7 +556,7 @@ Si decide usar SQLite, descargue e instale una herramienta de terceros para admi
 
 ## <a name="troubleshooting"></a>Solución de problemas
 
-Si experimenta un problema que no puede resolver, compare el código con el [proyecto completado](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples). Una buena forma de obtener ayuda consiste en publicar una pregunta en StackOverflow.com con la [etiqueta ASP.NET Core](https://stackoverflow.com/questions/tagged/asp.net-core) o la [etiqueta EF Core](https://stackoverflow.com/questions/tagged/entity-framework-core).
+Si experimenta un problema que no puede resolver, compare el código con el [proyecto completado](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/data/ef-rp/intro/samples). Una buena forma de obtener ayuda consiste en publicar una pregunta en StackOverflow.com con la [etiqueta ASP.NET Core](https://stackoverflow.com/questions/tagged/asp.net-core) o la [etiqueta EF Core](https://stackoverflow.com/questions/tagged/entity-framework-core).
 
 ## <a name="the-sample-app"></a>La aplicación de ejemplo
 
@@ -967,7 +967,7 @@ En la aplicación web de ejemplo Contoso University se muestra cómo crear una a
 
 La aplicación de ejemplo es un sitio web de una universidad ficticia, Contoso University. Incluye funciones como la admisión de estudiantes, la creación de cursos y asignaciones de instructores. Esta página es la primera de una serie de tutoriales en los que se explica cómo crear la aplicación de ejemplo Contoso University.
 
-[Descargue o vea la aplicación completa.](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples) [Instrucciones de descarga](xref:index#how-to-download-a-sample).
+[Descargue o vea la aplicación completa.](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/data/ef-rp/intro/samples) [Instrucciones de descarga](xref:index#how-to-download-a-sample).
 
 ## <a name="prerequisites"></a>Requisitos previos
 
@@ -985,7 +985,7 @@ Familiaridad con [Razor Pages](xref:razor-pages/index). Los programadores nuevos
 
 ## <a name="troubleshooting"></a>Solución de problemas
 
-Si experimenta un problema que no puede resolver, por lo general podrá encontrar la solución si compara el código con el [proyecto completado](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples). Una buena forma de obtener ayuda consiste en publicar una pregunta en [StackOverflow.com](https://stackoverflow.com/questions/tagged/asp.net-core) para [ASP.NET Core](https://stackoverflow.com/questions/tagged/asp.net-core) o [EF Core](https://stackoverflow.com/questions/tagged/entity-framework-core).
+Si experimenta un problema que no puede resolver, por lo general podrá encontrar la solución si compara el código con el [proyecto completado](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/data/ef-rp/intro/samples). Una buena forma de obtener ayuda consiste en publicar una pregunta en [StackOverflow.com](https://stackoverflow.com/questions/tagged/asp.net-core) para [ASP.NET Core](https://stackoverflow.com/questions/tagged/asp.net-core) o [EF Core](https://stackoverflow.com/questions/tagged/entity-framework-core).
 
 ## <a name="the-contoso-university-web-app"></a>La aplicación web Contoso University
 

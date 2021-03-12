@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/working-with-forms
-ms.openlocfilehash: a568ad481eb09587e2ddce8e84d0ac3eff01e990
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 51e5f2f74493e7f4c18273c8589ed0424a1f2cac
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93060903"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102585986"
 ---
 # <a name="tag-helpers-in-forms-in-aspnet-core"></a>Asistentes de etiquetas en formularios de ASP.NET Core
 
@@ -214,7 +214,7 @@ El asistente de etiquetas `Input` establece el atributo HTML `type` en función 
 |String|type="text"|
 |DateTime|type=["datetime-local"](https://developer.mozilla.org/docs/Web/HTML/Element/input/datetime-local)|
 |Byte|type="number"|
-|Valor int.|type="number"|
+|Int|type="number"|
 |Single, Double|type="number"|
 
 En la siguiente tabla se muestran algunos atributos de [anotación de datos](/dotnet/api/microsoft.aspnetcore.mvc.dataannotations.iattributeadapter) comunes que el asistente de etiquetas Input asignará a tipos de entrada concretos (no incluimos aquí todos los atributo de validación):
@@ -331,7 +331,7 @@ A continuación Razor se muestra cómo se obtiene acceso a un `Color` elemento e
 
 [!code-cshtml[](working-with-forms/sample/final/Views/Demo/EditColor.cshtml)]
 
-La plantilla *Views/Shared/EditorTemplates/String.cshtml* :
+La plantilla *Views/Shared/EditorTemplates/String.cshtml*:
 
 [!code-cshtml[](working-with-forms/sample/final/Views/Shared/EditorTemplates/String.cshtml)]
 
@@ -343,7 +343,7 @@ A continuación Razor se muestra cómo recorrer en iteración una colección:
 
 [!code-cshtml[](working-with-forms/sample/final/Views/Demo/Edit.cshtml)]
 
-La plantilla *Views/Shared/EditorTemplates/ToDoItem.cshtml* :
+La plantilla *Views/Shared/EditorTemplates/ToDoItem.cshtml*:
 
 [!code-cshtml[](working-with-forms/sample/final/Views/Shared/EditorTemplates/ToDoItem.cshtml)]
 
@@ -465,10 +465,10 @@ Cuando se produce un error de validación del lado servidor (por ejemplo, porque
 |asp-validation-summary|Mensajes de validación que se muestran|
 |--- |--- |
 |ValidationSummary.All|Nivel de modelo y de propiedad|
-|ValidationSummary.ModelOnly|Modelo|
-|ValidationSummary.None|None|
+|ValidationSummary.ModelOnly|Modelado|
+|ValidationSummary.None|Ninguno|
 
-### <a name="sample"></a>Ejemplo
+### <a name="sample"></a>Muestra
 
 En el siguiente ejemplo, el modelo de datos tiene atributos `DataAnnotation`, lo que genera mensajes de error de validación sobre el elemento `<input>`.  Cuando se produce un error de validación, el asistente de etiquetas de validación muestra el mensaje de error:
 
@@ -647,7 +647,7 @@ Si ve que usa la opción "sin especificar" en varias páginas, puede crear una p
 
 [!code-cshtml[](../../mvc/views/working-with-forms/sample/final/Views/Home/IndexEmptyTemplate.cshtml?highlight=5)]
 
-La plantilla *Views/Shared/EditorTemplates/CountryViewModel.cshtml* :
+La plantilla *Views/Shared/EditorTemplates/CountryViewModel.cshtml*:
 
 [!code-cshtml[](working-with-forms/sample/final/Views/Shared/EditorTemplates/CountryViewModel.cshtml)]
 
@@ -682,4 +682,4 @@ Se seleccionará el elemento `<option>` correcto (que contenga el atributo `sele
 * <xref:mvc/models/model-binding>
 * <xref:mvc/models/validation>
 * [IAttributeAdapter Interface (Interfaz IAttributeAdapter)](/dotnet/api/Microsoft.AspNetCore.Mvc.DataAnnotations.IAttributeAdapter)
-* [Fragmentos de código de este documento](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/working-with-forms/sample/final)
+* [Fragmentos de código de este documento](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/views/working-with-forms/sample/final)

@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/index
-ms.openlocfilehash: 03debcb211a8cb8f0ebd6d5e67fbc8de7b574e27
-ms.sourcegitcommit: c1839f2992b003c92cd958244a2e0771ae928786
+ms.openlocfilehash: fb7dfa53be1fee9904b4539a5c9da0700c2aa884
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99551655"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102585739"
 ---
 # <a name="create-web-apis-with-aspnet-core"></a>Creación de API web con ASP.NET Core
 
@@ -32,7 +32,7 @@ Por [Scott Addie](https://github.com/scottaddie) y [Tom Dykstra](https://github.
 
 ASP.NET Core admite la creación de servicios RESTful, lo que también se conoce como API web, mediante C#. Para gestionar las solicitudes, una API web usa controladores. Los *controladores* de una API web son clases que se derivan de `ControllerBase`. En este artículo se muestra cómo usar controladores para gestionar las solicitudes de API web.
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/index/samples). ([Método de descarga](xref:index#how-to-download-a-sample)).
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/web-api/index/samples). ([Método de descarga](xref:index#how-to-download-a-sample)).
 
 ## <a name="controllerbase-class"></a>Clase ControllerBase
 

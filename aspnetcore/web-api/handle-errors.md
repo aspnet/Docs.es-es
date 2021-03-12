@@ -19,18 +19,18 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/handle-errors
-ms.openlocfilehash: 92e9350a7892f8f38f64d4ebd68d54a97ec7e994
-ms.sourcegitcommit: 97243663fd46c721660e77ef652fe2190a461f81
+ms.openlocfilehash: f9cc38f444bd3db826595b7de64db05792915a23
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/09/2021
-ms.locfileid: "98058381"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102585726"
 ---
 # <a name="handle-errors-in-aspnet-core-web-apis"></a>Control de errores en API web de ASP.NET Core
 
 En este artículo se describe cómo administrar y personalizar el control de errores con API web de ASP.NET Core.
 
-[Ver o descargar el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/handle-errors/samples) ([Cómo descargarlo](xref:index#how-to-download-a-sample))
+[Ver o descargar el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/web-api/handle-errors/samples) ([Cómo descargarlo](xref:index#how-to-download-a-sample))
 
 ## <a name="developer-exception-page"></a>Página de excepciones para el desarrollador
 
