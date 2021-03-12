@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/caching/middleware
-ms.openlocfilehash: 3c28b6c736f07c0d0483152eeec4300a5a92224c
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 0f1f5dfcb9595270a9659a02141f7d1eba5c44ef
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93052115"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102587702"
 ---
 # <a name="response-caching-middleware-in-aspnet-core"></a>Middleware de almacenamiento en caché de respuesta en ASP.NET Core
 
@@ -34,7 +34,7 @@ Por [John Luo](https://github.com/JunTaoLuo)
 
 En este artículo se explica cómo configurar middleware de almacenamiento en caché de respuestas en una aplicación ASP.NET Core. El middleware determina cuándo se pueden almacenar en caché las respuestas, almacena las respuestas y atiende las respuestas de la memoria caché. Para obtener una introducción al almacenamiento en caché de HTTP y el atributo, consulte el artículo sobre el [`[ResponseCache]`](xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute) [almacenamiento en caché de respuestas](xref:performance/caching/response).
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/performance/caching/middleware/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/performance/caching/middleware/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
 ## <a name="configuration"></a>Configuración
 
@@ -71,7 +71,7 @@ El middleware de almacenamiento en caché de respuestas solo almacena en caché 
 
 En la tabla siguiente se muestran las opciones de almacenamiento en caché de respuestas.
 
-| Opción | Descripción |
+| Opción | Description |
 | ------ | ----------- |
 | <xref:Microsoft.AspNetCore.ResponseCaching.ResponseCachingOptions.MaximumBodySize> | Tamaño de almacenamiento en caché más grande para el cuerpo de respuesta en bytes. El valor predeterminado es `64 * 1024 * 1024` (64 MB). |
 | <xref:Microsoft.AspNetCore.ResponseCaching.ResponseCachingOptions.SizeLimit> | Límite de tamaño para el middleware de la caché de respuesta en bytes. El valor predeterminado es `100 * 1024 * 1024` (100 MB). |
@@ -181,7 +181,7 @@ Al probar y solucionar problemas de comportamiento de almacenamiento en caché, 
 
 En este artículo se explica cómo configurar middleware de almacenamiento en caché de respuestas en una aplicación ASP.NET Core. El middleware determina cuándo se pueden almacenar en caché las respuestas, almacena las respuestas y atiende las respuestas de la memoria caché. Para obtener una introducción al almacenamiento en caché de HTTP y el atributo, consulte el artículo sobre el [`[ResponseCache]`](xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute) [almacenamiento en caché de respuestas](xref:performance/caching/response).
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/performance/caching/middleware/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/performance/caching/middleware/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
 ## <a name="configuration"></a>Configuración
 
@@ -215,7 +215,7 @@ El middleware de almacenamiento en caché de respuestas solo almacena en caché 
 
 En la tabla siguiente se muestran las opciones de almacenamiento en caché de respuestas.
 
-| Opción | Descripción |
+| Opción | Description |
 | ------ | ----------- |
 | <xref:Microsoft.AspNetCore.ResponseCaching.ResponseCachingOptions.MaximumBodySize> | Tamaño de almacenamiento en caché más grande para el cuerpo de respuesta en bytes. El valor predeterminado es `64 * 1024 * 1024` (64 MB). |
 | <xref:Microsoft.AspNetCore.ResponseCaching.ResponseCachingOptions.SizeLimit> | Límite de tamaño para el middleware de la caché de respuesta en bytes. El valor predeterminado es `100 * 1024 * 1024` (100 MB). |

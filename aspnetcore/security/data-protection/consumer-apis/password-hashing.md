@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/data-protection/consumer-apis/password-hashing
-ms.openlocfilehash: a970d44a1ca6b9f3534bddb34b037e7c2fdc5389
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: b88abd076febae95f8990bcd730ce0d4517e92d2
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93051868"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102587767"
 ---
 # <a name="hash-passwords-in-aspnet-core"></a>Contraseñas de hash en ASP.NET Core
 
@@ -38,4 +38,4 @@ El paquete ofrece actualmente un método `KeyDerivation.Pbkdf2` que permite apli
 
 [!code-csharp[](password-hashing/samples/passwordhasher.cs)]
 
-Vea el [código fuente](https://github.com/dotnet/AspNetCore/blob/master/src/Identity/Extensions.Core/src/PasswordHasher.cs) ASP.NET Core Identity del `PasswordHasher` tipo de un caso de uso real.
+Vea el [código fuente](https://github.com/dotnet/AspNetCore/blob/main/src/Identity/Extensions.Core/src/PasswordHasher.cs) ASP.NET Core Identity del `PasswordHasher` tipo de un caso de uso real.

@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/models/model-binding
-ms.openlocfilehash: 4de34a75da932b41190caa8434ac5be8cc0710fd
-ms.sourcegitcommit: 8363e44f630fcc6433ccd2a85f7aa9567cd274ed
+ms.openlocfilehash: 5eaedf6dbe5df59848b9cf8a5bda67add48db2a6
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94981939"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102586948"
 ---
 # <a name="model-binding-in-aspnet-core"></a>Enlace de modelos en ASP.NET Core
 
@@ -31,7 +31,7 @@ ms.locfileid: "94981939"
 
 En este artículo se explica qué es el enlace de modelos, cómo funciona y cómo personalizar su comportamiento.
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/model-binding/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample)).
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/models/model-binding/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample)).
 
 ## <a name="what-is-model-binding"></a>Qué es el enlace de modelos
 
@@ -165,7 +165,7 @@ Los *proveedores de valores* proporcionan datos de origen al sistema de enlace d
 * Cree una clase que implemente `IValueProviderFactory`.
 * Registre la clase de generador en `Startup.ConfigureServices`.
 
-La aplicación de ejemplo incluye un [proveedor de valores](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/models/model-binding/samples/3.x/ModelBindingSample/CookieValueProvider.cs) y un ejemplo de [fábrica](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/models/model-binding/samples/3.x/ModelBindingSample/CookieValueProviderFactory.cs) que obtiene valores de cookie s. Este es el código de registro de `Startup.ConfigureServices`:
+La aplicación de ejemplo incluye un [proveedor de valores](https://github.com/dotnet/AspNetCore.Docs/blob/main/aspnetcore/mvc/models/model-binding/samples/3.x/ModelBindingSample/CookieValueProvider.cs) y un ejemplo de [fábrica](https://github.com/dotnet/AspNetCore.Docs/blob/main/aspnetcore/mvc/models/model-binding/samples/3.x/ModelBindingSample/CookieValueProviderFactory.cs) que obtiene valores de cookie s. Este es el código de registro de `Startup.ConfigureServices`:
 
 [!code-csharp[](model-binding/samples/3.x/ModelBindingSample/Startup.cs?name=snippet_ValueProvider&highlight=4)]
 
@@ -280,11 +280,11 @@ Existen varios atributos integrados para controlar el enlace de modelos de tipos
 * `[BindNever]`
 
 > [!WARNING]
-> Estos atributos afectan al enlace de modelos cuando el origen de los valores son datos de formulario publicados. **No afectan** a los formateadores de entrada, que procesan los cuerpos de solicitud JSON y XML publicados. Los formateadores de entrada se explican [más adelante en este artículo](#input-formatters).
+> Estos atributos afectan al enlace de modelos cuando el origen de los valores son datos de formulario publicados. ***No*** afectan a los formateadores de entrada, que procesan los cuerpos de solicitud JSON y XML publicados. Los formateadores de entrada se explican [más adelante en este artículo](#input-formatters).
 
 ### <a name="bind-attribute"></a>Atributo [Bind]
 
-Se puede aplicar a una clase o un parámetro de método. Especifica qué propiedades de un modelo se deben incluir en el enlace de modelos. `[Bind]`_*_no_*_ afecta a los formateadores de entrada.
+Se puede aplicar a una clase o un parámetro de método. Especifica qué propiedades de un modelo se deben incluir en el enlace de modelos. `[Bind]`***no*** afecta a los formateadores de entrada.
 
 En el ejemplo siguiente, solo se enlazan las propiedades especificadas del modelo `Instructor` cuando se llama a cualquier método de acción o controlador:
 
@@ -300,7 +300,7 @@ En el ejemplo siguiente, solo se enlazan las propiedades especificadas del model
 public IActionResult OnPost([Bind("LastName,FirstMidName,HireDate")] Instructor instructor)
 ```
 
-El `[Bind]` atributo se puede usar para protegerse frente a la publicación en escenarios _create *. No funciona bien en escenarios de edición porque las propiedades excluidas se establecen en NULL o en un valor predeterminado en lugar de mantenerse sin cambios. Para defenderse de la publicación excesiva, se recomiendan modelos de vista en lugar del atributo `[Bind]`. Para más información, vea [Nota de seguridad sobre la publicación excesiva](xref:data/ef-mvc/crud#security-note-about-overposting).
+El atributo `[Bind]` se puede usar para protegerse de la publicación excesiva en escenarios de *creación*. No funciona bien en escenarios de edición porque las propiedades excluidas se establecen en NULL o en un valor predeterminado en lugar de mantenerse sin cambios. Para defenderse de la publicación excesiva, se recomiendan modelos de vista en lugar del atributo `[Bind]`. Para más información, vea [Nota de seguridad sobre la publicación excesiva](xref:data/ef-mvc/crud#security-note-about-overposting).
 
 ### <a name="modelbinder-attribute"></a>Atributo [ModelBinder]
 
@@ -471,7 +471,7 @@ Por el contrario, los valores procedentes de datos de formulario se someten a un
 Para que el proveedor de valores de ruta de ASP.NET Core y el proveedor de valores de cadena de consulta se sometan a una conversión dependiente de la referencia cultural:
 
 * Heredan de <xref:Microsoft.AspNetCore.Mvc.ModelBinding.IValueProviderFactory>.
-* Copie el código de [QueryStringValueProviderFactory](https://github.com/dotnet/AspNetCore/blob/master/src/Mvc/Mvc.Core/src/ModelBinding/QueryStringValueProviderFactory.cs) o [RouteValueValueProviderFactory](https://github.com/dotnet/AspNetCore/blob/master/src/Mvc/Mvc.Core/src/ModelBinding/RouteValueProviderFactory.cs)
+* Copie el código de [QueryStringValueProviderFactory](https://github.com/dotnet/AspNetCore/blob/main/src/Mvc/Mvc.Core/src/ModelBinding/QueryStringValueProviderFactory.cs) o [RouteValueValueProviderFactory](https://github.com/dotnet/AspNetCore/blob/main/src/Mvc/Mvc.Core/src/ModelBinding/RouteValueProviderFactory.cs)
 * Reemplace el [valor de referencia cultural](https://github.com/dotnet/AspNetCore/blob/e625fe29b049c60242e8048b4ea743cca65aa7b5/src/Mvc/Mvc.Core/src/ModelBinding/QueryStringValueProviderFactory.cs#L30) pasado al constructor de proveedor de valores con [CultureInfo.CurrentCulture](xref:System.Globalization.CultureInfo.CurrentCulture)
 * Reemplace el generador de proveedores de valor predeterminado en las opciones de MVC por el nuevo:
 
@@ -580,7 +580,7 @@ El nombre de este atributo sigue el patrón de los atributos de enlace de modelo
 
 En este artículo se explica qué es el enlace de modelos, cómo funciona y cómo personalizar su comportamiento.
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/model-binding/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample)).
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/models/model-binding/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample)).
 
 ## <a name="what-is-model-binding"></a>Qué es el enlace de modelos
 
@@ -714,7 +714,7 @@ Los *proveedores de valores* proporcionan datos de origen al sistema de enlace d
 * Cree una clase que implemente `IValueProviderFactory`.
 * Registre la clase de generador en `Startup.ConfigureServices`.
 
-La aplicación de ejemplo incluye un [proveedor de valores](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/models/model-binding/samples/2.x/ModelBindingSample/CookieValueProvider.cs) y un ejemplo de [fábrica](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/models/model-binding/samples/2.x/ModelBindingSample/CookieValueProviderFactory.cs) que obtiene valores de cookie s. Este es el código de registro de `Startup.ConfigureServices`:
+La aplicación de ejemplo incluye un [proveedor de valores](https://github.com/dotnet/AspNetCore.Docs/blob/main/aspnetcore/mvc/models/model-binding/samples/2.x/ModelBindingSample/CookieValueProvider.cs) y un ejemplo de [fábrica](https://github.com/dotnet/AspNetCore.Docs/blob/main/aspnetcore/mvc/models/model-binding/samples/2.x/ModelBindingSample/CookieValueProviderFactory.cs) que obtiene valores de cookie s. Este es el código de registro de `Startup.ConfigureServices`:
 
 [!code-csharp[](model-binding/samples/2.x/ModelBindingSample/Startup.cs?name=snippet_ValueProvider&highlight=3)]
 
@@ -958,7 +958,7 @@ Por el contrario, los valores procedentes de datos de formulario se someten a un
 Para que el proveedor de valores de ruta de ASP.NET Core y el proveedor de valores de cadena de consulta se sometan a una conversión dependiente de la referencia cultural:
 
 * Heredan de <xref:Microsoft.AspNetCore.Mvc.ModelBinding.IValueProviderFactory>.
-* Copie el código de [QueryStringValueProviderFactory](https://github.com/dotnet/AspNetCore/blob/master/src/Mvc/Mvc.Core/src/ModelBinding/QueryStringValueProviderFactory.cs) o [RouteValueValueProviderFactory](https://github.com/dotnet/AspNetCore/blob/master/src/Mvc/Mvc.Core/src/ModelBinding/RouteValueProviderFactory.cs)
+* Copie el código de [QueryStringValueProviderFactory](https://github.com/dotnet/AspNetCore/blob/main/src/Mvc/Mvc.Core/src/ModelBinding/QueryStringValueProviderFactory.cs) o [RouteValueValueProviderFactory](https://github.com/dotnet/AspNetCore/blob/main/src/Mvc/Mvc.Core/src/ModelBinding/RouteValueProviderFactory.cs)
 * Reemplace el [valor de referencia cultural](https://github.com/dotnet/AspNetCore/blob/e625fe29b049c60242e8048b4ea743cca65aa7b5/src/Mvc/Mvc.Core/src/ModelBinding/QueryStringValueProviderFactory.cs#L30) pasado al constructor de proveedor de valores con [CultureInfo.CurrentCulture](xref:System.Globalization.CultureInfo.CurrentCulture)
 * Reemplace el generador de proveedores de valor predeterminado en las opciones de MVC por el nuevo:
 

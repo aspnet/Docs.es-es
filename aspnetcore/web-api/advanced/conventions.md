@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/advanced/conventions
-ms.openlocfilehash: 0c5ea8ba69e4c6287afce1771ac9cee65bb188a8
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 1e6526f46fbd177add3699fb5b667021b741c6a4
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93052544"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102587845"
 ---
 # <a name="use-web-api-conventions"></a>Uso de convenciones de API web
 
@@ -37,11 +37,11 @@ Una convención permite lo siguiente:
 * Definir los tipos de valor devuelto más comunes y los códigos de estado devueltos a partir de un tipo específico de acción.
 * Identificar las acciones que no siguen el estándar definido.
 
-ASP.NET Core MVC 2.2 (y versiones posteriores) incluye un conjunto de convenciones predeterminadas en <xref:Microsoft.AspNetCore.Mvc.DefaultApiConventions?displayProperty=fullName>. Las convenciones se basan en el controlador ( *ValuesController.cs* ) proporcionado en la plantilla de proyecto de la **API** de ASP.NET Core. Si sus acciones siguen los patrones de la plantilla, debería poder usar las convenciones predeterminadas correctamente. Si las convenciones predeterminadas no satisfacen sus necesidades, consulte [Creación de convenciones de API web](#create-web-api-conventions).
+ASP.NET Core MVC 2.2 (y versiones posteriores) incluye un conjunto de convenciones predeterminadas en <xref:Microsoft.AspNetCore.Mvc.DefaultApiConventions?displayProperty=fullName>. Las convenciones se basan en el controlador (*ValuesController.cs*) proporcionado en la plantilla de proyecto de la **API** de ASP.NET Core. Si sus acciones siguen los patrones de la plantilla, debería poder usar las convenciones predeterminadas correctamente. Si las convenciones predeterminadas no satisfacen sus necesidades, consulte [Creación de convenciones de API web](#create-web-api-conventions).
 
 En tiempo de ejecución, <xref:Microsoft.AspNetCore.Mvc.ApiExplorer> entiende las convenciones. `ApiExplorer` es la abstracción de MVC para comunicarse con los generadores de documento de [OpenAPI](https://www.openapis.org/), conocido también como Swagger. Los atributos de la convención aplicada se asocian a una acción y se incluyen en la documentación de OpenAPI de la acción. Los [analizadores de API](xref:web-api/advanced/analyzers) también comprenden las convenciones. Si la acción no es convencional (por ejemplo, devuelve un código de estado no documentado en la convención aplicada), recibirá una advertencia en la que se le animará a documentar el código de estado.
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/conventions/sample) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/web-api/advanced/conventions/sample) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
 ## <a name="apply-web-api-conventions"></a>Aplicación de convenciones de API web
 
@@ -66,11 +66,11 @@ Las convenciones no se crean, y es posible que cada acción esté asociada a una
 
 1. `Microsoft.AspNetCore.Mvc.ApiConventionTypeAttribute` aplicado a un controlador: se aplica el tipo de convención especificado a todas las acciones del controlador. Un método de convención se marca con sugerencias que determinan las acciones a las que este se aplica. Para obtener más información sobre las sugerencias, consulte [Creación de convenciones de API web](#create-web-api-conventions).
 
-    En el ejemplo siguiente, el conjunto predeterminado de convenciones se aplica a todas las acciones de *ContactsConventionController* :
+    En el ejemplo siguiente, el conjunto predeterminado de convenciones se aplica a todas las acciones de *ContactsConventionController*:
 
     [!code-csharp[](conventions/sample/Controllers/ContactsConventionController.cs?name=snippet_ApiConventionTypeAttribute&highlight=2)]
 
-1. `Microsoft.AspNetCore.Mvc.ApiConventionTypeAttribute` aplicado a un ensamblado: se aplica el tipo de convención especificado a todos los controladores del ensamblado actual. Como recomendación, aplique los atributos de nivel de ensamblado al archivo *Startup.cs* .
+1. `Microsoft.AspNetCore.Mvc.ApiConventionTypeAttribute` aplicado a un ensamblado: se aplica el tipo de convención especificado a todos los controladores del ensamblado actual. Como recomendación, aplique los atributos de nivel de ensamblado al archivo *Startup.cs*.
 
     En el ejemplo siguiente, el conjunto predeterminado de convenciones se aplica a todos los controladores del ensamblado:
 

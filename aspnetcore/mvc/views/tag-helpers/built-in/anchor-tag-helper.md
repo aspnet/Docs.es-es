@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/tag-helpers/builtin-th/anchor-tag-helper
-ms.openlocfilehash: d39db59b0fc273fe4193a4864f302ecd3f4ad348
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 2e49c545b0d343475ce44a636a6ae66324f9d3bf
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93060916"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102587208"
 ---
 # <a name="anchor-tag-helper-in-aspnet-core"></a>Asistente de etiquetas delimitadoras en ASP.NET Core
 
@@ -33,9 +33,9 @@ El [asistente de etiquetas delimitadoras](xref:Microsoft.AspNetCore.Mvc.TagHelpe
 
 Para obtener información general sobre asistentes de etiquetas, vea <xref:mvc/views/tag-helpers/intro>.
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/tag-helpers/built-in/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/views/tag-helpers/built-in/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
-En los ejemplos de todo este documento se usa *SpeakerController* :
+En los ejemplos de todo este documento se usa *SpeakerController*:
 
 [!code-csharp[](samples/TagHelpersBuiltIn/Controllers/SpeakerController.cs?name=snippet_SpeakerController)]
 
@@ -53,7 +53,7 @@ El código HTML generado:
 <a href="/Speaker">All Speakers</a>
 ```
 
-Si el atributo `asp-controller` está especificado y `asp-action` no lo está, el valor `asp-action` predeterminado es la acción del controlador asociada a la vista que se está ejecutando. Si se omite `asp-action` en el marcado anterior y se usa el asistente de etiquetas delimitadoras en la vista *Index* de *HomeController* ( */Home* ), el código HTML generado es el siguiente:
+Si el atributo `asp-controller` está especificado y `asp-action` no lo está, el valor `asp-action` predeterminado es la acción del controlador asociada a la vista que se está ejecutando. Si se omite `asp-action` en el marcado anterior y se usa el asistente de etiquetas delimitadoras en la vista *Index* de *HomeController* (*/Home*), el código HTML generado es el siguiente:
 
 ```html
 <a href="/Home">All Speakers</a>
@@ -83,7 +83,7 @@ Observe la siguiente acción del controlador:
 
 [!code-csharp[](samples/TagHelpersBuiltIn/Controllers/BuiltInTagController.cs?name=snippet_AnchorTagHelperAction)]
 
-Con una plantilla de ruta predeterminada definida en *Startup.Configure* :
+Con una plantilla de ruta predeterminada definida en *Startup.Configure*:
 
 [!code-csharp[](samples/TagHelpersBuiltIn/Startup.cs?name=snippet_UseMvc&highlight=8-10)]
 
@@ -139,7 +139,7 @@ En el siguiente marcado, el atributo `asp-route` hace referencia a la ruta con n
 
 [!code-cshtml[](samples/TagHelpersBuiltIn/Views/Home/Index.cshtml?name=snippet_AspRoute)]
 
-El asistente de etiquetas delimitadoras genera una ruta directamente a esa acción de controlador mediante la dirección URL */Speaker/Evaluations* . El código HTML generado:
+El asistente de etiquetas delimitadoras genera una ruta directamente a esa acción de controlador mediante la dirección URL */Speaker/Evaluations*. El código HTML generado:
 
 ```html
 <a href="/Speaker/Evaluations">Speaker Evaluations</a>
@@ -185,7 +185,7 @@ Las etiquetas hash son útiles al crear aplicaciones del lado cliente. Por ejemp
 
 El atributo [asp-area](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Area*) establece el nombre de área que se usa para establecer la ruta adecuada. En el siguiente ejemplo se muestra cómo el atributo `asp-area` provoca una reasignación de rutas.
 
-#### <a name="usage-in-no-locrazor-pages"></a>Uso en Razor páginas
+#### <a name="usage-in-razor-pages"></a>Uso en Razor páginas
 
 Razor Las áreas de páginas se admiten en ASP.NET Core 2,1 o posterior.
 
@@ -247,7 +247,7 @@ El código HTML generado:
 ```
 
 > [!TIP]
-> Para admitir áreas en una aplicación de MVC, la plantilla de ruta debe incluir una referencia al área, en el caso de que exista. Esta plantilla se representa mediante el segundo parámetro de la llamada de método `routes.MapRoute` en *Startup.Configure* :
+> Para admitir áreas en una aplicación de MVC, la plantilla de ruta debe incluir una referencia al área, en el caso de que exista. Esta plantilla se representa mediante el segundo parámetro de la llamada de método `routes.MapRoute` en *Startup.Configure*:
 >
 > [!code-csharp[](samples/TagHelpersBuiltIn/Startup.cs?name=snippet_UseMvc&highlight=5)]
 

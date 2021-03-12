@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/azure-apps/azure-continuous-deployment
-ms.openlocfilehash: 1485e1a97e51bb4d12d0d74ca1550e5cf18258d8
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 561f41dd9d50df0651c060fac4f75d9d59244029
+ms.sourcegitcommit: acfe51c35497a204f75c2a61125c9408c04493e6
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93053792"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102605651"
 ---
 # <a name="continuous-deployment-to-azure-with-visual-studio-and-git-with-aspnet-core"></a>Implementación continua en Azure con Visual Studio y Git con ASP.NET Core
 
@@ -172,7 +172,7 @@ En esta sección, creará un repositorio de Git local con Visual Studio y lo ins
 
 1. Escriba el siguiente comando en la ventana de comandos:
 
-   `git push -u Azure-SampleApp master`
+   `git push -u Azure-SampleApp main`
 
 1. Escriba la contraseña de sus **credenciales de implementación** de Azure que creó anteriormente en Azure.
 
@@ -183,8 +183,8 @@ En esta sección, creará un repositorio de Git local con Visual Studio y lo ins
    remote: Running post deployment command(s)...
    remote: Deployment successful.
    To https://username@samplewebappdemo01.scm.azurewebsites.net:443/SampleWebAppDemo01.git
-   * [new branch]      master -> master
-   Branch master set up to track remote branch master from Azure-SampleApp.
+   * [new branch]      main -> main
+   Branch main set up to track remote branch main from Azure-SampleApp.
    ```
 
    > [!NOTE]
@@ -232,7 +232,7 @@ Después de realizar cambios en el código local, vuelva a publicar la aplicaci�
 > [!NOTE]
 > Como alternativa, inserte los cambios desde la **ventana de comandos**. Para ello, abra la **ventana de comandos**, cambie al directorio del proyecto y escriba un comando de Git. Ejemplo:
 > 
-> `git push -u Azure-SampleApp master`
+> `git push -u Azure-SampleApp main`
 
 ## <a name="view-the-updated-web-app-in-azure"></a>Ver la aplicación web actualizada en Azure
 

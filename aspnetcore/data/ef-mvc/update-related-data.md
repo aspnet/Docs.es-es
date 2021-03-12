@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/update-related-data
-ms.openlocfilehash: 9ad0de9984b42c2b14dfaf48c74660915de93be1
-ms.sourcegitcommit: 97243663fd46c721660e77ef652fe2190a461f81
+ms.openlocfilehash: dadfceca2431ace558700ae06417f01c99751419
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/09/2021
-ms.locfileid: "98058329"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102588287"
 ---
 # <a name="tutorial-update-related-data---aspnet-mvc-with-ef-core"></a>Tutorial: Actualización de datos relacionados: ASP.NET MVC con EF Core
 
@@ -313,7 +313,7 @@ Como se explicó en el [tutorial de CRUD](crud.md), Entity Framework implementa 
 
 ## <a name="get-the-code"></a>Obtención del código
 
-[Descargue o vea la aplicación completa.](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
+[Descargue o vea la aplicación completa.](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/data/ef-mvc/intro/samples/cu-final)
 
 ## <a name="next-steps"></a>Pasos siguientes
 

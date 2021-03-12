@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/javascript-client
-ms.openlocfilehash: b4b1bc6131a6676710adbf2503efe3f304d89a58
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 1b5c89c1beaf36912766b3e08b9f16c4d33945f8
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93050854"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102588066"
 ---
-# <a name="aspnet-core-no-locsignalr-javascript-client"></a>Cliente de ASP.NET Core SignalR JavaScript
+# <a name="aspnet-core-signalr-javascript-client"></a>Cliente de ASP.NET Core SignalR JavaScript
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -34,15 +34,15 @@ Por [Rachel Appel](https://twitter.com/rachelappel)
 
 La biblioteca de cliente de ASP.NET Core SignalR JavaScript permite a los desarrolladores llamar a código de concentrador de servidor.
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/javascript-client/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/signalr/javascript-client/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
-## <a name="install-the-no-locsignalr-client-package"></a>Instalar el SignalR paquete de cliente
+## <a name="install-the-signalr-client-package"></a>Instalar el SignalR paquete de cliente
 
 La SignalR biblioteca de cliente de JavaScript se entrega como un paquete [NPM](https://www.npmjs.com/) . En las secciones siguientes se describen diferentes formas de instalar la biblioteca de cliente de.
 
 ### <a name="install-with-npm"></a>Instalación con NPM
 
-En Visual Studio, ejecute los siguientes comandos desde la **consola del administrador de paquetes** en la carpeta raíz. Para Visual Studio Code, ejecute los siguientes comandos desde el **terminal integrado** .
+En Visual Studio, ejecute los siguientes comandos desde la **consola del administrador de paquetes** en la carpeta raíz. Para Visual Studio Code, ejecute los siguientes comandos desde el **terminal integrado**.
 
 ```bash
 npm init -y
@@ -289,10 +289,10 @@ Una implementación del mundo real usaría una interrupción exponencial o reint
 * [Tutorial de WebPack y TypeScript](xref:tutorials/signalr-typescript-webpack)
 * [Concentradores](xref:signalr/hubs)
 * [Cliente .NET](xref:signalr/dotnet-client)
-* [Publicación en Azure](xref:signalr/publish-to-azure-web-app)
+* [Publicar en Azure](xref:signalr/publish-to-azure-web-app)
 * [Solicitudes entre orígenes (CORS)](xref:security/cors)
 * [Documentación sin servidor del servicio de Azure SignalR](/azure/azure-signalr/signalr-concept-serverless-development-config)
-* [Solución de problemas de conexión](xref:signalr/troubleshoot)
+* [Solucionar problemas de errores de conexión](xref:signalr/troubleshoot)
 
 ::: moniker-end
 
@@ -302,15 +302,15 @@ Por [Rachel Appel](https://twitter.com/rachelappel)
 
 La biblioteca de cliente de ASP.NET Core SignalR JavaScript permite a los desarrolladores llamar a código de concentrador de servidor.
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/javascript-client/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/signalr/javascript-client/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
-## <a name="install-the-no-locsignalr-client-package"></a>Instalar el SignalR paquete de cliente
+## <a name="install-the-signalr-client-package"></a>Instalar el SignalR paquete de cliente
 
 La SignalR biblioteca de cliente de JavaScript se entrega como un paquete [NPM](https://www.npmjs.com/) . En las secciones siguientes se describen diferentes formas de instalar la biblioteca de cliente de.
 
 ### <a name="install-with-npm"></a>Instalación con NPM
 
-Si usa Visual Studio, ejecute los siguientes comandos desde la **consola del administrador de paquetes** en la carpeta raíz. Para Visual Studio Code, ejecute los siguientes comandos desde el **terminal integrado** .
+Si usa Visual Studio, ejecute los siguientes comandos desde la **consola del administrador de paquetes** en la carpeta raíz. Para Visual Studio Code, ejecute los siguientes comandos desde el **terminal integrado**.
 
 ```bash
 npm init -y
@@ -434,7 +434,7 @@ Una implementación del mundo real usaría una interrupción exponencial o reint
 * [Tutorial de WebPack y TypeScript](xref:tutorials/signalr-typescript-webpack)
 * [Concentradores](xref:signalr/hubs)
 * [Cliente .NET](xref:signalr/dotnet-client)
-* [Publicación en Azure](xref:signalr/publish-to-azure-web-app)
+* [Publicar en Azure](xref:signalr/publish-to-azure-web-app)
 * [Solicitudes entre orígenes (CORS)](xref:security/cors)
 * [Documentación sin servidor del servicio de Azure SignalR](/azure/azure-signalr/signalr-concept-serverless-development-config)
 

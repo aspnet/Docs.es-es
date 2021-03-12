@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/new-field
-ms.openlocfilehash: 852c26f89b229d89797d9ce6fce2983319defe9c
-ms.sourcegitcommit: 422e8444b9f5cedc373be5efe8032822db54fcaf
+ms.openlocfilehash: cd637507e19735f020b4c28e6f22de0e7e772040
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101101151"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102588326"
 ---
 # <a name="part-7-add-a-new-field-to-a-razor-page-in-aspnet-core"></a>Parte 7. Adición de un campo nuevo a una instancia de Razor Pages en ASP.NET Core
 
@@ -32,7 +32,7 @@ Por [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 ::: moniker range=">= aspnetcore-5.0"
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie50) ([cómo descargarlo](xref:index#how-to-download-a-sample)).
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie50) ([cómo descargarlo](xref:index#how-to-download-a-sample)).
 
 En esta sección, Migraciones de [Entity Framework](/ef/core/get-started/aspnetcore/new-db) Code First se utiliza para:
 
@@ -62,7 +62,7 @@ La comprobación automática de la sincronización del esquema y el modelo facil
 
 1. Actualice las páginas siguientes:
    1. Agregue el campo `Rating` a las páginas Delete y Details.
-   1. Actualice [Create.cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie50/Pages/Movies/Create.cshtml) con un campo `Rating`.
+   1. Actualice [Create.cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie50/Pages/Movies/Create.cshtml) con un campo `Rating`.
    1. Agregue el campo `Rating` a la página de edición.
 
 La aplicación no funcionará hasta que la base de datos se actualiza para incluir el nuevo campo. Al ejecutar la aplicación sin actualizar la base de datos, se produce una excepción `SqlException`:
@@ -85,7 +85,7 @@ Actualice la clase `SeedData` para que proporcione un valor para la nueva column
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie50/Models/SeedDataRating.cs?name=snippet1&highlight=8)]
 
-Vea el [archivo completado SeedData.cs](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie50/Models/SeedDataRating.cs).
+Vea el [archivo completado SeedData.cs](https://github.com/dotnet/AspNetCore.Docs/blob/main/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie50/Models/SeedDataRating.cs).
 
 Compile la solución.
 
@@ -173,7 +173,7 @@ Ejecute la aplicación y compruebe que puede crear, editar o mostrar películas 
 
 ::: moniker range="< aspnetcore-5.0 >= aspnetcore-3.0"
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30) ([cómo descargarlo](xref:index#how-to-download-a-sample)).
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30) ([cómo descargarlo](xref:index#how-to-download-a-sample)).
 
 En esta sección, Migraciones de [Entity Framework](/ef/core/get-started/aspnetcore/new-db) Code First se utiliza para:
 
@@ -203,7 +203,7 @@ La comprobación automática de la sincronización del esquema y el modelo facil
 
 1. Actualice las páginas siguientes:
    1. Agregue el campo `Rating` a las páginas Delete y Details.
-   1. Actualice [Create.cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Pages/Movies/Create.cshtml) con un campo `Rating`.
+   1. Actualice [Create.cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Pages/Movies/Create.cshtml) con un campo `Rating`.
    1. Agregue el campo `Rating` a la página de edición.
 
 La aplicación no funcionará hasta que la base de datos se actualiza para incluir el nuevo campo. Al ejecutar la aplicación sin actualizar la base de datos, se produce una excepción `SqlException`:
@@ -226,7 +226,7 @@ Actualice la clase `SeedData` para que proporcione un valor para la nueva column
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Models/SeedDataRating.cs?name=snippet1&highlight=8)]
 
-Vea el [archivo completado SeedData.cs](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie50/Models/SeedDataRating.cs).
+Vea el [archivo completado SeedData.cs](https://github.com/dotnet/AspNetCore.Docs/blob/main/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie50/Models/SeedDataRating.cs).
 
 Compile la solución.
 
@@ -314,7 +314,7 @@ Ejecute la aplicación y compruebe que puede crear, editar o mostrar películas 
 
 ::: moniker range="< aspnetcore-3.0"
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start) ([cómo descargarlo](xref:index#how-to-download-a-sample)).
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/tutorials/razor-pages/razor-pages-start) ([cómo descargarlo](xref:index#how-to-download-a-sample)).
 
 En esta sección, Migraciones de [Entity Framework](/ef/core/get-started/aspnetcore/new-db) Code First se utiliza para:
 
@@ -343,7 +343,7 @@ Edite *Pages/Movies/Index.cshtml* y agregue un campo `Rating`:
 Actualice las páginas siguientes:
 
 * Agregue el campo `Rating` a las páginas Delete y Details.
-* Actualice [Create.cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Pages/Movies/Create.cshtml) con un campo `Rating`.
+* Actualice [Create.cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Pages/Movies/Create.cshtml) con un campo `Rating`.
 * Agregue el campo `Rating` a la página de edición.
 
 La aplicación no funcionará hasta que la base de datos se actualiza para incluir el nuevo campo. Si la aplicación se ejecuta ahora, la aplicación produce `SqlException`:
@@ -366,7 +366,7 @@ Actualice la clase `SeedData` para que proporcione un valor para la nueva column
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie22/Models/SeedDataRating.cs?name=snippet1&highlight=8)]
 
-Vea el [archivo completado SeedData.cs](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Models/SeedDataRating.cs).
+Vea el [archivo completado SeedData.cs](https://github.com/dotnet/AspNetCore.Docs/blob/main/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Models/SeedDataRating.cs).
 
 Compile la solución.
 

@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/tag-helpers/th-components
-ms.openlocfilehash: 15bddd8ce18546bef7ee7e6ec2e32e369d0858a3
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: fb0bda0cf8d225df4c58ae43f81ed0dce10c1adc
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93060565"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102587156"
 ---
 # <a name="tag-helper-components-in-aspnet-core"></a>Componentes del asistente de etiquetas en ASP.NET Core
 
@@ -31,9 +31,9 @@ Por [Scott Addie](https://twitter.com/Scott_Addie) y [Fiyaz Bin Hasan](https://g
 
 El componente de un asistente de etiquetas es un asistente de etiquetas que permite modificar o agregar con condiciones elementos HTML a partir del código del lado servidor. Esta característica está disponible en ASP.NET Core 2.0 o versiones posteriores.
 
-ASP.NET Core incluye dos componentes de asistente de etiquetas integrados: `head` y `body`. Están ubicados en el <xref:Microsoft.AspNetCore.Mvc.Razor.TagHelpers> espacio de nombres y se pueden usar en MVC y en Razor páginas. Los componentes de asistente de etiquetas no requieren el registro en la aplicación en *_ViewImports.cshtml* .
+ASP.NET Core incluye dos componentes de asistente de etiquetas integrados: `head` y `body`. Están ubicados en el <xref:Microsoft.AspNetCore.Mvc.Razor.TagHelpers> espacio de nombres y se pueden usar en MVC y en Razor páginas. Los componentes de asistente de etiquetas no requieren el registro en la aplicación en *_ViewImports.cshtml*.
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/tag-helpers/th-components/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/views/tag-helpers/th-components/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
 ## <a name="use-cases"></a>Casos de uso
 
@@ -84,7 +84,7 @@ Si la clase de componente de asistente de etiquetas no se administran con <xref:
 
 [!code-csharp[](th-components/samples/RazorPagesSample/Startup.cs?name=snippet_ConfigureServices&highlight=12-15)]
 
-### <a name="registration-via-no-locrazor-file"></a>Registro a través de Razor archivo
+### <a name="registration-via-razor-file"></a>Registro a través de Razor archivo
 
 Si el componente de aplicación auxiliar de etiquetas no está registrado con DI, se puede registrar en una Razor Página de páginas o en una vista de MVC. Esta técnica se utiliza para controlar el marcado insertado y el orden de ejecución de los componentes desde un Razor archivo.
 
@@ -124,7 +124,7 @@ Para crear un componente de asistente de etiquetas personalizado:
 
 * Cree una clase pública derivada de <xref:Microsoft.AspNetCore.Mvc.Razor.TagHelpers.TagHelperComponentTagHelper>.
 * Aplique un [`[HtmlTargetElement]`](xref:Microsoft.AspNetCore.Razor.TagHelpers.HtmlTargetElementAttribute) atributo a la clase. Especifique el nombre del elemento HTML de destino.
-* *Opcional* : Aplique un [`[EditorBrowsable(EditorBrowsableState.Never)]`](xref:System.ComponentModel.EditorBrowsableAttribute) atributo a la clase para suprimir la presentación del tipo en IntelliSense.
+* *Opcional*: Aplique un [`[EditorBrowsable(EditorBrowsableState.Never)]`](xref:System.ComponentModel.EditorBrowsableAttribute) atributo a la clase para suprimir la presentación del tipo en IntelliSense.
 
 El código siguiente crea un componente de asistente de etiquetas personalizado que tiene como destino el elemento `<address>` HTML:
 

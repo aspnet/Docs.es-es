@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/dependency-injection
-ms.openlocfilehash: a596d05e3d1d73d4faa2f84d97a40e4a2c1234e4
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 9d4920a7b572163b048bfb06029d913cee3f9e5a
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93059291"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102587260"
 ---
 # <a name="dependency-injection-into-views-in-aspnet-core"></a>Inserción de dependencias en vistas de ASP.NET Core
 
@@ -30,7 +30,7 @@ Por [Steve Smith](https://ardalis.com/)
 
 ASP.NET Core admite la [inserción de dependencias](xref:fundamentals/dependency-injection) en vistas. Esto puede ser útil para servicios específicos de vistas, como la localización o los datos necesarios solamente para rellenar los elementos de vistas. Debe intentar mantener la [separación de intereses](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#separation-of-concerns) entre los controladores y las vistas. La mayoría de los datos que muestran las vistas deben pasarse desde el controlador.
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/dependency-injection/sample) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/views/dependency-injection/sample) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
 ## <a name="configuration-injection"></a>Inserción de configuración
 
@@ -67,7 +67,7 @@ Un servicio puede insertarse en una vista mediante la directiva `@inject`. Puede
 
 [!code-cshtml[](../../mvc/views/dependency-injection/sample/src/ViewInjectSample/Views/ToDo/Index.cshtml?highlight=4,5,15,16,17)]
 
-Esta vista muestra una lista de instancias `ToDoItem`, junto con un resumen de estadísticas generales. El resumen se rellena a partir de `StatisticsService` insertado. Este servicio está registrado para la inserción de dependencias en `ConfigureServices` en *Startup.cs* :
+Esta vista muestra una lista de instancias `ToDoItem`, junto con un resumen de estadísticas generales. El resumen se rellena a partir de `StatisticsService` insertado. Este servicio está registrado para la inserción de dependencias en `ConfigureServices` en *Startup.cs*:
 
 [!code-csharp[](../../mvc/views/dependency-injection/sample/src/ViewInjectSample/Startup.cs?highlight=6,7&range=15-22)]
 

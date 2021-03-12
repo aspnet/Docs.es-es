@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/models/validation
-ms.openlocfilehash: d6fa7e4524a8afdc23d4ad46354d9d8b395656a3
-ms.sourcegitcommit: e311cfb77f26a0a23681019bd334929d1aaeda20
+ms.openlocfilehash: 412f95e67fa35e952a907db328395183f1698b9e
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99530195"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102587221"
 ---
 # <a name="model-validation-in-aspnet-core-mvc-and-razor-pages"></a>Validación del modelo en ASP.NET Core MVC y Razor páginas
 
@@ -33,7 +33,7 @@ De [Kirk Larkin](https://github.com/serpent5)
 
 En este artículo se explica cómo validar los datos proporcionados por el usuario en una aplicación ASP.NET Core MVC o Razor pages.
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/validation/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample)).
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/models/validation/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample)).
 
 ## <a name="model-state"></a>Estado del modelo
 
@@ -94,7 +94,7 @@ Para averiguar qué parámetros se pasan a `String.Format` para el mensaje de er
 
 ## <a name="non-nullable-reference-types-and-required-attribute"></a>Tipos de referencia que no aceptan valores NULL y atributo [required]
 
-El sistema de validación trata los parámetros que no aceptan valores NULL o las propiedades enlazadas como si tuvieran un `[Required]` atributo. Al [habilitar los `Nullable` contextos](/dotnet/csharp/nullable-references#nullable-contexts), MVC comienza implícitamente la validación de las propiedades o los parámetros que no aceptan valores NULL como si hubieran sido atribuidos con el `[Required]` atributo. Tenga en cuenta el código siguiente:
+El sistema de validación trata los parámetros que no aceptan valores NULL o las propiedades enlazadas como si tuvieran un `[Required]` atributo. Al [habilitar los `Nullable` contextos](/dotnet/csharp/nullable-references#nullable-contexts), MVC comienza implícitamente la validación de las propiedades o los parámetros que no aceptan valores NULL como si hubieran sido atribuidos con el `[Required]` atributo. Observe el código siguiente:
 
 ```csharp
 public class Person
@@ -419,7 +419,7 @@ El enfoque anterior no impedirá la validación del lado cliente de la ASP.NET C
 
 En este artículo se explica cómo validar los datos proporcionados por el usuario en una aplicación ASP.NET Core MVC o Razor pages.
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/validation/sample) ([cómo descargarlo](xref:index#how-to-download-a-sample)).
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/models/validation/sample) ([cómo descargarlo](xref:index#how-to-download-a-sample)).
 
 ## <a name="model-state"></a>Estado del modelo
 
@@ -439,7 +439,7 @@ La validación es automática, pero tal vez le interese repetirla manualmente. P
 
 ## <a name="validation-attributes"></a>Atributos de validación
 
-Los atributos de validación permiten especificar reglas de validación para las propiedades del modelo. En el ejemplo siguiente de la [aplicación de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/validation/sample) se muestra una clase de modelo anotada con atributos de validación. El atributo `[ClassicMovie]` es un atributo de validación personalizado y los demás están integrados. No se muestra `[ClassicMovie2]`, que indica una manera alternativa de implementar un atributo personalizado.
+Los atributos de validación permiten especificar reglas de validación para las propiedades del modelo. En el ejemplo siguiente de la [aplicación de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/models/validation/sample) se muestra una clase de modelo anotada con atributos de validación. El atributo `[ClassicMovie]` es un atributo de validación personalizado y los demás están integrados. No se muestra `[ClassicMovie2]`, que indica una manera alternativa de implementar un atributo personalizado.
 
 [!code-csharp[](validation/samples/2.x/ValidationSample/Models/Movie.cs?name=snippet_ModelClass)]
 

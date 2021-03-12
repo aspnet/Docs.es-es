@@ -18,18 +18,18 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/tag-helpers/authoring
-ms.openlocfilehash: 306416db3d9ae0219f859c3cf459eb08a5b778cf
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: e0c9f450e4eded49694cbbb0e9fa2614a221ab14
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93060929"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102586831"
 ---
 # <a name="author-tag-helpers-in-aspnet-core"></a>Crear asistentes de etiquetas en ASP.NET Core
 
 Por [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/tag-helpers/authoring/sample) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/views/tag-helpers/authoring/sample) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
 ## <a name="get-started-with-tag-helpers"></a>Introducción a los asistentes de etiquetas
 
@@ -37,9 +37,9 @@ En este tutorial se proporciona una introducción a la programación de asistent
 
 Un asistente de etiquetas es una clase que implementa la interfaz `ITagHelper`. A pesar de ello, cuando se crea un asistente de etiquetas, normalmente se deriva de `TagHelper`, lo que da acceso al método `Process`.
 
-1. Cree un proyecto de ASP.NET Core denominado **AuthoringTagHelpers** . No necesita autenticación para este proyecto.
+1. Cree un proyecto de ASP.NET Core denominado **AuthoringTagHelpers**. No necesita autenticación para este proyecto.
 
-1. Cree una carpeta para almacenar los asistentes de etiquetas denominada *TagHelpers* . La carpeta *TagHelpers**no* es necesaria, pero es una convención razonable. Ahora vamos a empezar a escribir algunos asistentes de etiquetas simples.
+1. Cree una carpeta para almacenar los asistentes de etiquetas denominada *TagHelpers*. La carpeta *TagHelpers**no* es necesaria, pero es una convención razonable. Ahora vamos a empezar a escribir algunos asistentes de etiquetas simples.
 
 ## <a name="a-minimal-tag-helper"></a>Asistente de etiquetas mínima
 
@@ -57,11 +57,11 @@ El servidor usará nuestro asistente de etiquetas de correo electrónico para co
 
 Es decir, una etiqueta delimitadora lo convierte en un vínculo de correo electrónico. Tal vez le interese si está escribiendo un motor de blogs y necesita que envíe correos electrónicos a contactos de marketing, soporte técnico y de otro tipo, todos ellos en el mismo dominio.
 
-1. Agregue la siguiente clase `EmailTagHelper` a la carpeta *TagHelpers* .
+1. Agregue la siguiente clase `EmailTagHelper` a la carpeta *TagHelpers*.
 
    [!code-csharp[](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z1EmailTagHelperCopy.cs)]
 
-   * Los asistentes de etiquetas usan una convención de nomenclatura que tiene como destino los elementos de la clase raíz (menos la parte *TagHelper* del nombre de clase). En este ejemplo, el nombre de raíz de **EmailTagHelper** es *email* , por lo que se usará la `<email>` etiqueta como destino. Esta convención de nomenclatura debería funcionar para la mayoría de los asistentes de etiquetas. Más adelante veremos cómo invalidarla.
+   * Los asistentes de etiquetas usan una convención de nomenclatura que tiene como destino los elementos de la clase raíz (menos la parte *TagHelper* del nombre de clase). En este ejemplo, el nombre de raíz de **EmailTagHelper** es *email*, por lo que se usará la `<email>` etiqueta como destino. Esta convención de nomenclatura debería funcionar para la mayoría de los asistentes de etiquetas. Más adelante veremos cómo invalidarla.
 
    * La clase `EmailTagHelper` deriva de `TagHelper`. La clase `TagHelper` proporciona métodos y propiedades para escribir asistentes de etiquetas.
 
@@ -71,7 +71,7 @@ Es decir, una etiqueta delimitadora lo convierte en un vínculo de correo electr
 
    * El parámetro de salida para `Process` (y `ProcessAsync`) contiene un elemento HTML con estado que representa el origen original usado para generar una etiqueta y contenido HTML.
 
-   * El nombre de nuestra clase tiene un sufijo **TagHelper** , que *no* es necesario, pero es una convención recomendada. Podría declarar la clase de la manera siguiente:
+   * El nombre de nuestra clase tiene un sufijo **TagHelper**, que *no* es necesario, pero es una convención recomendada. Podría declarar la clase de la manera siguiente:
 
    ```csharp
    public class Email : TagHelper
@@ -94,7 +94,7 @@ the following snippet uses TagHelpers3 and should use TagHelpers (not the 3)
     [!code-cshtml[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImports.cshtml?highlight=3&range=1-3)]
 -->
 
-Para agregar un asistente de etiquetas a una vista con un FQN, agregue primero el FQN (`AuthoringTagHelpers.TagHelpers.EmailTagHelper`) y, después, el **nombre del ensamblado** ( *AuthoringTagHelpers* , no necesariamente `namespace`). La mayoría de los desarrolladores prefiere usar la sintaxis de comodines. En [Introducción a los asistentes de etiquetas](intro.md) se describe en detalle la adición y eliminación de asistentes de etiquetas, la jerarquía y la sintaxis de comodines.
+Para agregar un asistente de etiquetas a una vista con un FQN, agregue primero el FQN (`AuthoringTagHelpers.TagHelpers.EmailTagHelper`) y, después, el **nombre del ensamblado** (*AuthoringTagHelpers*, no necesariamente `namespace`). La mayoría de los desarrolladores prefiere usar la sintaxis de comodines. En [Introducción a los asistentes de etiquetas](intro.md) se describe en detalle la adición y eliminación de asistentes de etiquetas, la jerarquía y la sintaxis de comodines.
 
 1. Actualice el marcado del archivo *Views/Home/Contact.cshtml* con estos cambios:
 
@@ -157,7 +157,7 @@ En esta sección, escribiremos un asistente de correo electrónico asincrónico.
 
 ### <a name="removeall-precontentsethtmlcontent-and-postcontentsethtmlcontent"></a>RemoveAll, PreContent.SetHtmlContent y PostContent.SetHtmlContent
 
-1. Agregue la siguiente clase `BoldTagHelper` a la carpeta *TagHelpers* .
+1. Agregue la siguiente clase `BoldTagHelper` a la carpeta *TagHelpers*.
 
    [!code-csharp[](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/BoldTagHelper.cs)]
 
@@ -169,7 +169,7 @@ En esta sección, escribiremos un asistente de correo electrónico asincrónico.
 
    [!code-cshtml[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/AboutBoldOnly.cshtml?highlight=7)]
 
-1. Ejecute la aplicación. Puede usar el explorador que prefiera para inspeccionar el origen y comprobar el marcado.
+1. Ejecutar la aplicación. Puede usar el explorador que prefiera para inspeccionar el origen y comprobar el marcado.
 
    El atributo `[HtmlTargetElement]` anterior solo tiene como destino el marcado HTML que proporciona el nombre de atributo "bold". El asistente de etiquetas no ha modificado el elemento `<bold>`.
 
@@ -195,13 +195,13 @@ También puede usar `[HtmlTargetElement]` para cambiar el nombre del elemento de
 
 ## <a name="pass-a-model-to-a-tag-helper"></a>Pasar un modelo a un asistente de etiquetas
 
-1. Agregue una carpeta *Models* .
+1. Agregue una carpeta *Models*.
 
-1. Agregue la clase `WebsiteContext` siguiente a la carpeta *Models* :
+1. Agregue la clase `WebsiteContext` siguiente a la carpeta *Models*:
 
    [!code-csharp[](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Models/WebsiteContext.cs)]
 
-1. Agregue la siguiente clase `WebsiteInformationTagHelper` a la carpeta *TagHelpers* .
+1. Agregue la siguiente clase `WebsiteInformationTagHelper` a la carpeta *TagHelpers*.
 
    [!code-csharp[](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/WebsiteInformationTagHelper.cs)]
 
@@ -227,7 +227,7 @@ También puede usar `[HtmlTargetElement]` para cambiar el nombre del elemento de
    $@"<ul><li><strong>Version:</strong> {Info.Version}</li>
    ```
 
-1. Agregue el marcado siguiente a la vista *About.cshtml* . En el marcado resaltado se muestra la información del sitio web.
+1. Agregue el marcado siguiente a la vista *About.cshtml*. En el marcado resaltado se muestra la información del sitio web.
 
    [!code-cshtml[](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/About.cshtml?highlight=1,4-8, 18-999)]
 
@@ -249,7 +249,7 @@ También puede usar `[HtmlTargetElement]` para cambiar el nombre del elemento de
 
 El asistente de etiquetas de condición representa la salida cuando se pasa un valor true.
 
-1. Agregue la siguiente clase `ConditionTagHelper` a la carpeta *TagHelpers* .
+1. Agregue la siguiente clase `ConditionTagHelper` a la carpeta *TagHelpers*.
 
    [!code-csharp[](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/ConditionTagHelper.cs)]
 
@@ -276,14 +276,14 @@ En esta sección, escribirá un par de asistentes de etiquetas de vinculación a
 
 Dado que estos dos asistentes están estrechamente relacionados y tal vez las refactorice en el futuro, los guardaremos en el mismo archivo.
 
-1. Agregue la siguiente clase `AutoLinkerHttpTagHelper` a la carpeta *TagHelpers* .
+1. Agregue la siguiente clase `AutoLinkerHttpTagHelper` a la carpeta *TagHelpers*.
 
    [!code-csharp[](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z1AutoLinker.cs?range=7-19)]
 
    >[!NOTE]
    >La clase `AutoLinkerHttpTagHelper` tiene como destino elementos `p` y usa [Regex](/dotnet/standard/base-types/regular-expression-language-quick-reference) para crear el delimitador.
 
-1. Agregue el marcado siguiente al final del archivo *Views/Home/Contact.cshtml* :
+1. Agregue el marcado siguiente al final del archivo *Views/Home/Contact.cshtml*:
 
    [!code-cshtml[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/Contact.cshtml?highlight=19)]
 
@@ -293,7 +293,7 @@ Dado que estos dos asistentes están estrechamente relacionados y tal vez las re
 
    [!code-csharp[](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z1AutoLinker.cs?highlight=15-34&range=7-34)]
 
-1. Ejecute la aplicación. Observe que el texto www se representa como un vínculo, a diferencia del texto HTTP. Si coloca un punto de interrupción en ambas clases, verá que la clase del asistente de etiquetas HTTP se ejecuta primero. El problema es que la salida del asistente de etiquetas se almacena en caché y, cuando se ejecuta el asistente de etiquetas WWW, sobrescribe la salida almacenada en caché desdel asistente de etiquetas HTTP. Más adelante en el tutorial veremos cómo se controla el orden en el que se ejecutan los asistentes de etiquetas. Corregiremos el código con lo siguiente:
+1. Ejecutar la aplicación. Observe que el texto www se representa como un vínculo, a diferencia del texto HTTP. Si coloca un punto de interrupción en ambas clases, verá que la clase del asistente de etiquetas HTTP se ejecuta primero. El problema es que la salida del asistente de etiquetas se almacena en caché y, cuando se ejecuta el asistente de etiquetas WWW, sobrescribe la salida almacenada en caché desdel asistente de etiquetas HTTP. Más adelante en el tutorial veremos cómo se controla el orden en el que se ejecutan los asistentes de etiquetas. Corregiremos el código con lo siguiente:
 
    [!code-csharp[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z1AutoLinkerCopy.cs?highlight=5,6,10,21,22,26&range=8-37)]
 

@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/file-providers
-ms.openlocfilehash: 16e5ead9898125c804da4d60322510474201d897
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: c66c35e93991333229e367e9f371b125d8067131
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93059447"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102588222"
 ---
 # <a name="file-providers-in-aspnet-core"></a>Proveedores de archivo en ASP.NET Core
 
@@ -39,7 +39,7 @@ ASP.NET Core abstrae el acceso al sistema de archivos mediante el uso de proveed
 * [Razor](xref:mvc/views/razor) usa proveedores de archivos para localizar páginas y vistas.
 * Las herramientas de .NET Core usan proveedores de archivos y patrones globales para especificar los archivos que deben publicarse.
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/file-providers/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/file-providers/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
 ## <a name="file-provider-interfaces"></a>Interfaces de proveedor de archivos
 
@@ -190,7 +190,7 @@ ASP.NET Core abstrae el acceso al sistema de archivos mediante el uso de proveed
 * [Razor](xref:mvc/views/razor) usa proveedores de archivos para localizar páginas y vistas.
 * Las herramientas de .NET Core usan proveedores de archivos y patrones globales para especificar los archivos que deben publicarse.
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/file-providers/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/file-providers/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
 ## <a name="file-provider-interfaces"></a>Interfaces de proveedor de archivos
 

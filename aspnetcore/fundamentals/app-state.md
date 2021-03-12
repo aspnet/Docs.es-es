@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/app-state
-ms.openlocfilehash: c11b748f9d79235b14c9541019da6e1fb3428af6
-ms.sourcegitcommit: c1839f2992b003c92cd958244a2e0771ae928786
+ms.openlocfilehash: ab09867a1b1aa73e423babbe295036e292fc733f
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "93051413"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102586584"
 ---
 # <a name="session-and-state-management-in-aspnet-core"></a>Administración del estado y la sesión en ASP.NET Core
 
@@ -33,7 +33,7 @@ Por [Rick Anderson](https://twitter.com/RickAndMSFT), [Steve Smith](https://twit
 
 HTTP es un protocolo sin estado. De forma predeterminada, las solicitudes HTTP son mensajes independientes que no conservan los valores de usuario. En este artículo se describen varios enfoques para conservar los datos de usuario entre las solicitudes.
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/app-state/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/app-state/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
 ## <a name="state-management"></a>Administración de estado
 
@@ -303,7 +303,7 @@ Por [Rick Anderson](https://twitter.com/RickAndMSFT), [Steve Smith](https://arda
 
 HTTP es un protocolo sin estado. Sin realizar pasos adicionales, las solicitudes HTTP son mensajes independientes que no conservan los valores de usuario ni el estado de la aplicación. En este artículo se describen varios enfoques para conservar el estado de la aplicación y los datos de usuario entre las solicitudes.
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/app-state/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/app-state/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
 ## <a name="state-management"></a>Administración de estado
 

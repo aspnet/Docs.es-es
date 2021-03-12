@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/partial
-ms.openlocfilehash: 3a7b054adc50be57028dfa0364f80ae8733b02f7
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: 0a8e4a4fdecd657840c6c02424ffffa64d4ab473
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98252713"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102586883"
 ---
 # <a name="partial-views-in-aspnet-core"></a>Vistas parciales en ASP.NET Core
 
@@ -37,7 +37,7 @@ El término *vista parcial* se usa al desarrollar una aplicación MVC, donde los
 
 ::: moniker-end
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/partial/sample) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/views/partial/sample) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
 ## <a name="when-to-use-partial-views"></a>¿Cuándo se usan las vistas parciales?
 
@@ -84,7 +84,7 @@ Los nombres de archivo de las vistas parciales suelen comenzar con un guión baj
 
 ::: moniker range=">= aspnetcore-2.0"
 
-### <a name="use-a-partial-view-in-a-no-locrazor-pages-pagemodel"></a>Usar una vista parcial en un Razor PageModel de páginas
+### <a name="use-a-partial-view-in-a-razor-pages-pagemodel"></a>Usar una vista parcial en un Razor PageModel de páginas
 
 En ASP.NET Core 2,0 o 2,1, el siguiente método de controlador representa la vista parcial de *\_ AuthorPartialRP. cshtml* en la respuesta:
 
@@ -353,7 +353,7 @@ La segunda vista parcial representa las secciones del artículo:
 
 ::: moniker range=">= aspnetcore-2.1"
 
-* [Razor referencia de sintaxis para ASP.NET Core](xref:mvc/views/razor)
+* [Referencia sobre la sintaxis de Razor para ASP.NET Core](xref:mvc/views/razor)
 * <xref:mvc/views/tag-helpers/intro>
 * <xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper>
 * <xref:mvc/views/view-components>
@@ -363,7 +363,7 @@ La segunda vista parcial representa las secciones del artículo:
 
 ::: moniker range="< aspnetcore-2.1"
 
-* [Razor referencia de sintaxis para ASP.NET Core](xref:mvc/views/razor)
+* [Referencia sobre la sintaxis de Razor para ASP.NET Core](xref:mvc/views/razor)
 * <xref:mvc/views/view-components>
 * <xref:mvc/controllers/areas>
 

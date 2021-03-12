@@ -17,14 +17,14 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/razor
-ms.openlocfilehash: cb9ffab19062bf726dd519c782d502f76e372073
-ms.sourcegitcommit: 97243663fd46c721660e77ef652fe2190a461f81
+ms.openlocfilehash: 60471232b3373039404b27c4afd1a1725d4d21eb
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/09/2021
-ms.locfileid: "98058290"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102586870"
 ---
-# <a name="no-locrazor-syntax-reference-for-aspnet-core"></a>Razor referencia de sintaxis para ASP.NET Core
+# <a name="razor-syntax-reference-for-aspnet-core"></a>Referencia sobre la sintaxis de Razor para ASP.NET Core
 
 Por [Rick Anderson](https://twitter.com/RickAndMSFT), [Taylor Mullen](https://twitter.com/ntaylormullen)y [dan Vicarel](https://github.com/Rabadash8820)
 
@@ -34,7 +34,7 @@ Razor es una sintaxis de marcado para insertar código basado en servidor en pá
 
 El Razor idioma predeterminado es HTML. La representación de HTML a partir del Razor marcado no es diferente de representar HTML desde un archivo HTML.  Razor El servidor no ha cambiado el formato HTML en los archivos. cshtml.
 
-## <a name="no-locrazor-syntax"></a>Sintaxis de Razor
+## <a name="razor-syntax"></a>Sintaxis de Razor
 
 Razor admite C# y usa el `@` símbolo para pasar de HTML a C#. Razor evalúa las expresiones de C# y las representa en la salida HTML.
 
@@ -58,7 +58,7 @@ El contenido y los atributos HTML que tienen direcciones de correo electrónico 
 <a href="mailto:Support@contoso.com">Support@contoso.com</a>
 ```
 
-## <a name="implicit-no-locrazor-expressions"></a>RazorExpresiones IMPLÍCITAS
+## <a name="implicit-razor-expressions"></a>RazorExpresiones IMPLÍCITAS
 
 Las Razor expresiones implícitas comienzan con `@` seguido de código C#:
 
@@ -86,7 +86,7 @@ El código anterior genera un error del compilador similar a uno de los siguient
 
 Las llamadas a métodos genéricos se deben encapsular en una [ Razor expresión explícita](#explicit-razor-expressions) o en un [ Razor bloque de código](#razor-code-blocks).
 
-## <a name="explicit-no-locrazor-expressions"></a>Expresiones explícitas Razor
+## <a name="explicit-razor-expressions"></a>Expresiones explícitas Razor
 
 Las Razor expresiones explícitas están compuestas por un `@` símbolo con paréntesis equilibrados. Para representar la hora de la semana pasada, Razor se usa el marcado siguiente:
 
@@ -157,7 +157,7 @@ El código representa el siguiente HTML:
 <span>Hello World</span>
 ```
 
-## <a name="no-locrazor-code-blocks"></a>Razor bloques de código
+## <a name="razor-code-blocks"></a>Razor bloques de código
 
 Razor los bloques de código comienzan con `@` y se incluyen en `{}` . A diferencia de las expresiones, el código de C# dentro de los bloques de código no se representa. Las expresiones y los bloques de código de una vista comparten el mismo ámbito y se definen en orden:
 
@@ -789,11 +789,11 @@ Las referencias de componentes (`@ref`) proporcionan una forma de hacer referenc
 
 *Este escenario solo se aplica a Razor los componentes de (. Razor).*
 
-La directiva `@typeparam` declara un parámetro de tipo genérico para la clase de componente generada. Para obtener más información, vea <xref:blazor/components/templated-components#generic-typed-components>.
+La directiva `@typeparam` declara un parámetro de tipo genérico para la clase de componente generada. Para obtener más información, vea <xref:blazor/components/templated-components>.
 
 ::: moniker-end
 
-## <a name="templated-no-locrazor-delegates"></a>Delegados con plantilla Razor
+## <a name="templated-razor-delegates"></a>Delegados con plantilla Razor
 
 Razor las plantillas permiten definir un fragmento de la interfaz de usuario con el siguiente formato:
 
@@ -904,9 +904,9 @@ Hay tres directivas que pertenecen a los [asistentes de etiquetas](xref:mvc/view
 | [`@removeTagHelper`](xref:mvc/views/tag-helpers/intro#remove-razor-directives-label) | Quita los asistentes de etiquetas agregadas anteriormente desde una vista. |
 | [`@tagHelperPrefix`](xref:mvc/views/tag-helpers/intro#prefix-razor-directives-label) | Especifica una cadena de prefijo de etiqueta para permitir la compatibilidad con el asistente de etiquetas y hacer explícito su uso. |
 
-## <a name="no-locrazor-reserved-keywords"></a>Razor Palabras clave reservadas
+## <a name="razor-reserved-keywords"></a>Razor Palabras clave reservadas
 
-### <a name="no-locrazor-keywords"></a>Razor palabra
+### <a name="razor-keywords"></a>Razor palabra
 
 * `page` (Requiere ASP.NET Core 2,1 o posterior)
 * `namespace`
@@ -918,7 +918,7 @@ Hay tres directivas que pertenecen a los [asistentes de etiquetas](xref:mvc/view
 
 Razor las palabras clave se incluyen en secuencias `@(Razor Keyword)` de escape (por ejemplo, `@(functions)` ).
 
-### <a name="c-no-locrazor-keywords"></a>RazorPalabras clave de C#
+### <a name="c-razor-keywords"></a>RazorPalabras clave de C#
 
 * `case`
 * `do`
@@ -937,11 +937,11 @@ Razor las palabras clave se incluyen en secuencias `@(Razor Keyword)` de escape 
 
 Las Razor palabras clave de C# deben tener un doble escape con `@(@C# Razor Keyword)` (por ejemplo, `@(@case)` ). El primero `@` convierte el analizador en caracteres de escape Razor . y el segundo `@`, en el analizador de C#.
 
-### <a name="reserved-keywords-not-used-by-no-locrazor"></a>Palabras clave reservadas no utilizadas por Razor
+### <a name="reserved-keywords-not-used-by-razor"></a>Palabras clave reservadas no utilizadas por Razor
 
 * `class`
 
-## <a name="inspect-the-no-locrazor-c-class-generated-for-a-view"></a>Inspeccionar la Razor clase de C# generada para una vista
+## <a name="inspect-the-razor-c-class-generated-for-a-view"></a>Inspeccionar la Razor clase de C# generada para una vista
 
 ::: moniker range=">= aspnetcore-2.1"
 

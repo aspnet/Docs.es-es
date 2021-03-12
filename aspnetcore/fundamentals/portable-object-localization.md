@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/portable-object-localization
-ms.openlocfilehash: 175614c426c564ce91068e18035ce05311432698
-ms.sourcegitcommit: ebc5beccba5f3f7619de20baa58ad727d2a3d18c
+ms.openlocfilehash: ed41657b364c7f845491b3e452db8a4d5c5aa389
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98689245"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102587182"
 ---
 # <a name="configure-portable-object-localization-in-aspnet-core"></a>Configurar la localización de objetos portátiles en ASP.NET Core
 
@@ -34,7 +34,7 @@ En este artículo se describen los pasos para usar archivos de objeto portátil 
 
 **Nota:** Orchard Core no es un producto de Microsoft. Por tanto, Microsoft no ofrece soporte técnico para esta característica.
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/localization/sample/3.x/POLocalization) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/localization/sample/3.x/POLocalization) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
 ## <a name="what-is-a-po-file"></a>¿Qué es un archivo de objeto portátil?
 
@@ -249,7 +249,7 @@ En este artículo se describen los pasos para usar archivos de objeto portátil 
 
 **Nota:** Orchard Core no es un producto de Microsoft. Por tanto, Microsoft no ofrece soporte técnico para esta característica.
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/localization/sample/2.x/POLocalization) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/localization/sample/2.x/POLocalization) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
 ## <a name="what-is-a-po-file"></a>¿Qué es un archivo de objeto portátil?
 

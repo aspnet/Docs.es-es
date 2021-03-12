@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/routing
-ms.openlocfilehash: 1355fdaeae58b6f4e0cf8d41a74b1c28aee0e8fe
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: 0ce89d2dee3fb2054655c003daddfda2ffa52696
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98253090"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102587287"
 ---
 # <a name="routing-in-aspnet-core"></a>Enrutamiento en ASP.NET Core
 
@@ -53,7 +53,7 @@ El sistema de enrutamiento de puntos de conexión descrito en este documento se 
 * El selector de versión de una versión anterior.
 * Seleccione [Enrutamiento de ASP.NET Core 2.1](?view=aspnetcore-2.1).
 
-[Vea o descargue el código de ejemplo](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/routing/samples/3.x) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/routing/samples/3.x) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
 Los ejemplos de descarga para este documento están habilitados por una clase `Startup` específica. Para ejecutar un ejemplo concreto, modifique *Program.cs* para llamar a la clase `Startup` deseada.
 
@@ -261,7 +261,7 @@ El middleware de terminal puede ser una herramienta eficaz, pero puede requerir:
 
 Considere la posibilidad de realizar la integración con el enrutamiento antes de escribir middleware de terminal.
 
-El middleware de terminal existente que se integra con [Map](xref:fundamentals/middleware/index#branch-the-middleware-pipeline) o <xref:Microsoft.AspNetCore.Builder.MapWhenExtensions.MapWhen*> normalmente se puede convertir en un punto de conexión compatible con el enrutamiento. [MapHealthChecks](https://github.com/aspnet/AspNetCore/blob/master/src/Middleware/HealthChecks/src/Builder/HealthCheckEndpointRouteBuilderExtensions.cs#L16) muestra el patrón para enrutadores:
+El middleware de terminal existente que se integra con [Map](xref:fundamentals/middleware/index#branch-the-middleware-pipeline) o <xref:Microsoft.AspNetCore.Builder.MapWhenExtensions.MapWhen*> normalmente se puede convertir en un punto de conexión compatible con el enrutamiento. [MapHealthChecks](https://github.com/dotnet/AspNetCore/blob/main/src/Middleware/HealthChecks/src/Builder/HealthCheckEndpointRouteBuilderExtensions.cs#L16) muestra el patrón para enrutadores:
 * Escriba un método de extensión en <xref:Microsoft.AspNetCore.Routing.IEndpointRouteBuilder>.
 * Cree una canalización de middleware anidada mediante <xref:Microsoft.AspNetCore.Routing.IEndpointRouteBuilder.CreateApplicationBuilder*>.
 * Adjunte el middleware a la nueva canalización. En este caso, <xref:Microsoft.AspNetCore.Builder.HealthCheckApplicationBuilderExtensions.UseHealthChecks*>.
@@ -345,7 +345,7 @@ Debido a los tipos de extensibilidad que proporciona el enrutamiento, el sistema
 
 ### <a name="route-template-precedence-and-endpoint-selection-order"></a>Prioridad de la plantilla de ruta y orden de selección de los puntos de conexión
 
-La [prioridad de la plantilla de ruta](https://github.com/dotnet/aspnetcore/blob/master/src/Http/Routing/src/Template/RoutePrecedence.cs#L16) es un sistema que asigna a cada plantilla de ruta un valor en función de su especificidad. Precedencia de la plantilla de ruta:
+La [prioridad de la plantilla de ruta](https://github.com/dotnet/aspnetcore/blob/main/src/Http/Routing/src/Template/RoutePrecedence.cs#L16) es un sistema que asigna a cada plantilla de ruta un valor en función de su especificidad. Precedencia de la plantilla de ruta:
 
 * Evita la necesidad de ajustar el orden de los puntos de conexión en casos comunes.
 * Intenta hacer coincidir las expectativas comunes del comportamiento del enrutamiento.
@@ -360,7 +360,7 @@ Los detalles de cómo funciona la precedencia están vinculados a cómo se defin
 * Un segmento complejo se considera igual de específico que un segmento de parámetro con una restricción.
 * Los parámetros comodín son los menos específicos. Vea **comodín** en [Referencia de plantilla de ruta](#rtr) para obtener información importante sobre las rutas comodín.
 
-Vea el [código fuente en GitHub](https://github.com/dotnet/aspnetcore/blob/master/src/Http/Routing/src/Template/RoutePrecedence.cs#L189) para obtener una referencia de los valores exactos.
+Vea el [código fuente en GitHub](https://github.com/dotnet/aspnetcore/blob/main/src/Http/Routing/src/Template/RoutePrecedence.cs#L189) para obtener una referencia de los valores exactos.
 
 <a name="lg"></a>
 
@@ -586,7 +586,7 @@ Se pueden crear restricciones de ruta personalizadas mediante la implementación
 
 Las restricciones de ruta personalizadas rara vez son necesarias. Antes de implementar una restricción de ruta personalizada, considere alternativas, como el enlace de modelos.
 
-En la carpeta [Constraints](https://github.com/dotnet/aspnetcore/tree/master/src/Http/Routing/src/Constraints) de ASP.NET Core se proporcionan buenos ejemplos de creación de restricciones. Por ejemplo, [GuidRouteConstraint](https://github.com/dotnet/aspnetcore/blob/master/src/Http/Routing/src/Constraints/GuidRouteConstraint.cs#L18).
+En la carpeta [Constraints](https://github.com/dotnet/aspnetcore/tree/main/src/Http/Routing/src/Constraints) de ASP.NET Core se proporcionan buenos ejemplos de creación de restricciones. Por ejemplo, [GuidRouteConstraint](https://github.com/dotnet/aspnetcore/blob/main/src/Http/Routing/src/Constraints/GuidRouteConstraint.cs#L18).
 
 Para usar una restricción `IRouteConstraint` personalizada, el tipo de restricción de ruta se debe registrar con el parámetro <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> de la aplicación en el contenedor de servicios. `ConstraintMap` es un diccionario que asigna claves de restricciones de ruta a implementaciones de `IRouteConstraint` que validen esas restricciones. El parámetro `ConstraintMap` de una aplicación puede actualizarse en `Startup.ConfigureServices` como parte de una llamada a [services.AddRouting](xref:Microsoft.Extensions.DependencyInjection.RoutingServiceCollectionExtensions.AddRouting*) o configurando <xref:Microsoft.AspNetCore.Routing.RouteOptions> directamente con `services.Configure<RouteOptions>`. Por ejemplo:
 
@@ -947,7 +947,7 @@ app.UseEndpoints(endpoints =>
 
 **CONSIDERE LA POSIBILIDAD** de escribir un objeto <xref:Microsoft.AspNetCore.Routing.EndpointDataSource> propio. `EndpointDataSource` es la primitiva de bajo nivel para declarar y actualizar una colección de puntos de conexión. `EndpointDataSource` es una API eficaz que usan los controladores y Razor Pages.
 
-Las pruebas de enrutamiento tienen un [ejemplo básico](https://github.com/aspnet/AspNetCore/blob/master/src/Http/Routing/test/testassets/RoutingSandbox/Framework/FrameworkEndpointDataSource.cs#L17) de un origen de datos que no es de actualización.
+Las pruebas de enrutamiento tienen un [ejemplo básico](https://github.com/dotnet/AspNetCore/blob/main/src/Http/Routing/test/testassets/RoutingSandbox/Framework/FrameworkEndpointDataSource.cs#L17) de un origen de datos que no es de actualización.
 
 **NO** intente registrar un objeto `EndpointDataSource` de forma predeterminada. Exija a los usuarios que registren el marco en <xref:Microsoft.AspNetCore.Builder.EndpointRoutingApplicationBuilderExtensions.UseEndpoints*>. La filosofía del enrutamiento es que nada se incluye de forma predeterminada y que `UseEndpoints` es el lugar donde se registran los puntos de conexión.
 
@@ -1029,7 +1029,7 @@ Para obtener más información sobre el enrutamiento basado en <xref:Microsoft.A
 > [!IMPORTANT]
 > En este documento se describe el enrutamiento de ASP.NET Core de bajo nivel. Para obtener información sobre el enrutamiento de ASP.NET Core MVC, vea <xref:mvc/controllers/routing>. Para obtener más información sobre las convenciones de enrutamiento en Razor Pages, consulte <xref:razor-pages/razor-pages-conventions>.
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/routing/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/routing/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
 ## <a name="routing-basics"></a>Fundamentos del enrutamiento
 
@@ -1565,7 +1565,7 @@ En el ejemplo siguiente se muestra cómo se genera un vínculo a una ruta, dado 
 
 [!code-csharp[](routing/samples/2.x/RoutingSample/Startup.cs?name=snippet_Dictionary)]
 
-El valor <xref:Microsoft.AspNetCore.Routing.VirtualPathData.VirtualPath> generado al final del ejemplo anterior es `/package/create/123`. El diccionario proporciona los valores de ruta `operation` e `id` de la plantilla "Ruta de paquete de seguimiento", `package/{operation}/{id}`. Para obtener más información, vea el código de ejemplo de la sección [Uso de software intermedio de enrutamiento](#use-routing-middleware) o la [aplicación de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/routing/samples).
+El valor <xref:Microsoft.AspNetCore.Routing.VirtualPathData.VirtualPath> generado al final del ejemplo anterior es `/package/create/123`. El diccionario proporciona los valores de ruta `operation` e `id` de la plantilla "Ruta de paquete de seguimiento", `package/{operation}/{id}`. Para obtener más información, vea el código de ejemplo de la sección [Uso de software intermedio de enrutamiento](#use-routing-middleware) o la [aplicación de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/routing/samples).
 
 El segundo parámetro del constructor <xref:Microsoft.AspNetCore.Routing.VirtualPathContext> es una colección de *valores de ambiente*. Los valores de ambiente son adecuados porque limitan el número de valores que el desarrollador debe especificar dentro de un contexto de solicitud. Los valores de ruta actuales de la solicitud actual se consideran valores de ambiente para la generación de vínculos. En la acción `About` de `HomeController` de una aplicación ASP.NET Core MVC, no es necesario especificar el valor de ruta de controlador para vincular a la acción `Index` (se usará el valor de ambiente `Home`).
 
@@ -1611,7 +1611,7 @@ services.AddMvc()
 > [!IMPORTANT]
 > En este documento se describe el enrutamiento de ASP.NET Core de bajo nivel. Para obtener información sobre el enrutamiento de ASP.NET Core MVC, vea <xref:mvc/controllers/routing>. Para obtener más información sobre las convenciones de enrutamiento en Razor Pages, consulte <xref:razor-pages/razor-pages-conventions>.
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/routing/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/routing/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
 ## <a name="routing-basics"></a>Fundamentos del enrutamiento
 
@@ -1971,7 +1971,7 @@ En el ejemplo siguiente se muestra cómo se genera un vínculo a una ruta, dado 
 
 [!code-csharp[](routing/samples/2.x/RoutingSample/Startup.cs?name=snippet_Dictionary)]
 
-El valor <xref:Microsoft.AspNetCore.Routing.VirtualPathData.VirtualPath> generado al final del ejemplo anterior es `/package/create/123`. El diccionario proporciona los valores de ruta `operation` e `id` de la plantilla "Ruta de paquete de seguimiento", `package/{operation}/{id}`. Para obtener más información, vea el código de ejemplo de la sección [Uso de software intermedio de enrutamiento](#use-routing-middleware) o la [aplicación de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/routing/samples).
+El valor <xref:Microsoft.AspNetCore.Routing.VirtualPathData.VirtualPath> generado al final del ejemplo anterior es `/package/create/123`. El diccionario proporciona los valores de ruta `operation` e `id` de la plantilla "Ruta de paquete de seguimiento", `package/{operation}/{id}`. Para obtener más información, vea el código de ejemplo de la sección [Uso de software intermedio de enrutamiento](#use-routing-middleware) o la [aplicación de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/routing/samples).
 
 El segundo parámetro del constructor <xref:Microsoft.AspNetCore.Routing.VirtualPathContext> es una colección de *valores de ambiente*. Los valores de ambiente son adecuados porque limitan el número de valores que el desarrollador debe especificar dentro de un contexto de solicitud. Los valores de ruta actuales de la solicitud actual se consideran valores de ambiente para la generación de vínculos. En la acción `About` de `HomeController` de una aplicación ASP.NET Core MVC, no es necesario especificar el valor de ruta de controlador para vincular a la acción `Index` (se usará el valor de ambiente `Home`).
 

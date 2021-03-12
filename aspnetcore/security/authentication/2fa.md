@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/2fa
-ms.openlocfilehash: 1ee9e656c2e631c9b5588149e0a75e07108baff1
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 1f77f3f4b7e9dd558e9869992e2f1f4d185e5b10
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93051270"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102586857"
 ---
 # <a name="two-factor-authentication-with-sms-in-aspnet-core"></a>Autenticación en dos fases con SMS en ASP.NET Core
 
@@ -35,7 +35,7 @@ Por [Rick Anderson](https://twitter.com/RickAndMSFT) y [Suiza-desarrolladores](h
 
 En este tutorial se muestra cómo configurar la autenticación en dos fases (2FA) mediante SMS. Se proporcionan instrucciones para [Twilio](https://www.twilio.com/) y [ASPSMS](https://www.aspsms.com/asp.net/identity/core/testcredits/), pero puede usar cualquier otro proveedor de SMS. Se recomienda completar la [confirmación de la cuenta y la recuperación de la contraseña antes de](xref:security/authentication/accconfirm) iniciar este tutorial.
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/2fa/sample/Web2FA). [Cómo descargar](xref:index#how-to-download-a-sample).
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/authentication/2fa/sample/Web2FA). [Cómo descargar](xref:index#how-to-download-a-sample).
 
 ## <a name="create-a-new-aspnet-core-project"></a>Crear un nuevo proyecto de ASP.NET Core
 
@@ -49,11 +49,11 @@ Cree una cuenta de SMS, por ejemplo, de [Twilio](https://www.twilio.com/) o [ASP
 
 **Twilio**
 
-En la pestaña panel de la cuenta de Twilio, copie el SID de la **cuenta** y el **token de autenticación** .
+En la pestaña panel de la cuenta de Twilio, copie el SID de la **cuenta** y el **token de autenticación**.
 
 **ASPSMS:**
 
-En la configuración de la cuenta, vaya a **Userkey** y cópiela junto con la **contraseña** .
+En la configuración de la cuenta, vaya a **Userkey** y cópiela junto con la **contraseña**.
 
 Más adelante almacenaremos estos valores en con la herramienta de administrador de secretos dentro de las claves `SMSAccountIdentification` y `SMSAccountPassword` .
 
@@ -100,7 +100,7 @@ info: Successfully saved SMSAccountIdentification = 12345 to the secret store.
 
 ### <a name="configure-startup-to-use-smsoptions"></a>Configurar el inicio para usar `SMSoptions`
 
-Agregue `SMSoptions` al contenedor de servicios en el `ConfigureServices` método en *Startup.CS* :
+Agregue `SMSoptions` al contenedor de servicios en el `ConfigureServices` método en *Startup.CS*:
 
 [!code-csharp[](2fa/sample/Web2FA/Startup.cs?name=snippet1&highlight=4)]
 
@@ -118,7 +118,7 @@ Abra el archivo de vista *views/Manage/index. cshtml* Razor y quite los caracter
 
 ![Administrar vista: Pulse el vínculo "agregar".](2fa/_static/login2fa2.png)
 
-* Agregue un número de teléfono que recibirá el código de verificación y pulse **Enviar código de verificación** .
+* Agregue un número de teléfono que recibirá el código de verificación y pulse **Enviar código de verificación**.
 
 ![Página Agregar número de teléfono](2fa/_static/login2fa3.png)
 
@@ -142,13 +142,13 @@ Si no recibe un mensaje de texto, consulte la página de registro de Twilio.
 
 * Inicie sesión.
 
-* La cuenta de usuario ha habilitado la autenticación en dos fases, por lo que debe proporcionar el segundo factor de autenticación. En este tutorial, ha habilitado la comprobación del teléfono. Las plantillas integradas también permiten configurar el correo electrónico como segundo factor. Puede configurar factores de segundo adicionales para la autenticación como códigos QR. Pulse **submit (enviar** ).
+* La cuenta de usuario ha habilitado la autenticación en dos fases, por lo que debe proporcionar el segundo factor de autenticación. En este tutorial, ha habilitado la comprobación del teléfono. Las plantillas integradas también permiten configurar el correo electrónico como segundo factor. Puede configurar factores de segundo adicionales para la autenticación como códigos QR. Pulse **submit (enviar**).
 
 ![Enviar vista de código de verificación](2fa/_static/login2fa7.png)
 
 * Escriba el código que se obtiene en el mensaje SMS.
 
-* Al hacer clic en la casilla **recordar este explorador** , no es necesario usar 2FA para iniciar sesión cuando se usa el mismo dispositivo y explorador. Al habilitar 2FA y hacer clic en **recordar, este explorador** le proporcionará protección de 2FA segura a los usuarios malintencionados que intentan acceder a su cuenta, siempre y cuando no tengan acceso a su dispositivo. Puede hacerlo en cualquier dispositivo privado que use con regularidad. Al establecer la opción  **recordar este explorador** , obtendrá la seguridad agregada de 2FA de los dispositivos que no use con regularidad y que le resulte más cómodo no tener que ir a través de 2FA en sus propios dispositivos.
+* Al hacer clic en la casilla **recordar este explorador** , no es necesario usar 2FA para iniciar sesión cuando se usa el mismo dispositivo y explorador. Al habilitar 2FA y hacer clic en **recordar, este explorador** le proporcionará protección de 2FA segura a los usuarios malintencionados que intentan acceder a su cuenta, siempre y cuando no tengan acceso a su dispositivo. Puede hacerlo en cualquier dispositivo privado que use con regularidad. Al establecer la opción  **recordar este explorador**, obtendrá la seguridad agregada de 2FA de los dispositivos que no use con regularidad y que le resulte más cómodo no tener que ir a través de 2FA en sus propios dispositivos.
 
 ![Comprobar vista](2fa/_static/login2fa8.png)
 

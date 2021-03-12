@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mongo-app
-ms.openlocfilehash: 350df417886fe1ea5fef89dc221c217d596768b3
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 489a15f2011e44ffd9f9bfe7d5410b7d79a10632
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93060747"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102587611"
 ---
 # <a name="create-a-web-api-with-aspnet-core-and-mongodb"></a>Creación de una API Web con ASP.NET Core y MongoDB
 
@@ -43,7 +43,7 @@ En este tutorial aprenderá a:
 > * Realizar operaciones de CRUD de MongoDB desde una API web
 > * Personalizar la serialización de JSON
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/first-mongo-app/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/tutorials/first-mongo-app/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
 ## <a name="prerequisites"></a>Requisitos previos
 
@@ -393,7 +393,7 @@ En este tutorial aprenderá a:
 > * Realizar operaciones de CRUD de MongoDB desde una API web
 > * Personalizar la serialización de JSON
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/first-mongo-app/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/tutorials/first-mongo-app/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
 ## <a name="prerequisites"></a>Requisitos previos
 
@@ -739,3 +739,4 @@ Para obtener más información sobre la creación de las API web de ASP.NET Core
 * [Versión de YouTube de este artículo](https://www.youtube.com/watch?v=7uJt_sOenyo&feature=youtu.be)
 * <xref:web-api/index>
 * <xref:web-api/action-return-types>
+* [Microsoft Learn: Creación de una API web con ASP.NET Core](/learn/modules/build-web-api-aspnet-core/)

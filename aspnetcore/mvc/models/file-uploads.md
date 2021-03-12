@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/models/file-uploads
-ms.openlocfilehash: c32d20d4616650db004c78fb4d8ea9a4d5a3beab
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: 90bde63ac94ba3fd29a067962989cf773ec613db
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98252804"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102587248"
 ---
 # <a name="upload-files-in-aspnet-core"></a>Carga de archivos en ASP.NET Core
 
@@ -34,7 +34,7 @@ Por [Steve Smith](https://ardalis.com/) y [Rutger Storm](https://github.com/ruti
 
 ASP.NET Core admite la carga de uno o varios archivos mediante el enlace de modelos almacenado en búfer de archivos más pequeños y el streaming no almacenado en búfer de archivos de mayor tamaño.
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/models/file-uploads/samples/) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
 ## <a name="security-considerations"></a>Consideraciones sobre la seguridad
 
@@ -238,7 +238,7 @@ Es posible acceder a archivos individuales cargados en el servidor a través del
 > string untrustedFileName = Path.GetFileName(pathName);
 > ```
 >
-> Los ejemplos proporcionados hasta ahora no tienen en cuenta las consideraciones de seguridad. Se proporciona información adicional en las secciones siguientes y en la [aplicación de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/):
+> Los ejemplos proporcionados hasta ahora no tienen en cuenta las consideraciones de seguridad. Se proporciona información adicional en las secciones siguientes y en la [aplicación de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/models/file-uploads/samples/):
 >
 > * [Consideraciones de seguridad](#security-considerations)
 > * [Validación](#validation)
@@ -409,7 +409,7 @@ El ejemplo anterior es similar a un escenario que se muestra en la aplicación d
 >
 > No se base ni confíe en la propiedad `FileName` de <xref:Microsoft.AspNetCore.Http.IFormFile> sin validarla. La propiedad `FileName` solo debe usarse para fines de presentación y solo después de la codificación HTML.
 >
-> Los ejemplos proporcionados no tienen en cuenta las consideraciones de seguridad. Se proporciona información adicional en las secciones siguientes y en la [aplicación de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/):
+> Los ejemplos proporcionados no tienen en cuenta las consideraciones de seguridad. Se proporciona información adicional en las secciones siguientes y en la [aplicación de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/models/file-uploads/samples/):
 >
 > * [Consideraciones de seguridad](#security-considerations)
 > * [Validación](#validation)
@@ -758,7 +758,7 @@ Los ejemplos de este tema se basan en <xref:System.IO.MemoryStream> para almacen
 
 ASP.NET Core admite la carga de uno o varios archivos mediante el enlace de modelos almacenado en búfer de archivos más pequeños y el streaming no almacenado en búfer de archivos de mayor tamaño.
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/models/file-uploads/samples/) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
 ## <a name="security-considerations"></a>Consideraciones sobre la seguridad
 
@@ -962,7 +962,7 @@ Es posible acceder a archivos individuales cargados en el servidor a través del
 > string untrustedFileName = Path.GetFileName(pathName);
 > ```
 >
-> Los ejemplos proporcionados hasta ahora no tienen en cuenta las consideraciones de seguridad. Se proporciona información adicional en las secciones siguientes y en la [aplicación de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/):
+> Los ejemplos proporcionados hasta ahora no tienen en cuenta las consideraciones de seguridad. Se proporciona información adicional en las secciones siguientes y en la [aplicación de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/models/file-uploads/samples/):
 >
 > * [Consideraciones de seguridad](#security-considerations)
 > * [Validación](#validation)
@@ -1133,7 +1133,7 @@ El ejemplo anterior es similar a un escenario que se muestra en la aplicación d
 >
 > No se base ni confíe en la propiedad `FileName` de <xref:Microsoft.AspNetCore.Http.IFormFile> sin validarla. La propiedad `FileName` solo debe usarse para fines de presentación y solo después de la codificación HTML.
 >
-> Los ejemplos proporcionados no tienen en cuenta las consideraciones de seguridad. Se proporciona información adicional en las secciones siguientes y en la [aplicación de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/):
+> Los ejemplos proporcionados no tienen en cuenta las consideraciones de seguridad. Se proporciona información adicional en las secciones siguientes y en la [aplicación de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/models/file-uploads/samples/):
 >
 > * [Consideraciones de seguridad](#security-considerations)
 > * [Validación](#validation)
@@ -1493,7 +1493,7 @@ Los ejemplos de este tema se basan en <xref:System.IO.MemoryStream> para almacen
 
 ASP.NET Core admite la carga de uno o varios archivos mediante el enlace de modelos almacenado en búfer de archivos más pequeños y el streaming no almacenado en búfer de archivos de mayor tamaño.
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/models/file-uploads/samples/) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
 ## <a name="security-considerations"></a>Consideraciones sobre la seguridad
 
@@ -1697,7 +1697,7 @@ Es posible acceder a archivos individuales cargados en el servidor a través del
 > string untrustedFileName = Path.GetFileName(pathName);
 > ```
 >
-> Los ejemplos proporcionados hasta ahora no tienen en cuenta las consideraciones de seguridad. Se proporciona información adicional en las secciones siguientes y en la [aplicación de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/):
+> Los ejemplos proporcionados hasta ahora no tienen en cuenta las consideraciones de seguridad. Se proporciona información adicional en las secciones siguientes y en la [aplicación de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/models/file-uploads/samples/):
 >
 > * [Consideraciones de seguridad](#security-considerations)
 > * [Validación](#validation)
@@ -1868,7 +1868,7 @@ El ejemplo anterior es similar a un escenario que se muestra en la aplicación d
 >
 > No se base ni confíe en la propiedad `FileName` de <xref:Microsoft.AspNetCore.Http.IFormFile> sin validarla. La propiedad `FileName` solo debe usarse para fines de presentación y solo después de la codificación HTML.
 >
-> Los ejemplos proporcionados no tienen en cuenta las consideraciones de seguridad. Se proporciona información adicional en las secciones siguientes y en la [aplicación de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/):
+> Los ejemplos proporcionados no tienen en cuenta las consideraciones de seguridad. Se proporciona información adicional en las secciones siguientes y en la [aplicación de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/models/file-uploads/samples/):
 >
 > * [Consideraciones de seguridad](#security-considerations)
 > * [Validación](#validation)

@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/testing
-ms.openlocfilehash: 348b0fe4da6037933aabdb5b400d36ca073a146a
-ms.sourcegitcommit: 43a540e703b9096921de27abc6b66bc0783fe905
+ms.openlocfilehash: 0f4fcceefdef946a5f29633c069cbb64ec345a3d
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96320101"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102586961"
 ---
 # <a name="unit-test-controller-logic-in-aspnet-core"></a>Lógica del controlador de pruebas unitarias en ASP.NET Core
 
@@ -42,7 +42,7 @@ Si va a escribir filtros personalizados y rutas, realice pruebas unitarias en el
 
 Para demostrar las pruebas unitarias del controlador, revise el siguiente controlador en la aplicación de ejemplo. 
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/testing/samples/) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/controllers/testing/samples/) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
 El controlador Home muestra una lista de sesiones de lluvia de ideas y permite crear nuevas sesiones de lluvia de ideas con una solicitud POST:
 
@@ -90,7 +90,7 @@ Las llamadas ficticias que no se efectúan se suelen ignorar, aunque llamar a `V
 > [!NOTE]
 > La biblioteca Moq usada en este ejemplo permite mezclar fácilmente objetos ficticios comprobables o "estrictos" con objetos ficticios no comprobables (también denominados "flexibles" o stub). Obtenga más información sobre cómo [personalizar el comportamiento de objetos ficticios con Moq](https://github.com/Moq/moq4/wiki/Quickstart#customizing-mock-behavior).
 
-[SessionController](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/controllers/testing/samples/3.x/TestingControllersSample/src/TestingControllersSample/Controllers/SessionController.cs) en la aplicación de ejemplo muestra información relacionada con una sesión de lluvia de ideas determinada. El controlador incluye lógica para tratar valores `id` no válidos (hay dos escenarios `return` en el ejemplo siguiente para abarcar estos escenarios). La última instrucción `return` devuelve un `StormSessionViewModel` nuevo a la vista (*Controllers/SessionController.cs*):
+[SessionController](https://github.com/dotnet/AspNetCore.Docs/blob/main/aspnetcore/mvc/controllers/testing/samples/3.x/TestingControllersSample/src/TestingControllersSample/Controllers/SessionController.cs) en la aplicación de ejemplo muestra información relacionada con una sesión de lluvia de ideas determinada. El controlador incluye lógica para tratar valores `id` no válidos (hay dos escenarios `return` en el ejemplo siguiente para abarcar estos escenarios). La última instrucción `return` devuelve un `StormSessionViewModel` nuevo a la vista (*Controllers/SessionController.cs*):
 
 [!code-csharp[](testing/samples/3.x/TestingControllersSample/src/TestingControllersSample/Controllers/SessionController.cs?name=snippet_SessionController&highlight=12-16,18-22,31)]
 
@@ -197,7 +197,7 @@ Para una sesión válida `id`, la prueba final confirma que:
 
 Los [controles](xref:mvc/controllers/actions) desempeñan un rol fundamental en cualquier aplicación de ASP.NET Core MVC. Por tanto, debe tener la seguridad de que los controladores se comportan según lo previsto. Las pruebas automatizadas pueden detectar errores antes de que la aplicación se implemente en un entorno de producción.
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/testing/samples/) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/controllers/testing/samples/) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
 ## <a name="unit-tests-of-controller-logic"></a>Pruebas unitarias de la lógica del controlador
 
@@ -253,7 +253,7 @@ Las llamadas ficticias que no se efectúan se suelen ignorar, aunque llamar a `V
 > [!NOTE]
 > La biblioteca Moq usada en este ejemplo permite mezclar fácilmente objetos ficticios comprobables o "estrictos" con objetos ficticios no comprobables (también denominados "flexibles" o stub). Obtenga más información sobre cómo [personalizar el comportamiento de objetos ficticios con Moq](https://github.com/Moq/moq4/wiki/Quickstart#customizing-mock-behavior).
 
-[SessionController](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/controllers/testing/samples/2.x/TestingControllersSample/src/TestingControllersSample/Controllers/SessionController.cs) en la aplicación de ejemplo muestra información relacionada con una sesión de lluvia de ideas determinada. El controlador incluye lógica para tratar valores `id` no válidos (hay dos escenarios `return` en el ejemplo siguiente para abarcar estos escenarios). La última instrucción `return` devuelve un `StormSessionViewModel` nuevo a la vista (*Controllers/SessionController.cs*):
+[SessionController](https://github.com/dotnet/AspNetCore.Docs/blob/main/aspnetcore/mvc/controllers/testing/samples/2.x/TestingControllersSample/src/TestingControllersSample/Controllers/SessionController.cs) en la aplicación de ejemplo muestra información relacionada con una sesión de lluvia de ideas determinada. El controlador incluye lógica para tratar valores `id` no válidos (hay dos escenarios `return` en el ejemplo siguiente para abarcar estos escenarios). La última instrucción `return` devuelve un `StormSessionViewModel` nuevo a la vista (*Controllers/SessionController.cs*):
 
 [!code-csharp[](testing/samples/2.x/TestingControllersSample/src/TestingControllersSample/Controllers/SessionController.cs?name=snippet_SessionController&highlight=12-16,18-22,31)]
 

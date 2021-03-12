@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/areas
-ms.openlocfilehash: f3d76f612e67aeabf1f7fef694199332c732c593
-ms.sourcegitcommit: 53e01d6e9b70a18a05618f0011cf115a16633c21
+ms.openlocfilehash: f3bd2d3eac97e0fd64d1e3a98a9d1750f7a607a8
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97878417"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102588378"
 ---
 # <a name="areas-in-aspnet-core"></a>Áreas de ASP.NET Core
 
@@ -44,7 +44,7 @@ Considere el uso de áreas en un proyecto en los casos siguientes:
 * La aplicación está formada por varios componentes funcionales generales que se pueden separar de forma lógica.
 * Le interesa dividir la aplicación para que se pueda trabajar en cada área funcional de forma independiente.
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/areas/31samples) ([cómo descargarlo](xref:index#how-to-download-a-sample)). En el ejemplo de descarga se proporciona una aplicación básica para probar las áreas.
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/controllers/areas/31samples) ([cómo descargarlo](xref:index#how-to-download-a-sample)). En el ejemplo de descarga se proporciona una aplicación básica para probar las áreas.
 
 Si utiliza Razor páginas, vea [áreas con Razor páginas](#areas-with-razor-pages) en este documento.
 
@@ -74,7 +74,7 @@ Considere una aplicación que tiene dos grupos lógicos, *Productos* y *Servicio
       * Vistas
         * Página principal
           * Index.cshtml
-        * Administrar
+        * Administración
           * Index.cshtml
           * About.cshtml
     * Servicios
@@ -122,7 +122,7 @@ Para más información, vea [Enrutamiento de áreas](xref:mvc/controllers/routin
 
 ### <a name="link-generation-with-mvc-areas"></a>Generación de vínculos con áreas de MVC
 
-En el código siguiente de la [descarga de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/areas/31samples) se muestra la generación de vínculos con el área especificada:
+En el código siguiente de la [descarga de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/controllers/areas/31samples) se muestra la generación de vínculos con el área especificada:
 
 [!code-cshtml[](areas/31samples/MVCareas/Views/Shared/_testLinksPartial.cshtml?name=snippet)]
 
@@ -166,9 +166,9 @@ En el código siguiente se cambia la carpeta de área predeterminada de `"Areas"
 
 <a name="arp"></a>
 
-## <a name="areas-with-no-locrazor-pages"></a>Áreas con Razor páginas
+## <a name="areas-with-razor-pages"></a>Áreas con Razor páginas
 
-Las áreas con Razor páginas requieren una `Areas/<area name>/Pages` carpeta en la raíz de la aplicación. La siguiente estructura de carpetas se usa con la [aplicación de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/areas/31samples):
+Las áreas con Razor páginas requieren una `Areas/<area name>/Pages` carpeta en la raíz de la aplicación. La siguiente estructura de carpetas se usa con la [aplicación de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/controllers/areas/31samples):
 
 * Nombre de proyecto
   * Áreas
@@ -179,13 +179,13 @@ Las áreas con Razor páginas requieren una `Areas/<area name>/Pages` carpeta en
         * Índice
     * Servicios
       * Páginas
-        * Administrar
+        * Administración
           * Acerca de
           * Índice
 
-### <a name="link-generation-with-no-locrazor-pages-and-areas"></a>Generación de vínculos con Razor páginas y áreas
+### <a name="link-generation-with-razor-pages-and-areas"></a>Generación de vínculos con Razor páginas y áreas
 
-El código siguiente de la [descarga de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/areas/samples/RPareas) muestra la generación de vínculos con el área especificada (por ejemplo, `asp-area="Products"`):
+El código siguiente de la [descarga de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/controllers/areas/samples/RPareas) muestra la generación de vínculos con el área especificada (por ejemplo, `asp-area="Products"`):
 
 [!code-cshtml[](areas/31samples/RPareas/Pages/Shared/_testLinksPartial.cshtml?name=snippet)]
 
@@ -199,7 +199,7 @@ En el código anterior:
 
 * El vínculo generado a partir de `<a asp-page="/Manage/About">` es correcto solo cuando la última solicitud fue de una página del área `Services`. Por ejemplo, `/Services/Manage/`, `/Services/Manage/Index` o `/Services/Manage/About`.
 * El vínculo generado a partir de `<a asp-page="/About">` es correcto solo cuando la última solicitud fue de una página de `/Home`.
-* El código está tomado de la [descarga de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/areas/31samples/RPareas).
+* El código está tomado de la [descarga de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/controllers/areas/31samples/RPareas).
 
 ### <a name="import-namespace-and-tag-helpers-with-_viewimports-file"></a>Importación del espacio de nombres y los asistentes de etiquetas con el archivo _ViewImports
 
@@ -226,7 +226,7 @@ En el archivo anterior, el espacio de nombres y la directiva `@addTagHelper` se 
 
 Para más información, consulte [Administración del ámbito de los asistentes de etiquetas](xref:mvc/views/tag-helpers/intro?view=aspnetcore-2.2#managing-tag-helper-scope) y [Importar directivas compartidas](xref:mvc/views/layout#importing-shared-directives).
 
-### <a name="shared-layout-for-no-locrazor-pages-areas"></a>Diseño compartido para Razor áreas de páginas
+### <a name="shared-layout-for-razor-pages-areas"></a>Diseño compartido para Razor áreas de páginas
 
 Para compartir un diseño común para toda la aplicación, mueva el archivo *_ViewStart.cshtml* a la carpeta raíz de la aplicación.
 
@@ -246,7 +246,7 @@ Considere el uso de áreas en un proyecto en los casos siguientes:
 * La aplicación está formada por varios componentes funcionales generales que se pueden separar de forma lógica.
 * Le interesa dividir la aplicación para que se pueda trabajar en cada área funcional de forma independiente.
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/areas/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample)). En el ejemplo de descarga se proporciona una aplicación básica para probar las áreas.
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/controllers/areas/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample)). En el ejemplo de descarga se proporciona una aplicación básica para probar las áreas.
 
 Si utiliza Razor páginas, vea [áreas con Razor páginas](#areas-with-razor-pages) en este documento.
 
@@ -276,7 +276,7 @@ Considere una aplicación que tiene dos grupos lógicos, *Productos* y *Servicio
       * Vistas
         * Página principal
           * Index.cshtml
-        * Administrar
+        * Administración
           * Index.cshtml
           * About.cshtml
     * Servicios
@@ -323,7 +323,7 @@ Para más información, vea [Enrutamiento de áreas](xref:mvc/controllers/routin
 
 ### <a name="link-generation-with-mvc-areas"></a>Generación de vínculos con áreas de MVC
 
-En el código siguiente de la [descarga de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/areas/samples) se muestra la generación de vínculos con el área especificada:
+En el código siguiente de la [descarga de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/controllers/areas/samples) se muestra la generación de vínculos con el área especificada:
 
 [!code-cshtml[](areas/samples/MVCareas/Views/Shared/_testLinksPartial.cshtml?name=snippet)]
 
@@ -353,9 +353,9 @@ En el código siguiente se cambia la carpeta de área predeterminada de `"Areas"
 
 <a name="arp"></a>
 
-## <a name="areas-with-no-locrazor-pages"></a>Áreas con Razor páginas
+## <a name="areas-with-razor-pages"></a>Áreas con Razor páginas
 
-Las áreas con Razor páginas requieren una `Areas/<area name>/Pages` carpeta en la raíz de la aplicación. La siguiente estructura de carpetas se usa con la [aplicación de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/areas/samples):
+Las áreas con Razor páginas requieren una `Areas/<area name>/Pages` carpeta en la raíz de la aplicación. La siguiente estructura de carpetas se usa con la [aplicación de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/controllers/areas/samples):
 
 * Nombre de proyecto
   * Áreas
@@ -366,13 +366,13 @@ Las áreas con Razor páginas requieren una `Areas/<area name>/Pages` carpeta en
         * Índice
     * Servicios
       * Páginas
-        * Administrar
+        * Administración
           * Acerca de
           * Índice
 
-### <a name="link-generation-with-no-locrazor-pages-and-areas"></a>Generación de vínculos con Razor páginas y áreas
+### <a name="link-generation-with-razor-pages-and-areas"></a>Generación de vínculos con Razor páginas y áreas
 
-El código siguiente de la [descarga de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/areas/samples/RPareas) muestra la generación de vínculos con el área especificada (por ejemplo, `asp-area="Products"`):
+El código siguiente de la [descarga de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/controllers/areas/samples/RPareas) muestra la generación de vínculos con el área especificada (por ejemplo, `asp-area="Products"`):
 
 [!code-cshtml[](areas/samples/RPareas/Pages/Shared/_testLinksPartial.cshtml?name=snippet)]
 
@@ -388,7 +388,7 @@ En el código anterior:
 
 * El vínculo generado a partir de `<a asp-page="/Manage/About">` es correcto solo cuando la última solicitud fue de una página del área `Services`. Por ejemplo, `/Services/Manage/`, `/Services/Manage/Index` o `/Services/Manage/About`.
 * El vínculo generado a partir de `<a asp-page="/About">` es correcto solo cuando la última solicitud fue de una página de `/Home`.
-* El código está tomado de la [descarga de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/areas/samples/RPareas).
+* El código está tomado de la [descarga de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/controllers/areas/samples/RPareas).
 
 ### <a name="import-namespace-and-tag-helpers-with-_viewimports-file"></a>Importación del espacio de nombres y los asistentes de etiquetas con el archivo _ViewImports
 
@@ -415,7 +415,7 @@ En el archivo anterior, el espacio de nombres y la directiva `@addTagHelper` se 
 
 Para más información, consulte [Administración del ámbito de los asistentes de etiquetas](xref:mvc/views/tag-helpers/intro?view=aspnetcore-2.2#managing-tag-helper-scope) y [Importar directivas compartidas](xref:mvc/views/layout#importing-shared-directives).
 
-### <a name="shared-layout-for-no-locrazor-pages-areas"></a>Diseño compartido para Razor áreas de páginas
+### <a name="shared-layout-for-razor-pages-areas"></a>Diseño compartido para Razor áreas de páginas
 
 Para compartir un diseño común para toda la aplicación, mueva el archivo *_ViewStart.cshtml* a la carpeta raíz de la aplicación.
 

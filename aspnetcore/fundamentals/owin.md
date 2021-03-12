@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/owin
-ms.openlocfilehash: c44803c6f67d8e03759a01f7aa71d82088be9a11
-ms.sourcegitcommit: ef8d8c79993a6608bf597ad036edcf30b231843f
+ms.openlocfilehash: e476f3f62a250d960c809e5062b3bd8ca3a1940a
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99975279"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102587245"
 ---
 # <a name="open-web-interface-for-net-owin-with-aspnet-core"></a>Interfaz web abierta para .NET (OWIN) con ASP.NET Core
 
@@ -46,7 +46,7 @@ Esto permite que ASP.NET Core se hospede sobre un servidor/host compatible con O
 > [!NOTE]
 > El uso de estos adaptadores conlleva un costo de rendimiento. Las aplicaciones que solo usan componentes de ASP.NET Core no deben usar el paquete o adaptadores de `Microsoft.AspNetCore.Owin`.
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/owin/sample) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/owin/sample) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
 ## <a name="running-owin-middleware-in-the-aspnet-core-pipeline"></a>Ejecución de software intermedio de OWIN en la canalización de ASP.NET Core
 

@@ -17,20 +17,20 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/extensibility/app-parts
-ms.openlocfilehash: 33deb5ff794982e0c074186bb2abb88344e8a116
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 23bc1db6a184e7babe87e2d311a8ac4a59e78dd0
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93061189"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102588365"
 ---
-# <a name="share-controllers-views-no-locrazor-pages-and-more-with-application-parts"></a>Comparta controladores, vistas, Razor páginas, etc. con los elementos de la aplicación
+# <a name="share-controllers-views-razor-pages-and-more-with-application-parts"></a>Comparta controladores, vistas, Razor páginas, etc. con los elementos de la aplicación
 
 ::: moniker range=">= aspnetcore-3.0"
 
 Por [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/app-parts) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/advanced/app-parts) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
 Un *elemento de aplicación* es una abstracción sobre los recursos de una aplicación. Los elementos de aplicación permiten a ASP.NET Core detectar controladores, ver componentes, aplicaciones auxiliares de etiquetas, Razor páginas, orígenes de compilación de Razor, etc. <xref:Microsoft.AspNetCore.Mvc.ApplicationParts.AssemblyPart> es un elemento de una aplicación. `AssemblyPart` encapsula una referencia de ensamblado y expone los tipos y las referencias de compilación.
 
@@ -48,7 +48,7 @@ El código siguiente proporciona un enfoque alternativo para configurar `Applica
 
 [!code-csharp[](./app-parts/3.0sample1/WebAppParts/Startup2.cs?name=snippet)]
 
-Los dos ejemplos de código anteriores cargan `SharedController` de un ensamblado. `SharedController` no se encuentra en el proyecto de la aplicación. Vea la descarga de ejemplo de la [solución WebAppParts](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/app-parts/3.0sample1/WebAppParts).
+Los dos ejemplos de código anteriores cargan `SharedController` de un ensamblado. `SharedController` no se encuentra en el proyecto de la aplicación. Vea la descarga de ejemplo de la [solución WebAppParts](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/advanced/app-parts/3.0sample1/WebAppParts).
 
 ### <a name="include-views"></a>Inclusión de vistas
 
@@ -76,7 +76,7 @@ Los proveedores de características de la aplicación examinan los elementos de 
 * <xref:Microsoft.AspNetCore.Mvc.Razor.TagHelpers.TagHelperFeatureProvider>
 * <xref:Microsoft.AspNetCore.Mvc.Razor.Compilation.MetadataReferenceFeatureProvider>
 * <xref:Microsoft.AspNetCore.Mvc.Razor.Compilation.ViewsFeatureProvider>
-* `internal class`[ Razor CompiledItemFeatureProvider](https://github.com/dotnet/AspNetCore/blob/master/src/Mvc/Mvc.Razor/src/ApplicationParts/RazorCompiledItemFeatureProvider.cs#L14)
+* `internal class`[ Razor CompiledItemFeatureProvider](https://github.com/dotnet/AspNetCore/blob/main/src/Mvc/Mvc.Razor/src/ApplicationParts/RazorCompiledItemFeatureProvider.cs#L14)
 
 Los proveedores de características heredan de <xref:Microsoft.AspNetCore.Mvc.ApplicationParts.IApplicationFeatureProvider`1>, donde `T` es el tipo de la característica. Los proveedores de características se pueden implementar para cualquiera de los tipos de características enumerados anteriormente. El orden de los proveedores de características en `ApplicationPartManager.FeatureProviders` puede afectar al comportamiento en tiempo de ejecución. Los proveedores agregados posteriormente pueden reaccionar ante las acciones realizadas por los proveedores agregados anteriormente.
 
@@ -86,7 +86,7 @@ Las características disponibles para una aplicación se pueden enumerar solicit
 
 [!code-csharp[](./app-parts/sample2/AppPartsSample/Controllers/FeaturesController.cs?highlight=16,25-27)]
 
-El [ejemplo de descarga](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/app-parts/sample2) usa el código anterior para mostrar las características de la aplicación:
+El [ejemplo de descarga](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/advanced/app-parts/sample2) usa el código anterior para mostrar las características de la aplicación:
 
 ```text
 Controllers:
@@ -120,7 +120,7 @@ Los errores HTTP 404 no son frecuentes cuando se usan elementos de aplicaciones 
 
 Por [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/app-parts) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/advanced/app-parts) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
 Un *elemento de aplicación* es una abstracción sobre los recursos de una aplicación. Los elementos de aplicación permiten a ASP.NET Core detectar controladores, ver componentes, aplicaciones auxiliares de etiquetas, Razor páginas, orígenes de compilación de Razor, etc. [AssemblyPart](/dotnet/api/microsoft.aspnetcore.mvc.applicationparts.assemblypart#Microsoft_AspNetCore_Mvc_ApplicationParts_AssemblyPart) is un elemento de aplicación. `AssemblyPart` encapsula una referencia de ensamblado y expone los tipos y las referencias de compilación.
 
@@ -138,7 +138,7 @@ El código siguiente proporciona un enfoque alternativo para configurar `Applica
 
 [!code-csharp[](./app-parts/sample1/WebAppParts/Startup2.cs?name=snippet)]
 
-Los dos ejemplos de código anteriores cargan `SharedController` de un ensamblado. `SharedController` no está en el proyecto de la aplicación. Vea la descarga de ejemplo de la [solución WebAppParts](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/app-parts/sample1/WebAppParts).
+Los dos ejemplos de código anteriores cargan `SharedController` de un ensamblado. `SharedController` no está en el proyecto de la aplicación. Vea la descarga de ejemplo de la [solución WebAppParts](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/advanced/app-parts/sample1/WebAppParts).
 
 ### <a name="include-views"></a>Inclusión de vistas
 
@@ -161,7 +161,7 @@ En el código siguiente se usa <xref:Microsoft.AspNetCore.Mvc.ApplicationParts> 
 Los proveedores de características de la aplicación examinan los elementos de aplicación y proporcionan características para esos elementos. Existen proveedores de características integrados para las siguientes características de ASP.NET Core:
 
 * [Controladores](/dotnet/api/microsoft.aspnetcore.mvc.controllers.controllerfeatureprovider)
-* [Asistentes de etiquetas](/dotnet/api/microsoft.aspnetcore.mvc.razor.taghelpers.taghelperfeatureprovider)
+* [Aplicaciones auxiliares de etiquetas](/dotnet/api/microsoft.aspnetcore.mvc.razor.taghelpers.taghelperfeatureprovider)
 * [Ver componentes](/dotnet/api/microsoft.aspnetcore.mvc.viewcomponents.viewcomponentfeatureprovider)
 
 Los proveedores de características heredan de <xref:Microsoft.AspNetCore.Mvc.ApplicationParts.IApplicationFeatureProvider`1>, donde `T` es el tipo de la característica. Los proveedores de características se pueden implementar para cualquiera de los tipos de características enumerados anteriormente. El orden de los proveedores de características en `ApplicationPartManager.FeatureProviders` puede afectar al comportamiento en tiempo de ejecución. Los proveedores agregados posteriormente pueden reaccionar ante las acciones realizadas por los proveedores agregados anteriormente.
@@ -172,7 +172,7 @@ Las características disponibles para una aplicación se pueden enumerar solicit
 
 [!code-csharp[](./app-parts/sample2/AppPartsSample/Controllers/FeaturesController.cs?highlight=16,25-27)]
 
-El [ejemplo de descarga](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/app-parts/sample2) usa el código anterior para mostrar las características de la aplicación:
+El [ejemplo de descarga](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/mvc/advanced/app-parts/sample2) usa el código anterior para mostrar las características de la aplicación:
 
 ```text
 Controllers:

@@ -19,20 +19,20 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/authn-and-authz
-ms.openlocfilehash: 0e220d72fe9ef4ada402b449ef20e31324f7bcd2
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 9a3102e4451bbc5cd9ff15e88bebd4e4f2c115f4
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93060123"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102588105"
 ---
-# <a name="authentication-and-authorization-in-aspnet-core-no-locsignalr"></a>Autenticación y autorización en ASP.NET Core SignalR
+# <a name="authentication-and-authorization-in-aspnet-core-signalr"></a>Autenticación y autorización en ASP.NET Core SignalR
 
 Por [Andrew Stanton-enfermera](https://twitter.com/anurse)
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/authn-and-authz/sample/) [(cómo descargarlo)](xref:index#how-to-download-a-sample)
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/signalr/authn-and-authz/sample/) [(cómo descargarlo)](xref:index#how-to-download-a-sample)
 
-## <a name="authenticate-users-connecting-to-a-no-locsignalr-hub"></a>Autenticar a los usuarios que se conectan a un SignalR centro
+## <a name="authenticate-users-connecting-to-a-signalr-hub"></a>Autenticar a los usuarios que se conectan a un SignalR centro
 
 SignalR se puede usar con la [autenticación de ASP.net Core](xref:security/authentication/identity) para asociar un usuario a cada conexión. En un concentrador, se puede tener acceso a los datos de autenticación desde la propiedad [HubConnectionContext. User](/dotnet/api/microsoft.aspnetcore.signalr.hubconnectioncontext.user) . La autenticación permite que el concentrador llame a métodos en todas las conexiones asociadas a un usuario. Para obtener más información, vea [administrar usuarios y grupos SignalR en ](xref:signalr/groups). Es posible que varias conexiones estén asociadas a un solo usuario.
 
@@ -90,7 +90,7 @@ public void Configure(IApplicationBuilder app)
 
 ::: moniker-end
 
-### <a name="no-loccookie-authentication"></a>autenticación Cookie
+### <a name="cookie-authentication"></a>autenticación Cookie
 
 En una aplicación basada en explorador, cookie la autenticación permite que las credenciales de usuario existentes fluyan automáticamente a SignalR las conexiones. Cuando se usa el cliente del explorador, no se necesita ninguna configuración adicional. Si el usuario ha iniciado sesión en la aplicación, la SignalR conexión hereda automáticamente esta autenticación.
 
@@ -131,7 +131,7 @@ En el servidor, la autenticación de token de portador se configura mediante el 
 > [!NOTE]
 > La cadena de consulta se usa en exploradores al conectarse con WebSockets y eventos de Server-Sent debido a las limitaciones de la API del explorador. Cuando se usa HTTPS, los valores de cadena de consulta están protegidos por la conexión TLS. Sin embargo, muchos servidores registran valores de cadena de consulta. Para obtener más información, vea [consideraciones de seguridad SignalR en ASP.net Core ](xref:signalr/security). SignalR utiliza encabezados para transmitir tokens en entornos que los admiten (como los clientes de .NET y Java).
 
-#### <a name="no-locidentity-server-jwt-authentication"></a>Identity Autenticación de JWT de servidor
+#### <a name="identity-server-jwt-authentication"></a>Identity Autenticación de JWT de servidor
 
 Al usar Identity servidor, agregue un <xref:Microsoft.Extensions.Options.PostConfigureOptions%601> servicio al proyecto:
 
@@ -173,7 +173,7 @@ services.TryAddEnumerable(
         ConfigureJwtBearerOptions>());
 ```
 
-### <a name="no-loccookies-vs-bearer-tokens"></a>Cookies frente a tokens de portador 
+### <a name="cookies-vs-bearer-tokens"></a>Cookies frente a tokens de portador 
 
 Cookies son específicos de los exploradores. Enviarlos desde otros tipos de clientes agrega complejidad en comparación con el envío de tokens de portador. Por lo tanto, cookie no se recomienda la autenticación a menos que la aplicación solo necesite autenticar a los usuarios desde el cliente del explorador. La autenticación de token de portador es el enfoque recomendado al usar clientes que no sean el cliente del explorador.
 
@@ -276,7 +276,7 @@ public class ChatHub : Hub
 
 SignalR proporciona un recurso personalizado a los controladores de autorización cuando un método de concentrador requiere autorización. El recurso es una instancia de `HubInvocationContext`. `HubInvocationContext`Incluye `HubCallerContext` , el nombre del método de concentrador que se va a invocar y los argumentos para el método de concentrador.
 
-Considere el ejemplo de un salón de chat que permite el inicio de sesión en varias organizaciones a través de Azure Active Directory. Cualquier persona con un cuenta de Microsoft puede iniciar sesión en el chat, pero solo los miembros de la organización propietaria deben ser capaces de prohibir a los usuarios o ver el historial de chat de los usuarios. Además, es posible que quiera restringir ciertas funciones de determinados usuarios. El uso de las características actualizadas en ASP.NET Core 3,0 es todo lo posible. Observe cómo `DomainRestrictedRequirement` actúa como un personalizado `IAuthorizationRequirement` . Ahora que `HubInvocationContext` se pasa el parámetro de recurso, la lógica interna puede inspeccionar el contexto en el que se llama al centro y tomar decisiones sobre cómo permitir al usuario ejecutar métodos de concentrador individuales.
+Considere el ejemplo de un salón de chat que permite el inicio de sesión en varias organizaciones a través de Azure Active Directory. Cualquier persona con un cuenta Microsoft puede iniciar sesión en el chat, pero solo los miembros de la organización propietaria deben ser capaces de prohibir a los usuarios o ver el historial de chat de los usuarios. Además, es posible que quiera restringir ciertas funciones de determinados usuarios. El uso de las características actualizadas en ASP.NET Core 3,0 es todo lo posible. Observe cómo `DomainRestrictedRequirement` actúa como un personalizado `IAuthorizationRequirement` . Ahora que `HubInvocationContext` se pasa el parámetro de recurso, la lógica interna puede inspeccionar el contexto en el que se llama al centro y tomar decisiones sobre cómo permitir al usuario ejecutar métodos de concentrador individuales.
 
 ```csharp
 [Authorize]

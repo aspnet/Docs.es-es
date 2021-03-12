@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/key-vault-configuration
-ms.openlocfilehash: 4b035fe59b8576eb387ddce67943386ccab55492
-ms.sourcegitcommit: 8dfcd2b4be936950c228b4d98430622a04254cd7
+ms.openlocfilehash: ab3a462a3e09113e96c6bdd0c034bff3e0bebdfa
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 12/26/2020
-ms.locfileid: "97792088"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102588300"
 ---
 # <a name="azure-key-vault-configuration-provider-in-aspnet-core"></a>Azure Key Vault proveedor de configuración en ASP.NET Core
 
@@ -37,7 +37,7 @@ En este documento se explica cómo usar el proveedor de configuración de [Azure
 * Controlar el acceso a los datos de configuración confidenciales.
 * Cumplir los requisitos de los módulos de seguridad de hardware (HSM) de FIPS 140-2 nivel 2 validados al almacenar los datos de configuración.
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/key-vault-configuration/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/key-vault-configuration/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
 ## <a name="packages"></a>Paquetes
 
@@ -228,7 +228,7 @@ config.AddAzureKeyVault(new SecretClient(new URI("Your Key Vault Endpoint"), new
     });
 ```
 
-| Propiedad         | Descripción |
+| Propiedad         | Description |
 | ---------------- | ----------- |
 | `Manager`        | `Azure.Extensions.AspNetCore.Configuration.Secrets` instancia usada para controlar la carga de secretos. |
 | `ReloadInterval` | `Timespan` para esperar entre los intentos de sondeo del almacén de claves en busca de cambios. El valor predeterminado es `null` (la configuración no se recarga). |
@@ -384,7 +384,7 @@ En este documento se explica cómo usar el proveedor de configuración de [key V
 * Controlar el acceso a los datos de configuración confidenciales.
 * Cumplir los requisitos de los módulos de seguridad de hardware (HSM) de FIPS 140-2 nivel 2 validados al almacenar los datos de configuración.
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/key-vault-configuration/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/security/key-vault-configuration/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
 ## <a name="packages"></a>Paquetes
 
