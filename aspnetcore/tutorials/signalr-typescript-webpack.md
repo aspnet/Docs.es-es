@@ -18,14 +18,14 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/signalr-typescript-webpack
-ms.openlocfilehash: 949276bf4aae33c3af3fd1b8219a83868095f378
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 9d52b72c669a9345cc7c5386876db22af55a97c7
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93056847"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589756"
 ---
-# <a name="use-aspnet-core-no-locsignalr-with-typescript-and-webpack"></a>Uso de ASP.NET Core SignalR con TypeScript and Webpack
+# <a name="use-aspnet-core-signalr-with-typescript-and-webpack"></a>Uso de ASP.NET Core SignalR con TypeScript and Webpack
 
 Por [Sébastien Sougnez](https://twitter.com/ssougnez) y [Scott Addie](https://twitter.com/Scott_Addie)
 
@@ -40,7 +40,7 @@ En este tutorial aprenderá a:
 > * Configurar el servidor SignalR
 > * Habilitar la comunicación entre cliente y servidor
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/signalr-typescript-webpack/sample) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/tutorials/signalr-typescript-webpack/sample) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
 ::: moniker range=">= aspnetcore-3.0"
 

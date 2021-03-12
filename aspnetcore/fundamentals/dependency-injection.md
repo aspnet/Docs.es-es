@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/dependency-injection
-ms.openlocfilehash: 3f7cce475b5c7b0fcbb93644b2c39acd637a6f9d
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: ce6804a58c5b17b57732713acc3aeca15042da0a
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "94595485"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589717"
 ---
 # <a name="dependency-injection-in-aspnet-core"></a>Inserción de dependencias en ASP.NET Core
 
@@ -40,7 +40,7 @@ Para obtener más información sobre la inserción de dependencias de las opcion
 
 En este tema se proporciona información sobre la inyección de dependencias en ASP.NET Core. La documentación principal sobre el uso de la inserción de dependencias se incluye en [Inserción de dependencias en .NET](/dotnet/core/extensions/dependency-injection).
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/dependency-injection/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/dependency-injection/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
 ## <a name="overview-of-dependency-injection"></a>Información general sobre la inserción de dependencias
 
@@ -82,7 +82,7 @@ La inserción de dependencias aborda estos problemas mediante:
 * Registro de la dependencia en un contenedor de servicios. ASP.NET Core proporciona un contenedor de servicios integrado, <xref:System.IServiceProvider>. Por lo general, los servicios se registran en el método `Startup.ConfigureServices` de la aplicación.
 * *Inserción* del servicio en el constructor de la clase en la que se usa. El marco de trabajo asume la responsabilidad de crear una instancia de la dependencia y de desecharla cuando ya no es necesaria.
 
-En la [aplicación de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/dependency-injection/samples), la interfaz `IMyDependency` define el método `WriteMessage`:
+En la [aplicación de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/dependency-injection/samples), la interfaz `IMyDependency` define el método `WriteMessage`:
 
 [!code-csharp[](dependency-injection/samples/3.x/DependencyInjectionSample/Interfaces/IMyDependency.cs?name=snippet1)]
 
@@ -427,7 +427,7 @@ ASP.NET Core admite el patrón de diseño de software de inserción de dependenc
 
 Para más información específica sobre la inserción de dependencias en los controladores MVC, vea <xref:mvc/controllers/dependency-injection>.
 
-[Vea o descargue el código de ejemplo](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/dependency-injection/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/dependency-injection/samples) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
 ## <a name="overview-of-dependency-injection"></a>Información general sobre la inserción de dependencias
 
@@ -477,7 +477,7 @@ La inserción de dependencias aborda estos problemas mediante:
 * Registro de la dependencia en un contenedor de servicios. ASP.NET Core proporciona un contenedor de servicios integrado, <xref:System.IServiceProvider>. Los servicios se registran en el método `Startup.ConfigureServices` de la aplicación.
 * *Inserción* del servicio en el constructor de la clase en la que se usa. El marco de trabajo asume la responsabilidad de crear una instancia de la dependencia y de desecharla cuando ya no es necesaria.
 
-En la [aplicación de ejemplo](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/dependency-injection/samples), la interfaz `IMyDependency` define un método que el servicio proporciona a la aplicación:
+En la [aplicación de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/dependency-injection/samples), la interfaz `IMyDependency` define un método que el servicio proporciona a la aplicación:
 
 [!code-csharp[](dependency-injection/samples/2.x/DependencyInjectionSample/Interfaces/IMyDependency.cs?name=snippet1)]
 

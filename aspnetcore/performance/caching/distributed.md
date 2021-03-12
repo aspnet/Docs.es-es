@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/caching/distributed
-ms.openlocfilehash: 6f89046f2e1805111dd81b3282253a72a7c6ea09
-ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
+ms.openlocfilehash: a4fd179772a26ffd20fa79cef4720cd5a4746ab3
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 02/12/2021
-ms.locfileid: "100281022"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102588619"
 ---
 # <a name="distributed-caching-in-aspnet-core"></a>Almacenamiento en caché distribuido en ASP.NET Core
 
@@ -44,7 +44,7 @@ Cuando se distribuyen los datos almacenados en caché, los datos:
 
 La configuración de caché distribuida es específica de la implementación. En este artículo se describe cómo configurar SQL Server y las cachés distribuidas de Redis. También hay implementaciones de terceros disponibles, como [NCache](http://www.alachisoft.com/ncache/aspnet-core-idistributedcache-ncache.html) ([NCache en github](https://github.com/Alachisoft/NCache)). Independientemente de la implementación seleccionada, la aplicación interactúa con la memoria caché mediante la <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> interfaz.
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/performance/caching/distributed/samples/) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/performance/caching/distributed/samples/) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
 ## <a name="prerequisites"></a>Requisitos previos
 
@@ -173,7 +173,7 @@ A la hora de decidir qué implementación de <xref:Microsoft.Extensions.Caching.
 
 * Infraestructura existente
 * Requisitos de rendimiento
-* Costos
+* Coste
 * Experiencia del equipo
 
 Las soluciones de almacenamiento en caché suelen basarse en el almacenamiento en memoria para proporcionar una recuperación rápida de los datos almacenados en memoria caché, pero la memoria es un recurso limitado y se amplía de forma costosa. Almacene solo los datos usados habitualmente en una memoria caché.
@@ -211,7 +211,7 @@ Cuando se distribuyen los datos almacenados en caché, los datos:
 
 La configuración de caché distribuida es específica de la implementación. En este artículo se describe cómo configurar SQL Server y las cachés distribuidas de Redis. También hay implementaciones de terceros disponibles, como [NCache](http://www.alachisoft.com/ncache/aspnet-core-idistributedcache-ncache.html) ([NCache en github](https://github.com/Alachisoft/NCache)). Independientemente de la implementación seleccionada, la aplicación interactúa con la memoria caché mediante la <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> interfaz.
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/performance/caching/distributed/samples/) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/performance/caching/distributed/samples/) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
 ## <a name="prerequisites"></a>Requisitos previos
 
@@ -343,7 +343,7 @@ A la hora de decidir qué implementación de <xref:Microsoft.Extensions.Caching.
 
 * Infraestructura existente
 * Requisitos de rendimiento
-* Costos
+* Coste
 * Experiencia del equipo
 
 Las soluciones de almacenamiento en caché suelen basarse en el almacenamiento en memoria para proporcionar una recuperación rápida de los datos almacenados en memoria caché, pero la memoria es un recurso limitado y se amplía de forma costosa. Almacene solo los datos usados habitualmente en una memoria caché.
@@ -381,7 +381,7 @@ Cuando se distribuyen los datos almacenados en caché, los datos:
 
 La configuración de caché distribuida es específica de la implementación. En este artículo se describe cómo configurar SQL Server y las cachés distribuidas de Redis. También hay implementaciones de terceros disponibles, como [NCache](http://www.alachisoft.com/ncache/aspnet-core-idistributedcache-ncache.html) ([NCache en github](https://github.com/Alachisoft/NCache)). Independientemente de la implementación seleccionada, la aplicación interactúa con la memoria caché mediante la <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> interfaz.
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/performance/caching/distributed/samples/) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/performance/caching/distributed/samples/) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
 ## <a name="prerequisites"></a>Requisitos previos
 
@@ -519,7 +519,7 @@ A la hora de decidir qué implementación de <xref:Microsoft.Extensions.Caching.
 
 * Infraestructura existente
 * Requisitos de rendimiento
-* Costos
+* Coste
 * Experiencia del equipo
 
 Las soluciones de almacenamiento en caché suelen basarse en el almacenamiento en memoria para proporcionar una recuperación rápida de los datos almacenados en memoria caché, pero la memoria es un recurso limitado y se amplía de forma costosa. Almacene solo los datos usados habitualmente en una memoria caché.

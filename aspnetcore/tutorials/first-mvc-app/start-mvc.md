@@ -18,12 +18,12 @@ no-loc:
 - SignalR
 uid: tutorials/first-mvc-app/start-mvc
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: aaf930eee351ed757be60f648bce88b182d52799
-ms.sourcegitcommit: da5a5bed5718a9f8db59356ef8890b4b60ced6e9
+ms.openlocfilehash: 8e5f216a354b1ed7559b433d3a4867627bf60df3
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98710795"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589782"
 ---
 # <a name="get-started-with-aspnet-core-mvc"></a>Introducción a ASP.NET Core MVC
 
@@ -43,7 +43,7 @@ Al final de la serie, tendrá una aplicación que administra y muestra datos de 
 > * Trabajar con una base de datos.
 > * Agregar búsqueda y validación.
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/first-mvc-app/start-mvc/sample) ([cómo descargarlo](xref:index#how-to-download-a-sample)).
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/tutorials/first-mvc-app/start-mvc/sample) ([cómo descargarlo](xref:index#how-to-download-a-sample)).
 
 ## <a name="prerequisites"></a>Requisitos previos
 
@@ -223,7 +223,7 @@ Al final de la serie, tendrá una aplicación que administra y muestra datos de 
 > * Trabajar con una base de datos.
 > * Agregar búsqueda y validación.
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/first-mvc-app/start-mvc/sample) ([cómo descargarlo](xref:index#how-to-download-a-sample)).
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/tutorials/first-mvc-app/start-mvc/sample) ([cómo descargarlo](xref:index#how-to-download-a-sample)).
 
 ## <a name="prerequisites"></a>Requisitos previos
 

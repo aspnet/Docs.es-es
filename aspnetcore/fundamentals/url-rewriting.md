@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/url-rewriting
-ms.openlocfilehash: 55993f951bfe910fb179fdb25b8d04f81d4ee2c9
-ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
+ms.openlocfilehash: 44e6570090de9c5f3550d18a30fcde758fb16f85
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99057465"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102588528"
 ---
 # <a name="url-rewriting-middleware-in-aspnet-core"></a>Middleware de reescritura de URL en ASP.NET Core
 
@@ -47,7 +47,7 @@ La reescritura de URL consiste en modificar varias URL de solicitud basadas en u
 > [!NOTE]
 > La reescritura de URL puede reducir el rendimiento de una aplicación. Cuando sea factible, limite el número y la complejidad de las reglas.
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/url-rewriting/samples/) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/url-rewriting/samples/) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
 ## <a name="url-redirect-and-url-rewrite"></a>Redireccionamiento y reescritura de URL
 
@@ -77,7 +77,7 @@ Aunque es posible que el cliente pueda recuperar el recurso en la dirección URL
 
 ## <a name="url-rewriting-sample-app"></a>Aplicación de ejemplo de reescritura de URL
 
-Puede explorar las características del middleware de reescritura de URL con la [aplicación de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/url-rewriting/samples/). La aplicación emplea las reglas de redireccionamiento y reescritura, y muestra la URL redirigida o reescrita para varios escenarios.
+Puede explorar las características del middleware de reescritura de URL con la [aplicación de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/url-rewriting/samples/). La aplicación emplea las reglas de redireccionamiento y reescritura, y muestra la URL redirigida o reescrita para varios escenarios.
 
 ## <a name="when-to-use-url-rewriting-middleware"></a>Cuándo usar el middleware de reescritura de URL
 
@@ -399,7 +399,7 @@ La reescritura de URL consiste en modificar varias URL de solicitud basadas en u
 > [!NOTE]
 > La reescritura de URL puede reducir el rendimiento de una aplicación. Cuando sea factible, limite el número y la complejidad de las reglas.
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/url-rewriting/samples/) ([cómo descargarlo](xref:index#how-to-download-a-sample))
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/url-rewriting/samples/) ([cómo descargarlo](xref:index#how-to-download-a-sample))
 
 ## <a name="url-redirect-and-url-rewrite"></a>Redireccionamiento y reescritura de URL
 
@@ -429,7 +429,7 @@ Aunque es posible que el cliente pueda recuperar el recurso en la dirección URL
 
 ## <a name="url-rewriting-sample-app"></a>Aplicación de ejemplo de reescritura de URL
 
-Puede explorar las características del middleware de reescritura de URL con la [aplicación de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/url-rewriting/samples/). La aplicación emplea las reglas de redireccionamiento y reescritura, y muestra la URL redirigida o reescrita para varios escenarios.
+Puede explorar las características del middleware de reescritura de URL con la [aplicación de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/url-rewriting/samples/). La aplicación emplea las reglas de redireccionamiento y reescritura, y muestra la URL redirigida o reescrita para varios escenarios.
 
 ## <a name="when-to-use-url-rewriting-middleware"></a>Cuándo usar el middleware de reescritura de URL
 

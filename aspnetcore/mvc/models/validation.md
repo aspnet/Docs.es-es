@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/models/validation
-ms.openlocfilehash: 412f95e67fa35e952a907db328395183f1698b9e
-ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
+ms.openlocfilehash: 21f2a65bd93c08f16de988381e648768debde438
+ms.sourcegitcommit: acfe51c35497a204f75c2a61125c9408c04493e6
 ms.translationtype: MT
 ms.contentlocale: es-ES
 ms.lasthandoff: 03/10/2021
-ms.locfileid: "102587221"
+ms.locfileid: "102605599"
 ---
 # <a name="model-validation-in-aspnet-core-mvc-and-razor-pages"></a>Validación del modelo en ASP.NET Core MVC y Razor páginas
 
@@ -90,7 +90,7 @@ Internamente, los atributos llaman a `String.Format` con un marcador de posició
 
 Cuando se aplica a una propiedad `Name`, el mensaje de error creado por el código anterior sería "La longitud del nombre debe estar entre 6 y 8".
 
-Para averiguar qué parámetros se pasan a `String.Format` para el mensaje de error de un atributo determinado, vea el [código fuente de DataAnnotations](https://github.com/dotnet/runtime/tree/master/src/libraries/System.ComponentModel.Annotations/src/System/ComponentModel/DataAnnotations).
+Para averiguar qué parámetros se pasan a `String.Format` para el mensaje de error de un atributo determinado, vea el [código fuente de DataAnnotations](https://github.com/dotnet/runtime/tree/main/src/libraries/System.ComponentModel.Annotations/src/System/ComponentModel/DataAnnotations).
 
 ## <a name="non-nullable-reference-types-and-required-attribute"></a>Tipos de referencia que no aceptan valores NULL y atributo [required]
 

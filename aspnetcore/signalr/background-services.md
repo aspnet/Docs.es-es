@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/background-services
-ms.openlocfilehash: 4b877c64a881fec15ac9e9bd74ffdde0b5fa60f9
-ms.sourcegitcommit: e311cfb77f26a0a23681019bd334929d1aaeda20
+ms.openlocfilehash: 9d95d7c9a33bcf2f4a603d815269752124133ee6
+ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99530182"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589704"
 ---
 # <a name="host-aspnet-core-signalr-in-background-services"></a>ASP.NET Core host SignalR en los servicios en segundo plano
 
@@ -37,12 +37,12 @@ En este artículo se proporcionan instrucciones para:
 
 ::: moniker range=">= aspnetcore-3.0"
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/background-service/samples/3.x) [(cómo descargarlo)](xref:index#how-to-download-a-sample)
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/signalr/background-service/samples/3.x) [(cómo descargarlo)](xref:index#how-to-download-a-sample)
 
 ::: moniker-end
 ::: moniker range="<= aspnetcore-2.2"
 
-[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/background-service/samples/2.2) [(cómo descargarlo)](xref:index#how-to-download-a-sample)
+[Vea o descargue el código de ejemplo](https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/signalr/background-service/samples/2.2) [(cómo descargarlo)](xref:index#how-to-download-a-sample)
 
 ::: moniker-end
 
@@ -161,6 +161,6 @@ Durante el `IHostedService.StopAsync` método, `HubConnection` se elimina de for
 ## <a name="additional-resources"></a>Recursos adicionales
 
 * [Introducción](xref:tutorials/signalr)
-* [Directorios](xref:signalr/hubs)
-* [Publicación en Azure](xref:signalr/publish-to-azure-web-app)
+* [Concentradores](xref:signalr/hubs)
+* [Publicar en Azure](xref:signalr/publish-to-azure-web-app)
 * [Concentradores fuertemente tipados](xref:signalr/hubs#strongly-typed-hubs)
