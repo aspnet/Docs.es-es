@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/caching/middleware
-ms.openlocfilehash: 0f1f5dfcb9595270a9659a02141f7d1eba5c44ef
-ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
+ms.openlocfilehash: 11473bbf8b4e2d67d15798a5d87ee01761682f9a
+ms.sourcegitcommit: 07e7ee573fe4e12be93249a385db745d714ff6ae
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102587702"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103413475"
 ---
 # <a name="response-caching-middleware-in-aspnet-core"></a>Middleware de almacenamiento en caché de respuesta en ASP.NET Core
 
@@ -49,7 +49,7 @@ Configure la aplicación para usar el middleware con el <xref:Microsoft.AspNetCo
 [!code-csharp[](middleware/samples/3.x/ResponseCachingMiddleware/Startup.cs?name=snippet2&highlight=17)]
 
 > [!WARNING]
-> <xref:Owin.CorsExtensions.UseCors%2A> se debe llamar a antes de <xref:Microsoft.AspNetCore.Builder.ResponseCachingExtensions.UseResponseCaching%2A> usar [middleware CORS](xref:security/cors).
+> <xref:Microsoft.AspNetCore.Builder.CorsMiddlewareExtensions.UseCors%2A> se debe llamar a antes de <xref:Microsoft.AspNetCore.Builder.ResponseCachingExtensions.UseResponseCaching%2A> usar [middleware CORS](xref:security/cors).
 
 La aplicación de ejemplo agrega encabezados para controlar el almacenamiento en caché en solicitudes posteriores:
 
@@ -71,7 +71,7 @@ El middleware de almacenamiento en caché de respuestas solo almacena en caché 
 
 En la tabla siguiente se muestran las opciones de almacenamiento en caché de respuestas.
 
-| Opción | Description |
+| Opción | Descripción |
 | ------ | ----------- |
 | <xref:Microsoft.AspNetCore.ResponseCaching.ResponseCachingOptions.MaximumBodySize> | Tamaño de almacenamiento en caché más grande para el cuerpo de respuesta en bytes. El valor predeterminado es `64 * 1024 * 1024` (64 MB). |
 | <xref:Microsoft.AspNetCore.ResponseCaching.ResponseCachingOptions.SizeLimit> | Límite de tamaño para el middleware de la caché de respuesta en bytes. El valor predeterminado es `100 * 1024 * 1024` (100 MB). |
@@ -111,7 +111,7 @@ El uso de un valor único igual a `*` en `VaryByQueryKeys` varía la caché por 
 
 En la tabla siguiente se proporciona información sobre los encabezados HTTP que afectan al almacenamiento en caché de las respuestas.
 
-| Encabezado | Detalles |
+| Header | Detalles |
 | ------ | ------- |
 | `Authorization` | Si el encabezado existe, la respuesta no se almacena en caché. |
 | `Cache-Control` | El middleware solo tiene en cuenta las respuestas de almacenamiento en caché marcadas con la `public` Directiva de caché. Controlar el almacenamiento en caché con los parámetros siguientes:<ul><li>Max-Age</li><li>Max:&#8224; obsoleto</li><li>mín. actualizado</li><li>must-revalidate</li><li>sin caché</li><li>sin almacén</li><li>solo si se almacena en caché</li><li>privado</li><li>público</li><li>s-maxage</li><li>proxy: revalidar&#8225;</li></ul>&#8224;si no se especifica ningún límite en `max-stale` , el middleware no realiza ninguna acción.<br>&#8225;`proxy-revalidate` tiene el mismo efecto que `must-revalidate` .<br><br>Para obtener más información, vea [RFC 7231: Request Cache-Control directivas](https://tools.ietf.org/html/rfc7234#section-5.2.1). |
@@ -136,7 +136,7 @@ Para obtener más control sobre el comportamiento del almacenamiento en caché, 
 * <xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper>
 * <xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper>
 
-## <a name="troubleshooting"></a>Solución de problemas
+## <a name="troubleshooting"></a>Solucionar problemas
 
 Si el comportamiento de almacenamiento en caché no es el esperado, confirme que las respuestas se pueden almacenar en caché y que se puede atender desde la memoria caché. Examine los encabezados entrantes de la solicitud y los encabezados de salida de la respuesta. Habilitar el [registro](xref:fundamentals/logging/index) para ayudar con la depuración.
 
@@ -215,7 +215,7 @@ El middleware de almacenamiento en caché de respuestas solo almacena en caché 
 
 En la tabla siguiente se muestran las opciones de almacenamiento en caché de respuestas.
 
-| Opción | Description |
+| Opción | Descripción |
 | ------ | ----------- |
 | <xref:Microsoft.AspNetCore.ResponseCaching.ResponseCachingOptions.MaximumBodySize> | Tamaño de almacenamiento en caché más grande para el cuerpo de respuesta en bytes. El valor predeterminado es `64 * 1024 * 1024` (64 MB). |
 | <xref:Microsoft.AspNetCore.ResponseCaching.ResponseCachingOptions.SizeLimit> | Límite de tamaño para el middleware de la caché de respuesta en bytes. El valor predeterminado es `100 * 1024 * 1024` (100 MB). |
@@ -255,7 +255,7 @@ El uso de un valor único igual a `*` en `VaryByQueryKeys` varía la caché por 
 
 En la tabla siguiente se proporciona información sobre los encabezados HTTP que afectan al almacenamiento en caché de las respuestas.
 
-| Encabezado | Detalles |
+| Header | Detalles |
 | ------ | ------- |
 | `Authorization` | Si el encabezado existe, la respuesta no se almacena en caché. |
 | `Cache-Control` | El middleware solo tiene en cuenta las respuestas de almacenamiento en caché marcadas con la `public` Directiva de caché. Controlar el almacenamiento en caché con los parámetros siguientes:<ul><li>Max-Age</li><li>Max:&#8224; obsoleto</li><li>mín. actualizado</li><li>must-revalidate</li><li>sin caché</li><li>sin almacén</li><li>solo si se almacena en caché</li><li>privado</li><li>público</li><li>s-maxage</li><li>proxy: revalidar&#8225;</li></ul>&#8224;si no se especifica ningún límite en `max-stale` , el middleware no realiza ninguna acción.<br>&#8225;`proxy-revalidate` tiene el mismo efecto que `must-revalidate` .<br><br>Para obtener más información, vea [RFC 7231: Request Cache-Control directivas](https://tools.ietf.org/html/rfc7234#section-5.2.1). |
@@ -280,7 +280,7 @@ Para obtener más control sobre el comportamiento del almacenamiento en caché, 
 * <xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper>
 * <xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper>
 
-## <a name="troubleshooting"></a>Solución de problemas
+## <a name="troubleshooting"></a>Solucionar problemas
 
 Si el comportamiento de almacenamiento en caché no es el esperado, confirme que las respuestas se pueden almacenar en caché y que se puede atender desde la memoria caché. Examine los encabezados entrantes de la solicitud y los encabezados de salida de la respuesta. Habilitar el [registro](xref:fundamentals/logging/index) para ayudar con la depuración.
 

@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/cors
-ms.openlocfilehash: 7afa8105e0ab007153d5c3e8238765d4e9f22641
-ms.sourcegitcommit: 54fe1ae5e7d068e27376d562183ef9ddc7afc432
+ms.openlocfilehash: b057e5e08b8a4d0f9bcd68f92102cad309655acc
+ms.sourcegitcommit: 07e7ee573fe4e12be93249a385db745d714ff6ae
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102586805"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103413514"
 ---
 # <a name="enable-cross-origin-requests-cors-in-aspnet-core"></a>Habilitación de solicitudes entre orígenes (CORS) en ASP.NET Core
 
@@ -71,7 +71,7 @@ Hay tres maneras de habilitar CORS:
 El uso del atributo [[EnableCors]](#attr) con una directiva con nombre proporciona el control más fino para limitar los puntos de conexión que admiten CORS.
 
 > [!WARNING]
-> <xref:Owin.CorsExtensions.UseCors%2A> se debe llamar a antes de <xref:Microsoft.AspNetCore.Builder.ResponseCachingExtensions.UseResponseCaching%2A> usar `UseResponseCaching` .
+> <xref:Microsoft.AspNetCore.Builder.CorsMiddlewareExtensions.UseCors%2A> se debe llamar a en el orden correcto. Para obtener más información, vea [orden de middleware](xref:fundamentals/middleware/index#middleware-order). Por ejemplo, `UseCors` se debe llamar a antes de <xref:Microsoft.AspNetCore.Builder.ResponseCachingExtensions.UseResponseCaching%2A> usar `UseResponseCaching` .
 
 Cada enfoque se detalla en las secciones siguientes.
 
@@ -89,7 +89,7 @@ El código anterior:
 * Llama al <xref:Microsoft.AspNetCore.Builder.CorsMiddlewareExtensions.UseCors*> método de extensión y especifica la  `_myAllowSpecificOrigins` Directiva CORS. `UseCors` agrega el middleware de CORS. La llamada a `UseCors` debe colocarse después `UseRouting` de, pero antes de `UseAuthorization` . Para obtener más información, vea [orden de middleware](xref:fundamentals/middleware/index#middleware-order).
 * Llama a <xref:Microsoft.Extensions.DependencyInjection.CorsServiceCollectionExtensions.AddCors*> con una [expresión lambda](/dotnet/csharp/programming-guide/statements-expressions-operators/lambda-expressions). La expresión lambda toma un <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder> objeto. [Las opciones de configuración](#cors-policy-options), como `WithOrigins` , se describen más adelante en este artículo.
 * Habilita la `_myAllowSpecificOrigins` Directiva CORS para todos los puntos de conexión del controlador. Consulte [enrutamiento de puntos de conexión](#ecors) para aplicar una directiva de CORS a puntos de conexión específicos.
-* Al usar el [middleware de almacenamiento en caché de respuestas](xref:performance/caching/middleware), llame a antes de <xref:Owin.CorsExtensions.UseCors%2A> <xref:Microsoft.AspNetCore.Builder.ResponseCachingExtensions.UseResponseCaching%2A> .
+* Al usar el [middleware de almacenamiento en caché de respuestas](xref:performance/caching/middleware), llame a antes de <xref:Microsoft.AspNetCore.Builder.CorsMiddlewareExtensions.UseCors%2A> <xref:Microsoft.AspNetCore.Builder.ResponseCachingExtensions.UseResponseCaching%2A> .
 
 Con el enrutamiento de punto de conexión, el middleware de CORS **debe** estar configurado para ejecutarse entre las llamadas a `UseRouting` y `UseEndpoints` .
 
